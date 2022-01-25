@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="155px" height="25px" viewBox="0 0 155 25" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>steps</title>
+    <g id="页面-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="PC组件概览备份-3" transform="translate(-406.000000, -858.000000)">
+            <g id="steps" transform="translate(406.000000, 858.000000)">
+                <line x1="19.6503759" y1="6" x2="71.8120301" y2="6" id="路径-3" stroke="#CCCCCC" stroke-width="0.704887218" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="0,1.409774436090225"></line>
+                <line x1="84.0902256" y1="6" x2="136.090226" y2="6" id="路径-3备份" stroke="#CCCCCC" stroke-width="0.704887218" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="0,1.409774436090225"></line>
+                <path d="M141,0 C144.313708,0 147,2.6862915 147,6 C147,9.3137085 144.313708,12 141,12 C137.686292,12 135,9.3137085 135,6 C135,2.6862915 137.686292,0 141,0 Z M141,0.75 C138.100505,0.75 135.75,3.10050506 135.75,6 C135.75,8.89949494 138.100505,11.25 141,11.25 C143.899495,11.25 146.25,8.89949494 146.25,6 C146.25,3.10050506 143.899495,0.75 141,0.75 Z" id="边框" fill="#BDC6D8" fill-rule="nonzero"></path>
+                <text id="↳-📍已完成序号" font-family="PingFangSC-Regular, PingFang SC" font-size="8.12030075" font-weight="normal" line-spacing="10.8270677" fill="#BDC6D8">
+                    <tspan x="138.479248" y="9">3</tspan>
+                </text>
+                <path d="M78,0 C81.3137085,0 84,2.6862915 84,6 C84,9.3137085 81.3137085,12 78,12 C74.6862915,12 72,9.3137085 72,6 C72,2.6862915 74.6862915,0 78,0 Z M78,0.75 C75.1005051,0.75 72.75,3.10050506 72.75,6 C72.75,8.89949494 75.1005051,11.25 78,11.25 C80.8994949,11.25 83.25,8.89949494 83.25,6 C83.25,3.10050506 80.8994949,0.75 78,0.75 Z" id="边框" fill="#BDC6D8" fill-rule="nonzero"></path>
+                <text id="↳-📍已完成序号" font-family="PingFangSC-Regular, PingFang SC" font-size="8.12030075" font-weight="normal" line-spacing="10.8270677" fill="#BDC6D8">
+                    <tspan x="75.4792481" y="9">2</tspan>
+                </text>
+                <g id="↳-📍节点图标" transform="translate(8.000000, 0.000000)" fill="#276FF5">
+                    <path d="M6,0 C9.3137085,0 12,2.6862915 12,6 C12,9.3137085 9.3137085,12 6,12 C2.6862915,12 0,9.3137085 0,6 C0,2.6862915 2.6862915,0 6,0 Z M6,0.75 C3.10050506,0.75 0.75,3.10050506 0.75,6 C0.75,8.89949494 3.10050506,11.25 6,11.25 C8.89949494,11.25 11.25,8.89949494 11.25,6 C11.25,3.10050506 8.89949494,0.75 6,0.75 Z" id="边框" fill-rule="nonzero"></path>
+                    <text id="↳-📍已完成序号" font-family="PingFangSC-Regular, PingFang SC" font-size="8.12030075" font-weight="normal" line-spacing="10.8270677">
+                        <tspan x="4.28721805" y="9">1</tspan>
+                    </text>
+                </g>
+                <rect id="矩形备份-44" fill="#276FF5" x="0" y="17" width="28" height="8" rx="1"></rect>
+                <rect id="矩形备份-45" fill="#BDC6D8" x="64" y="17" width="28" height="8" rx="1"></rect>
+                <rect id="矩形备份-46" fill="#BDC6D8" x="127" y="17" width="28" height="8" rx="1"></rect>
+            </g>
+        </g>
+    </g>
+</svg>

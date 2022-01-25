@@ -1,0 +1,120 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Spin renders correctly 1`] = `
+<div
+  class="kd-spin-children-wrapper"
+>
+  <div
+    class="kd-spin kd-spin-page kd-spin-indicator-container kd-spin-has-children"
+  >
+    <div
+      class="kd-spin-dot-spin"
+    >
+      <i
+        class="kd-spin-dot-item"
+      />
+      <i
+        class="kd-spin-dot-item"
+      />
+      <i
+        class="kd-spin-dot-item"
+      />
+      <i
+        class="kd-spin-dot-item"
+      />
+    </div>
+  </div>
+  <div
+    class="kd-spin-children-container"
+  >
+    Text
+  </div>
+</div>
+`;
+
+exports[`Spin renders correctly 2`] = `
+<div
+  class="kd-spin-children-wrapper"
+>
+  <div
+    class="kd-spin kd-spin-page kd-spin-indicator-container kd-spin-has-children"
+  >
+    <div
+      class="kd-spin-dot-spin"
+    >
+      <i
+        class="kd-spin-dot-item"
+      />
+      <i
+        class="kd-spin-dot-item"
+      />
+      <i
+        class="kd-spin-dot-item"
+      />
+      <i
+        class="kd-spin-dot-item"
+      />
+    </div>
+  </div>
+  <div
+    class="kd-spin-children-container"
+  >
+    Text
+  </div>
+</div>
+`;
+
+exports[`Spin renders correctly 3`] = `
+<div
+  class="kd-spin-children-wrapper"
+>
+  <div
+    class="kd-spin kd-spin-container kd-spin-indicator-container kd-spin-has-children"
+  >
+    <div
+      class="kd-spin-dot-spin"
+    >
+      <i
+        class="kd-spin-dot-item"
+      />
+      <i
+        class="kd-spin-dot-item"
+      />
+      <i
+        class="kd-spin-dot-item"
+      />
+      <i
+        class="kd-spin-dot-item"
+      />
+    </div>
+  </div>
+  <div
+    class="kd-spin-children-container"
+  >
+    Text
+  </div>
+</div>
+`;
+
+exports[`Spin renders correctly 4`] = `
+<div
+  class="kd-spin-children-wrapper"
+>
+  <div
+    class="kd-spin kd-spin-component kd-spin-indicator-container kd-spin-has-children"
+  >
+    <div
+      class="kd-spin-dot-spin"
+    >
+      <i
+        class="kd-spin-dot-item"
+      />
+    </div>
+  </div>
+  <div
+    class="kd-spin-children-container"
+  >
+    Text
+  </div>
+</div>
+`;

@@ -1,0 +1,133 @@
+@mobile: ~'only screen and (max-width: 960px)';
+
+.footer {
+  padding: 0 100px;
+  color: #fff;
+  background: #1d2c43;
+  position: relative;
+  z-index: 8;
+
+  &-top {
+    display: flex;
+    justify-content: space-between;
+
+    > div {
+      &:nth-child(2) {
+        text-align: center;
+        margin-top: 43px;
+        margin-right: 200px;
+
+        img {
+          width: 70px;
+          margin-bottom: 7px;
+        }
+
+        div {
+          font-size: 12px;
+          color: rgba(255, 255, 255, 0.7);
+          font-weight: 400;
+        }
+      }
+    }
+  }
+
+  &-logo {
+    height: 120px;
+    display: flex;
+    align-items: center;
+  }
+
+  &-main {
+    display: flex;
+    margin-bottom: 30px;
+
+    &-item {
+      margin-right: 120px;
+
+      a {
+        cursor: pointer;
+        margin-right: 20px;
+        color: #fff;
+        text-decoration: none;
+
+        &:hover {
+          color: rgb(35, 134, 238);
+        }
+      }
+
+      > div:nth-child(1) {
+        color: #fff;
+        opacity: 0.7;
+        font-size: 14px;
+      }
+
+      > div:nth-child(2) {
+        font-size: 16px;
+        margin-top: 10px;
+        display: flex;
+      }
+    }
+  }
+
+  &-bottom {
+    color: #fff;
+    opacity: 0.7;
+    height: 62px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-top: 1px solid rgba(255, 255, 255, 0.3);
+
+    a {
+      color: #fff;
+      opacity: 0.7;
+      text-decoration: none;
+      margin-left: 10px;
+
+      &:hover {
+        color: #fff;
+      }
+    }
+  }
+
+  &.transparent {
+    background: #9342f3;
+
+    .link-button {
+      cursor: pointer;
+
+      &:hover {
+        color: rgba(255, 255, 255, 0.78);
+      }
+    }
+  }
+}
+
+
+@media @mobile {
+  .footer {
+    padding: 0 10px;
+
+    &-main {
+      display: block;
+
+      > div:nth-child(1) {
+        margin-top: -10px;
+      }
+
+      a {
+        display: inline-block;
+        margin: 10px 20px 0 0;
+      }
+
+      &-item {
+        margin-right: 0;
+        margin-top: 10px;
+
+        > div:nth-child(2) {
+          display: block;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,92 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Badge renders correctly 1`] = `
+<span
+  class="kd-badge kd-badge-status kd-badge-not-a-wrapper"
+>
+  <span
+    class="kd-badge-status-dot kd-badge-status-success"
+  />
+  <span
+    class="kd-badge-status-text"
+  />
+</span>
+`;
+
+exports[`Badge renders correctly 2`] = `
+<span
+  class="kd-badge kd-badge-status kd-badge-not-a-wrapper"
+>
+  <span
+    class="kd-badge-status-dot kd-badge-status-processing"
+  />
+  <span
+    class="kd-badge-status-text"
+  />
+</span>
+`;
+
+exports[`Badge renders correctly 3`] = `
+<span
+  class="kd-badge kd-badge-status kd-badge-not-a-wrapper"
+>
+  <span
+    class="kd-badge-status-dot kd-badge-status-error"
+  />
+  <span
+    class="kd-badge-status-text"
+  />
+</span>
+`;
+
+exports[`Badge renders correctly 4`] = `
+<span
+  class="kd-badge kd-badge-status kd-badge-not-a-wrapper"
+>
+  <span
+    class="kd-badge-status-dot kd-badge-status-default"
+  />
+  <span
+    class="kd-badge-status-text"
+  />
+</span>
+`;
+
+exports[`Badge renders correctly 5`] = `
+<span
+  class="kd-badge kd-badge-status kd-badge-not-a-wrapper"
+>
+  <span
+    class="kd-badge-status-dot kd-badge-status-warning"
+  />
+  <span
+    class="kd-badge-status-text"
+  />
+</span>
+`;
+
+exports[`Badge renders correctly 6`] = `
+<span
+  class="kd-badge kd-badge-not-a-wrapper"
+>
+  <sup
+    class="kd-badge-count kd-badge-multiple-words"
+    title="10"
+  >
+    10
+  </sup>
+</span>
+`;
+
+exports[`Badge renders correctly 7`] = `
+<span
+  class="kd-badge kd-badge-not-a-wrapper"
+>
+  <sup
+    class="kd-badge-count kd-badge-count-sm kd-badge-multiple-words"
+    title="10"
+  >
+    10
+  </sup>
+</span>
+`;

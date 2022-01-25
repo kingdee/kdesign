@@ -1,0 +1,65 @@
+@import '../../style/themes/index';
+@import './mixin.less';
+@inputNumber-prefix-cls: ~'@{kd-prefix}-inputNumber';
+.@{inputNumber-prefix-cls} {
+  &-baseStep {
+	  display: flex;
+	  justify-content: center;
+    align-items: center;
+		box-sizing: border-box;
+		height: 100%;
+		cursor: pointer;
+		&-small {
+			.base-step-size(@input-small-height);
+		}
+		&-middle {
+			.base-step-size(@input-middle-height);
+		}
+		&-large {
+			.base-step-size(@input-large-height);
+		}
+		.@{inputNumber-prefix-cls}-icon {
+			color: @secondary-text-color;
+			transition: color @transition-duration;
+		}
+		&:hover .@{inputNumber-prefix-cls}-icon {
+			color: @theme-color-hover;
+		}
+	}
+	&-baseStep-decrease {
+		.step-style(right, left);
+	}
+	&-baseStep-increase {
+		.step-style(left, right);
+	}
+	&-embedStep {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		height: 100%;
+		border-radius: 0 1px 1px 0;
+		background-color: @inputNumber-embedStepBtn-bg-color;
+		overflow: hidden;
+		.step-style(left, right);
+		border: none;
+		span {
+			height: 50%;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			border-left: 1px solid @strong-border-color;
+			border-bottom: 1px solid @strong-border-color;
+			cursor: pointer;
+			font-size: 12px;
+			.@{inputNumber-prefix-cls}-icon {
+				transition: color @transition-duration;
+			}
+			&:hover .@{inputNumber-prefix-cls}-icon {
+				color: @theme-color-hover;
+			}
+			&:last-child {
+				border-bottom: none;
+			}
+		}
+	}
+}

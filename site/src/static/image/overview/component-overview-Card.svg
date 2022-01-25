@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="172px" height="87px" viewBox="0 0 172 87" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>卡片</title>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="160" height="75" rx="1"></rect>
+        <filter x="-5.9%" y="-11.3%" width="111.9%" height="125.3%" filterUnits="objectBoundingBox" id="filter-2">
+            <feOffset dx="0" dy="1" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="3" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.08 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="页面-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="PC组件概览备份-3" transform="translate(-660.000000, -2442.000000)">
+            <g id="编组" transform="translate(666.000000, 2447.000000)">
+                <g id="编组-2">
+                    <g id="矩形">
+                        <use fill="black" fill-opacity="1" filter="url(#filter-2)" xlink:href="#path-1"></use>
+                        <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-1"></use>
+                    </g>
+                    <g id="编组" transform="translate(100.000000, 58.900000)" fill="#FFFFFF" stroke="#CCCCCC" stroke-width="0.5">
+                        <g id="↳⚙️按钮样式">
+                            <rect id="↳⚙️按钮状态" x="0.25" y="0.25" width="22.5" height="11.5" rx="1.6"></rect>
+                        </g>
+                    </g>
+                    <g id="2.按钮/1.按钮/3.小按钮/1.主按钮/1.默认备份-3" transform="translate(128.000000, 59.300000)" fill="#FFFFFF" stroke="#CCCCCC" stroke-width="0.5">
+                        <g id="↳⚙️按钮样式">
+                            <rect id="↳⚙️按钮状态" x="0.25" y="0.25" width="22.5" height="10.7" rx="1.6"></rect>
+                        </g>
+                    </g>
+                    <path d="M1,0 L159,0 C159.552285,-1.01453063e-16 160,0.44771525 160,1 L160,24 L160,24 L0,24 L0,1 C-6.76353751e-17,0.44771525 0.44771525,1.01453063e-16 1,0 Z" id="矩形" fill="#EDF1F7"></path>
+                    <rect id="矩形备份-5" fill="#FAFAFA" x="0" y="51.8092105" width="160" height="1"></rect>
+                </g>
+                <rect id="矩形备份-96" fill="#D4D9E3" x="9" y="9" width="28" height="8" rx="1"></rect>
+                <rect id="矩形备份-97" fill="#EDF1F7" x="9" y="31" width="142" height="6" rx="1"></rect>
+                <rect id="矩形备份-98" fill="#EDF1F7" x="9" y="43" width="85" height="6" rx="1"></rect>
+            </g>
+        </g>
+    </g>
+</svg>

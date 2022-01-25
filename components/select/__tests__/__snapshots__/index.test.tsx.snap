@@ -1,0 +1,346 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Select render no child without errors 1`] = `
+<Select>
+  <div
+    className="kd-select"
+    onClick={[Function]}
+  >
+    <span
+      className="kd-select-selector"
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+    >
+      <div
+        className="kd-select-underline kd-select-size-middle kd-select-wrapper kd-select-single"
+      >
+        <span
+          className="kd-select-single-text"
+        />
+        <span
+          className="kd-select-placeholder"
+        />
+        <span
+          className="kd-select-suffix"
+        >
+          <span
+            className="kd-select-icon-arrow kd-select-icon-arrow-down"
+          >
+            <Icon
+              type="arrow-down"
+            >
+              <i
+                className="kdicon kdicon-arrow-down"
+                onClick={[Function]}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
+                style={Object {}}
+              />
+            </Icon>
+          </span>
+        </span>
+      </div>
+    </span>
+  </div>
+</Select>
+`;
+
+exports[`Select render null or undefined without errors 1`] = `
+<Select>
+  <div
+    className="kd-select"
+    onClick={[Function]}
+  >
+    <span
+      className="kd-select-selector"
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+    >
+      <div
+        className="kd-select-underline kd-select-size-middle kd-select-wrapper kd-select-single"
+      >
+        <span
+          className="kd-select-single-text"
+        />
+        <span
+          className="kd-select-placeholder"
+        />
+        <span
+          className="kd-select-suffix"
+        >
+          <span
+            className="kd-select-icon-arrow kd-select-icon-arrow-down"
+          >
+            <Icon
+              type="arrow-down"
+            >
+              <i
+                className="kdicon kdicon-arrow-down"
+                onClick={[Function]}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
+                style={Object {}}
+              />
+            </Icon>
+          </span>
+        </span>
+      </div>
+    </span>
+  </div>
+</Select>
+`;
+
+exports[`Select renders correctly 1`] = `
+<div
+  class="kd-select"
+>
+  <span
+    class="kd-select-selector"
+  >
+    <div
+      class="kd-select-underline kd-select-size-middle kd-select-wrapper kd-select-multiple"
+    >
+      <span
+        class="kd-select-placeholder"
+      />
+      <span
+        class="kd-select-suffix"
+      >
+        <span
+          class="kd-select-icon-arrow kd-select-icon-arrow-down"
+        >
+          <i
+            class="kdicon kdicon-arrow-down"
+          />
+        </span>
+      </span>
+    </div>
+  </span>
+</div>
+`;
+
+exports[`Select renders correctly 2`] = `
+<div
+  class="kd-select"
+>
+  <span
+    class="kd-select-selector"
+  >
+    <div
+      class="kd-select-underline kd-select-size-middle kd-select-wrapper kd-select-single"
+    >
+      <span
+        class="kd-select-single-text"
+      />
+      <span
+        class="kd-select-placeholder"
+      />
+      <span
+        class="kd-select-suffix"
+      >
+        <span
+          class="kd-select-icon-arrow kd-select-icon-arrow-down"
+        >
+          <i
+            class="kdicon kdicon-arrow-down"
+          />
+        </span>
+      </span>
+    </div>
+  </span>
+</div>
+`;
+
+exports[`Select renders correctly 3`] = `
+<div
+  class="kd-select"
+>
+  <span
+    class="kd-select-selector"
+  >
+    <div
+      class="kd-select-borderless kd-select-size-middle kd-select-wrapper kd-select-single"
+    >
+      <span
+        class="kd-select-single-text"
+      />
+      <span
+        class="kd-select-placeholder"
+      />
+      <span
+        class="kd-select-suffix"
+      >
+        <span
+          class="kd-select-icon-arrow kd-select-icon-arrow-down"
+        >
+          <i
+            class="kdicon kdicon-arrow-down"
+          />
+        </span>
+      </span>
+    </div>
+  </span>
+</div>
+`;
+
+exports[`Select renders correctly 4`] = `
+<div
+  class="kd-select"
+>
+  <span
+    class="kd-select-selector"
+  >
+    <div
+      class="kd-select-underline kd-select-size-middle kd-select-wrapper kd-select-single"
+    >
+      <span
+        class="kd-select-single-text"
+      />
+      <span
+        class="kd-select-placeholder"
+      />
+      <span
+        class="kd-select-suffix"
+      >
+        <span
+          class="kd-select-icon-arrow kd-select-icon-arrow-down"
+        >
+          <i
+            class="kdicon kdicon-arrow-down"
+          />
+        </span>
+      </span>
+    </div>
+  </span>
+</div>
+`;
+
+exports[`Select renders correctly 5`] = `
+<div
+  class="kd-select"
+>
+  <span
+    class="kd-select-selector"
+  >
+    <div
+      class="kd-select-bordered kd-select-size-middle kd-select-wrapper kd-select-single"
+    >
+      <span
+        class="kd-select-single-text"
+      />
+      <span
+        class="kd-select-placeholder"
+      />
+      <span
+        class="kd-select-suffix"
+      >
+        <span
+          class="kd-select-icon-arrow kd-select-icon-arrow-down"
+        >
+          <i
+            class="kdicon kdicon-arrow-down"
+          />
+        </span>
+      </span>
+    </div>
+  </span>
+</div>
+`;
+
+exports[`Select renders correctly 6`] = `
+<div
+  class="kd-select"
+>
+  <span
+    class="kd-select-selector"
+  >
+    <div
+      class="kd-select-underline kd-select-size-large kd-select-wrapper kd-select-single"
+    >
+      <span
+        class="kd-select-single-text"
+      />
+      <span
+        class="kd-select-placeholder"
+      />
+      <span
+        class="kd-select-suffix"
+      >
+        <span
+          class="kd-select-icon-arrow kd-select-icon-arrow-down"
+        >
+          <i
+            class="kdicon kdicon-arrow-down"
+          />
+        </span>
+      </span>
+    </div>
+  </span>
+</div>
+`;
+
+exports[`Select renders correctly 7`] = `
+<div
+  class="kd-select"
+>
+  <span
+    class="kd-select-selector"
+  >
+    <div
+      class="kd-select-underline kd-select-size-middle kd-select-wrapper kd-select-single"
+    >
+      <span
+        class="kd-select-single-text"
+      />
+      <span
+        class="kd-select-placeholder"
+      />
+      <span
+        class="kd-select-suffix"
+      >
+        <span
+          class="kd-select-icon-arrow kd-select-icon-arrow-down"
+        >
+          <i
+            class="kdicon kdicon-arrow-down"
+          />
+        </span>
+      </span>
+    </div>
+  </span>
+</div>
+`;
+
+exports[`Select renders correctly 8`] = `
+<div
+  class="kd-select"
+>
+  <span
+    class="kd-select-selector"
+  >
+    <div
+      class="kd-select-underline kd-select-size-small kd-select-wrapper kd-select-single"
+    >
+      <span
+        class="kd-select-single-text"
+      />
+      <span
+        class="kd-select-placeholder"
+      />
+      <span
+        class="kd-select-suffix"
+      >
+        <span
+          class="kd-select-icon-arrow kd-select-icon-arrow-down"
+        >
+          <i
+            class="kdicon kdicon-arrow-down"
+          />
+        </span>
+      </span>
+    </div>
+  </span>
+</div>
+`;

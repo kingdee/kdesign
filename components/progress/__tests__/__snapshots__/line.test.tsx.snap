@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Progress Line renders correctly 1`] = `
+<div
+  class="undefined-outer"
+>
+  <div
+    class="undefined-inner"
+  >
+    <div
+      class="undefined-bg"
+      style="width:0%"
+    />
+  </div>
+</div>
+`;

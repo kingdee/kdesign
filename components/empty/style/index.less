@@ -1,0 +1,23 @@
+
+@import '../../style/themes/index';
+@import './mixin.less';
+@empty-prefix-cls: ~'@{kd-prefix}-empty';
+
+.@{empty-prefix-cls} {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &-image {
+    height: @empty-image-height;
+
+    + .@{empty-prefix-cls}-description {
+      margin-top: 8px;
+    }
+  }
+
+  &-description {
+    font-size: @empty-font-size;
+    color: @empty-font-color;
+  }
+}

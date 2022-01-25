@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="127px" height="95px" viewBox="0 0 127 95" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>切片</title>
+    <g id="前端总览" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="PC组件概览备份-3" transform="translate(-940.000000, -2940.000000)">
+            <g id="4-时间轴备份" transform="translate(886.000000, 2918.000000)">
+                <g id="编组-42" transform="translate(54.000000, 22.000000)">
+                    <polygon id="矩形备份-16" fill="#EDF1F7" transform="translate(73.634518, 47.587413) rotate(90.000000) translate(-73.634518, -47.587413) " points="35.3233938 47.2676161 111.945642 47.2676161 111.945642 47.90721 35.3233938 47.90721"></polygon>
+                    <g id="编组-108">
+                        <rect id="矩形备份-117" fill="#D4D9E3" x="86.7969543" y="6.40295481" width="40" height="10" rx="1.28"></rect>
+                        <ellipse id="椭圆形" fill="#276FF5" cx="73.7969543" cy="11.3962307" rx="4" ry="3.99327589"></ellipse>
+                        <text id="2021-09-02" font-family="MicrosoftYaHei, Microsoft YaHei" font-size="12" font-weight="normal" line-spacing="20.48" fill="#666666">
+                            <tspan x="0.65234375" y="13">2021-09-02</tspan>
+                        </text>
+                    </g>
+                    <g id="编组-108" transform="translate(0.000000, 37.000000)">
+                        <rect id="矩形备份-117" fill="#D4D9E3" x="86.7969543" y="6.40295481" width="40" height="10" rx="1.28"></rect>
+                        <ellipse id="椭圆形" fill="#276FF5" cx="73.7969543" cy="11.3962307" rx="4" ry="3.99327589"></ellipse>
+                        <text id="2021-10-02" font-family="MicrosoftYaHei, Microsoft YaHei" font-size="12" font-weight="normal" line-spacing="20.48" fill="#666666">
+                            <tspan x="0.65234375" y="13">2021-10-02</tspan>
+                        </text>
+                    </g>
+                    <g id="编组-108" transform="translate(0.000000, 74.000000)">
+                        <rect id="矩形备份-117" fill="#D4D9E3" x="86.7969543" y="6.40295481" width="40" height="10" rx="1.28"></rect>
+                        <ellipse id="椭圆形" fill="#276FF5" cx="73.7969543" cy="11.3962307" rx="4" ry="3.99327589"></ellipse>
+                        <text id="2021-11-02" font-family="MicrosoftYaHei, Microsoft YaHei" font-size="12" font-weight="normal" line-spacing="20.48" fill="#666666">
+                            <tspan x="0.65234375" y="13">2021-11-02</tspan>
+                        </text>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

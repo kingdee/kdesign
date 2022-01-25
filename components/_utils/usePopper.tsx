@@ -1,0 +1,552 @@
+import React, { useEffect, useState, useCallback, useRef, cloneElement } from 'react'
+import ReactDOM from 'react-dom'
+import { tuple } from '../_utils/type'
+import debounce from 'lodash/debounce'
+import classNames from 'classnames'
+import devWarning from '../_utils/devwarning'
+import { useResizeObserver } from './hooks'
+
+export const Placements = tuple(
+  'top',
+  'left',
+  'right',
+  'bottom',
+  'topLeft',
+  'topRight',
+  'bottomLeft',
+  'bottomRight',
+  'leftTop',
+  'leftBottom',
+  'rightTop',
+  'rightBottom',
+)
+export type PlacementType = typeof Placements[number]
+
+export const Triggers = tuple('hover', 'focus', 'click', 'contextMenu')
+
+export type TriggerType = typeof Triggers[number]
+
+type Position = {
+  top: number
+  left: number
+  right: number
+  bottom: number
+  height: number
+  width: number
+}
+
+type Align = {
+  top: number
+  left: number
+}
+
+type NormalProps = {
+  [key: string]: any
+}
+
+export interface PopperProps {
+  gap?: number
+  arrow?: boolean
+  visible?: boolean
+  prefixCls?: string
+  arrowSize?: number
+  disabled?: boolean
+  arrowOffset?: number
+  scrollHidden?: boolean
+  mouseEnterDelay?: number
+  mouseLeaveDelay?: number
+  defaultVisible?: boolean
+  popperClassName?: string
+  placement?: PlacementType
+  popperStyle?: React.CSSProperties
+  trigger?: TriggerType | Array<TriggerType>
+  onTrigger?: (trigger: TriggerType) => void
+  onVisibleChange?: (visible: boolean) => void
+  getTriggerElement?: (locatorNode: HTMLElement) => HTMLElement
+  getPopupContainer?: (locatorNode: HTMLElement) => HTMLElement
+}
+
+function getTranslate(node: Element, param: string) {
+  const translates = document.defaultView?.getComputedStyle(node, null).transform.substring(7) || ''
+  const result = translates.match(/\(([^)]*)\)/)
+  const matrix = result ? result[1].split(',') : translates.split(',')
+  if (param === 'x' || param === undefined) {
+    return matrix.length > 6 ? parseFloat(matrix[12]) : parseFloat(matrix[4])
+  } else if (param === 'y') {
+    return matrix.length > 6 ? parseFloat(matrix[13]) : parseFloat(matrix[5])
+  } else if (param === 'z') {
+    return matrix.length > 6 ? parseFloat(matrix[14]) : 0
+  } else if (param === 'rotate') {
+    return matrix.length > 6
+      ? getRotate([parseFloat(matrix[0]), parseFloat(matrix[1]), parseFloat(matrix[4]), parseFloat(matrix[5])])
+      : getRotate(matrix.map((i: string) => parseFloat(i)))
+  }
+}
+
+function getRotate(matrix: Array<number>) {
+  const aa = Math.round((180 * Math.asin(matrix[0])) / Math.PI)
+  const bb = Math.round((180 * Math.acos(matrix[1])) / Math.PI)
+  const cc = Math.round((180 * Math.asin(matrix[2])) / Math.PI)
+  const dd = Math.round((180 * Math.acos(matrix[3])) / Math.PI)
+  let deg = 0
+  if (aa === bb || -aa === bb) {
+    deg = dd
+  } else if (-aa + bb === 180) {
+    deg = 180 + cc
+  } else if (aa + bb === 180) {
+    deg = 360 - cc || 360 - dd
+  }
+  return deg >= 360 ? 0 : deg
+}
+
+const getTranslatePos: (el: Element) => { top: number; left: number } = (el: HTMLElement) => {
+  const elPos = { top: getTranslate(el, 'y') || 0, left: getTranslate(el, 'x') || 0 }
+  if (el.parentElement) {
+    const parentPos = getTranslatePos(el.parentElement)
+    elPos.top += parentPos.top
+    elPos.left += parentPos.left
+  }
+  return elPos
+}
+
+const getOffsetPos: (el: Element) => { top: number; left: number } = (el: HTMLElement) => {
+  const elPos = { top: el.offsetTop, left: el.offsetLeft }
+  if (el.offsetParent) {
+    const parentPos = getOffsetPos(el.offsetParent)
+    elPos.top += parentPos.top
+    elPos.left += parentPos.left
+  }
+  return elPos
+}
+
+const getScrollDist: (el: Element, container: Element) => { top: number; left: number } = (
+  el: HTMLElement,
+  container: HTMLElement,
+) => {
+  const elScroll = { top: el.scrollTop, left: el.scrollLeft }
+  const isFixed = getComputedStyle(el, null).getPropertyValue('position') === 'fixed'
+  if (isFixed) {
+    elScroll.top -= document.documentElement.scrollTop
+    elScroll.left -= document.documentElement.scrollLeft
+  } else if (el.parentElement && container.contains(el.parentElement)) {
+    const parentScroll = getScrollDist(el.parentElement, container)
+    elScroll.top += parentScroll.top
+    elScroll.left += parentScroll.left
+  }
+  return elScroll
+}
+
+function usePopper(locatorElement: React.ReactElement, popperElement: React.ReactElement, props: PopperProps) {
+  const {
+    prefixCls,
+    onTrigger,
+    popperStyle,
+    arrow = false,
+    onVisibleChange,
+    popperClassName,
+    arrowOffset = 12,
+    arrowSize = 4.25,
+    disabled = false,
+    trigger = 'click',
+    placement = 'top',
+    gap: defalutGap = 4,
+    scrollHidden = false,
+    mouseEnterDelay = 0.1,
+    mouseLeaveDelay = 0.1,
+    defaultVisible = false,
+    getTriggerElement = (locatorNode) => locatorNode,
+    getPopupContainer = () => document.body,
+  } = props
+
+  const arrowWidth = Math.sqrt(2 * Math.pow(arrowSize, 2))
+
+  const componentName = prefixCls?.split('-')[1] || ''
+
+  devWarning(
+    Placements.indexOf(placement) === -1,
+    componentName,
+    `cannot found ${componentName} placement '${placement}'`,
+  )
+
+  const isWrongTrigger = Array.isArray(trigger)
+    ? trigger.some((v) => !Triggers.includes(v))
+    : Triggers.indexOf(trigger) === -1
+  devWarning(isWrongTrigger, componentName, `cannot found ${componentName} trigger '${trigger}'`)
+
+  const locatorEl = useRef<HTMLElement>()
+  const popperEl = useRef<HTMLElement>()
+  const locatorRef = (locatorElement as any).ref || locatorEl
+  const popperRef = (popperElement as any).ref || popperEl
+
+  const container = getPopupContainer(locatorRef.current || document.body)
+
+  Promise.resolve().then(() => {
+    const triggerNode = getTriggerElement(locatorRef.current)
+    const container = getPopupContainer(locatorRef.current)
+    devWarning(
+      !triggerNode,
+      componentName,
+      `getTriggerElement() must return a HTMLElement, but now it does not return anything`,
+    )
+    devWarning(
+      !container,
+      componentName,
+      `getPopupContainer() must return a HTMLElement, but now it does not return anything`,
+    )
+  })
+
+  const initPos = { top: 0, left: 0, right: 0, bottom: 0, height: 0, width: 0 }
+
+  const initAlign = { top: 0, left: 0 }
+
+  const gap = defalutGap + (arrow ? 10 : 0)
+
+  const [mousePos, setMousePos] = useState<Position>(initPos)
+  const [arrowPos, setArrowPos] = useState<Align>(initAlign)
+
+  const [exist, setExist] = useState(!!props.visible || defaultVisible)
+  const [canAlign, setCanAlign] = useState(!!props.visible || defaultVisible)
+  const [visible, setVisible] = useState(false)
+  useEffect(() => {
+    if (props.visible) {
+      !exist && setExist(true)
+      setCanAlign(true)
+      setVisible(true)
+    } else {
+      setVisible(false)
+    }
+  }, [exist, props.visible])
+
+  const [evType, setEvType] = useState<string>('')
+  const [align, setAlign] = useState<Align | undefined>()
+
+  const [currentPlacement, setCurrentPlacement] = useState<string>(placement)
+
+  const alignPopper = useCallback(() => {
+    if (locatorRef?.current && popperRef?.current) {
+      const { width: popperWidth, height: popperHeight } = popperRef.current.getBoundingClientRect()
+      const { top, bottom, left, right, height, width } = locatorRef.current.getBoundingClientRect()
+
+      const { top: containerTop, left: containerLeft } = getOffsetPos(container)
+      const { top: locatorTop, left: locatorLeft } = getOffsetPos(locatorRef.current)
+      const { top: scrollTop, left: scrollLeft } = getScrollDist(locatorRef.current.parentElement, container)
+      const { top: translateTop, left: translateLeft } = getTranslatePos(locatorRef.current)
+
+      const locatorPos = {
+        width,
+        height,
+        top: locatorTop + translateTop - containerTop - scrollTop,
+        left: locatorLeft + translateLeft - containerLeft - scrollLeft,
+        right: locatorLeft + translateLeft + width - containerLeft - scrollLeft,
+        bottom: locatorTop + translateTop + height - containerTop - scrollTop,
+      }
+
+      const currentPos = trigger === 'contextMenu' ? mousePos : locatorPos
+
+      let currentPlacement: string = placement
+
+      if (top - gap - popperHeight <= 5 && bottom + gap + popperHeight < document.body.clientHeight - 5) {
+        currentPlacement = currentPlacement.replace('top', 'bottom')
+      }
+      if (bottom + gap + popperHeight >= document.body.clientHeight - 5 && top - gap - popperHeight > 5) {
+        currentPlacement = currentPlacement.replace('bottom', 'top')
+      }
+      if (left + popperWidth >= document.body.clientWidth - 5 && right - popperWidth > 5) {
+        currentPlacement = currentPlacement.replace('Left', 'Right')
+      }
+      if (right - popperWidth <= 5 && left + popperWidth < document.body.clientWidth - 5) {
+        currentPlacement = currentPlacement.replace('Right', 'Left')
+      }
+      if (top + popperHeight >= document.body.clientHeight - 5 && bottom - popperHeight > 5) {
+        currentPlacement = currentPlacement.replace('Top', 'Bottom')
+      }
+      if (bottom - popperHeight <= 5 && top + popperHeight < document.body.clientHeight - 5) {
+        currentPlacement = currentPlacement.replace('Bottom', 'Top')
+      }
+      if (left - gap - popperWidth <= 5 && right + gap + popperWidth < document.body.clientWidth - 5) {
+        currentPlacement = currentPlacement.replace('left', 'right')
+      }
+      if (right + gap + popperWidth >= document.body.clientWidth - 5 && left - gap - popperWidth > 5) {
+        currentPlacement = currentPlacement.replace('right', 'left')
+      }
+
+      const leftLeft = currentPos.left - popperWidth - gap
+      const topTop = currentPos.top - gap - popperHeight
+      const bottomTop = currentPos.top + currentPos.height + gap
+      const rightLeft = currentPos.left + currentPos.width - popperWidth
+      const centerLeft = currentPos.left + (currentPos.width - popperWidth) / 2
+      const centerTop = currentPos.top - (popperHeight - currentPos.height) / 2
+      const topBottom = currentPos.bottom - popperHeight
+      const leftRight = currentPos.right + gap
+
+      const mapAlign: { [key: string]: Align } = {
+        topLeft: { left: currentPos.left, top: topTop },
+        top: { left: centerLeft, top: topTop },
+        topRight: { left: rightLeft, top: topTop },
+        bottomLeft: { left: currentPos.left, top: bottomTop },
+        bottom: { left: centerLeft, top: bottomTop },
+        bottomRight: { left: rightLeft, top: bottomTop },
+        leftTop: { left: leftLeft, top: currentPos.top },
+        left: { left: leftLeft, top: centerTop },
+        leftBottom: { left: leftLeft, top: topBottom },
+        rightTop: { left: leftRight, top: currentPos.top },
+        right: { left: leftRight, top: centerTop },
+        rightBottom: { left: leftRight, top: topBottom },
+      }
+
+      const alignPos = mapAlign[currentPlacement]
+      const arrowPos = { top: 0, left: 0 }
+
+      if (/left/.test(currentPlacement) || /right/.test(currentPlacement)) {
+        if (/Top/.test(currentPlacement)) {
+          arrowPos.top = arrowOffset
+        } else if (/Bottom/.test(currentPlacement)) {
+          arrowPos.top = popperHeight - arrowOffset - 2 * arrowSize
+        } else {
+          arrowPos.top = (popperHeight - arrowWidth) / 2 - 1
+        }
+
+        if (top <= 0) {
+          alignPos.top = locatorPos.top
+          arrowPos.top = arrowOffset
+        } else if (bottom - height / 4 >= document.body.clientHeight) {
+          alignPos.top = locatorPos.bottom - popperHeight
+          arrowPos.top = popperHeight - arrowOffset - 2 * arrowSize
+        } else {
+          const scrollTop = alignPos.top - window.pageYOffset
+          const scrollBottom = alignPos.top + popperHeight - 5 - window.pageYOffset
+          if (scrollTop < 0) {
+            alignPos.top -= scrollTop
+            arrowPos.top += scrollTop
+          }
+          if (scrollBottom > document.body.clientHeight) {
+            alignPos.top += document.body.clientHeight - scrollBottom
+            arrowPos.top += scrollBottom - document.body.clientHeight
+          }
+        }
+      }
+
+      if (/top/.test(currentPlacement) || /bottom/.test(currentPlacement)) {
+        if (/Left/.test(currentPlacement)) {
+          arrowPos.left = arrowOffset
+        } else if (/Right/.test(currentPlacement)) {
+          arrowPos.left = popperWidth - arrowOffset - 2 * arrowSize
+        } else {
+          arrowPos.left = (popperWidth - arrowWidth) / 2 - 1
+        }
+      }
+
+      setAlign(alignPos)
+      setArrowPos(arrowPos)
+      setCurrentPlacement(currentPlacement)
+    }
+  }, [locatorRef, popperRef, container, trigger, mousePos, placement, gap, arrowOffset, arrowSize, arrowWidth])
+
+  useEffect(() => {
+    if (canAlign) {
+      alignPopper()
+      setCanAlign(false)
+      props.visible === undefined && setVisible(true)
+      onVisibleChange && onVisibleChange(true)
+    }
+  }, [alignPopper, canAlign, onVisibleChange, props])
+
+  const arrowStyle: Record<string, string> = {
+    [`--arrowSize`]: arrowSize + 'px',
+    [`--arrowSpill`]: arrowWidth / -2 + 'px',
+  }
+  if (arrowPos.top) arrowStyle[`--arrowTop`] = arrowPos.top + 'px'
+  if (arrowPos.left) arrowStyle[`--arrowLeft`] = arrowPos.left + 'px'
+
+  const popperContainerStyle = {
+    position: 'absolute',
+    ...popperStyle,
+    ...align,
+    ...(arrow ? arrowStyle : {}),
+  }
+
+  const popperProps: NormalProps = {
+    ref: popperRef,
+    style: popperContainerStyle,
+    className: classNames(prefixCls, popperClassName, currentPlacement, {
+      arrow,
+      hidden: !visible,
+      [`${currentPlacement}-active`]: visible,
+    }),
+  }
+
+  const popperNode = popperRef.current
+  const locatorNode = locatorRef.current
+  useResizeObserver(popperNode, alignPopper)
+  useResizeObserver(locatorNode, alignPopper)
+
+  const showPopper = useCallback(
+    (evType: string) => {
+      if (!disabled) {
+        !exist && setExist(true)
+        setEvType(evType)
+        if (onTrigger) {
+          const mapTrigger: NormalProps = {
+            mouseenter: 'hover',
+            mouseup: 'click',
+            focus: 'focus',
+            contextmenu: 'contextMenu',
+          }
+          onTrigger(mapTrigger[evType])
+        }
+        if (!visible || evType === 'contextmenu') {
+          setCanAlign(true)
+        }
+      }
+    },
+    [disabled, exist, onTrigger, visible],
+  )
+
+  const hidePopper = useCallback(() => {
+    setEvType('')
+    props.visible === undefined && setVisible(false)
+    onVisibleChange && onVisibleChange(false)
+  }, [onVisibleChange, props.visible])
+
+  useEffect(() => {
+    if (exist && visible) {
+      let mouseleaveTimer: number
+      const handleHidePopper = (e: MouseEvent) => {
+        const triggerNode = getTriggerElement(locatorRef.current)
+        const triggerRect = triggerNode.getBoundingClientRect()
+        const popperRect = popperRef.current.getBoundingClientRect()
+        const left = /left/.test(currentPlacement) ? popperRect.right : triggerRect.left
+        const right = /right/.test(currentPlacement) ? popperRect.left : triggerRect.right
+        const top = /top/.test(currentPlacement) ? popperRect.bottom : triggerRect.top
+        const bottom = /bottom/.test(currentPlacement) ? popperRect.top : triggerRect.bottom
+        const { clientX: X, clientY: Y } = e
+        const inTriggerRect = X > left - 2 && X < right + 2 && Y > top - 2 && Y < bottom + 2
+        const inPopperRect = X > popperRect.left && X < popperRect.right && Y > popperRect.top && Y < popperRect.bottom
+        const ableArea = evType === 'contextmenu' ? inPopperRect : inTriggerRect || inPopperRect
+
+        if (ableArea) {
+          mouseleaveTimer && clearTimeout(mouseleaveTimer)
+          evType === 'focus' && triggerNode.focus()
+        } else {
+          evType === 'mouseenter'
+            ? (mouseleaveTimer = window.setTimeout(hidePopper, mouseLeaveDelay * 1000))
+            : hidePopper()
+        }
+      }
+
+      const debounceHidePopper = debounce(handleHidePopper, 10, { leading: true })
+
+      const mapEvent: NormalProps = {
+        mouseenter: 'mousemove',
+        mouseup: 'mousedown',
+        focus: 'mousedown',
+        contextmenu: 'mousedown',
+      }
+
+      document.addEventListener(mapEvent[evType], debounceHidePopper)
+
+      return () => {
+        document.removeEventListener(mapEvent[evType], debounceHidePopper)
+      }
+    }
+  }, [currentPlacement, evType, exist, getTriggerElement, hidePopper, locatorRef, mouseLeaveDelay, popperRef, visible])
+
+  useEffect(() => {
+    if (visible) {
+      const scrollAlign = debounce((e: Event) => {
+        const isPopperScroll = e.target === popperRef.current || popperRef.current.contains(e.target)
+        if (scrollHidden && !isPopperScroll) {
+          props.visible === undefined && setVisible(false)
+          onVisibleChange && onVisibleChange(false)
+        }
+        alignPopper()
+      }, 10)
+      window.addEventListener('resize', alignPopper)
+      document.addEventListener('scroll', scrollAlign, true)
+
+      locatorNode?.addEventListener('DOMSubtreeModified', alignPopper)
+      exist && popperNode?.addEventListener('DOMSubtreeModified', alignPopper)
+
+      return () => {
+        window.removeEventListener('resize', alignPopper)
+        document.removeEventListener('scroll', scrollAlign, true)
+
+        locatorNode?.removeEventListener('DOMSubtreeModified', alignPopper)
+        exist && popperNode?.removeEventListener('DOMSubtreeModified', alignPopper)
+      }
+    }
+  }, [alignPopper, exist, onVisibleChange, popperNode, props.visible, scrollHidden, locatorNode, visible, popperRef])
+
+  React.useEffect(() => {
+    const triggerNode = getTriggerElement(locatorRef.current)
+    if (triggerNode) {
+      let mouseenterTimer: number
+      const clearMouseLeave = () => clearTimeout(mouseenterTimer)
+      const addAction = (action: string) => {
+        if (action === 'hover') {
+          triggerNode.addEventListener('mouseenter', debounceShowPopper)
+          triggerNode.addEventListener('mouseleave', clearMouseLeave)
+        } else {
+          triggerNode.addEventListener(action, debounceShowPopper)
+        }
+      }
+      const removeAction = (action: string) => {
+        if (action === 'hover') {
+          triggerNode.removeEventListener('mouseenter', debounceShowPopper)
+          triggerNode.removeEventListener('mouseleave', clearMouseLeave)
+        } else {
+          triggerNode.removeEventListener(action, debounceShowPopper)
+        }
+      }
+      const handleShowPopper = (e: MouseEvent) => {
+        e.preventDefault()
+        if (e.type === 'contextmenu') {
+          const currentMousePos = {
+            ...mousePos,
+            ...{ left: e.pageX, top: e.pageY, right: e.pageX, bottom: e.pageY },
+          }
+          setMousePos(currentMousePos)
+        }
+
+        if (e.type === 'mouseenter') {
+          mouseenterTimer = window.setTimeout(() => showPopper(e.type), mouseEnterDelay * 1000)
+        } else if (e.type === 'mouseup' && visible) {
+          hidePopper()
+        } else {
+          showPopper(e.type)
+        }
+      }
+
+      const debounceShowPopper = debounce(handleShowPopper, 10, { leading: true })
+
+      const mapEvent: NormalProps = {
+        hover: 'hover',
+        click: 'mouseup',
+        focus: 'focus',
+        contextMenu: 'contextmenu',
+      }
+
+      Array.isArray(trigger)
+        ? trigger.forEach((action: string) => addAction(mapEvent[action]))
+        : addAction(mapEvent[trigger as string])
+
+      return () => {
+        Array.isArray(trigger)
+          ? trigger.forEach((action: string) => removeAction(mapEvent[action]))
+          : removeAction(mapEvent[trigger as string])
+      }
+    }
+  }, [getTriggerElement, hidePopper, locatorRef, mouseEnterDelay, mousePos, showPopper, trigger, visible])
+
+  const Locator = cloneElement(locatorElement, { ref: locatorRef })
+
+  const Popper = <div {...popperProps}>{popperElement}</div>
+  return (
+    <>
+      {Locator}
+      {exist && container && ReactDOM.createPortal(Popper, container)}
+    </>
+  )
+}
+
+export default usePopper

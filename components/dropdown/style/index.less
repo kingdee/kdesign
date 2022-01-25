@@ -1,0 +1,124 @@
+@import '../../style/themes/index';
+@import '../../style/mixins/index';
+
+@dropdown-prefix-cls: ~'@{kd-prefix}-dropdown';
+@dropdown-trigger-prefix-cls: ~'@{dropdown-prefix-cls}-trigger';
+@dropdown-link-prefix-cls: ~'@{dropdown-prefix-cls}-link';
+
+.@{dropdown-link-prefix-cls} {
+  color: @theme-color;
+  text-decoration: none;
+  background-color: transparent;
+  outline: noned;
+  cursor: pointer;
+  transition: color @transition-duration, background-color @transition-duration;
+  -webkit-text-decoration-skip: objects;
+
+  &.disabled,
+  &.disabled:hover {
+    cursor: default;
+    color: @disabled-color;
+  }
+
+  &:hover {
+    color: @theme-color-hover;
+  }
+}
+
+.@{dropdown-trigger-prefix-cls} {
+  outline: none;
+}
+
+.@{dropdown-prefix-cls} {
+  .reset-component;
+  opacity: 1;
+  visibility: visible;
+  z-index: @zIndex-popper;
+  background-color: @white;
+  border-radius: @radius-size;
+  min-width: @dropdown-menu-min-width;
+  max-width: @dropdown-menu-max-width;
+  box-shadow: 0 4px @dropdown-box-shadow-blur 0 rgba(0, 0, 0, 0.2);
+
+  &.hidden {
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  // 箭头样式
+  .popperArrow(@white, @dropdown-item-horizontal-gap, @dropdown-box-shadow-blur);
+
+  &-menu {
+    max-height: @dropdown-menu-max-height;
+    padding: @dropdown-menu-gap 0;
+    overflow-y: auto;
+    &-item {
+      position: relative;
+      padding: @dropdown-item-vertical-gap @dropdown-item-horizontal-gap;
+      color: @dropdown-color;
+      font-size: @dropdown-font-size;
+      line-height: @dropdown-line-height;
+      overflow: hidden;
+      cursor: pointer;
+
+      &.disabled,
+      &.disabled > a {
+        color: @disabled-color;
+        cursor: not-allowed;
+      }
+      transition: background-color @transition-duration;
+      &:not(.disabled):hover {
+        background-color: @dropdown-hover-bg-color;
+      }
+
+      &:not(.disabled):active,
+      &:not(.disabled).selected {
+        color: @theme-color;
+        background-color: @dropdown-active-bg-color;
+
+        > a {
+          color: @theme-color;
+        }
+      }
+
+      &.divided::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: @dropdown-item-horizontal-gap;
+        right: @dropdown-item-horizontal-gap;
+        height: 1px;
+        background-color: @dropdown-divided-color;
+      }
+
+      &.danger,
+      &.danger > a {
+        color: @error-color;
+
+        transition: color @transition-duration, background-color @transition-duration;
+        &:hover {
+          color: @white;
+          background-color: @error-color;
+        }
+      }
+
+      > a {
+        display: block;
+        margin: -1 * @dropdown-item-vertical-gap -1 * @dropdown-item-horizontal-gap;
+        padding: @dropdown-item-vertical-gap @dropdown-item-horizontal-gap;
+        color: @dropdown-color;
+        font-size: @dropdown-font-size;
+        line-height: @dropdown-line-height;
+        transition: color @transition-duration;
+
+        &:hover {
+          color: @dropdown-color;
+        }
+      }
+
+      span {
+        .multipleEllipsis(2);
+      }
+    }
+  }
+}

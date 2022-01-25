@@ -1,0 +1,629 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Rate renders correctly 1`] = `
+<span
+  class="kd-rate kd-rate-size-middle"
+>
+  <span
+    class="kd-rate-item"
+  >
+    <div
+      class="kd-rate-icon-view"
+    >
+      <span
+        class="kd-rate-icon-first"
+      >
+        <span
+          class="kd-rate-icon-wrapper"
+        >
+          <i
+            class="kdicon kdicon-star"
+          />
+        </span>
+      </span>
+      <span
+        class="kd-rate-icon-second"
+      >
+        <span
+          class="kd-rate-icon-wrapper"
+        >
+          <i
+            class="kdicon kdicon-star"
+          />
+        </span>
+      </span>
+    </div>
+  </span>
+  <span
+    class="kd-rate-item"
+  >
+    <div
+      class="kd-rate-icon-view"
+    >
+      <span
+        class="kd-rate-icon-first"
+      >
+        <span
+          class="kd-rate-icon-wrapper"
+        >
+          <i
+            class="kdicon kdicon-star"
+          />
+        </span>
+      </span>
+      <span
+        class="kd-rate-icon-second"
+      >
+        <span
+          class="kd-rate-icon-wrapper"
+        >
+          <i
+            class="kdicon kdicon-star"
+          />
+        </span>
+      </span>
+    </div>
+  </span>
+  <span
+    class="kd-rate-item"
+  >
+    <div
+      class="kd-rate-icon-view"
+    >
+      <span
+        class="kd-rate-icon-first"
+      >
+        <span
+          class="kd-rate-icon-wrapper"
+        >
+          <i
+            class="kdicon kdicon-star"
+          />
+        </span>
+      </span>
+      <span
+        class="kd-rate-icon-second"
+      >
+        <span
+          class="kd-rate-icon-wrapper"
+        >
+          <i
+            class="kdicon kdicon-star"
+          />
+        </span>
+      </span>
+    </div>
+  </span>
+  <span
+    class="kd-rate-item"
+  >
+    <div
+      class="kd-rate-icon-view"
+    >
+      <span
+        class="kd-rate-icon-first"
+      >
+        <span
+          class="kd-rate-icon-wrapper"
+        >
+          <i
+            class="kdicon kdicon-star"
+          />
+        </span>
+      </span>
+      <span
+        class="kd-rate-icon-second"
+      >
+        <span
+          class="kd-rate-icon-wrapper"
+        >
+          <i
+            class="kdicon kdicon-star"
+          />
+        </span>
+      </span>
+    </div>
+  </span>
+  <span
+    class="kd-rate-item"
+  >
+    <div
+      class="kd-rate-icon-view"
+    >
+      <span
+        class="kd-rate-icon-first"
+      >
+        <span
+          class="kd-rate-icon-wrapper"
+        >
+          <i
+            class="kdicon kdicon-star"
+          />
+        </span>
+      </span>
+      <span
+        class="kd-rate-icon-second"
+      >
+        <span
+          class="kd-rate-icon-wrapper"
+        >
+          <i
+            class="kdicon kdicon-star"
+          />
+        </span>
+      </span>
+    </div>
+  </span>
+</span>
+`;
+
+exports[`Rate renders correctly 2`] = `
+<span
+  class="kd-rate kd-rate-size-large"
+>
+  <span
+    class="kd-rate-item"
+  >
+    <div
+      class="kd-rate-icon-view"
+    >
+      <span
+        class="kd-rate-icon-first"
+      >
+        <span
+          class="kd-rate-icon-wrapper"
+        >
+          <i
+            class="kdicon kdicon-star"
+          />
+        </span>
+      </span>
+      <span
+        class="kd-rate-icon-second"
+      >
+        <span
+          class="kd-rate-icon-wrapper"
+        >
+          <i
+            class="kdicon kdicon-star"
+          />
+        </span>
+      </span>
+    </div>
+  </span>
+  <span
+    class="kd-rate-item"
+  >
+    <div
+      class="kd-rate-icon-view"
+    >
+      <span
+        class="kd-rate-icon-first"
+      >
+        <span
+          class="kd-rate-icon-wrapper"
+        >
+          <i
+            class="kdicon kdicon-star"
+          />
+        </span>
+      </span>
+      <span
+        class="kd-rate-icon-second"
+      >
+        <span
+          class="kd-rate-icon-wrapper"
+        >
+          <i
+            class="kdicon kdicon-star"
+          />
+        </span>
+      </span>
+    </div>
+  </span>
+  <span
+    class="kd-rate-item"
+  >
+    <div
+      class="kd-rate-icon-view"
+    >
+      <span
+        class="kd-rate-icon-first"
+      >
+        <span
+          class="kd-rate-icon-wrapper"
+        >
+          <i
+            class="kdicon kdicon-star"
+          />
+        </span>
+      </span>
+      <span
+        class="kd-rate-icon-second"
+      >
+        <span
+          class="kd-rate-icon-wrapper"
+        >
+          <i
+            class="kdicon kdicon-star"
+          />
+        </span>
+      </span>
+    </div>
+  </span>
+  <span
+    class="kd-rate-item"
+  >
+    <div
+      class="kd-rate-icon-view"
+    >
+      <span
+        class="kd-rate-icon-first"
+      >
+        <span
+          class="kd-rate-icon-wrapper"
+        >
+          <i
+            class="kdicon kdicon-star"
+          />
+        </span>
+      </span>
+      <span
+        class="kd-rate-icon-second"
+      >
+        <span
+          class="kd-rate-icon-wrapper"
+        >
+          <i
+            class="kdicon kdicon-star"
+          />
+        </span>
+      </span>
+    </div>
+  </span>
+  <span
+    class="kd-rate-item"
+  >
+    <div
+      class="kd-rate-icon-view"
+    >
+      <span
+        class="kd-rate-icon-first"
+      >
+        <span
+          class="kd-rate-icon-wrapper"
+        >
+          <i
+            class="kdicon kdicon-star"
+          />
+        </span>
+      </span>
+      <span
+        class="kd-rate-icon-second"
+      >
+        <span
+          class="kd-rate-icon-wrapper"
+        >
+          <i
+            class="kdicon kdicon-star"
+          />
+        </span>
+      </span>
+    </div>
+  </span>
+</span>
+`;
+
+exports[`Rate renders correctly 3`] = `
+<span
+  class="kd-rate kd-rate-size-middle"
+>
+  <span
+    class="kd-rate-item"
+  >
+    <div
+      class="kd-rate-icon-view"
+    >
+      <span
+        class="kd-rate-icon-first"
+      >
+        <span
+          class="kd-rate-icon-wrapper"
+        >
+          <i
+            class="kdicon kdicon-star"
+          />
+        </span>
+      </span>
+      <span
+        class="kd-rate-icon-second"
+      >
+        <span
+          class="kd-rate-icon-wrapper"
+        >
+          <i
+            class="kdicon kdicon-star"
+          />
+        </span>
+      </span>
+    </div>
+  </span>
+  <span
+    class="kd-rate-item"
+  >
+    <div
+      class="kd-rate-icon-view"
+    >
+      <span
+        class="kd-rate-icon-first"
+      >
+        <span
+          class="kd-rate-icon-wrapper"
+        >
+          <i
+            class="kdicon kdicon-star"
+          />
+        </span>
+      </span>
+      <span
+        class="kd-rate-icon-second"
+      >
+        <span
+          class="kd-rate-icon-wrapper"
+        >
+          <i
+            class="kdicon kdicon-star"
+          />
+        </span>
+      </span>
+    </div>
+  </span>
+  <span
+    class="kd-rate-item"
+  >
+    <div
+      class="kd-rate-icon-view"
+    >
+      <span
+        class="kd-rate-icon-first"
+      >
+        <span
+          class="kd-rate-icon-wrapper"
+        >
+          <i
+            class="kdicon kdicon-star"
+          />
+        </span>
+      </span>
+      <span
+        class="kd-rate-icon-second"
+      >
+        <span
+          class="kd-rate-icon-wrapper"
+        >
+          <i
+            class="kdicon kdicon-star"
+          />
+        </span>
+      </span>
+    </div>
+  </span>
+  <span
+    class="kd-rate-item"
+  >
+    <div
+      class="kd-rate-icon-view"
+    >
+      <span
+        class="kd-rate-icon-first"
+      >
+        <span
+          class="kd-rate-icon-wrapper"
+        >
+          <i
+            class="kdicon kdicon-star"
+          />
+        </span>
+      </span>
+      <span
+        class="kd-rate-icon-second"
+      >
+        <span
+          class="kd-rate-icon-wrapper"
+        >
+          <i
+            class="kdicon kdicon-star"
+          />
+        </span>
+      </span>
+    </div>
+  </span>
+  <span
+    class="kd-rate-item"
+  >
+    <div
+      class="kd-rate-icon-view"
+    >
+      <span
+        class="kd-rate-icon-first"
+      >
+        <span
+          class="kd-rate-icon-wrapper"
+        >
+          <i
+            class="kdicon kdicon-star"
+          />
+        </span>
+      </span>
+      <span
+        class="kd-rate-icon-second"
+      >
+        <span
+          class="kd-rate-icon-wrapper"
+        >
+          <i
+            class="kdicon kdicon-star"
+          />
+        </span>
+      </span>
+    </div>
+  </span>
+</span>
+`;
+
+exports[`Rate renders correctly 4`] = `
+<span
+  class="kd-rate kd-rate-size-small"
+>
+  <span
+    class="kd-rate-item"
+  >
+    <div
+      class="kd-rate-icon-view"
+    >
+      <span
+        class="kd-rate-icon-first"
+      >
+        <span
+          class="kd-rate-icon-wrapper"
+        >
+          <i
+            class="kdicon kdicon-star"
+          />
+        </span>
+      </span>
+      <span
+        class="kd-rate-icon-second"
+      >
+        <span
+          class="kd-rate-icon-wrapper"
+        >
+          <i
+            class="kdicon kdicon-star"
+          />
+        </span>
+      </span>
+    </div>
+  </span>
+  <span
+    class="kd-rate-item"
+  >
+    <div
+      class="kd-rate-icon-view"
+    >
+      <span
+        class="kd-rate-icon-first"
+      >
+        <span
+          class="kd-rate-icon-wrapper"
+        >
+          <i
+            class="kdicon kdicon-star"
+          />
+        </span>
+      </span>
+      <span
+        class="kd-rate-icon-second"
+      >
+        <span
+          class="kd-rate-icon-wrapper"
+        >
+          <i
+            class="kdicon kdicon-star"
+          />
+        </span>
+      </span>
+    </div>
+  </span>
+  <span
+    class="kd-rate-item"
+  >
+    <div
+      class="kd-rate-icon-view"
+    >
+      <span
+        class="kd-rate-icon-first"
+      >
+        <span
+          class="kd-rate-icon-wrapper"
+        >
+          <i
+            class="kdicon kdicon-star"
+          />
+        </span>
+      </span>
+      <span
+        class="kd-rate-icon-second"
+      >
+        <span
+          class="kd-rate-icon-wrapper"
+        >
+          <i
+            class="kdicon kdicon-star"
+          />
+        </span>
+      </span>
+    </div>
+  </span>
+  <span
+    class="kd-rate-item"
+  >
+    <div
+      class="kd-rate-icon-view"
+    >
+      <span
+        class="kd-rate-icon-first"
+      >
+        <span
+          class="kd-rate-icon-wrapper"
+        >
+          <i
+            class="kdicon kdicon-star"
+          />
+        </span>
+      </span>
+      <span
+        class="kd-rate-icon-second"
+      >
+        <span
+          class="kd-rate-icon-wrapper"
+        >
+          <i
+            class="kdicon kdicon-star"
+          />
+        </span>
+      </span>
+    </div>
+  </span>
+  <span
+    class="kd-rate-item"
+  >
+    <div
+      class="kd-rate-icon-view"
+    >
+      <span
+        class="kd-rate-icon-first"
+      >
+        <span
+          class="kd-rate-icon-wrapper"
+        >
+          <i
+            class="kdicon kdicon-star"
+          />
+        </span>
+      </span>
+      <span
+        class="kd-rate-icon-second"
+      >
+        <span
+          class="kd-rate-icon-wrapper"
+        >
+          <i
+            class="kdicon kdicon-star"
+          />
+        </span>
+      </span>
+    </div>
+  </span>
+</span>
+`;

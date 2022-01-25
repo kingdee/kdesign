@@ -1,0 +1,1046 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ImageCropper render no child without errors 1`] = `
+<ImageCropper
+  visible={true}
+>
+  <Modal
+    body={
+      <ForwardRef
+        aspectRatio={NaN}
+        className="kd-image-cropper-container"
+        dragMode="crop"
+        imgSrc=""
+        viewMode={0}
+      />
+    }
+    bodyClassName="kd-image-cropper-modal-body-container"
+    className="kd-image-cropper-modal-container"
+    footer={
+      <OperationBar
+        btnClassName="kd-image-cropper-btn-container"
+        className="kd-image-cropper-bar-container"
+        getCropper={
+          Object {
+            "current": Object {
+              "cropper": Object {
+                "current": null,
+              },
+              "getImage": [Function],
+              "replace": [Function],
+              "reset": [Function],
+              "rotate": [Function],
+              "zoom": [Function],
+            },
+          }
+        }
+        okText="确认裁剪"
+        onClick={[Function]}
+        onReplace={[Function]}
+        onRevert={[Function]}
+        onRotate={[Function]}
+        onZoom={[Function]}
+      />
+    }
+    height={620}
+    visible={true}
+    width={860}
+  >
+    <Portal
+      containerInfo={
+        <body>
+          <div
+            class="kd-modal kd-image-cropper-modal-container kd-modal-container"
+          >
+            <div
+              class="kd-modal-mask"
+            />
+            <div
+              class="kd-modal-container-box kd-modal-has-container-box kd-modal-showline react-draggable"
+              style="width: 860px; height: 620px; transform: translate(-430px,-310px);"
+              tabindex="-1"
+            >
+              <div
+                class="kd-modal-header"
+              >
+                <div
+                  class="kd-modal-title-container"
+                >
+                  <div
+                    class="kd-modal-title"
+                  />
+                </div>
+                <div
+                  class="kd-modal-close-icon"
+                >
+                  <i
+                    class="kdicon kdicon-close"
+                  />
+                </div>
+              </div>
+              <div
+                class="kd-modal-body kd-image-cropper-modal-body-container"
+              >
+                <div
+                  class="kd-image-cropper-container"
+                >
+                  <img
+                    src=""
+                    style="display: none;"
+                  />
+                </div>
+              </div>
+              <div
+                class="kd-modal-footer kd-modal-normal-footer"
+                style="flex-direction: row-reverse;"
+              >
+                <div
+                  class="kd-image-cropper-bar-container"
+                >
+                  <div
+                    class="kd-image-cropper-btn-container"
+                  >
+                    <i
+                      class="kdicon kdicon-reduction"
+                    />
+                    <div
+                      class="kd-upload"
+                    >
+                      <label
+                        class="kd-upload-select"
+                      >
+                        <span
+                          class="kd-upload-handle"
+                        >
+                          <i
+                            class="kdicon kdicon-upload"
+                          />
+                        </span>
+                        <span
+                          class="kd-upload-input"
+                        >
+                          <input
+                            accept=".jpeg,.jpg,.png"
+                            title=""
+                            type="file"
+                          />
+                        </span>
+                      </label>
+                    </div>
+                    <i
+                      class="kdicon kdicon-spin"
+                    />
+                    <i
+                      class="kdicon kdicon-reduce"
+                    />
+                    <i
+                      class="kdicon kdicon-add"
+                    />
+                  </div>
+                  <button
+                    class="kd-btn ok-btn kd-btn-primary kd-btn-size-middle"
+                    click-animating-wave="false"
+                    type="button"
+                  >
+                    <span>
+                      确认裁剪
+                    </span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </body>
+      }
+    >
+      <div
+        className="kd-modal kd-image-cropper-modal-container kd-modal-container"
+        style={Object {}}
+      >
+        <div
+          className="kd-modal-mask"
+          onClick={[Function]}
+        />
+        <Draggable
+          allowAnyClick={false}
+          axis="both"
+          bounds={false}
+          cancel=".kd-modal-title-container, .kd-modal-close-icon"
+          defaultClassName="react-draggable"
+          defaultClassNameDragged="react-draggable-dragged"
+          defaultClassNameDragging="react-draggable-dragging"
+          defaultPosition={
+            Object {
+              "x": -430,
+              "y": -310,
+            }
+          }
+          disabled={false}
+          enableUserSelectHack={true}
+          handle=".kd-modal-header"
+          onDrag={[Function]}
+          onMouseDown={[Function]}
+          onStart={[Function]}
+          onStop={[Function]}
+          scale={1}
+        >
+          <DraggableCore
+            allowAnyClick={false}
+            cancel=".kd-modal-title-container, .kd-modal-close-icon"
+            disabled={false}
+            enableUserSelectHack={true}
+            handle=".kd-modal-header"
+            onDrag={[Function]}
+            onMouseDown={[Function]}
+            onStart={[Function]}
+            onStop={[Function]}
+            scale={1}
+          >
+            <div
+              className="kd-modal-container-box kd-modal-has-container-box kd-modal-showline react-draggable"
+              onKeyDown={[Function]}
+              onMouseDown={[Function]}
+              onMouseUp={[Function]}
+              onTouchEnd={[Function]}
+              style={
+                Object {
+                  "height": 620,
+                  "transform": "translate(-430px,-310px)",
+                  "width": 860,
+                }
+              }
+              tabIndex={-1}
+              transform={null}
+            >
+              <div
+                className="kd-modal-header"
+              >
+                <div
+                  className="kd-modal-title-container"
+                >
+                  <div
+                    className="kd-modal-title"
+                  />
+                </div>
+                <div
+                  className="kd-modal-close-icon"
+                  onClick={[Function]}
+                >
+                  <Icon
+                    type="close"
+                  >
+                    <i
+                      className="kdicon kdicon-close"
+                      onClick={[Function]}
+                      onMouseEnter={[Function]}
+                      onMouseLeave={[Function]}
+                      style={Object {}}
+                    />
+                  </Icon>
+                </div>
+              </div>
+              <div
+                className="kd-modal-body kd-image-cropper-modal-body-container"
+              >
+                <ForwardRef
+                  aspectRatio={NaN}
+                  className="kd-image-cropper-container"
+                  dragMode="crop"
+                  imgSrc=""
+                  viewMode={0}
+                >
+                  <div
+                    className="kd-image-cropper-container"
+                  >
+                    <img
+                      src=""
+                      style={
+                        Object {
+                          "display": "none",
+                        }
+                      }
+                    />
+                  </div>
+                </ForwardRef>
+              </div>
+              <div
+                className="kd-modal-footer kd-modal-normal-footer"
+                style={
+                  Object {
+                    "flexDirection": "row-reverse",
+                  }
+                }
+              >
+                <OperationBar
+                  btnClassName="kd-image-cropper-btn-container"
+                  className="kd-image-cropper-bar-container"
+                  getCropper={
+                    Object {
+                      "current": Object {
+                        "cropper": Object {
+                          "current": null,
+                        },
+                        "getImage": [Function],
+                        "replace": [Function],
+                        "reset": [Function],
+                        "rotate": [Function],
+                        "zoom": [Function],
+                      },
+                    }
+                  }
+                  okText="确认裁剪"
+                  onClick={[Function]}
+                  onReplace={[Function]}
+                  onRevert={[Function]}
+                  onRotate={[Function]}
+                  onZoom={[Function]}
+                >
+                  <div
+                    className="kd-image-cropper-bar-container"
+                  >
+                    <div
+                      className="kd-image-cropper-btn-container"
+                    >
+                      <Icon
+                        onClick={[Function]}
+                        type="reduction"
+                      >
+                        <i
+                          className="kdicon kdicon-reduction"
+                          onClick={[Function]}
+                          onMouseEnter={[Function]}
+                          onMouseLeave={[Function]}
+                          style={Object {}}
+                        />
+                      </Icon>
+                      <Upload
+                        accept=".jpeg,.jpg,.png"
+                        beforeUpload={[Function]}
+                        showUploadList={false}
+                      >
+                        <div
+                          className="kd-upload"
+                        >
+                          <label
+                            className="kd-upload-select"
+                          >
+                            <span
+                              className="kd-upload-handle"
+                            >
+                              <Icon
+                                type="upload"
+                              >
+                                <i
+                                  className="kdicon kdicon-upload"
+                                  onClick={[Function]}
+                                  onMouseEnter={[Function]}
+                                  onMouseLeave={[Function]}
+                                  style={Object {}}
+                                />
+                              </Icon>
+                            </span>
+                            <span
+                              className="kd-upload-input"
+                            >
+                              <input
+                                accept=".jpeg,.jpg,.png"
+                                disabled={false}
+                                multiple={false}
+                                onChange={[Function]}
+                                onClick={[Function]}
+                                title=""
+                                type="file"
+                              />
+                            </span>
+                          </label>
+                        </div>
+                      </Upload>
+                      <Icon
+                        onClick={[Function]}
+                        type="spin"
+                      >
+                        <i
+                          className="kdicon kdicon-spin"
+                          onClick={[Function]}
+                          onMouseEnter={[Function]}
+                          onMouseLeave={[Function]}
+                          style={Object {}}
+                        />
+                      </Icon>
+                      <Icon
+                        onClick={[Function]}
+                        type="reduce"
+                      >
+                        <i
+                          className="kdicon kdicon-reduce"
+                          onClick={[Function]}
+                          onMouseEnter={[Function]}
+                          onMouseLeave={[Function]}
+                          style={Object {}}
+                        />
+                      </Icon>
+                      <Icon
+                        onClick={[Function]}
+                        type="add"
+                      >
+                        <i
+                          className="kdicon kdicon-add"
+                          onClick={[Function]}
+                          onMouseEnter={[Function]}
+                          onMouseLeave={[Function]}
+                          style={Object {}}
+                        />
+                      </Icon>
+                    </div>
+                    <Button
+                      className="ok-btn"
+                      onClick={[Function]}
+                      type="primary"
+                    >
+                      <button
+                        className="kd-btn ok-btn kd-btn-primary kd-btn-size-middle"
+                        click-animating-wave="false"
+                        onClick={[Function]}
+                        type="button"
+                      >
+                        <span>
+                          确认裁剪
+                        </span>
+                      </button>
+                    </Button>
+                  </div>
+                </OperationBar>
+              </div>
+            </div>
+          </DraggableCore>
+        </Draggable>
+      </div>
+    </Portal>
+  </Modal>
+</ImageCropper>
+`;
+
+exports[`ImageCropper render null or undefined ImageCropper without errors 1`] = `
+<ImageCropper
+  visible={true}
+>
+  <Modal
+    body={
+      <ForwardRef
+        aspectRatio={NaN}
+        className="kd-image-cropper-container"
+        dragMode="crop"
+        imgSrc=""
+        viewMode={0}
+      />
+    }
+    bodyClassName="kd-image-cropper-modal-body-container"
+    className="kd-image-cropper-modal-container"
+    footer={
+      <OperationBar
+        btnClassName="kd-image-cropper-btn-container"
+        className="kd-image-cropper-bar-container"
+        getCropper={
+          Object {
+            "current": Object {
+              "cropper": Object {
+                "current": null,
+              },
+              "getImage": [Function],
+              "replace": [Function],
+              "reset": [Function],
+              "rotate": [Function],
+              "zoom": [Function],
+            },
+          }
+        }
+        okText="确认裁剪"
+        onClick={[Function]}
+        onReplace={[Function]}
+        onRevert={[Function]}
+        onRotate={[Function]}
+        onZoom={[Function]}
+      />
+    }
+    height={620}
+    visible={true}
+    width={860}
+  >
+    <Portal
+      containerInfo={
+        <body>
+          <div
+            class="kd-modal kd-image-cropper-modal-container kd-modal-container"
+          >
+            <div
+              class="kd-modal-mask"
+            />
+            <div
+              class="kd-modal-container-box kd-modal-has-container-box kd-modal-showline react-draggable"
+              style="width: 860px; height: 620px; transform: translate(-430px,-310px);"
+              tabindex="-1"
+            >
+              <div
+                class="kd-modal-header"
+              >
+                <div
+                  class="kd-modal-title-container"
+                >
+                  <div
+                    class="kd-modal-title"
+                  />
+                </div>
+                <div
+                  class="kd-modal-close-icon"
+                >
+                  <i
+                    class="kdicon kdicon-close"
+                  />
+                </div>
+              </div>
+              <div
+                class="kd-modal-body kd-image-cropper-modal-body-container"
+              >
+                <div
+                  class="kd-image-cropper-container"
+                >
+                  <img
+                    src=""
+                    style="display: none;"
+                  />
+                </div>
+              </div>
+              <div
+                class="kd-modal-footer kd-modal-normal-footer"
+                style="flex-direction: row-reverse;"
+              >
+                <div
+                  class="kd-image-cropper-bar-container"
+                >
+                  <div
+                    class="kd-image-cropper-btn-container"
+                  >
+                    <i
+                      class="kdicon kdicon-reduction"
+                    />
+                    <div
+                      class="kd-upload"
+                    >
+                      <label
+                        class="kd-upload-select"
+                      >
+                        <span
+                          class="kd-upload-handle"
+                        >
+                          <i
+                            class="kdicon kdicon-upload"
+                          />
+                        </span>
+                        <span
+                          class="kd-upload-input"
+                        >
+                          <input
+                            accept=".jpeg,.jpg,.png"
+                            title=""
+                            type="file"
+                          />
+                        </span>
+                      </label>
+                    </div>
+                    <i
+                      class="kdicon kdicon-spin"
+                    />
+                    <i
+                      class="kdicon kdicon-reduce"
+                    />
+                    <i
+                      class="kdicon kdicon-add"
+                    />
+                  </div>
+                  <button
+                    class="kd-btn ok-btn kd-btn-primary kd-btn-size-middle"
+                    click-animating-wave="false"
+                    type="button"
+                  >
+                    <span>
+                      确认裁剪
+                    </span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            class="kd-modal kd-image-cropper-modal-container kd-modal-container"
+          >
+            <div
+              class="kd-modal-mask"
+            />
+            <div
+              class="kd-modal-container-box kd-modal-has-container-box kd-modal-showline react-draggable"
+              style="width: 860px; height: 620px; transform: translate(-430px,-310px);"
+              tabindex="-1"
+            >
+              <div
+                class="kd-modal-header"
+              >
+                <div
+                  class="kd-modal-title-container"
+                >
+                  <div
+                    class="kd-modal-title"
+                  />
+                </div>
+                <div
+                  class="kd-modal-close-icon"
+                >
+                  <i
+                    class="kdicon kdicon-close"
+                  />
+                </div>
+              </div>
+              <div
+                class="kd-modal-body kd-image-cropper-modal-body-container"
+              >
+                <div
+                  class="kd-image-cropper-container"
+                >
+                  <img
+                    src=""
+                    style="display: none;"
+                  />
+                </div>
+              </div>
+              <div
+                class="kd-modal-footer kd-modal-normal-footer"
+                style="flex-direction: row-reverse;"
+              >
+                <div
+                  class="kd-image-cropper-bar-container"
+                >
+                  <div
+                    class="kd-image-cropper-btn-container"
+                  >
+                    <i
+                      class="kdicon kdicon-reduction"
+                    />
+                    <div
+                      class="kd-upload"
+                    >
+                      <label
+                        class="kd-upload-select"
+                      >
+                        <span
+                          class="kd-upload-handle"
+                        >
+                          <i
+                            class="kdicon kdicon-upload"
+                          />
+                        </span>
+                        <span
+                          class="kd-upload-input"
+                        >
+                          <input
+                            accept=".jpeg,.jpg,.png"
+                            title=""
+                            type="file"
+                          />
+                        </span>
+                      </label>
+                    </div>
+                    <i
+                      class="kdicon kdicon-spin"
+                    />
+                    <i
+                      class="kdicon kdicon-reduce"
+                    />
+                    <i
+                      class="kdicon kdicon-add"
+                    />
+                  </div>
+                  <button
+                    class="kd-btn ok-btn kd-btn-primary kd-btn-size-middle"
+                    click-animating-wave="false"
+                    type="button"
+                  >
+                    <span>
+                      确认裁剪
+                    </span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </body>
+      }
+    >
+      <div
+        className="kd-modal kd-image-cropper-modal-container kd-modal-container"
+        style={Object {}}
+      >
+        <div
+          className="kd-modal-mask"
+          onClick={[Function]}
+        />
+        <Draggable
+          allowAnyClick={false}
+          axis="both"
+          bounds={false}
+          cancel=".kd-modal-title-container, .kd-modal-close-icon"
+          defaultClassName="react-draggable"
+          defaultClassNameDragged="react-draggable-dragged"
+          defaultClassNameDragging="react-draggable-dragging"
+          defaultPosition={
+            Object {
+              "x": -430,
+              "y": -310,
+            }
+          }
+          disabled={false}
+          enableUserSelectHack={true}
+          handle=".kd-modal-header"
+          onDrag={[Function]}
+          onMouseDown={[Function]}
+          onStart={[Function]}
+          onStop={[Function]}
+          scale={1}
+        >
+          <DraggableCore
+            allowAnyClick={false}
+            cancel=".kd-modal-title-container, .kd-modal-close-icon"
+            disabled={false}
+            enableUserSelectHack={true}
+            handle=".kd-modal-header"
+            onDrag={[Function]}
+            onMouseDown={[Function]}
+            onStart={[Function]}
+            onStop={[Function]}
+            scale={1}
+          >
+            <div
+              className="kd-modal-container-box kd-modal-has-container-box kd-modal-showline react-draggable"
+              onKeyDown={[Function]}
+              onMouseDown={[Function]}
+              onMouseUp={[Function]}
+              onTouchEnd={[Function]}
+              style={
+                Object {
+                  "height": 620,
+                  "transform": "translate(-430px,-310px)",
+                  "width": 860,
+                }
+              }
+              tabIndex={-1}
+              transform={null}
+            >
+              <div
+                className="kd-modal-header"
+              >
+                <div
+                  className="kd-modal-title-container"
+                >
+                  <div
+                    className="kd-modal-title"
+                  />
+                </div>
+                <div
+                  className="kd-modal-close-icon"
+                  onClick={[Function]}
+                >
+                  <Icon
+                    type="close"
+                  >
+                    <i
+                      className="kdicon kdicon-close"
+                      onClick={[Function]}
+                      onMouseEnter={[Function]}
+                      onMouseLeave={[Function]}
+                      style={Object {}}
+                    />
+                  </Icon>
+                </div>
+              </div>
+              <div
+                className="kd-modal-body kd-image-cropper-modal-body-container"
+              >
+                <ForwardRef
+                  aspectRatio={NaN}
+                  className="kd-image-cropper-container"
+                  dragMode="crop"
+                  imgSrc=""
+                  viewMode={0}
+                >
+                  <div
+                    className="kd-image-cropper-container"
+                  >
+                    <img
+                      src=""
+                      style={
+                        Object {
+                          "display": "none",
+                        }
+                      }
+                    />
+                  </div>
+                </ForwardRef>
+              </div>
+              <div
+                className="kd-modal-footer kd-modal-normal-footer"
+                style={
+                  Object {
+                    "flexDirection": "row-reverse",
+                  }
+                }
+              >
+                <OperationBar
+                  btnClassName="kd-image-cropper-btn-container"
+                  className="kd-image-cropper-bar-container"
+                  getCropper={
+                    Object {
+                      "current": Object {
+                        "cropper": Object {
+                          "current": null,
+                        },
+                        "getImage": [Function],
+                        "replace": [Function],
+                        "reset": [Function],
+                        "rotate": [Function],
+                        "zoom": [Function],
+                      },
+                    }
+                  }
+                  okText="确认裁剪"
+                  onClick={[Function]}
+                  onReplace={[Function]}
+                  onRevert={[Function]}
+                  onRotate={[Function]}
+                  onZoom={[Function]}
+                >
+                  <div
+                    className="kd-image-cropper-bar-container"
+                  >
+                    <div
+                      className="kd-image-cropper-btn-container"
+                    >
+                      <Icon
+                        onClick={[Function]}
+                        type="reduction"
+                      >
+                        <i
+                          className="kdicon kdicon-reduction"
+                          onClick={[Function]}
+                          onMouseEnter={[Function]}
+                          onMouseLeave={[Function]}
+                          style={Object {}}
+                        />
+                      </Icon>
+                      <Upload
+                        accept=".jpeg,.jpg,.png"
+                        beforeUpload={[Function]}
+                        showUploadList={false}
+                      >
+                        <div
+                          className="kd-upload"
+                        >
+                          <label
+                            className="kd-upload-select"
+                          >
+                            <span
+                              className="kd-upload-handle"
+                            >
+                              <Icon
+                                type="upload"
+                              >
+                                <i
+                                  className="kdicon kdicon-upload"
+                                  onClick={[Function]}
+                                  onMouseEnter={[Function]}
+                                  onMouseLeave={[Function]}
+                                  style={Object {}}
+                                />
+                              </Icon>
+                            </span>
+                            <span
+                              className="kd-upload-input"
+                            >
+                              <input
+                                accept=".jpeg,.jpg,.png"
+                                disabled={false}
+                                multiple={false}
+                                onChange={[Function]}
+                                onClick={[Function]}
+                                title=""
+                                type="file"
+                              />
+                            </span>
+                          </label>
+                        </div>
+                      </Upload>
+                      <Icon
+                        onClick={[Function]}
+                        type="spin"
+                      >
+                        <i
+                          className="kdicon kdicon-spin"
+                          onClick={[Function]}
+                          onMouseEnter={[Function]}
+                          onMouseLeave={[Function]}
+                          style={Object {}}
+                        />
+                      </Icon>
+                      <Icon
+                        onClick={[Function]}
+                        type="reduce"
+                      >
+                        <i
+                          className="kdicon kdicon-reduce"
+                          onClick={[Function]}
+                          onMouseEnter={[Function]}
+                          onMouseLeave={[Function]}
+                          style={Object {}}
+                        />
+                      </Icon>
+                      <Icon
+                        onClick={[Function]}
+                        type="add"
+                      >
+                        <i
+                          className="kdicon kdicon-add"
+                          onClick={[Function]}
+                          onMouseEnter={[Function]}
+                          onMouseLeave={[Function]}
+                          style={Object {}}
+                        />
+                      </Icon>
+                    </div>
+                    <Button
+                      className="ok-btn"
+                      onClick={[Function]}
+                      type="primary"
+                    >
+                      <button
+                        className="kd-btn ok-btn kd-btn-primary kd-btn-size-middle"
+                        click-animating-wave="false"
+                        onClick={[Function]}
+                        type="button"
+                      >
+                        <span>
+                          确认裁剪
+                        </span>
+                      </button>
+                    </Button>
+                  </div>
+                </OperationBar>
+              </div>
+            </div>
+          </DraggableCore>
+        </Draggable>
+      </div>
+    </Portal>
+  </Modal>
+</ImageCropper>
+`;
+
+exports[`ImageCropper renders correctly 1`] = `
+<div
+  class="kd-modal kd-image-cropper-modal-container kd-modal-container"
+>
+  <div
+    class="kd-modal-mask"
+  />
+  <div
+    class="kd-modal-container-box kd-modal-showline react-draggable"
+    style="width:860px;height:620px;transform:translate(0px,0px)"
+    tabindex="-1"
+  >
+    <div
+      class="kd-modal-header"
+    >
+      <div
+        class="kd-modal-title-container"
+      >
+        <div
+          class="kd-modal-title"
+        />
+      </div>
+      <div
+        class="kd-modal-close-icon"
+      >
+        <i
+          class="kdicon kdicon-close"
+        />
+      </div>
+    </div>
+    <div
+      class="kd-modal-body kd-image-cropper-modal-body-container"
+    >
+      <div
+        class="kd-image-cropper-container"
+      >
+        <img
+          src=""
+          style="display:none"
+        />
+      </div>
+    </div>
+    <div
+      class="kd-modal-footer kd-modal-normal-footer"
+      style="flex-direction:row-reverse"
+    >
+      <div
+        class="kd-image-cropper-bar-container"
+      >
+        <div
+          class="kd-image-cropper-btn-container"
+        >
+          <i
+            class="kdicon kdicon-reduction"
+          />
+          <div
+            class="kd-upload"
+          >
+            <label
+              class="kd-upload-select"
+            >
+              <span
+                class="kd-upload-handle"
+              >
+                <i
+                  class="kdicon kdicon-upload"
+                />
+              </span>
+              <span
+                class="kd-upload-input"
+              >
+                <input
+                  accept=".jpeg,.jpg,.png"
+                  title=""
+                  type="file"
+                />
+              </span>
+            </label>
+          </div>
+          <i
+            class="kdicon kdicon-spin"
+          />
+          <i
+            class="kdicon kdicon-reduce"
+          />
+          <i
+            class="kdicon kdicon-add"
+          />
+        </div>
+        <button
+          class="kd-btn ok-btn kd-btn-primary kd-btn-size-middle"
+          click-animating-wave="false"
+          type="button"
+        >
+          <span>
+            确认裁剪
+          </span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+`;

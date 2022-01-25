@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ConfigProvider customGetLangMsg 1`] = `
+<div
+  class="kd-pagination"
+>
+  Pagination-first-[object Object]
+</div>
+`;
+
+exports[`ConfigProvider renders correctly 1`] = `
+<div
+  class="kd-pagination"
+/>
+`;

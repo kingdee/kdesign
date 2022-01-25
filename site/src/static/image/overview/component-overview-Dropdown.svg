@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="160px" height="88px" viewBox="0 0 160 88" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>切片</title>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="160" height="66" rx="2.7826087"></rect>
+        <filter x="-7.5%" y="-13.6%" width="115.0%" height="136.4%" filterUnits="objectBoundingBox" id="filter-2">
+            <feOffset dx="0" dy="3" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="3.5" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.2 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="前端总览" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="PC组件概览备份-3" transform="translate(-403.000000, -1127.000000)">
+            <g id="编组-5" transform="translate(403.000000, 1127.500000)">
+                <rect id="矩形备份-40" fill="#276FF5" x="6" y="2.5" width="36" height="12" rx="2"></rect>
+                <g id="0.全局样式/1.图标/5.基础线性图标/1.指向类/下拉" transform="translate(44.500000, 0.000000)" fill="#276FF5">
+                    <path d="M10.8535534,3.85355339 C11.0488155,3.65829124 11.0488155,3.34170876 10.8535534,3.14644661 C10.6582912,2.95118446 10.3417088,2.95118446 10.1464466,3.14644661 L5.14644661,7.89644661 C4.95118446,8.09170876 4.95118446,8.40829124 5.14644661,8.60355339 L10.1464466,13.3535534 C10.3417088,13.5488155 10.6582912,13.5488155 10.8535534,13.3535534 C11.0488155,13.1582912 11.0488155,12.8417088 10.8535534,12.6464466 L6.20710678,8.25 L10.8535534,3.85355339 Z" id="路径" transform="translate(8.000000, 8.250000) rotate(-90.000000) translate(-8.000000, -8.250000) "></path>
+                </g>
+                <g id="6.筛选/1.搜索/全局搜索/搜索栏-下拉面板" transform="translate(0.000000, 21.500000)">
+                    <g id="Mask备份-3" fill-rule="nonzero">
+                        <use fill="black" fill-opacity="1" filter="url(#filter-2)" xlink:href="#path-1"></use>
+                        <use fill="#FFFFFF" xlink:href="#path-1"></use>
+                    </g>
+                    <rect id="矩形备份-10" fill="#FFFFFF" x="0" y="22" width="160" height="22"></rect>
+                    <rect id="矩形备份-10" fill="#FFFFFF" x="0" y="43.3015873" width="160" height="22.3492063"></rect>
+                    <rect id="矩形备份-10" fill="#FFFFFF" x="0" y="43.3015873" width="160" height="22.3492063"></rect>
+                    <rect id="矩形备份-10" fill="#FFFFFF" x="0" y="44" width="160" height="22"></rect>
+                    <g id="2图标/通用操作/面性/勾选-2" transform="translate(2.787324, 48.238095)" fill="#276FF5" fill-rule="nonzero">
+                        <g id="2图标/通用操作/面性/勾选">
+                            <path d="M8.64002045,2.31548319 C8.86571348,2.05323437 9.2648997,2.02052749 9.53162783,2.24243034 C9.78168545,2.45046427 9.82655132,2.80842169 9.64521744,3.06844011 L9.60592844,3.1190645 L4.96651756,8.50992677 C4.72666999,8.78862276 4.30007685,8.80257835 4.04138679,8.55310438 L3.99755073,8.50634526 L1.8887276,6.01825498 C1.66504637,5.75434518 1.70131226,5.3621197 1.96972974,5.14219486 C2.22137113,4.93601533 2.58771624,4.95446814 2.81683406,5.17503511 L2.86075328,5.22183669 L4.48693769,7.14068368 L8.64002045,2.31548319 Z" id="路径-13"></path>
+                        </g>
+                    </g>
+                    <rect id="矩形备份-41" fill="#276FF5" x="17" y="49" width="36" height="8" rx="2"></rect>
+                    <rect id="矩形备份-42" fill="#D4D9E3" x="17" y="29" width="36" height="8" rx="2"></rect>
+                    <rect id="矩形备份-43" fill="#D4D9E3" x="17" y="9" width="36" height="8" rx="2"></rect>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

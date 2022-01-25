@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="149px" height="52px" viewBox="0 0 149 52" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>编组 32</title>
+    <defs>
+        <filter x="-10.5%" y="-42.2%" width="120.9%" height="184.4%" filterUnits="objectBoundingBox" id="filter-1">
+            <feOffset dx="0" dy="1" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="3" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.08 0" type="matrix" in="shadowBlurOuter1" result="shadowMatrixOuter1"></feColorMatrix>
+            <feMerge>
+                <feMergeNode in="shadowMatrixOuter1"></feMergeNode>
+                <feMergeNode in="SourceGraphic"></feMergeNode>
+            </feMerge>
+        </filter>
+    </defs>
+    <g id="前端总览" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="PC组件概览备份-3" transform="translate(-147.000000, -1347.000000)">
+            <g id="编组-33备份" transform="translate(147.000000, 1347.000000)">
+                <g id="编组-32" transform="translate(10.000000, 10.000000)">
+                    <g id="2.导航/5.页签/基础页签/基础页签" filter="url(#filter-1)">
+                        <rect id="矩形" fill="#FFFFFF" x="0" y="0" width="129" height="32"></rect>
+                        <g id="编组">
+                            <g id="编组-2"></g>
+                            <rect id="矩形" fill="#E5E5E5" x="0" y="31" width="129" height="1"></rect>
+                            <g id="编组-3">
+                                <g id="组件/导航/页签/基础页签-未选中状态" transform="translate(64.000000, 0.000000)">
+                                    <rect id="矩形备份" fill="#FFFFFF" x="0" y="0" width="64" height="32"></rect>
+                                    <rect id="矩形备份-2" fill="#EDF1F7" x="0" y="31" width="64" height="1"></rect>
+                                </g>
+                                <g id="组件/导航/页签/基础页签-选中态">
+                                    <rect id="矩形" fill="#FFFFFF" x="0" y="0" width="64" height="32"></rect>
+                                    <rect id="矩形备份-25" fill="#276FF5" x="20" y="10" width="25" height="12" rx="2"></rect>
+                                    <rect id="矩形" fill="#276FF5" fill-rule="nonzero" x="0" y="30" width="64" height="2"></rect>
+                                </g>
+                            </g>
+                        </g>
+                    </g>
+                    <rect id="矩形备份-26" fill="#EDF1F7" x="82" y="10" width="25" height="12" rx="2"></rect>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

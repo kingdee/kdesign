@@ -1,0 +1,188 @@
+@import '../../style/themes/index';
+@import './mixin.less';
+
+@advancedSelector-prefix-cls: ~'@{kd-prefix}-baseData';
+
+.@{advancedSelector-prefix-cls} {
+  width: @advancedSelector-width;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid @advancedSelector-border-color;
+
+  &-disabled {
+    cursor: not-allowed;
+  }
+
+  &:not(.@{advancedSelector-prefix-cls}-disabled):hover {
+    border-color: @theme-color;
+
+    .@{advancedSelector-prefix-cls} {
+      &-detail,
+      &-suffix {
+        color: @theme-color;
+      }
+
+      &-detail {
+        visibility: visible;
+      }
+    }
+  }
+
+  &-total {
+    white-space: nowrap;
+    cursor: pointer;
+  }
+
+  &-suffix,
+  &-detail {
+    font-size: 16px;
+    margin-left: 5px;
+    cursor: pointer;
+  }
+
+  &-detail {
+    visibility: hidden;
+  }
+
+  &-dropdown {
+    margin: 0;
+    z-index: @zIndex-popper;
+    box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.2);
+    border-radius: @radius-size;
+    background: @bg;
+    overflow: auto;
+    max-height: @advancedSelector-dropdown-height;
+
+    &-columns,
+    &-options {
+      display: flex;
+      align-items: center;
+
+      &-item {
+        flex: 1;
+        padding: 0 12px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        position: relative;
+        display: flex;
+        align-items: center;
+
+        &-collect {
+          position: absolute;
+          right: 10px;
+          visibility: hidden;
+
+          &-icon {
+            color: @warning-color;
+
+            &:hover {
+              color: @warning-color;
+            }
+          }
+
+          &-not-icon {
+            color: #666;
+
+            &:hover {
+              color: @warning-color;
+            }
+          }
+        }
+
+        &-search {
+          color: @link-color-hover;
+        }
+      }
+    }
+
+    &-loading {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 200px;
+    }
+
+    &-columns {
+      height: 36px;
+      background: @advancedSelector-hover-bg;
+    }
+
+    &-options {
+      height: @advancedSelector-dropdown-options-height;
+
+      &:hover {
+        background: @advancedSelector-hover-bg;
+
+        .@{advancedSelector-prefix-cls}-dropdown-options-item-collect {
+          visibility: visible;
+        }
+      }
+    }
+
+    &-footer {
+      height: 40px;
+      border-top: 1px solid @strong-border-color;
+
+      &-btn {
+        color: @link-color;
+        height: 100%;
+        display: flex;
+        align-items: center;
+
+        & > span {
+          flex: 1;
+          text-align: center;
+          cursor: pointer;
+        }
+      }
+    }
+
+    &-empty {
+      margin: 20px 0;
+    }
+
+    // 修改tabs默认样式
+    .@{kd-prefix}-tabs-tab-list {
+      width: 100%;
+      display: flex;
+    }
+
+    .@{kd-prefix}-tab-pane {
+      flex: 1;
+      margin-right: 0;
+      text-align: center;
+    }
+
+    .@{kd-prefix}-tabs-right-arrows {
+      display: none;
+    }
+  }
+
+  .@{kd-prefix}-input {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding-right: 0;
+
+    &-disabled {
+      background: @bg;
+    }
+  }
+}
+
+.topLeft.hidden,
+.bottomLeft.hidden {
+  opacity: 0;
+  visibility: hidden;
+  transition: all calc(@transition-duration - 0.1s) @ease;
+}
+
+.@{advancedSelector-prefix-cls}-dropdown-wrapper {
+  &.topLeft.hidden,
+  &.bottomLeft.hidden {
+    opacity: 0;
+    visibility: hidden;
+    transition: all calc(@transition-duration - 0.1s) @ease;
+  }
+}

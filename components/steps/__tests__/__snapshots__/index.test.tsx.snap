@@ -1,0 +1,1066 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Steps render null or undefined buttons without errors 1`] = `
+<Steps>
+  <div
+    className="kd-steps kd-steps-horizontal kd-steps-bottomLable"
+    style={Object {}}
+  />
+</Steps>
+`;
+
+exports[`Steps renders correctly 1`] = `
+<div
+  class="kd-steps kd-steps-horizontal kd-steps-bottomLable"
+>
+  <div
+    class="kd-steps-item kd-steps-item-process"
+  >
+    <div
+      class="kd-steps-item-container"
+    >
+      <div
+        class="kd-steps-item-iconContainer"
+      >
+        <div
+          class="kd-steps-item-iconContainer-icon"
+        >
+          <span
+            class="kd-steps-icon"
+          >
+            1
+          </span>
+        </div>
+      </div>
+      <div
+        class="kd-steps-item-content"
+      >
+        <div
+          class="kd-steps-item-title"
+          title="Step1"
+        >
+          Step1
+        </div>
+        <div
+          class="kd-steps-item-description"
+          title="hello word hello word hello word hello word hello word hello word"
+        >
+          hello word hello word hello word hello word hello word hello word
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    class="kd-steps-item kd-steps-item-wait"
+  >
+    <div
+      class="kd-steps-item-container"
+    >
+      <div
+        class="kd-steps-item-iconContainer"
+      >
+        <div
+          class="kd-steps-item-iconContainer-icon"
+        >
+          <span
+            class="kd-steps-icon"
+          >
+            2
+          </span>
+        </div>
+      </div>
+      <div
+        class="kd-steps-item-content"
+      >
+        <div
+          class="kd-steps-item-title"
+          title="Step2"
+        >
+          Step2
+        </div>
+        <div
+          class="kd-steps-item-description"
+          title="hello word"
+        >
+          hello word
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Steps renders correctly 2`] = `
+<div
+  class="kd-steps kd-steps-horizontal kd-steps-bottomLable"
+>
+  <div
+    class="kd-steps-item kd-steps-item-process"
+  >
+    <div
+      class="kd-steps-item-container"
+    >
+      <div
+        class="kd-steps-item-iconContainer"
+      >
+        <div
+          class="kd-steps-item-iconContainer-icon"
+        >
+          <span
+            class="kd-steps-icon"
+          >
+            1
+          </span>
+        </div>
+      </div>
+      <div
+        class="kd-steps-item-content"
+      >
+        <div
+          class="kd-steps-item-title"
+          title="Step1"
+        >
+          Step1
+        </div>
+        <div
+          class="kd-steps-item-description"
+          title="hello word hello word hello word hello word hello word hello word"
+        >
+          hello word hello word hello word hello word hello word hello word
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    class="kd-steps-item kd-steps-item-wait"
+  >
+    <div
+      class="kd-steps-item-container"
+    >
+      <div
+        class="kd-steps-item-iconContainer"
+      >
+        <div
+          class="kd-steps-item-iconContainer-icon"
+        >
+          <span
+            class="kd-steps-icon"
+          >
+            2
+          </span>
+        </div>
+      </div>
+      <div
+        class="kd-steps-item-content"
+      >
+        <div
+          class="kd-steps-item-title"
+          title="Step2"
+        >
+          Step2
+        </div>
+        <div
+          class="kd-steps-item-description"
+          title="hello word"
+        >
+          hello word
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Steps renders correctly 3`] = `
+<div
+  class="kd-steps kd-steps-vertical kd-steps-bottomLable"
+>
+  <div
+    class="kd-steps-item kd-steps-item-process"
+  >
+    <div
+      class="kd-steps-item-container"
+    >
+      <div
+        class="kd-steps-item-iconContainer"
+      >
+        <div
+          class="kd-steps-item-iconContainer-icon"
+        >
+          <span
+            class="kd-steps-icon"
+          >
+            1
+          </span>
+        </div>
+      </div>
+      <div
+        class="kd-steps-item-content"
+      >
+        <div
+          class="kd-steps-item-title"
+          title="Step1"
+        >
+          Step1
+        </div>
+        <div
+          class="kd-steps-item-description"
+          title="hello word hello word hello word hello word hello word hello word"
+        >
+          hello word hello word hello word hello word hello word hello word
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    class="kd-steps-item kd-steps-item-wait"
+  >
+    <div
+      class="kd-steps-item-container"
+    >
+      <div
+        class="kd-steps-item-iconContainer"
+      >
+        <div
+          class="kd-steps-item-iconContainer-icon"
+        >
+          <span
+            class="kd-steps-icon"
+          >
+            2
+          </span>
+        </div>
+      </div>
+      <div
+        class="kd-steps-item-content"
+      >
+        <div
+          class="kd-steps-item-title"
+          title="Step2"
+        >
+          Step2
+        </div>
+        <div
+          class="kd-steps-item-description"
+          title="hello word"
+        >
+          hello word
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Steps renders correctly 4`] = `
+<div
+  class="kd-steps kd-steps-horizontal kd-steps-leftLable"
+>
+  <div
+    class="kd-steps-item kd-steps-item-process"
+  >
+    <div
+      class="kd-steps-item-container"
+    >
+      <div
+        class="kd-steps-item-iconContainer"
+      >
+        <div
+          class="kd-steps-item-iconContainer-icon"
+        >
+          <span
+            class="kd-steps-icon"
+          >
+            1
+          </span>
+        </div>
+      </div>
+      <div
+        class="kd-steps-item-content"
+      >
+        <div
+          class="kd-steps-item-title"
+          title="Step1"
+        >
+          Step1
+        </div>
+        <div
+          class="kd-steps-item-description"
+          title="hello word hello word hello word hello word hello word hello word"
+        >
+          hello word hello word hello word hello word hello word hello word
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    class="kd-steps-item kd-steps-item-wait"
+  >
+    <div
+      class="kd-steps-item-container"
+    >
+      <div
+        class="kd-steps-item-iconContainer"
+      >
+        <div
+          class="kd-steps-item-iconContainer-icon"
+        >
+          <span
+            class="kd-steps-icon"
+          >
+            2
+          </span>
+        </div>
+      </div>
+      <div
+        class="kd-steps-item-content"
+      >
+        <div
+          class="kd-steps-item-title"
+          title="Step2"
+        >
+          Step2
+        </div>
+        <div
+          class="kd-steps-item-description"
+          title="hello word"
+        >
+          hello word
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Steps renders correctly 5`] = `
+<div
+  class="kd-steps kd-steps-horizontal kd-steps-rightLable"
+>
+  <div
+    class="kd-steps-item kd-steps-item-process"
+  >
+    <div
+      class="kd-steps-item-container"
+    >
+      <div
+        class="kd-steps-item-iconContainer"
+      >
+        <div
+          class="kd-steps-item-iconContainer-icon"
+        >
+          <span
+            class="kd-steps-icon"
+          >
+            1
+          </span>
+        </div>
+      </div>
+      <div
+        class="kd-steps-item-content"
+      >
+        <div
+          class="kd-steps-item-title"
+          title="Step1"
+        >
+          Step1
+        </div>
+        <div
+          class="kd-steps-item-description"
+          title="hello word hello word hello word hello word hello word hello word"
+        >
+          hello word hello word hello word hello word hello word hello word
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    class="kd-steps-item kd-steps-item-wait"
+  >
+    <div
+      class="kd-steps-item-container"
+    >
+      <div
+        class="kd-steps-item-iconContainer"
+      >
+        <div
+          class="kd-steps-item-iconContainer-icon"
+        >
+          <span
+            class="kd-steps-icon"
+          >
+            2
+          </span>
+        </div>
+      </div>
+      <div
+        class="kd-steps-item-content"
+      >
+        <div
+          class="kd-steps-item-title"
+          title="Step2"
+        >
+          Step2
+        </div>
+        <div
+          class="kd-steps-item-description"
+          title="hello word"
+        >
+          hello word
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Steps renders correctly 6`] = `
+<div
+  class="kd-steps kd-steps-horizontal kd-steps-topLable"
+>
+  <div
+    class="kd-steps-item kd-steps-item-process"
+  >
+    <div
+      class="kd-steps-item-container"
+    >
+      <div
+        class="kd-steps-item-iconContainer"
+      >
+        <div
+          class="kd-steps-item-iconContainer-icon"
+        >
+          <span
+            class="kd-steps-icon"
+          >
+            1
+          </span>
+        </div>
+      </div>
+      <div
+        class="kd-steps-item-content"
+      >
+        <div
+          class="kd-steps-item-title"
+          title="Step1"
+        >
+          Step1
+        </div>
+        <div
+          class="kd-steps-item-description"
+          title="hello word hello word hello word hello word hello word hello word"
+        >
+          hello word hello word hello word hello word hello word hello word
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    class="kd-steps-item kd-steps-item-wait"
+  >
+    <div
+      class="kd-steps-item-container"
+    >
+      <div
+        class="kd-steps-item-iconContainer"
+      >
+        <div
+          class="kd-steps-item-iconContainer-icon"
+        >
+          <span
+            class="kd-steps-icon"
+          >
+            2
+          </span>
+        </div>
+      </div>
+      <div
+        class="kd-steps-item-content"
+      >
+        <div
+          class="kd-steps-item-title"
+          title="Step2"
+        >
+          Step2
+        </div>
+        <div
+          class="kd-steps-item-description"
+          title="hello word"
+        >
+          hello word
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Steps renders correctly 7`] = `
+<div
+  class="kd-steps kd-steps-horizontal kd-steps-bottomLable"
+>
+  <div
+    class="kd-steps-item kd-steps-item-process"
+  >
+    <div
+      class="kd-steps-item-container"
+    >
+      <div
+        class="kd-steps-item-iconContainer"
+      >
+        <div
+          class="kd-steps-item-iconContainer-icon"
+        >
+          <span
+            class="kd-steps-icon"
+          >
+            1
+          </span>
+        </div>
+      </div>
+      <div
+        class="kd-steps-item-content"
+      >
+        <div
+          class="kd-steps-item-title"
+          title="Step1"
+        >
+          Step1
+        </div>
+        <div
+          class="kd-steps-item-description"
+          title="hello word hello word hello word hello word hello word hello word"
+        >
+          hello word hello word hello word hello word hello word hello word
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    class="kd-steps-item kd-steps-item-wait"
+  >
+    <div
+      class="kd-steps-item-container"
+    >
+      <div
+        class="kd-steps-item-iconContainer"
+      >
+        <div
+          class="kd-steps-item-iconContainer-icon"
+        >
+          <span
+            class="kd-steps-icon"
+          >
+            2
+          </span>
+        </div>
+      </div>
+      <div
+        class="kd-steps-item-content"
+      >
+        <div
+          class="kd-steps-item-title"
+          title="Step2"
+        >
+          Step2
+        </div>
+        <div
+          class="kd-steps-item-description"
+          title="hello word"
+        >
+          hello word
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Steps renders correctly 8`] = `
+<div
+  class="kd-steps kd-steps-horizontal kd-steps-bottomLable"
+>
+  <div
+    class="kd-steps-item kd-steps-item-wait"
+  >
+    <div
+      class="kd-steps-item-container"
+    >
+      <div
+        class="kd-steps-item-iconContainer"
+      >
+        <div
+          class="kd-steps-item-iconContainer-icon"
+        >
+          <span
+            class="kd-steps-icon"
+          >
+            1
+          </span>
+        </div>
+      </div>
+      <div
+        class="kd-steps-item-content"
+      >
+        <div
+          class="kd-steps-item-title"
+          title="Step1"
+        >
+          Step1
+        </div>
+        <div
+          class="kd-steps-item-description"
+          title="hello word hello word hello word hello word hello word hello word"
+        >
+          hello word hello word hello word hello word hello word hello word
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    class="kd-steps-item kd-steps-item-wait"
+  >
+    <div
+      class="kd-steps-item-container"
+    >
+      <div
+        class="kd-steps-item-iconContainer"
+      >
+        <div
+          class="kd-steps-item-iconContainer-icon"
+        >
+          <span
+            class="kd-steps-icon"
+          >
+            2
+          </span>
+        </div>
+      </div>
+      <div
+        class="kd-steps-item-content"
+      >
+        <div
+          class="kd-steps-item-title"
+          title="Step2"
+        >
+          Step2
+        </div>
+        <div
+          class="kd-steps-item-description"
+          title="hello word"
+        >
+          hello word
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Steps renders correctly 9`] = `
+<div
+  class="kd-steps kd-steps-horizontal kd-steps-bottomLable"
+>
+  <div
+    class="kd-steps-item kd-steps-item-process"
+  >
+    <div
+      class="kd-steps-item-container"
+    >
+      <div
+        class="kd-steps-item-iconContainer"
+      >
+        <div
+          class="kd-steps-item-iconContainer-icon"
+        >
+          <span
+            class="kd-steps-icon"
+          >
+            1
+          </span>
+        </div>
+      </div>
+      <div
+        class="kd-steps-item-content"
+      >
+        <div
+          class="kd-steps-item-title"
+          title="Step1"
+        >
+          Step1
+        </div>
+        <div
+          class="kd-steps-item-description"
+          title="hello word hello word hello word hello word hello word hello word"
+        >
+          hello word hello word hello word hello word hello word hello word
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    class="kd-steps-item kd-steps-item-wait"
+  >
+    <div
+      class="kd-steps-item-container"
+    >
+      <div
+        class="kd-steps-item-iconContainer"
+      >
+        <div
+          class="kd-steps-item-iconContainer-icon"
+        >
+          <span
+            class="kd-steps-icon"
+          >
+            2
+          </span>
+        </div>
+      </div>
+      <div
+        class="kd-steps-item-content"
+      >
+        <div
+          class="kd-steps-item-title"
+          title="Step2"
+        >
+          Step2
+        </div>
+        <div
+          class="kd-steps-item-description"
+          title="hello word"
+        >
+          hello word
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Steps renders correctly 10`] = `
+<div
+  class="kd-steps kd-steps-horizontal kd-steps-bottomLable"
+>
+  <div
+    class="kd-steps-item kd-steps-item-finish"
+  >
+    <div
+      class="kd-steps-item-container"
+    >
+      <div
+        class="kd-steps-item-iconContainer"
+      >
+        <div
+          class="kd-steps-item-iconContainer-icon"
+        >
+          <span
+            class="kd-steps-icon"
+          >
+            <i
+              class="kdicon kd-steps-iconSize kdicon-right-bold"
+            />
+          </span>
+        </div>
+      </div>
+      <div
+        class="kd-steps-item-content"
+      >
+        <div
+          class="kd-steps-item-title"
+          title="Step1"
+        >
+          Step1
+        </div>
+        <div
+          class="kd-steps-item-description"
+          title="hello word hello word hello word hello word hello word hello word"
+        >
+          hello word hello word hello word hello word hello word hello word
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    class="kd-steps-item kd-steps-item-wait"
+  >
+    <div
+      class="kd-steps-item-container"
+    >
+      <div
+        class="kd-steps-item-iconContainer"
+      >
+        <div
+          class="kd-steps-item-iconContainer-icon"
+        >
+          <span
+            class="kd-steps-icon"
+          >
+            2
+          </span>
+        </div>
+      </div>
+      <div
+        class="kd-steps-item-content"
+      >
+        <div
+          class="kd-steps-item-title"
+          title="Step2"
+        >
+          Step2
+        </div>
+        <div
+          class="kd-steps-item-description"
+          title="hello word"
+        >
+          hello word
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Steps renders correctly 11`] = `
+<div
+  class="kd-steps kd-steps-horizontal kd-steps-bottomLable"
+>
+  <div
+    class="kd-steps-item kd-steps-item-error"
+  >
+    <div
+      class="kd-steps-item-container"
+    >
+      <div
+        class="kd-steps-item-iconContainer"
+      >
+        <div
+          class="kd-steps-item-iconContainer-icon"
+        >
+          <span
+            class="kd-steps-icon"
+          >
+            <span>
+              !
+            </span>
+          </span>
+        </div>
+      </div>
+      <div
+        class="kd-steps-item-content"
+      >
+        <div
+          class="kd-steps-item-title"
+          title="Step1"
+        >
+          Step1
+        </div>
+        <div
+          class="kd-steps-item-description"
+          title="hello word hello word hello word hello word hello word hello word"
+        >
+          hello word hello word hello word hello word hello word hello word
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    class="kd-steps-item kd-steps-item-wait"
+  >
+    <div
+      class="kd-steps-item-container"
+    >
+      <div
+        class="kd-steps-item-iconContainer"
+      >
+        <div
+          class="kd-steps-item-iconContainer-icon"
+        >
+          <span
+            class="kd-steps-icon"
+          >
+            2
+          </span>
+        </div>
+      </div>
+      <div
+        class="kd-steps-item-content"
+      >
+        <div
+          class="kd-steps-item-title"
+          title="Step2"
+        >
+          Step2
+        </div>
+        <div
+          class="kd-steps-item-description"
+          title="hello word"
+        >
+          hello word
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Steps renders correctly 12`] = `
+<div
+  class="kd-steps kd-steps-horizontal kd-steps-bottomLable"
+>
+  <div
+    class="kd-steps-item kd-steps-item-finish"
+  >
+    <div
+      class="kd-steps-item-container"
+    >
+      <div
+        class="kd-steps-item-iconContainer kd-steps-item-iconContainer-finish"
+      >
+        <div
+          class="kd-steps-item-iconContainer-icon"
+        >
+          <span
+            class="kd-steps-icon"
+          >
+            <i
+              class="kdicon kdicon-right-bold"
+            />
+          </span>
+        </div>
+      </div>
+      <div
+        class="kd-steps-item-content"
+      >
+        <div
+          class="kd-steps-item-title"
+          title="Step1"
+        >
+          Step1
+        </div>
+        <div
+          class="kd-steps-item-description"
+          title="hello word"
+        >
+          hello word
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    class="kd-steps-item kd-steps-item-finish"
+  >
+    <div
+      class="kd-steps-item-container"
+    >
+      <div
+        class="kd-steps-item-iconContainer kd-steps-item-iconContainer-finish"
+      >
+        <div
+          class="kd-steps-item-iconContainer-icon"
+        >
+          <span
+            class="kd-steps-icon"
+          >
+            <i
+              class="kdicon kdicon-right-bold"
+            />
+          </span>
+        </div>
+      </div>
+      <div
+        class="kd-steps-item-content"
+      >
+        <div
+          class="kd-steps-item-title"
+          title="Step2"
+        >
+          Step2
+        </div>
+        <div
+          class="kd-steps-item-description"
+          title="hello word"
+        >
+          hello word
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    class="kd-steps-item kd-steps-item-error"
+  >
+    <div
+      class="kd-steps-item-container"
+    >
+      <div
+        class="kd-steps-item-iconContainer"
+      >
+        <div
+          class="kd-steps-item-iconContainer-icon"
+        >
+          <span
+            class="kd-steps-icon"
+          >
+            <i
+              class="kdicon kdicon-close"
+            />
+          </span>
+        </div>
+      </div>
+      <div
+        class="kd-steps-item-content"
+      >
+        <div
+          class="kd-steps-item-title"
+          title="Step3"
+        >
+          Step3
+        </div>
+        <div
+          class="kd-steps-item-description"
+          title="hello word"
+        >
+          hello word
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    class="kd-steps-item kd-steps-item-wait"
+  >
+    <div
+      class="kd-steps-item-container"
+    >
+      <div
+        class="kd-steps-item-iconContainer"
+      >
+        <div
+          class="kd-steps-item-iconContainer-icon"
+        >
+          <span
+            class="kd-steps-icon"
+          >
+            4
+          </span>
+        </div>
+      </div>
+      <div
+        class="kd-steps-item-content"
+      >
+        <div
+          class="kd-steps-item-title"
+          title="Step4"
+        >
+          Step4
+        </div>
+        <div
+          class="kd-steps-item-description"
+          title="hello word"
+        >
+          hello word
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

@@ -1,0 +1,105 @@
+@import '../../style/themes/index';
+@import './mixin.less';
+@import '../../style/mixins/overlay';
+
+@drawer-prefix-cls: ~'@{kd-prefix}-drawer';
+
+@placement-left: left;
+@placement-right: right;
+@placement-top: top;
+@placement-bottom: bottom;
+
+@drawer-title-font-size: 18px;
+@drawer-title-font-color: #333333;
+@drawer-dividing-width: 1px;
+@drawer-dividing-color: #cccccc;
+@drawer-body-font-size: 14px;
+@drawer-body-font-color: #333333;
+@drawer-footer-font-size: 12px;
+@drawer-footer-font-color: #333333;
+
+.@{drawer-prefix-cls} {
+  display: flex;
+  z-index: @zIndex-dialog;
+  &-active {
+    .@{drawer-prefix-cls}-mask {
+      opacity: 1;
+      visibility: visible;
+      transition: all calc(@transition-duration - 0.1s) @ease-out;
+    }
+  }
+  &-hide {
+    visibility: hidden;
+    transition: visibility calc(@transition-duration - 0.1s) @ease-out;
+  }
+  position: fixed;
+  .overall-postion();
+  &-mask {
+    .overlay(rgba(55, 55, 55, 0.5), 0);
+    opacity: 0;
+    transition: opacity calc(@transition-duration - 0.1s) @ease-out;
+  }
+  &-not-at-body {
+    position: absolute;
+    .@{drawer-prefix-cls}-mask {
+      position: absolute;
+    }
+  }
+  &-container-left {
+    .drawer-container-placement-horizontal();
+  }
+  &-container-right {
+    .drawer-container-placement-horizontal();
+  }
+  &-container-top {
+    .drawer-container-placement-vertical();
+  }
+  &-container-bottom {
+    .drawer-container-placement-vertical();
+  }
+
+  &-container-box {
+    display: flex;
+    position: absolute;
+    flex-direction: column;
+    background: @bg;
+    box-shadow: -4px 0 10px 0 rgba(0, 0, 0, 0.1);
+    transition: all calc(@transition-duration - 0.1s) @ease-out;
+    .@{drawer-prefix-cls}-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid @drawer-dividing-color;
+      min-height: 50px;
+      background: @bg;
+      font-size: @drawer-title-font-size;
+      color: @drawer-title-font-color;
+      .@{drawer-prefix-cls}-title {
+        margin-left: 20px;
+        font-size: @drawer-title-font-size;
+        letter-spacing: 0;
+        line-height: 26px;
+      }
+      .@{drawer-prefix-cls}-close-icon {
+        i {
+          font-size: 26px;
+        }
+        margin-right: 10px;
+        cursor: pointer;
+      }
+    }
+    .@{drawer-prefix-cls}-body {
+      display: flex;
+      flex-grow: 1;
+      flex-direction: column;
+      font-size: @drawer-body-font-size;
+      color: @drawer-body-font-color;
+    }
+    .@{drawer-prefix-cls}-footer {
+      display: flex;
+      min-height: 40px;
+      font-size: @drawer-footer-font-size;
+      color: @drawer-footer-font-color;
+    }
+  }
+}

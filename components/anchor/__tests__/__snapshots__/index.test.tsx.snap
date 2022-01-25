@@ -1,0 +1,140 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Anchor render null or undefined buttons without errors 1`] = `
+<Anchor>
+  <div
+    className="kd-anchor-wrapper"
+  >
+    <div
+      className="kd-anchor"
+      style={
+        Object {
+          "position": "fixed",
+          "top": 0,
+          "width": 0,
+        }
+      }
+    >
+      <div
+        className="kd-anchor-ink"
+      >
+        <span
+          className="kd-anchor-ink-line"
+        />
+      </div>
+    </div>
+  </div>
+</Anchor>
+`;
+
+exports[`Anchor renders correctly 1`] = `
+<div
+  class="kd-anchor-wrapper"
+>
+  <div
+    class="kd-anchor"
+  >
+    <div
+      class="kd-anchor-ink"
+    >
+      <span
+        class="kd-anchor-ink-line"
+      />
+    </div>
+    <div
+      class="kd-anchor-link"
+    >
+      <span
+        class="kd-anchor-link-title"
+        title="使用场景"
+      >
+        使用场景
+      </span>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Anchor renders correctly 2`] = `
+<div
+  class="kd-anchor-wrapper"
+>
+  <div
+    class="kd-anchor"
+  >
+    <div
+      class="kd-anchor-ink"
+    >
+      <span
+        class="kd-anchor-ink-line"
+      />
+    </div>
+    <div
+      class="kd-anchor-link"
+    >
+      <span
+        class="kd-anchor-link-title"
+        title="使用场景"
+      >
+        使用场景
+      </span>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Anchor renders correctly 3`] = `
+<div
+  class="kd-anchor-menu-wrapper"
+  style="width:100%"
+>
+  <div
+    class="kd-anchor-menu"
+  >
+    <span
+      class="kd-anchor-menu-left-arrows kd-anchor-menu-left-arrows-disabled"
+    >
+      <i
+        class="kdicon kdicon-arrow-left"
+      />
+    </span>
+    <div
+      class="kd-anchor-menu-wrap"
+      style="max-width:0"
+    >
+      <div
+        class="kd-anchor-menu-link-list"
+        style="left:0px"
+      >
+        <div
+          class="kd-anchor-link"
+        >
+          <span
+            class="kd-anchor-link-title"
+            title="使用场景"
+          >
+            使用场景
+          </span>
+        </div>
+      </div>
+    </div>
+    <span
+      class="kd-anchor-menu-right-arrows kd-anchor-menu-right-arrows-disabled"
+    >
+      <i
+        class="kdicon kdicon-arrow-right"
+      />
+    </span>
+  </div>
+</div>
+`;
+
+exports[`Anchor renders correctly 4`] = `
+<span
+  class="kd-anchor-advanced-arrows"
+>
+  <i
+    class="kdicon kdicon-location-solid"
+  />
+</span>
+`;

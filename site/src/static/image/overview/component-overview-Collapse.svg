@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="192px" height="97px" viewBox="0 0 192 97" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>折叠面板</title>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="180" height="85" rx="4"></rect>
+        <filter x="-5.3%" y="-10.0%" width="110.6%" height="122.4%" filterUnits="objectBoundingBox" id="filter-2">
+            <feOffset dx="0" dy="1" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="3" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.08 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="页面-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="PC组件概览备份-3" transform="translate(-126.000000, -2640.000000)">
+            <g id="编组" transform="translate(132.000000, 2645.000000)">
+                <g id="矩形">
+                    <use fill="black" fill-opacity="1" filter="url(#filter-2)" xlink:href="#path-1"></use>
+                    <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-1"></use>
+                </g>
+                <g id="编组-44" transform="translate(0.000000, 5.000000)">
+                    <g id="4.展示/5.折叠面板/展开">
+                        <g id="组件/展示/折叠面板/展开2" fill="#FFFFFF">
+                            <polygon id="Rectangle-94" points="0 0 180 0 180 19 0 19"></polygon>
+                        </g>
+                        <g id="0.全局样式/1.图标/5.基础线性图标/4.业务类/折叠展开" transform="translate(13.222222, 5.722222)" fill="#666666">
+                            <path d="M4.23495765,4.70638242 C3.98270538,5.04240724 3.5735881,5.04222669 3.32147137,4.70638242 L2.01763022,2.96953786 C1.76537795,2.63351305 1.89420696,2.36111111 2.31316583,2.36111111 L5.24326319,2.36111111 C5.65873527,2.36111111 5.79091553,2.6336936 5.5387988,2.96953786 L4.23495765,4.70638242 Z" id="Path-Copy-2" transform="translate(3.777778, 3.659722) scale(-1, 1) rotate(-360.000000) translate(-3.777778, -3.659722) "></path>
+                        </g>
+                    </g>
+                    <rect id="矩形备份-99" fill="#D4D9E3" x="23" y="6" width="28" height="8" rx="1"></rect>
+                </g>
+                <g id="编组-44备份-2" transform="translate(0.000000, 43.000000)">
+                    <g id="4.展示/5.折叠面板/展开">
+                        <g id="组件/展示/折叠面板/展开2" fill="#FFFFFF">
+                            <polygon id="Rectangle-94" points="0 0 180 0 180 19 0 19"></polygon>
+                        </g>
+                        <g id="0.全局样式/1.图标/5.基础线性图标/4.业务类/折叠展开" transform="translate(13.222222, 5.722222)" fill="#666666">
+                            <path d="M4.23495765,4.70638242 C3.98270538,5.04240724 3.5735881,5.04222669 3.32147137,4.70638242 L2.01763022,2.96953786 C1.76537795,2.63351305 1.89420696,2.36111111 2.31316583,2.36111111 L5.24326319,2.36111111 C5.65873527,2.36111111 5.79091553,2.6336936 5.5387988,2.96953786 L4.23495765,4.70638242 Z" id="Path-Copy-2" transform="translate(3.777778, 3.659722) scale(-1, 1) rotate(-360.000000) translate(-3.777778, -3.659722) "></path>
+                        </g>
+                    </g>
+                    <rect id="矩形备份-99" fill="#D4D9E3" x="23" y="6" width="28" height="8" rx="1"></rect>
+                </g>
+                <g id="编组-103" transform="translate(0.000000, 24.000000)">
+                    <polygon id="Rectangle-94" fill="#FFFFFF" points="0 0 180 0 180 19 0 19"></polygon>
+                    <rect id="矩形备份-92" fill="#EDF1F7" x="23" y="6" width="70" height="8" rx="1"></rect>
+                </g>
+                <g id="组件/展示/折叠面板/展开2" transform="translate(0.000000, 62.000000)">
+                    <g id="编组-103">
+                        <polygon id="Rectangle-94" fill="#FFFFFF" points="0 0 180 0 180 19 0 19"></polygon>
+                        <rect id="矩形备份-92" fill="#EDF1F7" x="23" y="6" width="70" height="8" rx="1"></rect>
+                    </g>
+                    <g id="编组-102备份-4" transform="translate(23.000000, 6.000000)"></g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

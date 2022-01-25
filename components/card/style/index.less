@@ -1,0 +1,98 @@
+@import '../../style/themes/index';
+@import '../../style/mixins/index';
+
+@card-prefix-cls: ~'@{kd-prefix}-card';
+
+.@{card-prefix-cls} {
+  position: relative;
+  background-color: @white;
+  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.2);
+
+  &.hoverable:hover {
+    box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.2);
+  }
+
+  .@{card-prefix-cls}-header {
+    height: @card-header-height;
+    padding: 0 58px 0 @card-horizontal-padding;
+    line-height: @card-header-height;
+    font-size: @card-title-font-size;
+    color: @card-title-color;
+    .ellipsis;
+  }
+
+  .@{card-prefix-cls}-avatar {
+    display: flex;
+    align-items: center;
+    height: @card-avatar-header-height;
+    padding: 0 @card-horizontal-padding;
+
+    .@{card-prefix-cls}-avatar-img {
+      width: @card-avatar-size;
+      height: @card-avatar-size;
+      margin-right: 2 * @card-unit-space;
+      overflow: hidden;
+
+      &.circle {
+        border-radius: 50%;
+      }
+
+      img {
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+    .@{card-prefix-cls}-avatar-title {
+      font-size: @card-title-font-size;
+      color: @card-title-color;
+    }
+
+    .@{card-prefix-cls}-avatar-desc {
+      font-size: @card-content-font-size;
+      color: @card-content-color;
+    }
+  }
+
+  .@{kd-prefix}-checkbox {
+    position: absolute;
+    top: @card-horizontal-padding;
+    right: @card-horizontal-padding;
+  }
+
+  .@{card-prefix-cls}-tags {
+    padding: @card-unit-space @card-horizontal-padding;
+
+    .@{kd-prefix}-tag:not(:last-child) {
+      margin-right: 2 * @card-unit-space;
+    }  
+  }
+
+  .@{card-prefix-cls}-body {
+    padding: 2 * @card-unit-space @card-horizontal-padding;
+    font-size: @card-content-font-size;
+    color: @card-content-color;
+  }
+
+  .@{card-prefix-cls}-actions {
+    height: @card-actions-height;
+    padding: 0 @card-horizontal-padding;
+    line-height: @card-actions-height;
+    text-align: right;
+    background-color: @contain-bg;
+
+    > a {
+      margin-left: 4 * @card-unit-space;
+      font-size: @card-content-font-size;
+      color: @theme-color;
+
+      &:hover {
+        color: @theme-color-hover;
+      }
+
+      &:active {
+        color: @theme-color-click;
+      }
+    }
+  }
+}
