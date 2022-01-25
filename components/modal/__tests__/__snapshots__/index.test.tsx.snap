@@ -1,0 +1,965 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Modal renders correctly 1`] = `
+<div
+  class="kd-modal kd-modal-container"
+>
+  <div
+    class="kd-modal-mask"
+  />
+  <div
+    class="kd-modal-container-box kd-modal-showline react-draggable"
+    style="width:460px;height:340px;transform:translate(0px,0px)"
+    tabindex="-1"
+  >
+    <div
+      class="kd-modal-header"
+    >
+      <div
+        class="kd-modal-title-container"
+      >
+        <div
+          class="kd-modal-title"
+        />
+      </div>
+      <div
+        class="kd-modal-close-icon"
+      >
+        <i
+          class="kdicon kdicon-close"
+        />
+      </div>
+    </div>
+    <div
+      class="kd-modal-body"
+    />
+    <div
+      class="kd-modal-footer kd-modal-normal-footer"
+      style="flex-direction:row"
+    >
+      <div
+        class="kd-modal-cancel-node"
+      >
+        <button
+          class="kd-btn kd-modal-cancel-btn kd-modal-margin-btn kd-btn-second kd-btn-size-middle"
+          click-animating-wave="false"
+          type="button"
+        >
+          <span>
+            取消
+          </span>
+        </button>
+      </div>
+      <div
+        class="kd-modal-ok-node"
+      >
+        <button
+          class="kd-btn kd-modal-ok-btn kd-btn-primary kd-btn-size-middle"
+          click-animating-wave="false"
+          type="button"
+        >
+          <span>
+            确定
+          </span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Modal renders correctly 2`] = `
+<div
+  class="kd-modal kd-modal-container"
+>
+  <div
+    class="kd-modal-mask"
+  />
+  <div
+    class="kd-modal-container-box kd-modal-showline react-draggable"
+    style="width:460px;height:340px;transform:translate(0px,0px)"
+    tabindex="-1"
+  >
+    <div
+      class="kd-modal-header"
+    >
+      <div
+        class="kd-modal-title-container"
+      >
+        <div
+          class="kd-modal-title-icon modal-confirm-title-icon-bgcolor"
+        />
+        <div
+          class="kd-modal-title"
+        />
+      </div>
+      <div
+        class="kd-modal-close-icon"
+      >
+        <i
+          class="kdicon kdicon-close"
+        />
+      </div>
+    </div>
+    <div
+      class="kd-modal-body"
+    />
+    <div
+      class="kd-modal-footer kd-modal-confirm-footer"
+      style="flex-direction:row"
+    >
+      <div
+        class="kd-modal-cancel-node"
+      >
+        <button
+          class="kd-btn kd-modal-cancel-btn kd-modal-margin-btn kd-btn-second kd-btn-size-middle"
+          click-animating-wave="false"
+          type="button"
+        >
+          <span>
+            取消
+          </span>
+        </button>
+      </div>
+      <div
+        class="kd-modal-ok-node"
+      >
+        <button
+          class="kd-btn kd-modal-ok-btn kd-btn-primary kd-btn-size-middle"
+          click-animating-wave="false"
+          type="button"
+        >
+          <span>
+            确定
+          </span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Modal renders correctly 3`] = `
+<div
+  class="kd-modal kd-modal-container"
+>
+  <div
+    class="kd-modal-mask"
+  />
+  <div
+    class="kd-modal-container-box kd-modal-showline react-draggable"
+    style="width:460px;height:340px;transform:translate(0px,0px)"
+    tabindex="-1"
+  >
+    <div
+      class="kd-modal-header"
+    >
+      <div
+        class="kd-modal-title-container"
+      >
+        <div
+          class="kd-modal-title-icon modal-warning-title-icon-bgcolor"
+        />
+        <div
+          class="kd-modal-title"
+        />
+      </div>
+      <div
+        class="kd-modal-close-icon"
+      >
+        <i
+          class="kdicon kdicon-close"
+        />
+      </div>
+    </div>
+    <div
+      class="kd-modal-body"
+    />
+    <div
+      class="kd-modal-footer kd-modal-warning-footer"
+      style="flex-direction:row"
+    >
+      <div
+        class="kd-modal-iknow-node"
+      >
+        <button
+          class="kd-btn kd-modal-ok-btn kd-btn-second kd-btn-size-middle"
+          click-animating-wave="false"
+          type="button"
+        >
+          <span>
+            我知道了
+          </span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Modal renders correctly 4`] = `
+<div
+  class="kd-modal kd-modal-container"
+>
+  <div
+    class="kd-modal-mask"
+  />
+  <div
+    class="kd-modal-container-box kd-modal-showline react-draggable"
+    style="width:460px;height:340px;transform:translate(0px,0px)"
+    tabindex="-1"
+  >
+    <div
+      class="kd-modal-header"
+    >
+      <div
+        class="kd-modal-title-container"
+      >
+        <div
+          class="kd-modal-title-icon modal-error-title-icon-bgcolor"
+        />
+        <div
+          class="kd-modal-title"
+        />
+      </div>
+      <div
+        class="kd-modal-close-icon"
+      >
+        <i
+          class="kdicon kdicon-close"
+        />
+      </div>
+    </div>
+    <div
+      class="kd-modal-body"
+    />
+    <div
+      class="kd-modal-footer kd-modal-error-footer"
+      style="flex-direction:row"
+    >
+      <div
+        class="kd-modal-iknow-node"
+      >
+        <button
+          class="kd-btn kd-modal-ok-btn kd-btn-second kd-btn-size-middle"
+          click-animating-wave="false"
+          type="button"
+        >
+          <span>
+            我知道了
+          </span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Modal renders correctly 5`] = `
+<div
+  class="kd-modal kd-modal-container"
+>
+  <div
+    class="kd-modal-mask"
+  />
+  <div
+    class="kd-modal-container-box kd-modal-showline react-draggable"
+    style="width:460px;height:340px;transform:translate(0px,0px)"
+    tabindex="-1"
+  >
+    <div
+      class="kd-modal-header"
+    >
+      <div
+        class="kd-modal-title-container"
+      >
+        <div
+          class="kd-modal-title"
+        />
+      </div>
+      <div
+        class="kd-modal-close-icon"
+      >
+        <i
+          class="kdicon kdicon-close"
+        />
+      </div>
+    </div>
+    <div
+      class="kd-modal-body"
+    />
+    <div
+      class="kd-modal-footer kd-modal-normal-footer"
+      style="flex-direction:row"
+    >
+      <div
+        class="kd-modal-cancel-node"
+      >
+        <button
+          class="kd-btn kd-modal-cancel-btn kd-modal-margin-btn kd-btn-second kd-btn-size-middle"
+          click-animating-wave="false"
+          type="button"
+        >
+          <span>
+            取消
+          </span>
+        </button>
+      </div>
+      <div
+        class="kd-modal-ok-node"
+      >
+        <button
+          class="kd-btn kd-modal-ok-btn kd-btn-primary kd-btn-size-middle"
+          click-animating-wave="false"
+          type="button"
+        >
+          <span>
+            确定
+          </span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Modal should draggable use right 1`] = `
+<div
+  class="kd-modal kd-modal-container"
+>
+  <div
+    class="kd-modal-mask"
+  />
+  <div
+    class="kd-modal-container-box kd-modal-showline react-draggable"
+    style="width:460px;height:340px;transform:translate(0px,0px)"
+    tabindex="-1"
+  >
+    <div
+      class="kd-modal-header"
+    >
+      <div
+        class="kd-modal-title-container"
+      >
+        <div
+          class="kd-modal-title"
+        />
+      </div>
+      <div
+        class="kd-modal-close-icon"
+      >
+        <i
+          class="kdicon kdicon-close"
+        />
+      </div>
+    </div>
+    <div
+      class="kd-modal-body"
+    />
+    <div
+      class="kd-modal-footer kd-modal-normal-footer"
+      style="flex-direction:row"
+    >
+      <div
+        class="kd-modal-cancel-node"
+      >
+        <button
+          class="kd-btn kd-modal-cancel-btn kd-modal-margin-btn kd-btn-second kd-btn-size-middle"
+          click-animating-wave="false"
+          type="button"
+        >
+          <span>
+            取消
+          </span>
+        </button>
+      </div>
+      <div
+        class="kd-modal-ok-node"
+      >
+        <button
+          class="kd-btn kd-modal-ok-btn kd-btn-primary kd-btn-size-middle"
+          click-animating-wave="false"
+          type="button"
+        >
+          <span>
+            确定
+          </span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Modal should draggable use right 2`] = `
+<div
+  class="kd-modal kd-modal-container"
+>
+  <div
+    class="kd-modal-mask"
+  />
+  <div
+    class="kd-modal-container-box kd-modal-showline react-draggable"
+    style="width:460px;height:340px;transform:translate(0px,0px)"
+    tabindex="-1"
+  >
+    <div
+      class="kd-modal-header"
+    >
+      <div
+        class="kd-modal-title-container"
+      >
+        <div
+          class="kd-modal-title"
+        />
+      </div>
+      <div
+        class="kd-modal-close-icon"
+      >
+        <i
+          class="kdicon kdicon-close"
+        />
+      </div>
+    </div>
+    <div
+      class="kd-modal-body"
+    />
+    <div
+      class="kd-modal-footer kd-modal-normal-footer"
+      style="flex-direction:row"
+    >
+      <div
+        class="kd-modal-cancel-node"
+      >
+        <button
+          class="kd-btn kd-modal-cancel-btn kd-modal-margin-btn kd-btn-second kd-btn-size-middle"
+          click-animating-wave="false"
+          type="button"
+        >
+          <span>
+            取消
+          </span>
+        </button>
+      </div>
+      <div
+        class="kd-modal-ok-node"
+      >
+        <button
+          class="kd-btn kd-modal-ok-btn kd-btn-primary kd-btn-size-middle"
+          click-animating-wave="false"
+          type="button"
+        >
+          <span>
+            确定
+          </span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Modal should getContainer use right 1`] = `
+<div>
+  <div
+    class="kd-modal kd-modal-container"
+  >
+    <div
+      class="kd-modal-mask"
+    />
+    <div
+      class="kd-modal-container-box kd-modal-showline react-draggable"
+      style="width:460px;height:340px;transform:translate(0px,0px)"
+      tabindex="-1"
+    >
+      <div
+        class="kd-modal-header"
+      >
+        <div
+          class="kd-modal-title-container"
+        >
+          <div
+            class="kd-modal-title"
+          />
+        </div>
+        <div
+          class="kd-modal-close-icon"
+        >
+          <i
+            class="kdicon kdicon-close"
+          />
+        </div>
+      </div>
+      <div
+        class="kd-modal-body"
+      />
+      <div
+        class="kd-modal-footer kd-modal-normal-footer"
+        style="flex-direction:row"
+      >
+        <div
+          class="kd-modal-cancel-node"
+        >
+          <button
+            class="kd-btn kd-modal-cancel-btn kd-modal-margin-btn kd-btn-second kd-btn-size-middle"
+            click-animating-wave="false"
+            type="button"
+          >
+            <span>
+              取消
+            </span>
+          </button>
+        </div>
+        <div
+          class="kd-modal-ok-node"
+        >
+          <button
+            class="kd-btn kd-modal-ok-btn kd-btn-primary kd-btn-size-middle"
+            click-animating-wave="false"
+            type="button"
+          >
+            <span>
+              确定
+            </span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Modal should getContainer use right 2`] = `
+<div>
+  <div
+    class="kd-modal kd-modal-container"
+  >
+    <div
+      class="kd-modal-mask"
+    />
+    <div
+      class="kd-modal-container-box kd-modal-showline react-draggable"
+      style="width:460px;height:340px;transform:translate(0px,0px)"
+      tabindex="-1"
+    >
+      <div
+        class="kd-modal-header"
+      >
+        <div
+          class="kd-modal-title-container"
+        >
+          <div
+            class="kd-modal-title"
+          />
+        </div>
+        <div
+          class="kd-modal-close-icon"
+        >
+          <i
+            class="kdicon kdicon-close"
+          />
+        </div>
+      </div>
+      <div
+        class="kd-modal-body"
+      />
+      <div
+        class="kd-modal-footer kd-modal-normal-footer"
+        style="flex-direction:row"
+      >
+        <div
+          class="kd-modal-cancel-node"
+        >
+          <button
+            class="kd-btn kd-modal-cancel-btn kd-modal-margin-btn kd-btn-second kd-btn-size-middle"
+            click-animating-wave="false"
+            type="button"
+          >
+            <span>
+              取消
+            </span>
+          </button>
+        </div>
+        <div
+          class="kd-modal-ok-node"
+        >
+          <button
+            class="kd-btn kd-modal-ok-btn kd-btn-primary kd-btn-size-middle"
+            click-animating-wave="false"
+            type="button"
+          >
+            <span>
+              确定
+            </span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Modal should getContainer use right 3`] = `
+<div
+  class="test-get-container"
+>
+  <div
+    class="kd-modal kd-modal-container"
+  >
+    <div
+      class="kd-modal-mask"
+    />
+    <div
+      class="kd-modal-container-box kd-modal-showline react-draggable"
+      style="width:460px;height:340px;transform:translate(0px,0px)"
+      tabindex="-1"
+    >
+      <div
+        class="kd-modal-header"
+      >
+        <div
+          class="kd-modal-title-container"
+        >
+          <div
+            class="kd-modal-title"
+          />
+        </div>
+        <div
+          class="kd-modal-close-icon"
+        >
+          <i
+            class="kdicon kdicon-close"
+          />
+        </div>
+      </div>
+      <div
+        class="kd-modal-body"
+      />
+      <div
+        class="kd-modal-footer kd-modal-normal-footer"
+        style="flex-direction:row"
+      >
+        <div
+          class="kd-modal-cancel-node"
+        >
+          <button
+            class="kd-btn kd-modal-cancel-btn kd-modal-margin-btn kd-btn-second kd-btn-size-middle"
+            click-animating-wave="false"
+            type="button"
+          >
+            <span>
+              取消
+            </span>
+          </button>
+        </div>
+        <div
+          class="kd-modal-ok-node"
+        >
+          <button
+            class="kd-btn kd-modal-ok-btn kd-btn-primary kd-btn-size-middle"
+            click-animating-wave="false"
+            type="button"
+          >
+            <span>
+              确定
+            </span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Modal should getContainer use right 4`] = `
+<ErrorTestComp>
+  <div
+    className="test-get-container"
+  >
+    <Modal
+      getContainer={[Function]}
+    >
+      <Portal
+        containerInfo={
+          <body>
+            <div
+              class="kd-modal kd-modal-container"
+              style="display: none;"
+            >
+              <div
+                class="kd-modal-mask"
+              />
+              <div
+                class="kd-modal-container-box kd-modal-has-container-box kd-modal-showline react-draggable"
+                style="width: 460px; height: 340px; transform: translate(-230px,-170px);"
+                tabindex="-1"
+              >
+                <div
+                  class="kd-modal-header"
+                >
+                  <div
+                    class="kd-modal-title-container"
+                  >
+                    <div
+                      class="kd-modal-title"
+                    />
+                  </div>
+                  <div
+                    class="kd-modal-close-icon"
+                  >
+                    <i
+                      class="kdicon kdicon-close"
+                    />
+                  </div>
+                </div>
+                <div
+                  class="kd-modal-body"
+                />
+                <div
+                  class="kd-modal-footer kd-modal-normal-footer"
+                  style="flex-direction: row;"
+                >
+                  <div
+                    class="kd-modal-cancel-node"
+                  >
+                    <button
+                      class="kd-btn kd-modal-cancel-btn kd-modal-margin-btn kd-btn-second kd-btn-size-middle"
+                      click-animating-wave="false"
+                      type="button"
+                    >
+                      <span>
+                        取消
+                      </span>
+                    </button>
+                  </div>
+                  <div
+                    class="kd-modal-ok-node"
+                  >
+                    <button
+                      class="kd-btn kd-modal-ok-btn kd-btn-primary kd-btn-size-middle"
+                      click-animating-wave="false"
+                      type="button"
+                    >
+                      <span>
+                        确定
+                      </span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              class="kd-modal kd-modal-container"
+            >
+              <div
+                class="kd-modal-mask"
+              />
+              <div
+                class="kd-modal-container-box kd-modal-has-container-box kd-modal-showline react-draggable"
+                style="width: 460px; height: 340px; transform: translate(-230px,-170px);"
+                tabindex="-1"
+              >
+                <div
+                  class="kd-modal-header"
+                >
+                  <div
+                    class="kd-modal-title-container"
+                  >
+                    <div
+                      class="kd-modal-title"
+                    />
+                  </div>
+                  <div
+                    class="kd-modal-close-icon"
+                  >
+                    <i
+                      class="kdicon kdicon-close"
+                    />
+                  </div>
+                </div>
+                <div
+                  class="kd-modal-body"
+                />
+                <div
+                  class="kd-modal-footer kd-modal-normal-footer"
+                  style="flex-direction: row;"
+                >
+                  <div
+                    class="kd-modal-cancel-node"
+                  >
+                    <button
+                      class="kd-btn kd-modal-cancel-btn kd-modal-margin-btn kd-btn-second kd-btn-size-middle"
+                      click-animating-wave="false"
+                      type="button"
+                    >
+                      <span>
+                        取消
+                      </span>
+                    </button>
+                  </div>
+                  <div
+                    class="kd-modal-ok-node"
+                  >
+                    <button
+                      class="kd-btn kd-modal-ok-btn kd-btn-primary kd-btn-size-middle"
+                      click-animating-wave="false"
+                      type="button"
+                    >
+                      <span>
+                        确定
+                      </span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </body>
+        }
+      >
+        <div
+          className="kd-modal kd-modal-container"
+          style={Object {}}
+        >
+          <div
+            className="kd-modal-mask"
+            onClick={[Function]}
+          />
+          <Draggable
+            allowAnyClick={false}
+            axis="both"
+            bounds={false}
+            cancel=".kd-modal-title-container, .kd-modal-close-icon"
+            defaultClassName="react-draggable"
+            defaultClassNameDragged="react-draggable-dragged"
+            defaultClassNameDragging="react-draggable-dragging"
+            defaultPosition={
+              Object {
+                "x": -230,
+                "y": -170,
+              }
+            }
+            disabled={false}
+            enableUserSelectHack={true}
+            handle=".kd-modal-header"
+            onDrag={[Function]}
+            onMouseDown={[Function]}
+            onStart={[Function]}
+            onStop={[Function]}
+            scale={1}
+          >
+            <DraggableCore
+              allowAnyClick={false}
+              cancel=".kd-modal-title-container, .kd-modal-close-icon"
+              disabled={false}
+              enableUserSelectHack={true}
+              handle=".kd-modal-header"
+              onDrag={[Function]}
+              onMouseDown={[Function]}
+              onStart={[Function]}
+              onStop={[Function]}
+              scale={1}
+            >
+              <div
+                className="kd-modal-container-box kd-modal-has-container-box kd-modal-showline react-draggable"
+                onKeyDown={[Function]}
+                onMouseDown={[Function]}
+                onMouseUp={[Function]}
+                onTouchEnd={[Function]}
+                style={
+                  Object {
+                    "height": 340,
+                    "transform": "translate(-230px,-170px)",
+                    "width": 460,
+                  }
+                }
+                tabIndex={-1}
+                transform={null}
+              >
+                <div
+                  className="kd-modal-header"
+                >
+                  <div
+                    className="kd-modal-title-container"
+                  >
+                    <div
+                      className="kd-modal-title"
+                    />
+                  </div>
+                  <div
+                    className="kd-modal-close-icon"
+                    onClick={[Function]}
+                  >
+                    <Icon
+                      type="close"
+                    >
+                      <i
+                        className="kdicon kdicon-close"
+                        onClick={[Function]}
+                        onMouseEnter={[Function]}
+                        onMouseLeave={[Function]}
+                        style={Object {}}
+                      />
+                    </Icon>
+                  </div>
+                </div>
+                <div
+                  className="kd-modal-body"
+                />
+                <div
+                  className="kd-modal-footer kd-modal-normal-footer"
+                  style={
+                    Object {
+                      "flexDirection": "row",
+                    }
+                  }
+                >
+                  <div
+                    className="kd-modal-cancel-node"
+                  >
+                    <Button
+                      className="kd-modal-cancel-btn kd-modal-margin-btn"
+                      onClick={[Function]}
+                      type="second"
+                    >
+                      <button
+                        className="kd-btn kd-modal-cancel-btn kd-modal-margin-btn kd-btn-second kd-btn-size-middle"
+                        click-animating-wave="false"
+                        onClick={[Function]}
+                        type="button"
+                      >
+                        <span>
+                          取消
+                        </span>
+                      </button>
+                    </Button>
+                  </div>
+                  <div
+                    className="kd-modal-ok-node"
+                  >
+                    <Button
+                      className="kd-modal-ok-btn"
+                      onClick={[Function]}
+                      type="primary"
+                    >
+                      <button
+                        className="kd-btn kd-modal-ok-btn kd-btn-primary kd-btn-size-middle"
+                        click-animating-wave="false"
+                        onClick={[Function]}
+                        type="button"
+                      >
+                        <span>
+                          确定
+                        </span>
+                      </button>
+                    </Button>
+                  </div>
+                </div>
+              </div>
+            </DraggableCore>
+          </Draggable>
+        </div>
+      </Portal>
+    </Modal>
+  </div>
+</ErrorTestComp>
+`;

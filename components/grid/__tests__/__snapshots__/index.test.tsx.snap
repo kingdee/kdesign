@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Grid should render Col 1`] = `
+<div
+  class="kd-col"
+  style="flex:0 0 8.333333333333332%;max-width:8.333333333333332%"
+/>
+`;
+
+exports[`Grid should render Row 1`] = `
+<div
+  class="kd-row"
+  style="--cgap:12px;align-items:flex-start;justify-content:flex-start"
+/>
+`;

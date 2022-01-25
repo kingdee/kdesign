@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Card renders correctly 1`] = `
+<div
+  class="kd-card"
+>
+  <div
+    class="kd-card-body"
+  >
+    Card Text
+  </div>
+</div>
+`;

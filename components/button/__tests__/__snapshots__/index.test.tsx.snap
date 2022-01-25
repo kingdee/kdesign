@@ -1,0 +1,137 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Button renders correctly 1`] = `
+<button
+  class="kd-btn kd-btn-second kd-btn-size-middle"
+  click-animating-wave="false"
+  type="button"
+>
+  <span>
+    Button Text
+  </span>
+</button>
+`;
+
+exports[`Button renders correctly 2`] = `
+<button
+  class="kd-btn kd-btn-second kd-btn-size-middle"
+  click-animating-wave="false"
+  type="button"
+>
+  <span>
+    Button Text
+  </span>
+</button>
+`;
+
+exports[`Button renders correctly 3`] = `
+<button
+  class="kd-btn kd-btn-primary kd-btn-size-middle"
+  click-animating-wave="false"
+  type="button"
+>
+  <span>
+    Button Text
+  </span>
+</button>
+`;
+
+exports[`Button renders correctly 4`] = `
+<button
+  class="kd-btn kd-btn-ghost kd-btn-size-middle"
+  click-animating-wave="false"
+  type="button"
+>
+  <span>
+    Button Text
+  </span>
+</button>
+`;
+
+exports[`Button renders correctly 5`] = `
+<a
+  class="kd-btn kd-btn-link kd-btn-size-middle"
+>
+  Button Text
+</a>
+`;
+
+exports[`Button renders correctly 6`] = `
+<span
+  class="kd-btn kd-btn-text kd-btn-size-middle"
+>
+  Button Text
+</span>
+`;
+
+exports[`Button renders correctly 7`] = `
+<button
+  class="kd-btn kd-btn-second kd-btn-size-large"
+  click-animating-wave="false"
+  type="button"
+>
+  <span>
+    Button Text
+  </span>
+</button>
+`;
+
+exports[`Button renders correctly 8`] = `
+<button
+  class="kd-btn kd-btn-second kd-btn-size-middle"
+  click-animating-wave="false"
+  type="button"
+>
+  <span>
+    Button Text
+  </span>
+</button>
+`;
+
+exports[`Button renders correctly 9`] = `
+<button
+  class="kd-btn kd-btn-second kd-btn-size-small"
+  click-animating-wave="false"
+  type="button"
+>
+  <span>
+    Button Text
+  </span>
+</button>
+`;
+
+exports[`Button renders correctly 10`] = `
+<button
+  class="kd-btn kd-btn-second kd-btn-size-middle"
+  click-animating-wave="false"
+  type="submit"
+>
+  <span>
+    Button Text
+  </span>
+</button>
+`;
+
+exports[`Button renders correctly 11`] = `
+<button
+  class="kd-btn kd-btn-second kd-btn-size-middle"
+  click-animating-wave="false"
+  type="button"
+>
+  <span>
+    Button Text
+  </span>
+</button>
+`;
+
+exports[`Button renders correctly 12`] = `
+<button
+  class="kd-btn kd-btn-second kd-btn-size-middle"
+  click-animating-wave="false"
+  type="reset"
+>
+  <span>
+    Button Text
+  </span>
+</button>
+`;

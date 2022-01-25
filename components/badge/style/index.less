@@ -1,0 +1,129 @@
+@import '../../style/themes/index';
+@import './mixin.less';
+@badge-prefix-cls: ~'@{kd-prefix}-badge';
+.@{badge-prefix-cls} {
+  position: relative;
+  display: inline-block;
+  line-height: 1;
+  font-size: @font-size;
+
+  &-count {
+    z-index: auto;
+    min-width: @badge-height;
+    height: @badge-height;
+    color: @badge-text-color;
+    font-weight: @badge-font-weight;
+    font-size: @badge-font-size;
+    line-height: @badge-height;
+    white-space: nowrap;
+    text-align: center;
+    background: @badge-color;
+    border-radius: (@badge-height / 2);
+    // box-shadow: 0 0 0 1px @bg;
+  }
+
+  &-count-sm {
+    min-width: @badge-height-sm;
+    height: @badge-height-sm;
+    padding: 0;
+    font-size: @badge-font-size-sm;
+    line-height: @badge-height-sm;
+    border-radius: (@badge-height-sm / 2);
+  }
+
+  &-dot {
+    z-index: auto;
+    width: @badge-dot-size;
+    min-width: @badge-dot-size;
+    height: @badge-dot-size;
+    background: @badge-color;
+    border-radius: 100%;
+    // box-shadow: 0 0 0 1px @shadow-color-inverse;
+  }
+
+  &-dot,
+  &-custom-component,
+  &-count {
+    position: absolute;
+    top: 0;
+    right: 0;
+    transform: translate(50%, -50%);
+    transform-origin: 100% 0%;
+  }
+
+  &-multiple-words {
+    padding: 0 6px;
+  }
+
+  &-status {
+    line-height: inherit;
+    vertical-align: baseline;
+    &-text {
+      margin-left: 8px;
+      color: @primary-text-color;
+      font-size: @font-size;
+    }
+    &-dot {
+      position: relative;
+      top: -1px;
+      display: inline-block;
+      width: @badge-status-size;
+      height: @badge-status-size;
+      vertical-align: middle;
+      border-radius: 50%;
+    }
+    &-success {
+      background-color: @success-color;
+    }
+    &-processing {
+      position: relative;
+      background-color: @ongoing-color;
+      &::after {
+        position: absolute;
+        top: -1px;
+        left: -1px;
+        width: 100%;
+        height: 100%;
+        border: 1px solid @ongoing-color;
+        border-radius: 50%;
+        animation: antStatusProcessing 1.2s infinite ease-in-out;
+        content: '';
+      }
+    }
+    &-error {
+      background-color: @warning-color;
+    }
+    &-default {
+      background-color: @success-color;
+    }
+    &-warning {
+      background-color: @error-color;
+    }
+  }
+
+  &-not-a-wrapper {
+    &:not(.@{badge-prefix-cls}-status) {
+      vertical-align: middle;
+    }
+  
+    .@{badge-prefix-cls}-custom-component,
+    .@{badge-prefix-cls}-count {
+      position: relative;
+      top: auto;
+      display: block;
+      transform-origin: 50% 50%;
+      transform: none;
+    }
+  }
+}
+
+@keyframes antStatusProcessing {
+  0% {
+    transform: scale(0.8);
+    opacity: 0.5;
+  }
+  100% {
+    transform: scale(2.4);
+    opacity: 0;
+  }
+}

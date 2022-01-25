@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Menu renders correctly 1`] = `
+<div
+  class="kd-menu kd-menu-vertical kd-menu-collapsed kd-menu-dark"
+  role="menu"
+  style="transition:width 0.2s cubic-bezier(0,.4,.4,1)"
+>
+  <ul>
+    <li
+      class="kd-menu-item"
+      role="menuitem"
+      title="222"
+    >
+      <div
+        class="kd-menu-item-title"
+        style="padding-left:50px;padding-right:0"
+      >
+        <span>
+          222
+        </span>
+      </div>
+    </li>
+  </ul>
+</div>
+`;

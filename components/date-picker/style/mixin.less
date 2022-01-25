@@ -1,0 +1,85 @@
+.input-wrapper() {
+  display: inline-flex;
+  border: 1px solid @strong-border-color;
+  border-radius: @radius-size;
+  box-sizing: border-box;
+  background-color: @date-background-color;
+  &-borderless {
+    border: 0;
+  }
+  &-underline {
+    border: none;
+    border-bottom: 1px solid @input-color;
+    border-radius: 0;
+    padding-left: 0;
+  }
+  &-disabled {
+    background-color: @disabled-contain-bg !important;
+    border-color: @strong-border-color !important;
+    color: @disabled-color !important;
+    cursor: not-allowed !important;
+    input {
+      cursor: not-allowed !important;
+    }
+  }
+  &-underline&-disabled,
+  &-borderless&-disabled {
+    background-color: @date-background-color;
+    border-color: @strong-border-color;
+  }
+
+  &-focused {
+    box-shadow: none;
+    outline: none;
+    border-color: @theme-color;
+  }
+
+  &:hover {
+    border-color: @theme-color;
+  }
+
+  &:not(&-disabled) input:focus {
+    color: @date-focus-color;
+  }
+}
+
+.input() {
+  width: 100%;
+  min-width: 0;
+  color: @date-font-color;
+  &::-webkit-input-placeholder {
+    color: @date-placeholder-color;
+  }
+  &::-moz-input-placeholder {
+    color: @date-placeholder-color;
+  }
+  &::-ms-input-placeholder {
+    color: @date-placeholder-color;
+  }
+  &:focus {
+    box-shadow: none;
+    outline: none;
+    border-color: @theme-color;
+  }
+}
+
+.input-size(@height, @fonSize, @padding-vertical, @padding-horizontal) {
+  height: @height;
+  line-height: @height - (@padding-vertical * 2) - (@input-border-width * 2);
+  font-size: @fonSize;
+  padding: @padding-vertical @padding-horizontal;
+}
+
+.today-after(@background) {
+  position: relative;
+  &::after {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    border-radius: 6px;
+    background: @background;
+    content: '';
+    bottom: 0;
+    left: calc(50% - 3px);
+  }
+}

@@ -1,0 +1,27 @@
+@import '../../style/themes/index';
+@import '../../style/mixins/index';
+
+@tootip-prefix-cls: ~'@{kd-prefix}-tooltip';
+
+.@{tootip-prefix-cls} {
+  .reset-component;
+  max-width: @tooltip-width;
+  padding: @tooltip-vertical-gap @tooltip-horizontal-gap;
+  color: @tooltip-color;
+  border-radius: @radius-size;
+  font-size: @tooltip-font-size;
+  line-height: @tooltip-line-height;
+  background-color: @tooltip-background-color;
+  box-shadow: 0 1px @tooltip-box-shadow-blur 0 rgba(0, 0, 0, 0.3);
+  opacity: 1;
+  z-index: @zIndex-popper;
+  visibility: visible;
+
+  &.hidden {
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  // 箭头样式
+  .popperArrow(@tooltip-background-color, @tooltip-horizontal-gap, @tooltip-box-shadow-blur);
+}

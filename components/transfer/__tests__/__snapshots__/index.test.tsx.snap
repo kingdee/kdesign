@@ -1,0 +1,810 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Transfer renders correctly 1`] = `
+<div
+  class="kd-transfer"
+>
+  <div
+    class="kd-transfer-list"
+  >
+    <div
+      class="kd-transfer-list-header"
+    >
+      <div
+        class="kd-transfer-list-header-left"
+      >
+        <div
+          class="kd-transfer-list-header-select-all"
+        >
+          <label
+            class="kd-checkbox kd-checkbox-no-child kd-checkbox-default"
+          >
+            <span
+              class="kd-checkbox-default-no-child kd-checkbox-default-wrapper kd-checkbox-default-checked"
+            >
+              <span
+                class="kd-checkbox-default-inner"
+              >
+                <i
+                  class="kdicon kd-checkbox-default-inner-icon kdicon-right-bold"
+                />
+              </span>
+              <input
+                checked=""
+                class="kd-checkbox-input"
+                name="nodejs"
+                type="checkbox"
+              />
+            </span>
+          </label>
+        </div>
+        <span
+          class="kd-transfer-list-header-title"
+        >
+          可选列表
+        </span>
+      </div>
+      <span
+        class="kd-transfer-list-header-selected"
+      >
+        (1/2)
+      </span>
+    </div>
+    <div
+      class="kd-transfer-list-body"
+    >
+      <ul
+        class="kd-transfer-list-content"
+      >
+        <li
+          class="kd-transfer-list-content-item kd-transfer-list-content-item-checked"
+        >
+          <label
+            class="kd-checkbox kd-checkbox-no-child kd-checkbox-default"
+          >
+            <span
+              class="kd-checkbox-default-no-child kd-checkbox-default-wrapper kd-checkbox-default-checked"
+            >
+              <span
+                class="kd-checkbox-default-inner"
+              >
+                <i
+                  class="kdicon kd-checkbox-default-inner-icon kdicon-right-bold"
+                />
+              </span>
+              <input
+                checked=""
+                class="kd-checkbox-input"
+                name="nodejs"
+                type="checkbox"
+              />
+            </span>
+          </label>
+          <span
+            class="kd-transfer-list-content-item-text"
+          />
+        </li>
+        <li
+          class="kd-transfer-list-content-item kd-transfer-list-content-item-disabled"
+        >
+          <label
+            class="kd-checkbox kd-checkbox-no-child kd-checkbox-default kd-checkbox-default-disabled"
+          >
+            <span
+              class="kd-checkbox-default-no-child kd-checkbox-default-wrapper kd-checkbox-default-disabled"
+            >
+              <input
+                class="kd-checkbox-input"
+                disabled=""
+                name="nodejs"
+                type="checkbox"
+              />
+            </span>
+          </label>
+          <span
+            class="kd-transfer-list-content-item-text"
+          />
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div
+    class="kd-transfer-operation"
+  >
+    <button
+      class="kd-btn kd-btn-primary kd-btn-size-small"
+      click-animating-wave="false"
+      type="button"
+    >
+      <span
+        class="kd-btn-iconWrapper-left"
+      >
+        <i
+          class="kdicon kdicon-arrow-right"
+        />
+      </span>
+      <span />
+    </button>
+    <button
+      class="kd-btn kd-btn-primary kd-btn-size-small"
+      click-animating-wave="false"
+      disabled=""
+      type="button"
+    >
+      <span
+        class="kd-btn-iconWrapper-left"
+      >
+        <i
+          class="kdicon kdicon-arrow-left"
+        />
+      </span>
+      <span />
+    </button>
+  </div>
+  <div
+    class="kd-transfer-list"
+  >
+    <div
+      class="kd-transfer-list-header"
+    >
+      <div
+        class="kd-transfer-list-header-left"
+      >
+        <div
+          class="kd-transfer-list-header-select-all"
+        >
+          <label
+            class="kd-checkbox kd-checkbox-no-child kd-checkbox-default"
+          >
+            <span
+              class="kd-checkbox-default-no-child kd-checkbox-default-wrapper"
+            >
+              <input
+                class="kd-checkbox-input"
+                name="nodejs"
+                type="checkbox"
+              />
+            </span>
+          </label>
+        </div>
+        <span
+          class="kd-transfer-list-header-title"
+        >
+          已选列表
+        </span>
+      </div>
+      <span
+        class="kd-transfer-list-header-selected"
+      >
+        (0/1)
+      </span>
+    </div>
+    <div
+      class="kd-transfer-list-body"
+    >
+      <ul
+        class="kd-transfer-list-content"
+      >
+        <li
+          class="kd-transfer-list-content-item"
+        >
+          <label
+            class="kd-checkbox kd-checkbox-no-child kd-checkbox-default"
+          >
+            <span
+              class="kd-checkbox-default-no-child kd-checkbox-default-wrapper"
+            >
+              <input
+                class="kd-checkbox-input"
+                name="nodejs"
+                type="checkbox"
+              />
+            </span>
+          </label>
+          <span
+            class="kd-transfer-list-content-item-text"
+          />
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Transfer should show sorted targetKey 1`] = `
+<div
+  class="kd-transfer"
+>
+  <div
+    class="kd-transfer-list"
+  >
+    <div
+      class="kd-transfer-list-header"
+    >
+      <div
+        class="kd-transfer-list-header-left"
+      >
+        <div
+          class="kd-transfer-list-header-select-all"
+        >
+          <label
+            class="kd-checkbox kd-checkbox-no-child kd-checkbox-default"
+          >
+            <span
+              class="kd-checkbox-default-no-child kd-checkbox-default-wrapper"
+            >
+              <input
+                class="kd-checkbox-input"
+                name="nodejs"
+                type="checkbox"
+              />
+            </span>
+          </label>
+        </div>
+        <span
+          class="kd-transfer-list-header-title"
+        >
+          可选列表
+        </span>
+      </div>
+      <span
+        class="kd-transfer-list-header-selected"
+      >
+        (0/1)
+      </span>
+    </div>
+    <div
+      class="kd-transfer-list-body"
+    >
+      <ul
+        class="kd-transfer-list-content"
+      >
+        <li
+          class="kd-transfer-list-content-item"
+          title="a"
+        >
+          <label
+            class="kd-checkbox kd-checkbox-no-child kd-checkbox-default"
+          >
+            <span
+              class="kd-checkbox-default-no-child kd-checkbox-default-wrapper"
+            >
+              <input
+                class="kd-checkbox-input"
+                name="nodejs"
+                type="checkbox"
+              />
+            </span>
+          </label>
+          <span
+            class="kd-transfer-list-content-item-text"
+          >
+            a
+          </span>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div
+    class="kd-transfer-operation"
+  >
+    <button
+      class="kd-btn kd-btn-primary kd-btn-size-small"
+      click-animating-wave="false"
+      disabled=""
+      type="button"
+    >
+      <span
+        class="kd-btn-iconWrapper-left"
+      >
+        <i
+          class="kdicon kdicon-arrow-right"
+        />
+      </span>
+      <span />
+    </button>
+    <button
+      class="kd-btn kd-btn-primary kd-btn-size-small"
+      click-animating-wave="false"
+      disabled=""
+      type="button"
+    >
+      <span
+        class="kd-btn-iconWrapper-left"
+      >
+        <i
+          class="kdicon kdicon-arrow-left"
+        />
+      </span>
+      <span />
+    </button>
+  </div>
+  <div
+    class="kd-transfer-list"
+  >
+    <div
+      class="kd-transfer-list-header"
+    >
+      <div
+        class="kd-transfer-list-header-left"
+      >
+        <div
+          class="kd-transfer-list-header-select-all"
+        >
+          <label
+            class="kd-checkbox kd-checkbox-no-child kd-checkbox-default"
+          >
+            <span
+              class="kd-checkbox-default-no-child kd-checkbox-default-wrapper"
+            >
+              <input
+                class="kd-checkbox-input"
+                name="nodejs"
+                type="checkbox"
+              />
+            </span>
+          </label>
+        </div>
+        <span
+          class="kd-transfer-list-header-title"
+        >
+          已选列表
+        </span>
+      </div>
+      <span
+        class="kd-transfer-list-header-selected"
+      >
+        (0/2)
+      </span>
+    </div>
+    <div
+      class="kd-transfer-list-body"
+    >
+      <ul
+        class="kd-transfer-list-content"
+      >
+        <li
+          class="kd-transfer-list-content-item"
+          title="c"
+        >
+          <label
+            class="kd-checkbox kd-checkbox-no-child kd-checkbox-default"
+          >
+            <span
+              class="kd-checkbox-default-no-child kd-checkbox-default-wrapper"
+            >
+              <input
+                class="kd-checkbox-input"
+                name="nodejs"
+                type="checkbox"
+              />
+            </span>
+          </label>
+          <span
+            class="kd-transfer-list-content-item-text"
+          >
+            c
+          </span>
+        </li>
+        <li
+          class="kd-transfer-list-content-item"
+          title="b"
+        >
+          <label
+            class="kd-checkbox kd-checkbox-no-child kd-checkbox-default"
+          >
+            <span
+              class="kd-checkbox-default-no-child kd-checkbox-default-wrapper"
+            >
+              <input
+                class="kd-checkbox-input"
+                name="nodejs"
+                type="checkbox"
+              />
+            </span>
+          </label>
+          <span
+            class="kd-transfer-list-content-item-text"
+          >
+            b
+          </span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Transfer should support render value and label in item 1`] = `
+<Transfer
+  dataSource={
+    Array [
+      Object {
+        "key": "a",
+        "title": "title",
+      },
+    ]
+  }
+  render={[Function]}
+>
+  <div
+    className="kd-transfer"
+  >
+    <TransferList
+      checkedKeys={Array []}
+      dataSource={
+        Array [
+          Object {
+            "key": "a",
+            "title": "title",
+          },
+        ]
+      }
+      direction="left"
+      handleClear={[Function]}
+      handleFilter={[Function]}
+      noDataContent={
+        <React.Fragment>
+          <img
+            alt="暂无数据"
+            height={96}
+            src="test-file-stub"
+          />
+          <span
+            className="kd-transfer-list-body-not-found-tip"
+          >
+            暂无数据
+          </span>
+        </React.Fragment>
+      }
+      onItemSelect={[Function]}
+      onItemSelectAll={[Function]}
+      prefixCls="kd-transfer-list"
+      render={[Function]}
+      showSearch={false}
+      style={Object {}}
+      titleText="可选列表"
+    >
+      <div
+        className="kd-transfer-list"
+        style={Object {}}
+      >
+        <div
+          className="kd-transfer-list-header"
+        >
+          <div
+            className="kd-transfer-list-header-left"
+          >
+            <div
+              className="kd-transfer-list-header-select-all"
+            >
+              <Checkbox
+                checked={false}
+                indeterminate={false}
+                onChange={[Function]}
+              >
+                <label
+                  className="kd-checkbox kd-checkbox-no-child kd-checkbox-default"
+                  onClick={[Function]}
+                >
+                  <span
+                    className="kd-checkbox-default-no-child kd-checkbox-default-wrapper"
+                  >
+                    <input
+                      checked={false}
+                      className="kd-checkbox-input"
+                      name="nodejs"
+                      onChange={[Function]}
+                      type="checkbox"
+                    />
+                  </span>
+                </label>
+              </Checkbox>
+            </div>
+            <span
+              className="kd-transfer-list-header-title"
+            >
+              可选列表
+            </span>
+          </div>
+          <span
+            className="kd-transfer-list-header-selected"
+          >
+            (0/1)
+          </span>
+        </div>
+        <div
+          className="kd-transfer-list-body"
+        >
+          <ListBody
+            dataSource={
+              Array [
+                Object {
+                  "key": "a",
+                  "title": "title",
+                },
+              ]
+            }
+            direction="left"
+            filteredItems={
+              Array [
+                Object {
+                  "key": "a",
+                  "title": "title",
+                },
+              ]
+            }
+            filteredRenderItems={
+              Array [
+                Object {
+                  "item": Object {
+                    "key": "a",
+                    "title": "title",
+                  },
+                  "renderedEl": "label",
+                  "renderedText": "title value",
+                },
+              ]
+            }
+            noDataContent={
+              <React.Fragment>
+                <img
+                  alt="暂无数据"
+                  height={96}
+                  src="test-file-stub"
+                />
+                <span
+                  className="kd-transfer-list-body-not-found-tip"
+                >
+                  暂无数据
+                </span>
+              </React.Fragment>
+            }
+            onItemSelect={[Function]}
+            onItemSelectAll={[Function]}
+            prefixCls="kd-transfer-list"
+            render={[Function]}
+            selectedKeys={Array []}
+            showSearch={false}
+            style={Object {}}
+            titleText="可选列表"
+          >
+            <ul
+              className="kd-transfer-list-content"
+            >
+              <Memo(ListItem)
+                checked={false}
+                item={
+                  Object {
+                    "key": "a",
+                    "title": "title",
+                  }
+                }
+                key="a"
+                onClick={[Function]}
+                onRemove={[Function]}
+                prefixCls="kd-transfer-list"
+                renderedEl="label"
+                renderedText="title value"
+              >
+                <li
+                  className="kd-transfer-list-content-item"
+                  onClick={[Function]}
+                  title="title value"
+                >
+                  <Checkbox
+                    checked={false}
+                  >
+                    <label
+                      className="kd-checkbox kd-checkbox-no-child kd-checkbox-default"
+                      onClick={[Function]}
+                    >
+                      <span
+                        className="kd-checkbox-default-no-child kd-checkbox-default-wrapper"
+                      >
+                        <input
+                          checked={false}
+                          className="kd-checkbox-input"
+                          name="nodejs"
+                          onChange={[Function]}
+                          type="checkbox"
+                        />
+                      </span>
+                    </label>
+                  </Checkbox>
+                  <span
+                    className="kd-transfer-list-content-item-text"
+                  >
+                    label
+                  </span>
+                </li>
+              </Memo(ListItem)>
+            </ul>
+          </ListBody>
+        </div>
+      </div>
+    </TransferList>
+    <Operation
+      className="kd-transfer-operation"
+      leftActive={false}
+      moveToLeft={[Function]}
+      moveToRight={[Function]}
+      rightActive={false}
+    >
+      <div
+        className="kd-transfer-operation"
+      >
+        <Button
+          disabled={true}
+          icon={
+            <Icon
+              type="arrow-right"
+            />
+          }
+          onClick={[Function]}
+          size="small"
+          type="primary"
+        >
+          <button
+            className="kd-btn kd-btn-primary kd-btn-size-small"
+            click-animating-wave="false"
+            disabled={true}
+            onClick={[Function]}
+            type="button"
+          >
+            <span
+              className="kd-btn-iconWrapper-left"
+            >
+              <Icon
+                type="arrow-right"
+              >
+                <i
+                  className="kdicon kdicon-arrow-right"
+                  onClick={[Function]}
+                  onMouseEnter={[Function]}
+                  onMouseLeave={[Function]}
+                  style={Object {}}
+                />
+              </Icon>
+            </span>
+            <span />
+          </button>
+        </Button>
+        <Button
+          disabled={true}
+          icon={
+            <Icon
+              type="arrow-left"
+            />
+          }
+          onClick={[Function]}
+          size="small"
+          type="primary"
+        >
+          <button
+            className="kd-btn kd-btn-primary kd-btn-size-small"
+            click-animating-wave="false"
+            disabled={true}
+            onClick={[Function]}
+            type="button"
+          >
+            <span
+              className="kd-btn-iconWrapper-left"
+            >
+              <Icon
+                type="arrow-left"
+              >
+                <i
+                  className="kdicon kdicon-arrow-left"
+                  onClick={[Function]}
+                  onMouseEnter={[Function]}
+                  onMouseLeave={[Function]}
+                  style={Object {}}
+                />
+              </Icon>
+            </span>
+            <span />
+          </button>
+        </Button>
+      </div>
+    </Operation>
+    <TransferList
+      checkedKeys={Array []}
+      dataSource={Array []}
+      direction="right"
+      handleClear={[Function]}
+      handleFilter={[Function]}
+      noDataContent={
+        <React.Fragment>
+          <img
+            alt="暂无数据"
+            height={96}
+            src="test-file-stub"
+          />
+          <span
+            className="kd-transfer-list-body-not-found-tip"
+          >
+            暂无数据
+          </span>
+        </React.Fragment>
+      }
+      onItemRemove={[Function]}
+      onItemSelect={[Function]}
+      onItemSelectAll={[Function]}
+      prefixCls="kd-transfer-list"
+      render={[Function]}
+      showSearch={false}
+      style={Object {}}
+      titleText="已选列表"
+    >
+      <div
+        className="kd-transfer-list"
+        style={Object {}}
+      >
+        <div
+          className="kd-transfer-list-header"
+        >
+          <div
+            className="kd-transfer-list-header-left"
+          >
+            <div
+              className="kd-transfer-list-header-select-all"
+            >
+              <Checkbox
+                checked={false}
+                indeterminate={false}
+                onChange={[Function]}
+              >
+                <label
+                  className="kd-checkbox kd-checkbox-no-child kd-checkbox-default"
+                  onClick={[Function]}
+                >
+                  <span
+                    className="kd-checkbox-default-no-child kd-checkbox-default-wrapper"
+                  >
+                    <input
+                      checked={false}
+                      className="kd-checkbox-input"
+                      name="nodejs"
+                      onChange={[Function]}
+                      type="checkbox"
+                    />
+                  </span>
+                </label>
+              </Checkbox>
+            </div>
+            <span
+              className="kd-transfer-list-header-title"
+            >
+              已选列表
+            </span>
+          </div>
+          <span
+            className="kd-transfer-list-header-selected"
+          >
+            (0/0)
+          </span>
+        </div>
+        <div
+          className="kd-transfer-list-body"
+        >
+          <div
+            className="kd-transfer-list-body-not-found"
+          >
+            <img
+              alt="暂无数据"
+              height={96}
+              src="test-file-stub"
+            />
+            <span
+              className="kd-transfer-list-body-not-found-tip"
+            >
+              暂无数据
+            </span>
+          </div>
+        </div>
+      </div>
+    </TransferList>
+  </div>
+</Transfer>
+`;

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="172px" height="100px" viewBox="0 0 172 100" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>气泡确认框</title>
+    <defs>
+        <path d="M1.33333333,83.6666667 C0.596953667,83.6666667 -4.3507116e-15,83.069713 0,82.3333333 L0,1.33333333 C-9.01805001e-17,0.596953667 0.596953667,2.5777614e-15 1.33333333,0 L158.666667,0 C159.403046,-1.58321474e-14 160,0.596953667 160,1.33333333 L160,82.3333333 C160,83.069713 159.403046,83.6666667 158.666667,83.6666667 L14.6666667,83.6666667 L10.6666667,89 L6.66666667,83.6666667 L1.33333333,83.6666667 Z" id="path-1"></path>
+        <filter x="-5.9%" y="-9.6%" width="111.9%" height="121.3%" filterUnits="objectBoundingBox" id="filter-2">
+            <feOffset dx="0" dy="1" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="3" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.08 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="页面-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="PC组件概览备份-3" transform="translate(-921.000000, -2937.000000)">
+            <g id="5.反馈/5.弹出框/带标题/靠下居左" transform="translate(927.000000, 2942.000000)">
+                <g id="1组件/反馈/文字提示/内容元素//带三角/靠左居中" fill-rule="nonzero">
+                    <g id="形状结合">
+                        <use fill="black" fill-opacity="1" filter="url(#filter-2)" xlink:href="#path-1"></use>
+                        <use fill="#FFFFFF" xlink:href="#path-1"></use>
+                    </g>
+                </g>
+                <g id="编组" transform="translate(10.000000, 13.000000)">
+                    <rect id="矩形备份-103" fill="#D4D9E3" x="0" y="0" width="32" height="12" rx="1"></rect>
+                    <rect id="矩形备份-106" fill="#EDF1F7" x="0" y="16" width="120" height="8" rx="1"></rect>
+                </g>
+                <g id="编组-12" transform="translate(61.333333, 54.238095)">
+                    <g id="1.基础控件/1.按钮/1.基础按钮/中/主要按钮" transform="translate(48.000000, 0.000000)" fill="#276FF5" fill-rule="nonzero">
+                        <rect id="Rectangle-11-Copy" x="0" y="0" width="40" height="18.6666667" rx="1.33333333"></rect>
+                    </g>
+                    <g id="1.基础控件/1.按钮/1.基础按钮/中/主要按钮" fill="#FFFFFF" stroke="#D9D9D9" stroke-width="0.666666667">
+                        <rect id="Rectangle-11-Copy" x="0.333333333" y="0.333333333" width="39.3333333" height="18" rx="1.33333333"></rect>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

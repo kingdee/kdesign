@@ -1,0 +1,16 @@
+.alert-bg-type(@type, @color) {
+  &.alert-@{type}-bg-color {
+    background-color: @color;
+  }
+}
+
+.alert-font-type(@type, @color) {
+  &.alert-@{type}-font-color {
+    color: @color
+  }
+}
+
+.square(@side-length) {
+  width: @side-length;
+  height: @side-length;
+}

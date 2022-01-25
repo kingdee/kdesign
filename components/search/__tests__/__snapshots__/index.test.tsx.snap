@@ -1,0 +1,226 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Search render no child without errors 1`] = `
+<Search>
+  <div
+    className="kd-search kd-search-size-middle"
+  >
+    <Input
+      borderType="none"
+      disabled={false}
+      onBlur={[Function]}
+      onChange={[Function]}
+      onFocus={[Function]}
+      onPressEnter={[Function]}
+      placeholder="请输入需要搜索的内容"
+      prefix={null}
+      size="middle"
+      suffix={null}
+    >
+      <ClearableInput
+        borderType="none"
+        disabled={false}
+        element={
+          <input
+            className="kd-input kd-input-size-middle kd-input-borderless"
+            disabled={false}
+            onBlur={[Function]}
+            onChange={[Function]}
+            onFocus={[Function]}
+            onKeyUp={[Function]}
+            placeholder="请输入需要搜索的内容"
+            prefix={null}
+            type="text"
+            value=""
+          />
+        }
+        focused={false}
+        handleReset={[Function]}
+        inputType="input"
+        onBlur={[Function]}
+        onChange={[Function]}
+        onFocus={[Function]}
+        onPressEnter={[Function]}
+        placeholder="请输入需要搜索的内容"
+        prefix={null}
+        prefixCls="kd-input"
+        size="middle"
+        suffix={null}
+        type="text"
+        value=""
+      >
+        <input
+          className="kd-input kd-input-size-middle kd-input-borderless"
+          disabled={false}
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          onKeyUp={[Function]}
+          placeholder="请输入需要搜索的内容"
+          prefix={null}
+          type="text"
+          value=""
+        />
+      </ClearableInput>
+    </Input>
+  </div>
+</Search>
+`;
+
+exports[`Search render null or undefined without errors 1`] = `
+<Search>
+  <div
+    className="kd-search kd-search-size-middle"
+  >
+    <Input
+      borderType="none"
+      disabled={false}
+      onBlur={[Function]}
+      onChange={[Function]}
+      onFocus={[Function]}
+      onPressEnter={[Function]}
+      placeholder="请输入需要搜索的内容"
+      prefix={null}
+      size="middle"
+      suffix={null}
+    >
+      <ClearableInput
+        borderType="none"
+        disabled={false}
+        element={
+          <input
+            className="kd-input kd-input-size-middle kd-input-borderless"
+            disabled={false}
+            onBlur={[Function]}
+            onChange={[Function]}
+            onFocus={[Function]}
+            onKeyUp={[Function]}
+            placeholder="请输入需要搜索的内容"
+            prefix={null}
+            type="text"
+            value=""
+          />
+        }
+        focused={false}
+        handleReset={[Function]}
+        inputType="input"
+        onBlur={[Function]}
+        onChange={[Function]}
+        onFocus={[Function]}
+        onPressEnter={[Function]}
+        placeholder="请输入需要搜索的内容"
+        prefix={null}
+        prefixCls="kd-input"
+        size="middle"
+        suffix={null}
+        type="text"
+        value=""
+      >
+        <input
+          className="kd-input kd-input-size-middle kd-input-borderless"
+          disabled={false}
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          onKeyUp={[Function]}
+          placeholder="请输入需要搜索的内容"
+          prefix={null}
+          type="text"
+          value=""
+        />
+      </ClearableInput>
+    </Input>
+  </div>
+</Search>
+`;
+
+exports[`Search renders correctly 1`] = `
+<div
+  class="kd-search kd-search-size-large"
+>
+  <input
+    class="kd-input kd-input-size-large kd-input-borderless"
+    placeholder="请输入需要搜索的内容"
+    type="text"
+    value=""
+  />
+</div>
+`;
+
+exports[`Search renders correctly 2`] = `
+<div
+  class="kd-search kd-search-size-middle"
+>
+  <input
+    class="kd-input kd-input-size-middle kd-input-borderless"
+    placeholder="请输入需要搜索的内容"
+    type="text"
+    value=""
+  />
+</div>
+`;
+
+exports[`Search renders correctly 3`] = `
+<div
+  class="kd-search kd-search-size-small"
+>
+  <input
+    class="kd-input kd-input-size-small kd-input-borderless"
+    placeholder="请输入需要搜索的内容"
+    type="text"
+    value=""
+  />
+</div>
+`;
+
+exports[`Search renders correctly 4`] = `
+<div
+  class="kd-search kd-search-size-middle kd-search-borderless"
+>
+  <input
+    class="kd-input kd-input-size-middle kd-input-borderless"
+    placeholder="请输入需要搜索的内容"
+    type="text"
+    value=""
+  />
+</div>
+`;
+
+exports[`Search renders correctly 5`] = `
+<div
+  class="kd-search kd-search-size-middle"
+>
+  <input
+    class="kd-input kd-input-size-middle kd-input-borderless"
+    placeholder="请输入需要搜索的内容"
+    type="text"
+    value=""
+  />
+</div>
+`;
+
+exports[`Search renders correctly 6`] = `
+<div
+  class="kd-search kd-search-size-middle"
+>
+  <input
+    class="kd-input kd-input-size-middle kd-input-borderless"
+    placeholder="请输入需要搜索的内容"
+    type="text"
+    value=""
+  />
+</div>
+`;
+
+exports[`Search renders correctly 7`] = `
+<div
+  class="kd-search kd-search-size-middle"
+>
+  <input
+    class="kd-input kd-input-size-middle kd-input-borderless"
+    placeholder="请输入需要搜索的内容"
+    type="text"
+    value=""
+  />
+</div>
+`;

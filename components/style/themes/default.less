@@ -1,0 +1,696 @@
+
+@kd-prefix: kd;
+
+/* -----------  color  ——————---- start */
+@theme-color: #5582f3; // 主题色
+@theme-color-level1: rgb(242, 248, 255);
+@theme-color-level2: rgb(242, 248, 255);
+@theme-color-level3: rgb(227, 238, 255);
+@theme-color-level4: rgb(181, 207, 255);
+@theme-color-level5: rgb(135, 173, 255);
+@theme-color-level6: rgb(85, 130, 243);
+@theme-color-level7: rgb(55, 92, 202);
+@theme-color-level8: rgb(31, 59, 161);
+@theme-color-level9: rgb(13, 33, 121);
+// @hsv-h: hsvhue(@theme-color); // 色相
+// @hsv-s: hsvsaturation(@theme-color); // 饱和度
+// @hsv-v: hsvvalue(@theme-color); // 明度
+
+@theme-color-disabled: @theme-color-level3;
+@theme-color-hover: @theme-color-level5;
+@theme-color-click: @theme-color-level7;// 点击色
+@theme-color-active-light: @theme-color-level1; // 浅色选中
+@theme-color-active-dark: @theme-color; // 深色选中
+@hover-color: #f5f5f5; // 中性的悬停色
+@disabled-contain-bg: #f5f5f5; // 容器失效背景色
+@success-color: #1ba854; // 成功色(深)
+@success-bg-color: #f2fff5; // 成功反馈浮层的底色
+@success-border-color: #6dd18e; // 成功反馈浮层的容器边框色
+@warning-color: #ff991c; // 警示色(深)
+@warning-bg-color: #fffbf2; // 警示反馈浮层的底色
+@warning-border-color: #ffcb78; // 警示反馈浮层的容器边框色
+@error-color: #fb2323; // 失败色(深)
+@error-bg-color: #fff2f4; // 失败反馈浮层的底色
+@error-border-color: #ff8088; // 失败反馈浮层的容器边框色
+@ongoing-color: #276ff5; // 进行中(深)
+@ongoing-bg-color: #f2f9ff; // 进行中反馈浮层的底色
+@ongoing-border-color: #85b8ff; // 进行中反馈浮层的容器边框色
+@disabled-color: #b2b2b2; // 失效色
+@disabled-border-color: #ccc; // 失效边框色
+@end-color: #666; // 暂停或者终止等状态标签色
+@link-color: #0e5fd8; // 链接色
+@link-color-hover: #3987ed; // 链接色或辅助色(悬浮)
+@link-color-active: #0041b0; // 链接色或辅助色(点击)
+@primary-text-color: #212121; // 一级文本
+@primary-text-color2: rgba(255, 255, 255, 1); // 一级文本
+@secondary-text-color: #666; // 二级文本
+@secondary-text-color2: rgba(255, 255, 255, 0.65); // 二级文本
+@third-text-color: #999; // 三级文本
+@third-text-color2: rgba(255, 255, 255, 0.4); // 三级文本
+@placeholder-text-color: #ccc; // 占位符文本
+@placeholder-text-color2: rgba(255, 255, 255, 0.3); // 占位符文本
+@bg: #fff; // 底色白背景
+@bg2: #f2f2f2; // 底色灰背景
+@contain-bg: #fafafa; // 容器内的灰背景
+@radius-size: 2px; // 圆角值
+@input-color: #999; // 线型录入的默认态
+@strong-border-color: #d9d9d9; // 强线条 --带操作
+@strong-border-color-1: #d9d9d9; // 强线条 --分割内容/容器包裹线
+@weak-border-color: #e5e5e5; // 弱线条 -- 需要多层级时
+// @shadow-on-hover: ; // 悬停时阴影
+@white: #fff;
+@dirList: left, top, bottom, right;
+@line-height-base: 1.5715;
+/* -----------  color  ——————---- end */
+
+/* -----------  motion  ——————---- start */
+@ease-out: cubic-bezier(0,.4,.4,1);
+@ease-in: cubic-bezier(0.4,0,1,0.6);
+@ease: cubic-bezier(0.4,0,0.6,1);
+/* -----------  motion  ——————---- end */
+
+/* -----------  transition  ——————---- start */
+@transition-duration: 0.3s;
+/* -----------  transition  ——————---- end */
+
+/* -----------  font  ——————---- start */
+@font-size: 14px;
+@font-weight: 400;
+@small-font-size: 12px;
+@middle-font-size: 14px;
+@large-font-size: 16px;
+@xlarge-font-size: 18px;
+@xxlarge-font-size: 20px;
+/* -----------  font  ——————---- end */
+
+@radius-size: 2px; // 圆角值
+
+/* -----------  zIndex  ——————---- start */
+/*
+    普通组件内部自身层级应设置在0-100间
+*/
+@zIndex-below: -1; // 置于下层
+@zIndex-popper: 1050; // 弹出层
+@zIndex-dialog: 1050; // 对话框
+@zIndex-masker: 3000; // 遮罩层 （loading等）
+@zIndex-apex: 9999; // 顶层 （notify）
+/* -----------  zIndex  ——————---- end */
+
+/* -----------  Button  ——————---- start */
+@btn-border-width: 1px;
+@btn-border-style: solid;
+@btn-primary-font-color: @white; // 基础文字颜色
+@btn-primary-background-color: @theme-color; // 基础背景颜色
+@btn-primary-border-color: @theme-color; // 基础边框颜色
+
+@btn-ghost-font-color: @secondary-text-color; // 幽灵按钮文字颜色
+@btn-ghost-background-color: transparent; // 幽灵背景颜色
+@btn-ghost-border-color: @strong-border-color; //幽灵边框颜色
+
+@btn-second-font-color: rgba(@secondary-text-color, 65%); // 次要文字颜色
+@btn-second-background-color: rgba(@white, 65%); // 次要背景颜色
+@btn-second-border-color: rgba(@strong-border-color, 65%); // 次要边框颜色
+
+@btn-link-font-color: @link-color; // 链接文字颜色
+
+@btn-disabled-font-color: @white; // 禁用状态 文字颜色
+@btn-disabled-background-color: @disabled-contain-bg; // 禁用状态 背景颜色
+@btn-disabled-border-color: @strong-border-color; // 禁用状态 边框颜色
+
+@btn-danger-font-color: @white; // 危险状态 文字颜色
+@btn-danger-background-color: @error-color; // 危险状态 背景颜色
+@btn-danger-border-color: @error-color; // 危险状态 边框颜色
+
+@btn-small-font-size: @small-font-size; // 小号 文字大小
+@btn-small-height: 24px; // 小号 高度
+@btn-small-min-width: 60px; // 小号 最小宽度
+@btn-small-padding-vertical: 3px; // 小号 内间距 纵向
+@btn-small-padding-horizontal: 8px; // 小号 内间距 横向
+
+@btn-middle-font-size: @small-font-size; // 中号 文字大小
+@btn-middle-height: 28px; // 中号 高度
+@btn-middle-min-width: 60px; // 中号 最小宽度
+@btn-middle-padding-vertical: 5px; // 中号 内间距 纵向
+@btn-middle-padding-horizontal: 8px; // 中号 内间距 纵向
+
+@btn-large-font-size: @large-font-size; // 大号 文字大小
+@btn-large-height: 32px; // 大号 高度
+@btn-large-min-width: 80px; // 大号 最小宽度
+@btn-large-padding-vertical: 6px; // 大号 内间距 纵向
+@btn-large-padding-horizontal: 8px; // 大号 内间距 横向
+@btn-transition-fn: cubic-bezier(0.075, 0.82, 0.165, 1);
+/* -----------  Button  ——————---- end */
+
+/* -----------  Collapse  ——————---- start */
+@collapse-border-width: 1px;
+@collapse-border-color: @strong-border-color-1;
+@collapse-icon-margin-right: 6px;
+@collapse-header-font-color: @primary-text-color;
+@collapse-header-font-size: @font-size;
+@collapse-header-padding: 12px;
+@collapse-content-font-color: @primary-text-color;
+@collapse-content-font-size: @font-size;
+@collapse-content-padding: 0 16px;
+@collapse-disabled-color: @disabled-color;
+@collapse-content-bordered-padding: 12px;
+
+/* -----------  Collapse  ——————---- end */
+
+/* -----------  Card  ——————---- start */
+@card-horizontal-padding: 12px;
+@card-header-height: 40px;
+@card-avatar-header-height: 64px;
+@card-avatar-size: 42px;
+@card-actions-height: 32px;
+@card-unit-space: 4px;
+@card-title-color: @primary-text-color;
+@card-content-color: @secondary-text-color;
+@card-title-font-size: @font-size;
+@card-content-font-size: @small-font-size;
+/* -----------  Card  ——————---- end */
+
+/* -----------  Carousel  ——————---- start */
+@carousel-dots-margin-top: 15px; // 面板指示点到边界的边距
+@carousel-dots-margin-bottom: 15px; // 面板指示点到边界的边距
+@carousel-dots-margin-left: 15px; // 面板指示点到边界的边距
+@carousel-dots-margin-right: 15px; // 面板指示点到边界的边距
+@carousel-dots-boder-radius: 2px; // 面板指示点的圆角
+@carousel-dots-width: 24px; // 面板指示点的宽度
+@carousel-dots-height: 3px; // 面板指示点的高度
+@carousel-dots-marigin: 3px; // 面板指示点的间距
+/* -----------  Carousel  ——————---- end */
+
+/* -----------  Cascader  ——————---- start */
+@cascader-menu-height: 196px;
+@cascader-menu-min-width: 116px;
+@cascader-color: @primary-text-color;
+@cascader-font-size: @small-font-size;
+@cascader-background-color: @white;
+@cascader-box-shadow-blur: 6px;
+@cascader-transition-fn: cubic-bezier(0.25, 1, 0.5, 1);
+/* -----------  Cascader  ——————---- end */
+
+/* -----------  Switch  ——————---- start */
+@switch-small-font-size: @small-font-size;
+@switch-small-line-height: 14px;
+@switch-small-height: 14px;
+@switch-small-min-width: 28px;
+@switch-small-border-radius: 7px;
+@switch-large-font-size: @small-font-size;
+@switch-large-line-height: 20px;
+@switch-large-height: 20px;
+@switch-large-min-width: 40px;
+@switch-large-border-radius: 10px;
+@switch-on-color: @theme-color;
+@switch-off-color: #999;
+@switch-disabled-bg: @disabled-color;
+@switch-loading-color: @ongoing-color;
+@switch-font-color: @white;
+@switch-inner-small-font-size: @small-font-size;
+@switch-inner-margin: 0 5px 0 17px;
+@switch-inner-checked-margin: 0 17px 0 5px;
+@switch-inner-large-margin: 0 5px 0 21px;
+@switch-inner-large-checked-margin: 0 21px 0 5px;
+/* -----------  Switch  ——————---- end */
+
+/* -----------  Input  ——————---- start */
+@input-placeholder-color: @third-text-color;
+@input-font-color: @secondary-text-color;
+@input-focus-color: @primary-text-color;
+@input-background-color: @white;
+@input-border-width: 1px;
+@input-width: 230px;
+
+@input-small-font-size: @small-font-size; // 小号 文字大小
+@input-small-height: 20px; // 小号 高度
+@input-small-padding-vertical: 3px; // 小号 内间距 纵向
+@input-small-padding-horizontal: 9px; // 小号 内间距 横向
+
+@input-middle-font-size: @middle-font-size; // 中号 文字大小
+@input-middle-height: 30px; // 中号 高度
+@input-middle-padding-vertical: 5px; // 中号 内间距 纵向
+@input-middle-padding-horizontal: 9px; // 中号 内间距 纵向
+
+@input-large-font-size: @large-font-size; // 大号 文字大小
+@input-large-height: 36px; // 大号 高度
+@input-large-padding-vertical: 8px; // 大号 内间距 纵向
+@input-large-padding-horizontal: 9px; // 大号 内间距 横向
+/* -----------  Input  ——————---- end */
+
+/* -----------  InputNumber  ——————---- start */
+@inputNumber-embedStepBtn-bg-color: #f6f7f9;
+/* -----------  InputNumber  ——————---- end */
+
+/* -----------  checkbox  ——————---- start */
+/* -----------  checkbox  ——————---- start */
+@checkbox-font-size: @small-font-size; //默认字体大小
+@checkbox-font-color: @primary-text-color;
+@checkbox-border-color: @strong-border-color;
+@checkbox-checked-border-color: @theme-color-active-dark;
+@checkbox-checked-font-color: @theme-color-active-dark;
+@checkbox-bg-color: @bg;
+@checkbox-disabled-bg-color: @disabled-color;
+@checkbox-small-size-height: 32px; // 小尺寸复选框
+@checkbox-middle-size-height: 36px; // 中尺寸复选框
+@checkbox-large-size-height: 40px; // 大尺寸复选框
+@checkbox-border-width: 1px; // 边框类型边框大小
+@checkbox-group-margin-right: 8px; // 按钮组的间距
+@checkbox-default-padding: 0; // 默认类型复选框内边距
+@checkbox-default-input-margin-right: 8px; // 勾选输入框与右侧内容间距
+@checkbox-default-input-height: 16px; // 勾选输入框高度
+@checkbox-default-input-width: 16px; // 勾选输入框宽度
+@checkbox-default-input-border-radius: 2px; // 勾选输入框圆角
+@checkbox-default-input-border-width: 1px; // 勾选输入框边框大小
+@checkbox-default-input-icon-color: #fff; // 勾选输入框边勾勾图标颜色
+@checkbox-default-input-icon-size: 14px; // 勾选输入框勾勾图标大小
+@checkbox-square-padding: 0 20px; // 边框类型内边距
+@checkbox-square-triangle-height: 18px; // 边框类型右下角三角高度
+@checkbox-square-triangle-width: 18px; // 边框类型右下角三角宽度
+@checkbox-square-input-icon-color: #fff; // 边框类型三角内勾选输入框勾勾图标颜色
+@checkbox-square-input-icon-size: 12px; // 边框类型三角内勾选输入框勾勾图标大小
+/* -----------  checkbox  ——————---- end */
+
+/* -----------  Radio  ——————---- start */
+@radio-font-size: @small-font-size;
+@radio-font-color: @primary-text-color;
+@radio-border-width: 1px;
+@radio-margin-right: 8px;
+@radio-transition-fn: cubic-bezier(0.075, 0.82, 0.165, 1);
+@radio-circle-size: 13px;
+@radio-square-height: 32px;
+@radio-square-padding: 0 20px;
+@radio-button-height: 24px;
+@radio-button-padding: 0 18px;
+/* -----------  Radio  ——————---- end */
+
+/* -----------  icon  ——————---- start */
+@icon-css-prefix: kdicon;
+/* -----------  icon  ——————---- end */
+
+/* -----------  Popconfirm  ——————---- start */
+@popconfirm-icon-size: 17px;
+@popconfirm-min-width: 164px;
+@popconfirm-max-width: 500px;
+@popconfirm-min-height: 98px;
+@popconfirm-max-height: 400px;
+@popconfirm-title-line-height: 21px;
+@popconfirm-color: @primary-text-color;
+@popconfirm-font-size: @small-font-size;
+@popconfirm-title-font-size: @middle-font-size;
+@popconfirm-vertical-gap: 16px;
+@popconfirm-horizontal-gap: 16px;
+@popconfirm-background-color: @white;
+@popconfirm-box-shadow-blur: 6px;
+@popconfirm-transition-fn: cubic-bezier(0.25, 1, 0.5, 1);
+/* -----------  Popconfirm  ——————---- end */
+
+/* -----------  Progress  ——————---- start */
+@progress-remaining-color: #e5e5e5;
+@progress-default-color: @ongoing-color;
+@progress-success-color: @success-color;
+@progress-failure-color: @error-color;
+@progress-border-radius: 100px;
+@progress-line-stroke-width: 8px;
+@progress-line-icon-font-size: 16px;
+@progress-line-text-font-size: 16px;
+@progress-line-text-width: 3 * @progress-line-text-font-size;
+@progress-line-special-text-font-size: 16px;
+@progress-line-text-margin-left: 8px;
+@progress-circle-stroke-width: 4px;
+@progress-transition-fn: cubic-bezier(0.66, 0, 0.34, 1);
+@progress-circle-text-font-size: 28px;
+@progress-circle-percent-line-height: 48px;
+@progress-circle-unit-line-height: 18px;
+@progress-circle-unit-font-size: 12px;
+@progress-circle-unit-margin-top: 18px;
+@progress-circle-icon-font-size: 48px;
+/* -----------  Progress  ——————---- end */
+
+/* -----------  Pagination  ——————---- start */
+@pagination-size: 24px;
+@pagination-nicety-size: 30px;
+@pagination-button-gap: 8px;
+@pagination-hover-color: @theme-color;
+@pagination-font-size: @small-font-size;
+@pagination-icon-size: @large-font-size;
+@pagination-font-color: @secondary-text-color;
+@pagination-button-color: @secondary-text-color;
+@pagination-button-disabled-color: @disabled-border-color;
+@pagination-button-disabled-background-color: @disabled-contain-bg;
+/* -----------  Pagination  ——————---- end */
+
+/* -----------  Timeline  ——————---- start */
+@timeline-gap: 8px;
+@timeline-width: 1px;
+@timeline-dot-size: 9px;
+@timeline-line-height: 18px;
+@timeline-label-width: 70px;
+@timeline-color: @weak-border-color;
+@timeline-dot-color: @theme-color;
+@timeline-item-padding-bottom: 26px;
+/* -----------  Timeline  ——————---- end */
+
+/* -----------  Tabs  ——————---- start */
+@tabs-font-color: @secondary-text-color;
+@tabs-border-color: @strong-border-color;
+@tabPane-font-size: @font-size;
+@tabPane-font-color-active: @theme-color;
+@tabPane-font-color-hover: @theme-color;
+@tabPane-font-color-disabled: @disabled-color;
+@tab-line-color-active: @theme-color;
+@tabs-card-bg: @disabled-contain-bg;
+@tabs-height: 48px;
+@tabs-border-width: 1px;
+@tab-pane-height: 48px;
+@tab-pane-line-height: 48px;
+@tab-pane-margin-right: 24px;
+@tab-transition-fn: cubic-bezier(0.42, 0, 1, 1);
+@tab-disabled-bg: @bg2;
+/* -----------  Tabs  ——————---- end */
+
+/* -----------  Select  ——————---- start */
+@select-dropdown-bg: @bg;
+@select-disabled-option-bg: @disabled-contain-bg;
+@select-placeholder-color: @third-text-color;
+@select-item-active-bg: @hover-color;
+@select-dropdown-height: 22px;
+@select-list-font-size: 12px; // 下拉列表文字大小
+@select-large-font-size: 16px; // 大号字体
+@select-middle-font-size: 14px; // 中号高度
+@select-small-font-size: 12px; // 小号高度
+@select-dropdown-line-height: 22px;
+@select-item-selected-color: #276ff5;
+@select-item-selected-bg: #f2f9ff;
+@select-font-color: #212121;
+@select-large-height: 36px; // 大号高度 lh:28px
+@select-middle-height: 30px; // 中号高度lh:22px
+@select-small-height: 24px; // 小号高度lh:12px
+@select-large-line-height: 28px;
+@select-middle-line-height: 22px;
+@select-small-line-height: 14px;
+
+/* -----------  Select  ——————---- end */
+/* -----------  Rate  ——————---- start */
+@rate-selected-color: #fdc200;
+@rate-not-selected-color: #d9d9d9;
+@rate-icon-margin: 10px;
+@rate-small-font-size: @small-font-size;
+@rate-middle-font-size: @middle-font-size;
+@rate-large-font-size: @large-font-size;
+/* -----------  Rate  ——————---- end */
+
+/* -----------  Dropdown  ——————---- start */
+@dropdown-menu-min-width: 136px;
+@dropdown-menu-max-width: 320px;
+@dropdown-menu-max-height: 336px;
+@dropdown-menu-gap: 8px;
+@dropdown-line-height: 18px;
+@dropdown-color: @primary-text-color;
+@dropdown-divided-color: @weak-border-color;
+@dropdown-hover-bg-color: @disabled-contain-bg;
+@dropdown-active-bg-color: @theme-color-active-light;
+@dropdown-font-size: @small-font-size;
+@dropdown-item-vertical-gap: 7px;
+@dropdown-item-horizontal-gap: 12px;
+@dropdown-box-shadow-blur: 10px;
+@dropdown-transition-fn: cubic-bezier(0.25, 1, 0.5, 1);
+/* -----------  Dropdown  ——————---- end */
+
+/* -----------  Tooltip  ——————---- start */
+@tooltip-width: 267px;
+@tooltip-line-height: 18px;
+@tooltip-color: @primary-text-color;
+@tooltip-font-size: @small-font-size;
+@tooltip-vertical-gap: 8px;
+@tooltip-horizontal-gap: 12px;
+@tooltip-background-color: @white;
+@tooltip-box-shadow-blur: 6px;
+@tooltip-transition-fn: cubic-bezier(0.25, 1, 0.5, 1);
+/* -----------  Tooltip  ——————---- end */
+
+/* -----------  Transfer  ——————---- start */
+@transfer-disabled-bg: @disabled-contain-bg;
+@transfer-border-color: @strong-border-color;
+@transfer-padding-base: 14px;
+@transfer-font-size-base: 12px;
+@transfer-list-item-height: 32px;
+@transfer-list-content-height: @transfer-list-item-height * 10;
+@transfer-list-item-hover-bg: @hover-color;
+@transfer-list-item-checked: @theme-color;
+@transfer-list-item-disabled: @disabled-color;
+@transfer-header-bg: #f5f5f5;
+@transfer-header-height: 36px;
+@transfer-search-height: 32px;
+@transfer-search-prefix-icon-color: @theme-color;
+@transfer-search-suffix-icon-color: #bbb;
+@transfer-search-suffix-icon-color-hover: #999;
+@transfer-pagination-height: 36px;
+/* -----------  Transfer  ——————---- end */
+
+/* -----------  DatePicker  ——————---- start */
+@date-placeholder-color: @secondary-text-color;
+@date-font-color: @secondary-text-color;
+@date-focus-color: @primary-text-color;
+@date-background-color: @white;
+@date-border-width: 1px;
+@date-width: 230px;
+@date-padding-suffix: 10px;
+@date-panel-header-height: 36px;
+@date-panel-horizontal-gap: 12px;
+@date-panel-box-shadow-blur: 8px;
+
+@date-small-font-size: @small-font-size; // 小号 文字大小
+@date-small-height: 20px; // 小号 高度
+@date-small-padding-vertical: 4px; // 小号 内间距 纵向
+@date-small-padding-horizontal: 9px; // 小号 内间距 横向
+
+@date-middle-font-size: @middle-font-size; // 中号 文字大小
+@date-middle-height: 30px; // 中号 高度
+@date-middle-padding-vertical: 5px; // 中号 内间距 纵向
+@date-middle-padding-horizontal: 9px; // 中号 内间距 纵向
+
+@date-large-font-size: @large-font-size; // 大号 文字大小
+@date-large-height: 36px; // 大号 高度
+@date-large-padding-vertical: 8px; // 大号 内间距 纵向
+@date-large-padding-horizontal: 9px; // 大号 内间距 横向
+
+@date-clear-offset: 1px;
+@date-range-clear-offset: 9px;
+@date-ranges-width: 160px;
+
+/* -----------  DatePicker  ——————---- end */
+/* -----------  Tree  ——————---- start */
+@tree-node-height: 28px;
+@tree-font-size: @font-size;
+@tree-node-hover-bg-color: @hover-color;
+@tree-node-checked-bg-color: @theme-color;
+@tree-expand-icon-height: 22px;
+@tree-expand-icon-width: 22px;
+@tree-node-icon-height: 22px;
+@tree-node-icon-width: 22px;
+@tree-node-margin-left: 6px;
+@tree-node-disabled-color: @disabled-color;
+@tree-node-disabled-border-color: @disabled-border-color;
+/* -----------  Tree  ——————---- end */
+
+/* -----------  Alert  ——————---- start */
+@success-alert-bg-color: @success-bg-color; // 反馈浮层成功提示的背景色
+@warning-alert-bg-color: @warning-bg-color; // 反馈浮层警告提示的背景色
+@error-alert-bg-color: @error-bg-color; // 反馈浮层错误提示的背景色
+@info-alert-bg-color: @ongoing-bg-color; // 反馈浮层一般提示的背景色
+@alert-transition-fn: cubic-bezier(0.32, 0.94, 0.6, 1);
+/* -----------  Alert  ——————---- end */
+
+/* -----------  Split-Panel ——————---- start */
+@split-panel-trigger-border-color: #ccc;
+@split-panel-trigger-arrow-color: #a7b5d3;
+@split-panel-trigger-arrow-hover-color: @theme-color;
+@split-panel-trigger-line-width: 1px;
+@split-panel-trigger-line-color: @split-panel-trigger-border-color;
+/* -----------  Split-Panel ——————---- end */
+
+/* -----------  Modal  ——————---- start */
+@confirm-modal-title-icon-bg: @ongoing-bg-color; // 提示弹窗的背景色
+@warning-modal-title-icon-bg: @warning-bg-color; // 警告弹窗的背景色
+@error-modal-title-icon-bg: @error-bg-color; // 反馈浮层错误提示的背景色
+@modal-border-color: @strong-border-color-1;
+/* -----------  Modal  ——————---- end */
+
+/* -----------  Steps  ——————---- start */
+@steps-transition-fn: cubic-bezier(0.48, 0.04, 0.52, 0.96);
+/* -----------  Steps  ——————---- end */
+
+/* -----------  Form  ——————---- start */
+@form-field-margin: 0 30px 22px 0; // item 间距
+@form-field-label-font-size: 12px; // label 字体大小
+@form-field-label-line-height: 18px; // label 行高
+@form-field-message-font-size: 12px; // 校验信息字体大小
+@form-field-message-line-height: 18px; // 校验信息行高
+@form-field-message-padding: 2px 8px; // 校验信息内间距
+/* -----------  Form  ——————---- end */
+/* -----------  Tag ——————---- start */
+@tag-font-size: @small-font-size;
+@tag-border-radius: 10px;
+@tag-height: 20px;
+@tag-small-height: 16px;
+@tag-small-padding-horizontal: 6px;
+@tag-small-font-size: @small-font-size;
+@tag-middle-height: 20px;
+@tag-middle-padding-horizontal: 7px;
+@tag-middle-font-size: @small-font-size;
+@tag-large-height: 24px;
+@tag-large-padding-horizontal: 8px;
+@tag-large-font-size: @middle-font-size;
+@tag-process-color: @ongoing-color;
+@tag-success-color: @success-color;
+@tag-warning-color: @warning-color;
+@tag-error-color: @error-color;
+@tag-end-color: @end-color;
+@tag-expired-color: @disabled-color;
+@tag-disabled-color: @disabled-color;
+/* -----------  Tag ——————---- end */
+
+/* -----------  Menu  ——————---- start */
+@menu-bg-color: #343848;
+@menu-subMenu-bg-color: #21242d;
+@menu-font-color: rgba(255, 255, 255, 0.65);
+@menu-font-size: @small-font-size;
+@menu-icon-size: @xxlarge-font-size;
+@menu-item-line-height: 50px;
+@menu-item-padding: 0 15px;
+/* -----------  Menu  ——————---- end */
+
+/* -----------  notice  ——————---- start */
+@notice-zIndex: @zIndex-apex;
+@notice-below-zIndex: @zIndex-below;
+/* -----------  message  ——————---- end */
+
+/* -----------  Spin  ——————---- start */
+@spin-page-size: 15px;
+@spin-container-size: 5px;
+@spin-dot-color-first: #2386ee;
+@spin-dot-color-second: #00ccfe;
+@spin-dot-color-third: #05c8c8;
+@spin-dot-color-fourth: #a06eff;
+/* -----------  Spin  ——————---- end */
+
+/* -----------  Spin  ——————---- start */
+@empty-image-height: 96px;
+@empty-font-color: @third-text-color;
+@empty-font-size: @font-size;
+/* -----------  Spin  ——————---- end */
+
+/* -----------  Layout  ——————---- start */
+@layout-body-background: @bg2;
+@layout-header-background: @bg;
+@layout-header-height: 52px;
+@layout-header-padding: 0 20px 0 35px;
+@layout-header-color: @primary-text-color;
+@layout-footer-padding: 24px 50px;
+@layout-footer-background: @layout-body-background;
+@layout-sider-background: @menu-bg-color;
+@layout-trigger-height: 50px;
+@layout-trigger-background: @menu-bg-color;
+@layout-trigger-color: @bg;
+@layout-zero-trigger-width: 36px;
+@layout-zero-trigger-height: 42px;
+// Layout light theme
+@layout-sider-background-light: @bg;
+@layout-trigger-background-light: @bg;
+@layout-trigger-color-light: @primary-text-color;
+/* -----------  Layout  ——————---- end */
+
+/* -----------  Typography  ——————---- start */
+@typography-title-font-weight: 600;
+@typography-title-margin-top: 1.2em;
+@typography-title-margin-bottom: 0.5em;
+@typography-paragraph-margin-bottom: 24px;
+@typography-margin-bottom: 80px;
+@typography-max-width: 830px;
+@heading-1-size: 40px;
+@heading-2-size: 28px;
+@heading-3-size: 18px;
+@heading-1-margin-bottom: 12px;
+@heading-2-margin-bottom: 24px;
+@heading-3-margin-bottom: 12px;
+@heading-2-color: #276ff5;
+@heading-4-size: ceil(@font-size * 1.42);
+@heading-5-size: ceil(@font-size * 1.14);
+/* -----------  Typography  ——————---- start */
+
+/* -----------  Search  ——————---- start */
+@search-small-width: 200px;
+@search-middle-width: 260px;
+@search-large-width: 320px;
+@search-hover-color: #276ff5;
+@quick-search-default-width: 200px;
+@quick-search-default-height: 24px;
+@quick-search-max-width: 400px;
+@quick-search-selected-tags-del-hover-bg: #FB2323;
+@quick-search-input-color: @disabled-color;
+@quick-search-border-bottom-color: #d9d9d9;
+@quick-search-dropdown-font-size: 12px;
+@quick-search-dropdown-option-height: 32px;
+@quick-search-dropdown-option-padding: 12px;
+@quick-search-dropdown-selected-bg: #f2F9ff;
+@quick-search-dropdown-hover-bg: @hover-color;
+@quick-search-dropdown-tag-color: #666666;
+@quick-search-dropdown-desc-color: #999999;
+@quick-search-npl-border-color: #D8D8D8;
+@quick-search-selection-placeholder-color: #bfbfbf;
+@search-panel-width: 800px;
+@search-panel-height: 60px;
+@search-panel-hover-bg: #eef3fe;
+@search-panel-hover-color: #597cfc;
+@search-panel-border-color: #E6E8ED;
+
+/* -----------  Search  ——————---- start */
+
+/* -----------  Badge  ——————---- start */
+@badge-color: #ff4d4f;
+@badge-text-color: @bg;
+@badge-height: 20px;
+@badge-height-sm: 14px;
+@badge-font-weight: normal;
+@badge-font-size: @small-font-size;
+@badge-font-size-sm: @small-font-size;
+@badge-dot-size: 6px;
+@badge-status-size: 6px;
+/* -----------  Badge  ——————---- end */
+
+/* -----------  Anchor  ——————---- start */
+@anchor-bg: @bg;
+@anchor-width: 120px;
+@anchor-border-color: @strong-border-color;
+@anchor-link-top: 7px;
+@anchor-link-left: 8px;
+@anchor-link-padding: @anchor-link-top @anchor-link-left @anchor-link-top @anchor-link-left;
+@anchor-advanced-padding-top: 8px;
+@anchor-advanced-padding-bottom: 7px;
+@anchor-advanced-width: 160px;
+@anchor-advanced-lock-size: 16px;
+@anchor-advanced-arrows-color: #666;
+@anchor-icon-font-size: 16px;
+/* -----------  Anchor  ——————---- end */
+
+/* -----------  Avatar  ——————---- start */
+@avatar-size-xs: 24px;
+@avatar-size-sm: 32px;
+@avatar-size-base: 40px;
+@avatar-size-lg: 60px;
+@avatar-font-size-base: 22px;
+@avatar-font-size-lg: 36px;
+@avatar-font-size-sm: 18px;
+@avatar-font-size-xs: 14px;
+@avatar-border-radius: @radius-size;
+@avatar-bg: #ccc;
+/* -----------  Avatar  ——————---- end */
+
+/* -----------  AdvancedSelector  ——————---- start */
+@advancedSelector-width: 230px;
+@advancedSelector-border-color: #999;
+@advancedSelector-dropdown-height: 400px;
+@advancedSelector-dropdown-options-height: 32px;
+@advancedSelector-hover-bg: @hover-color;
+
+/* -----------  AdvancedSelector  ——————---- end */

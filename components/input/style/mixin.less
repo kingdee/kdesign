@@ -1,0 +1,59 @@
+// 输入框默认样式Mixins
+.input(@prefix) {
+	@disabled-prefix-cls: ~'@{prefix}-disabled';
+	width: 100%;
+	min-width: 0;
+	border: @input-border-width solid @strong-border-color;
+	border-radius: @radius-size;
+	color: @input-font-color;
+	box-sizing: border-box;
+	background-color: @input-background-color;
+	display: inline-block;
+	font-variant: tabular-nums;
+	list-style: none;
+	background-image: none;
+	font-feature-settings: "tnum";
+
+	&::-webkit-input-placeholder {
+		color: @input-placeholder-color !important;
+	}
+	&::-moz-input-placeholder {
+		color: @input-placeholder-color !important;
+	}
+	&::-ms-input-placeholder {
+		color: @input-placeholder-color !important;
+	}
+	&:focus{
+		box-shadow: none;
+		outline: none;
+	}
+	&:not(.@{disabled-prefix-cls}):hover{
+		border-color: @theme-color;
+	}
+	&:not(.@{disabled-prefix-cls}):focus{
+		color: @input-focus-color;
+		border-color: @theme-color;
+	}
+}
+.input-size(@height, @fonSize, @padding-vertical, @padding-horizontal) {
+	height: @height;
+	line-height: @height - (@padding-vertical * 2) - (@input-border-width * 2);
+	font-size: @fonSize;
+	padding: @padding-vertical @padding-horizontal;
+}
+.input-clear-icon() {
+	cursor: pointer;
+	color: @theme-color;
+	i {
+		vertical-align: middle;
+		font-size: 12px !important;
+	}
+}
+.border-less() {
+	border: none !important;
+}
+.underline() {
+	border: none;
+	border-bottom: 1px solid @input-color;
+	border-radius: 0 !important;
+}

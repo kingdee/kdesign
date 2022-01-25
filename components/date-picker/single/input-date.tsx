@@ -1,0 +1,208 @@
+import React, { useRef } from 'react'
+import classnames from 'classnames'
+
+import { Icon } from '../../index'
+import usePickerInput from '../hooks/use-picker-input'
+import { DateType, InputCommonProps, OutInputCommonProps } from '../interface'
+import { getInputSize, getPlaceholder, elementsContains } from '../utils'
+
+export interface InputDateProps extends OutInputCommonProps, InputCommonProps {
+  inputRef: React.RefObject<HTMLInputElement>
+  text: string
+  dateValue: DateType | null
+  selectedValue: DateType | null
+  disabled?: boolean
+  hoverValue?: string
+  placeholder?: string
+  disabledDate?: (currentDate: DateType) => boolean
+  resetText: () => void
+  setSelectedValue: (date: DateType | null) => void
+  triggerTextChange: (value: string) => void
+  triggerOpen: (open: boolean) => void
+  triggerChange: (date: DateType | null) => void
+}
+
+function InputDate(props: InputDateProps, ref: React.RefObject<HTMLDivElement>) {
+  const {
+    inputRef,
+    panelDivRef,
+
+    id,
+    autoFocus,
+    allowClear,
+    className,
+    borderType,
+    disabled,
+    hoverValue,
+    picker,
+    placeholder: propsPlaceholder,
+    style,
+    size,
+    text,
+    needConfirmButton,
+    dateValue,
+    selectedValue,
+    suffixIcon,
+    clearIcon,
+
+    format,
+    open,
+    readOnly,
+    prefixCls,
+    locale,
+    dataOrAriaProps,
+
+    disabledDate,
+    onFocus,
+    onBlur,
+    // onChange,
+    onMouseDown,
+    onMouseUp,
+    onMouseEnter,
+    onMouseLeave,
+    onContextMenu,
+    onClick,
+    resetText,
+    setSelectedValue,
+    triggerTextChange,
+    triggerOpen,
+    triggerChange,
+  } = props
+
+  const preventBlurRef = useRef<boolean>(false)
+
+  const placeholder = getPlaceholder(picker, locale, propsPlaceholder)
+
+  const suffixNode = (
+    <span className={`${prefixCls}-suffix`}>
+      {suffixIcon || <Icon type={picker === 'time' ? 'waiting' : 'date'} />}
+    </span>
+  )
+
+  let clearNode: React.ReactNode
+  if (allowClear && dateValue && !disabled) {
+    clearNode = (
+      <span
+        onMouseDown={(e) => {
+          e.preventDefault()
+          e.stopPropagation()
+        }}
+        onMouseUp={(e) => {
+          e.preventDefault()
+          e.stopPropagation()
+          triggerChange(null)
+          triggerOpen(false)
+        }}
+        className={`${prefixCls}-clear`}
+      >
+        {clearIcon || <Icon type="close" />}
+      </span>
+    )
+  }
+
+  const onInternalMouseUp: React.MouseEventHandler<HTMLDivElement> = (...args) => {
+    if (onMouseUp) {
+      onMouseUp(...args)
+    }
+
+    if (inputRef.current) {
+      inputRef.current.focus()
+      triggerOpen(true)
+    }
+  }
+
+  const onInternalonMouseDown: React.MouseEventHandler<HTMLDivElement> = (...args) => {
+    if (onMouseDown) {
+      onMouseDown(...args)
+    }
+    if (open) {
+      preventBlurRef.current = true
+      requestAnimationFrame(() => {
+        preventBlurRef.current = false
+      })
+    }
+  }
+
+  const [inputProps, { focused, typing }] = usePickerInput({
+    preventBlurRef,
+    blurToCancel: needConfirmButton,
+    open: open,
+    value: text,
+    triggerOpen,
+    // forwardKeyDown,
+    isClickOutside: (target) => !elementsContains([panelDivRef.current, ref.current], target as HTMLElement),
+    onSubmit: () => {
+      if (selectedValue && disabledDate && disabledDate(selectedValue)) {
+        return false
+      }
+
+      triggerChange(selectedValue)
+      triggerOpen(false)
+      resetText()
+      return true
+    },
+    onCancel: () => {
+      triggerOpen(false)
+      setSelectedValue(dateValue)
+      resetText()
+    },
+    onFocus,
+    onBlur,
+  })
+
+  const borderClass = classnames({
+    [`${prefixCls}-underline`]: borderType === 'underline',
+    [`${prefixCls}-borderless`]: borderType === 'none',
+  })
+
+  return (
+    <div
+      ref={ref}
+      className={classnames(prefixCls, className, borderClass, {
+        // [`${prefixCls}-${size}`]: size,
+        [`${prefixCls}-disabled`]: disabled,
+        [`${prefixCls}-focused`]: focused,
+        [`${prefixCls}-${size}`]: size,
+      })}
+      style={style}
+      onMouseDown={onInternalonMouseDown}
+      onMouseUp={onInternalMouseUp}
+      onMouseEnter={onMouseEnter}
+      onMouseLeave={onMouseLeave}
+      onContextMenu={onContextMenu}
+      onClick={onClick}
+      {...dataOrAriaProps}
+    >
+      <div
+        className={classnames(`${prefixCls}-input`, {
+          [`${prefixCls}-input-placeholder`]: !!hoverValue,
+        })}
+      >
+        <input
+          // className={classnames({
+          //   [`${prefixCls}-input-${size}`]: size,
+          // })}
+          id={id}
+          ref={inputRef}
+          // tabIndex={tabIndex}
+          disabled={disabled}
+          readOnly={readOnly || typeof format === 'function' || !typing}
+          value={hoverValue || text}
+          onChange={(e) => {
+            triggerTextChange(e.target.value)
+          }}
+          // eslint-disable-next-line jsx-a11y/no-autofocus
+          autoFocus={autoFocus}
+          placeholder={placeholder}
+          title={text}
+          {...inputProps}
+          size={getInputSize(picker, format)}
+        />
+        {suffixNode}
+        {clearNode}
+      </div>
+    </div>
+  )
+}
+
+export default React.forwardRef(InputDate)

@@ -1,0 +1,94 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Cascader renders correctly 1`] = `
+<span
+  class="kd-cascader-picker"
+  tabindex="0"
+>
+  <span>
+    <span
+      class="kd-input-wrapper kd-input-wrapper-size-middle kd-input-wrapper-underline kd-cascader-picker-input"
+    >
+      <input
+        class="kd-input kd-input-size-middle kd-input-underline"
+        placeholder="Please select"
+        readonly=""
+        type="text"
+        value=""
+      />
+      <span
+        class="kd-input-suffix"
+      >
+        <i
+          class="kdicon kdicon-arrow-down"
+        />
+      </span>
+    </span>
+    <span
+      class="kd-cascader-picker-label"
+    />
+  </span>
+</span>
+`;
+
+exports[`Cascader renders correctly 2`] = `
+<span
+  class="kd-cascader-picker"
+  tabindex="0"
+>
+  <span>
+    <span
+      class="kd-input-wrapper kd-input-wrapper-size-middle kd-input-wrapper-underline kd-cascader-picker-input"
+    >
+      <input
+        class="kd-input kd-input-size-middle kd-input-underline"
+        placeholder="Please select"
+        readonly=""
+        type="text"
+        value=""
+      />
+      <span
+        class="kd-input-suffix"
+      >
+        <i
+          class="kdicon kdicon-arrow-down"
+        />
+      </span>
+    </span>
+    <span
+      class="kd-cascader-picker-label"
+    />
+  </span>
+</span>
+`;
+
+exports[`Cascader renders correctly 3`] = `
+<span
+  class="kd-cascader-picker"
+  tabindex="0"
+>
+  <span>
+    <span
+      class="kd-input-wrapper kd-input-wrapper-size-middle kd-cascader-picker-input"
+    >
+      <input
+        class="kd-input kd-input-size-middle"
+        placeholder="Please select"
+        readonly=""
+        type="text"
+        value=""
+      />
+      <span
+        class="kd-input-suffix"
+      >
+        <i
+          class="kdicon kdicon-arrow-down"
+        />
+      </span>
+    </span>
+    <span
+      class="kd-cascader-picker-label"
+    />
+  </span>
+</span>
+`;

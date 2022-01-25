@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Radio should render correctly 1`] = `
+<label
+  class="myPrefix customized"
+  style="color:red"
+>
+  <input
+    class="myPrefix-input"
+    type="radio"
+  />
+  <span>
+    Test
+  </span>
+</label>
+`;
