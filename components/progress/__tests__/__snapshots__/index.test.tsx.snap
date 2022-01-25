@@ -1,0 +1,261 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Progress renders correctly 1`] = `
+<div
+  class="kd-progress kd-progress-type-line kd-progress-status-normal kd-progress-show-info"
+  type="line"
+>
+  <div
+    class="kd-progress-outer"
+  >
+    <div
+      class="kd-progress-inner"
+      style="background-color:#E5E5E5"
+    >
+      <div
+        class="kd-progress-bg"
+        style="width:0%;height:8px"
+      />
+    </div>
+  </div>
+  <span
+    class="kd-progress-text"
+  >
+    <span
+      class="kd-progress-text-percent"
+    >
+      0
+    </span>
+    <span
+      class="kd-progress-text-unit"
+    >
+      %
+    </span>
+  </span>
+</div>
+`;
+
+exports[`Progress renders correctly 2`] = `
+<div
+  class="kd-progress kd-progress-type-circle kd-progress-status-normal kd-progress-show-info"
+  type="circle"
+>
+  <div
+    class="kd-progress-circle-box"
+    style="width:88px;height:88px"
+  >
+    <svg
+      class="kd-progress-circle"
+      stroke-width="4"
+      viewBox="0 0 100 100"
+    >
+      <path
+        class="kd-progress-circle-trail"
+        d="M 50,50 m 0,-48 
+
+                      a 48,48 0 1 1 0,96 
+
+                      a 48,48 0 1 1 0,-96 
+"
+        fill-opacity="0"
+        stroke-linecap="round"
+        stroke-width="4"
+        style="stroke:#E5E5E5"
+      />
+      <path
+        class="kd-progress-circle-path"
+        d="M 50,50 m 0,-48 
+
+                      a 48,48 0 1 1 0,96 
+
+                      a 48,48 0 1 1 0,-96 
+"
+        fill-opacity="0"
+        stroke-linecap="round"
+        stroke-width="4"
+        style="stroke-dasharray:0px 301.59289474462014px;stroke-dashoffset:0px;opacity:0"
+      />
+    </svg>
+    <span
+      class="kd-progress-text"
+    >
+      <span
+        class="kd-progress-text-percent"
+      >
+        0
+      </span>
+      <span
+        class="kd-progress-text-unit"
+      >
+        %
+      </span>
+    </span>
+  </div>
+  <div
+    class="kd-progress-special-text"
+  >
+    正在加载中
+  </div>
+</div>
+`;
+
+exports[`Progress renders correctly 3`] = `
+<div
+  class="kd-progress kd-progress-type-line kd-progress-status-normal kd-progress-show-info"
+  type="line"
+>
+  <div
+    class="kd-progress-outer"
+  >
+    <div
+      class="kd-progress-inner"
+      style="background-color:#E5E5E5"
+    >
+      <div
+        class="kd-progress-bg"
+        style="width:0%;height:8px"
+      />
+    </div>
+  </div>
+  <span
+    class="kd-progress-text"
+  >
+    <span
+      class="kd-progress-text-percent"
+    >
+      0
+    </span>
+    <span
+      class="kd-progress-text-unit"
+    >
+      %
+    </span>
+  </span>
+</div>
+`;
+
+exports[`Progress renders correctly 4`] = `
+<div
+  class="kd-progress kd-progress-type-line kd-progress-status-cycle kd-progress-show-info"
+  type="line"
+>
+  <div
+    class="kd-progress-outer"
+  >
+    <div
+      class="kd-progress-inner"
+      style="background-color:#E5E5E5"
+    >
+      <div
+        class="kd-progress-bg"
+        style="width:0%;height:8px"
+      />
+    </div>
+  </div>
+  <span
+    class="kd-progress-text"
+  >
+    <span
+      class="kd-progress-text-percent"
+    >
+      0
+    </span>
+    <span
+      class="kd-progress-text-unit"
+    >
+      %
+    </span>
+  </span>
+</div>
+`;
+
+exports[`Progress renders correctly 5`] = `
+<div
+  class="kd-progress kd-progress-type-line kd-progress-status-loading kd-progress-show-info"
+  type="line"
+>
+  <div
+    class="kd-progress-outer"
+  >
+    <div
+      class="kd-progress-inner"
+      style="background-color:#E5E5E5"
+    >
+      <div
+        class="kd-progress-bg"
+        style="width:0%;height:8px"
+      />
+    </div>
+  </div>
+  <span
+    class="kd-progress-text"
+  >
+    <span
+      class="kd-progress-text-percent"
+    >
+      0
+    </span>
+    <span
+      class="kd-progress-text-unit"
+    >
+      %
+    </span>
+  </span>
+</div>
+`;
+
+exports[`Progress renders correctly 6`] = `
+<div
+  class="kd-progress kd-progress-type-line kd-progress-status-failure kd-progress-show-info"
+  type="line"
+>
+  <div
+    class="kd-progress-outer"
+  >
+    <div
+      class="kd-progress-inner"
+      style="background-color:#E5E5E5"
+    >
+      <div
+        class="kd-progress-bg"
+        style="width:0%;height:8px"
+      />
+    </div>
+  </div>
+  <span
+    class="kd-progress-text"
+  >
+    <i
+      class="kdicon kd-progress-icon kdicon-refresh-solid"
+    />
+  </span>
+</div>
+`;
+
+exports[`Progress renders correctly 7`] = `
+<div
+  class="kd-progress kd-progress-type-line kd-progress-status-success kd-progress-show-info"
+  type="line"
+>
+  <div
+    class="kd-progress-outer"
+  >
+    <div
+      class="kd-progress-inner"
+      style="background-color:#E5E5E5"
+    >
+      <div
+        class="kd-progress-bg"
+        style="width:0%;height:8px"
+      />
+    </div>
+  </div>
+  <span
+    class="kd-progress-text"
+  >
+    <i
+      class="kdicon kd-progress-icon kdicon-right-solid"
+    />
+  </span>
+</div>
+`;

@@ -1,0 +1,74 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Empty renders correctly 1`] = `
+<div
+  class="kd-empty"
+>
+  <img
+    alt="empty"
+    class="kd-empty-image"
+    src="test-file-stub"
+  />
+  <div
+    class="kd-empty-description"
+  >
+    暂无数据
+  </div>
+</div>
+`;
+
+exports[`Empty renders correctly 2`] = `
+<div
+  class="kd-empty"
+>
+  <img
+    alt="empty"
+    class="kd-empty-image"
+    src="test-file-stub"
+  />
+  <div
+    class="kd-empty-description"
+  >
+    我是空组件
+  </div>
+</div>
+`;
+
+exports[`Empty renders correctly 3`] = `
+<div
+  class="kd-empty"
+>
+  <img
+    alt="empty"
+    class="kd-empty-image"
+    src="http://ikd.kingdee.com/ikd2/images/common/empty-content.png"
+  />
+  <div
+    class="kd-empty-description"
+  >
+    暂无数据
+  </div>
+</div>
+`;
+
+exports[`Empty renders correctly 4`] = `
+<div
+  class="kd-empty"
+>
+  <img
+    alt="empty"
+    class="kd-empty-image"
+    src="test-file-stub"
+  />
+  <div
+    class="kd-empty-description"
+  >
+    暂无数据
+  </div>
+  <div
+    class="kd-empty-footer"
+  >
+    空组件自定义附属内容
+  </div>
+</div>
+`;

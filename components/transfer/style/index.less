@@ -1,0 +1,186 @@
+@import '../../style/themes/index';
+@import '../../style/mixins/index';
+@import './mixins.less';
+
+@transfer-prefix-cls: ~'@{kd-prefix}-transfer';
+
+.@{transfer-prefix-cls} {
+  .reset-component;
+
+  position: relative;
+  display: flex;
+  align-items: stretch;
+
+  .@{kd-prefix}-checkbox {
+    background: transparent;
+    margin-right: 6px;
+  }
+
+  &-disabled {
+    .@{transfer-prefix-cls}-list {
+      background: @transfer-disabled-bg;
+    }
+  }
+
+  &-list {
+    display: flex;
+    flex-direction: column;
+    width: 250px;
+    min-height: 300px;
+    border: 1px solid @transfer-border-color;
+
+    &-with-pagination {
+      width: 250px;
+      height: auto;
+    }
+
+    &-header {
+      height: @transfer-header-height;
+      display: flex;
+      align-items: center;
+      flex-direction: row;
+      justify-content: space-between;
+      flex-shrink: 0;
+      font-size: @transfer-font-size-base;
+      background-color: @transfer-header-bg;
+      border-bottom: 1px solid @transfer-border-color;
+      .transfer-horizontal-padding(@transfer-padding-base);
+      &-left {
+        // flex: 1;
+        display: flex;
+        align-items: center;
+        overflow: hidden;
+      }
+      &-title {
+        // flex: 1;
+        .ellipsis;
+      }
+      &-select-all {
+        flex-shrink: 0;
+        display: inline-flex;
+        align-items: center;
+      }
+    }
+
+    &-search {
+      height: @transfer-search-height;
+      position: relative;
+      &-prefix {
+        i {
+          color: @transfer-search-prefix-icon-color;
+        }
+      }
+      &-suffix {
+        i {
+          color: @transfer-search-suffix-icon-color;
+          &:hover {
+            color: @transfer-search-suffix-icon-color-hover;
+          }
+        }
+        cursor: pointer;
+      }
+    }
+
+    &-body {
+      display: flex;
+      flex: auto;
+      flex-direction: column;
+      overflow: hidden;
+      font-size: @transfer-font-size-base;
+
+      &-search-wrapper {
+        position: relative;
+        flex: none;
+        padding: 0 12px;
+        margin: 8px 0;
+      }
+    }
+
+    &-content {
+      height: @transfer-list-content-height;
+      flex: auto;
+      margin: 0;
+      padding: 0;
+      overflow: auto;
+      list-style: none;
+      padding-bottom: 8px;
+      &-item {
+        height: @transfer-list-item-height;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        .transfer-horizontal-padding(@transfer-padding-base);
+        cursor: pointer;
+        transition: background-color @transition-duration;
+        &-disabled {
+          color: @transfer-list-item-disabled;
+          cursor: not-allowed;
+        }
+        &:hover:not(&-disabled) {
+          background: @transfer-list-item-hover-bg;
+        }
+        &-checked {
+          color: @transfer-list-item-checked;
+        }
+        &-text {
+          flex: auto;
+          .ellipsis;
+        }
+        &-remove{
+          i {
+            color: @transfer-search-suffix-icon-color;
+            &:hover {
+              color: @transfer-search-suffix-icon-color-hover;
+            }
+          }
+          cursor: pointer;
+        }
+      }
+    }
+    &-pagination {
+      height: @transfer-pagination-height;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      .transfer-horizontal-padding(@transfer-padding-base);
+      border-top: 1px solid @transfer-border-color;
+    }
+    &-footer {
+      border-top: 1px solid @transfer-border-color;
+    }
+    &-body-not-found {
+      flex-grow: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      padding-bottom: 8px;
+      color: rgba(153, 153, 153, 1);
+      &-tip {
+        font-size: 12px;
+        line-height: 16px;
+        margin-top: 8px;
+      }
+    }
+  }
+
+  &-operation {
+    display: flex;
+    flex: none;
+    flex-direction: column;
+    align-self: center;
+    margin: 0 8px;
+    overflow: hidden;
+    vertical-align: middle;
+
+    .@{kd-prefix}-btn {
+      display: block;
+      height: 28px;
+      padding: 0 10px;
+      box-sizing: border-box;
+      & + .@{kd-prefix}-btn {
+        margin-top: 20px;
+      }
+    }
+  }
+}

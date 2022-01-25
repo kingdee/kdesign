@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Radio Group passes prefixCls down to radio 1`] = `
+<div
+  class="my-radio"
+>
+  <label
+    class="my-radio"
+  >
+    <input
+      class="my-radio-input"
+      type="radio"
+      value="Apple"
+    />
+    <span>
+      Apple
+    </span>
+  </label>
+  <label
+    class="my-radio"
+    style="font-size:12px"
+  >
+    <input
+      class="my-radio-input"
+      type="radio"
+      value="Orange"
+    />
+    <span>
+      Orange
+    </span>
+  </label>
+</div>
+`;

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="182px" height="93px" viewBox="0 0 182 93" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>抽屉</title>
+    <defs>
+        <path d="M0,0 L68,0 C70.209139,-8.49901461e-16 72,1.790861 72,4 L72,81 C72,83.209139 70.209139,85 68,85 L0,85 L0,85 L0,0 Z" id="path-1"></path>
+        <filter x="-12.5%" y="-8.2%" width="119.4%" height="116.5%" filterUnits="objectBoundingBox" id="filter-3">
+            <feOffset dx="-2" dy="0" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="2" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.1 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="页面-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="PC组件概览备份-3" transform="translate(-393.000000, -2641.000000)">
+            <g id="编组" transform="translate(393.000000, 2645.000000)">
+                <rect id="矩形" fill="#D4D9E3" x="0" y="0" width="180" height="85" rx="4"></rect>
+                <g id="矩形" transform="translate(108.000000, 0.000000)">
+                    <mask id="mask-2" fill="white">
+                        <use xlink:href="#path-1"></use>
+                    </mask>
+                    <g id="蒙版">
+                        <use fill="black" fill-opacity="1" filter="url(#filter-3)" xlink:href="#path-1"></use>
+                        <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-1"></use>
+                    </g>
+                </g>
+                <g transform="translate(168.454545, 5.175199)" fill="#C2CBD0" id="0.-全局样式/1.图标/1.系统图标/线性图标/时间">
+                    <g transform="translate(3.272727, 3.305795) scale(1, -1) translate(-3.272727, -3.305795) ">
+                        <path d="M0.810915373,0.169807906 L3.27233908,2.65634251 L5.73453917,0.169807906 C5.90905448,-0.00647069747 6.18236215,-0.0236226525 6.37388583,0.109028491 L6.40733908,0.136342505 L6.43892183,0.174456634 C6.57344994,0.369826805 6.55540192,0.63925302 6.37734521,0.819108808 L3.91533908,3.30534251 L6.37734521,5.79248057 C6.55186052,5.96875918 6.5688409,6.24482832 6.43751665,6.43828715 L6.40633908,6.47434251 L6.37274298,6.50398027 C6.17932707,6.63986764 5.91259589,6.62163726 5.73453917,6.44178147 L3.27233908,3.95434251 L0.810915373,6.44178147 C0.636400061,6.61806008 0.363092399,6.63521203 0.171568712,6.50256089 L0.136339079,6.47234251 L0.106532711,6.43713275 C-0.0279953936,6.24176257 -0.00994737416,5.97233636 0.16810934,5.79248057 L2.62933908,3.30534251 L0.16810934,0.819108808 C-0.00640597196,0.642830204 -0.0233863583,0.36676106 0.107937893,0.173302231 L0.135339079,0.138342505 L0.172711568,0.107609111 C0.366127478,-0.0282782572 0.632858659,-0.0100478818 0.810915373,0.169807906 Z" id="关闭"></path>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

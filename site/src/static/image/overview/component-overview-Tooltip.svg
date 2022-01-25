@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="168px" height="39px" viewBox="0 0 168 39" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>文字提示</title>
+    <defs>
+        <path d="M78,0 L82,5 L154.651685,5 C155.396339,5 156,5.60366101 156,6.34831461 L156,26.6516854 C156,27.396339 155.396339,28 154.651685,28 L1.34831461,28 C0.603661011,28 -3.4757656e-15,27.396339 0,26.6516854 L0,6.34831461 C-3.13238369e-16,5.60366101 0.603661011,5 1.34831461,5 L74,5 L78,0 Z" id="path-1"></path>
+        <filter x="-6.1%" y="-30.4%" width="112.2%" height="167.9%" filterUnits="objectBoundingBox" id="filter-2">
+            <feOffset dx="0" dy="1" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="3" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.08 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="页面-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="PC组件概览备份-3" transform="translate(-137.000000, -2963.000000)">
+            <g id="编组-104" transform="translate(143.000000, 2967.000000)">
+                <g id="形状结合" fill-rule="nonzero">
+                    <use fill="black" fill-opacity="1" filter="url(#filter-2)" xlink:href="#path-1"></use>
+                    <use fill="#FFFFFF" xlink:href="#path-1"></use>
+                </g>
+                <rect id="矩形备份-115" fill="#EDF1F7" x="8" y="12" width="140" height="8" rx="1"></rect>
+            </g>
+        </g>
+    </g>
+</svg>

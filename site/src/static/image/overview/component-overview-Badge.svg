@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="165px" height="44px" viewBox="0 0 165 44" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>切片</title>
+    <g id="前端总览" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="PC组件概览备份-3" transform="translate(-142.000000, -2762.000000)">
+            <g id="4-徽标备份" transform="translate(100.000000, 2714.000000)">
+                <g id="编组-40" transform="translate(42.000000, 48.000000)">
+                    <g transform="translate(121.000000, 0.000000)">
+                        <rect id="矩形" fill="#D4D9E3" x="0" y="8" width="36" height="36" rx="2"></rect>
+                        <g id="编组" transform="translate(28.000000, 0.000000)">
+                            <circle id="徽标背景" fill="#FB2323" fill-rule="nonzero" cx="8" cy="8" r="8"></circle>
+                            <text id="8" font-family="PingFangSC-Regular, PingFang SC" font-size="12" font-weight="normal" line-spacing="16" fill="#FFFFFF">
+                                <tspan x="4" y="13">8</tspan>
+                            </text>
+                        </g>
+                    </g>
+                    <g id="编组-39">
+                        <rect id="矩形备份-14" fill="#D4D9E3" x="0" y="8" width="36" height="36" rx="2"></rect>
+                        <g id="编组-38" transform="translate(60.000000, 0.000000)">
+                            <rect id="矩形备份-15" fill="#D4D9E3" x="0" y="8" width="36" height="36" rx="2"></rect>
+                            <g id="编组" transform="translate(18.000000, 0.000000)">
+                                <rect id="矩形" fill="#FB2323" fill-rule="nonzero" x="0" y="0" width="36" height="16" rx="8"></rect>
+                                <text id="new" font-family="PingFangSC-Regular, PingFang SC" font-size="12" font-weight="normal" line-spacing="16" fill="#FFFFFF">
+                                    <tspan x="4" y="13">NEW</tspan>
+                                </text>
+                            </g>
+                        </g>
+                        <g id="编组" transform="translate(32.000000, 4.000000)" fill="#FB2323" fill-rule="nonzero">
+                            <g id="徽标">
+                                <circle cx="4" cy="4" r="4"></circle>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

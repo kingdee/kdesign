@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="160px" height="40px" viewBox="0 0 160 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>头像</title>
+    <defs>
+        <circle id="path-1" cx="20" cy="20" r="20"></circle>
+        <circle id="path-3" cx="16" cy="16" r="16"></circle>
+        <circle id="path-5" cx="12" cy="12" r="12"></circle>
+        <circle id="path-7" cx="8" cy="8" r="8"></circle>
+    </defs>
+    <g id="页面-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="PC组件概览备份-3" transform="translate(-141.000000, -2262.000000)">
+            <g id="编组-27" transform="translate(141.000000, 2262.000000)">
+                <g id="Group-Copy">
+                    <mask id="mask-2" fill="white">
+                        <use xlink:href="#path-1"></use>
+                    </mask>
+                    <use id="Mask" fill="#BDC6D8" xlink:href="#path-1"></use>
+                    <circle id="Oval-2" fill="#FFFFFF" mask="url(#mask-2)" cx="20" cy="16" r="7.42857143"></circle>
+                    <ellipse id="Combined-Shape" fill="#FFFFFF" mask="url(#mask-2)" cx="20" cy="40.8571429" rx="14.8571429" ry="15.7142857"></ellipse>
+                </g>
+                <g id="Group-Copy" transform="translate(56.000000, 4.000000)">
+                    <mask id="mask-4" fill="white">
+                        <use xlink:href="#path-3"></use>
+                    </mask>
+                    <use id="Mask" fill="#BDC6D8" xlink:href="#path-3"></use>
+                    <circle id="Oval-2" fill="#FFFFFF" mask="url(#mask-4)" cx="16" cy="12.8" r="5.94285714"></circle>
+                    <ellipse id="Combined-Shape" fill="#FFFFFF" mask="url(#mask-4)" cx="16" cy="32.6857143" rx="11.8857143" ry="12.5714286"></ellipse>
+                </g>
+                <g id="Group-Copy" transform="translate(104.000000, 8.000000)">
+                    <mask id="mask-6" fill="white">
+                        <use xlink:href="#path-5"></use>
+                    </mask>
+                    <use id="Mask" fill="#BDC6D8" xlink:href="#path-5"></use>
+                    <circle id="Oval-2" fill="#FFFFFF" mask="url(#mask-6)" cx="12" cy="9.6" r="4.45714286"></circle>
+                    <ellipse id="Combined-Shape" fill="#FFFFFF" mask="url(#mask-6)" cx="12" cy="24.5142857" rx="8.91428571" ry="9.42857143"></ellipse>
+                </g>
+                <g id="Group-Copy" transform="translate(144.000000, 12.000000)">
+                    <mask id="mask-8" fill="white">
+                        <use xlink:href="#path-7"></use>
+                    </mask>
+                    <use id="Mask" fill="#BDC6D8" xlink:href="#path-7"></use>
+                    <circle id="Oval-2" fill="#FFFFFF" mask="url(#mask-8)" cx="8" cy="6.4" r="2.97142857"></circle>
+                    <ellipse id="Combined-Shape" fill="#FFFFFF" mask="url(#mask-8)" cx="8" cy="16.3428571" rx="5.94285714" ry="6.28571429"></ellipse>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,84 @@
+@import '../../style/themes/index';
+@import '../../style/mixins/index';
+
+@form-prefix-cls: ~'@{kd-prefix}-form';
+@field-prefix-cls: ~'@{form-prefix-cls}-field';
+@field-label-cls: ~'@{field-prefix-cls}-label';
+@field-wrapper-cls: ~'@{field-prefix-cls}-wrapper';
+
+.@{form-prefix-cls} {
+  .reset-component;
+
+  &-horizontal, &-vertical {
+    .@{field-prefix-cls} {
+      display: flex;
+    }
+  }
+
+  &-inline {
+    .@{field-prefix-cls} {
+      display: inline-flex;
+    }
+  }
+}
+
+.@{field-prefix-cls} {
+  align-items: center;
+  margin: @form-field-margin;
+  &-vertical {
+    align-items: flex-start;
+    flex-direction: column;
+
+    .@{field-label-cls} {
+      margin-bottom: 5px;
+    }
+  }
+
+  &-hidden {
+    display: none !important;
+  }
+}
+
+.@{field-label-cls} {
+  font-size: @form-field-label-font-size;
+  line-height: @form-field-label-line-height;
+  color: @secondary-text-color;
+  text-align: left;
+  margin-right: 30px;
+  &-right {
+    text-align: right;
+  }
+
+  &-required-mark {
+    position: relative;
+  }
+
+  &-required-mark::after {
+    content: '*';
+    position: absolute;
+    top: -1px;
+    right: -9px;
+    width: 5px;
+    height: 5px;
+    line-height: 1;
+    color: @error-color;
+  }
+}
+
+.@{field-wrapper-cls} {
+  position: relative;
+  &-message {
+    position: absolute;
+    left: 0;
+    right: 0;
+    padding: @form-field-message-padding;
+    font-size: @form-field-message-font-size;
+    line-height: @form-field-message-line-height;
+    color: @error-color;
+    background-color: @error-bg-color;
+    word-break: break-word;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+}

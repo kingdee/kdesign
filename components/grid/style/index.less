@@ -1,0 +1,22 @@
+@import '../../style/themes/index';
+@import '../../style/mixins/index';
+
+@row-prefix-cls: ~'@{kd-prefix}-row';
+@col-prefix-cls: ~'@{kd-prefix}-col';
+
+.@{row-prefix-cls} {
+  display: flex;
+  flex-flow: row wrap;
+  row-gap: var(--rgap);
+  margin: 0 calc(-1 * var(--cgap) / 2);
+
+  &.nowrap {
+    flex-wrap: nowrap;
+  }
+}
+
+.@{col-prefix-cls} {
+  position: relative;
+  box-sizing: border-box;
+  padding: 0 calc(var(--cgap) / 2);
+}

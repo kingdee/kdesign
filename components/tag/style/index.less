@@ -1,0 +1,144 @@
+
+@import '../../style/themes/index';
+@import './mixin.less';
+@tag-prefix-cls: ~'@{kd-prefix}-tag';
+
+@types: process, success, warning, error, end, expired;
+@colors: @tag-process-color, @tag-success-color, @tag-warning-color, @tag-error-color, @tag-end-color, @tag-expired-color;
+
+.@{tag-prefix-cls} {
+  &-size-small {
+    .tag-size(@tag-small-font-size, @tag-height, @tag-small-padding-horizontal);
+  }
+
+  &-size-middle {
+    .tag-size(@tag-middle-font-size, @tag-middle-height, @tag-middle-padding-horizontal);
+  }
+
+  &-size-large {
+    .tag-size(@tag-large-font-size, @tag-large-height, @tag-large-padding-horizontal);
+  }
+  
+  transition: all @transition-duration;
+  // 状态标签
+  &-shape-status {
+    .tag-status(@tag-process-color)
+  }
+  each(@types, {
+      &-shape-status.@{tag-prefix-cls}-@{value} {
+        .tag-status(extract(@colors, @index))
+      }
+  })
+
+  // 属性标签
+  &-shape-attribute {
+    .tag-attribute(@tag-process-color)
+  }
+  each(@types, {
+    &-shape-attribute.@{tag-prefix-cls}-@{value} {
+      .tag-attribute(extract(@colors, @index))
+    }
+  })
+  // 文本标签
+  &-shape-text {
+    .tag-text-color(@tag-process-color);
+    .tag-text-padding(@tag-small-padding-horizontal)
+  }
+  &-shape-text.@{tag-prefix-cls}-size-small {
+    .tag-text-padding(@tag-small-padding-horizontal)
+  }
+  &-shape-text.@{tag-prefix-cls}-size-middle {
+    .tag-text-padding(@tag-middle-padding-horizontal)
+  }
+  &-shape-text.@{tag-prefix-cls}-size-large {
+    .tag-text-padding(@tag-large-padding-horizontal)
+  }
+  each(@types, {
+    &-shape-text.@{tag-prefix-cls}-@{value} {
+      .tag-text-color(extract(@colors, @index))
+    }
+    &-shape-text.@{tag-prefix-cls}-@{value}.@{tag-prefix-cls}-size-middle {
+      .tag-text-color(extract(@colors, @index))
+    }
+    &-shape-text.@{tag-prefix-cls}-@{value}.@{tag-prefix-cls}-size-large {
+      .tag-text-color(extract(@colors, @index))
+    }
+  })
+
+  // 可关闭的标签
+  &-shape-edit {
+    border: 1px solid @placeholder-text-color;
+    border-radius: 2px;
+    line-height: @tag-height;
+    padding-left: 6px;
+    padding-right: 6px;
+    color: @primary-text-color;
+    &:not(.@{tag-prefix-cls}-closable-disabled):hover {
+      border-color: @theme-color;
+      .@{tag-prefix-cls}-closeWrapper {
+        background-color: @theme-color;
+        color: @white;
+      }
+    }
+
+    &.@{tag-prefix-cls}-closable {
+      padding-right: 0;
+    }
+  }
+
+  // 可点击的标签
+  &-clickable {
+    cursor: pointer;
+  }
+
+  // 自定义标签颜色
+  &-has-color {
+    color: @white;
+  }
+
+  // 图标设置外边距
+  &-text {
+    margin-left: 6px;
+  }
+
+  &-closable-disabled {
+    background-color: @disabled-contain-bg;
+    border-color: @strong-border-color;
+    color: @strong-border-color;
+    cursor: not-allowed;
+  }
+  &-closable.@{tag-prefix-cls}-size-middle {
+    line-height: @tag-middle-height;
+
+    .@{tag-prefix-cls}-closeWrapper {
+      width: @tag-middle-height - 2;
+      height: @tag-middle-height - 2;
+    }
+  }
+  &-closable.@{tag-prefix-cls}-size-large {
+    line-height: @tag-large-height;
+    padding-left: @tag-large-padding-horizontal;
+
+    .@{tag-prefix-cls}-closeWrapper {
+      width: @tag-large-height - 2;
+      height: @tag-large-height - 2;
+      
+      .@{tag-prefix-cls}-close-icon {
+        font-size: 14px;
+      }
+    }
+  }
+  &-closeWrapper {
+    width: @tag-height - 2;
+    height: @tag-height - 2;
+    margin-left: 4px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    transition: color @transition-duration, background-color @transition-duration;
+  }
+  &-close-icon {
+    cursor: pointer;
+    font-size: 12px;
+  }
+}

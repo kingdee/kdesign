@@ -1,0 +1,79 @@
+@import '../../style/themes/index';
+@import '../../style/mixins/index';
+
+@rate-prefix-cls: ~'@{kd-prefix}-rate';
+@rate-icon-prefix-cls: ~'@{rate-prefix-cls}-icon';
+.@{rate-prefix-cls} {
+  .reset-component;
+  display: inline-flex;
+  justify-content: flex-start;
+  &-size-large {
+    font-size: @rate-large-font-size;
+  }
+  &-size-middle {
+    font-size: @rate-middle-font-size;
+  }
+  &-size-small {
+    font-size: @rate-small-font-size;
+  }
+}
+.@{rate-prefix-cls}-item {
+  display: inline-flex;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  line-height: 100%;
+  margin-right: @rate-icon-margin;
+  .@{rate-icon-prefix-cls} {
+    &-view {
+      position: relative;
+      display: inline-flex;
+      transition: transform @transition-duration;
+    }
+    &-view:hover {
+      transform: scale(1.2);
+    }
+    &-wrapper {
+      display: inline-flex;
+    }
+    &-first {
+      display: inline-flex;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 50%;
+      overflow: hidden;
+      color: @rate-not-selected-color;
+      opacity: 1;
+      cursor: pointer;
+      transition: color @transition-duration;
+    }
+    &-first:hover {
+      color: @rate-selected-color;
+    }
+    &-second {
+      display: inline-flex;
+      color: @rate-not-selected-color;
+      opacity: 1;
+      cursor: pointer;
+      transition: color @transition-duration;
+      &-content {
+        display: inline-flex;
+      }
+    }
+    &-second:hover {
+      color: @rate-selected-color;
+    }
+    &-selected {
+      color: @rate-selected-color;
+      opacity: 1;
+    }
+  }
+}
+.@{rate-prefix-cls}-item:last-child {
+  margin-right: 0;
+}
+
+.@{rate-prefix-cls}-disabled {
+  pointer-events: none;
+}

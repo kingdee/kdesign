@@ -1,0 +1,44 @@
+
+// code component mixin here
+.tag-size(@size, @height, @padding) {
+  font-size: @size;
+  height: @height;
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  vertical-align: middle;
+  padding: 0 @padding;
+  border-radius:  @height / 2;
+}
+.tag-status(@color) {
+  border: 1px solid @color;
+  color: @color;
+  &:hover{
+    background-color: @color;
+    color: #fff;
+  }
+}
+.tag-attribute(@color) {
+  color: #fff;
+  background-color: @color;
+}
+.tag-text-color(@color) {
+  color: @color;
+  display: inline-flex;
+  align-items: center;
+  padding: 0;
+  border-radius: 0;
+  &::before{
+    content: '';
+    display: block;
+    background-color: @color;
+    border-radius: 50%;
+  }
+}
+.tag-text-padding(@padding) {
+  &::before{
+    width: @padding;
+    height: @padding;
+    margin-right: @padding;
+  }
+}

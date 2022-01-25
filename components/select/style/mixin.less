@@ -1,0 +1,85 @@
+.item() {
+  position: relative;
+  display: block;
+  font-weight: normal;
+  font-size: @select-list-font-size; // update
+  min-height: @select-dropdown-height; // update
+  padding: 5px 12px; // update
+  color: @select-font-color; // update
+  line-height: @select-dropdown-line-height; // update
+}
+
+.focusColor() {
+  // border-bottom: 1px solid #5582F3;
+  border-color: #5582F3 !important;
+}
+
+.select-input-size(@height, @maxHeight, @lineHeight, @fontSize) {
+  min-height: @height;
+  max-height: @maxHeight * 3 - 10px;
+  line-height: @lineHeight;
+  font-size: @fontSize;
+}
+
+.over() {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.item-size(@height) {
+  height: @height - 10px;
+  line-height: @height - 10px;
+}
+
+@keyframes SlideDownIn {
+  0% {
+    transform: scaleY(0.8);
+    transform-origin: 0% 0%;
+    opacity: 0;
+  }
+  100% {
+    transform: scaleY(1);
+    transform-origin: 0% 0%;
+    opacity: 1;
+  }
+}
+@keyframes SlideDownOut {
+  0% {
+    transform: scaleY(1);
+    transform-origin: 0% 0%;
+    opacity: 1;
+  }
+  100% {
+    transform: scaleY(0.8);
+    transform-origin: 0% 0%;
+    opacity: 0;
+  }
+}
+
+
+@keyframes SlideUpIn {
+  0% {
+    transform: scaleY(0.8);
+    transform-origin: 100% 100%;
+    opacity: 0;
+  }
+  100% {
+    transform: scaleY(1);
+    transform-origin: 100% 100%;
+    opacity: 1;
+  }
+}
+
+@keyframes SlideUpOut {
+  0% {
+    transform: scaleY(1);
+    transform-origin: 100% 100%;
+    opacity: 1;
+  }
+  100% {
+    transform: scaleY(0.8);
+    transform-origin: 100% 100%;
+    opacity: 0;
+  }
+}

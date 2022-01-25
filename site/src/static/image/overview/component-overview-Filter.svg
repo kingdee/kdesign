@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="180px" height="94px" viewBox="0 0 180 94" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>切片</title>
+    <g id="前端总览" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="PC组件概览备份-3" transform="translate(-393.000000, -1832.000000)">
+            <g id="编组-109备份" transform="translate(362.000000, 1806.000000)">
+                <g id="编组-109" transform="translate(31.000000, 26.400000)">
+                    <g transform="translate(0.000000, 2.600000)">
+                        <g id="编组-7">
+                            <g id="编组-5">
+                                <path d="M178.8,0.25 C179.062335,0.25 179.299835,0.356332372 179.471751,0.528248558 C179.643668,0.700164744 179.75,0.937664744 179.75,1.2 L179.75,1.2 L179.75,12 L179.75,88.8 C179.75,89.0623353 179.643668,89.2998353 179.471751,89.4717514 C179.299835,89.6436676 179.062335,89.75 178.8,89.75 L178.8,89.75 L1.2,89.75 C0.937664744,89.75 0.700164744,89.6436676 0.528248558,89.4717514 C0.356332372,89.2998353 0.25,89.0623353 0.25,88.8 L0.25,88.8 L0.25,13.2 C0.25,12.9376647 0.356332372,12.7001647 0.528248558,12.5282486 C0.700164744,12.3563324 0.937664744,12.25 1.2,12.25 L1.2,12.25 L157.392857,12.25 L157.392857,1.2 C157.392857,0.937664744 157.49919,0.700164744 157.671106,0.528248558 C157.843022,0.356332372 158.080522,0.25 158.342857,0.25 L158.342857,0.25 Z" id="形状结合" stroke="#D4D9E3" stroke-width="0.5" fill="#FFFFFF"></path>
+                                <g id="编组-2" transform="translate(6.000000, 32.757477)">
+                                    <g id="组件/展示/表格/内容背景" fill="#EDF1F7">
+                                        <polygon id="Rectangle-16-Copy-3备份" points="0 19 167 19 167 19.5 0 19.5"></polygon>
+                                        <polygon id="Rectangle-16-Copy-3备份-2" points="0 0 167 0 167 0.5 0 0.5"></polygon>
+                                    </g>
+                                    <g id="内容区操作按钮备份-3" transform="translate(26.000000, 5.242523)" fill="#EDF1F7">
+                                        <rect id="矩形" x="0" y="0" width="12" height="6" rx="1.2"></rect>
+                                    </g>
+                                    <text id="组织：" font-family="MicrosoftYaHei, Microsoft YaHei" font-size="4.8" font-weight="normal" fill="#999999">
+                                        <tspan x="0" y="10.838051">组织：</tspan>
+                                    </text>
+                                    <g id="内容区操作按钮备份-10" transform="translate(54.000000, 5.242523)" fill="#EDF1F7">
+                                        <rect id="矩形" x="0" y="0" width="30" height="6" rx="1.2"></rect>
+                                    </g>
+                                    <rect id="矩形" stroke="#276FF5" stroke-width="0.5" fill="#EDF1F7" x="100.25" y="5.49252251" width="29.5" height="5.5" rx="1.2"></rect>
+                                </g>
+                                <g id="编组-2" transform="translate(6.000000, 58.000000)">
+                                    <g id="组件/展示/表格/内容背景" transform="translate(0.000000, 12.257477)" fill="#EDF1F7">
+                                        <polygon id="Rectangle-16-Copy-3备份" points="0 0 167 0 167 0.5 0 0.5"></polygon>
+                                    </g>
+                                    <g id="内容区操作按钮备份-3" transform="translate(26.000000, 0.000000)" fill="#EDF1F7">
+                                        <rect id="矩形" x="0" y="0" width="12" height="6" rx="1.2"></rect>
+                                    </g>
+                                    <text id="日期：" font-family="MicrosoftYaHei, Microsoft YaHei" font-size="4.8" font-weight="normal" fill="#999999">
+                                        <tspan x="0" y="5">日期：</tspan>
+                                    </text>
+                                    <rect id="矩形" stroke="#276FF5" stroke-width="0.5" fill="#EDF1F7" x="54.25" y="0.25" width="11.5" height="5.5" rx="1.2"></rect>
+                                    <g id="内容区操作按钮备份-3" transform="translate(82.000000, 0.000000)" fill="#EDF1F7">
+                                        <rect id="矩形" x="0" y="0" width="12" height="6" rx="1.2"></rect>
+                                    </g>
+                                </g>
+                                <g id="编组-2" transform="translate(6.000000, 77.000000)">
+                                    <g id="内容区操作按钮备份-3" transform="translate(26.000000, 0.000000)" fill="#EDF1F7">
+                                        <rect id="矩形" x="0" y="0" width="12" height="6" rx="1.2"></rect>
+                                    </g>
+                                    <text id="状态：" font-family="MicrosoftYaHei, Microsoft YaHei" font-size="4.8" font-weight="normal" fill="#999999">
+                                        <tspan x="0" y="5.2">状态：</tspan>
+                                    </text>
+                                    <g id="内容区操作按钮备份-10" transform="translate(54.000000, 0.000000)" fill="#EDF1F7">
+                                        <rect id="矩形" x="0" y="0" width="19.2" height="6" rx="1.2"></rect>
+                                    </g>
+                                    <rect id="矩形" stroke="#276FF5" stroke-width="0.5" fill="#EDF1F7" x="89.45" y="0.25" width="18.7" height="5.5" rx="1.2"></rect>
+                                </g>
+                            </g>
+                            <g id="编组-6" transform="translate(5.974555, 19.600000)" fill="#D4D9E3">
+                                <g id="内容区操作按钮备份">
+                                    <rect id="矩形" x="0" y="0" width="19.2" height="7.2" rx="1.2"></rect>
+                                </g>
+                                <g id="内容区操作按钮备份" transform="translate(26.425445, 0.000000)">
+                                    <rect id="矩形" x="0" y="0" width="19.2" height="7.2" rx="1.2"></rect>
+                                </g>
+                            </g>
+                        </g>
+                        <text id="筛选条件" font-family="MicrosoftYaHei, Microsoft YaHei" font-size="4.8" font-weight="normal" fill="#999999">
+                            <tspan x="50" y="7">筛选条件</tspan>
+                        </text>
+                        <g id="内容区操作按钮备份-8" transform="translate(72.000000, 2.000000)" fill="#D4D9E3">
+                            <rect id="矩形" x="0" y="0" width="26" height="7" rx="1.2"></rect>
+                        </g>
+                        <g id="内容区操作按钮备份-8" transform="translate(103.000000, 2.000000)" fill="#D4D9E3">
+                            <rect id="矩形" x="0" y="0" width="26" height="7" rx="1.2"></rect>
+                        </g>
+                        <g id="内容区操作按钮备份-7" transform="translate(0.000000, 1.000000)" fill="#BDC6D8">
+                            <rect id="矩形" x="0" y="0" width="26" height="8" rx="1.2"></rect>
+                        </g>
+                        <line x1="29.5" y1="21" x2="29.5" y2="26" id="路径" stroke="#D4D9E3" stroke-width="0.5" stroke-linecap="round"></line>
+                    </g>
+                    <g id="0.全局样式/1.图标/5.基础线性图标/1.指向类/上拉" transform="translate(165.000000, 5.600000)" fill="#276FF5">
+                        <path d="M5.4267767,1.9267767 C5.52440777,1.82914562 5.52440777,1.67085438 5.4267767,1.5732233 C5.32914562,1.47559223 5.17085438,1.47559223 5.0732233,1.5732233 L2.5732233,3.8232233 C2.47559223,3.92085438 2.47559223,4.07914562 2.5732233,4.1767767 L5.0732233,6.6767767 C5.17085438,6.77440777 5.32914562,6.77440777 5.4267767,6.6767767 C5.52440777,6.57914562 5.52440777,6.42085438 5.4267767,6.3232233 L3.10355339,4 L5.4267767,1.9267767 Z" id="路径" transform="translate(4.000000, 4.125000) scale(1, -1) rotate(-90.000000) translate(-4.000000, -4.125000) "></path>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

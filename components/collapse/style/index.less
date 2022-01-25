@@ -1,0 +1,85 @@
+@import '../../style/themes/index';
+@import './mixin.less';
+
+@collapse-prefix-cls: ~'@{kd-prefix}-collapse';
+.@{collapse-prefix-cls} {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  &-panel:last-child {
+    border-top: none;
+  }
+  &-panel {
+    display: inline-flex;
+    flex-direction: column;
+    &-border {
+      border: @collapse-border-width solid @collapse-border-color;
+    }
+
+    &-top {
+      display: inline-flex;
+      padding: @collapse-header-padding;
+    }
+    &-top-border {
+      border-bottom: @collapse-border-width solid @collapse-border-color;
+    }
+    &-left {
+      display: inline-flex;
+      align-items: center;
+      flex-grow: 1;
+    }
+    &-right {
+      display: inline-flex;
+      align-items: center;
+    }
+    &-extra,
+    &-header {
+      display: inline-flex;
+      align-items: center;
+      color: @collapse-header-font-color;
+      font-size: @collapse-header-font-size;
+    }
+    &-icon {
+      align-items: center;
+      display: inline-flex;
+      margin-right: @collapse-icon-margin-right;
+    }
+    &-icon:hover,
+    &-left:hover {
+      cursor: pointer;
+    }
+    &-animation-expand {
+      transform: rotate(0deg);
+      transition: transform @transition-duration;
+    }
+    &-animation-collapse {
+      transform: rotate(90deg);
+      transition: transform @transition-duration;
+    }
+    &-children {
+      overflow: hidden;
+      opacity: 0;
+      padding: @collapse-content-padding;
+      color: @collapse-content-font-color;
+      font-size: @collapse-content-font-size;
+      transition: height @transition-duration, opacity @transition-duration;
+    }
+    &-children-hide {
+      overflow: hidden;
+      opacity: 0;
+      height: 0;
+      padding: @collapse-content-padding;
+      color: @collapse-content-font-color;
+      font-size: @collapse-content-font-size;
+      transition: height @transition-duration, opacity calc(@transition-duration / 2);
+    }
+    &-children-bordered {
+      padding: @collapse-content-bordered-padding;
+      overflow: hidden;
+    }
+    &-disabled {
+      cursor: not-allowed !important;
+      color: @disabled-color;
+    }
+  }
+}

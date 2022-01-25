@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="240px" height="139px" viewBox="0 0 240 139" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>component-overview-basedata</title>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="201" height="122" rx="0.981595092"></rect>
+        <filter x="-4.7%" y="-7.0%" width="109.5%" height="115.6%" filterUnits="objectBoundingBox" id="filter-2">
+            <feOffset dx="0" dy="1" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="3" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.08 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="前端总览" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="PC组件概览备份-3" transform="translate(-101.000000, -1603.000000)">
+            <g id="编组-62备份-2" transform="translate(100.000000, 1603.000000)">
+                <g id="编组-89" transform="translate(41.000000, 23.000000)">
+                    <g id="矩形">
+                        <use fill="black" fill-opacity="1" filter="url(#filter-2)" xlink:href="#path-1"></use>
+                        <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-1"></use>
+                    </g>
+                    <g id="编组-10" transform="translate(0.000000, 24.000000)">
+                        <polygon id="Rectangle-12-Copy" fill="#FFFFFF" points="0 0 50 0 50 99 0 99"></polygon>
+                        <g id="树节点备份" transform="translate(4.000000, 5.702546)">
+                            <g id="图标/通用操作/树展开" transform="translate(0.000000, 2.000000)" fill="#666666">
+                                <path d="M3.3630546,3.73742134 C3.16273663,4.00426457 2.83784938,4.00412119 2.63763903,3.73742134 L1.60223576,2.35816242 C1.40191779,2.09131918 1.50422318,1.875 1.83692581,1.875 L4.16376783,1.875 C4.49370154,1.875 4.59866822,2.09146256 4.39845787,2.35816242 L3.3630546,3.73742134 Z" id="Path-Copy-2" transform="translate(3.000000, 2.906250) scale(-1, 1) rotate(-270.000000) translate(-3.000000, -2.906250) "></path>
+                            </g>
+                            <text id="A级菜单" font-family="MicrosoftYaHei, Microsoft YaHei" font-size="6.72993827" font-weight="normal" line-spacing="10.0949074"></text>
+                        </g>
+                        <g id="图标/通用操作/树展开" transform="translate(10.000000, 23.000000)" fill="#666666">
+                            <path d="M3.3630546,3.73742134 C3.16273663,4.00426457 2.83784938,4.00412119 2.63763903,3.73742134 L1.60223576,2.35816242 C1.40191779,2.09131918 1.50422318,1.875 1.83692581,1.875 L4.16376783,1.875 C4.49370154,1.875 4.59866822,2.09146256 4.39845787,2.35816242 L3.3630546,3.73742134 Z" id="Path-Copy-2" transform="translate(3.000000, 2.906250) scale(-1, 1) rotate(-270.000000) translate(-3.000000, -2.906250) "></path>
+                        </g>
+                        <g id="图标/通用操作/树展开" transform="translate(10.000000, 87.000000)" fill="#666666">
+                            <path d="M3.3630546,3.73742134 C3.16273663,4.00426457 2.83784938,4.00412119 2.63763903,3.73742134 L1.60223576,2.35816242 C1.40191779,2.09131918 1.50422318,1.875 1.83692581,1.875 L4.16376783,1.875 C4.49370154,1.875 4.59866822,2.09146256 4.39845787,2.35816242 L3.3630546,3.73742134 Z" id="Path-Copy-2" transform="translate(3.000000, 2.906250) scale(-1, 1) rotate(-270.000000) translate(-3.000000, -2.906250) "></path>
+                        </g>
+                        <rect id="矩形备份-17" fill="#D4D9E3" x="24" y="57" width="18" height="6" rx="1"></rect>
+                        <rect id="矩形" x="0" y="67" width="96" height="16"></rect>
+                        <rect id="矩形备份-17" fill="#D4D9E3" x="24" y="73" width="18" height="6" rx="1"></rect>
+                        <rect id="矩形备份-17" fill="#D4D9E3" x="19" y="87" width="18" height="6" rx="1"></rect>
+                        <rect id="矩形备份-17" fill="#D4D9E3" x="17" y="23" width="18" height="6" rx="1"></rect>
+                        <rect id="矩形备份-17" fill="#D4D9E3" x="10" y="8" width="21" height="6" rx="1"></rect>
+                        <g id="树二级节点2" transform="translate(0.000000, 35.000000)">
+                            <rect id="矩形备份-2" fill="#276FF5" x="0" y="0" width="50" height="16"></rect>
+                            <g id="图标/通用操作/树展开备份-2" transform="translate(10.000000, 4.000000)" fill="#FFFFFF">
+                                <path d="M3.3630546,3.73742134 C3.16273663,4.00426457 2.83784938,4.00412119 2.63763903,3.73742134 L1.60223576,2.35816242 C1.40191779,2.09131918 1.50422318,1.875 1.83692581,1.875 L4.16376783,1.875 C4.49370154,1.875 4.59866822,2.09146256 4.39845787,2.35816242 L3.3630546,3.73742134 Z" id="Path-Copy-2" transform="translate(3.000000, 2.906250) scale(-1, 1) rotate(-360.000000) translate(-3.000000, -2.906250) "></path>
+                            </g>
+                        </g>
+                        <rect id="矩形备份-17" fill="#FFFFFF" x="17" y="39" width="18" height="6" rx="1"></rect>
+                    </g>
+                    <rect id="矩形" fill="#EDF1F7" transform="translate(100.500000, 23.750000) scale(1, -1) translate(-100.500000, -23.750000) " x="0" y="23.5" width="201" height="1"></rect>
+                    <g id="编组" transform="translate(58.000000, 80.000000)">
+                        <g id="0.-全局样式/1.图标/1.系统图标/线性图标/时间备份-6" transform="translate(3.000000, 3.000721) scale(1, -1) translate(-3.000000, -3.000721) ">
+                            <ellipse id="椭圆形" fill="#FFFFFF" cx="3" cy="3.00072135" rx="2.625" ry="2.62563118"></ellipse>
+                            <g id="0.全局样式/1.图标/4.基础面性图标/单选未选备份" fill="#276FF5">
+                                <path d="M3,0.375090169 C4.44974747,0.375090169 5.625,1.55062529 5.625,3.00072135 C5.625,4.45081741 4.44974747,5.62635254 3,5.62635254 C1.55025253,5.62635254 0.375,4.45081741 0.375,3.00072135 C0.375,1.55062529 1.55025253,0.375090169 3,0.375090169 Z M3,0.750180338 C1.75735931,0.750180338 0.75,1.75778187 0.75,3.00072135 C0.75,4.24366083 1.75735931,5.25126237 3,5.25126237 C4.24264069,5.25126237 5.25,4.24366083 5.25,3.00072135 C5.25,1.75778187 4.24264069,0.750180338 3,0.750180338 Z M3,1.31281559 C3.93198052,1.31281559 4.6875,2.06851674 4.6875,3.00072135 C4.6875,3.93292596 3.93198052,4.68862711 3,4.68862711 C2.06801948,4.68862711 1.3125,3.93292596 1.3125,3.00072135 C1.3125,2.06851674 2.06801948,1.31281559 3,1.31281559 Z" id="形状结合"></path>
+                            </g>
+                        </g>
+                    </g>
+                    <g id="编组" transform="translate(58.000000, 48.001443)">
+                        <g id="0.-全局样式/1.图标/1.系统图标/线性图标/时间备份-4" transform="translate(3.000000, 3.000000) scale(1, -1) translate(-3.000000, -3.000000) ">
+                            <circle id="椭圆形" fill="#FFFFFF" cx="3" cy="3" r="2.625"></circle>
+                            <g id="0.全局样式/1.图标/4.基础面性图标/单选未选" fill="#D9D9D9">
+                                <path d="M3,0.375 C4.44974747,0.375 5.625,1.55025253 5.625,3 C5.625,4.44974747 4.44974747,5.625 3,5.625 C1.55025253,5.625 0.375,4.44974747 0.375,3 C0.375,1.55025253 1.55025253,0.375 3,0.375 Z M3,0.75 C1.75735931,0.75 0.75,1.75735931 0.75,3 C0.75,4.24264069 1.75735931,5.25 3,5.25 C4.24264069,5.25 5.25,4.24264069 5.25,3 C5.25,1.75735931 4.24264069,0.75 3,0.75 Z" id="形状结合"></path>
+                            </g>
+                        </g>
+                    </g>
+                    <g id="编组" transform="translate(58.000000, 98.001443)">
+                        <g id="0.-全局样式/1.图标/1.系统图标/线性图标/时间备份-4" transform="translate(3.000000, 3.000000) scale(1, -1) translate(-3.000000, -3.000000) ">
+                            <circle id="椭圆形" fill="#FFFFFF" cx="3" cy="3" r="2.625"></circle>
+                            <g id="0.全局样式/1.图标/4.基础面性图标/单选未选" fill="#D9D9D9">
+                                <path d="M3,0.375 C4.44974747,0.375 5.625,1.55025253 5.625,3 C5.625,4.44974747 4.44974747,5.625 3,5.625 C1.55025253,5.625 0.375,4.44974747 0.375,3 C0.375,1.55025253 1.55025253,0.375 3,0.375 Z M3,0.75 C1.75735931,0.75 0.75,1.75735931 0.75,3 C0.75,4.24264069 1.75735931,5.25 3,5.25 C4.24264069,5.25 5.25,4.24264069 5.25,3 C5.25,1.75735931 4.24264069,0.75 3,0.75 Z" id="形状结合"></path>
+                            </g>
+                        </g>
+                    </g>
+                    <g id="编组" transform="translate(58.000000, 66.001443)">
+                        <g id="0.-全局样式/1.图标/1.系统图标/线性图标/时间备份-4" transform="translate(3.000000, 3.000000) scale(1, -1) translate(-3.000000, -3.000000) ">
+                            <circle id="椭圆形" fill="#FFFFFF" cx="3" cy="3" r="2.625"></circle>
+                            <g id="0.全局样式/1.图标/4.基础面性图标/单选未选" fill="#D9D9D9">
+                                <path d="M3,0.375 C4.44974747,0.375 5.625,1.55025253 5.625,3 C5.625,4.44974747 4.44974747,5.625 3,5.625 C1.55025253,5.625 0.375,4.44974747 0.375,3 C0.375,1.55025253 1.55025253,0.375 3,0.375 Z M3,0.75 C1.75735931,0.75 0.75,1.75735931 0.75,3 C0.75,4.24264069 1.75735931,5.25 3,5.25 C4.24264069,5.25 5.25,4.24264069 5.25,3 C5.25,1.75735931 4.24264069,0.75 3,0.75 Z" id="形状结合"></path>
+                            </g>
+                        </g>
+                    </g>
+                    <rect id="矩形备份-59" fill="#BDC6D8" x="9" y="9" width="24" height="8" rx="1"></rect>
+                    <rect id="矩形" fill="#F8FBFF" x="50" y="24" width="151" height="18"></rect>
+                    <g id="编组-17" transform="translate(67.000000, 29.000000)" fill="#D4D9E3">
+                        <rect id="矩形备份-60" x="0" y="0" width="24" height="8" rx="1"></rect>
+                        <rect id="矩形备份-61" x="36" y="0" width="24" height="8" rx="1"></rect>
+                        <rect id="矩形备份-62" x="72" y="0" width="24" height="8" rx="1"></rect>
+                        <rect id="矩形备份-63" x="108" y="0" width="24" height="8" rx="1"></rect>
+                    </g>
+                    <g id="编组-17备份-3" transform="translate(67.000000, 79.000000)" fill="#EDF1F7">
+                        <rect id="矩形备份-60" x="0" y="0" width="24" height="8" rx="1"></rect>
+                        <rect id="矩形备份-61" x="36" y="0" width="24" height="8" rx="1"></rect>
+                        <rect id="矩形备份-62" x="72" y="0" width="24" height="8" rx="1"></rect>
+                        <rect id="矩形备份-63" x="108" y="0" width="24" height="8" rx="1"></rect>
+                    </g>
+                    <g id="编组-17备份" transform="translate(67.000000, 47.000000)" fill="#EDF1F7">
+                        <rect id="矩形备份-60" x="0" y="0" width="24" height="8" rx="1"></rect>
+                        <rect id="矩形备份-61" x="36" y="0" width="24" height="8" rx="1"></rect>
+                        <rect id="矩形备份-62" x="72" y="0" width="24" height="8" rx="1"></rect>
+                        <rect id="矩形备份-63" x="108" y="0" width="24" height="8" rx="1"></rect>
+                    </g>
+                    <g id="编组-17备份-4" transform="translate(67.000000, 97.000000)" fill="#EDF1F7">
+                        <rect id="矩形备份-60" x="0" y="0" width="24" height="8" rx="1"></rect>
+                        <rect id="矩形备份-61" x="36" y="0" width="24" height="8" rx="1"></rect>
+                        <rect id="矩形备份-62" x="72" y="0" width="24" height="8" rx="1"></rect>
+                        <rect id="矩形备份-63" x="108" y="0" width="24" height="8" rx="1"></rect>
+                    </g>
+                    <g id="编组-17备份-2" transform="translate(67.000000, 65.000000)" fill="#EDF1F7">
+                        <rect id="矩形备份-60" x="0" y="0" width="24" height="8" rx="1"></rect>
+                        <rect id="矩形备份-61" x="36" y="0" width="24" height="8" rx="1"></rect>
+                        <rect id="矩形备份-62" x="72" y="0" width="24" height="8" rx="1"></rect>
+                        <rect id="矩形备份-63" x="108" y="0" width="24" height="8" rx="1"></rect>
+                    </g>
+                    <g id="编组-17备份-5" transform="translate(67.000000, 115.000000)" fill="#EDF1F7">
+                        <rect id="矩形备份-60" x="0" y="0" width="24" height="8" rx="1"></rect>
+                        <rect id="矩形备份-61" x="36" y="0" width="24" height="8" rx="1"></rect>
+                        <rect id="矩形备份-62" x="72" y="0" width="24" height="8" rx="1"></rect>
+                        <rect id="矩形备份-63" x="108" y="0" width="24" height="8" rx="1"></rect>
+                    </g>
+                    <rect id="矩形备份-5" fill="#FAFAFA" x="50" y="42" width="160" height="1"></rect>
+                    <rect id="矩形备份-84" fill="#FAFAFA" x="50" y="92" width="160" height="1"></rect>
+                    <rect id="矩形备份-11" fill="#FAFAFA" x="50" y="58.5" width="160" height="1"></rect>
+                    <rect id="矩形备份-85" fill="#FAFAFA" x="50" y="108.5" width="160" height="1"></rect>
+                    <rect id="矩形备份-12" fill="#FAFAFA" x="50" y="75" width="160" height="1"></rect>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

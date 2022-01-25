@@ -1,0 +1,105 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Alert renders correctly 1`] = `
+<div
+  class="kd-alert kd-alert-leave kd-alert-container alert-warning-bg-color alert-warning-font-color"
+>
+  <div
+    class="kd-alert-message kd-alert-without-icon-message"
+  />
+</div>
+`;
+
+exports[`Alert renders correctly 2`] = `
+<div
+  class="kd-alert kd-alert-leave kd-alert-container alert-success-bg-color alert-success-font-color"
+>
+  <div
+    class="kd-alert-message kd-alert-without-icon-message"
+  />
+</div>
+`;
+
+exports[`Alert renders correctly 3`] = `
+<div
+  class="kd-alert kd-alert-leave kd-alert-container alert-info-bg-color alert-info-font-color"
+>
+  <div
+    class="kd-alert-message kd-alert-without-icon-message"
+  />
+</div>
+`;
+
+exports[`Alert renders correctly 4`] = `
+<div
+  class="kd-alert kd-alert-leave kd-alert-container alert-warning-bg-color alert-warning-font-color"
+>
+  <div
+    class="kd-alert-message kd-alert-without-icon-message"
+  />
+</div>
+`;
+
+exports[`Alert renders correctly 5`] = `
+<div
+  class="kd-alert kd-alert-leave kd-alert-container alert-error-bg-color alert-error-font-color"
+>
+  <div
+    class="kd-alert-message kd-alert-without-icon-message"
+  />
+</div>
+`;
+
+exports[`Alert should showIcon & closable use right 1`] = `
+<div
+  class="kd-alert kd-alert-closable kd-alert-leave kd-alert-container alert-success-bg-color alert-success-font-color"
+>
+  <div
+    class="kd-alert-icon"
+  >
+    <i
+      class="kdicon kdicon-right-solid"
+    />
+  </div>
+  <div
+    class="kd-alert-message"
+  />
+</div>
+`;
+
+exports[`Alert should showIcon & closable use right 2`] = `
+<div
+  class="kd-alert kd-alert-leave kd-alert-container alert-success-bg-color alert-success-font-color"
+>
+  <div
+    class="kd-alert-icon"
+  >
+    <i
+      class="kdicon kdicon-right-solid"
+    />
+  </div>
+  <div
+    class="kd-alert-message"
+  />
+</div>
+`;
+
+exports[`Alert should showIcon & closable use right 3`] = `
+<div
+  class="kd-alert kd-alert-closable kd-alert-leave kd-alert-container alert-success-bg-color alert-success-font-color"
+>
+  <div
+    class="kd-alert-message kd-alert-without-icon-message"
+  />
+</div>
+`;
+
+exports[`Alert should showIcon & closable use right 4`] = `
+<div
+  class="kd-alert kd-alert-leave kd-alert-container alert-success-bg-color alert-success-font-color"
+>
+  <div
+    class="kd-alert-message kd-alert-without-icon-message"
+  />
+</div>
+`;
