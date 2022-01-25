@@ -1,0 +1,1262 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Tabs renders correctly 1`] = `
+<div
+  class="kd-tabs"
+>
+  <div
+    class="kd-tabs-navs kd-tabs-navs-line kd-tabs-navs-middle"
+    type="line"
+  >
+    <div
+      class="kd-tabs-tab-wrap"
+    >
+      <div
+        class="kd-tabs-tab-list"
+        style="left:0px"
+      >
+        <span
+          class="kd-tab-pane kd-tab-pane-box-active kd-tab-pane-type-line kd-tab-pane-middle"
+        >
+          <span
+            class="kd-tab-pane-text kd-tab-pane-text-active"
+          >
+            TabPane1
+          </span>
+        </span>
+        <span
+          class="kd-active-line"
+          style="left:0px;width:0px"
+        />
+      </div>
+    </div>
+    <div
+      class="kd-tabs-right-arrows kd-tabs-right-arrows-line kd-tabs-right-arrows-noshadow"
+    >
+      <span
+        class="kd-dropdown-trigger kd-tabs-more-btn"
+      >
+        <i
+          class="kdicon kdicon-arrow-down"
+        />
+      </span>
+    </div>
+  </div>
+  <div
+    class="kd-carousel-root"
+  >
+    <ul
+      class="kd-carousel-displaylist"
+    >
+      <li
+        class="kd-carousel-displaylist-item kd-carousel-displaylist-item-not-hidden"
+      >
+        TabPane1
+      </li>
+    </ul>
+  </div>
+</div>
+`;
+
+exports[`Tabs renders correctly 2`] = `
+<div
+  class="kd-tabs"
+>
+  <div
+    class="kd-tabs-navs kd-tabs-navs-card kd-tabs-navs-middle"
+    type="card"
+  >
+    <div
+      class="kd-tabs-tab-wrap"
+    >
+      <div
+        class="kd-tabs-tab-list"
+        style="left:0px"
+      >
+        <span
+          class="kd-tab-pane kd-tab-pane-box-active kd-tab-pane-type-card kd-tab-pane-middle"
+        >
+          <span
+            class="kd-tab-pane-text kd-tab-pane-text-active"
+          >
+            TabPane1
+          </span>
+        </span>
+      </div>
+    </div>
+    <div
+      class="kd-tabs-right-arrows kd-tabs-right-arrows-card kd-tabs-right-arrows-noshadow"
+    >
+      <span
+        class="kd-dropdown-trigger kd-tabs-more-btn"
+      >
+        <i
+          class="kdicon kdicon-arrow-down"
+        />
+      </span>
+    </div>
+  </div>
+  <div
+    class="kd-carousel-root"
+  >
+    <ul
+      class="kd-carousel-displaylist"
+    >
+      <li
+        class="kd-carousel-displaylist-item kd-carousel-displaylist-item-not-hidden"
+      >
+        TabPane1
+      </li>
+    </ul>
+  </div>
+</div>
+`;
+
+exports[`Tabs renders correctly 3`] = `
+<div
+  class="kd-tabs"
+>
+  <div
+    class="kd-tabs-navs kd-tabs-navs-grid kd-tabs-navs-middle"
+    type="grid"
+  >
+    <div
+      class="kd-tabs-tab-wrap"
+    >
+      <div
+        class="kd-tabs-tab-list"
+        style="left:0px"
+      >
+        <span
+          class="kd-tab-pane kd-tab-pane-box-active kd-tab-pane-type-grid kd-tab-pane-middle"
+        >
+          <span
+            class="kd-tab-pane-text kd-tab-pane-text-active"
+          >
+            TabPane1
+          </span>
+        </span>
+      </div>
+    </div>
+    <div
+      class="kd-tabs-right-arrows kd-tabs-right-arrows-grid kd-tabs-right-arrows-noshadow"
+    >
+      <span
+        class="kd-dropdown-trigger kd-tabs-more-btn"
+      >
+        <i
+          class="kdicon kdicon-more"
+        />
+      </span>
+    </div>
+  </div>
+  <div
+    class="kd-carousel-root"
+  >
+    <ul
+      class="kd-carousel-displaylist"
+    >
+      <li
+        class="kd-carousel-displaylist-item kd-carousel-displaylist-item-not-hidden"
+      >
+        TabPane1
+      </li>
+    </ul>
+  </div>
+</div>
+`;
+
+exports[`Tabs renders correctly 4`] = `
+<div
+  class="kd-tabs"
+>
+  <div
+    class="kd-tabs-navs kd-tabs-navs-dynamic kd-tabs-navs-middle"
+    type="dynamic"
+  >
+    <div
+      class="kd-tabs-tab-wrap"
+    >
+      <div
+        class="kd-tabs-tab-list"
+        style="left:0px"
+      >
+        <span
+          class="kd-tab-pane kd-tab-pane-box-active kd-tab-pane-type-dynamic kd-tab-pane-middle"
+        >
+          <span
+            class="kd-tab-pane-text kd-tab-pane-text-active"
+          >
+            TabPane1
+          </span>
+          <span
+            class="kd-tab-pane-operations kd-tab-pane-operations-active"
+          />
+        </span>
+        <span
+          class="kd-active-line"
+          style="left:0px;width:0px"
+        />
+      </div>
+    </div>
+    <div
+      class="kd-tabs-right-arrows kd-tabs-right-arrows-dynamic kd-tabs-right-arrows-noshadow"
+    >
+      <span
+        class="kd-dropdown-trigger kd-tabs-more-btn"
+      >
+        <i
+          class="kdicon kdicon-arrow-down"
+        />
+      </span>
+    </div>
+  </div>
+  <div
+    class="kd-carousel-root"
+  >
+    <ul
+      class="kd-carousel-displaylist"
+    >
+      <li
+        class="kd-carousel-displaylist-item kd-carousel-displaylist-item-not-hidden"
+      >
+        TabPane1
+      </li>
+    </ul>
+  </div>
+</div>
+`;
+
+exports[`Tabs renders correctly 5`] = `
+<div
+  class="kd-tabs kd-tabs-top"
+>
+  <div
+    class="kd-tabs-navs kd-tabs-navs-card kd-tabs-navs-top kd-tabs-navs-middle"
+    position="top"
+    type="card"
+  >
+    <div
+      class="kd-tabs-tab-wrap"
+    >
+      <div
+        class="kd-tabs-tab-list"
+        style="left:0px"
+      >
+        <span
+          class="kd-tab-pane kd-tab-pane-type-card kd-tab-pane-top kd-tab-pane-middle"
+        >
+          <span
+            class="kd-tab-pane-text"
+          >
+            TabPane2
+          </span>
+        </span>
+        <span
+          class="kd-tab-pane kd-tab-pane-type-card kd-tab-pane-top kd-tab-pane-middle kd-tab-pane-disabled"
+        >
+          <span
+            class="kd-tab-pane-text kd-tab-pane-text-disabled"
+          >
+            TabPane1
+          </span>
+        </span>
+      </div>
+    </div>
+    <div
+      class="kd-tabs-right-arrows kd-tabs-right-arrows-card kd-tabs-right-arrows-noshadow"
+    >
+      <span
+        class="kd-dropdown-trigger kd-tabs-more-btn"
+      >
+        <i
+          class="kdicon kdicon-arrow-down"
+        />
+      </span>
+    </div>
+  </div>
+  <div
+    class="kd-carousel-root"
+  >
+    <ul
+      class="kd-carousel-displaylist"
+    >
+      <li
+        class="kd-carousel-displaylist-item kd-carousel-displaylist-item-not-hidden"
+      >
+        TabPane1
+      </li>
+      <li
+        class="kd-carousel-displaylist-item kd-carousel-displaylist-item-hidden"
+      >
+        TabPane2
+      </li>
+    </ul>
+  </div>
+</div>
+`;
+
+exports[`Tabs renders correctly 6`] = `
+<div
+  class="kd-tabs kd-tabs-left"
+>
+  <div
+    class="kd-tabs-navs kd-tabs-navs-card kd-tabs-navs-left kd-tabs-navs-middle"
+    position="left"
+    type="card"
+  >
+    <div
+      class="kd-tabs-tab-wrap"
+    >
+      <div
+        class="kd-tabs-tab-list"
+        style="left:0px"
+      >
+        <span
+          class="kd-tab-pane kd-tab-pane-type-card kd-tab-pane-left kd-tab-pane-middle"
+        >
+          <span
+            class="kd-tab-pane-text"
+          >
+            TabPane2
+          </span>
+        </span>
+        <span
+          class="kd-tab-pane kd-tab-pane-type-card kd-tab-pane-left kd-tab-pane-middle kd-tab-pane-disabled"
+        >
+          <span
+            class="kd-tab-pane-text kd-tab-pane-text-disabled"
+          >
+            TabPane1
+          </span>
+        </span>
+      </div>
+    </div>
+  </div>
+  <div
+    class="kd-carousel-root"
+  >
+    <ul
+      class="kd-carousel-displaylist"
+    >
+      <li
+        class="kd-carousel-displaylist-item kd-carousel-displaylist-item-not-hidden"
+      >
+        TabPane1
+      </li>
+      <li
+        class="kd-carousel-displaylist-item kd-carousel-displaylist-item-hidden"
+      >
+        TabPane2
+      </li>
+    </ul>
+  </div>
+</div>
+`;
+
+exports[`Tabs renders correctly 7`] = `
+<div
+  class="kd-tabs kd-tabs-right"
+>
+  <div
+    class="kd-tabs-navs kd-tabs-navs-card kd-tabs-navs-right kd-tabs-navs-middle"
+    position="right"
+    type="card"
+  >
+    <div
+      class="kd-tabs-tab-wrap"
+    >
+      <div
+        class="kd-tabs-tab-list"
+        style="left:0px"
+      >
+        <span
+          class="kd-tab-pane kd-tab-pane-type-card kd-tab-pane-right kd-tab-pane-middle"
+        >
+          <span
+            class="kd-tab-pane-text"
+          >
+            TabPane2
+          </span>
+        </span>
+        <span
+          class="kd-tab-pane kd-tab-pane-type-card kd-tab-pane-right kd-tab-pane-middle kd-tab-pane-disabled"
+        >
+          <span
+            class="kd-tab-pane-text kd-tab-pane-text-disabled"
+          >
+            TabPane1
+          </span>
+        </span>
+      </div>
+    </div>
+  </div>
+  <div
+    class="kd-carousel-root"
+  >
+    <ul
+      class="kd-carousel-displaylist"
+    >
+      <li
+        class="kd-carousel-displaylist-item kd-carousel-displaylist-item-not-hidden"
+      >
+        TabPane1
+      </li>
+      <li
+        class="kd-carousel-displaylist-item kd-carousel-displaylist-item-hidden"
+      >
+        TabPane2
+      </li>
+    </ul>
+  </div>
+</div>
+`;
+
+exports[`Tabs renders correctly 8`] = `
+<div
+  class="kd-tabs kd-tabs-bottom"
+>
+  <div
+    class="kd-tabs-navs kd-tabs-navs-card kd-tabs-navs-bottom kd-tabs-navs-middle"
+    position="bottom"
+    type="card"
+  >
+    <div
+      class="kd-tabs-tab-wrap"
+    >
+      <div
+        class="kd-tabs-tab-list"
+        style="left:0px"
+      >
+        <span
+          class="kd-tab-pane kd-tab-pane-type-card kd-tab-pane-bottom kd-tab-pane-middle"
+        >
+          <span
+            class="kd-tab-pane-text"
+          >
+            TabPane2
+          </span>
+        </span>
+        <span
+          class="kd-tab-pane kd-tab-pane-type-card kd-tab-pane-bottom kd-tab-pane-middle kd-tab-pane-disabled"
+        >
+          <span
+            class="kd-tab-pane-text kd-tab-pane-text-disabled"
+          >
+            TabPane1
+          </span>
+        </span>
+      </div>
+    </div>
+    <div
+      class="kd-tabs-right-arrows kd-tabs-right-arrows-card kd-tabs-right-arrows-noshadow"
+    >
+      <span
+        class="kd-dropdown-trigger kd-tabs-more-btn"
+      >
+        <i
+          class="kdicon kdicon-arrow-down"
+        />
+      </span>
+    </div>
+  </div>
+  <div
+    class="kd-carousel-root"
+  >
+    <ul
+      class="kd-carousel-displaylist"
+    >
+      <li
+        class="kd-carousel-displaylist-item kd-carousel-displaylist-item-not-hidden"
+      >
+        TabPane1
+      </li>
+      <li
+        class="kd-carousel-displaylist-item kd-carousel-displaylist-item-hidden"
+      >
+        TabPane2
+      </li>
+    </ul>
+  </div>
+</div>
+`;
+
+exports[`Tabs renders correctly 9`] = `
+<Tabs
+  type="dynamic"
+>
+  <TabPane
+    specialPane="left"
+  >
+    <Icon
+      type="workbench"
+    />
+  </TabPane>
+  <TabPane
+    tab="TabPane1"
+  />
+  <TabPane
+    specialPane="right"
+  >
+    <Icon
+      type="expand"
+    />
+  </TabPane>
+  <TabPane
+    specialPane="contextMenu"
+  >
+    <div>
+      关闭当前
+    </div>
+    <div>
+      关闭其他
+    </div>
+  </TabPane>
+</Tabs>
+`;
+
+exports[`Tabs renders correctly 10`] = `
+<div
+  style={
+    Object {
+      "width": "200px",
+    }
+  }
+>
+  <Tabs
+    defaultActiveKey={0}
+    showScrollArrow={true}
+    type="card"
+  >
+    <div
+      className="kd-tabs"
+    >
+      <div
+        className="kd-tabs-navs kd-tabs-navs-card kd-tabs-navs-middle"
+        size="middle"
+        type="card"
+      >
+        <div
+          className="kd-tabs-left-arrows kd-tabs-left-arrows-card kd-tabs-left-arrows-noshadow"
+        >
+          <ArrowButton
+            direction="left"
+            disabled={true}
+            onClick={[Function]}
+          >
+            <span
+              className="kd-arrow-button kd-arrow-button-left kd-arrow-button-disabled"
+              onClick={[Function]}
+            >
+              <Icon
+                type="arrow-left"
+              >
+                <i
+                  className="kdicon kdicon-arrow-left"
+                  onClick={[Function]}
+                  onMouseEnter={[Function]}
+                  onMouseLeave={[Function]}
+                  style={Object {}}
+                />
+              </Icon>
+            </span>
+          </ArrowButton>
+        </div>
+        <div
+          className="kd-tabs-tab-wrap"
+        >
+          <div
+            className="kd-tabs-tab-list"
+            style={
+              Object {
+                "left": "0px",
+              }
+            }
+          >
+            <TabPane
+              id="0"
+              key="0"
+              onChange={[Function]}
+              tab="TabPane00"
+            >
+              <span
+                className="kd-tab-pane kd-tab-pane-box-active kd-tab-pane-type-card kd-tab-pane-middle"
+                onClick={[Function]}
+              >
+                <span
+                  className="kd-tab-pane-text kd-tab-pane-text-active"
+                >
+                  TabPane00
+                </span>
+              </span>
+            </TabPane>
+            <TabPane
+              id="1"
+              key="1"
+              onChange={[Function]}
+              tab="TabPane01"
+            >
+              <span
+                className="kd-tab-pane kd-tab-pane-type-card kd-tab-pane-middle"
+                onClick={[Function]}
+              >
+                <span
+                  className="kd-tab-pane-text"
+                >
+                  TabPane01
+                </span>
+              </span>
+            </TabPane>
+            <TabPane
+              id="2"
+              key="2"
+              onChange={[Function]}
+              tab="TabPane02"
+            >
+              <span
+                className="kd-tab-pane kd-tab-pane-type-card kd-tab-pane-middle"
+                onClick={[Function]}
+              >
+                <span
+                  className="kd-tab-pane-text"
+                >
+                  TabPane02
+                </span>
+              </span>
+            </TabPane>
+            <TabPane
+              id="3"
+              key="3"
+              onChange={[Function]}
+              tab="TabPane03"
+            >
+              <span
+                className="kd-tab-pane kd-tab-pane-type-card kd-tab-pane-middle"
+                onClick={[Function]}
+              >
+                <span
+                  className="kd-tab-pane-text"
+                >
+                  TabPane03
+                </span>
+              </span>
+            </TabPane>
+            <TabPane
+              id="4"
+              key="4"
+              onChange={[Function]}
+              tab="TabPane04"
+            >
+              <span
+                className="kd-tab-pane kd-tab-pane-type-card kd-tab-pane-middle"
+                onClick={[Function]}
+              >
+                <span
+                  className="kd-tab-pane-text"
+                >
+                  TabPane04
+                </span>
+              </span>
+            </TabPane>
+            <TabPane
+              id="5"
+              key="5"
+              onChange={[Function]}
+              tab="TabPane05"
+            >
+              <span
+                className="kd-tab-pane kd-tab-pane-type-card kd-tab-pane-middle"
+                onClick={[Function]}
+              >
+                <span
+                  className="kd-tab-pane-text"
+                >
+                  TabPane05
+                </span>
+              </span>
+            </TabPane>
+            <TabPane
+              id="6"
+              key="6"
+              onChange={[Function]}
+              tab="TabPane06"
+            >
+              <span
+                className="kd-tab-pane kd-tab-pane-type-card kd-tab-pane-middle"
+                onClick={[Function]}
+              >
+                <span
+                  className="kd-tab-pane-text"
+                >
+                  TabPane06
+                </span>
+              </span>
+            </TabPane>
+            <TabPane
+              id="7"
+              key="7"
+              onChange={[Function]}
+              tab="TabPane07"
+            >
+              <span
+                className="kd-tab-pane kd-tab-pane-type-card kd-tab-pane-middle"
+                onClick={[Function]}
+              >
+                <span
+                  className="kd-tab-pane-text"
+                >
+                  TabPane07
+                </span>
+              </span>
+            </TabPane>
+            <TabPane
+              id="8"
+              key="8"
+              onChange={[Function]}
+              tab="TabPane08"
+            >
+              <span
+                className="kd-tab-pane kd-tab-pane-type-card kd-tab-pane-middle"
+                onClick={[Function]}
+              >
+                <span
+                  className="kd-tab-pane-text"
+                >
+                  TabPane08
+                </span>
+              </span>
+            </TabPane>
+            <TabPane
+              id="9"
+              key="9"
+              onChange={[Function]}
+              tab="TabPane09"
+            >
+              <span
+                className="kd-tab-pane kd-tab-pane-type-card kd-tab-pane-middle"
+                onClick={[Function]}
+              >
+                <span
+                  className="kd-tab-pane-text"
+                >
+                  TabPane09
+                </span>
+              </span>
+            </TabPane>
+            <TabPane
+              id="10"
+              key="10"
+              onChange={[Function]}
+              tab="TabPane010"
+            >
+              <span
+                className="kd-tab-pane kd-tab-pane-type-card kd-tab-pane-middle"
+                onClick={[Function]}
+              >
+                <span
+                  className="kd-tab-pane-text"
+                >
+                  TabPane010
+                </span>
+              </span>
+            </TabPane>
+            <TabPane
+              id="11"
+              key="11"
+              onChange={[Function]}
+              tab="TabPane011"
+            >
+              <span
+                className="kd-tab-pane kd-tab-pane-type-card kd-tab-pane-middle"
+                onClick={[Function]}
+              >
+                <span
+                  className="kd-tab-pane-text"
+                >
+                  TabPane011
+                </span>
+              </span>
+            </TabPane>
+            <TabPane
+              id="12"
+              key="12"
+              onChange={[Function]}
+              tab="TabPane012"
+            >
+              <span
+                className="kd-tab-pane kd-tab-pane-type-card kd-tab-pane-middle"
+                onClick={[Function]}
+              >
+                <span
+                  className="kd-tab-pane-text"
+                >
+                  TabPane012
+                </span>
+              </span>
+            </TabPane>
+            <TabPane
+              id="13"
+              key="13"
+              onChange={[Function]}
+              tab="TabPane013"
+            >
+              <span
+                className="kd-tab-pane kd-tab-pane-type-card kd-tab-pane-middle"
+                onClick={[Function]}
+              >
+                <span
+                  className="kd-tab-pane-text"
+                >
+                  TabPane013
+                </span>
+              </span>
+            </TabPane>
+            <TabPane
+              id="14"
+              key="14"
+              onChange={[Function]}
+              tab="TabPane014"
+            >
+              <span
+                className="kd-tab-pane kd-tab-pane-type-card kd-tab-pane-middle"
+                onClick={[Function]}
+              >
+                <span
+                  className="kd-tab-pane-text"
+                >
+                  TabPane014
+                </span>
+              </span>
+            </TabPane>
+            <TabPane
+              id="15"
+              key="15"
+              onChange={[Function]}
+              tab="TabPane015"
+            >
+              <span
+                className="kd-tab-pane kd-tab-pane-type-card kd-tab-pane-middle"
+                onClick={[Function]}
+              >
+                <span
+                  className="kd-tab-pane-text"
+                >
+                  TabPane015
+                </span>
+              </span>
+            </TabPane>
+            <TabPane
+              id="16"
+              key="16"
+              onChange={[Function]}
+              tab="TabPane016"
+            >
+              <span
+                className="kd-tab-pane kd-tab-pane-type-card kd-tab-pane-middle"
+                onClick={[Function]}
+              >
+                <span
+                  className="kd-tab-pane-text"
+                >
+                  TabPane016
+                </span>
+              </span>
+            </TabPane>
+            <TabPane
+              id="17"
+              key="17"
+              onChange={[Function]}
+              tab="TabPane017"
+            >
+              <span
+                className="kd-tab-pane kd-tab-pane-type-card kd-tab-pane-middle"
+                onClick={[Function]}
+              >
+                <span
+                  className="kd-tab-pane-text"
+                >
+                  TabPane017
+                </span>
+              </span>
+            </TabPane>
+            <TabPane
+              id="18"
+              key="18"
+              onChange={[Function]}
+              tab="TabPane018"
+            >
+              <span
+                className="kd-tab-pane kd-tab-pane-type-card kd-tab-pane-middle"
+                onClick={[Function]}
+              >
+                <span
+                  className="kd-tab-pane-text"
+                >
+                  TabPane018
+                </span>
+              </span>
+            </TabPane>
+            <TabPane
+              id="19"
+              key="19"
+              onChange={[Function]}
+              tab="TabPane019"
+            >
+              <span
+                className="kd-tab-pane kd-tab-pane-type-card kd-tab-pane-middle"
+                onClick={[Function]}
+              >
+                <span
+                  className="kd-tab-pane-text"
+                >
+                  TabPane019
+                </span>
+              </span>
+            </TabPane>
+          </div>
+        </div>
+        <div
+          className="kd-tabs-right-arrows kd-tabs-right-arrows-card kd-tabs-right-arrows-noshadow"
+        >
+          <ArrowButton
+            direction="right"
+            disabled={true}
+            onClick={[Function]}
+          >
+            <span
+              className="kd-arrow-button kd-arrow-button-right kd-arrow-button-disabled"
+              onClick={[Function]}
+            >
+              <Icon
+                type="arrow-right"
+              >
+                <i
+                  className="kdicon kdicon-arrow-right"
+                  onClick={[Function]}
+                  onMouseEnter={[Function]}
+                  onMouseLeave={[Function]}
+                  style={Object {}}
+                />
+              </Icon>
+            </span>
+          </ArrowButton>
+          <Dropdown
+            menu={
+              Array [
+                Object {
+                  "key": "0",
+                  "label": "TabPane00",
+                },
+                Object {
+                  "key": "1",
+                  "label": "TabPane01",
+                },
+                Object {
+                  "key": "2",
+                  "label": "TabPane02",
+                },
+                Object {
+                  "key": "3",
+                  "label": "TabPane03",
+                },
+                Object {
+                  "key": "4",
+                  "label": "TabPane04",
+                },
+                Object {
+                  "key": "5",
+                  "label": "TabPane05",
+                },
+                Object {
+                  "key": "6",
+                  "label": "TabPane06",
+                },
+                Object {
+                  "key": "7",
+                  "label": "TabPane07",
+                },
+                Object {
+                  "key": "8",
+                  "label": "TabPane08",
+                },
+                Object {
+                  "key": "9",
+                  "label": "TabPane09",
+                },
+                Object {
+                  "key": "10",
+                  "label": "TabPane010",
+                },
+                Object {
+                  "key": "11",
+                  "label": "TabPane011",
+                },
+                Object {
+                  "key": "12",
+                  "label": "TabPane012",
+                },
+                Object {
+                  "key": "13",
+                  "label": "TabPane013",
+                },
+                Object {
+                  "key": "14",
+                  "label": "TabPane014",
+                },
+                Object {
+                  "key": "15",
+                  "label": "TabPane015",
+                },
+                Object {
+                  "key": "16",
+                  "label": "TabPane016",
+                },
+                Object {
+                  "key": "17",
+                  "label": "TabPane017",
+                },
+                Object {
+                  "key": "18",
+                  "label": "TabPane018",
+                },
+                Object {
+                  "key": "19",
+                  "label": "TabPane019",
+                },
+              ]
+            }
+            onItemClick={[Function]}
+            trigger={
+              Array [
+                "click",
+              ]
+            }
+          >
+            <span
+              className="kd-dropdown-trigger kd-tabs-more-btn"
+            >
+              <Icon
+                type="arrow-down"
+              >
+                <i
+                  className="kdicon kdicon-arrow-down"
+                  onClick={[Function]}
+                  onMouseEnter={[Function]}
+                  onMouseLeave={[Function]}
+                  style={Object {}}
+                />
+              </Icon>
+            </span>
+          </Dropdown>
+        </div>
+      </div>
+      <Carousel
+        autoplay={false}
+        dots={false}
+        effect="none"
+      >
+        <div
+          className="kd-carousel-root"
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+          onTransitionEnd={[Function]}
+        >
+          <ForwardRef
+            currentIndex={0}
+            items={
+              Array [
+                <React.Fragment>
+                  TabPane00
+                </React.Fragment>,
+                <React.Fragment>
+                  TabPane01
+                </React.Fragment>,
+                <React.Fragment>
+                  TabPane02
+                </React.Fragment>,
+                <React.Fragment>
+                  TabPane03
+                </React.Fragment>,
+                <React.Fragment>
+                  TabPane04
+                </React.Fragment>,
+                <React.Fragment>
+                  TabPane05
+                </React.Fragment>,
+                <React.Fragment>
+                  TabPane06
+                </React.Fragment>,
+                <React.Fragment>
+                  TabPane07
+                </React.Fragment>,
+                <React.Fragment>
+                  TabPane08
+                </React.Fragment>,
+                <React.Fragment>
+                  TabPane09
+                </React.Fragment>,
+                <React.Fragment>
+                  TabPane010
+                </React.Fragment>,
+                <React.Fragment>
+                  TabPane011
+                </React.Fragment>,
+                <React.Fragment>
+                  TabPane012
+                </React.Fragment>,
+                <React.Fragment>
+                  TabPane013
+                </React.Fragment>,
+                <React.Fragment>
+                  TabPane014
+                </React.Fragment>,
+                <React.Fragment>
+                  TabPane015
+                </React.Fragment>,
+                <React.Fragment>
+                  TabPane016
+                </React.Fragment>,
+                <React.Fragment>
+                  TabPane017
+                </React.Fragment>,
+                <React.Fragment>
+                  TabPane018
+                </React.Fragment>,
+                <React.Fragment>
+                  TabPane019
+                </React.Fragment>,
+              ]
+            }
+            parentPrefixCls="kd-carousel"
+          >
+            <ul
+              className="kd-carousel-displaylist"
+            >
+              <li
+                className="kd-carousel-displaylist-item kd-carousel-displaylist-item-not-hidden"
+                key="0"
+              >
+                TabPane00
+              </li>
+              <li
+                className="kd-carousel-displaylist-item kd-carousel-displaylist-item-hidden"
+                key="1"
+              >
+                TabPane01
+              </li>
+              <li
+                className="kd-carousel-displaylist-item kd-carousel-displaylist-item-hidden"
+                key="2"
+              >
+                TabPane02
+              </li>
+              <li
+                className="kd-carousel-displaylist-item kd-carousel-displaylist-item-hidden"
+                key="3"
+              >
+                TabPane03
+              </li>
+              <li
+                className="kd-carousel-displaylist-item kd-carousel-displaylist-item-hidden"
+                key="4"
+              >
+                TabPane04
+              </li>
+              <li
+                className="kd-carousel-displaylist-item kd-carousel-displaylist-item-hidden"
+                key="5"
+              >
+                TabPane05
+              </li>
+              <li
+                className="kd-carousel-displaylist-item kd-carousel-displaylist-item-hidden"
+                key="6"
+              >
+                TabPane06
+              </li>
+              <li
+                className="kd-carousel-displaylist-item kd-carousel-displaylist-item-hidden"
+                key="7"
+              >
+                TabPane07
+              </li>
+              <li
+                className="kd-carousel-displaylist-item kd-carousel-displaylist-item-hidden"
+                key="8"
+              >
+                TabPane08
+              </li>
+              <li
+                className="kd-carousel-displaylist-item kd-carousel-displaylist-item-hidden"
+                key="9"
+              >
+                TabPane09
+              </li>
+              <li
+                className="kd-carousel-displaylist-item kd-carousel-displaylist-item-hidden"
+                key="10"
+              >
+                TabPane010
+              </li>
+              <li
+                className="kd-carousel-displaylist-item kd-carousel-displaylist-item-hidden"
+                key="11"
+              >
+                TabPane011
+              </li>
+              <li
+                className="kd-carousel-displaylist-item kd-carousel-displaylist-item-hidden"
+                key="12"
+              >
+                TabPane012
+              </li>
+              <li
+                className="kd-carousel-displaylist-item kd-carousel-displaylist-item-hidden"
+                key="13"
+              >
+                TabPane013
+              </li>
+              <li
+                className="kd-carousel-displaylist-item kd-carousel-displaylist-item-hidden"
+                key="14"
+              >
+                TabPane014
+              </li>
+              <li
+                className="kd-carousel-displaylist-item kd-carousel-displaylist-item-hidden"
+                key="15"
+              >
+                TabPane015
+              </li>
+              <li
+                className="kd-carousel-displaylist-item kd-carousel-displaylist-item-hidden"
+                key="16"
+              >
+                TabPane016
+              </li>
+              <li
+                className="kd-carousel-displaylist-item kd-carousel-displaylist-item-hidden"
+                key="17"
+              >
+                TabPane017
+              </li>
+              <li
+                className="kd-carousel-displaylist-item kd-carousel-displaylist-item-hidden"
+                key="18"
+              >
+                TabPane018
+              </li>
+              <li
+                className="kd-carousel-displaylist-item kd-carousel-displaylist-item-hidden"
+                key="19"
+              >
+                TabPane019
+              </li>
+            </ul>
+          </ForwardRef>
+        </div>
+      </Carousel>
+    </div>
+  </Tabs>
+</div>
+`;

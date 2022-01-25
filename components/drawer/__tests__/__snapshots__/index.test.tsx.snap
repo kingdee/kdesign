@@ -1,0 +1,166 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Drawer renders correctly 1`] = `
+<div
+  class="kd-drawer kd-drawer-hide kd-drawer-not-at-body"
+  style="z-index:1050"
+>
+  <div
+    class="kd-drawer-mask"
+  />
+  <div
+    class="kd-drawer-container-box kd-drawer-container-right"
+    style="right:0;width:365px;transform:translateX(365px)"
+  >
+    <div
+      class="kd-drawer-header"
+    >
+      <div
+        class="kd-drawer-title"
+      />
+      <div
+        class="kd-drawer-close-icon"
+      >
+        <i
+          class="kdicon kdicon-close"
+        />
+      </div>
+    </div>
+    <div
+      class="kd-drawer-body"
+    />
+  </div>
+</div>
+`;
+
+exports[`Drawer renders correctly 2`] = `
+<div
+  class="kd-drawer kd-drawer-hide kd-drawer-not-at-body"
+  style="z-index:1050"
+>
+  <div
+    class="kd-drawer-mask"
+  />
+  <div
+    class="kd-drawer-container-box kd-drawer-container-top"
+    style="top:0;height:220px;transform:translateY(-220px)"
+  >
+    <div
+      class="kd-drawer-header"
+    >
+      <div
+        class="kd-drawer-title"
+      />
+      <div
+        class="kd-drawer-close-icon"
+      >
+        <i
+          class="kdicon kdicon-close"
+        />
+      </div>
+    </div>
+    <div
+      class="kd-drawer-body"
+    />
+  </div>
+</div>
+`;
+
+exports[`Drawer renders correctly 3`] = `
+<div
+  class="kd-drawer kd-drawer-hide kd-drawer-not-at-body"
+  style="z-index:1050"
+>
+  <div
+    class="kd-drawer-mask"
+  />
+  <div
+    class="kd-drawer-container-box kd-drawer-container-right"
+    style="right:0;width:365px;transform:translateX(365px)"
+  >
+    <div
+      class="kd-drawer-header"
+    >
+      <div
+        class="kd-drawer-title"
+      />
+      <div
+        class="kd-drawer-close-icon"
+      >
+        <i
+          class="kdicon kdicon-close"
+        />
+      </div>
+    </div>
+    <div
+      class="kd-drawer-body"
+    />
+  </div>
+</div>
+`;
+
+exports[`Drawer renders correctly 4`] = `
+<div
+  class="kd-drawer kd-drawer-hide kd-drawer-not-at-body"
+  style="z-index:1050"
+>
+  <div
+    class="kd-drawer-mask"
+  />
+  <div
+    class="kd-drawer-container-box kd-drawer-container-bottom"
+    style="bottom:0;height:220px;transform:translateY(220px)"
+  >
+    <div
+      class="kd-drawer-header"
+    >
+      <div
+        class="kd-drawer-title"
+      />
+      <div
+        class="kd-drawer-close-icon"
+      >
+        <i
+          class="kdicon kdicon-close"
+        />
+      </div>
+    </div>
+    <div
+      class="kd-drawer-body"
+    />
+  </div>
+</div>
+`;
+
+exports[`Drawer renders correctly 5`] = `
+<div
+  class="kd-drawer kd-drawer-hide kd-drawer-not-at-body"
+  style="z-index:1050"
+>
+  <div
+    class="kd-drawer-mask"
+  />
+  <div
+    class="kd-drawer-container-box kd-drawer-container-left"
+    style="left:0;width:365px;transform:translateX(-365px)"
+  >
+    <div
+      class="kd-drawer-header"
+    >
+      <div
+        class="kd-drawer-title"
+      />
+      <div
+        class="kd-drawer-close-icon"
+      >
+        <i
+          class="kdicon kdicon-close"
+        />
+      </div>
+    </div>
+    <div
+      class="kd-drawer-body"
+    />
+  </div>
+</div>
+`;

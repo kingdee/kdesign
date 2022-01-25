@@ -1,0 +1,61 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Layout renders string width correctly 1`] = `
+<aside
+  class="kd-layout-sider kd-layout-sider-dark"
+  style="flex:0 0 200;max-width:200;min-width:200;width:200"
+  width="200"
+>
+  <div
+    class="kd-layout-sider-children"
+  >
+    Sider
+  </div>
+</aside>
+`;
+
+exports[`Layout should be controlled by collapsed 1`] = `
+<Sider>
+  <aside
+    className="kd-layout-sider kd-layout-sider-dark"
+    style={
+      Object {
+        "flex": "0 0 200px",
+        "maxWidth": "200px",
+        "minWidth": "200px",
+        "width": "200px",
+      }
+    }
+  >
+    <div
+      className="kd-layout-sider-children"
+    >
+      Sider
+    </div>
+  </aside>
+</Sider>
+`;
+
+exports[`Layout should be controlled by collapsed 2`] = `
+<Sider
+  collapsed={true}
+>
+  <aside
+    className="kd-layout-sider kd-layout-sider-dark kd-layout-sider-collapsed"
+    style={
+      Object {
+        "flex": "0 0 50px",
+        "maxWidth": "50px",
+        "minWidth": "50px",
+        "width": "50px",
+      }
+    }
+  >
+    <div
+      className="kd-layout-sider-children"
+    >
+      Sider
+    </div>
+  </aside>
+</Sider>
+`;

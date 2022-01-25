@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Tabs Arrow Button renders correctly 1`] = `
+<span
+  class="kd-arrow-button kd-arrow-button-left"
+>
+  <i
+    class="kdicon kdicon-arrow-left"
+  />
+</span>
+`;
+
+exports[`Tabs Arrow Button renders correctly 2`] = `
+<span
+  class="kd-arrow-button kd-arrow-button-right"
+>
+  <i
+    class="kdicon kdicon-arrow-right"
+  />
+</span>
+`;

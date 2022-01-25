@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="180px" height="24px" viewBox="0 0 180 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>切片</title>
+    <defs>
+        <circle id="path-1" cx="12" cy="12" r="12"></circle>
+        <filter x="-12.5%" y="-12.5%" width="125.0%" height="125.0%" filterUnits="objectBoundingBox" id="filter-2">
+            <feOffset dx="0" dy="0" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="1" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0.6   0 0 0 0 0.6   0 0 0 0 0.6  0 0 0 0.5 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="前端总览" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="PC组件概览备份-3" transform="translate(-393.000000, -2270.000000)">
+            <g id="4.表单/10.滑动条/元素/1.单点滑动条备份" transform="translate(393.000000, 2270.000000)">
+                <rect id="背景" fill="#E5E5E5" x="0" y="11" width="180" height="2" rx="1"></rect>
+                <rect id="进度" fill="#276FF5" fill-rule="nonzero" x="0" y="11" width="120" height="2" rx="1"></rect>
+                <g id="点" transform="translate(108.000000, 0.000000)">
+                    <g id="椭圆形">
+                        <use fill="black" fill-opacity="1" filter="url(#filter-2)" xlink:href="#path-1"></use>
+                        <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-1"></use>
+                    </g>
+                    <circle id="椭圆形" fill="#276FF5" fill-rule="nonzero" cx="12" cy="12" r="8"></circle>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

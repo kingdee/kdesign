@@ -1,0 +1,319 @@
+import React, {
+  FunctionComponentElement,
+  useContext,
+  useState,
+  useEffect,
+  useRef,
+  useCallback,
+  useImperativeHandle,
+} from 'react'
+import Input, { InputProps } from '../input'
+import ConfigContext from '../config-provider/ConfigContext'
+import { getCompProps } from '../_utils'
+import { serialization } from '../_utils/numberUtil'
+import { formatEditNumber, formatNumber, FormatParam } from '../_utils/formatUtil'
+import devWarning from '../_utils/devwarning'
+import Big from 'big.js'
+
+export type StepType = 'embed' | 'base'
+
+interface RefObject<T> {
+  // immutable
+  readonly current: T | null
+}
+export interface StepOption {
+  type?: StepType
+  step?: number
+  stepBtnClassName?: string
+}
+export interface InputNumberProps extends InputProps {
+  digitLength?: number // 数字的位数
+  decimalLength?: number // 小数点后位数
+  zeroShow?: boolean // 为零是否显示
+  showDecimalTailZero?: boolean // 是否显示小数尾部0
+  mask?: string // 掩码
+  min?: number // 最小值
+  minMark?: string // 最小值比较符
+  max?: number // 最大值
+  maxMark?: string // 最大值比较符
+  symbol?: string // 货币符号
+  mustInScope?: boolean // 输入内容是否必须在设定的数字范围内(不在范围内则不允许输入)
+  mustInPrecisionScope?: boolean // 输入限制在精度范围 默认-true
+  stepOption?: StepOption
+  stepperrref?: any
+}
+
+const InternalInputNumber = (props: InputNumberProps, ref: unknown): FunctionComponentElement<InputNumberProps> => {
+  const { compDefaultProps: userDefaultProps, getPrefixCls, prefixCls } = useContext(ConfigContext)
+  const inputNumberProps = getCompProps('InputNumber', userDefaultProps, props)
+  const {
+    value,
+    defaultValue,
+    mustInScope,
+    decimalLength,
+    mustInPrecisionScope,
+    digitLength,
+    onChange,
+    symbol,
+    zeroShow,
+    showDecimalTailZero,
+    code,
+    roundMethod,
+    mask,
+    stepOption,
+    min,
+    minMark,
+    max,
+    maxMark,
+    prefix,
+    suffix,
+    ...others
+  } = inputNumberProps
+  const initVal = value === undefined ? defaultValue : value
+  const [inputValue, setInputValue] = useState(serialization(initVal || ''))
+  const inputStatus = useRef({ isHandleChange: false, inputFocused: false })
+  const inputPrefixCls = getPrefixCls!(prefixCls, 'inputNumber', inputNumberProps.prefixCls)
+  const thisInputNumberRef = useRef<HTMLElement>()
+  const inputNumberRef = (ref as any) || thisInputNumberRef
+  const stepMouseDownDelayTimer = useRef<any>(null)
+  const stepMouseDownIntervalTimer = useRef<any>(null)
+
+  const isScopeValid = (value: string) => {
+    if (value === '') return true
+    const numberValue = parseFloat(value) || 0
+    if (min >= 0 && value.substr(0, 1) === '-') return false // 数值范围>=0时,不允许输入负号
+    if (
+      (minMark === '[' && numberValue < min) ||
+      (minMark === '(' && numberValue <= min) ||
+      (maxMark === ']' && numberValue > max) ||
+      (maxMark === ')' && numberValue >= max)
+    )
+      return false
+    return true
+  }
+
+  useEffect(() => {
+    setInputValue(value)
+  }, [value])
+
+  const handleEventAttachValue = (
+    event: React.ChangeEvent<HTMLInputElement> | React.FocusEvent<HTMLInputElement>,
+    value: string,
+  ) => {
+    return Object.assign({}, event, { target: { value: value } })
+  }
+
+  const verifiValue = (initValue: string): false | string => {
+    // 将 value 进行数字序列化 剔除非数字输入-复制粘贴的情况
+    let value = serialization(initValue)
+
+    // 校验数字合法性
+    if (!/^-?\d*\.?\d*$/.test(value)) return false
+
+    // 输入内容超出数字范围不允许输入
+    if (mustInScope && !isScopeValid(value)) {
+      return false
+    }
+
+    // 整数字段不允许输入小数点
+    if (decimalLength === 0 && value.includes('.')) {
+      return false
+    }
+
+    if (mustInPrecisionScope) {
+      value = handleNumericalAccuracy(value)
+      if (value === inputValue) return false
+    }
+    return value
+  }
+
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    inputStatus.current.isHandleChange = true
+    const legalNumber = verifiValue(event.target.value)
+    if (legalNumber === false) {
+      return false
+    }
+
+    value === undefined && setInputValue(legalNumber)
+    onChange && onChange(handleEventAttachValue(event, legalNumber))
+  }
+
+  const handleFocus = (event: React.FocusEvent<HTMLInputElement>) => {
+    inputStatus.current.inputFocused = true
+    const { onFocus } = inputNumberProps
+    const formatValue = formatEditNumber(inputValue, {
+      zeroShow,
+      decimalLength,
+      showDecimalTailZero,
+      roundMethod,
+      symbol,
+    })
+    value === undefined && setInputValue(formatValue)
+    onFocus && onFocus(handleEventAttachValue(event, formatValue))
+  }
+
+  const handleFormatValue = (value: string | number, param: FormatParam): string => {
+    if (!value && value !== 0) return ''
+    return formatNumber(value, param)
+  }
+
+  const handleNumericalAccuracy = (numerical: string): string => {
+    let resultNumerical = ''
+    const [integerValue, decimalValue = ''] = numerical.split('.')
+    const integerValueLength = integerValue.length
+    const decimalValueLength = decimalValue.length
+
+    if (typeof decimalLength === 'number' && typeof digitLength === 'number') {
+      if (integerValueLength > digitLength - decimalLength) {
+        resultNumerical = integerValue.substr(0, digitLength - decimalLength)
+      } else if (decimalValueLength > decimalLength) {
+        resultNumerical = `${integerValue}.${decimalValue.substr(0, decimalLength)}`
+      }
+    } else if (typeof decimalLength !== 'number' && typeof digitLength === 'number') {
+      if (integerValueLength >= digitLength) {
+        resultNumerical = integerValue.substr(0, digitLength)
+      } else {
+        resultNumerical = decimalValueLength
+          ? `${integerValue}.${decimalValue.substr(0, digitLength - integerValueLength)}`
+          : integerValue
+      }
+    } else if (typeof decimalLength === 'number' && typeof digitLength !== 'number') {
+      resultNumerical = decimalValueLength ? `${integerValue}.${decimalValue.substr(0, decimalLength)}` : integerValue
+    } else {
+      resultNumerical = numerical
+    }
+    if (
+      inputStatus.current.inputFocused &&
+      resultNumerical.indexOf('.') === -1 &&
+      numerical.indexOf('.') > -1 &&
+      numerical.indexOf('.') === numerical.length - 1
+    ) {
+      resultNumerical += '.'
+    }
+    return resultNumerical
+  }
+
+  type StepBtnType = 'plus' | 'minus'
+  const handleStepChang = (type: StepBtnType) => {
+    const step = stepOption.step === undefined ? 1 : parseFloat(stepOption.step)
+    if (typeof step !== 'number') {
+      devWarning(true, 'inputNumber', `stepOption.step必须为一个数值`)
+      return false
+    }
+    const startingNumber = parseFloat(inputNumberRef.current.value) || 0
+    const calculationResults = new Big(startingNumber)[type](step).valueOf()
+    const legalNumber = verifiValue(calculationResults)
+    if (legalNumber === false) {
+      return false
+    }
+    setInputValue(legalNumber)
+    onChange && onChange({ target: { value: legalNumber } })
+  }
+
+  const handleKeyDown = (event: KeyboardEvent) => {
+    if (!stepOption || props.disabled || props.readOnly) {
+      return
+    }
+    const keyCode = event.keyCode
+    if ([38, 40].includes(keyCode)) {
+      event.preventDefault()
+      handleStepChang(keyCode === 38 ? 'plus' : 'minus')
+    }
+  }
+
+  const clearAllTimer = useCallback(() => {
+    stepMouseDownDelayTimer.current && clearTimeout(stepMouseDownDelayTimer.current)
+    stepMouseDownIntervalTimer.current && clearInterval(stepMouseDownIntervalTimer.current)
+    document.removeEventListener('mouseup', clearAllTimer)
+    return false
+  }, [stepMouseDownDelayTimer, stepMouseDownIntervalTimer])
+
+  const handleBlur = (event: React.FocusEvent<HTMLInputElement>) => {
+    inputStatus.current.isHandleChange = false
+    inputStatus.current.inputFocused = false
+    const { min, max, onBlur } = inputNumberProps
+    let _inputValue = inputValue
+    if (_inputValue === '-') {
+      _inputValue = ''
+    }
+    const bigValue = new Big(Number(_inputValue))
+    // 还原最小值
+    if (typeof min === 'number' && bigValue.lt(min)) {
+      _inputValue = min.toString()
+    }
+    // 还原最大值
+    if (typeof min === 'number' && bigValue.gt(max)) {
+      _inputValue = max.toString()
+    }
+    // 超过精度位数直接截断
+    _inputValue = handleNumericalAccuracy(_inputValue)
+    const formatValue = handleFormatValue(_inputValue, {
+      mask,
+      zeroShow,
+      decimalLength,
+      showDecimalTailZero,
+      symbol,
+      code,
+    })
+    setInputValue(formatValue)
+    onBlur && onBlur(handleEventAttachValue(event, _inputValue))
+    inputStatus.current.isHandleChange = false
+    inputStatus.current.inputFocused = false
+  }
+
+  useEffect(() => {
+    const { isHandleChange, inputFocused } = inputStatus.current
+    if (isHandleChange) {
+      return
+    }
+    setInputValue((_inputValue) => {
+      const isValueChange =
+        value !==
+        (inputFocused
+          ? _inputValue
+          : formatEditNumber(_inputValue, { zeroShow, decimalLength, showDecimalTailZero, roundMethod, symbol }))
+      if (!inputFocused || isValueChange) {
+        if (value === '' || value === null) {
+          return ''
+        } else {
+          const formatValue = inputFocused
+            ? formatEditNumber(value, { zeroShow, decimalLength, showDecimalTailZero })
+            : handleFormatValue(value, { mask, zeroShow, decimalLength, showDecimalTailZero, symbol, code })
+          return formatValue
+        }
+      }
+      return _inputValue
+    })
+  }, [value, zeroShow, decimalLength, showDecimalTailZero, symbol, code, roundMethod, mask])
+
+  useEffect(() => {
+    return () => {
+      clearAllTimer()
+    }
+  }, [clearAllTimer])
+
+  useImperativeHandle(props.stepperrref as RefObject<unknown>, () => ({
+    value: inputValue,
+    handleNumericalAccuracy,
+    verifiValue,
+    setValue: (value: any) => setInputValue(value),
+  }))
+
+  return (
+    <Input
+      {...others}
+      ref={inputNumberRef}
+      value={inputValue}
+      prefix={prefix}
+      suffix={suffix}
+      onChange={handleChange}
+      onFocus={handleFocus}
+      onBlur={handleBlur}
+      onKeyDown={handleKeyDown}
+      className={inputPrefixCls}
+    />
+  )
+}
+const InputNumber = React.forwardRef<unknown, InputNumberProps>(InternalInputNumber)
+InputNumber.displayName = 'InputNumber'
+export default InputNumber

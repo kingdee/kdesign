@@ -1,0 +1,8 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Tabs Active Line renders correctly 1`] = `
+<span
+  class="kd-active-line"
+  style="left:0px;width:100px"
+/>
+`;

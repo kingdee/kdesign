@@ -1,0 +1,129 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Avatar render null or undefined buttons without errors 1`] = `
+<Avatar>
+  <span
+    className="kd-avatar kd-avatar-md kd-avatar-circle"
+    style={Object {}}
+  >
+    <span
+      className="kd-avatar-string"
+      style={
+        Object {
+          "transform": "scale(1) translateX(-50%)",
+        }
+      }
+    />
+  </span>
+</Avatar>
+`;
+
+exports[`Avatar renders correctly 1`] = `
+<span
+  class="kd-avatar kd-avatar-md kd-avatar-circle"
+>
+  <span
+    class="kd-avatar-string"
+    style="opacity:0"
+  >
+    Avatar
+  </span>
+</span>
+`;
+
+exports[`Avatar renders correctly 2`] = `
+<span
+  class="kd-avatar kd-avatar-lg kd-avatar-circle"
+>
+  <span
+    class="kd-avatar-string"
+    style="opacity:0"
+  >
+    Avatar
+  </span>
+</span>
+`;
+
+exports[`Avatar renders correctly 3`] = `
+<span
+  class="kd-avatar kd-avatar-md kd-avatar-circle"
+>
+  <span
+    class="kd-avatar-string"
+    style="opacity:0"
+  >
+    Avatar
+  </span>
+</span>
+`;
+
+exports[`Avatar renders correctly 4`] = `
+<span
+  class="kd-avatar kd-avatar-sm kd-avatar-circle"
+>
+  <span
+    class="kd-avatar-string"
+    style="opacity:0"
+  >
+    Avatar
+  </span>
+</span>
+`;
+
+exports[`Avatar renders correctly 5`] = `
+<span
+  class="kd-avatar kd-avatar-xs kd-avatar-circle"
+>
+  <span
+    class="kd-avatar-string"
+    style="opacity:0"
+  >
+    Avatar
+  </span>
+</span>
+`;
+
+exports[`Avatar renders correctly 6`] = `
+<span
+  class="kd-avatar kd-avatar-md kd-avatar-circle"
+>
+  <span
+    class="kd-avatar-string"
+    style="opacity:0"
+  >
+    Avatar
+  </span>
+</span>
+`;
+
+exports[`Avatar renders correctly 7`] = `
+<span
+  class="kd-avatar kd-avatar-md kd-avatar-square"
+>
+  <span
+    class="kd-avatar-string"
+    style="opacity:0"
+  >
+    Avatar
+  </span>
+</span>
+`;
+
+exports[`Avatar should handle onError correctly 1`] = `
+<Foo>
+  <Avatar
+    onError={[Function]}
+    src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"
+  >
+    <span
+      className="kd-avatar kd-avatar-md kd-avatar-circle kd-avatar-image"
+      style={Object {}}
+    >
+      <img
+        onError={[Function]}
+        src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"
+      />
+    </span>
+  </Avatar>
+</Foo>
+`;

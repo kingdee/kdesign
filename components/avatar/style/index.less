@@ -1,0 +1,72 @@
+@import '../../style/themes/index';
+@import './mixin.less';
+@avatar-prefix-cls: ~'@{kd-prefix}-avatar';
+@icon-prefix-cls: ~'@{kd-prefix}icon';
+
+.@{avatar-prefix-cls} {
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+  text-align: center;
+  vertical-align: middle;
+  background: @avatar-bg;
+
+  &-image {
+    background: transparent;
+  }
+
+  &-disabled {
+    cursor: not-allowed;
+  }
+
+  &:hover:not(&-disabled) {
+    cursor: pointer;
+  }
+
+  .avatar-size(@avatar-size-base, @avatar-font-size-base);
+
+  &-lg {
+    .avatar-size(@avatar-size-lg, @avatar-font-size-lg);
+  }
+
+  &-sm {
+    .avatar-size(@avatar-size-sm, @avatar-font-size-sm);
+  }
+
+  &-xs {
+    .avatar-size(@avatar-size-xs, @avatar-font-size-xs);
+  }
+
+  &-square {
+    border-radius: @avatar-border-radius;
+  }
+
+  & > img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.avatar-size(@size, @font-size) {
+  width: @size;
+  height: @size;
+  line-height: @size;
+  border-radius: 50%;
+
+  &-string {
+    position: absolute;
+    left: 50%;
+    transform-origin: 0 center;
+  }
+
+  &.@{avatar-prefix-cls}-icon {
+    font-size: @font-size;
+
+    & > .@{icon-prefix-cls} {
+      vertical-align: unset !important;
+    }
+  }
+}

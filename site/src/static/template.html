@@ -1,0 +1,39 @@
+
+<!DOCTYPE html>
+<html {{ htmlAttributes | safe }}>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests"> -->
+    {% if title %}<title>{{ title }}</title>{% endif %}
+    {% if meta %}{{ meta | safe }}{% endif %}
+    {% if link %}{{ link | safe }}{% endif %}
+    {% for cssFile in manifest["css"] %}
+    <link rel="stylesheet" type="text/css" href="{{ root }}{{ cssFile }}" />
+    {% endfor %}
+    <link
+      rel="icon"
+      href="https://kingdee.design/theme/favicon.ico"
+      type="image/x-icon"
+    />
+    <!--[if lt IE 10]>
+      <script src="https://as.alipayobjects.com/g/component/??console-polyfill/0.2.2/index.js,es5-shim/4.5.7/es5-shim.min.js,es5-shim/4.5.7/es5-sham.min.js,html5shiv/3.7.2/html5shiv.min.js,media-match/2.0.2/media.match.min.js"></script>
+    <![endif]-->
+
+    <!-- GrowingIO Analytics code version 2.1 -->
+    <!-- Copyright 2015-2018 GrowingIO, Inc. More info available at http://www.growingio.com -->
+    <script type='text/javascript'>
+      !function(e,t,n,g,i){e[i]=e[i]||function(){(e[i].q=e[i].q||[]).push(arguments)},n=t.createElement("script"),tag=t.getElementsByTagName("script")[0],n.async=1,n.src=('https:'==document.location.protocol?'https://':'http://')+g,tag.parentNode.insertBefore(n,tag)}(window,document,"script","assets.giocdn.com/2.1/gio.js","gio");
+        gio('init','bc50b53527a09164', {});
+      gio('send');
+    </script>
+    <!-- End GrowingIO Analytics code version: 2.1 -->
+  </head>
+  <body>
+    <div id="react-content">{{ content | safe }}</div>
+  </body>
+  {% for jsFile in manifest["js"] %}
+  <script src="{{ root }}{{ jsFile }}"></script>
+  {% endfor %}
+</html>

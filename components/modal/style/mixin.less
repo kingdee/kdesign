@@ -1,0 +1,11 @@
+.modal-title-icon-type(@squareWidth) {
+  border-radius: 50% 50%;
+  width: @squareWidth;
+  height: @squareWidth;
+}
+
+.modal-title-icon-bgcolor-type(@type, @bgcolor) {
+  & .modal-@{type}-title-icon-bgcolor {
+    background-color: @bgcolor;
+  }
+}

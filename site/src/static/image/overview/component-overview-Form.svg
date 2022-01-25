@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="120px" height="78px" viewBox="0 0 120 78" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>编组 55</title>
+    <g id="前端总览" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="PC组件概览备份-3" transform="translate(-685.000000, -1837.000000)">
+            <g id="编组-25" transform="translate(685.000000, 1837.000000)">
+                <g id="编组-21">
+                    <rect id="矩形" fill="#BDC6D8" x="0" y="20" width="120" height="1"></rect>
+                    <rect id="矩形备份-81" fill="#EDF1F7" x="0" y="0" width="24" height="6" rx="1"></rect>
+                    <rect id="矩形备份-82" fill="#D4D9E3" x="0" y="11" width="32" height="8" rx="1"></rect>
+                    <rect id="矩形备份-87" fill="#D4D9E3" x="0" y="43" width="32" height="8" rx="1"></rect>
+                </g>
+                <g id="编组-21" transform="translate(0.000000, 32.000000)">
+                    <rect id="矩形" fill="#BDC6D8" x="0" y="20" width="120" height="1"></rect>
+                    <rect id="矩形备份-81" fill="#EDF1F7" x="0" y="0" width="24" height="6" rx="1"></rect>
+                </g>
+                <g id="↳⚙️按钮样式备份" transform="translate(0.000000, 66.000000)" fill="#276FF5">
+                    <rect id="↳⚙️按钮状态" x="0" y="0" width="23" height="11.2" rx="1.6"></rect>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,42 @@
+@import '../../style/themes/index';
+@import '../../style/mixins/index';
+
+@space-prefix-cls: ~'@{kd-prefix}-space';
+
+.@{space-prefix-cls} {
+  display: flex;
+  row-gap: var(--rgap);
+
+  &.@{space-prefix-cls}-horizontal {
+    > *:not(:last-child) {
+      margin-right: var(--cgap);
+    }
+  }
+
+  &.@{space-prefix-cls}-vertical {
+    flex-direction: column;
+    > *:not(:last-child) {
+      margin-bottom: var(--cgap);
+    }
+  }
+
+  &.@{space-prefix-cls}-wrap {
+    flex-wrap: wrap;
+  }
+
+  &.@{space-prefix-cls}-align-start {
+    align-items: flex-start;
+  }
+
+  &.@{space-prefix-cls}-align-center {
+    align-items: center;
+  }
+
+  &.@{space-prefix-cls}-align-end {
+    align-items: flex-end;
+  }
+
+  &.@{space-prefix-cls}-align-baseline {
+    align-items: baseline;
+  }
+}
