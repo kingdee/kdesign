@@ -1,0 +1,57 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Input renders correctly 1`] = `
+<input
+  class="kd-input kd-input-size-middle kd-input-underline"
+  type="text"
+  value=""
+/>
+`;
+
+exports[`Input renders correctly 2`] = `
+<input
+  class="kd-input kd-input-size-large kd-input-underline"
+  type="text"
+  value=""
+/>
+`;
+
+exports[`Input renders correctly 3`] = `
+<input
+  class="kd-input kd-input-size-middle kd-input-underline"
+  type="text"
+  value=""
+/>
+`;
+
+exports[`Input renders correctly 4`] = `
+<input
+  class="kd-input kd-input-size-small kd-input-underline"
+  type="text"
+  value=""
+/>
+`;
+
+exports[`Input renders correctly 5`] = `
+<input
+  class="kd-input kd-input-size-middle kd-input-borderless"
+  type="text"
+  value=""
+/>
+`;
+
+exports[`Input renders correctly 6`] = `
+<input
+  class="kd-input kd-input-size-middle kd-input-underline"
+  type="text"
+  value=""
+/>
+`;
+
+exports[`Input renders correctly 7`] = `
+<input
+  class="kd-input kd-input-size-middle"
+  type="text"
+  value=""
+/>
+`;

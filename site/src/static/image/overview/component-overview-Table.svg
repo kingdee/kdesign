@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="194px" height="102px" viewBox="0 0 194 102" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>表格</title>
+    <defs>
+        <filter x="-7.7%" y="-15.8%" width="115.4%" height="131.6%" filterUnits="objectBoundingBox" id="filter-1">
+            <feOffset dx="0" dy="1" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="3" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.08 0" type="matrix" in="shadowBlurOuter1" result="shadowMatrixOuter1"></feColorMatrix>
+            <feMerge>
+                <feMergeNode in="shadowMatrixOuter1"></feMergeNode>
+                <feMergeNode in="SourceGraphic"></feMergeNode>
+            </feMerge>
+        </filter>
+    </defs>
+    <g id="页面-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="PC组件概览备份-3" transform="translate(-387.000000, -2432.000000)">
+            <g id="编组" transform="translate(394.000000, 2438.000000)">
+                <g id="编组-2" filter="url(#filter-1)">
+                    <g id="编组">
+                        <g id="编组备份-8">
+                            <rect id="矩形" stroke="#D4D9E3" stroke-width="0.4" fill="#FFFFFF" x="-0.2" y="-0.2" width="180.4" height="88.4"></rect>
+                            <rect id="矩形" fill="#F8FBFF" x="0" y="0" width="180" height="20"></rect>
+                        </g>
+                        <g id="编组-3" transform="translate(0.000000, 20.000000)">
+                            <rect id="矩形" x="0" y="0" width="180" height="17"></rect>
+                            <rect id="矩形备份-19" fill="#FAFAFA" x="0" y="16.2916667" width="179.28" height="1"></rect>
+                        </g>
+                        <g id="编组-3备份" transform="translate(0.000000, 54.000000)">
+                            <rect id="矩形" x="0" y="0" width="180" height="17"></rect>
+                            <rect id="矩形备份-19" fill="#FAFAFA" x="0" y="16.2916667" width="179.28" height="1"></rect>
+                        </g>
+                        <g id="编组-3备份-3" transform="translate(0.000000, 37.000000)">
+                            <rect id="矩形" x="0" y="0" width="180" height="17"></rect>
+                            <rect id="矩形备份-19" fill="#FAFAFA" x="0" y="16.2916667" width="179.28" height="1"></rect>
+                        </g>
+                        <g id="编组-3备份-4" transform="translate(0.000000, 71.000000)">
+                            <rect id="矩形" x="0" y="0" width="180" height="17"></rect>
+                        </g>
+                        <rect id="矩形备份-19" fill="#FAFAFA" x="0" y="19.3790323" width="179.28" height="1"></rect>
+                    </g>
+                </g>
+                <rect id="矩形备份-82" fill="#D4D9E3" x="7" y="6" width="28" height="8" rx="1"></rect>
+                <g id="编组-102" transform="translate(7.000000, 26.000000)" fill="#EDF1F7">
+                    <rect id="矩形备份-92" x="0" y="0" width="32" height="6" rx="1"></rect>
+                    <rect id="矩形备份-93" x="44" y="0" width="32" height="6" rx="1"></rect>
+                    <rect id="矩形备份-94" x="88" y="0" width="32" height="6" rx="1"></rect>
+                    <rect id="矩形备份-95" x="135" y="0" width="32" height="6" rx="1"></rect>
+                </g>
+                <g id="编组-102备份" transform="translate(7.000000, 43.000000)" fill="#EDF1F7">
+                    <rect id="矩形备份-92" x="0" y="0" width="32" height="6" rx="1"></rect>
+                    <rect id="矩形备份-93" x="44" y="0" width="32" height="6" rx="1"></rect>
+                    <rect id="矩形备份-94" x="88" y="0" width="32" height="6" rx="1"></rect>
+                    <rect id="矩形备份-95" x="135" y="0" width="32" height="6" rx="1"></rect>
+                </g>
+                <g id="编组-102备份-2" transform="translate(7.000000, 60.000000)" fill="#EDF1F7">
+                    <rect id="矩形备份-92" x="0" y="0" width="32" height="6" rx="1"></rect>
+                    <rect id="矩形备份-93" x="44" y="0" width="32" height="6" rx="1"></rect>
+                    <rect id="矩形备份-94" x="88" y="0" width="32" height="6" rx="1"></rect>
+                    <rect id="矩形备份-95" x="135" y="0" width="32" height="6" rx="1"></rect>
+                </g>
+                <g id="编组-102备份-3" transform="translate(7.000000, 77.000000)" fill="#EDF1F7">
+                    <rect id="矩形备份-92" x="0" y="0" width="32" height="6" rx="1"></rect>
+                    <rect id="矩形备份-93" x="44" y="0" width="32" height="6" rx="1"></rect>
+                    <rect id="矩形备份-94" x="88" y="0" width="32" height="6" rx="1"></rect>
+                    <rect id="矩形备份-95" x="135" y="0" width="32" height="6" rx="1"></rect>
+                </g>
+                <rect id="矩形备份-89" fill="#D4D9E3" x="51" y="6" width="28" height="8" rx="1"></rect>
+                <rect id="矩形备份-90" fill="#D4D9E3" x="95" y="6" width="28" height="8" rx="1"></rect>
+                <rect id="矩形备份-91" fill="#D4D9E3" x="146" y="6" width="28" height="8" rx="1"></rect>
+            </g>
+        </g>
+    </g>
+</svg>

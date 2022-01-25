@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="172px" height="77px" viewBox="0 0 172 77" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>编组 65备份 2</title>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="160" height="65" rx="0.981595092"></rect>
+        <filter x="-5.9%" y="-13.1%" width="111.9%" height="129.2%" filterUnits="objectBoundingBox" id="filter-2">
+            <feOffset dx="0" dy="1" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="3" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.08 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="前端总览" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="PC组件概览备份-3" transform="translate(-135.000000, -3452.000000)">
+            <g id="编组-7" transform="translate(135.000000, 3452.000000)">
+                <g id="编组-65备份" transform="translate(6.000000, 5.000000)">
+                    <g id="矩形">
+                        <use fill="black" fill-opacity="1" filter="url(#filter-2)" xlink:href="#path-1"></use>
+                        <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-1"></use>
+                    </g>
+                    <path d="M0.981595092,0 L159.018405,0 C159.560525,1.54194136e-14 160,0.439475092 160,0.981595092 L160,24 L160,24 L0,24 L0,0.981595092 C-6.63905523e-17,0.439475092 0.439475092,1.54287576e-15 0.981595092,0 Z" id="矩形" fill="#EDF1F7"></path>
+                    <rect id="矩形备份-107" fill="#BDC6D8" x="8" y="8" width="36" height="8" rx="1"></rect>
+                    <rect id="矩形备份-108" fill="#EDF1F7" x="8" y="32" width="91" height="8" rx="1"></rect>
+                    <rect id="矩形备份-109" fill="#EDF1F7" x="8" y="46" width="28" height="8" rx="1"></rect>
+                    <rect id="矩形备份-110" fill="#EDF1F7" x="40" y="46" width="28" height="8" rx="1"></rect>
+                    <rect id="矩形备份-111" fill="#EDF1F7" x="123" y="46" width="28" height="8" rx="1"></rect>
+                    <g id="编组" transform="translate(145.000000, 8.000000)" fill="#C2CBD0">
+                        <g id="0.-全局样式/1.图标/1.系统图标/线性图标/时间" transform="translate(3.000000, 3.000000) scale(1, -1) translate(-3.000000, -3.000000) ">
+                            <path d="M0.177810541,5.93209632 L0.0679036831,5.82218946 L0.0679036831,5.82218946 L0.124310823,5.86831082 C-0.013254286,5.67133845 0.00504460277,5.40571653 0.188194027,5.22256711 L2.41031082,2.99931082 L0.188194027,0.777432891 C0.0114843376,0.600723201 -0.00826530155,0.326534674 0.121959734,0.135353248 L0.128310823,0.126310823 L0.0679036831,0.177810541 L0.177810541,0.0679036831 L0.177810541,0.0679036831 L0.130310823,0.124310823 C0.328661554,-0.013254286 0.594283466,0.00504460277 0.777432891,0.188194027 L2.99931082,2.41031082 L5.22256711,0.188194027 C5.3992768,0.0114843376 5.67346533,-0.00826530155 5.86464675,0.121959734 L5.87531082,0.130310823 C6.01325429,0.328661554 5.9949554,0.594283466 5.81180597,0.777432891 L3.58931082,2.99931082 L5.81180597,5.22256711 C5.98851566,5.3992768 6.0082653,5.67346533 5.87804027,5.86464675 L5.86831082,5.87531082 C5.67133845,6.01325429 5.40571653,5.9949554 5.22256711,5.81180597 L2.99931082,3.58931082 L0.777432891,5.81180597 C0.600723201,5.98851566 0.326534674,6.0082653 0.135353248,5.87804027 L0.126310823,5.87031082 L0.177810541,5.93209632 Z" id="关闭"></path>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

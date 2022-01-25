@@ -1,0 +1,315 @@
+@import '../../style/themes/index';
+@import '../../style/mixins/index';
+
+@radio-prefix-cls: ~'@{kd-prefix}-radio';
+@radio-square-prefix-cls: ~'@{radio-prefix-cls}-square';
+@radio-button-prefix-cls: ~'@{radio-prefix-cls}-button';
+@radio-group-prefix-cls: ~'@{radio-prefix-cls}-group';
+@radio-focus-shadow: 0 0 0 3px rgba(@theme-color, 10%);
+
+// 默认类型（单选项）
+.@{radio-prefix-cls} {
+  .reset-component();
+
+  // 默认状态
+  position: relative;
+  display: inline-block;
+  padding-left: @radio-circle-size;
+  margin-right: @radio-margin-right;
+  white-space: nowrap;
+  cursor: pointer;
+  vertical-align: middle;
+  color: @radio-font-color;
+  font-size: @radio-font-size;
+
+  &::before {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    height: @radio-circle-size;
+    width: @radio-circle-size;
+    content: '';
+    border-radius: 50%;
+    box-sizing: border-box;
+    border: @radio-border-width solid @strong-border-color;
+    background-color: @white;
+    transform: translateY(-50%);
+    transition: border-color @transition-duration, box-shadow @transition-duration;
+  }
+
+  &::after {
+    position: absolute;
+    top: 50%;
+    left: 2px;
+    width: @radio-circle-size - 4px;
+    height: @radio-circle-size - 4px;
+    content: '';
+    border-radius: 50%;
+    background-color: @theme-color;
+    transform: translateY(-50%);
+    animation: kdRadioLeaveEffect calc(@transition-duration - 0.1s) @ease both;
+    transition: all @transition-duration @ease;
+    visibility: hidden;
+    opacity: 0;
+  }
+
+  &-input {
+    position: absolute;
+    opacity: 0;
+  }
+
+  & > span {
+    padding: 0 6px;
+  }
+
+  // 悬停状态
+  &:hover {
+    // color: @theme-color;
+    &::before {
+      border-color: @theme-color;
+    }
+  }
+
+  // 选中状态
+  &-checked {
+    &::before {
+      border-color: @theme-color;
+    }
+
+    &:focus-within::before {
+      box-shadow: @radio-focus-shadow;
+    }
+
+    &::after {
+      position: absolute;
+      top: 50%;
+      left: 2px;
+      width: @radio-circle-size - 4px;
+      height: @radio-circle-size - 4px;
+      content: '';
+      border-radius: 50%;
+      background-color: @theme-color;
+      transform: translateY(-50%);
+      animation: kdRadioEffect calc(@transition-duration - 0.1s) @ease both;
+      transition: all calc(@transition-duration - 0.1s) @ease;
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+
+  // 禁用状态
+  &-disabled,
+  &-disabled:hover {
+    cursor: not-allowed;
+    color: @disabled-color;
+
+    &::before {
+      border-color: @disabled-color;
+      background-color: @disabled-contain-bg;
+      box-shadow: none;
+    }
+
+    &::after {
+      background-color: @disabled-color;
+      animation: none;
+    }
+  }
+}
+
+// 方框类型（单选框）
+.@{radio-square-prefix-cls} {
+  .reset-component();
+
+  // 默认状态
+  position: relative;
+  display: inline-block;
+  height: @radio-square-height;
+  padding: @radio-square-padding;
+  margin-right: @radio-margin-right;
+  line-height: @radio-square-height - 2;
+  vertical-align: middle;
+  color: @radio-font-color;
+  font-size: @radio-font-size;
+  cursor: pointer;
+  background-color: @white;
+  overflow: hidden;
+  border-radius: @radius-size;
+  border: @radio-border-width solid @strong-border-color;
+  transition: all @transition-duration;
+
+  &::after {
+    position: absolute;
+    right: -1 * (@radio-square-height - 10px) / 2;
+    bottom: -1 * (@radio-square-height - 10px) / 2;
+    width: @radio-square-height - 10px;
+    height: @radio-square-height - 10px;
+    content: '';
+    background-color: @theme-color;
+    transform: rotate(45deg);
+    animation: kdRadioSquareLeaveEffect calc(@transition-duration - 0.1s) @ease both;
+    transition: all @transition-duration @ease;
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  &-input {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+    cursor: pointer;
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  // 悬停状态
+  &:hover {
+    color: @theme-color;
+    border-color: @theme-color;
+  }
+
+  // 选中状态
+  &-checked {
+    border-color: @theme-color;
+    &:focus-within {
+      box-shadow: @radio-focus-shadow;
+    }
+    &::after {
+      position: absolute;
+      right: -1 * (@radio-square-height - 10px) / 2;
+      bottom: -1 * (@radio-square-height - 10px) / 2;
+      width: @radio-square-height - 10px;
+      height: @radio-square-height - 10px;
+      content: '';
+      background-color: @theme-color;
+      transform: rotate(45deg);
+      animation: kdRadioSquareEffect calc(@transition-duration - 0.1s) @ease both;
+      transition: all calc(@transition-duration - 0.1s) @ease;
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+
+  &-disabled,
+  &-disabled:hover {
+    color: @disabled-color;
+    border-color: @strong-border-color;
+    background-color: @disabled-contain-bg;
+    box-shadow: none;
+    cursor: not-allowed;
+
+    &::after {
+      background-color: @disabled-color;
+      animation: none;
+    }
+  }
+}
+
+// 按钮类型（切换按钮）
+.@{radio-button-prefix-cls} {
+  .reset-component();
+
+  // 默认状态
+  position: relative;
+  display: inline-block;
+  height: @radio-button-height;
+  padding: @radio-button-padding;
+  line-height: @radio-button-height;
+  vertical-align: middle;
+  color: @radio-font-color;
+  font-size: @radio-font-size;
+  cursor: pointer;
+  background-color: @white;
+  border: @radio-border-width solid @strong-border-color;
+  border-left: none;
+  transition: all @transition-duration;
+
+  &:first-child {
+    border-radius: @radius-size 0 0 @radius-size;
+    border-left: @radio-border-width solid @strong-border-color;
+    &::before {
+      content: none;
+    }
+  }
+
+  &:last-child {
+    border-radius: 0 @radius-size @radius-size 0;
+  }
+
+  &::before {
+    z-index: 10;
+    position: absolute;
+    top: -1 * @radio-border-width;
+    left: -1 * @radio-border-width;
+    height: @radio-button-height;
+    width: @radio-border-width;
+    content: '';
+    background-color: @strong-border-color;
+  }
+
+  &-input {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+    cursor: pointer;
+    opacity: 0;
+  }
+
+  // 悬停状态
+  &:hover {
+    color: @theme-color;
+  }
+
+  // 选中状态
+  &-checked {
+    z-index: 1;
+    color: @white;
+    border-color: @theme-color;
+    background-color: @theme-color;
+
+    &:focus-within {
+      box-shadow: @radio-focus-shadow;
+    }
+
+    &:hover {
+      color: @white;
+    }
+
+    &::before {
+      background-color: @theme-color;
+    }
+
+    &:first-child {
+      border-left-color: @theme-color;
+      &::before {
+        content: none;
+      }
+    }
+
+    & + .@{radio-button-prefix-cls} {
+      &::before {
+        content: none;
+      }
+    }
+
+    &.@{radio-button-prefix-cls}-disabled {
+      background-color: @strong-border-color;
+      border-left-color: @strong-border-color;
+      box-shadow: none;
+    }
+  }
+
+  &-disabled,
+  &-disabled:hover {
+    color: @disabled-color;
+    border-color: @strong-border-color;
+    // background-color: @disabled-contain-bg;
+    cursor: not-allowed;
+  }
+}

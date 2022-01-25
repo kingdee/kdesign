@@ -1,0 +1,15 @@
+.base-step-size(@width) {
+	width: @width;
+}
+.step-style(@borderDirection, @marginDirection) {
+	border-@{borderDirection}: 1px solid @strong-border-color;
+	&.@{inputNumber-prefix-cls}-baseStep-small, &.@{inputNumber-prefix-cls}-embedStep-small {
+		margin-@{marginDirection}: -@input-small-padding-horizontal;
+	}
+	&.@{inputNumber-prefix-cls}-baseStep-middle, &.@{inputNumber-prefix-cls}-embedStep-middle {
+		margin-@{marginDirection}: -@input-middle-padding-horizontal;
+	}
+	&.@{inputNumber-prefix-cls}-baseStep-large, &.@{inputNumber-prefix-cls}-embedStep-large {
+		margin-@{marginDirection}: -@input-large-padding-horizontal;
+	}
+}

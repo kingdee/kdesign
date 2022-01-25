@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Image renders correctly 1`] = `
+<div
+  class="kd-image error"
+  style="width:42px"
+>
+  <img
+    class="kd-image-img"
+    src=""
+  />
+</div>
+`;

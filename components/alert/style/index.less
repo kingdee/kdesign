@@ -1,0 +1,118 @@
+@import '../../style/themes/index';
+@import './mixin.less';
+@alert-prefix-cls: ~'@{kd-prefix}-alert';
+@icon-side-length: 16px;
+@font-size: 12px;
+@line-height: 18px;
+
+@success: success;
+@warning: warning;
+@error: error;
+@info: info;
+
+.alert-bg-type-set() {
+  @success: @success-alert-bg-color;
+  @warning: @warning-alert-bg-color;
+  @error: @error-alert-bg-color;
+  @info: @info-alert-bg-color;
+};
+
+.alert-font-type-set() {
+  @success: @success-color;
+  @warning: @warning-color;
+  @error: @error-color;
+  @info: @link-color;
+};
+
+.icon-center {
+  i {
+    align-self: center;
+  }
+}
+
+.@{alert-prefix-cls} {
+  &-container {
+    display: none;
+    margin: 8px 0;
+    min-height: 50px;
+    width: 100%;
+    // flex-grow: 1;
+    align-items: center;
+    z-index: @zIndex-apex;
+     transition: display 3s;
+  }
+  &-banner-container {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    z-index: @zIndex-apex;
+    width: 100%;
+  }
+  each(.alert-bg-type-set(), {
+    .alert-bg-type(@key, @value);
+  });
+  each(.alert-font-type-set(), {
+    .alert-font-type(@key, @value);
+  });
+  &-icon {
+    display: flex;
+    margin: 0 8px 0 32px;
+    .square(@icon-side-length);
+    cursor: default;
+    .icon-center();
+  }
+  &-message {
+    margin-right: 51px;
+    font-size: @font-size;
+    line-height: @line-height;
+    display: flex;
+    flex-grow: 1;
+    cursor: default;
+  }
+  &-without-icon-message {
+    margin-left: 56px;
+  }
+  &-leave {
+    transition: min-height @transition-duration @alert-transition-fn, opacity @transition-duration @alert-transition-fn, margin @transition-duration @alert-transition-fn, height @transition-duration @alert-transition-fn, line-height @transition-duration @alert-transition-fn;
+    display: flex;
+    min-height: 0;
+    margin: 0 !important;
+    overflow: hidden;
+    opacity: 0;
+    
+    .@{alert-prefix-cls}-icon, .@{alert-prefix-cls}-message, .@{alert-prefix-cls}-close-icon {
+      height: 0;
+      line-height: 0;
+    }
+  }
+  &-close-icon {
+    display: flex;
+    .square(@icon-side-length);
+    color: @secondary-text-color;
+    justify-self: flex-end;
+    margin-right: 15px;
+    cursor: pointer;
+    &:hover {
+      color: @theme-color-hover;
+    }
+    &:active {
+      color: @theme-color-click;
+    }
+    .icon-center();
+  }
+  &-visible {
+    display: flex;
+  }
+  &-banner {
+    position: fixed;
+    animation: moveIn @transition-duration @alert-transition-fn both;
+  }
+}
+@keyframes moveIn {
+  from {
+    transform: translateY(-50px);
+  }
+  to {
+    transform: translateY(0);
+  }
+}

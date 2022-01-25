@@ -1,0 +1,83 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SplitPanel renders correctly 1`] = `
+<div
+  class="kd-split-wrapper"
+>
+  <div
+    class="kd-split-horizontal"
+  >
+    <div
+      class="kd-split-panel left-panel"
+      style="right:100%"
+    />
+    <div
+      class="kd-split-trigger-con can-drag is-active"
+      style="left:0%"
+    >
+      <div
+        class="kd-split-trigger kd-split-trigger-vertical"
+      />
+      <span
+        class="kd-split-trigger-arrow is-vertical left"
+      >
+        <i
+          class="kdicon kdicon-arrow-left-solid"
+        />
+      </span>
+      <span
+        class="kd-split-trigger-arrow is-vertical right"
+      >
+        <i
+          class="kdicon kdicon-arrow-right-solid"
+        />
+      </span>
+    </div>
+    <div
+      class="kd-split-panel right-panel"
+      style="left:0%"
+    />
+  </div>
+</div>
+`;
+
+exports[`SplitPanel renders correctly 2`] = `
+<div
+  class="kd-split-wrapper"
+>
+  <div
+    class="kd-split-vertical"
+  >
+    <div
+      class="kd-split-panel top-panel"
+      style="bottom:100%"
+    />
+    <div
+      class="kd-split-trigger-con can-drag is-active"
+      style="top:0%"
+    >
+      <div
+        class="kd-split-trigger kd-split-trigger-horizontal"
+      />
+      <span
+        class="kd-split-trigger-arrow is-horizontal top"
+      >
+        <i
+          class="kdicon kdicon-arrow-up-solid"
+        />
+      </span>
+      <span
+        class="kd-split-trigger-arrow is-horizontal bottom"
+      >
+        <i
+          class="kdicon kdicon-arrow-down-solid"
+        />
+      </span>
+    </div>
+    <div
+      class="kd-split-panel bottom-panel"
+      style="top:0%"
+    />
+  </div>
+</div>
+`;

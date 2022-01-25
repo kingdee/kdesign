@@ -1,0 +1,83 @@
+
+// code component mixin here
+.typography-paragraph(@marginBottom) {
+  margin-bottom: @marginBottom;
+}
+
+.typography-title(@fontSize; @fontWeight; @lineHeight; @headingColor; @headingMarginBottom) {
+  margin-bottom: @headingMarginBottom;
+  color: @headingColor;
+  font-weight: @fontWeight;
+  font-size: @fontSize;
+  line-height: @lineHeight;
+}
+
+.typography-title-1(@marginBottom: @typography-title-margin-bottom) {
+  .typography-title(
+    @heading-1-size,
+    @typography-title-font-weight,
+    1.5,
+    @primary-text-color,
+    // @heading-1-margin-bottom
+    @marginBottom
+  );
+}
+
+.typography-title-2(@marginBottom: @typography-title-margin-bottom) {
+  .typography-title(
+    @heading-2-size,
+    @typography-title-font-weight,
+    1.5,
+    @heading-2-color,
+    // @heading-2-margin-bottom
+    @marginBottom
+  );
+}
+
+.typography-title-3(@marginBottom: @typography-title-margin-bottom) {
+  .typography-title(
+    @heading-3-size,
+    @typography-title-font-weight,
+    1.5,
+    @primary-text-color,
+    // @heading-3-margin-bottom
+    @marginBottom
+  );
+}
+
+.typography-title-4() {
+  .typography-title(
+    @heading-4-size,
+    @typography-title-font-weight,
+    1.4,
+    @primary-text-color,
+    @typography-title-margin-bottom
+  );
+}
+
+.typography-title-5() {
+  .typography-title(
+    @heading-5-size,
+    @typography-title-font-weight,
+    1.5,
+    @primary-text-color,
+    @typography-title-margin-bottom
+  );
+}
+
+.operation-unit() {
+  color: @link-color;
+  text-decoration: none;
+  outline: none;
+  cursor: pointer;
+  transition: color 0.3s;
+
+  &:focus,
+  &:hover {
+    color: @link-color-hover;
+  }
+
+  &:active {
+    color: @link-color-active;
+  }
+}

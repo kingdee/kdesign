@@ -1,0 +1,208 @@
+.kdm-modal-mask {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  height: 100%;
+  z-index: 1999;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+.kdm-modal-wrap {
+  position: fixed;
+  overflow: auto;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 100%;
+  z-index: 1999;
+  -webkit-overflow-scrolling: touch;
+  outline: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-transform: translateZ(1px);
+  transform: translateZ(1px);
+}
+.kdm-modal-wrap-popup {
+  display: block;
+}
+.kdm-modal-popup {
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+.kdm-modal-content {
+  position: relative;
+  background-color: #fff;
+  border: 0;
+  background-clip: padding-box;
+  text-align: center;
+  height: 100%;
+  overflow: hidden;
+}
+.kdm-modal-popup .kdm-modal-content {
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+.kdm-modal-body {
+  font-size: 15px;
+  color: #888;
+  height: 100%;
+  line-height: 1.5;
+  overflow: auto;
+}
+.kdm-list-header {
+  padding: 15px 15px 9px;
+  font-size: 14px;
+  color: #888;
+  width: 100%;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.kdm-list-body {
+  position: relative;
+  background-color: #fff;
+}
+.popup-list .kdm-list-body {
+  height: 40px;
+  overflow: auto;
+  padding: 0 20px;
+}
+
+// @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 2dppx) {
+
+//   html:not([data-scale]) .kdm-list-body {
+//     border-top: none;
+//   }
+
+//   html:not([data-scale]) .kdm-list-body {
+//     border-bottom: none;
+//   }
+
+//   html:not([data-scale]) .kdm-list-body:before {
+//     content: '';
+//     position: absolute;
+//     background-color: #ddd;
+//     display: block;
+//     z-index: 1;
+//     top: 0;
+//     right: auto;
+//     bottom: auto;
+//     left: 0;
+//     width: 100%;
+//     height: 1px;
+//     -webkit-transform-origin: 50% 50%;
+//     -ms-transform-origin: 50% 50%;
+//     transform-origin: 50% 50%;
+//     -webkit-transform: scaleY(0.5);
+//     -ms-transform: scaleY(0.5);
+//     transform: scaleY(0.5);
+//   }
+// }
+.search-wapper {
+  .res-wapper {
+    position: absolute;
+    top: 64px;
+    width: 100%;
+    background: #fff;
+    z-index: 2999;
+    box-shadow: 0 0 24px 0 rgba(0, 0, 0, 0.08);
+    min-height: 100px;
+
+    &::before {
+      left: 40px;
+      display: block;
+      position: absolute;
+      content: '';
+      width: 14px;
+      height: 14px;
+      background: #fff;
+      z-index: 998;
+      top: -7px;
+      -webkit-transform: rotate(-45deg);
+      transform: rotate(-45deg);
+      border-radius: 2px;
+      box-shadow: 0 0 24px 0 rgba(0, 0, 0, 0.1);
+    }
+
+    ul {
+      li {
+        margin: 0 20px;
+        height: 66px;
+        border-bottom: 1px solid #d6e3ee;
+        line-height: normal;
+
+        &:last-of-type {
+          border: none;
+        }
+
+        a {
+          // display: inline-block;
+          width: 100%;
+          height: 100%;
+          padding-top: 12px;
+          box-sizing: border-box;
+          display: grid;
+          grid-template-columns: auto 150px;
+          grid-template-rows: 45px;
+
+          .item-left {
+            font-size: 14px;
+            // float: left;
+            // width: 250px;
+            color: #111111;
+            cursor: pointer;
+
+            .category {
+              width: 100%;
+              line-height: 26px;
+            }
+
+            .details {
+              width: 100%;
+              font-size: 12px;
+              color: #999;
+            }
+          }
+
+          .item-right {
+            // float: right;
+            color: #999999;
+            // width: 150px;
+            text-align: right;
+            font-size: 14px;
+            line-height: 26px;
+          }
+
+          .algolia-docsearch-suggestion--highlight {
+            color: #5582f3;
+            padding: 0 1px;
+          }
+        }
+      }
+    }
+
+    .no-res {
+      text-align: center;
+      color: #999;
+      font-size: 14px;
+      line-height: 50px;
+    }
+
+    .algolia-docsearch-footer {
+      display: none;
+    }
+  }
+}

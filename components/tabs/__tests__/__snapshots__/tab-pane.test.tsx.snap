@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Tabs Active Line renders correctly 1`] = `
+<span
+  class="kd-tab-pane kd-tab-pane-box-active"
+>
+  <span
+    class="kd-tab-pane-text kd-tab-pane-text-active"
+  >
+    TabPane1
+  </span>
+</span>
+`;

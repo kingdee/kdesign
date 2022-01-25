@@ -1,0 +1,14 @@
+
+@import '../../style/themes/index';
+@icon-prefix-cls: ~'@{icon-css-prefix}';
+
+[class^="kdicon"] {
+  display: inline-block;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.icon-spin::before,
+.icon-spin {
+  animation: loadingcircle 2s infinite linear;
+}

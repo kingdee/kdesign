@@ -1,0 +1,223 @@
+@import '../../style/themes/index';
+@import '../../style/mixins/index';
+
+@upload-prefix-cls: ~'@{kd-prefix}-upload';
+@upload-prefix-text-list-cls: ~'@{upload-prefix-cls}-text-list';
+@upload-prefix-picture-list-cls: ~'@{upload-prefix-cls}-picture-list';
+
+.@{upload-prefix-cls} {
+  .reset-component;
+
+  &-select {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+  }
+
+  &-drag {
+    .reset-component;
+    position: relative;
+    cursor: pointer;
+    display: flex;
+    height: 80px;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    color: @third-text-color;
+    border: 1px dashed @weak-border-color;
+    background-color: @contain-bg;
+    transition: border-color @transition-duration, background-color @transition-duration;
+
+    &.hover,
+    &:hover,
+    &:active {
+      border-color: @link-color;
+      background-color: @ongoing-bg-color;
+    }
+  }
+
+  &-input {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    opacity: 0;
+    overflow: hidden;
+
+    input[type="file"] {
+      position: absolute;
+      top: -20%;
+      left: 0;
+      width: 100%;
+      height: 120%;
+      font-size: 0;
+      cursor: pointer;
+    }
+  }
+
+  .@{upload-prefix-text-list-cls} {
+    .reset-component;
+    margin-top: 16px;
+    font-size: @font-size;
+    border-top: 1px dashed @strong-border-color;
+
+    &-item {
+      position: relative;
+      padding: 12px 20px;
+      overflow: hidden;
+      white-space: nowrap;
+      display: flex;
+      align-items: center;
+      transition: background-color @transition-duration;
+
+      &:hover {
+        background-color: @hover-color;
+
+        .@{upload-prefix-text-list-cls}-item-action {
+          opacity: 1;
+          visibility: visible;
+          transform: translateX(0);
+          background-color: @hover-color;
+        }
+      }
+
+      &.error {
+        i,
+        .@{upload-prefix-text-list-cls}-item-name {
+          color: @error-color;
+        }
+      }
+
+      &-name {
+        display: inline-block;
+        margin: 0 5px;
+        .ellipsis;
+        color: @primary-text-color;
+      }
+
+      &-size {
+        color: @third-text-color;
+      }
+
+      &-action {
+        position: absolute;
+        top: 0;
+        right: 0;
+        padding: 12px 20px;
+        background-color: transparent;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateX(5px);
+        transition: transform @transition-duration;
+
+        a {
+          display: inline-block;
+          vertical-align: middle;
+
+          &:not(:first-child) {
+            margin-left: 20px;
+          }
+        }
+      }
+    }
+  }
+
+  .@{upload-prefix-picture-list-cls} {
+    .reset-component;
+
+    &-item {
+      position: relative;
+      width: 100px;
+      height: 100px;
+      display: inline-block;
+      margin: 0 28px 28px 0;
+      vertical-align: middle;
+      overflow: hidden;
+      border-radius: @radius-size;
+      border: 1px solid @weak-border-color;
+      background-color: @contain-bg;
+
+      .@{upload-prefix-cls}-select {
+        display: flex;
+        position: absolute;
+        top: -1px;
+        right: -1px;
+        bottom: -1px;
+        left: -1px;
+        color: @third-text-color;
+        align-items: center;
+        justify-content: center;
+        border: 1px dashed @weak-border-color;
+        transition: all @transition-duration;
+
+        &:hover,
+        &:active {
+          border-color: @link-color;
+          background-color: @ongoing-bg-color;
+        }
+
+        .@{upload-prefix-cls}-handle {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          display: flex;
+          text-align: center;
+          align-items: center;
+          justify-content: center;
+        }
+      }
+
+      img {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        margin: auto;
+        max-width: 100%;
+        max-height: 100%;
+      }
+
+      &.error {
+        border-color: @error-border-color;
+      }
+
+      &-loading {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        > * {
+          width: 80%;
+        }
+      }
+
+      &-error {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        &-text {
+          margin-bottom: 5px;
+          color: @error-color;
+        }
+
+        a {
+          display: inline-block;
+          &:not(:first-child) {
+            margin-left: 10px;
+          }
+        }
+      }
+    }
+  }
+}

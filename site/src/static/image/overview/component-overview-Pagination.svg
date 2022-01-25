@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="164px" height="24px" viewBox="0 0 164 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>切片</title>
+    <g id="前端总览" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="PC组件概览备份-3" transform="translate(-925.000000, -355.000000)">
+            <g id="1.基础控件/3.分页/1.基础分页/精简分页" transform="translate(925.000000, 355.000000)">
+                <rect id="Rectangle-21-Copy-3" stroke="#D9D9D9" fill="#FFFFFF" x="0.5" y="0.5" width="23" height="23" rx="2"></rect>
+                <rect id="Rectangle-21-Copy-3" stroke="#D9D9D9" fill="#FFFFFF" x="140.5" y="0.5" width="23" height="23" rx="2"></rect>
+                <g id="图标/通用操作/前翻" transform="translate(4.000000, 4.000000)" fill="#B2B2B2">
+                    <path d="M11.3535534,2.85355339 C11.5488155,2.65829124 11.5488155,2.34170876 11.3535534,2.14644661 C11.1582912,1.95118446 10.8417088,1.95118446 10.6464466,2.14644661 L5.14644661,7.64644661 C4.95118446,7.84170876 4.95118446,8.15829124 5.14644661,8.35355339 L10.6464466,13.8535534 C10.8417088,14.0488155 11.1582912,14.0488155 11.3535534,13.8535534 C11.5488155,13.6582912 11.5488155,13.3417088 11.3535534,13.1464466 L6.20710678,8 L11.3535534,2.85355339 Z" id="路径"></path>
+                </g>
+                <text id="1" font-family="MicrosoftYaHei, Microsoft YaHei" font-size="12" font-weight="normal" line-spacing="18" fill="#212121">
+                    <tspan x="36.765625" y="16">1</tspan>
+                </text>
+                <text id="3" font-family="MicrosoftYaHei, Microsoft YaHei" font-size="12" font-weight="normal" line-spacing="18" fill="#212121">
+                    <tspan x="92.765625" y="16">3</tspan>
+                </text>
+                <text id="2" font-family="MicrosoftYaHei, Microsoft YaHei" font-size="12" font-weight="normal" line-spacing="18" fill="#212121">
+                    <tspan x="64.765625" y="16">2</tspan>
+                </text>
+                <text id="4" font-family="MicrosoftYaHei, Microsoft YaHei" font-size="12" font-weight="normal" line-spacing="18" fill="#212121">
+                    <tspan x="120.765625" y="16">4</tspan>
+                </text>
+                <g id="图标/通用操作/后翻" transform="translate(144.000000, 4.000000)" fill="#666666">
+                    <path d="M11.3535534,2.85355339 C11.5488155,2.65829124 11.5488155,2.34170876 11.3535534,2.14644661 C11.1582912,1.95118446 10.8417088,1.95118446 10.6464466,2.14644661 L5.14644661,7.64644661 C4.95118446,7.84170876 4.95118446,8.15829124 5.14644661,8.35355339 L10.6464466,13.8535534 C10.8417088,14.0488155 11.1582912,14.0488155 11.3535534,13.8535534 C11.5488155,13.6582912 11.5488155,13.3417088 11.3535534,13.1464466 L6.20710678,8 L11.3535534,2.85355339 Z" id="路径" transform="translate(8.250000, 8.000000) scale(-1, 1) translate(-8.250000, -8.000000) "></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

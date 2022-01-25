@@ -1,0 +1,259 @@
+@import '../../style/themes/index';
+@import '../../style/mixins/index';
+
+@timeline-prefix-cls: ~'@{kd-prefix}-timeline';
+@timeline-item-prefix-cls: ~'@{kd-prefix}-timeline-item';
+
+.@{timeline-prefix-cls} {
+  .reset-component;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  list-style: none;
+
+  .@{timeline-item-prefix-cls} {
+    .reset-component;
+    position: relative;
+    margin: 0;
+    padding-bottom: @timeline-item-padding-bottom;
+    font-size: @small-font-size;
+
+    &-tail {
+      position: absolute;
+      left: (@timeline-dot-size - 1) / 2;
+      height: calc(100% - @timeline-dot-size * 2 + 4px);
+      border-left: @timeline-width solid @timeline-color;
+    }
+
+    &.pending .@{timeline-item-prefix-cls}-dot {
+      font-size: @small-font-size;
+    }
+
+    &.pending .@{timeline-item-prefix-cls}-tail {
+      display: none;
+    }
+
+    &-dot {
+      box-sizing: border-box;
+      position: absolute;
+      width: @timeline-dot-size;
+      height: @timeline-dot-size;
+      border-radius: 50%;
+      transform: translateY(-50%);
+
+      &.blue {
+        color: @theme-color;
+        background-color: @theme-color;
+      }
+
+      &.red {
+        color: @error-color;
+        background-color: @error-color;
+      }
+
+      &.green {
+        color: @success-color;
+        background-color: @success-color;
+      }
+
+      &.gray {
+        color: @disabled-color;
+        background-color: @disabled-color;
+      }
+    }
+
+    &-dot.custom {
+      position: absolute;
+      left: @timeline-dot-size / 2;
+      width: auto;
+      height: auto;
+      margin-top: 0;
+      padding: 1px;
+      line-height: 1;
+      text-align: center;
+      border: 0;
+      border-radius: 0;
+      transform: translate(-50%, -50%);
+      background-color: transparent !important;
+    }
+
+    &-content {
+      position: relative;
+      margin: 0 0 0 2 * (@timeline-dot-size - @timeline-width) + @timeline-gap;
+      word-break: break-word;
+      color: @primary-text-color;
+
+      > * {
+        margin: 0;
+        padding: 0;
+      }
+    }
+
+    &.last {
+      > .@{timeline-item-prefix-cls}-tail {
+        display: none;
+      }
+      > .@{timeline-item-prefix-cls}-content {
+        min-height: 48px;
+      }
+    }
+  }
+
+  &.alternate {
+    .@{timeline-item-prefix-cls} {
+      &-tail,
+      &-dot,
+      &-dot.custom {
+        left: 50%;
+      }
+
+      &-dot {
+        margin-left: -1 * (@timeline-dot-size - 1) / 2;
+
+        &.custom {
+          margin-left: 1px;
+        }
+      }
+
+      &:nth-child(2n + 1) {
+        .@{timeline-item-prefix-cls}-content {
+          left: calc(50% - 4px);
+          width: calc(50% - 24px);
+          text-align: left;
+        }
+      }
+
+      &:nth-child(2n) {
+        .@{timeline-item-prefix-cls}-content {
+          width: calc(50% - 24px);
+          margin: 0;
+          text-align: right;
+        }
+      }
+    }
+  }
+
+  &.right {
+    .@{timeline-item-prefix-cls} {
+      &-tail,
+      &-dot,
+      &-dot.custom {
+        left: auto;
+        right: 4.5px;
+      }
+
+      &-dot {
+        margin-right: -1 * (@timeline-dot-size - 1) / 2;
+
+        &.custom {
+          margin-right: 1px;
+        }
+      }
+      .@{timeline-item-prefix-cls}-content {
+        left: 0;
+        text-align: right;
+        margin: 0 2 * (@timeline-dot-size - @timeline-width) + @timeline-gap 0 0;
+        width: auto;
+      }
+    }
+  }
+
+  &.label {
+    &.left {
+      .@{timeline-item-prefix-cls} {
+        &-tail,
+        &-dot,
+        &-dot.custom {
+          left: ((2 * @timeline-gap) + (@timeline-dot-size / 2));
+        }
+
+        &-dot {
+          margin-left: -1 * (@timeline-dot-size - 1) / 2;
+  
+          &.custom {
+            margin-left: 1px;
+          }
+        }
+        .@{timeline-item-prefix-cls}-label {
+          position: absolute;
+          text-align: right;
+        }
+        .@{timeline-item-prefix-cls}-content {
+          left: @timeline-dot-size + 7.5px;
+          text-align: left;
+          margin-right: 16px;
+        }
+      }
+    }
+    &.right {
+      .@{timeline-item-prefix-cls} {
+        &-tail,
+        &-dot,
+        &-dot.custom {
+          left: auto;
+          right: ((2 * @timeline-gap) + (@timeline-dot-size / 2));
+        }
+  
+        &-dot {
+          margin-right: -1 * (@timeline-dot-size - 1) / 2;
+  
+          &.custom {
+            right: @timeline-gap - 2px;
+          }
+        }
+        .@{timeline-item-prefix-cls}-label {
+          position: absolute;
+          right: 0;
+          text-align: left;
+        }
+        .@{timeline-item-prefix-cls}-content {
+          left: auto;
+          right: @timeline-dot-size + 7.5px;
+          text-align: right;
+          margin-left: 17px;
+        }
+      }
+    }
+    &.alternate {
+      .@{timeline-item-prefix-cls} {
+        &:nth-child(2n + 1) {
+          .@{timeline-item-prefix-cls}-label {
+            position: absolute;
+            width: calc(50% - 18px);
+            text-align: right;
+          }
+        }
+        &:nth-child(2n) {
+          .@{timeline-item-prefix-cls}-label {
+            position: absolute;
+            left: calc(50% + (2 * (@timeline-dot-size - @timeline-width) + @timeline-gap) - @timeline-dot-size / 2);
+            width: calc(50% - (2 * (@timeline-dot-size - @timeline-width) + @timeline-gap) + @timeline-dot-size / 2);
+            text-align: left;
+          }
+        }
+      }
+    }
+  }
+
+  &.pending .@{timeline-item-prefix-cls}.last .@{timeline-item-prefix-cls}-tail {
+    display: block;
+    height: calc(100% - 14px);
+    border-left: 2px dotted @timeline-color;
+  }
+
+  &.reverse .@{timeline-item-prefix-cls}.last .@{timeline-item-prefix-cls}-tail {
+    display: none;
+  }
+
+  &.reverse .@{timeline-item-prefix-cls}.pending {
+    .@{timeline-item-prefix-cls}-tail {
+      top: 15px;
+      display: block;
+      height: calc(100% - 15px);
+      border-left: 2px dotted @timeline-color;
+    }
+    .@{timeline-item-prefix-cls}-content {
+      min-height: 48px;
+    }
+  }
+}

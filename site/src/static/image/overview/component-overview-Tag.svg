@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="182px" height="20px" viewBox="0 0 182 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>切片</title>
+    <g id="前端总览" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="PC组件概览备份-3" transform="translate(-393.000000, -1364.000000)">
+            <g id="编组-38" transform="translate(393.000000, 1364.000000)">
+                <g id="编组-24" stroke-width="0.5">
+                    <g id="5.展示/4.标签/3.动态标签/1.左对齐/4.编辑状态备份" fill="#F2F9FF" stroke="#85B8FF">
+                        <rect id="背景" x="0.25" y="0.25" width="51.5" height="19.5" rx="2"></rect>
+                    </g>
+                    <g id="5.展示/4.标签/3.动态标签/1.左对齐/4.编辑状态备份-2" transform="translate(64.000000, 0.000000)" fill="#F2FFF5" stroke="#6DD18E">
+                        <rect id="矩形" x="0.25" y="0.25" width="51.5" height="19.5" rx="2"></rect>
+                    </g>
+                    <g id="5.展示/4.标签/3.动态标签/1.左对齐/4.编辑状态备份-4" transform="translate(130.000000, 0.000000)" fill="#FFFBF2" stroke="#FFCB78">
+                        <rect id="矩形" x="0.25" y="0.25" width="51.5" height="19.5" rx="2"></rect>
+                    </g>
+                </g>
+                <text id="Tag" font-family="SourceHanSansCN-Regular, Source Han Sans CN" font-size="8" font-weight="normal" fill="#276FF5">
+                    <tspan x="19.192" y="13">Tag</tspan>
+                </text>
+                <text id="Tag备份" font-family="SourceHanSansCN-Regular, Source Han Sans CN" font-size="8" font-weight="normal" fill="#1BA854">
+                    <tspan x="83.192" y="13">Tag</tspan>
+                </text>
+                <text id="Tag备份-2" font-family="SourceHanSansCN-Regular, Source Han Sans CN" font-size="8" font-weight="normal" fill="#FF991C">
+                    <tspan x="149.192" y="13">Tag</tspan>
+                </text>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,263 @@
+@import '../../style/themes/index';
+@import '../../style/mixins/index';
+
+@filter-prefix-cls: ~'@{kd-prefix}-filter';
+@filter-header-prefix-cls: ~'@{kd-prefix}-filter-header';
+@filter-body-prefix-cls: ~'@{kd-prefix}-filter-body';
+
+.@{filter-prefix-cls} {
+  .@{filter-header-prefix-cls} {
+    z-index: 1;
+    display: flex;
+    position: relative;
+    align-items: flex-end;
+    padding: 9px 124px 9px 0;
+
+    &-title {
+      white-space: nowrap;
+      color: @primary-text-color;
+      font-size: @large-font-size;
+    }
+
+    &-condition {
+      display: flex;
+      flex: 1 1 auto;
+      align-items: flex-end;
+      margin: 0 8px 0 40px;
+
+      &-label {
+        padding-right: 8px;
+        font-size: @font-size;
+        white-space: nowrap;
+        color: @third-text-color;
+      }
+
+      &-item-text {
+        max-width: 224px;
+        .ellipsis;
+      }
+    }
+
+    &-search {
+      min-width: 200px;
+    }
+
+    &-handle {
+      .reset-component;
+      position: absolute;
+      right: 0;
+      bottom: -1px;
+      width: 100px;
+      height: 44px;
+      line-height: 44px;
+      text-align: center;
+      color: @ongoing-color;
+      font-size: @font-size;
+      cursor: pointer;
+      user-select: none;
+      border: 1px solid transparent;
+      border-bottom: none;
+
+      > i {
+        transition: transform .2s linear
+      }
+
+      &.spread {
+        border-radius: 4px 4px 0 0;
+        background-color: @contain-bg;
+        border-color: @strong-border-color;
+
+        > i {
+          transform: rotate(180deg);
+        }
+      }
+    }
+  }
+  .@{filter-body-prefix-cls} {
+    position: relative;
+    height: 0;
+    overflow: hidden;
+
+    &.spread {
+      height: auto;
+      overflow: visible;
+      padding: 8px 20px;
+      border-radius: 4px 0 4px 4px;
+      background-color: @contain-bg;
+      border: 1px solid @strong-border-color;
+    }
+
+    &-tabs {
+      border-bottom: 1px solid @weak-border-color;
+
+      &-item {
+        padding: 10px 0;
+        font-size: @font-size;
+        color: @third-text-color;
+        cursor: pointer;
+
+        &:hover,
+        &.active {
+          color: @ongoing-color;
+        }
+      }
+
+      &-split {
+        width: 1px;
+        height: 16px;
+        background-color: @strong-border-color;
+      }
+    }
+
+    &-conditions {
+      display: none;
+
+      &.active {
+        display: block;
+      }
+    }
+    
+    &-condition {
+      display: flex;
+      font-size: @small-font-size;
+
+      &:not(:last-child) {
+        border-bottom: 1px solid @weak-border-color;
+      }
+
+      &-label {
+        padding: 11px 0 10px;
+        color: @third-text-color;
+        line-height: 18px;
+      }
+
+      &-options {
+        display: flex;
+        align-items: flex-start;
+        flex-wrap: wrap;
+        flex: 1;
+        max-height: 64px;
+        margin-left: 24px;
+        padding: 8px 0 4px;
+        overflow: auto;
+      }
+
+      &-option {
+        margin-bottom: 4px;
+        padding: 0 12px;
+        color: @secondary-text-color;
+        vertical-align: middle;
+        line-height: 22px;
+        font-size: @small-font-size;
+        border-radius: @radius-size;
+        border: 1px solid transparent;
+        cursor: pointer;
+        white-space: nowrap;
+
+        &:not(:last-child) {
+          margin-right: 24px;
+        }
+
+        &.active {
+          color: @ongoing-color;
+          border-color: @ongoing-color;
+          background-color: @bg;
+        }
+
+        &-customer {
+          margin-left: -20px;
+        }
+      }
+
+      &-addition {
+        margin-left: 24px;
+        line-height: 40px;
+      }
+    }
+
+    &-scheme {
+      display: none;
+
+      &.active {
+        display: block;
+      }
+
+      > li {
+        position: relative;
+        display: flex;
+        line-height: 40px;
+      }
+
+      &-label {
+        width: 96px;
+        color: @third-text-color;
+        font-size: @small-font-size;
+      }
+
+      &-list {
+        display: flex;
+      }
+
+      &-item {
+        font-size: @small-font-size;
+        color: @secondary-text-color;
+        cursor: pointer;
+
+        &:not(:last-child) {
+          margin-right: 48px;
+        }
+
+        &.active {
+          color: @ongoing-color;
+        }
+      }
+
+      &-action {
+        position: absolute;
+        right: 0;
+      }
+
+      &-detail {
+        > li {
+          line-height: 40px;
+          color: @primary-text-color;
+          font-size: @small-font-size;
+
+          > span {
+            display: inline-block;
+
+            &:not(:last-child) {
+              margin-right: 12px;
+            }
+          }
+        }
+
+        &-field {
+          width: 100px;
+        }
+
+        &-operator {
+          width: 140px;
+        }
+
+        &-value {
+          width: 220px;
+        }
+
+        &-and {
+          font-size: @font-size;
+        }
+
+        &-delete {
+          color: @disabled-color;
+          font-size: @xxlarge-font-size;
+          cursor: pointer;
+
+          &:hover {
+            color: @error-color;
+          }
+        }
+      }
+    }
+  }
+}

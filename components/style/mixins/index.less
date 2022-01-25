@@ -1,0 +1,90 @@
+// Mixins
+//----------------------------------------
+@import 'reset';
+
+/* 多行显示省略号 */
+.multipleEllipsis(@n: n) {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: @n;
+  -webkit-box-orient: vertical;
+}
+
+/* 单行显示省略号 */
+.ellipsis() {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/** 浮层箭头样式 **/
+.popperArrow(@popperBg: popperBg, @offset: offset, @blur: blur,) {
+  &.arrow {
+    &::before {
+      position: absolute;
+      z-index: -2;
+      background: transparent;
+      border-style: solid;
+      border-width: var(--arrowSize);
+      transform: rotate(45deg);
+      content: '';
+    }
+
+    &::after {
+      position: absolute;
+      z-index: -1;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      content: '';
+      background: @popperBg;
+      border-radius: @radius-size;
+    }
+
+    &.bottomLeft,
+    &.bottom,
+    &.bottomRight {
+      &::before {
+        left: var(--arrowLeft);
+        top: var(--arrowSpill);
+        box-shadow: -2px -2px @blur - 1px rgba(0, 0, 0, 0.1);
+        border-color: @white transparent transparent @white;
+      }
+    }
+
+    &.topLeft,
+    &.top,
+    &.topRight {
+      &::before {
+        left: var(--arrowLeft);
+        bottom: var(--arrowSpill);
+        box-shadow: 3px 3px @blur + 1px rgba(0, 0, 0, 0.15);
+        border-color: transparent @white @white transparent;
+      }
+    }
+
+    &.leftTop,
+    &.left,
+    &.leftBottom {
+      &::before {
+        top: var(--arrowTop);
+        right: var(--arrowSpill);
+        box-shadow: 3px 0 @blur rgba(0, 0, 0, 0.12), 0 -2px @blur rgba(204, 149, 149, 0.12);
+        border-color: @white @white transparent transparent;
+      }
+    }
+
+    &.rightTop,
+    &.right,
+    &.rightBottom {
+      &::before {
+        top: var(--arrowTop);
+        left: var(--arrowSpill);
+        box-shadow: 0 3px @blur rgba(0, 0, 0, 0.1), -2px 0 @blur rgba(0, 0, 0, 0.1);
+        border-color: transparent transparent @white @white;
+      }
+    }
+  }
+}

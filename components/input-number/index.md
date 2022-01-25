@@ -1,0 +1,29 @@
+---
+category: Components
+type: 录入
+order: 8
+title: InputNumber
+subtitle: 数值输入框
+---
+
+## 使用场景
+
+用于录入跟数值相关的数据，如整数、小数、价位等，支持对数值进行格式化展示处理。 `(KDesign组件库中Input组件的属性在该组件中同样适用)`
+
+## API
+
+| 属性 | 说明 | 类型 | 默认值 | 可选值 | 版本 |
+| --- | --- | --- | --- | --- | --- |
+| decimalLength | 小数位数 | number | `-` | `-` | 1.0.0 |
+| digitLength | 数字的位数 | number | `-` | `-` | 1.0.0 |
+| mask | 掩码 | string | `-` | `-` | 1.0.0 |
+| max | 最大值 | string | `-` | `-` | 1.0.0 |
+| maxMark | 最大值比较符 | string | `]` | `)` \| `]` | 1.0.0 |
+| min | 最小值 | number | `-` | `-` | 1.0.0 |
+| minMark | 最小值比较符 | string | `(` | `(` \| `[` | 1.0.0 |
+| mustInPrecisionScope | 输入限制在精度范围 | boolean | `true` | `true`\|`false` | 1.0.0 |
+| mustInScope | 输入内容是否必须在设定的数字范围内(不在范围内则不允许输入) | boolean | `false` | `true`\|`false` | 1.0.0 |
+| showDecimalTailZero | 是否显示小数尾部 0 | boolean | `false` | `true`\|`false` | 1.0.0 |
+| stepOption | 步进器模式配置，设置后开启步进功能，可配置`type`(步进器类型)，`step`(步长)，`stepBtnClassName`(步进按钮样式)) | StepOption { type?: 'embed' \| 'base', step?: number, stepBtnClassName?: string } | `-` | `-` | 1.0.0 |
+| symbol | 货币符号 | string | `-` | `-` | 1.0.0 |
+| zeroShow | 为零是否显示 | boolean | `false` | `true` `false` | 1.0.0 |

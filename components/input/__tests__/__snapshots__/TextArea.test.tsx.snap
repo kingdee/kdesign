@@ -1,0 +1,45 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TextArea renders correctly 1`] = `
+<span
+  class="kd-input-countWrapper "
+>
+  <textarea
+    class="kd-input-textarea kd-input-size-middle kd-input-underline kd-input-no-resize"
+    maxlength="255"
+  />
+</span>
+`;
+
+exports[`TextArea renders correctly 2`] = `
+<span
+  class="kd-input-countWrapper "
+>
+  <textarea
+    class="kd-input-textarea kd-input-size-middle kd-input-borderless kd-input-no-resize"
+    maxlength="255"
+  />
+</span>
+`;
+
+exports[`TextArea renders correctly 3`] = `
+<span
+  class="kd-input-countWrapper "
+>
+  <textarea
+    class="kd-input-textarea kd-input-size-middle kd-input-underline kd-input-no-resize"
+    maxlength="255"
+  />
+</span>
+`;
+
+exports[`TextArea renders correctly 4`] = `
+<span
+  class="kd-input-countWrapper "
+>
+  <textarea
+    class="kd-input-textarea kd-input-size-middle kd-input-no-resize"
+    maxlength="255"
+  />
+</span>
+`;

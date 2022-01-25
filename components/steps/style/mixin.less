@@ -1,0 +1,41 @@
+// 按钮默认样式Mixins
+.btn() {
+	padding: 0;
+	position: relative;
+	display: inline-block;
+	box-sizing: border-box;
+	font-weight: @font-weight;
+	border: @btn-border-width @btn-border-style transparent;
+	user-select: none;
+	border-radius: @radius-size;
+	text-align: center;
+	background-color: transparent;
+	cursor: pointer;
+  &,
+  &:active,
+  &:focus {
+    outline: 0;
+	}
+	&>span {
+		display: inline-block;
+	}
+}
+// 各个按钮类型的样式Mixins
+.btn-type(@border-color, @background-color, @color) {
+	border-color: @border-color;
+	background-color: @background-color;
+	color: @color;
+}
+// 各个按钮尺寸的样式Mixins
+.btn-size(@height, @font-size, @padding-vertical, @padding-horizontal, @min-width) {
+	height: @height;
+	min-width: @min-width;
+	line-height: @height - (@padding-vertical * 2) - (@btn-border-width * 2);
+	font-size: @font-size;
+	padding: @padding-vertical @padding-horizontal;
+}
+// 圆形按钮不同尺寸的样式Mixins
+.btn-shape-circle-width(@width) {
+	width: @width;
+	padding: 0;
+}
