@@ -33,7 +33,7 @@ import '@kdcloudjs/kdesign/dist/kdesign.css'
 
 reactDom.render((
   <div>
-    <Button>kdesign 按钮</Button>
+    <Button>kdesign 按aa钮</Button>
   </div>
 ), document.getElementById('root'))
 ```
