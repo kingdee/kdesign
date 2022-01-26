@@ -12,6 +12,7 @@ jobs:
       - uses: wearerequired/git-mirror-action@v1
         env:
           SSH_PRIVATE_KEY: ${{ secrets.GITEE_SSH_PRIVATE_KEY }}
+          SSH_KNOWN_HOSTS: ${{ secrets.GITEE_SSH_KNOWN_HOSTS }}
         with:
           source-repo: 'git@github.com:kdcloudone/kdesign.git'
           destination-repo: 'git@gitee.com:kdcloudone/kdesign.git'
