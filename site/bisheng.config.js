@@ -38,9 +38,6 @@ module.exports = {
       kdesign: path.join(process.cwd(), 'index.js'),
       '@src': path.join(process.cwd(), 'site/src'),
     }
-    config.externals = {
-      typescript: 'window.typescript',
-    }
     if (process.env.NODE_ENV !== 'development') {
       config.optimization.splitChunks = {
         ...config.optimization.splitChunks,

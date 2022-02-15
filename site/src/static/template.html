@@ -33,7 +33,6 @@
   <body>
     <div id="react-content">{{ content | safe }}</div>
   </body>
-  <script async defer src="/typescript.min.js"></script>
   {% for jsFile in manifest["js"] %}
   <script src="{{ root }}{{ jsFile }}"></script>
   {% endfor %}

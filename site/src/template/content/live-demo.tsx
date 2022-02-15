@@ -4,7 +4,6 @@ import { LiveProvider, LiveEditor, LiveError, LivePreview } from 'react-live'
 import github from 'prism-react-renderer/themes/github'
 import * as kdesign from 'kdesign'
 import { Icon, Message } from 'kdesign'
-import ts from 'typescript'
 import lodash from 'lodash'
 import copy from 'copy-to-clipboard'
 import axios from 'axios'
@@ -55,18 +54,6 @@ const allScope: Record<string, any> = {
   '@kdcloudjs/kdesign': { ...kdesign },
   lodash: { ...lodash, _: lodash },
   'date-fns': dateFns,
-}
-
-console.log({ allScope })
-
-const transpile = (code: string) => {
-  return ts.transpileModule(code, {
-    compilerOptions: {
-      jsx: ts.JsxEmit.Preserve,
-      target: ts.ScriptTarget.ES2015,
-      noEmitOnError: true,
-    },
-  }).outputText
 }
 
 const getDependencies = (code: string, codeArr: string[]) => {
@@ -131,14 +118,8 @@ function LiveDemo(props: Props) {
   }
 
   function onCodeChange(code: string) {
-    if (lang === 'tsx') {
-      // console.log(transpile(code))
-      setLiveCode(transpile(handleCode(code)))
-      setEditCode(code)
-    } else {
-      setLiveCode(handleCode(code))
-      setEditCode(code)
-    }
+    setLiveCode(handleCode(code))
+    setEditCode(code)
   }
 
   const handleCode = useCallback(
@@ -181,7 +162,7 @@ function LiveDemo(props: Props) {
         scope.iframeRef = iframeRef
         scope.iframeSrc = src
         scope.iframeHeight = iframe
-        iframeCode = transformer(transpile(sourceCode), { presets: ['env', 'react'] })
+        iframeCode = transformer(sourceCode, { presets: ['env', 'react'] })
         window.IFRAME_CODES[`${src?.substring(1)}`] = iframeCode
       }
       setScope(scope)
@@ -203,13 +184,8 @@ function LiveDemo(props: Props) {
 
   useEffect(() => {
     if (code) {
-      if (lang === 'tsx') {
-        setLiveCode(transpile(handleCode(code)))
-        setEditCode(code)
-      } else {
-        setLiveCode(handleCode(code))
-        setEditCode(code)
-      }
+      setLiveCode(handleCode(code))
+      setEditCode(code)
     }
   }, [code, handleCode, lang])
 

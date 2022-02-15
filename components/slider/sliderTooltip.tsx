@@ -30,7 +30,6 @@ const SliderTooltip = React.forwardRef<unknown, ISliderTooltipProps>((props: ISl
         [reverse ? 'right' : 'left']: offset,
         [reverse ? 'left' : 'right']: 'auto',
       }
-  console.log('visible :>> ', visible)
   const placement = vertical ? 'right' : 'top'
 
   return (

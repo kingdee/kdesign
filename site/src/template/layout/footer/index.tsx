@@ -21,6 +21,9 @@ const Footer = (props: any) => {
             <div className="footer-main-item">
               <div>快速链接：</div>
               <div>
+                <a href="https://kingdee.design/" target="_blank" rel="noreferrer">
+                  KDesign网站
+                </a>
                 <a href="https://www.kingdee.com/" target="_blank" rel="noreferrer">
                   金蝶官网
                 </a>

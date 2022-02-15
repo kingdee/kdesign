@@ -115,12 +115,6 @@ function compile(modules) {
   return merge2([less, tsFilesStream, tsd, assets])
 }
 
-gulp.task('copy-typescript', (done) => {
-  console.log('copy typescript files...')
-  gulp.src(path.join(__dirname, 'site/src/static/typescript.min.js')).pipe(gulp.dest(path.join(__dirname, './_site')))
-  compile(false).on('finish', done)
-})
-
 gulp.task('compile-with-es', (done) => {
   console.log('[Parallel] Compile to es...')
   compile(false).on('finish', done)

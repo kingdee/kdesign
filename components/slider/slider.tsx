@@ -77,8 +77,6 @@ const InteranalSlider = (props: ISliderProps, ref: unknown): FunctionComponentEl
     [`${sliderPrefixCls}-reverse`]: reverse,
   })
 
-  console.log('object :>> ', defaultValue, onAfterChange, onChange, marks, sliderProps)
-
   const [value, setValue] = useMergedState(0, {
     defaultValue,
     value: propsValue,
@@ -86,7 +84,6 @@ const InteranalSlider = (props: ISliderProps, ref: unknown): FunctionComponentEl
   const [dragging, setDraging] = useState(false)
 
   let mouseOffset: number
-  console.log(setValue, dragging, setDraging)
   const addDocumentMouseEvents = () => {
     document.addEventListener('mousemove', handleMouseMove)
     document.addEventListener('mouseup', handleMouseUp)
@@ -146,7 +143,7 @@ const InteranalSlider = (props: ISliderProps, ref: unknown): FunctionComponentEl
     setDraging(false)
   }
   const handleTouchStart = () => {
-    console.log('object :>> ', 'object', addDocumentMouseEvents)
+    // console.log('object :>> ', 'object', addDocumentMouseEvents)
   }
   const handleMouseDown = (e: MouseEvent) => {
     // 移除document的鼠标事件
@@ -155,7 +152,6 @@ const InteranalSlider = (props: ISliderProps, ref: unknown): FunctionComponentEl
     let position = vertical ? e.clientY : e.pageX
     // 判断当前点击的区域是否是拖拽点还是bar条
     const isHandlePoint = handleRef.current === e.target
-    console.log('object :>> ', isHandlePoint, handleRef.current, e.target)
     if (!isHandlePoint) {
       mouseOffset = 0
     } else {
@@ -163,7 +159,6 @@ const InteranalSlider = (props: ISliderProps, ref: unknown): FunctionComponentEl
       mouseOffset = position - handlePosition
       position = handlePosition
     }
-    console.log('mouseOffset :>> ', mouseOffset)
     // 设置状态值
     setDraging(true)
     const newV = calcValueByPos(position)
@@ -178,10 +173,10 @@ const InteranalSlider = (props: ISliderProps, ref: unknown): FunctionComponentEl
     onEnd()
   }
   const handleKeyDown = () => {
-    console.log('object :>> ', 'object')
+    // console.log('object :>> ', 'object')
   }
   const handleFocus = () => {
-    console.log('object :>> ', 'object')
+    // console.log('object :>> ', 'object')
   }
   const handleBlur = (e: FocusEvent) => {
     onEnd()
@@ -257,7 +252,7 @@ const InteranalSlider = (props: ISliderProps, ref: unknown): FunctionComponentEl
         max={max}
         bound={value}
         onClickLabel={() => {
-          console.log('hello world!')
+          // console.log('hello world!')
         }}
       />
     </div>
