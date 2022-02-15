@@ -232,9 +232,11 @@ const Tabs: React.FC<ITabsProps> = (props) => {
       const tmp = {
         label: '',
         key: 0,
+        disabled: false,
       }
       tmp.label = node.props.tab
       tmp.key = node.props.id
+      tmp.disabled = node.props.disabled
       return tmp
     })
 
