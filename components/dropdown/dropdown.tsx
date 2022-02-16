@@ -60,8 +60,14 @@ const Dropdown = React.forwardRef<unknown, DropDownProps>((props, ref) => {
   const menuSelectable = menu.props?.selectable === undefined ? selectable : menu.props?.selectable
 
   const handleItemClick = (e: any) => {
-    const key = e.target.dataset?.key || e.target.parentNode.dataset?.key
-    if (e.target.className.indexOf('disabled') === -1 && key) {
+    const currentTarget = e.target
+    const parentTarget = currentTarget.parentNode
+    const key = currentTarget.dataset?.key || currentTarget.parentNode.dataset?.key
+    if (
+      currentTarget.className.indexOf('disabled') === -1 &&
+      parentTarget.className.indexOf('disabled') === -1 &&
+      key
+    ) {
       if (isMenu && menu.props.onClick) {
         menu.props.onClick(key)
       } else if (onItemClick) {

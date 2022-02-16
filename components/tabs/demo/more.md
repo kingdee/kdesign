@@ -34,8 +34,8 @@ function Demo() {
         </Tabs>
         <br />
         <Tabs showScrollArrow defaultActiveKey={2} onChange={showChange}>
-          {data.map((v) => (
-            <Tabs.TabPane key={v.value} tab={v.name} />
+          {data.map((v, i) => (
+            <Tabs.TabPane key={v.value} tab={v.name} disabled={i === 2}/>
           ))}
         </Tabs>
       </div>
