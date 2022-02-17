@@ -2,7 +2,7 @@
 感谢你的宝贵时间，我们很高兴您有兴趣为 KDesign 做出贡献。请在你要提 pull request 之前，请务必花点时间阅读下面的入门指南。
 
 ## 分支管理
-KDesign使用 Git Flow的思想来管理分支，我们长期维护两个分支 `main` 和 `develop`。如果你需要修复一个bug，请提pull request到 `master` 分支；如果你需要新增功能/组件，请提pull request到 `develop` 分支。每周我们会对代码进行code review，并合并代码到 `main` 和 `develop` 分支。
+KDesign使用 Git Flow的思想来管理分支，我们长期维护两个分支 `main` 和 `develop`。如果你需要修复一个bug，请提pull request到 `main` 分支；如果你需要新增功能/组件，请提pull request到 `develop` 分支。每周我们会对代码进行code review，并合并代码到 `main` 和 `develop` 分支。
 
 ## Bug
 我们使用 Github issues 来追踪 bug。为了更快地了解和解决 bug，在提交 issue 时，你也可以通过我们提供的模板来重现问题。
