@@ -113,29 +113,35 @@ function flattenMenu(menu) {
   }
 }
 
+function isIE() {
+  // ie?
+  if (!!window.ActiveXObject || 'ActiveXObject' in window) return true
+  else return false
+}
+
+function isScrollEnd(element, t1) {
+  let t2 = element.scrollTop
+  if (t2 === t1) {
+    document.styleSheets[0].insertRule('.menu-wapper::-webkit-scrollbar-thumb { display:none; }')
+  }
+}
+
 class Content extends React.Component {
   componentDidMount() {
     this.componentDidUpdate()
     window.addEventListener('load', this.handleInitialHashOnLoad)
     window.addEventListener('hashchange', this.handleHashChange)
 
-    let t1 = 0
-    let t2 = 0
-    let timer = null // 定时器
-    const element = document.getElementById('default-menu-inner')
-    document.styleSheets[0].addRule('.menu-wapper::-webkit-scrollbar-thumb', 'display:none;')
-
-    element.onscroll = function () {
-      clearTimeout(timer)
-      timer = setTimeout(isScrollEnd, 500)
-      t1 = element.scrollTop
-      document.styleSheets[0].addRule('.menu-wapper::-webkit-scrollbar-thumb', 'display:block;')
-    }
-
-    function isScrollEnd() {
-      t2 = element.scrollTop
-      if (t2 === t1) {
-        document.styleSheets[0].addRule('.menu-wapper::-webkit-scrollbar-thumb', 'display:none;')
+    if (!isIE()) {
+      let t1 = 0
+      let timer = null // 定时器
+      const element = document.getElementById('default-menu-inner')
+      document.styleSheets[0].insertRule('.menu-wapper::-webkit-scrollbar-thumb { display:none; }')
+      element.onscroll = function () {
+        clearTimeout(timer)
+        timer = setTimeout(isScrollEnd(element, t1), 500)
+        t1 = element.scrollTop
+        document.styleSheets[0].insertRule('.menu-wapper::-webkit-scrollbar-thumb { display:block; }')
       }
     }
   }
