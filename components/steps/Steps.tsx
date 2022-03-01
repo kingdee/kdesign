@@ -62,7 +62,7 @@ const Steps: React.FC<StepsProps> = (props) => {
   const getIcons = () => {
     const actualIcons: Icons = {}
     actualIcons.finish = (icons && icons.finish) || <Icon type="right-bold" className={`${stepsPrefixCls}-iconSize`} />
-    actualIcons.error = (icons && icons.error) || <span>!</span>
+    actualIcons.error = (icons && icons.error) || <Icon type="exclamatory" className={`${stepsPrefixCls}-iconSize`} />
     return actualIcons
   }
 

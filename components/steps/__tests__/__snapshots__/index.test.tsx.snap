@@ -840,9 +840,9 @@ exports[`Steps renders correctly 11`] = `
           <span
             class="kd-steps-icon"
           >
-            <span>
-              !
-            </span>
+            <i
+              class="kdicon kd-steps-iconSize kdicon-exclamatory"
+            />
           </span>
         </div>
       </div>

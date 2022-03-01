@@ -944,82 +944,102 @@ exports[`Tabs renders correctly 10`] = `
             menu={
               Array [
                 Object {
+                  "disabled": undefined,
                   "key": "0",
                   "label": "TabPane00",
                 },
                 Object {
+                  "disabled": undefined,
                   "key": "1",
                   "label": "TabPane01",
                 },
                 Object {
+                  "disabled": undefined,
                   "key": "2",
                   "label": "TabPane02",
                 },
                 Object {
+                  "disabled": undefined,
                   "key": "3",
                   "label": "TabPane03",
                 },
                 Object {
+                  "disabled": undefined,
                   "key": "4",
                   "label": "TabPane04",
                 },
                 Object {
+                  "disabled": undefined,
                   "key": "5",
                   "label": "TabPane05",
                 },
                 Object {
+                  "disabled": undefined,
                   "key": "6",
                   "label": "TabPane06",
                 },
                 Object {
+                  "disabled": undefined,
                   "key": "7",
                   "label": "TabPane07",
                 },
                 Object {
+                  "disabled": undefined,
                   "key": "8",
                   "label": "TabPane08",
                 },
                 Object {
+                  "disabled": undefined,
                   "key": "9",
                   "label": "TabPane09",
                 },
                 Object {
+                  "disabled": undefined,
                   "key": "10",
                   "label": "TabPane010",
                 },
                 Object {
+                  "disabled": undefined,
                   "key": "11",
                   "label": "TabPane011",
                 },
                 Object {
+                  "disabled": undefined,
                   "key": "12",
                   "label": "TabPane012",
                 },
                 Object {
+                  "disabled": undefined,
                   "key": "13",
                   "label": "TabPane013",
                 },
                 Object {
+                  "disabled": undefined,
                   "key": "14",
                   "label": "TabPane014",
                 },
                 Object {
+                  "disabled": undefined,
                   "key": "15",
                   "label": "TabPane015",
                 },
                 Object {
+                  "disabled": undefined,
                   "key": "16",
                   "label": "TabPane016",
                 },
                 Object {
+                  "disabled": undefined,
                   "key": "17",
                   "label": "TabPane017",
                 },
                 Object {
+                  "disabled": undefined,
                   "key": "18",
                   "label": "TabPane018",
                 },
                 Object {
+                  "disabled": undefined,
                   "key": "19",
                   "label": "TabPane019",
                 },

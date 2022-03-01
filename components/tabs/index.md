@@ -46,3 +46,24 @@ subtitle: 页签
 | key | 对应 activeKey | string | - | 1.0.0 |
 | specialPane | 用于插入图标的位置，仅在`type='dynamic'`时生效，可选值`left`,`right`,`contextMenu`，`contextMenu`是右键下拉菜单内容 | string | - | 1.0.0 |
 | tab | 当前tab显示的内容 | React.ReactNode | - | 1.0.0 |
+
+## Design Token
+
+| 分类 | 组件token | 全局token | 默认值 |
+| --- | --- | --- | --- |
+| color | --kd-c-tabs-color-border | --kd-g-color-border-strong | #d9d9d9 |
+|  | --kd-c-tabs-line-color-active | --kd-g-color-theme | #5582f3 |
+|  | --kd-c-tabs-card-color-background | --kd-g-color-background-contain-disabled | #f5f5f5 |
+|  | --kd-c-tabs-color-background-disabled | --kd-g-color-background-2 | #f2f2f2 |
+|  | --kd-c-tabs-color-text | --kd-g-color-text-secondary | #666 |
+|  | --kd-c-tabs-color-text-active | --kd-g-color-theme | #5582f3 |
+|  | --kd-c-tabs-color-text-hover | --kd-g-color-theme | #5582f3 |
+|  | --kd-c-tabs-color-text-disabled | --kd-g-color-disabled | #b2b2b2 |
+| font | --kd-c-tabs-pane-font-size | --kd-g-font-size-middle | 14px |
+| line-height | --kd-c-tabs-pane-line-height | - | 48px |
+| motion | --kd-c-tabs-motion-timing-function | - | cubic-bezier(0.42, 0, 1, 1) |
+|  | --kd-c-tabs-motion-duration | --kd-g-duration | 0.3s |
+| sizing | --kd-c-tabs-sizing-height | - | 48px |
+|  | --kd-c-tabs-sizing-border | - | 1px |
+|  | --kd-c-tabs-pane-sizing-height | - | 48px |
+| spacing | --kd-c-tabs-pane-spacing-margin-right | - | 24px |

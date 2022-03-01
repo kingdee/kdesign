@@ -1,9 +1,8 @@
-
 @import '../../style/themes/index';
 @import './mixin.less';
+@import './token.less';
 
 @city-picker-prefix-cls: ~'@{kd-prefix}-city-picker';
-@hover-bg: #F5F5F5;
 
 .@{city-picker-prefix-cls}-container {
   display: flex;
@@ -55,9 +54,9 @@
 }
 
 .@{city-picker-prefix-cls}-panel-container {
-  width: 460px;
-  height: 373px;
-  font-size: 12px;
+  width: @city-picker-panel-sizing-width;
+  height: @city-picker-panel-sizing-height;
+  font-size: @city-picker-panel-font-size;
   line-height: 18px;
   letter-spacing: 0;
 
@@ -72,7 +71,7 @@
       padding: 3px 0;
 
       &.active {
-        color: @theme-color;
+        color: @city-picker-theme-color;
         z-index: 1;
 
         &::before {
@@ -92,7 +91,7 @@
         right: 0;
         bottom: 0;
         z-index: -2;
-        background: @contain-bg;
+        background: @city-picker-background-color;
         border-radius: 2px 4px 0 0;
         transform: scaleY(1.25) perspective(18px) rotateX(10deg);
         transform-origin: bottom left;
@@ -111,7 +110,7 @@
         right: 0;
         bottom: 0;
         z-index: -2;
-        background: @contain-bg;
+        background: @city-picker-background-color;
         border-radius: 4px 4px 0 0;
         transform: scaleY(1.25) perspective(18px) rotateX(10deg);
         transform-origin: bottom;
@@ -129,7 +128,7 @@
   cursor: pointer;
 
   &:hover {
-    background: @hover-bg;
+    background: @city-picker-background-hover-color;
     border-radius: 2px;
   }
 }
@@ -139,6 +138,7 @@
   padding: 0 20px 12px 20px;
   background: #fff;
   box-shadow: 0 1px 6px 0 rgba(0, 0, 0, 0.2);
+  border-radius: 0 @city-picker-panel-radius-border @city-picker-panel-radius-border @city-picker-panel-radius-border;
 }
 
 .@{city-picker-prefix-cls}-group-container {
@@ -158,12 +158,12 @@
   text-align: center;
 
   &:hover {
-    color: @theme-color;
+    color: @city-picker-theme-color;
   }
 
   &.active {
-    color: @theme-color;
-    border-bottom: 2px solid @theme-color;
+    color: @city-picker-theme-color;
+    border-bottom: 2px solid @city-picker-theme-color;
   }
 
   &.last {
@@ -202,7 +202,7 @@
   .@{city-picker-prefix-cls}-city-table-cell {
     margin: 4px 6px;
     padding: 3px 6px;
-    color: #212121;
+    color: @city-picker-panel-item-color;
     cursor: pointer;
     width: 60px;
     overflow: hidden;
@@ -211,7 +211,7 @@
     text-overflow: ellipsis;
 
     &:hover {
-      background: @hover-bg;
+      background: @city-picker-background-hover-color;
       border-radius: 2px;
     }
   }
@@ -240,7 +240,7 @@
     cursor: pointer;
 
     &:hover {
-      background: @hover-bg;
+      background: @city-picker-background-hover-color;
     }
 
     .@{city-picker-prefix-cls}-search-panel-item-left {
@@ -268,7 +268,7 @@
 }
 
 .@{city-picker-prefix-cls}-search-keyword {
-  color: @theme-color;
+  color: @city-picker-theme-color;
 }
 
 .@{city-picker-prefix-cls}-no-data {

@@ -40,3 +40,21 @@ subtitle: 通知提示
 | key | 标识message唯一性的key，可以用来删除当前message | React.Key | - | 1.0.0 |
 | style | 样式 | React.CSSProperties | - | 1.0.0 |
 | onClose | 关闭时回调函数 | Function(key: React.Key): void | - | 1.0.0 |
+
+
+## Design Token
+
+| 分类 | 组件token | 全局token | 默认值 |
+| --- | --- | --- | --- |
+| color | --kd-c-notice-icon-color | --color-theme | #5582f3 |
+|  | --kd-c-notice-icon-color-hover | --kd-g-color-border-ongoing | #85b8ff |
+|  | --kd-c-notice-header-color| --kd-g-color-white | #fff |
+|  | --kd-c-notice-header-color-background | --color-theme | #5582f3 |
+|  | --kd-c-notice-content-color-background | --kd-g-color-white | #fff |
+|  | --kd-c-notice-info-color | --kd-g-color-text-primary | #212121 |
+|  | --kd-c-notice-info-header-color-background | --kd-g-color-white | #fff |
+|  | --kd-c-notice-footer-color | --kd-g-color-text-link | #0e5fd8 |
+|  | --kd-c-notice-footer-color-hover| --kd-g-color-text-link-hover | #3987ed |
+| motion | --kd-c-notice-motion-duration | --kd-g-duration-quickly | 0.2s |
+| font | --kd-c-notice-title-font-size | --kd-g-font-size-middle | 14px |
+| z-index | --kd-c-notice-z-index | --kd-g-z-index-apex | 9999 |

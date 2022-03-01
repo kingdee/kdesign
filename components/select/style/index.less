@@ -48,7 +48,7 @@
       opacity: 0;
       transition: opacity 0.15s ease;
       &:hover {
-        color: @theme-color;
+        color: @select-g-color-border-hover;
       }
     }
   }
@@ -88,18 +88,18 @@
   }
 
   &-underline {
-    border-bottom: 1px solid @input-color;
+    border-bottom: 1px solid @select-g-color-border;
     &:hover:not(.@{select-prefix-cls}-multiple-disabled):not(.@{select-prefix-cls}-single-disabled) {
-      border-bottom: 1px solid #5582f3;
+      border-bottom: 1px solid @select-g-color-border-hover;
     }
   }
 
   &-bordered {
-    border: 1px solid @strong-border-color;
+    border: 1px solid @select-border-g-color-border;
     padding-left: 8px !important;
     border-radius: 2px;
     &:hover:not(.@{select-prefix-cls}-multiple-disabled):not(.@{select-prefix-cls}-single-disabled) {
-      border: 1px solid #5582f3;
+      border: 1px solid @select-g-color-border-hover;
     }
   }
 
@@ -120,7 +120,7 @@
   &-dropdown {
     display: block;
     left: 0;
-    z-index: @zIndex-popper;
+    z-index: @select-z-index;
     box-sizing: border-box;
     padding: 4px 0; // update
     margin: 0;
@@ -128,7 +128,7 @@
     font-size: @select-list-font-size; // update
     font-variant: initial;
     background-color: @select-dropdown-bg;
-    border-radius: @radius-size;
+    border-radius: @select-g-radius-border;
     outline: none;
     box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.2);
 
@@ -179,7 +179,7 @@
       }
 
       &-disabled {
-        color: @disabled-color;
+        color: @select-g-item-text-color-disabled;
         cursor: not-allowed;
         background-color: @select-disabled-option-bg;
       }
@@ -329,7 +329,7 @@
     }
     .@{select-prefix-cls}-wrapper {
       &:hover:not(.@{select-prefix-cls}-multiple-disabled) {
-        border-bottom: 1px solid #5582f3;
+        border-bottom: 1px solid @select-g-color-border-hover;
       }
     }
 
@@ -348,7 +348,7 @@
         color: #999999;
         padding-left: 12px;
         > span {
-          color: #0e5fd8;
+          color: @select-footer-g-text-color-selected;
           padding: 0 2px;
         }
       }

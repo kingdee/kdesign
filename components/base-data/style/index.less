@@ -1,25 +1,25 @@
 @import '../../style/themes/index';
-@import './mixin.less';
+@import './token.less';
 
 @advancedSelector-prefix-cls: ~'@{kd-prefix}-baseData';
 
 .@{advancedSelector-prefix-cls} {
-  width: @advancedSelector-width;
+  width: @base-data-width;
   display: flex;
   align-items: center;
-  border-bottom: 1px solid @advancedSelector-border-color;
+  border-bottom: 1px solid @base-data-border-color;
 
   &-disabled {
     cursor: not-allowed;
   }
 
   &:not(.@{advancedSelector-prefix-cls}-disabled):hover {
-    border-color: @theme-color;
+    border-color: @base-data-color-border-hover;
 
     .@{advancedSelector-prefix-cls} {
       &-detail,
       &-suffix {
-        color: @theme-color;
+        color: @base-data-icon-text-color-hover;
       }
 
       &-detail {
@@ -46,12 +46,12 @@
 
   &-dropdown {
     margin: 0;
-    z-index: @zIndex-popper;
+    z-index: @base-data-dropdown-z-index;
     box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.2);
-    border-radius: @radius-size;
-    background: @bg;
+    border-radius: @base-data-dropdown-radius-border;
+    background: @base-data-dropdown-color-background;
     overflow: auto;
-    max-height: @advancedSelector-dropdown-height;
+    max-height: @base-data-dropdown-height;
 
     &-columns,
     &-options {
@@ -74,10 +74,10 @@
           visibility: hidden;
 
           &-icon {
-            color: @warning-color;
+            color: @base-data-dropdown-icon-text-color;
 
             &:hover {
-              color: @warning-color;
+              color: @base-data-dropdown-icon-text-color-hover;
             }
           }
 
@@ -85,7 +85,7 @@
             color: #666;
 
             &:hover {
-              color: @warning-color;
+              color: @base-data-dropdown-text-color-hover;
             }
           }
         }
@@ -105,14 +105,14 @@
 
     &-columns {
       height: 36px;
-      background: @advancedSelector-hover-bg;
+      background: @base-data-hover-bg;
     }
 
     &-options {
-      height: @advancedSelector-dropdown-options-height;
+      height: @base-data-dropdown-options-height;
 
       &:hover {
-        background: @advancedSelector-hover-bg;
+        background: @base-data-hover-bg;
 
         .@{advancedSelector-prefix-cls}-dropdown-options-item-collect {
           visibility: visible;
@@ -122,10 +122,10 @@
 
     &-footer {
       height: 40px;
-      border-top: 1px solid @strong-border-color;
+      border-top: 1px solid @base-data-footer-color-border;
 
       &-btn {
-        color: @link-color;
+        color: @base-data-footer-btn-text-color;
         height: 100%;
         display: flex;
         align-items: center;

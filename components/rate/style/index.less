@@ -1,5 +1,6 @@
 @import '../../style/themes/index';
 @import '../../style/mixins/index';
+@import './token.less';
 
 @rate-prefix-cls: ~'@{kd-prefix}-rate';
 @rate-icon-prefix-cls: ~'@{rate-prefix-cls}-icon';
@@ -28,7 +29,7 @@
     &-view {
       position: relative;
       display: inline-flex;
-      transition: transform @transition-duration;
+      transition: transform @rate-transition-duration;
     }
     &-view:hover {
       transform: scale(1.2);
@@ -46,7 +47,7 @@
       color: @rate-not-selected-color;
       opacity: 1;
       cursor: pointer;
-      transition: color @transition-duration;
+      transition: color @rate-transition-duration;
     }
     &-first:hover {
       color: @rate-selected-color;
@@ -56,7 +57,7 @@
       color: @rate-not-selected-color;
       opacity: 1;
       cursor: pointer;
-      transition: color @transition-duration;
+      transition: color @rate-transition-duration;
       &-content {
         display: inline-flex;
       }

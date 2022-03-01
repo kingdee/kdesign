@@ -62,3 +62,35 @@ subtitle: 选择器
 | disabled | 是否禁用 | boolean | false | 0.0.17 |
 | title | 选中该 Option 后，Select 的 title | string | - | 0.0.17 |
 | value | 默认根据此属性值进行筛选 | string \| number | - | 0.0.17 |
+
+## Design Token
+
+| 分类 | 组件token | 全局token | 默认值 |
+| --- | --- | --- | --- |
+| color | --kd-c-select-dropdown-color-background | --kd-g-color-background | #fff |
+|  | --kd-c-select-item-color-background-disabled | --kd-g-color-background-contain-disabled | #f5f5f5 |
+|  | --kd-c-select-color-background | --kd-g-color-hover | #f5f5f5 |
+|  | --kd-c-select-color-background-selected | - | #f2f9ff |
+|  | --kd-c-select-color-border | --kd-g-color-input | #999 |
+|  | --kd-c-select-color-border-foucs | --kd-g-color-theme | #5582f3 |
+|  | --kd-c-select-color-border-hover | --kd-g-color-theme | #5582f3 |
+|  | --kd-c-select-border-color-border | --kd-g-color-border-strong | #d9d9d9 |
+|  | --kd-c-select-placeholder-color-text | --kd-g-color-text-third | #999 |
+|  | --kd-c-select-item-color-text-selected | --kd-g-color-ongoing | #276ff5 |
+|  | --kd-c-select-footer-color-text | --kd-g-color-text-primary | #212121 |
+|  | --kd-c-select-footer-color-text-selected | --kd-g-color-text-link | #0e5fd8 |
+|  | --kd-c-select-item-color-text-disabled | --kd-g-color-disabled | #b2b2b2 |
+| font | --kd-c-select-dropdown-font-size | - | 12px |
+|  | --kd-c-select-font-size-large | - | 16px |
+|  | --kd-c-select-font-size-middle | - | 14px |
+|  | --kd-c-select-font-size-small | - | 12px |
+| line-height | --kd-c-select-dropdown-line-height | - | 22px |
+|  | --kd-c-select-line-height-large | - | 28px |
+|  | --kd-c-select-line-height-middle | - | 22px |
+|  | --kd-c-select-line-height-small | - | 14px |
+| radius | --kd-c-select-radius-border | --kd-g-radius-border | 2px |
+| sizing | --kd-c-select-item-sizing-height | - | 22px |
+|  | --kd-c-select-sizing-height-large | - | 36px |
+|  | --kd-c-select-sizing-height-middle | - | 30px |
+|  | --kd-c-select-sizing-height-small | - | 24px |
+| z-index | --kd-c-select-z-index | --kd-g-z-index-popper | 1050 |

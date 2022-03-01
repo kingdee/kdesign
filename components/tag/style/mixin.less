@@ -1,3 +1,4 @@
+@import './token.less';
 
 // code component mixin here
 .tag-size(@size, @height, @padding) {
@@ -8,7 +9,7 @@
   align-items: center;
   vertical-align: middle;
   padding: 0 @padding;
-  border-radius:  @height / 2;
+  border-radius:  calc(@height / 2);
 }
 .tag-status(@color) {
   border: 1px solid @color;

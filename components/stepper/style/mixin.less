@@ -1,15 +1,17 @@
+@import './token.less';
+
 .base-step-size(@width) {
 	width: @width;
 }
 .step-style(@borderDirection, @marginDirection) {
-	border-@{borderDirection}: 1px solid @strong-border-color;
+	border-@{borderDirection}: 1px solid @stepper-color-border-strong;
 	&.@{inputNumber-prefix-cls}-baseStep-small, &.@{inputNumber-prefix-cls}-embedStep-small {
-		margin-@{marginDirection}: -@input-small-padding-horizontal;
+		margin-@{marginDirection}: calc(-1 * @stepper-input-spacing-padding-horizontal);
 	}
 	&.@{inputNumber-prefix-cls}-baseStep-middle, &.@{inputNumber-prefix-cls}-embedStep-middle {
-		margin-@{marginDirection}: -@input-middle-padding-horizontal;
+		margin-@{marginDirection}: calc(-1 * @stepper-input-spacing-padding-horizontal);
 	}
 	&.@{inputNumber-prefix-cls}-baseStep-large, &.@{inputNumber-prefix-cls}-embedStep-large {
-		margin-@{marginDirection}: -@input-large-padding-horizontal;
+		margin-@{marginDirection}: calc(-1 * @stepper-input-spacing-padding-horizontal);
 	}
 }

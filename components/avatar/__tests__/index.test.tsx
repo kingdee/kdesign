@@ -101,7 +101,7 @@ describe('Avatar', () => {
 
   it('should handle onError correctly', () => {
     const LOAD_FAILURE_SRC = 'http://error.url'
-    const LOAD_SUCCESS_SRC = 'https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png'
+    const LOAD_SUCCESS_SRC = 'https://kui.kingdee.com/assets/image/avatar_m.png'
 
     const div = global.document.createElement('div')
     global.document.body.appendChild(div)

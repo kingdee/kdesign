@@ -39,3 +39,18 @@ subtitle: 抽屉
 | visible | Drawer 是否可见 | boolean | - | - | 1.0.0 |
 | width | 宽度（placement 为 left/right 时有效，否则为 100%） | string \| number | 365 | - | 1.0.0 |
 | zIndex | 设置 Drawer 的 z-index | string \| number | 1050 | - | 1.0.0 |
+
+
+## Design Token
+
+| 分类 | 组件token | 全局token | 默认值 |
+| --- | --- | --- | --- |
+| color | --kd-c-drawer-color-background | --kd-g-color-background | #fff |
+|  | --kd-c-drawer-title-color-text | --kd-g-color-text-primary | #212121 |
+|  | --kd-c-drawer-dividing-color-border | --kd-g-color-border-disabled | #ccc |
+|  | --kd-c-drawer-close-icon-color-text | --kd-g-color-text-secondary | #666 |
+| font | --kd-c-drawer-title-font-size | --kd-g-font-size-x-large | 18px |
+|  | --kd-c-drawer-close-icon-font-size | --kd-g-font-size-large | 16px |
+| sizing | --kd-c-drawer-dividing-sizing-width | - | 1px |
+| spacing | --kd-c-drawer-header-sizing-padding | - | 12px |
+|  | --kd-c-drawer-body-sizing-padding | - | 16px |

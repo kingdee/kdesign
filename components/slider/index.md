@@ -37,3 +37,20 @@ subtitle: 滑动输入
 | --- | --- | --- |
 | blur() | 移除焦点 | 1.0.0 |
 | focus() | 获取焦点 | 1.0.0 |
+
+## Design Token
+
+| 分类 | 组件token | 全局token | 默认值 |
+| --- | --- | --- | --- |
+| color | --kd-c-slider-trail-color-background | --kd-g-color-border-weak | #e5e5e5 |
+|  | --kd-c-slider-track-color-background | --kd-g-color-theme | #5582f3 |
+|  | --kd-c-slider-track-color-background-hover | --kd-g-color-theme-5 | rgb(135, 173, 255) |
+|  | --kd-c-slider-track-color-background-hover | --kd-g-color-disabled | #b2b2b2 |
+|  | --kd-c-slider-handle-color-border | --kd-g-color-theme | #5582f3 |
+|  | --kd-c-slider-handle-color-border-hover | --kd-g-color-theme-5 | rgb(135, 173, 255) |
+|  | --kd-c-slider-handle-color-border-hover | --kd-g-color-disabled | #b2b2b2 |
+|  | --kd-c-slider-dot-color-border | --kd-g-color-theme | #5582f3 |
+|  | --kd-c-slider-dot-color-border-actived | --kd-g-color-theme | #5582f3 |
+|  | --kd-c-slider-dot-color-border-actived | --kd-g-color-disabled | #b2b2b2 |
+|  | --kd-c-slider-mark-color-text | --kd-g-color-text-primary | #212121 |
+|  | --kd-c-slider-mark-color-text-actived | --kd-g-color-text-primary-2 | rgba(255, 255, 255, 1) |

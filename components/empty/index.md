@@ -21,3 +21,11 @@ subtitle: 空状态
 | description | 自定义描述内容 | ReactNode | '暂无相关数据' | --- | 1.0.0 |
 | image | 设置显示图片, 为 string 时表示自定义图片地址 | ReactNode | --- | --- | 1.0.0 |
 | imageStyle | 图片样式 | cssProperties | --- | --- | 1.0.0 |
+
+## Design Token
+
+| 分类 | 组件token | 全局token | 默认值 |
+| --- | --- | --- | --- |
+| color | --kd-c-empty-color-text | --kd-g-color-text-third | #999 |
+| font | --kd-c-empty-font-size | --kd-g-font-size-middle | 14px |
+| sizing | --kd-c-empty-image-sizing-height | - | 96px |

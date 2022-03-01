@@ -1,0 +1,21 @@
+@import '../../style/themes/token.less';
+
+@message-custom-prefix: ~'--@{kd-prefix}-c-message';
+
+// color
+@message-info-color-background: var(~'@{message-custom-prefix}-info-color-background', #e0efff);
+@message-info-color-border: var(~'@{message-custom-prefix}-info-color-border', #b3d5ff);
+@message-success-color-background: var(~'@{message-custom-prefix}-success-color-background', #dcfae4);
+@message-success-color-border: var(~'@{message-custom-prefix}-success-color-border', #a1e6b5);
+@message-success-text-color: var(~'@{message-custom-prefix}-success-color-text', @color-success);
+@message-warning-color-background: var(~'@{message-custom-prefix}-warning-color-background', #fff1d4);
+@message-warning-color-border: var(~'@{message-custom-prefix}-warning-color-border', #ffe0a6);
+@message-warning-text-color: var(~'@{message-custom-prefix}-warning-color-text', @color-warning);
+@message-error-color-background: var(~'@{message-custom-prefix}-error-color-background', #ffdbe0);
+@message-error-color-border: var(~'@{message-custom-prefix}-error-color-border', #ffadb6);
+@message-error-text-color: var(~'@{message-custom-prefix}-error-color-text', @color-error);
+@message-icon-text-color-hover: var(~'@{message-custom-prefix}-icon-color-text-hover', @color-border-ongoing);
+@message-info-text-color: var(~'@{message-custom-prefix}-info-color-text', @color-text-link);
+
+// z-index
+@message-z-index: var(~'@{message-custom-prefix}-z-index', @z-index-apex);

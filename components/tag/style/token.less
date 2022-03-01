@@ -1,0 +1,42 @@
+@import '../../style/themes/token.less';
+
+@tag-custom-prefix: ~'--@{kd-prefix}-c-tag';
+
+// color
+@tag-process-color: var(~'@{tag-custom-prefix}-color-process', @color-ongoing);
+@tag-success-color: var(~'@{tag-custom-prefix}-color-success', @color-success);
+@tag-warning-color: var(~'@{tag-custom-prefix}-color-warning', @color-warning);
+@tag-error-color: var(~'@{tag-custom-prefix}-color-error', @color-error);
+@tag-end-color: var(~'@{tag-custom-prefix}-color-end', @color-end);
+@tag-expired-color: var(~'@{tag-custom-prefix}-color-expired', @color-disabled);
+@tag-disabled-color: var(~'@{tag-custom-prefix}-color-disabled', @color-disabled);
+@tag-attribute-g-text-color: var(~'@{tag-custom-prefix}-attribute-color-text', @color-white);
+@tag-edit-g-color-border: var(~'@{tag-custom-prefix}-edit-color-border', @color-text-placeholder);
+@tag-edit-g-text-color: var(~'@{tag-custom-prefix}-edit-color-text', @color-text-primary);
+@tag-edit-g-color-border-hover: var(~'@{tag-custom-prefix}-edit-color-border-hover', @color-theme);
+@tag-edit-cloesWrapper-g-color-background-hover: var(~'@{tag-custom-prefix}-edit-cloesWrapper-color-background-hover', @color-theme);
+@tag-edit-cloesWrapper-g-text-color-hover: var(~'@{tag-custom-prefix}-edit-cloesWrapper-color-text-hover', @color-white);
+@tag-edit-g-color-background-disabled: var(~'@{tag-custom-prefix}-edit-color-background-disabled', @color-background-contain-disabled);
+@tag-edit-g-color-border-disabled: var(~'@{tag-custom-prefix}-edit-color-background-disabled', @color-border-strong);
+@tag-edit-g-text-color-disabled: var(~'@{tag-custom-prefix}-edit-color-text-disabled', @color-border-strong);
+
+// font
+@tag-small-font-size: var(~'@{tag-custom-prefix}-font-size-small', @font-size-small);
+@tag-middle-font-size: var(~'@{tag-custom-prefix}-font-size-middle', @font-size-small);
+@tag-large-font-size: var(~'@{tag-custom-prefix}-font-size-large', @font-size-middle);
+
+// motion
+@tag-g-motion-duration: var(~'@{tag-custom-prefix}-motion-duration', @duration-promptly);
+
+// radius
+@tag-border-radius: var(~'@{tag-custom-prefix}-radius-border', 10px);
+
+// sizing
+@tag-small-height: var(~'@{tag-custom-prefix}-sizing-height-small', 20px);
+@tag-middle-height: var(~'@{tag-custom-prefix}-sizing-height-middle', 20px);
+@tag-large-height: var(~'@{tag-custom-prefix}-sizing-height-large', 24px);
+
+// spacing
+@tag-small-padding-horizontal: var(~'@{tag-custom-prefix}-spacing-padding-horizontal-small', 6px);
+@tag-middle-padding-horizontal: var(~'@{tag-custom-prefix}-spacing-padding-horizontal-middle', 7px);
+@tag-large-padding-horizontal: var(~'@{tag-custom-prefix}-spacing-padding-horizontal-large', 8px);

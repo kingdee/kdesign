@@ -1,0 +1,33 @@
+@import '../../style/themes/token.less';
+
+@anchor-prefix: '--@{kd-prefix}-c-anchor';
+
+// color
+@anchor-bg: var(~'@{anchor-prefix}-color-background', @color-background);
+@anchor-border-color: var(~'@{anchor-prefix}-color-border', @color-border-strong);
+@anchor-advanced-arrows-color: var(~'@{anchor-prefix}-advanced-arrows-color-text', #666);
+@anchor-color-theme: var(~'@{anchor-prefix}-color-theme', @color-theme);
+@anchor-disabled-border-color: var(~'@{anchor-prefix}-color-border-disabled', @color-border-disabled);
+@anchor-primary-text-color: var(~'@{anchor-prefix}-color-text-primary', @color-text-primary);
+@anchor-secondary-text-color: var(~'@{anchor-prefix}-color-text-secondary', @color-text-secondary);
+
+// sizing
+@anchor-width: var(~'@{anchor-prefix}-sizing-width', 120px);
+@anchor-advanced-width: var(~'@{anchor-prefix}-advanced-sizing-width', 160px);
+
+// spacing
+@anchor-link-top: var(~'@{anchor-prefix}-spacing-vertical', 7px);
+@anchor-link-left: var(~'@{anchor-prefix}-spacing-horizontal', 7px);
+@anchor-link-padding: var(~'@{anchor-prefix}-spacing-padding', 7px 8px);
+@anchor-advanced-padding-top: var(~'@{anchor-prefix}-advanced-spacing-padding-top', 8px);
+@anchor-advanced-padding-bottom: var(~'@{anchor-prefix}-advanced-spacing-padding-bottom', 7px);
+@anchor-ink-line-width: var(~'@{anchor-prefix}-ink-line-spacing-width', 1px);
+
+
+// font
+@anchor-advanced-lock-size: var(~'@{anchor-prefix}-advanced-lock-font-size', 16px);
+@anchor-font-size: var(~'@{anchor-prefix}-font-size', @font-size-small);
+@anchor-icon-font-size: var(~'@{anchor-prefix}-icon-font-size', 16px);
+
+// motion
+@anchor-transition-duration: var(~'@{anchor-prefix}-duration-duration', @duration-promptly);

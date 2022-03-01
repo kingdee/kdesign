@@ -29,9 +29,6 @@ function Demo() {
       <Button shape="circle" style={demoButtonStyle} disabled>
         圆
       </Button>
-      <Button type="link" style={demoButtonStyle} disabled>
-        link
-      </Button>
       <Button type="text" style={demoButtonStyle} disabled>
         text
       </Button>

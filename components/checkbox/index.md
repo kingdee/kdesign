@@ -42,3 +42,29 @@ subtitle: 多选
 | onChange | 选项变化时的回调函数 | function(e:Event) | - | 1.0.0 |
 
 ## 方法
+
+## Design Token
+
+| 分类 | 组件token | 全局token | 默认值 |
+| --- | --- | --- | --- |
+| colors | --kd-c-checkbox-color-theme | --kd-g-color-theme | #5582f3 |
+|  | --kd-c-checkbox-color-text-primary | --kd-g-color-text-primary | #212121 |
+|  | --kd-c-checkbox-color-border | --kd-g-color-border-strong | #d9d9d9 |
+|  | --kd-c-checkbox-color-border-active | --kd-g-color-theme | #5582f3 |
+|  | --kd-c-checkbox-color-text-hover | --kd-g-color-theme | #5582f3 |
+|  | --kd-c-checkbox-default-input-icon-color | - | #fff |
+|  | --kd-c-checkbox-square-input-icon-color | - | #fff |
+|  | --kd-c-checkbox-color-background | --kd-g-color-background | #fff |
+|  | --kd-c-checkbox-color-background-disabled | --kd-g-color-disabled | #b2b2b2 |
+| font-size | --kd-c-checkbox-font-size | --kd-g-font-size-small | 12px |
+|  | --kd-c-checkbox-default-input-icon-font-size | - | 14px |
+|  | --kd-c-checkbox-default-input-icon-font-size | - | 12px |
+| motion | --kd-c-checkbox-motion-duration | --kd-g-duration | 0.3s |
+| radius | --kd-c-checkbox-default-input-radius-border | - | 2px |
+| sizing | --kd-c-checkbox-sizing-height-small | - | 32px |
+|  | --kd-c-checkbox-sizing-height-middle | - | 36px |
+|  | --kd-c-checkbox-sizing-height-large | - | 40px |
+| spacing | --kd-c-checkbox-group-spacing-margin-right | - | 8px |
+|  | --kd-c-checkbox-default-spacing-padding | - | 0 |
+|  | --kd-c-checkbox-default-input-spacing-margin-right | - | 8px |
+|  | --kd-c-checkbox-square-spacing-padding | - | 0 20px |

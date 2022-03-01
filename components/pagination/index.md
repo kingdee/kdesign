@@ -32,3 +32,24 @@ subtitle: 分页
 | total | 数据总量 | number | 0 | 1.0.0 |
 | onChange | 页码改变的回调，参数是改变后的页码及每页条目数 | function(page, pageSize) | - | 1.0.0 |
 | onShowSizeChange | pageSize 变化后的回调 | function(current, size) | - | 1.0.0 |
+
+
+## Design Token
+
+| 分类 | 组件token | 全局token | 默认值 |
+| --- | --- | --- | --- |
+| color | --kd-c-pagination-text-color | --kd-g-color-text-secondary | #666 |
+|  | --kd-c-pagination-color-text-hover | --kd-g-color-theme | #5582f3 |
+|  | --kd-c-pagination-color-text-disabled | --kd-g-color-border-disabled | #ccc |
+|  | --kd-c-pagination-button-color | --kd-g-color-text-secondary | #666 |
+|  | --kd-c-pagination-button-color-disabled | --kd-g-color-border-disabled | #ccc |
+|  | --kd-c-pagination-color-border | --kd-g-color-border-strong | #d9d9d9 |
+|  | --kd-c-pagination-color-border-hover | --kd-g-color-theme | #5582f3 |
+|  | --kd-c-pagination-color-border-disabled | --kd-g-color-border-strong | #d9d9d9 |
+|  | --kd-c-pagination-button-color-background-disabled | --kd-g-color-background-contain-disabled | #f5f5f5 |
+| font | --kd-c-pagination-font-size | --kd-g-font-size-small | 12px |
+|  | --kd-c-pagination-icon-font-size | --kd-g-font-size-large | 16px |
+| sizing | --kd-c-pagination-sizing-square | - | 24px |
+|  | --kd-c-pagination-nicety-sizing-square | - | 30px |
+|  | --kd-c-pagination-sizing-border-width | - | 1px |
+| spacing | --kd-c-pagination-button-spacing | - | 4px |

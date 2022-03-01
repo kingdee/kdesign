@@ -1,3 +1,5 @@
+@import './token.less';
+
 .item() {
   position: relative;
   display: block;
@@ -11,12 +13,12 @@
 
 .focusColor() {
   // border-bottom: 1px solid #5582F3;
-  border-color: #5582F3 !important;
+  border-color: @select-g-color-border-foucs !important;
 }
 
 .select-input-size(@height, @maxHeight, @lineHeight, @fontSize) {
   min-height: @height;
-  max-height: @maxHeight * 3 - 10px;
+  max-height: calc(@maxHeight * 3 - 10px);
   line-height: @lineHeight;
   font-size: @fontSize;
 }
@@ -25,11 +27,6 @@
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
-}
-
-.item-size(@height) {
-  height: @height - 10px;
-  line-height: @height - 10px;
 }
 
 @keyframes SlideDownIn {

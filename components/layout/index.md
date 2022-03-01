@@ -64,3 +64,23 @@ subtitle: 布局
 }
 ```
 
+## Design Token
+
+| 分类 | 组件token | 全局token | 默认值 |
+| --- | --- | --- | --- |
+| color | --kd-c-layout-body-color-background | --kd-g-color-background-2 | #f2f2f2 |
+|  | --kd-c-layout-header-color-background | --kd-g-color-background | #fff |
+|  | --kd-c-layout-header-color-text | --kd-g-color-text-primary | #212121 |
+|  | --kd-c-layout-footer-color-background | --kd-g-color-background-2 | #f2f2f2 |
+|  | --kd-c-layout-sider-color-background | - | #343848 |
+|  | --kd-c-layout-trigger-color-background | - | #343848 |
+|  | --kd-c-layout-trigger-color-text | --kd-g-color-white | #fff |
+|  | --kd-c-layout-sider-color-background-light | --kd-g-color-background | #fff |
+|  | --kd-c-layout-trigger-color-background-light | --kd-g-color-background | #fff |
+|  | --kd-c-layout-trigger-color-text-light | --kd-g-color-text-primary | #212121 |
+| sizing | --kd-c-layout-header-sizing-height | - | 52px |
+|  | --kd-c-layout-trigger-sizing-height | - | 50px |
+|  | --kd-c-layout-trigger-sizing-width | - | 36px |
+|  | --kd-c-layout-trigger-sizing-height | - | 42px |
+| spacing | --kd-c-layout-header-spacing-padding | - | 0 20px 0 35px |
+|  | --kd-c-layout-footer-spacing-padding | - | 24px 50px |

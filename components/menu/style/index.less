@@ -14,14 +14,16 @@
       .ellipsis();
 
       &-active {
-        color: @white;
+        color: @menu-inline-color-active;
       }
     }
+
     .@{submenu-prefix-cls} {
       padding-right: 0;
     }
+
     .@{submenu-prefix-cls}:not(.@{submenu-prefix-cls}-disabled):hover {
-      color: @white;
+      color: @menu-inline-color-active;
     }
   }
 
@@ -30,32 +32,37 @@
     .@{submenu-prefix-cls}-hover {
       .hover();
     }
+
     .@{submenu-prefix-cls} {
       padding-right: 0;
+
       &-sub {
-        background: @menu-subMenu-bg-color;
+        background: @menu-sub-color-background;
+
         .@{menuitem-prefix-cls} {
           &:hover,
           &-active {
-            color: @theme-color;
+            color: @menu-sub-color-active;
           }
         }
+
         &-second,
         &-third {
-          animation: kdZoomTopLeftIn calc(@transition-duration - 0.1s) @ease-out forwards;
+          animation: kdZoomTopLeftIn calc(@menu-motion-duration - 0.1s) cubic-bezier(0, .4, .4, 1) forwards;
           opacity: 1;
           visibility: visible;
           transition: opacity, visibility;
-          transition-duration: calc(@transition-duration - 0.1s);
-          transition-timing-function: @ease;
+          transition-duration: calc(@menu-motion-duration - 0.1s);
+          transition-timing-function: cubic-bezier(0.4, 0, 0.6, 1);
         }
+
         &-hide {
           opacity: 0;
           visibility: hidden;
-          animation: kdZoomTopLeftOut calc(@transition-duration - 0.1s) @ease-out forwards;
+          animation: kdZoomTopLeftOut calc(@menu-motion-duration - 0.1s) cubic-bezier(0, .4, .4, 1) forwards;
           transition: opacity, visibility;
-          transition-duration: calc(@transition-duration - 0.1s);
-          transition-timing-function: @ease;
+          transition-duration: calc(@menu-motion-duration - 0.1s);
+          transition-timing-function: cubic-bezier(0.4, 0, 0.6, 1);
         }
       }
     }
@@ -67,39 +74,47 @@
 
   &-light {
     .light-default;
+
     .@{submenu-prefix-cls}-hover,
     .@{submenu-prefix-cls}-sub {
       .light-default;
     }
+
     .@{submenu-prefix-cls}-title:hover {
-      color: @lightHoverColor;
+      color: @menu-light-color-hover;
     }
+
     .@{submenu-prefix-cls}:not(.@{submenu-prefix-cls}-disabled):hover {
       .light-default;
     }
+
     .@{menuitem-prefix-cls} {
       &-active {
         .light-hover();
       }
     }
+
     .@{menuitem-prefix-cls}:not(.@{menuitem-prefix-cls}-disabled):hover {
       .light-hover();
     }
   }
+
   &-light&-vertical {
     .@{submenu-prefix-cls}-sub {
       box-shadow: 0 3px 6px -4px rgba(0, 0, 0, 0.12), 0 6px 16px 0 rgba(0, 0, 0, 0.08),
-        0 9px 28px 8px rgba(0, 0, 0, 0.05);
+      0 9px 28px 8px rgba(0, 0, 0, 0.05);
     }
+
     .@{menuitem-prefix-cls} {
       &:not(.@{menuitem-prefix-cls}-disabled):not(.@{menuitem-prefix-cls}-active):hover {
-        color: @lightHoverColor;
+        color: @menu-light-color-hover;
         background: #fff;
         border: none;
       }
+
       &-active {
-        color: @lightActiveColor;
-        background-color: @lightBgColor;
+        color: @menu-light-color-active;
+        background-color: @menu-light-color-background;
         border: none !important;
       }
     }
@@ -110,8 +125,9 @@
   .menuItem(relative);
 
   transition: color, background-color;
-  transition-duration: calc(@transition-duration - 0.1s);
-  transition-timing-function: @ease;
+  transition-duration: calc(@menu-motion-duration - 0.1s);
+  transition-timing-function: cubic-bezier(0.4, 0, 0.6, 1);
+
   &:not(&-disabled):hover {
     .hover();
   }
@@ -121,15 +137,16 @@
   .menuItem();
 
   transition: color, background-color;
-  transition-duration: calc(@transition-duration - 0.1s);
-  transition-timing-function: @ease;
+  transition-duration: calc(@menu-motion-duration - 0.1s);
+  transition-timing-function: cubic-bezier(0.4, 0, 0.6, 1);
+
   &-hover {
-    color: @white;
+    color: @menu-sub-color-hover;
   }
 
   &-sub {
-    line-height: @menu-item-line-height;
-    color: @menu-font-color;
+    line-height: @menu-item-height;
+    color: @menu-sub-color;
   }
 
   &-thrid {
@@ -137,14 +154,16 @@
     max-width: 810px;
     max-height: 492px;
     padding-left: 24px;
-    background: @menu-subMenu-bg-color;
+    background: @menu-sub-color-background;
     flex-wrap: wrap;
     overflow-y: auto;
     cursor: default;
-    z-index: @zIndex-dialog;
+    z-index: @menu-z-index;
+
     &-item {
       margin-right: 40px;
     }
+
     &-title {
       line-height: 50px;
       font-size: 12px;
@@ -155,10 +174,12 @@
       align-items: center;
       border-bottom: 1px solid rgba(255, 255, 255, 0.3);
       .ellipsis();
+
       & > span {
         .ellipsis();
       }
     }
+
     &-list {
       list-style-type: none;
       padding: 0;
@@ -168,6 +189,7 @@
       margin-bottom: 20px;
       margin-top: 10px;
       height: 180px;
+
       & > li {
         width: 160px;
         margin: 8px 0;
@@ -179,19 +201,22 @@
         justify-content: space-between;
         cursor: pointer;
         .ellipsis();
+
         &:hover {
-          color: @theme-color;
+          color: @menu-sub-color-active;
         }
+
         & > span {
           .ellipsis();
         }
+
         .@{menuitem-prefix-cls}-title {
           height: auto;
         }
       }
 
       & > .@{menuitem-prefix-cls}-active {
-        color: @theme-color;
+        color: @menu-sub-color-active;
       }
     }
   }

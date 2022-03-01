@@ -1,11 +1,12 @@
 @import '../../style/themes/index';
+@import './token.less';
 
 @notice-prefix-cls: ~'@{kd-prefix}-notice';
 @notice-box: ~'@{notice-prefix-cls}-box';
 
 .@{notice-box}-topRight, .@{notice-box}-topLeft, .@{notice-box}-bottomLeft, .@{notice-box}-bottomRight {
   position: fixed;
-  z-index: @notice-zIndex;
+  z-index: @notice-z-index;
 }
 
 
@@ -17,8 +18,8 @@
   margin: 0 auto 16px;
   box-shadow: 0 1px 6px 0 rgba(0, 0, 0, 0.15);
   border-radius: 2px;
-  background-color: @white;
-  animation: kdNoticeEffect calc(@transition-duration - 0.2s) @ease-out forwards;
+  background-color: @notice-content-color-background;
+  animation: kdNoticeEffect @notice-motion-duration cubic-bezier(0,.4,.4,1) forwards;
 
   &-content {
     width: 100%;
@@ -29,7 +30,7 @@
       white-space: nowrap;
       padding: 0 20px;
       display: flex;
-      font-size: @font-size;
+      font-size: @notice-font-size;
       align-content: center;
       justify-content: space-between;
 
@@ -73,14 +74,14 @@
       align-items: center;
       padding: 0 20px 15px 20px;
       font-size: 12px;
-      color: @link-color;
+      color: @notice-footer-color;
       cursor: pointer;
 
       > div {
         margin-right: 10px;
 
         &:hover {
-          color: @link-color-hover;
+          color: @notice-footer-color-hover;
         }
       }
     }
@@ -88,18 +89,18 @@
 
   &-info {
     .@{notice-prefix-cls}-content-title {
-      color: @primary-text-color;
-      background: @white;
+      color: @notice-info-color;
+      background: @notice-info-header-color-background;
 
       &-left-icon {
-        color: @theme-color;
+        color: @notice-icon-color;
       }
 
       &-close {
-        color: @theme-color;
+        color: @notice-icon-color;
 
         &:hover {
-          color: @ongoing-border-color;
+          color: @notice-icon-color-hover;
         }
       }
     }
@@ -109,38 +110,38 @@
 
   &-primary {
     .@{notice-prefix-cls}-content-title {
-      color: @white;
-      background: @theme-color;
+      color: @notice-header-color;
+      background: @notice-header-color-background;
 
       &-close {
-        color: @white;
+        color: @notice-header-color;
 
         &:hover {
-          color: @ongoing-border-color;
+          color: @notice-icon-color-hover;
         }
       }
     }
   }
 
   &-leave {
-    animation: kdNoticeLeaveEffect calc(@transition-duration - 0.2s) @ease-out forwards;
+    animation: kdNoticeLeaveEffect @notice-motion-duration cubic-bezier(0,.4,.4,1) forwards;
   }
 
   &-leave-after {
     padding: 0;
     margin: 0;
     opacity: 0;
-    transition: all calc(@transition-duration - 0.2s) @ease-out;
+    transition: all @notice-motion-duration cubic-bezier(0,.4,.4,1);
 
     &.@{notice-prefix-cls}-success,
     &.@{notice-prefix-cls}-warning,
     &.@{notice-prefix-cls}-error {
-      transition: all calc(@transition-duration - 0.2s) @ease-out;
+      transition: all @notice-motion-duration cubic-bezier(0,.4,.4,1);
       border: none;
     }
 
     & div, & i {
-      transition: all calc(@transition-duration - 0.2s) @ease-out;
+      transition: all @notice-motion-duration cubic-bezier(0,.4,.4,1);
       height: 0;
       font-size: 0;
     }

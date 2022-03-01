@@ -35,3 +35,18 @@ subtitle: 卡片
   description?: string, // 描述
 }
 ```
+
+## Design Token
+
+| 分类 | 组件token | 全局token | 默认值 |
+| --- | --- | --- | --- |
+| color | --kd-c-card-color-background | --kd-g-color-white | #fff |
+|  | --kd-c-card-actions-color | --color-theme | #5582f3 |
+|  | --kd-c-card-actions-color-hover | --kd-g-color-theme-5 | rgb(135, 173, 255) |
+|  | --kd-c-card-actions-color-active | --kd-g-color-theme-7 | rgb(55, 92, 202) |
+|  | --kd-c-card-content-color | --kd-g-color-text-secondary | #666 |
+| sizing | --kd-c-card-sizing-title-height | - | 40px |
+| spacing | --kd-c-card-spacing-padding-horizontal | - | 12px |
+|  | --kd-c-card-spacing-padding-vertical | - | 8px |
+| font | --kd-c-card-title-font-size | --kd-g-font-size-middle | 14px |
+|  | --kd-c-card-content-font-size | --kd-g-font-size-small | 12px |

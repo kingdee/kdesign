@@ -11,7 +11,12 @@ import ReactDOM from 'react-dom'
 import { Empty } from '@kdcloudjs/kdesign'
 
 function Demo() {
-  return <Empty name="Empty" image="http://ikd.kingdee.com/ikd2/images/common/empty-content.png" />
+  return (
+    <div style={{ display: 'flex' }}>
+      <Empty name="Empty" image="http://ikd.kingdee.com/ikd2/images/common/empty-content.png" />
+      <Empty name="Empty" image={Empty.ILLUSTRATION_IMG} />
+    </div>
+  )
 }
 
 ReactDOM.render(<Demo />, mountNode)

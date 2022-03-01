@@ -127,7 +127,7 @@ function writeCompleteLessFile(lessFilesPath) {
   let allLessContent = ''
   lessFilesPath.forEach((filePathObj) => {
     let data = fs.readFileSync(filePathObj.lessFilePath, 'utf-8')
-    data = data.replace(/@import\s'.*?';?/g, '')
+    data = data.replace(/@import\s['"].*?['"];?/g, '')
     allLessContent += data + '\n'
   })
   fs.writeFileSync(path.join(process.cwd(), 'dist', 'kdesign-complete.less'), allLessContent)

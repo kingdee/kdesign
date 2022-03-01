@@ -27,3 +27,16 @@ subtitle: 数值输入框
 | stepOption | 步进器模式配置，设置后开启步进功能，可配置`type`(步进器类型)，`step`(步长)，`stepBtnClassName`(步进按钮样式)) | StepOption { type?: 'embed' \| 'base', step?: number, stepBtnClassName?: string } | `-` | `-` | 1.0.0 |
 | symbol | 货币符号 | string | `-` | `-` | 1.0.0 |
 | zeroShow | 为零是否显示 | boolean | `false` | `true` `false` | 1.0.0 |
+
+## Design Token
+
+| 分类 | 组件token | 全局token | 默认值 |
+| --- | --- | --- | --- |
+| color | --kd-c-input-number-color-border-strong | --kd-g-color-border-strong | #d9d9d9 |
+|  | --kd-c-input-number-color-theme-5 | --kd-g-color-theme-5 | rgb(135, 173, 255) |
+|  | --kd-c-input-number-color-text | - | #f6f7f9 |
+|  | --kd-c-input-number-color-text-baseStep | --kd-g-color-text-secondary | #666 |
+|  | --kd-c-input-number-color-text-baseStep-hover | --kd-g-color-text-secondary | #666 |
+| sizing | --kd-c-input-number-sizing-height-small | - | 20px |
+|  | --kd-c-input-number-sizing-height-middle | - | 30px |
+|  | --kd-c-input-number-sizing-height-large | - | 36px |

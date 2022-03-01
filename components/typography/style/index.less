@@ -3,35 +3,35 @@
 @import './mixin.less';
 @typography-prefix-cls: ~'@{kd-prefix}-typography';
 .@{typography-prefix-cls} {
-  color: @primary-text-color;
+  color: @typography-color-text-primary;
   overflow-wrap: break-word;
   line-height: 2;
   max-width: @typography-max-width;
 
   &&-second {
-    color: @secondary-text-color;
+    color: @typography-color-text-secondary;
   }
 
   &&-success {
-    color: @success-color;
+    color: @typography-color-success;
   }
 
   &&-warning {
-    color: @warning-color;
+    color: @typography-color-warning;
   }
 
   &&-danger {
-    color: @error-color;
+    color: @typography-color-error;
   }
 
   &&-disabled {
-    color: @disabled-color;
+    color: @typography-color-disabled;
     cursor: not-allowed;
     user-select: none;
   }
 
   &&-assist {
-    color: @third-text-color;
+    color: @typography-color-text-third;
   }
 
   h1&,
@@ -82,14 +82,14 @@
   h3 {
     .typography-title-3();
   }
-  h4&,
-  h4 {
-    .typography-title-4();
-  }
-  h5&,
-  h5 {
-    .typography-title-5();
-  }
+  // h4&,
+  // h4 {
+  //   .typography-title-4();
+  // }
+  // h5&,
+  // h5 {
+  //   .typography-title-5();
+  // }
 
   code {
     margin: 0 0.2em;

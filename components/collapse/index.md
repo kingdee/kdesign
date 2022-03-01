@@ -34,3 +34,22 @@ subtitle: 折叠面板
 | extra    | 自定义渲染每个面板右上角的内容 | ReactNode | -      | -             | 1.0.0 |
 | header   | 折叠头内容                     | ReactNode | -      | -             | 1.0.0 |
 | key      | 对应 Collapse 的 activeKey     | ReactNode | -      | -             | 1.0.0 |
+
+## Design Token
+
+| 分类 | 组件token | 全局token | 默认值 |
+| --- | --- | --- | --- |
+| color | --kd-c-collapse-color-border-strong-2 | --kd-g-color-border-strong-2 | #d9d9d9 |
+|  | --kd-c-collapse-header-color-text-primary | --kd-g-color-text-primary | #212121 |
+|  | --kd-c-collapse-content-color-text-primary | --kd-g-color-text-primary | #212121 |
+|  | --kd-c-collapse-color-disabled | - | raba(178, 178, 178, 1) |
+|  | --kd-c-collapse-header-color-background | - | rgba(0, 0, 0, 0) |
+|  | --kd-c-collapse-content-color-background | - | rgba(0, 0, 0, 0) |
+| font | --kd-c-collapse-header-font-size | --kd-g-font-size-middle | 14px |
+|  | --kd-c-collapse-content-font-size | --kd-g-font-size-middle | 14px |
+| motion | --kd-c-collapse-motion-duration | --kd-g-duration | 0.3s |
+| sizing | --kd-c-collapse-border-width | - | 1px |
+|  | --kd-c-collapse-spacing-margin-right | - | 6px |
+|  | --kd-c-collapse-header-spacing-padding | - | 12px |
+|  | --kd-c-collapse-content-bordered-spacing-padding | - | 12px |
+|  | --kd-c-collapse-content-spacing-padding | - | 0 16px |

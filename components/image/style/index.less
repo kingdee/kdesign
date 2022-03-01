@@ -1,4 +1,5 @@
 @import '../../style/themes/index';
+@import './token.less';
 @import '../../style/mixins/index';
 
 @image-prefix-cls: ~'@{kd-prefix}-image';
@@ -9,7 +10,7 @@
   display: inline-block;
   box-sizing: border-box;
   overflow: hidden;
-  border-radius: @radius-size;
+  border-radius: @image-border-radius;
 
   &:not(.error):hover {
     .@{image-prefix-cls}-action {
@@ -35,19 +36,19 @@
   &-action {
     position: absolute;
     bottom: 0;
-    height: 28px;
-    width: 100%;
+    height: @image-action-height;
+    width: @image-action-width;
     text-align: center;
     opacity: 0;
     transform: translateY(100%);
-    transition: all 0.2s ease-out;
-    background-color: rgba(0, 0, 0, 0.5);
+    transition: all @image-action-transition ease-out;
+    background-color: @image-action-background-color;
 
-    > * {
-      color: @white;
+    >* {
+      color: @image-icon-color;
       cursor: pointer;
       display: inline-block;
-      font-size: @xlarge-font-size;
+      font-size: @image-font-size-x-large;
 
       &:not(:first-child) {
         margin-left: 20px;
@@ -57,7 +58,7 @@
 }
 
 .@{image-preview-prefix-cls} {
-  z-index: @zIndex-masker;
+  z-index: @image-z-index-masker;
   position: fixed;
   top: 0;
   right: 0;
@@ -66,14 +67,14 @@
   opacity: 0;
   transform: scale(0.15);
   visibility: hidden;
-  transition: all calc(@transition-duration - 0.1s) @ease-in;
+  transition: all calc(@image-transition-duration - 0.1s) @image-motion-ease-in;
   -webkit-overflow-scrolling: touch;
 
   &.show {
     opacity: 1;
     transform: scale(1);
     visibility: visible;
-    transition: all calc(@transition-duration - 0.1s) @ease-out;
+    transition: all calc(@image-transition-duration - 0.1s) @image-motion-ease-out;
   }
 
   &-mask {
@@ -90,12 +91,12 @@
     position: absolute;
     top: 18px;
     right: 18px;
-    width: 18px;
-    height: 18px;
-    font-size: 22px;
-    color: @secondary-text-color;
+    width: calc(@image-preview-close-font-size - 10px);
+    height: calc(@image-preview-close-font-size - 10px);
+    font-size: @image-preview-close-font-size;
+    color: @image-close-color-background;
     cursor: pointer;
-    background-color: @white;
+    background-color: @image-icon-color;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -129,7 +130,7 @@
     position: absolute;
     left: 50%;
     bottom: 40px;
-    width: 270px;
+    width: 240px;
     height: 40px;
     display: flex;
     align-items: center;
@@ -139,8 +140,8 @@
     transform: translateX(-50%);
 
     i {
-      color: @white;
-      font-size: 26px;
+      color: @image-icon-color;
+      font-size: @image-icon-font-size;
       cursor: pointer;
 
       &:hover,
@@ -169,7 +170,7 @@
     align-items: center;
     justify-content: center;
     border-radius: 50%;
-    color: @white;
+    color: @image-icon-color;
     background-color: rgba(0, 0, 0, 0.6);
     transform: translateY(-50%);
     cursor: pointer;
@@ -188,7 +189,7 @@
     top: 0;
     width: 100%;
     height: 40px;
-    color: @white;
+    color: @image-icon-color;
     line-height: 40px;
     background-color: rgba(0, 0, 0, 0.9);
     box-shadow: 0 1px 6px 0 rgba(0, 0, 0, 0.15);
@@ -207,7 +208,7 @@
       position: absolute;
       right: 40px;
 
-      > * {
+      >* {
         display: inline-block;
         margin-left: 20px;
         cursor: pointer;

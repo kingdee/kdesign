@@ -37,3 +37,18 @@ subtitle: 时间轴
 | color    | 指定圆圈颜色 `blue`, `red`, `green`, `gray`，或自定义的色值 | string              | `blue` | 1.0.0 |
 | dot      | 自定义时间轴点                                              | string \| ReactNode | -      | 1.0.0 |
 | label    | 设置标签                                                    | ReactNode           | -      | 1.0.0 |
+
+## Design Token
+
+| 分类 | 组件token | 全局token | 默认值 |
+| --- | --- | --- | --- |
+| color | --kd-c-timeline-finished-color | --kd-g-color-theme | #5582f3 |
+|  | --kd-c-timeline-error-color | --kd-g-color-error | #fb2323 |
+|  | --kd-c-timeline-success-color | --kd-g-color-success | #1ba854 |
+|  | --kd-c-timeline-disabled-color | --kd-g-color-disabled | #b2b2b2 |
+|  | --kd-c-timeline-line-color | --kd-g-color-border-weak | #e5e5e5 |
+|  | --kd-c-timeline-label-color-text | - | #666666 |
+|  | --kd-c-timeline-content-color-text | --kd-g-color-text-primary | #212121 |
+| font | --kd-c-timeline-content-font-size | --kd-g-font-size-small | 12px |
+| sizing | --kd-c-timeline-sizing-width | - | 1px |
+| spacing | --kd-c-timeline-spacing-padding-bottom | - | 26px |

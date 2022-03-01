@@ -1,22 +1,24 @@
+@import './token.less';
+
 .input-wrapper() {
   display: inline-flex;
-  border: 1px solid @strong-border-color;
-  border-radius: @radius-size;
+  border: 1px solid @date-input-color-border;
+  border-radius: @date-input-border-radius;
   box-sizing: border-box;
-  background-color: @date-background-color;
+  background-color: @date-input-color-background;
   &-borderless {
     border: 0;
   }
   &-underline {
     border: none;
-    border-bottom: 1px solid @input-color;
+    border-bottom: 1px solid @date-input-underline-color;
     border-radius: 0;
     padding-left: 0;
   }
   &-disabled {
-    background-color: @disabled-contain-bg !important;
-    border-color: @strong-border-color !important;
-    color: @disabled-color !important;
+    background-color: @date-input-color-background-disabled !important;
+    border-color: @date-input-color-border !important;
+    color: @date-input-color-disabled !important;
     cursor: not-allowed !important;
     input {
       cursor: not-allowed !important;
@@ -24,48 +26,48 @@
   }
   &-underline&-disabled,
   &-borderless&-disabled {
-    background-color: @date-background-color;
-    border-color: @strong-border-color;
+    background-color: @date-input-color-background;
+    border-color: @date-input-color-border;
   }
 
   &-focused {
     box-shadow: none;
     outline: none;
-    border-color: @theme-color;
+    border-color: @date-color-background-checked;
   }
 
   &:hover {
-    border-color: @theme-color;
+    border-color: @date-color-background-checked;
   }
 
   &:not(&-disabled) input:focus {
-    color: @date-focus-color;
+    color: @date-input-color-focus;
   }
 }
 
 .input() {
   width: 100%;
   min-width: 0;
-  color: @date-font-color;
+  color: @date-input-color;
   &::-webkit-input-placeholder {
-    color: @date-placeholder-color;
+    color: @date-input-color-placeholder;
   }
   &::-moz-input-placeholder {
-    color: @date-placeholder-color;
+    color: @date-input-color-placeholder;
   }
   &::-ms-input-placeholder {
-    color: @date-placeholder-color;
+    color: @date-input-color-placeholder;
   }
   &:focus {
     box-shadow: none;
     outline: none;
-    border-color: @theme-color;
+    border-color: @date-color-background-checked;
   }
 }
 
 .input-size(@height, @fonSize, @padding-vertical, @padding-horizontal) {
   height: @height;
-  line-height: @height - (@padding-vertical * 2) - (@input-border-width * 2);
+  line-height: calc(@height - (@padding-vertical * 2) - 2);
   font-size: @fonSize;
   padding: @padding-vertical @padding-horizontal;
 }

@@ -2,8 +2,8 @@ import React, { FunctionComponentElement, useContext, useRef } from 'react'
 import classNames from 'classnames'
 import ConfigContext from '../config-provider/ConfigContext'
 import { getCompProps } from '../_utils'
-import defaultEmptyImg from './img/transfer-empty.png'
-
+import DefaultEmptyImg from './defaultEmptyImg'
+import IllustrationEmptyImg from './illustrationEmptyImg'
 export interface IEmptyProps {
   className?: string
   description?: React.ReactNode
@@ -12,13 +12,21 @@ export interface IEmptyProps {
   children?: React.ReactNode
 }
 
+interface IEmptyType extends React.ForwardRefExoticComponent<IEmptyProps & React.RefAttributes<any>> {
+  DEFAULT_IMG?: React.ReactNode
+  ILLUSTRATION_IMG?: React.ReactNode
+}
+
+const defaultEmptyImg = <DefaultEmptyImg />
+const illustrationEmptyImg = <IllustrationEmptyImg />
+
 const InteranalEmpty = (props: IEmptyProps, ref: unknown): FunctionComponentElement<any> => {
   const { getPrefixCls, prefixCls, compDefaultProps: userDefaultProps, locale } = useContext(ConfigContext)
   const emptyProps = getCompProps('Empty', userDefaultProps, props)
   const {
     className,
     description,
-    image,
+    image = defaultEmptyImg,
     imageStyle,
     style,
     prefixCls: customPrefixcls,
@@ -36,11 +44,7 @@ const InteranalEmpty = (props: IEmptyProps, ref: unknown): FunctionComponentElem
 
   const imgClasses = classNames(`${emptyPrefixCls}-image`)
   const imgNode =
-    image === undefined ? (
-      <img src={defaultEmptyImg} className={imgClasses} style={imageStyle} alt="empty" />
-    ) : image ? (
-      <img src={image} className={imgClasses} style={imageStyle} alt="empty" />
-    ) : null
+    typeof image === 'string' ? <img src={image} className={imgClasses} style={imageStyle} alt="empty" /> : image
 
   const descriptionNode =
     description === undefined ? (
@@ -62,6 +66,8 @@ const InteranalEmpty = (props: IEmptyProps, ref: unknown): FunctionComponentElem
   )
 }
 
-const Empty = React.forwardRef<unknown, IEmptyProps>(InteranalEmpty)
+const Empty: IEmptyType = React.forwardRef<unknown, IEmptyProps>(InteranalEmpty)
 Empty.displayName = 'Empty'
+Empty.DEFAULT_IMG = defaultEmptyImg
+Empty.ILLUSTRATION_IMG = illustrationEmptyImg
 export default Empty

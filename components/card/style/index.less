@@ -1,11 +1,12 @@
 @import '../../style/themes/index';
 @import '../../style/mixins/index';
+@import './token.less';
 
 @card-prefix-cls: ~'@{kd-prefix}-card';
 
 .@{card-prefix-cls} {
   position: relative;
-  background-color: @white;
+  background-color: @card-color-background;
   box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.2);
 
   &.hoverable:hover {
@@ -13,9 +14,9 @@
   }
 
   .@{card-prefix-cls}-header {
-    height: @card-header-height;
-    padding: 0 58px 0 @card-horizontal-padding;
-    line-height: @card-header-height;
+    height: @card-sizing-title-height;
+    padding: 0 58px 0 @card-spacing-padding-horizontal;
+    line-height: 40px;
     font-size: @card-title-font-size;
     color: @card-title-color;
     .ellipsis;
@@ -24,13 +25,13 @@
   .@{card-prefix-cls}-avatar {
     display: flex;
     align-items: center;
-    height: @card-avatar-header-height;
-    padding: 0 @card-horizontal-padding;
+    height: 64px;
+    padding: 0 @card-spacing-padding-horizontal;
 
     .@{card-prefix-cls}-avatar-img {
-      width: @card-avatar-size;
-      height: @card-avatar-size;
-      margin-right: 2 * @card-unit-space;
+      width: 42px;
+      height: 42px;
+      margin-right: @card-spacing-padding-vertical;
       overflow: hidden;
 
       &.circle {
@@ -56,42 +57,42 @@
 
   .@{kd-prefix}-checkbox {
     position: absolute;
-    top: @card-horizontal-padding;
-    right: @card-horizontal-padding;
+    top: @card-spacing-padding-horizontal;
+    right: @card-spacing-padding-horizontal;
   }
 
   .@{card-prefix-cls}-tags {
-    padding: @card-unit-space @card-horizontal-padding;
+    padding: 4px @card-spacing-padding-horizontal;
 
     .@{kd-prefix}-tag:not(:last-child) {
-      margin-right: 2 * @card-unit-space;
-    }  
+      margin-right: @card-spacing-padding-vertical;
+    }
   }
 
   .@{card-prefix-cls}-body {
-    padding: 2 * @card-unit-space @card-horizontal-padding;
+    padding: @card-spacing-padding-vertical @card-spacing-padding-horizontal;
     font-size: @card-content-font-size;
     color: @card-content-color;
   }
 
   .@{card-prefix-cls}-actions {
-    height: @card-actions-height;
-    padding: 0 @card-horizontal-padding;
-    line-height: @card-actions-height;
+    height: 32px;
+    padding: 0 @card-spacing-padding-horizontal;
+    line-height: 32px;
     text-align: right;
-    background-color: @contain-bg;
+    background-color: #fafafa;
 
     > a {
-      margin-left: 4 * @card-unit-space;
+      margin-left: 16px;
       font-size: @card-content-font-size;
-      color: @theme-color;
+      color: @card-actions-color;
 
       &:hover {
-        color: @theme-color-hover;
+        color: @card-actions-color-hover;
       }
 
       &:active {
-        color: @theme-color-click;
+        color: @card-actions-color-active;
       }
     }
   }

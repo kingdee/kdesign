@@ -1,0 +1,45 @@
+@import '../../style/themes/token.less';
+
+@switch-prefix: '--@{kd-prefix}-c-switch';
+
+
+
+
+
+
+
+
+// color
+@switch-on-color: var(~'@{switch-prefix}-color-on', @color-theme);
+@switch-off-color: var(~'@{switch-prefix}-color-off', #999);
+@switch-disabled-bg: var(~'@{switch-prefix}-color-background-disabled', @color-disabled);
+@switch-loading-color: var(~'@{switch-prefix}-color-loading', @color-ongoing);
+@switch-font-color: var(~'@{switch-prefix}-color-font', @color-white);
+
+// font
+@switch-small-font-size: var(~'@{switch-prefix}-small-font-size', @font-size-small);
+@switch-large-font-size: var(~'@{switch-prefix}-large-font-size', @font-size-small);
+@switch-inner-small-font-size: var(~'@{switch-prefix}-inner-font-size-small', @font-size-small);
+
+
+// line-height
+@switch-large-line-height: var(~'@{switch-prefix}-large-line-height', 20px);
+@switch-small-line-height: var(~'@{switch-prefix}-small-line-height', 14px);
+
+
+//radius
+@switch-small-border-radius: var(~'@{switch-prefix}-small-radius-border', 7px);
+
+
+// sizing
+@switch-small-height: var(~'@{switch-prefix}-small-sizing-height', 14px);
+@switch-small-min-width: var(~'@{switch-prefix}-small-sizing-width', 28px);
+@switch-large-height: var(~'@{switch-prefix}-large-sizing-height', 20px);
+@switch-large-min-width: var(~'@{switch-prefix}-large-sizing-width', 40px);
+@switch-large-border-radius: var(~'@{switch-prefix}-large-sizing-border-radius', 10px);
+
+// spacing
+@switch-inner-margin: var(~'@{switch-prefix}-inner-spacing-margin', 0 5px 0 17px);
+@switch-inner-checked-margin: var(~'@{switch-prefix}-inner-spacing-margin-checked', 0 17px 0 5px);
+@switch-inner-large-margin: var(~'@{switch-prefix}-inner-spacing-margin-large', 0 5px 0 21px);
+@switch-inner-large-checked-margin: var(~'@{switch-prefix}-inner-spacing-margin-large-checked', 0 21px 0 5px);

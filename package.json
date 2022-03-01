@@ -62,7 +62,8 @@
     "pub": "npm run test:all && npm run build && cross-env PUB_ENV=pub np --no-cleanup --no-tests",
     "pub:beta": "npm run test:all && npm run build && cross-env PUB_ENV=pub np --no-cleanup --anyBranch --no-tests --tag=beta",
     "prepublishOnly": "node scripts/guard.js",
-    "new": "node scripts/create-component.js"
+    "new": "node scripts/create-component.js",
+    "token": "node scripts/generate-token.js"
   },
   "browserslist": [
     "last 2 versions",

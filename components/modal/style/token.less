@@ -1,0 +1,46 @@
+@import '../../style/themes/token.less';
+
+@modal-prefix: '--@{kd-prefix}-c-modal';
+
+// color
+@modal-primary-text-color: var(~'@{modal-prefix}-color-text-primary', @color-text-primary);
+@modal-secondary-text-color: var(~'@{modal-prefix}-color-text-secondary', @color-text-secondary);
+@modal-color-ongoing: var(~'@{modal-prefix}-color-ongoing', @color-ongoing);
+@modal-color-warning: var(~'@{modal-prefix}-color-warning', @color-warning);
+@modal-color-error: var(~'@{modal-prefix}-color-error', @color-error);
+@modal-footer-font-color: var(~'@{modal-prefix}-footer-text-color', @color-text-secondary);
+@modal-body-font-color: var(~'@{modal-prefix}-body-text-color', @color-text-primary);
+@modal-title-font-color: var(~'@{modal-prefix}-title-text-color', @color-text-primary);
+@modal-border-color: var(~'@{modal-prefix}-color-border', @color-border-strong-2);
+@modal-theme-color-hover: var(~'@{modal-prefix}-color-theme-hover', @color-theme-5);
+@modal-theme-color-active: var(~'@{modal-prefix}-color-theme-active', @color-theme-7);
+@modal-mask-color-background: var(~'@{modal-prefix}-mask-color-background', rgba(55, 55, 55, 0.5));
+@modal-close-icon-color-text: var(~'@{modal-prefix}-close-icon-color-text', #666666);
+@confirm-modal-title-icon-bg: var(~'@{modal-prefix}-title-icon-color-backround-ongoing', @color-ongoing); // 提示弹窗的背景色
+@warning-modal-title-icon-bg: var(~'@{modal-prefix}-title-icon-color-backround-warning', @color-warning); // 警告弹窗的背景色
+@error-modal-title-icon-bg: var(~'@{modal-prefix}-title-icon-color-backround-warning', @color-warning); // 反馈浮层错误提示的背景色
+
+// z-index
+@modal-z-index-dialog: var(~'@{modal-prefix}-z-index', @z-index-dialog);
+
+// font
+@modal-footer-font-size: var(~'@{modal-prefix}-footer-font-size', 14px);
+@modal-body-font-size: var(~'@{modal-prefix}-body-font-size', 16px);
+@modal-title-font-size: var(~'@{modal-prefix}-title-font-size', 18px);
+
+// shadow
+@modal-shadow: var(~'@{modal-prefix}-box-shadow', 0 4px 10px 0 rgba(0, 0, 0, 0.2));
+
+// radius
+@modal-radius: var(~'@{modal-prefix}-boeder-radius', 2px);
+
+// sizing
+@icon-circle-radiu: var(~'@{modal-prefix}-icon-circle-sizing', 6px);
+@modal-border-width: var(~'@{modal-prefix}-sizing-border', 1px);
+@modal-close-icon-size: var(~'@{modal-prefix}-close-icon-font-size', 16px);
+@modal-header-sizing-padding-horizontal: var(~'@{modal-prefix}-header-sizing-padding-horizontal', 20px);
+@modal-header-sizing-padding-vertical: var(~'@{modal-prefix}-header-sizing-padding-vertical', 0px);
+@modal-header-sizing-height: var(~'@{modal-prefix}-header-sizing-height', 50px);
+@modal-body-sizing-padding: var(~'@{modal-prefix}-body-sizing-padding', 20px);
+@modal-footer-sizing-height: var(~'@{modal-prefix}-footer-sizing-height', 50px);
+@modal-title-icon-sizing-margin-right: var(~'@{modal-prefix}-title-icon-sizing-margin-right', 8px);

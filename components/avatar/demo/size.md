@@ -15,11 +15,11 @@ function Demo() {
         <Avatar
           shape="square"
           size="extra-small"
-          src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"
+          src="https://kui.kingdee.com/assets/image/avatar_m.png"
         />
-        <Avatar shape="square" size="small" src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
-        <Avatar shape="square" src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
-        <Avatar shape="square" size="large" src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
+        <Avatar shape="square" size="small" src="https://kui.kingdee.com/assets/image/avatar_m.png" />
+        <Avatar shape="square" src="https://kui.kingdee.com/assets/image/avatar_m.png" />
+        <Avatar shape="square" size="large" src="https://kui.kingdee.com/assets/image/avatar_m.png" />
       </div>
     </>
   )

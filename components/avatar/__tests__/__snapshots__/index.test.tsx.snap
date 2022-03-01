@@ -113,7 +113,7 @@ exports[`Avatar should handle onError correctly 1`] = `
 <Foo>
   <Avatar
     onError={[Function]}
-    src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"
+    src="https://kui.kingdee.com/assets/image/avatar_m.png"
   >
     <span
       className="kd-avatar kd-avatar-md kd-avatar-circle kd-avatar-image"
@@ -121,7 +121,7 @@ exports[`Avatar should handle onError correctly 1`] = `
     >
       <img
         onError={[Function]}
-        src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"
+        src="https://kui.kingdee.com/assets/image/avatar_m.png"
       />
     </span>
   </Avatar>

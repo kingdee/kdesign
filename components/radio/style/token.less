@@ -1,0 +1,47 @@
+@import '../../style/themes/token.less';
+@import '../../style/mixins/index';
+
+
+@radio-prefix: '--@{kd-prefix}-c-radio';
+
+
+
+
+
+
+@radio-transition-fn:  cubic-bezier(0.075, 0.82, 0.165, 1);
+
+
+
+
+// color
+@radio-font-color: var(~'@{radio-prefix}-color-font', @color-text-primary);//单选项字体颜色
+@radio-color-theme: var(~'@{radio-prefix}-color-theme', @color-theme);//悬停/选中跟随主题色
+@radio-color-border: var(~'@{radio-prefix}-color-border', @color-border-strong);//边框色
+@radio-color-disabled: var(~'@{radio-prefix}-color-disabled', @color-disabled);//禁用色（全局）
+@radio-color-background-disabled: var(~'@{radio-prefix}-color-background-disabled', @color-background-contain-disabled);//禁用色（全局）
+@radio-color-border-disabled: var(~'@{radio-prefix}-color-border-disabled', @color-border-strong);//禁用边框色
+@radio-color-background: var(~'@{radio-prefix}-color-background', @color-white);// 基础颜色
+
+// font
+@radio-font-size: var(~'@{radio-prefix}-font-size', @font-size-small);//单选项字体大小
+
+
+
+
+//radius
+@radio-border-width:   var(~'@{radio-prefix}-radius-border-width',1px);
+
+
+
+// sizing
+@radio-circle-size:var(~'@{radio-prefix}-square-sizing-width-height',13px);//单选图标大小
+@radio-square-height:  var(~'@{radio-prefix}-square-sizing-height',32px);//单选框 高度
+
+
+// spacing
+@radio-margin-right:   var(~'@{radio-prefix}-spacing-margin-right',8px);
+@radio-square-padding-vertical: var(~'@{radio-prefix}-square-spacing-padding-vertical',0px); //内间距 纵向
+@radio-square-padding-horizontal: var(~'@{radio-prefix}-square-spacing-padding-horizontal',20px);//内间距 横向   /单选框 宽度
+@radio-padding-left: var(~'@{radio-prefix}-spacing-padding-left',6px);//图标与文字间距
+
