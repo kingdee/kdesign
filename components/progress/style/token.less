@@ -1,0 +1,40 @@
+@import '../../style/themes/token.less';
+@progress-prefix: '--@{kd-prefix}-c-progress';
+
+
+
+@progress-transition-fn:  cubic-bezier(0.66, 0, 0.34, 1);
+
+
+
+
+
+// color
+@progress-remaining-color: var(~'@{progress-prefix}-color-remaining', #e5e5e5);//背景色
+@progress-default-color: var(~'@{progress-prefix}-color-default', #5582f3);//进度条 默认色
+@progress-success-color: var(~'@{progress-prefix}-color-success', @color-success);//进度条 成功
+@progress-failure-color: var(~'@{progress-prefix}-color-failure', @color-error);//进度条 失败
+
+// font
+@progress-line-icon-font-size: var(~'@{progress-prefix}-line-icon-font-size', 16px); //线性进度条 icon 大小
+@progress-line-text-font-size: var(~'@{progress-prefix}-line-text-font-size', 16px);//线性进度条 数值文本
+@progress-line-special-text-font-size: var(~'@{progress-prefix}-line-special-text-font-size', 16px);// 圆形进度条 状态文本
+
+// line-height
+@progress-circle-percent-line-height: var(~'@{progress-prefix}-circle-percent-line-height', 48px);
+@progress-circle-unit-line-height: var(~'@{progress-prefix}-circle-unit-line-height', 18px);
+
+//radius
+@progress-border-radius: var(~'@{progress-prefix}-radius-border', 100px);//线性进度条圆角
+
+
+
+// sizing
+@progress-line-stroke-width: var(~'@{progress-prefix}-line-stroke-sizing-width', 8px);
+@progress-circle-stroke-width: var(~'@{progress-prefix}-circle-stroke-sizing-width', 4px);
+
+
+// spacing
+@progress-circle-unit-margin-top: var(~'@{progress-prefix}-circle-unit-spacing-margin-top', 18px);
+@progress-line-text-margin-left: var(~'@{progress-prefix}-line-text-spacing-margin-left', 8px); //进度与文字或者图标的间距
+

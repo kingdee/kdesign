@@ -228,7 +228,7 @@ function Demo() {
         <div className="table-top">
           <div>
             <span>{`已选${selected.length}条数据，共200条（100张）`}</span>
-            <Button type="link" onClick={handleSelectAll}>
+            <Button type="text" onClick={handleSelectAll}>
               选择全部
             </Button>
           </div>
@@ -258,7 +258,7 @@ function Demo() {
       <div className="collect">
         <div className="collect-top">
           <span>{`已选（${selected.length}）`}</span>
-          <Button type="link" onClick={handleEmpty}>
+          <Button type="text" onClick={handleEmpty}>
             清空
           </Button>
         </div>
@@ -296,7 +296,7 @@ function Demo() {
     <div className="detail-footer">
       <div className="footer-other">
         <Checkbox>包含下级</Checkbox>
-        <Button style={{ marginLeft: 20 }} type="link">新增</Button>
+        <Button style={{ marginLeft: 20 }} type="text">新增</Button>
       </div>
       <div className="footer-action">
         <Button type="primary" style={{ marginRight: 12 }} onClick={() => setVisible(false)}>

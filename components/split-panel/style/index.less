@@ -1,9 +1,10 @@
 
 @import '../../style/themes/index';
 @import '../../style/mixins/index';
+@import './token.less';
 
 @split-prefix-cls: ~'@{kd-prefix}-split';
-@split-panel-padding-base: @split-panel-trigger-line-width / 2;
+@split-panel-padding-base: calc(@split-panel-trigger-line-width / 2);
 
 .@{split-prefix-cls} {
     &-wrapper {

@@ -4,7 +4,6 @@ exports[`Select render no child without errors 1`] = `
 <Select>
   <div
     className="kd-select"
-    onClick={[Function]}
   >
     <span
       className="kd-select-selector"
@@ -50,7 +49,6 @@ exports[`Select render null or undefined without errors 1`] = `
 <Select>
   <div
     className="kd-select"
-    onClick={[Function]}
   >
     <span
       className="kd-select-selector"

@@ -1,7 +1,21 @@
 @import '../../style/themes/index';
 @import './mixin.less';
+
 @inputNumber-prefix-cls: ~'@{kd-prefix}-inputNumber';
 .@{inputNumber-prefix-cls} {
+  width: 100px;
+  height: @stepper-input-middle-sizing-height;
+
+  input {
+    text-align: center;
+    color: @stepper-input-color;
+    margin: 0 4px;
+  }
+
+  &-icon {
+    font-size: 14px;
+  }
+
   &-baseStep {
     display: flex;
     justify-content: center;
@@ -9,67 +23,87 @@
     box-sizing: border-box;
     height: 100%;
     cursor: pointer;
+
     &-small {
-      .base-step-size(@input-small-height);
+      .base-step-size(@stepper-input-small-sizing-height);
     }
+
     &-middle {
-      .base-step-size(@input-middle-height);
+      .base-step-size(@stepper-input-middle-sizing-height);
     }
+
     &-large {
-      .base-step-size(@input-large-height);
+      .base-step-size(@stepper-input-large-sizing-height);
     }
+
     .@{inputNumber-prefix-cls}-icon {
-      color: @secondary-text-color;
-      transition: color @transition-duration;
+      color: @stepper-icon-color;
+      transition: color @stepper-motion-duration;
+      font-size: 16px;
+
+      &:hover {
+        color: @stepper-icon-color-hover;
+      }
     }
+
     &:hover:not(&-disabled) .@{inputNumber-prefix-cls}-icon {
-      color: @theme-color-hover;
+      color: @stepper-icon-color-hover;
     }
 
     &-disabled {
       cursor: not-allowed;
+
       .@{inputNumber-prefix-cls}-icon {
         color: unset !important;
       }
     }
   }
+
   &-baseStep-decrease {
     .step-style(right, left);
   }
+
   &-baseStep-increase {
     .step-style(left, right);
   }
+
   &-embedStep {
     display: flex;
     flex-direction: column;
     justify-content: center;
     height: 100%;
     border-radius: 0 1px 1px 0;
-    background-color: @inputNumber-embedStepBtn-bg-color;
+    background-color: @stepper-embed-icon-color-background;
     overflow: hidden;
     .step-style(left, right);
     border: none;
+
     span {
       height: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      border-left: 1px solid @strong-border-color;
-      border-bottom: 1px solid @strong-border-color;
+      border-left: 1px solid @stepper-color-border-strong;
+      border-bottom: 1px solid @stepper-color-border-strong;
       cursor: pointer;
       font-size: 12px;
+
       .@{inputNumber-prefix-cls}-icon {
-        transition: color @transition-duration;
+        transition: color @stepper-motion-duration;
       }
+
       &:hover .@{inputNumber-prefix-cls}-icon {
-        color: @theme-color-hover;
+        color: @stepper-icon-color-hover;
       }
+
       &:last-child {
         border-bottom: none;
       }
     }
+
     &-disabled {
       cursor: not-allowed !important;
+
       .@{inputNumber-prefix-cls}-icon {
         color: unset !important;
       }

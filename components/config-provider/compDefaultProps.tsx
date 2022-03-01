@@ -391,6 +391,10 @@ const compDefaultProps = {
     shape: 'circle',
     gap: 4,
   },
+  Link: {
+    size: 'middle',
+    underscore: false,
+  },
 }
 
 export default compDefaultProps

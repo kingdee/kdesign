@@ -1,4 +1,6 @@
 @import '../../style/themes/index';
+@import './token.less';
+
 @checkbox-prefix-cls: ~'@{kd-prefix}-checkbox';
 @checkbox-group-prefix-cls: ~'@{kd-prefix}-group';
 
@@ -55,7 +57,7 @@
   border-radius: 2px;
   border: 1px solid @checkbox-border-color;
   padding: @checkbox-square-padding;
-  transition: color @transition-duration, border-color @transition-duration;
+  transition: color @checkbox-transition-duration, border-color @checkbox-transition-duration;
   &:not(&-disabled)::after {
     content: '';
     position: absolute;
@@ -65,7 +67,7 @@
     left: 0;
     border-radius: inherit;
     opacity: 0.2;
-    box-shadow: 0 0 0 0 @theme-color;
+    box-shadow: 0 0 0 0 @checkbox-color-theme;
   }
   &:hover {
     color: @checkbox-checked-font-color;
@@ -87,8 +89,8 @@
     border-bottom-color: @checkbox-checked-border-color;
   }
   &-triangle {
-    animation: kdZoomBounceLeaveEffect calc(@transition-duration - 0.1s) @ease-out forwards;
-    transition: all @transition-duration @ease;
+    animation: kdZoomBounceLeaveEffect calc(@checkbox-transition-duration - 0.1s) cubic-bezier(0,.4,.4,1) forwards;
+    transition: all @checkbox-transition-duration cubic-bezier(0.4,0,0.6,1);
     visibility: hidden;
     opacity: 0;
   }
@@ -106,7 +108,7 @@
   &-inner-icon {
     font-size: inherit;
     line-height: 100%;
-    animation: kdZoomLeaveEffect calc(@transition-duration - 0.1s) @ease-out;
+    animation: kdZoomLeaveEffect calc(@checkbox-transition-duration - 0.1s) cubic-bezier(0,.4,.4,1);
   }
   &-triangle-disabled {
     border-bottom-color: @checkbox-disabled-bg-color;
@@ -121,14 +123,14 @@
   &-checked {
     border-color: @checkbox-checked-border-color;
     &:not(&-disabled)::after {
-      animation: fadeEffect calc(@transition-duration + 0.1s) @ease-out forwards,
-        waveEffect calc(@transition-duration - 0.1s) @ease-out forwards;
+      animation: fadeEffect calc(@checkbox-transition-duration + 0.1s) cubic-bezier(0,.4,.4,1) forwards,
+        waveEffect calc(@checkbox-transition-duration - 0.1s) cubic-bezier(0,.4,.4,1) forwards;
     }
     .@{checkbox-prefix-cls}-square-triangle-checked:not(.@{checkbox-prefix-cls}-square-disabled) {
-      animation: kdZoomBounceEffect calc(@transition-duration - 0.1s) @ease;
+      animation: kdZoomBounceEffect calc(@checkbox-transition-duration - 0.1s) cubic-bezier(0.4,0,0.6,1);
     }
     .@{checkbox-prefix-cls}-square-inner-icon:not(.@{checkbox-prefix-cls}-square-disabled) {
-      animation: kdZoomEffect calc(@transition-duration - 0.1s) @ease-out;
+      animation: kdZoomEffect calc(@checkbox-transition-duration - 0.1s) cubic-bezier(0,.4,.4,1);
     }
   }
   &-checked-disabled {
@@ -148,7 +150,7 @@
 .@{checkbox-prefix-cls}-default {
   border: none;
   padding: @checkbox-default-padding;
-  transition: color @transition-duration, border-color @transition-duration;
+  transition: color @checkbox-transition-duration, border-color @checkbox-transition-duration;
   &:hover,
   &:hover &-wrapper {
     color: @checkbox-checked-font-color;
@@ -170,7 +172,7 @@
     border: @checkbox-default-input-border-width solid @checkbox-border-color;
     border-radius: @checkbox-default-input-border-radius;
     box-sizing: border-box;
-    transition: color @transition-duration, border-color @transition-duration;
+    transition: color @checkbox-transition-duration, border-color @checkbox-transition-duration;
     &:not(&-disabled)::after {
       content: '';
       position: absolute;
@@ -180,7 +182,7 @@
       left: 0;
       border-radius: inherit;
       opacity: 0.2;
-      box-shadow: 0 0 0 0 @theme-color;
+      box-shadow: 0 0 0 0 @checkbox-color-theme;
     }
   }
   &-wrapper-size {
@@ -203,14 +205,14 @@
   &-checked {
     background-color: @checkbox-checked-border-color;
     border-color: @checkbox-checked-border-color;
-    transition: background-color calc(@transition-duration - 0.1s) @ease-out,
-      border-color calc(@transition-duration - 0.1s) @ease-out;
+    transition: background-color calc(@checkbox-transition-duration - 0.1s) cubic-bezier(0,.4,.4,1),
+      border-color calc(@checkbox-transition-duration - 0.1s) cubic-bezier(0,.4,.4,1);
     &:not(&-disabled)::after {
-      animation: fadeEffect calc(@transition-duration + 0.1s) @ease-out forwards,
-        waveEffect calc(@transition-duration - 0.1s) @ease-out forwards;
+      animation: fadeEffect calc(@checkbox-transition-duration + 0.1s) cubic-bezier(0,.4,.4,1) forwards,
+        waveEffect calc(@checkbox-transition-duration - 0.1s) cubic-bezier(0,.4,.4,1) forwards;
     }
     .@{checkbox-prefix-cls}-default-inner:not(&-disabled .@{checkbox-prefix-cls}-default-inner) {
-      animation: kdZoomBounceDefaultEffect calc(@transition-duration - 0.1s) @ease !important;
+      animation: kdZoomBounceDefaultEffect calc(@checkbox-transition-duration - 0.1s) cubic-bezier(0.4,0,0.6,1) !important;
     }
   }
   &-inner {
@@ -228,19 +230,16 @@
     font-size: inherit;
     line-height: 100%;
   }
-  &-indeterminate {
-    background-color: @checkbox-checked-border-color;
-    border-color: @checkbox-checked-border-color;
-  }
   &-indeterminate::before {
-    background-color: @checkbox-bg-color;
     position: absolute;
-    width: 70%;
-    height: 2px;
-    border-radius: 1px;
     top: 50%;
-    transform: translate(-50%, -50%);
     left: 50%;
-    content: ' ';
+    width: 8px;
+    height: 8px;
+    background-color: @checkbox-checked-border-color;
+    border: 0;
+    transform: translate(-50%,-50%) scale(1);
+    opacity: 1;
+    content: " ";
   }
 }

@@ -16,3 +16,16 @@ subtitle: 加载中
 | spinning | 是否为加载中状态 | boolean | true | --- | 1.0.0 |
 | tip | 当作为包裹元素时，可以自定义描述文案 | string | --- | --- | 1.0.0 |
 | type | 加载中类型 | string | `page` | `page` `container` `component` | 1.0.0 |
+
+## Design Token
+
+| 分类 | 组件token | 全局token | 默认值 |
+| --- | --- | --- | --- |
+| color | --kd-c-spin-dot-color-backgroung-first | --kd-g-color-logo-1 | #2386ee |
+|  | --kd-c-spin-dot-color-backgroung-second | --kd-g-color-logo-2 | #00ccfe |
+|  | --kd-c-spin-dot-color-backgroung-third | --kd-g-color-logo-3 | #05c8c8 |
+|  | --kd-c-spin-dot-color-backgroung-fourth | --kd-g-color-logo-4 | #a06eff |
+|  | --kd-c-spin-component-dot-color-border | - | #e1e1e1 |
+|  | --kd-c-spin-component-dot-item-color-border | --kd-g-color-theme | #5582f3 |
+| sizing | --kd-c-spin-page-sizing | - | 15px |
+|  | --kd-c-spin-dot-container-sizing | - | 5px |

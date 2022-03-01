@@ -348,14 +348,6 @@ const InternalSelect: React.ForwardRefRenderFunction<ISelectProps> = (props: any
     e.stopPropagation()
   }
 
-  // 控制下列面板的显示
-  const handleDropdownShow = () => {
-    if (!optionShow && !disabled) {
-      setOptionShow(true)
-      onVisibleChange && onVisibleChange(true)
-    }
-  }
-
   // 渲染后缀图标
   const renderSuffix = () => {
     const { suffixIcon } = selectProps
@@ -595,7 +587,7 @@ const InternalSelect: React.ForwardRefRenderFunction<ISelectProps> = (props: any
 
   const renderSelect = () => {
     return (
-      <div className={selectCls} ref={selectRef} style={style} onClick={handleDropdownShow}>
+      <div className={selectCls} ref={selectRef} style={style}>
         <span className={selectionCls} onClick={handleClick} onFocus={handleFocus} onBlur={handleBlur}>
           {/* 单选模式Input  多选输入框 */}
           {!isMultiple ? (
@@ -620,10 +612,8 @@ const InternalSelect: React.ForwardRefRenderFunction<ISelectProps> = (props: any
   }
 
   const handleVisibleChange = (visible: boolean) => {
-    if (!visible) {
-      props.visible === undefined && setOptionShow(visible)
-      onVisibleChange && onVisibleChange(visible)
-    }
+    props.visible === undefined && setOptionShow(visible)
+    onVisibleChange && onVisibleChange(visible)
   }
 
   const popperProps = {

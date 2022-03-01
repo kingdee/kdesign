@@ -41,9 +41,6 @@ function Demo() {
         <Button type="primary" shape="circle" size={size} style={demoButtonStyle}>
           圆
         </Button>
-        <Button type="link" size={size} style={demoButtonStyle}>
-          link
-        </Button>
         <Button type="text" size={size} style={demoButtonStyle}>
           text
         </Button>

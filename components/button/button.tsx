@@ -6,7 +6,7 @@ import { getCompProps } from '../_utils'
 import { tuple } from '../_utils/type'
 import devWarning from '../_utils/devwarning'
 
-export const ButtonTypes = tuple('second', 'primary', 'ghost', 'link', 'text')
+export const ButtonTypes = tuple('second', 'primary', 'ghost', 'text')
 export type ButtonType = typeof ButtonTypes[number]
 
 export const ButtonSizes = tuple('large', 'middle', 'small')
@@ -28,8 +28,6 @@ export interface IButtonProps {
   shape?: ButtonShape // 按钮形状
   style?: Record<string, unknown> // 内联样式
   className?: string // 样式名
-  target?: string // 相当于 a 链接的 target 属性，按钮类型为link时生效
-  href?: string // 相当于 a 链接的 href 属性，按钮类型为link时生效
   prefixCls?: string // 样式前缀
   loading?: boolean // loading状态
   ghost?: boolean // 是否幽灵属性
@@ -50,8 +48,6 @@ const InternalButton = (props: IButtonProps, ref: unknown): FunctionComponentEle
     children,
     className,
     prefixCls: customPrefixcls,
-    target,
-    href,
     size,
     loading,
     shape,
@@ -107,7 +103,7 @@ const InternalButton = (props: IButtonProps, ref: unknown): FunctionComponentEle
     }
     return child
   }
-  const isTextBtn = type === 'link' || type === 'text' // 判断按钮是否文本或链接类型。这些类型下有部分样式不适用
+  const isTextBtn = type === 'text' // 判断按钮是否文本类型。这些类型下有部分样式不适用
   const btnClasses = classNames(btnPrefixCls, className, {
     [`${btnPrefixCls}-${type}`]: type, // 类型样式
     [`${btnPrefixCls}-size-${size}`]: size, // 尺寸样式
@@ -132,20 +128,6 @@ const InternalButton = (props: IButtonProps, ref: unknown): FunctionComponentEle
     ) : null
   const btnChild = handleChild(children)
   switch (type) {
-    case 'link':
-      return (
-        <a
-          ref={buttonRef}
-          target={target}
-          href={href}
-          className={btnClasses}
-          disabled={disabled}
-          onClick={handleClick}
-          {...others}
-        >
-          {children}
-        </a>
-      )
     case 'text':
       return (
         <span ref={buttonRef} className={btnClasses} onClick={handleClick} disabled={disabled} {...others}>

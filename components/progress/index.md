@@ -31,3 +31,22 @@ subtitle: 进度条
 | width | type=circle 时生效，指定当前圆形进度条的宽度 | number | 88 |  |
 | format | 格式化进度条信息的方法 | Function(percent: number): React.ReactNode |  |  |
 | onProcess | 进度条变化中的回调 | Function(percent: number): void |  |  |
+
+## Design Token
+
+| 分类 | 组件token | 全局token | 默认值 |
+| --- | --- | --- | --- |
+| color | --kd-c-progress-color-remaining | - | #e5e5e5 |
+|  | --kd-c-progress-color-default | - | #5582f3 |
+|  | --kd-c-progress-color-success | --kd-g-color-success | #1ba854 |
+|  | --kd-c-progress-color-failure | --kd-g-color-error | #fb2323 |
+| font | --kd-c-progress-line-icon-font-size | - | 16px |
+|  | --kd-c-progress-line-text-font-size | - | 16px |
+|  | --kd-c-progress-line-special-text-font-size | - | 16px |
+| line-height | --kd-c-progress-circle-percent-line-height | - | 48px |
+|  | --kd-c-progress-circle-unit-line-height | - | 18px |
+| radius | --kd-c-progress-radius-border | - | 100px |
+| sizing | --kd-c-progress-line-stroke-sizing-width | - | 8px |
+|  | --kd-c-progress-circle-stroke-sizing-width | - | 4px |
+| spacing | --kd-c-progress-circle-unit-spacing-margin-top | - | 18px |
+|  | --kd-c-progress-line-text-spacing-margin-left | - | 8px |

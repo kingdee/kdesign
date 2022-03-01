@@ -1,5 +1,6 @@
 
-// code component mixin here
+@import './token.less';
+
 .typography-paragraph(@marginBottom) {
   margin-bottom: @marginBottom;
 }
@@ -17,8 +18,7 @@
     @heading-1-size,
     @typography-title-font-weight,
     1.5,
-    @primary-text-color,
-    // @heading-1-margin-bottom
+    @typography-color-text-primary,
     @marginBottom
   );
 }
@@ -29,7 +29,6 @@
     @typography-title-font-weight,
     1.5,
     @heading-2-color,
-    // @heading-2-margin-bottom
     @marginBottom
   );
 }
@@ -39,8 +38,7 @@
     @heading-3-size,
     @typography-title-font-weight,
     1.5,
-    @primary-text-color,
-    // @heading-3-margin-bottom
+    @typography-color-text-primary,
     @marginBottom
   );
 }
@@ -50,7 +48,7 @@
     @heading-4-size,
     @typography-title-font-weight,
     1.4,
-    @primary-text-color,
+    @typography-color-text-primary,
     @typography-title-margin-bottom
   );
 }
@@ -60,21 +58,21 @@
     @heading-5-size,
     @typography-title-font-weight,
     1.5,
-    @primary-text-color,
+    @typography-color-text-primary,
     @typography-title-margin-bottom
   );
 }
 
 .operation-unit() {
-  color: @link-color;
+  color: @typography-link-color;
   text-decoration: none;
   outline: none;
   cursor: pointer;
-  transition: color 0.3s;
+  transition: color @typography-duration-promptly;
 
   &:focus,
   &:hover {
-    color: @link-color-hover;
+    color: @typography-link-color-hover;
   }
 
   &:active {

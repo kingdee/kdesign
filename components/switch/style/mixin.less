@@ -1,3 +1,4 @@
+@import './token.less';
 .switch() {
   padding: 0;
   position: relative;
@@ -29,11 +30,11 @@
 	font-size: @font-size;
   border-radius: @border-radius;
   &::after {
-    width: @height - 2px;
-    height: @height - 2px;
+    width: calc( @height - 2px);
+    height:calc( @height - 2px);
   }
   .@{switch-prefix-cls}-loading-icon {
-    width: @height - 2px;
-    height: @height - 2px;
+    width: calc( @height - 2px);
+    height: calc( @height - 2px);
   }
 }

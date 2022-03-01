@@ -39,3 +39,24 @@ order: 0
 | showFrequent | 是否显示历史记录及我的收藏面板 | boolean | `false` | `true` `false` | 1.0.0 |
 | size | 下拉列表显示数量 | number | 10 | - | 1.0.0 |
 | value | 指定选中的条目 | { label, value }[] | - | - | 1.0.0 |
+
+## Design Token
+
+| 分类 | 组件token | 全局token | 默认值 |
+| --- | --- | --- | --- |
+| color | --kd-c-base-data-color-border | - | #999 |
+|  | --kd-c-base-data-color-background-hover | --kd-g-color-hover | #f5f5f5 |
+|  | --kd-c-base-data-border-color-hover | --kd-g-color-theme | #5582f3 |
+|  | --kd-c-base-data-dropdown-radius-border | --kd-g-color-background | #fff |
+|  | --kd-c-base-data-dropdown-icon-color-text | --kd-g-color-warning | #ff991c |
+|  | --kd-c-base-data-dropdown-icon-color-text-hover | --kd-g-color-warning | #ff991c |
+|  | --kd-c-base-data-dropdown-color-text-hover | --kd-g-color-warning | #ff991c |
+|  | --kd-c-base-data-dropdown-search-icon-color-text | --kd-g-color-text-link-hover | #3987ed |
+|  | --kd-c-base-data-footer-color-border | --kd-g-color-border-strong | #d9d9d9 |
+|  | --kd-c-base-data-icon-color-text-hover | --kd-g-color-theme | #5582f3 |
+|  | --kd-c-base-data-footer-btn-color-text | --kd-g-color-text-link | #0e5fd8 |
+| radius | --kd-c-base-data-dropdown-radius-border | --kd-g-radius-border | 2px |
+| sizing | --kd-c-base-data-sizing-width | - | 230px |
+|  | --kd-c-base-data-dropdown-sizing-height | - | 400px |
+|  | --kd-c-base-data-dropdown-options-sizing-height | - | 32px |
+| z-index | --kd-c-base-data-dropdown-z-index | --kd-g-z-index-popper | 1050 |

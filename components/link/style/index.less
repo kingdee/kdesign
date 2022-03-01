@@ -1,0 +1,61 @@
+@import '../../style/themes/index';
+@import './mixin.less';
+
+@wrapper-prefix-cls: ~'@{kd-prefix}-link-wrapper';
+@link-prefix-cls: ~'@{kd-prefix}-link';
+
+.@{link-prefix-cls} {
+  cursor: pointer;
+  display: inline-block;
+  color: @link-color-text;
+
+  .@{link-prefix-cls}-text {
+    height: auto;
+    width: auto;
+    padding: 0;
+    min-width: auto;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    color: inherit;
+    font-weight: @link-g-font-weight;
+    &:not(.@{link-prefix-cls}-disabled):hover {
+      color: @link-color-text-hover;
+    }
+    &:not(.@{link-prefix-cls}-disabled):active {
+      color: @link-color-text-active;
+    }
+  }
+
+  // 小号尺寸链接
+  &-size-small {
+    .link-size(@link-small-font-size, @link-small-height);
+  }
+  // 中号尺寸链接
+  &-size-middle {
+    .link-size(@link-middle-font-size, @link-middle-height);
+  }
+  // 大号尺寸链接
+  &-size-large {
+    .link-size(@link-large-font-size, @link-large-height);
+  }
+
+  &-underscore {
+    border-bottom: 1px solid;
+  }
+
+  &-disabled {
+    color: @link-color-text-disabled !important;
+    cursor: not-allowed;
+  }
+
+  &-prefix {
+    display: inline-block;
+    margin-right: @link-prefix-horizontal;
+  }
+
+  &-suffix {
+    display: inline-block;
+    margin-left: @link-suffix-horizontal;
+  }
+}

@@ -1,0 +1,28 @@
+@import '../../style/themes/token.less';
+
+@pagination-custom-prefix: ~'--@{kd-prefix}-c-pagination';
+
+// color
+@pagination-text-color: var(~'@{pagination-custom-prefix}-text-color', @color-text-secondary);
+@pagination-hover-color: var(~'@{pagination-custom-prefix}-color-text-hover', @color-theme);
+@pagination-disabled-color: var(~'@{pagination-custom-prefix}-color-text-disabled', @color-border-disabled);
+@pagination-icon-color: var(~'@{pagination-custom-prefix}-button-color', @color-text-secondary);
+@pagination-icon-disabled-color: var(~'@{pagination-custom-prefix}-button-color-disabled', @color-border-disabled);
+@pagination-border-color: var(~'@{pagination-custom-prefix}-color-border', @color-border-strong);
+@pagination-border-hover-color: var(~'@{pagination-custom-prefix}-color-border-hover', @color-theme);
+@pagination-border-disabled-color: var(~'@{pagination-custom-prefix}-color-border-disabled', @color-border-strong);
+@pagination-button-disabled-background-color: var(~'@{pagination-custom-prefix}-button-color-background-disabled', @color-background-contain-disabled);
+
+// sizing
+@pagination-size: var(~'@{pagination-custom-prefix}-sizing-square', 24px);
+@pagination-nicety-size: var(~'@{pagination-custom-prefix}-nicety-sizing-square', 30px);
+@pagination-border-size: var(~'@{pagination-custom-prefix}-sizing-border-width', 1px);
+
+// spacing
+@pagination-button-spacing: var(~'@{pagination-custom-prefix}-button-spacing', 4px);
+
+// font
+@pagination-font-size: var(~'@{pagination-custom-prefix}-font-size', @font-size-small);
+@pagination-icon-size: var(~'@{pagination-custom-prefix}-icon-font-size', @font-size-large);
+
+

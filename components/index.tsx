@@ -121,3 +121,5 @@ export { default as Table } from './table'
 export { default as Stepper } from './stepper'
 
 export { default as BaseData } from './base-data'
+
+export { default as Link } from './link'

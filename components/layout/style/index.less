@@ -1,5 +1,6 @@
 @import '../../style/themes/index';
 @import '../../style/mixins/index';
+@import './token.less';
 
 @layout-prefix-cls: ~'@{kd-prefix}-layout';
 
@@ -40,8 +41,8 @@
 
   &-footer {
     padding: @layout-footer-padding;
-    color: @primary-text-color;
-    font-size: @font-size;
+    color: @color-text-primary;
+    font-size: @font-size-middle;
     background: @layout-footer-background;
   }
 
@@ -77,7 +78,7 @@
       padding: 0 16px;
       color: @layout-trigger-color;
       height: @layout-trigger-height;
-      line-height: @layout-trigger-height - 2px;
+      line-height: calc(@layout-trigger-height - 2px);
       font-size: 20px;
       background: @layout-trigger-background;
       cursor: pointer;
@@ -93,16 +94,16 @@
       &-trigger {
         position: absolute;
         top: @layout-header-height;
-        right: -@layout-zero-trigger-width;
+        right: calc(-1 * @layout-zero-trigger-width);
         z-index: 1;
         width: @layout-zero-trigger-width;
         height: @layout-zero-trigger-height;
         color: @layout-trigger-color;
-        font-size: (@layout-zero-trigger-width / 2);
+        font-size: calc(@layout-zero-trigger-width / 2);
         line-height: @layout-zero-trigger-height;
         text-align: center;
         background: @layout-sider-background;
-        border-radius: 0 @radius-size @radius-size 0;
+        border-radius: 0 @radius-border @radius-border 0;
         cursor: pointer;
         transition: background 0.3s ease;
 
@@ -122,8 +123,8 @@
         }
 
         &-right {
-          left: -@layout-zero-trigger-width;
-          border-radius: @radius-size 0 0 @radius-size;
+          left: calc(-1 * @layout-zero-trigger-width);
+          border-radius: @radius-border 0 0 @radius-border;
         }
       }
     }

@@ -1,4 +1,5 @@
 @import '../../style/themes/index';
+@import './token.less';
 
 @msg-prefix-cls: ~'@{kd-prefix}-message';
 
@@ -9,7 +10,7 @@
   display: flex;
   flex-direction: column;
   pointer-events: none;
-  z-index: @notice-zIndex;
+  z-index: @message-z-index;
 }
 
 .@{msg-prefix-cls} {
@@ -20,9 +21,10 @@
   max-width: 1000px;
   margin: 0 auto 16px;
   padding: 10px 20px;
-  border: 1px solid #ccc;
+  color: @message-info-text-color;
+  border: 1px solid @message-info-color-border;
   border-radius: 4px;
-  background-color: @white;
+  background-color: @message-info-color-background;
   pointer-events: all;
   animation: kdNoticeEffect calc(@transition-duration - 0.2s) @ease-out forwards;
 
@@ -44,27 +46,27 @@
       cursor: pointer;
 
       &:hover {
-        color: @ongoing-border-color;
+        color: @message-icon-text-color-hover;
       }
     }
   }
 
   &-success {
-    color: #1ba854;
-    background: #dcfae4;
-    border: 1px solid #a1e6b5;
+    color: @message-success-text-color;
+    background: @message-success-color-background;
+    border: 1px solid @message-success-color-border;
   }
 
   &-warning {
-    color: #ff991c;
-    background: #fff1d4;
-    border: 1px solid #ffe0a6;
+    color: @message-warning-text-color;
+    background: @message-warning-color-background;
+    border: 1px solid @message-warning-color-border;
   }
 
   &-error {
-    color: #fb2323;
-    background: #ffdbe0;
-    border: 1px solid #ffadb6;
+    color: @message-error-text-color;
+    background: @message-error-color-background;
+    border: 1px solid @message-error-color-border;
   }
 
   &-leave {

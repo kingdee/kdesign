@@ -9,14 +9,13 @@ import ReactDOM from 'react-dom'
 import { Stepper } from '@kdcloudjs/kdesign'
 
 function Demo() {
-  const inputStyle = { marginBottom: 8, marginRight: 8, width: 230 }
   return (
     <div style={{ width: '300px' }}>
       <p>基础步进器</p>
-      <Stepper style={inputStyle} placeholder="基本使用" type="base" />
+      <Stepper placeholder="基本使用" type="base" />
       <br />
       <p>嵌入式步进器</p>
-      <Stepper style={inputStyle} placeholder="基本使用" type="embed" />
+      <Stepper placeholder="基本使用" type="embed" />
       <br />
     </div>
   )

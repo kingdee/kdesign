@@ -8,7 +8,7 @@
 
 .@{tag-prefix-cls} {
   &-size-small {
-    .tag-size(@tag-small-font-size, @tag-height, @tag-small-padding-horizontal);
+    .tag-size(@tag-small-font-size, @tag-small-height, @tag-small-padding-horizontal);
   }
 
   &-size-middle {
@@ -19,7 +19,7 @@
     .tag-size(@tag-large-font-size, @tag-large-height, @tag-large-padding-horizontal);
   }
   
-  transition: all @transition-duration;
+  transition: all @tag-g-motion-duration;
   // 状态标签
   &-shape-status {
     .tag-status(@tag-process-color)
@@ -67,17 +67,17 @@
 
   // 可关闭的标签
   &-shape-edit {
-    border: 1px solid @placeholder-text-color;
+    border: 1px solid @tag-edit-g-color-border;
     border-radius: 2px;
-    line-height: @tag-height;
+    line-height: @tag-middle-height;
     padding-left: 6px;
     padding-right: 6px;
-    color: @primary-text-color;
+    color: @tag-edit-g-text-color;
     &:not(.@{tag-prefix-cls}-closable-disabled):hover {
-      border-color: @theme-color;
+      border-color: @tag-edit-g-color-border-hover;
       .@{tag-prefix-cls}-closeWrapper {
-        background-color: @theme-color;
-        color: @white;
+        background-color: @tag-edit-cloesWrapper-g-color-background-hover;
+        color: @tag-edit-cloesWrapper-g-text-color-hover;
       }
     }
 
@@ -93,7 +93,7 @@
 
   // 自定义标签颜色
   &-has-color {
-    color: @white;
+    color: @tag-attribute-g-text-color;
   }
 
   // 图标设置外边距
@@ -102,17 +102,17 @@
   }
 
   &-closable-disabled {
-    background-color: @disabled-contain-bg;
-    border-color: @strong-border-color;
-    color: @strong-border-color;
+    background-color: @tag-edit-g-color-background-disabled;
+    border-color: @tag-edit-g-color-border-disabled;
+    color: @tag-edit-g-text-color-disabled;
     cursor: not-allowed;
   }
   &-closable.@{tag-prefix-cls}-size-middle {
     line-height: @tag-middle-height;
 
     .@{tag-prefix-cls}-closeWrapper {
-      width: @tag-middle-height - 2;
-      height: @tag-middle-height - 2;
+      width: calc(@tag-middle-height - 2px);
+      height: calc(@tag-middle-height - 2px);
     }
   }
   &-closable.@{tag-prefix-cls}-size-large {
@@ -120,8 +120,8 @@
     padding-left: @tag-large-padding-horizontal;
 
     .@{tag-prefix-cls}-closeWrapper {
-      width: @tag-large-height - 2;
-      height: @tag-large-height - 2;
+      width: calc(@tag-large-height - 2px);
+      height: calc(@tag-large-height - 2px);
       
       .@{tag-prefix-cls}-close-icon {
         font-size: 14px;
@@ -129,13 +129,13 @@
     }
   }
   &-closeWrapper {
-    width: @tag-height - 2;
-    height: @tag-height - 2;
+    width: calc(@tag-middle-height - 2px);
+    height: calc(@tag-middle-height - 2px);
     margin-left: 4px;
     display: inline-flex;
     justify-content: center;
     align-items: center;
-    transition: color @transition-duration, background-color @transition-duration;
+    transition: color @tag-g-motion-duration, background-color @tag-g-motion-duration;
   }
   &-close-icon {
     cursor: pointer;

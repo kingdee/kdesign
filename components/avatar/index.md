@@ -25,3 +25,18 @@ order: 0
 | size | 设置头像的大小 | number \| `large` \| `middle` \| `small` \| `extra-small` | `middle` | 1.0.0 |
 | src | 图片类头像的资源地址或者图片元素 | string \| ReactNode | - | 1.0.0 |
 | srcSet | 设置图片类头像响应式资源地址 | string | - | 1.0.0 |
+
+## Design Token
+
+| 分类 | 组件token | 全局token | 默认值 |
+| --- | --- | --- | --- |
+| color | --kd-c-avatar-color-background | - | #B2B2B2 |
+| font | --kd-c-avatar-font-size-x-small | - | 14px |
+|  | --kd-c-avatar-font-size-small | - | 18px |
+|  | --kd-c-avatar-font-size-base | - | 22px |
+|  | --kd-c-avatar-font-size-large | - | 36px |
+| radius | --kd-c-avatar-border-radius | - | 2px |
+| sizing | --kd-c-avatar-size-x-small | - | 24px |
+|  | --kd-c-avatar-size-small | - | 32px |
+|  | --kd-c-avatar-size-base | - | 40px |
+|  | --kd-c-avatar-size-large | - | 60px |

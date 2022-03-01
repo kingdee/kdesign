@@ -17,12 +17,12 @@ function Demo() {
     carouselRef.current.getRef().parentNode.parentNode.style.display = 'flex'
   }, [carouselRef])
   const itemStyle = {
-    backgroundColor: 'blue',
+    backgroundColor: '#F2F2F2',
     height: '160px',
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    color: '#fff',
+    color: '#212121',
   }
   const dots = { dotsClassName: `kd-carousel-slidebar-dot`, activeDotsClassName: `kd-carousel-slidebar-dot-active` }
   return (

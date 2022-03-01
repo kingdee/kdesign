@@ -1,59 +1,80 @@
 @import '../../style/themes/index';
 @import '../../style/mixins/index';
+@import './token.less';
 
 @popconfirm-prefix-cls: ~'@{kd-prefix}-popconfirm';
 
+@popconfirm-title-line-height: 21px;
+@popconfirm-box-shadow-blur: 16px;
+
+.showdow(@x, @y) {
+  box-shadow: @x @y @popconfirm-box-shadow-blur 3px rgba(0, 0, 0, 0.08);
+}
+
 .@{popconfirm-prefix-cls} {
   .reset-component;
-  color: @popconfirm-color;
-  border-radius: @radius-size;
-  font-size: @popconfirm-font-size;
+  border-radius: @popconfirm-border-radius;
   background-color: @popconfirm-background-color;
-  box-shadow: 0 1px @popconfirm-box-shadow-blur 0 rgba(0, 0, 0, 0.3);
   opacity: 1;
-  z-index: @zIndex-popper;
+  z-index: @z-index-popper;
   visibility: visible;
-
+  
   &.hidden {
     opacity: 0;
     visibility: hidden;
   }
 
+  &[class*="top"] {
+    .showdow(0, 6px);
+  }
+
+  &[class*="bottom"] {
+    .showdow(0, -6px);
+  }
+
+  &[class*="left"] {
+    .showdow(6px, 0);
+  }
+
+  &[class*="right"] {
+    .showdow(-6px, 0);
+  }
+  
   // 箭头样式
   .popperArrow(@popconfirm-background-color, @popconfirm-horizontal-gap, @popconfirm-box-shadow-blur);
-
+  
   &-content {
     .reset-component;
-    min-width: @popconfirm-min-width;
-    max-width: @popconfirm-max-width;
-    min-height: @popconfirm-min-height;
-    max-height: @popconfirm-max-height;
+    width: @popconfirm-width;
     padding: @popconfirm-vertical-gap @popconfirm-horizontal-gap;
-    overflow-y: auto;
   }
-
+  
   &-title {
     line-height: @popconfirm-title-line-height;
+    color: @popconfirm-title-color;
     font-size: @popconfirm-title-font-size;
-
+    
     i {
-      margin-right: 8px;
+      margin-right: @popconfirm-title-icon-margin-right;
       vertical-align: top;
-      color: @warning-color;
-      font-size: @popconfirm-icon-size;
       line-height: @popconfirm-title-line-height;
+      color: @popconfirm-icon-color;
+      font-size: @popconfirm-icon-size;
     }
   }
-
+  
   &-message {
-    margin: 6px 0 20px;
+    color: @popconfirm-message-color;
+    font-size: @popconfirm-message-font-size;
+    line-height: 18px;
+    margin: @popconfirm-message-margin-top 0 @popconfirm-message-margin-bottom;
   }
 
   &-interaction {
     text-align: right;
 
     button:not(:last-child) {
-      margin-right: 12px;
+      margin-right: @popconfirm-button-spacing;
     }
   }
 }

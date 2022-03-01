@@ -49,3 +49,23 @@ subtitle: 单选
 | ------- | -------- |
 | blur()  | 移除焦点 |
 | focus() | 获取焦点 |
+
+## Design Token
+
+| 分类 | 组件token | 全局token | 默认值 |
+| --- | --- | --- | --- |
+| color | --kd-c-radio-color-font | --kd-g-color-text-primary | #212121 |
+|  | --kd-c-radio-color-theme | --kd-g-color-theme | #5582f3 |
+|  | --kd-c-radio-color-border | --kd-g-color-border-strong | #d9d9d9 |
+|  | --kd-c-radio-color-disabled | --kd-g-color-disabled | #b2b2b2 |
+|  | --kd-c-radio-color-background-disabled | --kd-g-color-background-contain-disabled | #f5f5f5 |
+|  | --kd-c-radio-color-border-disabled | --kd-g-color-border-strong | #d9d9d9 |
+|  | --kd-c-radio-color-background | --kd-g-color-white | #fff |
+| font | --kd-c-radio-font-size | --kd-g-font-size-small | 12px |
+| radius | --kd-c-radio-radius-border-width | - | 1px |
+| sizing | --kd-c-radio-square-sizing-width-height | - | 13px |
+|  | --kd-c-radio-square-sizing-height | - | 32px |
+| spacing | --kd-c-radio-spacing-margin-right | - | 8px |
+|  | --kd-c-radio-square-spacing-padding-vertical | - | 0px |
+|  | --kd-c-radio-square-spacing-padding-horizontal | - | 20px |
+|  | --kd-c-radio-spacing-padding-left | - | 6px |

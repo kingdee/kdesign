@@ -1,0 +1,17 @@
+@import '../../style/themes/token.less';
+
+@slider-custom-prefix: ~'--@{kd-prefix}-c-slider';
+
+// color
+@slider-trail-color-background: var(~'@{slider-custom-prefix}-trail-color-background', @color-border-weak);
+@slider-track-color-background: var(~'@{slider-custom-prefix}-track-color-background', @color-theme);
+@slider-track-color-background-hover: var(~'@{slider-custom-prefix}-track-color-background-hover', @color-theme-hover);
+@slider-track-color-background-disabled: var(~'@{slider-custom-prefix}-track-color-background-hover', @color-disabled);
+@slider-handle-color-border: var(~'@{slider-custom-prefix}-handle-color-border', @color-theme);
+@slider-handle-color-border-hover: var(~'@{slider-custom-prefix}-handle-color-border-hover', @color-theme-hover);
+@slider-handle-color-border-disabled: var(~'@{slider-custom-prefix}-handle-color-border-hover', @color-disabled);
+@slider-dot-color-border: var(~'@{slider-custom-prefix}-dot-color-border', @color-theme);
+@slider-dot-color-border-actived: var(~'@{slider-custom-prefix}-dot-color-border-actived', @color-theme);
+@slider-dot-color-border-disabled: var(~'@{slider-custom-prefix}-dot-color-border-actived', @color-disabled);
+@slider-mark-text-color: var(~'@{slider-custom-prefix}-mark-color-text', @color-text-primary);
+@slider-mark-text-color-actived: var(~'@{slider-custom-prefix}-mark-color-text-actived', @color-text-primary-2);

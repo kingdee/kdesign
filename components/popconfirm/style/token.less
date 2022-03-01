@@ -1,0 +1,28 @@
+@import '../../style/themes/token.less';
+
+@popconfirm-custom-prefix: ~'--@{kd-prefix}-c-popconfirm';
+
+// spacing
+@popconfirm-vertical-gap: var(~'@{popconfirm-custom-prefix}-spacing-padding-vertical', 16px);
+@popconfirm-horizontal-gap: var(~'@{popconfirm-custom-prefix}-spacing-padding-horizontal', 16px);
+@popconfirm-title-icon-margin-right: var(~'@{popconfirm-custom-prefix}-title-icon-spacing-margin-right', 6px);
+@popconfirm-message-margin-top: var(~'@{popconfirm-custom-prefix}-message-spacing-margin-top', 6px);
+@popconfirm-message-margin-bottom: var(~'@{popconfirm-custom-prefix}-message-spacing-margin-bottom', 18px);
+@popconfirm-button-spacing: var(~'@{popconfirm-custom-prefix}-button-spacing', 12px);
+
+// sizing
+@popconfirm-width: var(~'@{popconfirm-custom-prefix}-sizing-min-width', 240px);
+@popconfirm-icon-size: var(~'@{popconfirm-custom-prefix}-icon-sizing-square', 17px);
+
+// color
+@popconfirm-title-color: var(~'@{popconfirm-custom-prefix}-title-color-text', @color-text-primary);
+@popconfirm-message-color: var(~'@{popconfirm-custom-prefix}-message-color-text', @color-text-primary);
+@popconfirm-icon-color: var(~'@{popconfirm-custom-prefix}-icon-color-text', @color-warning);
+@popconfirm-background-color: var(~'@{popconfirm-custom-prefix}-color-background', @color-background);
+
+// font
+@popconfirm-title-font-size: var(~'@{popconfirm-custom-prefix}-title-font-size', @font-size-middle);
+@popconfirm-message-font-size: var(~'@{popconfirm-custom-prefix}-message-font-size', @font-size-small);
+
+// radius
+@popconfirm-border-radius: var(~'@{popconfirm-custom-prefix}-radius-border', @radius-border);

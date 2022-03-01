@@ -54,3 +54,31 @@ subtitle: 排版
 | type | 文本类型 | `second` \| `success` \| `warning` \| `danger` \| `assist` | - | 1.0.0 |
 | underline | 添加下划线样式 | boolean | false | 1.0.0 |
 
+## Design Token
+
+| 分类 | 组件token | 全局token | 默认值 |
+| --- | --- | --- | --- |
+| color | --kd-c-typography-title-color-text | - | #276ff5 |
+|  | --kd-c-typography-color-text-primary | --kd-g-color-text-primary | #212121 |
+|  | --kd-c-typography-color-text-secondary | --kd-g-color-text-secondary | #666 |
+|  | --kd-c-typography-color-text-third | --kd-g-color-text-third | #999 |
+|  | --kd-c-typography-color-warning | --kd-g-color-warning | #ff991c |
+|  | --kd-c-typography-color-error | --kd-g-color-error | #fb2323 |
+|  | --kd-c-typography-color-success | --kd-g-color-success | #1ba854 |
+|  | --kd-c-typography-color-disabled | --kd-g-color-disabled | #b2b2b2 |
+|  | --kd-c-typography-color-text-link | --kd-g-color-text-link | #0e5fd8 |
+|  | --kd-c-typography-color-text-link-hover | --kd-g-color-text-link-hover | #3987ed |
+|  | --kd-c-typography-color-text-link-active | --kd-g-color-text-link-active | #0041b0 |
+| font | --kd-c-typography-title-font-weight | - | 600 |
+|  | --kd-c-typography-font-size-1 | - | 40px |
+|  | --kd-c-typography-font-size-2 | - | 28px |
+|  | --kd-c-typography-font-size-3 | - | 18px |
+| motion | --kd-c-typography-motion-duration | --kd-g-duration | 0.3s |
+| sizing | --kd-c-typography-sizing-width-max | - | 830px |
+| spacing | --kd-c-typography-title-spacing-margin-top | - | 1.2em |
+|  | --kd-c-typography-title-spacing-margin-bottom | - | 0.5em |
+|  | --kd-c-typography-paragraph-spacing-margin-bottom | - | 24px |
+|  | --kd-c-typography-spacing-margin-bottom | - | 80px |
+|  | --kd-c-typography-spacing-margin-bottom-1 | - | 12px |
+|  | --kd-c-typography-spacing-margin-bottom-2 | - | 24px |
+|  | --kd-c-typography-spacing-margin-bottom-3 | - | 12px |

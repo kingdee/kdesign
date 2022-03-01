@@ -33,3 +33,19 @@ subtitle: 走马灯
 | jumpTo(slideNumber, needAnimation) | 切换到指定面板，needAnimation 为 false 时关闭动画效果 |
 | next()                             | 切换到下一个面板                                      |
 | prev()                             | 切换到上一个面板                                      |
+
+## Design Token
+
+| 分类 | 组件token | 全局token | 默认值 |
+| --- | --- | --- | --- |
+| color | --kd-c-carousel-dots-color-background | - | #D8D8D8 |
+|  | --kd-c-carousel-dots-color-hover | - | #666666 |
+| radius | --kd-c-carousel-dots-border-radius | - | 2px |
+|  | --kd-c-carousel-border-radius | - | 0px |
+| sizing | --kd-c-carousel-dots-sizing-width | - | 12px |
+|  | --kd-c-carousel-dots-sizing-height | - | 4px |
+| spacing | --kd-c-carousel-spacing-margin-top | - | 15px |
+|  | --kd-c-carousel-spacing-margin-bottom | - | 15px |
+|  | --kd-c-carousel-spacing-margin-left | - | 15px |
+|  | --kd-c-carousel-spacing-margin-right | - | 15px |
+|  | --kd-c-carousel-dots-spacing-margin | - | 4px |

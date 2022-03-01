@@ -1,5 +1,22 @@
+@import './token.less';
 
-// code component mixin here
-.test() {
-  display: inline;
+.avatar-size(@size, @font-size) {
+  width: @size;
+  height: @size;
+  line-height: @size;
+  border-radius: 50%;
+
+  &-string {
+    position: absolute;
+    left: 50%;
+    transform-origin: 0 center;
+  }
+
+  &.@{avatar-prefix-cls}-icon {
+    font-size: @font-size;
+
+    & > .@{icon-prefix-cls} {
+      vertical-align: unset !important;
+    }
+  }
 }

@@ -1,0 +1,24 @@
+@import '../../style/themes/token.less';
+
+@link-custom-prefix: ~'--@{kd-prefix}-c-link';
+
+// color
+@link-color-text: var(~'@{link-custom-prefix}-color-text', @color-text-link);
+@link-color-text-hover: var(~'@{link-custom-prefix}-color-text-link-hover', #87A9FF);
+@link-color-text-active: var(~'@{link-custom-prefix}-color-text-link-active', #3761CA);
+@link-color-text-disabled: var(~'@{link-custom-prefix}-color-text-link-disabled', #9EBFEF);
+
+// font
+@link-g-font-weight: var(~'@{link-custom-prefix}-font-weight', @font-weight-light);
+@link-small-font-size: var(~'@{link-custom-prefix}-font-size-small', @font-size-small); // 小号 文字大小
+@link-middle-font-size: var(~'@{link-custom-prefix}-font-size-middle', @font-size-middle); // 中号 文字大小
+@link-large-font-size: var(~'@{link-custom-prefix}-font-size-large', @font-size-large); // 大号 文字大小
+
+// sizing
+@link-small-height: var(~'@{link-custom-prefix}-sizing-height-small', 18px); // 小号 高度
+@link-middle-height: var(~'@{link-custom-prefix}-sizing-height-middle', 21px); // 中号 高度
+@link-large-height: var(~'@{link-custom-prefix}-sizing-height-large', 24px); // 大号 高度
+
+// spacing
+@link-prefix-horizontal: var(~'@{link-custom-prefix}-prefix-horizontal', 4px); // 前缀图标间隔
+@link-suffix-horizontal: var(~'@{link-custom-prefix}-suffix-horizontal', 4px); // 后缀图标间隔

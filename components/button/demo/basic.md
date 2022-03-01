@@ -3,7 +3,7 @@ title: 按钮类型
 order: 0
 ---
 
-按钮有五种风格：主要按钮、次要按钮、幽灵按钮、链接按钮、文本按钮（默认为次要按钮）
+按钮有四种风格：主要按钮、次要按钮、幽灵按钮、文本按钮（默认为次要按钮）
 
 ```jsx
 import React from 'react'
@@ -19,9 +19,6 @@ function Demo() {
       </Button>
       <Button type="ghost" className="button-basic-left">
         幽灵按钮
-      </Button>
-      <Button type="link" className="button-basic-left">
-        link
       </Button>
       <Button type="text" className="button-basic-left">
         text

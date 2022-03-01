@@ -1,0 +1,29 @@
+@import '../../style/themes/token.less';
+
+@transfer-custom-prefix: ~'--@{kd-prefix}-c-transfer';
+
+// color
+@transfer-disabled-bg: var(~'@{transfer-custom-prefix}-color-background-disabled', @color-background-contain-disabled);
+@transfer-border-color: var(~'@{transfer-custom-prefix}-color-border', @color-border-strong);
+@transfer-list-item-hover-bg: var(~'@{transfer-custom-prefix}-list-item-color-background-hover', @color-hover);
+@transfer-header-bg: var(~'@{transfer-custom-prefix}-header-color-background', #f5f5f5);
+
+// font
+@transfer-font-size-base: var(~'@{transfer-custom-prefix}-font-size', 12px);
+
+// sizing
+@transfer-list-item-height: var(~'@{transfer-custom-prefix}-list-item-sizing-height', 32px);
+@transfer-list-content-height: var(~'@{transfer-custom-prefix}-list-item-content-sizing-height', 320px);
+@transfer-header-height: var(~'@{transfer-custom-prefix}-header-sizing-height', 36px);
+@transfer-search-height: var(~'@{transfer-custom-prefix}-search-sizing-height', 32px);
+@transfer-pagination-height: var(~'@{transfer-custom-prefix}-pagination-sizing-height', 36px);
+
+// spacing
+@transfer-padding-base: var(~'@{transfer-custom-prefix}-spacing-horizontal', 14px);
+
+// text
+@transfer-list-item-checked: var(~'@{transfer-custom-prefix}-list-item-color-text-checked', @color-theme);
+@transfer-list-item-disabled: var(~'@{transfer-custom-prefix}-list-item-color-text-disabled', @color-disabled);
+@transfer-search-prefix-icon-color: var(~'@{transfer-custom-prefix}-search-icon-color-text-prefix', @color-theme);
+@transfer-search-suffix-icon-color: var(~'@{transfer-custom-prefix}-search-icon-color-text-suffix', #bbb);
+@transfer-search-suffix-icon-color-hover: var(~'@{transfer-custom-prefix}-search-icon-color-text-suffix-hover', #999);

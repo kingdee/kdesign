@@ -49,3 +49,22 @@ subtitle: 消息提示
 | key | 标识message唯一性的key，可以用来删除当前message | React.Key | - | 1.0.0 |
 | style | 样式 | React.CSSProperties | - | 1.0.0 |
 | onClose | 关闭时回调函数 | Function(key: React.Key): void | - | 1.0.0 |
+
+## Design Token
+
+| 分类 | 组件token | 全局token | 默认值 |
+| --- | --- | --- | --- |
+| color | --kd-c-message-info-color-background | - | #e0efff |
+|  | --kd-c-message-info-color-border | - | #b3d5ff |
+|  | --kd-c-message-success-color-background | - | #dcfae4 |
+|  | --kd-c-message-success-color-border | - | #a1e6b5 |
+|  | --kd-c-message-success-color-text | --kd-g-color-success | #1ba854 |
+|  | --kd-c-message-warning-color-background | - | #fff1d4 |
+|  | --kd-c-message-warning-color-border | - | #ffe0a6 |
+|  | --kd-c-message-warning-color-text | --kd-g-color-warning | #ff991c |
+|  | --kd-c-message-error-color-background | - | #ffdbe0 |
+|  | --kd-c-message-error-color-border | - | #ffadb6 |
+|  | --kd-c-message-error-color-text | --kd-g-color-error | #fb2323 |
+|  | --kd-c-message-icon-color-text-hover | --kd-g-color-border-ongoing | #85b8ff |
+|  | --kd-c-message-info-color-text | --kd-g-color-text-link | #0e5fd8 |
+| z-index | --kd-c-message-z-index | --kd-g-z-index-apex | 9999 |

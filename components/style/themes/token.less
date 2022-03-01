@@ -1,0 +1,128 @@
+@global-custom-prefix: '--@{kd-prefix}-g';
+
+@color-theme: var(~'@{global-custom-prefix}-color-theme', @theme-color);
+@color-theme-1: var(~'@{global-custom-prefix}-color-theme-1', @theme-color-level1);
+@color-theme-2: var(~'@{global-custom-prefix}-color-theme-2', @theme-color-level2);
+@color-theme-3: var(~'@{global-custom-prefix}-color-theme-3', @theme-color-level3);
+@color-theme-4: var(~'@{global-custom-prefix}-color-theme-4', @theme-color-level4);
+@color-theme-5: var(~'@{global-custom-prefix}-color-theme-5', @theme-color-level5);
+@color-theme-6: var(~'@{global-custom-prefix}-color-theme-6', @theme-color-level6);
+@color-theme-7: var(~'@{global-custom-prefix}-color-theme-7', @theme-color-level7);
+@color-theme-8: var(~'@{global-custom-prefix}-color-theme-8', @theme-color-level8);
+@color-theme-9: var(~'@{global-custom-prefix}-color-theme-9', @theme-color-level9);
+
+
+@color-theme-disabled: @color-theme-3;
+@color-theme-hover: @color-theme-5;
+@color-theme-click: @color-theme-7;// 点击色
+@color-theme-light-active: @color-theme-1; // 浅色选中
+@color-theme-dark-active: @color-theme; // 深色选中
+
+// hover
+@color-hover: var(~'@{global-custom-prefix}-color-hover', @hover-color);
+@color-background-contain-disabled: var(~'@{global-custom-prefix}-color-background-contain-disabled', @disabled-contain-bg); // 有疑问 contain
+
+// success
+@color-success: var(~'@{global-custom-prefix}-color-success', @success-color);
+@color-background-success: var(~'@{global-custom-prefix}-color-background-success', @success-bg-color);
+@color-border-success: var(~'@{global-custom-prefix}-color-border-success', @success-border-color);
+
+
+// warning
+@color-warning: var(~'@{global-custom-prefix}-color-warning', @warning-color);
+@color-background-warning: var(~'@{global-custom-prefix}-color-background-warning', @warning-bg-color);
+@color-border-warning: var(~'@{global-custom-prefix}-color-border-warning', @warning-border-color);
+
+// error
+@color-error: var(~'@{global-custom-prefix}-color-error', @error-color);
+@color-background-error: var(~'@{global-custom-prefix}-color-background-error', @error-bg-color);
+@color-border-error: var(~'@{global-custom-prefix}-color-border-error', @error-border-color);
+
+// ongoing
+@color-ongoing: var(~'@{global-custom-prefix}-color-ongoing', @ongoing-color);
+@color-background-ongoing: var(~'@{global-custom-prefix}-color-background-ongoing', @ongoing-bg-color);
+@color-border-ongoing: var(~'@{global-custom-prefix}-color-border-ongoing', @ongoing-border-color);
+
+// disabled
+@color-disabled: var(~'@{global-custom-prefix}-color-disabled', @disabled-color);
+@color-border-disabled: var(~'@{global-custom-prefix}-color-border-disabled', @disabled-border-color);
+
+
+@color-end: var(~'@{global-custom-prefix}-color-end', @end-color);
+
+// color text-link
+@color-text-link: var(~'@{global-custom-prefix}-color-text-link', @link-color);
+@color-text-link-hover: var(~'@{global-custom-prefix}-color-text-link-hover', @link-color-hover);
+@color-text-link-active: var(~'@{global-custom-prefix}-color-text-link-active', @link-color-active);
+
+// color-text
+@color-text-primary: var(~'@{global-custom-prefix}-color-text-primary', @primary-text-color);
+@color-text-primary-2: var(~'@{global-custom-prefix}-color-text-primary-2', @primary-text-color2);
+
+
+@color-text-secondary: var(~'@{global-custom-prefix}-color-text-secondary', @secondary-text-color);
+@color-text-secondary-2: var(~'@{global-custom-prefix}-color-text-secondary-2', @secondary-text-color2);
+@color-text-secondary-3: var(~'@{global-custom-prefix}-color-text-secondary-3', @secondary-text-color3);
+
+@color-text-third: var(~'@{global-custom-prefix}-color-text-third', @third-text-color);
+@color-text-third-2: var(~'@{global-custom-prefix}-color-text-third-2', @third-text-color2);
+
+// placeholder 占位符文本
+@color-text-placeholder: var(~'@{global-custom-prefix}-color-text-placeholder', @placeholder-text-color);
+@color-text-placeholder-2: var(~'@{global-custom-prefix}-color-text-placeholder-2', @placeholder-text-color2);
+
+ //bg -----------------
+@color-background: var(~'@{global-custom-prefix}-color-background', @bg);
+@color-background-2: var(~'@{global-custom-prefix}-color-background-2', @bg2);
+@color-background-3: var(~'@{global-custom-prefix}-color-background-3', @bg3);
+
+
+@color-background-contain: var(~'@{global-custom-prefix}-color-background-contain', @contain-bg); // 容器内的灰背景
+@color-input: var(~'@{global-custom-prefix}-color-input', @input-color); // 线型录入的默认态
+
+
+@color-border-strong: var(~'@{global-custom-prefix}-color-border-strong', @strong-border-color);
+@color-border-strong-2: var(~'@{global-custom-prefix}-color-border-strong-2', @strong-border-color-1);
+@color-border-strong-3: var(~'@{global-custom-prefix}-color-border-strong-3', @strong-border-color-2);
+@color-border-weak: var(~'@{global-custom-prefix}-color-border-weak', @weak-border-color);
+
+@color-white: var(~'@{global-custom-prefix}-color-white', @white);
+
+// logo 颜色值
+@color-logo-1: var(~'@{global-custom-prefix}-color-logo-1', @logo-color-1);
+@color-logo-2: var(~'@{global-custom-prefix}-color-logo-2', @logo-color-2);
+@color-logo-3: var(~'@{global-custom-prefix}-color-logo-3', @logo-color-3);
+@color-logo-4: var(~'@{global-custom-prefix}-color-logo-4', @logo-color-4);
+/* -----------  motion  ——————---- start */
+@motion-ease-out: var(~'@{global-custom-prefix}-ease-out', @ease-out);
+@motion-ease-in: var(~'@{global-custom-prefix}-ease-in', @ease-in);
+@motion-ease: var(~'@{global-custom-prefix}-ease', @ease);
+/* -----------  motion  ——————---- end */
+
+/* -----------  transition  ——————---- start */
+@duration-slowly: var(~'@{global-custom-prefix}-duration-slowly', @transition-duration-slowly);
+@duration-promptly: var(~'@{global-custom-prefix}-duration', @transition-duration);
+@duration-quickly: var(~'@{global-custom-prefix}-duration-quickly', @transition-duration-quickly);
+/* -----------  transition  ——————---- end */
+
+// font
+// font-size 与 font-weight 变量名重复 去除了@font-size定义 font-weight变为font-weight-light
+@font-weight-light: var(~'@{global-custom-prefix}-font-weight', @font-weight);
+@font-size-small: var(~'@{global-custom-prefix}-font-size-small', @small-font-size);
+@font-size-middle: var(~'@{global-custom-prefix}-font-size-middle', @middle-font-size);
+@font-size-large: var(~'@{global-custom-prefix}-font-size-large', @large-font-size);
+@font-size-x-large: var(~'@{global-custom-prefix}-font-size-x-large', @xlarge-font-size);
+@font-size-xx-large: var(~'@{global-custom-prefix}-font-size-xx-large', @xxlarge-font-size);
+
+@radius-border: var(~'@{global-custom-prefix}-radius-border', @radius-size); // 圆角值
+
+/* -----------  zIndex  ——————---- start */
+/*
+    普通组件内部自身层级应设置在0-100间
+*/
+@z-index-below: var(~'@{global-custom-prefix}-z-index-below', @zIndex-below); // 置于下层
+@z-index-popper: var(~'@{global-custom-prefix}-z-index-popper', @zIndex-popper); // 弹出层
+@z-index-dialog: var(~'@{global-custom-prefix}-z-index-dialog', @zIndex-dialog); // 对话框
+@z-index-masker: var(~'@{global-custom-prefix}-z-index-masker', @zIndex-masker); // 遮罩层 （loading等）
+@z-index-apex: var(~'@{global-custom-prefix}-z-index-apex', @zIndex-apex); // 顶层 （notify）
+/* -----------  zIndex  ——————---- end */

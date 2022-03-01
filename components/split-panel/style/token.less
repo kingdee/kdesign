@@ -1,0 +1,12 @@
+@import '../../style/themes/token.less';
+
+@split-panel-custom-prefix: ~'--@{kd-prefix}-c-split-panel';
+
+// color
+@split-panel-trigger-border-color: var(~'@{split-panel-custom-prefix}-trigger-color-border', @color-border-strong-2);
+@split-panel-trigger-arrow-color: var(~'@{split-panel-custom-prefix}-arrow-color-background', @color-input);
+@split-panel-trigger-arrow-hover-color: var(~'@{split-panel-custom-prefix}-arrow-color-background-hover', @color-theme);
+@split-panel-trigger-line-color: var(~'@{split-panel-custom-prefix}-line-color-background', @color-border-strong-2);
+
+// sizing
+@split-panel-trigger-line-width: var(~'@{split-panel-custom-prefix}-line-sizing-width', 1px);

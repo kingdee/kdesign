@@ -1,0 +1,43 @@
+@import '../../style/themes/token.less';
+
+@select-custom-prefix: ~'--@{kd-prefix}-c-select';
+
+
+// color
+@select-dropdown-bg: var(~'@{select-custom-prefix}-dropdown-color-background', @color-background);
+@select-disabled-option-bg: var(~'@{select-custom-prefix}-item-color-background-disabled', @color-background-contain-disabled);
+@select-item-active-bg: var(~'@{select-custom-prefix}-color-background', @color-hover);
+@select-item-selected-bg: var(~'@{select-custom-prefix}-color-background-selected', #f2f9ff);
+@select-g-color-border: var(~'@{select-custom-prefix}-color-border', @color-input);
+@select-g-color-border-foucs: var(~'@{select-custom-prefix}-color-border-foucs', @color-theme);
+@select-g-color-border-hover: var(~'@{select-custom-prefix}-color-border-hover', @color-theme);
+@select-border-g-color-border: var(~'@{select-custom-prefix}-border-color-border', @color-border-strong);
+@select-placeholder-color: var(~'@{select-custom-prefix}-placeholder-color-text', @color-text-third);
+@select-item-selected-color: var(~'@{select-custom-prefix}-item-color-text-selected', @color-ongoing);
+@select-font-color: var(~'@{select-custom-prefix}-footer-color-text', @color-text-primary);
+@select-footer-g-text-color-selected: var(~'@{select-custom-prefix}-footer-color-text-selected', @color-text-link);
+@select-g-item-text-color-disabled: var(~'@{select-custom-prefix}-item-color-text-disabled', @color-disabled);
+
+// font
+@select-list-font-size: var(~'@{select-custom-prefix}-dropdown-font-size', 12px); // 下拉列表文字大小
+@select-large-font-size: var(~'@{select-custom-prefix}-font-size-large', 16px); // 大号字体
+@select-middle-font-size: var(~'@{select-custom-prefix}-font-size-middle', 14px); // 中号高度
+@select-small-font-size: var(~'@{select-custom-prefix}-font-size-small', 12px); // 小号高度
+
+// sizing
+@select-dropdown-height: var(~'@{select-custom-prefix}-item-sizing-height', 22px);
+@select-large-height: var(~'@{select-custom-prefix}-sizing-height-large', 36px); // 大号高度 lh:28px
+@select-middle-height: var(~'@{select-custom-prefix}-sizing-height-middle', 30px); // 中号高度lh:22px
+@select-small-height: var(~'@{select-custom-prefix}-sizing-height-small', 24px); // 小号高度lh:12px
+
+// line-height
+@select-dropdown-line-height: var(~'@{select-custom-prefix}-dropdown-line-height', 22px);
+@select-large-line-height: var(~'@{select-custom-prefix}-line-height-large', 28px);
+@select-middle-line-height: var(~'@{select-custom-prefix}-line-height-middle', 22px);
+@select-small-line-height: var(~'@{select-custom-prefix}-line-height-small', 14px);
+
+// radius
+@select-g-radius-border: var(~'@{select-custom-prefix}-radius-border', @radius-border);
+
+// z-index
+@select-z-index: var(~'@{select-custom-prefix}-z-index', @z-index-popper);

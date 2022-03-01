@@ -62,3 +62,18 @@ subtitle: 表单
 | submit | 提交表单 | `() => void` | | | 1.0.0 |
 | validateFields | 触发表单校验 | `(namePathList?: NamePath[]) => Promise<Values>` | | | 1.0.0 |
 
+## Design Token
+
+| 分类 | 组件token | 全局token | 默认值 |
+| --- | --- | --- | --- |
+| color | --kd-c-form-field-color | --kd-g-color-text-secondary | #666 |
+|  | --kd-c-form-error-color | --kd-g-color-error | #fb2323 |
+|  | --kd-c-form-error-color-background | --kd-g-color-background-error | #fff2f4 |
+| spacing | --kd-c-form-field-spacing-margin-right | - | 30px |
+|  | --kd-c-form-field-spacing-margin-bottom | - | 22px |
+|  | --kd-c-form-field-message-spacing-padding-horizontal | - | 2px |
+|  | --kd-c-form-field-message-spacing-padding-vertical | - | 8px |
+| font | --kd-c-form-field-label-font-size | - | 12px |
+|  | --kd-c-field-message-font-size | - | 12px |
+| line-height | --kd-c-field-label-line-height | - | 18px |
+|  | --kd-c-field-message-line-height | - | 18px |

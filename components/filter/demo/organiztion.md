@@ -47,7 +47,7 @@ function Demo() {
       ],
       addition: (
         <Button
-          type="link"
+          type="text"
           onClick={() => {
             Message.success('这里打开基础资料弹窗')
           }}>
