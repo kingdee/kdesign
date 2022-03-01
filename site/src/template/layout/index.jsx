@@ -25,26 +25,29 @@ if (typeof window !== 'undefined') {
     }
   })
 }
-
+function isIE() {
+  // ie?
+  if (!!window.ActiveXObject || 'ActiveXObject' in window) return true
+  else return false
+}
+function isScrollEnd(element, t1) {
+  let t2 = element.scrollTop
+  if (t2 === t1) {
+    document.styleSheets[0].insertRule('body::-webkit-scrollbar-thumb { display:none; }')
+  }
+}
 class Layout extends Component {
   componentDidMount() {
-    let t1 = 0
-    let t2 = 0
-    let timer = null // 定时器
-    const element = document.body
-    document.styleSheets[0].addRule('body::-webkit-scrollbar-thumb', 'display:none;')
-
-    element.onscroll = function () {
-      clearTimeout(timer)
-      timer = setTimeout(isScrollEnd, 500)
-      t1 = element.scrollTop
-      document.styleSheets[0].addRule('body::-webkit-scrollbar-thumb', 'display:block;')
-    }
-
-    function isScrollEnd() {
-      t2 = element.scrollTop
-      if (t2 === t1) {
-        document.styleSheets[0].addRule('body::-webkit-scrollbar-thumb', 'display:none;')
+    if (!isIE()) {
+      let t1 = 0
+      let timer = null // 定时器
+      const element = document.body
+      document.styleSheets[0].insertRule('body::-webkit-scrollbar-thumb { display:none; }')
+      element.onscroll = function () {
+        clearTimeout(timer)
+        timer = setTimeout(isScrollEnd(element, t1), 500)
+        t1 = element.scrollTop
+        document.styleSheets[0].insertRule('body::-webkit-scrollbar-thumb { display:block; }')
       }
     }
   }
