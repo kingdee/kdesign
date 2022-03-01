@@ -1,5 +1,7 @@
 @import '../../style/themes/index';
+@import 'token.less';
 @import '../../style/mixins/index';
+
 
 @timeline-prefix-cls: ~'@{kd-prefix}-timeline';
 @timeline-item-prefix-cls: ~'@{kd-prefix}-timeline-item';
@@ -16,17 +18,17 @@
     position: relative;
     margin: 0;
     padding-bottom: @timeline-item-padding-bottom;
-    font-size: @small-font-size;
+    font-size: @timeline-content-font-size-small;
 
     &-tail {
       position: absolute;
-      left: (@timeline-dot-size - 1) / 2;
+      left: calc((@timeline-dot-size - 1px) / 2);
       height: calc(100% - @timeline-dot-size * 2 + 4px);
-      border-left: @timeline-width solid @timeline-color;
+      border-left: @timeline-width solid @timeline-line-color;
     }
 
     &.pending .@{timeline-item-prefix-cls}-dot {
-      font-size: @small-font-size;
+      font-size: @timeline-content-font-size-small;
     }
 
     &.pending .@{timeline-item-prefix-cls}-tail {
@@ -42,29 +44,29 @@
       transform: translateY(-50%);
 
       &.blue {
-        color: @theme-color;
-        background-color: @theme-color;
+        color: @timeline-finished-color;
+        background-color: @timeline-finished-color;
       }
 
       &.red {
-        color: @error-color;
-        background-color: @error-color;
+        color: @timeline-error-color;
+        background-color: @timeline-error-color;
       }
 
       &.green {
-        color: @success-color;
-        background-color: @success-color;
+        color: @timeline-success-color;
+        background-color: @timeline-success-color;
       }
 
       &.gray {
-        color: @disabled-color;
-        background-color: @disabled-color;
+        color: @timeline-disabled-color;
+        background-color: @timeline-disabled-color;
       }
     }
 
     &-dot.custom {
       position: absolute;
-      left: @timeline-dot-size / 2;
+      left: calc(@timeline-dot-size / 2);
       width: auto;
       height: auto;
       margin-top: 0;
@@ -79,9 +81,9 @@
 
     &-content {
       position: relative;
-      margin: 0 0 0 2 * (@timeline-dot-size - @timeline-width) + @timeline-gap;
+      margin: 0 0 0 calc(2 * (@timeline-dot-size - @timeline-width) + @timeline-gap);
       word-break: break-word;
-      color: @primary-text-color;
+      color: @timeline-content-color-text;
 
       > * {
         margin: 0;
@@ -108,7 +110,7 @@
       }
 
       &-dot {
-        margin-left: -1 * (@timeline-dot-size - 1) / 2;
+        margin-left:calc(-1 * (@timeline-dot-size - 1px) / 2);
 
         &.custom {
           margin-left: 1px;
@@ -143,7 +145,7 @@
       }
 
       &-dot {
-        margin-right: -1 * (@timeline-dot-size - 1) / 2;
+        margin-right:calc(-1 * (@timeline-dot-size - 1px) / 2) ;
 
         &.custom {
           margin-right: 1px;
@@ -152,7 +154,7 @@
       .@{timeline-item-prefix-cls}-content {
         left: 0;
         text-align: right;
-        margin: 0 2 * (@timeline-dot-size - @timeline-width) + @timeline-gap 0 0;
+        margin: 0 calc(2 * (@timeline-dot-size - @timeline-width) + @timeline-gap)  0 0;
         width: auto;
       }
     }
@@ -164,12 +166,12 @@
         &-tail,
         &-dot,
         &-dot.custom {
-          left: ((2 * @timeline-gap) + (@timeline-dot-size / 2));
+          left: calc((2 * @timeline-gap) + (@timeline-dot-size / 2));
         }
 
         &-dot {
-          margin-left: -1 * (@timeline-dot-size - 1) / 2;
-  
+          margin-left: calc(-1 * (@timeline-dot-size - 1px) / 2);
+
           &.custom {
             margin-left: 1px;
           }
@@ -177,9 +179,10 @@
         .@{timeline-item-prefix-cls}-label {
           position: absolute;
           text-align: right;
+          color: @timeline-label-color-text;
         }
         .@{timeline-item-prefix-cls}-content {
-          left: @timeline-dot-size + 7.5px;
+          left: calc(@timeline-dot-size + 7.5px);
           text-align: left;
           margin-right: 16px;
         }
@@ -191,14 +194,14 @@
         &-dot,
         &-dot.custom {
           left: auto;
-          right: ((2 * @timeline-gap) + (@timeline-dot-size / 2));
+          right: calc((2 * @timeline-gap) + (@timeline-dot-size / 2));
         }
-  
+
         &-dot {
-          margin-right: -1 * (@timeline-dot-size - 1) / 2;
-  
+          margin-right: calc(-1 * (@timeline-dot-size - 1px) / 2);
+
           &.custom {
-            right: @timeline-gap - 2px;
+            right: calc(-1 * (@timeline-dot-size - 1px) / 2);
           }
         }
         .@{timeline-item-prefix-cls}-label {
@@ -208,7 +211,7 @@
         }
         .@{timeline-item-prefix-cls}-content {
           left: auto;
-          right: @timeline-dot-size + 7.5px;
+          right: calc(@timeline-dot-size + 7.5px);
           text-align: right;
           margin-left: 17px;
         }
@@ -238,7 +241,7 @@
   &.pending .@{timeline-item-prefix-cls}.last .@{timeline-item-prefix-cls}-tail {
     display: block;
     height: calc(100% - 14px);
-    border-left: 2px dotted @timeline-color;
+    border-left: 2px dotted @timeline-line-color;
   }
 
   &.reverse .@{timeline-item-prefix-cls}.last .@{timeline-item-prefix-cls}-tail {
@@ -250,7 +253,7 @@
       top: 15px;
       display: block;
       height: calc(100% - 15px);
-      border-left: 2px dotted @timeline-color;
+      border-left: 2px dotted @timeline-line-color;
     }
     .@{timeline-item-prefix-cls}-content {
       min-height: 48px;

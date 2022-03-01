@@ -1,5 +1,6 @@
 @import '../../style/themes/index';
 @import '../../style/mixins/index';
+@import './token.less';
 
 @filter-prefix-cls: ~'@{kd-prefix}-filter';
 @filter-header-prefix-cls: ~'@{kd-prefix}-filter-header';
@@ -15,8 +16,8 @@
 
     &-title {
       white-space: nowrap;
-      color: @primary-text-color;
-      font-size: @large-font-size;
+      color: @filter-header-title-color;
+      font-size: @filter-header-title-font-size;
     }
 
     &-condition {
@@ -27,9 +28,9 @@
 
       &-label {
         padding-right: 8px;
-        font-size: @font-size;
+        font-size: @filter-condition-label-font-size;
         white-space: nowrap;
-        color: @third-text-color;
+        color: @filter-condition-label-color;
       }
 
       &-item-text {
@@ -51,8 +52,8 @@
       height: 44px;
       line-height: 44px;
       text-align: center;
-      color: @ongoing-color;
-      font-size: @font-size;
+      color: @filter-handle-color;
+      font-size: @filter-handle-font-size;
       cursor: pointer;
       user-select: none;
       border: 1px solid transparent;
@@ -64,8 +65,8 @@
 
       &.spread {
         border-radius: 4px 4px 0 0;
-        background-color: @contain-bg;
-        border-color: @strong-border-color;
+        background-color: @filter-handle-spread-bg-color;
+        border-color: @filter-handle-spread-border-color;
 
         > i {
           transform: rotate(180deg);
@@ -83,29 +84,29 @@
       overflow: visible;
       padding: 8px 20px;
       border-radius: 4px 0 4px 4px;
-      background-color: @contain-bg;
-      border: 1px solid @strong-border-color;
+      background-color: @filter-body-bg-color;
+      border: 1px solid @filter-body-border-color;
     }
 
     &-tabs {
-      border-bottom: 1px solid @weak-border-color;
+      border-bottom: 1px solid @filter-body-tabs-border-color;
 
       &-item {
         padding: 10px 0;
-        font-size: @font-size;
-        color: @third-text-color;
+        font-size: @filter-body-tabs-item-font-size;
+        color: @filter-body-tabs-item-color;
         cursor: pointer;
 
         &:hover,
         &.active {
-          color: @ongoing-color;
+          color: @filter-body-tabs-item-active-color;
         }
       }
 
       &-split {
         width: 1px;
         height: 16px;
-        background-color: @strong-border-color;
+        background-color: @color-border-strong;
       }
     }
 
@@ -119,15 +120,15 @@
     
     &-condition {
       display: flex;
-      font-size: @small-font-size;
+      font-size: @font-size-small;
 
       &:not(:last-child) {
-        border-bottom: 1px solid @weak-border-color;
+        border-bottom: 1px solid @color-border-weak;
       }
 
       &-label {
         padding: 11px 0 10px;
-        color: @third-text-color;
+        color: @color-text-third;
         line-height: 18px;
       }
 
@@ -145,11 +146,11 @@
       &-option {
         margin-bottom: 4px;
         padding: 0 12px;
-        color: @secondary-text-color;
+        color: @color-text-secondary;
         vertical-align: middle;
         line-height: 22px;
-        font-size: @small-font-size;
-        border-radius: @radius-size;
+        font-size: @font-size-small;
+        border-radius: @radius-border;
         border: 1px solid transparent;
         cursor: pointer;
         white-space: nowrap;
@@ -161,7 +162,7 @@
         &.active {
           color: @ongoing-color;
           border-color: @ongoing-color;
-          background-color: @bg;
+          background-color: @color-background;
         }
 
         &-customer {
@@ -190,8 +191,8 @@
 
       &-label {
         width: 96px;
-        color: @third-text-color;
-        font-size: @small-font-size;
+        color: @color-text-third;
+        font-size: @font-size-small;
       }
 
       &-list {
@@ -199,8 +200,8 @@
       }
 
       &-item {
-        font-size: @small-font-size;
-        color: @secondary-text-color;
+        font-size: @font-size-small;
+        color: @color-text-secondary;
         cursor: pointer;
 
         &:not(:last-child) {
@@ -218,10 +219,11 @@
       }
 
       &-detail {
+        list-style: none;
         > li {
           line-height: 40px;
-          color: @primary-text-color;
-          font-size: @small-font-size;
+          color: @color-text-primary;
+          font-size: @font-size-small;
 
           > span {
             display: inline-block;
@@ -245,16 +247,16 @@
         }
 
         &-and {
-          font-size: @font-size;
+          font-size: @font-size-middle;
         }
 
         &-delete {
-          color: @disabled-color;
-          font-size: @xxlarge-font-size;
+          color: @color-disabled;
+          font-size: @font-size-xx-large;
           cursor: pointer;
 
           &:hover {
-            color: @error-color;
+            color: @color-error;
           }
         }
       }

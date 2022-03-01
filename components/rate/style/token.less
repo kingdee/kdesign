@@ -1,0 +1,18 @@
+@import '../../style/themes/token.less';
+
+@rate-prefix: '--@{kd-prefix}-c-rate';
+
+// color
+@rate-selected-color: var(~'@{rate-prefix}-color-text-selected', #fdc200);
+@rate-not-selected-color: var(~'@{rate-prefix}-color-text-not-selected', #d9d9d9);
+
+// font
+@rate-small-font-size: var(~'@{rate-prefix}-font-size-small', @font-size-small);
+@rate-middle-font-size: var(~'@{rate-prefix}-font-size-middle', @font-size-middle);
+@rate-large-font-size: var(~'@{rate-prefix}-font-size-large', @font-size-large);
+
+// motion
+@rate-transition-duration: var(~'@{rate-prefix}-motion-duration', @duration-promptly);
+
+// spacing
+@rate-icon-margin: var(~'@{rate-prefix}-spacing-margin-right', 10px);

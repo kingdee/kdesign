@@ -92,3 +92,22 @@ interface Field {
   assignOptions: Record<string, React.ReactElement>
 }
 ```
+
+## Design Token
+
+| 分类 | 组件token | 全局token | 默认值 |
+| --- | --- | --- | --- |
+| color | --kd-c-filter-header-title-color-text | --kd-g-color-text-primary | #212121 |
+|  | --kd-c-filter-condition-label-color-text | --kd-g-color-text-third | #999 |
+|  | --kd-c-filter-handle-color-text | --kd-g-color-ongoing | #276ff5 |
+|  | --kd-c-filter-handle-color-background-spread | --kd-g-color-background-contain | #fafafa |
+|  | --kd-c-filter-handle-color-border-spread | --kd-g-color-border-strong | #d9d9d9 |
+|  | --kd-c-filter-body-color-background | --kd-g-color-background-contain | #fafafa |
+|  | --kd-c-filter-body-color-border | --kd-g-color-border-strong | #d9d9d9 |
+|  | --kd-c-filter-body-tabs-color-border | --kd-g-color-border-weak | #e5e5e5 |
+|  | --kd-c-filter-body-tabs-item-color-text | --kd-g-color-text-third | #999 |
+|  | --kd-c-filter-body-tabs-item-color-text-active | --kd-g-color-ongoing | #276ff5 |
+| font | --kd-c-filter-header-title-font-size | --kd-g-font-size-large | 16px |
+|  | --kd-c-filter-condition-label-font-size | --kd-g-font-size-middle | 14px |
+|  | --kd-c-filter-handle-font-size | --kd-g-font-size-middle | 14px |
+|  | --kd-c-filter-body-tabs-item-font-size | --kd-g-font-size-middle | 14px |

@@ -19,6 +19,7 @@
     &-top {
       display: inline-flex;
       padding: @collapse-header-padding;
+      background: @collapse-header-color-background;
     }
     &-top-border {
       border-bottom: @collapse-border-width solid @collapse-border-color;
@@ -50,11 +51,11 @@
     }
     &-animation-expand {
       transform: rotate(0deg);
-      transition: transform @transition-duration;
+      transition: transform @collapse-transition-duration;
     }
     &-animation-collapse {
       transform: rotate(90deg);
-      transition: transform @transition-duration;
+      transition: transform @collapse-transition-duration;
     }
     &-children {
       overflow: hidden;
@@ -62,7 +63,8 @@
       padding: @collapse-content-padding;
       color: @collapse-content-font-color;
       font-size: @collapse-content-font-size;
-      transition: height @transition-duration, opacity @transition-duration;
+      transition: height @collapse-transition-duration, opacity @collapse-transition-duration;
+      background: @collapse-content-color-background;
     }
     &-children-hide {
       overflow: hidden;
@@ -71,7 +73,7 @@
       padding: @collapse-content-padding;
       color: @collapse-content-font-color;
       font-size: @collapse-content-font-size;
-      transition: height @transition-duration, opacity calc(@transition-duration / 2);
+      transition: height @collapse-transition-duration, opacity calc(@collapse-transition-duration / 2);
     }
     &-children-bordered {
       padding: @collapse-content-bordered-padding;
@@ -79,7 +81,7 @@
     }
     &-disabled {
       cursor: not-allowed !important;
-      color: @disabled-color;
+      color: @collapse-disabled-color;
     }
   }
 }

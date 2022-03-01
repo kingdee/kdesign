@@ -1,9 +1,10 @@
 // Mixins
 //----------------------------------------
 @import 'reset';
+@import '../themes/token.less';
 
 /* 多行显示省略号 */
-.multipleEllipsis(@n: n) {
+.multipleEllipsis(@n) {
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
@@ -19,7 +20,7 @@
 }
 
 /** 浮层箭头样式 **/
-.popperArrow(@popperBg: popperBg, @offset: offset, @blur: blur,) {
+.popperArrow(@popperBg, @offset, @blur,) {
   &.arrow {
     &::before {
       position: absolute;
@@ -40,7 +41,7 @@
       left: 0;
       content: '';
       background: @popperBg;
-      border-radius: @radius-size;
+      border-radius: @radius-border;
     }
 
     &.bottomLeft,
@@ -49,8 +50,8 @@
       &::before {
         left: var(--arrowLeft);
         top: var(--arrowSpill);
-        box-shadow: -2px -2px @blur - 1px rgba(0, 0, 0, 0.1);
-        border-color: @white transparent transparent @white;
+        box-shadow: -2px -2px calc(@blur - 1px) rgba(0, 0, 0, 0.1);
+        border-color: @color-white transparent transparent @color-white;
       }
     }
 
@@ -60,8 +61,8 @@
       &::before {
         left: var(--arrowLeft);
         bottom: var(--arrowSpill);
-        box-shadow: 3px 3px @blur + 1px rgba(0, 0, 0, 0.15);
-        border-color: transparent @white @white transparent;
+        box-shadow: 3px 3px calc(@blur + 1px) rgba(0, 0, 0, 0.15);
+        border-color: transparent @color-white @color-white transparent;
       }
     }
 
@@ -72,7 +73,7 @@
         top: var(--arrowTop);
         right: var(--arrowSpill);
         box-shadow: 3px 0 @blur rgba(0, 0, 0, 0.12), 0 -2px @blur rgba(204, 149, 149, 0.12);
-        border-color: @white @white transparent transparent;
+        border-color: @color-white @color-white transparent transparent;
       }
     }
 
@@ -83,7 +84,7 @@
         top: var(--arrowTop);
         left: var(--arrowSpill);
         box-shadow: 0 3px @blur rgba(0, 0, 0, 0.1), -2px 0 @blur rgba(0, 0, 0, 0.1);
-        border-color: transparent transparent @white @white;
+        border-color: transparent transparent @color-white @color-white;
       }
     }
   }

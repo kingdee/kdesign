@@ -1,0 +1,32 @@
+@import "../../style/themes/token.less";
+
+@menu-prefix: '--@{kd-prefix}-c-menu';
+
+// shadow
+// color
+@menu-color-disabled: var(~'@{menu-prefix}-color-disabled', @color-disabled);
+@menu-sub-color: var(~'@{menu-prefix}-sub-color', rgba(255, 255, 255, 0.65));
+@menu-sub-color-hover: var(~'@{menu-prefix}-sub-color-hover', @color-white);
+@menu-sub-color-active: var(~'@{menu-prefix}-sub-color-active', @color-theme);
+@menu-sub-color-background: var(~'@{menu-prefix}-sub-color-background', #21242d);
+@menu-inline-color-active: var(~'@{menu-prefix}-inline-color-active', @color-white);
+@menu-color-background: var(~'@{menu-prefix}-color-background', #343848);
+
+@menu-light-color: var(~'@{menu-prefix}-light-color', @color-text-primary);
+@menu-light-color-hover: var(~'@{menu-prefix}-light-color-hover', @color-ongoing);
+@menu-light-color-active: var(~'@{menu-prefix}-light-color-active', @color-theme);
+@menu-light-color-background: var(~'@{menu-prefix}-light-color-background', @color-background-ongoing);
+
+// sizing
+@menu-item-height: var(~'@{menu-prefix}-item-sizing-height', 50px);
+// spacing
+// motion
+@menu-motion-duration: var(~'@{menu-prefix}-motion-duration', @duration-promptly);
+
+// font
+@menu-icon-font-size: var(~'@{menu-prefix}-icon-font-size', @font-size-xx-large);
+
+// radius
+// line-height
+// z-index
+@menu-z-index: var(~'@{menu-prefix}-z-index', @z-index-dialog);

@@ -97,15 +97,6 @@ describe('Button', () => {
     const IconButton = mount(<Button icon={<Icon type="add"></Icon>}>Button Text</Button>)
     expect(IconButton.find(`.kd-btn`)).toContainReact(<Icon type="add"></Icon>)
 
-    const LinkButton = mount(
-      <Button type="link" target="_blank" href="https://react.kingdee.design/">
-        Button Text
-      </Button>,
-    )
-    expect(LinkButton.find(`.kd-btn`)).toHaveDisplayName('a')
-    expect(LinkButton.find(`.kd-btn`)).toHaveProp('href')
-    expect(LinkButton.find(`.kd-btn`)).toHaveProp('target')
-
     const TextButton = mount(<Button type="text"></Button>)
     expect(TextButton.find(`.kd-btn`)).toHaveDisplayName('span')
     expect(TextButton.find('.kd-btn')).toHaveClassName('kd-btn-text')
@@ -165,28 +156,18 @@ describe('Button', () => {
 
     mount(<Button ref={ref} type="text"></Button>)
     expect(ref.current instanceof HTMLSpanElement).toBe(true)
-
-    mount(<Button ref={ref} type="link"></Button>)
-    expect(ref.current instanceof HTMLAnchorElement).toBe(true)
   })
 
   // 10. react controlled component
 
   // 11. component inner logic test
 
-  it('text or link attributes should not use with shape or loading', () => {
+  it('text attributes should not use with shape or loading', () => {
     const wrapper = mount(
       <Button shape="circle" type="text">
         Button Text
       </Button>,
     )
     expect(wrapper.find('.kd-btn-shape-circle').length).toBe(0)
-
-    const LinkButton = mount(
-      <Button loading type="link">
-        Button Text
-      </Button>,
-    )
-    expect(LinkButton.find('.kd-btn-loading').length).toBe(0)
   })
 })

@@ -256,10 +256,21 @@ class Content extends React.Component {
           )
         })
     }
+
+    let tokenToc = null
     // 文章需要生成的右侧导航
     const indexToc = getChildren(toc)
       .map((li) => {
         const liMeta = Array.isArray(li) && Array.isArray(li[1]) && li[1][1] ? li[1][1] : {}
+        if (liMeta.href.match(/Design-Token/i)) {
+          tokenToc = (
+            <li key={liMeta.href} title={liMeta.title}>
+              <a href={liMeta.href}>{liMeta.title}</a>
+            </li>
+          )
+          return null
+        }
+
         if (!liMeta.href.match(/api/i)) {
           return (
             <li key={liMeta.href} title={liMeta.title}>
@@ -278,6 +289,7 @@ class Content extends React.Component {
             <a href="#API">API</a>
           </li>
         )}
+        {tokenToc}
       </ul>
     )
   }

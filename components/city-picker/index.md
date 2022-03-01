@@ -47,3 +47,16 @@ order: 3
 | country | 国家 | string | - | - | 1.0.0 |
 | province | 省份 | string | - | - | 1.0.0 |
 | name | 城市名 | string | - | - | 1.0.0 |
+
+## Design Token
+
+| 分类 | 组件token | 全局token | 默认值 |
+| --- | --- | --- | --- |
+| color | --kd-c-city-picker-color | --kd-g-color-theme | #5582f3 |
+|  | --kd-c-city-picker-color-background | --kd-g-color-background-contain | #fafafa |
+|  | --kd-c-city-picker-panel-item-color | --kd-g-color-text-primary | #212121 |
+|  | --kd-c-city-picker-color-background-hover | --kd-g-color-hover | #f5f5f5 |
+| sizing | --kd-c-city-picker-panel-sizing-width | - | 460px |
+|  | --kd-c-city-picker-panel-sizing-height | - | 373px |
+| font | --kd-c-city-picker-panel-font-size | - | 12px |
+| radius | --kd-c-city-picker-panel-radius-border | --kd-g-radius-border | 2px |

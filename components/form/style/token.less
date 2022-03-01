@@ -1,0 +1,27 @@
+@import "../../style/themes/token.less";
+
+@form-prefix: '--@{kd-prefix}-c-form';
+
+// shadow
+// color
+@form-field-color: var(~'@{form-prefix}-field-color', @color-text-secondary);
+@form-error-color: var(~'@{form-prefix}-error-color', @color-error);
+@form-error-color-background: var(~'@{form-prefix}-error-color-background', @color-background-error);
+
+// sizing
+// spacing
+@form-field-spacing-margin-right: var(~'@{form-prefix}-field-spacing-margin-right', 30px);
+@form-field-spacing-margin-bottom: var(~'@{form-prefix}-field-spacing-margin-bottom', 22px);
+@form-field-message-spacing-padding-horizontal: var(~'@{form-prefix}-field-message-spacing-padding-horizontal', 2px);
+@form-field-message-spacing-padding-vertical: var(~'@{form-prefix}-field-message-spacing-padding-vertical', 8px);
+
+// motion
+// font
+@form-field-label-font-size: var(~'@{form-prefix}-field-label-font-size',12px);
+@form-field-message-font-size: var(~'@{form-prefix}-field-message-font-size', 12px);
+
+// radius
+// line-height
+@form-field-label-line-height: var(~'@{form-prefix}-field-label-line-height', 18px);
+@form-field-message-line-height: var(~'@{form-prefix}-field-message-line-height', 18px);
+// z-index

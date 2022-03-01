@@ -1,0 +1,48 @@
+@import '../../style/themes/token.less';
+
+@checkbox-prefix: '--@{kd-prefix}-c-checkbox';
+
+// font-size
+@checkbox-font-size: var(~'@{checkbox-prefix}-font-size', @font-size-small); //默认字体大小
+@checkbox-default-input-icon-size: var(~'@{checkbox-prefix}-default-input-icon-font-size', 14px); // 勾选输入框勾勾图标大小
+@checkbox-square-input-icon-size: var(~'@{checkbox-prefix}-default-input-icon-font-size', 12px); // 边框类型三角内勾选输入框勾勾图标大小
+
+// colors
+@checkbox-color-theme: var(~'@{checkbox-prefix}-color-theme', @color-theme);
+@checkbox-font-color: var(~'@{checkbox-prefix}-color-text-primary', @color-text-primary);
+@checkbox-border-color: var(~'@{checkbox-prefix}-color-border', @color-border-strong);
+@checkbox-checked-border-color: var(~'@{checkbox-prefix}-color-border-active',  @color-theme);
+@checkbox-checked-font-color: var(~'@{checkbox-prefix}-color-text-hover',  @color-theme);
+@checkbox-default-input-icon-color: var(~'@{checkbox-prefix}-default-input-icon-color',  #fff); // 勾选输入框边勾勾图标颜色
+@checkbox-square-input-icon-color: var(~'@{checkbox-prefix}-square-input-icon-color',  #fff); // 边框类型三角内勾选输入框勾勾图标颜色
+@checkbox-bg-color: var(~'@{checkbox-prefix}-color-background',  @color-background);
+@checkbox-disabled-bg-color: var(~'@{checkbox-prefix}-color-background-disabled',  @color-disabled);
+
+// sizing
+@checkbox-small-size-height: var(~'@{checkbox-prefix}-sizing-height-small',  32px); // 小尺寸复选框
+@checkbox-middle-size-height: var(~'@{checkbox-prefix}-sizing-height-middle',  36px); // 中尺寸复选框
+@checkbox-large-size-height: var(~'@{checkbox-prefix}-sizing-height-large',  40px); // 大尺寸复选框
+
+// @checkbox-border-width: 1px; // 边框类型边框大小
+@checkbox-border-width: var(~'@{checkbox-prefix}-border-width',  1px); // 边框类型边框大小
+
+@checkbox-default-input-height: var(~'@{checkbox-prefix}-default-input-sizing-height',  16px); // 勾选输入框高度
+@checkbox-default-input-width: var(~'@{checkbox-prefix}-default-input-sizing-width',  16px); // 勾选输入框宽度
+
+// @checkbox-default-input-border-width: 1px; // 勾选输入框边框大小
+@checkbox-default-input-border-width: var(~'@{checkbox-prefix}-default-input-border-width',  1px); // 勾选输入框边框大小 不需要
+
+@checkbox-square-triangle-height: var(~'@{checkbox-prefix}-square-triangle-sizing-height',  18px); // 边框类型右下角三角高度
+@checkbox-square-triangle-width: var(~'@{checkbox-prefix}-square-triangle-sizing-width',  18px); // 边框类型右下角三角宽度
+
+// spacing
+@checkbox-group-margin-right: var(~'@{checkbox-prefix}-group-spacing-margin-right',  8px); // 按钮组的间距
+@checkbox-default-padding: var(~'@{checkbox-prefix}-default-spacing-padding',  0); // 默认类型复选框内边距
+@checkbox-default-input-margin-right: var(~'@{checkbox-prefix}-default-input-spacing-margin-right',  8px); // 勾选输入框与右侧内容间距
+@checkbox-square-padding: var(~'@{checkbox-prefix}-square-spacing-padding',  0 20px); // 边框类型内边距
+
+// radius
+@checkbox-default-input-border-radius: var(~'@{checkbox-prefix}-default-input-radius-border',  2px); // 勾选输入框圆角
+
+// motion
+@checkbox-transition-duration: var(~'@{checkbox-prefix}-motion-duration', @duration-promptly);

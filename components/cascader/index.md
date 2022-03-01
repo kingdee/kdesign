@@ -62,3 +62,24 @@ interface Option {
 
 > 注意，如果需要获得中国省市区数据，可以参考 [china-division](https://gist.github.com/afc163/7582f35654fd03d5be7009444345ea17)。
 
+
+
+## Design Token
+
+| 分类 | 组件token | 全局token | 默认值 |
+| --- | --- | --- | --- |
+| colors | --kd-c-cascader-color-active | --kd-g-color-theme | #5582f3 |
+|  | --kd-c-cascader-color-text | --kd-g-color-text-primary | #212121 |
+|  | --kd-c-cascader-color-background | --kd-g-color-white | #fff |
+|  | --kd-c-cascader-color-background-hover | --kd-g-color-hover | #f5f5f5 |
+|  | --kd-c-cascader-color-text-selected | --kd-g-color-theme | #5582f3 |
+|  | --kd-c-cascader-color-background-selected | --kd-g-color-background-ongoing | #f2f9ff |
+|  | --kd-c-cascader-color-text-disabled | --kd-g-color-disabled | #b2b2b2 |
+| font | --kd-c-cascader-font-size | --kd-g-font-size-small | 12px |
+|  | --kd-c-cascader-font-weight | - | 'normal' |
+| radius | --kd-c-cascader-radius-border | --kd-g-radius-border | 2px |
+| sizing | --kd-c-cascader-sizing-height | - | 192px |
+|  | --kd-c-cascader-menu-sizing-min-width | - | 116px |
+|  | --kd-c-cascader-menu-item-sizing-height | - | 32px |
+| spacing | --kd-c-cascader-menu-spacing-padding-vertical | - | 8px |
+|  | --kd-c-cascader-menu-item-spacing-padding-horizontal | - | 12px |

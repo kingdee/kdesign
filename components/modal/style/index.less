@@ -6,21 +6,11 @@
 @confirm: confirm;
 @warning: warning;
 @error: error;
-@icon-circle-radiu: 6px;
-
-@modal-title-font-size: 18px;
-@modal-title-font-color: @primary-text-color;
-@modal-body-font-size: 16px;
-@modal-body-font-color: @primary-text-color;
-@modal-footer-font-size: 14px;
-@modal-footer-font-color: @secondary-text-color;
-@modal-radius: 2px;
-@modal-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.2);
 
 @modal-bg-type-set: {
-  @confirm: @ongoing-color;
-  @warning: @warning-color;
-  @error: @error-color;
+  @confirm: @modal-color-ongoing;
+  @warning: @modal-color-warning;
+  @error: @modal-color-error;
 };
 
 @modal-footer-type-set: {
@@ -32,10 +22,10 @@
 .@{modal-prefix-cls} {
   &-container {
     position: relative;
-    z-index: @zIndex-dialog;
+    z-index: @modal-z-index-dialog;
   }
   &-mask {
-    .overlay(rgba(55, 55, 55, 0.5), 0);
+    .overlay(@modal-mask-color-background, 0);
   }
   // &-mask + &-container-box {
 
@@ -57,16 +47,16 @@
     .@{modal-prefix-cls}-header {
       display: flex;
       justify-content: space-between;
-      padding: 16px 27px 0 24px;
+      padding: @modal-header-sizing-padding-vertical @modal-header-sizing-padding-horizontal;
       align-items: center;
-      min-height: 43px;
+      height: @modal-header-sizing-height;
       .@{modal-prefix-cls}-title-container {
         display: flex;
         justify-content: center;
         align-items: center;
         .@{modal-prefix-cls}-title-icon {
           .modal-title-icon-type(@icon-circle-radiu);
-          margin-right: 8px;
+          margin-right: @modal-title-icon-sizing-margin-right;
         }
         each(@modal-bg-type-set, {
           .modal-title-icon-bgcolor-type(@key, @value)
@@ -86,14 +76,14 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        width: 10px;
-        height: 10px;
+        font-size: @modal-close-icon-size;
+        color: @modal-close-icon-color-text;
         cursor: pointer;
         &:hover {
-          color: @theme-color-hover;
+          color: @modal-theme-color-hover;
         }
         &:active {
-          color: @theme-color-click;
+          color: @modal-theme-color-active;
         }
       }
       &:active {
@@ -104,12 +94,12 @@
     .@{modal-prefix-cls}-body {
       display: block;
       flex-grow: 1;
-      padding: 20px 48px 32px;
+      padding: @modal-body-sizing-padding;
       font-size: @modal-body-font-size;
       color: @modal-body-font-color;
     }
     .@{modal-prefix-cls}-footer {
-      min-height: 64px;
+      height: @modal-footer-sizing-height;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -136,9 +126,9 @@
 
 .@{modal-prefix-cls}-showline {
   .@{modal-prefix-cls}-header {
-    border-bottom: 1px solid @modal-border-color;
+    border-bottom: @modal-border-width solid @modal-border-color;
   }
   .@{modal-prefix-cls}-footer {
-    border-top: 1px solid @modal-border-color;
+    border-top: @modal-border-width solid @modal-border-color;
   }
 }

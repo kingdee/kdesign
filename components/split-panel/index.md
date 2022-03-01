@@ -28,3 +28,13 @@ subtitle: 分割容器
 | onMoving | 分割线在拖拽中的事件回调 | (e: MouseEvent) => void |  | 1.0.0 |
 | onMoveStart | 分割线在开始拖拽时的事件回调 | (e: React.MouseEvent) => void |  | 1.0.0 |
 | onMoveEnd | 分割线在拖拽结束时的事件回调| (e: MouseEvent) => void |  | 1.0.0 |
+
+## Design Token
+
+| 分类 | 组件token | 全局token | 默认值 |
+| --- | --- | --- | --- |
+| color | --kd-c-split-panel-trigger-color-border | --kd-g-color-border-strong-2 | #d9d9d9 |
+|  | --kd-c-split-panel-arrow-color-background | --kd-g-color-input | #999 |
+|  | --kd-c-split-panel-arrow-color-background-hover | --kd-g-color-theme | #5582f3 |
+|  | --kd-c-split-panel-line-color-background | --kd-g-color-border-strong-2 | #d9d9d9 |
+| sizing | --kd-c-split-panel-line-sizing-width | - | 1px |

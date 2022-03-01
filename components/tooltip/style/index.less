@@ -1,20 +1,21 @@
 @import '../../style/themes/index';
 @import '../../style/mixins/index';
+@import './token.less';
 
 @tootip-prefix-cls: ~'@{kd-prefix}-tooltip';
 
 .@{tootip-prefix-cls} {
   .reset-component;
-  max-width: @tooltip-width;
+  max-width: @tooltip-max-width;
   padding: @tooltip-vertical-gap @tooltip-horizontal-gap;
   color: @tooltip-color;
-  border-radius: @radius-size;
+  border-radius: @tooltip-border-radius;
   font-size: @tooltip-font-size;
-  line-height: @tooltip-line-height;
+  line-height: 18px;
   background-color: @tooltip-background-color;
-  box-shadow: 0 1px @tooltip-box-shadow-blur 0 rgba(0, 0, 0, 0.3);
+  box-shadow: 0 1px 6px 0 rgba(0, 0, 0, 0.3);
   opacity: 1;
-  z-index: @zIndex-popper;
+  z-index: @z-index-popper;
   visibility: visible;
 
   &.hidden {

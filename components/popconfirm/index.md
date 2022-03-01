@@ -28,3 +28,25 @@ subtitle: 气泡确认框
 | onConfirm | 确认回调 | function(e) | - | 1.0.0 |
 
 更多属性请参考 [Tooltip](/components/tooltip/#API)。
+## Design Token
+
+| 分类 | 组件token | 全局token | 默认值 |
+| --- | --- | --- | --- |
+| color | --kd-c-popconfirm-title-color-text | --kd-g-color-text-primary | #212121 |
+|  | --kd-c-popconfirm-message-color-text | --kd-g-color-text-primary | #212121 |
+|  | --kd-c-popconfirm-icon-color-text | --kd-g-color-warning | #ff991c |
+|  | --kd-c-popconfirm-color-background | --kd-g-color-background | #fff |
+| font | --kd-c-popconfirm-title-font-size | --kd-g-font-size-middle | 14px |
+|  | --kd-c-popconfirm-message-font-size | --kd-g-font-size-small | 12px |
+| radius | --kd-c-popconfirm-radius-border | --kd-g-radius-border | 2px |
+| sizing | --kd-c-popconfirm-sizing-min-width | - | 164px |
+|  | --kd-c-popconfirm-sizing-max-width | - | 500px |
+|  | --kd-c-popconfirm-sizing-min-height | - | 98px |
+|  | --kd-c-popconfirm-sizing-max-height | - | 400px |
+|  | --kd-c-popconfirm-icon-sizing-square | - | 17px |
+| spacing | --kd-c-popconfirm-spacing-padding-vertical | - | 16px |
+|  | --kd-c-popconfirm-spacing-padding-horizontal | - | 16px |
+|  | --kd-c-popconfirm-title-icon-spacing-margin-right | - | 8px |
+|  | --kd-c-popconfirm-message-spacing-margin-top | - | 6px |
+|  | --kd-c-popconfirm-message-spacing-margin-bottom | - | 20px |
+|  | --kd-c-popconfirm-button-spacing | - | 12px |

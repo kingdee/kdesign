@@ -270,7 +270,7 @@ const Cascader = React.forwardRef<unknown, CascaderProps>((props, ref) => {
 
   const popperProps = {
     ...allProps,
-    gap: 1,
+    gap: 4,
     visible,
     onVisibleChange,
     trigger: 'click',

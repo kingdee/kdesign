@@ -1,11 +1,10 @@
 @import '../../style/themes/index';
-@import '../../style/mixins/index';
-
+@import 'token.less';
 @radio-prefix-cls: ~'@{kd-prefix}-radio';
 @radio-square-prefix-cls: ~'@{radio-prefix-cls}-square';
 @radio-button-prefix-cls: ~'@{radio-prefix-cls}-button';
 @radio-group-prefix-cls: ~'@{radio-prefix-cls}-group';
-@radio-focus-shadow: 0 0 0 3px rgba(@theme-color, 10%);
+@radio-focus-shadow: 0 0 0 3px rgba(@radio-color-theme, 10%);
 
 // 默认类型（单选项）
 .@{radio-prefix-cls} {
@@ -31,8 +30,8 @@
     content: '';
     border-radius: 50%;
     box-sizing: border-box;
-    border: @radio-border-width solid @strong-border-color;
-    background-color: @white;
+    border: @radio-border-width solid @radio-color-border;
+    background-color: @radio-color-background;
     transform: translateY(-50%);
     transition: border-color @transition-duration, box-shadow @transition-duration;
   }
@@ -41,11 +40,11 @@
     position: absolute;
     top: 50%;
     left: 2px;
-    width: @radio-circle-size - 4px;
-    height: @radio-circle-size - 4px;
+    width: calc(@radio-circle-size - 4px);
+    height: calc(@radio-circle-size - 4px);
     content: '';
     border-radius: 50%;
-    background-color: @theme-color;
+    background-color: @radio-color-theme;
     transform: translateY(-50%);
     animation: kdRadioLeaveEffect calc(@transition-duration - 0.1s) @ease both;
     transition: all @transition-duration @ease;
@@ -58,22 +57,23 @@
     opacity: 0;
   }
 
-  & > span {
-    padding: 0 6px;
+  &>span {
+    padding: 0 6px 0 @radio-padding-left;
   }
 
   // 悬停状态
   &:hover {
-    // color: @theme-color;
+
+    // color: @radio-color-theme;
     &::before {
-      border-color: @theme-color;
+      border-color: @radio-color-theme;
     }
   }
 
   // 选中状态
   &-checked {
     &::before {
-      border-color: @theme-color;
+      border-color: @radio-color-theme;
     }
 
     &:focus-within::before {
@@ -84,11 +84,11 @@
       position: absolute;
       top: 50%;
       left: 2px;
-      width: @radio-circle-size - 4px;
-      height: @radio-circle-size - 4px;
+      width: calc(@radio-circle-size - 4px);
+      height: calc(@radio-circle-size - 4px);
       content: '';
       border-radius: 50%;
-      background-color: @theme-color;
+      background-color: @radio-color-theme;
       transform: translateY(-50%);
       animation: kdRadioEffect calc(@transition-duration - 0.1s) @ease both;
       transition: all calc(@transition-duration - 0.1s) @ease;
@@ -101,16 +101,16 @@
   &-disabled,
   &-disabled:hover {
     cursor: not-allowed;
-    color: @disabled-color;
+    color: @radio-color-disabled;
 
     &::before {
-      border-color: @disabled-color;
-      background-color: @disabled-contain-bg;
+      border-color: @radio-color-disabled;
+      background-color: @radio-color-background-disabled;
       box-shadow: none;
     }
 
     &::after {
-      background-color: @disabled-color;
+      background-color: @radio-color-disabled;
       animation: none;
     }
   }
@@ -124,27 +124,31 @@
   position: relative;
   display: inline-block;
   height: @radio-square-height;
-  padding: @radio-square-padding;
+  padding-top: @radio-square-padding-vertical;
+  padding-right: @radio-square-padding-horizontal;
+  padding-bottom: @radio-square-padding-vertical;
+  padding-left: @radio-square-padding-horizontal;
   margin-right: @radio-margin-right;
-  line-height: @radio-square-height - 2;
+  // line-height: calc(@radio-square-height - @radio-border-width * 2);
+  line-height: calc(@radio-square-height - (@radio-square-padding-vertical * 2) - (@radio-border-width * 2));
   vertical-align: middle;
   color: @radio-font-color;
   font-size: @radio-font-size;
   cursor: pointer;
-  background-color: @white;
+  background-color: @radio-color-background;
   overflow: hidden;
   border-radius: @radius-size;
-  border: @radio-border-width solid @strong-border-color;
+  border: @radio-border-width solid @radio-color-border;
   transition: all @transition-duration;
 
   &::after {
     position: absolute;
-    right: -1 * (@radio-square-height - 10px) / 2;
-    bottom: -1 * (@radio-square-height - 10px) / 2;
-    width: @radio-square-height - 10px;
-    height: @radio-square-height - 10px;
+    right: calc(-1 * (@radio-square-height - 10px) / 2);
+    bottom: calc(-1 * (@radio-square-height - 10px) / 2);
+    width: calc(@radio-square-height - 10px);
+    height: calc(@radio-square-height - 10px);
     content: '';
-    background-color: @theme-color;
+    background-color: @radio-color-theme;
     transform: rotate(45deg);
     animation: kdRadioSquareLeaveEffect calc(@transition-duration - 0.1s) @ease both;
     transition: all @transition-duration @ease;
@@ -167,24 +171,26 @@
 
   // 悬停状态
   &:hover {
-    color: @theme-color;
-    border-color: @theme-color;
+    color: @radio-color-theme;
+    border-color: @radio-color-theme;
   }
 
   // 选中状态
   &-checked {
-    border-color: @theme-color;
+    border-color: @radio-color-theme;
+
     &:focus-within {
       box-shadow: @radio-focus-shadow;
     }
+
     &::after {
       position: absolute;
-      right: -1 * (@radio-square-height - 10px) / 2;
-      bottom: -1 * (@radio-square-height - 10px) / 2;
-      width: @radio-square-height - 10px;
-      height: @radio-square-height - 10px;
+      right: calc(-1 * (@radio-square-height - 10px) / 2);
+      bottom: calc(-1 * (@radio-square-height - 10px) / 2);
+      width: calc(@radio-square-height - 10px);
+      height: calc(@radio-square-height - 10px);
       content: '';
-      background-color: @theme-color;
+      background-color: @radio-color-theme;
       transform: rotate(45deg);
       animation: kdRadioSquareEffect calc(@transition-duration - 0.1s) @ease both;
       transition: all calc(@transition-duration - 0.1s) @ease;
@@ -195,14 +201,14 @@
 
   &-disabled,
   &-disabled:hover {
-    color: @disabled-color;
-    border-color: @strong-border-color;
-    background-color: @disabled-contain-bg;
+    color: @radio-color-disabled;
+    border-color: @radio-color-border-disabled;
+    background-color: @radio-color-background-disabled;
     box-shadow: none;
     cursor: not-allowed;
 
     &::after {
-      background-color: @disabled-color;
+      background-color: @radio-color-disabled;
       animation: none;
     }
   }
@@ -215,21 +221,25 @@
   // 默认状态
   position: relative;
   display: inline-block;
-  height: @radio-button-height;
-  padding: @radio-button-padding;
-  line-height: @radio-button-height;
+  height: @radio-square-height;
+  padding-top: @radio-square-padding-vertical;
+  padding-right: @radio-square-padding-horizontal;
+  padding-bottom: @radio-square-padding-vertical;
+  padding-left: @radio-square-padding-horizontal;
+  line-height: calc(@radio-square-height - (@radio-square-padding-vertical * 2) - (@radio-border-width * 2));
   vertical-align: middle;
   color: @radio-font-color;
   font-size: @radio-font-size;
   cursor: pointer;
-  background-color: @white;
-  border: @radio-border-width solid @strong-border-color;
+  background-color: @radio-color-background;
+  border: @radio-border-width solid @radio-color-border;
   border-left: none;
   transition: all @transition-duration;
 
   &:first-child {
     border-radius: @radius-size 0 0 @radius-size;
-    border-left: @radio-border-width solid @strong-border-color;
+    border-left: @radio-border-width solid @radio-color-border;
+
     &::before {
       content: none;
     }
@@ -242,12 +252,12 @@
   &::before {
     z-index: 10;
     position: absolute;
-    top: -1 * @radio-border-width;
-    left: -1 * @radio-border-width;
-    height: @radio-button-height;
+    top: calc(-1 * @radio-border-width);
+    left: calc(-1 * @radio-border-width);
+    height: @radio-square-height;
     width: @radio-border-width;
     content: '';
-    background-color: @strong-border-color;
+    background-color: @radio-color-border;
   }
 
   &-input {
@@ -263,53 +273,55 @@
 
   // 悬停状态
   &:hover {
-    color: @theme-color;
+    color: @radio-color-theme;
+    // border-color: @radio-color-theme;
   }
 
   // 选中状态
   &-checked {
     z-index: 1;
-    color: @white;
-    border-color: @theme-color;
-    background-color: @theme-color;
+    color: @radio-color-background;
+    border-color: @radio-color-theme;
+    background-color: @radio-color-theme;
 
     &:focus-within {
       box-shadow: @radio-focus-shadow;
     }
 
     &:hover {
-      color: @white;
+      color: @radio-color-background;
     }
 
     &::before {
-      background-color: @theme-color;
+      background-color: @radio-color-theme;
     }
 
     &:first-child {
-      border-left-color: @theme-color;
+      border-left-color: @radio-color-theme;
+
       &::before {
         content: none;
       }
     }
 
-    & + .@{radio-button-prefix-cls} {
+    &+.@{radio-button-prefix-cls} {
       &::before {
         content: none;
       }
     }
 
     &.@{radio-button-prefix-cls}-disabled {
-      background-color: @strong-border-color;
-      border-left-color: @strong-border-color;
+      background-color: @radio-color-border;
+      border-left-color: @radio-color-border;
       box-shadow: none;
     }
   }
 
   &-disabled,
   &-disabled:hover {
-    color: @disabled-color;
-    border-color: @strong-border-color;
-    // background-color: @disabled-contain-bg;
+    color: @radio-color-disabled;
+    border-color: @radio-color-border;
+    // background-color: @radio-color-background-disabled;
     cursor: not-allowed;
   }
 }

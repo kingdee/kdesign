@@ -10,6 +10,7 @@
   display: flex;
   flex-grow: 1;
   font-size: @tree-font-size;
+  color: @tree-color-text;
   &-root {
     min-width: 100%;
     flex-shrink: 0;
@@ -37,7 +38,7 @@
     align-items: center;
   }
   &-item-hover {
-    transition: background-color @transition-duration, color @transition-duration;
+    transition: background-color @tree-transition-duration, color @tree-transition-duration;
   }
   &-item-hover:hover {
     background-color: @tree-node-hover-bg-color;
@@ -68,6 +69,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    font-size: @tree-node-icon-size;
+    color: @tree-node-icon-color-text;
   }
   &-icon-hidden {
     height: @tree-node-icon-height;
@@ -78,11 +81,11 @@
   }
   &-animation-expand {
     transform: rotate(90deg);
-    transition: transform @transition-duration;
+    transition: transform @tree-transition-duration;
   }
   &-animation-collapse {
     transform: rotate(0deg);
-    transition: transform @transition-duration;
+    transition: transform @tree-transition-duration;
   }
   &-disabled {
     cursor: not-allowed !important;
@@ -97,25 +100,10 @@
   }
   &-selected {
     background-color: @tree-node-checked-bg-color !important;
-    color: #fff;
-
-    .@{kd-prefix}-checkbox {
-      &-default-checked {
-        background-color: #fff;
-      }
-      &-default-inner {
-        color: @theme-color;
-      }
-      &-default-indeterminate {
-        background-color: #fff;
-        &::before {
-          background-color: @theme-color;
-        }
-      }
-    }
+    color: @tree-node-checked-text-color;
 
     .@{tree-node-prefix-cls}-title {
-      color: #fff;
+      color: @tree-node-checked-text-color;
     }
   }
 

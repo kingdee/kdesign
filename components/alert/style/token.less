@@ -1,0 +1,29 @@
+@import '../../style/themes/token.less';
+
+@alert-custom-prefix: ~'--@{kd-prefix}-c-alert';
+
+// color
+@alert-success-bg-color: var(~'@{alert-custom-prefix}-color-background-success', @color-background-success); // 反馈浮层成功提示的背景色
+@alert-warning-bg-color: var(~'@{alert-custom-prefix}-color-background-warning', @color-background-warning); // 反馈浮层警告提示的背景色 
+@alert-error-bg-color: var(~'@{alert-custom-prefix}-color-background-error', @color-background-error); // 反馈浮层错误提示的背景色
+@alert-info-bg-color: var(~'@{alert-custom-prefix}-color-background-info', @color-background-ongoing); // 反馈浮层一般提示的背景色
+
+@alert-success-font-color: var(~'@{alert-custom-prefix}-color-text-success', @color-success); // 反馈浮层成功提示的文字色
+@alert-warning-font-color: var(~'@{alert-custom-prefix}-color-text-warning', @color-warning); // 反馈浮层警告提示的文字色 
+@alert-error-font-color: var(~'@{alert-custom-prefix}-color-text-error', @color-error); // 反馈浮层错误提示的文字色
+@alert-info-font-color: var(~'@{alert-custom-prefix}-color-text-info', @color-ongoing); // 反馈浮层一般提示的文字色
+
+@alert-close-icon-color: var(~'@{alert-custom-prefix}-close-icon-color-text', @color-text-secondary); 
+@alert-close-icon-color-hover: var(~'@{alert-custom-prefix}-close-icon-color-text-hover', @color-theme-hover); 
+
+// font
+@alert-message-font-size: var(~'@{alert-custom-prefix}-message-font-size', @font-size-small);
+@alert-message-icon-font-size: var(~'@{alert-custom-prefix}-message-icon-font-size', @font-size-middle);
+@alert-close-icon-font-size: var(~'@{alert-custom-prefix}-close-icon-font-size', @font-size-middle);
+
+// spacing
+@alert-padding-top: var(~'@{alert-custom-prefix}-sizing-padding-top', 8px);
+@alert-padding-bottom: var(~'@{alert-custom-prefix}-sizing-padding-bottom', 12px);
+@alert-padding-horizontal: var(~'@{alert-custom-prefix}-sizing-padding-horizontal', 12px);
+@alert-message-icon-margin-right: var(~'@{alert-custom-prefix}-message-icon-sizing-margin-right', 8px);
+@alert-close-icon-margin-left: var(~'@{alert-custom-prefix}-close-icon-sizing-margin-left', 8px);

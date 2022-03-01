@@ -1,0 +1,88 @@
+@import '../../style/themes/token.less';
+
+@button-custom-prefix: ~'--@{kd-prefix}-c-button';
+
+// color
+@btn-primary-background-color: var(~'@{button-custom-prefix}-primary-color-background', @color-theme); // 基础背景颜色
+@btn-primary-border-color: var(~'@{button-custom-prefix}-primary-color-border', @color-theme); // 基础边框颜色
+@btn-primary-font-color: var(~'@{button-custom-prefix}-primary-color-text', @color-white); // 基础文字颜色
+@btn-primary-background-color-hover: var(~'@{button-custom-prefix}-primary-color-background-hover', @color-theme-hover); // 基础hover背景颜色
+@btn-primary-border-color-hover: var(~'@{button-custom-prefix}-primary-color-border-hover', @color-theme-hover); // 基础hover边框颜色
+@btn-primary-background-color-active: var(~'@{button-custom-prefix}-primary-color-background-active', @color-theme-click); // 基础active背景颜色
+@btn-primary-border-color-active: var(~'@{button-custom-prefix}-primary-color-border-active', @color-theme); // 基础active边框颜色
+@btn-primary-background-color-disabled: var(~'@{button-custom-prefix}-primary-color-background-disabled', @color-theme-disabled); // 基础disabled背景颜色   禁用状态
+@btn-primary-border-color-disabled: var(~'@{button-custom-prefix}-primary-color-border-disabled', @color-theme-disabled); // 基础disabled边框颜色
+
+@btn-ghost-background-color: var(~'@{button-custom-prefix}-ghost-color-background', transparent); // 幽灵背景颜色
+@btn-ghost-border-color: var(~'@{button-custom-prefix}-ghost-color-border', @color-border-strong); //幽灵边框颜色
+@btn-ghost-font-color: var(~'@{button-custom-prefix}-ghost-color-text', @color-text-secondary); // 幽灵按钮文字颜色
+@btn-ghost-border-color-hover: var(~'@{button-custom-prefix}-ghost-color-border-hover', @color-theme); //幽灵hover边框颜色
+@btn-ghost-font-color-hover: var(~'@{button-custom-prefix}-ghost-color-text-hover', @color-theme); // 幽灵hover按钮文字颜色
+@btn-ghost-border-color-active: var(~'@{button-custom-prefix}-ghost-color-border-active', @color-theme-click); //幽灵active边框颜色
+@btn-ghost-background-color-disabled: var(~'@{button-custom-prefix}-ghost-color-background-disabled', @color-background-contain-disabled); // 幽灵disabled背景颜色
+@btn-ghost-font-color-active: var(~'@{button-custom-prefix}-ghost-color-text-active', @color-theme-click); // 幽灵active按钮文字颜色
+@btn-ghost-border-color-disabled: var(~'@{button-custom-prefix}-ghost-color-border-disabled', @color-disabled); //幽灵disabled边框颜色
+@btn-ghost-font-color-disabled: var(~'@{button-custom-prefix}-ghost-color-text-disabled', @color-disabled); // 幽灵disabled按钮文字颜色
+
+@btn-second-background-color:  var(~'@{button-custom-prefix}-second-color-background', @color-background-3); // 次要背景颜色
+@btn-second-border-color: var(~'@{button-custom-prefix}-second-color-border', @color-border-strong-3); // 次要边框颜色
+@btn-second-font-color: var(~'@{button-custom-prefix}-second-color-text', @color-text-secondary-3); // 次要文字颜色
+@btn-second-background-color-hover:  var(~'@{button-custom-prefix}-second-color-background-hover', @color-white); // 次要hover背景颜色
+@btn-second-border-color-hover: var(~'@{button-custom-prefix}-second-color-border-hover', @color-border-strong); // 次要hover边框颜色
+@btn-second-font-color-hover: var(~'@{button-custom-prefix}-second-color-text-hover', @color-text-secondary); // 次要hover文字颜色
+@btn-second-background-color-active:  var(~'@{button-custom-prefix}-second-color-background-active', @color-white); // 次要active背景颜色
+@btn-second-border-color-active: var(~'@{button-custom-prefix}-second-color-border-active', @color-border-strong); // 次要active边框颜色
+@btn-second-font-color-active: var(~'@{button-custom-prefix}-second-color-text-active', @color-text-secondary); // 次要active文字颜色
+@btn-second-background-color-disabled:  var(~'@{button-custom-prefix}-second-color-background-disabled', @color-background-3); // 次要disabled背景颜色
+@btn-second-border-color-disabled: var(~'@{button-custom-prefix}-second-color-border-disabled', @color-text-secondary-3); // 次要disabled边框颜色
+@btn-second-font-color-disabled: var(~'@{button-custom-prefix}-second-color-text-disabled', @color-text-secondary-3); // 次要disabled文字颜色
+
+@btn-text-g-text-color: var(~'@{button-custom-prefix}-text-color-text', @color-theme);
+@btn-text-g-text-color-hover: var(~'@{button-custom-prefix}-text-color-text-hover', @color-theme-hover);
+@btn-text-g-text-color-active: var(~'@{button-custom-prefix}-text-color-text-active', @color-theme-click);
+@btn-text-g-text-color-disabled: var(~'@{button-custom-prefix}-text-color-text-disabled', @color-disabled);
+
+@btn-disabled-background-color: var(~'@{button-custom-prefix}-color-background-disabled', @color-background-contain-disabled); // 禁用状态 背景颜色
+@btn-disabled-border-color: var(~'@{button-custom-prefix}-color-border-disabled', @color-border-strong); // 禁用状态 边框颜色
+@btn-disabled-font-color: var(~'@{button-custom-prefix}-text-color-disabled', @color-white); // 禁用状态 文字颜色
+
+@btn-danger-background-color: var(~'@{button-custom-prefix}-danger-color-background', @color-error); // 危险状态 背景颜色
+@btn-danger-border-color: var(~'@{button-custom-prefix}-danger-color-border', @color-error); // 危险状态 边框颜色
+@btn-danger-font-color: var(~'@{button-custom-prefix}-danger-color-text', @color-white); // 危险状态 文字颜色
+
+@btn-g-text-color-loading: var(~'@{button-custom-prefix}-text-color-loading', @color-theme);
+@btn-primary-g-text-color-loading: var(~'@{button-custom-prefix}-primary-color-text-loading', @color-white);
+
+@btn-background-ghost-g-text-color: var(~'@{button-custom-prefix}-background-ghost-color-text', @color-theme);
+@btn-background-ghost-g-text-color-hover: var(~'@{button-custom-prefix}-background-ghost-color-text-hover', @color-white);
+
+// duration
+@btn-transition-fn: var(~'@{button-custom-prefix}-motion-timing-function', cubic-bezier(0.075, 0.82, 0.165, 1));
+@btn-duration-fade: var(~'@{button-custom-prefix}-motion-duration-fade', @duration-slowly);
+@btn-duration-wave: var(~'@{button-custom-prefix}-motion-duration-wave', @duration-quickly);
+
+// font
+@btn-g-font-weight: var(~'@{button-custom-prefix}-font-weight', @font-weight-light);
+@btn-small-font-size: var(~'@{button-custom-prefix}-font-size-small', @font-size-small); // 小号 文字大小
+@btn-middle-font-size: var(~'@{button-custom-prefix}-font-size-middle', @font-size-small); // 中号 文字大小
+@btn-large-font-size: var(~'@{button-custom-prefix}-font-size-large', @font-size-large); // 大号 文字大小
+
+// radius
+@btn-g-radius-border: var(~'@{button-custom-prefix}-radius-border', @radius-border);//圆角
+
+// sizing
+@btn-border-width: var(~'@{button-custom-prefix}-sizing-border', 1px);
+@btn-small-height: var(~'@{button-custom-prefix}-sizing-height-small', 24px); // 小号 高度
+@btn-small-min-width: var(~'@{button-custom-prefix}-sizing-min-height-small', 60px); // 小号 最小宽度
+@btn-middle-height: var(~'@{button-custom-prefix}-sizing-height-middle', 28px); // 中号 高度     高度配置
+@btn-middle-min-width: var(~'@{button-custom-prefix}-sizing-min-height-middle', 60px); // 中号 最小宽度
+@btn-large-height: var(~'@{button-custom-prefix}-sizing-height-large', 32px); // 大号 高度
+@btn-large-min-width: var(~'@{button-custom-prefix}-sizing-min-height-large', 80px); // 大号 最小宽度
+
+// spacing
+@btn-small-padding-vertical: var(~'@{button-custom-prefix}-spacing-padding-vertical-small', 3px); // 小号 内间距 纵向
+@btn-small-padding-horizontal: var(~'@{button-custom-prefix}-spacing-padding-horizontal-small', 8px); // 小号 内间距 横向
+@btn-middle-padding-vertical: var(~'@{button-custom-prefix}-spacing-padding-vertical-middle', 5px); // 中号 内间距 纵向
+@btn-middle-padding-horizontal: var(~'@{button-custom-prefix}-spacing-padding-horizontal-middle', 8px); // 中号 内间距 纵向   宽度配置
+@btn-large-padding-vertical: var(~'@{button-custom-prefix}-spacing-padding-vertical-large', 6px); // 大号 内间距 纵向
+@btn-large-padding-horizontal: var(~'@{button-custom-prefix}-spacing-padding-horizontal-large', 8px); // 大号 内间距 横向

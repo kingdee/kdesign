@@ -34,7 +34,7 @@ describe('Card', () => {
 
   it('show avatar correctly', () => {
     const avatar = {
-      src: 'https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png',
+      src: 'https://kui.kingdee.com/assets/image/avatar_m.png',
       title: '王可可',
       description: '视觉设计',
     }

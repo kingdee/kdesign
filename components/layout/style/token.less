@@ -1,0 +1,30 @@
+@import '../../style/themes/token.less';
+
+@layout-custom-prefix: ~'--@{kd-prefix}-c-layout';
+
+// color
+@layout-body-background: var(~'@{layout-custom-prefix}-body-color-background', @color-background-2);
+
+@layout-header-background: var(~'@{layout-custom-prefix}-header-color-background', @color-background);
+@layout-header-color: var(~'@{layout-custom-prefix}-header-color-text', @color-text-primary);
+
+@layout-footer-background: var(~'@{layout-custom-prefix}-footer-color-background', @color-background-2);
+
+@layout-sider-background: var(~'@{layout-custom-prefix}-sider-color-background', #343848);
+
+@layout-trigger-background: var(~'@{layout-custom-prefix}-trigger-color-background', #343848);
+@layout-trigger-color: var(~'@{layout-custom-prefix}-trigger-color-text', @color-white);
+
+@layout-sider-background-light: var(~'@{layout-custom-prefix}-sider-color-background-light', @color-background);
+@layout-trigger-background-light: var(~'@{layout-custom-prefix}-trigger-color-background-light', @color-background);
+@layout-trigger-color-light: var(~'@{layout-custom-prefix}-trigger-color-text-light', @color-text-primary);
+
+// spacing
+@layout-header-padding: var(~'@{layout-custom-prefix}-header-spacing-padding', 0 20px 0 35px);
+@layout-footer-padding: var(~'@{layout-custom-prefix}-footer-spacing-padding', 24px 50px);
+
+// sizing
+@layout-header-height: var(~'@{layout-custom-prefix}-header-sizing-height', 52px);
+@layout-trigger-height: var(~'@{layout-custom-prefix}-trigger-sizing-height', 50px);
+@layout-zero-trigger-width: var(~'@{layout-custom-prefix}-trigger-sizing-width', 36px);
+@layout-zero-trigger-height: var(~'@{layout-custom-prefix}-trigger-sizing-height', 42px);

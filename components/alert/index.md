@@ -28,3 +28,25 @@ subtitle: 警告提示
 | onClose | 反馈浮层关闭回调 | Function | - | - | 1.0.0 |
 | showIcon | 反馈浮层是否显示信息标识图标 | boolean | `false` |  `true` `false` | 1.0.0 |
 | type | 反馈浮层的类型 | string | `warning` | `success` `warning` `error` `info` | 1.0.0 |
+## Design Token
+
+| 分类 | 组件token | 全局token | 默认值 |
+| --- | --- | --- | --- |
+| color | --kd-c-alert-color-background-success | --kd-g-color-background-success | #f2fff5 |
+|  | --kd-c-alert-color-background-warning | --kd-g-color-background-warning | #fffbf2 |
+|  | --kd-c-alert-color-background-error | --kd-g-color-background-error | #fff2f4 |
+|  | --kd-c-alert-color-background-info | --kd-g-color-background-ongoing | #f2f9ff |
+|  | --kd-c-alert-color-text-success | --kd-g-color-success | #1ba854 |
+|  | --kd-c-alert-color-text-warning | --kd-g-color-warning | #ff991c |
+|  | --kd-c-alert-color-text-error | --kd-g-color-error | #fb2323 |
+|  | --kd-c-alert-color-text-info | --kd-g-color-ongoing | #276ff5 |
+|  | --kd-c-alert-close-icon-color-text | --kd-g-color-text-secondary | #666 |
+|  | --kd-c-alert-close-icon-color-text-hover | --kd-g-color-theme-5 | rgb(135, 173, 255) |
+| font | --kd-c-alert-message-font-size | --kd-g-font-size-small | 12px |
+|  | --kd-c-alert-message-icon-font-size | --kd-g-font-size-middle | 14px |
+|  | --kd-c-alert-close-icon-font-size | --kd-g-font-size-middle | 14px |
+| spacing | --kd-c-alert-sizing-padding-top | - | 8px |
+|  | --kd-c-alert-sizing-padding-bottom | - | 12px |
+|  | --kd-c-alert-sizing-padding-horizontal | - | 12px |
+|  | --kd-c-alert-message-icon-sizing-margin-right | - | 8px |
+|  | --kd-c-alert-close-icon-sizing-margin-left | - | 8px |

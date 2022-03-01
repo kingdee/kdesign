@@ -1,6 +1,7 @@
 @import '../../style/themes/index';
 @import './mixin.less';
 @progress-prefix-cls: ~'@{kd-prefix}-progress';
+
 .@{progress-prefix-cls} {
   .progress;
   line-height: 1;
@@ -29,9 +30,10 @@
     margin-right: 0;
     padding-right: 0;
     font-size: 0;
+
     .@{progress-prefix-cls}-show-info & {
-      margin-right: -@progress-line-text-width - 8px;
-      padding-right: @progress-line-text-width + 8px;
+      margin-right: calc(-1 * @progress-line-text-font-size * 3 - 8px);
+      padding-right: calc(@progress-line-text-font-size * 3 + 8px);
     }
   }
 
@@ -69,7 +71,7 @@
   &-text {
     display: inline-block;
     box-sizing: border-box;
-    width: @progress-line-text-width;
+    width: calc(@progress-line-text-font-size*3);
     margin-left: @progress-line-text-margin-left;
     // font-size: @progress-line-text-font-size;
     // line-height: 1;
@@ -83,13 +85,14 @@
     font-size: @progress-line-special-text-font-size;
     text-align: center;
     overflow: hidden;
-    padding-right: @progress-line-text-width + 8px;
+    padding-right: calc(@progress-line-text-font-size*3 + 8px);
   }
 
   &-status-success {
     .@{progress-prefix-cls}-bg {
       background-color: @progress-success-color;
     }
+
     .@{progress-prefix-cls}-text,
     .@{progress-prefix-cls}-special-text {
       color: @progress-success-color;
@@ -97,6 +100,10 @@
 
     .@{progress-prefix-cls}-text {
       font-size: 0;
+    }
+    .@{progress-prefix-cls}-icon {
+      font-size: @progress-line-icon-font-size;
+      color: @progress-success-color;
     }
 
     .@{progress-prefix-cls}-circle-box:not(.@{progress-prefix-cls}-circle-gradient) {
@@ -110,6 +117,7 @@
     .@{progress-prefix-cls}-bg {
       background-color: @progress-failure-color;
     }
+
     .@{progress-prefix-cls}-text,
     .@{progress-prefix-cls}-special-text {
       color: @progress-failure-color;
@@ -117,6 +125,10 @@
 
     .@{progress-prefix-cls}-text {
       font-size: 0;
+    }
+    .@{progress-prefix-cls}-icon {
+      font-size: @progress-line-icon-font-size;
+      color: @progress-failure-color;
     }
 
     .@{progress-prefix-cls}-circle-box:not(.@{progress-prefix-cls}-circle-gradient) {
@@ -126,19 +138,19 @@
     }
   }
 
-  .@{progress-prefix-cls}-icon {
-    font-size: @progress-line-icon-font-size;
-  }
+
 
   &-circle-box {
     position: relative;
+
     .@{progress-prefix-cls}-circle-trail {
       stroke: @progress-remaining-color;
     }
+
     .@{progress-prefix-cls}-circle-path {
       transition: stroke-dasharray @transition-duration @progress-transition-fn, stroke-dashoffset @transition-duration @progress-transition-fn;
     }
-    
+
     .@{progress-prefix-cls}-text {
       position: absolute;
       width: auto;
@@ -148,14 +160,17 @@
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
+
       &-percent,
       &-unit {
         display: inline-block;
         vertical-align: top;
       }
+
       &-percent {
         line-height: @progress-circle-percent-line-height;
       }
+
       &-unit {
         line-height: @progress-circle-unit-line-height;
         font-size: @progress-circle-unit-font-size;
@@ -167,6 +182,7 @@
       font-size: @progress-circle-icon-font-size;
     }
   }
+
   &-circle-box:not(.@{progress-prefix-cls}-circle-gradient) {
     .@{progress-prefix-cls}-circle-path {
       stroke: @progress-default-color;

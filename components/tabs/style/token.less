@@ -1,0 +1,32 @@
+@import '../../style/themes/token.less';
+
+@tabs-custom-prefix: ~'--@{kd-prefix}-c-tabs';
+
+// color
+@tabs-border-color: var(~'@{tabs-custom-prefix}-color-border', @color-border-strong);
+@tab-line-color-active: var(~'@{tabs-custom-prefix}-line-color-active', @color-theme);
+@tabs-card-bg: var(~'@{tabs-custom-prefix}-card-color-background', @color-background-contain-disabled);
+@tab-disabled-bg: var(~'@{tabs-custom-prefix}-color-background-disabled', @color-background-2);
+@tabs-font-color: var(~'@{tabs-custom-prefix}-color-text', @color-text-secondary);
+@tabPane-font-color-active: var(~'@{tabs-custom-prefix}-color-text-active', @color-theme);
+@tabPane-font-color-hover: var(~'@{tabs-custom-prefix}-color-text-hover', @color-theme);
+@tabPane-font-color-disabled: var(~'@{tabs-custom-prefix}-color-text-disabled', @color-disabled);
+
+// font
+@tabPane-font-size: var(~'@{tabs-custom-prefix}-pane-font-size', @font-size-middle);
+
+// line-height
+@tab-pane-line-height: var(~'@{tabs-custom-prefix}-pane-line-height', 48px);
+
+// motion
+@tab-transition-fn: var(~'@{tabs-custom-prefix}-motion-timing-function', cubic-bezier(0.42, 0, 1, 1));
+@tab-g-motion-duration: var(~'@{tabs-custom-prefix}-motion-duration', @duration-promptly);
+
+// sizing
+@tabs-height: var(~'@{tabs-custom-prefix}-sizing-height', 48px);
+@tabs-border-width: var(~'@{tabs-custom-prefix}-sizing-border', 1px);
+@tab-pane-height: var(~'@{tabs-custom-prefix}-pane-sizing-height', 48px);
+
+
+// spacing
+@tab-pane-margin-right: var(~'@{tabs-custom-prefix}-pane-spacing-margin-right', 24px);

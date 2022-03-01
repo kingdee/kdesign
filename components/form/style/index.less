@@ -1,6 +1,8 @@
 @import '../../style/themes/index';
 @import '../../style/mixins/index';
 
+@import './token.less';
+
 @form-prefix-cls: ~'@{kd-prefix}-form';
 @field-prefix-cls: ~'@{form-prefix-cls}-field';
 @field-label-cls: ~'@{field-prefix-cls}-label';
@@ -24,7 +26,8 @@
 
 .@{field-prefix-cls} {
   align-items: center;
-  margin: @form-field-margin;
+  margin: 0 @form-field-spacing-margin-right @form-field-spacing-margin-bottom 0 ;
+
   &-vertical {
     align-items: flex-start;
     flex-direction: column;
@@ -42,7 +45,7 @@
 .@{field-label-cls} {
   font-size: @form-field-label-font-size;
   line-height: @form-field-label-line-height;
-  color: @secondary-text-color;
+  color: @form-field-color;
   text-align: left;
   margin-right: 30px;
   &-right {
@@ -61,7 +64,7 @@
     width: 5px;
     height: 5px;
     line-height: 1;
-    color: @error-color;
+    color: @form-error-color;
   }
 }
 
@@ -71,11 +74,11 @@
     position: absolute;
     left: 0;
     right: 0;
-    padding: @form-field-message-padding;
+    padding: @form-field-message-spacing-padding-horizontal @form-field-message-spacing-padding-vertical;
     font-size: @form-field-message-font-size;
     line-height: @form-field-message-line-height;
-    color: @error-color;
-    background-color: @error-bg-color;
+    color: @form-error-color;
+    background-color: @form-error-color-background;
     word-break: break-word;
     overflow: hidden;
     white-space: nowrap;

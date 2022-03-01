@@ -1,0 +1,26 @@
+@import '../../style//themes/token.less';
+
+@collapse-prefix: '--@{kd-prefix}-c-collapse';
+
+// sizing
+@collapse-border-width: var(~'@{collapse-prefix}-border-width', 1px);
+@collapse-icon-margin-right: var(~'@{collapse-prefix}-spacing-margin-right', 6px);
+@collapse-header-padding: var(~'@{collapse-prefix}-header-spacing-padding', 12px);
+@collapse-content-bordered-padding: var(~'@{collapse-prefix}-content-bordered-spacing-padding', 12px);
+@collapse-content-padding: var(~'@{collapse-prefix}-content-spacing-padding', 0 16px);
+
+// color
+@collapse-border-color: var(~'@{collapse-prefix}-color-border-strong-2', @color-border-strong-2);
+@collapse-header-font-color: var(~'@{collapse-prefix}-header-color-text-primary', @color-text-primary);
+@collapse-content-font-color: var(~'@{collapse-prefix}-content-color-text-primary', @color-text-primary);
+@collapse-disabled-color: var(~'@{collapse-prefix}-color-disabled', raba(178, 178, 178, 1));
+@collapse-header-color-background: var(~'@{collapse-prefix}-header-color-background', rgba(0, 0, 0, 0));
+@collapse-content-color-background: var(~'@{collapse-prefix}-content-color-background', rgba(0, 0, 0, 0));
+
+
+// font
+@collapse-header-font-size: var(~'@{collapse-prefix}-header-font-size', @font-size-middle);
+@collapse-content-font-size: var(~'@{collapse-prefix}-content-font-size', @font-size-middle);
+
+// motion
+@collapse-transition-duration: var(~'@{collapse-prefix}-motion-duration', @duration-promptly);

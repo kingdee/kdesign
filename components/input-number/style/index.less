@@ -10,20 +10,20 @@
 		height: 100%;
 		cursor: pointer;
 		&-small {
-			.base-step-size(@input-small-height);
+			.base-step-size(@input-number-small-height);
 		}
 		&-middle {
-			.base-step-size(@input-middle-height);
+			.base-step-size(@input-number-middle-height);
 		}
 		&-large {
-			.base-step-size(@input-large-height);
+			.base-step-size(@input-number-large-height);
 		}
 		.@{inputNumber-prefix-cls}-icon {
-			color: @secondary-text-color;
-			transition: color @transition-duration;
+			color: @input-number-color-text-baseStep;
+			transition: color @duration-promptly;
 		}
 		&:hover .@{inputNumber-prefix-cls}-icon {
-			color: @theme-color-hover;
+			color:@input-number-color-theme-5;
 		}
 	}
 	&-baseStep-decrease {
@@ -38,7 +38,7 @@
 		justify-content: center;
 		height: 100%;
 		border-radius: 0 1px 1px 0;
-		background-color: @inputNumber-embedStepBtn-bg-color;
+		background-color: @input-number-color-text;
 		overflow: hidden;
 		.step-style(left, right);
 		border: none;
@@ -47,15 +47,15 @@
 			display: flex;
 			align-items: center;
 			justify-content: center;
-			border-left: 1px solid @strong-border-color;
-			border-bottom: 1px solid @strong-border-color;
+			border-left: 1px solid @input-number-color-border-strong;
+			border-bottom: 1px solid @input-number-color-border-strong;
 			cursor: pointer;
 			font-size: 12px;
 			.@{inputNumber-prefix-cls}-icon {
-				transition: color @transition-duration;
+				transition: color @duration-promptly;
 			}
 			&:hover .@{inputNumber-prefix-cls}-icon {
-				color: @theme-color-hover;
+				color:@input-number-color-theme-5;
 			}
 			&:last-child {
 				border-bottom: none;

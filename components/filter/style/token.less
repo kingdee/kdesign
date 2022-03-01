@@ -1,0 +1,28 @@
+@import '../../style/themes/token.less';
+
+@filter-custom-prefix: ~'--@{kd-prefix}-c-filter';
+
+// color
+@filter-header-title-color: var(~'@{filter-custom-prefix}-header-title-color-text', @color-text-primary);
+
+@filter-condition-label-color: var(~'@{filter-custom-prefix}-condition-label-color-text', @color-text-third);
+
+@filter-handle-color: var(~'@{filter-custom-prefix}-handle-color-text', @color-ongoing);
+
+@filter-handle-spread-bg-color: var(~'@{filter-custom-prefix}-handle-color-background-spread', @color-background-contain);
+@filter-handle-spread-border-color: var(~'@{filter-custom-prefix}-handle-color-border-spread', @color-border-strong);
+
+@filter-body-bg-color: var(~'@{filter-custom-prefix}-body-color-background', @color-background-contain);
+@filter-body-border-color: var(~'@{filter-custom-prefix}-body-color-border', @color-border-strong);
+
+@filter-body-tabs-border-color: var(~'@{filter-custom-prefix}-body-tabs-color-border', @color-border-weak);
+
+@filter-body-tabs-item-color: var(~'@{filter-custom-prefix}-body-tabs-item-color-text', @color-text-third);
+
+@filter-body-tabs-item-active-color: var(~'@{filter-custom-prefix}-body-tabs-item-color-text-active', @color-ongoing);
+
+// font
+@filter-header-title-font-size: var(~'@{filter-custom-prefix}-header-title-font-size', @font-size-large);
+@filter-condition-label-font-size: var(~'@{filter-custom-prefix}-condition-label-font-size', @font-size-middle);
+@filter-handle-font-size: var(~'@{filter-custom-prefix}-handle-font-size', @font-size-middle);
+@filter-body-tabs-item-font-size: var(~'@{filter-custom-prefix}-body-tabs-item-font-size', @font-size-middle);

@@ -1,0 +1,21 @@
+
+@import '../../style/themes/token.less';
+
+@drawer-custom-prefix: ~'--@{kd-prefix}-c-drawer';
+
+// color
+@drawer-bg: var(~'@{drawer-custom-prefix}-color-background', @color-background);
+@drawer-title-font-color: var(~'@{drawer-custom-prefix}-title-color-text', @color-text-primary);
+@drawer-dividing-color: var(~'@{drawer-custom-prefix}-dividing-color-border', @color-border-disabled);
+@drawer-close-icon-color: var(~'@{drawer-custom-prefix}-close-icon-color-text', @color-text-secondary);
+
+// font
+@drawer-title-font-size: var(~'@{drawer-custom-prefix}-title-font-size', @font-size-x-large);
+@drawer-close-icon-font-size: var(~'@{drawer-custom-prefix}-close-icon-font-size', @font-size-large);
+
+// sizing
+@drawer-dividing-width: var(~'@{drawer-custom-prefix}-dividing-sizing-width', 1px);
+
+// spacing
+@drawer-header-padding: var(~'@{drawer-custom-prefix}-header-sizing-padding', 12px);
+@drawer-body-padding: var(~'@{drawer-custom-prefix}-body-sizing-padding', 16px);

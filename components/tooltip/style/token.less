@@ -1,0 +1,20 @@
+@import '../../style/themes/token.less';
+
+@tooltip-custom-prefix: ~'--@{kd-prefix}-c-tooltip';
+
+// color
+@tooltip-color: var(~'@{tooltip-custom-prefix}-color-text', @color-text-primary);
+@tooltip-background-color: var(~'@{tooltip-custom-prefix}-color-background', @color-background);
+
+// font
+@tooltip-font-size: var(~'@{tooltip-custom-prefix}-color-text', @font-size-small);
+
+// spacing
+@tooltip-vertical-gap: var(~'@{tooltip-custom-prefix}-spacing-padding-vertical', 8px);
+@tooltip-horizontal-gap: var(~'@{tooltip-custom-prefix}-spacing-padding-vertical', 12px);
+
+// sizing
+@tooltip-max-width: var(~'@{tooltip-custom-prefix}-sizing-max-width', 360px);
+
+// radius
+@tooltip-border-radius: var(~'@{tooltip-custom-prefix}-radius-border', @radius-border);

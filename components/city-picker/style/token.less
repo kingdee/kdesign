@@ -1,0 +1,25 @@
+@import "../../style/themes/token.less";
+
+@city-picker-prefix: '--@{kd-prefix}-c-city-picker';
+
+
+
+// color
+@city-picker-theme-color: var(~'@{city-picker-prefix}-color', @color-theme);
+@city-picker-panel-item-color: var(~'@{city-picker-prefix}-panel-item-color', @color-text-primary);
+@city-picker-background-color: var(~'@{city-picker-prefix}-color-background', @color-background-contain);
+@city-picker-background-hover-color: var(~'@{city-picker-prefix}-color-background-hover', @color-hover);
+
+// sizing
+@city-picker-panel-sizing-width: var(~'@{city-picker-prefix}-panel-sizing-width', 460px);
+@city-picker-panel-sizing-height: var(~'@{city-picker-prefix}-panel-sizing-height', 373px);
+// spacing
+// motion
+
+// font
+@city-picker-panel-font-size: var(~'@{city-picker-prefix}-panel-font-size', 12px);
+
+// radius
+@city-picker-panel-radius-border: var(~'@{city-picker-prefix}-panel-radius-border', @radius-border);
+// line-height
+// z-index

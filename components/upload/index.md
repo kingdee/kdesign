@@ -81,3 +81,22 @@ title: Upload
 ### 如何显示下载链接？
 
 请使用 fileList 属性设置数组项的 url 属性进行展示控制。
+
+## Design Token
+
+| 分类 | 组件token | 全局token | 默认值 |
+| --- | --- | --- | --- |
+| color | --kd-c-upload-color | --kd-g-color-text-third | #999 |
+|  | --kd-c-upload-error-color | --kd-g-color-error | #fb2323 |
+|  | --kd-c-upload-color-border-error | --kd-g-color-border-error | #ff8088 |
+|  | --kd-c-upload-color-border | --kd-g-color-border-weak | #e5e5e5 |
+|  | --kd-c-upload-division-color | --kd-g-color-border-strong | #d9d9d9 |
+|  | --kd-c-upload-color-border-active | --kd-g-color-text-link | #0e5fd8 |
+|  | --kd-c-upload-color-background | --kd-g-color-background-contain | #fafafa |
+|  | --kd-c-upload-color-background-ongoing | --kd-g-color-background-ongoing | #f2f9ff |
+|  | --kd-c-upload-color-background-hover | --kd-g-color-hover | #f5f5f5 |
+|  | --kd-c-upload-panel-button-color | - | #0E5FD8 |
+|  | --kd-c-upload-panel-color | --kd-g-color-text-primary | #212121 |
+| font | --kd-c-upload-font-size | --kd-g-font-size-middle | 14px |
+| motion | --kd-c-upload-motion-duration | --kd-g-duration | 0.3s |
+| radius | --kd-c-upload-radius-border | --kd-g-radius-border | 2px |

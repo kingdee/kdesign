@@ -2,8 +2,6 @@
 @import './mixin.less';
 @anchor-prefix-cls: ~'@{kd-prefix}-anchor';
 
-@anchor-border-width: 1px;
-
 .@{anchor-prefix-cls} {
   position: relative;
   padding-left: @anchor-link-left;
@@ -11,7 +9,7 @@
 
   &-wrapper {
     overflow: auto;
-    font-size: @small-font-size;
+    font-size: @anchor-font-size;
     width: @anchor-width;
   }
 
@@ -23,7 +21,7 @@
 
     &-wrapper {
       overflow: auto;
-      font-size: @small-font-size;
+      font-size: @anchor-font-size;
     }
 
     &-left-arrows {
@@ -31,7 +29,7 @@
       font-size: @anchor-icon-font-size;
       color: #666;
       &:hover:not(&-disabled) {
-        color: @theme-color;
+        color: @anchor-color-theme;
       }
       .disabled;
     }
@@ -41,7 +39,7 @@
       font-size: @anchor-icon-font-size;
       color: #666;
       &:hover:not(&-disabled) {
-        color: @theme-color;
+        color: @anchor-color-theme;
       }
       .disabled;
     }
@@ -58,7 +56,7 @@
       display: inline-block;
       white-space: nowrap;
       position: absolute;
-      transition: all @transition-duration @tab-transition-fn;
+      transition: all @anchor-transition-duration cubic-bezier(0.42, 0, 1, 1);
       left: 0;
       top: 0;
     }
@@ -83,7 +81,7 @@
       content: '';
       height: 0;
       width: 40px;
-      border-bottom: 1px dashed @disabled-border-color;
+      border-bottom: @anchor-ink-line-width dashed @anchor-disabled-border-color;
       margin: 4px;
     }
   }
@@ -92,7 +90,7 @@
     color: @anchor-advanced-arrows-color;
     font-size: @anchor-icon-font-size;
     &:hover {
-      color: @theme-color;
+      color: @anchor-color-theme;
     }
   }
 
@@ -129,7 +127,7 @@
     &::before {
       position: relative;
       display: block;
-      width: @anchor-border-width;
+      width: @anchor-ink-line-width;
       height: 100%;
       margin: 0 auto;
       background-color: @anchor-border-color;
@@ -141,7 +139,7 @@
       display: none;
       width: 0;
       height: 16px;
-      border-right: 1px solid @theme-color;
+      border-right: @anchor-ink-line-width solid @anchor-color-theme;
       transition: top 0.3s ease-in-out;
       &.visible {
         display: inline-block;
@@ -154,7 +152,7 @@
 
     &-title {
       text-decoration: none;
-      color: @primary-text-color;
+      color: @anchor-primary-text-color;
       margin-bottom: @anchor-link-top;
       display: block;
       overflow: hidden;
@@ -165,17 +163,17 @@
         margin-bottom: 0;
       }
       &-secondary {
-        color: @secondary-text-color;
+        color: @anchor-secondary-text-color;
         padding-left: 4px;
       }
     }
 
     &-title:hover {
-      color: @theme-color;
+      color: @anchor-color-theme;
     }
 
     &-active > &-title {
-      color: @theme-color;
+      color: @anchor-color-theme;
     }
   }
 
@@ -186,6 +184,6 @@
   &.hidden {
     opacity: 0;
     visibility: hidden;
-    transition: all calc(@transition-duration - 0.1s) @ease;
+    transition: all calc(@anchor-transition-duration - 0.1s) cubic-bezier(0.4,0,0.6,1);
   }
 }

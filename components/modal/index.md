@@ -60,3 +60,39 @@ subtitle: 提示弹窗
 - `Modal.error`
 - `Modal.warning`
 - `Modal.confirm`
+
+## Design Token
+
+| 分类 | 组件token | 全局token | 默认值 |
+| --- | --- | --- | --- |
+| color | --kd-c-modal-color-text-primary | --kd-g-color-text-primary | #212121 |
+|  | --kd-c-modal-color-text-secondary | --kd-g-color-text-secondary | #666 |
+|  | --kd-c-modal-color-ongoing | --kd-g-color-ongoing | #276ff5 |
+|  | --kd-c-modal-color-warning | --kd-g-color-warning | #ff991c |
+|  | --kd-c-modal-color-error | --kd-g-color-error | #fb2323 |
+|  | --kd-c-modal-footer-text-color | --kd-g-color-text-secondary | #666 |
+|  | --kd-c-modal-body-text-color | --kd-g-color-text-primary | #212121 |
+|  | --kd-c-modal-title-text-color | --kd-g-color-text-primary | #212121 |
+|  | --kd-c-modal-color-border | --kd-g-color-border-strong-2 | #d9d9d9 |
+|  | --kd-c-modal-color-theme-hover | --kd-g-color-theme-5 | rgb(135, 173, 255) |
+|  | --kd-c-modal-color-theme-active | --kd-g-color-theme-7 | rgb(55, 92, 202) |
+|  | --kd-c-modal-mask-color-background | - | rgba(55, 55, 55, 0.5) |
+|  | --kd-c-modal-close-icon-color-text | - | #666666 |
+|  | --kd-c-modal-title-icon-color-backround-ongoing | --kd-g-color-ongoing | #276ff5 |
+|  | --kd-c-modal-title-icon-color-backround-warning | --kd-g-color-warning | #ff991c |
+|  | --kd-c-modal-title-icon-color-backround-warning | --kd-g-color-warning | #ff991c |
+| font | --kd-c-modal-footer-font-size | - | 14px |
+|  | --kd-c-modal-body-font-size | - | 16px |
+|  | --kd-c-modal-title-font-size | - | 18px |
+| radius | --kd-c-modal-boeder-radius | - | 2px |
+| shadow | --kd-c-modal-box-shadow | - | 0 4px 10px 0 rgba(0, 0, 0, 0.2) |
+| sizing | --kd-c-modal-icon-circle-sizing | - | 6px |
+|  | --kd-c-modal-sizing-border | - | 1px |
+|  | --kd-c-modal-close-icon-font-size | - | 16px |
+|  | --kd-c-modal-header-sizing-padding-horizontal | - | 20px |
+|  | --kd-c-modal-header-sizing-padding-vertical | - | 0px |
+|  | --kd-c-modal-header-sizing-height | - | 50px |
+|  | --kd-c-modal-body-sizing-padding | - | 20px |
+|  | --kd-c-modal-footer-sizing-height | - | 50px |
+|  | --kd-c-modal-title-icon-sizing-margin-right | - | 8px |
+| z-index | --kd-c-modal-z-index | --kd-g-z-index-dialog | 1050 |

@@ -26,3 +26,22 @@ order: 1
 | status | 设置 Badge 为状态点 | `success` \| `processing` \| `default` \| `error` \| `warning` | - | 1.0.0 |
 | text | 在设置了 `status` 的前提下有效，设置状态点的文本 | ReactNode | - | 1.0.0 |
 | title | 设置鼠标放在状态点上时显示的文字 | string | - | 1.0.0 |
+
+## Design Token
+
+| 分类 | 组件token | 全局token | 默认值 |
+| --- | --- | --- | --- |
+| color | --kd-c-badge-color-background | - | #fb2323 |
+|  | --kd-c-badge-color | --kd-g-color-background | #fff |
+|  | --kd-c-badge-color | --kd-g-color-text-primary | #212121 |
+|  | --kd-c-badge-color-success | --kd-g-color-success | #1ba854 |
+|  | --kd-c-badge-color-ongoing | --kd-g-color-ongoing | #276ff5 |
+|  | --kd-c-badge-color-warning | --kd-g-color-warning | #ff991c |
+|  | --kd-c-badge-color-error | --kd-g-color-error | #fb2323 |
+| font | --kd-c-badge-font-weight | - | 400 |
+|  | --kd-c-badge-font-size-base | --kd-g-font-size-middle | 14px |
+|  | --kd-c-badge-font-size-small | --kd-g-font-size-small | 12px |
+| sizing | --kd-c-badge-sizing-base | - | 16px |
+|  | --kd-c-badge-sizing-small | - | 14px |
+|  | --kd-c-badge-sizing-dot | - | 8px |
+|  | --kd-c-badge-sizing-status | - | 8px |

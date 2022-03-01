@@ -1,0 +1,28 @@
+@import "../../style/themes/token.less";
+
+@upload-prefix: '--@{kd-prefix}-c-upload';
+
+// color
+@upload-text-color: var(~'@{upload-prefix}-color', @color-text-third);
+
+@upload-text-error-color: var(~'@{upload-prefix}-error-color', @color-error);
+@upload-border-error-color: var(~'@{upload-prefix}-color-border-error', @color-border-error);
+@upload-border-color: var(~'@{upload-prefix}-color-border', @color-border-weak);
+@upload-border-color-strong: var(~'@{upload-prefix}-division-color', @color-border-strong);
+@upload-border-color-active: var(~'@{upload-prefix}-color-border-active', @color-text-link);
+@upload-background-color: var(~'@{upload-prefix}-color-background', @color-background-contain);
+@upload-background-color-ongoing: var(~'@{upload-prefix}-color-background-ongoing', @color-background-ongoing);
+@upload-background-color-hover: var(~'@{upload-prefix}-color-background-hover', @color-hover);
+
+@upload-panel-button-color: var(~'@{upload-prefix}-panel-button-color', #0E5FD8);
+@upload-panel-color: var(~'@{upload-prefix}-panel-color', @color-text-primary);
+
+// motion
+@upload-transition-duration: var(~'@{upload-prefix}-motion-duration', @duration-promptly);
+
+// font
+@upload-font-size: var(~'@{upload-prefix}-font-size', @font-size-middle);
+
+// radius
+@upload-border-radius: var(~'@{upload-prefix}-radius-border', @radius-border);
+

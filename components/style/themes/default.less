@@ -45,22 +45,27 @@
 @primary-text-color2: rgba(255, 255, 255, 1); // 一级文本
 @secondary-text-color: #666; // 二级文本
 @secondary-text-color2: rgba(255, 255, 255, 0.65); // 二级文本
+@secondary-text-color3: rgba(102, 102, 102, 0.65); // 二级文本
 @third-text-color: #999; // 三级文本
 @third-text-color2: rgba(255, 255, 255, 0.4); // 三级文本
 @placeholder-text-color: #ccc; // 占位符文本
 @placeholder-text-color2: rgba(255, 255, 255, 0.3); // 占位符文本
 @bg: #fff; // 底色白背景
 @bg2: #f2f2f2; // 底色灰背景
+@bg3: rgba(255, 255, 255, 0.65); // 次级底色背景
 @contain-bg: #fafafa; // 容器内的灰背景
 @radius-size: 2px; // 圆角值
 @input-color: #999; // 线型录入的默认态
 @strong-border-color: #d9d9d9; // 强线条 --带操作
 @strong-border-color-1: #d9d9d9; // 强线条 --分割内容/容器包裹线
+@strong-border-color-2: rgba(217, 217, 217, 0.65); // 次级边框
 @weak-border-color: #e5e5e5; // 弱线条 -- 需要多层级时
+@logo-color-1: #2386ee;
+@logo-color-2: #00ccfe;
+@logo-color-3: #05c8c8;
+@logo-color-4: #a06eff;
 // @shadow-on-hover: ; // 悬停时阴影
 @white: #fff;
-@dirList: left, top, bottom, right;
-@line-height-base: 1.5715;
 /* -----------  color  ——————---- end */
 
 /* -----------  motion  ——————---- start */
@@ -70,7 +75,9 @@
 /* -----------  motion  ——————---- end */
 
 /* -----------  transition  ——————---- start */
+@transition-duration-slowly: 0.4s;
 @transition-duration: 0.3s;
+@transition-duration-quickly: 0.2s;
 /* -----------  transition  ——————---- end */
 
 /* -----------  font  ——————---- start */
@@ -97,6 +104,7 @@
 /* -----------  zIndex  ——————---- end */
 
 /* -----------  Button  ——————---- start */
+
 @btn-border-width: 1px;
 @btn-border-style: solid;
 @btn-primary-font-color: @white; // 基础文字颜色
@@ -107,9 +115,9 @@
 @btn-ghost-background-color: transparent; // 幽灵背景颜色
 @btn-ghost-border-color: @strong-border-color; //幽灵边框颜色
 
-@btn-second-font-color: rgba(@secondary-text-color, 65%); // 次要文字颜色
-@btn-second-background-color: rgba(@white, 65%); // 次要背景颜色
-@btn-second-border-color: rgba(@strong-border-color, 65%); // 次要边框颜色
+@btn-second-font-color: @secondary-text-color3; // 次要文字颜色
+@btn-second-background-color: @bg3; // 次要背景颜色
+@btn-second-border-color: @strong-border-color-2; // 次要边框颜色
 
 @btn-link-font-color: @link-color; // 链接文字颜色
 
@@ -293,6 +301,7 @@
 @popconfirm-max-width: 500px;
 @popconfirm-min-height: 98px;
 @popconfirm-max-height: 400px;
+
 @popconfirm-title-line-height: 21px;
 @popconfirm-color: @primary-text-color;
 @popconfirm-font-size: @small-font-size;
@@ -305,6 +314,7 @@
 /* -----------  Popconfirm  ——————---- end */
 
 /* -----------  Progress  ——————---- start */
+
 @progress-remaining-color: #e5e5e5;
 @progress-default-color: @ongoing-color;
 @progress-success-color: @success-color;
@@ -313,7 +323,6 @@
 @progress-line-stroke-width: 8px;
 @progress-line-icon-font-size: 16px;
 @progress-line-text-font-size: 16px;
-@progress-line-text-width: 3 * @progress-line-text-font-size;
 @progress-line-special-text-font-size: 16px;
 @progress-line-text-margin-left: 8px;
 @progress-circle-stroke-width: 4px;
@@ -340,6 +349,7 @@
 /* -----------  Pagination  ——————---- end */
 
 /* -----------  Timeline  ——————---- start */
+
 @timeline-gap: 8px;
 @timeline-width: 1px;
 @timeline-dot-size: 9px;
@@ -434,7 +444,7 @@
 @transfer-padding-base: 14px;
 @transfer-font-size-base: 12px;
 @transfer-list-item-height: 32px;
-@transfer-list-content-height: @transfer-list-item-height * 10;
+// @transfer-list-content-height: @transfer-list-item-height * 10;
 @transfer-list-item-hover-bg: @hover-color;
 @transfer-list-item-checked: @theme-color;
 @transfer-list-item-disabled: @disabled-color;
@@ -452,7 +462,7 @@
 @date-font-color: @secondary-text-color;
 @date-focus-color: @primary-text-color;
 @date-background-color: @white;
-@date-border-width: 1px;
+@date-sizing-border: 1px;
 @date-width: 230px;
 @date-padding-suffix: 10px;
 @date-panel-header-height: 36px;
@@ -568,10 +578,10 @@
 /* -----------  Spin  ——————---- start */
 @spin-page-size: 15px;
 @spin-container-size: 5px;
-@spin-dot-color-first: #2386ee;
-@spin-dot-color-second: #00ccfe;
-@spin-dot-color-third: #05c8c8;
-@spin-dot-color-fourth: #a06eff;
+@spin-dot-color-first: @logo-color-1;
+@spin-dot-color-second: @logo-color-2;
+@spin-dot-color-third: @logo-color-3;
+@spin-dot-color-fourth: @logo-color-4;
 /* -----------  Spin  ——————---- end */
 
 /* -----------  Spin  ——————---- start */

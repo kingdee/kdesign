@@ -1,5 +1,6 @@
 @import '../../style/themes/index';
 @import '../../style/mixins/index';
+@import './token.less';
 
 @upload-prefix-cls: ~'@{kd-prefix}-upload';
 @upload-prefix-text-list-cls: ~'@{upload-prefix-cls}-text-list';
@@ -23,16 +24,16 @@
     text-align: center;
     align-items: center;
     justify-content: center;
-    color: @third-text-color;
-    border: 1px dashed @weak-border-color;
-    background-color: @contain-bg;
-    transition: border-color @transition-duration, background-color @transition-duration;
+    color: @upload-text-color;
+    border: 1px dashed @upload-border-color;
+    background-color: @upload-background-color;
+    transition: border-color @upload-transition-duration, background-color @upload-transition-duration;
 
     &.hover,
     &:hover,
     &:active {
-      border-color: @link-color;
-      background-color: @ongoing-bg-color;
+      border-color: @upload-border-color-active;
+      background-color: @upload-background-color-ongoing;
     }
   }
 
@@ -59,8 +60,8 @@
   .@{upload-prefix-text-list-cls} {
     .reset-component;
     margin-top: 16px;
-    font-size: @font-size;
-    border-top: 1px dashed @strong-border-color;
+    font-size: @upload-font-size;
+    border-top: 1px dashed @upload-border-color-strong;
 
     &-item {
       position: relative;
@@ -69,23 +70,23 @@
       white-space: nowrap;
       display: flex;
       align-items: center;
-      transition: background-color @transition-duration;
+      transition: background-color @upload-transition-duration;
 
       &:hover {
-        background-color: @hover-color;
+        background-color: @upload-background-color-hover;
 
         .@{upload-prefix-text-list-cls}-item-action {
           opacity: 1;
           visibility: visible;
           transform: translateX(0);
-          background-color: @hover-color;
+          background-color: @upload-background-color-hover;
         }
       }
 
       &.error {
         i,
         .@{upload-prefix-text-list-cls}-item-name {
-          color: @error-color;
+          color: @upload-text-error-color;
         }
       }
 
@@ -93,11 +94,11 @@
         display: inline-block;
         margin: 0 5px;
         .ellipsis;
-        color: @primary-text-color;
+        color: @upload-panel-color;
       }
 
       &-size {
-        color: @third-text-color;
+        color: @upload-text-color;
       }
 
       &-action {
@@ -109,11 +110,12 @@
         opacity: 0;
         visibility: hidden;
         transform: translateX(5px);
-        transition: transform @transition-duration;
+        transition: transform @upload-transition-duration;
 
         a {
           display: inline-block;
           vertical-align: middle;
+          color: @upload-panel-button-color;
 
           &:not(:first-child) {
             margin-left: 20px;
@@ -134,9 +136,9 @@
       margin: 0 28px 28px 0;
       vertical-align: middle;
       overflow: hidden;
-      border-radius: @radius-size;
-      border: 1px solid @weak-border-color;
-      background-color: @contain-bg;
+      border-radius: @upload-border-radius;
+      border: 1px solid @upload-border-color;
+      background-color: @upload-background-color;
 
       .@{upload-prefix-cls}-select {
         display: flex;
@@ -145,16 +147,16 @@
         right: -1px;
         bottom: -1px;
         left: -1px;
-        color: @third-text-color;
+        color: @upload-text-color;
         align-items: center;
         justify-content: center;
-        border: 1px dashed @weak-border-color;
-        transition: all @transition-duration;
+        border: 1px dashed @upload-border-color;
+        transition: all @upload-transition-duration;
 
         &:hover,
         &:active {
-          border-color: @link-color;
-          background-color: @ongoing-bg-color;
+          border-color: @upload-border-color-active;
+          background-color: @upload-background-color-ongoing;
         }
 
         .@{upload-prefix-cls}-handle {
@@ -182,7 +184,7 @@
       }
 
       &.error {
-        border-color: @error-border-color;
+        border-color: @upload-border-error-color;
       }
 
       &-loading {
@@ -208,7 +210,7 @@
 
         &-text {
           margin-bottom: 5px;
-          color: @error-color;
+          color: @upload-text-error-color;
         }
 
         a {

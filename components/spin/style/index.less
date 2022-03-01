@@ -15,6 +15,7 @@
       width: 50px;
       height: 50px;
       padding: 5px;
+      // background: @logo-color-1;
       box-sizing: border-box;
       display: flex;
       flex-wrap: wrap;
@@ -104,7 +105,7 @@
     .@{spin-prefix-cls}-dot-spin {
       width: 13px;
       height: 13px;
-      border: 1px solid #e1e1e1;
+      border: 1px solid @spin-component-dot-color-border;
       border-radius: 50%;
       position: relative;
       box-sizing: border-box;
@@ -115,7 +116,7 @@
         box-sizing: border-box;
         border: 1px solid transparent;
         // border-top-color: #5582f3;
-        border-right-color: #5582f3;
+        border-right-color: @spin-component-dot-item-color-border;
         border-radius: 50%;
         position: absolute;
         top: -1px;

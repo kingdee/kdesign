@@ -40,3 +40,24 @@ subtitle: 穿梭框
 | onChange | 选项在两栏之间转移时的回调函数 | (targetKeys, direction, moveKeys): void | - | 1.0.0 |
 | onSearch | 搜索框内容时改变时的回调函数 | (direction: `left` \| `right`, value: string): void | - | 1.0.0 |
 | onSelectChange | 选中项发生改变时的回调函数 | (sourceSelectedKeys, targetSelectedKeys): void | - | 1.0.0 |
+
+## Design Token
+
+| 分类 | 组件token | 全局token | 默认值 |
+| --- | --- | --- | --- |
+| color | --kd-c-transfer-color-background-disabled | --kd-g-color-background-contain-disabled | #f5f5f5 |
+|  | --kd-c-transfer-color-border | --kd-g-color-border-strong | #d9d9d9 |
+|  | --kd-c-transfer-list-item-color-background-hover | --kd-g-color-hover | #f5f5f5 |
+|  | --kd-c-transfer-header-color-background | - | #f5f5f5 |
+| font | --kd-c-transfer-font-size | - | 12px |
+| sizing | --kd-c-transfer-list-item-sizing-height | - | 32px |
+|  | --kd-c-transfer-list-item-content-sizing-height | - | 320px |
+|  | --kd-c-transfer-header-sizing-height | - | 36px |
+|  | --kd-c-transfer-search-sizing-height | - | 32px |
+|  | --kd-c-transfer-pagination-sizing-height | - | 36px |
+| spacing | --kd-c-transfer-spacing-horizontal | - | 14px |
+| text | --kd-c-transfer-list-item-color-text-checked | --kd-g-color-theme | #5582f3 |
+|  | --kd-c-transfer-list-item-color-text-disabled | --kd-g-color-disabled | #b2b2b2 |
+|  | --kd-c-transfer-search-icon-color-text-prefix | --kd-g-color-theme | #5582f3 |
+|  | --kd-c-transfer-search-icon-color-text-suffix | - | #bbb |
+|  | --kd-c-transfer-search-icon-color-text-suffix-hover | - | #999 |

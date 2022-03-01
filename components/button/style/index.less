@@ -6,71 +6,78 @@
 
 	// 按钮wave动效
 	transition: color @transition-duration, background-color @transition-duration, border-color @transition-duration;
-	&:not(&-link):not(&-text)::after{
+	&:not(&-text)::after{
 		position: absolute;
 		top: 0;
 		right: 0;
 		bottom: 0;
 		left: 0;
 		border-radius: inherit;
-		box-shadow: 0 0 0 0 @theme-color;
+		box-shadow: 0 0 0 0 @color-theme;
 		opacity: 0.2;
 		content: '';
 		pointer-events: none;
 		clear: both;
 	}
-	&:not(&-link):not(&-text)[click-animating-wave='true']::after {
-		animation: fadeEffect calc(@transition-duration + 0.1s) @ease-out forwards,
-        waveEffect calc(@transition-duration - 0.1s) @ease-out forwards;
+	&:not(&-text)[click-animating-wave='true']::after {
+		animation: fadeEffect @btn-duration-fade @ease-out forwards,
+        waveEffect @btn-duration-wave @ease-out forwards;
 	}
 
 	// 次要按钮
 	&-second {
 		.btn-type(@btn-second-border-color, @btn-second-background-color, @btn-second-font-color);
-		&:hover,&:active {
+		&:hover {
 			&:not(.@{btn-prefix-cls}-loading) {
-				background-color: @white;
-				border-color: @strong-border-color;
-				color: @secondary-text-color
+				background-color: @btn-second-background-color-hover;
+				border-color: @btn-second-border-color-hover;
+				color: @btn-second-font-color-hover;
+			}
+		}
+		&:active {
+			&:not(.@{btn-prefix-cls}-loading) {
+				background-color: @btn-second-background-color-active;
+				border-color: @btn-second-border-color-active;
+				color: @btn-second-font-color-active;
 			}
 		}
 		&:disabled {
-			border-color: @btn-second-border-color !important;
-			background-color: @btn-second-background-color !important;
-			color: @btn-second-font-color !important;
+			border-color: @btn-second-border-color-disabled !important;
+			background-color: @btn-second-background-color-disabled !important;
+			color: @btn-second-font-color-disabled !important;
 		}
 	}
 	// 主要按钮
 	&-primary {
 		.btn-type(@btn-primary-border-color, @btn-primary-background-color, @btn-primary-font-color);
 		&:hover:not(.@{btn-prefix-cls}-loading) {
-			background-color: @theme-color-hover;
-			border-color: @theme-color-hover;
+			background-color: @btn-primary-background-color-hover;
+			border-color: @btn-primary-border-color-hover;
 		}
 		&:active:not(.@{btn-prefix-cls}-loading) {
-			border-color: @theme-color-click;
-			background-color: @theme-color-click;
+			border-color: @btn-primary-border-color-active;
+			background-color: @btn-primary-background-color-active;
 		}
 		&:disabled {
-			background-color: @theme-color-disabled !important;
-			border-color: @theme-color-disabled !important;
+			background-color: @btn-primary-background-color-disabled !important;
+			border-color: @btn-primary-border-color-disabled !important;
 		}
 	}
 	// 幽灵按钮
 	&-ghost {
 		.btn-type(@btn-ghost-border-color, @btn-ghost-background-color, @btn-ghost-font-color);
 		&:hover:not(.@{btn-prefix-cls}-loading) {
-			border-color: @theme-color;
-			color: @theme-color;
+			border-color: @btn-ghost-border-color-hover;
+			color: @btn-ghost-font-color-hover;
 		}
 		&:active:not(.@{btn-prefix-cls}-loading) {
-			border-color: @theme-color-click;
-			color: @theme-color-click;
+			border-color: @btn-ghost-border-color-hover;
+			color: @btn-ghost-font-color-active;
 		}
 		&:disabled {
-			background-color: @disabled-contain-bg !important;
-			border-color: @disabled-color !important;
-			color: @disabled-color !important;
+			background-color: @btn-ghost-background-color-disabled !important;
+			border-color: @btn-ghost-border-color-disabled !important;
+			color: @btn-ghost-border-color-active !important;
 		}
 	}
 	&-iconWrapper-left {
@@ -86,10 +93,10 @@
 		float: right;
 	}
 	&-loadingIcon {
-		color: @theme-color;
+		color: @btn-g-text-color-loading;
 	}
 	&-primary-loadingIcon {
-		color: @white;
+		color: @btn-primary-g-text-color-loading;
 	}
 	// 小号尺寸按钮
 	&-size-small {
@@ -140,40 +147,25 @@
 	&-text {
 		height: auto;
 		width: auto;
-		color: @secondary-text-color;
+		color: @btn-text-g-text-color;
 		padding: 0;
 		min-width: auto;
 		&:hover {
-			color: @theme-color;
+			color: @btn-text-g-text-color-hover;
 		}
 		&:active {
-			color: @theme-color-click;
+			color: @btn-text-g-text-color-active;
 		}
 		&[disabled] {
-			color: @disabled-color !important;
+			color: @btn-text-g-text-color-disabled !important;
 		}
 	}
-	// 链接类型按钮
-	&-link {
-		height: auto;
-		width: auto;
-		text-decoration: none;
-		color: @link-color;
-		padding: 0;
-		min-width: auto;
-		&:hover {
-			color: @link-color-hover;
-		}
-		&:active {
-			color: @link-color-active;
-		}
-	}
-	
+
 	// 按钮不带边框
 	&-no-border {
 		border: none;
 	}
-	
+
 	// 不可用按钮部分样式
 	&:disabled, &[disabled] {
 		cursor: not-allowed;
@@ -184,9 +176,9 @@
 			background-color: transparent;
 		}
 		&.@{btn-prefix-cls}-primary {
-			color: @theme-color;
+			color: @btn-background-ghost-g-text-color;
 			&:hover {
-				color: @white;
+				color: @btn-background-ghost-g-text-color-hover;
 			}
 		}
 	}

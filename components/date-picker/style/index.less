@@ -1,7 +1,7 @@
 @import '../../style/themes/index';
 @import '../../style/mixins/index';
 @import './mixin.less';
-// @import './variables.less';
+
 
 @datePicker-prefix-cls: ~'@{kd-prefix}-date-picker';
 // @rangePicker-prefix-cls: ~'@{kd-prefix}-rangePicker';
@@ -23,11 +23,11 @@
     }
 
     .@{datePicker-prefix-cls}-clear {
-      right: @date-small-font-size + @date-clear-offset
+      right: calc(@date-small-font-size + 1px);
     }
 
     &.@{datePicker-prefix-cls}-range .@{datePicker-prefix-cls}-clear {
-      right: @date-small-font-size + @date-range-clear-offset
+      right: calc(@date-small-font-size + 9px);
     }
   }
 
@@ -39,11 +39,11 @@
     }
 
     .@{datePicker-prefix-cls}-clear {
-      right: @date-large-font-size + @date-clear-offset
+      right:calc(@date-large-font-size + 1px);
     }
 
     &.@{datePicker-prefix-cls}-range .@{datePicker-prefix-cls}-clear {
-      right: @date-large-font-size + @date-range-clear-offset
+      right: calc(@date-large-font-size + 9px);
     }
   }
 
@@ -55,11 +55,11 @@
     }
 
     .@{datePicker-prefix-cls}-clear {
-      right: @date-middle-font-size + @date-clear-offset
+      right: calc(@date-middle-font-size + 1px);
     }
 
     &.@{datePicker-prefix-cls}-range .@{datePicker-prefix-cls}-clear {
-      right: @date-middle-font-size + @date-range-clear-offset
+      right: calc(@date-middle-font-size + 9px);
     }
   }
 
@@ -93,7 +93,7 @@
 
     &-placeholder {
       > input {
-        color: @date-placeholder-color;
+        color: @date-input-color-placeholder;
       }
     }
   }
@@ -130,8 +130,8 @@
 
   &-suffix {
     align-self: center;
-    margin-left: @date-padding-suffix;
-    color: @disabled-color;
+    margin-left: @date-suffix-spacing-margin-left;
+    color: @date-icon-color;
     line-height: 1;
     pointer-events: none;
 
@@ -149,9 +149,9 @@
   &-clear {
     position: absolute;
     top: 50%;
-    color: @disabled-color;
+    color: @date-icon-color;
     line-height: 1;
-    background: @bg;
+    background: @date-clear-background-color;
     transform: translateY(-48%);
     cursor: pointer;
     opacity: 0;
@@ -161,24 +161,24 @@
     }
 
     &:hover {
-      color: @theme-color-hover;
+      color: @date-clear-background-color-hover;
     }
   }
 
   &-focused {
     .@{datePicker-prefix-cls}-suffix {
-      color: @theme-color;
+      color: @date-clear-background-color-focused;
     }
   }
 }
 
 .@{datePicker-prefix-cls-panel} {
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
-  border-radius: @radius-size;
+  border-radius: @date-panel-border-radius;
   background-color: #fff;
   text-align: center;
   z-index: 999;
-  font-size: @font-size;
+  font-size: @date-panel-font-size;
 
   &-range {
     display: flex;
@@ -192,7 +192,7 @@
 
   .@{datePicker-prefix-cls}-warpper {
     font-size: 12px;
-    background: @bg;
+    background: @date-wrapper-color-background;
 
     .@{datePicker-prefix-cls}-month,
     .@{datePicker-prefix-cls}-year,
@@ -225,7 +225,7 @@
     .@{datePicker-prefix-cls}-quarter-text {
       line-height: 24px;
       display: inline-block;
-      border-radius: @radius-size;
+      border-radius: @date-panel-border-radius;
     }
 
     .@{datePicker-prefix-cls}-year {
@@ -256,7 +256,7 @@
           }
 
           .@{datePicker-prefix-cls}-year-text-today {
-            .today-after(@theme-color);
+            .today-after(@date-color-background-checked);
           }
 
           &-disabled {
@@ -269,7 +269,7 @@
           }
 
           .@{datePicker-prefix-cls}-year-text-selected {
-            background: @theme-color;
+            background: @date-color-background-checked;
             color: #fff;
           }
         }
@@ -312,7 +312,7 @@
           }
 
           .@{datePicker-prefix-cls}-month-text-today {
-            .today-after(@theme-color);
+            .today-after(@date-color-background-checked);
           }
 
           &-disabled {
@@ -325,7 +325,7 @@
           }
 
           .@{datePicker-prefix-cls}-month-text-selected {
-            background: @theme-color;
+            background: @date-color-background-checked;
             color: #fff;
           }
         }
@@ -372,7 +372,7 @@
           }
 
           .@{datePicker-prefix-cls}-quarter-text-today {
-            .today-after(@theme-color);
+            .today-after(@date-color-background-checked);
           }
 
           &-disabled {
@@ -385,7 +385,7 @@
           }
 
           .@{datePicker-prefix-cls}-quarter-text-selected {
-            background: @theme-color;
+            background: @date-color-background-checked;
             color: #fff;
           }
         }
@@ -483,7 +483,7 @@
 
         &.@{datePicker-prefix-cls}-calendar-week-selected {
           .@{datePicker-prefix-cls}-calendar-week-text::before {
-            background: @theme-color;
+            background: @date-color-background-checked;
           }
 
           &:hover {
@@ -539,11 +539,11 @@
         text-align: center;
         line-height: 32px;
         display: inline-block;
-        border-radius: @radius-size;
+        border-radius: @date-panel-border-radius;
         color: #b2b2b2;
 
         &-today {
-          .today-after(@theme-color);
+          .today-after(@date-color-background-checked);
         }
       }
 
@@ -563,7 +563,7 @@
         }
 
         .@{datePicker-prefix-cls}-calendar-text-selected {
-          background: @theme-color;
+          background: @date-color-background-checked;
           color: #fff;
         }
       }
@@ -732,7 +732,7 @@
     font-size: 12px;
     box-sizing: border-box;
     text-align: right;
-    background: @bg;
+    background: @date-footer-color-background;
 
     &::after {
       content: '';
@@ -748,9 +748,9 @@
     .@{datePicker-prefix-cls}-ok-btn {
       display: inline-block;
       padding: 5px 12px;
-      background: @theme-color;
+      background: @date-color-background-checked;
       color: #fff;
-      border-radius: @radius-size;
+      border-radius: @date-panel-border-radius;
       line-height: initial;
       vertical-align: middle;
       cursor: pointer;
@@ -796,15 +796,15 @@
 
 .@{datePicker-prefix-cls}-container {
   display: flex;
-  background: @bg2;
+  background: @date-container-color-background;
 
   &-date{
     display: flex;
   }
 
   .@{datePicker-prefix-cls}-ranges {
-    width: @date-ranges-width;
-    color: @primary-text-color;
+    width: 160px;
+    color: @date-container-color;
     padding: 0 12px;
     text-align: left;
     overflow: auto;
@@ -813,8 +813,8 @@
     &-item {
       height: @date-panel-header-height;
       line-height: @date-panel-header-height;
-      font-size: @small-font-size;
-      border-bottom: .5px solid @weak-border-color;
+      font-size: @date-container-font-size;
+      border-bottom: .5px solid @date-container-color-border;
     }
   }
 }

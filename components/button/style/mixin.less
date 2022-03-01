@@ -1,3 +1,5 @@
+@import './token.less';
+
 // 按钮默认样式Mixins
 .btn() {
 	padding: 0;
@@ -5,10 +7,10 @@
 	display: inline-block;
 	vertical-align: middle;
 	box-sizing: border-box;
-	font-weight: @font-weight;
-	border: @btn-border-width @btn-border-style transparent;
+	font-weight: @btn-g-font-weight;
+	border: @btn-border-width solid transparent;
 	user-select: none;
-	border-radius: @radius-size;
+	border-radius: @btn-g-radius-border;
 	text-align: center;
 	background-color: transparent;
 	cursor: pointer;
@@ -28,7 +30,7 @@
 .btn-size(@height, @font-size, @padding-vertical, @padding-horizontal, @min-width) {
 	height: @height;
 	min-width: @min-width;
-	line-height: @height - (@padding-vertical * 2) - (@btn-border-width * 2);
+	line-height: calc(@height - (@padding-vertical * 2) - (@btn-border-width * 2));
 	font-size: @font-size;
 	padding: @padding-vertical @padding-horizontal;
 }

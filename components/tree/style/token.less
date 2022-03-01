@@ -1,0 +1,27 @@
+@import '../../style/themes/token.less';
+
+@tree-prefix: '--@{kd-prefix}-c-tree';
+
+// color
+@tree-color-text: var(~'@{tree-prefix}-color-text', @color-text-primary);
+@tree-node-disabled-color: var(~'@{tree-prefix}-node-color-disabled', @color-disabled);
+@tree-node-disabled-border-color: var(~'@{tree-prefix}-node-color-border-disabled', @color-border-disabled);
+@tree-color-theme: var(~'@{tree-prefix}-color-theme', @color-theme);
+@tree-node-checked-bg-color: var(~'@{tree-prefix}-node-color-backgroung-checked', #E3EBFF);
+@tree-node-checked-text-color: var(~'@{tree-prefix}-node-color-text-checked', @color-theme-6);
+@tree-node-hover-bg-color: var(~'@{tree-prefix}-node-color-backgroung-hover', @color-hover);
+@tree-node-icon-color-text: var(~'@{tree-prefix}-node-icon-color-text', #666666);
+
+// sizing
+@tree-node-height: var(~'@{tree-prefix}-node-sizing-height', 32px);
+@tree-expand-icon-height: var(~'@{tree-prefix}-expand-icon-sizing-height', 22px);
+@tree-expand-icon-width: var(~'@{tree-prefix}-expand-icon-sizing-width', 22px);
+@tree-node-icon-height: var(~'@{tree-prefix}-node-icon-sizing-height', 20px);
+@tree-node-icon-width: var(~'@{tree-prefix}-node-icon-sizing-width', 20px);
+
+// font
+@tree-font-size: var(~'@{tree-prefix}-font-size', @font-size-small);
+@tree-node-icon-size: var(~'@{tree-prefix}-node-icon-font-size', 16px);
+
+// motion
+@tree-transition-duration: var(~'@{tree-prefix}-motion-duration', @duration-promptly);

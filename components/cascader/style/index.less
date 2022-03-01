@@ -1,5 +1,6 @@
 @import '../../style/themes/index';
 @import '../../style/mixins/index';
+@import './token.less';
 
 @cascader-picker-prefix-cls: ~'@{kd-prefix}-cascader-picker';
 @cascader-menus-prefix-cls: ~'@{kd-prefix}-cascader-menus';
@@ -12,29 +13,29 @@
   cursor: pointer;
 
   &:focus > &-input {
-    border-color: @theme-color;
+    border-color: @cascader-active-color;
 
     .@{kd-prefix}-input-suffix,
     i[class*="kdicon"] {
-      color: @theme-color;
+      color: @cascader-active-color;
     }
   }
 
   &:hover > &-input {
     .@{kd-prefix}-input-suffix,
     i[class*="kdicon"] {
-      color: @theme-color;
+      color: @cascader-active-color;
     }
   }
 
   &.disabled {
     .@{cascader-picker-prefix-cls}-input {
       cursor: not-allowed;
-      border-color: @strong-border-color;
+      border-color: @color-border-strong;
 
       .@{kd-prefix}-input-suffix,
       i[class*="kdicon"] {
-        color: @disabled-color;
+        color: @cascader-disabled-color;
       }
     }
   }
@@ -62,10 +63,10 @@
     }
 
     &.expand {
-      border-color: @theme-color;
+      border-color: @cascader-active-color;
 
       i[class*="kdicon"] {
-        color: @theme-color;
+        color: @cascader-active-color;
         transform: rotate(180deg);
       }
     }
@@ -98,7 +99,7 @@
     opacity: 0;
     cursor: pointer;
     visibility: hidden;
-    color: @theme-color;
+    color: @cascader-active-color;
     transition: all 0.1s;
     transform-origin: 50% 50%;
     transform: scale(0.9) translateY(-50%);
@@ -108,13 +109,14 @@
 .@{cascader-menus-prefix-cls} {
   .reset-component;
   color: @cascader-color;
-  border-radius: @radius-size;
+  border-radius: @cascader-radius-size;
   font-size: @cascader-font-size;
-  background-color: @cascader-background-color;
-  box-shadow: 0 1px @cascader-box-shadow-blur 0 rgba(0, 0, 0, 0.3);
+  font-weight: @cascader-font-weight;
+  background-color: @cascader-bg-color;
+  box-shadow: 0 1px 6px 0 rgba(0, 0, 0, 0.3);
   opacity: 1;
   visibility: visible;
-  z-index: @zIndex-popper;
+  z-index: @z-index-popper;
 
   &.hidden {
     opacity: 0;
@@ -123,37 +125,36 @@
 
   .@{cascader-menu-prefix-cls} {
     display: inline-table;
-    height: @cascader-menu-height;
+    height: @cascader-height;
     min-width: @cascader-menu-min-width;
     margin: 0;
-    padding: 0;
+    padding: @cascader-menu-padding-vertical 0;
     overflow-y: auto;
 
     &:not(:first-child) {
-      border-left: 1px solid @strong-border-color;
+      border-left: 1px solid @color-border-strong;
     }
 
     &-item {
       display: flex;
       justify-content: space-between;
-      padding: 0 12px;
-      height: 32px;
-      line-height: 32px;
+      padding: 0 @cascader-menu-item-padding-horizontal;
+      line-height: @cascader-menu-item-height;
       cursor: pointer;
 
       &:not(.disabled, .selected):hover {
-        background-color: @hover-color;
-        transition: all calc(@transition-duration - 0.1s) @ease;
+        background-color: @cascader-hover-bg-color;
+        transition: all calc(@duration-promptly - 0.1s) @motion-ease;
       }
 
       &.disabled {
-        color: @disabled-color;
+        color: @cascader-disabled-color;
         cursor: not-allowed;
       }
 
       &.selected {
-        color: @theme-color;
-        background-color: @ongoing-bg-color;
+        color: @cascader-selected-color;
+        background-color: @cascader-selected-bg-color;
       }
 
       &-label {

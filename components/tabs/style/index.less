@@ -24,7 +24,7 @@
     white-space: nowrap;
     top: 0;
     left: 0;
-    transition: all @transition-duration @tab-transition-fn;
+    transition: all @tab-g-motion-duration @tab-transition-fn;
   }
   &-bottom {
     flex-direction: column-reverse;
@@ -215,7 +215,7 @@
   .tabPane;
   &-text {
     display: inline-block;
-    transition: color @transition-duration;
+    transition: color @tab-g-motion-duration;
     &-active, &:hover {
       color: @tabPane-font-color-active;
     }
@@ -362,7 +362,7 @@
   bottom: 0;
   height: 2px;
   background-color: @tab-line-color-active;
-  transition: all @transition-duration @tab-transition-fn;
+  transition: all @tab-g-motion-duration @tab-transition-fn;
 }
 
 .@{arrowBtn-prefix-cls} {

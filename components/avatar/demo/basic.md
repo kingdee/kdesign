@@ -7,7 +7,7 @@ order: 0
 import { Avatar } from '@kdcloudjs/kdesign'
 
 function Demo() {
-  return <Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
+  return <Avatar src="https://kui.kingdee.com/assets/image/avatar_m.png" />
 }
 
 ReactDOM.render(<Demo />, mountNode)

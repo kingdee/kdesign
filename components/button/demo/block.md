@@ -23,9 +23,6 @@ function Demo() {
       <Button type="ghost" style={demoButtonStyle} block>
         幽灵按钮
       </Button>
-      <Button type="link" style={demoButtonStyle} block>
-        link
-      </Button>
       <Button type="text" style={demoButtonStyle} block>
         text
       </Button>

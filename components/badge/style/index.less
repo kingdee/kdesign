@@ -5,40 +5,38 @@
   position: relative;
   display: inline-block;
   line-height: 1;
-  font-size: @font-size;
+  font-size: @badge-font-size-base;
 
   &-count {
     z-index: auto;
-    min-width: @badge-height;
-    height: @badge-height;
-    color: @badge-text-color;
+    min-width: @badge-size-base;
+    height: @badge-size-base;
+    color: @badge-color-text;
     font-weight: @badge-font-weight;
-    font-size: @badge-font-size;
-    line-height: @badge-height;
+    font-size: @font-size-small;
+    line-height: @badge-size-base;
     white-space: nowrap;
     text-align: center;
-    background: @badge-color;
-    border-radius: (@badge-height / 2);
-    // box-shadow: 0 0 0 1px @bg;
+    background: @badge-color-background;
+    border-radius: calc(@badge-size-base / 2);
   }
 
   &-count-sm {
-    min-width: @badge-height-sm;
-    height: @badge-height-sm;
+    min-width: @badge-size-small;
+    height: @badge-size-small;
     padding: 0;
-    font-size: @badge-font-size-sm;
-    line-height: @badge-height-sm;
-    border-radius: (@badge-height-sm / 2);
+    font-size: @badge-font-size-small;
+    line-height: @badge-size-small;
+    border-radius: calc(@badge-size-small / 2);
   }
 
   &-dot {
     z-index: auto;
-    width: @badge-dot-size;
-    min-width: @badge-dot-size;
-    height: @badge-dot-size;
-    background: @badge-color;
+    width: @badge-size-dot;
+    min-width: @badge-size-dot;
+    height: @badge-size-dot;
+    background: @badge-color-background;
     border-radius: 100%;
-    // box-shadow: 0 0 0 1px @shadow-color-inverse;
   }
 
   &-dot,
@@ -52,7 +50,7 @@
   }
 
   &-multiple-words {
-    padding: 0 6px;
+    padding: 0 4px;
   }
 
   &-status {
@@ -60,44 +58,44 @@
     vertical-align: baseline;
     &-text {
       margin-left: 8px;
-      color: @primary-text-color;
-      font-size: @font-size;
+      color: @badge-color-text-primary;
+      font-size: @badge-font-size-base;
     }
     &-dot {
       position: relative;
       top: -1px;
       display: inline-block;
-      width: @badge-status-size;
-      height: @badge-status-size;
+      width: @badge-size-status;
+      height: @badge-size-status;
       vertical-align: middle;
       border-radius: 50%;
     }
     &-success {
-      background-color: @success-color;
+      background-color: @badge-color-success;
     }
     &-processing {
       position: relative;
-      background-color: @ongoing-color;
+      background-color: @badge-color-ongoing;
       &::after {
         position: absolute;
         top: -1px;
         left: -1px;
         width: 100%;
         height: 100%;
-        border: 1px solid @ongoing-color;
+        border: 1px solid @badge-color-ongoing;
         border-radius: 50%;
         animation: antStatusProcessing 1.2s infinite ease-in-out;
         content: '';
       }
     }
     &-error {
-      background-color: @warning-color;
+      background-color: @badge-color-warning;
     }
     &-default {
-      background-color: @success-color;
+      background-color: @badge-color-success;
     }
     &-warning {
-      background-color: @error-color;
+      background-color: @badge-color-error;
     }
   }
 

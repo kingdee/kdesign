@@ -9,14 +9,14 @@
     position: absolute;
     width: 100%;
     height: 4px;
-    background-color: #f5f5f5;
+    background-color: @slider-trail-color-background;
     border-radius: 2px;
   }
   
   &-track {
     position: absolute;
     height: 4px;
-    background-color: #91d5ff;
+    background-color: @slider-track-color-background;
   }
   
   &-step {
@@ -29,7 +29,7 @@
   }
 
   &-dot.@{slider-prefix-cls}-dot-actived {
-    border-color: #8cc8ff;
+    border-color: @slider-dot-color-border-actived;
   }
 
   &-handle {
@@ -45,7 +45,7 @@
   &-mark-text {
     position: absolute;
     display: inline-block;
-    color: rgba(0, 0, 0, .45);
+    color: @slider-mark-text-color;
     word-break: keep-all;
     cursor: pointer;
     user-select: none;
@@ -53,7 +53,7 @@
   }
 
   &-mark-text.@{slider-prefix-cls}-mark-text-actived {
-    color: rgba(0, 0, 0, .85);
+    color: @slider-mark-text-color-actived;
   }
 
   &:hover > &-rail{
@@ -61,11 +61,11 @@
   }
 
   &:not(&-disabled):hover > &-handle{
-    border-color: #69c0ff;
+    border-color: @slider-handle-color-border-hover;
   }
 
   &:not(&-disabled):hover &-track{
-    background-color: #69c0ff;
+    background-color: @slider-track-color-background-hover;
   }
 
   &-reverse {
@@ -151,16 +151,16 @@
     cursor: not-allowed;
 
     .@{slider-prefix-cls}-track {
-      background-color: rgba(0, 0, 0, .25);
+      background-color: @slider-track-color-background-disabled;
     }
 
     .@{slider-prefix-cls}-dot {
-      border-color: rgba(0, 0, 0, .25);
+      border-color: @slider-dot-color-border-disabled;
       cursor: not-allowed;
     }
 
     .@{slider-prefix-cls}-handle {
-      border-color: rgba(0, 0, 0, .25);
+      border-color: @slider-handle-color-border-disabled;
       cursor: not-allowed;
     }
   }

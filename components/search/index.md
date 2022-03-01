@@ -72,3 +72,53 @@ subtitle: 搜索
 | className | Option 器类名                     | string           | -      | 1.0.0 |
 | tag       | 选中该 Option 后，Select 的 title | string           | -      | 1.0.0 |
 | value     | 默认根据此属性值进行筛选          | string \| number | -      | 1.0.0 |
+
+## Design Token
+
+| 分类 | 组件token | 全局token | 默认值 |
+| --- | --- | --- | --- |
+| color | --kd-c-search-icon-color | - | #B2B2B2 |
+|  | --kd-c-search-color-theme | --kd-g-color-theme | #5582f3 |
+|  | --kd-c-search-color-hover | - | #5582F3 |
+|  | --kd-c-search-input-color-text | --kd-g-color-disabled | #b2b2b2 |
+|  | --kd-c-search-color-border | --kd-g-color-border-strong-2 | #d9d9d9 |
+|  | --kd-c-search-dropdown-desc-color-text | - | #999999 |
+|  | --kd-c-search-npl-color-border | - | #D8D8D8 |
+|  | --kd-c-search-selection-placeholder-color-text | - | #B2B2B2 |
+|  | --kd-c-search-panel-color-hover | - | #597cfc |
+|  | --kd-c-search-panel-color-border | - | #E6E8ED |
+|  | --kd-c-search-color-end | --kd-g-color-end | #666 |
+|  | --kd-c-search-color-text-primary | --kd-g-color-text-primary | #212121 |
+|  | --kd-c-search-color-text-secondary | --kd-g-color-text-secondary | #666 |
+|  | --kd-c-search-color-text-third | --kd-g-color-text-third | #999 |
+|  | --kd-c-search-dot-color-first | --kd-g-color-logo-1 | #2386ee |
+|  | --kd-c-search-dot-color-second | --kd-g-color-logo-2 | #00ccfe |
+|  | --kd-c-search-dot-color-third | --kd-g-color-logo-3 | #05c8c8 |
+|  | --kd-c-search-dot-color-fourth | --kd-g-color-logo-4 | #a06eff |
+|  | --kd-c-search-placeholder-color-text | - | #B2B2B2 |
+|  | --kd-c-search-selected-tags-del-color-background-hover | - | #999999 |
+|  | --kd-c-search-dropdown-tags-color-background-selected | - | #F2F6FF |
+|  | --kd-c-search-dropdown-color-background-hover | --kd-g-color-hover | #f5f5f5 |
+|  | --kd-c-search-panel-color-background-hover | - | #eef3fe |
+|  | --kd-c-search-color-background | --kd-g-color-background | #fff |
+|  | --kd-c-search-color-background-contain-disabled | --kd-g-color-background-contain-disabled | #f5f5f5 |
+| font | --kd-c-search-dropdown-font-size | - | 12px |
+|  | --kd-c-search-font-size-middle | --kd-g-font-size-middle | 14px |
+|  | --kd-c-search-font-size-small | --kd-g-font-size-small | 12px |
+|  | --kd-c-search-placeholder-font-size | - | 12px |
+|  | --kd-c-search-dropdown-desc-font-size | - | 12px |
+|  | --kd-c-search-input-font-size | - | 12px |
+| motion | --kd-c-search-motion-duration | --kd-g-duration | 0.3s |
+| radius | --kd-c-search-radius-border | --kd-g-radius-border | 2px |
+| sizing | --kd-c-search-icon-font-size | - | 16px |
+|  | --kd-c-search-sizing-width-small | - | 200px |
+|  | --kd-c-search-sizing-width-middle | - | 260px |
+|  | --kd-c-search-sizing-width-large | - | 320px |
+|  | --kd-c-search-sizing-width-default | - | 200px |
+|  | --kd-c-search-sizing-height-default | - | 24px |
+|  | --kd-c-search-sizing-width-max | - | 400px |
+|  | --kd-c-search-panel-sizing-width | - | 800px |
+|  | --kd-c-search-panel-sizing-height | - | 60px |
+|  | --kd-c-search-dropdown-option-sizing-height | - | 32px |
+|  | --kd-c-search-sizing-border-width | - | 1px |
+| spacing | --kd-c-search-dropdown-option-spacing-padding-horizontal | - | 12px |

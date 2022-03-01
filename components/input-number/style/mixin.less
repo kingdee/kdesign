@@ -1,8 +1,10 @@
+@import './token.less';
+
 .base-step-size(@width) {
 	width: @width;
 }
 .step-style(@borderDirection, @marginDirection) {
-	border-@{borderDirection}: 1px solid @strong-border-color;
+	border-@{borderDirection}: 1px solid @input-number-color-border-strong;
 	&.@{inputNumber-prefix-cls}-baseStep-small, &.@{inputNumber-prefix-cls}-embedStep-small {
 		margin-@{marginDirection}: -@input-small-padding-horizontal;
 	}

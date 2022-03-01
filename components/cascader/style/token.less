@@ -1,0 +1,28 @@
+@import '../../style/themes/token.less';
+
+@cascader-prefix: '--@{kd-prefix}-c-cascader';
+
+// sizing
+@cascader-height: var(~'@{cascader-prefix}-sizing-height', 192px);
+@cascader-menu-min-width: var(~'@{cascader-prefix}-menu-sizing-min-width', 116px);
+@cascader-menu-item-height: var(~'@{cascader-prefix}-menu-item-sizing-height', 32px);
+
+// spacing
+@cascader-menu-padding-vertical: var(~'@{cascader-prefix}-menu-spacing-padding-vertical', 8px);
+@cascader-menu-item-padding-horizontal: var(~'@{cascader-prefix}-menu-item-spacing-padding-horizontal', 12px);
+
+// colors
+@cascader-active-color: var(~'@{cascader-prefix}-color-active', @color-theme);
+@cascader-color: var(~'@{cascader-prefix}-color-text', @color-text-primary);
+@cascader-bg-color: var(~'@{cascader-prefix}-color-background', @color-white);
+@cascader-hover-bg-color: var(~'@{cascader-prefix}-color-background-hover', @color-hover);
+@cascader-selected-color: var(~'@{cascader-prefix}-color-text-selected', @color-theme);
+@cascader-selected-bg-color: var(~'@{cascader-prefix}-color-background-selected', @color-background-ongoing);
+@cascader-disabled-color: var(~'@{cascader-prefix}-color-text-disabled', @color-disabled);
+
+// font
+@cascader-font-size: var(~'@{cascader-prefix}-font-size', @font-size-small);
+@cascader-font-weight: var(~'@{cascader-prefix}-font-weight', 'normal');
+
+// radius
+@cascader-radius-size: var(~'@{cascader-prefix}-radius-border', @radius-border);

@@ -36,7 +36,7 @@ function Demo() {
         <Button type="primary">Primary</Button>
         <Button>Default</Button>
         <Button type="ghost">Ghost</Button>
-        <Button type="link">Link</Button>
+        <Button type="text">Link</Button>
       </Space>
       <br />
       <Slider className="slider-container" value={mapSize[size] || size} onChange={size => setSize(size)}/>
