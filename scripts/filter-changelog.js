@@ -10,8 +10,12 @@ const versionData = data.match(
 const req = readdirSync('./components')
 const componentMap = req.filter((v) => !/locale|overview|style|_utils|index\.tsx/g.test(v))
 const filterData = versionData.map((version) => {
-  const versionInfo = /#{1,2}\s\[?(\d{1,2}\.\d{1,2}\.\d{1,2}[^\]]*)\]?\s*\((.*)\)\s*\(?(20[\d-]*)\)?/g.exec(version)
-  const versionHeaderStr = `## [${versionInfo[1]}](${versionInfo[2]})\n\`${versionInfo[3]}\`\n`
+  const versionInfo = /#{1,2}\s\[?(\d{1,2}\.\d{1,2}\.\d{1,2}[^\]()\s]*)\]?\s*(?:\((.*)\))?\s*\(?(20[\d-]*)\)?/g.exec(
+    version,
+  )
+  const versionHeaderStr = versionInfo[2]
+    ? `## [${versionInfo[1]}](${versionInfo[2]})\n\`${versionInfo[3]}\`\n`
+    : `## [${versionInfo[1]}](https://github.com/kdcloudone/kdesign)\n\`${versionInfo[3]}\`\n`
   const componentContent = {}
   const notComponentContent = []
   const versionContent = version.match(/(\*\s+.*)\n/g)

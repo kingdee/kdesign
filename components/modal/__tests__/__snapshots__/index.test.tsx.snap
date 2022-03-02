@@ -840,31 +840,24 @@ exports[`Modal should getContainer use right 4`] = `
             }
             disabled={false}
             enableUserSelectHack={true}
-            grid={null}
             handle=".kd-modal-header"
-            offsetParent={null}
             onDrag={[Function]}
             onMouseDown={[Function]}
             onStart={[Function]}
             onStop={[Function]}
-            position={null}
             scale={1}
-            transform={null}
           >
             <DraggableCore
               allowAnyClick={false}
               cancel=".kd-modal-title-container, .kd-modal-close-icon"
               disabled={false}
               enableUserSelectHack={true}
-              grid={null}
               handle=".kd-modal-header"
-              offsetParent={null}
               onDrag={[Function]}
               onMouseDown={[Function]}
               onStart={[Function]}
               onStop={[Function]}
               scale={1}
-              transform={null}
             >
               <div
                 className="kd-modal-container-box kd-modal-has-container-box kd-modal-showline react-draggable"
