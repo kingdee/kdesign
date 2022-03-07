@@ -55,8 +55,8 @@ reactDom.render((
   <script src="https://cdn.staticfile.org/react-dom/16.14.0/umd/react-dom.development.js"></script>
   <script src="https://cdn.staticfile.org/babel-standalone/6.26.0/babel.min.js"></script>
 
-  <script src="https://unpkg.com/@kdcloudjs/kdesign@latest/dist/kdesign.min.js"></script>//或者引入项目文件
-  <link rel="stylesheet" href="https://unpkg.com/@kdcloudjs/kdesign@latest/dist/kdesign.min.css">//或者引入项目文件
+  <script src="https://unpkg.com/@kdcloudjs/kdesign@latest/dist/kdesign.min.js"></script><!--或者引入项目文件 -->
+  <link rel="stylesheet" href="https://unpkg.com/@kdcloudjs/kdesign@latest/dist/kdesign.min.css"><!--或者引入项目文件 -->
 </head>
 <body>
 <div id="root"></div>
