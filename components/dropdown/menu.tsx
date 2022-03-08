@@ -4,7 +4,7 @@ import { getCompProps } from '../_utils'
 import classNames from 'classnames'
 
 export interface MenuProps {
-  defaultKey?: string
+  selectedKey?: string
   className?: string
   selectable?: boolean
   style?: React.CSSProperties
@@ -31,7 +31,7 @@ export const Menu = React.forwardRef<unknown, MenuProps>((props, ref) => {
     prefixCls: customPrefixcls,
     children,
     selectable,
-    defaultKey,
+    selectedKey,
     className,
     ...restProps
   } = getCompProps('DropdownMenu', userDefaultProps, props)
@@ -41,7 +41,7 @@ export const Menu = React.forwardRef<unknown, MenuProps>((props, ref) => {
 
   const cloneItem = (item: React.ReactElement, index?: number) => {
     const key = item.key || index
-    const selected = selectable && String(defaultKey) === String(key)
+    const selected = selectable && String(selectedKey) === String(key)
     return React.cloneElement(item, { key, selected, defaultKey: key })
   }
 
