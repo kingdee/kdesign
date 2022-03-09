@@ -82,7 +82,7 @@
     text-align: right;
     background-color: #fafafa;
 
-    > a {
+    >a {
       margin-left: 16px;
       font-size: @card-content-font-size;
       color: @card-actions-color;
@@ -94,6 +94,28 @@
       &:active {
         color: @card-actions-color-active;
       }
+    }
+  }
+}
+
+
+.@{card-prefix-cls}-edits {
+  font-size: 32px;
+  position: absolute;
+  top: 6px;
+  right: 12px;
+
+  >a {
+    margin-left: 16px;
+    font-size: @card-content-font-size;
+    color: @card-actions-color;
+
+    &:hover {
+      color: @card-actions-color-hover;
+    }
+
+    &:active {
+      color: @card-actions-color-active;
     }
   }
 }
