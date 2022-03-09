@@ -41,7 +41,8 @@ reactDom.render((
 **浏览器引入**
 
 在浏览器中使用 `script` 和 `link` 标签直接引入文件，并使用全局变量 `kdesign`。
-目前尚未将文件上传至 `cdn` 需要手动将 `dist` 目录下的 `kdesign.min.js` 和 `kdesign.min.css` 文件拷贝至项目。
+目前尚未将文件上传至 `cdn` 需要手动将 `dist` 目录下的 `kdesign.min.js` 和 `kdesign.min.css` 文件拷贝至项目，
+你也可以通过 [UNPKG](https://unpkg.com/@kdcloudjs/kdesign) 进行下载。
 
 使用：
 ```html
@@ -54,8 +55,8 @@ reactDom.render((
   <script src="https://cdn.staticfile.org/react-dom/16.14.0/umd/react-dom.development.js"></script>
   <script src="https://cdn.staticfile.org/babel-standalone/6.26.0/babel.min.js"></script>
 
-  <script src="https://unpkg.com/@kdcloudjs/kdesign@latest/dist/kdesign.min.js 目录地址"></script>
-  <link rel="stylesheet" href="https://unpkg.com/@kdcloudjs/kdesign@latest/dist/kdesign.min.css 目录地址">
+  <script src="https://unpkg.com/@kdcloudjs/kdesign@latest/dist/kdesign.min.js"></script><!--或者引入项目文件 -->
+  <link rel="stylesheet" href="https://unpkg.com/@kdcloudjs/kdesign@latest/dist/kdesign.min.css"><!--或者引入项目文件 -->
 </head>
 <body>
 <div id="root"></div>
