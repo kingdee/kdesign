@@ -47,7 +47,7 @@ const Footer = (props: any) => {
       </div>
       <div className="footer-bottom">
         <div>
-          ©2021金蝶软件（中国）有限公司
+          ©1993 - 2022金蝶软件（中国）有限公司
           <a href="https://beian.miit.gov.cn/" target="_blank" rel="noreferrer">
             粤ICP备05041751号
           </a>
