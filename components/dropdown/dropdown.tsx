@@ -17,6 +17,7 @@ type MenuItem = {
 
 export interface DropDownProps extends PopperProps {
   defaultKey?: string
+  selectedKey?: string
   selectable?: boolean
   children?: React.ReactNode
   onItemClick?: (key: string) => void
@@ -55,7 +56,13 @@ const Dropdown = React.forwardRef<unknown, DropDownProps>((props, ref) => {
 
   const isMenu = menu.type === Menu
 
-  const [defaultKey, setKeyValue] = React.useState(menu.props?.defaultKey || props.defaultKey || '')
+  const [selectedKey, setSelectedKey] = React.useState(
+    props.selectedKey || menu.props?.defaultKey || props.defaultKey || '',
+  )
+
+  React.useEffect(() => {
+    setSelectedKey(props.selectedKey)
+  }, [props.selectedKey])
 
   const menuSelectable = menu.props?.selectable === undefined ? selectable : menu.props?.selectable
 
@@ -73,14 +80,14 @@ const Dropdown = React.forwardRef<unknown, DropDownProps>((props, ref) => {
       } else if (onItemClick) {
         onItemClick(key)
       }
-      menuSelectable && setKeyValue(key)
+      menuSelectable && setSelectedKey(key)
       props.visible === undefined && setVisible(false)
     }
   }
 
   const menuElement = isMenu ? (
     React.cloneElement(menu, {
-      defaultKey,
+      selectedKey,
       onClick: handleItemClick,
       selectable: menuSelectable,
     })
@@ -93,7 +100,7 @@ const Dropdown = React.forwardRef<unknown, DropDownProps>((props, ref) => {
           rel: 'noopener noreferrer',
         }
         const key: string = itemKey || label
-        const selected = selectable && String(defaultKey) === String(key)
+        const selected = selectable && String(selectedKey) === String(key)
         return (
           <li
             title={label}

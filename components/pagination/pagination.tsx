@@ -235,7 +235,7 @@ const Pagination: React.FC<IPaginationProps> = (props) => {
         <div className={`${prefixCls}-selector`}>
           <Dropdown
             selectable
-            defaultKey={size}
+            selectedKey={size}
             menu={sizeOptions}
             trigger="click"
             disabled={disabled}
@@ -391,7 +391,7 @@ const Pagination: React.FC<IPaginationProps> = (props) => {
               <Dropdown
                 selectable
                 trigger="click"
-                defaultKey={size}
+                selectedKey={size}
                 menu={sizeOptions}
                 disabled={disabled}
                 popperStyle={{ minWidth: 67 }}
