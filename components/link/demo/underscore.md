@@ -13,10 +13,10 @@ import { Link } from '@kdcloudjs/kdesign'
 function Demo() {
   return (
     <>
-      <Link name="Link" className="link-underscore-right">
+      <Link className="link-underscore-right">
         链接
       </Link>
-      <Link name="Link" underscore>
+      <Link underscore>
         链接
       </Link>
     </>

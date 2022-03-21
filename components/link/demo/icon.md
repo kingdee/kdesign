@@ -11,10 +11,10 @@ import { Link, Icon } from '@kdcloudjs/kdesign'
 function Demo() {
   return (
     <div>
-      <Link name="Link" prefix={<Icon type="date" />} className="link-icon-right">
+      <Link prefix={<Icon type="date" />} className="link-icon-right">
         日历
       </Link>
-      <Link name="Link" suffix={<Icon type="hyperlink" />}>
+      <Link suffix={<Icon type="hyperlink" />}>
         原始单据
       </Link>
     </div>
