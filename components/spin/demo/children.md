@@ -30,7 +30,7 @@ function Demo() {
             textAlign: 'center',
             lineHeight: '200px',
           }}>
-          KDUI
+          KDesign
         </div>
       </Spin>
       <Switch checked={loading} onChange={toggleLoading} style={{ marginTop: '10px' }}></Switch>
