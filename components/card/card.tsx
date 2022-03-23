@@ -23,6 +23,7 @@ export interface CardProps {
   headStyle?: React.CSSProperties
   bodyStyle?: React.CSSProperties
   actions?: Array<React.ReactNode>
+  extra?: Array<React.ReactNode>
 }
 
 const Card: React.FC<CardProps> = (props) => {
@@ -34,6 +35,7 @@ const Card: React.FC<CardProps> = (props) => {
     title,
     avatar,
     actions,
+    extra,
     children,
     className,
     hoverable,
@@ -73,6 +75,7 @@ const Card: React.FC<CardProps> = (props) => {
         {children}
       </div>
       {actions && <div className={`${prefixCls}-actions`}>{actions}</div>}
+      {extra && <div className={`${prefixCls}-extra`}>{extra}</div>}
     </div>
   )
 }

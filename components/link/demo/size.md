@@ -12,13 +12,13 @@ import { Link } from '@kdcloudjs/kdesign'
 function Demo() {
   return (
     <>
-      <Link name="Link" size="small" className="link-size-right">
+      <Link size="small" className="link-size-right">
         链接
       </Link>
-      <Link name="Link" size="middle" className="link-size-right">
+      <Link size="middle" className="link-size-right">
         链接
       </Link>
-      <Link name="Link" size="large" className="link-size-right">
+      <Link size="large" className="link-size-right">
         链接
       </Link>
     </>

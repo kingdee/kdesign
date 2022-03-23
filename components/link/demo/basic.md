@@ -10,7 +10,7 @@ import { Link, Icon } from '@kdcloudjs/kdesign'
 
 function Demo() {
   return (
-    <Link name="Link"target="_blank" href="https://www.kingdee.com/">
+    <Link target="_blank" href="https://www.kingdee.com/">
       文本链接
     </Link>
   )
