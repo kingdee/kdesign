@@ -29,7 +29,7 @@ function Demo() {
           </div>
         </div>
       ),
-      footer: <div className="kd-notice-content-main">自定义底部内容</div>,
+      footer: <div className="kd-notice-content-description">自定义底部内容</div>,
        duration: 5000
     })
   }
