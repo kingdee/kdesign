@@ -58,6 +58,6 @@ subtitle: 穿梭框
 | spacing | --kd-c-transfer-spacing-horizontal | - | 14px |
 | text | --kd-c-transfer-list-item-color-text-checked | --kd-g-color-theme | #5582f3 |
 |  | --kd-c-transfer-list-item-color-text-disabled | --kd-g-color-disabled | #b2b2b2 |
-|  | --kd-c-transfer-search-icon-color-text-prefix | --kd-g-color-theme | #5582f3 |
+|  | --kd-c-transfer-search-icon-color-text-prefix | - | #999 |
 |  | --kd-c-transfer-search-icon-color-text-suffix | - | #bbb |
 |  | --kd-c-transfer-search-icon-color-text-suffix-hover | - | #999 |
