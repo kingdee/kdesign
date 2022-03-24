@@ -53,7 +53,6 @@ export interface IDrawerProps {
   getContainer?: (() => Element | CSSSelector | false | null) | Element | false
   headerStyle?: CSSProperties
   headerClassName?: string
-  height?: string | number
   keyboard?: boolean
   mask?: boolean
   maskClassName?: string
@@ -109,7 +108,6 @@ const InternalDrawer = (props: IDrawerProps, ref: unknown): ReactElement | React
     footerClassName,
     visible,
     width,
-    height,
     headerStyle,
     headerClassName,
     zIndex: zindex,
@@ -121,7 +119,6 @@ const InternalDrawer = (props: IDrawerProps, ref: unknown): ReactElement | React
   const drawerPrefixCls = getPrefixCls!(prefixCls, 'drawer', customPrefixcls)
   const [showChildren, setShowChildren] = useState(false)
   const [currentWidth, setCurrentWidth] = useState(width)
-  const [currentHeight, setCurrentHeight] = useState(height)
   // const previousWidthRef = usePrevious(currentWidth)
   // const previousHeightRef = usePrevious(currentHeight)
   const containerRef = (ref as any) || createRef<HTMLDivElement>()
@@ -157,8 +154,8 @@ const InternalDrawer = (props: IDrawerProps, ref: unknown): ReactElement | React
   }, [drawerContainer, isBody, isAtOriginalPlace, containerRef])
 
   const handleContainerResize = useCallback(
-    ({ width: containerWidth, height: containerHeight }) => {
-      if (!visible && width === currentWidth && height === currentHeight) return
+    ({ width: containerWidth }) => {
+      if (!visible && width === currentWidth) return
       if (containerWidth < currentWidth!) {
         // 这里改成操作DOM？
         setCurrentWidth(containerWidth)
@@ -168,13 +165,8 @@ const InternalDrawer = (props: IDrawerProps, ref: unknown): ReactElement | React
       } else {
         setCurrentWidth(width)
       }
-      if (containerHeight < currentHeight!) {
-        setCurrentHeight(containerHeight)
-      } else {
-        setCurrentHeight(height)
-      }
     },
-    [width, height, visible, currentWidth, currentHeight],
+    [width, visible, currentWidth],
   )
   useResizeObserver(() => (drawerContainer || containerRef.current?.parentNode) as HTMLElement, handleContainerResize)
   useHideDocumentScrollBar(!!visible, isBody, !!mask)
@@ -183,9 +175,6 @@ const InternalDrawer = (props: IDrawerProps, ref: unknown): ReactElement | React
   useEffect(() => {
     setCurrentWidth(width)
   }, [width])
-  useEffect(() => {
-    setCurrentHeight(height)
-  }, [height])
 
   const closeDrawer = useCallback(() => {
     onClose && onClose()
@@ -230,10 +219,7 @@ const InternalDrawer = (props: IDrawerProps, ref: unknown): ReactElement | React
           width: currentWidth,
           transform: `translateX(${visible ? 0 : transformSize(currentWidth!, placement!)})`,
         }
-      : {
-          height: currentHeight,
-          transform: `translateY(${visible ? 0 : transformSize(currentHeight!, placement!)})`,
-        },
+      : {},
   )
   const container = (
     <div
@@ -273,7 +259,6 @@ const InternalDrawer = (props: IDrawerProps, ref: unknown): ReactElement | React
   const noneMaskStyle = !mask
     ? {
         width: containerStyle.width,
-        height: containerStyle.height,
       }
     : {}
   const comp: ReactElement = (
