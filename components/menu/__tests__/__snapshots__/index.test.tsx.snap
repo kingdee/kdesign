@@ -10,7 +10,6 @@ exports[`Menu renders correctly 1`] = `
     <li
       class="kd-menu-item"
       role="menuitem"
-      title="222"
     >
       <div
         class="kd-menu-item-title"
