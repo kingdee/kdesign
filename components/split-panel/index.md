@@ -33,8 +33,16 @@ subtitle: 分割容器
 
 | 分类 | 组件token | 全局token | 默认值 |
 | --- | --- | --- | --- |
-| color | --kd-c-split-panel-trigger-color-border | --kd-g-color-border-strong-2 | #d9d9d9 |
-|  | --kd-c-split-panel-arrow-color-background | --kd-g-color-input | #999 |
+| color | --kd-c-split-panel-color-border | - | #d9d9d9 |
+|  | --kd-c-split-panel-arrow-color-background | - | #999 |
 |  | --kd-c-split-panel-arrow-color-background-hover | --kd-g-color-theme | #5582f3 |
-|  | --kd-c-split-panel-line-color-background | --kd-g-color-border-strong-2 | #d9d9d9 |
-| sizing | --kd-c-split-panel-line-sizing-width | - | 1px |
+|  | --kd-c-split-panel-line-color-background | - | #d9d9d9 |
+| radius | --kd-c-split-panel-arrow-radius-border-vertical | - | 8px |
+|  | --kd-c-split-panel-arrow-radius-border-horizontal | - | 8px |
+| sizing | --kd-c-split-panel-wrapper-sizing-border | - | 1px |
+|  | --kd-c-split-panel-line-sizing-border | - | 1px |
+|  | --kd-c-split-panel-arrow-sizing-border | - | 1px |
+|  | --kd-c-split-panel-arrow-sizing-width-vertical | - | 16px |
+|  | --kd-c-split-panel-arrow-sizing-height-vertical | - | 16px |
+|  | --kd-c-split-panel-arrow-sizing-width-horizontal | - | 16px |
+|  | --kd-c-split-panel-arrow-sizing-height-horizontal | - | 16px |
