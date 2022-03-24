@@ -23,7 +23,6 @@ subtitle: 抽屉
 | footerStyle | 页脚 styles | CSSProperties | - | - | 1.0.0 |
 | forceRender | 预渲染 Drawer 内元素 | boolean | false | - | 1.0.0 |
 | getContainer | 指定 Drawer 挂载的 HTML 节点, false 为挂载在当前 dom | HTMLElement | `() => HTMLElement | Selectors | false | body` | - | 1.0.0 |
-| height | 高度（placement 为 top/bottom 时有效，否则为 100%） | string \| number | 220 | - | 1.0.0 |
 | headerClassName | 页眉 className | string | - | - | 1.0.0 |
 | headerStyle | 页眉 styles | CSSProperties | - | - | 1.0.0 |
 | keyboard | 是否支持键盘 esc 关闭 | boolean | true | - | 1.0.0 |
@@ -40,7 +39,6 @@ subtitle: 抽屉
 | width | 宽度（placement 为 left/right 时有效，否则为 100%） | string \| number | 365 | - | 1.0.0 |
 | zIndex | 设置 Drawer 的 z-index | string \| number | 1050 | - | 1.0.0 |
 
-
 ## Design Token
 
 | 分类 | 组件token | 全局token | 默认值 |
@@ -51,6 +49,8 @@ subtitle: 抽屉
 |  | --kd-c-drawer-close-icon-color-text | --kd-g-color-text-secondary | #666 |
 | font | --kd-c-drawer-title-font-size | --kd-g-font-size-x-large | 18px |
 |  | --kd-c-drawer-close-icon-font-size | --kd-g-font-size-large | 16px |
-| sizing | --kd-c-drawer-dividing-sizing-width | - | 1px |
-| spacing | --kd-c-drawer-header-sizing-padding | - | 12px |
+| sizing | --kd-c-drawer-body-max-height-vertical | - | 470px |
+|  | --kd-c-drawer-dividing-sizing-width | - | 1px |
+| spacing | --kd-c-drawer-header-sizing-padding-vertical | - | 12px |
+|  | --kd-c-drawer-header-sizing-padding-horizontal | - | 16px |
 |  | --kd-c-drawer-body-sizing-padding | - | 16px |

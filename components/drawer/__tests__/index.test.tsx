@@ -206,10 +206,7 @@ describe('Drawer', () => {
     unmountHelp(wrapper)
   })
 
-  it.each([
-    ['width', ['left', 'right']],
-    ['height', ['top', 'bottom']],
-  ])('should %s use right', (prop: 'width' | 'height', placementTypesList) => {
+  it.each([['width', ['left', 'right']]])('should %s use right', (prop: 'width', placementTypesList) => {
     PlacementTypes.forEach((type) => {
       const wrapper = mount(<Drawer visible {...{ [prop]: 500 }} placement={type} />)
       const node = () => wrapper.find(classNameMap.containerBox).getDOMNode() as HTMLElement
