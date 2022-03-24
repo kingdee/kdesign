@@ -134,7 +134,6 @@ const InternalMenuItem: React.ForwardRefRenderFunction<unknown, MenuItemProps> =
       role="menuitem"
       style={style}
       key={keyValue}
-      title={children}
       {...mouseEvent}
     >
       <div className={classNames(`${prefixCls}-title`)} style={titleStyle}>

@@ -96,7 +96,7 @@ const Content: React.FC<ContentProps> = (args) => {
 
   const getMainElement = () => {
     if (typeof content === 'string') {
-      return <div className={classNames(`${classPrefix}-main`)}>{content}</div>
+      return <div className={classNames(`${classPrefix}-description`)}>{content}</div>
     }
 
     if (React.isValidElement(content)) {

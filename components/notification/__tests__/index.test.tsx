@@ -19,7 +19,7 @@ describe('Notification', () => {
         Notification[type]({ content: 'test render' })
       })
       expect(document.querySelector(`.kd-notice-${type}`)).toBeTruthy()
-      const contentEl = document.querySelector(`.kd-notice-${type} .kd-notice-content-main`) as HTMLElement
+      const contentEl = document.querySelector(`.kd-notice-${type} .kd-notice-content-description`) as HTMLElement
       expect(contentEl.textContent).toEqual('test render')
     })
   })
@@ -77,7 +77,7 @@ describe('Notification', () => {
     expect(document.querySelector('.kd-notice-info')).toBeTruthy()
     expect(document.querySelector('.kd-notice-info .kd-notice-content-title-close')).toBeFalsy()
 
-    const contentEl = document.querySelector('.kd-notice .kd-notice-content-main') as HTMLElement
+    const contentEl = document.querySelector('.kd-notice .kd-notice-content-description') as HTMLElement
     expect(contentEl.textContent).toEqual('test update')
 
     act(() => {
