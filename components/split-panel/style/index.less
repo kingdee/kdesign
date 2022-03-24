@@ -11,7 +11,7 @@
         position: relative;
         width: 100%;
         height: 100%;
-        border: 1px solid @split-panel-trigger-border-color;
+        border: @split-panel-wrapper-border-width solid @split-panel-trigger-border-color;
         overflow: hidden;
     }
     &-panel {
@@ -57,8 +57,8 @@
           transition: all calc(@transition-duration - 0.1s) @ease-out;
           &.is-active {
             .@{split-prefix-cls}-trigger-arrow {
-              border-color: @split-panel-trigger-border-color;
-              background: @split-panel-trigger-border-color;
+              border-color: @split-panel-trigger-arrow-color;
+              background: @split-panel-trigger-arrow-color;
               color: white;
             }
           }
@@ -78,7 +78,7 @@
           &:not(.is-disabled) {
             &:hover{
               .@{split-prefix-cls}-trigger-arrow {
-                border-color: @split-panel-trigger-border-color;
+                border-color: @split-panel-trigger-arrow-color;
               }
             }
             .@{split-prefix-cls}-trigger-arrow:hover {
@@ -96,61 +96,42 @@
           align-items: center;
           justify-content: center;
           transition: all calc(@transition-duration - 0.1s) @ease-out;
+          box-sizing: border-box;
+          border: @split-panel-arrow-border-width solid transparent;
           .@{kd-prefix}icon {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 12px;
-            height: 12px;
             font-size: 12px;
           }
           &.is-vertical {
-              width: 12px;
-              height: 16px;
+              width: @split-panel-arrow-vertical-width;
+              height: @split-panel-arrow-vertical-height;
               top: 50%;
               transform: translate(0, -50%);
-              .@{kd-prefix}icon {
-                height: 12px;
-                // position: absolute;
-                // top: 50%;
-                // transform: translate(0, -50%);
-              }
           }
           &.is-horizontal {
-              width: 16px;
-              height: 12px;
+              width: @split-panel-arrow-horizontal-width;
+              height: @split-panel-arrow-horizontal-height;
               left: 50%;
               transform: translate(-50%, 0);
-              .@{kd-prefix}icon {
-                width: 12px;
-                // position: absolute;
-                // left: 50%;
-                // transform: translate(-50%, 0);
-              }
           }
           &.top {
             bottom: 100%;
-            border: 1px solid transparent;
             border-bottom: none;
-            border-radius: 10px 10px 0 0;
+            border-radius: @split-panel-arrow-vertical-radius @split-panel-arrow-vertical-radius 0 0;
           }
           &.bottom {
             top: 100%;
-            border: 1px solid transparent;
             border-top: none;
-            border-radius: 0 0 10px 10px;
+            border-radius: 0 0 @split-panel-arrow-vertical-radius @split-panel-arrow-vertical-radius;
           }
           &.left {
             right: 100%;
-            border: 1px solid transparent;
             border-right: none;
-            border-radius: 10px 0 0 10px;
+            border-radius: @split-panel-arrow-horizontal-radius 0 0 @split-panel-arrow-horizontal-radius;
           }
           &.right {
             left: 100%;
-            border: 1px solid transparent;
             border-left: none;
-            border-radius: 0 10px 10px 0;
+            border-radius: 0 @split-panel-arrow-horizontal-radius @split-panel-arrow-horizontal-radius 0;
           }
         }
         &-vertical {
