@@ -26,8 +26,8 @@ function Demo() {
       </Radio.Group>
       <Button onClick={() => setVisible(!visible)}>Open</Button>
       <Drawer placement={type} visible={visible} onClose={() => setVisible(false)} title="这就是标题">
-        <div style={{ marginTop: 20, marginLeft: 20 }}>点击按钮关闭</div>
-        <Button onClick={() => setVisible(!visible)} style={{ width: 100, marginTop: 20, marginLeft: 20 }}>
+        <div style={{ marginTop: 20 }}>点击按钮关闭</div>
+        <Button onClick={() => setVisible(!visible)} style={{ width: 100, marginTop: 20 }}>
           Close
         </Button>
       </Drawer>
