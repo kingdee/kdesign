@@ -31,7 +31,7 @@ const Operation = ({
 }: TransferOperationProps) => (
   <div className={className} style={style}>
     <Button
-      type="primary"
+      type={disabled || !rightActive ? 'ghost' : 'primary'}
       size="small"
       disabled={disabled || !rightActive}
       onClick={moveToRight}
@@ -41,7 +41,7 @@ const Operation = ({
     </Button>
     {!oneWay && (
       <Button
-        type="primary"
+        type={disabled || !leftActive ? 'ghost' : 'primary'}
         size="small"
         disabled={disabled || !leftActive}
         onClick={moveToLeft}
