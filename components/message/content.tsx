@@ -16,12 +16,12 @@ const Content: React.FC<ContentProps> = (args) => {
     success: <Icon type="right-solid" />,
     warning: <Icon type="warning-solid" />,
     error: <Icon type="warning-solid" />,
-    info: <Icon type="tips-solid" />,
+    info: <Icon type="notice" />,
   }
 
   const renderIcon = () => {
-    if (icon) return <div>{icon}</div>
-    return iconMap[type] ? <div>{iconMap[type]}</div> : null
+    if (icon) return <div className={`${classPrefix}-icon-wrapper`}>{icon}</div>
+    return iconMap[type] ? <div className={`${classPrefix}-icon-wrapper`}>{iconMap[type]}</div> : null
   }
 
   const handleClick = (e: React.MouseEvent) => {

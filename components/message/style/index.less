@@ -17,13 +17,13 @@
   position: relative;
   display: inline-block;
   box-sizing: border-box;
-  min-width: 280px;
-  max-width: 1000px;
-  margin: 0 auto 16px;
-  padding: 10px 20px;
+  min-width: @message-sizing-min-width;
+  max-width: @message-sizing-max-width;
+  margin: 0 auto @message-spacing-margin-bottom;
+  padding: @message-spacing-padding-horizontal @message-spacing-padding-vertical;
   color: @message-info-text-color;
   border: 1px solid @message-info-color-border;
-  border-radius: 4px;
+  border-radius: @message-border-radius;
   background-color: @message-info-color-background;
   pointer-events: all;
   animation: kdNoticeEffect calc(@transition-duration - 0.2s) @ease-out forwards;
@@ -31,19 +31,32 @@
   &-content {
     display: flex;
     justify-content: space-between;
-    font-size: 12px;
+    font-size: @message-font-size;
+    line-height: @messgae-line-height;
 
     &-main{
       display: flex;
-      align-items: center;
+    }
 
-      &>div:nth-child(1){
-        margin-right: 10px;
-      }
+    &-icon-wrapper{
+      font-size: @message-icon-font-size;
+      margin-right: @message-icon-spacing-margin-right;
+      align-self: flex-start;
+      display: inline-flex;
+      align-items: center;
+    }
+
+    &-text {
+      max-height: @message-text-sizing-max-height;
+      overflow: auto;
     }
 
     &-close{
       cursor: pointer;
+      color: @message-close-color-text;
+      font-size: @message-close-font-size;
+      margin-left: @message-close-spacing-margin-left;
+      display: inline-flex;
 
       &:hover {
         color: @message-icon-text-color-hover;

@@ -5,17 +5,41 @@
 // color
 @message-info-color-background: var(~'@{message-custom-prefix}-info-color-background', #e0efff);
 @message-info-color-border: var(~'@{message-custom-prefix}-info-color-border', #b3d5ff);
+@message-info-text-color: var(~'@{message-custom-prefix}-info-color-text', #0e5fd8);
 @message-success-color-background: var(~'@{message-custom-prefix}-success-color-background', #dcfae4);
 @message-success-color-border: var(~'@{message-custom-prefix}-success-color-border', #a1e6b5);
-@message-success-text-color: var(~'@{message-custom-prefix}-success-color-text', @color-success);
+@message-success-text-color: var(~'@{message-custom-prefix}-success-color-text', #1BA854);
 @message-warning-color-background: var(~'@{message-custom-prefix}-warning-color-background', #fff1d4);
 @message-warning-color-border: var(~'@{message-custom-prefix}-warning-color-border', #ffe0a6);
-@message-warning-text-color: var(~'@{message-custom-prefix}-warning-color-text', @color-warning);
+@message-warning-text-color: var(~'@{message-custom-prefix}-warning-color-text', #FF991C);
 @message-error-color-background: var(~'@{message-custom-prefix}-error-color-background', #ffdbe0);
 @message-error-color-border: var(~'@{message-custom-prefix}-error-color-border', #ffadb6);
-@message-error-text-color: var(~'@{message-custom-prefix}-error-color-text', @color-error);
-@message-icon-text-color-hover: var(~'@{message-custom-prefix}-icon-color-text-hover', @color-border-ongoing);
-@message-info-text-color: var(~'@{message-custom-prefix}-info-color-text', @color-text-link);
+@message-error-text-color: var(~'@{message-custom-prefix}-error-color-text', #FB2323);
+@message-close-color-text: var(~'@{message-custom-prefix}-close-color-text', #666);
+@message-icon-text-color-hover: var(~'@{message-custom-prefix}-close-color-text-hover', @color-theme-hover);
+
+// font
+@message-font-size: var(~'@{message-custom-prefix}-font-size', 14px);
+@message-icon-font-size: var(~'@{message-custom-prefix}-icon-font-size', 16px);
+@message-close-font-size: var(~'@{message-custom-prefix}-font-size', 16px);
+
+// line-height
+@messgae-line-height: var(~'@{message-custom-prefix}-line-height', 20px);
+
+// radius
+@message-border-radius: var(~'@{message-custom-prefix}-border-radius', 4px);
+
+// sizing
+@message-sizing-max-width: var(~'@{message-custom-prefix}-sizing-max-width', 1000px);
+@message-sizing-min-width: var(~'@{message-custom-prefix}-sizing-min-width', 280px);
+@message-text-sizing-max-height: var(~'@{message-custom-prefix}-text-sizing-max-height', 160px);
+
+// spacing
+@message-spacing-margin-bottom: var(~'@{message-custom-prefix}-spacing-margin-bottom', 16px);
+@message-spacing-padding-horizontal: var(~'@{message-custom-prefix}-spacing-padding-horizontal', 10px);
+@message-spacing-padding-vertical: var(~'@{message-custom-prefix}-spacing-padding-vertical', 20px);
+@message-icon-spacing-margin-right: var(~'@{message-custom-prefix}-icon-spacing-margin-right', 8px);
+@message-close-spacing-margin-left: var(~'@{message-custom-prefix}-close-spacing-margin-left', 12px);
 
 // z-index
 @message-z-index: var(~'@{message-custom-prefix}-z-index', @z-index-apex);

@@ -76,7 +76,7 @@ subtitle: 选择器
 |  | --kd-c-select-color-border-hover | --kd-g-color-theme | #5582f3 |
 |  | --kd-c-select-border-color-border | --kd-g-color-border-strong | #d9d9d9 |
 |  | --kd-c-select-placeholder-color-text | --kd-g-color-text-third | #999 |
-|  | --kd-c-select-item-color-text-selected | --kd-g-color-ongoing | #276ff5 |
+|  | --kd-c-select-item-color-text-selected | --kd-g-color-theme | #5582f3 |
 |  | --kd-c-select-footer-color-text | --kd-g-color-text-primary | #212121 |
 |  | --kd-c-select-footer-color-text-selected | --kd-g-color-text-link | #0e5fd8 |
 |  | --kd-c-select-item-color-text-disabled | --kd-g-color-disabled | #b2b2b2 |

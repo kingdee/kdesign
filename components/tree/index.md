@@ -71,8 +71,8 @@ subtitle: 树控件
 |  | --kd-c-tree-node-color-disabled | --kd-g-color-disabled | #b2b2b2 |
 |  | --kd-c-tree-node-color-border-disabled | --kd-g-color-border-disabled | #ccc |
 |  | --kd-c-tree-color-theme | --kd-g-color-theme | #5582f3 |
-|  | --kd-c-tree-node-color-backgroung-checked | - | #E3EBFF |
-|  | --kd-c-tree-node-color-text-checked | --kd-g-color-theme-6 | rgb(85, 130, 243) |
+|  | --kd-c-tree-node-color-backgroung-checked | --kd-g-color-theme-3 | rgb(227, 238, 255) |
+|  | --kd-c-tree-node-color-text-checked | --kd-g-color-theme | #5582f3 |
 |  | --kd-c-tree-node-color-backgroung-hover | --kd-g-color-hover | #f5f5f5 |
 |  | --kd-c-tree-node-icon-color-text | - | #666666 |
 | font | --kd-c-tree-font-size | --kd-g-font-size-small | 12px |
