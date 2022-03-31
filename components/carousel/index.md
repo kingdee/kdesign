@@ -44,8 +44,8 @@ subtitle: 走马灯
 |  | --kd-c-carousel-border-radius | - | 0px |
 | sizing | --kd-c-carousel-dots-sizing-width | - | 12px |
 |  | --kd-c-carousel-dots-sizing-height | - | 4px |
-| spacing | --kd-c-carousel-spacing-margin-top | - | 15px |
-|  | --kd-c-carousel-spacing-margin-bottom | - | 15px |
-|  | --kd-c-carousel-spacing-margin-left | - | 15px |
-|  | --kd-c-carousel-spacing-margin-right | - | 15px |
+| spacing | --kd-c-carousel-spacing-margin-top | - | 12px |
+|  | --kd-c-carousel-spacing-margin-bottom | - | 12px |
+|  | --kd-c-carousel-spacing-margin-left | - | 12px |
+|  | --kd-c-carousel-spacing-margin-right | - | 12px |
 |  | --kd-c-carousel-dots-spacing-margin | - | 4px |
