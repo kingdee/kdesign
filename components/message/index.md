@@ -56,15 +56,29 @@ subtitle: 消息提示
 | --- | --- | --- | --- |
 | color | --kd-c-message-info-color-background | - | #e0efff |
 |  | --kd-c-message-info-color-border | - | #b3d5ff |
+|  | --kd-c-message-info-color-text | - | #0e5fd8 |
 |  | --kd-c-message-success-color-background | - | #dcfae4 |
 |  | --kd-c-message-success-color-border | - | #a1e6b5 |
-|  | --kd-c-message-success-color-text | --kd-g-color-success | #1ba854 |
+|  | --kd-c-message-success-color-text | - | #1BA854 |
 |  | --kd-c-message-warning-color-background | - | #fff1d4 |
 |  | --kd-c-message-warning-color-border | - | #ffe0a6 |
-|  | --kd-c-message-warning-color-text | --kd-g-color-warning | #ff991c |
+|  | --kd-c-message-warning-color-text | - | #FF991C |
 |  | --kd-c-message-error-color-background | - | #ffdbe0 |
 |  | --kd-c-message-error-color-border | - | #ffadb6 |
-|  | --kd-c-message-error-color-text | --kd-g-color-error | #fb2323 |
-|  | --kd-c-message-icon-color-text-hover | --kd-g-color-border-ongoing | #85b8ff |
-|  | --kd-c-message-info-color-text | --kd-g-color-text-link | #0e5fd8 |
+|  | --kd-c-message-error-color-text | - | #FB2323 |
+|  | --kd-c-message-close-color-text | - | #666 |
+|  | --kd-c-message-close-color-text-hover | --kd-g-color-theme-5 | rgb(135, 173, 255) |
+| font | --kd-c-message-font-size | - | 14px |
+|  | --kd-c-message-icon-font-size | - | 16px |
+|  | --kd-c-message-font-size | - | 16px |
+| line-height | --kd-c-message-line-height | - | 20px |
+| radius | --kd-c-message-border-radius | - | 4px |
+| sizing | --kd-c-message-sizing-max-width | - | 1000px |
+|  | --kd-c-message-sizing-min-width | - | 280px |
+|  | --kd-c-message-text-sizing-max-height | - | 160px |
+| spacing | --kd-c-message-spacing-margin-bottom | - | 16px |
+|  | --kd-c-message-spacing-padding-horizontal | - | 10px |
+|  | --kd-c-message-spacing-padding-vertical | - | 20px |
+|  | --kd-c-message-icon-spacing-margin-right | - | 8px |
+|  | --kd-c-message-close-spacing-margin-left | - | 12px |
 | z-index | --kd-c-message-z-index | --kd-g-z-index-apex | 9999 |
