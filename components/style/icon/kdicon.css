@@ -1,6 +1,6 @@
 @font-face {
   font-family: "kdicon";
-  src: url("kdicon.woff?t=1643017048816") format("woff");
+  src: url("kdicon.woff?t=1648623696425") format("woff");
 }
 .kdicon {
   font-family: 'kdicon' !important;
@@ -218,5 +218,6 @@
 .kdicon-warning:before { content: "\e64d"; }
 .kdicon-workbench:before { content: "\e64f"; }
 .kdicon-wrap:before { content: "\e6b0"; }
+.kdicon-xingzhuangjiehe:before { content: "\e719"; }
 .kdicon-yunzhijia:before { content: "\e706"; }
 .kdicon-zoom:before { content: "\e70c"; }

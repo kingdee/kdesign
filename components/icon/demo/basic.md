@@ -167,6 +167,7 @@ function Demo() {
     'chart-display',
     'date',
     'more-item',
+    'xingzhuangjiehe',
   ]
   const handleClick = (type, e) => {
     copy(type)

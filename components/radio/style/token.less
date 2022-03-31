@@ -1,18 +1,8 @@
 @import '../../style/themes/token.less';
 @import '../../style/mixins/index';
 
-
 @radio-prefix: '--@{kd-prefix}-c-radio';
-
-
-
-
-
-
 @radio-transition-fn:  cubic-bezier(0.075, 0.82, 0.165, 1);
-
-
-
 
 // color
 @radio-font-color: var(~'@{radio-prefix}-color-font', @color-text-primary);//单选项字体颜色
@@ -26,18 +16,12 @@
 // font
 @radio-font-size: var(~'@{radio-prefix}-font-size', @font-size-small);//单选项字体大小
 
-
-
-
 //radius
 @radio-border-width:   var(~'@{radio-prefix}-radius-border-width',1px);
-
-
 
 // sizing
 @radio-circle-size:var(~'@{radio-prefix}-square-sizing-width-height',13px);//单选图标大小
 @radio-square-height:  var(~'@{radio-prefix}-square-sizing-height',32px);//单选框 高度
-
 
 // spacing
 @radio-margin-right:   var(~'@{radio-prefix}-spacing-margin-right',8px);
