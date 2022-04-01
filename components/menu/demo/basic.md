@@ -16,15 +16,13 @@ function Demo() {
   }
 
   const menuStyle = {
-    width: '206px',
-    borderRight: '1px solid #f0f0f0',
-    borderLeft: '1px solid #f0f0f0',
+    border: '1px solid #f0f0f0',
   }
 
   return (
     <>
       <Menu name="Menu" style={menuStyle} onClick={handleClickItem} inlineIndent={24}>
-        <Menu.Item key="1" name="MenuItem" disabled>
+        <Menu.Item key="1" name="MenuItem">
           标签一
         </Menu.Item>
         <Menu.Item name="MenuItem" key="2">
