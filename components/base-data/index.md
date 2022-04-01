@@ -46,6 +46,7 @@ order: 0
 | --- | --- | --- | --- |
 | color | --kd-c-base-data-color-border | - | #999 |
 |  | --kd-c-base-data-color-background-hover | --kd-g-color-hover | #f5f5f5 |
+|  | --kd-c-base-data-color-text | - | #212121 |
 |  | --kd-c-base-data-border-color-hover | --kd-g-color-theme | #5582f3 |
 |  | --kd-c-base-data-dropdown-radius-border | --kd-g-color-background | #fff |
 |  | --kd-c-base-data-dropdown-icon-color-text | --kd-g-color-warning | #ff991c |
@@ -55,8 +56,12 @@ order: 0
 |  | --kd-c-base-data-footer-color-border | --kd-g-color-border-strong | #d9d9d9 |
 |  | --kd-c-base-data-icon-color-text-hover | --kd-g-color-theme | #5582f3 |
 |  | --kd-c-base-data-footer-btn-color-text | --kd-g-color-text-link | #0e5fd8 |
+|  | --kd-c-base-data-option-color-text-active | --kd-g-color-theme | #5582f3 |
 | radius | --kd-c-base-data-dropdown-radius-border | --kd-g-radius-border | 2px |
 | sizing | --kd-c-base-data-sizing-width | - | 230px |
 |  | --kd-c-base-data-dropdown-sizing-height | - | 400px |
 |  | --kd-c-base-data-dropdown-options-sizing-height | - | 32px |
+|  | --kd-c-base-data-dropdown-columns-height | - | 36px |
+|  | --kd-c-base-data-dropdown-footer-height | - | 40px |
+| spacing | --kd-c-base-data-option-spacing-padding-vertical | - | 12px |
 | z-index | --kd-c-base-data-dropdown-z-index | --kd-g-z-index-popper | 1050 |

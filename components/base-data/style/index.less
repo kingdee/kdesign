@@ -52,15 +52,20 @@
     background: @base-data-dropdown-color-background;
     overflow: auto;
     max-height: @base-data-dropdown-height;
+    color: @base-data-color-text;
 
     &-columns,
     &-options {
       display: flex;
       align-items: center;
 
+      &.selected {
+        color: @base-data-option-color-text-active;
+      }
+
       &-item {
         flex: 1;
-        padding: 0 12px;
+        padding: 0 @base-data-option-spacing-padding-vertical;
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
@@ -104,7 +109,7 @@
     }
 
     &-columns {
-      height: 36px;
+      height: @base-data-dropdown-columns-height;
       background: @base-data-hover-bg;
     }
 
@@ -121,7 +126,7 @@
     }
 
     &-footer {
-      height: 40px;
+      height: @base-data-dropdown-footer-height;
       border-top: 1px solid @base-data-footer-color-border;
 
       &-btn {
