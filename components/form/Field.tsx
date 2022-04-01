@@ -100,12 +100,16 @@ const Field: React.FC<FormItemProps> = (props) => {
   })
 
   const mergedRequired = required || !!rulesRequired
-  if (rules.length === 0 && required) {
+  if (
+    Array.isArray(rules) &&
+    !rules.some((rule) => Object.prototype.hasOwnProperty.call(rule, 'required')) &&
+    required
+  ) {
     rules.push({ required: true })
   }
 
   let mergeRules = rules
-  if (Array.isArray(mergeRules) && mergeRules.length) {
+  if (mergeRules.length) {
     mergeRules = rules.map((r) => {
       if (typeof r === 'function') {
         return r(fieldContext)
