@@ -4,6 +4,7 @@
 .menu() {
   position: relative;
   width: 100%;
+  min-width: 138px;
   height: 100%;
   background-color: @menu-color-background;
   color: @menu-sub-color;
@@ -51,10 +52,6 @@
     color: @menu-color-disabled;
   }
 
-  &-active {
-    .hover();
-  }
-
   &-arrow {
     margin-left: auto;
     font-size: 16px;
@@ -70,15 +67,9 @@
   }
 }
 
-.hover {
-  background-color: @menu-sub-color-background;
-  color: @menu-sub-color-hover;
-}
-
 .light-hover {
   background-color: @menu-light-color-background;
   color: @menu-light-color-hover;
-  border-right: 2px solid @menu-light-color-active;
 }
 
 .light-default {

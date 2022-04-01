@@ -18,9 +18,7 @@ function Demo() {
   }
 
   const menuStyle = {
-    width: '214px',
-    borderRight: '1px solid #f0f0f0',
-    borderLeft: '1px solid #f0f0f0',
+    border: '1px solid #f0f0f0',
   }
 
   return (
