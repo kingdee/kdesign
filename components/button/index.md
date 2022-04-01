@@ -76,13 +76,13 @@ subtitle: 按钮
 |  | --kd-c-button-primary-color-text-loading | --kd-g-color-white | #fff |
 |  | --kd-c-button-background-ghost-color-text | --kd-g-color-theme | #5582f3 |
 |  | --kd-c-button-background-ghost-color-text-hover | --kd-g-color-white | #fff |
-| duration | --kd-c-button-motion-timing-function | - | cubic-bezier(0.075, 0.82, 0.165, 1) |
-|  | --kd-c-button-motion-duration-fade | --kd-g-duration-slowly | 0.4s |
-|  | --kd-c-button-motion-duration-wave | --kd-g-duration-quickly | 0.2s |
 | font | --kd-c-button-font-weight | --kd-g-font-weight | 400 |
 |  | --kd-c-button-font-size-small | --kd-g-font-size-small | 12px |
 |  | --kd-c-button-font-size-middle | --kd-g-font-size-small | 12px |
 |  | --kd-c-button-font-size-large | --kd-g-font-size-large | 16px |
+| motion | --kd-c-button-motion-timing-function | - | cubic-bezier(0.075, 0.82, 0.165, 1) |
+|  | --kd-c-button-motion-duration-fade | --kd-g-duration-slowly | 0.4s |
+|  | --kd-c-button-motion-duration-wave | --kd-g-duration-quickly | 0.2s |
 | radius | --kd-c-button-radius-border | --kd-g-radius-border | 2px |
 | sizing | --kd-c-button-sizing-border | - | 1px |
 |  | --kd-c-button-sizing-height-small | - | 24px |
