@@ -2,7 +2,7 @@
 
 exports[`Menu renders correctly 1`] = `
 <div
-  class="kd-menu kd-menu-vertical kd-menu-collapsed kd-menu-dark"
+  class="kd-menu kd-menu-vertical kd-menu-dark"
   role="menu"
   style="transition:width 0.2s cubic-bezier(0,.4,.4,1)"
 >
