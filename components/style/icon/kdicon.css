@@ -1,6 +1,6 @@
 @font-face {
   font-family: "kdicon";
-  src: url("kdicon.woff?t=1648623696425") format("woff");
+  src: url("kdicon.woff?t=1648791837879") format("woff");
 }
 .kdicon {
   font-family: 'kdicon' !important;
@@ -108,6 +108,7 @@
 .kdicon-hyperlink:before { content: "\e6c9"; }
 .kdicon-image:before { content: "\e687"; }
 .kdicon-import:before { content: "\e6cb"; }
+.kdicon-international:before { content: "\e719"; }
 .kdicon-job-info:before { content: "\e68d"; }
 .kdicon-last:before { content: "\e631"; }
 .kdicon-left-border:before { content: "\e708"; }
@@ -218,6 +219,5 @@
 .kdicon-warning:before { content: "\e64d"; }
 .kdicon-workbench:before { content: "\e64f"; }
 .kdicon-wrap:before { content: "\e6b0"; }
-.kdicon-xingzhuangjiehe:before { content: "\e719"; }
 .kdicon-yunzhijia:before { content: "\e706"; }
 .kdicon-zoom:before { content: "\e70c"; }
