@@ -70,7 +70,7 @@ subtitle: 选择器
 | color | --kd-c-select-dropdown-color-background | --kd-g-color-background | #fff |
 |  | --kd-c-select-item-color-background-disabled | --kd-g-color-background-contain-disabled | #f5f5f5 |
 |  | --kd-c-select-color-background | --kd-g-color-hover | #f5f5f5 |
-|  | --kd-c-select-color-background-selected | - | #f2f9ff |
+|  | --kd-c-select-color-background-selected | --kd-g-color-theme-3 | rgb(227, 238, 255) |
 |  | --kd-c-select-color-border | --kd-g-color-input | #999 |
 |  | --kd-c-select-color-border-foucs | --kd-g-color-theme | #5582f3 |
 |  | --kd-c-select-color-border-hover | --kd-g-color-theme | #5582f3 |
