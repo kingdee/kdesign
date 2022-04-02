@@ -115,7 +115,7 @@
       bottom: -1px;
       height: 2px;
       margin-left: 11px;
-      background: #1890ff;
+      background: @date-bar-color-bg-active;
       opacity: 0;
       transition: all 0.3s ease-out;
       pointer-events: none;
@@ -243,7 +243,7 @@
 
             &:not(.@{datePicker-prefix-cls}-year-item-disabled) {
               .@{datePicker-prefix-cls}-year-text-selected {
-                background: #104ccc;
+                background: @date-square-item-color-selected;
               }
             }
           }
@@ -299,7 +299,7 @@
 
             &:not(.@{datePicker-prefix-cls}-month-item-disabled) {
               .@{datePicker-prefix-cls}-month-text-selected {
-                background: #104ccc;
+                background: @date-square-item-color-selected;
               }
             }
           }
@@ -359,7 +359,7 @@
 
             &:not(.@{datePicker-prefix-cls}-quarter-item-disabled) {
               .@{datePicker-prefix-cls}-quarter-text-selected {
-                background: #104ccc;
+                background: @date-square-item-color-selected;
               }
             }
           }
@@ -426,7 +426,7 @@
           }
 
           .@{datePicker-prefix-cls}-calendar-text-selected {
-            background: #104ccc !important;
+            background: @date-square-item-color-selected !important;
           }
         }
 
@@ -489,7 +489,7 @@
           &:hover {
             & .@{datePicker-prefix-cls}-calendar-item:not(.@{datePicker-prefix-cls}-calendar-item-disabled) {
               .@{datePicker-prefix-cls}-calendar-week-text::before {
-                background: #104ccc;
+                background: @date-square-item-color-selected;
               }
             }
           }
@@ -605,7 +605,7 @@
       height: 24px;
       width: 100%;
       margin: 0 -4px;
-      background: #e6f7ff;
+      background: @date-range-item-color-bg;
     }
   }
 
@@ -699,7 +699,7 @@
 
         .@{datePicker-prefix-cls}-time-cell-selected {
           .@{datePicker-prefix-cls}-time-cell-inner {
-            background: #e6f7ff;
+            background: @date-range-item-color-bg;
           }
         }
 
