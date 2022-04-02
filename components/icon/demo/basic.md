@@ -168,6 +168,8 @@ function Demo() {
     'date',
     'more-item',
     'international',
+    'little-k',
+    'bellOutlined'
   ]
   const handleClick = (type, e) => {
     copy(type)
