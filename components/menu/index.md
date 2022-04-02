@@ -51,6 +51,7 @@ subtitle: 导航菜单
 | icon | 菜单图标 | ReactNode | - | - | 1.0.0 |
 | key | item的唯一标识 | string \| number | - | - | 1.0.0 |
 
+
 ## Design Token
 
 | 分类 | 组件token | 全局token | 默认值 |
@@ -58,19 +59,16 @@ subtitle: 导航菜单
 | color | --kd-c-menu-color-disabled | --kd-g-color-disabled | #b2b2b2 |
 |  | --kd-c-menu-sub-color | - | rgba(255, 255, 255, 0.65) |
 |  | --kd-c-menu-sub-color-hover | --kd-g-color-white | #fff |
-|  | --kd-c-menu-sub-color-active | --kd-g-color-white | #fff |
+|  | --kd-c-menu-sub-color-active | --color-theme | #5582f3 |
 |  | --kd-c-menu-sub-color-background | - | #21242d |
-|  | --kd-c-menu-sub-color-background-hover | - | #121319 |
-|  | --kd-c-menu-sub-base-color-hover | - | #b2b3b7 |
-|  | --kd-c-menu-sub-base-color-background-hover | - | #1f212b |
 |  | --kd-c-menu-inline-color-active | --kd-g-color-white | #fff |
 |  | --kd-c-menu-color-background | - | #343848 |
 |  | --kd-c-menu-light-color | --kd-g-color-text-primary | #212121 |
-|  | --kd-c-menu-light-color-hover | --kd-g-color-text-primary | #212121 |
-|  | --kd-c-menu-light-color-active | --kd-g-color-text-primary | #212121 |
-|  | --kd-c-menu-light-color-background | - | #f5f5f5 |
-|  | --kd-c-menu-light-color-background-hover | - | #eaeaea |
-| font | --kd-c-menu-icon-font-size | --kd-g-font-size-xx-large | 20px |
-| motion | --kd-c-menu-motion-duration | --kd-g-duration | 0.3s |
+|  | --kd-c-menu-light-color-hover | --kd-g-color-ongoing | #276ff5 |
+|  | --kd-c-menu-light-color-active | --color-theme | #5582f3 |
+|  | --kd-c-menu-light-color-background | --kd-g-color-background-ongoing | #f2f9ff |
 | sizing | --kd-c-menu-item-sizing-height | - | 50px |
+| motion | --kd-c-menu-motion-duration | --kd-g-duration | 0.3s |
+| font | --kd-c-menu-icon-font-size | --kd-g-font-size-xx-large | 20px |
 | z-index | --kd-c-menu-z-index | --kd-g-z-index-dialog | 1050 |
+

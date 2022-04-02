@@ -34,7 +34,7 @@ function Demo() {
       </Button>
       <Menu
         name="Menu"
-        style={{ marginTop: '20px', border: '1px solid #f0f0f0' }}
+        style={{ width: '214px', marginTop: '20px' }}
         collapsed={collapsed}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}>
@@ -62,7 +62,7 @@ function Demo() {
         }}>
         {collapsedInline ? '展开' : '收起'}
       </Button>
-      <Menu name="Menu" style={{ marginTop: '20px', border: '1px solid #f0f0f0' }} mode="inline" collapsed={collapsedInline}>
+      <Menu name="Menu" style={{ width: '214px', marginTop: '20px' }} mode="inline" collapsed={collapsedInline}>
         <Menu.Item key="1" name="MenuItem" icon={<Icon type="add" />}>
           标签一
         </Menu.Item>

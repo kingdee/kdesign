@@ -359,6 +359,7 @@ const SubMenu: React.FC<MenuSubMenuProps> = (props) => {
         [`${prefixCls}-hover`]: !disabled && isVisible,
       })}
       key={keyValue}
+      title={title}
       {...mouseEvent}
       style={style}
     >

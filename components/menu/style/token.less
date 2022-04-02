@@ -2,31 +2,31 @@
 
 @menu-prefix: '--@{kd-prefix}-c-menu';
 
+// shadow
 // color
 @menu-color-disabled: var(~'@{menu-prefix}-color-disabled', @color-disabled);
 @menu-sub-color: var(~'@{menu-prefix}-sub-color', rgba(255, 255, 255, 0.65));
 @menu-sub-color-hover: var(~'@{menu-prefix}-sub-color-hover', @color-white);
-@menu-sub-color-active: var(~'@{menu-prefix}-sub-color-active', @color-white);
+@menu-sub-color-active: var(~'@{menu-prefix}-sub-color-active', @color-theme);
 @menu-sub-color-background: var(~'@{menu-prefix}-sub-color-background', #21242d);
-@menu-sub-color-background-hover: var(~'@{menu-prefix}-sub-color-background-hover', #121319);
-@menu-sub-base-color-hover: var(~'@{menu-prefix}-sub-base-color-hover', #b2b3b7);
-@menu-sub-base-color-background-hover: var(~'@{menu-prefix}-sub-base-color-background-hover', #1f212b);
 @menu-inline-color-active: var(~'@{menu-prefix}-inline-color-active', @color-white);
 @menu-color-background: var(~'@{menu-prefix}-color-background', #343848);
+
 @menu-light-color: var(~'@{menu-prefix}-light-color', @color-text-primary);
-@menu-light-color-hover: var(~'@{menu-prefix}-light-color-hover', @color-text-primary);
-@menu-light-color-active: var(~'@{menu-prefix}-light-color-active', @color-text-primary);
-@menu-light-color-background: var(~'@{menu-prefix}-light-color-background', #f5f5f5);
-@menu-light-color-background-hover: var(~'@{menu-prefix}-light-color-background-hover', #eaeaea);
+@menu-light-color-hover: var(~'@{menu-prefix}-light-color-hover', @color-ongoing);
+@menu-light-color-active: var(~'@{menu-prefix}-light-color-active', @color-theme);
+@menu-light-color-background: var(~'@{menu-prefix}-light-color-background', @color-background-ongoing);
+
+// sizing
+@menu-item-height: var(~'@{menu-prefix}-item-sizing-height', 50px);
+// spacing
+// motion
+@menu-motion-duration: var(~'@{menu-prefix}-motion-duration', @duration-promptly);
 
 // font
 @menu-icon-font-size: var(~'@{menu-prefix}-icon-font-size', @font-size-xx-large);
 
-// motion
-@menu-motion-duration: var(~'@{menu-prefix}-motion-duration', @duration-promptly);
-
-// sizing
-@menu-item-height: var(~'@{menu-prefix}-item-sizing-height', 50px);
-
+// radius
+// line-height
 // z-index
 @menu-z-index: var(~'@{menu-prefix}-z-index', @z-index-dialog);
