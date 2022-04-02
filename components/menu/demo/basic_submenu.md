@@ -13,7 +13,9 @@ function Demo() {
   }
 
   const menuStyle = {
-    border: '1px solid #f0f0f0',
+    width: '206px',
+    borderRight: '1px solid #f0f0f0',
+    borderLeft: '1px solid #f0f0f0',
   }
 
   return (

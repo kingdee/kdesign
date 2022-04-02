@@ -35,7 +35,6 @@ const transformComponentArr = [
   'layout',
   'filter',
   'typography',
-  'menu',
   'form',
 ]
 const tokenBrandPrefix = 'kd'
