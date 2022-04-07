@@ -149,7 +149,7 @@ function usePopper(locatorElement: React.ReactElement, popperElement: React.Reac
     disabled = false,
     trigger = 'click',
     placement = 'top',
-    gap: defalutGap = 4,
+    gap: defaultGap = 4,
     scrollHidden = false,
     mouseEnterDelay = 0.1,
     mouseLeaveDelay = 0.1,
@@ -199,7 +199,7 @@ function usePopper(locatorElement: React.ReactElement, popperElement: React.Reac
 
   const initAlign = { top: 0, left: 0 }
 
-  const gap = defalutGap + (arrow ? 10 : 0)
+  const gap = defaultGap + (arrow ? 10 : 0)
 
   const [mousePos, setMousePos] = useState<Position>(initPos)
   const [arrowPos, setArrowPos] = useState<Align>(initAlign)
@@ -377,8 +377,9 @@ function usePopper(locatorElement: React.ReactElement, popperElement: React.Reac
 
   const popperNode = popperRef.current
   const locatorNode = locatorRef.current
-  useResizeObserver(popperNode, alignPopper)
-  useResizeObserver(locatorNode, alignPopper)
+
+  useResizeObserver(popperNode || document.body, alignPopper)
+  useResizeObserver(locatorNode || document.body, alignPopper)
 
   const showPopper = useCallback(
     (evType: string) => {

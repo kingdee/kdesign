@@ -37,6 +37,7 @@ const transformComponentArr = [
   'typography',
   'form',
   'menu',
+  'pagination',
 ]
 const tokenBrandPrefix = 'kd'
 const tokenGloablPrefix = `--${tokenBrandPrefix}-g`

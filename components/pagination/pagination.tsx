@@ -1,4 +1,3 @@
-/* eslint-disable react/jsx-no-comment-textnodes */
 import * as React from 'react'
 import classNames from 'classnames'
 import ConfigContext from '../config-provider/ConfigContext'
@@ -238,8 +237,10 @@ const Pagination: React.FC<IPaginationProps> = (props) => {
             selectedKey={size}
             menu={sizeOptions}
             trigger="click"
+            placement="bottomRight"
             disabled={disabled}
-            popperStyle={{ minWidth: 67 }}
+            prefix={`${prefixCls}-dropdown`}
+            popperStyle={{ minWidth: 64 }}
             onItemClick={handleChangeSize}
             getPopupContainer={(triggerNode) => triggerNode?.parentElement as HTMLElement}
             {...dropdownProps}
@@ -394,7 +395,7 @@ const Pagination: React.FC<IPaginationProps> = (props) => {
                 selectedKey={size}
                 menu={sizeOptions}
                 disabled={disabled}
-                popperStyle={{ minWidth: 67 }}
+                popperStyle={{ minWidth: 64 }}
                 onItemClick={handleChangeSize}
                 getPopupContainer={(triggerNode) => triggerNode?.parentElement as HTMLElement}
                 {...dropdownProps}
