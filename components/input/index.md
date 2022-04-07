@@ -53,26 +53,28 @@ subtitle: 输入框
 
 | 分类 | 组件token | 全局token | 默认值 |
 | --- | --- | --- | --- |
-| color | --kd-c-input-color | --kd-g-color-text-secondary | #666 |
-|  | --kd-c-input-color-placeholder | --kd-g-color-text-third | #999 |
+| color | --kd-c-input-color-text | --kd-g-color-text-primary | #212121 |
+|  | --kd-c-input-placeholder-color-text | --kd-g-color-text-placeholder | #ccc |
 |  | --kd-c-input-color-border | - | #999 |
 |  | --kd-c-input-color-background | --kd-g-color-white | #fff |
 |  | --kd-c-input-color-background-disabled | --kd-g-color-background-contain-disabled | #f5f5f5 |
 |  | --kd-c-input-color-border-focused | --kd-g-color-theme | #5582f3 |
 |  | --kd-c-input-color-border-disabled | --kd-g-color-border-strong | #d9d9d9 |
+|  | --kd-c-input-underline-color-border-disabled | --kd-g-color-border-weak | #e5e5e5 |
 |  | --kd-c-input-color-disabled | --kd-g-color-disabled | #b2b2b2 |
-| font | --kd-c-input-small-font-size | --kd-g-font-size-small | 12px |
-|  | --kd-c-input-middle-font-size | --kd-g-font-size-middle | 14px |
-|  | --kd-c-input-large-font-size | --kd-g-font-size-large | 16px |
+|  | --kd-c-input-affix-color-text | --kd-g-color-text-primary | #212121 |
+| font | --kd-c-input-font-size-small | --kd-g-font-size-small | 12px |
+|  | --kd-c-input-font-size-middle | --kd-g-font-size-middle | 14px |
+|  | --kd-c-input-font-size-large | --kd-g-font-size-large | 16px |
 | motion | --kd-c-input-motion-duration | --kd-g-duration | 0.3s |
 | radius | --kd-c-input-radius-border | --kd-g-radius-border | 2px |
-| sizing | --kd-c-input-small-sizing-height | - | 20px |
-|  | --kd-c-input-middle-sizing-height | - | 30px |
-|  | --kd-c-input-large-sizing-height | - | 36px |
+| sizing | --kd-c-input-sizing-height-small | - | 20px |
+|  | --kd-c-input-sizing-height-middle | - | 30px |
+|  | --kd-c-input-sizing-height-large | - | 36px |
 |  | --kd-c-input-sizing-border | - | 1px |
-| spacing | --kd-c-input-small-spacing-padding-vertical | - | 3px |
-|  | --kd-c-input-small-spacing-padding-horizontal | - | 9px |
-|  | --kd-c-input-middle-spacing-padding-vertical | - | 5px |
-|  | --kd-c-input-middle-spacing-padding-horizontal | - | 9px |
-|  | --kd-c-input-large-spacing-padding-vertical | - | 8px |
-|  | --kd-c-input-large-spacing-padding-horizontal | - | 9px |
+| spacing | --kd-c-input-spacing-padding-vertical-small | - | 3px |
+|  | --kd-c-input-spacing-padding-horizontal-small | - | 9px |
+|  | --kd-c-input-spacing-padding-vertical-middle | - | 5px |
+|  | --kd-c-input-spacing-padding-horizontal-middle | - | 9px |
+|  | --kd-c-input-spacing-padding-vertical-large | - | 8px |
+|  | --kd-c-input-spacing-padding-horizontal-large | - | 9px |

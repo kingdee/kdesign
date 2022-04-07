@@ -58,12 +58,13 @@ textarea {
 	&-disabled {
 		background-color: @input-background-color-disabled-inner;
 		border-color: @input-border-color-disabled-inner;
-		color: @input-color-disabled-inner;
+    color: @input-affix-color;
 		cursor: not-allowed;
 	}
 	&-underline&-disabled {
+    color: @input-color-disabled-inner;
 		background-color: @input-background-color-inner;
-		border-color: @input-border-color-disabled-inner;
+		border-color: @input-underline-border-color-disabled-inner;
 	}
 	&-size-small {
 		.input-size(@input-small-height-inner, @input-small-font-size-inner, @input-small-padding-vertical-inner, @input-small-padding-horizontal-inner);
@@ -93,6 +94,7 @@ textarea {
 				align-items: center;
 				justify-content: center;
 				word-break: keep-all;
+        color: @input-affix-color;
 			}
 			&-suffix {
 				margin-left: 4px;
@@ -181,7 +183,7 @@ textarea {
 				}
 				.@{input-prefix-cls}-group-addon {
 					position: relative;
-					color: @input-font-color-inner;
+					color: @input-affix-color;
 					padding: 0 9px;
 					font-weight: 400;
 					font-size: 14px;
@@ -213,7 +215,6 @@ textarea {
 					&-disabled {
 						background-color: @input-background-color-disabled-inner;
 						border-color: @input-border-color-disabled-inner;
-						color: @input-color-disabled-inner;
 						cursor: not-allowed;
 					}
 				}

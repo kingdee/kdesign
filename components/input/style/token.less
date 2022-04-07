@@ -4,39 +4,42 @@
 
 
 // color
-@input-font-color-inner: var(~'@{input-prefix}-color', @color-text-secondary);
-@input-placeholder-color-inner: var(~'@{input-prefix}-color-placeholder', @color-text-third);
+@input-font-color-inner: var(~'@{input-prefix}-color-text', @color-text-primary);
+@input-placeholder-color-inner: var(~'@{input-prefix}-placeholder-color-text', @color-text-placeholder);
 @input-color-border: var(~'@{input-prefix}-color-border', #999);
 @input-background-color-inner: var(~'@{input-prefix}-color-background', @color-white);
 @input-background-color-disabled-inner: var(~'@{input-prefix}-color-background-disabled', @color-background-contain-disabled);
 @input-border-color-focused: var(~'@{input-prefix}-color-border-focused', @color-theme);
 @input-border-color-disabled-inner: var(~'@{input-prefix}-color-border-disabled', @color-border-strong);
+@input-underline-border-color-disabled-inner: var(~'@{input-prefix}-underline-color-border-disabled', @color-border-weak);
 @input-color-disabled-inner: var(~'@{input-prefix}-color-disabled', @color-disabled);
+@input-affix-color: var(~'@{input-prefix}-affix-color-text', @color-text-primary);
 
-// sizing
-@input-small-height-inner: var(~'@{input-prefix}-small-sizing-height', 20px);
-@input-middle-height-inner: var(~'@{input-prefix}-middle-sizing-height', 30px);
-@input-large-height-inner: var(~'@{input-prefix}-large-sizing-height', 36px);
-@input-border-width-inner: var(~'@{input-prefix}-sizing-border', 1px);
-
-// spacing
-@input-small-padding-vertical-inner: var(~'@{input-prefix}-small-spacing-padding-vertical', 3px);
-@input-small-padding-horizontal-inner: var(~'@{input-prefix}-small-spacing-padding-horizontal', 9px);
-@input-middle-padding-vertical-inner: var(~'@{input-prefix}-middle-spacing-padding-vertical', 5px);
-@input-middle-padding-horizontal-inner: var(~'@{input-prefix}-middle-spacing-padding-horizontal', 9px);
-@input-large-padding-vertical-inner: var(~'@{input-prefix}-large-spacing-padding-vertical', 8px);
-@input-large-padding-horizontal-inner: var(~'@{input-prefix}-large-spacing-padding-horizontal', 9px);
+// font
+@input-small-font-size-inner: var(~'@{input-prefix}-font-size-small', @font-size-small);
+@input-middle-font-size-inner: var(~'@{input-prefix}-font-size-middle', @font-size-middle);
+@input-large-font-size-inner: var(~'@{input-prefix}-font-size-large', @font-size-large);
 
 // motion
 @transition-duration-inner: var(~'@{input-prefix}-motion-duration', @duration-promptly);
 
-// font
-@input-small-font-size-inner: var(~'@{input-prefix}-small-font-size', @font-size-small);
-@input-middle-font-size-inner: var(~'@{input-prefix}-middle-font-size', @font-size-middle);
-@input-large-font-size-inner: var(~'@{input-prefix}-large-font-size', @font-size-large);
-
 // radius
 @input-border-radius-inner: var(~'@{input-prefix}-radius-border', @radius-border);
+
+// sizing
+@input-small-height-inner: var(~'@{input-prefix}-sizing-height-small', 20px);
+@input-middle-height-inner: var(~'@{input-prefix}-sizing-height-middle', 30px);
+@input-large-height-inner: var(~'@{input-prefix}-sizing-height-large', 36px);
+@input-border-width-inner: var(~'@{input-prefix}-sizing-border', 1px);
+
+// spacing
+@input-small-padding-vertical-inner: var(~'@{input-prefix}-spacing-padding-vertical-small', 3px);
+@input-small-padding-horizontal-inner: var(~'@{input-prefix}-spacing-padding-horizontal-small', 9px);
+@input-middle-padding-vertical-inner: var(~'@{input-prefix}-spacing-padding-vertical-middle', 5px);
+@input-middle-padding-horizontal-inner: var(~'@{input-prefix}-spacing-padding-horizontal-middle', 9px);
+@input-large-padding-vertical-inner: var(~'@{input-prefix}-spacing-padding-vertical-large', 8px);
+@input-large-padding-horizontal-inner: var(~'@{input-prefix}-spacing-padding-horizontal-large', 9px);
+
 
 
 
