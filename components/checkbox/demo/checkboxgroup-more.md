@@ -11,15 +11,12 @@ import ReactDOM from 'react-dom'
 import { Checkbox, Input } from '@kdcloudjs/kdesign'
 
 const checkboxStyle1 = {
-  display: 'flex',
-  height: '30px',
-  lineHeight: '30px',
+  marginBottom: 12,
+  marginRight: 12
 }
 const checkboxStyle2 = {
-  display: 'flex',
-  height: '30px',
-  lineHeight: '30px',
-  justifyContent: 'center',
+  marginBottom: 12,
+  marginRight: 12
 }
 class Demo extends React.Component {
   constructor() {
@@ -46,7 +43,7 @@ class Demo extends React.Component {
   render() {
     const { value1, value2 } = this.state
     return (
-      <div>
+      <div style={{ display: 'flex', width: 300 }}>
         <Checkbox.Group onChange={this.onChange1} value={value1} checkboxType={'default'}>
           <Checkbox style={checkboxStyle1} value={1}>
             Option A
@@ -59,7 +56,7 @@ class Demo extends React.Component {
           </Checkbox>
           <Checkbox style={checkboxStyle1} value={4}>
             More...
-            {value1.includes(String(4)) ? <Input style={{ width: 100, marginLeft: 10 }} /> : null}
+            {value1.includes(String(4)) ? <Input style={{ width: 100, marginLeft: 10, display: 'none' }} /> : null}
           </Checkbox>
         </Checkbox.Group>
         <br />
@@ -67,18 +64,15 @@ class Demo extends React.Component {
           <Checkbox style={checkboxStyle2} value={1}>
             Option A
           </Checkbox>
-          <br />
           <Checkbox style={checkboxStyle2} value={2}>
             Option B
           </Checkbox>
-          <br />
           <Checkbox style={checkboxStyle2} value={3}>
             Option C
           </Checkbox>
-          <br />
           <Checkbox style={checkboxStyle2} value={4}>
             More...
-            {value2.includes(String(4)) ? <Input style={{ width: 100, marginLeft: 10 }} /> : null}
+            {value2.includes(String(4)) ? <Input style={{ width: 100, marginLeft: 10, display: 'none' }} /> : null}
           </Checkbox>
         </Checkbox.Group>
       </div>

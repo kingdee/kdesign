@@ -73,6 +73,7 @@ const InternalCheckbox: React.ForwardRefRenderFunction<unknown, CheckboxProps> =
     [`${checkboxPrefixCls}-${size}`]: true && !!children,
     [`${checkboxPrefixCls}-${checkboxType}`]: true,
     [`${checkboxPrefixCls}-${checkboxType}-disabled`]: disabled,
+    checked: selected,
   })
 
   const getSquareClassName = classNames(className, {
@@ -80,6 +81,7 @@ const InternalCheckbox: React.ForwardRefRenderFunction<unknown, CheckboxProps> =
     [`${checkboxPrefixCls}-${checkboxType}`]: true,
     [`${checkboxPrefixCls}-${checkboxType}-disabled`]: disabled,
     [`${checkboxPrefixCls}-${checkboxType}-checked`]: selected && !disabled,
+    checked: selected,
   })
 
   const getRootClassName = isDefaultType() ? getDefaultClassName : getSquareClassName
@@ -145,7 +147,6 @@ const InternalCheckbox: React.ForwardRefRenderFunction<unknown, CheckboxProps> =
             value={value}
             checked={selected}
             disabled={disabled}
-            name={name}
           />
         </span>
         {children && <span className={`${checkboxPrefixCls}-children`}>{children}</span>}
