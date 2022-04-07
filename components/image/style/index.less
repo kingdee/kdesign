@@ -41,7 +41,7 @@
     text-align: center;
     opacity: 0;
     transform: translateY(100%);
-    transition: all @image-action-transition ease-out;
+    transition: all @duration-quickly ease-out;
     background-color: @image-action-background-color;
 
     >* {
@@ -58,7 +58,7 @@
 }
 
 .@{image-preview-prefix-cls} {
-  z-index: @image-z-index-masker;
+  z-index: @z-index-masker;
   position: fixed;
   top: 0;
   right: 0;
@@ -67,14 +67,14 @@
   opacity: 0;
   transform: scale(0.15);
   visibility: hidden;
-  transition: all calc(@image-transition-duration - 0.1s) @image-motion-ease-in;
+  transition: all calc(@transition-duration - 0.1s) @motion-ease-in;
   -webkit-overflow-scrolling: touch;
 
   &.show {
     opacity: 1;
     transform: scale(1);
     visibility: visible;
-    transition: all calc(@image-transition-duration - 0.1s) @image-motion-ease-out;
+    transition: all calc(@transition-duration - 0.1s) @motion-ease-out;
   }
 
   &-mask {

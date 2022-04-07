@@ -144,7 +144,7 @@ const Preview: React.FC<PreviewProps> = (props) => {
           <div className={`${prefixCls}-preview-topbar-action`}>
             {operations}
             <span onClick={onClose}>
-              <Icon type="close" />
+              <Icon type="close-solid" />
               关闭
             </span>
           </div>
