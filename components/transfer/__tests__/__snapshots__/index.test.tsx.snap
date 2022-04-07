@@ -17,7 +17,7 @@ exports[`Transfer renders correctly 1`] = `
           class="kd-transfer-list-header-select-all"
         >
           <label
-            class="kd-checkbox kd-checkbox-no-child kd-checkbox-default"
+            class="kd-checkbox kd-checkbox-no-child kd-checkbox-default checked"
           >
             <span
               class="kd-checkbox-default-no-child kd-checkbox-default-wrapper kd-checkbox-default-checked"
@@ -32,7 +32,6 @@ exports[`Transfer renders correctly 1`] = `
               <input
                 checked=""
                 class="kd-checkbox-input"
-                name="nodejs"
                 type="checkbox"
               />
             </span>
@@ -60,7 +59,7 @@ exports[`Transfer renders correctly 1`] = `
           class="kd-transfer-list-content-item kd-transfer-list-content-item-checked"
         >
           <label
-            class="kd-checkbox kd-checkbox-no-child kd-checkbox-default"
+            class="kd-checkbox kd-checkbox-no-child kd-checkbox-default checked"
           >
             <span
               class="kd-checkbox-default-no-child kd-checkbox-default-wrapper kd-checkbox-default-checked"
@@ -75,7 +74,6 @@ exports[`Transfer renders correctly 1`] = `
               <input
                 checked=""
                 class="kd-checkbox-input"
-                name="nodejs"
                 type="checkbox"
               />
             </span>
@@ -96,7 +94,6 @@ exports[`Transfer renders correctly 1`] = `
               <input
                 class="kd-checkbox-input"
                 disabled=""
-                name="nodejs"
                 type="checkbox"
               />
             </span>
@@ -161,7 +158,6 @@ exports[`Transfer renders correctly 1`] = `
             >
               <input
                 class="kd-checkbox-input"
-                name="nodejs"
                 type="checkbox"
               />
             </span>
@@ -196,7 +192,6 @@ exports[`Transfer renders correctly 1`] = `
             >
               <input
                 class="kd-checkbox-input"
-                name="nodejs"
                 type="checkbox"
               />
             </span>
@@ -235,7 +230,6 @@ exports[`Transfer should show sorted targetKey 1`] = `
             >
               <input
                 class="kd-checkbox-input"
-                name="nodejs"
                 type="checkbox"
               />
             </span>
@@ -271,7 +265,6 @@ exports[`Transfer should show sorted targetKey 1`] = `
             >
               <input
                 class="kd-checkbox-input"
-                name="nodejs"
                 type="checkbox"
               />
             </span>
@@ -339,7 +332,6 @@ exports[`Transfer should show sorted targetKey 1`] = `
             >
               <input
                 class="kd-checkbox-input"
-                name="nodejs"
                 type="checkbox"
               />
             </span>
@@ -375,7 +367,6 @@ exports[`Transfer should show sorted targetKey 1`] = `
             >
               <input
                 class="kd-checkbox-input"
-                name="nodejs"
                 type="checkbox"
               />
             </span>
@@ -398,7 +389,6 @@ exports[`Transfer should show sorted targetKey 1`] = `
             >
               <input
                 class="kd-checkbox-input"
-                name="nodejs"
                 type="checkbox"
               />
             </span>
@@ -493,7 +483,6 @@ exports[`Transfer should support render value and label in item 1`] = `
                     <input
                       checked={false}
                       className="kd-checkbox-input"
-                      name="nodejs"
                       onChange={[Function]}
                       type="checkbox"
                     />
@@ -605,7 +594,6 @@ exports[`Transfer should support render value and label in item 1`] = `
                         <input
                           checked={false}
                           className="kd-checkbox-input"
-                          name="nodejs"
                           onChange={[Function]}
                           type="checkbox"
                         />
@@ -765,7 +753,6 @@ exports[`Transfer should support render value and label in item 1`] = `
                     <input
                       checked={false}
                       className="kd-checkbox-input"
-                      name="nodejs"
                       onChange={[Function]}
                       type="checkbox"
                     />
