@@ -13,8 +13,8 @@ function Demo() {
   return (
     <div  style={{ width: '300px' }}>
       <Input style={inputStyle} placeholder="基本使用" disabled />
-      <Input style={inputStyle} placeholder="全边框" borderType="bordered" disabled />
-      <Input style={inputStyle} placeholder="无边框" borderType="none" disabled />
+      <Input style={inputStyle} value="全边框" borderType="bordered" disabled />
+      <Input style={inputStyle} value="无边框" borderType="none" disabled />
       <Input style={inputStyle} placeholder="请输入" borderType="bordered" prefix="金额" suffix="rmb" disabled />
       <Input
         style={inputStyle}
