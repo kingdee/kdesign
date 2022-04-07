@@ -10,11 +10,6 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { Checkbox, Input } from '@kdcloudjs/kdesign'
 
-const checkboxStyle = {
-  display: 'flex',
-  justifyContent: 'flex-start',
-}
-
 class Demo extends React.Component {
   constructor() {
     super()
@@ -56,24 +51,24 @@ class Demo extends React.Component {
     const checked = this.getChecked(value)
     const indeterminate = this.getIndeterminate(value)
     return (
-      <div>
-        <Checkbox style={checkboxStyle} checked={checked} indeterminate={indeterminate} onChange={this.onChangeAll}>
+      <div style={{ width: 300 }}>
+        <Checkbox checked={checked} indeterminate={indeterminate} onChange={this.onChangeAll}>
           Select ALL
         </Checkbox>
         <br />
         <Checkbox.Group onChange={this.onChange} value={value} checkboxType={'default'}>
-          <Checkbox style={checkboxStyle} value={1}>
+          <Checkbox value={1}>
             Option A
           </Checkbox>
-          <Checkbox style={checkboxStyle} value={2}>
+          <Checkbox value={2}>
             Option B
           </Checkbox>
-          <Checkbox style={checkboxStyle} value={3}>
+          <Checkbox value={3}>
             Option C
           </Checkbox>
-          <Checkbox style={checkboxStyle} value={4}>
+          <Checkbox value={4}>
             More...
-            {value.includes(String(4)) ? <Input style={{ width: 100, marginLeft: 10 }} /> : null}
+            {value.includes(String(4)) ? <Input style={{ width: 100, marginLeft: 10, display: 'none' }} /> : null}
           </Checkbox>
         </Checkbox.Group>
       </div>

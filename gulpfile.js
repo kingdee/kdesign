@@ -62,6 +62,7 @@ function babelify(js, modules) {
 
 function compile(modules) {
   rimraf.sync(modules !== false ? libDir : esDir)
+  const assets = gulp.src(['components/**/*.@(png|svg|woff|css)']).pipe(gulp.dest(modules === false ? esDir : libDir))
   const less = gulp
     .src(['components/**/*.less'])
     .pipe(
@@ -84,7 +85,6 @@ function compile(modules) {
       }),
     )
     .pipe(gulp.dest(modules === false ? esDir : libDir))
-  const assets = gulp.src(['components/**/*.@(png|svg)']).pipe(gulp.dest(modules === false ? esDir : libDir))
   let error = 0
   const source = ['components/**/*.tsx', 'components/**/*.ts', 'typings/**/*.d.ts', '!components/**/__tests__/**']
   // allow jsx file in components/xxx/
