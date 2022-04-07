@@ -160,6 +160,7 @@ export const BaseIcon: Array<string> = [
   'international',
   'little-k',
   'bellOutlined',
+  'sigma',
 ]
 export const SolidIcon: Array<string> = [
   'arrow-up-solid',
