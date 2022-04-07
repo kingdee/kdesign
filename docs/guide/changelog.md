@@ -4,19 +4,42 @@ title: 更新日志
 hiddenAnchor: true
 ---
 
-## [1.1.2](https://github.com/kdcloudone/kdesign/compare/v1.1.0...v1.1.2)
+## [1.1.3](https://github.com/kdcloudone/kdesign/compare/v1.1.2...v1.1.3)
+`2022-04-07`
+* checkbox
+  * 修复视觉走查问题点
+* layout
+  * 修改siderTrigger的line-height为46px,防止出现滚动条
+* input
+  * 修复点击label中有input元素时的双击事件
+* radio
+  * 修复点击label中有input元素时的双击事件
+* pagination
+  * 更新样式
+* 修复引用kdesign.less文件提示字体包缺失问题
+* 去除了使用usePopper的时候useResizeObserver检测元素没有的警告
+
+## [1.1.2](https://github.com/kdcloudone/kdesign/compare/v1.1.1...v1.1.2)
 `2022-04-02`
-* base-data
-  * 更正开放token属性及选中项颜色值
 * date-picker
   * 修复日期区间选择的选择块不跟随主题色的问题
+* icon
+  * 新增多个图标
+
+## [1.1.1](https://github.com/kdcloudone/kdesign/compare/v1.1.0...v1.1.1)
+`2022-04-01`
+* base-data
+  * 更正开放token属性及选中项颜色值
 * form
   * 检验require未正确添加
   * fix token
 * icon
   * 优化图标名称
-  * 新增多个图标
   * 新增图标：xingzhuangjiehe
+* collapse
+  * 1：删除子菜单title；2：收起class根据collapsed属性添加；3：添加默认宽度，删除demo中的宽度；4：token相关修改 ([#29](https://github.com/kdcloudone/kdesign/issues/29))
+* menu
+  * 1：删除子菜单title；2：收起class根据collapsed属性添加；3：添加默认宽度，删除demo中的宽度；4：token相关修改 ([#29](https://github.com/kdcloudone/kdesign/issues/29))
 * message
   * 更新消息提示视觉稿
 * select
