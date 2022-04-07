@@ -3,6 +3,7 @@
 @import './token.less';
 
 @pagination-prefix-cls: ~'@{kd-prefix}-pagination';
+@dropdown-prefix-cls: ~'@{kd-prefix}-dropdown';
 @pagination-action-prefix-cls: ~'@{pagination-prefix-cls}-action';
 @pagination-selector-prefix-cls: ~'@{pagination-prefix-cls}-selector';
 @pagination-pages-prefix-cls: ~'@{pagination-prefix-cls}-pages';
@@ -22,11 +23,11 @@
 
   .@{pagination-prefix-cls}-current {
     display: inline-block;
-    margin-right: 15px;
+    margin-right: 12px;
     vertical-align: middle;
     .@{pagination-prefix-cls}-current-input {
       box-sizing: border-box;
-      width: 32px;
+      width: 44px;
       height: @pagination-size;
       margin: 0 3px;
       padding: 0;
@@ -46,7 +47,7 @@
       }
 
       &:disabled {
-        color: @color-disabled;
+        color: @pagination-disabled-color;
         border: @pagination-border-size solid @pagination-border-disabled-color;
         background: @pagination-button-disabled-background-color;
         cursor: not-allowed;
@@ -107,7 +108,7 @@
           cursor: not-allowed;
 
           i {
-            color: @pagination-icon-disabled-color;
+            color: @pagination-disabled-color;
           }
         }
 
@@ -141,6 +142,7 @@
     .@{pagination-selector-prefix-cls}-size {
       box-sizing: border-box;
       display: inline-block;
+      padding: 0;
       line-height: @pagination-size;
       font-size: @pagination-font-size;
       color: @color-text-primary;
@@ -160,21 +162,34 @@
       &.disabled,
       &.disabled > i {
         cursor: not-allowed;
-        color: @color-border-disabled;
+        color: @pagination-disabled-color;
       }
 
       i {
-        margin-left: 5px;
+        margin-left: 4px;
         line-height: @pagination-size;
         font-size: @pagination-icon-size;
         color: @pagination-text-color;
+      }
+    }
+
+    .@{dropdown-prefix-cls}-menu-item {
+      text-align: right;
+      padding-right: @pagination-dropdown-item-spacing-horizontal;
+      padding-left: @pagination-dropdown-item-spacing-horizontal;
+
+      span {
+        white-space: nowrap;
       }
     }
   }
 
   // 简化版分页
   &.simple {
-    display: inline-block;
+    display: inline-flex;
+    justify-content: space-around;
+    align-items: center;
+    height: @pagination-size;
     border-radius: @radius-border;
     border: @pagination-border-size solid transparent;
 
@@ -193,15 +208,17 @@
     }
 
     &.disabled > .@{pagination-prefix-cls}-item {
-      color: @color-border-disabled;
+      color: @pagination-disabled-color;
     }
 
     .@{pagination-prefix-cls}-item {
       .reset-component;
       display: inline-block;
+      height: @pagination-size;
+      overflow: hidden;
+      margin: 0 8px;
       vertical-align: middle;
       color: @color-text-primary;
-      margin: 0 18px;
 
       &:first-child,
       &:last-child {
@@ -216,7 +233,7 @@
           margin: 0;
 
           &:disabled {
-            color: @color-disabled;
+            color: @pagination-disabled-color;
             cursor: not-allowed;
           }
         }
@@ -243,7 +260,7 @@
         &:hover,
         &:active {
           &:not(:disabled) {
-            border-color: @pagination-border-hover-color
+            border-color: @pagination-border-hover-color;
           }
 
           i {
@@ -255,7 +272,7 @@
           cursor: not-allowed;
 
           i {
-            color: @pagination-icon-disabled-color;
+            color: @pagination-disabled-color;
           }
         }
 
@@ -318,7 +335,7 @@
               border-color: @pagination-border-hover-color;
 
               &:disabled {
-                border-color: @pagination-border-disabled-color
+                border-color: @pagination-border-disabled-color;
               }
             }
           }
@@ -339,7 +356,7 @@
 
           &:disabled {
             cursor: not-allowed;
-            color: @color-disabled;
+            color: @pagination-disabled-color;
           }
         }
       }
@@ -377,11 +394,8 @@
           background-color: @color-background-contain;
         }
 
-        &:hover,
-        &:active,
         &.active,
-        &:first-child,
-        &:last-child {
+        &:hover {
           button {
             color: @color-theme;
 
@@ -394,16 +408,16 @@
         &:first-child,
         &:last-child {
           button {
-            width: @pagination-nicety-size;
+            width: @pagination-size;
             padding: 0;
-            line-height: calc(@pagination-nicety-size - 2px);
+            line-height: calc(@pagination-size - 2px);
           }
         }
 
         button {
           .reset-component;
-          min-width: @pagination-nicety-size;
-          height: @pagination-nicety-size;
+          min-width: @pagination-size;
+          height: @pagination-size;
           padding: 0 6px;
           cursor: pointer;
           outline: none;
@@ -416,7 +430,11 @@
 
           &:disabled {
             cursor: not-allowed;
-            color: @color-disabled;
+            color: @pagination-disabled-color;
+          }
+
+          > i {
+            font-size: 16px;
           }
 
           .@{pagination-pages-prefix-cls}-jumper-icon {
@@ -427,7 +445,7 @@
             width: 100%;
             height: 100%;
             color: @color-theme;
-            line-height: @pagination-nicety-size;
+            line-height: @pagination-size;
             background-color: @color-background;
             transition: opacity @duration-promptly;
           }
@@ -437,13 +455,13 @@
 
     .@{pagination-jumper-prefix-cls} {
       display: inline-block;
-      margin-left: 12px;
+      margin-left: 4px;
       vertical-align: middle;
 
       .@{pagination-jumper-prefix-cls}-input {
         box-sizing: border-box;
-        width: 48px;
-        height: @pagination-nicety-size;
+        width: 40px;
+        height: @pagination-size;
         padding: 0;
         outline: none;
         text-align: center;
@@ -461,7 +479,7 @@
         }
 
         &:disabled {
-          color: @color-disabled;
+          color: @pagination-disabled-color;
           border: @pagination-border-size solid @pagination-border-disabled-color;
           background: @pagination-button-disabled-background-color;
           cursor: not-allowed;
@@ -470,14 +488,14 @@
 
       .@{pagination-jumper-prefix-cls}-button {
         .reset-component;
-        width: @pagination-nicety-size;
-        height: @pagination-nicety-size;
+        width: @pagination-size;
+        height: @pagination-size;
         margin-left: @pagination-button-spacing;
-        line-height: @pagination-nicety-size;
+        line-height: @pagination-size;
         vertical-align: top;
         cursor: pointer;
         outline: none;
-        color: @color-theme;
+        color: @color-text-primary;
         font-size: @pagination-font-size;
         border-radius: @radius-border;
         border: @pagination-border-size solid @color-border-strong;
@@ -485,8 +503,8 @@
         transition: border-color @duration-promptly;
 
         &:hover,
-        &:active,
-        &.active {
+        &:active {
+          color: @color-theme;
           border-color: @pagination-border-hover-color;
 
           &:disabled {
@@ -495,7 +513,7 @@
         }
 
         &:disabled {
-          color: @color-disabled;
+          color: @pagination-disabled-color;
           cursor: not-allowed;
         }
       }
@@ -505,9 +523,9 @@
       .reset-component;
       position: relative;
       display: inline-block;
-      margin-left: 40px;
+      margin-left: 22px;
       outline: none;
-      height: @pagination-nicety-size;
+      height: @pagination-size;
       color: @color-text-primary;
       vertical-align: middle;
 
@@ -515,11 +533,11 @@
         position: relative;
         box-sizing: border-box;
         display: inline-block;
-        width: 67px;
-        height: @pagination-nicety-size;
+        min-width: 64px;
+        height: @pagination-size;
         margin-right: 8px;
-        padding: 0 8px;
-        line-height: @pagination-nicety-size;
+        padding: 0 24px 0 4px;
+        line-height: @pagination-size;
         font-size: @pagination-font-size;
         color: @color-text-primary;
         text-align: left;
@@ -542,7 +560,7 @@
         &.disabled,
         &.disabled > i {
           cursor: not-allowed;
-          color: @color-border-disabled;
+          color: @pagination-disabled-color;
         }
 
         i {
@@ -554,7 +572,7 @@
           color: @pagination-hover-color;
           transform: translateY(-50%);
         }
-        
+
         .@{pagination-prefix-cls}-dropdown-icon-open {
           transform: rotate(180deg) translateY(50%);
         }
