@@ -60,8 +60,16 @@ const InternalRadio: React.ForwardRefRenderFunction<HTMLElement, IRadioProps> = 
     className,
   ) // 单选包裹元素class名称
 
+  const handleRepeatClick = (e: React.MouseEvent<HTMLElement>) => {
+    const element = e.target as HTMLElement
+    if (element.tagName !== 'INPUT') {
+      e.stopPropagation()
+    }
+  }
+
   return (
-    <label className={classString} style={style} ref={mergedRef as any}>
+    // eslint-disable-next-line
+    <label className={classString} style={style} ref={mergedRef as any} onClick={handleRepeatClick}>
       <input type="radio" className={`${radioPrefixCls}-input`} {...radioProps} />
       {children !== undefined ? <span>{children}</span> : null}
     </label>

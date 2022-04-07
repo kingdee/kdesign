@@ -56,28 +56,16 @@ subtitle: 导航菜单
 | 分类 | 组件token | 全局token | 默认值 |
 | --- | --- | --- | --- |
 | color | --kd-c-menu-color-disabled | --kd-g-color-disabled | #b2b2b2 |
-<<<<<<< HEAD
 |  | --kd-c-menu-sub-color-text | - | rgba(255, 255, 255, 0.65) |
 |  | --kd-c-menu-sub-color-text-hover | --kd-g-color-white | #fff |
 |  | --kd-c-menu-sub-color-text-active | --kd-g-color-white | #fff |
-=======
-|  | --kd-c-menu-sub-color | - | rgba(255, 255, 255, 0.65) |
-|  | --kd-c-menu-sub-color-hover | --kd-g-color-white | #fff |
-|  | --kd-c-menu-sub-color-active | --kd-g-color-white | #fff |
->>>>>>> cc2faa2 (style: [menu]fix token and demo)
 |  | --kd-c-menu-sub-color-background | - | #121319 |
 |  | --kd-c-menu-sub-inline-color-background | - | #1f212b |
 |  | --kd-c-menu-inline-color-active | --kd-g-color-white | #fff |
 |  | --kd-c-menu-color-background | - | #343848 |
-<<<<<<< HEAD
 |  | --kd-c-menu-light-color-text | --kd-g-color-text-primary | #212121 |
 |  | --kd-c-menu-light-color-text-hover | --kd-g-color-ongoing | #276ff5 |
 |  | --kd-c-menu-light-color-text-active | --kd-g-color-theme | #5582f3 |
-=======
-|  | --kd-c-menu-light-color | --kd-g-color-text-primary | #212121 |
-|  | --kd-c-menu-light-color-hover | --kd-g-color-ongoing | #276ff5 |
-|  | --kd-c-menu-light-color-active | --kd-g-color-theme | #5582f3 |
->>>>>>> cc2faa2 (style: [menu]fix token and demo)
 |  | --kd-c-menu-light-color-background | --kd-g-color-background-ongoing | #f2f9ff |
 | font | --kd-c-menu-icon-font-size | --kd-g-font-size-xx-large | 20px |
 | motion | --kd-c-menu-motion-duration | --kd-g-duration | 0.3s |
