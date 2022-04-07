@@ -70,6 +70,7 @@
 
   &-collapsed {
     width: 50px;
+    min-width: auto;
   }
 
   &-light {
@@ -221,3 +222,16 @@
     }
   }
 }
+
+.@{menu-prefix-cls}-dark {
+  .@{submenu-prefix-cls}-sub {
+    background: @menu-sub-inline-color-background;
+  }
+
+  .@{submenu-prefix-cls}-sub-second,.@{submenu-prefix-cls}-sub-third  {
+    background: @menu-sub-color-background;
+  }
+}
+
+
+
