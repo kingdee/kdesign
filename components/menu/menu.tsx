@@ -154,7 +154,7 @@ const Menu: MenuType = (props) => {
       className={classNames(prefixCls, className, {
         [`${prefixCls}-inline`]: mode === 'inline',
         [`${prefixCls}-vertical`]: mode !== 'inline',
-        [`${prefixCls}-collapsed`]: true,
+        [`${prefixCls}-collapsed`]: collapsed,
         [`${prefixCls}-${theme === 'light' ? 'light' : 'dark'}`]: true,
       })}
       role="menu"
