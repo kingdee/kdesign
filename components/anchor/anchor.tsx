@@ -272,10 +272,6 @@ const InternalAnchor = (props: AnchorProps, ref: unknown): React.FunctionCompone
   const handleVisibleChange = (visible: boolean) => {
     !isLocked && onVisibleChange && onVisibleChange(visible)
     if (props.visible !== undefined) return
-    if (visible) {
-      setOptionShow(visible)
-      return
-    }
     !isLocked && setOptionShow(visible)
   }
 
