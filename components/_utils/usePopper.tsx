@@ -404,7 +404,6 @@ function usePopper(locatorElement: React.ReactElement, popperElement: React.Reac
   )
 
   const hidePopper = useCallback(() => {
-    setEvType('')
     props.visible === undefined && setVisible(false)
     onVisibleChange && onVisibleChange(false)
   }, [onVisibleChange, props.visible])
