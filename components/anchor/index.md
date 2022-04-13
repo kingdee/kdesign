@@ -58,12 +58,14 @@ subtitle: 锚点
 | font | --kd-c-anchor-advanced-lock-font-size | - | 16px |
 |  | --kd-c-anchor-font-size | --kd-g-font-size-small | 12px |
 |  | --kd-c-anchor-icon-font-size | - | 16px |
+|  | --kd-c-anchor-advanced-arrows-font-size | - | 24px |
 | motion | --kd-c-anchor-duration-duration | --kd-g-duration | 0.3s |
 | sizing | --kd-c-anchor-sizing-width | - | 120px |
 |  | --kd-c-anchor-advanced-sizing-width | - | 160px |
 | spacing | --kd-c-anchor-spacing-vertical | - | 7px |
 |  | --kd-c-anchor-spacing-horizontal | - | 7px |
 |  | --kd-c-anchor-spacing-padding | - | 7px 8px |
+|  | --kd-c-anchor-secondary-spacing-padding | - | 12px 8px |
 |  | --kd-c-anchor-advanced-spacing-padding-top | - | 8px |
 |  | --kd-c-anchor-advanced-spacing-padding-bottom | - | 7px |
 |  | --kd-c-anchor-ink-line-spacing-width | - | 1px |
