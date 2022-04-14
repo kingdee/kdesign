@@ -58,12 +58,23 @@
 
 @btn-background-ghost-g-text-color: var(~'@{button-custom-prefix}-background-ghost-color-text', @color-theme);
 @btn-background-ghost-g-text-color-hover: var(~'@{button-custom-prefix}-background-ghost-color-text-hover', @color-white);
+@btn-group-dropdown-item-border-color: var(~'@{button-custom-prefix}-group-dropdown-item-border-color', #E5E5E5); // 集合按钮 下拉边框颜色
+@btn-group-dropdown-item-color-background-hover: var(~'@{button-custom-prefix}-group-dropdown-item-color-background-hover', #F5F5F5); // 集合按钮 下拉hover背景颜色
+@btn-group-dropdown-color-background: var(~'@{button-custom-prefix}-group-dropdown-color-background', #fff); // 集合按钮 下拉菜单背景颜色
+@btn-group-trigger-color-background: var(~'@{button-custom-prefix}-group-trigger-color-background', #4367c1);
+@btn-group-trigger-color-background-hover: var(~'@{button-custom-prefix}-group-trigger-color-background-hover', #4c74da);
+@btn-group-trigger-color-background-active: var(~'@{button-custom-prefix}-group-trigger-color-background-active', #3B5AA9);
+@btn-group-trigger-color-background-disabled: var(~'@{button-custom-prefix}-group-trigger-color-background-disabled', #95a4c8);
 
 // font
 @btn-g-font-weight: var(~'@{button-custom-prefix}-font-weight', @font-weight-light);
 @btn-small-font-size: var(~'@{button-custom-prefix}-font-size-small', @font-size-small); // 小号 文字大小
 @btn-middle-font-size: var(~'@{button-custom-prefix}-font-size-middle', @font-size-small); // 中号 文字大小
 @btn-large-font-size: var(~'@{button-custom-prefix}-font-size-large', @font-size-large); // 大号 文字大小
+
+@btn-icon-small-font-size: var(~'@{button-custom-prefix}-icon-font-size-small', 14px); // 小号 图标大小
+@btn-icon-middle-font-size: var(~'@{button-custom-prefix}-icon-font-size-middle', 16px); // 中号 图标大小
+@btn-icon-large-font-size: var(~'@{button-custom-prefix}-icon-font-size-large', 18px); // 大号 图标大小
 
 // motion
 @btn-transition-fn: var(~'@{button-custom-prefix}-motion-timing-function', cubic-bezier(0.075, 0.82, 0.165, 1));
@@ -81,6 +92,8 @@
 @btn-middle-min-width: var(~'@{button-custom-prefix}-sizing-min-width-middle', 60px); // 中号 最小宽度
 @btn-large-height: var(~'@{button-custom-prefix}-sizing-height-large', 32px); // 大号 高度
 @btn-large-min-width: var(~'@{button-custom-prefix}-sizing-min-width-large', 80px); // 大号 最小宽度
+@btn-group-dropdown-item-height: var(~'@{button-custom-prefix}--group-dropdown-item-height', 30px);
+@btn-group-dropdown-min-width: var(~'@{button-custom-prefix}-group-dropdown-min-width', 80px);
 
 // spacing
 @btn-small-padding-vertical: var(~'@{button-custom-prefix}-spacing-padding-vertical-small', 3px); // 小号 内间距 纵向
@@ -89,3 +102,5 @@
 @btn-middle-padding-horizontal: var(~'@{button-custom-prefix}-spacing-padding-horizontal-middle', 8px); // 中号 内间距 纵向   宽度配置
 @btn-large-padding-vertical: var(~'@{button-custom-prefix}-spacing-padding-vertical-large', 6px); // 大号 内间距 纵向
 @btn-large-padding-horizontal: var(~'@{button-custom-prefix}-spacing-padding-horizontal-large', 8px); // 大号 内间距 横向
+@btn-group-dropdown-item-horizontal: var(~'@{button-custom-prefix}-group-dropdown-item-horizonta', 12px);
+@btn-icon-padding-horizontal: var(~'@{button-custom-prefix}-icon-spacing-padding-horizontal', 4px);

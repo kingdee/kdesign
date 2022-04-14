@@ -152,6 +152,9 @@ const InternalCarousel = (props: CarouselProps, ref: unknown): FunctionComponent
     if (autoplay) {
       play()
     }
+    return () => {
+      autoplayRef.current && clearTimeout(autoplayRef.current)
+    }
   }, [currentIndex, autoplay, intervalTime, play])
 
   const showDot = () => {

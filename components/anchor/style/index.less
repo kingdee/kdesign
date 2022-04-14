@@ -72,7 +72,7 @@
         overflow: hidden;
         white-space: nowrap;
         text-overflow: ellipsis;
-        padding: 0 6px;
+        padding: 0 4px;
         line-height: 1.5;
         vertical-align: middle;
       }
@@ -90,7 +90,7 @@
 
   &-advanced-arrows {
     color: @anchor-advanced-arrows-color;
-    font-size: @anchor-icon-font-size;
+    font-size: @anchor-advanced-arrows-font-size;
     cursor: pointer;
     &:hover {
       color: @anchor-color-theme;
@@ -153,6 +153,10 @@
 
   &-link {
     padding: @anchor-link-padding;
+
+    &>.@{anchor-prefix-cls}-link {
+      padding: @anchor-link-secondary-padding;
+    }
 
     &-title {
       text-decoration: none;

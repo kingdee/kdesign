@@ -7,7 +7,6 @@
 
   // 按钮wave动效
   transition: color @transition-duration, background-color @transition-duration, border-color @transition-duration;
-
   &:not(&-text)::after {
     position: absolute;
     top: 0;
@@ -21,7 +20,6 @@
     pointer-events: none;
     clear: both;
   }
-
   &:not(&-text)[click-animating-wave='true']::after {
     animation: fadeEffect @btn-duration-fade @ease-out forwards, waveEffect @btn-duration-wave @ease-out forwards;
   }
@@ -29,7 +27,6 @@
   // 次要按钮
   &-second {
     .btn-type(@btn-second-border-color, @btn-second-background-color, @btn-second-font-color);
-
     &:hover {
       &:not(.@{btn-prefix-cls}-loading) {
         background-color: @btn-second-background-color-hover;
@@ -37,7 +34,6 @@
         color: @btn-second-font-color-hover;
       }
     }
-
     &:active {
       &:not(.@{btn-prefix-cls}-loading) {
         background-color: @btn-second-background-color-active;
@@ -45,28 +41,23 @@
         color: @btn-second-font-color-active;
       }
     }
-
     &:disabled {
       border-color: @btn-second-border-color-disabled !important;
       background-color: @btn-second-background-color-disabled !important;
       color: @btn-second-font-color-disabled !important;
     }
   }
-
   // 主要按钮
   &-primary {
     .btn-type(@btn-primary-border-color, @btn-primary-background-color, @btn-primary-font-color);
-
     &:hover:not(.@{btn-prefix-cls}-loading) {
       background-color: @btn-primary-background-color-hover;
       border-color: @btn-primary-border-color-hover;
     }
-
     &:active:not(.@{btn-prefix-cls}-loading) {
       border-color: @btn-primary-border-color-active;
       background-color: @btn-primary-background-color-active;
     }
-
     &:disabled {
       background-color: @btn-primary-background-color-disabled !important;
       border-color: @btn-primary-border-color-disabled !important;
@@ -102,7 +93,6 @@
     justify-content: center;
     float: left;
   }
-
   &-iconWrapper-right {
     display: flex;
     align-items: center;
@@ -121,16 +111,40 @@
   // 小号尺寸按钮
   &-size-small {
     .btn-size(@btn-small-height, @btn-small-font-size, @btn-small-padding-vertical, @btn-small-padding-horizontal, @btn-small-min-width);
+    &.@{btn-prefix-cls}-icon-only {
+      font-size: @btn-icon-small-font-size;
+      padding: 0 @btn-icon-padding-horizontal;
+    }
+
+    .@{btn-prefix-cls}-group-basic-icon {
+      font-size: @btn-icon-small-font-size;
+    }
   }
 
   // 中号尺寸按钮
   &-size-middle {
     .btn-size(@btn-middle-height, @btn-middle-font-size, @btn-middle-padding-vertical, @btn-middle-padding-horizontal, @btn-middle-min-width);
+    &.@{btn-prefix-cls}-icon-only {
+      font-size: @btn-icon-middle-font-size;
+      padding: 0 @btn-icon-padding-horizontal;
+    }
+
+    .@{btn-prefix-cls}-group-basic-icon {
+      font-size: @btn-icon-middle-font-size;
+    }
   }
 
   // 大号尺寸按钮
   &-size-large {
     .btn-size(@btn-large-height, @btn-large-font-size, @btn-large-padding-vertical, @btn-large-padding-horizontal, @btn-large-min-width);
+    &.@{btn-prefix-cls}-icon-only {
+      font-size: @btn-icon-large-font-size;
+      padding: 0 @btn-icon-padding-horizontal;
+    }
+
+    .@{btn-prefix-cls}-group-basic-icon {
+      font-size: @btn-icon-large-font-size;
+    }
   }
 
   // 圆形按钮
@@ -143,12 +157,10 @@
   &-shape-circle&-size-small {
     .btn-shape-circle-width(@btn-small-height);
   }
-
   // 圆形中号尺寸按钮宽度等同其高度
   &-shape-circle&-size-middle {
     .btn-shape-circle-width(@btn-middle-height);
   }
-
   // 圆形大号尺寸按钮宽度等同其高度
   &-shape-circle&-size-large {
     .btn-shape-circle-width(@btn-large-height);
@@ -158,12 +170,10 @@
   &-shape-round&-size-small {
     border-radius: @btn-small-height;
   }
-
   // 椭圆形中号尺寸按钮border-radius等同其高度
   &-shape-round&-size-middle {
     border-radius: @btn-middle-height;
   }
-
   // 椭圆形大号尺寸按钮border-radius等同其高度
   &-shape-round&-size-large {
     border-radius: @btn-large-height;
@@ -205,7 +215,6 @@
   &[disabled] {
     cursor: not-allowed;
   }
-
   // 按钮开启幽灵化
   &-background-ghost {
     &,
@@ -222,19 +231,107 @@
       }
     }
   }
-
   // 加载中按钮
   &-loading {
     cursor: default;
   }
-
   // 按钮开启块化撑满父元素
   &-block {
     width: 100%;
   }
-
   // 图标与文本之间的间隔
   .btn-space {
     margin-left: 4px;
+  }
+}
+
+.@{btn-prefix-cls}-group {
+  display: inline-block;
+
+  &-basic {
+    .@{btn-prefix-cls} {
+      padding-top: 0;
+      padding-bottom: 0;
+    }
+
+    &-icon {
+      margin-left: 4px;
+    }
+  }
+
+  &-trigger {
+    .@{btn-prefix-cls}-primary {
+      background: @btn-group-trigger-color-background;
+      &:hover {
+        background: @btn-group-trigger-color-background-hover;
+        border-color: @btn-group-trigger-color-background-hover;
+      }
+
+      &:active {
+        background: @btn-group-trigger-color-background-active;
+      }
+
+      &:disabled {
+        background: @btn-group-trigger-color-background-disabled !important;
+      }
+    }
+
+    .@{btn-prefix-cls} {
+      margin-left: -1px;
+    }
+  }
+
+  .@{btn-prefix-cls} {
+    &-size-small,
+    &-size-middle,
+    &-size-large {
+      min-width: unset;
+    }
+
+    &:first-child {
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+
+    &:last-child {
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+    }
+  }
+
+  .@{kd-prefix}-dropdown {
+    &-menu {
+      padding: 0;
+    }
+  }
+
+  &-dropdown {
+    box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.2);
+    background: @btn-group-dropdown-color-background;
+    color: #333333;
+    min-width: @btn-group-dropdown-min-width;
+
+    &-item {
+      height: @btn-group-dropdown-item-height;
+      line-height: @btn-group-dropdown-item-height;
+      cursor: pointer;
+      padding: 0 @btn-group-dropdown-item-horizontal;
+      &:hover {
+        background: @btn-group-dropdown-item-color-background-hover;
+      }
+
+      &:not(:last-child) {
+        border-bottom: 1px solid @btn-group-dropdown-item-border-color;
+      }
+    }
+  }
+
+  &.topLeft.hidden,
+  &.bottomLeft.hidden,
+  &.topRight.hidden,
+  &.bottomRight.hidden {
+    opacity: 0;
+    visibility: hidden;
+    transition: all calc(@transition-duration - 0.1s) @ease;
   }
 }
