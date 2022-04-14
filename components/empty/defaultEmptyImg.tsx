@@ -1,9 +1,11 @@
 import React, { useContext } from 'react'
 import ConfigContext from '../config-provider/ConfigContext'
+import uniqueId from 'lodash/uniqueId'
 
 function DefaultEmptyImg() {
   const { getPrefixCls, prefixCls } = useContext(ConfigContext)
   const emptyPrefixCls = getPrefixCls!(prefixCls, 'empty')
+  const linearGradientId = uniqueId(emptyPrefixCls + '-default-linearGradient')
   return (
     <svg
       className={`${emptyPrefixCls}-image`}
@@ -15,7 +17,7 @@ function DefaultEmptyImg() {
     >
       <title>编组</title>
       <defs>
-        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-1">
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id={linearGradientId}>
           <stop stopColor="#D6DCE7" offset="0%"></stop>
           <stop stopColor="#D6DCE7" stopOpacity="0" offset="100%"></stop>
         </linearGradient>
@@ -35,7 +37,7 @@ function DefaultEmptyImg() {
           </g>
           <g
             transform="translate(108.000000, 40.000000)"
-            fill="url(#linearGradient-1)"
+            fill={`url(#${linearGradientId})`}
             id="背景/云"
             opacity="0.300000012"
           >
@@ -45,7 +47,7 @@ function DefaultEmptyImg() {
           </g>
           <g
             transform="translate(12.000000, 32.000000)"
-            fill="url(#linearGradient-1)"
+            fill={`url(#${linearGradientId})`}
             id="背景/云"
             opacity="0.300000012"
           >
