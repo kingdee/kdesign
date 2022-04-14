@@ -1,9 +1,11 @@
 import React, { useContext } from 'react'
 import ConfigContext from '../config-provider/ConfigContext'
+import uniqueId from 'lodash/uniqueId'
 
 function IllustrationEmptyImg() {
   const { getPrefixCls, prefixCls } = useContext(ConfigContext)
   const emptyPrefixCls = getPrefixCls!(prefixCls, 'empty')
+  const linearGradientId = uniqueId(emptyPrefixCls + '-illus-linearGradient-')
   return (
     <svg
       className={`${emptyPrefixCls}-image`}
@@ -16,11 +18,11 @@ function IllustrationEmptyImg() {
       <title>切片</title>
       <defs>
         <rect id="path-1" x="0" y="0" width="200" height="114"></rect>
-        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-3">
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id={linearGradientId}>
           <stop stopColor="#F2F5FA" offset="0%"></stop>
           <stop stopColor="#F2F5FA" stopOpacity="0" offset="100%"></stop>
         </linearGradient>
-        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-4">
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id={`${linearGradientId}-1`}>
           <stop stopColor="#F2F5FA" offset="0%"></stop>
           <stop stopColor="#F2F5FA" stopOpacity="0" offset="100%"></stop>
         </linearGradient>
@@ -60,7 +62,7 @@ function IllustrationEmptyImg() {
               <g transform="translate(11.428571, 37.050000)">
                 <g
                   transform="translate(34.285714, 34.200000) scale(-1, 1) translate(-34.285714, -34.200000) "
-                  fill="url(#linearGradient-3)"
+                  fill={`url(#${linearGradientId})`}
                   id="形状结合"
                 >
                   <path d="M4.28571429,55.575 L4.28571429,34.2535714 C4.28571429,22.4188982 13.8796125,12.825 25.7142857,12.825 C36.3598894,12.825 45.1923741,20.587885 46.8597669,30.7616821 C48.2786739,30.2207368 49.8190861,29.925 51.4285714,29.925 C58.5293754,29.925 64.2857143,35.6813389 64.2857143,42.7821429 L64.2857143,55.575 L4.28571429,55.575 Z"></path>
@@ -68,7 +70,7 @@ function IllustrationEmptyImg() {
               </g>
             </g>
             <g mask="url(#mask-2)" id="背景/云">
-              <g transform="translate(142.857143, 51.300000)" fill="url(#linearGradient-4)" id="形状结合">
+              <g transform="translate(142.857143, 51.300000)" fill={`url(#${linearGradientId}-1)`} id="形状结合">
                 <path d="M17.1428571,8.55 C24.2401777,8.55 30.1286667,13.7256234 31.2399627,20.508509 C32.186033,20.1471098 33.2128549,19.95 34.2857143,19.95 C39.0195836,19.95 42.8571429,23.7875593 42.8571429,28.5214286 L42.8571429,37.05 L31.4281429,37.049 L31.4285714,37.05 L2.85714286,37.05 L2.85714286,22.8357143 C2.85714286,14.9459321 9.253075,8.55 17.1428571,8.55 Z"></path>
               </g>
             </g>

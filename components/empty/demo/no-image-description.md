@@ -13,9 +13,9 @@ import { Empty } from '@kdcloudjs/kdesign'
 function Demo() {
   return (
     <div style={{ display: 'flex', alignItems: 'center' }}>
-      <Empty name="Empty" description="没有找到结果" image={false} />
+      <Empty description="没有找到结果" image={false} />
 
-      <Empty name="Empty" description={false} />
+      <Empty description={false} />
     </div>
   )
 }

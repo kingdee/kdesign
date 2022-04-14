@@ -17,7 +17,7 @@ exports[`Empty renders correctly 1`] = `
     </title>
     <defs>
       <linearGradient
-        id="linearGradient-1"
+        id="kd-empty-default-linearGradient2"
         x1="50%"
         x2="50%"
         y1="0%"
@@ -84,7 +84,7 @@ exports[`Empty renders correctly 1`] = `
           />
         </g>
         <g
-          fill="url(#linearGradient-1)"
+          fill="url(#kd-empty-default-linearGradient2)"
           id="背景/云"
           opacity="0.300000012"
           transform="translate(108.000000, 40.000000)"
@@ -98,7 +98,7 @@ exports[`Empty renders correctly 1`] = `
           </g>
         </g>
         <g
-          fill="url(#linearGradient-1)"
+          fill="url(#kd-empty-default-linearGradient2)"
           id="背景/云"
           opacity="0.300000012"
           transform="translate(12.000000, 32.000000)"
@@ -140,7 +140,7 @@ exports[`Empty renders correctly 2`] = `
     </title>
     <defs>
       <linearGradient
-        id="linearGradient-1"
+        id="kd-empty-default-linearGradient3"
         x1="50%"
         x2="50%"
         y1="0%"
@@ -207,7 +207,7 @@ exports[`Empty renders correctly 2`] = `
           />
         </g>
         <g
-          fill="url(#linearGradient-1)"
+          fill="url(#kd-empty-default-linearGradient3)"
           id="背景/云"
           opacity="0.300000012"
           transform="translate(108.000000, 40.000000)"
@@ -221,7 +221,7 @@ exports[`Empty renders correctly 2`] = `
           </g>
         </g>
         <g
-          fill="url(#linearGradient-1)"
+          fill="url(#kd-empty-default-linearGradient3)"
           id="背景/云"
           opacity="0.300000012"
           transform="translate(12.000000, 32.000000)"
@@ -280,7 +280,7 @@ exports[`Empty renders correctly 4`] = `
     </title>
     <defs>
       <linearGradient
-        id="linearGradient-1"
+        id="kd-empty-default-linearGradient4"
         x1="50%"
         x2="50%"
         y1="0%"
@@ -347,7 +347,7 @@ exports[`Empty renders correctly 4`] = `
           />
         </g>
         <g
-          fill="url(#linearGradient-1)"
+          fill="url(#kd-empty-default-linearGradient4)"
           id="背景/云"
           opacity="0.300000012"
           transform="translate(108.000000, 40.000000)"
@@ -361,7 +361,7 @@ exports[`Empty renders correctly 4`] = `
           </g>
         </g>
         <g
-          fill="url(#linearGradient-1)"
+          fill="url(#kd-empty-default-linearGradient4)"
           id="背景/云"
           opacity="0.300000012"
           transform="translate(12.000000, 32.000000)"
