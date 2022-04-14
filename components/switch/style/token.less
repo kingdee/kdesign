@@ -2,11 +2,11 @@
 
 @switch-prefix: '--@{kd-prefix}-c-switch';
 
-
 // color
-@switch-on-color: var(~'@{switch-prefix}-color-on', @color-theme);
-@switch-off-color: var(~'@{switch-prefix}-color-off', #999);
-@switch-disabled-bg: var(~'@{switch-prefix}-color-background-disabled', @color-disabled);
+@switch-on-color: var(~'@{switch-prefix}-color-on', @color-theme-6);
+@switch-off-color: var(~'@{switch-prefix}-color-off', #B2B2B2);
+@switch-on-disabled-bg: var(~'@{switch-prefix}-color-on-background-disabled', @color-theme-4);
+@switch-off-disabled-bg: var(~'@{switch-prefix}-color-off-background-disabled', #D9D9D9);
 @switch-loading-color: var(~'@{switch-prefix}-color-loading', @color-ongoing);
 @switch-font-color: var(~'@{switch-prefix}-color-font', @color-white);
 
@@ -15,19 +15,16 @@
 @switch-large-font-size: var(~'@{switch-prefix}-large-font-size', @font-size-small);
 @switch-inner-small-font-size: var(~'@{switch-prefix}-inner-font-size-small', @font-size-small);
 
-
 // line-height
 @switch-large-line-height: var(~'@{switch-prefix}-large-line-height', 20px);
 @switch-small-line-height: var(~'@{switch-prefix}-small-line-height', 14px);
 
-
 //radius
-@switch-small-border-radius: var(~'@{switch-prefix}-small-radius-border', 7px);
-
+@switch-small-border-radius: var(~'@{switch-prefix}-small-radius-border', 8px);
 
 // sizing
-@switch-small-height: var(~'@{switch-prefix}-small-sizing-height', 14px);
-@switch-small-min-width: var(~'@{switch-prefix}-small-sizing-width', 28px);
+@switch-small-height: var(~'@{switch-prefix}-small-sizing-height', 16px);
+@switch-small-min-width: var(~'@{switch-prefix}-small-sizing-width', 32px);
 @switch-large-height: var(~'@{switch-prefix}-large-sizing-height', 20px);
 @switch-large-min-width: var(~'@{switch-prefix}-large-sizing-width', 40px);
 @switch-large-border-radius: var(~'@{switch-prefix}-large-sizing-border-radius', 10px);
