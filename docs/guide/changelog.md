@@ -4,6 +4,30 @@ title: 更新日志
 hiddenAnchor: true
 ---
 
+## [1.2.0](https://github.com/kdcloudone/kdesign/compare/v1.1.3...v1.2.0)
+`2022-04-14`
+* anchor
+  * 解决锚点组件锁住后重新打开，锚点浮层不能自动关闭问题
+  * 修复视觉走查问题点
+* button
+  * 样式优化
+  * 新增集合按钮
+* carousel
+  * 解决走马灯自动播放时内存泄漏问题
+* empty
+  * 去除demo中多余的name属性
+  * 修复当页面中出现多个空组件时隐藏第一个组件导致渐变色不渲染的视觉问题
+* image
+  * 样式优化
+* stepper
+  * 样式优化
+* switch
+  * 样式优化
+* icon
+  * 新增sigma图标
+* rate
+  * 更新样式
+
 ## [1.1.3](https://github.com/kdcloudone/kdesign/compare/v1.1.2...v1.1.3)
 `2022-04-07`
 * checkbox
