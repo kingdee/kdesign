@@ -9,7 +9,7 @@ import ReactDOM from 'react-dom'
 import { Empty } from '@kdcloudjs/kdesign'
 
 function Demo() {
-  return <Empty name="Empty" />
+  return <Empty />
 }
 
 ReactDOM.render(<Demo />, mountNode)

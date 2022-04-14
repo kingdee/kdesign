@@ -13,9 +13,8 @@ import { Empty } from '@kdcloudjs/kdesign'
 function Demo() {
   return (
     <div style={{ display: 'flex' }}>
-      <Empty name="Empty" description="没有找到结果" />
+      <Empty description="没有找到结果" />
       <Empty
-        name="Empty"
         description={
           <span>
             自定义 <a href="#API">描述内容</a>

@@ -109,7 +109,7 @@ exports[`Transfer renders correctly 1`] = `
     class="kd-transfer-operation"
   >
     <button
-      class="kd-btn kd-btn-primary kd-btn-size-small"
+      class="kd-btn kd-btn-primary kd-btn-size-small kd-btn-icon-only"
       click-animating-wave="false"
       type="button"
     >
@@ -123,7 +123,7 @@ exports[`Transfer renders correctly 1`] = `
       <span />
     </button>
     <button
-      class="kd-btn kd-btn-ghost kd-btn-size-small"
+      class="kd-btn kd-btn-ghost kd-btn-size-small kd-btn-icon-only"
       click-animating-wave="false"
       disabled=""
       type="button"
@@ -282,7 +282,7 @@ exports[`Transfer should show sorted targetKey 1`] = `
     class="kd-transfer-operation"
   >
     <button
-      class="kd-btn kd-btn-ghost kd-btn-size-small"
+      class="kd-btn kd-btn-ghost kd-btn-size-small kd-btn-icon-only"
       click-animating-wave="false"
       disabled=""
       type="button"
@@ -297,7 +297,7 @@ exports[`Transfer should show sorted targetKey 1`] = `
       <span />
     </button>
     <button
-      class="kd-btn kd-btn-ghost kd-btn-size-small"
+      class="kd-btn kd-btn-ghost kd-btn-size-small kd-btn-icon-only"
       click-animating-wave="false"
       disabled=""
       type="button"
@@ -634,7 +634,7 @@ exports[`Transfer should support render value and label in item 1`] = `
           type="ghost"
         >
           <button
-            className="kd-btn kd-btn-ghost kd-btn-size-small"
+            className="kd-btn kd-btn-ghost kd-btn-size-small kd-btn-icon-only"
             click-animating-wave="false"
             disabled={true}
             onClick={[Function]}
@@ -670,7 +670,7 @@ exports[`Transfer should support render value and label in item 1`] = `
           type="ghost"
         >
           <button
-            className="kd-btn kd-btn-ghost kd-btn-size-small"
+            className="kd-btn kd-btn-ghost kd-btn-size-small kd-btn-icon-only"
             click-animating-wave="false"
             disabled={true}
             onClick={[Function]}

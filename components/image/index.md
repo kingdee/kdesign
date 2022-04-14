@@ -63,9 +63,10 @@ title: Image
 | color | --kd-c-image-icon-color | --kd-g-color-white | #fff |
 |  | --kd-c-image-close-color-background | - | #666666 |
 |  | --kd-c-image-action-color-background | - | rgba(0, 0, 0, 0.5) |
-| font | --kd-c-image-icon-font-size | - | 27px |
+| font | --kd-c-image-icon-font-size | - | 26px |
 |  | --kd-c-image-preview-font-size | - | 28px |
 |  | --kd-c-image-font-size-x-large | --kd-g-font-size-x-large | 18px |
+| radius | --kd-c-image-radius-border | --kd-g-radius-border | 2px |
 | sizing | --kd-c-image-action-sizing-width | - | 100% |
 |  | --kd-c-image-preview-sizing-width | - | 18px |
 |  | --kd-c-image-preview-sizing-height | - | 18px |

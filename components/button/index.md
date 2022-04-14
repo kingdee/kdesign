@@ -54,31 +54,33 @@ subtitle: 按钮
 |  | --kd-c-button-primary-color-background-disabled | --kd-g-color-theme-3 | rgb(227, 238, 255) |
 |  | --kd-c-button-primary-color-border-disabled | --kd-g-color-theme-3 | rgb(227, 238, 255) |
 |  | --kd-c-button-ghost-color-background | - | transparent |
-|  | --kd-c-button-ghost-color-border | --kd-g-color-border-strong | #d9d9d9 |
-|  | --kd-c-button-ghost-color-text | --kd-g-color-text-secondary | #666 |
-|  | --kd-c-button-ghost-color-border-hover | --kd-g-color-theme | #5582f3 |
-|  | --kd-c-button-ghost-color-text-hover | --kd-g-color-theme | #5582f3 |
-|  | --kd-c-button-ghost-color-border-active | --kd-g-color-theme-7 | rgb(55, 92, 202) |
+|  | --kd-c-button-ghost-color-border | --kd-g-color-theme-6 | rgb(85, 130, 243) |
+|  | --kd-c-button-ghost-color-text | - | #5582F3 |
+|  | --kd-c-button-ghost-color-background-hover | --kd-g-color-theme-5 | rgb(135, 173, 255) |
+|  | --kd-c-button-ghost-color-border-hover | - | transparent |
+|  | --kd-c-button-ghost-color-text-hover | - | #ffffff |
+|  | --kd-c-button-ghost-color-text-active | - | #ffffff |
+|  | --kd-c-button-ghost-color-background-active | --kd-g-color-theme-7 | rgb(55, 92, 202) |
+|  | --kd-c-button-ghost-color-border-active | - | transparent |
 |  | --kd-c-button-ghost-color-background-disabled | --kd-g-color-background-contain-disabled | #f5f5f5 |
-|  | --kd-c-button-ghost-color-text-active | --kd-g-color-theme-7 | rgb(55, 92, 202) |
-|  | --kd-c-button-ghost-color-border-disabled | --kd-g-color-disabled | #b2b2b2 |
-|  | --kd-c-button-ghost-color-text-disabled | --kd-g-color-disabled | #b2b2b2 |
-|  | --kd-c-button-second-color-background | --kd-g-color-background-3 | rgba(255, 255, 255, 0.65) |
-|  | --kd-c-button-second-color-border | --kd-g-color-border-strong-3 | rgba(217, 217, 217, 0.65) |
-|  | --kd-c-button-second-color-text | --kd-g-color-text-secondary-3 | rgba(102, 102, 102, 0.65) |
+|  | --kd-c-button-ghost-color-border-disabled | - | #D9D9D9 |
+|  | --kd-c-button-ghost-color-text-disabled | - | #B2B2B2 |
+|  | --kd-c-button-second-color-background | - | transparent |
+|  | --kd-c-button-second-color-border | - | #D9D9D9 |
+|  | --kd-c-button-second-color-text | - | #212121 |
 |  | --kd-c-button-second-color-background-hover | --kd-g-color-white | #fff |
-|  | --kd-c-button-second-color-border-hover | --kd-g-color-border-strong | #d9d9d9 |
-|  | --kd-c-button-second-color-text-hover | --kd-g-color-text-secondary | #666 |
+|  | --kd-c-button-second-color-border-hover | --kd-g-color-theme | #5582f3 |
+|  | --kd-c-button-second-color-text-hover | --kd-g-color-theme | #5582f3 |
 |  | --kd-c-button-second-color-background-active | --kd-g-color-white | #fff |
-|  | --kd-c-button-second-color-border-active | --kd-g-color-border-strong | #d9d9d9 |
-|  | --kd-c-button-second-color-text-active | --kd-g-color-text-secondary | #666 |
-|  | --kd-c-button-second-color-background-disabled | --kd-g-color-background-3 | rgba(255, 255, 255, 0.65) |
-|  | --kd-c-button-second-color-border-disabled | --kd-g-color-text-secondary-3 | rgba(102, 102, 102, 0.65) |
-|  | --kd-c-button-second-color-text-disabled | --kd-g-color-text-secondary-3 | rgba(102, 102, 102, 0.65) |
-|  | --kd-c-button-text-color-text | --kd-g-color-theme | #5582f3 |
+|  | --kd-c-button-second-color-border-active | --kd-g-color-theme-7 | rgb(55, 92, 202) |
+|  | --kd-c-button-second-color-text-active | --kd-g-color-theme-7 | rgb(55, 92, 202) |
+|  | --kd-c-button-second-color-background-disabled | --kd-g-color-background-contain-disabled | #f5f5f5 |
+|  | --kd-c-button-second-color-border-disabled | - | #D9D9D9 |
+|  | --kd-c-button-second-color-text-disabled | - | #B2B2B2 |
+|  | --kd-c-button-text-color-text | --kd-g-color-theme-6 | rgb(85, 130, 243) |
 |  | --kd-c-button-text-color-text-hover | --kd-g-color-theme-5 | rgb(135, 173, 255) |
 |  | --kd-c-button-text-color-text-active | --kd-g-color-theme-7 | rgb(55, 92, 202) |
-|  | --kd-c-button-text-color-text-disabled | --kd-g-color-disabled | #b2b2b2 |
+|  | --kd-c-button-text-color-text-disabled | --kd-g-color-theme-4 | rgb(181, 207, 255) |
 |  | --kd-c-button-color-background-disabled | --kd-g-color-background-contain-disabled | #f5f5f5 |
 |  | --kd-c-button-color-border-disabled | --kd-g-color-border-strong | #d9d9d9 |
 |  | --kd-c-button-text-color-disabled | --kd-g-color-white | #fff |

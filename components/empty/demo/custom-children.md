@@ -10,7 +10,7 @@ import { Empty, Button } from '@kdcloudjs/kdesign'
 
 function Demo() {
   return (
-    <Empty name="Empty">
+    <Empty>
       <Button type="primary" ghost style={{ marginTop: '10px' }}>
         立即新增
       </Button>
