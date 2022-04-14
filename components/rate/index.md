@@ -37,10 +37,10 @@ subtitle: 评分
 
 | 分类 | 组件token | 全局token | 默认值 |
 | --- | --- | --- | --- |
-| color | --kd-c-rate-color-text-selected | - | #fdc200 |
-|  | --kd-c-rate-color-text-not-selected | - | #d9d9d9 |
-| font | --kd-c-rate-font-size-small | --kd-g-font-size-small | 12px |
-|  | --kd-c-rate-font-size-middle | --kd-g-font-size-middle | 14px |
-|  | --kd-c-rate-font-size-large | --kd-g-font-size-large | 16px |
+| color | --kd-c-rate-color-text-selected | - | #FEC104 |
+|  | --kd-c-rate-color-text-not-selected | - | #E5E5E5 |
+| font | --kd-c-rate-font-size-small | - | 12px |
+|  | --kd-c-rate-font-size-middle | - | 16px |
+|  | --kd-c-rate-font-size-large | - | 20px |
 | motion | --kd-c-rate-motion-duration | --kd-g-duration | 0.3s |
-| spacing | --kd-c-rate-spacing-margin-right | - | 10px |
+| spacing | --kd-c-rate-spacing-margin-right | - | 8px |
