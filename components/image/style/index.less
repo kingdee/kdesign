@@ -41,7 +41,7 @@
     text-align: center;
     opacity: 0;
     transform: translateY(100%);
-    transition: all @image-action-transition ease-out;
+    transition: all 0.2s ease-out;
     background-color: @image-action-background-color;
 
     >* {
@@ -58,7 +58,7 @@
 }
 
 .@{image-preview-prefix-cls} {
-  z-index: @image-z-index-masker;
+  z-index: 3000;
   position: fixed;
   top: 0;
   right: 0;
@@ -67,14 +67,14 @@
   opacity: 0;
   transform: scale(0.15);
   visibility: hidden;
-  transition: all calc(@image-transition-duration - 0.1s) @image-motion-ease-in;
+  transition: all 0.2s cubic-bezier(0.4,0,1,0.6);
   -webkit-overflow-scrolling: touch;
 
   &.show {
     opacity: 1;
     transform: scale(1);
     visibility: visible;
-    transition: all calc(@image-transition-duration - 0.1s) @image-motion-ease-out;
+    transition: all 0.2s cubic-bezier(0,.4,.4,1);
   }
 
   &-mask {
@@ -104,7 +104,7 @@
 
     &:hover,
     &:active {
-      color: @theme-color;
+      color: #5582f3;
     }
   }
 

@@ -12,7 +12,7 @@ export type ButtonType = typeof ButtonTypes[number]
 export const ButtonSizes = tuple('large', 'middle', 'small')
 export type ButtonSize = typeof ButtonSizes[number]
 
-export const ButtonShapes = tuple('circle', 'round')
+export const ButtonShapes = tuple('circle', 'round', 'none')
 export type ButtonShape = typeof ButtonShapes[number]
 
 export const ButtonIconPlaces = tuple('left', 'right')

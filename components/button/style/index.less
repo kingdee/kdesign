@@ -1,197 +1,240 @@
 @import '../../style/themes/index';
 @import './mixin.less';
 @btn-prefix-cls: ~'@{kd-prefix}-btn';
+
 .@{btn-prefix-cls} {
-	.btn;
+  .btn;
 
-	// 按钮wave动效
-	transition: color @transition-duration, background-color @transition-duration, border-color @transition-duration;
-	&:not(&-text)::after{
-		position: absolute;
-		top: 0;
-		right: 0;
-		bottom: 0;
-		left: 0;
-		border-radius: inherit;
-		box-shadow: 0 0 0 0 @color-theme;
-		opacity: 0.2;
-		content: '';
-		pointer-events: none;
-		clear: both;
-	}
-	&:not(&-text)[click-animating-wave='true']::after {
-		animation: fadeEffect @btn-duration-fade @ease-out forwards,
-        waveEffect @btn-duration-wave @ease-out forwards;
-	}
+  // 按钮wave动效
+  transition: color @transition-duration, background-color @transition-duration, border-color @transition-duration;
 
-	// 次要按钮
-	&-second {
-		.btn-type(@btn-second-border-color, @btn-second-background-color, @btn-second-font-color);
-		&:hover {
-			&:not(.@{btn-prefix-cls}-loading) {
-				background-color: @btn-second-background-color-hover;
-				border-color: @btn-second-border-color-hover;
-				color: @btn-second-font-color-hover;
-			}
-		}
-		&:active {
-			&:not(.@{btn-prefix-cls}-loading) {
-				background-color: @btn-second-background-color-active;
-				border-color: @btn-second-border-color-active;
-				color: @btn-second-font-color-active;
-			}
-		}
-		&:disabled {
-			border-color: @btn-second-border-color-disabled !important;
-			background-color: @btn-second-background-color-disabled !important;
-			color: @btn-second-font-color-disabled !important;
-		}
-	}
-	// 主要按钮
-	&-primary {
-		.btn-type(@btn-primary-border-color, @btn-primary-background-color, @btn-primary-font-color);
-		&:hover:not(.@{btn-prefix-cls}-loading) {
-			background-color: @btn-primary-background-color-hover;
-			border-color: @btn-primary-border-color-hover;
-		}
-		&:active:not(.@{btn-prefix-cls}-loading) {
-			border-color: @btn-primary-border-color-active;
-			background-color: @btn-primary-background-color-active;
-		}
-		&:disabled {
-			background-color: @btn-primary-background-color-disabled !important;
-			border-color: @btn-primary-border-color-disabled !important;
-		}
-	}
-	// 幽灵按钮
-	&-ghost {
-		.btn-type(@btn-ghost-border-color, @btn-ghost-background-color, @btn-ghost-font-color);
-		&:hover:not(.@{btn-prefix-cls}-loading) {
-			border-color: @btn-ghost-border-color-hover;
-			color: @btn-ghost-font-color-hover;
-		}
-		&:active:not(.@{btn-prefix-cls}-loading) {
-			border-color: @btn-ghost-border-color-hover;
-			color: @btn-ghost-font-color-active;
-		}
-		&:disabled {
-			background-color: @btn-ghost-background-color-disabled !important;
-			border-color: @btn-ghost-border-color-disabled !important;
-			color: @btn-ghost-border-color-disabled !important;
-		}
-	}
-	&-iconWrapper-left {
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		float: left;
-	}
-	&-iconWrapper-right {
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		float: right;
-	}
-	&-loadingIcon {
-		color: @btn-g-text-color-loading;
-	}
-	&-primary-loadingIcon {
-		color: @btn-primary-g-text-color-loading;
-	}
-	// 小号尺寸按钮
-	&-size-small {
-		.btn-size(@btn-small-height, @btn-small-font-size, @btn-small-padding-vertical, @btn-small-padding-horizontal, @btn-small-min-width);
-	}
-	// 中号尺寸按钮
-	&-size-middle {
-		.btn-size(@btn-middle-height, @btn-middle-font-size, @btn-middle-padding-vertical, @btn-middle-padding-horizontal, @btn-middle-min-width);
-	}
-	// 大号尺寸按钮
-	&-size-large {
-		.btn-size(@btn-large-height, @btn-large-font-size, @btn-large-padding-vertical, @btn-large-padding-horizontal, @btn-large-min-width);
-	}
+  &:not(&-text)::after {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    border-radius: inherit;
+    box-shadow: 0 0 0 0 @color-theme;
+    opacity: 0.2;
+    content: '';
+    pointer-events: none;
+    clear: both;
+  }
 
-	// 圆形按钮
-	&-shape-circle {
-		border-radius: 50%;
-		min-width: auto;
-	}
+  &:not(&-text)[click-animating-wave='true']::after {
+    animation: fadeEffect @btn-duration-fade @ease-out forwards, waveEffect @btn-duration-wave @ease-out forwards;
+  }
 
-	// 圆形小号尺寸按钮宽度等同其高度
-	&-shape-circle&-size-small {
-		.btn-shape-circle-width(@btn-small-height);
-	}
-	// 圆形中号尺寸按钮宽度等同其高度
-	&-shape-circle&-size-middle {
-		.btn-shape-circle-width(@btn-middle-height);
-	}
-	// 圆形大号尺寸按钮宽度等同其高度
-	&-shape-circle&-size-large {
-		.btn-shape-circle-width(@btn-large-height);
-	}
+  // 次要按钮
+  &-second {
+    .btn-type(@btn-second-border-color, @btn-second-background-color, @btn-second-font-color);
 
-	// 椭圆形小号尺寸按钮border-radius等同其高度
-	&-shape-round&-size-small {
-		border-radius: @btn-small-height;
-	}
-	// 椭圆形中号尺寸按钮border-radius等同其高度
-	&-shape-round&-size-middle {
-		border-radius: @btn-middle-height;
-	}
-	// 椭圆形大号尺寸按钮border-radius等同其高度
-	&-shape-round&-size-large {
-		border-radius: @btn-large-height;
-	}
+    &:hover {
+      &:not(.@{btn-prefix-cls}-loading) {
+        background-color: @btn-second-background-color-hover;
+        border-color: @btn-second-border-color-hover;
+        color: @btn-second-font-color-hover;
+      }
+    }
 
-	// 文本类型按钮
-	&-text {
-		height: auto;
-		width: auto;
-		color: @btn-text-g-text-color;
-		padding: 0;
-		min-width: auto;
-		&:hover {
-			color: @btn-text-g-text-color-hover;
-		}
-		&:active {
-			color: @btn-text-g-text-color-active;
-		}
-		&[disabled] {
-			color: @btn-text-g-text-color-disabled !important;
-		}
-	}
+    &:active {
+      &:not(.@{btn-prefix-cls}-loading) {
+        background-color: @btn-second-background-color-active;
+        border-color: @btn-second-border-color-active;
+        color: @btn-second-font-color-active;
+      }
+    }
 
-	// 按钮不带边框
-	&-no-border {
-		border: none;
-	}
+    &:disabled {
+      border-color: @btn-second-border-color-disabled !important;
+      background-color: @btn-second-background-color-disabled !important;
+      color: @btn-second-font-color-disabled !important;
+    }
+  }
 
-	// 不可用按钮部分样式
-	&:disabled, &[disabled] {
-		cursor: not-allowed;
-	}
-	// 按钮开启幽灵化
-	&-background-ghost {
-		&, &:hover, &:active {
-			background-color: transparent;
-		}
-		&.@{btn-prefix-cls}-primary {
-			color: @btn-background-ghost-g-text-color;
-			&:hover {
-				color: @btn-background-ghost-g-text-color-hover;
-			}
-		}
-	}
-	// 加载中按钮
-	&-loading {
-		cursor: default;
-	}
-	// 按钮开启块化撑满父元素
-	&-block {
-		width: 100%;
-	}
-	// 图标与文本之间的间隔
-	.btn-space {
-		margin-left: 5px;
-	}
+  // 主要按钮
+  &-primary {
+    .btn-type(@btn-primary-border-color, @btn-primary-background-color, @btn-primary-font-color);
+
+    &:hover:not(.@{btn-prefix-cls}-loading) {
+      background-color: @btn-primary-background-color-hover;
+      border-color: @btn-primary-border-color-hover;
+    }
+
+    &:active:not(.@{btn-prefix-cls}-loading) {
+      border-color: @btn-primary-border-color-active;
+      background-color: @btn-primary-background-color-active;
+    }
+
+    &:disabled {
+      background-color: @btn-primary-background-color-disabled !important;
+      border-color: @btn-primary-border-color-disabled !important;
+    }
+  }
+
+  // 幽灵按钮
+  &-ghost {
+    .btn-type(@btn-ghost-border-color, @btn-ghost-background-color, @btn-ghost-font-color);
+
+    &:hover:not(.@{btn-prefix-cls}-loading) {
+      background-color: @btn-ghost-background-color-hover;
+      border-color: @btn-ghost-border-color-hover;
+      color: @btn-ghost-font-color-hover;
+    }
+
+    &:active:not(.@{btn-prefix-cls}-loading) {
+      background-color: @btn-ghost-background-color-active;
+      border-color: @btn-ghost-border-color-hover;
+      color: @btn-ghost-font-color-active;
+    }
+
+    &:disabled {
+      background-color: @btn-ghost-background-color-disabled !important;
+      border-color: @btn-ghost-border-color-disabled !important;
+      color: @btn-ghost-font-color-disabled !important;
+    }
+  }
+
+  &-iconWrapper-left {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    float: left;
+  }
+
+  &-iconWrapper-right {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    float: right;
+  }
+
+  &-loadingIcon {
+    color: @btn-g-text-color-loading;
+  }
+
+  &-primary-loadingIcon {
+    color: @btn-primary-g-text-color-loading;
+  }
+
+  // 小号尺寸按钮
+  &-size-small {
+    .btn-size(@btn-small-height, @btn-small-font-size, @btn-small-padding-vertical, @btn-small-padding-horizontal, @btn-small-min-width);
+  }
+
+  // 中号尺寸按钮
+  &-size-middle {
+    .btn-size(@btn-middle-height, @btn-middle-font-size, @btn-middle-padding-vertical, @btn-middle-padding-horizontal, @btn-middle-min-width);
+  }
+
+  // 大号尺寸按钮
+  &-size-large {
+    .btn-size(@btn-large-height, @btn-large-font-size, @btn-large-padding-vertical, @btn-large-padding-horizontal, @btn-large-min-width);
+  }
+
+  // 圆形按钮
+  &-shape-circle {
+    border-radius: 50%;
+    min-width: auto;
+  }
+
+  // 圆形小号尺寸按钮宽度等同其高度
+  &-shape-circle&-size-small {
+    .btn-shape-circle-width(@btn-small-height);
+  }
+
+  // 圆形中号尺寸按钮宽度等同其高度
+  &-shape-circle&-size-middle {
+    .btn-shape-circle-width(@btn-middle-height);
+  }
+
+  // 圆形大号尺寸按钮宽度等同其高度
+  &-shape-circle&-size-large {
+    .btn-shape-circle-width(@btn-large-height);
+  }
+
+  // 椭圆形小号尺寸按钮border-radius等同其高度
+  &-shape-round&-size-small {
+    border-radius: @btn-small-height;
+  }
+
+  // 椭圆形中号尺寸按钮border-radius等同其高度
+  &-shape-round&-size-middle {
+    border-radius: @btn-middle-height;
+  }
+
+  // 椭圆形大号尺寸按钮border-radius等同其高度
+  &-shape-round&-size-large {
+    border-radius: @btn-large-height;
+  }
+
+  // 直角按钮
+  &-shape-none {
+    border-radius: 0;
+  }
+
+  // 文本类型按钮
+  &-text {
+    height: auto;
+    width: auto;
+    color: @btn-text-g-text-color;
+    padding: 0;
+    min-width: auto;
+
+    &:hover {
+      color: @btn-text-g-text-color-hover;
+    }
+
+    &:active {
+      color: @btn-text-g-text-color-active;
+    }
+
+    &[disabled] {
+      color: @btn-text-g-text-color-disabled !important;
+    }
+  }
+
+  // 按钮不带边框
+  &-no-border {
+    border: none;
+  }
+
+  // 不可用按钮部分样式
+  &:disabled,
+  &[disabled] {
+    cursor: not-allowed;
+  }
+
+  // 按钮开启幽灵化
+  &-background-ghost {
+    &,
+    &:hover,
+    &:active {
+      background-color: transparent;
+    }
+
+    &.@{btn-prefix-cls}-primary {
+      color: @btn-background-ghost-g-text-color;
+
+      &:hover {
+        color: @btn-background-ghost-g-text-color-hover;
+      }
+    }
+  }
+
+  // 加载中按钮
+  &-loading {
+    cursor: default;
+  }
+
+  // 按钮开启块化撑满父元素
+  &-block {
+    width: 100%;
+  }
+
+  // 图标与文本之间的间隔
+  .btn-space {
+    margin-left: 4px;
+  }
 }

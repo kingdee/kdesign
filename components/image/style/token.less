@@ -2,31 +2,18 @@
 
 @image-prefix: '--@{kd-prefix}-c-image';
 
-@image-transition-duration: var(~'@{image-prefix}-transition-duration',@transition-duration);
-@image-motion-ease-out: var(~'@{image-prefix}-motion-ease-out',@motion-ease-out);
-@image-motion-ease-in: var(~'@{image-prefix}-motion-ease-out',@motion-ease-in);
-@image-z-index-masker: var(~'@{image-prefix}-z-index-masker',@z-index-masker);
-@image-border-radius: var(~'@{image-prefix}-radius-border',@radius-border);
-@image-action-transition: var(~'@{image-prefix}-action-transition',@duration-quickly);
-
-
-
-
 // color
-@image-icon-color: var(~'@{image-prefix}-icon-color',@color-white);//图片预览 图标颜色
-@image-close-color-background: var(~'@{image-prefix}-close-color-background',#666666);//删除图标 背景色
-@image-action-background-color: var(~'@{image-prefix}-action-color-background',rgba(0, 0, 0, 0.5));
-
-
+@image-icon-color: var(~'@{image-prefix}-icon-color', @color-white); //图片预览 图标颜色
+@image-close-color-background: var(~'@{image-prefix}-close-color-background', #666666); //删除图标 背景色
+@image-action-background-color: var(~'@{image-prefix}-action-color-background', rgba(0, 0, 0, 0.5));
 // font
-@image-icon-font-size: var(~'@{image-prefix}-icon-font-size',27px);//图片预览 图标大小
-@image-preview-close-font-size: var(~'@{image-prefix}-preview-font-size',28px);
-@image-font-size-x-large: var(~'@{image-prefix}-font-size-x-large',@font-size-x-large);
-
+@image-icon-font-size: var(~'@{image-prefix}-icon-font-size', 26px); //图片预览 图标大小
+@image-preview-close-font-size: var(~'@{image-prefix}-preview-font-size', 28px);
+@image-font-size-x-large: var(~'@{image-prefix}-font-size-x-large', @font-size-x-large);
+// radius
+@image-border-radius: var(~'@{image-prefix}-radius-border', @radius-border);
 // sizing
-@image-action-width: var(~'@{image-prefix}-action-sizing-width',100%);
-@image-preview-close-width: var(~'@{image-prefix}-preview-sizing-width',18px);
-@image-preview-close-height: var(~'@{image-prefix}-preview-sizing-height',18px);
-@image-action-height: var(~'@{image-prefix}-action-sizing-height',28px);
-
-
+@image-action-width: var(~'@{image-prefix}-action-sizing-width', 100%);
+@image-preview-close-width: var(~'@{image-prefix}-preview-sizing-width', 18px);
+@image-preview-close-height: var(~'@{image-prefix}-preview-sizing-height', 18px);
+@image-action-height: var(~'@{image-prefix}-action-sizing-height', 28px);

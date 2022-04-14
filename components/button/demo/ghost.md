@@ -13,7 +13,7 @@ import { Button } from '@kdcloudjs/kdesign'
 function Demo() {
   const demoButtonStyle = { margin: '0px 8px 8px 0' }
   return (
-    <div style={{ width: '400px' }}>
+    <div style={{ width: '400px', padding: '26px 16px 16px', backgroundColor: '#F5F5F5' }}>
       <Button type="primary" style={demoButtonStyle} ghost>
         主要按钮
       </Button>

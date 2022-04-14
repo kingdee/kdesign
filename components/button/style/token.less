@@ -14,33 +14,36 @@
 @btn-primary-border-color-disabled: var(~'@{button-custom-prefix}-primary-color-border-disabled', @color-theme-disabled); // 基础disabled边框颜色
 
 @btn-ghost-background-color: var(~'@{button-custom-prefix}-ghost-color-background', transparent); // 幽灵背景颜色
-@btn-ghost-border-color: var(~'@{button-custom-prefix}-ghost-color-border', @color-border-strong); //幽灵边框颜色
-@btn-ghost-font-color: var(~'@{button-custom-prefix}-ghost-color-text', @color-text-secondary); // 幽灵按钮文字颜色
-@btn-ghost-border-color-hover: var(~'@{button-custom-prefix}-ghost-color-border-hover', @color-theme); //幽灵hover边框颜色
-@btn-ghost-font-color-hover: var(~'@{button-custom-prefix}-ghost-color-text-hover', @color-theme); // 幽灵hover按钮文字颜色
-@btn-ghost-border-color-active: var(~'@{button-custom-prefix}-ghost-color-border-active', @color-theme-click); //幽灵active边框颜色
+@btn-ghost-border-color: var(~'@{button-custom-prefix}-ghost-color-border', @color-theme-6); //幽灵边框颜色
+@btn-ghost-font-color: var(~'@{button-custom-prefix}-ghost-color-text', #5582F3); // 幽灵按钮文字颜色
+@btn-ghost-background-color-hover: var(~'@{button-custom-prefix}-ghost-color-background-hover', @color-theme-5); //幽灵hover背景颜色
+@btn-ghost-border-color-hover: var(~'@{button-custom-prefix}-ghost-color-border-hover', transparent); //幽灵hover边框颜色
+@btn-ghost-font-color-hover: var(~'@{button-custom-prefix}-ghost-color-text-hover',#ffffff); // 幽灵hover按钮文字颜色
+@btn-ghost-font-color-active: var(~'@{button-custom-prefix}-ghost-color-text-active', #ffffff); // 幽灵active按钮文字颜色
+@btn-ghost-background-color-active: var(~'@{button-custom-prefix}-ghost-color-background-active', @color-theme-7); //幽灵active背景颜色
+@btn-ghost-border-color-active: var(~'@{button-custom-prefix}-ghost-color-border-active', transparent); //幽灵active边框颜色
+
 @btn-ghost-background-color-disabled: var(~'@{button-custom-prefix}-ghost-color-background-disabled', @color-background-contain-disabled); // 幽灵disabled背景颜色
-@btn-ghost-font-color-active: var(~'@{button-custom-prefix}-ghost-color-text-active', @color-theme-click); // 幽灵active按钮文字颜色
-@btn-ghost-border-color-disabled: var(~'@{button-custom-prefix}-ghost-color-border-disabled', @color-disabled); //幽灵disabled边框颜色
-@btn-ghost-font-color-disabled: var(~'@{button-custom-prefix}-ghost-color-text-disabled', @color-disabled); // 幽灵disabled按钮文字颜色
+@btn-ghost-border-color-disabled: var(~'@{button-custom-prefix}-ghost-color-border-disabled', #D9D9D9); //幽灵disabled边框颜色
+@btn-ghost-font-color-disabled: var(~'@{button-custom-prefix}-ghost-color-text-disabled', #B2B2B2); // 幽灵disabled按钮文字颜色
 
-@btn-second-background-color: var(~'@{button-custom-prefix}-second-color-background', @color-background-3); // 次要背景颜色
-@btn-second-border-color: var(~'@{button-custom-prefix}-second-color-border', @color-border-strong-3); // 次要边框颜色
-@btn-second-font-color: var(~'@{button-custom-prefix}-second-color-text', @color-text-secondary-3); // 次要文字颜色
+@btn-second-background-color: var(~'@{button-custom-prefix}-second-color-background', transparent); // 次要背景颜色
+@btn-second-border-color: var(~'@{button-custom-prefix}-second-color-border', #D9D9D9); // 次要边框颜色
+@btn-second-font-color: var(~'@{button-custom-prefix}-second-color-text', #212121); // 次要文字颜色
 @btn-second-background-color-hover: var(~'@{button-custom-prefix}-second-color-background-hover', @color-white); // 次要hover背景颜色
-@btn-second-border-color-hover: var(~'@{button-custom-prefix}-second-color-border-hover', @color-border-strong); // 次要hover边框颜色
-@btn-second-font-color-hover: var(~'@{button-custom-prefix}-second-color-text-hover', @color-text-secondary); // 次要hover文字颜色
+@btn-second-border-color-hover: var(~'@{button-custom-prefix}-second-color-border-hover', @color-theme); // 次要hover边框颜色
+@btn-second-font-color-hover: var(~'@{button-custom-prefix}-second-color-text-hover', @color-theme); // 次要hover文字颜色
 @btn-second-background-color-active: var(~'@{button-custom-prefix}-second-color-background-active', @color-white); // 次要active背景颜色
-@btn-second-border-color-active: var(~'@{button-custom-prefix}-second-color-border-active', @color-border-strong); // 次要active边框颜色
-@btn-second-font-color-active: var(~'@{button-custom-prefix}-second-color-text-active', @color-text-secondary); // 次要active文字颜色
-@btn-second-background-color-disabled: var(~'@{button-custom-prefix}-second-color-background-disabled', @color-background-3); // 次要disabled背景颜色
-@btn-second-border-color-disabled: var(~'@{button-custom-prefix}-second-color-border-disabled', @color-text-secondary-3); // 次要disabled边框颜色
-@btn-second-font-color-disabled: var(~'@{button-custom-prefix}-second-color-text-disabled', @color-text-secondary-3); // 次要disabled文字颜色
+@btn-second-border-color-active: var(~'@{button-custom-prefix}-second-color-border-active', @color-theme-click); // 次要active边框颜色
+@btn-second-font-color-active: var(~'@{button-custom-prefix}-second-color-text-active', @color-theme-click); // 次要active文字颜色
+@btn-second-background-color-disabled: var(~'@{button-custom-prefix}-second-color-background-disabled', @color-background-contain-disabled); // 次要disabled背景颜色
+@btn-second-border-color-disabled: var(~'@{button-custom-prefix}-second-color-border-disabled', #D9D9D9); // 次要disabled边框颜色
+@btn-second-font-color-disabled: var(~'@{button-custom-prefix}-second-color-text-disabled', #B2B2B2); // 次要disabled文字颜色
 
-@btn-text-g-text-color: var(~'@{button-custom-prefix}-text-color-text', @color-theme);
-@btn-text-g-text-color-hover: var(~'@{button-custom-prefix}-text-color-text-hover', @color-theme-hover);
-@btn-text-g-text-color-active: var(~'@{button-custom-prefix}-text-color-text-active', @color-theme-click);
-@btn-text-g-text-color-disabled: var(~'@{button-custom-prefix}-text-color-text-disabled', @color-disabled);
+@btn-text-g-text-color: var(~'@{button-custom-prefix}-text-color-text', @color-theme-6);
+@btn-text-g-text-color-hover: var(~'@{button-custom-prefix}-text-color-text-hover', @color-theme-5);
+@btn-text-g-text-color-active: var(~'@{button-custom-prefix}-text-color-text-active', @color-theme-7);
+@btn-text-g-text-color-disabled: var(~'@{button-custom-prefix}-text-color-text-disabled', @color-theme-4);
 
 @btn-disabled-background-color: var(~'@{button-custom-prefix}-color-background-disabled', @color-background-contain-disabled); // 禁用状态 背景颜色
 @btn-disabled-border-color: var(~'@{button-custom-prefix}-color-border-disabled', @color-border-strong); // 禁用状态 边框颜色
@@ -66,8 +69,6 @@
 @btn-transition-fn: var(~'@{button-custom-prefix}-motion-timing-function', cubic-bezier(0.075, 0.82, 0.165, 1));
 @btn-duration-fade: var(~'@{button-custom-prefix}-motion-duration-fade', @duration-slowly);
 @btn-duration-wave: var(~'@{button-custom-prefix}-motion-duration-wave', @duration-quickly);
-
-
 
 // radius
 @btn-g-radius-border: var(~'@{button-custom-prefix}-radius-border', @radius-border); //圆角

@@ -1,6 +1,6 @@
 @font-face {
   font-family: "kdicon";
-  src: url("kdicon.woff?t=1648879081136") format("woff");
+  src: url("kdicon.woff?t=1649311510226") format("woff");
 }
 .kdicon {
   font-family: 'kdicon' !important;
@@ -187,6 +187,7 @@
 .kdicon-shoppingcart:before { content: "\e6bf"; }
 .kdicon-shrink:before { content: "\e6fd"; }
 .kdicon-shutdown:before { content: "\e686"; }
+.kdicon-sigma:before { content: "\e71b"; }
 .kdicon-spin:before { content: "\e6f7"; }
 .kdicon-split:before { content: "\e6c3"; }
 .kdicon-star:before { content: "\e653"; }

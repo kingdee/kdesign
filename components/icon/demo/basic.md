@@ -169,7 +169,8 @@ function Demo() {
     'more-item',
     'international',
     'little-k',
-    'bellOutlined'
+    'bellOutlined',
+    'sigma',
   ]
   const handleClick = (type, e) => {
     copy(type)
