@@ -112,6 +112,7 @@ const InternalButton = (props: IButtonProps, ref: unknown): FunctionComponentEle
     [`${btnPrefixCls}-background-ghost`]: ghost && !disabled, // 幽灵样式
     [`${btnPrefixCls}-loading`]: loading && !isTextBtn, // 加载中样式
     [`${btnPrefixCls}-block`]: block && !shape, // 撑满父级的样式
+    [`${btnPrefixCls}-icon-only`]: !children && children !== 0 && icon,
   })
   const iconWrapperClassName = `${btnPrefixCls}-iconWrapper-${iconPlace === 'left' ? 'left' : 'right'}`
   const iconNode =
