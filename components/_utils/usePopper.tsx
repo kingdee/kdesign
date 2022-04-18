@@ -119,6 +119,16 @@ const getOffsetPos: (el: Element) => { top: number; left: number } = (el: HTMLEl
   return elPos
 }
 
+const getBorderWidth: (el: Element) => { top: number; left: number } = (el: HTMLElement) => {
+  const border = { top: 0, left: 0 }
+  if (el.offsetParent) {
+    const parentBorder = getBorderWidth(el.offsetParent)
+    border.top += parentBorder.top + parseInt(getComputedStyle(el.offsetParent, null).borderTopWidth.slice(0, -2))
+    border.left += parentBorder.left + parseInt(getComputedStyle(el.offsetParent, null).borderTopWidth.slice(0, -2))
+  }
+  return border
+}
+
 const getScrollDist: (el: Element, container: Element) => { top: number; left: number } = (
   el: HTMLElement,
   container: HTMLElement,
@@ -229,16 +239,17 @@ function usePopper(locatorElement: React.ReactElement, popperElement: React.Reac
 
       const { top: containerTop, left: containerLeft } = getOffsetPos(container)
       const { top: locatorTop, left: locatorLeft } = getOffsetPos(locatorRef.current)
-      const { top: scrollTop, left: scrollLeft } = getScrollDist(locatorRef.current.parentElement, container)
       const { top: translateTop, left: translateLeft } = getTranslatePos(locatorRef.current)
+      const { top: borderTop, left: borderLeft } = getBorderWidth(locatorRef.current)
+      const { top: scrollTop, left: scrollLeft } = getScrollDist(locatorRef.current.parentElement, container)
 
       const locatorPos = {
         width,
         height,
-        top: locatorTop + translateTop - containerTop - scrollTop,
-        left: locatorLeft + translateLeft - containerLeft - scrollLeft,
-        right: locatorLeft + translateLeft + width - containerLeft - scrollLeft,
-        bottom: locatorTop + translateTop + height - containerTop - scrollTop,
+        top: locatorTop + borderTop + translateTop - containerTop - scrollTop,
+        left: locatorLeft + borderLeft + translateLeft - containerLeft - scrollLeft,
+        right: locatorLeft + borderLeft + translateLeft + width - containerLeft - scrollLeft,
+        bottom: locatorTop + borderTop + translateTop + height - containerTop - scrollTop,
       }
 
       const currentPos = trigger === 'contextMenu' ? mousePos : locatorPos
