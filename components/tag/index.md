@@ -42,7 +42,7 @@ subtitle: 标签
 |  | --kd-c-tag-edit-color-text | --kd-g-color-text-primary | #212121 |
 |  | --kd-c-tag-edit-color-border-hover | --kd-g-color-theme | #5582f3 |
 |  | --kd-c-tag-edit-cloesWrapper-color-background-hover | --kd-g-color-theme | #5582f3 |
-|  | --kd-c-tag-edit-cloesWrapper-color-text-hover | --kd-g-color-white | #fff |
+|  | --kd-c-tag-edit-cloesWrapper-color-text-hover | --kd-g-color-theme | #5582f3 |
 |  | --kd-c-tag-edit-color-background-disabled | --kd-g-color-background-contain-disabled | #f5f5f5 |
 |  | --kd-c-tag-edit-color-background-disabled | --kd-g-color-border-strong | #d9d9d9 |
 |  | --kd-c-tag-edit-color-text-disabled | --kd-g-color-border-strong | #d9d9d9 |

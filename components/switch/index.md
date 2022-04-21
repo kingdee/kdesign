@@ -31,9 +31,10 @@ subtitle: 开关
 
 | 分类 | 组件token | 全局token | 默认值 |
 | --- | --- | --- | --- |
-| color | --kd-c-switch-color-on | --kd-g-color-theme | #5582f3 |
-|  | --kd-c-switch-color-off | - | #999 |
-|  | --kd-c-switch-color-background-disabled | --kd-g-color-disabled | #b2b2b2 |
+| color | --kd-c-switch-color-on | --kd-g-color-theme-6 | rgb(85, 130, 243) |
+|  | --kd-c-switch-color-off | - | #B2B2B2 |
+|  | --kd-c-switch-color-on-background-disabled | --kd-g-color-theme-4 | rgb(181, 207, 255) |
+|  | --kd-c-switch-color-off-background-disabled | - | #D9D9D9 |
 |  | --kd-c-switch-color-loading | --kd-g-color-ongoing | #276ff5 |
 |  | --kd-c-switch-color-font | --kd-g-color-white | #fff |
 | font | --kd-c-switch-small-font-size | --kd-g-font-size-small | 12px |
@@ -41,9 +42,9 @@ subtitle: 开关
 |  | --kd-c-switch-inner-font-size-small | --kd-g-font-size-small | 12px |
 | line-height | --kd-c-switch-large-line-height | - | 20px |
 |  | --kd-c-switch-small-line-height | - | 14px |
-| radius | --kd-c-switch-small-radius-border | - | 7px |
-| sizing | --kd-c-switch-small-sizing-height | - | 14px |
-|  | --kd-c-switch-small-sizing-width | - | 28px |
+| radius | --kd-c-switch-small-radius-border | - | 8px |
+| sizing | --kd-c-switch-small-sizing-height | - | 16px |
+|  | --kd-c-switch-small-sizing-width | - | 32px |
 |  | --kd-c-switch-large-sizing-height | - | 20px |
 |  | --kd-c-switch-large-sizing-width | - | 40px |
 |  | --kd-c-switch-large-sizing-border-radius | - | 10px |
