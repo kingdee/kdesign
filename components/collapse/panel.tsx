@@ -14,6 +14,7 @@ export interface PanelProps {
   expandIconPosition?: IconPositionType // 设置切换图标位置
   onChange?: (key: keyType) => void // 切换面板时的回调
   extra?: React.ReactNode | ((props: PanelProps) => React.ReactNode)
+  assist?: React.ReactNode | ((props: PanelProps) => React.ReactNode)
   expand?: boolean
   defaultExpand?: boolean
   children?: React.ReactNode
@@ -26,6 +27,7 @@ const Panel = React.forwardRef<unknown, PanelProps>((props, ref) => {
   const {
     disabled,
     extra,
+    assist,
     header,
     onChange,
     panelKey,
@@ -99,6 +101,19 @@ const Panel = React.forwardRef<unknown, PanelProps>((props, ref) => {
     )
   }
 
+  const renderMiddle = () => {
+    const className = classNames({
+      [`${panelPrefixCls}-middle`]: true,
+      [`${panelPrefixCls}-disabled`]: disabled,
+    })
+    return (
+      <span className={className}>
+        {assist && <span className={`${panelPrefixCls}-assist`}>{renderReactNode(assist)}</span>}
+        {expandIconPosition === 'right' ? renderIcon() : null}
+      </span>
+    )
+  }
+
   const renderReactNode = (reactNode: React.ReactNode) => {
     if (typeof reactNode === 'function') {
       return reactNode()
@@ -167,6 +182,7 @@ const Panel = React.forwardRef<unknown, PanelProps>((props, ref) => {
     <div className={rootClassName} style={style} ref={panelPrefixClsRef}>
       <span className={topClassName}>
         {renderLeft()}
+        {renderMiddle()}
         {renderRight()}
       </span>
       <div className={childrenClassName} ref={childrenRef as any}>
