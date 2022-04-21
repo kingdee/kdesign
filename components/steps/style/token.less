@@ -2,26 +2,23 @@
 
 @steps-prefix: '--@{kd-prefix}-c-steps';
 
-@steps-duration-promptly: var(~'@{steps-prefix}-duration-promptly', @duration-promptly);
-@steps-transition-fn: cubic-bezier(0.48, 0.04, 0.52, 0.96);
-
-
-
 // color
-@steps-color-completed: var(~'@{steps-prefix}-color-completed', @color-theme);//已经完成
+@steps-color-completed: var(~'@{steps-prefix}-color-completed', @color-success);//已经完成
+@steps-color-hover: var(~'@{steps-prefix}-color-hover', @color-theme);
 @steps-color-error: var(~'@{steps-prefix}-color-error', @color-error);
-@steps-color-wait:  var(~'@{steps-prefix}-color-wait', @color-text-secondary);//未开始  等待
+@steps-color-wait:  var(~'@{steps-prefix}-color-wait', #999);//未开始  等待
 @steps-color-white: var(~'@{steps-prefix}-color-white',@color-white);
 @steps-color-background-process-icon: var(~'@{steps-prefix}-icon-color-background', @color-theme);//图标的颜色
-
 
 // font
 @steps-font-size: var(~'@{steps-prefix}-font-size', @font-size-small); // 文字大小
 
+// motion
+@steps-duration-promptly: var(~'@{steps-prefix}-motion-duration', @duration-promptly);
 
 // sizing
 @steps-icon-sizing-width: var(~'@{steps-prefix}-icon-sizing-width', 28px);//图标的大小
-@steps-line-sizing-height: var(~'@{steps-prefix}-line-sizing-height', 4px);//连接线高度
+@steps-line-sizing-height: var(~'@{steps-prefix}-line-sizing-height', 1px);//连接线高度
 @steps-horizontal-description-sizing-height: var(~'@{steps-prefix}-horizontal-description-sizing-height', 60px);//内容部分高度 横向
 @steps-vertical-description-sizing-width: var(~'@{steps-prefix}-vertical-description-sizing-width', 200px);//内容部分宽度    纵向
 
