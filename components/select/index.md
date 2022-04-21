@@ -69,7 +69,7 @@ subtitle: 选择器
 | --- | --- | --- | --- |
 | color | --kd-c-select-dropdown-color-background | --kd-g-color-background | #fff |
 |  | --kd-c-select-item-color-background-disabled | --kd-g-color-background-contain-disabled | #f5f5f5 |
-|  | --kd-c-select-color-background | --kd-g-color-hover | #f5f5f5 |
+|  | --kd-c-select-color-background | - | #f5f5f5 |
 |  | --kd-c-select-color-background-selected | --kd-g-color-theme-3 | rgb(227, 238, 255) |
 |  | --kd-c-select-color-border | --kd-g-color-input | #999 |
 |  | --kd-c-select-color-border-foucs | --kd-g-color-theme | #5582f3 |
@@ -78,7 +78,7 @@ subtitle: 选择器
 |  | --kd-c-select-placeholder-color-text | --kd-g-color-text-third | #999 |
 |  | --kd-c-select-item-color-text-selected | --kd-g-color-theme | #5582f3 |
 |  | --kd-c-select-footer-color-text | --kd-g-color-text-primary | #212121 |
-|  | --kd-c-select-footer-color-text-selected | --kd-g-color-text-link | #0e5fd8 |
+|  | --kd-c-select-footer-color-text-selected | - | #0e5fd8 |
 |  | --kd-c-select-item-color-text-disabled | --kd-g-color-disabled | #b2b2b2 |
 | font | --kd-c-select-dropdown-font-size | - | 12px |
 |  | --kd-c-select-font-size-large | - | 16px |
