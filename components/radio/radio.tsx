@@ -71,7 +71,7 @@ const InternalRadio: React.ForwardRefRenderFunction<HTMLElement, IRadioProps> = 
     // eslint-disable-next-line
     <label className={classString} style={style} ref={mergedRef as any} onClick={handleRepeatClick}>
       <input type="radio" className={`${radioPrefixCls}-input`} {...radioProps} />
-      {children !== undefined ? <span>{children}</span> : null}
+      {children !== undefined ? <span className={`${radioPrefixCls}-text`}>{children}</span> : null}
     </label>
   )
 }

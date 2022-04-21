@@ -1,5 +1,6 @@
 @import '../../style/themes/index';
 @import 'token.less';
+@import '../../style/mixins/index.less';
 @radio-prefix-cls: ~'@{kd-prefix}-radio';
 @radio-square-prefix-cls: ~'@{radio-prefix-cls}-square';
 @radio-button-prefix-cls: ~'@{radio-prefix-cls}-button';
@@ -9,6 +10,7 @@
 // 默认类型（单选项）
 .@{radio-prefix-cls} {
   .reset-component();
+  .ellipsis();
 
   // 默认状态
   position: relative;
@@ -64,7 +66,7 @@
   // 悬停状态
   &:hover {
 
-    // color: @radio-color-theme;
+    color: @radio-color-theme;
     &::before {
       border-color: @radio-color-theme;
     }
@@ -113,12 +115,22 @@
       background-color: @radio-color-disabled;
       animation: none;
     }
+
+    &.@{radio-prefix-cls}-checked {
+      color: @radio-font-color;
+    }
+  }
+
+  &-text {
+    line-height: 1.5;
   }
 }
 
 // 方框类型（单选框）
 .@{radio-square-prefix-cls} {
   .reset-component();
+
+  .ellipsis();
 
   // 默认状态
   position: relative;
@@ -211,6 +223,14 @@
       background-color: @radio-color-disabled;
       animation: none;
     }
+
+    &.@{radio-square-prefix-cls}-checked {
+      color: @radio-font-color;
+    }
+  }
+
+  &-text {
+    line-height: 1.5;
   }
 }
 
@@ -323,5 +343,11 @@
     border-color: @radio-color-border;
     // background-color: @radio-color-background-disabled;
     cursor: not-allowed;
+  }
+
+  &-text {
+    .ellipsis();
+    display: block;
+    line-height: 1.5;
   }
 }
