@@ -9,12 +9,11 @@ import ReactDOM from 'react-dom'
 import { Steps, Step, Icon } from '@kdcloudjs/kdesign'
 
 function Demo() {
-  const iconStyle = { fontSize: 12 }
   const icons = {
-    process: <Icon type="loadding" style={iconStyle} spin />,
-    wait: <Icon type="wating" style={iconStyle} />,
-    error: <Icon type="close" style={iconStyle} />,
-    finish: <Icon type="right-bold" style={iconStyle} />,
+    process: <Icon type="loadding" spin />,
+    wait: <Icon type="wating" />,
+    error: <Icon type="close-bold" />,
+    finish: <Icon type="right-bold" />,
   }
   return (
     <>

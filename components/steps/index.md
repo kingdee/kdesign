@@ -43,13 +43,15 @@ subtitle: 步骤条
 
 | 分类 | 组件token | 全局token | 默认值 |
 | --- | --- | --- | --- |
-| color | --kd-c-steps-color-completed | --kd-g-color-theme | #5582f3 |
+| color | --kd-c-steps-color-completed | --kd-g-color-success | #1ba854 |
+|  | --kd-c-steps-color-hover | --kd-g-color-theme | #5582f3 |
 |  | --kd-c-steps-color-error | --kd-g-color-error | #fb2323 |
-|  | --kd-c-steps-color-wait | --kd-g-color-text-secondary | #666 |
+|  | --kd-c-steps-color-wait | - | #999 |
 |  | --kd-c-steps-color-white | --kd-g-color-white | #fff |
 |  | --kd-c-steps-icon-color-background | --kd-g-color-theme | #5582f3 |
 | font | --kd-c-steps-font-size | --kd-g-font-size-small | 12px |
+| motion | --kd-c-steps-motion-duration | --kd-g-duration | 0.3s |
 | sizing | --kd-c-steps-icon-sizing-width | - | 28px |
-|  | --kd-c-steps-line-sizing-height | - | 4px |
+|  | --kd-c-steps-line-sizing-height | - | 1px |
 |  | --kd-c-steps-horizontal-description-sizing-height | - | 60px |
 |  | --kd-c-steps-vertical-description-sizing-width | - | 200px |

@@ -1,16 +1,19 @@
 @import '../../style/themes/index';
 @import './token.less';
 
-
 @steps-prefix-cls: ~'@{kd-prefix}-steps';
 
 .@{steps-prefix-cls} {
   display: flex;
   justify-content: space-between;
-  align-items: baseline;
 
-  &-iconSize {
-    // font-size: @steps-font-size;
+  .@{steps-prefix-cls}-icon {
+    border: 2px solid;
+    padding-top: 1px;
+  }
+
+  .@{kd-prefix}icon-exclamatory {
+    font-size: 30px;
   }
 
   &-item {
@@ -31,25 +34,21 @@
     }
 
     &-clickable&-wait {
-
       .@{steps-prefix-cls}-icon,
       .@{steps-prefix-cls}-item-title {
         transition: all @steps-duration-promptly;
       }
 
-
       &:hover {
         .@{steps-prefix-cls}-icon {
-          // background-color: @steps-color-background-wait-icon-hover;
-
           background-color: @steps-color-white;
-          color: @steps-color-completed;
-          border: 2px solid @steps-color-completed;
+          color: @steps-color-hover;
+          border-color: @steps-color-hover;
         }
 
         .@{steps-prefix-cls}-item-title,
         .@{steps-prefix-cls}-item-description {
-          color: @steps-color-completed;
+          color: @steps-color-hover;
         }
       }
     }
@@ -82,11 +81,12 @@
         content: '';
         width: 100%;
         height: @steps-line-sizing-height;
-        background-color: @steps-color-wait;
+        border-bottom: 1px dashed @steps-color-wait;
+        border-left: 1px dashed @steps-color-wait;
         position: absolute;
         left: 50%;
         top: calc(50% - @steps-line-sizing-height / 2);
-        transition: width @steps-duration-promptly @steps-transition-fn, background-color @steps-duration-promptly @steps-transition-fn
+        transition: width @steps-duration-promptly cubic-bezier(0.48, 0.04, 0.52, 0.96), background-color @steps-duration-promptly cubic-bezier(0.48, 0.04, 0.52, 0.96)
       }
 
       &:last-child {
@@ -103,7 +103,6 @@
         justify-content: center;
         align-items: center;
 
-        // background-color:@steps-color-white;
         .@{steps-prefix-cls}-icon {
           width: @steps-icon-sizing-width;
           height: @steps-icon-sizing-width;
@@ -114,7 +113,7 @@
           color: @steps-color-wait;
           font-size: calc(@steps-icon-sizing-width - 13px);
           border-radius: 50%;
-          border: 2px solid @steps-color-wait;
+          border-color: @steps-color-wait;
           box-sizing: border-box;
         }
       }
@@ -135,7 +134,6 @@
       }
 
       .@{steps-prefix-cls}-item-description {
-
         line-height: 20px;
         font-size: @steps-font-size;
         color: @steps-color-wait;
@@ -144,19 +142,21 @@
         word-break: break-word;
         display: -webkit-box;
         -webkit-box-orient: vertical;
-
         width: @steps-vertical-description-sizing-width;
-
       }
     }
 
     &-process {
+      color: @steps-color-hover;
+
       .@{steps-prefix-cls}-icon {
-        background-color: @steps-color-background-process-icon;
+        background-color: @steps-color-white;
+        color: @steps-color-hover;
+        border-color: @steps-color-hover;
       }
 
-      .@{steps-prefix-cls}-item-title {
-        color: @steps-color-wait;
+      .@{steps-prefix-cls}-item-title, .@{steps-prefix-cls}-item-description {
+        color: @steps-color-hover;
       }
     }
 
@@ -172,12 +172,11 @@
       .@{steps-prefix-cls}-icon {
         background-color: @steps-color-white;
         color: @steps-color-completed;
-        border: 2px solid @steps-color-completed;
+        border-color: @steps-color-completed;
         box-sizing: border-box;
       }
 
       .@{steps-prefix-cls}-item-content {
-
         .@{steps-prefix-cls}-item-title,
         .@{steps-prefix-cls}-item-description {
           color: @steps-color-completed;
@@ -185,30 +184,21 @@
       }
     }
 
-    &-iconContainer-finish {
-      &::after {
-        background-color: @steps-color-completed;
-      }
-    }
 
     &-error {
       .@{steps-prefix-cls}-icon {
         color: @steps-color-error;
-        border: 2px solid @steps-color-error;
+        border-color: @steps-color-error;
       }
 
       .@{steps-prefix-cls}-item-content {
-
         .@{steps-prefix-cls}-item-title,
         .@{steps-prefix-cls}-item-description {
           color: @steps-color-error;
         }
       }
-
-
     }
   }
-
 
   &-bottomLable {
     .@{steps-prefix-cls}-item-iconContainer {
