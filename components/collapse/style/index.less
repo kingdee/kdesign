@@ -27,11 +27,23 @@
     &-left {
       display: inline-flex;
       align-items: center;
-      flex-grow: 1;
+      line-height: 1.5;
     }
-    &-right {
+    &-middle {
       display: inline-flex;
       align-items: center;
+      flex: 1;
+      margin-left: 22px;
+      color: @collapse-header-font-color-secondary;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    &-right {
+      margin-left: 40px;
+      display: inline-flex;
+      align-items: center;
+      white-space: nowrap;
     }
     &-extra,
     &-header {
@@ -40,10 +52,21 @@
       color: @collapse-header-font-color;
       font-size: @collapse-header-font-size;
     }
+
+    &-header {
+      display: inline-block;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      &:hover {
+        color: @collapse-header-color-text-hover;
+      }
+    }
     &-icon {
       align-items: center;
       display: inline-flex;
       margin-right: @collapse-icon-margin-right;
+      font-size: @collapse-icon-font-size;
     }
     &-icon:hover,
     &-left:hover {

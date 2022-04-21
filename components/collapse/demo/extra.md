@@ -21,11 +21,12 @@ function Demo() {
     listStyle: 'none',
     border: 'none',
     background: 'none',
-    color: '#3863ff',
+    color: '#0E5FD8',
     cursor: 'pointer',
     outline: 'none',
+    padding: '0',
+    'marginLeft': '24px',
   }
-  const pStyle = { color: '#3863ff' }
   return (
     <Collapse name="Collapse" ref={collapseRef}>
       <Collapse.Panel
@@ -34,11 +35,8 @@ function Demo() {
         extra={
           <div style={{ cursor: 'pointer', display: 'flex' }}>
             <button style={buttonStyle}>按钮</button>
-            <p style={pStyle}>|</p>
             <button style={buttonStyle}>按钮</button>
-            <p style={pStyle}>|</p>
             <button style={buttonStyle}>按钮</button>
-            <p style={pStyle}>|</p>
             <button style={buttonStyle}>按钮</button>
           </div>
         }>
