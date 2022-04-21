@@ -10,7 +10,7 @@ exports[`Drawer renders correctly 1`] = `
   />
   <div
     class="kd-drawer-container-box kd-drawer-container-right"
-    style="right:0;width:320px;transform:translateX(320px)"
+    style="right:0;width:320px;transform:translateX(100%)"
   >
     <div
       class="kd-drawer-header"
@@ -43,7 +43,7 @@ exports[`Drawer renders correctly 2`] = `
   />
   <div
     class="kd-drawer-container-box kd-drawer-container-top"
-    style="top:0"
+    style="top:0;transform:translateY(-100%)"
   >
     <div
       class="kd-drawer-header"
@@ -76,7 +76,7 @@ exports[`Drawer renders correctly 3`] = `
   />
   <div
     class="kd-drawer-container-box kd-drawer-container-right"
-    style="right:0;width:320px;transform:translateX(320px)"
+    style="right:0;width:320px;transform:translateX(100%)"
   >
     <div
       class="kd-drawer-header"
@@ -109,7 +109,7 @@ exports[`Drawer renders correctly 4`] = `
   />
   <div
     class="kd-drawer-container-box kd-drawer-container-bottom"
-    style="bottom:0"
+    style="bottom:0;transform:translateY(100%)"
   >
     <div
       class="kd-drawer-header"
@@ -142,7 +142,7 @@ exports[`Drawer renders correctly 5`] = `
   />
   <div
     class="kd-drawer-container-box kd-drawer-container-left"
-    style="left:0;width:320px;transform:translateX(-320px)"
+    style="left:0;width:320px;transform:translateX(-100%)"
   >
     <div
       class="kd-drawer-header"

@@ -9,7 +9,9 @@ exports[`Radio should render correctly 1`] = `
     class="myPrefix-input"
     type="radio"
   />
-  <span>
+  <span
+    class="myPrefix-text"
+  >
     Test
   </span>
 </label>

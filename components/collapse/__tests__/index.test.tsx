@@ -60,7 +60,7 @@ describe('Collapse', () => {
           </Collapse.Panel>
         </Collapse>,
       )
-      wrapper.find(`.kd-collapse-panel-icon`).simulate('click')
+      wrapper.find(`.kd-collapse-panel-icon`).first().simulate('click')
       expect(collapseProps.onChange).toHaveBeenCalled()
     })
   })
@@ -146,7 +146,7 @@ describe('Collapse', () => {
           </Collapse.Panel>
         </Collapse>,
       )
-      expect(wrapper.find(`.kdicon-arrow-right`).length).toBe(1)
+      expect(wrapper.find(`.kdicon-arrow-right`).length).toBeGreaterThan(0)
     })
   })
 
