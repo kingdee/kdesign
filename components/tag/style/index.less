@@ -18,7 +18,7 @@
   &-size-large {
     .tag-size(@tag-large-font-size, @tag-large-height, @tag-large-padding-horizontal);
   }
-  
+
   transition: all @tag-g-motion-duration;
   // 状态标签
   &-shape-status {
@@ -42,16 +42,6 @@
   // 文本标签
   &-shape-text {
     .tag-text-color(@tag-process-color);
-    .tag-text-padding(@tag-small-padding-horizontal)
-  }
-  &-shape-text.@{tag-prefix-cls}-size-small {
-    .tag-text-padding(@tag-small-padding-horizontal)
-  }
-  &-shape-text.@{tag-prefix-cls}-size-middle {
-    .tag-text-padding(@tag-middle-padding-horizontal)
-  }
-  &-shape-text.@{tag-prefix-cls}-size-large {
-    .tag-text-padding(@tag-large-padding-horizontal)
   }
   each(@types, {
     &-shape-text.@{tag-prefix-cls}-@{value} {
@@ -76,13 +66,13 @@
     &:not(.@{tag-prefix-cls}-closable-disabled):hover {
       border-color: @tag-edit-g-color-border-hover;
       .@{tag-prefix-cls}-closeWrapper {
-        background-color: @tag-edit-cloesWrapper-g-color-background-hover;
+        // background-color: @tag-edit-cloesWrapper-g-color-background-hover;
         color: @tag-edit-cloesWrapper-g-text-color-hover;
       }
     }
 
     &.@{tag-prefix-cls}-closable {
-      padding-right: 0;
+      padding-right: 8px;
     }
   }
 
@@ -109,28 +99,18 @@
   }
   &-closable.@{tag-prefix-cls}-size-middle {
     line-height: @tag-middle-height;
-
-    .@{tag-prefix-cls}-closeWrapper {
-      width: calc(@tag-middle-height - 2px);
-      height: calc(@tag-middle-height - 2px);
-    }
   }
   &-closable.@{tag-prefix-cls}-size-large {
     line-height: @tag-large-height;
     padding-left: @tag-large-padding-horizontal;
 
     .@{tag-prefix-cls}-closeWrapper {
-      width: calc(@tag-large-height - 2px);
-      height: calc(@tag-large-height - 2px);
-      
       .@{tag-prefix-cls}-close-icon {
         font-size: 14px;
       }
     }
   }
   &-closeWrapper {
-    width: calc(@tag-middle-height - 2px);
-    height: calc(@tag-middle-height - 2px);
     margin-left: 4px;
     display: inline-flex;
     justify-content: center;
