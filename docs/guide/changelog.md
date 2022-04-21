@@ -4,6 +4,24 @@ title: 更新日志
 hiddenAnchor: true
 ---
 
+## [1.2.1](https://github.com/kdcloudone/kdesign/compare/v1.2.0...v1.2.1)
+`2022-04-21`
+* collapse
+  * 修复视觉走查问题点
+* drawer
+  * 抽屉顶部关闭会出现闪烁
+* radio
+  * 修复视觉走查问题点
+* select
+  * 修复视觉走查问题点
+* steps
+  * fix token
+* tag
+  * 修复标签视觉走查问题点
+* tree
+  * 修复点击整行的触发意图混淆的问题
+* 修复了usePopper没有把borderWidth加入计算的bug
+
 ## [1.2.0](https://github.com/kdcloudone/kdesign/compare/v1.1.3...v1.2.0)
 `2022-04-14`
 * anchor
