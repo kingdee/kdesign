@@ -7,6 +7,7 @@ import React, {
   useCallback,
   CSSProperties,
   createRef,
+  useRef,
 } from 'react'
 import { Icon } from '../index'
 import ReactDOM from 'react-dom'
@@ -24,6 +25,7 @@ const relativePostionTypes = ['relative', 'absolute', 'fixed']
 type CSSSelector = string
 const horizontalPlacements = ['left', 'right']
 const verticalPlacements = ['top', 'bottom']
+
 /**
  * TODO:
  * 多层抽屉的实现方式无法确定（需求不明确，没有现行的业务场景）: 思考的两种方式:
@@ -66,24 +68,25 @@ export interface IDrawerProps {
   titleStyle?: CSSProperties
   visible?: boolean
   width?: string | number
+  height?: string | number
   zIndex?: string | number
 }
 const documentBody = document.body
 
-function transformSize(size: string | number, placement: string) {
-  if (typeof size === 'string') {
-    // 只考虑px 或者 %
-    devWarning(
-      !(size.endsWith('px') && size.endsWith('%')),
-      'drawer',
-      `cannot calculate drawer size: width | height for '${size}' besides px or %`,
-    )
-    if (placement === 'right' || placement === 'bottom') return size || 0
-    return size ? '-' + size : 0
-  }
-  if (placement === 'right' || placement === 'bottom') return (size || 0) + 'px'
-  return ('-' + size || 0) + 'px'
-}
+// function transformSize(size: string | number, placement: string) {
+//   if (typeof size === 'string') {
+//     // 只考虑px 或者 %
+//     devWarning(
+//       !(size.endsWith('px') && size.endsWith('%')),
+//       'drawer',
+//       `cannot calculate drawer size: width | height for '${size}' besides px or %`,
+//     )
+//     if (placement === 'right' || placement === 'bottom') return size || 0
+//     return size ? '-' + size : 0
+//   }
+//   if (placement === 'right' || placement === 'bottom') return (size || 0) + 'px'
+//   return ('-' + size || 0) + 'px'
+// }
 
 const InternalDrawer = (props: IDrawerProps, ref: unknown): ReactElement | React.ReactPortal => {
   const { getPrefixCls, prefixCls, compDefaultProps: userDefaultProps } = useContext(ConfigContext)
@@ -108,6 +111,7 @@ const InternalDrawer = (props: IDrawerProps, ref: unknown): ReactElement | React
     footerClassName,
     visible,
     width,
+    height,
     headerStyle,
     headerClassName,
     zIndex: zindex,
@@ -122,7 +126,10 @@ const InternalDrawer = (props: IDrawerProps, ref: unknown): ReactElement | React
   // const previousWidthRef = usePrevious(currentWidth)
   // const previousHeightRef = usePrevious(currentHeight)
   const containerRef = (ref as any) || createRef<HTMLDivElement>()
+  const contentRef = useRef<HTMLDivElement>(null)
+
   devWarning(PlacementTypes.indexOf(placement!) === -1, 'drawer', `cannot found drawer type '${placement}'`)
+
   let drawerContainer: Element | CSSSelector | undefined | null | false =
     typeof getContainer === 'function' ? getContainer() : getContainer
   const isAtOriginalPlace = drawerContainer === false
@@ -206,20 +213,54 @@ const InternalDrawer = (props: IDrawerProps, ref: unknown): ReactElement | React
     }
   }, [maskClosable, closeDrawer])
 
+  const getHorizontalBoolAndPlacementName = useCallback(() => {
+    const isHorizontal = placement === 'left' || placement === 'right'
+    const placementName = `translate${isHorizontal ? 'X' : 'Y'}`
+    return {
+      isHorizontal,
+      placementName,
+    }
+  }, [placement])
+
+  const setDraerTransform = useCallback(
+    (_isOpen?: boolean, _placementName?: string, _value?: string | number) => {
+      if (!contentRef.current) return
+      contentRef.current.style.transform = ''
+    },
+    [contentRef],
+  )
+
+  useEffect(() => {
+    const { isHorizontal, placementName } = getHorizontalBoolAndPlacementName()
+    const contentValue = contentRef.current
+      ? contentRef.current.getBoundingClientRect()[isHorizontal ? 'width' : 'height']
+      : 0
+    const value = (isHorizontal ? width : height) || contentValue
+    if (visible) {
+      setDraerTransform(visible, placementName, value)
+    }
+  }, [contentRef, getHorizontalBoolAndPlacementName, height, setDraerTransform, visible, width])
+
   const drawerClasses = classNames(drawerPrefixCls, className, {
     [`${drawerPrefixCls}-hide`]: !visible,
     [`${drawerPrefixCls}-active`]: visible,
     [`${drawerPrefixCls}-not-at-body`]: !isBody,
   })
   const headerClass = `${drawerPrefixCls}-header`
+
+  const { placementName } = getHorizontalBoolAndPlacementName()
+  const placementPos = placement === 'left' || placement === 'top' ? '-100%' : '100%'
+  const transform = visible ? '' : `${placementName}(${placementPos})`
   const containerStyle = Object.assign(
     { [placement!]: 0 },
     horizontalPlacements.includes(placement!)
       ? {
-          width: currentWidth,
-          transform: `translateX(${visible ? 0 : transformSize(currentWidth!, placement!)})`,
+          width: width,
+          transform: transform,
         }
-      : {},
+      : {
+          transform: transform,
+        },
   )
   const container = (
     <div
@@ -229,6 +270,7 @@ const InternalDrawer = (props: IDrawerProps, ref: unknown): ReactElement | React
         [`${drawerPrefixCls}-container-${placement}`]: true,
       })}
       style={containerStyle}
+      ref={contentRef}
     >
       {(title || closable) && (
         <div className={classNames(headerClass, headerClassName)} style={headerStyle}>
