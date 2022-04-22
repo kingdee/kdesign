@@ -109,7 +109,6 @@ const Panel = React.forwardRef<unknown, PanelProps>((props, ref) => {
     return (
       <span className={className}>
         {assist && <span className={`${panelPrefixCls}-assist`}>{renderReactNode(assist)}</span>}
-        {expandIconPosition === 'right' ? renderIcon() : null}
       </span>
     )
   }
