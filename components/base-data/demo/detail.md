@@ -21,6 +21,7 @@ function Demo() {
   const handleChange = (a, b) => {
     console.log('a', b)
     console.log('a', b)
+    setValue(b)
   }
   const handleSearch = (val) => console.log('handleSearch', val)
   const handleShowMore = () => {
