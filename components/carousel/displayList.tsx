@@ -13,20 +13,21 @@ interface displayListProps {
 export const DisplayList = React.forwardRef((props: displayListProps, ref: any) => {
   const { items, parentPrefixCls, currentIndex } = props
   const itemRef = React.useRef<HTMLElement>(null)
-  const displayListPrefixCls = `${parentPrefixCls}-displaylist`
+  const displayListPrefixCls = `${parentPrefixCls}-list-display`
+  const listPrefixCls = `${parentPrefixCls}-list`
   const renderItems = () => {
     return items.map((item, index) => {
       const opacityClassName =
-        index === currentIndex ? `${displayListPrefixCls}-item-not-hidden` : `${displayListPrefixCls}-item-hidden`
+        index === currentIndex ? `${listPrefixCls}-item-not-hidden` : `${listPrefixCls}-item-hidden`
       return (
-        <li className={classNames(`${displayListPrefixCls}-item`, opacityClassName)} key={index} ref={itemRef as any}>
+        <li className={classNames(`${listPrefixCls}-item`, opacityClassName)} key={index} ref={itemRef as any}>
           {item}
         </li>
       )
     })
   }
   return (
-    <ul className={displayListPrefixCls} ref={ref as any}>
+    <ul className={`${listPrefixCls} ${displayListPrefixCls}`} ref={ref as any}>
       {renderItems()}
     </ul>
   )

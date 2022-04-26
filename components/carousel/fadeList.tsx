@@ -15,18 +15,19 @@ interface FadeListProps {
 export const FadeList = React.forwardRef((props: FadeListProps, ref: any) => {
   const { items, parentPrefixCls, needAnimation, currentIndex, itemWidth } = props
   const itemRef = React.useRef<HTMLElement>(null)
-  const fadeListPrefixCls = `${parentPrefixCls}-fadelist`
+  const fadeListPrefixCls = `${parentPrefixCls}-list-fade`
+  const listPrefixCls = `${parentPrefixCls}-list`
   const renderItems = () => {
     return items.map((item, index) => {
       const opacityClassName =
-        index === currentIndex ? `${fadeListPrefixCls}-item-not-hidden` : `${fadeListPrefixCls}-item-hidden`
+        index === currentIndex ? `${listPrefixCls}-item-not-hidden` : `${listPrefixCls}-item-hidden`
       const animationClassName = needAnimation
-        ? `${fadeListPrefixCls}-item-animation`
-        : `${fadeListPrefixCls}-item-none-animation`
+        ? `${listPrefixCls}-item-animation`
+        : `${listPrefixCls}-item-none-animation`
       const posx = -1 * index * itemWidth
       return (
         <li
-          className={classNames(`${fadeListPrefixCls}-item`, opacityClassName, animationClassName)}
+          className={classNames(`${listPrefixCls}-item`, opacityClassName, animationClassName)}
           key={index}
           ref={itemRef as any}
           style={{ left: `${posx}px` }}
@@ -37,7 +38,7 @@ export const FadeList = React.forwardRef((props: FadeListProps, ref: any) => {
     })
   }
   return (
-    <ul className={fadeListPrefixCls} ref={ref as any}>
+    <ul className={`${listPrefixCls} ${fadeListPrefixCls}`} ref={ref as any}>
       {renderItems()}
     </ul>
   )
