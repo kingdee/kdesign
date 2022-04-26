@@ -46,10 +46,10 @@ exports[`Tabs renders correctly 1`] = `
     class="kd-carousel-root"
   >
     <ul
-      class="kd-carousel-displaylist"
+      class="kd-carousel-list kd-carousel-list-display"
     >
       <li
-        class="kd-carousel-displaylist-item kd-carousel-displaylist-item-not-hidden"
+        class="kd-carousel-list-item kd-carousel-list-item-not-hidden"
       >
         TabPane1
       </li>
@@ -100,10 +100,10 @@ exports[`Tabs renders correctly 2`] = `
     class="kd-carousel-root"
   >
     <ul
-      class="kd-carousel-displaylist"
+      class="kd-carousel-list kd-carousel-list-display"
     >
       <li
-        class="kd-carousel-displaylist-item kd-carousel-displaylist-item-not-hidden"
+        class="kd-carousel-list-item kd-carousel-list-item-not-hidden"
       >
         TabPane1
       </li>
@@ -154,10 +154,10 @@ exports[`Tabs renders correctly 3`] = `
     class="kd-carousel-root"
   >
     <ul
-      class="kd-carousel-displaylist"
+      class="kd-carousel-list kd-carousel-list-display"
     >
       <li
-        class="kd-carousel-displaylist-item kd-carousel-displaylist-item-not-hidden"
+        class="kd-carousel-list-item kd-carousel-list-item-not-hidden"
       >
         TabPane1
       </li>
@@ -215,10 +215,10 @@ exports[`Tabs renders correctly 4`] = `
     class="kd-carousel-root"
   >
     <ul
-      class="kd-carousel-displaylist"
+      class="kd-carousel-list kd-carousel-list-display"
     >
       <li
-        class="kd-carousel-displaylist-item kd-carousel-displaylist-item-not-hidden"
+        class="kd-carousel-list-item kd-carousel-list-item-not-hidden"
       >
         TabPane1
       </li>
@@ -279,15 +279,15 @@ exports[`Tabs renders correctly 5`] = `
     class="kd-carousel-root"
   >
     <ul
-      class="kd-carousel-displaylist"
+      class="kd-carousel-list kd-carousel-list-display"
     >
       <li
-        class="kd-carousel-displaylist-item kd-carousel-displaylist-item-not-hidden"
+        class="kd-carousel-list-item kd-carousel-list-item-not-hidden"
       >
         TabPane1
       </li>
       <li
-        class="kd-carousel-displaylist-item kd-carousel-displaylist-item-hidden"
+        class="kd-carousel-list-item kd-carousel-list-item-hidden"
       >
         TabPane2
       </li>
@@ -337,15 +337,15 @@ exports[`Tabs renders correctly 6`] = `
     class="kd-carousel-root"
   >
     <ul
-      class="kd-carousel-displaylist"
+      class="kd-carousel-list kd-carousel-list-display"
     >
       <li
-        class="kd-carousel-displaylist-item kd-carousel-displaylist-item-not-hidden"
+        class="kd-carousel-list-item kd-carousel-list-item-not-hidden"
       >
         TabPane1
       </li>
       <li
-        class="kd-carousel-displaylist-item kd-carousel-displaylist-item-hidden"
+        class="kd-carousel-list-item kd-carousel-list-item-hidden"
       >
         TabPane2
       </li>
@@ -395,15 +395,15 @@ exports[`Tabs renders correctly 7`] = `
     class="kd-carousel-root"
   >
     <ul
-      class="kd-carousel-displaylist"
+      class="kd-carousel-list kd-carousel-list-display"
     >
       <li
-        class="kd-carousel-displaylist-item kd-carousel-displaylist-item-not-hidden"
+        class="kd-carousel-list-item kd-carousel-list-item-not-hidden"
       >
         TabPane1
       </li>
       <li
-        class="kd-carousel-displaylist-item kd-carousel-displaylist-item-hidden"
+        class="kd-carousel-list-item kd-carousel-list-item-hidden"
       >
         TabPane2
       </li>
@@ -464,15 +464,15 @@ exports[`Tabs renders correctly 8`] = `
     class="kd-carousel-root"
   >
     <ul
-      class="kd-carousel-displaylist"
+      class="kd-carousel-list kd-carousel-list-display"
     >
       <li
-        class="kd-carousel-displaylist-item kd-carousel-displaylist-item-not-hidden"
+        class="kd-carousel-list-item kd-carousel-list-item-not-hidden"
       >
         TabPane1
       </li>
       <li
-        class="kd-carousel-displaylist-item kd-carousel-displaylist-item-hidden"
+        class="kd-carousel-list-item kd-carousel-list-item-hidden"
       >
         TabPane2
       </li>
@@ -1150,124 +1150,124 @@ exports[`Tabs renders correctly 10`] = `
             parentPrefixCls="kd-carousel"
           >
             <ul
-              className="kd-carousel-displaylist"
+              className="kd-carousel-list kd-carousel-list-display"
             >
               <li
-                className="kd-carousel-displaylist-item kd-carousel-displaylist-item-not-hidden"
+                className="kd-carousel-list-item kd-carousel-list-item-not-hidden"
                 key="0"
               >
                 TabPane00
               </li>
               <li
-                className="kd-carousel-displaylist-item kd-carousel-displaylist-item-hidden"
+                className="kd-carousel-list-item kd-carousel-list-item-hidden"
                 key="1"
               >
                 TabPane01
               </li>
               <li
-                className="kd-carousel-displaylist-item kd-carousel-displaylist-item-hidden"
+                className="kd-carousel-list-item kd-carousel-list-item-hidden"
                 key="2"
               >
                 TabPane02
               </li>
               <li
-                className="kd-carousel-displaylist-item kd-carousel-displaylist-item-hidden"
+                className="kd-carousel-list-item kd-carousel-list-item-hidden"
                 key="3"
               >
                 TabPane03
               </li>
               <li
-                className="kd-carousel-displaylist-item kd-carousel-displaylist-item-hidden"
+                className="kd-carousel-list-item kd-carousel-list-item-hidden"
                 key="4"
               >
                 TabPane04
               </li>
               <li
-                className="kd-carousel-displaylist-item kd-carousel-displaylist-item-hidden"
+                className="kd-carousel-list-item kd-carousel-list-item-hidden"
                 key="5"
               >
                 TabPane05
               </li>
               <li
-                className="kd-carousel-displaylist-item kd-carousel-displaylist-item-hidden"
+                className="kd-carousel-list-item kd-carousel-list-item-hidden"
                 key="6"
               >
                 TabPane06
               </li>
               <li
-                className="kd-carousel-displaylist-item kd-carousel-displaylist-item-hidden"
+                className="kd-carousel-list-item kd-carousel-list-item-hidden"
                 key="7"
               >
                 TabPane07
               </li>
               <li
-                className="kd-carousel-displaylist-item kd-carousel-displaylist-item-hidden"
+                className="kd-carousel-list-item kd-carousel-list-item-hidden"
                 key="8"
               >
                 TabPane08
               </li>
               <li
-                className="kd-carousel-displaylist-item kd-carousel-displaylist-item-hidden"
+                className="kd-carousel-list-item kd-carousel-list-item-hidden"
                 key="9"
               >
                 TabPane09
               </li>
               <li
-                className="kd-carousel-displaylist-item kd-carousel-displaylist-item-hidden"
+                className="kd-carousel-list-item kd-carousel-list-item-hidden"
                 key="10"
               >
                 TabPane010
               </li>
               <li
-                className="kd-carousel-displaylist-item kd-carousel-displaylist-item-hidden"
+                className="kd-carousel-list-item kd-carousel-list-item-hidden"
                 key="11"
               >
                 TabPane011
               </li>
               <li
-                className="kd-carousel-displaylist-item kd-carousel-displaylist-item-hidden"
+                className="kd-carousel-list-item kd-carousel-list-item-hidden"
                 key="12"
               >
                 TabPane012
               </li>
               <li
-                className="kd-carousel-displaylist-item kd-carousel-displaylist-item-hidden"
+                className="kd-carousel-list-item kd-carousel-list-item-hidden"
                 key="13"
               >
                 TabPane013
               </li>
               <li
-                className="kd-carousel-displaylist-item kd-carousel-displaylist-item-hidden"
+                className="kd-carousel-list-item kd-carousel-list-item-hidden"
                 key="14"
               >
                 TabPane014
               </li>
               <li
-                className="kd-carousel-displaylist-item kd-carousel-displaylist-item-hidden"
+                className="kd-carousel-list-item kd-carousel-list-item-hidden"
                 key="15"
               >
                 TabPane015
               </li>
               <li
-                className="kd-carousel-displaylist-item kd-carousel-displaylist-item-hidden"
+                className="kd-carousel-list-item kd-carousel-list-item-hidden"
                 key="16"
               >
                 TabPane016
               </li>
               <li
-                className="kd-carousel-displaylist-item kd-carousel-displaylist-item-hidden"
+                className="kd-carousel-list-item kd-carousel-list-item-hidden"
                 key="17"
               >
                 TabPane017
               </li>
               <li
-                className="kd-carousel-displaylist-item kd-carousel-displaylist-item-hidden"
+                className="kd-carousel-list-item kd-carousel-list-item-hidden"
                 key="18"
               >
                 TabPane018
               </li>
               <li
-                className="kd-carousel-displaylist-item kd-carousel-displaylist-item-hidden"
+                className="kd-carousel-list-item kd-carousel-list-item-hidden"
                 key="19"
               >
                 TabPane019

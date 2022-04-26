@@ -156,7 +156,7 @@ describe('Carousel', () => {
       </Carousel>,
     )
     wrapper.setProps({ effect: 'fade' })
-    expect(wrapper.find('.kd-carousel-fadelist').length).toBe(1)
+    expect(wrapper.find('.kd-carousel-list-fade').length).toBe(1)
   })
   it('test afterChange callback', () => {
     const wrapper = mount(
