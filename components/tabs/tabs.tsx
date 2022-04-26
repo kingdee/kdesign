@@ -115,7 +115,7 @@ const Tabs: React.FC<ITabsProps> = (props) => {
   useEffect(() => {
     const index = carouselData.findIndex((data: any) => String(curActiveKey) === String(data.key))
     if (index !== -1) {
-      carouselRef.current?.jumpTo(index)
+      carouselRef.current?.jumpTo(index, true)
     }
   }, [curActiveKey, carouselRef, carouselData])
 
@@ -418,6 +418,10 @@ const Tabs: React.FC<ITabsProps> = (props) => {
       }
       carouselData.push(item)
     })
+
+    if (effect !== 'none') {
+      console.log('effect', effect)
+    }
 
     return (
       <Carousel ref={carouselRef} dots={false} autoplay={false} effect={effect}>
