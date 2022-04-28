@@ -5,12 +5,11 @@
 @radio-square-prefix-cls: ~'@{radio-prefix-cls}-square';
 @radio-button-prefix-cls: ~'@{radio-prefix-cls}-button';
 @radio-group-prefix-cls: ~'@{radio-prefix-cls}-group';
-@radio-focus-shadow: 0 0 0 3px rgba(@radio-color-theme, 10%);
+@radio-focus-shadow: 0 0 0 3px rgba(85, 130, 243, 10%);
 
 // 默认类型（单选项）
 .@{radio-prefix-cls} {
   .reset-component();
-  .ellipsis();
 
   // 默认状态
   position: relative;
@@ -18,6 +17,7 @@
   padding-left: @radio-circle-size;
   margin-right: @radio-margin-right;
   white-space: nowrap;
+  text-overflow: ellipsis;
   cursor: pointer;
   vertical-align: middle;
   color: @radio-font-color;
