@@ -4,6 +4,19 @@ title: 更新日志
 hiddenAnchor: true
 ---
 
+## [1.2.2](https://github.com/kdcloudone/kdesign/compare/v1.2.1...v1.2.2)
+`2022-04-28`
+* carousel
+  * 调整样式类名
+* city-picker
+  * 去除demo的部分内容
+* collapse
+  * 修复单测报错问题
+* radio
+  * 修复阴影动画丢失的问题
+* tabs
+  * 解决Tabs组件effect的值为fade和scrollx的时候没有动画效果
+
 ## [1.2.1](https://github.com/kdcloudone/kdesign/compare/v1.2.0...v1.2.1)
 `2022-04-21`
 * collapse
