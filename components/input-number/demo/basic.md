@@ -18,9 +18,8 @@ const Demo = () => {
     <InputNumber
       style={inputStyle}
       placeholder="带货币符号"
-      mask="#,###"
-      symbol="$"
       value={val}
+      formatter={value => `$${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
       onChange={(e) => {
         setVal(e.target.value)
         console.log(e, e.target.value)

@@ -382,6 +382,7 @@ const compDefaultProps = {
     minMark: '[',
     maxMark: ']',
     mustInScope: false,
+    zeroShow: true,
   },
   BaseData: {
     mode: 'single',
