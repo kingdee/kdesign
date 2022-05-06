@@ -41,6 +41,7 @@ export interface InputNumberProps extends InputProps {
   mustInPrecisionScope?: boolean // 输入限制在精度范围 默认-true
   stepOption?: StepOption
   stepperrref?: any
+  formatter?: (value: string | undefined) => string
 }
 
 const InternalInputNumber = (props: InputNumberProps, ref: unknown): FunctionComponentElement<InputNumberProps> => {
@@ -67,6 +68,7 @@ const InternalInputNumber = (props: InputNumberProps, ref: unknown): FunctionCom
     maxMark,
     prefix,
     suffix,
+    formatter,
     ...others
   } = inputNumberProps
   const initVal = value === undefined ? defaultValue : value
@@ -303,7 +305,7 @@ const InternalInputNumber = (props: InputNumberProps, ref: unknown): FunctionCom
     <Input
       {...others}
       ref={inputNumberRef}
-      value={inputValue}
+      value={inputValue ? formatter?.(inputValue) || inputValue : inputValue}
       prefix={prefix}
       suffix={suffix}
       onChange={handleChange}

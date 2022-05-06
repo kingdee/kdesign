@@ -20,7 +20,7 @@ subtitle: 步进器
 | --- | --- | --- | --- | --- | --- |
 | decimalLength | 小数位数 | number | `-` | `-` | 1.0.0 |
 | digitLength | 数字的位数 | number | `-` | `-` | 1.0.0 |
-| mask | 掩码 | string | `-` | `-` | 1.0.0 |
+| formatter | 指定输入框展示值的格式 | function(value: string): string | `-` | `-` | 1.0.0 |
 | max | 最大值 | number | `-` | `-` | 1.0.0 |
 | maxMark | 最大值比较符 | string | `]` | `)` \| `]` | 1.0.0 |
 | min | 最小值 | number | `-` | `-` | 1.0.0 |

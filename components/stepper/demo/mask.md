@@ -1,9 +1,9 @@
 ---
-title: 掩码配置
+title: 格式化展示
 order: 2
 ---
 
-配置 `mask` 掩码可在非编辑态时对数值按掩码规则进行格式化处理
+通过 `formatter` 格式化数字
 
 ```jsx
 import React from 'react'
@@ -14,9 +14,9 @@ function Demo() {
   const inputStyle = { marginBottom: 8, marginRight: 8, width: 230 }
   return (
     <div style={{ width: '300px' }}>
-      <Stepper style={inputStyle} placeholder="基本使用" mask="#,###" />
+      <Stepper style={inputStyle} placeholder="基本使用" formatter={value => `${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ',')} />
       <br />
-      <Stepper style={inputStyle} placeholder="基本使用" mask="$#" />
+      <Stepper style={inputStyle} placeholder="基本使用" formatter={value => `$ ${value}`} />
       <br />
     </div>
   )
