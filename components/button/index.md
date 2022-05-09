@@ -31,14 +31,14 @@ subtitle: 按钮
 
 | 属性 | 说明 | 类型 | 默认值 | 可选值 | 版本 |
 | --- | --- | --- | --- | --- | --- |
-| buttonType | 按钮类型 | string | `primary` | `primary` `second` | 1.0.0 |
-| disabled | 按钮禁用状态 | boolean | `false` | `true` `false` | 1.0.0 |
-| size | 按钮尺寸 | string | `middle` | `small` `middle` `large` | 1.0.0 |
-| icon | 自定义图标 | [ReactNode, ReactNode] | - | - | 1.0.0 |
-| type | 按钮类型 | string | `basic` | `similar` | 1.0.0 |
-| overlay | 数据化配置选项内容 | { label, value }[] | `-` | `-` | 1.0.0 |
-| onItemClick | 下拉菜单点击事件 | ({value, label}) => void | `-` | `-` | 1.0.0 |
-| onClick | 点击按钮时的回调 | (event) => void | `-` | `-` | 1.0.0 |
+| buttonType | 按钮类型 | string | `primary` | `primary` `second` | 1.2.0 |
+| disabled | 按钮禁用状态 | boolean | `false` | `true` `false` | 1.2.0 |
+| size | 按钮尺寸 | string | `middle` | `small` `middle` `large` | 1.2.0 |
+| icon | 自定义图标 | [ReactNode, ReactNode] | - | - | 1.2.0 |
+| type | 按钮类型 | string | `basic` | `similar` | 1.2.0 |
+| overlay | 数据化配置选项内容 | { label, value }[] | `-` | `-` | 1.2.0 |
+| onItemClick | 下拉菜单点击事件 | ({value, label}) => void | `-` | `-` | 1.2.0 |
+| onClick | 点击按钮时的回调 | (event) => void | `-` | `-` | 1.2.0 |
 
 ## Design Token
 
