@@ -51,8 +51,8 @@ subtitle: 按钮
 |  | --kd-c-button-primary-color-border-hover | --kd-g-color-theme-5 | rgb(135, 173, 255) |
 |  | --kd-c-button-primary-color-background-active | --kd-g-color-theme-7 | rgb(55, 92, 202) |
 |  | --kd-c-button-primary-color-border-active | --kd-g-color-theme | #5582f3 |
-|  | --kd-c-button-primary-color-background-disabled | --kd-g-color-theme-3 | rgb(227, 238, 255) |
-|  | --kd-c-button-primary-color-border-disabled | --kd-g-color-theme-3 | rgb(227, 238, 255) |
+|  | --kd-c-button-primary-color-background-disabled | --kd-g-color-theme-4 | rgb(181, 207, 255) |
+|  | --kd-c-button-primary-color-border-disabled | --kd-g-color-theme-4 | rgb(181, 207, 255) |
 |  | --kd-c-button-ghost-color-background | - | transparent |
 |  | --kd-c-button-ghost-color-border | --kd-g-color-theme-6 | rgb(85, 130, 243) |
 |  | --kd-c-button-ghost-color-text | - | #5582F3 |
