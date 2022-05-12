@@ -197,7 +197,9 @@ const SubMenu: React.FC<MenuSubMenuProps> = (props) => {
   const handleOnClick: MenuClickEventHandler = (info) => {
     // 保存路径
     info.keyPath = info.keyPath.concat([keyValue])
-
+    if (triggerSubMenuAction === 'click' && mode === 'vertical') {
+      closeSubMenu()
+    }
     restProps.handleOnClick && restProps.handleOnClick(info)
   }
 
