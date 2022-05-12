@@ -14,6 +14,7 @@ function Demo() {
   const { Option } = Select
   const style = {
     width: 230,
+    marginBottom: 20
   }
   const options = [
     { label: <div />, value: 'apple' },

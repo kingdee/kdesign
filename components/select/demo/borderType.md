@@ -14,6 +14,7 @@ function Demo() {
   const { Option } = Select
   const style = {
     width: 230,
+    marginRight: 20
   }
   return (
     <>
