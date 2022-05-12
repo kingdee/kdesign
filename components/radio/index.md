@@ -63,9 +63,9 @@ subtitle: 单选
 |  | --kd-c-radio-color-background | --kd-g-color-white | #fff |
 | font | --kd-c-radio-font-size | --kd-g-font-size-small | 12px |
 | radius | --kd-c-radio-radius-border-width | - | 1px |
-| sizing | --kd-c-radio-square-sizing-width-height | - | 13px |
+| sizing | --kd-c-radio-square-sizing-width-height | - | 14px |
 |  | --kd-c-radio-square-sizing-height | - | 32px |
 | spacing | --kd-c-radio-spacing-margin-right | - | 8px |
-|  | --kd-c-radio-square-spacing-padding-vertical | - | 0px |
-|  | --kd-c-radio-square-spacing-padding-horizontal | - | 20px |
-|  | --kd-c-radio-spacing-padding-left | - | 6px |
+|  | --kd-c-radio-square-spacing-padding-vertical | - | 6px |
+|  | --kd-c-radio-square-spacing-padding-horizontal | - | 12px |
+|  | --kd-c-radio-spacing-padding-left | - | 4px |

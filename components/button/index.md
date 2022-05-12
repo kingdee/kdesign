@@ -55,7 +55,7 @@ subtitle: 按钮
 |  | --kd-c-button-primary-color-border-disabled | --kd-g-color-theme-4 | rgb(181, 207, 255) |
 |  | --kd-c-button-ghost-color-background | - | transparent |
 |  | --kd-c-button-ghost-color-border | --kd-g-color-theme-6 | rgb(85, 130, 243) |
-|  | --kd-c-button-ghost-color-text | - | #5582F3 |
+|  | --kd-c-button-ghost-color-text | --kd-g-color-theme | #5582f3 |
 |  | --kd-c-button-ghost-color-background-hover | --kd-g-color-theme-5 | rgb(135, 173, 255) |
 |  | --kd-c-button-ghost-color-border-hover | - | transparent |
 |  | --kd-c-button-ghost-color-text-hover | - | #ffffff |
