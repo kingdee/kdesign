@@ -62,6 +62,7 @@ const locale = {
   'Filter.and': '并且',
   'Filter.settings': '设置',
   'Filter.schemeNamePlaceholder': '请输入方案名称',
+  'Form.requiredMessage': '请输入您的',
 }
 
 export default locale

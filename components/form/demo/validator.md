@@ -81,7 +81,7 @@ function Demo() {
           <Input type="password" />
         </Form.Item>
         <Button onClick={onSubmit}>提交</Button>
-        <Button htmlType="reset">重置</Button>
+        <Button htmlType="reset" style={{marginLeft: 10}}>重置</Button>
       </Form>
     </div>
   )
