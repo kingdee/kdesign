@@ -55,7 +55,7 @@ const Field: React.FC<FormItemProps> = (props) => {
   const forceUpdate = useForceUpdate()
   const [fieldValue, setFieldValue] = useState<any>(undefined)
 
-  const { getFieldValue, getFieldError, getInternalHooks, vertical, getDefaultValue } = fieldContext
+  const { getFieldValue, getFieldError, getInternalHooks, vertical, getDefaultValue, local } = fieldContext
   const { registerField, dispatch, setDefaultValues } = getInternalHooks(INTERNAL_HOOK_KEY)!
 
   const {
@@ -105,7 +105,7 @@ const Field: React.FC<FormItemProps> = (props) => {
     !rules.some((rule) => Object.prototype.hasOwnProperty.call(rule, 'required')) &&
     required
   ) {
-    rules.push({ required: true })
+    rules.push({ required: true, message: `${local && local.requiredMessage}${label}` })
   }
 
   let mergeRules = rules

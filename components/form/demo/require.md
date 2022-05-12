@@ -20,17 +20,17 @@ function Demo() {
           console.log(changedValue, values)
         }}
         onFinish={(val) => console.log(val)}>
-        <Form.Item label="Note" name="note" required>
+        <Form.Item label="姓名" name="note" required>
           <Input />
         </Form.Item>
-        <Form.Item label="Gender" name="gender">
+        <Form.Item label="性别" name="gender">
           <Input />
         </Form.Item>
-        <Form.Item label="Age" name="age" rules={[{ required: true, message: '请输入年龄!' }]}>
+        <Form.Item label="年龄" name="age" rules={[{ required: true, message: '请输入年龄' }]}>
           <Input />
         </Form.Item>
         <br />
-        <Button type="primary" htmlType="submit">Submit</Button>
+        <Button type="primary" htmlType="submit">提交</Button>
       </Form>
     </div>
   )

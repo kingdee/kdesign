@@ -25,8 +25,15 @@ export interface FormProps<Values = any> extends BaseFormProps {
 }
 
 const Form: React.ForwardRefRenderFunction<FormInstance, FormProps> = (props: FormProps, ref) => {
-  const { getPrefixCls, prefixCls, compDefaultProps: userDefaultProps } = useContext(ConfigContext)
+  const {
+    getPrefixCls,
+    prefixCls,
+    compDefaultProps: userDefaultProps,
+    locale: globalLocale,
+  } = useContext(ConfigContext)
   const formProps = getCompProps('Form', userDefaultProps, props)
+
+  const formLang = globalLocale.getCompLangMsg({ componentName: 'Form' })
 
   const {
     children,
@@ -83,9 +90,10 @@ const Form: React.ForwardRefRenderFunction<FormInstance, FormProps> = (props: Fo
       labelAlign,
       labelWidth,
       wrapperWidth,
+      local: formLang,
       vertical: layout === 'vertical',
     }),
-    [formInstance, labelAlign, labelWidth, wrapperWidth, layout],
+    [formInstance, labelAlign, labelWidth, wrapperWidth, layout, formLang],
   )
 
   const handleSubmit = (evt: React.FormEvent<HTMLFormElement>) => {

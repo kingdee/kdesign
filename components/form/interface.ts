@@ -36,12 +36,18 @@ export interface FormInstance<Values = any> {
   getInternalHooks: (secret: string) => InternalHooks | null
 }
 
+export interface InnerLocale {
+  locale: string
+  requiredMessage: string
+}
+
 // Internal form instance
 export interface InternalFormInstance extends FormInstance {
   labelWidth?: string | number
   labelAlign?: LabelAlign
   wrapperWidth?: string | number
   vertical?: boolean
+  local?: InnerLocale
   getInternalHooks: (key: string) => InternalHooks | null
 }
 

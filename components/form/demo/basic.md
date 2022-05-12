@@ -23,18 +23,17 @@ function Demo() {
         }}
         onFinish={(val) => console.log('submit', val)}>
         <Form.Item
-          label="Username"
+          label="用户名"
           name="username"
           required
-          validateTrigger="onBlur"
-          rules={[{ type: 'string', message: '请输入' }]}>
+          validateTrigger="onBlur">
           <Input onChange={onChange} />
         </Form.Item>
-        <Form.Item label="Password" name="password" required>
+        <Form.Item label="密码" name="password" required>
           <Input type="password" />
         </Form.Item>
-        <Button htmlType="submit">Submit</Button>
-        <Button htmlType="reset">Reset</Button>
+        <Button htmlType="submit">提交</Button>
+        <Button htmlType="reset" style={{marginLeft: 10}}>重置</Button>
       </Form>
     </div>
   )

@@ -20,14 +20,19 @@ function Demo() {
           console.log(changedValue, values)
         }}
         onFinish={(val) => console.log(val)}>
-        <Form.Item name="username" rules={[{ required: true, message: 'Please input your Username!' }]}>
+        <Form.Item name="用户名" rules={[{ required: true, message: '用户名是必填项' }]}>
           <Input placeholder="Username" />
         </Form.Item>
-        <Form.Item name="password" rules={[{ required: true, type: 'number', min: 3 }]}>
+        <Form.Item
+          name="密码"
+          rules={[
+            { required: true, message: '密码是必填项'},
+            {min: 3, message: '密码至少3位'},
+          ]}>
           <Input placeholder="Password" />
         </Form.Item>
         <br />
-        <Button type="primary" htmlType="submit">Submit</Button>
+        <Button type="primary" htmlType="submit">提交</Button>
       </Form>
     </div>
   )
