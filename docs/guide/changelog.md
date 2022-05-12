@@ -4,6 +4,30 @@ title: 更新日志
 hiddenAnchor: true
 ---
 
+## [1.2.3](https://github.com/kdcloudone/kdesign/compare/v1.2.2...v1.2.3)
+`2022-05-12`
+* button
+  * 更新主要按钮禁用色
+  * 修复幽灵按钮的文字颜色
+* carousel
+  * 解决走马灯自适应问题
+* form
+  * fix error message
+  * reset errormessage
+* message
+  * fix error message
+  * reset errormessage
+* menu
+  * del title
+  * fix hover
+* select
+  * 修复禁用状态下的样式
+* stepper
+  * 修复stepper的demo点击递增显示错误
+* tooltip
+  * 修复视觉走查问题点
+* 更新gio的请求id
+
 ## [1.2.2](https://github.com/kdcloudone/kdesign/compare/v1.2.1...v1.2.2)
 `2022-04-28`
 * carousel
