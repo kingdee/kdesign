@@ -25,7 +25,7 @@
     &::before {
       position: absolute;
       z-index: -2;
-      background: transparent;
+      background: @popperBg;
       border-style: solid;
       border-width: var(--arrowSize);
       transform: rotate(45deg);
@@ -51,7 +51,7 @@
         left: var(--arrowLeft);
         top: var(--arrowSpill);
         box-shadow: -2px -2px calc(@blur - 1px) rgba(0, 0, 0, 0.1);
-        border-color: @color-white transparent transparent @color-white;
+        border-color: @popperBg transparent transparent @popperBg;
       }
     }
 
@@ -62,7 +62,7 @@
         left: var(--arrowLeft);
         bottom: var(--arrowSpill);
         box-shadow: 3px 3px calc(@blur + 1px) rgba(0, 0, 0, 0.15);
-        border-color: transparent @color-white @color-white transparent;
+        border-color: transparent @popperBg @popperBg transparent;
       }
     }
 
@@ -73,7 +73,7 @@
         top: var(--arrowTop);
         right: var(--arrowSpill);
         box-shadow: 3px 0 @blur rgba(0, 0, 0, 0.12), 0 -2px @blur rgba(204, 149, 149, 0.12);
-        border-color: @color-white @color-white transparent transparent;
+        border-color: @popperBg @popperBg transparent transparent;
       }
     }
 
@@ -84,7 +84,7 @@
         top: var(--arrowTop);
         left: var(--arrowSpill);
         box-shadow: 0 3px @blur rgba(0, 0, 0, 0.1), -2px 0 @blur rgba(0, 0, 0, 0.1);
-        border-color: transparent transparent @color-white @color-white;
+        border-color: transparent transparent @popperBg @popperBg;
       }
     }
   }
