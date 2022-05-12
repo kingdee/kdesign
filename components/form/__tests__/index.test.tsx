@@ -77,7 +77,7 @@ describe('Form', () => {
   it('Field handleValueValidate', async () => {
     wrapper = mount(
       <Form>
-        <Form.Item name="test" required>
+        <Form.Item name="test" label="test" required>
           <Input />
         </Form.Item>
       </Form>,
@@ -89,7 +89,7 @@ describe('Form', () => {
     wrapper.update()
 
     expect(wrapper.find('.kd-form-field-wrapper-message').length).toBeTruthy()
-    expect(wrapper.find('.kd-form-field-wrapper-message').at(0).text()).toEqual('test is required')
+    expect(wrapper.find('.kd-form-field-wrapper-message').at(0).text()).toEqual('请输入您的test')
   })
 
   it('Field defaultValue', async () => {

@@ -209,6 +209,7 @@ class FormStore {
       newStore[key] = this.defaultValues[key] ? this.defaultValues[key] : ''
     }
     this.store = newStore
+    this.errorMessages = {}
     this.notifyObservers(prevStore, null, 'reset')
   }
 
