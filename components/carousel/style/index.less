@@ -10,71 +10,11 @@
     overflow: hidden;
     flex: 1;
   }
-  &-slidelist {
-    list-style: none;
-    display: flex;
-    flex-direction: row;
-    width: 100%;
-    &-item {
-      flex-shrink: 0;
-      height: 100%;
-      width: 100%;
-      overflow: hidden;
-      border-radius: @carousel-boder-radius;
-    }
-  }
-  &-fadelist {
-    list-style: none;
-    display: flex;
-    flex-direction: row;
-    flex: 1;
-    position: relative;
-    &-item {
-      opacity: 1;
-      position: relative;
-      flex-shrink: 0;
-      height: 100%;
-      width: 100%;
-      &-animation {
-        transition: opacity 0.3s ease;
-      }
-      &-none-animation {
-        transition: none;
-      }
-      &-not-hidden {
-        opacity: 1;
-      }
-      &-hidden {
-        opacity: 0;
-      }
-    }
-  }
-  &-displaylist {
-    list-style: none;
-    display: flex;
-    flex-direction: row;
-    width: 100%;
-    position: relative;
-    &-item {
-      display: block;
-      position: relative;
-      flex-shrink: 0;
-      height: 100%;
-      width: 100%;
-      &-not-hidden {
-        display: block;
-      }
-      &-hidden {
-        display: none;
-      }
-    }
-  }
 
   &-list {
     list-style: none;
     display: flex;
     flex-direction: row;
-    flex: 1;
     position: relative;
 
     &-item {
@@ -85,6 +25,7 @@
     }
 
     &-slide {
+      width: 100%;
       .@{carousel-prefix-cls}-list-item {
         opacity: 1;
         border-radius: @carousel-boder-radius;
@@ -104,6 +45,7 @@
     }
 
     &-fade {
+      flex: 1;
       .@{carousel-prefix-cls}-list-item {
         opacity: 1;
         &-animation {
@@ -122,6 +64,7 @@
     }
 
     &-display {
+      width: 100%;
       .@{carousel-prefix-cls}-list-item {
         display: block;
         &-not-hidden {
