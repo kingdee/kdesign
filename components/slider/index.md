@@ -1,6 +1,6 @@
 ---
 category: Components
-type: 录入
+type: 表单
 title: Slider
 subtitle: 滑动输入
 ---

@@ -1,6 +1,6 @@
 ---
 category: Components
-type: 录入
+type: 表单
 order: 1
 title: Cascader
 subtitle: 级联选择

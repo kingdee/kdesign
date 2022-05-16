@@ -1,6 +1,6 @@
 ---
 category: Components
-type: 录入
+type: 表单
 title: CityPicker
 subtitle: 城市选择
 order: 3

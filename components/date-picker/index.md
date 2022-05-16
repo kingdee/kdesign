@@ -1,6 +1,6 @@
 ---
 category: Components
-type: 录入
+type: 表单
 order: 4
 title: DatePicker
 subtitle: 日期选择器

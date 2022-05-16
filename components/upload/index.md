@@ -2,7 +2,7 @@
 category: Components
 subtitle: 上传
 order: 16
-type: 录入
+type: 表单
 title: Upload
 ---
 
