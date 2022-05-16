@@ -38,6 +38,7 @@ order: 1
 |  | --kd-c-badge-color-ongoing | --kd-g-color-ongoing | #276ff5 |
 |  | --kd-c-badge-color-warning | --kd-g-color-warning | #ff991c |
 |  | --kd-c-badge-color-error | --kd-g-color-error | #fb2323 |
+|  | --kd-c-badge-color-default | - | #d9d9d9 |
 | font | --kd-c-badge-font-weight | - | 400 |
 |  | --kd-c-badge-font-size-base | --kd-g-font-size-middle | 14px |
 |  | --kd-c-badge-font-size-small | --kd-g-font-size-small | 12px |
