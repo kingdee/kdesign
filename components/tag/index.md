@@ -1,7 +1,7 @@
 ---
 category: Components
-type: 导航
-order: 5
+type: 数据展示
+order: 4
 title: Tag
 subtitle: 标签
 ---
