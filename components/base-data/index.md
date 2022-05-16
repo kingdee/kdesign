@@ -1,6 +1,6 @@
 ---
 category: Components
-type: 录入
+type: 表单
 title: BaseData
 subtitle: 基础资料选择
 order: 0

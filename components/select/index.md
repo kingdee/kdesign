@@ -1,6 +1,6 @@
 ---
 category: Components
-type: 录入
+type: 表单
 order: 12
 title: Select
 subtitle: 选择器

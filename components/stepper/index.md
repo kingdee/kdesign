@@ -1,6 +1,6 @@
 ---
 category: Components
-type: 录入
+type: 表单
 order: 13
 title: Stepper
 subtitle: 步进器

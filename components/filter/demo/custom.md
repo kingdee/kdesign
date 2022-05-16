@@ -3,7 +3,7 @@ title: 自定义选项
 order: 5
 ---
 
-自定义选项，可以使用录入组件
+自定义选项，可以使用表单组件
 
 ```jsx
 import React from 'react'
@@ -11,11 +11,11 @@ import ReactDOM from 'react-dom'
 import { Filter, RangePicker } from '@kdcloudjs/kdesign'
 
 function Demo() {
-  const defaultValue = { 
-    organization: ['organ2', 'organ3'], 
+  const defaultValue = {
+    organization: ['organ2', 'organ3'],
     date: ['nearlyThreeMonths'],
   }
-  
+
   const [value, setValue] = React.useState(defaultValue)
 
   const [rangeValue, setRangeValue] = React.useState('')
@@ -48,7 +48,7 @@ function Demo() {
         { value: 'thisMonth', label: '本月' },
         { value: 'nearlyThreeMonths', label: '近三个月' },
         { value: 'nearlyYear', label: '近一年' },
-        { 
+        {
           label: '自定义',
           component:  <RangePicker borderType="bordered" style={{ margin: '-4px 0' }} allowClear={false} value={rangeValue} disabledDate={date => date && date > new Date()} onChange={handleCustomerChange} />
         },

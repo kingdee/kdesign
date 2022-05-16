@@ -17,7 +17,7 @@ export const typeOrder: Record<string, number> = {
   基础: 0,
   布局: 1,
   导航: 2,
-  录入: 3,
+  表单: 3,
   数据展示: 4,
   反馈: 5,
   筛选: 6,
