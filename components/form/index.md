@@ -61,6 +61,7 @@ subtitle: 表单
 | setFieldValue | 设置表单指定字段值 | `(name: NamePath, value: Values) => void` | | | 1.0.0 |
 | submit | 提交表单 | `() => void` | | | 1.0.0 |
 | validateFields | 触发表单校验 | `(namePathList?: NamePath[]) => Promise<Values>` | | | 1.0.0 |
+| valuePropName | 子节点的值的属性，如 Switch 的是 'checked'。 | string | | `value` | 1.3.0 |
 
 ## Design Token
 
