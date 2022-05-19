@@ -4,6 +4,22 @@ title: 更新日志
 hiddenAnchor: true
 ---
 
+## [1.3.0](https://github.com/kdcloudone/kdesign/compare/v1.2.3...v1.3.0)
+`2022-05-19`
+* badge
+  * status属性对应颜色调整
+  * status显示问题
+* carousel
+  * 走马灯样式问题修复
+* checkbox
+  * 修复group的name传值问题
+* form
+  * 新增valuePropName属性
+* select
+  * 修复ts类型报错
+* tag
+  * 分类由 导航 => 数据展示
+
 ## [1.2.3](https://github.com/kdcloudone/kdesign/compare/v1.2.2...v1.2.3)
 `2022-05-12`
 * button
