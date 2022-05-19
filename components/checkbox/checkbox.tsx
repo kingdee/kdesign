@@ -45,6 +45,7 @@ const InternalCheckbox: React.ForwardRefRenderFunction<unknown, CheckboxProps> =
     style,
     value,
     indeterminate,
+    name,
   } = CheckboxProps
 
   const getChecked = () => {
@@ -147,6 +148,7 @@ const InternalCheckbox: React.ForwardRefRenderFunction<unknown, CheckboxProps> =
             value={value}
             checked={selected}
             disabled={disabled}
+            name={name}
           />
         </span>
         {children && <span className={`${checkboxPrefixCls}-children`}>{children}</span>}
