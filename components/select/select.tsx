@@ -9,7 +9,7 @@ import Option from './option'
 import { ISelectProps, SelectValue } from './interface'
 import usePopper from '../_utils/usePopper'
 
-const InternalSelect: React.ForwardRefRenderFunction<ISelectProps> = (props: any, ref: unknown) => {
+const InternalSelect: React.ForwardRefRenderFunction<ISelectProps<SelectValue>> = (props: any, ref: unknown) => {
   const { getPrefixCls, prefixCls, compDefaultProps: userDefaultProps } = useContext(ConfigContext)
   const selectProps = getCompProps('Select', userDefaultProps, props)
   const {
@@ -628,7 +628,7 @@ const InternalSelect: React.ForwardRefRenderFunction<ISelectProps> = (props: any
   return usePopper(renderSelect(), renderContent(), popperProps)
 }
 
-const Select = React.forwardRef<unknown, ISelectProps>(InternalSelect)
+const Select = React.forwardRef<unknown, ISelectProps<SelectValue>>(InternalSelect)
 
 Select.displayName = 'Select'
 
