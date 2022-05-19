@@ -16,7 +16,7 @@ const DEFAULT_TRIGGER = 'onChange'
 export interface FormItemProps {
   children?: React.ReactNode // Children
   className?: string // 自定义类类名
-  defaultValue?: string // 默认值
+  defaultValue?: any // 默认值
   disabled?: boolean // 禁用
   hidden?: boolean // 是否隐藏
   label?: string | number
@@ -28,7 +28,11 @@ export interface FormItemProps {
   rules?: Rule[] // 校验规则
   validateTrigger?: string | string[] // 字段校验的时机
   wrapperWidth?: string | number
+  valuePropName?: string
 }
+
+const FormEventValuePropNames = ['value', 'checked']
+type FormEventValuePropNamesType = 'value' | 'checked'
 
 const generateEventHandler = (handler: EventHandler<any>, validateTrigger?: string | string[]) => {
   const eventHandler: { [key: string]: EventHandler<any> } = {}
@@ -73,6 +77,7 @@ const Field: React.FC<FormItemProps> = (props) => {
     wrapperWidth,
     validateTrigger,
     defaultValue,
+    valuePropName = 'value',
   } = props
 
   const onStoreChange = (stores: Stores, _namePathList: NamePath[] | null, source: NotifySource) => {
@@ -147,9 +152,18 @@ const Field: React.FC<FormItemProps> = (props) => {
 
   const value = getFieldValue(name)
   const validateMessage = getFieldError(name)
+  const getInputValueFormProp = (evt: any) => {
+    let inputValue
+    if (Object.prototype.hasOwnProperty.call(evt, 'target') && FormEventValuePropNames.includes(valuePropName)) {
+      inputValue = evt.target?.[valuePropName as FormEventValuePropNamesType]
+    } else {
+      inputValue = evt
+    }
+    return inputValue
+  }
   const handleValueChange = React.useCallback(
-    (evt: React.ChangeEvent<HTMLInputElement> | string) => {
-      const inputValue = typeof evt === 'string' ? evt : evt.target?.value
+    (evt: any) => {
+      const inputValue = getInputValueFormProp(evt)
       dispatch({ type: 'updateValue', namePath: name, value: inputValue })
     },
     [name],
@@ -169,15 +183,16 @@ const Field: React.FC<FormItemProps> = (props) => {
       return {}
     }
     const { onChange: faChange, disabled: faDisabled, ...rest } = fa
-    const { onChange: chChange, value: chValue, disabled: chDisabled, defaultValue: chDefaultValue } = ch.props
+    const {
+      onChange: chChange,
+      [valuePropName]: chValue,
+      disabled: chDisabled,
+      defaultValue: chDefaultValue,
+    } = ch.props
 
     const onChange = (evt: React.ChangeEvent<HTMLInputElement> | string) => {
       if (chValue === undefined) {
-        if (typeof evt === 'string') {
-          setFieldValue(evt)
-        } else {
-          setFieldValue(evt.target.value)
-        }
+        setFieldValue(getInputValueFormProp(evt))
       }
       if (typeof faChange === 'function') {
         faChange(evt)
@@ -200,7 +215,7 @@ const Field: React.FC<FormItemProps> = (props) => {
       ...rest,
       onChange,
       defaultValue,
-      value: fieldValue,
+      [valuePropName]: fieldValue,
       disabled: chDisabled || faDisabled,
     }
   }
@@ -210,7 +225,7 @@ const Field: React.FC<FormItemProps> = (props) => {
       <FieldLabel value={label} width={labelWidth} textAlign={labelAlign} requiredMark={mergedRequired} />
       <FieldWrapper width={wrapperWidth} validateMessage={validateMessage}>
         {toArray(children).map((child: React.ReactElement, index) => {
-          const keys = mergeProps({ disabled, value, ...trigger, key: index }, child)
+          const keys = mergeProps({ disabled, [valuePropName]: value, ...trigger, key: index }, child)
           return child ? React.cloneElement(child, keys) : child
         })}
       </FieldWrapper>
