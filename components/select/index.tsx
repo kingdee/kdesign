@@ -1,8 +1,9 @@
 import InternalSelect from './select'
-import { ISelectProps } from './interface'
+import { ISelectProps, SelectValue } from './interface'
 import Option from './option'
 
-interface CompoundedComponent extends React.ForwardRefExoticComponent<ISelectProps & React.RefAttributes<HTMLElement>> {
+interface CompoundedComponent
+  extends React.ForwardRefExoticComponent<ISelectProps<SelectValue> & React.RefAttributes<HTMLElement>> {
   Option: typeof Option
 }
 

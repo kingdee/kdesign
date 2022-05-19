@@ -49,17 +49,17 @@ export interface OptionsType {
   label?: React.ReactNode
 }
 
-export type SelectValue = string | string[] | number | number[] | LabeledValue | LabeledValue[] | null
-export interface ISelectProps<T = SelectValue> extends AbstractSelectProps {
+export type SelectValue = string | string[] | number | number[] | LabeledValue | LabeledValue[] | null | undefined
+export interface ISelectProps<T extends SelectValue> extends AbstractSelectProps {
   value?: T
   defaultValue?: T
   mode?: Mode
   autoFocus?: boolean
-  onChange?: (value: T, option: React.ReactElement<any> | React.ReactElement<any>[]) => void
-  onSelect?: (value: T extends (infer I)[] ? I : T, option: React.ReactElement<any>) => void
-  onBlur?: (value: T) => void
+  onChange?: (value?: T, option?: React.ReactElement<any> | React.ReactElement<any>[]) => void
+  onSelect?: (value?: T extends (infer I)[] ? I : T, option?: React.ReactElement<any>) => void
+  onBlur?: (value?: T) => void
   onFocus?: () => void
-  onSearch?: () => void
+  onSearch?: (value?: string) => void
   onClear?: () => void
-  onDropdownVisibleChange?: (value: T) => void
+  onDropdownVisibleChange?: (value?: T) => void
 }
