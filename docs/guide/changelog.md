@@ -4,6 +4,12 @@ title: 更新日志
 hiddenAnchor: true
 ---
 
+## [1.3.1](https://github.com/kdcloudone/kdesign/compare/v1.3.0...v1.3.1)
+`2022-05-26`
+* select
+  * 更新半选禁用状态下样式
+  * 修复多选模式下删除选项展开下拉框的问题
+
 ## [1.3.0](https://github.com/kdcloudone/kdesign/compare/v1.2.3...v1.3.0)
 `2022-05-19`
 * badge
