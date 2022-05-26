@@ -190,6 +190,15 @@ const InternalSelect: React.ForwardRefRenderFunction<ISelectProps<SelectValue>> 
     // handleClear()
   }
 
+  useEffect(() => {
+    selectionRef.current.addEventListener('mouseup', (e: MouseEvent) => {
+      const isCloseBtn = (e?.target as Element)?.className.indexOf('kd-tag-close-icon') > -1
+      if (isCloseBtn) {
+        e.stopPropagation()
+      }
+    })
+  }, [])
+
   // 点击下拉列表中某项回调
   const handleOption = (key: SelectValue, label: string | undefined, isSelected: boolean) => {
     const { onSelect, onDeselect, labelInValue, value } = selectProps
