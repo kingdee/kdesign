@@ -38,6 +38,8 @@
     justify-content: center;
     align-items: center;
     z-index: 999;
+    user-select: none;
+
     .kd-input-underline {
       background-color: transparent;
       border-bottom: none;
@@ -245,6 +247,11 @@
     content: " ";
   }
   &.checked {
+    .@{checkbox-prefix-cls}-children {
+      color: @checkbox-font-color;
+    }
+  }
+  &-indeterminate {
     .@{checkbox-prefix-cls}-children {
       color: @checkbox-font-color;
     }
