@@ -50,6 +50,15 @@ const generateEventHandler = (handler: EventHandler<any>, validateTrigger?: stri
   return eventHandler
 }
 
+const INNER_VALUE_PROPS_LIST = [
+  { name: 'Radio', propName: 'checked' },
+  { name: 'Checkbox', propName: 'checked' },
+  { name: 'Switch', propName: 'checked' },
+  { name: 'Upload', propName: 'fileList' },
+  { name: 'Transfer', propName: 'targetKey' },
+  { name: 'RangePicker', propName: 'ranges' },
+]
+
 const Field: React.FC<FormItemProps> = (props) => {
   devwarning(!React.isValidElement(props.children), 'Form.Item', 'Children of Form.Item is not a valid element')
   devwarning(!props.name, 'Form.Item', 'Form.Item must have a name')
@@ -77,8 +86,25 @@ const Field: React.FC<FormItemProps> = (props) => {
     wrapperWidth,
     validateTrigger,
     defaultValue,
-    valuePropName = 'value',
+    valuePropName,
   } = props
+
+  let childrenNode: any = null
+  let innerValuePropName = 'value'
+  const childrenArray = toArray(children)
+  if (childrenArray.length) {
+    devwarning(childrenArray.length > 1, 'Form.Item', 'Form.Item must have only child')
+    childrenNode = childrenArray[0] as React.ReactElement
+  }
+  const innerDisplayName = childrenNode?.type?.displayName
+  if (valuePropName !== undefined) {
+    innerValuePropName = valuePropName
+  } else if (innerDisplayName) {
+    const filter = INNER_VALUE_PROPS_LIST.filter((item) => innerDisplayName === item.name)
+    if (filter.length) {
+      innerValuePropName = filter[0].propName
+    }
+  }
 
   const onStoreChange = (stores: Stores, _namePathList: NamePath[] | null, source: NotifySource) => {
     const { prev, curr } = stores
@@ -154,8 +180,8 @@ const Field: React.FC<FormItemProps> = (props) => {
   const validateMessage = getFieldError(name)
   const getInputValueFormProp = (evt: any) => {
     let inputValue
-    if (Object.prototype.hasOwnProperty.call(evt, 'target') && FormEventValuePropNames.includes(valuePropName)) {
-      inputValue = evt.target?.[valuePropName as FormEventValuePropNamesType]
+    if (Object.prototype.hasOwnProperty.call(evt, 'target') && FormEventValuePropNames.includes(innerValuePropName)) {
+      inputValue = evt.target?.[innerValuePropName as FormEventValuePropNamesType]
     } else {
       inputValue = evt
     }
@@ -185,7 +211,7 @@ const Field: React.FC<FormItemProps> = (props) => {
     const { onChange: faChange, disabled: faDisabled, ...rest } = fa
     const {
       onChange: chChange,
-      [valuePropName]: chValue,
+      [innerValuePropName]: chValue,
       disabled: chDisabled,
       defaultValue: chDefaultValue,
     } = ch.props
@@ -215,7 +241,7 @@ const Field: React.FC<FormItemProps> = (props) => {
       ...rest,
       onChange,
       defaultValue,
-      [valuePropName]: fieldValue,
+      [innerValuePropName]: fieldValue,
       disabled: chDisabled || faDisabled,
     }
   }
@@ -224,8 +250,8 @@ const Field: React.FC<FormItemProps> = (props) => {
     <div className={formItemClassName}>
       <FieldLabel value={label} width={labelWidth} textAlign={labelAlign} requiredMark={mergedRequired} />
       <FieldWrapper width={wrapperWidth} validateMessage={validateMessage}>
-        {toArray(children).map((child: React.ReactElement, index) => {
-          const keys = mergeProps({ disabled, [valuePropName]: value, ...trigger, key: index }, child)
+        {childrenArray.map((child: React.ReactElement, index) => {
+          const keys = mergeProps({ disabled, [innerValuePropName]: value, ...trigger, key: index }, child)
           return child ? React.cloneElement(child, keys) : child
         })}
       </FieldWrapper>
