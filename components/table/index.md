@@ -47,7 +47,7 @@ return <Table dataSource={dataSource} columns={columns} />
 | dataSource | 数据数组 | any[] | - | - | 1.0.0 |
 | isLoading | 表格是否在加载中 | boolean | `false` | `true` `false` | 1.0.0 |
 | style | 自定义内联样式 | CSSProperties | `-` | `-` | 1.0.0 |
-| primaryKey | 主键 | string \| (row) => string | - | - | 1.0.0 |
+| primaryKey | 用于指定每一行的 key，传入字符串表示从数据中获取对应字段的值作为 key，传入函数时将调用该函数来生成每一行的 key，不传该 prop 时，表格将使用下标作为每一行的 key | string \| (row) => string | - | - | 1.0.0 |
 | hasHeader | 表格是否具有头部 | boolean | `true` | `true` `false` | 1.0.0 |
 | emptyCellHeight | 数据为空时，单元格的高度 | number | - | - | 1.0.0 |
 | useVirtual | 是否开启虚拟滚动 | boolean auto | `auto` | `true` `false` `auto` | 1.0.0 |
@@ -91,14 +91,14 @@ return <Table dataSource={dataSource} columns={columns} />
 ### rowSelection
 行选择配置项
 
-- 启用行选择功能之前，必须已经设置了 `primaryKey`
+- 启用行选择功能之前，必须已经设置了 `primaryKey`, 未设置则选中行的`key`默认为下标`index`
 
 | 属性 | 说明 | 类型 | 默认值 | 可选值 | 版本 |
 | --- | --- | --- | --- | --- | --- |
 | defaultValue | 非受控用法：默认选中的值 | string[] | `-` | `-` | 1.0.0 |
 | value | 受控用法：当前选中的 keys | string[] | `-` | `-` | 1.0.0 |
 | type | 行选择类型 | string | `checkbox` | `checkbox` `radio` | 1.0.0 |
-| onChange | 受控用法：状态改变回调 | (nextValue) => void | `-` | `-` | 1.0.0 |
+| onChange | 受控用法：状态改变回调 | (selectedRowKeys, actionRowkey, actionRowskeys, action) => void | `-` | `-` | 1.0.0 |
 | fixed | 复选框所在列的位置 | string | `start` | `start` `end` | 1.0.0 |
 | column | 复选框所在列的 column 配置，可指定 width，lock, title, align, features 等属性 | [Column](#Column) | `-` | `-` | 1.0.0 |
 | isDisabled | 判断一行中的 checkbox 是否要禁用 | (row, rowIndex) => boolean| `-` | `-` | 1.0.0 |
