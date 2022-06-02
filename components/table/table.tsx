@@ -19,6 +19,7 @@ import useTreeMode from './feature/treeMode'
 import useColumnResize from './feature/columnResize'
 import useColumnDrag from './feature/columnDrag'
 import useContextMenu from './feature/contextMenu'
+import useRangeSelection from './feature/useRangeSelection'
 import devWarning from '../_utils/devwarning'
 
 function Table(props: TableProps) {
@@ -49,6 +50,7 @@ function Table(props: TableProps) {
     getRowProps,
     getTableProps,
     contextMenu,
+    rangeSelection,
     cssVariables,
   } = props
 
@@ -80,6 +82,7 @@ function Table(props: TableProps) {
   useColumnResize(pipeline, columnResize)
   useColumnDrag(pipeline, columnDrag)
   useContextMenu(pipeline, contextMenu)
+  useRangeSelection(pipeline, rangeSelection)
 
   /* -------------------------------------------------------------------------- */
   /* after useTablePipeline, merge pipeline.getProps result                     */
