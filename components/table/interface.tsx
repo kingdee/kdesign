@@ -8,7 +8,19 @@ import {
   ColumnResizeOptions,
   ContextMenuFeatureOptions,
 } from '@kdcloudjs/table/es/table/pipeline/features'
-export interface TableProps extends BaseTableProps {
+
+type TablePropsOfComponents = Pick<BaseTableProps, 'components'> & {
+  components?: {
+    /** 复选框 */
+    Checkbox?: React.ComponentType
+    /** 单选框 */
+    Radio?: React.ComponentType
+  }
+}
+
+type TablePropsOfExtend = Omit<BaseTableProps, 'components'>
+
+export interface TableProps extends TablePropsOfExtend, TablePropsOfComponents {
   rowSelection?: TableRowSelection
   prefixCls?: string
   rowDetail?: TableRowDetail
