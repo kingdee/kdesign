@@ -32,13 +32,13 @@ subtitle: 级联选择
 | notFoundContent | 下拉列表为空时显示的内容 | string | `No Data` |  |
 | options | 可选项数据源 | [Option](#Option)\[] | - |  1.0.0 |
 | placeholder | 输入框占位文本 | string | - | 1.0.0 |
-| popupClassName | 自定义浮层类名 | string | - | 1.0.0 |
-| popupPlacement | 浮层预设位置：`bottomLeft` `bottomRight` `topLeft` `topRight` | string | `bottomLeft` |  1.0.0 |
-| popupVisible | 控制浮层显隐 | boolean | - | 1.0.0 |
+| popperClassName | 自定义浮层类名 | string | - | 1.0.0 |
+| popperPlacement | 浮层预设位置：`bottomLeft` `bottomRight` `topLeft` `topRight` | string | `bottomLeft` |  1.0.0 |
+| popperVisible | 控制浮层显隐 | boolean | - | 1.0.0 |
 | suffixIcon | 自定义的选择框后缀图标 | ReactNode | - | 1.0.0 |
 | value | 指定选中项 | string\[] \| number\[] | - | 1.0.0 |
 | onChange | 选择完成后的回调 | (value, selectedOptions) => void | - | 1.0.0 |
-| onPopupVisibleChange | 显示/隐藏浮层的回调 | (visible) => void | - | 1.0.0 |
+| onPopperVisibleChange | 显示/隐藏浮层的回调 | (visible) => void | - | 1.0.0 |
 
 更多属性请参考 [Tooltip](/components/tooltip/#API)。
 
