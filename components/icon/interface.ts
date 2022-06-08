@@ -205,6 +205,7 @@ export const SolidIcon: Array<string> = [
   'workbench',
   'star',
   'notice',
+  'dashboard',
 ]
 
 export const IconTypes = tuple(...BaseIcon, ...SolidIcon)

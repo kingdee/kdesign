@@ -1,9 +1,10 @@
 @font-face {
   font-family: "kdicon";
-  src: url("kdicon.woff?t=1649311510226") format("woff");
+  src: url("kdicon.woff?t=1654677347390") format("woff");
 }
 .kdicon {
   font-family: 'kdicon' !important;
+  font-size:16px;
   font-style:normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -62,6 +63,7 @@
 .kdicon-copy:before { content: "\e678"; }
 .kdicon-counterclockwise:before { content: "\e6e5"; }
 .kdicon-customize:before { content: "\e707"; }
+.kdicon-dashboard:before { content: "\e71c"; }
 .kdicon-date-selection:before { content: "\e70f"; }
 .kdicon-date:before { content: "\e6eb"; }
 .kdicon-delete-indentation:before { content: "\e697"; }
