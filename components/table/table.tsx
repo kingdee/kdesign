@@ -56,10 +56,11 @@ function Table(props: TableProps) {
 
   const tablePrefixCls = getPrefixCls!(prefixCls, customPrefixcls)
   const tableCls = classNames(tablePrefixCls, className)
+
   const pipeline = useTablePipeline({
     components: {
-      Checkbox: components?.Checkbox || Checkbox,
-      Radio: components?.Radio || Radio,
+      Checkbox,
+      Radio,
     },
   })
     .primaryKey(primaryKey === undefined ? '' : primaryKey)
@@ -104,8 +105,9 @@ function Table(props: TableProps) {
       style={style}
       isLoading={isLoading}
       components={{
-        LoadingIcon: components?.LoadingIcon || (() => <Spin type="container" />),
-        EmptyContent: components?.EmptyContent || (() => <Empty />),
+        LoadingIcon: () => <Spin type="container" />,
+        EmptyContent: () => <Empty />,
+        ...components,
       }}
       useVirtual={useVirtual}
       footerDataSource={footerDataSource}
