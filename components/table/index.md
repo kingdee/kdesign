@@ -55,11 +55,6 @@ return <Table dataSource={dataSource} columns={columns} />
 | rowSelection | 行选中配置 | [rowSelection](#rowSelection) | `-` | - | 1.0.0 |
 | filter | 过滤配置 | [filter](#filter) | - | - | 1.0.0 |
 | sort | 排序配置 | [sort](#sort) | - | - | 1.0.0 |
-| rowDetail | 详情行功能配置 | [rowDetail](#rowDetail) | - | - | 1.0.0 |
-| treeMode | 树形数据展示配置 | [treeMode](#treeMode) | - | - | 1.0.0 |
-| columnDrag | 拖动表头来调整列的位置配置 | [columnDrag](#columnDrag) | - | - | 1.0.0 |
-| columnResize | 手动调整列宽的大小配置 | [columnResize](#columnResize) | - | - | 1.0.0 |
-
 <br/>
 
 
@@ -92,41 +87,6 @@ return <Table dataSource={dataSource} columns={columns} />
 | sortable | 是否开启排序功能 | boolean \| (a,b)=>boolean | `false` | `true` `false`  | 1.0.0 |
 | filterable | 是否开启过滤功能 | boolean \| (filterValue) => (value) =>boolean | `false` | `true` `false`  | 1.0.0 |
 <br/>
-
-
-### 虚拟滚动
-
-数据量较大时，表格会自动开启虚拟滚动。你也可以通过表格的 useVirtual 属性来调整虚拟滚动功能，目前 useVirtual 支持以下几个值：
-
-- 'auto' （默认值）表示根据表格的行数或列数自动调整是否开启虚拟滚动
-  - 行数量超过 100 时，自动开启纵向虚拟滚动
-  - 列数量超过 100 时，自动开启横向虚拟滚动
-  - 表头的横向虚拟滚动默认关闭
-- true 开启所有虚拟滚动
-- false 关闭所有虚拟滚动
-- 传入一个对象可以分别指定 横向/纵向/表头 是否开启虚拟滚动
-  - 对象的结构为 { horizontal?: boolean | 'auto', vertical?: boolean | 'auto', header?: boolean | 'auto' }
-
-此外，水平方向的虚拟滚动 要求「所有的列都有一个指定的宽度」。推荐设置 <BaseTable defaultColumnWidth={...} />，确保所有的列都有一个指定的宽度
-
-> 注意设置表格的高度或最大高度（宽度同理），并设置 style.overflow = 'auto'
-
-#### 虚拟滚动与单元格合并
-
-在虚拟滚动开启的情况下，如果想要进行单元格合并，则要使用 column.getSpanRect 来进行设定：
-
-- column.getSpanRect 返回一个 SpanRect 的对象来表示对应单元所处的合并后的位置。
-- SpanRect 的具体类型为 { left: number, right: number, top: number, bottom: number }
-  - 注意其中 left/top 是 inclusive 的，right/bottom 是 exclusive 的。
-  
-不开启虚拟滚动时，单元格合并可以通过 column.getCellProps(...) 返回 colSpan / rowSpan 进行实现。
-
-#### 预估行高
-
-在元素被渲染在页面之前，组件是无法获取该元素的尺寸的。为了展示尽量真实的滚动条，表格组件内部需要算出所有行的高度之和。在一行没有被渲染之前，表格内部会使用 props.estimatedRowHeight (默认值为 48）来作为该行的高度，从而计算所有行的高度和。
-
-在实际使用时，实际行高可能与预估行高有较大出入，此时可以设置 estimatedRowHeight 来提升预估高度的准确性。
-
 
 ### rowSelection
 行选择配置项
@@ -218,7 +178,7 @@ SortHeaderCellProps {
 ```
 <br/>
 
-### rowDetail 
+#### rowDetail 
 详情行功能
 
 | 属性 | 说明 | 类型 | 默认值 | 可选值 | 版本 |
@@ -237,7 +197,7 @@ SortHeaderCellProps {
 | expandColumnCode | 指定在哪一列设置展开按钮 | string | `-` | `-` | 1.0.0 |
 <br/>
 
-### treeMode
+#### treeMode
 树形数据展示功能
 
 | 属性 | 说明 | 类型 | 默认值 | 可选值 | 版本 |
@@ -254,19 +214,51 @@ SortHeaderCellProps {
 | treeMetaKey | 指定表格每一行元信息的记录字段 | string &#124; symbol | `Symbol('treeMetaSymbol')` | `-` | 1.0.0 |
 <br/>
 
+#### 虚拟滚动
 
-### columnDrag
+数据量较大时，表格会自动开启虚拟滚动。你也可以通过表格的 useVirtual 属性来调整虚拟滚动功能，目前 useVirtual 支持以下几个值：
 
-属性`columnDrag`为`true`或设置`ColumnDragOptions`时可以拖动表头来调整列的位置
+- 'auto' （默认值）表示根据表格的行数或列数自动调整是否开启虚拟滚动
+  - 行数量超过 100 时，自动开启纵向虚拟滚动
+  - 列数量超过 100 时，自动开启横向虚拟滚动
+  - 表头的横向虚拟滚动默认关闭
+- true 开启所有虚拟滚动
+- false 关闭所有虚拟滚动
+- 传入一个对象可以分别指定 横向/纵向/表头 是否开启虚拟滚动
+  - 对象的结构为 { horizontal?: boolean | 'auto', vertical?: boolean | 'auto', header?: boolean | 'auto' }
+
+此外，水平方向的虚拟滚动 要求「所有的列都有一个指定的宽度」。推荐设置 <BaseTable defaultColumnWidth={...} />，确保所有的列都有一个指定的宽度
+
+> 注意设置表格的高度或最大高度（宽度同理），并设置 style.overflow = 'auto'
+
+##### 虚拟滚动与单元格合并
+
+在虚拟滚动开启的情况下，如果想要进行单元格合并，则要使用 column.getSpanRect 来进行设定：
+
+- column.getSpanRect 返回一个 SpanRect 的对象来表示对应单元所处的合并后的位置。
+- SpanRect 的具体类型为 { left: number, right: number, top: number, bottom: number }
+  - 注意其中 left/top 是 inclusive 的，right/bottom 是 exclusive 的。
+  
+不开启虚拟滚动时，单元格合并可以通过 column.getCellProps(...) 返回 colSpan / rowSpan 进行实现。
+
+##### 预估行高
+
+在元素被渲染在页面之前，组件是无法获取该元素的尺寸的。为了展示尽量真实的滚动条，表格组件内部需要算出所有行的高度之和。在一行没有被渲染之前，表格内部会使用 props.estimatedRowHeight (默认值为 48）来作为该行的高度，从而计算所有行的高度和。
+
+在实际使用时，实际行高可能与预估行高有较大出入，此时可以设置 estimatedRowHeight 来提升预估高度的准确性。
+
+##### columnDrag
+
+属性`columnDrag`为`true`或`ColumnDragOptions`时可以拖动表头来调整列的位置
 
 ColumnDragOptions 接口类型如下
 ```ts
 interface ColumnDragOptions { onColumnDragStopped?: (columnMoved: boolean, columns: ArtColumn[]) => void }
 ```
 
-### columnResize
+##### columnResize
 
-属性`columnResize`为`true`或设置`ColumnResizeOptions`时表头右侧会显示拖拽线，按住可以手动调整列宽的大小
+属性`columnResize`为`true`或`ColumnResizeOptions`时可以拖动表头来调整列的位置
 
 ```ts
 interface ColumnResizeOptions { 
@@ -288,3 +280,4 @@ interface ChangedColumnSize {
     width: number;
 }
 ```
+;
