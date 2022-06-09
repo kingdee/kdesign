@@ -1,5 +1,10 @@
 @import './token.less';
 
+@menu-prefix-cls: ~'@{kd-prefix}-menu';
+@menuitem-prefix-cls: ~'@{menu-prefix-cls}-item';
+@menu-vertical-prefix-cls: ~'@{menu-prefix-cls}-vertical';
+@submenu-prefix-cls: ~'@{menu-prefix-cls}-submenu';
+
 // 菜单默认样式
 .menu() {
   position: relative;
@@ -77,8 +82,13 @@
 }
 
 .light-hover {
-  background-color: @menu-light-color-background;
+  background-color: @menu-light-color-background-hover;
   color: @menu-light-color-hover;
+}
+
+.light-active {
+  background-color: @menu-light-color-background-active;
+  color: @menu-light-color-active;
 }
 
 .light-default {
@@ -93,5 +103,27 @@
   .ellipsis();
   & > span {
     .ellipsis();
+  }
+}
+
+
+.light {
+  .light-default();
+
+  .@{submenu-prefix-cls}-hover,
+  .@{submenu-prefix-cls}-sub {
+    .light-default();
+  }
+
+  .@{submenu-prefix-cls}-title:hover {
+    color: @menu-light-color-hover;
+  }
+
+  .@{submenu-prefix-cls}:not(.@{submenu-prefix-cls}-disabled):hover {
+    .light-hover();
+  }
+
+  .@{menuitem-prefix-cls}:not(.@{menuitem-prefix-cls}-disabled):hover {
+    .light-hover();
   }
 }
