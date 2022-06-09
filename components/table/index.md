@@ -59,7 +59,7 @@ return <Table dataSource={dataSource} columns={columns} />
 | treeMode | 树形数据展示配置 | [treeMode](#treeMode) | - | - | 1.0.0 |
 | columnDrag | 拖动表头来调整列的位置配置 | [columnDrag](#columnDrag) | - | - | 1.0.0 |
 | columnResize | 手动调整列宽的大小配置 | [columnResize](#columnResize) | - | - | 1.0.0 |
-| rangeSelection | 范围选中功能配置 | [rangeSelection](#rangeSelection) | - | - | 1.0.0 |
+
 <br/>
 
 
@@ -286,17 +286,5 @@ interface columnSize { [key: string]: number }
 interface ChangedColumnSize {
     code: string;
     width: number;
-}
-```
-
-### rangeSelection
-
-属性`rangeSelection`为`{}`或设置`TableRangeSelection`时表体内部可范围选中表格
-```ts
-interface TableRangeSelection {
-    /** 范围选中回调函数 */
-    rangeSelectedChange?(params: any): void;
-    /** 是否阻止keydown的默认行为 */
-    preventkDefaultOfKeyDownEvent?: boolean;
 }
 ```
