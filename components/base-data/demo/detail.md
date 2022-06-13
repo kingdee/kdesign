@@ -6,7 +6,7 @@ order: 6
 ```jsx
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { BaseData, Modal, Input, Icon, Tree, Table, SplitPanel, Button, Pagination, Search, Spin, Checkbox } from '@kdcloudjs/kdesign'
+import { BaseData, Modal, Input, Icon, Tree, Table, SplitPanel, Button, Pagination, Search, Spin, Checkbox, Tabs } from '@kdcloudjs/kdesign'
 
 function Demo() {
   const modalRef = React.useRef()
@@ -134,15 +134,21 @@ function Demo() {
     setExpandedKeys(expandedKeys)
   }
 
+  const handleInputSearch = (e) => {
+    console.log('handleSearch', e)
+  }
+
   const renderTree = () => {
     return (
       <div className="left-content">
+      <div style={{ margin: '8px 8px 0 8px', }}>
         <Input
           placeholder="请输入组织编号/名称"
           borderType="bordered"
           prefix={<Icon type="search" />}
-          style={{ marginBottom: '10px' }}
+          onChange={handleInputSearch}
         />
+      </div>
         <Tree
           name="Tree"
           treeData={treeData}
@@ -160,7 +166,7 @@ function Demo() {
   // Table
   const tableColumns = [
     { code: 'value', name: '#', width: 60, features: { sortable: true, filterable: true } },
-    { code: 'code', name: '编码', width: 120, align: 'right', features: { sortable: true, filterable: true } },
+    { code: 'code', name: '编码', width: 130, align: 'right', features: { sortable: true, filterable: true } },
     { code: 'label', name: '姓名', width: 80, align: 'right', features: { sortable: true, filterable: false } },
     { code: 'number', name: '工号', width: 80, align: 'right', features: { sortable: false, filterable: true } },
     { code: 'department', name: '部门', width: 120, features: { sortable: true, filterable: true } },
@@ -233,7 +239,9 @@ function Demo() {
               选择全部
             </Button>
           </div>
-          <Pagination bordered pageType="simple" defaultCurrent={1} total={50} showQuickJumper={false} />
+          <div>
+          <Pagination pageType="simple" defaultCurrent={1} total={50} showQuickJumper={false} />
+          </div>
         </div>
         <Table
           useOuterBorder={false}
@@ -283,14 +291,20 @@ function Demo() {
   }
 
   const body = (
-    <Spin type="page" spinning={loading}>
-      <SplitPanel
-        style={{ width: 960, height: 472 }}
-        firstSlot={renderTree()}
-        secondSlot={renderRightContent()}
-        defaultSplit={0.25}
-      />
-    </Spin>
+    <>
+      <Tabs type="card" defaultActiveKey="TabPane1" noContainer={true}>
+          <Tabs.TabPane key="TabPane1" tab="全部" />
+          <Tabs.TabPane key="TabPane2" tab="我的收藏" />
+      </Tabs>
+      <Spin type="page" spinning={loading}>
+        <SplitPanel
+          style={{ width: 960, height: 444 }}
+          firstSlot={renderTree()}
+          secondSlot={renderRightContent()}
+          defaultSplit={0.25}
+        />
+      </Spin>
+    </>
   )
 
   const footer = (
@@ -300,7 +314,7 @@ function Demo() {
         <Button style={{ marginLeft: 20 }} type="text">新增</Button>
       </div>
       <div className="footer-action">
-        <Button type="primary" style={{ marginRight: 12 }} onClick={() => setVisible(false)}>
+        <Button style={{ marginRight: 12 }} onClick={() => setVisible(false)}>
           取消
         </Button>
         <Button type="primary" onClick={handleOk}>
@@ -347,6 +361,13 @@ ReactDOM.render(<Demo />, mountNode)
 ```
 
 ```css
+.detail {
+  --kd-c-tabs-pane-line-height: 36px;
+  --kd-c-tabs-sizing-height: 36px;
+  --kd-c-tabs-color-border: transparent;
+  --kd-c-button-text-color-text: #0E5FD8;
+}
+
 .detail .kd-modal-header {
   padding: 0 20px;
   height: 50px;
@@ -377,9 +398,6 @@ ReactDOM.render(<Demo />, mountNode)
 .selector-detail .kd-split-wrapper {
   border: 0;
 }
-.selector-detail .left-content {
-  padding: 10px;
-}
 
 .selector-detail .right-content {
   display: flex;
@@ -401,17 +419,15 @@ ReactDOM.render(<Demo />, mountNode)
 }
 
 .selector-detail .right-content .collect-list {
-  line-height: 24px;
-  margin: 0 20px 8px 20px;
-  padding: 0 5px;
+  line-height: 32px;
+  padding: 0 12px;
   display: flex;
   justify-content: space-between;
-  border: 1px solid transparent;
 }
 
 .collect-list:hover {
-  border: 1px solid #5582f3 !important;
   border-radius: 2px;
+  background-color: #f5f5f5 !important;
 }
 
 .selector-detail .right-content .table {
@@ -423,7 +439,11 @@ ReactDOM.render(<Demo />, mountNode)
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 30px 0 15px;
+  padding: 0 20px;
+}
+
+.selector-detail .kd-pagination.simple .kd-pagination-item {
+  line-height: 24px;
 }
 
 .detail .detail-footer {
@@ -436,7 +456,7 @@ ReactDOM.render(<Demo />, mountNode)
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 56px;
+  height: 50px;
 }
 
 .detail .detail-footer .footer-other {
