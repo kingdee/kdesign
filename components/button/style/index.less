@@ -259,25 +259,37 @@
     }
   }
 
-  &-trigger {
-    .@{btn-prefix-cls}-primary {
-      background: @btn-group-trigger-color-background;
-      &:hover {
-        background: @btn-group-trigger-color-background-hover;
-        border-color: @btn-group-trigger-color-background-hover;
-      }
-
-      &:active {
-        background: @btn-group-trigger-color-background-active;
-      }
-
-      &:disabled {
-        background: @btn-group-trigger-color-background-disabled !important;
+  &-similar {
+    .@{btn-prefix-cls}-group-trigger {
+      .@{btn-prefix-cls} {
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+        margin-left: -1px;
+        &-primary {
+          background: @btn-group-trigger-color-background;
+          &:hover {
+            background: @btn-group-trigger-color-background-hover;
+            border-color: @btn-group-trigger-color-background-hover;
+          }
+  
+          &:active {
+            background: @btn-group-trigger-color-background-active;
+          }
+  
+          &:disabled {
+            background: @btn-group-trigger-color-background-disabled !important;
+          }
+        }
       }
     }
-
-    .@{btn-prefix-cls} {
-      margin-left: -1px;
+    &>.@{btn-prefix-cls} {
+      &:first-child {
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+        &:hover {
+          z-index: 1;
+        }
+      }
     }
   }
 
@@ -286,19 +298,6 @@
     &-size-middle,
     &-size-large {
       min-width: unset;
-    }
-
-    &:first-child {
-      border-top-right-radius: 0;
-      border-bottom-right-radius: 0;
-      &:hover {
-        z-index: 1;
-      }
-    }
-
-    &:last-child {
-      border-top-left-radius: 0;
-      border-bottom-left-radius: 0;
     }
   }
 
