@@ -40,6 +40,8 @@ const isFunction = (fn: any): boolean => {
   return fn && typeof fn === 'function'
 }
 
+const openSubMenuSet = new Set<string>()
+
 const Menu: MenuType = (props) => {
   const { getPrefixCls, prefixCls: pkgPrefixCls, compDefaultProps: userDefaultProps } = React.useContext(ConfigContext)
 
@@ -114,21 +116,21 @@ const Menu: MenuType = (props) => {
 
   // 子菜单展开关闭的回调
   const handleOnOpenChange = (openKey: string, isAdd: boolean, clean = false) => {
-    let tempKeys: KeyType[] = []
-    if (!clean) {
-      const has = openKeys.includes(openKey)
-
-      if (isAdd && !has) {
-        tempKeys = [...openKeys, openKey]
+    if (clean) {
+      openSubMenuSet.clear()
+    } else {
+      if (isAdd) {
+        openSubMenuSet.add(openKey)
+      } else {
+        openSubMenuSet.delete(openKey)
       }
-      if (!isAdd && has) {
-        tempKeys = openKeys.filter((d) => d !== openKey)
-      }
-      if (userOpenKeys === undefined) {
-        setOpenKeys(tempKeys)
-      }
-      onOpenChange && onOpenChange(tempKeys)
     }
+
+    if (userOpenKeys === undefined) {
+      setOpenKeys([...openSubMenuSet])
+    }
+
+    onOpenChange && onOpenChange([...openSubMenuSet])
   }
 
   const renderMenu = (): React.ReactElement => {

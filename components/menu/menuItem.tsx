@@ -14,13 +14,7 @@ export interface MenuItemProps extends React.HTMLAttributes<HTMLElement> {
   style?: React.CSSProperties
 }
 
-const renderItemChildren = (children: React.ReactNode) => {
-  if (typeof children === 'string') {
-    return <span>{children}</span>
-  }
-
-  return renderReactNodeFunction(children)
-}
+export const MENU_ITEM_CONTAINER_NAME = 'menu-item-content-container'
 
 const InternalMenuItem: React.ForwardRefRenderFunction<unknown, MenuItemProps> = (props, ref) => {
   const { getPrefixCls, prefixCls: pkgPrefixCls, compDefaultProps: userDefaultProps } = React.useContext(ConfigContext)
@@ -51,9 +45,16 @@ const InternalMenuItem: React.ForwardRefRenderFunction<unknown, MenuItemProps> =
 
   const menuItemRef = (ref as any) || React.createRef<HTMLElement>()
 
+  const renderItemChildren = (children: React.ReactNode) => {
+    if (typeof children === 'string') {
+      return <span className={MENU_ITEM_CONTAINER_NAME}>{children}</span>
+    }
+
+    return <div className={MENU_ITEM_CONTAINER_NAME}>{typeof children === 'function' ? children() : children}</div>
+  }
+
   const preventClick = (): boolean => {
-    if (disabled || mode === 'inline') return true
-    return false
+    return !!(disabled || mode === 'inline')
   }
 
   const handleOnMouseEnter = (e: React.MouseEvent<HTMLLIElement, MouseEvent>) => {
