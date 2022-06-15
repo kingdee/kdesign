@@ -475,7 +475,6 @@ exports[`Transfer should support render value and label in item 1`] = `
               >
                 <label
                   className="kd-checkbox kd-checkbox-no-child kd-checkbox-default"
-                  onClick={[Function]}
                 >
                   <span
                     className="kd-checkbox-default-no-child kd-checkbox-default-wrapper"
@@ -586,7 +585,6 @@ exports[`Transfer should support render value and label in item 1`] = `
                   >
                     <label
                       className="kd-checkbox kd-checkbox-no-child kd-checkbox-default"
-                      onClick={[Function]}
                     >
                       <span
                         className="kd-checkbox-default-no-child kd-checkbox-default-wrapper"
@@ -745,7 +743,6 @@ exports[`Transfer should support render value and label in item 1`] = `
               >
                 <label
                   className="kd-checkbox kd-checkbox-no-child kd-checkbox-default"
-                  onClick={[Function]}
                 >
                   <span
                     className="kd-checkbox-default-no-child kd-checkbox-default-wrapper"

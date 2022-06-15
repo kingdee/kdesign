@@ -1,4 +1,4 @@
-import * as React from 'react'
+import React, { useEffect, MutableRefObject } from 'react'
 import classNames from 'classnames'
 import ConfigContext from '../config-provider/ConfigContext'
 import { IRadioProps } from './interface'
@@ -60,16 +60,25 @@ const InternalRadio: React.ForwardRefRenderFunction<HTMLElement, IRadioProps> = 
     className,
   ) // 单选包裹元素class名称
 
-  const handleRepeatClick = (e: React.MouseEvent<HTMLElement>) => {
-    const element = e.target as HTMLElement
-    if (element.tagName !== 'INPUT') {
-      e.stopPropagation()
+  useEffect(() => {
+    const handleRepeatClick = function (e: any) {
+      const element = e.target as HTMLElement
+      if (element.tagName !== 'INPUT') {
+        e.stopPropagation()
+      }
     }
-  }
+    const radioRef = mergedRef as MutableRefObject<HTMLElement>
+    radioRef.current.addEventListener('click', handleRepeatClick)
+
+    return () => {
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+      radioRef.current.removeEventListener('click', handleRepeatClick)
+    }
+  }, [])
 
   return (
     // eslint-disable-next-line
-    <label className={classString} style={style} ref={mergedRef as any} onClick={handleRepeatClick}>
+    <label className={classString} style={style} ref={mergedRef as any}>
       <input type="radio" className={`${radioPrefixCls}-input`} {...radioProps} />
       {children !== undefined ? <span className={`${radioPrefixCls}-text`}>{children}</span> : null}
     </label>
