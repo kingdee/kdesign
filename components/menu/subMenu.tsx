@@ -9,6 +9,7 @@ import { useOnClickOutside } from '../_utils/hooks'
 import { Icon } from '../index'
 import usePopper from '../_utils/usePopper'
 import devWarning from '../_utils/devwarning'
+import { MENU_ITEM_CONTAINER_NAME } from './menuItem'
 
 export interface MenuSubMenuProps extends React.HTMLAttributes<HTMLElement> {
   disabled?: boolean
@@ -44,7 +45,6 @@ const SubMenu: React.FC<MenuSubMenuProps> = (props) => {
     style,
     handleOnOpenChange,
     paddingLeft = 0,
-    userOpenKeys,
     ...restProps
   } = getCompProps('MenuSubMenu', userDefaultProps, props)
 
@@ -69,16 +69,10 @@ const SubMenu: React.FC<MenuSubMenuProps> = (props) => {
   const subMenuVerticalRef = React.useRef(null)
   const subMenuWrapperVerticalRef = React.useRef<HTMLDivElement>(null)
 
-  const [isVisible, setIsVisible] = React.useState<boolean>(false)
+  const visible = Array.isArray(openKeys) && openKeys.includes(keyValue)
 
   React.useEffect(() => {
-    if (Array.isArray(openKeys)) {
-      setIsVisible(openKeys.includes(keyValue))
-    }
-  }, [keyValue, openKeys])
-
-  React.useEffect(() => {
-    if (!isVisible) return
+    if (!visible) return
 
     const subMenuWrapperEle = subMenuWrapperRef.current
     const subMenuEle = subMenuRef.current
@@ -126,15 +120,15 @@ const SubMenu: React.FC<MenuSubMenuProps> = (props) => {
       const height = subMenuWrapperRef.current?.scrollHeight || 0
 
       return {
-        height: isVisible && !collapsed ? `${height}px` : '0px',
+        height: visible && !collapsed ? `${height}px` : '0px',
         overflow: 'hidden',
-        opacity: isVisible && !collapsed ? 1 : 0,
+        opacity: visible && !collapsed ? 1 : 0,
         transition: 'all 0.2s cubic-bezier(0,.4,.4,1)',
       }
     }
 
     const style: React.CSSProperties = {
-      visibility: forceSubMenuRender && !isVisible ? 'visible' : 'hidden',
+      visibility: forceSubMenuRender && !visible ? 'visible' : 'hidden',
     }
 
     if (restProps.subMenuMode === 'horizontal') {
@@ -159,25 +153,24 @@ const SubMenu: React.FC<MenuSubMenuProps> = (props) => {
       paddingLeft: `${popupOffsetPosition[0]}px`,
       paddingTop: `${popupOffsetPosition[1]}px`,
     })
-  }, [subMenuRef, restProps.popupOffset, forceSubMenuRender, isVisible, mode, restProps.subMenuMode])
+  }, [subMenuRef, restProps.popupOffset, forceSubMenuRender, visible, mode, restProps.subMenuMode])
 
-  const handleVisibleChange = (status: boolean) => {
+  const handleVisibleChange = (status: boolean, clean = false) => {
     if (typeof restProps.parentVisibleChange === 'function') {
       restProps.parentVisibleChange(status)
     }
-    if (userOpenKeys === undefined) {
-      setIsVisible(status)
-    }
+
+    handleOnOpenChange(keyValue, status, clean)
   }
 
   const closeSubMenu = () => {
-    handleVisibleChange(false)
-    handleOnOpenChange(keyValue, false, true)
+    handleVisibleChange(false, true)
   }
 
   // 点击区域外的地方关闭
-  useOnClickOutside([subMenuVerticalRef, subMenuWrapperVerticalRef], () => {
-    if (triggerSubMenuAction === 'click' && mode === 'vertical') {
+  useOnClickOutside([subMenuVerticalRef, subMenuWrapperVerticalRef], (e: any) => {
+    const className = e?.target?.className || ''
+    if (!className.includes(MENU_ITEM_CONTAINER_NAME)) {
       closeSubMenu()
     }
   })
@@ -213,8 +206,7 @@ const SubMenu: React.FC<MenuSubMenuProps> = (props) => {
   // 子菜单展开收缩
   const handleOnClickSubMenu = () => {
     if (disabled || triggerSubMenuAction === 'hover') return
-    handleOnOpenChange(keyValue, !isVisible)
-    handleVisibleChange(!isVisible)
+    handleVisibleChange(!visible)
   }
 
   const renderItemTitle = (): React.ReactNode => {
@@ -236,7 +228,7 @@ const SubMenu: React.FC<MenuSubMenuProps> = (props) => {
       <Icon
         type="arrow-down"
         className={classNames(`${prefixCls}-arrow`, {
-          [`${prefixCls}-arrow-${isVisible ? 'up' : 'down'}`]: true,
+          [`${prefixCls}-arrow-${visible ? 'up' : 'down'}`]: true,
         })}
       />
     )
@@ -288,7 +280,7 @@ const SubMenu: React.FC<MenuSubMenuProps> = (props) => {
         className={classNames(prefixCls, className, {
           [`${prefixCls}-collapsed`]: collapsed,
           [`${prefixCls}-disabled`]: disabled,
-          [`${prefixCls}-hover`]: !disabled && isVisible,
+          [`${prefixCls}-hover`]: !disabled && visible,
           [`${prefixCls}-active`]: Array.isArray(openKeys) && openKeys.includes(keyValue),
         })}
         key={keyValue}
@@ -336,7 +328,7 @@ const SubMenu: React.FC<MenuSubMenuProps> = (props) => {
         [`light`]: theme === 'light',
         [`${prefixCls}-collapsed`]: collapsed,
         [`${prefixCls}-disabled`]: disabled,
-        [`${prefixCls}-hover`]: !disabled && isVisible,
+        [`${prefixCls}-hover`]: !disabled && visible,
         [`${prefixCls}-active`]: Array.isArray(openKeys) && openKeys.includes(keyValue),
       })}
       ref={subMenuVerticalRef}
@@ -358,16 +350,12 @@ const SubMenu: React.FC<MenuSubMenuProps> = (props) => {
       </div>
     </li>,
     <div
-      onMouseLeave={() => {
-        if (mode === 'vertical') {
-          handleOnMouseLeave()
-        }
-      }}
       ref={subMenuWrapperVerticalRef}
+      onMouseLeave={() => {
+        handleOnMouseLeave()
+      }}
       onMouseEnter={() => {
-        if (mode === 'vertical') {
-          handleOnMouseEnter()
-        }
+        handleOnMouseEnter()
       }}
     >
       <ul
@@ -402,7 +390,7 @@ const SubMenu: React.FC<MenuSubMenuProps> = (props) => {
       arrow: false,
       placement: 'rightTop',
       gap: 0,
-      visible: isVisible,
+      visible,
       prefixCls: 'kd-menu-popper',
       popperClassName: theme === 'light' ? 'light' : '',
     },
