@@ -156,10 +156,6 @@ const SubMenu: React.FC<MenuSubMenuProps> = (props) => {
   }, [subMenuRef, restProps.popupOffset, forceSubMenuRender, visible, mode, restProps.subMenuMode])
 
   const handleVisibleChange = (status: boolean, clean = false) => {
-    if (typeof restProps.parentVisibleChange === 'function') {
-      restProps.parentVisibleChange(status)
-    }
-
     handleOnOpenChange(keyValue, status, clean)
   }
 
@@ -182,7 +178,6 @@ const SubMenu: React.FC<MenuSubMenuProps> = (props) => {
 
   const handleMouseEvent = (status: boolean) => {
     if (disabled || triggerSubMenuAction === 'click') return
-    handleOnOpenChange(keyValue, status)
     handleVisibleChange(status)
   }
 
@@ -380,7 +375,6 @@ const SubMenu: React.FC<MenuSubMenuProps> = (props) => {
             handleOnOpenChange,
             handleOnClick,
             inlineIndent,
-            parentVisibleChange: handleVisibleChange,
             paddingLeft: curPaddingLeft,
           })
         })}

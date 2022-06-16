@@ -81,6 +81,14 @@ const Menu: MenuType = (props) => {
     }
   }, [userOpenKeys])
 
+  useEffect(() => {
+    if (Array.isArray(userOpenKeys)) {
+      userOpenKeys.forEach((d) => {
+        openSubMenuSet.add(d)
+      })
+    }
+  }, [])
+
   // triggerSubMenuAction内嵌模式固定为click，即该值设置只对垂直模式有效
   if (mode === 'inline') {
     restProps.triggerSubMenuAction = 'click'
