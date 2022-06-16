@@ -4,6 +4,23 @@ title: 更新日志
 hiddenAnchor: true
 ---
 
+## [1.3.3](https://github.com/kdcloudone/kdesign/compare/v1.3.2...v1.3.3)
+`2022-06-16`
+* button
+  * 调整集合按钮圆角以及下拉面板空隙
+  * 集合按钮颜色调整
+* checkbox
+  * 修复外层包裹添加点击事件,执行操作时触发两次的bug
+* menu
+  * 菜单受控问题处理
+  * 菜单组件问题修复
+  * 受控问题处理
+* search
+  * 解决多选情况下showSearch为false时不生效
+* select
+  * 解决多选情况下showSearch为false时不生效
+* 基础资料选择demo调整
+
 ## [1.3.2](https://github.com/kdcloudone/kdesign/compare/v1.3.1...v1.3.2)
 `2022-06-09`
 * form
