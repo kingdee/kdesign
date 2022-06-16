@@ -11,8 +11,17 @@ import ReactDOM from 'react-dom'
 import { Menu } from '@kdcloudjs/kdesign'
 
 function Demo() {
+  const [openKeys, setOpenKeys] = React.useState(['sub1']);
+  const [selectKey, setSelectKey] = React.useState('2');
+
   const handleClickItem = (obj) => {
     console.log(obj)
+    setSelectKey(obj.key)
+  }
+
+  const onOpenChange = (data) => {
+    console.log(data)
+    setOpenKeys(data)
   }
 
   const menuStyle = {
@@ -26,8 +35,9 @@ function Demo() {
       mode="inline"
       inlineIndent={24}
       onClick={handleClickItem}
-      openKeys={['sub1']}
-      selectedKey="5">
+      onOpenChange={onOpenChange}
+      selectedKey={selectKey}
+      openKeys={openKeys}>
       <Menu.Item key="1" name="MenuItem" disabled>
         标签一
       </Menu.Item>
