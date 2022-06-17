@@ -138,6 +138,7 @@ const InternalButtonGroup = (
   const popperProps = {
     placement: 'bottomLeft',
     trigger: 'click',
+    gap: 0,
     ...buttonGoupProps,
     prefixCls: btnGroupPrefixCls,
     defaultVisible: optionShow,

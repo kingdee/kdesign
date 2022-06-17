@@ -15,7 +15,9 @@ exports[`Menu renders correctly 1`] = `
         class="kd-menu-item-title"
         style="padding-left:50px;padding-right:0"
       >
-        <span>
+        <span
+          class="menu-item-content-container"
+        >
           222
         </span>
       </div>

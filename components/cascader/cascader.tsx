@@ -24,9 +24,9 @@ type FieldNames = {
   children: string
 }
 
-export const PopupPlacement = tuple('topLeft', 'topRight', 'bottomLeft', 'bottomRight')
+export const CascaderPlacement = tuple('topLeft', 'topRight', 'bottomLeft', 'bottomRight')
 
-export type PopupPlacementType = typeof PopupPlacement[number]
+export type CascaderPlacementType = typeof CascaderPlacement[number]
 
 export type CascaderValueType = Array<string | number>
 
@@ -43,8 +43,10 @@ export interface CascaderProps extends PopperProps {
   allowClear?: boolean
   placeholder?: string
   popupVisible?: boolean
+  popperVisible?: boolean
   fieldNames?: FieldNames
   popupClassName?: string
+  popperClassName?: string
   changeOnSelect?: boolean
   notFoundContent?: string
   value?: CascaderValueType
@@ -54,10 +56,12 @@ export interface CascaderProps extends PopperProps {
   expandIcon?: React.ReactNode
   defaultPopupVisible?: boolean
   defaultValue?: CascaderValueType
-  popupPlacement?: PopupPlacementType
+  popupPlacement?: CascaderPlacementType
+  popperPlacement?: CascaderPlacementType
   options?: Array<CascaderOptionType>
   expandTrigger?: CascaderExpandTrigger
   onPopupVisibleChange?: (visible: boolean) => void
+  onPopperVisibleChange?: (visible: boolean) => void
   loadData?: (selectedOptions: CascaderOptionType[]) => void
   dropdownRender?: (menus: React.ReactNode) => React.ReactNode
   getPopupContainer?: (triggerNode: HTMLElement) => HTMLElement
@@ -88,6 +92,7 @@ const Cascader = React.forwardRef<unknown, CascaderProps>((props, ref) => {
     getPopupContainer,
     defaultPopupVisible,
     onPopupVisibleChange,
+    onPopperVisibleChange,
     prefixCls: customPrefixcls,
   } = allProps
 
@@ -99,10 +104,10 @@ const Cascader = React.forwardRef<unknown, CascaderProps>((props, ref) => {
 
   const mergeRef = (ref || pickerRef) as any
 
-  const [visible, setVisible] = React.useState(!!props.popupVisible || defaultPopupVisible)
+  const [visible, setVisible] = React.useState(!!props.popperVisible || !!props.popupVisible || defaultPopupVisible)
   React.useEffect(() => {
-    setVisible(!!props.popupVisible)
-  }, [props.popupVisible])
+    setVisible(!!props.popperVisible || !!props.popupVisible)
+  }, [props.popperVisible, props.popupVisible])
 
   const [menus, setMenus] = React.useState<CascaderOptionType[][]>([options])
   const [currentOptions, setCurrentOptions] = React.useState<CascaderOptionType[]>([])
@@ -216,6 +221,7 @@ const Cascader = React.forwardRef<unknown, CascaderProps>((props, ref) => {
   const onVisibleChange = (visible: boolean) => {
     setVisible(visible)
     onPopupVisibleChange && onPopupVisibleChange(visible)
+    onPopperVisibleChange && onPopperVisibleChange(visible)
     visible && setSelectedOptions(currentOptions.slice(0))
   }
 
@@ -276,8 +282,8 @@ const Cascader = React.forwardRef<unknown, CascaderProps>((props, ref) => {
     trigger: 'click',
     getPopupContainer,
     prefixCls: `${prefixCls}-menus`,
-    placement: allProps.popupPlacement,
-    popperClassName: allProps.popupClassName,
+    placement: allProps.popperPlacement || allProps.popupPlacement,
+    popperClassName: allProps.popperClassName || allProps.popupClassName,
     getTriggerElement: () => triggerRef.current,
   }
 

@@ -1,4 +1,4 @@
-import * as React from 'react'
+import React, { useEffect } from 'react'
 import {
   KeyType,
   MenuMode,
@@ -40,9 +40,12 @@ const isFunction = (fn: any): boolean => {
   return fn && typeof fn === 'function'
 }
 
+const openSubMenuSet = new Set<string>()
+
 const Menu: MenuType = (props) => {
   const { getPrefixCls, prefixCls: pkgPrefixCls, compDefaultProps: userDefaultProps } = React.useContext(ConfigContext)
 
+  const { selectedKey: userSelectedKey, openKeys: userOpenKeys } = props
   const {
     prefixCls: customPrefixcls,
     mode,
@@ -61,15 +64,30 @@ const Menu: MenuType = (props) => {
   const prefixCls = getPrefixCls!(pkgPrefixCls, 'menu', customPrefixcls)
 
   devWarning(['inline', 'vertical', undefined].indexOf(mode!) === -1, 'menu', `cannot found menu mode '${mode}'`)
-
-  const defaultSelectedKey: KeyType =
-    ('selectedKey' in restProps ? restProps.selectedKey : restProps.defaultSelectedKey) || ''
-  const defaultOpenKeys: KeyType[] = ('openKeys' in restProps ? restProps.openKeys : restProps.defaultOpenKeys) || []
-
   // const [collapsed, setCollapsed] = React.useState<boolean | undefined>(restProps.collapsed)
 
-  const [selectedKey, setSelectedKey] = React.useState<KeyType>(defaultSelectedKey)
-  const [openKeys, setOpenKeys] = React.useState<KeyType[]>(defaultOpenKeys)
+  const [selectedKey, setSelectedKey] = React.useState<KeyType>('')
+  const [openKeys, setOpenKeys] = React.useState<KeyType[]>([])
+
+  useEffect(() => {
+    if (userSelectedKey !== undefined) {
+      setSelectedKey(userSelectedKey)
+    }
+  }, [userSelectedKey])
+
+  useEffect(() => {
+    if (userOpenKeys !== undefined) {
+      setOpenKeys(userOpenKeys)
+    }
+  }, [userOpenKeys])
+
+  useEffect(() => {
+    if (Array.isArray(userOpenKeys)) {
+      userOpenKeys.forEach((d) => {
+        openSubMenuSet.add(d)
+      })
+    }
+  }, [])
 
   // triggerSubMenuAction内嵌模式固定为click，即该值设置只对垂直模式有效
   if (mode === 'inline') {
@@ -81,7 +99,9 @@ const Menu: MenuType = (props) => {
   // }, [restProps.collapsed])
 
   const handleOnClick: MenuClickEventHandler = (info) => {
-    setSelectedKey(info.key)
+    if (userSelectedKey === undefined) {
+      setSelectedKey(info.key)
+    }
 
     if (mode !== 'inline' && openKeys.length > 0) {
       setOpenKeys([])
@@ -103,15 +123,22 @@ const Menu: MenuType = (props) => {
   }
 
   // 子菜单展开关闭的回调
-  const handleOnOpenChange = (openKey: string) => {
-    const index = openKeys.indexOf(openKey)
-    if (index > -1) {
-      openKeys.splice(index, 1)
-      setOpenKeys(openKeys)
+  const handleOnOpenChange = (openKey: string, isAdd: boolean, clean = false) => {
+    if (clean) {
+      openSubMenuSet.clear()
     } else {
-      setOpenKeys(openKeys.concat(openKey))
+      if (isAdd) {
+        openSubMenuSet.add(openKey)
+      } else {
+        openSubMenuSet.delete(openKey)
+      }
     }
-    onOpenChange && onOpenChange(openKey)
+
+    if (userOpenKeys === undefined) {
+      setOpenKeys([...openSubMenuSet])
+    }
+
+    onOpenChange && onOpenChange([...openSubMenuSet])
   }
 
   const renderMenu = (): React.ReactElement => {
@@ -127,11 +154,14 @@ const Menu: MenuType = (props) => {
             mode,
             openKeys,
             selectedKey,
+            theme,
             triggerSubMenuAction: restProps.triggerSubMenuAction,
             forceSubMenuRender,
             handleOnOpenChange,
             handleOnClick,
             inlineIndent,
+            userOpenKeys,
+            userSelectedKey,
           })
         })}
       </ul>

@@ -433,6 +433,13 @@ const InternalSelect: React.ForwardRefRenderFunction<ISelectProps<SelectValue>> 
     return realChildren?.length === 0 && <div className={emptyListCls}>{emptyContent}</div>
   }
 
+  const isShowSearch = useCallback(() => {
+    if (isMultiple) {
+      return showSearch ?? true
+    }
+    return showSearch ?? false
+  }, [showSearch, isMultiple])
+
   // 渲染下拉列表框
   const renderContent = () => {
     const { searchIcon, dropdownRender, listHeight } = selectProps
@@ -461,7 +468,7 @@ const InternalSelect: React.ForwardRefRenderFunction<ISelectProps<SelectValue>> 
         {
           <div className={dropDownCls} style={dropDownStyle} ref={dropDownRef}>
             {/* 搜索框 */}
-            {(showSearch || isMultiple) && (
+            {isShowSearch() && (
               <div className={searchCls}>
                 <Input
                   ref={searchRef}

@@ -94,10 +94,10 @@ subtitle: 按钮
 |  | --kd-c-button-group-dropdown-item-border-color | - | #E5E5E5 |
 |  | --kd-c-button-group-dropdown-item-color-background-hover | - | #F5F5F5 |
 |  | --kd-c-button-group-dropdown-color-background | - | #fff |
-|  | --kd-c-button-group-trigger-color-background | - | #4367c1 |
-|  | --kd-c-button-group-trigger-color-background-hover | - | #4c74da |
-|  | --kd-c-button-group-trigger-color-background-active | - | #3B5AA9 |
-|  | --kd-c-button-group-trigger-color-background-disabled | - | #95a4c8 |
+|  | --kd-c-button-group-trigger-color-background | --kd-g-color-theme-7 | rgb(55, 92, 202) |
+|  | --kd-c-button-group-trigger-color-background-hover | --kd-g-color-theme-6 | rgb(85, 130, 243) |
+|  | --kd-c-button-group-trigger-color-background-active | --kd-g-color-theme-8 | rgb(31, 59, 161) |
+|  | --kd-c-button-group-trigger-color-background-disabled | --kd-g-color-theme-5 | rgb(135, 173, 255) |
 | font | --kd-c-button-font-weight | --kd-g-font-weight | 400 |
 |  | --kd-c-button-font-size-small | --kd-g-font-size-small | 12px |
 |  | --kd-c-button-font-size-middle | --kd-g-font-size-small | 12px |

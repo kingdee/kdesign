@@ -4,7 +4,7 @@ import { getCompProps } from '../_utils'
 import { ConfigContext } from '../config-provider'
 import throttle from 'lodash/throttle'
 
-type Align = 'top' | 'middle' | 'bottom'
+type Align = 'top' | 'middle' | 'bottom' | 'stretch'
 type Justify = 'start' | 'end' | 'center' | 'space-around' | 'space-between'
 interface gutterObject {
   xs?: number

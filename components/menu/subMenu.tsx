@@ -1,20 +1,15 @@
-import * as React from 'react'
+import React from 'react'
 import { ConfigContext } from '../config-provider'
 import { getCompProps } from '../_utils'
 import { toArray } from '../_utils/react-children'
 import classNames from 'classnames'
 import { MenuClickEventHandler } from './interface'
-import {
-  isString,
-  getWrapWidth,
-  getItemWidth,
-  renderReactNodeFunction,
-  isElementInViewport,
-  DEFAUTL_PADDING,
-} from './util'
+import { isString, getItemWidth, renderReactNodeFunction, isElementInViewport, DEFAUTL_PADDING } from './util'
 import { useOnClickOutside } from '../_utils/hooks'
 import { Icon } from '../index'
+import usePopper from '../_utils/usePopper'
 import devWarning from '../_utils/devwarning'
+import { MENU_ITEM_CONTAINER_NAME } from './menuItem'
 
 export interface MenuSubMenuProps extends React.HTMLAttributes<HTMLElement> {
   disabled?: boolean
@@ -33,6 +28,7 @@ const SubMenu: React.FC<MenuSubMenuProps> = (props) => {
   // 属性需要合并一遍用户定义的默认属性
   const {
     prefixCls: customPrefixcls,
+    theme,
     mode,
     title,
     icon,
@@ -70,16 +66,13 @@ const SubMenu: React.FC<MenuSubMenuProps> = (props) => {
   const subMenuRef = React.useRef(null)
   const subMenuWrapperRef = React.useRef<HTMLDivElement>(null)
 
-  const [isVisible, setIsVisible] = React.useState<boolean>(false)
+  const subMenuVerticalRef = React.useRef(null)
+  const subMenuWrapperVerticalRef = React.useRef<HTMLDivElement>(null)
+
+  const visible = Array.isArray(openKeys) && openKeys.includes(keyValue)
 
   React.useEffect(() => {
-    if (openKeys.length > 0) {
-      setIsVisible(openKeys.includes(keyValue))
-    }
-  }, [keyValue])
-
-  React.useEffect(() => {
-    if (!isVisible) return
+    if (!visible) return
 
     const subMenuWrapperEle = subMenuWrapperRef.current
     const subMenuEle = subMenuRef.current
@@ -127,15 +120,15 @@ const SubMenu: React.FC<MenuSubMenuProps> = (props) => {
       const height = subMenuWrapperRef.current?.scrollHeight || 0
 
       return {
-        height: isVisible && !collapsed ? `${height}px` : '0px',
+        height: visible && !collapsed ? `${height}px` : '0px',
         overflow: 'hidden',
-        opacity: isVisible && !collapsed ? 1 : 0,
+        opacity: visible && !collapsed ? 1 : 0,
         transition: 'all 0.2s cubic-bezier(0,.4,.4,1)',
       }
     }
 
     const style: React.CSSProperties = {
-      visibility: forceSubMenuRender && !isVisible ? 'visible' : 'hidden',
+      visibility: forceSubMenuRender && !visible ? 'visible' : 'hidden',
     }
 
     if (restProps.subMenuMode === 'horizontal') {
@@ -160,16 +153,20 @@ const SubMenu: React.FC<MenuSubMenuProps> = (props) => {
       paddingLeft: `${popupOffsetPosition[0]}px`,
       paddingTop: `${popupOffsetPosition[1]}px`,
     })
-  }, [subMenuRef, restProps.popupOffset, forceSubMenuRender, isVisible, mode, restProps.subMenuMode])
+  }, [subMenuRef, restProps.popupOffset, forceSubMenuRender, visible, mode, restProps.subMenuMode])
+
+  const handleVisibleChange = (status: boolean, clean = false) => {
+    handleOnOpenChange(keyValue, status, clean)
+  }
 
   const closeSubMenu = () => {
-    setIsVisible(false)
-    handleOnOpenChange(keyValue)
+    handleVisibleChange(false, true)
   }
 
   // 点击区域外的地方关闭
-  useOnClickOutside([subMenuRef], () => {
-    if (triggerSubMenuAction === 'click' && mode === 'vertical') {
+  useOnClickOutside([subMenuVerticalRef, subMenuWrapperVerticalRef], (e: any) => {
+    const className = e?.target?.className || ''
+    if (!className.includes(MENU_ITEM_CONTAINER_NAME)) {
       closeSubMenu()
     }
   })
@@ -181,9 +178,7 @@ const SubMenu: React.FC<MenuSubMenuProps> = (props) => {
 
   const handleMouseEvent = (status: boolean) => {
     if (disabled || triggerSubMenuAction === 'click') return
-
-    handleOnOpenChange(keyValue)
-    setIsVisible(status)
+    handleVisibleChange(status)
   }
 
   const handleOnMouseEnter = () => {
@@ -204,14 +199,9 @@ const SubMenu: React.FC<MenuSubMenuProps> = (props) => {
   }
 
   // 子菜单展开收缩
-  const handleOnClickSubMenu = (e: React.MouseEvent) => {
+  const handleOnClickSubMenu = () => {
     if (disabled || triggerSubMenuAction === 'hover') return
-
-    e.stopPropagation()
-
-    handleOnOpenChange(keyValue)
-
-    setIsVisible(!isVisible)
+    handleVisibleChange(!visible)
   }
 
   const renderItemTitle = (): React.ReactNode => {
@@ -233,83 +223,9 @@ const SubMenu: React.FC<MenuSubMenuProps> = (props) => {
       <Icon
         type="arrow-down"
         className={classNames(`${prefixCls}-arrow`, {
-          [`${prefixCls}-arrow-${isVisible ? 'up' : 'down'}`]: true,
+          [`${prefixCls}-arrow-${visible ? 'up' : 'down'}`]: true,
         })}
       />
-    )
-  }
-
-  const renderSubMenu = (): React.ReactNode => {
-    const style: React.CSSProperties = getCurrentStyle()
-
-    // 展开收缩动画。针对二级三级菜单目前使用单一的样式去区分了
-    const motionClassName: any = {}
-
-    if (mode !== 'inline') {
-      const prefixClsMotion = `${prefixCls}-sub`
-      if (isVisible) {
-        motionClassName[`${prefixClsMotion}-second`] = restProps.level === 1
-        motionClassName[`${prefixClsMotion}-third`] = restProps.level === 2
-      } else {
-        motionClassName[`${prefixClsMotion}-hide`] = true
-      }
-    }
-
-    return (
-      <div style={style} ref={subMenuWrapperRef}>
-        <ul className={classNames(`${prefixCls}-sub`, restProps.popupClassName, motionClassName)}>
-          {toArray(children).map((item: React.ReactElement, index) => {
-            const key = item.key || index
-            return React.cloneElement(item, {
-              key,
-              level: restProps.level + 1,
-              keyValue: key,
-              collapsed,
-              mode,
-              selectedKey,
-              openKeys,
-              forceSubMenuRender,
-              triggerSubMenuAction,
-              handleOnOpenChange,
-              handleOnClick,
-              inlineIndent,
-              paddingLeft: curPaddingLeft,
-            })
-          })}
-        </ul>
-      </div>
-    )
-  }
-
-  const renderThridMenu = (): React.ReactNode => {
-    const style: React.CSSProperties = getCurrentStyle()
-
-    return (
-      <div style={style}>
-        <div
-          className={classNames(`${prefixCls}-thrid`)}
-          onClick={(e) => {
-            e.stopPropagation()
-          }}
-          style={{ width: getWrapWidth(children) }}
-        >
-          {toArray(children).map((item: React.ReactElement, i) => {
-            return React.cloneElement(item, {
-              level: restProps.level + 1,
-              subMenuMode: restProps.subMenuMode,
-              keyValue: item.key || i,
-              collapsed,
-              mode,
-              selectedKey,
-              openKeys,
-              forceSubMenuRender,
-              triggerSubMenuAction,
-              handleOnOpenChange,
-              handleOnClick,
-            })
-          })}
-        </div>
-      </div>
     )
   }
 
@@ -352,17 +268,72 @@ const SubMenu: React.FC<MenuSubMenuProps> = (props) => {
     paddingLeft: `${curPaddingLeft}px`,
   }
 
-  return (
+  if (mode !== 'vertical') {
+    return (
+      <li
+        ref={subMenuRef}
+        className={classNames(prefixCls, className, {
+          [`${prefixCls}-collapsed`]: collapsed,
+          [`${prefixCls}-disabled`]: disabled,
+          [`${prefixCls}-hover`]: !disabled && visible,
+          [`${prefixCls}-active`]: Array.isArray(openKeys) && openKeys.includes(keyValue),
+        })}
+        key={keyValue}
+        {...mouseEvent}
+        style={style}
+      >
+        <div className={classNames(`${prefixCls}-title`)} style={titleStyle}>
+          {icon &&
+            React.cloneElement(renderReactNodeFunction(icon), {
+              className: classNames(`${prefixCls}-icon`),
+            })}
+          {renderItemTitle()}
+          {renderItemArrow()}
+        </div>
+        <div style={getCurrentStyle()} ref={subMenuWrapperRef}>
+          <ul className={classNames(`${prefixCls}-sub`, restProps.popupClassName)}>
+            {toArray(children).map((item: React.ReactElement, index) => {
+              const key = item.key || index
+              return React.cloneElement(item, {
+                key,
+                level: restProps.level + 1,
+                keyValue: key,
+                collapsed,
+                mode,
+                selectedKey,
+                openKeys,
+                forceSubMenuRender,
+                triggerSubMenuAction,
+                handleOnOpenChange,
+                handleOnClick,
+                inlineIndent,
+                paddingLeft: curPaddingLeft,
+              })
+            })}
+          </ul>
+        </div>
+      </li>
+    )
+  }
+
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  return usePopper(
     <li
-      ref={subMenuRef}
       className={classNames(prefixCls, className, {
+        [`light`]: theme === 'light',
         [`${prefixCls}-collapsed`]: collapsed,
         [`${prefixCls}-disabled`]: disabled,
-        [`${prefixCls}-hover`]: !disabled && isVisible,
+        [`${prefixCls}-hover`]: !disabled && visible,
+        [`${prefixCls}-active`]: Array.isArray(openKeys) && openKeys.includes(keyValue),
       })}
+      ref={subMenuVerticalRef}
       key={keyValue}
-      {...mouseEvent}
       style={style}
+      {...{
+        onMouseLeave: handleOnMouseLeave,
+        onMouseEnter: handleOnMouseEnter,
+        onClick: handleOnClickSubMenu,
+      }}
     >
       <div className={classNames(`${prefixCls}-title`)} style={titleStyle}>
         {icon &&
@@ -372,8 +343,51 @@ const SubMenu: React.FC<MenuSubMenuProps> = (props) => {
         {renderItemTitle()}
         {renderItemArrow()}
       </div>
-      {restProps.subMenuMode === 'horizontal' ? renderThridMenu() : renderSubMenu()}
-    </li>
+    </li>,
+    <div
+      ref={subMenuWrapperVerticalRef}
+      onMouseLeave={() => {
+        handleOnMouseLeave()
+      }}
+      onMouseEnter={() => {
+        handleOnMouseEnter()
+      }}
+    >
+      <ul
+        className={classNames(`${prefixCls}-sub`, restProps.popupClassName, {
+          [`${prefixCls}-sub-second`]: restProps.level === 1,
+          [`${prefixCls}-sub-third`]: restProps.level === 2,
+        })}
+      >
+        {toArray(children).map((item: React.ReactElement, index) => {
+          const key = item.key || index
+          return React.cloneElement(item, {
+            key,
+            level: restProps.level + 1,
+            keyValue: key,
+            collapsed,
+            mode,
+            theme,
+            selectedKey,
+            openKeys,
+            forceSubMenuRender,
+            triggerSubMenuAction,
+            handleOnOpenChange,
+            handleOnClick,
+            inlineIndent,
+            paddingLeft: curPaddingLeft,
+          })
+        })}
+      </ul>
+    </div>,
+    {
+      arrow: false,
+      placement: 'rightTop',
+      gap: 0,
+      visible,
+      prefixCls: 'kd-menu-popper',
+      popperClassName: theme === 'light' ? 'light' : '',
+    },
   )
 }
 

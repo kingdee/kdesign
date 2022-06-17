@@ -1,4 +1,4 @@
-import React, { useCallback, useContext, useEffect } from 'react'
+import React, { useCallback, useContext, useEffect, useState, useRef } from 'react'
 import classNames from 'classnames'
 import ConfigContext from '../config-provider/ConfigContext'
 import { getCompProps } from '../_utils'
@@ -52,7 +52,8 @@ const InternalCheckbox: React.ForwardRefRenderFunction<unknown, CheckboxProps> =
     return isBoolean(checked) ? checked : defaultChecked
   }
 
-  const [selected, setSelected] = React.useState(getChecked())
+  const [selected, setSelected] = useState(getChecked())
+  const labelRef = useRef<any>(null)
 
   devWarning(CheckboxTypes.indexOf(checkboxType) === -1, 'checkbox', `cannot found checkbox type '${checkboxType}'`)
 
@@ -123,17 +124,25 @@ const InternalCheckbox: React.ForwardRefRenderFunction<unknown, CheckboxProps> =
     isBoolean(checked) && checked !== selected && setSelected(checked)
   }, [checked, selected])
 
-  const handleRepeatClick = (e: React.MouseEvent<HTMLElement>) => {
-    const element = e.target as HTMLElement
-    if (element.tagName !== 'INPUT') {
-      e.stopPropagation()
+  useEffect(() => {
+    const handleRepeatClick = function (e: React.MouseEvent<HTMLElement>) {
+      const element = e.target as HTMLElement
+      if (element.tagName !== 'INPUT') {
+        e.stopPropagation()
+      }
     }
-  }
+    labelRef.current.addEventListener('click', handleRepeatClick)
+
+    return () => {
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+      labelRef.current.removeEventListener('click', handleRepeatClick)
+    }
+  }, [])
 
   const getDefaultCheckbox = () => {
     return (
       // eslint-disable-next-line
-      <label className={getRootClassName} style={style} onClick={handleRepeatClick}>
+      <label className={getRootClassName} style={style} ref={labelRef}>
         <span className={checkedWrapperClassName}>
           {selected && (
             <span className={innerIconClassName}>
