@@ -126,7 +126,6 @@ const compDefaultProps = {
     mode: 'single',
     defaultOpen: false,
     showArrow: true,
-    showSearch: false,
   },
   Image: {
     preview: true,

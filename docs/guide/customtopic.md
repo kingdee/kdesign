@@ -147,7 +147,7 @@ module.exports = {
 
 注意：
 
-1. less-loader 的处理范围不要过滤掉 `node_modules` 下的 antd 包。
+1. less-loader 的处理范围不要过滤掉 `node_modules` 下的 kdesign 包。
 2. `lessOptions` 的配置写法在 [less-loader@6.0.0](https://github.com/webpack-contrib/less-loader/releases/tag/v6.0.0) 里支持。
 
 ### 在 create-react-app 中定制主题
