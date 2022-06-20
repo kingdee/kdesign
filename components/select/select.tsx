@@ -273,7 +273,7 @@ const InternalSelect: React.ForwardRefRenderFunction<ISelectProps<SelectValue>> 
 
   // 多选模式下选中所有 与清除所有 (可以优化)
   const handleSelectAll = () => {
-    const { selectedVal, selectMulOpts } = multipleRef.current
+    let { selectedVal, selectMulOpts } = multipleRef.current
     if (realChildren?.length !== selectedVal.length) {
       realChildren.map((child: any) => {
         const { value, children } = child.props
@@ -284,8 +284,8 @@ const InternalSelect: React.ForwardRefRenderFunction<ISelectProps<SelectValue>> 
       })
       setMulOptions([...selectMulOpts])
     } else {
-      multipleRef.current.selectedVal = []
-      multipleRef.current.selectMulOpts = []
+      multipleRef.current.selectedVal = selectedVal = []
+      multipleRef.current.selectMulOpts = selectMulOpts = []
       setMulOptions([])
     }
     onChange && onChange(labelInValue ? selectMulOpts : selectedVal)
