@@ -68,7 +68,15 @@ const Field: React.FC<FormItemProps> = (props) => {
   const forceUpdate = useForceUpdate()
   const [fieldValue, setFieldValue] = useState<any>(undefined)
 
-  const { getFieldValue, getFieldError, getInternalHooks, vertical, getDefaultValue, local } = fieldContext
+  const {
+    getFieldValue,
+    getFieldError,
+    getInternalHooks,
+    vertical,
+    getDefaultValue,
+    local,
+    disabled: formDisabled,
+  } = fieldContext
   const { registerField, dispatch, setDefaultValues } = getInternalHooks(INTERNAL_HOOK_KEY)!
 
   const {
@@ -216,15 +224,15 @@ const Field: React.FC<FormItemProps> = (props) => {
       defaultValue: chDefaultValue,
     } = ch.props
 
-    const onChange = (evt: React.ChangeEvent<HTMLInputElement> | string) => {
+    const onChange = (...evt: any) => {
       if (chValue === undefined) {
-        setFieldValue(getInputValueFormProp(evt))
+        setFieldValue(getInputValueFormProp(evt[0]))
       }
       if (typeof faChange === 'function') {
-        faChange(evt)
+        faChange(...evt)
       }
       if (typeof chChange === 'function') {
-        chChange(evt)
+        chChange(...evt)
       }
     }
 
@@ -242,7 +250,7 @@ const Field: React.FC<FormItemProps> = (props) => {
       onChange,
       defaultValue,
       [innerValuePropName]: fieldValue,
-      disabled: chDisabled || faDisabled,
+      disabled: chDisabled !== undefined ? chDisabled : faDisabled !== undefined ? faDisabled : formDisabled,
     }
   }
 
