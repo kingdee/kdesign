@@ -70,6 +70,10 @@ function Table(props: TableProps) {
       dataSource,
     })
 
+  if (footerDataSource) {
+    pipeline.footerDataSource(footerDataSource)
+  }
+
   /* -------------------------------------------------------------------------- */
   /* features                                                                   */
   /* -------------------------------------------------------------------------- */
@@ -111,7 +115,6 @@ function Table(props: TableProps) {
         EmptyContent: components?.EmptyContent || (() => <Empty />),
       }}
       useVirtual={useVirtual}
-      footerDataSource={footerDataSource}
       estimatedRowHeight={estimatedRowHeight}
       emptyCellHeight={emptyCellHeight}
       hasHeader={hasHeader}
