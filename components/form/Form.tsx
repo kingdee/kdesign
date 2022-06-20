@@ -12,6 +12,7 @@ type BaseFormProps = Omit<React.FormHTMLAttributes<HTMLFormElement>, 'onSubmit'>
 export interface FormProps<Values = any> extends BaseFormProps {
   children?: React.ReactNode
   defaultValues?: Store // 默认值
+  disabled?: boolean // 是否禁用
   className?: string // 类名
   form?: FormInstance<Values> // 表格引用
   labelAlign?: LabelAlign // 标签对齐方式
@@ -49,6 +50,7 @@ const Form: React.ForwardRefRenderFunction<FormInstance, FormProps> = (props: Fo
     onFinish,
     onFinishFailed,
     onValuesChange,
+    disabled,
     ...restProps
   } = formProps
 
@@ -91,6 +93,7 @@ const Form: React.ForwardRefRenderFunction<FormInstance, FormProps> = (props: Fo
       labelWidth,
       wrapperWidth,
       local: formLang,
+      disabled,
       vertical: layout === 'vertical',
     }),
     [formInstance, labelAlign, labelWidth, wrapperWidth, layout, formLang],

@@ -47,6 +47,7 @@ export interface InternalFormInstance extends FormInstance {
   labelAlign?: LabelAlign
   wrapperWidth?: string | number
   vertical?: boolean
+  disabled?: boolean
   local?: InnerLocale
   getInternalHooks: (key: string) => InternalHooks | null
 }
