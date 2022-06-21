@@ -276,12 +276,22 @@ const InternalAnchor = (props: AnchorProps, ref: unknown): React.FunctionCompone
   }
 
   const popperProps = {
+    autoPlacement: false,
     ...anchorProps,
     prefixCls: anchorPrefixCls,
     defaultVisible: optionShow,
     visible: optionShow,
     gap: -(((ref as any) || iconRef).current?.offsetHeight || 0),
     onVisibleChange: handleVisibleChange,
+  }
+
+  const fixedRef = React.useRef<HTMLDivElement>(null)
+
+  if (type === 'advanced' && isLocked) {
+    if (fixedRef.current) {
+      const { left, top } = fixedRef.current.getBoundingClientRect()
+      popperProps.popperStyle = { position: 'fixed', left, top }
+    }
   }
 
   const addChildrenProps = (linksChildren: any) => {
@@ -385,7 +395,7 @@ const InternalAnchor = (props: AnchorProps, ref: unknown): React.FunctionCompone
     const unlock = iconList[0] || <Icon type="unlock-solid" />
     const lock = iconList[1] || <Icon type="lock-solid" />
     return (
-      <div className={anchorAdvancedClass} style={dropdownStyle}>
+      <div ref={fixedRef} className={anchorAdvancedClass} style={dropdownStyle}>
         {lockedIcon !== false && (
           <span className={`${anchorPrefixCls}-advanced-lock`} onClick={() => setIsLocked(!isLocked)}>
             {isLocked ? lock : unlock}

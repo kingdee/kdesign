@@ -56,6 +56,7 @@ export interface PopperProps {
   mouseEnterDelay?: number
   mouseLeaveDelay?: number
   defaultVisible?: boolean
+  autoPlacement?: boolean
   popperClassName?: string
   placement?: PlacementType
   popperStyle?: React.CSSProperties
@@ -164,6 +165,7 @@ function usePopper(locatorElement: React.ReactElement, popperElement: React.Reac
     mouseEnterDelay = 0.1,
     mouseLeaveDelay = 0.1,
     defaultVisible = false,
+    autoPlacement = true,
     getTriggerElement = (locatorNode) => locatorNode,
     getPopupContainer = () => document.body,
   } = props
@@ -256,29 +258,31 @@ function usePopper(locatorElement: React.ReactElement, popperElement: React.Reac
 
       let currentPlacement: string = placement
 
-      if (top - gap - popperHeight <= 5 && bottom + gap + popperHeight < document.body.clientHeight - 5) {
-        currentPlacement = currentPlacement.replace('top', 'bottom')
-      }
-      if (bottom + gap + popperHeight >= document.body.clientHeight - 5 && top - gap - popperHeight > 5) {
-        currentPlacement = currentPlacement.replace('bottom', 'top')
-      }
-      if (left + popperWidth >= document.body.clientWidth - 5 && right - popperWidth > 5) {
-        currentPlacement = currentPlacement.replace('Left', 'Right')
-      }
-      if (right - popperWidth <= 5 && left + popperWidth < document.body.clientWidth - 5) {
-        currentPlacement = currentPlacement.replace('Right', 'Left')
-      }
-      if (top + popperHeight >= document.body.clientHeight - 5 && bottom - popperHeight > 5) {
-        currentPlacement = currentPlacement.replace('Top', 'Bottom')
-      }
-      if (bottom - popperHeight <= 5 && top + popperHeight < document.body.clientHeight - 5) {
-        currentPlacement = currentPlacement.replace('Bottom', 'Top')
-      }
-      if (left - gap - popperWidth <= 5 && right + gap + popperWidth < document.body.clientWidth - 5) {
-        currentPlacement = currentPlacement.replace('left', 'right')
-      }
-      if (right + gap + popperWidth >= document.body.clientWidth - 5 && left - gap - popperWidth > 5) {
-        currentPlacement = currentPlacement.replace('right', 'left')
+      if (autoPlacement) {
+        if (top - gap - popperHeight <= 5 && bottom + gap + popperHeight < document.body.clientHeight - 5) {
+          currentPlacement = currentPlacement.replace('top', 'bottom')
+        }
+        if (bottom + gap + popperHeight >= document.body.clientHeight - 5 && top - gap - popperHeight > 5) {
+          currentPlacement = currentPlacement.replace('bottom', 'top')
+        }
+        if (left + popperWidth >= document.body.clientWidth - 5 && right - popperWidth > 5) {
+          currentPlacement = currentPlacement.replace('Left', 'Right')
+        }
+        if (right - popperWidth <= 5 && left + popperWidth < document.body.clientWidth - 5) {
+          currentPlacement = currentPlacement.replace('Right', 'Left')
+        }
+        if (top + popperHeight >= document.body.clientHeight - 5 && bottom - popperHeight > 5) {
+          currentPlacement = currentPlacement.replace('Top', 'Bottom')
+        }
+        if (bottom - popperHeight <= 5 && top + popperHeight < document.body.clientHeight - 5) {
+          currentPlacement = currentPlacement.replace('Bottom', 'Top')
+        }
+        if (left - gap - popperWidth <= 5 && right + gap + popperWidth < document.body.clientWidth - 5) {
+          currentPlacement = currentPlacement.replace('left', 'right')
+        }
+        if (right + gap + popperWidth >= document.body.clientWidth - 5 && left - gap - popperWidth > 5) {
+          currentPlacement = currentPlacement.replace('right', 'left')
+        }
       }
 
       const leftLeft = currentPos.left - popperWidth - gap
@@ -351,7 +355,19 @@ function usePopper(locatorElement: React.ReactElement, popperElement: React.Reac
       setArrowPos(arrowPos)
       setCurrentPlacement(currentPlacement)
     }
-  }, [locatorRef, popperRef, container, trigger, mousePos, placement, gap, arrowOffset, arrowSize, arrowWidth])
+  }, [
+    locatorRef,
+    popperRef,
+    container,
+    trigger,
+    mousePos,
+    placement,
+    gap,
+    arrowOffset,
+    arrowSize,
+    arrowWidth,
+    autoPlacement,
+  ])
 
   useEffect(() => {
     if (canAlign) {
@@ -371,9 +387,9 @@ function usePopper(locatorElement: React.ReactElement, popperElement: React.Reac
 
   const popperContainerStyle = {
     position: 'absolute',
-    ...popperStyle,
     ...align,
     ...(arrow ? arrowStyle : {}),
+    ...popperStyle,
   }
 
   const popperProps: NormalProps = {
