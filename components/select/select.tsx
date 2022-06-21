@@ -47,7 +47,6 @@ const InternalSelect: React.ForwardRefRenderFunction<ISelectProps<SelectValue>> 
     defaultValue,
   })
   const realChildren = Array.isArray(options) ? options : toArray(children) // options配置项和默认children
-  // console.log('real', realChildren)
   const innerRef = React.useRef<HTMLElement>()
   const selectRef = (ref as any) || innerRef
   const searchRef = useRef<any>(null) // 搜索框ref
@@ -210,6 +209,7 @@ const InternalSelect: React.ForwardRefRenderFunction<ISelectProps<SelectValue>> 
           return child?.value === key
         }
       }) || {}
+    const optionsObj = obj.props ? obj.props : obj || {}
     if (value !== undefined) {
       // onChange && onChange(labelInValue ? { value: key, label } : key)
       if (isMultiple) {
@@ -223,17 +223,18 @@ const InternalSelect: React.ForwardRefRenderFunction<ISelectProps<SelectValue>> 
         } else {
           valArr.push(key)
           optsArr.push({
+            ...optionsObj,
             value: key,
             label: obj.props ? obj.props?.children : obj.label || key,
           })
         }
-        onChange && onChange(labelInValue ? optsArr : valArr)
+        onChange && onChange(labelInValue ? optsArr : valArr, optsArr)
         if (!isSelected) {
           onDeselect && onDeselect(key) // 下拉项取消选中时调用，参数为选中项的value,多选模式下生效
         }
       } else {
         props.visible === undefined && setOptionShow(false)
-        onChange && onChange(labelInValue ? { value: key, label } : key)
+        onChange && onChange(labelInValue ? { value: key, label } : key, { ...optionsObj, value: key, label })
       }
       onSelect && onSelect(key)
       return
@@ -244,7 +245,7 @@ const InternalSelect: React.ForwardRefRenderFunction<ISelectProps<SelectValue>> 
       setInitValue(key)
       props.visible === undefined && setOptionShow(false)
       // handleClear()
-      onChange && onChange(labelInValue ? { value: key, label } : key)
+      onChange && onChange(labelInValue ? { value: key, label } : key, { ...optionsObj, value: key, label })
     } else {
       const { selectedVal, selectMulOpts } = multipleRef.current
       if (selectedVal.includes(key)) {
@@ -254,13 +255,14 @@ const InternalSelect: React.ForwardRefRenderFunction<ISelectProps<SelectValue>> 
       } else {
         selectedVal.push(key)
         selectMulOpts.push({
+          ...optionsObj,
           value: key,
           label: obj.props ? obj.props?.children : obj.label || key,
         })
       }
       // setInitValue([...selectedVal])
       setMulOptions([...selectMulOpts])
-      onChange && onChange(labelInValue ? selectMulOpts : selectedVal)
+      onChange && onChange(labelInValue ? selectMulOpts : selectedVal, selectMulOpts)
       if (!isSelected) {
         onDeselect && onDeselect(key) // 下拉项取消选中时调用，参数为选中项的value,多选模式下生效
       }
@@ -276,7 +278,7 @@ const InternalSelect: React.ForwardRefRenderFunction<ISelectProps<SelectValue>> 
     let { selectedVal, selectMulOpts } = multipleRef.current
     if (realChildren?.length !== selectedVal.length) {
       realChildren.map((child: any) => {
-        const { value, children } = child.props
+        const { value, children } = child.props || child
         if (!selectedVal.includes(value)) {
           selectedVal.push(value)
           selectMulOpts.push({ value, label: children })
@@ -288,7 +290,7 @@ const InternalSelect: React.ForwardRefRenderFunction<ISelectProps<SelectValue>> 
       multipleRef.current.selectMulOpts = selectMulOpts = []
       setMulOptions([])
     }
-    onChange && onChange(labelInValue ? selectMulOpts : selectedVal)
+    onChange && onChange(labelInValue ? selectMulOpts : selectedVal, selectMulOpts)
   }
 
   // 筛选内容 ---可以优化，抽成hook
@@ -353,7 +355,7 @@ const InternalSelect: React.ForwardRefRenderFunction<ISelectProps<SelectValue>> 
     selectedVal.splice(idx, 1)
     selectMulOpts.splice(idx, 1)
     setMulOptions([...selectMulOpts])
-    onChange && onChange(labelInValue ? selectMulOpts : selectedVal)
+    onChange && onChange(labelInValue ? selectMulOpts : selectedVal, selectMulOpts)
     e.stopPropagation()
   }
 
