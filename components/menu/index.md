@@ -64,9 +64,10 @@ subtitle: 导航菜单
 |  | --kd-c-menu-inline-color-active | --kd-g-color-white | #fff |
 |  | --kd-c-menu-color-background | - | #343848 |
 |  | --kd-c-menu-light-color-text | --kd-g-color-text-primary | #212121 |
-|  | --kd-c-menu-light-color-text-hover | --kd-g-color-ongoing | #276ff5 |
+|  | --kd-c-menu-light-color-text-hover | --kd-g-color-text-primary | #212121 |
 |  | --kd-c-menu-light-color-text-active | --kd-g-color-theme | #5582f3 |
-|  | --kd-c-menu-light-color-background | --kd-g-color-background-ongoing | #f2f9ff |
+|  | --kd-c-menu-light-color-background-hover | - | #f5f5f5 |
+|  | --kd-c-menu-light-color-background-active | - | #e3ebff |
 | font | --kd-c-menu-icon-font-size | --kd-g-font-size-xx-large | 20px |
 | motion | --kd-c-menu-motion-duration | --kd-g-duration | 0.3s |
 | sizing | --kd-c-menu-item-sizing-height | - | 50px |
