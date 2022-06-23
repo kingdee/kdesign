@@ -224,7 +224,7 @@ describe('Select', () => {
         onChange={onChange}
         defaultOpen={true}
         mode="multiple"
-        defaultValue={['apple', 'lemon', 'watermelon']}
+        defaultValue={['apple', 'lemon']}
       >
         <Option value="apple">苹果</Option>
         <Option value="lemon">柠檬</Option>
