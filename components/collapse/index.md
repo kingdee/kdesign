@@ -41,15 +41,18 @@ subtitle: 折叠面板
 | --- | --- | --- | --- |
 | color | --kd-c-collapse-color-border-strong-2 | --kd-g-color-border-strong-2 | #d9d9d9 |
 |  | --kd-c-collapse-header-color-text-primary | --kd-g-color-text-primary | #212121 |
+|  | --kd-c-collapse-header-color-text-secondary | --kd-g-color-text-secondary | #666 |
 |  | --kd-c-collapse-content-color-text-primary | --kd-g-color-text-primary | #212121 |
 |  | --kd-c-collapse-color-disabled | - | raba(178, 178, 178, 1) |
 |  | --kd-c-collapse-header-color-background | - | rgba(0, 0, 0, 0) |
 |  | --kd-c-collapse-content-color-background | - | rgba(0, 0, 0, 0) |
-| font | --kd-c-collapse-header-font-size | --kd-g-font-size-middle | 14px |
+|  | --kd-c-collapse-header-color-text-hover | - | #666666 |
+| font | --kd-c-collapse-header-font-size | - | 16px |
 |  | --kd-c-collapse-content-font-size | --kd-g-font-size-middle | 14px |
+|  | --kd-c-collapse-icon-font-size | - | 16px |
 | motion | --kd-c-collapse-motion-duration | --kd-g-duration | 0.3s |
 | sizing | --kd-c-collapse-border-width | - | 1px |
 |  | --kd-c-collapse-spacing-margin-right | - | 6px |
-|  | --kd-c-collapse-header-spacing-padding | - | 12px |
+|  | --kd-c-collapse-header-spacing-padding | - | 8px 50px 8px 28px |
 |  | --kd-c-collapse-content-bordered-spacing-padding | - | 12px |
-|  | --kd-c-collapse-content-spacing-padding | - | 0 16px |
+|  | --kd-c-collapse-content-spacing-padding | - | 0 50px |
