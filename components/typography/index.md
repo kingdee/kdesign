@@ -33,7 +33,7 @@ subtitle: 排版
 | code | 添加代码样式 | boolean | false | 1.0.0 |
 | delete | 添加删除线样式 | boolean | false | 1.0.0 |
 | disabled | 禁用文本 | boolean | false | 1.0.0 |
-| level | 重要程度，相当于 `h1`、`h2`、`h3`、`h4`、`h5` | number: 1, 2, 3, 4, 5 | 1 | 1.0.0 |
+| level | 重要程度，相当于 `h1`、`h2`、`h3` | number: 1, 2, 3 | 1 | 1.0.0 |
 | mark | 添加标记样式 | boolean | false | 1.0.0 |
 | onClick | 点击 Title 时的回调 | (event) => void | - | 1.0.0 |
 | italic | 是否斜体 | boolean | false | 1.0.0 |
