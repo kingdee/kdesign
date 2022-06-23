@@ -4,6 +4,31 @@ title: 更新日志
 hiddenAnchor: true
 ---
 
+## [1.3.5](https://github.com/kdcloudone/kdesign/compare/v1.3.4...v1.3.5)
+`2022-06-23`
+* anchor
+  * 锚点组件跟随页面滚动问题
+* form
+  * onChange及disabled值处理
+* menu
+  * 菜单切换问题处理
+  * 样式修改
+* select
+  * 多选下 全选与取消全选onChange返回值问题
+  * 解决select onChange回调第二个参数缺失问题
+* table
+  * 增加范围选中功能
+  * 增加外部可配置表格复选框和单选框参数
+* 下拉面板鼠标样式
+* 调整滚动条样式
+* 修复[@popperjs](https://github.com/popperjs)版本更新导致的单测报错
+* 更新组件token文档
+
+## [1.3.4](https://github.com/kdcloudone/kdesign/compare/v1.3.3...v1.3.4)
+`2022-06-17`
+* table
+  * 修复@kdcloudjs/table更新导致的错误
+
 ## [1.3.3](https://github.com/kdcloudone/kdesign/compare/v1.3.2...v1.3.3)
 `2022-06-16`
 * button
