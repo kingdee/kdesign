@@ -2,7 +2,7 @@ const transformIgnorePatterns = [
   '/dist/',
   // Ignore modules without es dir.
   // Update: @babel/runtime should also be transformed
-  'node_modules/(?!.*@(babel|kdesign))[^/]+?/(?!(es|node_modules)/)',
+  'node_modules/(?!.*@(babel|kui|popperjs))[^/]+?/(?!(es|node_modules)/)',
 ]
 
 module.exports = {
@@ -18,6 +18,7 @@ module.exports = {
       '<rootDir>/tests/__mocks__/fileMock.js',
   },
   transform: {
+    '^.+\\.(js|jsx)$': 'babel-jest',
     '\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$':
       '<rootDir>/tests/fileTransform.js',
   },
