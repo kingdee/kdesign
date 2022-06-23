@@ -69,6 +69,16 @@ const Menu: MenuType = (props) => {
   const [selectedKey, setSelectedKey] = React.useState<KeyType>('')
   const [openKeys, setOpenKeys] = React.useState<KeyType[]>([])
 
+  if (mode === 'inline') {
+    restProps.triggerSubMenuAction = 'click'
+  }
+
+  useEffect(() => {
+    setOpenKeys([])
+    setSelectedKey('')
+    openSubMenuSet.clear()
+  }, [mode])
+
   useEffect(() => {
     if (userSelectedKey !== undefined) {
       setSelectedKey(userSelectedKey)
@@ -76,23 +86,14 @@ const Menu: MenuType = (props) => {
   }, [userSelectedKey])
 
   useEffect(() => {
-    if (userOpenKeys !== undefined) {
+    if (userOpenKeys !== undefined && Array.isArray(userOpenKeys)) {
       setOpenKeys(userOpenKeys)
-    }
-  }, [userOpenKeys])
-
-  useEffect(() => {
-    if (Array.isArray(userOpenKeys)) {
+      openSubMenuSet.clear()
       userOpenKeys.forEach((d) => {
         openSubMenuSet.add(d)
       })
     }
-  }, [])
-
-  // triggerSubMenuAction内嵌模式固定为click，即该值设置只对垂直模式有效
-  if (mode === 'inline') {
-    restProps.triggerSubMenuAction = 'click'
-  }
+  }, [userOpenKeys])
 
   // React.useEffect(() => {
   //   setCollapsed(restProps.collapsed)
