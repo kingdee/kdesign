@@ -354,8 +354,6 @@ const SubMenu: React.FC<MenuSubMenuProps> = (props) => {
         className={classNames(prefixCls, className, {
           [`${prefixCls}-collapsed`]: collapsed,
           [`${prefixCls}-disabled`]: disabled,
-          [`${prefixCls}-hover`]: !disabled && visible,
-          [`${prefixCls}-active`]: Array.isArray(openKeys) && openKeys.includes(keyValue),
         })}
         key={keyValue}
         {...mouseEvent}
