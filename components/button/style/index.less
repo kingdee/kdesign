@@ -114,6 +114,9 @@
     &.@{btn-prefix-cls}-icon-only {
       font-size: @btn-icon-small-font-size;
       padding: 0 @btn-icon-padding-horizontal;
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
     }
 
     .@{btn-prefix-cls}-group-basic-icon {
@@ -127,6 +130,9 @@
     &.@{btn-prefix-cls}-icon-only {
       font-size: @btn-icon-middle-font-size;
       padding: 0 @btn-icon-padding-horizontal;
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
     }
 
     .@{btn-prefix-cls}-group-basic-icon {
@@ -140,6 +146,9 @@
     &.@{btn-prefix-cls}-icon-only {
       font-size: @btn-icon-large-font-size;
       padding: 0 @btn-icon-padding-horizontal;
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
     }
 
     .@{btn-prefix-cls}-group-basic-icon {
@@ -234,6 +243,9 @@
   // 加载中按钮
   &-loading {
     cursor: default;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
   }
   // 按钮开启块化撑满父元素
   &-block {
@@ -271,11 +283,11 @@
             background: @btn-group-trigger-color-background-hover;
             border-color: @btn-group-trigger-color-background-hover;
           }
-  
+
           &:active {
             background: @btn-group-trigger-color-background-active;
           }
-  
+
           &:disabled {
             background: @btn-group-trigger-color-background-disabled !important;
           }
