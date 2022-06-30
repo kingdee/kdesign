@@ -4,6 +4,18 @@ title: 更新日志
 hiddenAnchor: true
 ---
 
+## [1.3.7](https://github.com/kdcloudone/kdesign/compare/v1.3.6...v1.3.7)
+`2022-06-30`
+* button
+  * 修复loading按钮以及单个图标按钮默认居中的视觉问题
+* checkbox
+  * 修复ref取值为null的bug
+
+## [1.3.6](https://github.com/kdcloudone/kdesign/compare/v1.3.5...v1.3.6)
+`2022-06-27`
+* table
+  * 更新table版本
+
 ## [1.3.5](https://github.com/kdcloudone/kdesign/compare/v1.3.4...v1.3.5)
 `2022-06-23`
 * anchor
