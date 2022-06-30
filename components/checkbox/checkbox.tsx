@@ -131,11 +131,11 @@ const InternalCheckbox: React.ForwardRefRenderFunction<unknown, CheckboxProps> =
         e.stopPropagation()
       }
     }
-    labelRef.current.addEventListener('click', handleRepeatClick)
+    labelRef?.current?.addEventListener('click', handleRepeatClick)
 
     return () => {
       // eslint-disable-next-line react-hooks/exhaustive-deps
-      labelRef.current.removeEventListener('click', handleRepeatClick)
+      labelRef?.current?.removeEventListener('click', handleRepeatClick)
     }
   }, [])
 

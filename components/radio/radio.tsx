@@ -68,11 +68,11 @@ const InternalRadio: React.ForwardRefRenderFunction<HTMLElement, IRadioProps> = 
       }
     }
     const radioRef = mergedRef as MutableRefObject<HTMLElement>
-    radioRef.current.addEventListener('click', handleRepeatClick)
+    radioRef?.current?.addEventListener('click', handleRepeatClick)
 
     return () => {
       // eslint-disable-next-line react-hooks/exhaustive-deps
-      radioRef.current.removeEventListener('click', handleRepeatClick)
+      radioRef?.current?.removeEventListener('click', handleRepeatClick)
     }
   }, [])
 
