@@ -130,7 +130,7 @@ const InternalAnchor = (props: AnchorProps, ref: unknown): React.FunctionCompone
     [`${anchorPrefixCls}-advanced`]: true,
   })
 
-  const inkClass = classNames(`${anchorPrefixCls}-ink-line`, {
+  const inkClass = classNames(`${anchorPrefixCls}-line-slider`, {
     visible: activeLink,
   })
 
@@ -307,7 +307,7 @@ const InternalAnchor = (props: AnchorProps, ref: unknown): React.FunctionCompone
         className={anchorPrefixCls}
         style={fixedTop ? { position: 'fixed', top: offsetTop || 0, width: anchorPosition.width } : undefined}
       >
-        <div className={`${anchorPrefixCls}-ink`}>
+        <div className={`${anchorPrefixCls}-line`}>
           <span className={inkClass} ref={inkRef} />
         </div>
         {addChildrenProps(children)}

@@ -68,4 +68,4 @@ subtitle: 锚点
 |  | --kd-c-anchor-secondary-spacing-padding | - | 12px 8px |
 |  | --kd-c-anchor-advanced-spacing-padding-top | - | 8px |
 |  | --kd-c-anchor-advanced-spacing-padding-bottom | - | 7px |
-|  | --kd-c-anchor-ink-line-spacing-width | - | 1px |
+|  | --kd-c-anchor-line-slider-spacing-width | - | 1px |

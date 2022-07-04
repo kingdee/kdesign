@@ -16,10 +16,10 @@ exports[`Anchor render null or undefined buttons without errors 1`] = `
       }
     >
       <div
-        className="kd-anchor-ink"
+        className="kd-anchor-line"
       >
         <span
-          className="kd-anchor-ink-line"
+          className="kd-anchor-line-slider"
         />
       </div>
     </div>
@@ -35,10 +35,10 @@ exports[`Anchor renders correctly 1`] = `
     class="kd-anchor"
   >
     <div
-      class="kd-anchor-ink"
+      class="kd-anchor-line"
     >
       <span
-        class="kd-anchor-ink-line"
+        class="kd-anchor-line-slider"
       />
     </div>
     <div
@@ -63,10 +63,10 @@ exports[`Anchor renders correctly 2`] = `
     class="kd-anchor"
   >
     <div
-      class="kd-anchor-ink"
+      class="kd-anchor-line"
     >
       <span
-        class="kd-anchor-ink-line"
+        class="kd-anchor-line-slider"
       />
     </div>
     <div
