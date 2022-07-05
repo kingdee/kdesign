@@ -67,6 +67,7 @@ const Menu: MenuType = (props) => {
   // const [collapsed, setCollapsed] = React.useState<boolean | undefined>(restProps.collapsed)
 
   const [selectedKey, setSelectedKey] = React.useState<KeyType>('')
+  const [selectedKeyPath, setSelectedKeyPath] = React.useState<KeyType[]>([])
   const [openKeys, setOpenKeys] = React.useState<KeyType[]>([])
 
   if (mode === 'inline') {
@@ -76,6 +77,7 @@ const Menu: MenuType = (props) => {
   useEffect(() => {
     setOpenKeys([])
     setSelectedKey('')
+    setSelectedKeyPath([])
     openSubMenuSet.clear()
   }, [mode])
 
@@ -88,24 +90,30 @@ const Menu: MenuType = (props) => {
   useEffect(() => {
     if (userOpenKeys !== undefined && Array.isArray(userOpenKeys)) {
       setOpenKeys(userOpenKeys)
-      openSubMenuSet.clear()
-      userOpenKeys.forEach((d) => {
-        openSubMenuSet.add(d)
-      })
     }
   }, [userOpenKeys])
 
-  // React.useEffect(() => {
-  //   setCollapsed(restProps.collapsed)
-  // }, [restProps.collapsed])
+  useEffect(() => {
+    if (userSelectedKey !== undefined && userOpenKeys !== undefined && Array.isArray(userOpenKeys)) {
+      setSelectedKeyPath(userOpenKeys)
+      setTimeout(() => {
+        userOpenKeys.forEach((d) => {
+          openSubMenuSet.add(d)
+        })
+      })
+    }
+  }, [])
 
   const handleOnClick: MenuClickEventHandler = (info) => {
     if (userSelectedKey === undefined) {
       setSelectedKey(info.key)
     }
 
+    setSelectedKeyPath(info.keyPath)
+
     if (mode !== 'inline' && openKeys.length > 0) {
       setOpenKeys([])
+      openSubMenuSet.clear()
     }
 
     onClick && onClick(info)
@@ -155,6 +163,7 @@ const Menu: MenuType = (props) => {
             mode,
             openKeys,
             selectedKey,
+            selectedKeyPath,
             theme,
             triggerSubMenuAction: restProps.triggerSubMenuAction,
             forceSubMenuRender,

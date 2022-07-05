@@ -71,6 +71,8 @@ function Table(props: TableProps) {
     })
 
   if (footerDataSource) {
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
     pipeline.footerDataSource(footerDataSource)
   }
 
