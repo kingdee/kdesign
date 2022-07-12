@@ -304,6 +304,7 @@ const compDefaultProps = {
     switcherIcon: function () {
       return <Icon type="arrow-right-solid" />
     },
+    estimatedItemSize: 32,
   },
   TreeNode: {},
   ToolTip: {

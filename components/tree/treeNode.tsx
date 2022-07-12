@@ -398,7 +398,7 @@ const TreeNode = React.forwardRef<unknown, TreeNodeProps>((props, ref) => {
         `${treeNodePrefixCls}-item-${nodeKey}`,
         className,
       )}
-      style={{ height: `${estimatedItemSize}`, ...style }}
+      style={{ height: `${estimatedItemSize}px`, ...style }}
       onClick={handleClick}
     >
       {renderNode()}

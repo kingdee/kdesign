@@ -78,8 +78,7 @@ subtitle: 树控件
 | font | --kd-c-tree-font-size | --kd-g-font-size-small | 12px |
 |  | --kd-c-tree-node-icon-font-size | - | 16px |
 | motion | --kd-c-tree-motion-duration | --kd-g-duration | 0.3s |
-| sizing | --kd-c-tree-node-sizing-height | - | 32px |
-|  | --kd-c-tree-expand-icon-sizing-height | - | 22px |
+| sizing | --kd-c-tree-expand-icon-sizing-height | - | 22px |
 |  | --kd-c-tree-expand-icon-sizing-width | - | 22px |
 |  | --kd-c-tree-node-icon-sizing-height | - | 20px |
 |  | --kd-c-tree-node-icon-sizing-width | - | 20px |
