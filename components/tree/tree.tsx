@@ -121,7 +121,7 @@ const InternalTree = React.forwardRef((props: TreeProps, ref: any): React.Functi
     selectedKeys: selectedKeysProps,
     setTreeNodeStyle = () => ({}),
     setTreeNodeClassName = () => '',
-    estimatedItemSize: innerEstimatedItemSize = 28,
+    estimatedItemSize: innerEstimatedItemSize,
     style,
   } = TreeProps
 
