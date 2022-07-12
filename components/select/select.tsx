@@ -40,6 +40,7 @@ const InternalSelect: React.ForwardRefRenderFunction<ISelectProps<SelectValue>> 
     dropdownStyle,
     style,
     clearIcon,
+    popperStyle = {},
   } = selectProps
   const isMultiple = mode === 'multiple' // 是否多选
   const [initValue, setInitValue] = useMergedState(undefined, {
@@ -625,7 +626,7 @@ const InternalSelect: React.ForwardRefRenderFunction<ISelectProps<SelectValue>> 
   const catchStyle = () => {
     if (selectRef?.current) {
       const { width } = selectRef.current?.getBoundingClientRect()
-      return { width: dropdownStyle?.width || (width > 75 ? width : 75), zIndex: 1050 }
+      return { width: dropdownStyle?.width || (width > 75 ? width : 75), zIndex: 1050, ...popperStyle }
     }
   }
 
