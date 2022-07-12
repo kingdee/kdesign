@@ -81,7 +81,8 @@ const InternalSelect: React.ForwardRefRenderFunction<ISelectProps<SelectValue>> 
 
   // 下拉子项列表样式
   const dropContentCls = classNames({
-    [`${selectPrefixCls}-dropdown-scroll`]: isMultiple ? realChildren?.length > 8 : realChildren?.length > 10,
+    [`${selectPrefixCls}-dropdown-scroll`]:
+      (isMultiple ? realChildren?.length > 8 : realChildren?.length > 10) || selectProps.dropdownRender,
   })
 
   // 多选底部样式
