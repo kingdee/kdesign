@@ -4,13 +4,25 @@ title: 更新日志
 hiddenAnchor: true
 ---
 
-## [1.3.8](https://github.com/kdcloudone/kdesign/compare/v1.3.7...v1.3.8)
-`2022-07-08`
+## [1.3.9](https://github.com/kdcloudone/kdesign/compare/v1.3.7...v1.3.9)
+`2022-07-14`
 * anchor
   * 锚点组件类名调整
   * 锚点组件取消监听事件调整
+* form
+  * onChange及disabled值处理
+* menu
+  * 菜单切换问题处理
+  * 修改高亮样式
+  * 样式修改
+* select
+  * 在启用listHeight属性的时候，拓展内容未固定
+  * select下拉面板需要z-index设置
 * switch
   * 解决开关文字垂直没对齐问题
+* tree
+  * 解决api estimatedItemSize设置树节点高度不生效问题
+* 更正cra跳转链接
 
 ## [1.3.7](https://github.com/kdcloudone/kdesign/compare/v1.3.6...v1.3.7)
 `2022-06-30`
