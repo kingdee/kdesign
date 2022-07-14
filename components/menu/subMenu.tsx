@@ -37,6 +37,7 @@ const SubMenu: React.FC<MenuSubMenuProps> = (props) => {
     collapsed,
     keyValue,
     selectedKey,
+    selectedKeyPath,
     openKeys,
     triggerSubMenuAction,
     forceSubMenuRender,
@@ -277,8 +278,8 @@ const SubMenu: React.FC<MenuSubMenuProps> = (props) => {
         [`light`]: theme === 'light',
         [`${prefixCls}-collapsed`]: collapsed,
         [`${prefixCls}-disabled`]: disabled,
-        [`${prefixCls}-hover`]: !disabled && visible,
-        [`${prefixCls}-active`]: Array.isArray(openKeys) && openKeys.includes(keyValue),
+        [`${prefixCls}-hover`]: !disabled && Array.isArray(openKeys) && openKeys.includes(keyValue),
+        [`${prefixCls}-active`]: Array.isArray(selectedKeyPath) && selectedKeyPath.includes(keyValue),
       })}
       ref={subMenuVerticalRef}
       key={keyValue}
@@ -338,7 +339,7 @@ const SubMenu: React.FC<MenuSubMenuProps> = (props) => {
       arrow: false,
       placement: 'rightTop',
       gap: 0,
-      visible: isVertical ? visible : false,
+      visible: isVertical && !disabled ? visible : false,
       disabled: isVertical ? undefined : true,
       prefixCls: 'kd-menu-popper',
       popperClassName: theme === 'light' ? 'light' : '',
@@ -354,6 +355,7 @@ const SubMenu: React.FC<MenuSubMenuProps> = (props) => {
         className={classNames(prefixCls, className, {
           [`${prefixCls}-collapsed`]: collapsed,
           [`${prefixCls}-disabled`]: disabled,
+          [`${prefixCls}-active`]: Array.isArray(selectedKeyPath) && selectedKeyPath.includes(keyValue),
         })}
         key={keyValue}
         {...mouseEvent}

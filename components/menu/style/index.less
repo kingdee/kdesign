@@ -6,6 +6,8 @@
 @menuitem-prefix-cls: ~'@{menu-prefix-cls}-item';
 @menu-dark-prefix-cls: ~'@{menu-prefix-cls}-dark';
 @menu-light-prefix-cls: ~'@{menu-prefix-cls}-light';
+@menu-vertical-prefix-cls: ~'@{menu-prefix-cls}-vertical';
+@menu-inline-prefix-cls: ~'@{menu-prefix-cls}-inline';
 @menu-popper-prefix-cls: ~'@{menu-prefix-cls}-popper';
 @submenu-prefix-cls: ~'@{menu-prefix-cls}-submenu';
 
@@ -15,55 +17,16 @@
   &-inline {
     .@{menuitem-prefix-cls} {
       .ellipsis();
-
-      &-active {
-        color: @menu-inline-color-active;
-      }
     }
 
     .@{submenu-prefix-cls} {
       padding-right: 0;
-    }
-
-    .@{submenu-prefix-cls}:not(.@{submenu-prefix-cls}-disabled):hover {
-      color: @menu-inline-color-active;
     }
   }
 
   &-collapsed {
     width: 50px;
     min-width: auto;
-  }
-
-  &-vertical {
-    .@{submenu-prefix-cls}:not(.@{submenu-prefix-cls}-disabled):hover,
-    .@{submenu-prefix-cls}-hover {
-      .hover();
-    }
-  }
-
-  &-light {
-    .light()
-  }
-
-  &-light&-vertical {
-    .@{submenu-prefix-cls}-sub {
-      box-shadow: 0 3px 6px -4px rgba(0, 0, 0, 0.12), 0 6px 16px 0 rgba(0, 0, 0, 0.08),
-      0 9px 28px 8px rgba(0, 0, 0, 0.05);
-    }
-
-    .@{menuitem-prefix-cls} {
-      &:not(.@{menuitem-prefix-cls}-disabled):not(.@{menuitem-prefix-cls}-active):hover {
-        .light-hover();
-        border: none;
-      }
-
-      &-active {
-        color: @menu-light-color-active;
-        background-color: @menu-light-color-background-active;
-        border: none !important;
-      }
-    }
   }
 }
 
@@ -73,10 +36,6 @@
   transition: color, background-color;
   transition-duration: calc(@menu-motion-duration - 0.1s);
   transition-timing-function: cubic-bezier(0.4, 0, 0.6, 1);
-
-  &:not(&-disabled):hover {
-    .hover();
-  }
 }
 
 .@{submenu-prefix-cls} {
@@ -86,13 +45,8 @@
   transition-duration: calc(@menu-motion-duration - 0.1s);
   transition-timing-function: cubic-bezier(0.4, 0, 0.6, 1);
 
-  &-hover {
-    .hover();
-  }
-
   &-sub {
     line-height: @menu-item-height;
-    color: @menu-sub-color;
   }
 
   &-thrid {
@@ -168,24 +122,66 @@
   }
 }
 
+// dark
 .@{menu-dark-prefix-cls} {
+
   .@{submenu-prefix-cls}-sub {
+    color: @menu-sub-color;
     background: @menu-sub-inline-color-background;
   }
 
   .@{submenu-prefix-cls}-sub-second, .@{submenu-prefix-cls}-sub-third {
     background: @menu-sub-color-background;
   }
+
+  .@{menuitem-prefix-cls} {
+    &:hover {
+      .hover();
+    }
+
+    &-active {
+      .active()
+    }
+  }
+
+  .@{menuitem-prefix-cls}-active, .@{submenu-prefix-cls}-active {
+    .active()
+  }
+
+  .@{menuitem-prefix-cls}-hover, .@{submenu-prefix-cls}-hover {
+    .hover()
+  }
 }
 
+.@{menu-inline-prefix-cls}.@{menu-dark-prefix-cls} {
+  .@{menuitem-prefix-cls}-active, .@{submenu-prefix-cls}-active {
+    .@{submenu-prefix-cls}-title {
+      .active-inline-title()
+    }
+  }
+
+  .@{submenu-prefix-cls}:not(.@{submenu-prefix-cls}-disabled) {
+    > .@{submenu-prefix-cls}-title:hover {
+      .active-inline-title()
+    }
+  }
+}
+
+// light
 .@{menu-light-prefix-cls} {
-  .@{submenu-prefix-cls}-active,.@{menuitem-prefix-cls}-active {
-    .light-active()
+  .light();
+}
+
+.@{menu-inline-prefix-cls}.@{menu-light-prefix-cls} {
+  .@{menuitem-prefix-cls}-active, .@{submenu-prefix-cls}-active {
+    .@{submenu-prefix-cls}-title {
+      .light-active-inline-title()
+    }
   }
 }
 
 .@{menu-popper-prefix-cls} {
-  .@{submenu-prefix-cls}:not(.@{submenu-prefix-cls}-disabled):hover,
+  .@{submenu-prefix-cls}:hover,
   .@{submenu-prefix-cls}-hover {
     .hover();
   }
@@ -204,12 +200,15 @@
     padding-right: 0;
 
     &-sub {
+      color: @menu-sub-color;
       background: @menu-sub-inline-color-background;
+      box-shadow: 0 3px 6px -4px rgba(0, 0, 0, 0.12), 0 6px 16px 0 rgba(0, 0, 0, 0.08),
+      0 9px 28px 8px rgba(0, 0, 0, 0.05);
 
       .@{menuitem-prefix-cls} {
         &:hover,
         &-active {
-          color: @menu-sub-color-active;
+          .hover()
         }
       }
 
@@ -236,27 +235,6 @@
 
   &.light {
     .light();
-
-    .@{submenu-prefix-cls}-sub {
-      box-shadow: 0 3px 6px -4px rgba(0, 0, 0, 0.12), 0 6px 16px 0 rgba(0, 0, 0, 0.08),
-      0 9px 28px 8px rgba(0, 0, 0, 0.05);
-    }
-
-    .@{menuitem-prefix-cls}:not(.@{menuitem-prefix-cls}-disabled):not(.@{menuitem-prefix-cls}-active):hover,
-    .@{submenu-prefix-cls}:not(.@{submenu-prefix-cls}-disabled):hover {
-      .light-hover();
-      border: none;
-    }
-
-    .@{menuitem-prefix-cls}-hover,.@{submenu-prefix-cls}-hover {
-      .light-hover();
-      border: none;
-    }
-
-    .@{menuitem-prefix-cls}-active,.@{submenu-prefix-cls}-active {
-      .light-active();
-      border: none;
-    }
   }
 }
 
