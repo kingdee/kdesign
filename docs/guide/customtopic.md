@@ -152,7 +152,7 @@ module.exports = {
 
 ### 在 create-react-app 中定制主题
 
-参考 [在 create-react-app 中使用](/react/docs/guide/create-react-app) 进行配置即可。
+参考 [在 create-react-app 中使用](/docs/guide/create-react-app) 进行配置即可。
 
 ### 配置less变量文件
 
