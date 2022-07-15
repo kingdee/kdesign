@@ -24,6 +24,7 @@
     align-items: center;
     height: 50px;
     .ellipsis();
+
     & > span {
       .ellipsis();
       opacity: 1;
@@ -57,8 +58,8 @@
 
   &-disabled {
     cursor: not-allowed;
-    color: @menu-color-disabled !important;
-    background-color: @menu-color-background !important;
+    color: @menu-color-disabled;
+    background-color: @menu-color-background;
   }
 
   &-arrow {
@@ -78,68 +79,67 @@
 }
 
 
-.hover {
+.menu-dark-hover {
   background-color: @menu-sub-color-background;
   color: @menu-sub-color-hover;
 }
 
-.active {
+.menu-dark-active {
   background-color: @menu-sub-color-background;
   color: @menu-sub-color-hover;
 }
 
-.active-inline-title {
-  color: @menu-sub-color-hover !important;
-  background: @menu-color-background !important;
+.menu-dark-active-inline-title {
+  color: @menu-sub-color-hover;
+  background: @menu-color-background;
   border: none;
 }
 
-
-.light {
-  .light-default();
+.menu-light-base {
+  .menu-light-default();
 
   .@{menuitem-prefix-cls}-disabled, .@{submenu-prefix-cls}-disabled {
-    background-color: #fff !important;
+    background-color: #fff;
   }
 
   .@{submenu-prefix-cls}-sub {
     color: @menu-light-color;
-    background: #FAFAFA;
+    background: #fafafa;
   }
 
-  .@{menuitem-prefix-cls}:hover {
-    .light-hover();
+  .@{menuitem-prefix-cls}:not(.@{menuitem-prefix-cls}-disabled):not(.@{menuitem-prefix-cls}-active):hover {
+    .menu-light-hover();
   }
 
   .@{menuitem-prefix-cls}-hover, .@{submenu-prefix-cls}-hover {
-    .light-hover();
+    .menu-light-hover();
   }
 
   .@{menuitem-prefix-cls}-active, .@{submenu-prefix-cls}-active {
-    .light-active();
+    .menu-light-active();
   }
 }
 
-.light-default {
+.menu-light-default {
   color: @menu-light-color;
   background: #ffffff;
 }
 
-.light-hover {
+.menu-light-hover {
   background-color: @menu-light-color-background-hover;
   color: @menu-light-color-hover;
   border: none;
 }
 
-.light-active {
-  background-color: @menu-light-color-background-active !important;
-  color: @menu-light-color-active !important;
+.menu-light-active {
+  background-color: @menu-light-color-background-active;
+  color: @menu-light-color-active;
   border: none;
 }
 
-.light-active-inline-title {
-  color: @menu-light-color-active !important;
-  background: #ffffff !important;
+.menu-light-active-inline-title {
+  color: @menu-light-color-active;
+  background: #ffffff;
   border: none;
 }
 
