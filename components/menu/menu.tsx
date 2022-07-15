@@ -64,7 +64,6 @@ const Menu: MenuType = (props) => {
   const prefixCls = getPrefixCls!(pkgPrefixCls, 'menu', customPrefixcls)
 
   devWarning(['inline', 'vertical', undefined].indexOf(mode!) === -1, 'menu', `cannot found menu mode '${mode}'`)
-  // const [collapsed, setCollapsed] = React.useState<boolean | undefined>(restProps.collapsed)
 
   const [selectedKey, setSelectedKey] = React.useState<KeyType>('')
   const [selectedKeyPath, setSelectedKeyPath] = React.useState<KeyType[]>([])

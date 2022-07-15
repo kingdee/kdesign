@@ -135,55 +135,55 @@
   }
 
   .@{menuitem-prefix-cls} {
-    &:hover {
-      .hover();
+    &:not(.@{menuitem-prefix-cls}-disabled):not(.@{menuitem-prefix-cls}-active):hover {
+      .menu-dark-hover();
     }
 
     &-active {
-      .active()
+      .menu-dark-active()
     }
   }
 
   .@{menuitem-prefix-cls}-active, .@{submenu-prefix-cls}-active {
-    .active()
+    .menu-dark-active()
   }
 
   .@{menuitem-prefix-cls}-hover, .@{submenu-prefix-cls}-hover {
-    .hover()
+    .menu-dark-hover()
   }
 }
 
 .@{menu-inline-prefix-cls}.@{menu-dark-prefix-cls} {
   .@{menuitem-prefix-cls}-active, .@{submenu-prefix-cls}-active {
     .@{submenu-prefix-cls}-title {
-      .active-inline-title()
+      .menu-dark-active-inline-title()
     }
   }
 
-  .@{submenu-prefix-cls}:not(.@{submenu-prefix-cls}-disabled) {
+  .@{submenu-prefix-cls}:not(.@{submenu-prefix-cls}-disabled):not(.@{submenu-prefix-cls}-active) {
     > .@{submenu-prefix-cls}-title:hover {
-      .active-inline-title()
+      .menu-dark-active-inline-title()
     }
   }
 }
 
 // light
 .@{menu-light-prefix-cls} {
-  .light();
+  .menu-light-base();
 }
 
 .@{menu-inline-prefix-cls}.@{menu-light-prefix-cls} {
   .@{menuitem-prefix-cls}-active, .@{submenu-prefix-cls}-active {
     .@{submenu-prefix-cls}-title {
-      .light-active-inline-title()
+      .menu-light-active-inline-title()
     }
   }
 }
 
 .@{menu-popper-prefix-cls} {
-  .@{submenu-prefix-cls}:hover,
+  .@{submenu-prefix-cls}:not(.@{submenu-prefix-cls}-disabled):not(.@{submenu-prefix-cls}-active):hover,
   .@{submenu-prefix-cls}-hover {
-    .hover();
+    .menu-dark-hover();
   }
 
   &.hidden {
@@ -206,9 +206,9 @@
       0 9px 28px 8px rgba(0, 0, 0, 0.05);
 
       .@{menuitem-prefix-cls} {
-        &:hover,
+        &:not(.@{menuitem-prefix-cls}-disabled):not(.@{menuitem-prefix-cls}-active):hover,
         &-active {
-          .hover()
+          .menu-dark-hover()
         }
       }
 
@@ -234,7 +234,7 @@
   }
 
   &.light {
-    .light();
+    .menu-light-base();
   }
 }
 
