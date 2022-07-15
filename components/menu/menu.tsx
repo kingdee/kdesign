@@ -94,7 +94,6 @@ const Menu: MenuType = (props) => {
 
   useEffect(() => {
     if (userSelectedKey !== undefined && userOpenKeys !== undefined && Array.isArray(userOpenKeys)) {
-      setSelectedKeyPath(userOpenKeys)
       setTimeout(() => {
         userOpenKeys.forEach((d) => {
           openSubMenuSet.add(d)
@@ -107,8 +106,6 @@ const Menu: MenuType = (props) => {
     if (userSelectedKey === undefined) {
       setSelectedKey(info.key)
     }
-
-    setSelectedKeyPath(info.keyPath)
 
     if (mode !== 'inline' && openKeys.length > 0) {
       setOpenKeys([])
@@ -163,6 +160,7 @@ const Menu: MenuType = (props) => {
             openKeys,
             selectedKey,
             selectedKeyPath,
+            setSelectedKeyPath,
             theme,
             triggerSubMenuAction: restProps.triggerSubMenuAction,
             forceSubMenuRender,

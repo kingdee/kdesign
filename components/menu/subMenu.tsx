@@ -38,6 +38,7 @@ const SubMenu: React.FC<MenuSubMenuProps> = (props) => {
     keyValue,
     selectedKey,
     selectedKeyPath,
+    setSelectedKeyPath,
     openKeys,
     triggerSubMenuAction,
     forceSubMenuRender,
@@ -54,6 +55,12 @@ const SubMenu: React.FC<MenuSubMenuProps> = (props) => {
   // 初始化level
   if (!restProps.level) {
     restProps.level = 1
+  }
+
+  if (Array.isArray(restProps.parentPath)) {
+    restProps.parentPath = [...restProps.parentPath, keyValue]
+  } else {
+    restProps.parentPath = [keyValue]
   }
 
   if (mode === 'inline') {
@@ -174,11 +181,6 @@ const SubMenu: React.FC<MenuSubMenuProps> = (props) => {
     }
   })
 
-  // // 缩略模式自动关闭子菜单
-  // if (triggerSubMenuAction === 'click' && mode === 'vertical' && collapsed) {
-  //   closeSubMenu()
-  // }
-
   const handleMouseEvent = (status: boolean) => {
     if (disabled || triggerSubMenuAction === 'click') return
     handleVisibleChange(status)
@@ -193,8 +195,6 @@ const SubMenu: React.FC<MenuSubMenuProps> = (props) => {
   }
 
   const handleOnClick: MenuClickEventHandler = (info) => {
-    // 保存路径
-    info.keyPath = info.keyPath.concat([keyValue])
     if (triggerSubMenuAction === 'click' && isVertical) {
       closeSubMenu()
     }
@@ -324,6 +324,7 @@ const SubMenu: React.FC<MenuSubMenuProps> = (props) => {
             mode,
             theme,
             selectedKey,
+            setSelectedKeyPath,
             openKeys,
             forceSubMenuRender,
             triggerSubMenuAction,
@@ -331,6 +332,7 @@ const SubMenu: React.FC<MenuSubMenuProps> = (props) => {
             handleOnClick,
             inlineIndent,
             paddingLeft: curPaddingLeft,
+            parentPath: restProps.parentPath,
           })
         })}
       </ul>
@@ -380,6 +382,7 @@ const SubMenu: React.FC<MenuSubMenuProps> = (props) => {
                 collapsed,
                 mode,
                 selectedKey,
+                setSelectedKeyPath,
                 openKeys,
                 forceSubMenuRender,
                 triggerSubMenuAction,
@@ -387,6 +390,7 @@ const SubMenu: React.FC<MenuSubMenuProps> = (props) => {
                 handleOnClick,
                 inlineIndent,
                 paddingLeft: curPaddingLeft,
+                parentPath: restProps.parentPath,
               })
             })}
           </ul>
