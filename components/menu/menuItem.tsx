@@ -30,12 +30,14 @@ const InternalMenuItem: React.ForwardRefRenderFunction<unknown, MenuItemProps> =
     collapsed,
     keyValue,
     selectedKey,
+    setSelectedKeyPath,
     subMenuMode,
     inlineIndent,
     className,
     handleOnClick,
     paddingLeft = 0,
     style,
+    parentPath,
     ...restProps
   } = getCompProps('MenuItem', userDefaultProps, props)
 
@@ -44,6 +46,8 @@ const InternalMenuItem: React.ForwardRefRenderFunction<unknown, MenuItemProps> =
   const prefixCls = getPrefixCls!(pkgPrefixCls, 'menu-item', customPrefixcls)
 
   const menuItemRef = (ref as any) || React.createRef<HTMLElement>()
+
+  const menuItemParentPath = Array.isArray(parentPath) ? [...parentPath, keyValue] : [keyValue]
 
   const renderItemChildren = (children: React.ReactNode) => {
     if (typeof children === 'string') {
@@ -76,7 +80,7 @@ const InternalMenuItem: React.ForwardRefRenderFunction<unknown, MenuItemProps> =
 
     const info: MenuInfo = {
       key: keyValue,
-      keyPath: [keyValue],
+      keyPath: menuItemParentPath,
       domEvent: e.nativeEvent,
     }
 
@@ -122,6 +126,12 @@ const InternalMenuItem: React.ForwardRefRenderFunction<unknown, MenuItemProps> =
 
     return renderItemChildren(children)
   }
+
+  React.useEffect(() => {
+    if (selectedKey && selectedKey === keyValue) {
+      setSelectedKeyPath(menuItemParentPath)
+    }
+  }, [selectedKey])
 
   return (
     <li
