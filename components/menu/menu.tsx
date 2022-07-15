@@ -89,18 +89,12 @@ const Menu: MenuType = (props) => {
   useEffect(() => {
     if (userOpenKeys !== undefined && Array.isArray(userOpenKeys)) {
       setOpenKeys(userOpenKeys)
-    }
-  }, [userOpenKeys])
-
-  useEffect(() => {
-    if (userSelectedKey !== undefined && userOpenKeys !== undefined && Array.isArray(userOpenKeys)) {
-      setTimeout(() => {
-        userOpenKeys.forEach((d) => {
-          openSubMenuSet.add(d)
-        })
+      openSubMenuSet.clear()
+      userOpenKeys.forEach((d) => {
+        openSubMenuSet.add(d)
       })
     }
-  }, [])
+  }, [userOpenKeys])
 
   const handleOnClick: MenuClickEventHandler = (info) => {
     if (userSelectedKey === undefined) {
