@@ -205,7 +205,6 @@ const compDefaultProps = {
     strokeWidth: 4, // 原型宽度
   },
   Radio: {
-    checked: false,
     defaultChecked: false,
     disabled: false,
   },

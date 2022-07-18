@@ -1,5 +1,6 @@
 import React, { useEffect, MutableRefObject } from 'react'
 import classNames from 'classnames'
+import isBoolean from 'lodash/isBoolean'
 import ConfigContext from '../config-provider/ConfigContext'
 import { IRadioProps } from './interface'
 import { getCompProps } from '../_utils'
@@ -22,10 +23,13 @@ const InternalRadio: React.ForwardRefRenderFunction<HTMLElement, IRadioProps> = 
     ...restProps
   } = getCompProps('Radio', userDefaultProps, props) // 属性需要合并一遍用户定义的默认属性
 
+  const getChecked = () => {
+    return isBoolean(checked) ? checked : defaultChecked
+  }
+
   const getPrefix = (radioType: string) => `radio${radioType === 'square' ? `-${radioType}` : ''}`
   const radioPrefixCls = getPrefixCls?.(prefixCls, getPrefix(radioType), customPrefixcls) // 样式前缀
-
-  const [isChecked, setIsChecked] = React.useState(checked || defaultChecked)
+  const [isChecked, setIsChecked] = React.useState(getChecked())
   React.useEffect(() => {
     checked !== undefined && setIsChecked(checked)
   }, [checked])
