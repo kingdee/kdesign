@@ -42,6 +42,8 @@ export interface TreeProps {
   disabled?: boolean
   draggable?: boolean
   expandedKeys?: string[]
+  filterValue?: string
+  filterTreeNode?: () => boolean
   height?: number
   icon?: ReactNode | ((props: any) => ReactNode)
   switcherIcon?: ReactNode | ((props: any) => ReactNode) | [ReactNode | ((props: any) => ReactNode)]
@@ -123,6 +125,8 @@ const InternalTree = React.forwardRef((props: TreeProps, ref: any): React.Functi
     setTreeNodeClassName = () => '',
     estimatedItemSize: innerEstimatedItemSize,
     style,
+    filterTreeNode,
+    filterValue,
   } = TreeProps
 
   const treePrefixCls = getPrefixCls!(prefixCls, 'tree', customPrefixcls) // 树样式前缀
@@ -170,14 +174,16 @@ const InternalTree = React.forwardRef((props: TreeProps, ref: any): React.Functi
     defaultExpandParent,
     scrollKey,
     isInit,
+    filterTreeNode,
+    filterValue,
   )
   const spreadAttrData = React.useMemo(() => {
     return getSpreadAttrData(flattenAllData, expandedKeys)
   }, [flattenAllData, expandedKeys])
 
   const filterData = React.useMemo(() => {
-    return getFilterData(spreadAttrData)
-  }, [spreadAttrData])
+    return getFilterData(spreadAttrData, filterTreeNode, filterValue)
+  }, [spreadAttrData, filterTreeNode, filterValue])
 
   const [viewportHeight] = useViewportHeight(height, listRef)
   const [visibleData] = useVisibleDataMemo(virtual, filterData, viewportHeight, estimatedItemSize, start)

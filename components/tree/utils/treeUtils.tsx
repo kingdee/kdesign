@@ -54,11 +54,23 @@ const isAllParentExpand = (data: any[], pos: string) => {
   return expand
 }
 
-export const getFilterData = (data: any[]) => {
+export const getAllFilterKeys = (data: any[], filterTreeNode: FunctionConstructor): any[] => {
+  const filterData = data.filter((item: any) => filterTreeNode?.(item))
+  const filterKeys = getAllNodeKeys(filterData)
+  const allFilterKeys: any[] = []
+  filterKeys.map((key) => allFilterKeys.push(...getAllParentKeys(data, key), key))
+  return [...new Set(allFilterKeys)]
+}
+
+export const getFilterData = (data: any[], filterTreeNode: FunctionConstructor, filterValue: string) => {
+  let filterData = data
+  if (typeof filterTreeNode === 'function' && filterValue) {
+    filterData = filterData.filter((item) => getAllFilterKeys(filterData, filterTreeNode).includes(item.key))
+  }
   const newData: any[] = []
-  data.forEach((item) => {
+  filterData.forEach((item) => {
     const { pos } = item
-    const parentExpand = isAllParentExpand(data, pos)
+    const parentExpand = isAllParentExpand(filterData, pos)
     if (parentExpand) {
       newData.push(item)
     }
@@ -362,6 +374,8 @@ export const getInitExpandedKeys = (
   defaultExpandRoot: boolean,
   defaultExpandParent: boolean,
   expandScrollkeys: string[] = [],
+  filterTreeNode: FunctionConstructor,
+  filterValue: string,
 ) => {
   let keys: string[] = expandedKeys?.concat(expandScrollkeys) || defaultExpandedKeys?.concat(expandScrollkeys) || []
 
@@ -381,6 +395,10 @@ export const getInitExpandedKeys = (
       })
       keys = keys.concat(parentKeys)
     }
+  }
+
+  if (typeof filterTreeNode === 'function' && filterValue) {
+    keys = [...keys, ...getAllFilterKeys(data, filterTreeNode)]
   }
   return Array.from(new Set([...keys]))
 }

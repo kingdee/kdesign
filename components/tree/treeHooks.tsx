@@ -88,6 +88,8 @@ export const useExpand = (
   defaultExpandParent: boolean,
   scrollKey: string,
   isInit: boolean,
+  filterTreeNode: FunctionConstructor,
+  filterValue: string,
 ) => {
   let expandScrollkeys: string[] = []
   if (scrollKey) {
@@ -103,6 +105,8 @@ export const useExpand = (
       defaultExpandRoot,
       defaultExpandParent,
       expandScrollkeys,
+      filterTreeNode,
+      filterValue,
     )
   }, [
     flattenAllData,
@@ -112,6 +116,8 @@ export const useExpand = (
     defaultExpandRoot,
     defaultExpandParent,
     scrollKey,
+    filterTreeNode,
+    filterValue,
   ])
 
   const newExpandedKeys = React.useMemo(() => {
