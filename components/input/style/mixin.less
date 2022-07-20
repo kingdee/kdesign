@@ -47,7 +47,12 @@
 
 .input-clear-icon() {
   cursor: pointer;
-  color: @input-border-color-focused;
+  color: @input-color-border;
+
+  &:hover {
+    color: @input-border-color-focused;
+  }
+
   i {
     vertical-align: middle;
     font-size: 12px !important;
