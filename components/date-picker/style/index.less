@@ -27,7 +27,7 @@
     }
 
     &.@{datePicker-prefix-cls}-range .@{datePicker-prefix-cls}-clear {
-      right: calc(@date-small-font-size + 9px);
+      right: calc(@date-small-font-size + 12px);
     }
   }
 
@@ -59,7 +59,7 @@
     }
 
     &.@{datePicker-prefix-cls}-range .@{datePicker-prefix-cls}-clear {
-      right: calc(@date-middle-font-size + 9px);
+      right: calc(@date-middle-font-size + 11px);
     }
   }
 
@@ -131,7 +131,7 @@
   &-suffix {
     align-self: center;
     margin-left: @date-suffix-spacing-margin-left;
-    color: @date-icon-color;
+    color: @date-input-color;
     line-height: 1;
     pointer-events: none;
 
@@ -143,6 +143,10 @@
   &:hover {
     .@{datePicker-prefix-cls}-clear {
       opacity: 1;
+    }
+
+    .@{datePicker-prefix-cls}-suffix {
+      color: @date-color-background-checked;
     }
   }
 
