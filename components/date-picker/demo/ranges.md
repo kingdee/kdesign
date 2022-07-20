@@ -6,7 +6,7 @@ order: 11
 ```jsx
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { RangePicker } from '@kdcloudjs/kdesign'
+import { RangePicker, Icon } from '@kdcloudjs/kdesign'
 import { startOfWeek, endOfWeek, startOfMonth, endOfMonth, startOfToday, endOfToday } from 'date-fns'
 
 function Demo() {
@@ -19,7 +19,7 @@ function Demo() {
 
   return (
     <div className="demo-range-picker">
-        <RangePicker ranges={ranges} />
+        <RangePicker ranges={ranges}  suffixIcon={<Icon type="search" />} allowClear/>
     </div>
   )
 }
