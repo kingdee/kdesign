@@ -36,6 +36,7 @@ subtitle: 锚点
 | onClick | `click` 事件的 handler | function(e: Event, link: Object) | - |  | 1.0.0 |
 | trigger | 触发行为(高级锚点有效)，可使用数组设置多个触发行为 | string \| string\[] | `hover` | `hover` \| `focus` \| `click` \| `contextMenu` | 1.0.0 |
 | type | 锚点类型（类型为 `menu` 时只显示一级锚点） | string | `bookmarks` | `bookmarks` `menu` `advanced` | 1.0.0 |
+| visible | 手动控制浮层显隐 | boolean | false | `true` `false` | 1.0.0 |
 
 ### Link Props
 
