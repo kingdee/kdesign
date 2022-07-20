@@ -1,6 +1,6 @@
 ---
 title: 主题更换
-order: 6
+order: 7
 ---
 
 内建了两套主题 light 和 dark，默认 dark。
