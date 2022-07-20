@@ -74,6 +74,7 @@ export interface RangePickerSharedProps {
   ranges?: Record<string, DateType[] | (() => DateType[])>
   separator?: React.ReactNode
   allowEmpty?: [boolean, boolean]
+  suffixIcon?: React.ReactNode
   mode?: [PanelMode, PanelMode]
   onChange?: (values: RangeValue, formatString: [string | null, string | null]) => void
   onCalendarChange?: (values: RangeValue, formatString: [string | null, string | null], info: RangeInfo) => void
@@ -216,6 +217,7 @@ function DatePicker(props: Partial<RangePickerProps>) {
     hourStep = 1,
     minuteStep = 1,
     secondStep = 1,
+    suffixIcon,
 
     renderExtraFooter,
     disabledHours,
@@ -774,6 +776,7 @@ function DatePicker(props: Partial<RangePickerProps>) {
     startOpen,
     endOpen,
     needConfirmButton,
+    suffixIcon,
     format: _format,
     open: mergedOpen,
     readOnly: inputReadOnly,
