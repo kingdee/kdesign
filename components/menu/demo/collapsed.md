@@ -1,6 +1,6 @@
 ---
 title: 收起模式
-order: 7
+order: 8
 ---
 
 ```jsx
