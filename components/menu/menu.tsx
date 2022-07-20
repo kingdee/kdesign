@@ -59,13 +59,14 @@ const Menu: MenuType = (props) => {
     className,
     theme,
     collapsed,
-    accordion = false,
+    accordion,
     ...restProps
   } = getCompProps('Menu', userDefaultProps, props)
 
   const prefixCls = getPrefixCls!(pkgPrefixCls, 'menu', customPrefixcls)
 
   devWarning(['inline', 'vertical', undefined].indexOf(mode!) === -1, 'menu', `cannot found menu mode '${mode}'`)
+  devWarning(mode !== 'inline' && accordion !== undefined, 'menu', `'accordion' is valid only in mode='inline'`)
 
   const [selectedKey, setSelectedKey] = React.useState<KeyType>('')
   const [selectedKeyPath, setSelectedKeyPath] = React.useState<KeyType[]>([])
