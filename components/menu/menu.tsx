@@ -29,6 +29,7 @@ export interface MenuProps extends React.HTMLAttributes<HTMLElement> {
   additionalTools?: React.ReactNode
   onOpenChange?: SubMenuChangeEventHandler
   theme?: MenuTheme
+  accordion?: boolean
 }
 
 interface MenuType extends React.FC<MenuProps> {
@@ -58,12 +59,14 @@ const Menu: MenuType = (props) => {
     className,
     theme,
     collapsed,
+    accordion,
     ...restProps
   } = getCompProps('Menu', userDefaultProps, props)
 
   const prefixCls = getPrefixCls!(pkgPrefixCls, 'menu', customPrefixcls)
 
   devWarning(['inline', 'vertical', undefined].indexOf(mode!) === -1, 'menu', `cannot found menu mode '${mode}'`)
+  devWarning(mode !== 'inline' && accordion !== undefined, 'menu', `'accordion' is valid only in mode='inline'`)
 
   const [selectedKey, setSelectedKey] = React.useState<KeyType>('')
   const [selectedKeyPath, setSelectedKeyPath] = React.useState<KeyType[]>([])
@@ -126,6 +129,9 @@ const Menu: MenuType = (props) => {
     if (clean) {
       openSubMenuSet.clear()
     } else {
+      if (mode === 'inline' && accordion) {
+        openSubMenuSet.clear()
+      }
       if (isAdd) {
         openSubMenuSet.add(openKey)
       } else {
