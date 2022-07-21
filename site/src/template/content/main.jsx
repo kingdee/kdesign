@@ -6,6 +6,8 @@ import { categoryOrder, typeOrder } from '../../../consts'
 import PrevAndNext from './prev-and-next'
 import Article from './article'
 import Footer from '../layout/footer'
+import SideMenu from './SideMenu'
+
 // 获取文档菜单列表
 function getMenuData(props) {
   const { pathname } = props.location
@@ -34,7 +36,7 @@ function getMenu({ menuItems, pathname, deep = 0, prefixClass }) {
             ' ' +
             `${path === pathname ? 'is-active' : ''}`
           }
-          style={{ paddingLeft: prefixClass ? paddingLeft : '60px' }}
+          style={{ paddingLeft: prefixClass ? paddingLeft : '40px' }}
         >
           {filename ? (
             <Link to={path} key={path}>
@@ -120,7 +122,7 @@ function isIE() {
 }
 
 function isScrollEnd(element, t1) {
-  let t2 = element.scrollTop
+  const t2 = element.scrollTop
   if (t2 === t1) {
     document.styleSheets[0].insertRule('.menu-wapper::-webkit-scrollbar-thumb { display:none; }')
   }
@@ -345,11 +347,14 @@ class Content extends React.Component {
         <div className="wapper">
           <div className="main">
             {menuList ? (
-              <div className="menu-wapper" id="default-menu-inner">
-                <div className="menu">
-                  <div className="menu-list">{this.renderMenu(menuList)}</div>
+              <>
+                <div className="menu-wapper" id="default-menu-inner">
+                  <div className="menu">
+                    <div className="menu-list">{this.renderMenu(menuList)}</div>
+                  </div>
                 </div>
-              </div>
+                <SideMenu>{this.renderMenu(menuList)}</SideMenu>
+              </>
             ) : null}
             <div className="content" style={!menuList ? { paddingLeft: '16px' } : {}}>
               <div className="content-wapper" style={!menuList ? { paddingLeft: 0 } : {}}>
