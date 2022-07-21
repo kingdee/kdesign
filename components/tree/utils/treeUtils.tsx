@@ -1,6 +1,6 @@
 import { TreeNodeData } from '../tree'
 
-const DRAG_OFFSET = 0.4
+const DRAG_OFFSET = 0.3
 
 /**
  * 打平所有数组，并添加pos位置信息，
