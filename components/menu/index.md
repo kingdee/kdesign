@@ -22,7 +22,7 @@ subtitle: 导航菜单
 | theme | 菜单主题颜色 | string | `dark` | `light`  `dark` | 1.0.0 |
 | mode | 菜单类型，支持垂直和内嵌模式 | string | `vertical` | `vertical` `inline` | 1.0.0 |
 | collapsed | 菜单是否收起状态 | boolean | `false` | `true` `false` | 1.0.0 |
-| accordion | 手风琴模式，仅在`mode='inline'`下有效  | boolean | `false` | `true` `false` | 1.0.0 |
+| accordion | 手风琴模式，仅在`mode='inline'`下有效  | boolean | `false` | `true` `false` | 1.5.0 |
 | defaultOpenKeys | 初始展开的 SubMenu 菜单项 key 数组  | string[] | - | - | 1.0.0 |
 | defaultSelectedKey | 初始选中的菜单项 | string | - | - | 1.0.0 |
 | forceSubMenuRender | 在子菜单展示之前就渲染进 DOM | boolean | `false` | `true` `false` | 1.0.0 |
