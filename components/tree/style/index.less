@@ -93,6 +93,13 @@
   &-title-disabled {
     color: @tree-node-disabled-color;
   }
+  &-title-wrap {
+    flex: 1;
+    position: relative;
+    display: flex;
+    align-items: center;
+    height: 100%;
+  }
   &-title {
     white-space: nowrap;
     margin-left: 6px;
@@ -129,6 +136,18 @@
     top: 100%;
     width: 100%;
     border-top: 2px solid @tree-node-drag-line-border-color;
+
+    &::before {
+      content: '';
+      width: 4px;
+      height: 4px;
+      background-color: #fff;
+      border-radius: 50%;
+      border: 2px solid @tree-node-drag-line-border-color;
+      position: absolute;
+      top: -1px;
+      transform: translateY(-50%);
+    }
   }
   &-leaf-icon {
     height: @tree-node-icon-height;
