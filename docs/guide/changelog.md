@@ -4,6 +4,37 @@ title: 更新日志
 hiddenAnchor: true
 ---
 
+## [1.5.0](https://github.com/kdcloudone/kdesign/compare/v1.4.1...v1.5.0)
+`2022-07-21`
+* carousel
+  * 解决走马灯children为空时报错
+* date-picker
+  * 修复范围选择自定义后缀及颜色问题
+* dropdown
+  * 新增下拉菜单hover字体颜色token
+* input
+  * 修复清除图标颜色问题
+* radio
+  * 修复单选defaultChecked不生效问题
+* tree
+  * 调整拖拽时关系线样式
+  * 树组件节点拖拽功能调整(允许拖入节点子级)
+  * 新增节点过滤功能
+* menu
+  * 新增手风琴模式
+* 官网改造
+
+## [1.4.1](https://github.com/kdcloudone/kdesign/compare/v1.4.0...v1.4.1)
+`2022-07-15`
+* menu
+  * :修复组件受控时赋值问题
+
+## [1.4.0](https://github.com/kdcloudone/kdesign/compare/v1.3.9...v1.4.0)
+`2022-07-15`
+* menu
+  * 受控组件路径问题
+  * 样式修改
+
 ## [1.3.9](https://github.com/kdcloudone/kdesign/compare/v1.3.7...v1.3.9)
 `2022-07-14`
 * anchor
