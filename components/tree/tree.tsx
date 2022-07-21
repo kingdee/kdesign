@@ -17,6 +17,7 @@ import {
   getAllChildKeys,
   getPos,
   getSelected,
+  calcDropPosition,
 } from './utils/treeUtils'
 import {
   useChecked,
@@ -163,9 +164,12 @@ const InternalTree = React.forwardRef((props: TreeProps, ref: any): React.Functi
   const scrollRef = ref || rootRef
   const treeNodeRef = React.useRef<any>(null)
   const dragNodeRef = React.useRef<any>(null)
+  const delayedDragEnterRef = React.useRef<any>(null)
   const [isInit, setIsInit] = React.useState(true)
+  const [dropPosition, setDropPosition] = React.useState<any>(null)
+  const [dragOverNodeKey, setDragOverNodeKey] = React.useState<any>(null)
 
-  const [expandedKeys] = useExpand(
+  const [expandedKeys, setExpandedKeys] = useExpand(
     flattenAllData,
     expandedKeysProps,
     defaultExpandedKeys,
@@ -252,7 +256,14 @@ const InternalTree = React.forwardRef((props: TreeProps, ref: any): React.Functi
   )
 
   const handleDragOver = React.useCallback(
-    (event: React.MouseEvent, node: any) => {
+    (event: React.MouseEvent, node: any, dropTarget: HTMLElement) => {
+      const dropPos = calcDropPosition(event, dropTarget)
+      setDropPosition(dropPos)
+
+      const dragNode = getDragNode()
+      if (dragNode.key === node.key) {
+        setDropPosition(null)
+      }
       onDragOver && onDragOver({ event, node })
     },
     [onDragOver],
@@ -266,14 +277,43 @@ const InternalTree = React.forwardRef((props: TreeProps, ref: any): React.Functi
   )
 
   const handleDragEnter = React.useCallback(
-    (event: React.MouseEvent, node: any) => {
+    (event: React.MouseEvent, node: any, dropTarget: HTMLElement) => {
+      const { key, pos } = node
+
+      const dragNode = getDragNode()
+      if (!dragNode) {
+        return
+      }
+      if (!delayedDragEnterRef.current) {
+        delayedDragEnterRef.current = {}
+      }
+      Object.keys(delayedDragEnterRef.current).forEach((key) => {
+        clearTimeout(delayedDragEnterRef.current[key])
+      })
+      if (dragNode?.key !== key) {
+        const dragPos = calcDropPosition(event, dropTarget)
+        setDragOverNodeKey(key)
+        setDropPosition(dragPos)
+        delayedDragEnterRef.current[pos] = setTimeout(() => {
+          let newExpandedKeys = [...expandedKeys]
+          if (!node.expand) {
+            newExpandedKeys = addKeys(expandedKeys, [key])
+          }
+          if (!('expandedKeys' in TreeProps)) {
+            setExpandedKeys(newExpandedKeys)
+          }
+          onExpand?.(newExpandedKeys, { node, expanded: true })
+        }, 800)
+      }
+
       onDragEnter && onDragEnter({ event, node })
     },
-    [onDragEnter],
+    [TreeProps, expandedKeys, onDragEnter, onExpand, setExpandedKeys],
   )
 
   const handleDragEnd = React.useCallback(
     (event: React.MouseEvent, node: any) => {
+      setDragOverNodeKey('')
       onDragEnd && onDragEnd({ event, node })
     },
     [onDragEnd],
@@ -283,9 +323,9 @@ const InternalTree = React.forwardRef((props: TreeProps, ref: any): React.Functi
     (event: React.MouseEvent, node: any, dragNode: any, dragNodesKeys: string) => {
       const pos = getPos(flattenAllData, dragNodesKeys)
       const keys = getAllChildKeys(flattenAllData, pos).concat(dragNodesKeys)
-      onDrop && onDrop({ event, node, dragNode, keys })
+      onDrop && onDrop({ event, node, dragNode, dragNodesKeys: keys, dropPosition })
     },
-    [onDrop, flattenAllData],
+    [flattenAllData, onDrop, dropPosition],
   )
 
   const handleSelect = React.useCallback(
@@ -364,6 +404,7 @@ const InternalTree = React.forwardRef((props: TreeProps, ref: any): React.Functi
             item.style = setTreeNodeStyle(Object.assign({}, item))
             item.getDragNode = getDragNode
             item.setDragNode = setDragNode
+            item.dragOver = dragOverNodeKey === item.key && dropPosition === 0
             return <TreeNode {...item} key={item.key} ref={treeNodeRef} />
           })}
       </div>

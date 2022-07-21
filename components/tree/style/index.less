@@ -118,12 +118,17 @@
     height: 100%;
   }
 
+  &-drag-over {
+    background-color: @tree-node-drag-over-color-background;
+    border: 2px solid @tree-node-drag-over-border-color;
+  }
+
   &-drag-line {
     position: absolute;
     left: 0;
     top: 100%;
     width: 100%;
-    border-top: 1px solid #fc8555;
+    border-top: 2px solid @tree-node-drag-line-border-color;
   }
   &-leaf-icon {
     height: @tree-node-icon-height;

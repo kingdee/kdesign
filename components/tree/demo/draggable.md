@@ -104,10 +104,13 @@ function Demo() {
   }
 
   const onDrop = (info) => {
-    const { event, node, dragNode, dragNodesKeys } = info
+    const { node, dragNode, dragNodesKeys, dropPosition } = info
     console.log('onDrop', info)
     const dropKey = node.key
     const dragKey = dragNode.key
+    if (dragNodesKeys.includes(dropKey)) {
+      return;
+    }
     let dragObject
     if (dropKey === dragKey) return
     const loopDelete = (data, dropKey, dragKey) => {
@@ -123,7 +126,13 @@ function Demo() {
     const loopAdd = (data, dropKey, dragKey) => {
       for (let i = 0; i < data.length; i++) {
         if (data[i].key === dropKey) {
-          data.splice(i + 1, 0, dragObject)
+          // dropPosition 指的是被拖拽节点被 drop 的位置，如插入在节点前则为 -1，在节点后则为 1，落在其上则为 0
+          if (dropPosition !== 0) {
+            data.splice(i + 1, 0, dragObject)
+          } else {
+            data[i].children = data[i].children || [];
+            data[i].children.push(dragObject);
+          }
           break
         } else {
           data[i].children && loopAdd(data[i].children, dropKey, dragKey)
@@ -151,7 +160,7 @@ function Demo() {
     console.log('onDragEnter', info)
   }
 
-  const onDragEnd = (event, node) => {
+  const onDragEnd = (event, info) => {
     console.log('onDragEnd', info)
   }
 

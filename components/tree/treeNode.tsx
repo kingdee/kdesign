@@ -30,6 +30,7 @@ export interface TreeNodeProps {
   checked?: boolean
   pos?: string
   estimatedItemSize?: number
+  dragOver?: boolean
   onCheck?: (
     key: string,
     value: boolean,
@@ -78,6 +79,7 @@ const TreeNode = React.forwardRef<unknown, TreeNodeProps>((props, ref) => {
     // leafIcon,
     indeterminate,
     estimatedItemSize,
+    dragOver,
     onExpand,
     onCheck,
     onDragStart,
@@ -255,6 +257,7 @@ const TreeNode = React.forwardRef<unknown, TreeNodeProps>((props, ref) => {
             [`${treeNodePrefixCls}-draggabled`]: true,
             [`${treeNodePrefixCls}-root`]: true,
             [`${treeNodePrefixCls}-fb-children-pointerEvents`]: forbiddenChildrenPointerEvents,
+            [`${treeNodePrefixCls}-drag-over`]: dragOver,
           })}
           onDragStart={handleDragStart}
           onDragEnd={handleDragEnd}
@@ -291,7 +294,7 @@ const TreeNode = React.forwardRef<unknown, TreeNodeProps>((props, ref) => {
               {title}
             </span>
           )}
-          {showDragLine && <span className={classNames(`${treeNodePrefixCls}-drag-line`)}></span>}
+          {showDragLine && !dragOver && <span className={classNames(`${treeNodePrefixCls}-drag-line`)}></span>}
         </div>
       </>
     )
@@ -328,14 +331,14 @@ const TreeNode = React.forwardRef<unknown, TreeNodeProps>((props, ref) => {
       setDragNode(nodeData)
       onDragStart && onDragStart(e, props)
     },
-    [onDragStart, nodeData, props, draggable],
+    [draggable, setDragNode, nodeData, onDragStart, props],
   )
 
   const handleDragOver = React.useCallback(
     (e) => {
       if (!draggable) return
       e.preventDefault()
-      onDragOver && onDragOver(e, nodeData)
+      onDragOver && onDragOver(e, nodeData, dragRef.current)
     },
     [onDragOver, nodeData, draggable],
   )
@@ -357,7 +360,7 @@ const TreeNode = React.forwardRef<unknown, TreeNodeProps>((props, ref) => {
       setForbiddenChildrenPointerEvents(true)
       if (!dragRef.current?.isEqualNode(e.target)) return
       setShowDragLine(true)
-      onDragEnter && onDragEnter(e, nodeData)
+      onDragEnter && onDragEnter(e, nodeData, dragRef.current)
     },
     [onDragEnter, nodeData, draggable],
   )

@@ -1,4 +1,7 @@
 import { TreeNodeData } from '../tree'
+
+const DRAG_OFFSET = 0.4
+
 /**
  * 打平所有数组，并添加pos位置信息，
  * 方便根据expandKeys等计算节点的expand，checkedKeys计算节点checked状态
@@ -406,4 +409,17 @@ export const getInitExpandedKeys = (
 export const getExpandedKeys = (expandedKeys: string[], expandScrollkeys: string[] = []) => {
   const keys: string[] = expandedKeys?.concat(expandScrollkeys) || []
   return Array.from(new Set([...keys]))
+}
+
+export const calcDropPosition = (event: React.MouseEvent, dropNode: HTMLElement) => {
+  const { clientY } = event
+  const { top, bottom, height } = dropNode.getBoundingClientRect()
+  if (clientY <= top + height * DRAG_OFFSET) {
+    return -1
+  }
+  if (clientY >= bottom - height * DRAG_OFFSET) {
+    return 1
+  }
+
+  return 0
 }
