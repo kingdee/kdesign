@@ -72,6 +72,10 @@
       transition: background-color @duration-promptly;
       &:not(.disabled):hover {
         background-color: @dropdown-item-hover-bg-color;
+
+        > a {
+          color: @dropdown-item-hover-color-text;
+        }
       }
 
       &:not(.disabled):active,

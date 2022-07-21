@@ -50,6 +50,7 @@ subtitle: 下拉菜单
 |  | --kd-c-dropdown-item-color-text-disabled | --kd-g-color-disabled | #b2b2b2 |
 |  | --kd-c-dropdown-item-color-text-danger | --kd-g-color-error | #fb2323 |
 |  | --kd-c-dropdown-item-color-background-danger-hover | --kd-g-color-error | #fb2323 |
+|  | --kd-c-dropdown-item-color-text-hover | --kd-g-color-text-primary | #212121 |
 |  | --kd-c-dropdown-divided-color-background | --kd-g-color-border-weak | #e5e5e5 |
 |  | --kd-c-dropdown-menu-item-color-text | --kd-g-color-text-primary | #212121 |
 | font | --kd-c-dropdown-font-size | --kd-g-font-size-small | 12px |
