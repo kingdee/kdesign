@@ -42,7 +42,7 @@ subtitle: 树控件
 | onDragLeave | dragleave 触发时调用 | function({event, node}) | - | - | 1.0.0 |
 | onDragOver | dragover 触发时调用 | function({event, node}) | - | - | 1.0.0 |
 | onDragStart | 开始拖拽时调用的回调 | function({event, node}) | - | - | 1.0.0 |
-| onDrop | drop 触发时调用 | function({event, node, dragNode, dragNodesKeys}) | - | - | 1.0.0 |
+| onDrop | drop 触发时调用 | function({event, node, dragNode, dragNodesKeys, dropPosition: -1 \| 0 \| 1}) | - | - | 1.0.0 |
 | onExpand | 展开/收起节点时触发的回调 | function(expandedKeys, {expanded: bool, node}) | - | - | 1.0.0 |
 | onSelect | 点击树节点触发 | function(selectedKeys, {checked: bool, node, event}) | - | - | 1.0.0 |
 | setTreeNodeStyle | 渲染树节点触发 | (node) => Map<string, string> | - | - | 1.0.0 |
@@ -75,6 +75,9 @@ subtitle: 树控件
 |  | --kd-c-tree-node-color-text-checked | --kd-g-color-theme | #5582f3 |
 |  | --kd-c-tree-node-color-backgroung-hover | --kd-g-color-hover | #f5f5f5 |
 |  | --kd-c-tree-node-icon-color-text | - | #666666 |
+|  | --kd-c-tree-node-drag-over-color-border | - | #5582f3 |
+|  | --kd-c-tree-node-drag-over-color-background | - | #E3EBFF |
+|  | --kd-c-tree-node-drag-line-color-background | - | #276FF5 |
 | font | --kd-c-tree-font-size | --kd-g-font-size-small | 12px |
 |  | --kd-c-tree-node-icon-font-size | - | 16px |
 | motion | --kd-c-tree-motion-duration | --kd-g-duration | 0.3s |
