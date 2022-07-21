@@ -103,7 +103,7 @@ const InternalCarousel = (props: CarouselProps, ref: unknown): FunctionComponent
         setNeedAnimation(needAnimation)
       }
     },
-    [isFadeEffect, beforeChange, currentIndex, children.length],
+    [isFadeEffect, beforeChange, currentIndex, children?.length],
   )
 
   const next = React.useCallback(() => {
@@ -178,7 +178,7 @@ const InternalCarousel = (props: CarouselProps, ref: unknown): FunctionComponent
   )
 
   const handleTransitionEnd = React.useCallback(() => {
-    if (!autoplay) return
+    if (!autoplay || !children?.length) return
     const childrenL = children.length
     let newCurrentIndex = currentIndex
     if (isScrollxEffect) {
@@ -192,7 +192,7 @@ const InternalCarousel = (props: CarouselProps, ref: unknown): FunctionComponent
     afterChange && afterChange(currentIndex)
     setCurrentIndex(newCurrentIndex)
     isScrollxEffect && setNeedAnimation(false)
-  }, [currentIndex, children.length, afterChange, isScrollxEffect, autoplay])
+  }, [currentIndex, children?.length, afterChange, isScrollxEffect, autoplay])
 
   const handleMouseEnter = React.useCallback(() => {
     autoplayRef.current && clearTimeout(autoplayRef.current)
@@ -236,8 +236,8 @@ const InternalCarousel = (props: CarouselProps, ref: unknown): FunctionComponent
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
-      {renderDisplayList()}
-      {showDot() && (
+      {children?.length && renderDisplayList()}
+      {children?.length && showDot() && (
         <Slidebar
           number={children.length}
           currentIndex={currentIndex}
