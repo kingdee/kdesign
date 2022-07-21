@@ -270,13 +270,23 @@ const TreeNode = React.forwardRef<unknown, TreeNodeProps>((props, ref) => {
           {indent()}
           {renderExpandIcon()}
           {showIcon && renderNodeIcon()}
-          {checkable ? (
-            <Checkbox
-              onChange={handleOnchange}
-              checked={checked}
-              indeterminate={!disabled && indeterminate}
-              disabled={disabled}
-            >
+          <div className={`${treeNodePrefixCls}-title-wrap`}>
+            {checkable ? (
+              <Checkbox
+                onChange={handleOnchange}
+                checked={checked}
+                indeterminate={!disabled && indeterminate}
+                disabled={disabled}
+              >
+                <span
+                  className={classNames(`${treeNodePrefixCls}-title`, {
+                    [`${treeNodePrefixCls}-title-disabled`]: disabled,
+                  })}
+                >
+                  {title}
+                </span>
+              </Checkbox>
+            ) : (
               <span
                 className={classNames(`${treeNodePrefixCls}-title`, {
                   [`${treeNodePrefixCls}-title-disabled`]: disabled,
@@ -284,17 +294,9 @@ const TreeNode = React.forwardRef<unknown, TreeNodeProps>((props, ref) => {
               >
                 {title}
               </span>
-            </Checkbox>
-          ) : (
-            <span
-              className={classNames(`${treeNodePrefixCls}-title`, {
-                [`${treeNodePrefixCls}-title-disabled`]: disabled,
-              })}
-            >
-              {title}
-            </span>
-          )}
-          {showDragLine && !dragOver && <span className={classNames(`${treeNodePrefixCls}-drag-line`)}></span>}
+            )}
+            {showDragLine && !dragOver && <span className={classNames(`${treeNodePrefixCls}-drag-line`)}></span>}
+          </div>
         </div>
       </>
     )
