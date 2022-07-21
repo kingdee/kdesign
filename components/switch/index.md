@@ -41,7 +41,7 @@ subtitle: 开关
 |  | --kd-c-switch-large-font-size | --kd-g-font-size-small | 12px |
 |  | --kd-c-switch-inner-font-size-small | --kd-g-font-size-small | 12px |
 | line-height | --kd-c-switch-large-line-height | - | 20px |
-|  | --kd-c-switch-small-line-height | - | 14px |
+|  | --kd-c-switch-small-line-height | - | 16px |
 | radius | --kd-c-switch-small-radius-border | - | 8px |
 | sizing | --kd-c-switch-small-sizing-height | - | 16px |
 |  | --kd-c-switch-small-sizing-width | - | 32px |
