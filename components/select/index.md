@@ -22,7 +22,7 @@ subtitle: 选择器
 | borderType | 边框类型 | `underline` `bordered` `none` | `underline` | 0.0.17 |
 | clearIcon | 自定义的清空图标 | ReactNode | - | 0.0.17 |
 | defaultOpen | 是否默认展开下拉菜单 | boolean | false | 0.0.17 |
-| defaultValue | 指定默认选中的条目 | string \| string\[]<br />number \| number\[]<br />LabeledValue \| LabeledValue\[] | - | 0.0.17 |
+| defaultValue | 指定默认选中的条目 | string \| string\[]<br />number \| number\[] | - | 0.0.17 |
 | disabled | 是否禁用 | boolean | false | 0.0.17 |
 | dropdownClassName | 下拉菜单的 className 属性 | string | - | 0.0.17 |
 | dropdownRender | 自定义下拉框内容 | (originNode: ReactNode) => ReactNode | - | 0.0.17 |
@@ -41,7 +41,7 @@ subtitle: 选择器
 | showSearch | 是否展示搜索框 | boolean | false | 0.0.17 |
 | size | 选择框大小 | `large` \| `middle` \| `small` | `middle` | 0.0.17 |
 | suffixIcon | 自定义的选择框后缀图标 | ReactNode | - | 0.0.17 |
-| value | 指定当前选中的条目 | string \| string\[]<br />number \| number\[]<br />LabeledValue \| LabeledValue\[] | - | 0.0.17 |
+| value | 指定当前选中的条目 | string \| string\[]<br />number \| number\[] | - | 0.0.17 |
 | onBlur | 失去焦点时回调 | function | - | 0.0.17 |
 | onChange | 选中 option，或 input 的 value 变化时，调用此函数 | function(value, option:Option \| Array&lt;Option>) | - | 0.0.17 |
 | onClear | 清除内容时回调 | function | - | 0.0.17 |
