@@ -68,7 +68,7 @@ subtitle: 选择器
 | 分类 | 组件token | 全局token | 默认值 |
 | --- | --- | --- | --- |
 | color | --kd-c-select-dropdown-color-background | --kd-g-color-background | #fff |
-|  | --kd-c-select-item-color-background-disabled | --kd-g-color-background-contain-disabled | #f5f5f5 |
+|  | --kd-c-select-item-color-background-disabled | - | #fff |
 |  | --kd-c-select-color-background | - | #f5f5f5 |
 |  | --kd-c-select-color-background-selected | --kd-g-color-theme-3 | rgb(227, 238, 255) |
 |  | --kd-c-select-color-border | --kd-g-color-input | #999 |
@@ -81,8 +81,9 @@ subtitle: 选择器
 |  | --kd-c-select-footer-color-text-selected | - | #0e5fd8 |
 |  | --kd-c-select-item-color-text-disabled | --kd-g-color-disabled | #b2b2b2 |
 |  | --kd-c-select-color-background-disabled | - | #f5f5f5 |
-|  | --kd-c-select-color-text-disabled | - | #212121 |
+|  | --kd-c-select-color-text-disabled | --kd-g-color-disabled | #b2b2b2 |
 |  | --kd-c-select-arrow-icon-color-text-disabled | - | #b2b2b2 |
+|  | --kd-c-select-single-color-text | --kd-g-color-text-primary | #212121 |
 | font | --kd-c-select-dropdown-font-size | - | 12px |
 |  | --kd-c-select-font-size-large | - | 16px |
 |  | --kd-c-select-font-size-middle | - | 14px |
