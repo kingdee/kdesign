@@ -31,7 +31,7 @@ function isIE() {
   else return false
 }
 function isScrollEnd(element, t1) {
-  let t2 = element.scrollTop
+  const t2 = element.scrollTop
   if (t2 === t1) {
     document.styleSheets[0].insertRule('body::-webkit-scrollbar-thumb { display:none; }')
   }

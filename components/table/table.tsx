@@ -52,6 +52,9 @@ function Table(props: TableProps) {
     contextMenu,
     rangeSelection,
     cssVariables,
+    stickyScrollHeight,
+    scrollbarWidth,
+    scrollLoad,
   } = props
 
   const { getPrefixCls, prefixCls } = useContext(ConfigContext)
@@ -123,6 +126,9 @@ function Table(props: TableProps) {
       useOuterBorder={useOuterBorder}
       defaultColumnWidth={defaultColumnWidth}
       cssVariables={cssVariables}
+      stickyScrollHeight={stickyScrollHeight}
+      scrollbarWidth={scrollbarWidth}
+      scrollLoad={scrollLoad}
     />
   )
 }
