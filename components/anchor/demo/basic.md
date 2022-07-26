@@ -20,7 +20,7 @@ function Demo() {
   return (
     <>
       <Switch style={{ width: 60, marginBottom: 20 }} checked={affix} onChange={toggleAffix} checkedChildren="固定" unCheckedChildren="不固定"></Switch>
-      <Anchor offsetTop={70} affix={affix}>
+      <Anchor offsetTop={70} targetOffset={0} affix={affix}>
         <Anchor.Link href="#使用场景" title="使用场景" />
         <Anchor.Link href="#components-anchor-demo-basic" title="纵向锚点" />
         <Anchor.Link href="#components-anchor-demo-menu" title="横向锚点" />
