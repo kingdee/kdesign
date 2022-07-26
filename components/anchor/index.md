@@ -34,6 +34,7 @@ subtitle: 锚点
 | offsetTop | 距离窗口顶部达到指定偏移量后触发 | number |  |  | 1.0.0 |
 | onChange | 监听锚点链接改变 | (currentActiveLink: string) => void | - |  | 1.0.0 |
 | onClick | `click` 事件的 handler | function(e: Event, link: Object) | - |  | 1.0.0 |
+| targetOffset | 锚点滚动偏移量，默认与 offsetTop 相同 | number | - | - | 1.5.1 |
 | trigger | 触发行为(高级锚点有效)，可使用数组设置多个触发行为 | string \| string\[] | `hover` | `hover` \| `focus` \| `click` \| `contextMenu` | 1.0.0 |
 | type | 锚点类型（类型为 `menu` 时只显示一级锚点） | string | `bookmarks` | `bookmarks` `menu` `advanced` | 1.0.0 |
 | visible | 手动控制浮层显隐 | boolean | false | `true` `false` | 1.0.0 |

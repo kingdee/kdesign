@@ -35,10 +35,6 @@ const AnchorLink = (props: AnchorLinkProps): React.FunctionComponentElement<any>
   }, [href, registerLink, prevHref])
 
   const handleClick = (e: React.MouseEvent<HTMLElement>) => {
-    const anchorElement = document.getElementById(href.replace('#', ''))
-    if (anchorElement) {
-      anchorElement.scrollIntoView()
-    }
     onClick?.(e, { title, href })
     scrollTo(href)
   }
