@@ -46,6 +46,7 @@ const InternalAvatar = (props: AvatarProps, ref: unknown): FunctionComponentElem
     children,
     gap,
     disabled,
+    srcSet,
   } = avatarProps
 
   devWarning(
@@ -136,7 +137,7 @@ const InternalAvatar = (props: AvatarProps, ref: unknown): FunctionComponentElem
 
   let childrenToRender
   if (typeof src === 'string' && isImgExist) {
-    childrenToRender = <img src={src} draggable={draggable} onError={handleImgLoadError} alt={alt} />
+    childrenToRender = <img src={src} srcSet={srcSet} draggable={draggable} onError={handleImgLoadError} alt={alt} />
   } else if (hasImageElement) {
     childrenToRender = src
   } else if (icon) {
