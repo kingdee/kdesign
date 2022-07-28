@@ -71,7 +71,7 @@ const ClearableInput: React.FC<ClearableInputProps> = (props) => {
     }
     return (
       <span className={`${prefixCls}-suffix`}>
-        {renderClearIcon()}
+        {!disabled && renderClearIcon()}
         {suffix}
       </span>
     )
@@ -124,7 +124,6 @@ const ClearableInput: React.FC<ClearableInputProps> = (props) => {
           {addonBeforeNode}
           {React.cloneElement(originElement, {
             style: null,
-            className: `${originElement.props.className || ''} ${prefixCls}-wrapper`,
           })}
           {addonAfterNode}
         </span>

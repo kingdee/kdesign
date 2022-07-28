@@ -126,6 +126,12 @@ textarea {
         color: @input-border-color-focused;
       }
 		}
+
+    &-disabled {
+      background-color: @input-background-color-disabled-inner;
+      border-color: @input-border-color-disabled-inner;
+      cursor: not-allowed;
+    }
 	}
 	&-wrapper-textarea {
 		.input(@input-prefix-cls);
