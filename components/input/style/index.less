@@ -131,6 +131,10 @@ textarea {
       background-color: @input-background-color-disabled-inner;
       border-color: @input-border-color-disabled-inner;
       cursor: not-allowed;
+
+      .@{input-prefix-cls}-suffix, .@{input-prefix-cls}-prefix {
+        color: @input-color-disabled-inner;
+      }
     }
 	}
 	&-wrapper-textarea {
@@ -225,6 +229,7 @@ textarea {
 					&-disabled {
 						background-color: @input-background-color-disabled-inner;
 						border-color: @input-border-color-disabled-inner;
+            color: @input-color-disabled-inner;
 						cursor: not-allowed;
 					}
 				}

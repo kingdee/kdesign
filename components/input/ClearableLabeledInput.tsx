@@ -66,15 +66,15 @@ const ClearableInput: React.FC<ClearableInputProps> = (props) => {
   }
 
   const renderSuffix = () => {
-    if (!suffix && !allowClear) {
-      return null
+    if (suffix || (!disabled && allowClear)) {
+      return (
+        <span className={`${prefixCls}-suffix`}>
+          {renderClearIcon()}
+          {suffix}
+        </span>
+      )
     }
-    return (
-      <span className={`${prefixCls}-suffix`}>
-        {!disabled && renderClearIcon()}
-        {suffix}
-      </span>
-    )
+    return null
   }
 
   const renderInputWithFixNode = (originElement: React.ReactElement) => {
