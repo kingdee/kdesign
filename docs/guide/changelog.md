@@ -4,6 +4,25 @@ title: 更新日志
 hiddenAnchor: true
 ---
 
+## [1.5.2](https://github.com/kdcloudone/kdesign/compare/v1.5.1...v1.5.2)
+`2022-07-28`
+* anchor
+  * 调整锚点组件定位偏移的逻辑
+* avatar
+  * 修复srcSet不生效问题
+* input
+  * 修复禁用状态下样式问题
+* select
+  * 修复禁用态出现清空按钮,并能继续触发清空操作的bug
+  * 修复禁用态下的视觉
+* tree
+  * 调整拖拽时dropPosition计算
+
+## [1.5.1](https://github.com/kdcloudone/kdesign/compare/v1.3.8...v1.5.1)
+`2022-07-27`
+* table
+  * 增加滚动加载和滚动条宽度参数
+
 ## [1.5.0](https://github.com/kdcloudone/kdesign/compare/v1.4.1...v1.5.0)
 `2022-07-21`
 * carousel
