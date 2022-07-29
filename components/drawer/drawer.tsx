@@ -259,6 +259,7 @@ const InternalDrawer = (props: IDrawerProps, ref: unknown): ReactElement | React
           transform: transform,
         }
       : {
+          height,
           transform: transform,
         },
   )
