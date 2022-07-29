@@ -99,6 +99,7 @@
 .kdicon-fixed-solid:before { content: "\e65f"; }
 .kdicon-fixed-window:before { content: "\e6d1"; }
 .kdicon-fixed:before { content: "\e6e3"; }
+.kdicon-fold:before { content: "\e71d"; }
 .kdicon-foldmenu:before { content: "\e70e"; }
 .kdicon-font-background-solid:before { content: "\e673"; }
 .kdicon-font-color-solid:before { content: "\e674"; }
@@ -209,7 +210,7 @@
 .kdicon-two-window:before { content: "\e6f6"; }
 .kdicon-underline-solid:before { content: "\e671"; }
 .kdicon-unfold-all:before { content: "\e6ad"; }
-.kdicon-unfold:before { content: "\e6bb"; }
+.kdicon-unfold:before { content: "\e71e"; }
 .kdicon-unfoldmenu:before { content: "\e70d"; }
 .kdicon-unlock-solid:before { content: "\e666"; }
 .kdicon-unlock:before { content: "\e69e"; }

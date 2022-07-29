@@ -170,6 +170,8 @@ const BaseIcon = [
   'little-k',
   'bellOutlined',
   'sigma',
+  'unfold',
+  'fold'
 ]
 function Demo() {
   const handleClick = (type, e) => {
