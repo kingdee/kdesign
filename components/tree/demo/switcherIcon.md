@@ -108,7 +108,7 @@ function Demo() {
         treeData={data}
         expandedKeys={expandedKeys}
         checkedKeys={checkedKeys}
-        switcherIcon={[<Icon type="add" />, <Icon type="reduce" />]}
+        switcherIcon={[<Icon type="unfold" key="unfold" />, <Icon type="fold" key="fold" />]}
         onCheck={onCheck}
         onExpand={onExpand}
         onSelect={onSelect}
