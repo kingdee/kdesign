@@ -35,17 +35,19 @@ subtitle: 步进器
 | type | 步进器类型 | string | `base` | `embed` `base` | 1.0.0 |
 | zeroShow | 为零是否显示 | boolean | `false` | `true` `false` | 1.0.0 |
 
-
 ## Design Token
 
 | 分类 | 组件token | 全局token | 默认值 |
 | --- | --- | --- | --- |
-| color | --kd-c-stepper-icon-color | --kd-g-color-text-secondary | #666 |
-|  | --kd-c-stepper-icon-color-hover | --kd-g-color-theme-5 | rgb(135, 173, 255) |
+| color | --kd-c-stepper-input-color | --kd-g-color-text-primary | #212121 |
+|  | --kd-c-stepper-icon-color | --kd-g-color-text-secondary | #666 |
+|  | --kd-c-stepper-icon-color-hover | --kd-g-color-theme | #5582f3 |
 |  | --kd-c-stepper-color-border-strong | --kd-g-color-border-strong | #d9d9d9 |
-|  | --kd-c-stepper-embed-icon-color-background | - | #f6f7f9 |
+|  | --kd-c-stepper-embed-icon-color-background | - | transparent |
+|  | --kd-c-stepper-icon-color-disabled | --kd-g-color-disabled | #b2b2b2 |
+| font | --kd-c-stepper-input-font-size | - | 12px |
+| motion | --kd-c-stepper-motion-duration | --kd-g-duration | 0.3s |
 | sizing | --kd-c-stepper-input-small-sizing-height | - | 20px |
-|  | --kd-c-stepper-input-middle-sizing-height | - | 30px |
+|  | --kd-c-stepper-input-middle-sizing-height | - | 28px |
 |  | --kd-c-stepper-input-large-sizing-height | - | 36px |
-| spacing | --kd-c-stepper-input-spacing-padding-horizontal| - | 9px |
-| motion | --kd-c-stepper-motion-duration | --kd-g-color-duration | 0.3s |
+| spacing | --kd-c-stepper-input-spacing-padding-horizontal | - | 9px |
