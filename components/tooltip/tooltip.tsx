@@ -23,7 +23,7 @@ const Tooltip = React.forwardRef<unknown, TooltipProps>((props, ref) => {
 
   const tiplocator = React.cloneElement(
     React.Children.count(children) === 1 && children.type ? children : <span>{children}</span>,
-    { ref },
+    { ref: children.ref || ref },
   )
 
   const popperProps = {
