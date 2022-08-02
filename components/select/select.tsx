@@ -373,7 +373,7 @@ const InternalSelect: React.ForwardRefRenderFunction<ISelectProps<SelectValue>> 
       [`${selectPrefixCls}-icon-arrow-focus`]: optionShow,
     })
 
-    const iconShow = allowClear && !disabled && (isMultiple ? mulOptions.length > 0 : selectedVal)
+    const iconShow = allowClear && !disabled && (isMultiple ? mulOptions.length > 0 : (selectedVal ?? '') !== '')
     const clearIconCls = classNames({
       [`${selectPrefixCls}-icon-clear`]: true,
     })
