@@ -13,7 +13,6 @@ import {
   getSpreadAttrData,
   getDataCheckededState,
   getDataCheckededStateStrictly,
-  getMaxLevel,
   getAllChildKeys,
   getPos,
   getSelected,
@@ -138,13 +137,9 @@ const InternalTree = React.forwardRef((props: TreeProps, ref: any): React.Functi
   const treeRootClassName = `${treePrefixCls}-root`
   const estimatedItemSize = innerEstimatedItemSize // 节点高度
 
-  const flattenAllData = React.useMemo(() => {
+  const { flattenAllData, maxLevel } = React.useMemo(() => {
     return flattenAll(treeData, [])
   }, [treeData])
-
-  const maxLevel = React.useMemo(() => {
-    return getMaxLevel(flattenAllData)
-  }, [flattenAllData])
 
   const [checkedKeys, halfCheckedKeys, setCheckedKeys, setHalfCheckedKeys] = useChecked(
     checkStrictly,
