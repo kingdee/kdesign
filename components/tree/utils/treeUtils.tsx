@@ -10,26 +10,28 @@ const DRAG_OFFSET = 0.3
  * @param level
  * @param pos
  */
-export const flattenAll = (
-  treeData: any[],
-  newTreeData: TreeNodeData[] = [],
-  level = 0,
-  pos?: string,
-  parent: any = null,
-) => {
-  treeData &&
-    treeData.forEach((item, index) => {
-      const { children, title, key, ...others } = item
-      item.parent = parent
-      const _pos = pos ? `${pos}-${index}` : `${index}`
-      const hasChildNode = children && children instanceof Array && children.length > 0
-      const flattenNode: any = { title, key, pos: _pos, hasChildNode, level, parent, ...others }
-      newTreeData.push(flattenNode)
-      let _level = level
-      _level++
-      flattenAll(children, newTreeData, _level, _pos, flattenNode)
-    })
-  return newTreeData
+export const flattenAll = (treeData: any[], newTreeData: TreeNodeData[] = [], level = 0, pos?: string) => {
+  let maxLevel = 0
+  const fn = (treeData: any[], newTreeData: TreeNodeData[] = [], level = 0, pos?: string, parent: any = null) => {
+    treeData &&
+      treeData.forEach((item, index) => {
+        const { children, title, key, ...others } = item
+        item.parent = parent
+        const _pos = pos ? `${pos}-${index}` : `${index}`
+        const hasChildNode = children && children instanceof Array && children.length > 0
+        const flattenNode: any = { title, key, pos: _pos, hasChildNode, level, parent, ...others }
+        newTreeData.push(flattenNode)
+        let _level = level
+        if (maxLevel < level) {
+          maxLevel = level
+        }
+        _level++
+        fn(children, newTreeData, _level, _pos, flattenNode)
+      })
+    return newTreeData
+  }
+  const flattenAllData = fn(treeData, newTreeData, level, pos)
+  return { flattenAllData, maxLevel }
 }
 
 export const getExpand = (expandedKeys: string[], key: string) => {
