@@ -24,6 +24,15 @@ export interface DropDownProps extends PopperProps {
   menu: React.ReactElement | Array<MenuItem>
 }
 
+const findItem: (element: any) => any = (element) => {
+  const isItem = element.className === 'kd-dropdown-menu-item'
+  if (isItem) {
+    return element
+  } else {
+    return element.parentNode ? findItem(element.parentNode) : null
+  }
+}
+
 const Dropdown = React.forwardRef<unknown, DropDownProps>((props, ref) => {
   const { getPrefixCls, prefixCls: pkgPrefixCls, compDefaultProps: userDefaultProps } = React.useContext(ConfigContext)
 
@@ -66,15 +75,10 @@ const Dropdown = React.forwardRef<unknown, DropDownProps>((props, ref) => {
 
   const menuSelectable = menu.props?.selectable === undefined ? selectable : menu.props?.selectable
 
-  const handleItemClick = (e: any) => {
-    const currentTarget = e.target
-    const parentTarget = currentTarget.parentNode
-    const key = currentTarget.dataset?.key || currentTarget.parentNode.dataset?.key
-    if (
-      currentTarget.className.indexOf('disabled') === -1 &&
-      parentTarget.className.indexOf('disabled') === -1 &&
-      key
-    ) {
+  const handleItemClick = (e: React.MouseEvent) => {
+    const item = findItem(e.target)
+    const key = item?.dataset?.key
+    if (item.className.indexOf('disabled') === -1 && key) {
       if (isMenu && menu.props.onClick) {
         menu.props.onClick(key)
       } else if (onItemClick) {
