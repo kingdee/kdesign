@@ -84,7 +84,7 @@ function Demo() {
 
   return (
     <Filter
-      style={{ width: 1214 }}
+      style={{ margin: '0 20px' }}
       title="用户故事"
       value={value}
       search={searchProps}

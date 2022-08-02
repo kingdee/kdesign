@@ -240,7 +240,9 @@ function LiveDemo(props: Props) {
                 <div className="demo-component">
                   <LivePreview
                     style={
-                      /import { (\w{3,},\s)*(Row|Col|Layout)(,\s\w{3,})* } from '@kdcloudjs\/kdesign'/g.test(code)
+                      /import { (\w{3,},\s)*(Row|Col|Layout|Filter)(,\s\w{3,})* } from '@kdcloudjs\/kdesign'/g.test(
+                        code,
+                      )
                         ? { width: '100%' }
                         : { width: 'auto' }
                     }
