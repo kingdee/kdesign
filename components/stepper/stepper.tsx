@@ -29,6 +29,7 @@ const InternalStepper = (props: StepperProps, ref: unknown): FunctionComponentEl
     stepBtnClassName,
     max,
     min,
+    disabled,
     value: propsValue,
     defaultValue,
   } = inputNumberProps
@@ -66,12 +67,13 @@ const InternalStepper = (props: StepperProps, ref: unknown): FunctionComponentEl
     if (type === 'embed') {
       return null
     }
-    const decreaseClassName = getStepBtnClassNames('base', 'decrease', showPlusdisabled)
+    const decreaseClassName = getStepBtnClassNames('base', 'decrease', showPlusdisabled || disabled)
 
     return (
       <span
         className={decreaseClassName}
         onMouseDown={() => {
+          if (disabled) return
           handleStepMouseDown('minus')
         }}
       >
@@ -81,13 +83,14 @@ const InternalStepper = (props: StepperProps, ref: unknown): FunctionComponentEl
   }
 
   const getStepSuffix = (): React.ReactNode => {
-    const increaseClassName = getStepBtnClassNames('base', 'increase', showMinusdisabled)
+    const increaseClassName = getStepBtnClassNames('base', 'increase', showMinusdisabled || disabled)
     return type === 'embed' ? (
       getEmbedStepView()
     ) : (
       <span
         className={increaseClassName}
         onMouseDown={() => {
+          if (disabled) return
           handleStepMouseDown('plus')
         }}
       >
@@ -175,17 +178,18 @@ const InternalStepper = (props: StepperProps, ref: unknown): FunctionComponentEl
     const embedStepClassName = getStepBtnClassNames('embed')
     const plusClassName = classNames(`${inputPrefixCls}-embedStep-plus`, {
       [stepBtnClassName]: stepBtnClassName,
-      [`${inputPrefixCls}-embedStep-disabled`]: showMinusdisabled,
+      [`${inputPrefixCls}-embedStep-disabled`]: showMinusdisabled || disabled,
     })
     const minusClassName = classNames(`${inputPrefixCls}-embedStep-minus`, {
       [stepBtnClassName]: stepBtnClassName,
-      [`${inputPrefixCls}-embedStep-disabled`]: showPlusdisabled,
+      [`${inputPrefixCls}-embedStep-disabled`]: showPlusdisabled || disabled,
     })
     return (
       <span className={embedStepClassName}>
         <span
           className={plusClassName}
           onMouseDown={() => {
+            if (disabled) return
             handleStepMouseDown('plus')
           }}
         >
@@ -194,6 +198,7 @@ const InternalStepper = (props: StepperProps, ref: unknown): FunctionComponentEl
         <span
           className={minusClassName}
           onMouseDown={() => {
+            if (disabled) return
             handleStepMouseDown('minus')
           }}
         >

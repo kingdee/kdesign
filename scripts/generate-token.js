@@ -43,6 +43,7 @@ const transformComponentArr = [
   'tree',
   'typography',
   'upload',
+  'stepper',
 ]
 const tokenBrandPrefix = 'kd'
 const tokenGloablPrefix = `--${tokenBrandPrefix}-g`
