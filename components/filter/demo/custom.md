@@ -72,7 +72,7 @@ function Demo() {
 
   return (
     <Filter
-      style={{ width: 1214 }}
+      style={{ margin: '0 20px' }}
       title="差旅报销"
       value={value}
       search={searchProps}
