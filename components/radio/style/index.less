@@ -312,7 +312,7 @@
       color: @radio-color-background;
     }
 
-    &::before {
+    &:not(.@{radio-button-prefix-cls}-disabled)::before {
       background-color: @radio-color-theme;
     }
 
