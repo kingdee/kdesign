@@ -169,6 +169,8 @@ const InternalTree = React.forwardRef((props: TreeProps, ref: any): React.Functi
   const [dropPosition, setDropPosition] = React.useState<any>(null)
   const [dragOverNodeKey, setDragOverNodeKey] = React.useState<any>(null)
 
+  const isSearching = React.useMemo(() => typeof filterTreeNode === 'function' && filterValue, [filterValue])
+
   const [expandedKeys, setExpandedKeys] = useExpand(
     flattenAllData,
     expandedKeysProps,
@@ -179,15 +181,15 @@ const InternalTree = React.forwardRef((props: TreeProps, ref: any): React.Functi
     scrollKey,
     isInit,
     filterTreeNode,
-    filterValue,
+    isSearching,
   )
   const spreadAttrData = React.useMemo(() => {
     return getSpreadAttrData(flattenAllData, expandedKeys)
   }, [flattenAllData, expandedKeys])
 
   const filterData = React.useMemo(() => {
-    return getFilterData(spreadAttrData, filterTreeNode, filterValue)
-  }, [spreadAttrData, filterTreeNode, filterValue])
+    return getFilterData(spreadAttrData, filterTreeNode, isSearching)
+  }, [spreadAttrData, isSearching])
 
   const [viewportHeight] = useViewportHeight(height, listRef)
   const [visibleData] = useVisibleDataMemo(virtual, filterData, viewportHeight, estimatedItemSize, start)

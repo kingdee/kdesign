@@ -10,16 +10,24 @@ const DRAG_OFFSET = 0.3
  * @param level
  * @param pos
  */
-export const flattenAll = (treeData: any[], newTreeData: TreeNodeData[] = [], level = 0, pos?: string) => {
+export const flattenAll = (
+  treeData: any[],
+  newTreeData: TreeNodeData[] = [],
+  level = 0,
+  pos?: string,
+  parent: any = null,
+) => {
   treeData &&
     treeData.forEach((item, index) => {
       const { children, title, key, ...others } = item
+      item.parent = parent
       const _pos = pos ? `${pos}-${index}` : `${index}`
       const hasChildNode = children && children instanceof Array && children.length > 0
-      newTreeData.push({ title, key, pos: _pos, hasChildNode, level, ...others })
+      const flattenNode: any = { title, key, pos: _pos, hasChildNode, level, parent, ...others }
+      newTreeData.push(flattenNode)
       let _level = level
       _level++
-      flattenAll(children, newTreeData, _level, _pos)
+      flattenAll(children, newTreeData, _level, _pos, flattenNode)
     })
   return newTreeData
 }
@@ -58,17 +66,25 @@ const isAllParentExpand = (data: any[], pos: string) => {
 }
 
 export const getAllFilterKeys = (data: any[], filterTreeNode: FunctionConstructor): any[] => {
-  const filterData = data.filter((item: any) => filterTreeNode?.(item))
-  const filterKeys = getAllNodeKeys(filterData)
   const allFilterKeys: any[] = []
-  filterKeys.map((key) => allFilterKeys.push(...getAllParentKeys(data, key), key))
+  data
+    .filter((item: any) => filterTreeNode?.(item))
+    .forEach((item) => {
+      let node = { ...item }
+      while (node) {
+        allFilterKeys.push(node.key)
+        node = node.parent
+      }
+    })
   return [...new Set(allFilterKeys)]
 }
 
-export const getFilterData = (data: any[], filterTreeNode: FunctionConstructor, filterValue: string) => {
+export const getFilterData = (data: any[], filterTreeNode: FunctionConstructor, isSearching: boolean) => {
   let filterData = data
-  if (typeof filterTreeNode === 'function' && filterValue) {
-    filterData = filterData.filter((item) => getAllFilterKeys(filterData, filterTreeNode).includes(item.key))
+  let allFilterKeys: any = null
+  if (isSearching) {
+    allFilterKeys = getAllFilterKeys(filterData, filterTreeNode)
+    filterData = filterData.filter((item) => allFilterKeys.includes(item.key))
   }
   const newData: any[] = []
   filterData.forEach((item) => {
@@ -378,7 +394,7 @@ export const getInitExpandedKeys = (
   defaultExpandParent: boolean,
   expandScrollkeys: string[] = [],
   filterTreeNode: FunctionConstructor,
-  filterValue: string,
+  isSearching: boolean,
 ) => {
   let keys: string[] = expandedKeys?.concat(expandScrollkeys) || defaultExpandedKeys?.concat(expandScrollkeys) || []
 
@@ -400,7 +416,7 @@ export const getInitExpandedKeys = (
     }
   }
 
-  if (typeof filterTreeNode === 'function' && filterValue) {
+  if (isSearching) {
     keys = [...keys, ...getAllFilterKeys(data, filterTreeNode)]
   }
   return Array.from(new Set([...keys]))
