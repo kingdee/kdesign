@@ -59,7 +59,7 @@ const Dropdown = React.forwardRef<unknown, DropDownProps>((props, ref) => {
   }, [props.visible])
 
   const child = React.cloneElement(React.Children.only(children), {
-    ref,
+    ref: children.ref || ref,
     className: classNames(`${prefixCls}-trigger`, children.props.className, { disabled }),
   })
 
