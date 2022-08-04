@@ -1,7 +1,6 @@
 import React from 'react'
 import './index.less'
-import KindeeLogo from './../../../static/image/kingdee.png'
-import KingdeeWhiteLogo from './../../../static/image/kingdee_white.png'
+import KindeeLogo from './../../../static/image/kingdee.svg'
 import KuiWechat from './../../../static/image/kui_wechat.jpg'
 
 const Footer = (props: any) => {
@@ -11,7 +10,7 @@ const Footer = (props: any) => {
       <div className="footer-top">
         <div>
           <div className="footer-logo">
-            <img src={isTransparent ? KingdeeWhiteLogo : KindeeLogo} alt="" />
+            <img src={KindeeLogo} alt="" />
           </div>
           <div className="footer-main">
             <div className="footer-main-item">
@@ -41,7 +40,7 @@ const Footer = (props: any) => {
           </div>
         </div>
         <div>
-          <img src={KuiWechat} alt="" />
+          <img src={'https://kui.kingdee.com/assets/image/kd_qr.png' || KuiWechat} alt="" />
           <div>欢迎加入KDesign微信交流群</div>
         </div>
       </div>
