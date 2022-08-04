@@ -78,7 +78,7 @@ const Dropdown = React.forwardRef<unknown, DropDownProps>((props, ref) => {
   const handleItemClick = (e: React.MouseEvent) => {
     const item = findItem(e.target)
     const key = item?.dataset?.key
-    if (item.className.indexOf('disabled') === -1 && key) {
+    if (item?.className.indexOf('disabled') === -1 && key) {
       if (isMenu && menu.props.onClick) {
         menu.props.onClick(key)
       } else if (onItemClick) {

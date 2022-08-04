@@ -46,24 +46,19 @@ const menus = [
     ],
   },
   {
-    name: '前端组件',
+    name: '开发',
     children: [
       {
-        name: 'React',
+        name: 'React 组件库',
         url: 'https://react.kingdee.design',
       },
       {
-        name: 'Charts',
-        url: 'https://charts.kingdee.design/tutorial',
-      },
-    ],
-  },
-  {
-    name: '生态产品',
-    children: [
-      {
-        name: 'Pro',
+        name: 'React Pro',
         url: 'https://pro.kingdee.design',
+      },
+      {
+        name: '可视化图表组件库',
+        url: 'https://charts.kingdee.design/tutorial',
       },
     ],
   },
