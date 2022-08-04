@@ -4,6 +4,38 @@ title: 更新日志
 hiddenAnchor: true
 ---
 
+## [1.5.4](https://github.com/kdcloudone/kdesign/compare/v1.5.3...v1.5.4)
+`2022-08-04`
+* drawer
+  * 修复纵向抽屉无法设置高度问题
+* dropdown
+  * dropdown组件item里面包含标签时点击无响应的bug
+  * 子元素的ref获取不到的bug
+* filter
+  * 修复Filter组件demo展示问题
+* radio
+  * 修复单选组合禁用状态样式问题
+* select
+  * 解决allowClear模式下 value为0时清空按钮被渲染为0的问题
+* stepper
+  * 修复步进器禁用状态无效问题
+* tabs
+  * 修复页签border宽度问题
+* tooltip
+  * 组件-子组件的ref获取不到bug
+* tree
+  * 调整demo展开收起图标
+  * 增加节点过滤功能api
+* icon
+  * 新增展开收起图标
+* 更改统一导航菜单
+* 更新footer的图片
+
+## [1.5.3](https://github.com/kdcloudone/kdesign/compare/v1.5.2...v1.5.3)
+`2022-07-29`
+* input
+  * 修复禁用状态下样式问题
+
 ## [1.5.2](https://github.com/kdcloudone/kdesign/compare/v1.5.1...v1.5.2)
 `2022-07-28`
 * anchor
