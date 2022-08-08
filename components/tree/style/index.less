@@ -35,13 +35,8 @@
   &-item {
     display: flex;
     align-items: center;
-  }
-  &-item-hover {
-    transition: background-color @tree-transition-duration, color @tree-transition-duration;
-  }
-  &-item-hover:hover {
-    background-color: @tree-node-hover-bg-color;
-    cursor: pointer;
+
+    .node-hover()
   }
 
   &-indent {
@@ -70,6 +65,11 @@
     align-items: center;
     font-size: @tree-node-icon-size;
     color: @tree-node-icon-color-text;
+
+    &-hover:hover {
+      background-color: @tree-node-hover-bg-color;
+      cursor: pointer;
+    }
   }
   &-icon-hidden {
     height: @tree-node-icon-height;
@@ -99,22 +99,19 @@
     display: flex;
     align-items: center;
     height: 100%;
+    padding-left: 4px;
+
+    .node-hover();
+
+    &-selected {
+      .node-selected()
+    }
   }
   &-title {
     white-space: nowrap;
-    margin-left: 6px;
   }
   &-selected {
-    background-color: @tree-node-checked-bg-color !important;
-    color: @tree-node-checked-text-color;
-
-    .@{tree-node-prefix-cls}-title {
-      color: @tree-node-checked-text-color;
-    }
-
-    .@{tree-node-prefix-cls}-icon {
-      color: @tree-node-checked-text-color;
-    }
+    .node-selected()
   }
 
   &-draggabled {

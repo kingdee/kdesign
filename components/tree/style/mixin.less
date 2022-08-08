@@ -1,1 +1,25 @@
 @import './token.less';
+
+.node-hover {
+  &-hover {
+    transition: background-color @tree-transition-duration, color @tree-transition-duration;
+
+    &:hover {
+      background-color: @tree-node-hover-bg-color;
+      cursor: pointer;
+    }
+  }
+}
+
+.node-selected {
+  background-color: @tree-node-checked-bg-color !important;
+  color: @tree-node-checked-text-color;
+
+  .@{tree-node-prefix-cls}-title {
+    color: @tree-node-checked-text-color;
+  }
+
+  .@{tree-node-prefix-cls}-icon {
+    color: @tree-node-checked-text-color;
+  }
+}

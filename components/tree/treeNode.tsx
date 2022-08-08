@@ -1,4 +1,4 @@
-import React, { MouseEvent, useContext, useEffect } from 'react'
+import React, { MouseEvent, useCallback, useContext, useEffect } from 'react'
 import classNames from 'classnames'
 import ConfigContext from '../config-provider/ConfigContext'
 import { getCompProps } from '../_utils'
@@ -80,6 +80,7 @@ const TreeNode = React.forwardRef<unknown, TreeNodeProps>((props, ref) => {
     indeterminate,
     estimatedItemSize,
     dragOver,
+    expandOnClickNode,
     onExpand,
     onCheck,
     onDragStart,
@@ -205,7 +206,12 @@ const TreeNode = React.forwardRef<unknown, TreeNodeProps>((props, ref) => {
       // }
       if (Array.isArray(switcherIcon) && switcherIcon.length === 2) {
         return (
-          <span className={classNames(`${treeNodePrefixCls}-icon`)}>
+          <span
+            className={classNames(`${treeNodePrefixCls}-icon`, {
+              [`${treeNodePrefixCls}-icon-hover`]: !expandOnClickNode,
+            })}
+            onClick={expandOnClickNode ? undefined : handleExpandIconClick}
+          >
             {expandState ? renderIcon(switcherIcon[1]) : renderIcon(switcherIcon[0])}
           </span>
         )
@@ -215,7 +221,9 @@ const TreeNode = React.forwardRef<unknown, TreeNodeProps>((props, ref) => {
           className={classNames(`${treeNodePrefixCls}-icon`, {
             [`${treeNodePrefixCls}-animation-expand`]: expandState,
             [`${treeNodePrefixCls}-animation-collapse`]: !expandState,
+            [`${treeNodePrefixCls}-icon-hover`]: !expandOnClickNode,
           })}
+          onClick={expandOnClickNode ? undefined : handleExpandIconClick}
         >
           {renderIcon(switcherIcon || <Icon type="arrow-right-solid" />)}
         </span>
@@ -270,7 +278,14 @@ const TreeNode = React.forwardRef<unknown, TreeNodeProps>((props, ref) => {
           {indent()}
           {renderExpandIcon()}
           {showIcon && renderNodeIcon()}
-          <div className={`${treeNodePrefixCls}-title-wrap`}>
+          <div
+            className={classNames({
+              [`${treeNodePrefixCls}-title-wrap`]: true,
+              [`${treeNodePrefixCls}-title-wrap-hover`]: !expandOnClickNode && !disabled,
+              [`${treeNodePrefixCls}-title-wrap-selected`]: selected && selectable && !disabled && !expandOnClickNode,
+            })}
+            onClick={expandOnClickNode ? undefined : handleClick}
+          >
             {checkable ? (
               <Checkbox
                 onChange={handleOnchange}
@@ -317,14 +332,22 @@ const TreeNode = React.forwardRef<unknown, TreeNodeProps>((props, ref) => {
   )
   React.useImperativeHandle(ref, () => ({ selectNode: handleSelect }))
 
+  const handleExpandIconClick = useCallback(
+    (e?: MouseEvent) => {
+      e?.stopPropagation()
+      setExpandState(!expandState)
+      onExpand && onExpand(nodeKey, !expandState, nodeData)
+    },
+    [expandState, nodeData, nodeKey, onExpand, setExpandState],
+  )
+
   const handleClick = React.useCallback(
     (e: MouseEvent) => {
       e.stopPropagation()
-      setExpandState(!expandState)
-      onExpand && onExpand(nodeKey, !expandState, nodeData)
+      expandOnClickNode && handleExpandIconClick()
       handleSelect(e)
     },
-    [setExpandState, expandState, onExpand, nodeKey, nodeData, handleSelect],
+    [expandOnClickNode, handleExpandIconClick, handleSelect],
   )
 
   const handleDragStart = React.useCallback(
@@ -396,15 +419,15 @@ const TreeNode = React.forwardRef<unknown, TreeNodeProps>((props, ref) => {
     <div
       className={classNames(
         `${treeNodePrefixCls}-item`,
-        { [`${treeNodePrefixCls}-item-hover`]: !disabled && selectable },
-        { [`${treeNodePrefixCls}-selected`]: selected && selectable && !disabled },
+        { [`${treeNodePrefixCls}-item-hover`]: !disabled && selectable && expandOnClickNode },
+        { [`${treeNodePrefixCls}-selected`]: selected && selectable && !disabled && expandOnClickNode },
         { [`${treeNodePrefixCls}-disabled`]: disabled },
         { [`${treeNodePrefixCls}-opened`]: expandState },
         `${treeNodePrefixCls}-item-${nodeKey}`,
         className,
       )}
       style={{ height: `${estimatedItemSize}px`, ...style }}
-      onClick={handleClick}
+      onClick={expandOnClickNode ? handleClick : undefined}
     >
       {renderNode()}
     </div>
