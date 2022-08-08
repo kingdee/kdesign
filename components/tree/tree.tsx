@@ -64,6 +64,7 @@ export interface TreeProps {
   setTreeNodeClassName?: (node: any) => string
   setTreeNodeStyle?: (node: any) => Map<string, string>
   estimatedItemSize?: number
+  expandOnClickNode?: boolean
 }
 
 export type TreeNodeData = {
@@ -127,6 +128,7 @@ const InternalTree = React.forwardRef((props: TreeProps, ref: any): React.Functi
     style,
     filterTreeNode,
     filterValue,
+    expandOnClickNode,
   } = TreeProps
 
   const treePrefixCls = getPrefixCls!(prefixCls, 'tree', customPrefixcls) // 树样式前缀
@@ -402,6 +404,7 @@ const InternalTree = React.forwardRef((props: TreeProps, ref: any): React.Functi
             item.getDragNode = getDragNode
             item.setDragNode = setDragNode
             item.dragOver = dragOverNodeKey === item.key && dropPosition === 0
+            item.expandOnClickNode = expandOnClickNode
             return <TreeNode {...item} key={item.key} ref={treeNodeRef} />
           })}
       </div>

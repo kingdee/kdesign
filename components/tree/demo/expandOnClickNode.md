@@ -1,17 +1,18 @@
 ---
-order: 9
-title: 节点过滤
+order: 7
+title: 缩进模式可配置
 ---
+
+树控件点击下拉按钮展开子节点内容；点击菜单行选中该节点，可根据需要进行配置
 
 ```jsx
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { Tree, Input } from '@kdcloudjs/kdesign'
+import { Tree } from '@kdcloudjs/kdesign'
 
 function Demo() {
-  const [expandedKeys, setExpandedKeys] = React.useState([])
+  const [expandedKeys, setExpandedKeys] = React.useState(['0-1', '0', '1'])
   const [selectedKeys, setSelectedKeys] = React.useState(['1-1'])
-  const [value, setValue] = React.useState('')
   const data = [
     {
       key: '0',
@@ -84,26 +85,18 @@ function Demo() {
       children: [],
     },
   ]
-  const onSelect = (selectedKeys) => {
+  const onSelect = (selectedKeys, info) => {
     setSelectedKeys(selectedKeys)
     console.log('onSelect', selectedKeys)
   }
 
-  const onExpand = (expandedKeys) => {
+  const onExpand = (expandedKeys, info) => {
     console.log('onExpand', expandedKeys)
     setExpandedKeys(expandedKeys)
   }
 
-  const filterTreeNode = (node) => {
-    if (node.title.includes(value)) {
-      return true
-    }
-    return false
-  }
-
   return (
     <div style={{ width: '300px', height: '300px' }}>
-      <Input placeholder="输入关键字进行过滤" onChange={(e)=> setValue(e.target.value)} />
       <Tree
         name="Tree"
         treeData={data}
@@ -111,9 +104,8 @@ function Demo() {
         onSelect={onSelect}
         selectedKeys={selectedKeys}
         onExpand={onExpand}
-        filterTreeNode={filterTreeNode}
-        filterValue={value}
         virtual={false}
+        expandOnClickNode={false}
       />
     </div>
   )

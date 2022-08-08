@@ -28,6 +28,7 @@ subtitle: 树控件
 | disabled | 禁用树，开启后所有节点将不能选中和拖拽 | boolean | `false` | `true` `false` | 1.0.0 |
 | draggable | 设置节点可拖拽 | boolean | `false` | `true` `false` | 1.0.0 |
 | expandedKeys | （受控）展开指定的树节点 | string[] | - | - | 1.0.0 |
+| expandOnClickNode | 是否在点击节点的时候展开或者收缩节点， 默认值为 true，如果为 false，则只有点箭头图标的时候才会展开或者收缩节点 | boolean | `true` | `true` `false` | 1.5.5 |
 | filterTreeNode | 对树节点进行筛选时执行的方法，返回 true 表示这个节点可以显示，返回 false 则表示这个节点会被隐藏 | function(node) | - | - | 1.5.3 |
 | filterValue | 节点过滤关键字 | string | - | - | 1.5.3 |
 | height | 设置虚拟滚动容器高度 | number | - | - | 1.0.0 |
@@ -83,7 +84,7 @@ subtitle: 树控件
 | font | --kd-c-tree-font-size | --kd-g-font-size-small | 12px |
 |  | --kd-c-tree-node-icon-font-size | - | 16px |
 | motion | --kd-c-tree-motion-duration | --kd-g-duration | 0.3s |
-| sizing | --kd-c-tree-expand-icon-sizing-height | - | 22px |
-|  | --kd-c-tree-expand-icon-sizing-width | - | 22px |
+| sizing | --kd-c-tree-expand-icon-sizing-height | - | 16px |
+|  | --kd-c-tree-expand-icon-sizing-width | - | 16px |
 |  | --kd-c-tree-node-icon-sizing-height | - | 20px |
 |  | --kd-c-tree-node-icon-sizing-width | - | 20px |
