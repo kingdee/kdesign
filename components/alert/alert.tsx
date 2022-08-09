@@ -12,7 +12,7 @@ export const AlertTypes = tuple('success', 'info', 'warning', 'error')
 export type AlertType = typeof AlertTypes[number]
 const IconTypes = tuple('right-solid', 'notice', 'warning-solid', 'warning-solid')
 type IconType = typeof IconTypes[number]
-type Destination = 'bg' | 'font'
+type Destination = 'bg' | 'border' | 'icon'
 type BannerOffsetType = [number, number]
 export const allBannerAlertPortals: Map<string, HTMLElement> = new Map()
 const allBannerAlertPortalsContainer = document.querySelector('body')!
@@ -180,10 +180,14 @@ const Alert: React.FC<IAlertProps> = (props: IAlertProps): ReactElement | React.
   const getAlertColorType = (mode: Destination): string => {
     return `alert-${type}-${mode}-color`
   }
-  const iconNode: ReactNode = <div className={`${alertPrefixCls}-icon`}>{icon || <Icon type={alertIconType} />}</div>
+  const iconNode: ReactNode = (
+    <div className={classNames(`${alertPrefixCls}-icon`, getAlertColorType('icon'))}>
+      {icon || <Icon type={alertIconType} />}
+    </div>
+  )
   const AlertComp: React.ReactElement = (
     <div
-      className={classNames(alertClasses, getAlertColorType('bg'), getAlertColorType('font'))}
+      className={classNames(alertClasses, getAlertColorType('bg'), getAlertColorType('border'))}
       {...events}
       ref={alertRef}
       // style={

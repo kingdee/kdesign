@@ -181,7 +181,7 @@ describe('Alert', () => {
         <Alert delayOffTime={0}></Alert>
       </ConfigProvider>,
     )
-    expect(wrapper.find('.kd-alert-container')).toHaveClassName('.alert-success-bg-color.alert-success-font-color')
+    expect(wrapper.find('.kd-alert-container')).toHaveClassName('.alert-success-bg-color.alert-success-border-color')
   })
 
   it('test click', () => {

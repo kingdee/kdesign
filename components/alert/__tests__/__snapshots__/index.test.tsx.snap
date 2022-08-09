@@ -2,7 +2,7 @@
 
 exports[`Alert renders correctly 1`] = `
 <div
-  class="kd-alert kd-alert-leave kd-alert-container alert-warning-bg-color alert-warning-font-color"
+  class="kd-alert kd-alert-leave kd-alert-container alert-warning-bg-color alert-warning-border-color"
 >
   <div
     class="kd-alert-message kd-alert-without-icon-message"
@@ -12,7 +12,7 @@ exports[`Alert renders correctly 1`] = `
 
 exports[`Alert renders correctly 2`] = `
 <div
-  class="kd-alert kd-alert-leave kd-alert-container alert-success-bg-color alert-success-font-color"
+  class="kd-alert kd-alert-leave kd-alert-container alert-success-bg-color alert-success-border-color"
 >
   <div
     class="kd-alert-message kd-alert-without-icon-message"
@@ -22,7 +22,7 @@ exports[`Alert renders correctly 2`] = `
 
 exports[`Alert renders correctly 3`] = `
 <div
-  class="kd-alert kd-alert-leave kd-alert-container alert-info-bg-color alert-info-font-color"
+  class="kd-alert kd-alert-leave kd-alert-container alert-info-bg-color alert-info-border-color"
 >
   <div
     class="kd-alert-message kd-alert-without-icon-message"
@@ -32,7 +32,7 @@ exports[`Alert renders correctly 3`] = `
 
 exports[`Alert renders correctly 4`] = `
 <div
-  class="kd-alert kd-alert-leave kd-alert-container alert-warning-bg-color alert-warning-font-color"
+  class="kd-alert kd-alert-leave kd-alert-container alert-warning-bg-color alert-warning-border-color"
 >
   <div
     class="kd-alert-message kd-alert-without-icon-message"
@@ -42,7 +42,7 @@ exports[`Alert renders correctly 4`] = `
 
 exports[`Alert renders correctly 5`] = `
 <div
-  class="kd-alert kd-alert-leave kd-alert-container alert-error-bg-color alert-error-font-color"
+  class="kd-alert kd-alert-leave kd-alert-container alert-error-bg-color alert-error-border-color"
 >
   <div
     class="kd-alert-message kd-alert-without-icon-message"
@@ -52,10 +52,10 @@ exports[`Alert renders correctly 5`] = `
 
 exports[`Alert should showIcon & closable use right 1`] = `
 <div
-  class="kd-alert kd-alert-closable kd-alert-leave kd-alert-container alert-success-bg-color alert-success-font-color"
+  class="kd-alert kd-alert-closable kd-alert-leave kd-alert-container alert-success-bg-color alert-success-border-color"
 >
   <div
-    class="kd-alert-icon"
+    class="kd-alert-icon alert-success-icon-color"
   >
     <i
       class="kdicon kdicon-right-solid"
@@ -69,10 +69,10 @@ exports[`Alert should showIcon & closable use right 1`] = `
 
 exports[`Alert should showIcon & closable use right 2`] = `
 <div
-  class="kd-alert kd-alert-leave kd-alert-container alert-success-bg-color alert-success-font-color"
+  class="kd-alert kd-alert-leave kd-alert-container alert-success-bg-color alert-success-border-color"
 >
   <div
-    class="kd-alert-icon"
+    class="kd-alert-icon alert-success-icon-color"
   >
     <i
       class="kdicon kdicon-right-solid"
@@ -86,7 +86,7 @@ exports[`Alert should showIcon & closable use right 2`] = `
 
 exports[`Alert should showIcon & closable use right 3`] = `
 <div
-  class="kd-alert kd-alert-closable kd-alert-leave kd-alert-container alert-success-bg-color alert-success-font-color"
+  class="kd-alert kd-alert-closable kd-alert-leave kd-alert-container alert-success-bg-color alert-success-border-color"
 >
   <div
     class="kd-alert-message kd-alert-without-icon-message"
@@ -96,7 +96,7 @@ exports[`Alert should showIcon & closable use right 3`] = `
 
 exports[`Alert should showIcon & closable use right 4`] = `
 <div
-  class="kd-alert kd-alert-leave kd-alert-container alert-success-bg-color alert-success-font-color"
+  class="kd-alert kd-alert-leave kd-alert-container alert-success-bg-color alert-success-border-color"
 >
   <div
     class="kd-alert-message kd-alert-without-icon-message"
