@@ -37,7 +37,7 @@
   opacity: 1;
   visibility: visible;
   z-index: @z-index-popper;
-  background-color: @color-background;
+  background-color: @dropdown-color-background;
   border-radius: @radius-border;
   min-width: @dropdown-menu-min-width;
   max-width: @dropdown-menu-max-width;
@@ -49,7 +49,7 @@
   }
 
   // 箭头样式
-  .popperArrow(@color-background, @dropdown-item-horizontal-gap, @dropdown-box-shadow-blur);
+  .popperArrow(@dropdown-color-background, @dropdown-item-horizontal-gap, @dropdown-box-shadow-blur);
 
   &-menu {
     max-height: @dropdown-menu-max-height;
@@ -80,11 +80,10 @@
 
       &:not(.disabled):active,
       &:not(.disabled).selected {
-        color: @color-theme;
-        background-color: @dropdown-item-active-bg-color;
+        color: @dropdown-item-active-color;
 
         > a {
-          color: @color-theme;
+          color: @dropdown-item-active-color;
         }
       }
 

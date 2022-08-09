@@ -55,7 +55,7 @@ function Demo() {
                 Right Click on here
               </div>
             ) : (
-              <Button type="ghost" style={{ display: 'block', width: 120, marginBottom: 20 }}>
+              <Button style={{ display: 'block', width: 120, marginBottom: 20 }}>
                 {trigger} me
               </Button>
             )}
