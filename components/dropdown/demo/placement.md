@@ -47,46 +47,46 @@ function Demo() {
     <div className="demo" style={{ width: '350px' }}>
       <div style={{ marginLeft: buttonWidth + 4, whiteSpace: 'nowrap' }}>
         <Dropdown placement="topLeft" menu={menu}>
-          <Button type="ghost" style={buttonStyle}>TL</Button>
+          <Button style={buttonStyle}>TL</Button>
         </Dropdown>
         <Dropdown placement="top" menu={menu}>
-          <Button type="ghost" style={buttonStyle}>Top</Button>
+          <Button style={buttonStyle}>Top</Button>
         </Dropdown>
         <Dropdown placement="topRight" menu={menu}>
-          <Button type="ghost" style={buttonStyle}>TR</Button>
+          <Button style={buttonStyle}>TR</Button>
         </Dropdown>
       </div>
       <div style={{ width: buttonWidth, float: 'left' }}>
         <Dropdown placement="leftTop" menu={menu}>
-          <Button type="ghost" style={buttonStyle}>LT</Button>
+          <Button style={buttonStyle}>LT</Button>
         </Dropdown>
         <Dropdown placement="left" menu={menu}>
-          <Button type="ghost" style={buttonStyle}>Left</Button>
+          <Button style={buttonStyle}>Left</Button>
         </Dropdown>
         <Dropdown placement="leftBottom" menu={menu}>
-          <Button type="ghost" style={buttonStyle}>LB</Button>
+          <Button style={buttonStyle}>LB</Button>
         </Dropdown>
       </div>
       <div style={{ width: buttonWidth, marginLeft: buttonWidth * 4 + 24 }}>
         <Dropdown placement="rightTop" menu={menu}>
-          <Button type="ghost" style={buttonStyle}>RT</Button>
+          <Button style={buttonStyle}>RT</Button>
         </Dropdown>
         <Dropdown placement="right" menu={menu}>
-          <Button type="ghost" style={buttonStyle}>Right</Button>
+          <Button style={buttonStyle}>Right</Button>
         </Dropdown>
         <Dropdown placement="rightBottom" menu={menu}>
-          <Button type="ghost" style={buttonStyle}>RB</Button>
+          <Button style={buttonStyle}>RB</Button>
         </Dropdown>
       </div>
       <div style={{ marginLeft: buttonWidth + 4, clear: 'both', whiteSpace: 'nowrap' }}>
         <Dropdown placement="bottomLeft" menu={menu}>
-          <Button type="ghost" style={buttonStyle}>BL</Button>
+          <Button style={buttonStyle}>BL</Button>
         </Dropdown>
         <Dropdown placement="bottom" menu={menu}>
-          <Button type="ghost" style={buttonStyle}>Bottom</Button>
+          <Button style={buttonStyle}>Bottom</Button>
         </Dropdown>
         <Dropdown placement="bottomRight" menu={menu}>
-          <Button type="ghost" style={buttonStyle}>BR</Button>
+          <Button style={buttonStyle}>BR</Button>
         </Dropdown>
       </div>
     </div>
