@@ -16,11 +16,18 @@
   @info: @alert-info-bg-color;
 }
 
-.alert-font-type-set() {
-  @success: @alert-success-font-color;
-  @warning: @alert-warning-font-color;
-  @error: @alert-error-font-color;
-  @info: @alert-info-font-color;
+.alert-icon-type-set() {
+  @success: @alert-success-icon-color;
+  @warning: @alert-warning-icon-color;
+  @error: @alert-error-icon-color;
+  @info: @alert-info-icon-color;
+}
+
+.alert-border-type-set() {
+  @success: @alert-success-border-color;
+  @warning: @alert-warning-border-color;
+  @error: @alert-error-border-color;
+  @info: @alert-info-border-color;
 }
 
 @alert-transition-fn: cubic-bezier(0.32, 0.94, 0.6, 1);
@@ -36,9 +43,11 @@
     z-index: @z-index-apex;
     display: none;
     width: 100%;
-    padding: @alert-padding-top @alert-padding-horizontal @alert-padding-bottom;
+    padding: @alert-padding-vertical @alert-padding-horizontal;
     align-items: center;
     transition: display 3s;
+    border-radius: @alert-radius-border;
+    border: 1px solid;
   }
   &-banner-container {
     display: flex;
@@ -50,19 +59,24 @@
   each(.alert-bg-type-set(), {
     .alert-bg-type(@key, @value);
   });
-  each(.alert-font-type-set(), {
-    .alert-font-type(@key, @value);
+  each(.alert-border-type-set(), {
+    .alert-border-type(@key, @value);
   });
   &-icon {
     display: flex;
     cursor: default;
     .icon-center();
+    height: @alert-message-icon-font-size;
     margin-right: @alert-message-icon-margin-right;
     font-size: @alert-message-icon-font-size;
+    each(.alert-icon-type-set(), {
+      .alert-icon-type(@key, @value);
+    });
   }
   &-message {
+    color: @alert-message-color-text;
     font-size: @alert-message-font-size;
-    line-height: 18px;
+    line-height: 16px;
     display: flex;
     flex-grow: 1;
     cursor: default;
@@ -86,10 +100,10 @@
   }
   &-close-icon {
     display: flex;
+    height: @alert-message-icon-font-size;
     margin-left: @alert-close-icon-margin-left;
     color: @alert-close-icon-color;
     font-size: @alert-close-icon-font-size;
-    justify-self: flex-end;
     cursor: pointer;
     &:hover {
       color: @alert-close-icon-color-hover;
