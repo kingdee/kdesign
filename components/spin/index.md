@@ -21,11 +21,15 @@ subtitle: 加载中
 
 | 分类 | 组件token | 全局token | 默认值 |
 | --- | --- | --- | --- |
-| color | --kd-c-spin-dot-color-backgroung-first | --kd-g-color-logo-1 | #2386ee |
-|  | --kd-c-spin-dot-color-backgroung-second | --kd-g-color-logo-2 | #00ccfe |
-|  | --kd-c-spin-dot-color-backgroung-third | --kd-g-color-logo-3 | #05c8c8 |
+| color | --kd-c-spin-dot-color-backgroung-first | --kd-g-color-logo-1 | #2486ee |
+|  | --kd-c-spin-dot-color-backgroung-second | --kd-g-color-logo-2 | #02ccfe |
+|  | --kd-c-spin-dot-color-backgroung-third | --kd-g-color-logo-3 | #05c8c7 |
 |  | --kd-c-spin-dot-color-backgroung-fourth | --kd-g-color-logo-4 | #a06eff |
-|  | --kd-c-spin-component-dot-color-border | - | #e1e1e1 |
+|  | --kd-c-spin-component-dot-color-border | - | #ebebeb |
 |  | --kd-c-spin-component-dot-item-color-border | --kd-g-color-theme | #5582f3 |
-| sizing | --kd-c-spin-page-sizing | - | 15px |
-|  | --kd-c-spin-dot-container-sizing | - | 5px |
+| sizing | --kd-c-spin-page-dot-item-sizing-square | - | 16px |
+|  | --kd-c-spin-page-dot-spin-sizing-square | - | 48px |
+|  | --kd-c-spin-dot-container-sizing-square | - | 5px |
+|  | --kd-c-spin-dot-component-sizing-square | - | 24px |
+|  | --kd-c-spin-dot-component-sizing-border | - | 2px |
+| spacing | --kd-c-spin-page-dot-spin-spacing-padding | - | 4px |

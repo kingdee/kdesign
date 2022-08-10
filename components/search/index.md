@@ -91,9 +91,9 @@ subtitle: 搜索
 |  | --kd-c-search-color-text-primary | --kd-g-color-text-primary | #212121 |
 |  | --kd-c-search-color-text-secondary | --kd-g-color-text-secondary | #666 |
 |  | --kd-c-search-color-text-third | --kd-g-color-text-third | #999 |
-|  | --kd-c-search-dot-color-first | --kd-g-color-logo-1 | #2386ee |
-|  | --kd-c-search-dot-color-second | --kd-g-color-logo-2 | #00ccfe |
-|  | --kd-c-search-dot-color-third | --kd-g-color-logo-3 | #05c8c8 |
+|  | --kd-c-search-dot-color-first | --kd-g-color-logo-1 | #2486ee |
+|  | --kd-c-search-dot-color-second | --kd-g-color-logo-2 | #02ccfe |
+|  | --kd-c-search-dot-color-third | --kd-g-color-logo-3 | #05c8c7 |
 |  | --kd-c-search-dot-color-fourth | --kd-g-color-logo-4 | #a06eff |
 |  | --kd-c-search-placeholder-color-text | - | #B2B2B2 |
 |  | --kd-c-search-selected-tags-del-color-background-hover | - | #999999 |
