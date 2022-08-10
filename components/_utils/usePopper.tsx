@@ -435,6 +435,8 @@ function usePopper(locatorElement: React.ReactElement, popperElement: React.Reac
     onVisibleChange && onVisibleChange(false)
   }, [onVisibleChange, props.visible])
 
+  const matchTrigger = (words: TriggerType) => (Array.isArray(trigger) ? trigger.includes(words) : trigger === words)
+
   useEffect(() => {
     if (exist && visible) {
       let mouseleaveTimer: number
@@ -449,13 +451,13 @@ function usePopper(locatorElement: React.ReactElement, popperElement: React.Reac
         const { clientX: X, clientY: Y } = e
         const inTriggerRect = X > left - 2 && X < right + 2 && Y > top - 2 && Y < bottom + 2
         const inPopperRect = X > popperRect.left && X < popperRect.right && Y > popperRect.top && Y < popperRect.bottom
-        const ableArea = evType === 'contextmenu' ? inPopperRect : inTriggerRect || inPopperRect
+        const ableArea = matchTrigger('contextMenu') ? inPopperRect : inTriggerRect || inPopperRect
 
         if (ableArea) {
           mouseleaveTimer && clearTimeout(mouseleaveTimer)
-          evType === 'focus' && triggerNode.focus()
+          matchTrigger('focus') && triggerNode.focus()
         } else {
-          evType === 'mouseenter'
+          matchTrigger('hover')
             ? (mouseleaveTimer = window.setTimeout(hidePopper, mouseLeaveDelay * 1000))
             : hidePopper()
         }
@@ -464,16 +466,20 @@ function usePopper(locatorElement: React.ReactElement, popperElement: React.Reac
       const debounceHidePopper = debounce(handleHidePopper, 10, { leading: true })
 
       const mapEvent: NormalProps = {
-        mouseenter: 'mousemove',
-        mouseup: 'mousedown',
+        hover: 'mousemove',
+        click: 'mousedown',
         focus: 'mousedown',
-        contextmenu: 'mousedown',
+        contextMenu: 'mousedown',
       }
 
-      document.addEventListener(mapEvent[evType], debounceHidePopper)
+      Array.isArray(trigger)
+        ? trigger.forEach((action: string) => document.addEventListener(mapEvent[action], debounceHidePopper))
+        : document.addEventListener(mapEvent[trigger], debounceHidePopper)
 
       return () => {
-        document.removeEventListener(mapEvent[evType], debounceHidePopper)
+        Array.isArray(trigger)
+          ? trigger.forEach((action: string) => document.removeEventListener(mapEvent[action], debounceHidePopper))
+          : document.removeEventListener(mapEvent[trigger], debounceHidePopper)
       }
     }
   }, [currentPlacement, evType, exist, getTriggerElement, hidePopper, locatorRef, mouseLeaveDelay, popperRef, visible])
