@@ -4,6 +4,23 @@ title: 更新日志
 hiddenAnchor: true
 ---
 
+## [1.5.5](https://github.com/kdcloudone/kdesign/compare/v1.5.4...v1.5.5)
+`2022-08-11`
+* dropdown
+  * 修复设置defaultVisible后下拉菜单无法关闭的问题
+  * 修复视觉走查问题点
+* radio
+  * BT-00876996 修复disabled状态下的鼠标悬浮手势
+* spin
+  * 修复视觉走查问题点
+* timeline
+  * 修复视觉走查问题点
+* alert
+  * 修复视觉走查问题点
+* tree
+  * 新增缩进模式配置
+  * 增加异步加载功能
+
 ## [1.5.4](https://github.com/kdcloudone/kdesign/compare/v1.5.3...v1.5.4)
 `2022-08-04`
 * drawer
