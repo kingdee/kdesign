@@ -304,7 +304,7 @@ const compDefaultProps = {
       return <Icon type="arrow-right-solid" />
     },
     estimatedItemSize: 32,
-    expandOnClickNode: false,
+    expandOnClickNode: true,
   },
   TreeNode: {},
   ToolTip: {

@@ -1,5 +1,6 @@
 import React, { useContext, ReactNode, useCallback, useEffect } from 'react'
 import classNames from 'classnames'
+import cloneDeep from 'lodash/cloneDeep'
 import ConfigContext from '../config-provider/ConfigContext'
 import { getCompProps } from '../_utils'
 import TreeNode from './treeNode'
@@ -52,6 +53,7 @@ export interface TreeProps {
   virtual?: boolean
   scrollToKey?: string
   selectedKeys?: string[]
+  loadData?: () => void
   onCheck?: (checkedKeys: string[], { checked, node, event, halfCheckedKeys }: any) => void
   onExpand?: (expandedKeys: string[], { expanded, node }: any) => void
   onSelect?: ({ checked, node, event }: any) => void
@@ -94,7 +96,6 @@ const InternalTree = React.forwardRef((props: TreeProps, ref: any): React.Functi
     prefixCls: customPrefixcls,
     treeData,
     virtual,
-    // showLine,
     showIcon,
     switcherIcon,
     icon,
@@ -129,6 +130,7 @@ const InternalTree = React.forwardRef((props: TreeProps, ref: any): React.Functi
     filterTreeNode,
     filterValue,
     expandOnClickNode,
+    loadData,
   } = TreeProps
 
   const treePrefixCls = getPrefixCls!(prefixCls, 'tree', customPrefixcls) // 树样式前缀
@@ -165,6 +167,8 @@ const InternalTree = React.forwardRef((props: TreeProps, ref: any): React.Functi
   const [isInit, setIsInit] = React.useState(true)
   const [dropPosition, setDropPosition] = React.useState<any>(null)
   const [dragOverNodeKey, setDragOverNodeKey] = React.useState<any>(null)
+  const [loadedKeys, setLoadedKeys] = React.useState<Set<string>>(new Set())
+  const [loadingKeys, setLoadingKeys] = React.useState<Set<string>>(new Set())
 
   const isSearching = React.useMemo(() => typeof filterTreeNode === 'function' && filterValue, [filterValue])
 
@@ -216,14 +220,46 @@ const InternalTree = React.forwardRef((props: TreeProps, ref: any): React.Functi
     }
   }, [listRef, scrollRef, virtual, estimatedItemSize])
 
+  const handleNodeLoad = useCallback(
+    (loadedKeys: Set<string>, loadingKeys: Set<string>, data: any) => {
+      const { key } = data
+      if (!loadData || loadedKeys.has(key) || loadingKeys.has(key)) {
+        return
+      }
+      setLoadingKeys((prevLoadingKeys) => new Set([...prevLoadingKeys, key]))
+      loadData(data)
+        .then(() => {
+          setLoadedKeys((prevState) => new Set([...prevState, key]))
+          setLoadingKeys((prevState) => {
+            const prevLoadingKeys = cloneDeep(prevState)
+            prevLoadingKeys.delete(key)
+            return prevLoadingKeys
+          })
+        })
+        .catch((e: any) => {
+          setLoadingKeys((prevState) => {
+            const prevLoadingKeys = cloneDeep(prevState)
+            prevLoadingKeys.delete(key)
+            return prevLoadingKeys
+          })
+          setExpandedKeys((preExpandedKeys) => delKey([...preExpandedKeys], [key]))
+          throw e
+        })
+    },
+    [loadData, setExpandedKeys],
+  )
+
   const handleExpand = React.useCallback(
-    (key: string, value: boolean, node: any) => {
-      const newExpandedKeys = value ? addKeys(expandedKeys, [key]) : delKey(expandedKeys, [key])
-      onExpand && onExpand(newExpandedKeys, { node, expanded: value })
+    (key: string, expanded: boolean, node: any) => {
+      const newExpandedKeys = expanded ? addKeys(expandedKeys, [key]) : delKey(expandedKeys, [key])
+      onExpand && onExpand(newExpandedKeys, { node, expanded: expanded })
       setScrollKey('')
       setIsInit(false)
+      if (expanded && loadData) {
+        handleNodeLoad(loadedKeys, loadingKeys, node)
+      }
     },
-    [expandedKeys, onExpand],
+    [expandedKeys, onExpand, loadData, handleNodeLoad, loadedKeys, loadingKeys],
   )
 
   const handleCheck = React.useCallback(
@@ -374,7 +410,6 @@ const InternalTree = React.forwardRef((props: TreeProps, ref: any): React.Functi
       <div className={treeRootClassName} ref={listRef as any}>
         {visibleData &&
           visibleData.map((item: any) => {
-            // const props: any = {}
             const checked = getChecked(checkedKeys, item.key)
             const indeterminate = getHalfChecked(halfCheckedKeys, item.key)
             item.nodeKey = item.key
@@ -390,7 +425,6 @@ const InternalTree = React.forwardRef((props: TreeProps, ref: any): React.Functi
             item.checked = checked
             item.selected = getSelected(selectedKeys, item.key)
             item.indeterminate = indeterminate
-            // item.showLine = showLine
             item.disabled = getDisabled(disabled, item.disabled)
             item.showIcon = showIcon || false
             item.checkable = getCheckable(checkable, item.checkable) // 哪个优先
@@ -405,6 +439,8 @@ const InternalTree = React.forwardRef((props: TreeProps, ref: any): React.Functi
             item.setDragNode = setDragNode
             item.dragOver = dragOverNodeKey === item.key && dropPosition === 0
             item.expandOnClickNode = expandOnClickNode
+            item.loading = loadingKeys.has(item.key) && !loadedKeys.has(item.key)
+            item.loadData = loadData
             return <TreeNode {...item} key={item.key} ref={treeNodeRef} />
           })}
       </div>
