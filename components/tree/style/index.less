@@ -28,6 +28,17 @@
     display: flex;
     justify-content: flex-start;
     align-items: center;
+
+    .@{kd-prefix}-spin-dot-spin {
+      border: none;
+      width: @tree-expand-icon-loading-width;
+      height: @tree-expand-icon-loading-height;
+
+      .@{kd-prefix}-spin-dot-item {
+        width: @tree-expand-icon-loading-width;
+        height: @tree-expand-icon-loading-height;
+      }
+    }
   }
   &-fb-children-pointerEvents * {
     pointer-events: none;

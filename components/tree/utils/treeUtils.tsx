@@ -18,7 +18,7 @@ export const flattenAll = (treeData: any[], newTreeData: TreeNodeData[] = [], le
         const { children, title, key, ...others } = item
         item.parent = parent
         const _pos = pos ? `${pos}-${index}` : `${index}`
-        const hasChildNode = children && children instanceof Array && children.length > 0
+        const hasChildNode = item.isLeaf ? false : children && children instanceof Array && children.length > 0
         const flattenNode: any = { title, key, pos: _pos, hasChildNode, level, parent, ...others }
         newTreeData.push(flattenNode)
         let _level = level
@@ -26,7 +26,7 @@ export const flattenAll = (treeData: any[], newTreeData: TreeNodeData[] = [], le
           maxLevel = level
         }
         _level++
-        fn(children, newTreeData, _level, _pos, flattenNode)
+        hasChildNode && fn(children, newTreeData, _level, _pos, flattenNode)
       })
     return newTreeData
   }

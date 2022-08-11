@@ -4,8 +4,8 @@ import ConfigContext from '../config-provider/ConfigContext'
 import { getCompProps } from '../_utils'
 import Checkbox from './../checkbox'
 import Icon from '../icon'
+import Spin from '../spin'
 import { TreeNodeData } from './index'
-// import { tuple } from '../_utils/type'
 
 export interface TreeNodeProps {
   nodeKey?: string
@@ -25,12 +25,12 @@ export interface TreeNodeProps {
   expand?: boolean
   level?: number
   switcherIcon?: React.ReactNode | ((props: any) => React.ReactNode)
-  // leafIcon?: React.ReactNode | ((props: any) => React.ReactNode)
   indeterminate?: boolean
   checked?: boolean
   pos?: string
   estimatedItemSize?: number
   dragOver?: boolean
+  isLeaf?: boolean
   onCheck?: (
     key: string,
     value: boolean,
@@ -76,11 +76,11 @@ const TreeNode = React.forwardRef<unknown, TreeNodeProps>((props, ref) => {
     selected,
     setDragNode,
     style,
-    // leafIcon,
     indeterminate,
     estimatedItemSize,
     dragOver,
     expandOnClickNode,
+    loading,
     onExpand,
     onCheck,
     onDragStart,
@@ -108,7 +108,6 @@ const TreeNode = React.forwardRef<unknown, TreeNodeProps>((props, ref) => {
       indeterminate,
       icon,
       switcherIcon,
-      // showLine,
       showIcon,
       selected,
       ...others,
@@ -186,24 +185,21 @@ const TreeNode = React.forwardRef<unknown, TreeNodeProps>((props, ref) => {
     return indentArr
   }
 
+  const isLeaf = useCallback(() => {
+    const { isLeaf, loadData, hasChildNode } = TreeNodeProps
+    if (isLeaf === false) {
+      return false
+    }
+    return isLeaf || (!loadData && !hasChildNode)
+  }, [TreeNodeProps])
+
   // line的两种模式， 图标被替换和图标不被替换
   const renderExpandIcon = () => {
-    // todo 图标被替换则 line样式改变
-    // if(switcherIcon){
-
-    // }
-    if (hasChildNode) {
-      // todo    showLine模式 使用+ -符号图标
-      // if(!!showLine){
-      //   return (
-      //     <span
-      //     onClick={handleClick}
-      //     className={classNames(`${treeNodePrefixCls}-icon`)}
-      //   >
-      //     {expand ? <Icon type='search' /> : <Icon type='add' />}
-      //   </span>
-      //   )
-      // }
+    if (loading) {
+      return <Spin type="component" />
+    }
+    const showExpandIcon = !isLeaf()
+    if (showExpandIcon) {
       if (Array.isArray(switcherIcon) && switcherIcon.length === 2) {
         return (
           <span
@@ -229,24 +225,6 @@ const TreeNode = React.forwardRef<unknown, TreeNodeProps>((props, ref) => {
         </span>
       )
     } else {
-      // if(typeof showLine === 'object' && !showLine.showLeafIcon){
-      //   return (
-      //     <span
-      //       className={classNames(`${treeNodePrefixCls}-icon-hidden`)}
-      //     >
-      //       {/* todo  renderLeafLine() */}
-      //       {renderIcon(leafIcon)}
-      //     </span>
-      //   )
-      // }else if(typeof showLine === 'object' && showLine.showLeafIcon || showLine === true){
-      //   return (
-      //     <span
-      //       className={classNames(`${treeNodePrefixCls}-leaf-icon`)}
-      //     >
-      //       {renderIcon(leafIcon)}
-      //     </span>
-      //   )
-      // }
       // 叶子结点 隐藏展开按钮
       return <span className={`${treeNodePrefixCls}-icon-hidden`}></span>
     }

@@ -153,7 +153,6 @@ export const useScrollToKey = (
       return
     }
     if (treeRoot && treeNode) {
-      // const treeRootScrollTop = treeRoot.scrollTop
       const treeRootRect = treeRoot.getBoundingClientRect()
       const treeNodeRect = treeNode.getBoundingClientRect()
       if (treeRootRect.top <= treeNodeRect.top && treeRootRect.bottom >= treeNodeRect.bottom) {
