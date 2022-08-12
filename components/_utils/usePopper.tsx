@@ -38,7 +38,6 @@ type Position = {
 type Align = {
   top: number
   left: number
-  right?: number
 }
 
 type NormalProps = {
@@ -220,7 +219,6 @@ function usePopper(locatorElement: React.ReactElement, popperElement: React.Reac
   const [exist, setExist] = useState(!!props.visible || defaultVisible)
   const [canAlign, setCanAlign] = useState(!!props.visible || defaultVisible)
   const [visible, setVisible] = useState(false)
-  const [active, setActive] = useState(false)
   useEffect(() => {
     if (props.visible) {
       !exist && setExist(true)
@@ -234,7 +232,7 @@ function usePopper(locatorElement: React.ReactElement, popperElement: React.Reac
   const [evType, setEvType] = useState<string>('')
   const [align, setAlign] = useState<Align | undefined>()
 
-  const [nextPlacement, setNextPlacement] = useState<string>(placement)
+  const [currentPlacement, setCurrentPlacement] = useState<string>(placement)
 
   const alignPopper = useCallback(() => {
     if (locatorRef?.current && popperRef?.current) {
@@ -258,7 +256,7 @@ function usePopper(locatorElement: React.ReactElement, popperElement: React.Reac
 
       const currentPos = trigger === 'contextMenu' ? mousePos : locatorPos
 
-      let currentPlacement: string = nextPlacement
+      let currentPlacement: string = placement
 
       if (autoPlacement) {
         if (top - gap - popperHeight <= 5 && bottom + gap + popperHeight < document.body.clientHeight - 5) {
@@ -284,12 +282,6 @@ function usePopper(locatorElement: React.ReactElement, popperElement: React.Reac
         }
         if (right + gap + popperWidth >= document.body.clientWidth - 5 && left - gap - popperWidth > 5) {
           currentPlacement = currentPlacement.replace('right', 'left')
-        }
-        if (right - width / 2 + popperWidth / 2 >= document.body.clientWidth - 5 && right - popperWidth > 5) {
-          currentPlacement += 'Right'
-        }
-        if (left - width / 2 - popperWidth / 2 <= 5 && left + popperWidth < document.body.clientWidth - 5) {
-          currentPlacement += 'Left'
         }
       }
 
@@ -347,7 +339,9 @@ function usePopper(locatorElement: React.ReactElement, popperElement: React.Reac
             arrowPos.top += scrollBottom - document.body.clientHeight
           }
         }
-      } else if (/top/.test(currentPlacement) || /bottom/.test(currentPlacement)) {
+      }
+
+      if (/top/.test(currentPlacement) || /bottom/.test(currentPlacement)) {
         if (/Left/.test(currentPlacement)) {
           arrowPos.left = arrowOffset
         } else if (/Right/.test(currentPlacement)) {
@@ -355,22 +349,25 @@ function usePopper(locatorElement: React.ReactElement, popperElement: React.Reac
         } else {
           arrowPos.left = (popperWidth - arrowWidth) / 2 - 1
         }
-
-        if (left <= 0) {
-          alignPos.left = locatorPos.left
-          arrowPos.left = arrowOffset
-        } else if (right >= document.body.clientWidth) {
-          alignPos.left = locatorPos.right - popperWidth
-          alignPos.right = -360
-          arrowPos.left = popperWidth - arrowOffset - 2 * arrowSize
-        }
       }
 
       setAlign(alignPos)
       setArrowPos(arrowPos)
-      setNextPlacement(currentPlacement)
+      setCurrentPlacement(currentPlacement)
     }
-  }, [locatorRef, popperRef, container, trigger, mousePos, autoPlacement, gap, arrowOffset, arrowSize, arrowWidth])
+  }, [
+    locatorRef,
+    popperRef,
+    container,
+    trigger,
+    mousePos,
+    placement,
+    gap,
+    arrowOffset,
+    arrowSize,
+    arrowWidth,
+    autoPlacement,
+  ])
 
   useEffect(() => {
     if (canAlign) {
@@ -378,8 +375,6 @@ function usePopper(locatorElement: React.ReactElement, popperElement: React.Reac
       setCanAlign(false)
       props.visible === undefined && setVisible(true)
       onVisibleChange && onVisibleChange(true)
-      setActive(true)
-      setTimeout(() => setActive(false), 200)
     }
   }, [alignPopper, canAlign, onVisibleChange, props])
 
@@ -400,10 +395,10 @@ function usePopper(locatorElement: React.ReactElement, popperElement: React.Reac
   const popperProps: NormalProps = {
     ref: popperRef,
     style: popperContainerStyle,
-    className: classNames(prefixCls, popperClassName, nextPlacement, {
+    className: classNames(prefixCls, popperClassName, currentPlacement, {
       arrow,
       hidden: !visible,
-      [`${nextPlacement}-active`]: active,
+      [`${currentPlacement}-active`]: visible,
     }),
   }
 
@@ -449,10 +444,10 @@ function usePopper(locatorElement: React.ReactElement, popperElement: React.Reac
         const triggerNode = getTriggerElement(locatorRef.current)
         const triggerRect = triggerNode.getBoundingClientRect()
         const popperRect = popperRef.current.getBoundingClientRect()
-        const left = /left/.test(nextPlacement) ? popperRect.right : triggerRect.left
-        const right = /right/.test(nextPlacement) ? popperRect.left : triggerRect.right
-        const top = /top/.test(nextPlacement) ? popperRect.bottom : triggerRect.top
-        const bottom = /bottom/.test(nextPlacement) ? popperRect.top : triggerRect.bottom
+        const left = /left/.test(currentPlacement) ? popperRect.right : triggerRect.left
+        const right = /right/.test(currentPlacement) ? popperRect.left : triggerRect.right
+        const top = /top/.test(currentPlacement) ? popperRect.bottom : triggerRect.top
+        const bottom = /bottom/.test(currentPlacement) ? popperRect.top : triggerRect.bottom
         const { clientX: X, clientY: Y } = e
         const inTriggerRect = X > left - 2 && X < right + 2 && Y > top - 2 && Y < bottom + 2
         const inPopperRect = X > popperRect.left && X < popperRect.right && Y > popperRect.top && Y < popperRect.bottom
@@ -487,7 +482,7 @@ function usePopper(locatorElement: React.ReactElement, popperElement: React.Reac
           : document.removeEventListener(mapEvent[trigger], debounceHidePopper)
       }
     }
-  }, [nextPlacement, evType, exist, getTriggerElement, hidePopper, locatorRef, mouseLeaveDelay, popperRef, visible])
+  }, [currentPlacement, evType, exist, getTriggerElement, hidePopper, locatorRef, mouseLeaveDelay, popperRef, visible])
 
   useEffect(() => {
     if (visible) {
