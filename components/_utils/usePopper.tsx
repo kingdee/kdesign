@@ -285,11 +285,13 @@ function usePopper(locatorElement: React.ReactElement, popperElement: React.Reac
         if (right + gap + popperWidth >= document.body.clientWidth - 5 && left - gap - popperWidth > 5) {
           currentPlacement = currentPlacement.replace('right', 'left')
         }
-        if (right - width / 2 + popperWidth / 2 >= document.body.clientWidth - 5 && right - popperWidth > 5) {
-          currentPlacement += 'Right'
-        }
-        if (left - width / 2 - popperWidth / 2 <= 5 && left + popperWidth < document.body.clientWidth - 5) {
-          currentPlacement += 'Left'
+        if (['top', 'bottom'].includes(currentPlacement)) {
+          if (right - width / 2 + popperWidth / 2 >= document.body.clientWidth - 5 && right - popperWidth > 5) {
+            currentPlacement += 'Right'
+          }
+          if (left - width / 2 - popperWidth / 2 <= 5 && left + popperWidth < document.body.clientWidth - 5) {
+            currentPlacement += 'Left'
+          }
         }
       }
 
