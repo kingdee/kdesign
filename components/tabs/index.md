@@ -54,16 +54,21 @@ subtitle: 页签
 | color | --kd-c-tabs-color-border | --kd-g-color-border-strong | #d9d9d9 |
 |  | --kd-c-tabs-line-color-active | --kd-g-color-theme | #5582f3 |
 |  | --kd-c-tabs-card-color-background | --kd-g-color-background-contain-disabled | #f5f5f5 |
-|  | --kd-c-tabs-color-background-disabled | --kd-g-color-background-2 | #f2f2f2 |
+|  | --kd-c-tabs-color-background-disabled | - | transparent |
 |  | --kd-c-tabs-color-text | --kd-g-color-text-secondary | #666 |
 |  | --kd-c-tabs-color-text-active | --kd-g-color-theme | #5582f3 |
 |  | --kd-c-tabs-color-text-hover | --kd-g-color-theme | #5582f3 |
 |  | --kd-c-tabs-color-text-disabled | --kd-g-color-disabled | #b2b2b2 |
 | font | --kd-c-tabs-pane-font-size | --kd-g-font-size-middle | 14px |
-| line-height | --kd-c-tabs-pane-line-height | - | 48px |
+| line-height | --kd-c-tabs-pane-height | - | 48px |
 | motion | --kd-c-tabs-motion-timing-function | - | cubic-bezier(0.42, 0, 1, 1) |
 |  | --kd-c-tabs-motion-duration | --kd-g-duration | 0.3s |
 | sizing | --kd-c-tabs-sizing-height | - | 48px |
 |  | --kd-c-tabs-sizing-border | - | 1px |
 |  | --kd-c-tabs-pane-sizing-height | - | 48px |
-| spacing | --kd-c-tabs-pane-spacing-margin-right | - | 24px |
+|  | --kd-c-tabs-pane-type-line-sizing-height-small | - | 32px |
+|  | --kd-c-tabs-pane-type-line-sizing-height-middle | - | 32px |
+|  | --kd-c-tabs-pane-type-dynamic-sizing-height | - | 32px |
+| spacing | --kd-c-tabs-pane-line-paddinng-horizontal | - | 20px |
+|  | --kd-c-tabs-pane-card-paddinng-horizontal | - | 18px |
+|  | --kd-c-tabs-pane-grid-paddinng-horizontal | - | 20px |

@@ -6,7 +6,7 @@
 @tabs-border-color: var(~'@{tabs-custom-prefix}-color-border', @color-border-strong);
 @tab-line-color-active: var(~'@{tabs-custom-prefix}-line-color-active', @color-theme);
 @tabs-card-bg: var(~'@{tabs-custom-prefix}-card-color-background', @color-background-contain-disabled);
-@tab-disabled-bg: var(~'@{tabs-custom-prefix}-color-background-disabled', @color-background-2);
+@tab-disabled-bg: var(~'@{tabs-custom-prefix}-color-background-disabled', transparent);
 @tabs-font-color: var(~'@{tabs-custom-prefix}-color-text', @color-text-secondary);
 @tabPane-font-color-active: var(~'@{tabs-custom-prefix}-color-text-active', @color-theme);
 @tabPane-font-color-hover: var(~'@{tabs-custom-prefix}-color-text-hover', @color-theme);
@@ -16,7 +16,7 @@
 @tabPane-font-size: var(~'@{tabs-custom-prefix}-pane-font-size', @font-size-middle);
 
 // line-height
-@tab-pane-line-height: var(~'@{tabs-custom-prefix}-pane-line-height', 48px);
+@tab-pane-line-height: var(~'@{tabs-custom-prefix}-pane-height', 48px);
 
 // motion
 @tab-transition-fn: var(~'@{tabs-custom-prefix}-motion-timing-function', cubic-bezier(0.42, 0, 1, 1));
@@ -26,7 +26,12 @@
 @tabs-height: var(~'@{tabs-custom-prefix}-sizing-height', 48px);
 @tabs-border-width: var(~'@{tabs-custom-prefix}-sizing-border', 1px);
 @tab-pane-height: var(~'@{tabs-custom-prefix}-pane-sizing-height', 48px);
+@tab-pane-type-line-height-small: var(~'@{tabs-custom-prefix}-pane-type-line-sizing-height-small', 32px);
+@tab-pane-type-line-height-middle: var(~'@{tabs-custom-prefix}-pane-type-line-sizing-height-middle', 32px);
+@tab-pane-type-dynamic-height: var(~'@{tabs-custom-prefix}-pane-type-dynamic-sizing-height', 32px);
 
 
 // spacing
-@tab-pane-margin-right: var(~'@{tabs-custom-prefix}-pane-spacing-margin-right', 24px);
+@tab-pane-line-paddinng-horizontal: var(~'@{tabs-custom-prefix}-pane-line-paddinng-horizontal', 20px);
+@tab-pane-card-paddinng-horizontal: var(~'@{tabs-custom-prefix}-pane-card-paddinng-horizontal', 18px);
+@tab-pane-grid-paddinng-horizontal: var(~'@{tabs-custom-prefix}-pane-grid-paddinng-horizontal', 20px);
