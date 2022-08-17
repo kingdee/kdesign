@@ -38,6 +38,9 @@
 
   &-left-arrows {
     box-shadow: 2px 0 2px rgba(0, 0, 0, 0.08);
+    height: 100%;
+    display: flex;
+    align-items: center;
     &-line {
       background-color: #fff;
     }
@@ -47,6 +50,9 @@
   }
   &-right-arrows {
     box-shadow: -2px 0 2px rgba(0, 0, 0, 0.08);
+    height: 100%;
+    display: flex;
+    align-items: center;
     &-line {
       background-color: #fff;
       .@{tabs-prefix-cls}-more-btn {
@@ -70,18 +76,7 @@
   }
   &-left-operations {
     position: relative;
-    line-height: 40px;
-    margin-right: 8px;
-    &::after {
-      position: absolute;
-      content: '';
-      width: 1px;
-      height: 28px;
-      right: 0;
-      top: 50%;
-      transform: translateY(-50%);
-      background-color: @tabs-border-color;
-    }
+    margin-right: 2px;
     &-item {
       padding: 0 12px;
       cursor: pointer;
@@ -89,19 +84,9 @@
   }
   &-right-operations {
     position: relative;
-    line-height: 40px;
-    &::before {
-      position: absolute;
-      content: '';
-      width: 1px;
-      height: 100%;
-      left: 0;
-      top: 50%;
-      transform: translateY(-50%);
-      background-color: @tabs-border-color;
-    }
+    padding-right: 18px;
     &-item {
-      padding: 0 12px;
+      padding-left: 12px;
       cursor: pointer;
     }
   }
@@ -110,8 +95,6 @@
     display: inline-block;
     box-sizing: border-box;
     width: 48px;
-    height: 100%;
-    line-height: 46px;
     text-align: center;
     cursor: pointer;
     &:hover {
@@ -130,6 +113,20 @@
 .@{tabs-prefix-cls}-navs {
   .tabNavs;
   &-line {
+    &.@{tabs-prefix-cls}-navs-middle {
+      height: @tab-pane-type-line-height-middle;
+    }
+    &.@{tabs-prefix-cls}-navs-small {
+      height: @tab-pane-type-line-height-small !important;
+    }
+    .@{tabPane-prefix-cls}-middle {
+      line-height: @tab-pane-type-line-height-middle;
+      height: @tab-pane-type-line-height-middle;
+    }
+    .@{tabPane-prefix-cls}-small {
+      line-height: @tab-pane-type-line-height-small;
+      height: @tab-pane-type-line-height-small;
+    }
     &.@{tabs-prefix-cls}-navs-bottom {
       border-top: 1px solid @tabs-border-color;
       border-bottom: unset;
@@ -152,12 +149,14 @@
       top: -1px;
       height: ~'calc(100% + 2px)';
     }
-    &.@{tabs-prefix-cls}-navs-left, &.@{tabs-prefix-cls}-navs-right {
+    &.@{tabs-prefix-cls}-navs-left,
+    &.@{tabs-prefix-cls}-navs-right {
       min-width: 120px;
       height: 100%;
       font-size: 0;
       border-top: 1px solid transparent;
-      &::before, &::after {
+      &::before,
+      &::after {
         position: absolute;
         content: '';
         display: inline-block;
@@ -196,12 +195,12 @@
   &-dynamic {
     background-color: @tabs-card-bg;
     border-bottom: unset;
-    height: 40px;
+    height: @tab-pane-type-dynamic-height;
     .@{tabs-prefix-cls}-tab-wrap {
-      height:  40px;
+      height: @tab-pane-type-dynamic-height;
     }
     .@{tabs-prefix-cls}-more-btn {
-      line-height: 40px;
+      line-height: @tab-pane-type-dynamic-height;
     }
   }
   &-small:not(.@{tabs-prefix-cls}-navs-left):not(.@{tabs-prefix-cls}-navs-right) {
@@ -217,7 +216,8 @@
   &-text {
     display: inline-block;
     transition: color @tab-g-motion-duration;
-    &-active, &:hover {
+    &-active,
+    &:hover {
       color: @tabPane-font-color-active;
     }
     &-disabled {
@@ -233,35 +233,28 @@
       color: @tabPane-font-color-disabled;
     }
   }
+  &-type-line {
+    padding: 0 @tab-pane-line-paddinng-horizontal;
+  }
   &-type-card {
     margin-right: 0;
-    .@{tabPane-prefix-cls}-text {
-      padding: 0 24px;
-    }
+    padding: 0 @tab-pane-card-paddinng-horizontal;
+    border: 1px solid transparent;
     &.@{tabPane-prefix-cls}-box-active {
       background-color: #fff;
       border: 1px solid @tabs-border-color;
       border-top: 2px solid;
       border-color: @tab-line-color-active @tabs-border-color transparent @tabs-border-color;
-      transition: background-color .2s @tab-transition-fn;
+      transition: background-color 0.2s @tab-transition-fn;
       &:first-of-type {
-        border-left: unset;
-      }
-    }
-    &.@{tabPane-prefix-cls}-left, &.@{tabPane-prefix-cls}-right {
-      width: 100%;
-      padding: 0;
-      text-align: center;
-      border-top: 1px solid @tabs-border-color;
-      &:last-of-type {
-        border-bottom: 1px solid @tabs-border-color;
+        border-left-color: transparent;
       }
     }
     &.@{tabPane-prefix-cls}-left {
-      border-left: 1px solid transparent;
+      border-left: 2px solid transparent;
       &.@{tabPane-prefix-cls}-box-active {
-        border-left: 2px solid @tab-line-color-active;
-        border-right: 1px solid transparent;
+        border-left: 2px solid;
+        border-color: @tabs-border-color transparent transparent @tab-line-color-active;
       }
     }
     &.@{tabPane-prefix-cls}-right {
@@ -271,20 +264,43 @@
         border-left: 1px solid transparent;
       }
     }
+    &.@{tabPane-prefix-cls}-left,
+    &.@{tabPane-prefix-cls}-right {
+      width: 100%;
+      border-top: 1px solid @tabs-border-color;
+      &:last-of-type {
+        border-bottom: 1px solid @tabs-border-color;
+      }
+    }
     &.@{tabPane-prefix-cls}-bottom {
+      border-top: 1px solid transparent;
+      border-bottom: 2px solid transparent;
       &.@{tabPane-prefix-cls}-box-active {
         border-bottom: 2px solid;
-        border-color:  transparent @tabs-border-color @tab-line-color-active @tabs-border-color;
+        border-color: transparent @tabs-border-color @tab-line-color-active @tabs-border-color;
+        &:first-of-type {
+          border-left-color: transparent;
+        }
+      }
+    }
+    &.@{tabPane-prefix-cls}-top {
+      border-top: 2px solid transparent;
+      &.@{tabPane-prefix-cls}-box-active {
+        border-top: 2px solid;
+        border-color: @tab-line-color-active @tabs-border-color transparent @tabs-border-color;
+        &:first-of-type {
+          border-left-color: transparent;
+        }
       }
     }
   }
   &-type-dynamic {
-    height: 40px;
-    line-height: 40px;
-    margin: 0 0 0 8px;
+    height: @tab-pane-type-dynamic-height;
+    line-height: @tab-pane-type-dynamic-height;
+    margin: 0 0 0 4px;
     display: inline-flex;
     align-items: center;
-    &:hover {
+    &:not(.@{tabPane-prefix-cls}-disabled):hover {
       .@{tabPane-prefix-cls}-operations {
         span:first-child {
           opacity: 1;
@@ -293,13 +309,13 @@
       }
     }
     .@{tabPane-prefix-cls}-operations .@{icon-prefix-cls} {
-      font-size: 14px;
+      font-size: 16px;
     }
   }
   &-type-grid {
     height: 24px;
     line-height: 22px;
-    padding: 0 19px;
+    padding: 0 @tab-pane-grid-paddinng-horizontal;
     border: 1px solid @tabs-border-color;
     margin-right: -1px;
     &:first-of-type {
@@ -313,7 +329,7 @@
       z-index: 2;
       background-color: @tab-line-color-active;
       border: 1px solid @tab-line-color-active;
-      transition: background-color .2s @tab-transition-fn;
+      transition: background-color 0.2s @tab-transition-fn;
       .@{tabPane-prefix-cls}-text-active {
         color: #fff;
       }
@@ -329,23 +345,12 @@
     position: relative;
     display: inline-block;
     line-height: 1;
-    padding: 0 18px 0 8px;
+    padding: 0 4px;
     span:first-child {
       display: inline-block;
       vertical-align: top;
       font-size: 0;
       opacity: 0;
-    }
-    &::after {
-      position: absolute;
-      content: '';
-      width: 1px;
-      height: 14px;
-      background-color: @tabs-border-color;
-      right: 0;
-      top: 50%;
-      opacity: 1;
-      transform: translateY(-50%);
     }
   }
   &-small {
@@ -370,8 +375,6 @@
   display: inline-block;
   box-sizing: border-box;
   width: 48px;
-  height: 100%;
-  line-height: 46px;
   text-align: center;
   cursor: pointer;
   &:hover {
@@ -382,7 +385,7 @@
   }
   &-dynamic {
     width: 24px;
-    line-height: 40px;
+    line-height: @tab-pane-type-dynamic-height;
   }
   &-disabled {
     color: @tabPane-font-color-disabled;

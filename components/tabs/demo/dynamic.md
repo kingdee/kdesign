@@ -101,7 +101,7 @@ class Demo extends React.Component {
         </Button>
           <Tabs type="dynamic" showScrollArrow activeKey={this.state.activeKey} onChange={this.setActive}>
             <Tabs.TabPane specialPane="left">
-              <Icon type="workbench" onClick={this.backHome} />
+              <Icon type="workbench" onClick={this.backHome} style={{ color: '#999999' }} />
             </Tabs.TabPane>
             {this.state.panes.map((pane) => {
               return (
@@ -111,8 +111,9 @@ class Demo extends React.Component {
               )
             })}
             <Tabs.TabPane specialPane="right">
-              <Icon type="expand" />
-              <Icon type="setting" />
+              <Icon type="tips" className="tabs-right-operations-icon" />
+              <Icon type="expand" className="tabs-right-operations-icon" />
+              <Icon type="setting" className="tabs-right-operations-icon" />
             </Tabs.TabPane>
             <Tabs.TabPane specialPane="contextMenu">
               <div onClick={this.closeTrigger}>关闭当前</div>
@@ -126,4 +127,9 @@ class Demo extends React.Component {
 }
 
 ReactDOM.render(<Demo />, mountNode)
+```
+```css
+.tabs-right-operations-icon {
+  font-size: 18px;
+}
 ```
