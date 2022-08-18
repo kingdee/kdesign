@@ -2,6 +2,7 @@
   "compilerOptions": {
     "baseUrl": "./",
     "paths": {
+      "react": ["node_modules/@types/react"],
       "kdesign": [
         "components/index.tsx"
       ],

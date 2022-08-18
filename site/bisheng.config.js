@@ -68,7 +68,14 @@ module.exports = {
         },
       }
     }
-    config.module.rules = editBabelConfig(config.module.rules)
+    config.module.rules = [
+      ...editBabelConfig(config.module.rules),
+      {
+        include: /node_modules/,
+        test: /\.mjs$/,
+        type: 'javascript/auto',
+      },
+    ]
     config.devtool = process.env.NODE_ENV !== 'development' ? 'none' : 'cheap-module-eval-source-map'
     return config
   },
