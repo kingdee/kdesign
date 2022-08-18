@@ -37,7 +37,7 @@ type Position = {
 
 type Align = {
   top: number
-  left: number
+  left?: number
   right?: number
 }
 
@@ -362,8 +362,8 @@ function usePopper(locatorElement: React.ReactElement, popperElement: React.Reac
           alignPos.left = locatorPos.left
           arrowPos.left = arrowOffset
         } else if (right >= document.body.clientWidth) {
-          alignPos.left = locatorPos.right - popperWidth
-          alignPos.right = -360
+          delete alignPos.left
+          alignPos.right = -1 * (right - document.body.clientWidth)
           arrowPos.left = popperWidth - arrowOffset - 2 * arrowSize
         }
       }
