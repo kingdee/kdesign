@@ -89,7 +89,7 @@ title: Upload
 | color | --kd-c-upload-color | --kd-g-color-text-third | #999 |
 |  | --kd-c-upload-error-color | --kd-g-color-error | #fb2323 |
 |  | --kd-c-upload-color-background-error | --kd-g-color-background-error | #fff2f4 |
-|  | --kd-c-upload-color-border-error | --kd-g-color-border-error | #ff8088 |
+|  | --kd-c-upload-color-border-error | --kd-g-color-border-error | #fc808B |
 |  | --kd-c-upload-color-border | --kd-g-color-border-weak | #e5e5e5 |
 |  | --kd-c-upload-division-color | --kd-g-color-border-strong | #d9d9d9 |
 |  | --kd-c-upload-color-border-active | --kd-g-color-text-link | #0e5fd8 |
@@ -106,4 +106,4 @@ title: Upload
 | spacing | --kd-c-upload-text-list-margin-top | - | 16px |
 |  | --kd-c-upload-text-list-item-padding-horizontal | - | 20px |
 |  | --kd-c-upload-text-list-item-name-padding-left | - | 4px |
-|  | --kd-c-upload-text-list-item-name-padding-left | - | 8px |
+|  | --kd-c-upload-text-list-item-name-padding-right | - | 8px |
