@@ -89,10 +89,11 @@ subtitle: 提示弹窗
 | sizing | --kd-c-modal-icon-circle-sizing | - | 6px |
 |  | --kd-c-modal-sizing-border | - | 1px |
 |  | --kd-c-modal-close-icon-font-size | - | 16px |
+|  | --kd-c-modal-header-sizing-height | - | 50px |
+|  | --kd-c-modal-footer-sizing-height | - | 50px |
+| spacing | --kd-c-modal-footer-button-spacing | - | 12px |
+|  | --kd-c-modal-title-icon-sizing-margin-right | - | 8px |
 |  | --kd-c-modal-header-sizing-padding-horizontal | - | 20px |
 |  | --kd-c-modal-header-sizing-padding-vertical | - | 0px |
-|  | --kd-c-modal-header-sizing-height | - | 50px |
 |  | --kd-c-modal-body-sizing-padding | - | 20px |
-|  | --kd-c-modal-footer-sizing-height | - | 50px |
-|  | --kd-c-modal-title-icon-sizing-margin-right | - | 8px |
 | z-index | --kd-c-modal-z-index | --kd-g-z-index-dialog | 1050 |
