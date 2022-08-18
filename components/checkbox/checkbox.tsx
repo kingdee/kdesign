@@ -26,6 +26,7 @@ export interface CheckboxProps {
   disabled?: boolean // 是否禁用
   children?: React.ReactNode // 子元素
   name?: string
+  onClick?: (e: React.MouseEvent) => void
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void // 点击事件
 }
 
@@ -46,6 +47,7 @@ const InternalCheckbox: React.ForwardRefRenderFunction<unknown, CheckboxProps> =
     value,
     indeterminate,
     name,
+    ...rest
   } = CheckboxProps
 
   const getChecked = () => {
@@ -142,7 +144,7 @@ const InternalCheckbox: React.ForwardRefRenderFunction<unknown, CheckboxProps> =
   const getDefaultCheckbox = () => {
     return (
       // eslint-disable-next-line
-      <label className={getRootClassName} style={style} ref={labelRef}>
+      <label className={getRootClassName} style={style} ref={labelRef} {...rest}>
         <span className={checkedWrapperClassName}>
           {selected && (
             <span className={innerIconClassName}>

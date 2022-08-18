@@ -270,6 +270,7 @@ const TreeNode = React.forwardRef<unknown, TreeNodeProps>((props, ref) => {
                 checked={checked}
                 indeterminate={!disabled && indeterminate}
                 disabled={disabled}
+                onClick={(e: React.MouseEvent) => e.stopPropagation()}
               >
                 <span
                   className={classNames(`${treeNodePrefixCls}-title`, {
