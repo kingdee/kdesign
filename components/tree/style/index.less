@@ -11,6 +11,7 @@
   flex-grow: 1;
   font-size: @tree-font-size;
   color: @tree-color-text;
+  margin-left: @tree-margin-left;
   &-root {
     min-width: 100%;
     flex-shrink: 0;
@@ -47,7 +48,7 @@
     display: flex;
     align-items: center;
 
-    .node-hover()
+    .node-hover();
   }
 
   &-indent {
@@ -115,14 +116,14 @@
     .node-hover();
 
     &-selected {
-      .node-selected()
+      .node-selected();
     }
   }
   &-title {
     white-space: nowrap;
   }
   &-selected {
-    .node-selected()
+    .node-selected();
   }
 
   &-draggabled {
