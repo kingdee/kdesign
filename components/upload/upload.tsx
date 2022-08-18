@@ -385,7 +385,7 @@ const InternalUpload: React.ForwardRefRenderFunction<unknown, UploadProps> = (pr
                       <Icon type={mapStatus[file.status as string]} style={{ verticalAlign: 'top' }} />
                       上传失败
                     </div>
-                    <div>
+                    <div className={`${prefixCls}-${listType}-list-item-action`}>
                       <a
                         href="true"
                         className={`${prefixCls}-${listType}-list-item-reupload`}

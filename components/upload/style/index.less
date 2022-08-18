@@ -59,13 +59,14 @@
 
   .@{upload-prefix-text-list-cls} {
     .reset-component;
-    margin-top: 16px;
+    margin-top: @upload-text-list-margin-top;
     font-size: @upload-font-size;
     border-top: 1px dashed @upload-border-color-strong;
 
     &-item {
       position: relative;
-      padding: 12px 20px;
+      padding: 0 @upload-text-list-item-padding-horizontal;
+      height: @upload-list-item-height;
       overflow: hidden;
       white-space: nowrap;
       display: flex;
@@ -90,9 +91,13 @@
         }
       }
 
+      &-icon > i {
+        font-size: @upload-font-size;
+      }
+
       &-name {
         display: inline-block;
-        margin: 0 5px;
+        margin: 0 @upload-text-list-item-name-padding-right 0 @upload-text-list-item-name-padding-left;
         .ellipsis;
         color: @upload-panel-color;
       }
@@ -105,7 +110,9 @@
         position: absolute;
         top: 0;
         right: 0;
-        padding: 12px 20px;
+        padding: 0 @upload-text-list-item-padding-horizontal;
+        height: @upload-list-item-height;
+        line-height: @upload-list-item-height;
         background-color: transparent;
         opacity: 0;
         visibility: hidden;
@@ -185,6 +192,7 @@
 
       &.error {
         border-color: @upload-border-error-color;
+        background-color: @upload-background-error-color;
       }
 
       &-loading {
@@ -209,7 +217,7 @@
         justify-content: center;
 
         &-text {
-          margin-bottom: 5px;
+          margin-bottom: 4px;
           color: @upload-text-error-color;
         }
 
@@ -219,6 +227,11 @@
             margin-left: 10px;
           }
         }
+      }
+
+      &-action > a {
+        color: @upload-panel-button-color;
+        font-size: @upload-picture-action-font-size;
       }
     }
   }
