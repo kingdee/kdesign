@@ -45,8 +45,7 @@ class Demo extends React.Component {
       </>
     )
     return (
-      <div style={{ width: '200px' }}>
-        <br />
+      <div style={{ width: '200px', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
         <Progress
           style={demoStyle}
           onProcess={this.pendding}
@@ -54,7 +53,6 @@ class Demo extends React.Component {
           textMap={[loadingDom]}
           infoPosition="bottom"
         />
-        <br />
         <Progress style={demoStyle} type="circle" percent={this.state.percent} />
         <br />
         <Button style={demoStyle} type="primary" onClick={this.plus}>

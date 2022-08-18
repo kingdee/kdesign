@@ -14,18 +14,9 @@ function Demo() {
   const demoStyle = { marginLeft: '10px', verticalAlign: 'top' }
   return (
     <div>
-      <Progress type="circle" percent={30} width={100} strokeWidth={10} />
-      <Progress type="circle" percent={100} style={demoStyle} />
-      <Progress
-        type="circle"
-        percent={30}
-        style={demoStyle}
-        showInfo={false}
-        strokeColor={{
-          '0%': '#108ee9',
-          '100%': '#87d068',
-        }}
-      />
+      <Progress type="circle" percent={60} style={demoStyle} />
+      <Progress type="circle" percent={60} status="failure" style={demoStyle} />
+      <Progress type="circle" percent={60} status="success" style={demoStyle} />
     </div>
   )
 }

@@ -1,5 +1,5 @@
 ---
-title: 状态
+title: 自定义进度条渐变色
 order: 3
 ---
 
@@ -14,10 +14,23 @@ function Demo() {
   const demoStyle = { marginLeft: '10px', verticalAlign: 'top' }
   return (
     <>
-      <Progress percent={30} status="success" />
-      <Progress percent={30} status="failure" />
-      <Progress type="circle" percent={30} style={demoStyle} status="failure" />
-      <Progress type="circle" percent={30} style={demoStyle} status="success" />
+      <Progress
+        percent={60}
+        strokeColor={{
+          '0%': '#108ee9',
+          '100%': '#87d068',
+        }}
+      />
+      <Progress
+        type="circle"
+        percent={60}
+        style={demoStyle}
+        showInfo={false}
+        strokeColor={{
+          '0%': '#108ee9',
+          '100%': '#87d068',
+        }}
+      />
     </>
   )
 }
