@@ -12,18 +12,14 @@ import { Progress } from '@kdcloudjs/kdesign'
 
 function Demo() {
   const container = { width: '300px' }
-  
+
   return (
     <div style={container}>
-      <Progress showInfo={false} />
+      <Progress percent={15} />
       <Progress percent={30} />
-      <Progress
-        percent={30}
-        strokeColor={{
-          '0%': '#108ee9',
-          '100%': '#87d068',
-        }}
-      />
+      <Progress percent={45} status="failure"/>
+      <Progress percent={60} status="success"/>
+      <Progress percent={75} showInfo={false} />
     </div>
   )
 }

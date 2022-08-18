@@ -14,11 +14,21 @@
 
   &-type-line {
     width: 100%;
+    color: @progress-line-font-color;
+
+    .@{progress-prefix-cls}-special-text {
+      margin-top: @progress-line-text-margin-top;
+      line-height: 24px;
+    }
   }
 
   &-type-circle {
+    color: @progress-circle-font-color;
+
     .@{progress-prefix-cls}-special-text {
+      margin-top: @progress-circle-text-margin-top;
       padding: 0;
+      line-height: 24px;
     }
   }
 
@@ -31,9 +41,9 @@
     padding-right: 0;
     font-size: 0;
 
-    .@{progress-prefix-cls}-show-info & {
-      margin-right: calc(-1 * @progress-line-text-font-size * 3 - 8px);
-      padding-right: calc(@progress-line-text-font-size * 3 + 8px);
+    .@{progress-prefix-cls}-show-info:not(.@{progress-prefix-cls}-position-bottom) & {
+      margin-right: calc(-1 * @progress-line-text-font-size * 2 - 8px);
+      padding-right: calc(@progress-line-text-font-size * 2 + 8px);
     }
   }
 
@@ -71,7 +81,7 @@
   &-text {
     display: inline-block;
     box-sizing: border-box;
-    width: calc(@progress-line-text-font-size*3);
+    width: calc(@progress-line-text-font-size*2);
     margin-left: @progress-line-text-margin-left;
     // font-size: @progress-line-text-font-size;
     // line-height: 1;
@@ -85,7 +95,11 @@
     font-size: @progress-line-special-text-font-size;
     text-align: center;
     overflow: hidden;
-    padding-right: calc(@progress-line-text-font-size*3 + 8px);
+    padding-right: calc(@progress-line-text-font-size*2 + 8px);
+
+    .@{progress-prefix-cls}-position-bottom & {
+      padding-right: 0;
+    }
   }
 
   &-status-success {

@@ -4,6 +4,8 @@
 
 // color
 @progress-remaining-color: var(~'@{progress-prefix}-color-remaining', #e5e5e5);//背景色
+@progress-line-font-color: var(~'@{progress-prefix}-line-color-font', #212121);
+@progress-circle-font-color: var(~'@{progress-prefix}-circle-color-font', #666);
 @progress-default-color: var(~'@{progress-prefix}-color-default', #5582f3);//进度条 默认色
 @progress-success-color: var(~'@{progress-prefix}-color-success', @color-success);//进度条 成功
 @progress-failure-color: var(~'@{progress-prefix}-color-failure', @color-error);//进度条 失败
@@ -27,6 +29,8 @@
 
 
 // spacing
-@progress-circle-unit-margin-top: var(~'@{progress-prefix}-circle-unit-spacing-margin-top', 18px);
+@progress-circle-unit-margin-top: var(~'@{progress-prefix}-circle-unit-spacing-margin-top', 18px); // 百分比符号距离顶部的距离
 @progress-line-text-margin-left: var(~'@{progress-prefix}-line-text-spacing-margin-left', 8px); //进度与文字或者图标的间距
+@progress-line-text-margin-top: var(~'@{progress-prefix}-line-text-spacing-margin-top', 12px);
+@progress-circle-text-margin-top: var(~'@{progress-prefix}-circle-text-spacing-margin-top', 8px);
 

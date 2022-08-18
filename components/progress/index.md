@@ -37,6 +37,8 @@ subtitle: 进度条
 | 分类 | 组件token | 全局token | 默认值 |
 | --- | --- | --- | --- |
 | color | --kd-c-progress-color-remaining | - | #e5e5e5 |
+|  | --kd-c-progress-line-color-font | - | #212121 |
+|  | --kd-c-progress-circle-color-font | - | #666 |
 |  | --kd-c-progress-color-default | - | #5582f3 |
 |  | --kd-c-progress-color-success | --kd-g-color-success | #1ba854 |
 |  | --kd-c-progress-color-failure | --kd-g-color-error | #fb2323 |
@@ -50,3 +52,5 @@ subtitle: 进度条
 |  | --kd-c-progress-circle-stroke-sizing-width | - | 4px |
 | spacing | --kd-c-progress-circle-unit-spacing-margin-top | - | 18px |
 |  | --kd-c-progress-line-text-spacing-margin-left | - | 8px |
+|  | --kd-c-progress-line-text-spacing-margin-top | - | 12px |
+|  | --kd-c-progress-circle-text-spacing-margin-top | - | 8px |

@@ -68,6 +68,7 @@ const Progress: FC<ProgressProps> = (props) => {
     [`${progressPrefixCls}-type-${type}`]: type,
     [`${progressPrefixCls}-status-${progressStatus}`]: true,
     [`${progressPrefixCls}-show-info`]: showInfo,
+    [`${progressPrefixCls}-position-bottom`]: progressProps.infoPosition !== 'right' && progressStatus === 'normal',
   })
 
   const renderProgressInfo = (
