@@ -88,6 +88,7 @@ title: Upload
 | --- | --- | --- | --- |
 | color | --kd-c-upload-color | --kd-g-color-text-third | #999 |
 |  | --kd-c-upload-error-color | --kd-g-color-error | #fb2323 |
+|  | --kd-c-upload-color-background-error | --kd-g-color-background-error | #fff2f4 |
 |  | --kd-c-upload-color-border-error | --kd-g-color-border-error | #ff8088 |
 |  | --kd-c-upload-color-border | --kd-g-color-border-weak | #e5e5e5 |
 |  | --kd-c-upload-division-color | --kd-g-color-border-strong | #d9d9d9 |
@@ -98,5 +99,11 @@ title: Upload
 |  | --kd-c-upload-panel-button-color | - | #0E5FD8 |
 |  | --kd-c-upload-panel-color | --kd-g-color-text-primary | #212121 |
 | font | --kd-c-upload-font-size | --kd-g-font-size-middle | 14px |
+|  | --kd-c-upload-picture-action-font-size | --kd-g-font-size-small | 12px |
 | motion | --kd-c-upload-motion-duration | --kd-g-duration | 0.3s |
 | radius | --kd-c-upload-radius-border | --kd-g-radius-border | 2px |
+| sizing | --kd-c-upload-list-item-height | - | 44px |
+| spacing | --kd-c-upload-text-list-margin-top | - | 16px |
+|  | --kd-c-upload-text-list-item-padding-horizontal | - | 20px |
+|  | --kd-c-upload-text-list-item-name-padding-left | - | 4px |
+|  | --kd-c-upload-text-list-item-name-padding-left | - | 8px |
