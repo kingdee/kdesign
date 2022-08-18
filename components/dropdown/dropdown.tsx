@@ -25,7 +25,7 @@ export interface DropDownProps extends PopperProps {
 }
 
 const findItem: (element: any) => any = (element) => {
-  const isItem = element.className === 'kd-dropdown-menu-item'
+  const isItem = /kd-dropdown-menu-item/.test(element.className)
   if (isItem) {
     return element
   } else {
