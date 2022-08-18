@@ -4,6 +4,35 @@ title: 更新日志
 hiddenAnchor: true
 ---
 
+## [1.5.9](https://github.com/kdcloudone/kdesign/compare/v1.5.8...v1.5.9)
+`2022-08-18`
+* dropdown
+  * 选项传入自定义类名点击事件失效的问题
+* progress
+  * 修复视觉走查问题点
+* tabs
+  * 修复页签组件视觉走查问题
+* tree
+  * 修复树控件视觉走查问题
+  * 修复异步加载时loading按钮显示不全问题
+* modal
+  * 修复视觉走查问题点
+* upload
+  * 修复视觉走查问题点
+* 修复组件token变量
+* 修复浮层贴右侧边缘时导致的问题
+
+## [1.5.8](https://github.com/kdcloudone/kdesign/compare/v1.5.7...v1.5.8)
+`2022-08-12`
+* 修复贴左侧边缘时导致的报错问题
+
+
+
+## [1.5.6](https://github.com/kdcloudone/kdesign/compare/v1.5.5...v1.5.6)
+`2022-08-11`
+* tooltip
+  * 修复当触发元素在右上角，trigger=top时，浮层超出显示边界的问题
+
 ## [1.5.5](https://github.com/kdcloudone/kdesign/compare/v1.5.4...v1.5.5)
 `2022-08-11`
 * dropdown
