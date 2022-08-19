@@ -18,11 +18,12 @@ subtitle: 抽屉
 | closable | 是否显示右上角的关闭按钮 | boolean | true | - | 1.0.0 |
 | closeIcon | 自定义关闭图标 | ReactNode | - | - | 1.0.0 |
 | destroyOnClose | 关闭时销毁 Drawer 里的子元素 | boolean | false | - | 1.0.0 |
+| disableScroll | Drawer挂载的HTML节点是否禁止的滚动，即添加 overflow: hidden | boolean | true | `true` `false` | 1.5.9 |
 | footer | 页脚 | ReactNode | - | - | 1.0.0 |
 | footerClassName | 页脚 className | string | - | - | 1.0.0 |
 | footerStyle | 页脚 styles | CSSProperties | - | - | 1.0.0 |
 | forceRender | 预渲染 Drawer 内元素 | boolean | false | - | 1.0.0 |
-| getContainer | 指定 Drawer 挂载的 HTML 节点, false 为挂载在当前 dom | HTMLElement | `() => HTMLElement | Selectors | false | body` | - | 1.0.0 |
+| getContainer | 指定 Drawer 挂载的 HTML 节点, false 为挂载在当前 dom, 自定义需要设置 position: relative | HTMLElement | `() => HTMLElement | Selectors | false | body` | - | 1.0.0 |
 | headerClassName | 页眉 className | string | - | - | 1.0.0 |
 | headerStyle | 页眉 styles | CSSProperties | - | - | 1.0.0 |
 | keyboard | 是否支持键盘 esc 关闭 | boolean | true | - | 1.0.0 |

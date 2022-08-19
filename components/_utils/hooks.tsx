@@ -123,6 +123,53 @@ export function useHideDocumentScrollBar(visible: boolean, isBody: boolean, mask
   }, [visible, isBody, mask])
 }
 
+export function useOverflowHidden(container: HTMLElement, hidden?: boolean, allowDisable?: boolean) {
+  const needResetContainerStyle = useRef<boolean>(false)
+  const originContainerStyle = useRef<Partial<CSSStyleDeclaration>>({})
+
+  const getScrollBarWidth = (element: HTMLElement) => {
+    return element.tagName === 'BODY'
+      ? window.innerWidth - (document.body.clientWidth || document.documentElement.clientWidth)
+      : element.offsetWidth - element.clientWidth
+  }
+
+  const setContainerStyle = () => {
+    if (container && container.style.overflow !== 'hidden') {
+      const originStyle = container.style
+      needResetContainerStyle.current = true
+
+      const containerScrollBarWidth = getScrollBarWidth(container)
+      if (containerScrollBarWidth) {
+        originContainerStyle.current.width = originStyle.width
+        container.style.width = `calc(${container.style.width || '100%'} - ${containerScrollBarWidth}px)`
+      }
+
+      originContainerStyle.current.overflow = originStyle.overflow
+      container.style.overflow = 'hidden'
+    }
+  }
+
+  const resetContainerStyle = () => {
+    if (needResetContainerStyle.current && container) {
+      const originStyle = originContainerStyle.current
+      Object.keys(originStyle).forEach((i: any) => ((container as any).style[i] = originStyle[i]))
+    }
+    needResetContainerStyle.current = false
+    originContainerStyle.current = {}
+  }
+
+  useEffect(() => {
+    if (!allowDisable) return
+    hidden ? setContainerStyle() : resetContainerStyle()
+
+    return () => {
+      resetContainerStyle()
+    }
+  }, [container, hidden, allowDisable])
+
+  return [resetContainerStyle, setContainerStyle]
+}
+
 interface ContentRectType {
   hide: boolean
   bottom: number

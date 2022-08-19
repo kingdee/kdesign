@@ -100,6 +100,7 @@ const compDefaultProps = {
     placement: 'right',
     width: 320,
     zIndex: 1050,
+    disableScroll: true,
   },
   Empty: {},
   Filter: {
