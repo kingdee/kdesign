@@ -16,7 +16,7 @@ import classNames from 'classnames'
 import ConfigContext from '../config-provider/ConfigContext'
 import { getCompProps } from '../_utils'
 import devWarning from '../_utils/devwarning'
-import { useResizeObserver, useHideDocumentScrollBar } from '../_utils/hooks'
+import { useResizeObserver, useOverflowHidden } from '../_utils/hooks'
 // import { usePrevious } from '../_utils/hooks'
 import { toArray } from '../_utils/react-children'
 export const PlacementTypes = tuple('top', 'right', 'bottom', 'left')
@@ -70,6 +70,7 @@ export interface IDrawerProps {
   width?: string | number
   height?: string | number
   zIndex?: string | number
+  disableScroll?: boolean
 }
 const documentBody = document.body
 
@@ -119,6 +120,7 @@ const InternalDrawer = (props: IDrawerProps, ref: unknown): ReactElement | React
     forceRender,
     destroyOnClose,
     prefixCls: customPrefixcls,
+    disableScroll,
   } = drawerProps
   const drawerPrefixCls = getPrefixCls!(prefixCls, 'drawer', customPrefixcls)
   const [showChildren, setShowChildren] = useState(false)
@@ -176,7 +178,11 @@ const InternalDrawer = (props: IDrawerProps, ref: unknown): ReactElement | React
     [width, visible, currentWidth],
   )
   useResizeObserver(() => (drawerContainer || containerRef.current?.parentNode) as HTMLElement, handleContainerResize)
-  useHideDocumentScrollBar(!!visible, isBody, !!mask)
+  useOverflowHidden(
+    (drawerContainer || containerRef.current?.parentNode) as HTMLElement,
+    visible && mask,
+    disableScroll,
+  )
 
   // 为了单测
   useEffect(() => {
