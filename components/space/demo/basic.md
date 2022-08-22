@@ -12,7 +12,7 @@ import { Space, Button, Upload, Popconfirm, Icon } from '@kdcloudjs/kdesign'
 
 function Demo() {
   return (
-    <Space style={{ width: 400 }}>
+    <Space style={{ width: 440 }}>
       <>Kingdee</>
       Space
       <Button type="primary">Button</Button>
