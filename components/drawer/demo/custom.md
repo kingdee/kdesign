@@ -11,7 +11,6 @@ import ReactDOM from 'react-dom'
 import { Drawer, Button, Radio, Icon } from '@kdcloudjs/kdesign'
 
 function Demo() {
-  const [content, setContent] = React.useState()
   const [visible, setVisible] = React.useState(false)
   const [prop, setProp] = React.useState('closeIcon')
   const map = {
@@ -35,7 +34,6 @@ function Demo() {
     },
   }
   const onChange = React.useCallback((e) => {
-    setContent(map[e.target.value] && map[e.target.value].content)
     setProp(e.target.value)
   }, [])
   return (
@@ -52,11 +50,7 @@ function Demo() {
       </Radio.Group>
       <Button onClick={() => setVisible(!visible)}>Open</Button>
       <Drawer visible={visible} {...{ [prop]: map[prop] && map[prop].Component() }} onClose={() => setVisible(false)}>
-        <div style={{ marginTop: 20, marginLeft: 20 }}>点击按钮关闭</div>
-        {prop === 'children' ? <div>自定义内容元素</div> : <div>自定义{content}</div>}
-        <Button onClick={() => setVisible(!visible)} style={{ width: 100, marginTop: 20, marginLeft: 20 }}>
-          Close
-        </Button>
+        {prop === 'children' ? <div>自定义内容元素</div> : <div>自定义{map[prop].content}</div>}
       </Drawer>
     </>
   )
