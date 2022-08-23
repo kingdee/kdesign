@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { useState, useEffect, useRef } from 'react'
-// import KeyCode from '../../_utils/KeyCode'
+import KeyCode from '../../_utils/KeyCode'
 
 export default function usePickerInput({
   preventBlurRef,
@@ -37,46 +37,41 @@ export default function usePickerInput({
       setTyping(true)
       triggerOpen(true)
     },
-    // onKeyDown: (e) => {
-    //   switch (e.which) {
-    //     case KeyCode.ENTER: {
-    //       if (!open) {
-    //         triggerOpen(true)
-    //       } else if (onSubmit() !== false) {
-    //         setTyping(true)
-    //       }
+    onKeyDown: (e) => {
+      setTyping(true)
+      triggerOpen(true)
 
-    //       e.preventDefault()
-    //       return
-    //     }
+      switch (e.which) {
+        case KeyCode.ENTER: {
+          if (!open) {
+            triggerOpen(true)
+          } else if (onSubmit() !== false) {
+            setTyping(true)
+          }
 
-    //     case KeyCode.TAB: {
-    //       if (typing && open && !e.shiftKey) {
-    //         setTyping(false)
-    //         e.preventDefault()
-    //       } else if (!typing && open) {
-    //         if (!forwardKeyDown(e) && e.shiftKey) {
-    //           setTyping(true)
-    //           e.preventDefault()
-    //         }
-    //       }
-    //       return
-    //     }
+          e.preventDefault()
+          return
+        }
 
-    //     case KeyCode.ESC: {
-    //       setTyping(true)
-    //       onCancel()
-    //       return
-    //     }
-    //   }
+        case KeyCode.TAB: {
+          if (typing && open && !e.shiftKey) {
+            setTyping(false)
+            e.preventDefault()
+          }
+          return
+        }
 
-    //   if (!open && ![KeyCode.SHIFT].includes(e.which)) {
-    //     triggerOpen(true)
-    //   } else if (!typing) {
-    //     // Let popup panel handle keyboard
-    //     forwardKeyDown(e)
-    //   }
-    // },
+        case KeyCode.ESC: {
+          setTyping(true)
+          onCancel()
+          return
+        }
+      }
+
+      if (!open && ![KeyCode.SHIFT].includes(e.which)) {
+        triggerOpen(true)
+      }
+    },
 
     onFocus: (e) => {
       setTyping(true)

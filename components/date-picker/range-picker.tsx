@@ -1,6 +1,5 @@
 import React, { useContext, useEffect } from 'react'
 import isSameWeek from 'date-fns/isSameWeek'
-import parse from 'date-fns/parse'
 
 import {
   DateType,
@@ -344,17 +343,30 @@ function DatePicker(props: Partial<RangePickerProps>) {
   const endValueTexts = useValueTexts(getValue(selectedValue, 1), { format: _format })
 
   const onTextChange = (newText: string, index: 0 | 1) => {
-    let inputDate
-    if (picker !== 'year') {
-      inputDate = parseDate(newText, _format)
-    } else {
-      const year = parse(newText, _format, newDate()!)
-      inputDate = isValid(year) ? year : null
-    }
-    const disabledFunc = index === 0 ? disabledStartDate : disabledEndDate
-    if (inputDate && (!disabledFunc || !disabledFunc(inputDate))) {
-      setSelectedValue(updateValues(selectedValue, inputDate, index))
-      setViewDate(inputDate, index)
+    let inputTempDate
+    if (newText === '') {
+      if (index === 0 && selectedValue && selectedValue.length === 2) {
+        inputTempDate = selectedValue[1]
+      } else if (index === 1 && selectedValue && selectedValue.length === 2) {
+        inputTempDate = selectedValue[0]
+      }
+      if (inputTempDate) {
+        setSelectedValue(updateValues(selectedValue, inputTempDate, index))
+        setViewDate(inputTempDate, index)
+      }
+    } else if (newText && newText.length === _format.length) {
+      inputTempDate = parseDate(newText, _format)
+
+      const disabledFunc = index === 0 ? disabledStartDate : disabledEndDate
+      if (inputTempDate && (!disabledFunc || !disabledFunc(inputTempDate))) {
+        if (picker !== 'year') {
+          setSelectedValue(updateValues(selectedValue, inputTempDate, index))
+          setViewDate(inputTempDate, index)
+        } else if (isValid(inputTempDate)) {
+          setSelectedValue(updateValues(selectedValue, inputTempDate, index))
+          setViewDate(inputTempDate, index)
+        }
+      }
     }
   }
 
