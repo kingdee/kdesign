@@ -1,6 +1,5 @@
 import React, { useContext, useEffect } from 'react'
 import classnames from 'classnames'
-import parse from 'date-fns/parse'
 
 import { DateType, InnerLocale, InnerLocaleKey, PickerMode, TimeUnit } from './interface'
 import ConfigContext from '../config-provider/ConfigContext'
@@ -231,21 +230,25 @@ function DatePicker(props: Partial<PickerProps>) {
 
   // text
   const valueText = useValueTexts(selectedValue, { format: _format })
+
   // input 展示
   const [text, triggerTextChange, resetText] = useTextValueMapping({
     valueText,
     onTextChange: (newText: string) => {
-      // if (typeof _format !== 'function') {
-      let inputDate
-      if (picker !== 'year') {
-        inputDate = parseDate(newText, _format)
-      } else {
-        const year = parse(newText, _format, newDate()!)
-        inputDate = isValid(year) ? year : null
-      }
-      if (inputDate && (!disabledDate || !disabledDate(inputDate))) {
-        setSelectedValue(inputDate)
-        setViewDate(inputDate)
+      if (newText === '') {
+        setSelectedValue(null)
+        setDateValue(null)
+      } else if (newText && newText.length === _format.length) {
+        const inputTempDate = parseDate(newText, _format)
+        if (inputTempDate && (!disabledDate || !disabledDate(inputTempDate))) {
+          if (picker !== 'year') {
+            setSelectedValue(inputTempDate)
+            setDateValue(inputTempDate)
+          } else if (isValid(inputTempDate)) {
+            setSelectedValue(inputTempDate)
+            setDateValue(inputTempDate)
+          }
+        }
       }
     },
   })
