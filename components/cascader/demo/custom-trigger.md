@@ -52,7 +52,9 @@ function Demo() {
     <div style={{ width: 300 }}>
       <span dangerouslySetInnerHTML={{ __html: `${text}&nbsp;` }} />
       <Cascader options={options} onChange={onChange}>
-        <a href="true">Change city</a>
+        <a href="true" onClick={(e) => e.preventDefault()}>
+          Change city
+        </a>
       </Cascader>
     </div>
   )
