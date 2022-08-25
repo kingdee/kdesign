@@ -4,6 +4,34 @@ title: 更新日志
 hiddenAnchor: true
 ---
 
+## [1.5.11](https://github.com/kdcloudone/kdesign/compare/v1.5.10...v1.5.11)
+`2022-08-25`
+* alert
+  * demo展示样式问题
+* button
+  * 新增按钮超出隐藏并出现省略号
+  * 修复按钮文字换行问题
+* cascader
+  * demo点击跳转问题
+* drawer
+  * 调整demo
+  * 修复抽屉显示时使页面抖动问题
+* message
+  * 修复手动点击关闭,不触发消息提示控件问题
+* pagination
+  * 颜色问题
+* search
+  * 修复demo图片不显示问题
+* space
+  * 修复demo显示问题
+* transfer
+  * 修复穿梭框方向键文字换行问题
+
+## [1.5.10](https://github.com/kdcloudone/kdesign/compare/v1.5.9...v1.5.10)
+`2022-08-22`
+* table
+  * 修复表格虚模式下表格从不可见到可见出现滚动条跳动问题
+
 ## [1.5.9](https://github.com/kdcloudone/kdesign/compare/v1.5.8...v1.5.9)
 `2022-08-18`
 * dropdown
