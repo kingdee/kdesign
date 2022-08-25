@@ -47,10 +47,7 @@ const Notification = React.forwardRef<unknown, NotificationProps>((props, ref) =
   }
 
   const remove = (key: React.Key) => {
-    const filter = notices.filter((notice: any) => {
-      return notice.key !== key
-    })
-    setNotices(filter)
+    setNotices((preNotices) => preNotices.filter((notice: any) => notice.key !== key))
   }
 
   const onClose = (notice: NotificationProps) => {
