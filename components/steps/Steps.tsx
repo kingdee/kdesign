@@ -92,7 +92,6 @@ const Steps: React.FC<StepsProps> = (props) => {
             childProps.status = 'wait'
           }
         }
-        childProps.active = stepNumber === current
         return cloneElement(child, childProps)
       })}
     </div>
