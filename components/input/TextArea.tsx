@@ -9,7 +9,7 @@ import { useResizeObserver, useMergedState } from '../_utils/hooks'
 import devWarning from '../_utils/devwarning'
 
 export interface textAreaProps extends React.TextareaHTMLAttributes<HTMLInputElement> {
-  allowClear?: boolean // 是否可以点击清除图标删除内容
+  allowClear?: boolean | React.ReactNode // 是否可以点击清除图标删除内容
   borderType?: BorderType // none/underline/bordered
   defaultValue?: string // 输入框默认内容
   count?: boolean // 计数开关
@@ -148,7 +148,7 @@ const InternalTextarea = (props: textAreaProps, ref: unknown): FunctionComponent
       <textarea
         ref={textareaRef}
         disabled={disabled}
-        style={Object.assign({}, textareaStyles, hadCount || allowClear ? otherStyles : style)}
+        style={Object.assign({}, textareaStyles, hadCount || !!allowClear ? otherStyles : style)}
         className={classNames(
           `${prefixCls}-textarea`,
           {
@@ -157,7 +157,7 @@ const InternalTextarea = (props: textAreaProps, ref: unknown): FunctionComponent
             [`${prefixCls}-underline`]: borderType === 'underline',
             [`${prefixCls}-disabled`]: disabled,
             [`${prefixCls}-no-resize`]: canResize !== true,
-            [`${prefixCls}-allowClear-spacing`]: allowClear,
+            [`${prefixCls}-allowClear-spacing`]: !!allowClear,
           },
           { [className!]: className && !allowClear && !hadCount },
         )}
