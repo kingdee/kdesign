@@ -24,7 +24,7 @@ export interface InputProps extends Omit<React.InputHTMLAttributes<HTMLInputElem
   size?: InputSiteType // 尺寸
   defaultValue?: string
   disabled?: boolean
-  allowClear?: boolean
+  allowClear?: boolean | React.ReactNode
   placeholderTobeValue?: boolean
   addonAfter?: React.ReactNode
   addonBefore?: React.ReactNode

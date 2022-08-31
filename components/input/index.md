@@ -20,7 +20,7 @@ subtitle: 输入框
 | --- | --- | --- | --- | --- | --- |
 | addonAfter | input 后置标签 | string / ReactNode | `-` | `-` | 1.0.0 |
 | addonBefore | input 前置标签 | string / ReactNode | `-` | `-` | 1.0.0 |
-| allowClear | 是否可以点击清除图标删除内容 | boolean | `true` | `true` `false` | 1.0.0 |
+| allowClear | 可以点击清除图标删除内容 | boolean / ReactNode | `-` | `-` | 1.0.0 |
 | borderType | 边框类型 | string | `underline` | `underline` `bordered` `none` | 1.0.0 |
 | defaultValue | 输入框默认内容 | string | `-` | `-` | 1.0.0 |
 | disabled | 输入框禁用状态 | boolean | `false` | `true` `false` | 1.0.0 |

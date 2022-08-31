@@ -8,13 +8,14 @@ order: 4
 ```jsx
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { Input } from '@kdcloudjs/kdesign'
+import { Input, Icon } from '@kdcloudjs/kdesign'
 
 function Demo() {
   const inputStyle = { marginBottom: 8, marginRight: 8, width: 230 }
   return (
     <div style={{ width: '300px' }}>
       <Input style={inputStyle} placeholder="基本使用" allowClear />
+      <Input style={inputStyle} placeholder="基本使用" allowClear={<Icon type='delete' />} />
       <Input
         style={inputStyle}
         placeholder="请输入"

@@ -11,7 +11,7 @@ interface ClearableInputProps {
   prefixCls: string
   inputType: typeof ClearableInputType[number]
   value?: any
-  allowClear?: boolean
+  allowClear?: boolean | React.ReactNode
   element: React.ReactElement
   handleReset?: (event: React.MouseEvent<HTMLElement, MouseEvent>) => void
   className?: string
@@ -60,13 +60,13 @@ const ClearableInput: React.FC<ClearableInputProps> = (props) => {
     })
     return (
       <span onClick={handleReset} className={clearIconclasses}>
-        <Icon type="close" />
+        {typeof allowClear === 'boolean' ? <Icon type="close" /> : allowClear}
       </span>
     )
   }
 
   const renderSuffix = () => {
-    if (suffix || (!disabled && allowClear)) {
+    if (suffix || (!disabled && !!allowClear)) {
       return (
         <span className={`${prefixCls}-suffix`}>
           {renderClearIcon()}
