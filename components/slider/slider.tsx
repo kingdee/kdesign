@@ -234,7 +234,7 @@ const InteranalSlider = (props: ISliderProps, ref: unknown): FunctionComponentEl
       <SliderTooltip
         ref={handleRef}
         placement={tooltipPlacement}
-        tip={tipFormatter || value}
+        tip={tipFormatter?.(value)}
         visible={disabled ? false : tooltipVisible}
         prefixCls={sliderPrefixCls}
         vertical={vertical}

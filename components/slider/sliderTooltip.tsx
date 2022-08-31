@@ -11,7 +11,7 @@ interface ISliderTooltipProps extends TooltipProps {
 }
 
 const SliderTooltip = React.forwardRef<unknown, ISliderTooltipProps>((props: ISliderTooltipProps, ref: unknown) => {
-  const { visible, prefixCls, reverse, vertical, min, max, bound, ...others } = props
+  const { visible, prefixCls, reverse, vertical, min, max, bound, tip, ...others } = props
   const thisTooltipRef = useRef<HTMLElement>(null)
   const tooltipRef = (ref as any) || thisTooltipRef
 
@@ -33,7 +33,7 @@ const SliderTooltip = React.forwardRef<unknown, ISliderTooltipProps>((props: ISl
   const placement = vertical ? 'right' : 'top'
 
   return (
-    <Tooltip ref={tooltipRef} {...others} tip={bound} visible={visible} placement={placement}>
+    <Tooltip ref={tooltipRef} {...others} tip={tip || bound} visible={tip !== null && visible} placement={placement}>
       <div className={sliderHandleClass} style={handleStyle}></div>
     </Tooltip>
   )
