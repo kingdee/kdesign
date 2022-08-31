@@ -31,6 +31,7 @@ subtitle: 穿梭框
 | oneWay | 展示为单向样式 | boolean | false | 1.0.0 |
 | operations | 操作文案集合，顺序从上至下 | string\[] | \[`>`, `<`] | 1.0.0 |
 | pagination | 使用分页样式，自定义渲染列表下无效 | boolean \| { pageSize: number } | false | 1.0.0 |
+| searchPlaceholder | 搜索框placeholder集合，顺序从左至右 | string\[] | \[`请输入需要搜索的内容`, `请输入需要搜索的内容`] | 1.6.2 |
 | render | 每行数据渲染函数，该函数的入参为 `dataSource` 中的项，返回值为 ReactElement。或者返回一个普通对象，其中 `label` 字段为 ReactElement，`value` 字段为 title | (record) => ReactNode | - | 1.0.0 |
 | selectedKeys | 设置哪些项应该被选中 | string\[] | \[] | 1.0.0 |
 | showSearch | 是否显示搜索框 | boolean | false | 1.0.0 |

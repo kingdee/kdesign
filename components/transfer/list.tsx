@@ -1,7 +1,6 @@
-import React, { useState, useContext } from 'react'
+import React, { useState } from 'react'
 import { omit } from '../_utils/omit'
 import Search from './search'
-import ConfigContext from '../config-provider/ConfigContext'
 import { PaginationType, TransferItem, TransferDirection, RenderResult, RenderResultObject } from './interface'
 import DefaultListBody, { TransferListBodyProps, OmitProps } from './list-body'
 import classNames from 'classnames'
@@ -24,6 +23,7 @@ type RenderListFunction = (props: TransferListBodyProps) => React.ReactNode
 export interface TransferListProps {
   prefixCls: string
   titleText: string
+  placeholder: string
   dataSource: TransferItem[]
   filterOption?: (filterText: string, item: TransferItem) => boolean
   style?: React.CSSProperties
@@ -47,7 +47,6 @@ export interface TransferListProps {
 }
 
 const TransferList: React.FC<TransferListProps> = (props: TransferListProps) => {
-  const { locale } = useContext(ConfigContext)
   const {
     prefixCls,
     dataSource,
@@ -67,9 +66,8 @@ const TransferList: React.FC<TransferListProps> = (props: TransferListProps) => 
     pagination,
     footer,
     showRemove,
+    placeholder,
   } = props
-  const transferLang = locale.getCompLangMsg({ componentName: 'Transfer' })
-  const { searchPlaceholder } = transferLang
   const [filterValue, setFilterValue] = useState('')
   // 自定义底部渲染
   const footerDom = footer && footer(props)
@@ -141,7 +139,7 @@ const TransferList: React.FC<TransferListProps> = (props: TransferListProps) => 
 
   const getListBody = (
     prefixCls: string,
-    searchPlaceholder: string,
+    placeholder: string,
     filterValue: string,
     filteredItems: TransferItem[],
     noDataContent: React.ReactNode,
@@ -152,12 +150,12 @@ const TransferList: React.FC<TransferListProps> = (props: TransferListProps) => 
     disabled?: boolean,
   ): React.ReactNode => {
     const search = showSearch ? (
-      <div className={`${prefixCls}-body-search-wrapper`}>
+      <div className={`${prefixCls}-body-search-wrpaper`}>
         <Search
           prefixCls={`${prefixCls}-search`}
           onChange={onFilterChange}
           handleClear={onClear}
-          placeholder={searchPlaceholder}
+          placeholder={placeholder}
           value={filterValue}
           disabled={disabled}
         />
@@ -244,7 +242,7 @@ const TransferList: React.FC<TransferListProps> = (props: TransferListProps) => 
     !showRemove && !pagination && getCheckBox(filteredItems, onItemSelectAll, showSelectAll, disabled)
   const listBody = getListBody(
     prefixCls,
-    searchPlaceholder,
+    placeholder,
     filterValue,
     filteredItems,
     noDataContent,

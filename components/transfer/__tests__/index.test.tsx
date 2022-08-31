@@ -221,6 +221,18 @@ describe('Transfer', () => {
     expect(onSearch).toHaveBeenCalledTimes(2)
   })
 
+  it('should input placeholder customize', () => {
+    const wrapper = mount(
+      <Transfer
+        {...searchTransferProps}
+        searchPlaceholder={['自定义的左placeholder', '自定义的右placeholder']}
+        showSearch
+      />,
+    )
+    expect(wrapper.find(TransferSearch).first().find('input').props().placeholder).toEqual('自定义的左placeholder')
+    expect(wrapper.find(TransferSearch).last().find('input').props().placeholder).toEqual('自定义的右placeholder')
+  })
+
   it('should show sorted targetKey', () => {
     const sortedTargetKeyProps = {
       dataSource: [
