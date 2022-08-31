@@ -25,6 +25,7 @@ export interface TransferProps {
   noDataContent?: ((param: TransferRenderParam) => React.ReactNode) | React.ReactNode // 穿梭框无数据时的内容
   titles?: string[] // 穿梭框标题
   operations?: string[] // 穿梭框操作面板文字
+  placeholders?: string[] // 搜索框 placeholder
   showSearch?: boolean // 是否展示搜索框
   filterOption?: (inputValue: string, item: TransferItem) => boolean // 自定义搜索函数
   rowKey?: (record: TransferItem) => string
@@ -54,6 +55,7 @@ const Transfer: React.FC<TransferProps> = (props: TransferProps) => {
     operationStyle,
     titles = [],
     operations = [],
+    placeholders = [],
     showSearch,
     filterOption,
     rowKey,
@@ -87,6 +89,8 @@ const Transfer: React.FC<TransferProps> = (props: TransferProps) => {
   const mergedPagination = !children && pagination
   const leftTitle = titles[0] || transferLang.leftTitle
   const rightTitle = titles[1] || transferLang.rightTitle
+  const leftPlaceholder = placeholders[0] || transferLang.searchPlaceholder
+  const rightPlaceholder = placeholders[1] || transferLang.searchPlaceholder
 
   const setStateKeys = (direction: TransferDirection, keys: string[] | ((prevKeys: string[]) => string[])) => {
     if (direction === 'left') {
@@ -251,6 +255,7 @@ const Transfer: React.FC<TransferProps> = (props: TransferProps) => {
     <div className={cls} style={style}>
       <List
         prefixCls={`${transferPrefixCls}-list`}
+        placeholder={leftPlaceholder}
         titleText={leftTitle}
         dataSource={leftDataSource}
         filterOption={filterOption}
@@ -284,6 +289,7 @@ const Transfer: React.FC<TransferProps> = (props: TransferProps) => {
       />
       <List
         prefixCls={`${transferPrefixCls}-list`}
+        placeholder={rightPlaceholder}
         titleText={rightTitle}
         dataSource={rightDataSource}
         filterOption={filterOption}
