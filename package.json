@@ -84,7 +84,7 @@
     "classnames": "^2.2.6",
     "copy-to-clipboard": "^3.3.1",
     "cropperjs": "^1.5.12",
-    "date-fns": "^2.16.1",
+    "date-fns": "2.28.0",
     "lodash": "^4.17.20",
     "react-draggable": "^4.4.3",
     "react-popper": "^2.2.3",
