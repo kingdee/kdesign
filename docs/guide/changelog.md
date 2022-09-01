@@ -4,6 +4,21 @@ title: 更新日志
 hiddenAnchor: true
 ---
 
+## [1.6.0](https://github.com/kdcloudone/kdesign/compare/v1.5.11...v1.6.0)
+`2022-09-01`
+* avatar
+  * 修复头像组件图标位置偏下问题
+* date-picker
+  * 更新demo与文档描述内容
+* form
+  * 修复api tipFormatter配置无效问题
+* slider
+  * 修复api tipFormatter配置无效问题
+* steps
+  * 修复步骤条警告信息
+* tree
+  * 调整树控件外边距
+
 ## [1.5.11](https://github.com/kdcloudone/kdesign/compare/v1.5.10...v1.5.11)
 `2022-08-25`
 * alert
