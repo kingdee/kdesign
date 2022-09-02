@@ -356,6 +356,8 @@ const InternalTree = React.forwardRef((props: TreeProps, ref: any): React.Functi
 
   const handleDrop = React.useCallback(
     (event: React.MouseEvent, node: any, dragNode: any, dragNodesKeys: string) => {
+      setDragOverNodeKey(null)
+      setDropPosition(null)
       const pos = getPos(flattenAllData, dragNodesKeys)
       const keys = getAllChildKeys(flattenAllData, pos).concat(dragNodesKeys)
       onDrop && onDrop({ event, node, dragNode, dragNodesKeys: keys, dropPosition })
