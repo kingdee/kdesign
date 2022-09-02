@@ -382,6 +382,7 @@ const TreeNode = React.forwardRef<unknown, TreeNodeProps>((props, ref) => {
     (e) => {
       if (!draggable) return
       setShowDragLine(false)
+      setForbiddenChildrenPointerEvents(false)
       const data = getDragNode()
       const sourceKey = data?.key
       if (sourceKey) {
