@@ -293,42 +293,27 @@ const InternalTree = React.forwardRef((props: TreeProps, ref: any): React.Functi
   const handleDragOver = React.useCallback(
     (event: React.MouseEvent, node: any, dropTarget: HTMLElement) => {
       const dropPos = calcDropPosition(event, dropTarget)
+      if (!delayedDragEnterRef.current) {
+        delayedDragEnterRef.current = {}
+      }
+      if (dropPos !== 0 && dropPos !== dropPosition) {
+        Object.keys(delayedDragEnterRef.current).forEach((key) => {
+          clearTimeout(delayedDragEnterRef.current[key])
+          delayedDragEnterRef.current[key] = null
+        })
+      }
       setDropPosition(dropPos)
 
+      const { key, pos } = node
       const dragNode = getDragNode()
       if (dragNode.key === node.key) {
         setDropPosition(null)
       }
-      onDragOver && onDragOver({ event, node })
-    },
-    [onDragOver],
-  )
 
-  const handleDragLeave = React.useCallback(
-    (event: React.MouseEvent, node: any) => {
-      onDragLeave && onDragLeave({ event, node })
-    },
-    [onDragLeave],
-  )
-
-  const handleDragEnter = React.useCallback(
-    (event: React.MouseEvent, node: any, dropTarget: HTMLElement) => {
-      const { key, pos } = node
-
-      const dragNode = getDragNode()
-      if (!dragNode) {
-        return
-      }
-      if (!delayedDragEnterRef.current) {
-        delayedDragEnterRef.current = {}
-      }
-      Object.keys(delayedDragEnterRef.current).forEach((key) => {
-        clearTimeout(delayedDragEnterRef.current[key])
-      })
-      if (dragNode?.key !== key) {
-        const dragPos = calcDropPosition(event, dropTarget)
-        setDragOverNodeKey(key)
-        setDropPosition(dragPos)
+      if (dragNode?.key !== key && dropPos === 0) {
+        if (dragNode.key === node.key || delayedDragEnterRef.current[pos]) {
+          return
+        }
         delayedDragEnterRef.current[pos] = setTimeout(() => {
           let newExpandedKeys = [...expandedKeys]
           if (!node.expand) {
@@ -340,15 +325,38 @@ const InternalTree = React.forwardRef((props: TreeProps, ref: any): React.Functi
           onExpand?.(newExpandedKeys, { node, expanded: true })
         }, 800)
       }
+      onDragOver && onDragOver({ event, node })
+    },
+    [TreeProps, dropPosition, expandedKeys, onDragOver, onExpand, setExpandedKeys],
+  )
+
+  const handleDragLeave = React.useCallback(
+    (event: React.MouseEvent, node: any) => {
+      onDragLeave && onDragLeave({ event, node })
+    },
+    [onDragLeave],
+  )
+
+  const handleDragEnter = React.useCallback(
+    (event: React.MouseEvent, node: any, _dropTarget: HTMLElement) => {
+      const { key } = node
+
+      const dragNode = getDragNode()
+      if (!dragNode) {
+        return
+      }
+      if (dragNode?.key !== key) {
+        setDragOverNodeKey(key)
+      }
 
       onDragEnter && onDragEnter({ event, node })
     },
-    [TreeProps, expandedKeys, onDragEnter, onExpand, setExpandedKeys],
+    [onDragEnter],
   )
 
   const handleDragEnd = React.useCallback(
     (event: React.MouseEvent, node: any) => {
-      setDragOverNodeKey('')
+      setDragOverNodeKey(null)
       onDragEnd && onDragEnd({ event, node })
     },
     [onDragEnd],
