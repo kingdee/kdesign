@@ -48,7 +48,7 @@ const InternalSearch: React.ForwardRefRenderFunction<ISearchProps, IQuickSearchP
     [`${searchPrefixCls}-disabled`]: disabled,
     [`${searchPrefixCls}-focused`]: focused && !disabled,
     [`${searchPrefixCls}-borderless`]: borderType === 'none',
-    [`${searchPrefixCls}-border`]: borderType === 'border',
+    [`${searchPrefixCls}-border`]: borderType === 'bordered',
   })
 
   const handleSearchChange = useCallback(
