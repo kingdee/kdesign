@@ -78,7 +78,7 @@ const InternalQuickSearch: React.ForwardRefRenderFunction<IQuickSearchProps> = (
     [`${quickSearchPrefixCls}-focused`]: isFocused || tagsList.length,
     [`${quickSearchPrefixCls}-disabled`]: disabled,
     [`${quickSearchPrefixCls}-borderless`]: borderType === 'none',
-    [`${quickSearchPrefixCls}-border`]: borderType === 'border',
+    [`${quickSearchPrefixCls}-border`]: borderType === 'bordered',
   })
 
   const quickSearchSelectorCls = classNames({
