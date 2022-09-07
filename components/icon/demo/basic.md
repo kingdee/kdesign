@@ -170,7 +170,6 @@ const BaseIcon = [
   'little-k',
   'bellOutlined',
   'sigma',
-  'unfold',
   'fold'
 ]
 function Demo() {
