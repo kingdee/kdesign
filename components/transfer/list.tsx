@@ -238,8 +238,7 @@ const TransferList: React.FC<TransferListProps> = (props: TransferListProps) => 
   const listFooter = footerDom ? <div className={`${prefixCls}-footer`}>{footerDom}</div> : null
 
   const { filteredItems, filteredRenderItems } = getFilteredItems(dataSource, filterValue)
-  const checkAllCheckbox =
-    !showRemove && !pagination && getCheckBox(filteredItems, onItemSelectAll, showSelectAll, disabled)
+  const checkAllCheckbox = !showRemove && getCheckBox(filteredItems, onItemSelectAll, showSelectAll, disabled)
   const listBody = getListBody(
     prefixCls,
     placeholder,
