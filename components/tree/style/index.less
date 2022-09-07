@@ -140,22 +140,31 @@
   }
 
   &-drag-line {
-    position: absolute;
-    left: 0;
-    top: 100%;
-    width: 100%;
-    border-top: 2px solid @tree-node-drag-line-border-color;
-
-    &::before {
-      content: '';
-      width: 4px;
-      height: 4px;
-      background-color: #fff;
-      border-radius: 50%;
-      border: 2px solid @tree-node-drag-line-border-color;
+    &-top, &-bottom {
       position: absolute;
-      top: -1px;
-      transform: translateY(-50%);
+      left: 0;
+      top: 0;
+      width: 100%;
+      border-top: 2px solid @tree-node-drag-line-border-color;
+      
+      &::before {
+        content: '';
+        width: 4px;
+        height: 4px;
+        background-color: #fff;
+        border-radius: 50%;
+        border: 2px solid @tree-node-drag-line-border-color;
+        position: absolute;
+        top: -1px;
+        transform: translateY(-50%);
+      }
+    }
+    &-top {
+      top: 0;
+    }
+
+    &-bottom {
+      top: 100%;
     }
   }
   &-leaf-icon {

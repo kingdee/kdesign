@@ -448,6 +448,7 @@ const InternalTree = React.forwardRef((props: TreeProps, ref: any): React.Functi
             item.getDragNode = getDragNode
             item.setDragNode = setDragNode
             item.dragOver = dragOverNodeKey === item.key && dropPosition === 0
+            item.dropPosition = dropPosition
             item.expandOnClickNode = expandOnClickNode
             item.loading = loadingKeys.has(item.key) && !loadedKeys.has(item.key)
             item.loadData = loadData
