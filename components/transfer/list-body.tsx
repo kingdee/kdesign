@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useMemo, useState } from 'react'
 import classNames from 'classnames'
 import { ElementOf, Omit, tuple } from '../_utils/type'
 import Pagination from '../pagination'
@@ -46,6 +46,8 @@ const ListBody: React.FC<TransferListBodyProps> = (props: TransferListBodyProps)
 
   const [current, setCurrent] = useState(1)
 
+  const mergedPagination = useMemo(() => parsePagination(pagination), [pagination])
+
   const onItemSelect = (item: TransferItem) => {
     const checked = selectedKeys.indexOf(item.key) >= 0
     itemSelect(item.key, !checked)
@@ -60,8 +62,6 @@ const ListBody: React.FC<TransferListBodyProps> = (props: TransferListBodyProps)
   }
 
   const getItems = () => {
-    const mergedPagination = parsePagination(pagination)
-
     let displayItems = filteredRenderItems
 
     if (mergedPagination) {
@@ -74,8 +74,16 @@ const ListBody: React.FC<TransferListBodyProps> = (props: TransferListBodyProps)
     return displayItems
   }
 
+  useEffect(() => {
+    const total = filteredRenderItems.length
+    if (mergedPagination && (current - 1) * mergedPagination.pageSize >= total) {
+      const pageSize = mergedPagination.pageSize
+      const pageNo = total % pageSize === 0 ? total / pageSize : total / pageSize + 1
+      setCurrent(pageNo)
+    }
+  }, [mergedPagination, filteredRenderItems])
+
   let paginationNode: React.ReactNode = null
-  const mergedPagination = parsePagination(pagination)
   if (mergedPagination) {
     paginationNode = (
       <div className={`${prefixCls}-pagination`}>
