@@ -127,8 +127,10 @@ function Demo() {
       for (let i = 0; i < data.length; i++) {
         if (data[i].key === dropKey) {
           // dropPosition 指的是被拖拽节点被 drop 的位置，如插入在节点前则为 -1，在节点后则为 1，落在其上则为 0
-          if (dropPosition !== 0) {
+          if (dropPosition === 1) {
             data.splice(i + 1, 0, dragObject)
+          } else if (dropPosition === -1) {
+            data.splice(i, 0, dragObject)
           } else {
             data[i].children = data[i].children || [];
             data[i].children.push(dragObject);

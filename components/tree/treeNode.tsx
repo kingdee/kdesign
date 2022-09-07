@@ -79,6 +79,7 @@ const TreeNode = React.forwardRef<unknown, TreeNodeProps>((props, ref) => {
     indeterminate,
     estimatedItemSize,
     dragOver,
+    dropPosition,
     expandOnClickNode,
     loading,
     onExpand,
@@ -264,6 +265,9 @@ const TreeNode = React.forwardRef<unknown, TreeNodeProps>((props, ref) => {
             })}
             onClick={expandOnClickNode ? undefined : handleClick}
           >
+            {showDragLine && dropPosition === -1 && (
+              <span className={classNames(`${treeNodePrefixCls}-drag-line-top`)}></span>
+            )}
             {checkable ? (
               <Checkbox
                 onChange={handleOnchange}
@@ -289,7 +293,9 @@ const TreeNode = React.forwardRef<unknown, TreeNodeProps>((props, ref) => {
                 {title}
               </span>
             )}
-            {showDragLine && !dragOver && <span className={classNames(`${treeNodePrefixCls}-drag-line`)}></span>}
+            {showDragLine && dropPosition === 1 && (
+              <span className={classNames(`${treeNodePrefixCls}-drag-line-bottom`)}></span>
+            )}
           </div>
         </div>
       </>
