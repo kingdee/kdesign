@@ -150,7 +150,7 @@ const TransferList: React.FC<TransferListProps> = (props: TransferListProps) => 
     disabled?: boolean,
   ): React.ReactNode => {
     const search = showSearch ? (
-      <div className={`${prefixCls}-body-search-wrpaper`}>
+      <div className={`${prefixCls}-body-search-wrapper`}>
         <Search
           prefixCls={`${prefixCls}-search`}
           onChange={onFilterChange}
