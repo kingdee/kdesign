@@ -15,7 +15,7 @@ function Demo() {
   return (
     <div  style={{ width: '150px' }}>
       <div style={demoStyle}>
-        <DatePicker locale={{ locale: 'en', confirm: 'confirm', placeholder: 'Select date' }} />
+        <DatePicker />
       </div>
       <div style={demoStyle}>
         <DatePicker picker="week" />

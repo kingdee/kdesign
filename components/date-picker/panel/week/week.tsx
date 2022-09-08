@@ -131,7 +131,7 @@ function Week(props: WeekProps) {
     prefixCls,
     rangeValue,
     hoverRangedValue,
-    isRange: !!panelPosition,
+    isRange: picker !== 'time',
     isCurrentMonth: (date) => isSameMonth(date, viewDate),
     isAfterStart: (date, rangedValue) => (rangedValue[0] ? isAfter(date, rangedValue[0]) : false),
     isBeforeEnd: (date, rangedValue) => (rangedValue[1] ? isBefore(date, rangedValue[1]) : false),

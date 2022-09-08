@@ -11,6 +11,9 @@ export interface Locale {
   'DatePicker.now': string
   'DatePicker.confrim': string
   'DatePicker.today': string
+  'DatePicker.year': string
+  'DatePicker.month': string
+  'DatePicker.weekTitle': [string, string, string, string, string, string, string]
   'DatePicker.rangePlaceholder': [string, string]
   'DatePicker.rangeYearPlaceholder': [string, string]
   'DatePicker.rangeMonthPlaceholder': [string, string]
@@ -30,6 +33,9 @@ export interface InnerLocale {
   now: string
   confrim: string
   today: string
+  year: string
+  month: string
+  weekTitle: [string, string, string, string, string, string, string]
   rangePlaceholder: [string, string]
   rangeYearPlaceholder: [string, string]
   rangeMonthPlaceholder: [string, string]
