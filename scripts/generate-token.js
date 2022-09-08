@@ -12,6 +12,7 @@ const transformComponentArr = [
   'cascader',
   'checkbox',
   'collapse',
+  'date-picker',
   'drawer',
   'dropdown',
   'empty',
@@ -34,6 +35,7 @@ const transformComponentArr = [
   'slider',
   'spin',
   'split-panel',
+  'stepper',
   'steps',
   'switch',
   'tabs',
@@ -43,7 +45,6 @@ const transformComponentArr = [
   'tree',
   'typography',
   'upload',
-  'stepper',
 ]
 const tokenBrandPrefix = 'kd'
 const tokenGloablPrefix = `--${tokenBrandPrefix}-g`

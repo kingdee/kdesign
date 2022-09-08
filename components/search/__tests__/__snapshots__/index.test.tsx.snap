@@ -201,7 +201,7 @@ exports[`Search renders correctly 5`] = `
 
 exports[`Search renders correctly 6`] = `
 <div
-  class="kd-search kd-search-size-middle"
+  class="kd-search kd-search-size-middle kd-search-border"
 >
   <input
     class="kd-input kd-input-size-middle kd-input-borderless"

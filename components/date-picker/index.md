@@ -115,16 +115,15 @@ subtitle: 日期选择器
 | ----- | -------------------- | --------- | ------ | ------ | ------ |
 | order | 始末时间是否自动排序 | `boolean` | true   |        | 1.0.0 |
 
-
 ## Design Token
 
 | 分类 | 组件token | 全局token | 默认值 |
 | --- | --- | --- | --- |
 | color | --kd-c-date-picker-color-background-checked | --kd-g-color-theme | #5582f3 |
 |  | --kd-c-date-picker-wrapper-color-background | --kd-g-color-background | #fff |
+|  | --kd-c-date-picker-input-color | --kd-g-color-text-primary | #212121 |
 |  | --kd-c-date-picker-input-color-placeholder | --kd-g-color-text-secondary | #666 |
-|  | --kd-c-date-picker-input-color | --kd-g-color-background | #666 |
-|  | --kd-c-date-picker-input-underline-color| - | #999 |
+|  | --kd-c-date-picker-input-underline-color | - | #999 |
 |  | --kd-c-date-picker-input-color-border | --kd-g-color-border-strong | #d9d9d9 |
 |  | --kd-c-date-picker-input-color-disabled | --kd-g-color-disabled | #b2b2b2 |
 |  | --kd-c-date-picker-input-color-background | --kd-g-color-white | #fff |
@@ -138,6 +137,16 @@ subtitle: 日期选择器
 |  | --kd-c-date-picker-container-color-border | --kd-g-color-border-weak | #e5e5e5 |
 |  | --kd-c-date-picker-container-color-background | --kd-g-color-background-2 | #f2f2f2 |
 |  | --kd-c-date-picker-footer-color-background | --kd-g-color-background | #fff |
+|  | --kd-c-date-picker-bar-color-bg-active | --kd-g-color-theme | #5582f3 |
+|  | --kd-c-date-picker-square-item-color-selected | --kd-g-color-theme-5 | rgb(135, 173, 255) |
+|  | --kd-c-date-picker-range-item-color-bg | --kd-g-color-theme-1 | rgb(242, 248, 255) |
+| font | --kd-c-date-picker-container-font-size | --kd-g-font-size-small | 12px |
+|  | --kd-c-date-picker-panel-font-size | --kd-g-font-size-middle | 14px |
+|  | --kd-c-date-picker-small-font-size | --kd-g-font-size-small | 12px |
+|  | --kd-c-date-picker-middle-font-size | --kd-g-font-size-middle | 14px |
+|  | --kd-c-date-picker-large-font-size | --kd-g-font-size-large | 16px |
+| radius | --kd-c-date-picker-input-radius-border | --kd-g-radius-border | 2px |
+|  | --kd-c-date-picker-panel-radius-border | --kd-g-radius-border | 2px |
 | sizing | --kd-c-date-picker-sizing-width | - | 230px |
 |  | --kd-c-date-picker-large-sizing-height | - | 36px |
 |  | --kd-c-date-picker-middle-sizing-height | - | 30px |
@@ -150,11 +159,3 @@ subtitle: 日期选择器
 |  | --kd-c-date-picker-large-spacing-padding-vertical | - | 8px |
 |  | --kd-c-date-picker-large-spacing-padding-horizontal | - | 9px |
 |  | --kd-c-date-picker-suffix-spacing-margin-left | - | 10px |
-| font | --kd-c-date-picker-container-font-size | --kd-g-font-size-small | 12px |
-|  | --kd-c-date-picker-panel-font-size | --kd-g-font-size-middle | 14px |
-|  | --kd-c-date-picker-small-font-size | --kd-g-font-size-small | 12px |
-|  | --kd-c-date-picker-middle-font-size | --kd-g-font-size-small | 14px |
-|  | --kd-c-date-picker-large-font-size | --kd-g-font-size-small | 16px |
-| radius | --kd-c-date-picker-input-radius-border | --kd-g-radius-border | 2px |
-|  | --kd-c-date-picker-panel-radius-border| --kd-g-radius-border | 2px |
-
