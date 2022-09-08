@@ -46,6 +46,7 @@ function Demo() {
       render={(item) => item.title}
       showSearch
       filterOption={filterOption}
+      searchPlaceholder={['自定义的左placeholder', '自定义的右placeholder']}
       style={{ marginBottom: 16 }}
     />
   )
