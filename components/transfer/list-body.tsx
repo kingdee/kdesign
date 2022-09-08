@@ -78,7 +78,7 @@ const ListBody: React.FC<TransferListBodyProps> = (props: TransferListBodyProps)
     const total = filteredRenderItems.length
     if (mergedPagination && (current - 1) * mergedPagination.pageSize >= total) {
       const pageSize = mergedPagination.pageSize
-      const pageNo = total % pageSize === 0 ? total / pageSize : total / pageSize + 1
+      const pageNo = total % pageSize === 0 ? total / pageSize : Math.floor(total / pageSize) + 1
       setCurrent(pageNo)
     }
   }, [mergedPagination, filteredRenderItems])
