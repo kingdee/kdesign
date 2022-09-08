@@ -8,6 +8,9 @@
 // @datePicker-prefix-cls-input: ~'@{datePicker-prefix-cls}-input';
 @datePicker-prefix-cls-panel: ~'@{datePicker-prefix-cls}-panel';
 
+@datePicker-calendar-text: 24px;
+@datePicker-calendar-height: 242px;
+
 .@{datePicker-prefix-cls} {
   // &-small {
   //   height: @date-small-height;
@@ -88,6 +91,10 @@
 
       &[disabled] {
         background: transparent;
+      }
+
+      &::placeholder {
+        color: @date-input-color-disabled;
       }
     }
 
@@ -436,7 +443,7 @@
 
         .@{datePicker-prefix-cls}-calendar-item-disabled {
           position: relative;
-          pointer-events: none;
+          cursor: not-allowed;
 
           .@{datePicker-prefix-cls}-calendar-text {
             color: #b2b2b2;
@@ -538,10 +545,10 @@
       .@{datePicker-prefix-cls}-calendar-week-text {
         position: relative;
         z-index: 2;
-        width: 32px;
-        height: 32px;
+        width: @datePicker-calendar-text;
+        height: @datePicker-calendar-text;
         text-align: center;
-        line-height: 32px;
+        line-height: @datePicker-calendar-text;
         display: inline-block;
         border-radius: @date-panel-border-radius;
         color: #b2b2b2;
@@ -553,7 +560,7 @@
 
       .@{datePicker-prefix-cls}-calendar-week-text {
         width: 100%;
-        height: 32px;
+        height: @datePicker-calendar-text;
         margin: 3px 0;
       }
 
@@ -589,11 +596,21 @@
     &::before {
       left: 50%;
     }
+
+    .@{datePicker-prefix-cls}-calendar-text-selected {
+      border-top-right-radius: 0 !important;
+      border-bottom-right-radius: 0 !important;
+    }
   }
 
   .@{datePicker-prefix-cls}-range-end {
     &::before {
       right: 50%;
+    }
+
+    .@{datePicker-prefix-cls}-calendar-text-selected {
+      border-top-left-radius: 0 !important;
+      border-bottom-left-radius: 0 !important;
     }
   }
 
@@ -619,14 +636,13 @@
       font-size: 14px;
       padding: 0;
       color: rgba(0, 0, 0, 0.25);
-      // line-height: 40px;
       background: 0 0;
       border: 0;
       cursor: pointer;
       transition: color 0.3s;
 
       &:hover {
-        color: rgba(0, 0, 0, 0.85);
+        color: @date-color-background-checked;
       }
     }
 
@@ -641,7 +657,7 @@
     line-height: @date-panel-header-height;
     background: #fafafa;
     color: #212121;
-    // line-height: 36px;
+    font-size: 14px;
     padding: 7px;
     border-bottom: 1px solid #d9d9d9;
     font-weight: bold;
@@ -656,7 +672,8 @@
 
     .@{datePicker-prefix-cls}-content {
       display: flex;
-      height: 224px;
+      height: @datePicker-calendar-height;
+      border-left: 1px solid #d9d9d9;
       width: 100%;
       table-layout: fixed;
       border-collapse: collapse;
@@ -665,13 +682,14 @@
         flex: 1 0 auto;
         width: 56px;
         margin: 0;
-        padding: 0 0 196px 0;
-        overflow-y: hidden;
+        padding: 0 0 206px 0;
+        padding-top: 10px;
         text-align: left;
         transition: background 0.3s;
+        overflow: hidden;
 
         &:not(:first-child) {
-          border-left: 1px solid #f0f0f0;
+          border-left: 1px solid #d9d9d9;
         }
 
         &:hover {
@@ -687,7 +705,7 @@
             width: 100%;
             height: 28px;
             margin: 0;
-            padding: 0 0 0 14px;
+            text-align: center;
             color: rgba(0, 0, 0, 0.85);
             line-height: 28px;
             border-radius: 0;
@@ -729,10 +747,12 @@
   .@{datePicker-prefix-cls}-footer {
     width: min-content;
     min-width: 100%;
-    line-height: 34px;
-    border-top: 1px solid #f0f0f0;
+    line-height: 36px;
+    height: 40px;
+    border-top: 1px solid #d9d9d9;
     border-bottom: 1px solid transparent;
-    padding: 0 16px;
+    padding: 0 12px;
+    color: @date-color-background-checked;
     font-size: 12px;
     box-sizing: border-box;
     text-align: right;

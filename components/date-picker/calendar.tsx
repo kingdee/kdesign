@@ -3,14 +3,7 @@ import classnames from 'classnames'
 
 import Week from './panel/week/week'
 import Context from './context'
-import {
-  getStartOfWeek,
-  getStartOfMonth,
-  addWeeks,
-  addDays,
-  getWeekdayShortInLocale,
-  getWeekdayMinInLocale,
-} from './utils/date-fns'
+import { getStartOfWeek, getStartOfMonth, addWeeks } from './utils/date-fns'
 import { DateType, PickerMode, SharedTimeProps } from './interface'
 import { RangeShowTimeObject } from './range-picker'
 
@@ -27,25 +20,10 @@ const DATE_ROW_COUNT = 6
 
 function Calendar(props: CalendarProps) {
   const context = useContext(Context)
-  const { prefixCls, viewDate } = context
-  const { picker, useWeekdaysShort, showWeekNumber, showWeeksTitle, showTime, disabledDate } = props
-
-  // const isWeekInMonth = (startOfWeek: DateType) => {
-  //   const endOfWeek = addDays(startOfWeek, 6)
-  //   return isSameMonth(startOfWeek, viewDate) || isSameMonth(endOfWeek, viewDate)
-  // }
-
-  // 获取title部分 周的格式
-  const formatWeekday = (day: Date) => {
-    return useWeekdaysShort ? getWeekdayShortInLocale(day) : getWeekdayMinInLocale(day)
-  }
-
-  // const getEffectTime = () => {
-
-  // }
+  const { prefixCls, viewDate, locale } = context
+  const { picker, showWeekNumber, showWeeksTitle, showTime, disabledDate } = props
 
   const renderWeeksTitle = () => {
-    const startOfWeek = getStartOfWeek(viewDate)
     const dayNames = []
     const weekTitleCls = classnames(`${prefixCls}-weektitle`)
     const weekTitleItemCls = classnames(`${prefixCls}-weektitle-item`)
@@ -57,8 +35,7 @@ function Calendar(props: CalendarProps) {
       <div className={weekTitleCls}>
         {dayNames.concat(
           [0, 1, 2, 3, 4, 5, 6].map((offset) => {
-            const day = addDays(startOfWeek, offset)
-            const weekDayName = formatWeekday(day)
+            const weekDayName = locale.weekTitle[offset]
 
             return (
               <div key={offset} className={weekTitleItemCls}>

@@ -717,6 +717,7 @@ function DatePicker(props: Partial<RangePickerProps>) {
             minute,
             second,
             disabledTimePanel,
+            rangeValue: selectedValue,
             prefixCls: datePickerPrefixCls,
             dateValue: selectedValue ? selectedValue[mergedActivePickerIndex] : null,
             viewDate: viewDate,

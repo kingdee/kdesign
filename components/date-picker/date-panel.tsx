@@ -101,7 +101,7 @@ function Panel(props: MergedPickerPanelProps) {
   // console.log('props', props)
   const context = useContext(Context)
 
-  const { prefixCls, viewDate, setViewDate, panelPosition } = context
+  const { prefixCls, viewDate, setViewDate, panelPosition, locale } = context
   const {
     picker = 'date',
     format,
@@ -183,7 +183,7 @@ function Panel(props: MergedPickerPanelProps) {
     const year = getYear(viewDate)
     const headerCls = classnames(`${prefixCls}-header`, `${prefixCls}-header-month`)
     return {
-      children: <>{year}年</>,
+      children: <>{year + locale.year}</>,
       className: headerCls,
     }
   }
@@ -195,8 +195,8 @@ function Panel(props: MergedPickerPanelProps) {
     return {
       children: (
         <>
-          <span>{year}年</span>
-          <span>{month}月</span>
+          <span>{year + locale.year}</span>
+          <span>{month + locale.month}</span>
         </>
       ),
       className: headerCls,
