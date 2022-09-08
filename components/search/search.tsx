@@ -112,6 +112,7 @@ const InternalSearch: React.ForwardRefRenderFunction<ISearchProps, IQuickSearchP
         onSearch={onSearch}
         className={className}
         style={style}
+        placeholder={placeholder}
       >
         {children}
       </QuickSearch>
