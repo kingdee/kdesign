@@ -4,6 +4,36 @@ title: 更新日志
 hiddenAnchor: true
 ---
 
+## [1.6.2](https://github.com/kdcloudone/kdesign/compare/v1.6.1...v1.6.2)
+`2022-09-08`
+* icon
+  * 去除demo中重复图标
+* pagination
+  * 修复api showSizeChanger设置不生效问题
+* search
+  * 修复api borderType设置bordered无效问题
+  * 修复type为为quick-search时placeholder不生效问题
+* transfer
+  * 添加穿梭框的搜索框 placeholder 支持自定义功能
+  * 修复分页时当前页数显示错误问题
+  * 修复分页页数出现小数问题
+  * 增加分页模式下可多选功能
+* tree
+  * 调整树控件拖拽展开逻辑
+  * 解决拖拽时border导致节点内容收缩
+  * 增加树控件垂直方向padding
+  * 新增拖拽到节点上方功能
+* date-picker
+  * 更新token文档
+* 调整在文档首页时翻页按钮位置
+
+## [1.6.1](https://github.com/kdcloudone/kdesign/compare/v1.6.0...v1.6.1)
+`2022-09-02`
+* dropdown
+  * 下拉菜单项点击不触发事件问题
+* tree
+  * 修复拖拽完成后存在多余样式问题
+
 ## [1.6.0](https://github.com/kdcloudone/kdesign/compare/v1.5.11...v1.6.0)
 `2022-09-01`
 * avatar
