@@ -1,5 +1,6 @@
 import * as React from 'react'
 import classNames from 'classnames'
+import isBoolean from 'lodash/isBoolean'
 import ConfigContext from '../config-provider/ConfigContext'
 import { getCompProps } from '../_utils'
 import Icon from '../icon'
@@ -85,7 +86,7 @@ const Pagination: React.FC<IPaginationProps> = (props) => {
   const [inputPage, setInputPage] = React.useState<string | undefined>(undefined)
 
   // 是否显示pageSize切换器
-  const showSizeSelector = total > 50 ? true : showSizeChanger
+  const showSizeSelector = isBoolean(showSizeChanger) ? showSizeChanger : total > 50
 
   const defaultShowQuickJumper = pageType !== 'bill'
   const showJumper = showQuickJumper === undefined ? defaultShowQuickJumper : showQuickJumper
