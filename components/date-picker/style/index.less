@@ -12,10 +12,7 @@
 @datePicker-calendar-height: 242px;
 
 .@{datePicker-prefix-cls} {
-  // &-small {
-  //   height: @date-small-height;
-  //   line-height: @date-small-height - 4;
-  // }
+  .input-wrapper;
   width: @date-width;
 
   &-small {
@@ -65,8 +62,6 @@
       right: calc(@date-middle-font-size + 11px);
     }
   }
-
-  .input-wrapper;
 
   &-input {
     position: relative;
@@ -147,7 +142,7 @@
     }
   }
 
-  &:hover {
+  &:not(.@{datePicker-prefix-cls}-disabled):hover {
     .@{datePicker-prefix-cls}-clear {
       opacity: 1;
     }
@@ -188,7 +183,7 @@
   border-radius: @date-panel-border-radius;
   background-color: #fff;
   text-align: center;
-  z-index: 999;
+  z-index: @date-panel-z-index;
   font-size: @date-panel-font-size;
 
   &-range {
