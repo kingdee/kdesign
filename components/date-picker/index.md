@@ -159,3 +159,4 @@ subtitle: 日期选择器
 |  | --kd-c-date-picker-large-spacing-padding-vertical | - | 8px |
 |  | --kd-c-date-picker-large-spacing-padding-horizontal | - | 9px |
 |  | --kd-c-date-picker-suffix-spacing-margin-left | - | 10px |
+| z-index | --kd-c-date-picker-panel-z-index | --kd-g-z-index-popper | 1050 |
