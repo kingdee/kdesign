@@ -4,6 +4,13 @@ title: 更新日志
 hiddenAnchor: true
 ---
 
+## [1.6.4](https://github.com/kdcloudone/kdesign/compare/v1.6.3...v1.6.4)
+`2022-09-15`
+* date-picker
+  * 修复z-index及禁用时的样式问题
+
+
+
 ## [1.6.2](https://github.com/kdcloudone/kdesign/compare/v1.6.1...v1.6.2)
 `2022-09-08`
 * icon
