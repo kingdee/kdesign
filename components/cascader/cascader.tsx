@@ -156,7 +156,7 @@ const Cascader = React.forwardRef<unknown, CascaderProps>((props, ref) => {
   }
 
   const handleClear = () => {
-    setValue([])
+    onChange([])
   }
 
   const inputProps: Record<string, unknown> = {
