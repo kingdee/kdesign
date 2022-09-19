@@ -186,107 +186,113 @@
 
   // 简化版分页
   &.simple {
-    display: inline-flex;
-    justify-content: space-around;
-    align-items: center;
-    height: @pagination-size;
-    border-radius: @radius-border;
-    border: @pagination-border-size solid transparent;
-
-    &.bordered {
-      border-color: @pagination-border-color;
-      transition: border-color @duration-promptly;
-
-      &:active:not(.disabled) {
-        border-color: @pagination-border-hover-color;
-      }
-
-      &.disabled,
-      &.disabled > .@{pagination-prefix-cls}-item > button {
-        background-color: @pagination-button-disabled-background-color;
-      }
-    }
-
-    &.disabled > .@{pagination-prefix-cls}-item {
-      color: @pagination-disabled-color;
-    }
-
-    .@{pagination-prefix-cls}-item {
-      .reset-component;
-      display: inline-block;
+    .@{pagination-prefix-cls}-action {
+      display: inline-flex;
+      justify-content: space-around;
+      align-items: center;
       height: @pagination-size;
-      overflow: hidden;
-      margin: 0 8px;
-      vertical-align: middle;
-      color: @color-text-primary;
+      border-radius: @radius-border;
+      border: @pagination-border-size solid transparent;
 
-      &:first-child,
-      &:last-child {
-        margin: 0;
-      }
-
-      .@{pagination-prefix-cls}-current {
-        margin-right: 2px;
-        vertical-align: middle;
-
-        .@{pagination-prefix-cls}-current-input {
-          margin: 0;
-
-          &:disabled {
-            color: @pagination-disabled-color;
-            cursor: not-allowed;
-          }
-        }
-      }
-
-      .@{pagination-prefix-cls}-total {
-        vertical-align: middle;
-        margin-right: 0;
-      }
-
-      button {
-        box-sizing: border-box;
-        position: relative;
-        width: calc(@pagination-size - 2px);
-        height: calc(@pagination-size - 2px);
-        border: none;
-        background-color: @color-background;
-        border-radius: @radius-border;
-        cursor: pointer;
-        outline: none;
-        vertical-align: middle;
+      &.bordered {
+        border-color: @pagination-border-color;
         transition: border-color @duration-promptly;
 
-        &:hover,
-        &:active {
-          &:not(:disabled) {
-            border-color: @pagination-border-hover-color;
-          }
+        &:active:not(.disabled) {
+          border-color: @pagination-border-hover-color;
+        }
 
-          i {
-            color: @pagination-hover-color;
+        &.disabled,
+        &.disabled > .@{pagination-prefix-cls}-item > button {
+          background-color: @pagination-button-disabled-background-color;
+        }
+      }
+
+      &.disabled > .@{pagination-prefix-cls}-action-item {
+        color: @pagination-disabled-color;
+      }
+
+      &-item {
+        .reset-component;
+        display: inline-block;
+        height: @pagination-size;
+        overflow: hidden;
+        margin: 0 8px;
+        vertical-align: middle;
+        color: @color-text-primary;
+
+        &:first-child,
+        &:last-child {
+          margin: 0;
+        }
+
+        .@{pagination-prefix-cls}-current {
+          margin-right: 2px;
+          vertical-align: middle;
+
+          .@{pagination-prefix-cls}-current-input {
+            margin: 0;
+
+            &:disabled {
+              color: @pagination-disabled-color;
+              cursor: not-allowed;
+            }
           }
         }
 
-        &:disabled {
-          cursor: not-allowed;
-
-          i {
-            color: @pagination-disabled-color;
-          }
+        .@{pagination-prefix-cls}-total {
+          vertical-align: middle;
+          margin-right: 0;
         }
 
-        i {
-          position: absolute;
-          top: 0;
-          right: 0;
-          bottom: 0;
-          left: 0;
-          margin: auto;
-          line-height: calc(@pagination-size - 2px);
-          font-size: @pagination-icon-size;
-          color: @pagination-icon-color;
-          transition: color @duration-promptly;
+        &.bordered > button {
+          border: none;
+        }
+
+        button {
+          box-sizing: border-box;
+          position: relative;
+          width: calc(@pagination-size - 2px);
+          height: calc(@pagination-size - 2px);
+          border: none;
+          background-color: @color-background;
+          border-radius: @radius-border;
+          cursor: pointer;
+          outline: none;
+          vertical-align: middle;
+          transition: border-color @duration-promptly;
+
+          &:hover,
+          &:active {
+            &:not(:disabled) {
+              border-color: @pagination-border-hover-color;
+            }
+
+            i {
+              color: @pagination-hover-color;
+            }
+          }
+
+          &:disabled {
+            cursor: not-allowed;
+
+            i {
+              color: @pagination-disabled-color;
+            }
+          }
+
+          i {
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            margin: auto;
+            line-height: calc(@pagination-size - 2px);
+            font-size: @pagination-icon-size;
+            color: @pagination-icon-color;
+            transition: color @duration-promptly;
+          }
         }
       }
     }

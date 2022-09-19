@@ -8,7 +8,9 @@ import Dropdown, { DropDownProps } from '../dropdown'
 import devWarning from '../_utils/devwarning'
 import { tuple } from '../_utils/type'
 export const PageTypes = tuple('basic', 'bill', 'simple', 'less', 'nicety')
+export const TotalTypes = tuple('page', 'row', 'all')
 export type pageType = typeof PageTypes[number]
+export type totalType = typeof TotalTypes[number]
 
 export interface IPaginationProps {
   total?: number
@@ -20,6 +22,7 @@ export interface IPaginationProps {
   bordered?: boolean
   pageType?: pageType
   showTitle?: boolean
+  showTotal?: boolean | totalType
   defaultCurrent?: number
   defaultPageSize?: number
   showSizeChanger?: boolean
@@ -187,11 +190,21 @@ const Pagination: React.FC<IPaginationProps> = (props) => {
     </Dropdown.Menu>
   )
 
+  const mapShowTotal: Record<string, string> = {
+    basic: 'page',
+    nicety: 'row',
+  }
+  const mapTotalText: Record<string, React.ReactNode> = {
+    page: locale.getLangMsg('Pagination', 'page', { page: totalPage }),
+    row: locale.getLangMsg('Pagination', 'row', { row: total }),
+    all: locale.getLangMsg('Pagination', 'total', { page: totalPage, row: total }),
+  }
+  const showTotal = props.showTotal ? (props.showTotal === true ? 'page' : props.showTotal) : mapShowTotal[pageType]
+  const Total = showTotal && <span className={`${prefixCls}-total`}>{mapTotalText[showTotal]}</span>
+
   const normalPagination = (
     <div className={classNames(prefixCls, className)} style={style}>
-      {pageType === 'basic' && (
-        <span className={`${prefixCls}-total`}>{locale.getLangMsg('Pagination', 'total', { total: totalPage })}</span>
-      )}
+      {Total}
       {showJumper && (
         <span className={`${prefixCls}-current`}>
           {locale.getLangMsg('Pagination', 'order', {
@@ -263,42 +276,46 @@ const Pagination: React.FC<IPaginationProps> = (props) => {
   )
 
   const simplePagination = (
-    <ul className={classNames(prefixCls, 'simple', { bordered, disabled }, className)} style={style}>
-      <li {...itemAttr('item', paginationLangMsg.prevPage)}>
-        <button onClick={handlePrev} disabled={page === 1 || disabled}>
-          <Icon type="arrow-left" />
-        </button>
-      </li>
-      <li {...itemAttr('item', `${page}/${totalPage}`)}>
-        <span className={`${prefixCls}-current`}>
-          {showJumper ? (
-            <input
-              type="text"
-              disabled={disabled}
-              onKeyUp={handleKeyUp}
-              onBlur={handleConfirmCurrentPage}
-              onChange={handleChangeCurrentPage}
-              className={`${prefixCls}-current-input`}
-              value={inputPage === undefined ? page : inputPage}
-            />
-          ) : (
-            page
-          )}
-        </span>
-        / <span className={`${prefixCls}-total`}>{totalPage}</span>
-      </li>
-      <li {...itemAttr('item', paginationLangMsg.nextPage)}>
-        <button onClick={handleNext} disabled={page === totalPage || disabled}>
-          <Icon type="arrow-right" />
-        </button>
-      </li>
-    </ul>
+    <div className={classNames(prefixCls, 'simple', className)} style={style}>
+      {Total}
+      <ul className={classNames(`${prefixCls}-action`, { bordered, disabled })}>
+        <li {...itemAttr('action-item', paginationLangMsg.prevPage)}>
+          <button onClick={handlePrev} disabled={page === 1 || disabled}>
+            <Icon type="arrow-left" />
+          </button>
+        </li>
+        <li {...itemAttr('action-item', `${page}/${totalPage}`)}>
+          <span className={`${prefixCls}-current`}>
+            {showJumper ? (
+              <input
+                type="text"
+                disabled={disabled}
+                onKeyUp={handleKeyUp}
+                onBlur={handleConfirmCurrentPage}
+                onChange={handleChangeCurrentPage}
+                className={`${prefixCls}-current-input`}
+                value={inputPage === undefined ? page : inputPage}
+              />
+            ) : (
+              page
+            )}
+          </span>
+          / <span className={`${prefixCls}-total`}>{totalPage}</span>
+        </li>
+        <li {...itemAttr('action-item', paginationLangMsg.nextPage)}>
+          <button onClick={handleNext} disabled={page === totalPage || disabled}>
+            <Icon type="arrow-right" />
+          </button>
+        </li>
+      </ul>
+    </div>
   )
 
   const lessPages = genArray(1, totalPage)
 
   const lessPagination = (
     <div className={classNames(prefixCls, 'less', { bordered, disabled }, className)} style={style}>
+      {Total}
       <ul className={`${prefixCls}-pages`}>
         <li {...itemAttr('pages-item', paginationLangMsg.prevPage)}>
           <button onClick={handlePrev} disabled={page === 1 || disabled}>
@@ -340,6 +357,7 @@ const Pagination: React.FC<IPaginationProps> = (props) => {
 
   const nicetyPagination = (
     <div className={classNames(prefixCls, 'nicety', { bordered, disabled }, className)} style={style}>
+      {Total}
       <ul className={`${prefixCls}-pages`}>
         <li {...itemAttr('pages-item', paginationLangMsg.prevPage)}>
           <button onClick={handlePrev} disabled={page === 1 || disabled}>
