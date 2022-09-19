@@ -26,6 +26,7 @@ subtitle: 分页
 | pageSize | 每页条目数 | number | - | 1.0.0 |
 | pageSizeOptions | `pageSize` 切换器的下拉列表 | string\[] | \[`10`, `20`, `50`, `100`] | 1.0.0 |
 | pageType | 分页类型，基础（basic)、单据(bill)、简化(simple)、较少(less)和精细(nicety)可选，默认是基础(basic) | `basic` \| `bill` \| `simple` \| `less` \| `nicety` | `basic` | 1.0.0 |
+| showTotal | 是否显示总计，默认为false, 当pageType为`basic`时，默认为`page`, 当pageType为`nicety`时，默认为`row` | boolean \| `page` \| `row` \| `all` | false | 1.0.0 |
 | showQuickJumper | 是否可以快速跳转至某页，默认为true, 当pageType为`bill`时，默认为false | boolean | true | 1.0.0 |
 | showSizeChanger | 是否展示 `pageSize` 切换器，当 `total` 大于 50 时默认为 true | boolean | - | 1.0.0 |
 | showTitle | 是否显示原生 tooltip 页码 | boolean | true | 1.0.0 |

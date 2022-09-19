@@ -366,7 +366,7 @@ describe('pagination', () => {
 
   it('not exceed max size', () => {
     const wrapper = mount(<Transfer {...listDisabledProps} pagination={{ pageSize: 1 }} />)
-    wrapper.find('.kd-pagination-item').last().childAt(0).simulate('click')
+    wrapper.find('.kd-pagination-action-item').last().childAt(0).simulate('click')
     expect(wrapper.find('Pagination').first().props()).toEqual(
       expect.objectContaining({
         current: 2,
