@@ -99,10 +99,14 @@
     opacity: 0;
     cursor: pointer;
     visibility: hidden;
-    color: @cascader-active-color;
+    color: @cascader-clear-color;
     transition: all 0.1s;
     transform-origin: 50% 50%;
     transform: scale(0.9) translateY(-50%);
+
+    &:hover {
+      color: @cascader-active-color;
+    }
   }
 }
 

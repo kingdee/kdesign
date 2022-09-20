@@ -184,7 +184,7 @@ const Cascader = React.forwardRef<unknown, CascaderProps>((props, ref) => {
               {labels?.length ? displayRender(labels, currentOptions) : ''}
             </span>
           </span>
-          {allowClear && <Icon type="close" className={`${prefixCls}-picker-close`} onClick={handleClear} />}
+          {allowClear && <Icon type="close-solid" className={`${prefixCls}-picker-close`} onClick={handleClear} />}
         </>
       )}
     </span>

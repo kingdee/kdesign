@@ -73,6 +73,7 @@ interface Option {
 |  | --kd-c-cascader-color-text-selected | --kd-g-color-theme | #5582f3 |
 |  | --kd-c-cascader-color-background-selected | --kd-g-color-background-ongoing | #f2f9ff |
 |  | --kd-c-cascader-color-text-disabled | --kd-g-color-disabled | #b2b2b2 |
+|  | --kd-c-cascader-clear-color-text | - | #666 |
 | font | --kd-c-cascader-font-size | --kd-g-font-size-small | 12px |
 |  | --kd-c-cascader-font-weight | - | 'normal' |
 | radius | --kd-c-cascader-radius-border | --kd-g-radius-border | 2px |
