@@ -33,6 +33,8 @@ const InternalSearch: React.ForwardRefRenderFunction<ISearchProps, IQuickSearchP
     type,
     placeholder,
     onSearch,
+    onFocus,
+    onBlur,
     ...restProps
   } = searchProps
   devWarning(SearchSizeTypes.indexOf(size) === -1, 'search', `cannot found search size '${size}'`)
@@ -65,13 +67,21 @@ const InternalSearch: React.ForwardRefRenderFunction<ISearchProps, IQuickSearchP
     [onPressEnter, searchRef],
   )
 
-  const handleFocus = useCallback(() => {
-    setFocused(true)
-  }, [])
+  const handleFocus = useCallback(
+    (event) => {
+      setFocused(true)
+      onFocus && onFocus(event)
+    },
+    [onFocus],
+  )
 
-  const handleBlur = useCallback(() => {
-    setFocused(false)
-  }, [])
+  const handleBlur = useCallback(
+    (event) => {
+      setFocused(false)
+      onBlur && onBlur(event)
+    },
+    [onBlur],
+  )
 
   const renderPrefix = useCallback(() => {
     if (!prefix) {
