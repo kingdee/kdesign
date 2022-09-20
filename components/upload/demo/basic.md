@@ -31,7 +31,7 @@ function Demo() {
   }
   return (
     <Upload {...props} style={{ width: 500 }}>
-      <Button type="ghost" icon={<Icon type="upload" />}>
+      <Button icon={<Icon type="upload" />}>
         上传文件
       </Button>
     </Upload>
@@ -40,3 +40,4 @@ function Demo() {
 
 ReactDOM.render(<Demo />, mountNode)
 ```
+

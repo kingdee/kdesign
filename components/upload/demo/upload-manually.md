@@ -62,12 +62,11 @@ function Demo() {
     <>
       <Alert message={msg} type={type} closable={true} showIcon={true} />
       <Upload {...props} style={{ width: 500 }}>
-        <Button type="ghost" icon={<Icon type="upload" />}>
+        <Button icon={<Icon type="upload" />}>
           Select File
         </Button>
       </Upload>
       <Button
-        type="primary"
         onClick={handleUpload}
         disabled={fileList.length === 0}
         loading={uploading}
