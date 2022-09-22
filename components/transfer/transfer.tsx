@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useState, useImperativeHandle, useRef } from 'react'
 import classNames from 'classnames'
 import List, { TransferListProps } from './list'
 import Operation from './operation'
@@ -37,7 +37,7 @@ export interface TransferProps {
   footer?: (props: TransferListProps) => React.ReactNode // 是否采用自定义渲染底部
 }
 
-const Transfer: React.FC<TransferProps> = (props: TransferProps) => {
+const InternalTransfer = (props: TransferProps, ref: any) => {
   const { getPrefixCls, prefixCls, compDefaultProps: userDefaultProps, locale } = useContext(ConfigContext)
   const transferProps = getCompProps('Transfer', userDefaultProps, props) // 获取穿梭框props
   const {
@@ -84,6 +84,8 @@ const Transfer: React.FC<TransferProps> = (props: TransferProps) => {
   const [targetSelectedKeys, setTargetSelectedKeys] = useState(
     selectedKeys.filter((key: string) => targetKeys.indexOf(key) > -1),
   )
+  const leftListRef = useRef(null)
+  const rightListRef = useRef(null)
   const leftActive = targetSelectedKeys.length > 0
   const rightActive = sourceSelectedKeys.length > 0
   const mergedPagination = !children && pagination
@@ -91,6 +93,22 @@ const Transfer: React.FC<TransferProps> = (props: TransferProps) => {
   const rightTitle = titles[1] || transferLang.rightTitle
   const leftPlaceholder = searchPlaceholder[0] || transferLang.searchPlaceholder[0]
   const rightPlaceholder = searchPlaceholder[1] || transferLang.searchPlaceholder[1]
+
+  useImperativeHandle(ref, () => {
+    return {
+      clearSearch,
+    }
+  })
+
+  const clearSearch = (position: string | undefined) => {
+    if (position === 'left' || position === undefined) {
+      ;(leftListRef?.current as any)?.onClear()
+    }
+
+    if (position === 'right' || position === undefined) {
+      ;(rightListRef?.current as any)?.onClear()
+    }
+  }
 
   const setStateKeys = (direction: TransferDirection, keys: string[] | ((prevKeys: string[]) => string[])) => {
     if (direction === 'left') {
@@ -274,6 +292,7 @@ const Transfer: React.FC<TransferProps> = (props: TransferProps) => {
         pagination={mergedPagination}
         noDataContent={handleNoDataContent(noDataContent, 'left')}
         footer={footer}
+        ref={leftListRef}
       />
       <Operation
         className={`${transferPrefixCls}-operation`}
@@ -310,9 +329,13 @@ const Transfer: React.FC<TransferProps> = (props: TransferProps) => {
         noDataContent={handleNoDataContent(noDataContent, 'right')}
         footer={footer}
         showRemove={oneWay}
+        ref={rightListRef}
       />
     </div>
   )
 }
+
+const Transfer = React.forwardRef<unknown, TransferProps>(InternalTransfer)
+Transfer.displayName = 'Transfer'
 
 export default Transfer

@@ -42,6 +42,11 @@ subtitle: 穿梭框
 | onSearch | 搜索框内容时改变时的回调函数 | (direction: `left` \| `right`, value: string): void | - | 1.0.0 |
 | onSelectChange | 选中项发生改变时的回调函数 | (sourceSelectedKeys, targetSelectedKeys): void | - | 1.0.0 |
 
+## 方法
+| 名称 | 描述 | 参数 | 版本 |
+| --- | --- | --- |
+| clearSearch | 清空某个面板的搜索关键词 | -/'left'/'right',指定需要清空的左右/左/右面板的搜索框 | 1.6.5 |
+
 ## Design Token
 
 | 分类 | 组件token | 全局token | 默认值 |
