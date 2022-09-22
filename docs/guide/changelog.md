@@ -4,6 +4,24 @@ title: 更新日志
 hiddenAnchor: true
 ---
 
+## [1.6.5](https://github.com/kdcloudone/kdesign/compare/v1.6.4...v1.6.5)
+`2022-09-22`
+* cascader
+  * 更改清空按钮样式
+  * 点击清空图标没有触发onChange的问题
+* rate
+  * 修复当value值为0时不触发视图更新的bug
+* search
+  * 修复basic模式下onFocus和onBlur不生效的问题
+  * 添加清空搜索框的方法clearSearch
+* transfer
+  * 添加清空搜索框的方法clearSearch
+* upload
+  * 修复demo默认上传按钮的样式
+  * 修复hover上传列表时操作按钮与文件列表背景色不同步的问题
+* pagination
+  * 添加配置总计的显示方式
+
 ## [1.6.4](https://github.com/kdcloudone/kdesign/compare/v1.6.3...v1.6.4)
 `2022-09-15`
 * date-picker
