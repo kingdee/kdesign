@@ -9,13 +9,19 @@
   display: inline-flex;
   justify-content: flex-start;
   &-size-large {
-    font-size: @rate-large-font-size;
+    .@{kd-prefix}icon {
+      font-size: @rate-large-font-size;
+    }
   }
   &-size-middle {
-    font-size: @rate-middle-font-size;
+    .@{kd-prefix}icon {
+      font-size: @rate-middle-font-size;
+    }
   }
   &-size-small {
-    font-size: @rate-small-font-size;
+    .@{kd-prefix}icon {
+      font-size: @rate-small-font-size;
+    }
   }
 }
 .@{rate-prefix-cls}-item {

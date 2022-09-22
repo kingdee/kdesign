@@ -57,7 +57,7 @@ const Rate: React.FC<RateProps> = (props) => {
   const [activeNumber, setActiveNumber] = React.useState(0) // 鼠标悬停icon位置对应的值
 
   React.useEffect(() => {
-    if (value && value !== 0 && value !== selectedValue) {
+    if (value !== undefined && value !== selectedValue) {
       setSelectedValue(value)
     }
   }, [value, selectedValue])
