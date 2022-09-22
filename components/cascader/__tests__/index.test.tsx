@@ -109,13 +109,13 @@ describe('Cascader', () => {
     const defaultValue = ['guangdong', 'shenzhen', 'nanshan']
     const wrapper = mount(<Cascader options={options} defaultValue={defaultValue} />)
     expect(wrapper.find('.kd-input-wrapper input')).toHaveValue(defaultValue)
-    expect(wrapper.find('.kdicon-close')).toExist()
+    expect(wrapper.find('.kdicon-close-solid')).toExist()
   })
 
   it('allowClear is unavailabel', () => {
     // eslint-disable-next-line jsx-a11y/no-autofocus
     const wrapper = mount(<Cascader options={options} allowClear={false} autoFocus />)
-    expect(wrapper.find('.kdicon-close')).not.toExist()
+    expect(wrapper.find('.kdicon-close-solid')).not.toExist()
   })
 
   it('move enter menu item for expand', () => {

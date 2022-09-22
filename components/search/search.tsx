@@ -67,7 +67,7 @@ const InternalSearch: React.ForwardRefRenderFunction<ISearchProps, IQuickSearchP
     [onPressEnter, searchRef],
   )
 
-  const handleFocus = useCallback(
+  const handleFocus: React.FocusEventHandler<HTMLInputElement> = useCallback(
     (event) => {
       setFocused(true)
       onFocus && onFocus(event)
@@ -75,7 +75,7 @@ const InternalSearch: React.ForwardRefRenderFunction<ISearchProps, IQuickSearchP
     [onFocus],
   )
 
-  const handleBlur = useCallback(
+  const handleBlur: React.FocusEventHandler<HTMLInputElement> = useCallback(
     (event) => {
       setFocused(false)
       onBlur && onBlur(event)
@@ -123,6 +123,8 @@ const InternalSearch: React.ForwardRefRenderFunction<ISearchProps, IQuickSearchP
         className={className}
         style={style}
         placeholder={placeholder}
+        onFocus={onFocus}
+        onBlur={onBlur}
       >
         {children}
       </QuickSearch>
