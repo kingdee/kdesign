@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useImperativeHandle } from 'react'
 import { omit } from '../_utils/omit'
 import Search from './search'
 import { PaginationType, TransferItem, TransferDirection, RenderResult, RenderResultObject } from './interface'
@@ -46,7 +46,7 @@ export interface TransferListProps {
   pagination?: PaginationType
 }
 
-const TransferList: React.FC<TransferListProps> = (props: TransferListProps) => {
+const ITransferList = (props: TransferListProps, ref: any) => {
   const {
     prefixCls,
     dataSource,
@@ -71,6 +71,12 @@ const TransferList: React.FC<TransferListProps> = (props: TransferListProps) => 
   const [filterValue, setFilterValue] = useState('')
   // 自定义底部渲染
   const footerDom = footer && footer(props)
+
+  useImperativeHandle(ref, () => {
+    return {
+      onClear,
+    }
+  })
 
   const renderItem = (item: TransferItem): RenderedItem => {
     const renderResult: RenderResult = render(item)
@@ -274,6 +280,9 @@ const TransferList: React.FC<TransferListProps> = (props: TransferListProps) => 
     </div>
   )
 }
+
+const TransferList = React.forwardRef<unknown, TransferListProps>(ITransferList)
+
 TransferList.defaultProps = {
   dataSource: [],
   titleText: '',
