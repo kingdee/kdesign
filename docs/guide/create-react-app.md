@@ -78,7 +78,7 @@ export default App;
 
 好了，现在你应该能看到页面上已经有了 @kdcloudjs/kdesign 的按钮组件，接下来就可以继续选用其他组件开发应用了。其他开发流程你可以参考 create-react-app 的[官方文档](https://create-react-app.dev/docs/getting-started)。
 
-我们现在已经把 kudi 组件成功运行起来了，开始开发你的应用吧！
+我们现在已经把 KDesign 组件成功运行起来了，开始开发你的应用吧！
 
 ## 高级配置
 
