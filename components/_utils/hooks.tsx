@@ -206,14 +206,6 @@ export function useResizeObserver(
           rect[prop] = contentRect[prop]
         },
       )
-      // rect.width = contentRect.width
-      // rect.height = contentRect.height
-      // rect.x = contentRect.x
-      // rect.y = contentRect.y
-      // rect.bottom = contentRect.bottom
-      // rect.top = contentRect.top
-      // rect.left = contentRect.left
-      // rect.right = contentRect.right
       handler && handler(rect)
     }
     const resizeObserver = new ResizeObserver(measure)
