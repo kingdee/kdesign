@@ -41,6 +41,7 @@ const transformComponentArr = [
   'tabs',
   'tag',
   'timeline',
+  'tooltip',
   'transfer',
   'tree',
   'typography',
