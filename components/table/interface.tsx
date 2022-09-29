@@ -21,6 +21,16 @@ type TablePropsOfComponents = Pick<BaseTableProps, 'components'> & {
 
 type TablePropsOfExtend = Omit<BaseTableProps, 'components'>
 
+export type TableApi = {
+  getColumns: () => any[]
+  getDataSource: () => any[]
+  getFooterDataSource: () => any[]
+}
+
+export type TableInstance = {
+  api: TableApi
+}
+
 export interface TableProps extends TablePropsOfExtend, TablePropsOfComponents {
   rowSelection?: TableRowSelection
   prefixCls?: string

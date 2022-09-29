@@ -1,5 +1,5 @@
-import React, { useContext } from 'react'
-import { Table as BaseTable, useTablePipeline } from '@kdcloudjs/table'
+import React, { forwardRef, useContext, useImperativeHandle, useRef } from 'react'
+import { Table as BaseTable, TablePipeline, useTablePipeline } from '@kdcloudjs/table'
 
 import ConfigContext from '../config-provider/ConfigContext'
 
@@ -13,7 +13,7 @@ import useFilter from './feature/filter'
 import useSort from './feature/sort'
 import useAutoRowSpan from './feature/autoRowSpan'
 
-import { TableProps } from './interface'
+import { TableProps, TableInstance } from './interface'
 import classNames from 'classnames'
 import useTreeMode from './feature/treeMode'
 import useColumnResize from './feature/columnResize'
@@ -23,7 +23,7 @@ import useRangeSelection from './feature/useRangeSelection'
 import useＭergeCellHover from './feature/mergeCellHover'
 import devWarning from '../_utils/devwarning'
 
-function Table(props: TableProps) {
+const Table = forwardRef<unknown, TableProps>((props: TableProps, ref) => {
   const {
     columns,
     dataSource,
@@ -74,11 +74,25 @@ function Table(props: TableProps) {
       dataSource,
     })
 
+  const pipelineRef = useRef<TablePipeline>(pipeline)
+  pipelineRef.current = pipeline
+
   if (footerDataSource) {
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
     pipeline.footerDataSource(footerDataSource)
   }
+
+  useImperativeHandle(
+    ref,
+    (): TableInstance => ({
+      api: {
+        getColumns: pipelineRef.current.getColumns?.bind(pipelineRef.current),
+        getDataSource: pipelineRef.current.getDataSource?.bind(pipelineRef.current),
+        getFooterDataSource: pipelineRef.current.getFooterDataSource?.bind(pipelineRef.current),
+      },
+    }),
+  )
 
   /* -------------------------------------------------------------------------- */
   /* features                                                                   */
@@ -133,6 +147,8 @@ function Table(props: TableProps) {
       scrollLoad={scrollLoad}
     />
   )
-}
+})
+
+Table.displayName = 'Table'
 
 export default Table
