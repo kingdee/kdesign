@@ -43,6 +43,7 @@ subtitle: 输入框
 | borderType | 边框类型 | string | `underline` | `underline` `bordered` `none` | 1.0.0 |
 | canResize | 是否可调整大小 | boolean | `true` | `true` `false` | 1.0.0 |
 | count | 计数开关 | boolean | `true` | `true` `false` | 1.0.0 |
+| countPosition | 计数开关摆放位置 | string | `outter` | `outter` `inner` | 1.6.6 |
 | disabled | 输入框禁用状态 | boolean | `false` | `true` `false` | 1.0.0 |
 | defaultValue | 输入框默认内容 | string | `-` | `-` | 1.0.0 |
 | maxLength | 最大输入长度 | number | `255` | `-` | 1.0.0 |

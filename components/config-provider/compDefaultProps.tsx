@@ -280,6 +280,7 @@ const compDefaultProps = {
     borderType: 'underline',
     disabled: false,
     count: true,
+    countPosition: 'outter',
     maxLength: 255,
   },
   Timeline: {

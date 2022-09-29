@@ -13,7 +13,7 @@ import { TextArea } from '@kdcloudjs/kdesign'
 function Demo() {
   return (
     <div style={{ width: '300px' }}>
-      <TextArea autoSize={true} borderType="bordered" />
+      <TextArea autoSize={true} borderType="bordered" countPosition="inner"/>
       <br />
       <br />
       <TextArea autoSize={{ minRows: 2, maxRows: 6 }} borderType="bordered" />
