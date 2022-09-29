@@ -43,7 +43,6 @@ subtitle: 文字提示
 | visible | 手动控制浮层显隐 | boolean | false | 1.0.0 |
 | onVisibleChange | 显示隐藏的回调 | (visible) => void | - | 1.0.0 |
 
-
 ## Design Token
 
 | 分类 | 组件token | 全局token | 默认值 |
@@ -54,4 +53,4 @@ subtitle: 文字提示
 | radius | --kd-c-tooltip-radius-border | --kd-g-radius-border | 2px |
 | sizing | --kd-c-tooltip-sizing-max-width | - | 360px |
 | spacing | --kd-c-tooltip-spacing-padding-vertical | - | 8px |
-|  | --kd-c-tooltip-spacing-padding-vertical | - | 12px |
+|  | --kd-c-tooltip-spacing-padding-horizontal | - | 12px |
