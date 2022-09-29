@@ -4,6 +4,16 @@ title: 更新日志
 hiddenAnchor: true
 ---
 
+## [1.6.6](https://github.com/kdcloudone/kdesign/compare/v1.6.5...v1.6.6)
+`2022-09-29`
+* tooltip
+  * 修复重复的token变量
+* input
+  * 开放countPosition属性用来摆放计数器位置
+* table
+  * 添加表格向外提供的api
+* 文档内容更新
+
 ## [1.6.5](https://github.com/kdcloudone/kdesign/compare/v1.6.4...v1.6.5)
 `2022-09-22`
 * cascader
