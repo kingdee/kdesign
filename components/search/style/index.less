@@ -27,6 +27,7 @@
 
   &-border {
     border: @search-sizing-border-width solid @quick-search-border-bottom-color;
+    border-radius: @search-border-radius;
   }
 
   &-prefix,
@@ -61,6 +62,7 @@
   }
   &-border {
     border: @search-sizing-border-width solid @quick-search-border-bottom-color;
+    border-radius: @search-border-radius;
   }
   &:hover:not(&-disabled) {
     border-color: @search-color-theme;
@@ -206,7 +208,7 @@
     z-index: @zIndex-popper;
     font-size: @quick-search-dropdown-font-size;
     box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.2);
-    border-radius: @search-radius-size;
+    border-radius: @search-dropdown-border-radius;
     background: @search-color-background;
     overflow: auto;
     &-scroll {
