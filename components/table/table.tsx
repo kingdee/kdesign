@@ -20,6 +20,7 @@ import useColumnResize from './feature/columnResize'
 import useColumnDrag from './feature/columnDrag'
 import useContextMenu from './feature/contextMenu'
 import useRangeSelection from './feature/useRangeSelection'
+import useＭergeCellHover from './feature/mergeCellHover'
 import devWarning from '../_utils/devwarning'
 
 const Table = forwardRef<unknown, TableProps>((props: TableProps, ref) => {
@@ -106,6 +107,7 @@ const Table = forwardRef<unknown, TableProps>((props: TableProps, ref) => {
   useColumnDrag(pipeline, columnDrag)
   useContextMenu(pipeline, contextMenu)
   useRangeSelection(pipeline, rangeSelection)
+  useＭergeCellHover(pipeline)
 
   /* -------------------------------------------------------------------------- */
   /* after useTablePipeline, merge pipeline.getProps result                     */
