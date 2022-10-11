@@ -10,6 +10,7 @@ export interface FieldLabelProps {
   width?: string | number
   textAlign?: LabelAlign
   prefixCls?: string
+  htmlFor?: string
   requiredMark?: boolean
 }
 
@@ -23,6 +24,7 @@ const FieldLabel: React.FC<FieldLabelProps> = (props: FieldLabelProps) => {
     textAlign,
     prefixCls: customizePrefixCls,
     requiredMark,
+    htmlFor,
   } = getCompProps('Form', userDefaultProps, props)
 
   if (value === undefined) return null
@@ -40,7 +42,7 @@ const FieldLabel: React.FC<FieldLabelProps> = (props: FieldLabelProps) => {
   const style = { width: mergedLabelWidth }
   return (
     <div className={labelWrapperClassName} style={style}>
-      <label className={labelClassName} title={value}>
+      <label className={labelClassName} title={value} htmlFor={htmlFor}>
         {value}
       </label>
     </div>
