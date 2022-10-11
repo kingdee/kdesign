@@ -1,4 +1,4 @@
-import React, { useRef } from 'react'
+import React, { useRef, useState } from 'react'
 import classnames from 'classnames'
 
 import { Icon } from '../../index'
@@ -102,6 +102,7 @@ function InputDate(props: InputRangeProps, ref: React.RefObject<HTMLDivElement>)
   } = props
 
   const preventBlurRef = useRef<boolean>(false)
+  const [isMouseEnter, setIsMouseEnter] = useState<boolean>(false)
 
   const placeholder = getRangePlaceholder(picker, locale, propsPlaceholder)
 
@@ -142,12 +143,6 @@ function InputDate(props: InputRangeProps, ref: React.RefObject<HTMLDivElement>)
     }
   }
 
-  const suffixNode = (
-    <span className={`${prefixCls}-suffix`}>
-      {suffixIcon || <Icon type={picker === 'time' ? 'waiting' : 'date'} />}
-    </span>
-  )
-
   let clearNode: React.ReactNode
   if (
     allowClear &&
@@ -170,14 +165,25 @@ function InputDate(props: InputRangeProps, ref: React.RefObject<HTMLDivElement>)
           if (!mergedDisabled[1]) {
             values = updateValues(values, null, 1)
           }
-
           triggerChange(values)
           triggerOpen(false, mergedActivePickerIndex)
           setHoverRangedValue([null, null])
         }}
-        className={`${prefixCls}-clear`}
+        className={`${prefixCls}-range-clear`}
       >
-        {clearIcon || <Icon type="close" />}
+        {clearIcon || <Icon type="close-solid" />}
+      </span>
+    )
+  }
+
+  const getSuffixNode = () => {
+    if (isMouseEnter && (startHoverValue || endHoverValue || startText || endText)) {
+      return clearNode
+    }
+
+    return (
+      <span className={`${prefixCls}-suffix`}>
+        {suffixIcon || <Icon type={picker === 'time' ? 'waiting' : 'date'} />}
       </span>
     )
   }
@@ -225,6 +231,20 @@ function InputDate(props: InputRangeProps, ref: React.RefObject<HTMLDivElement>)
     [`${prefixCls}-borderless`]: borderType === 'none',
   })
 
+  const mouseEnterHandle: React.MouseEventHandler<HTMLDivElement> = (e) => {
+    setIsMouseEnter(true)
+    if (typeof onMouseEnter === 'function') {
+      onMouseEnter(e)
+    }
+  }
+
+  const mouseLeaveHandle: React.MouseEventHandler<HTMLDivElement> = (e) => {
+    setIsMouseEnter(false)
+    if (typeof onMouseLeave === 'function') {
+      onMouseLeave(e)
+    }
+  }
+
   return (
     <div
       ref={ref}
@@ -236,8 +256,8 @@ function InputDate(props: InputRangeProps, ref: React.RefObject<HTMLDivElement>)
       style={style}
       onMouseDown={onInternalonMouseDown}
       onMouseUp={onMouseUp}
-      onMouseEnter={onMouseEnter}
-      onMouseLeave={onMouseLeave}
+      onMouseEnter={mouseEnterHandle}
+      onMouseLeave={mouseLeaveHandle}
       onContextMenu={onContextMenu}
       onClick={onInternalonClick}
       {...dataOrAriaProps}
@@ -298,8 +318,7 @@ function InputDate(props: InputRangeProps, ref: React.RefObject<HTMLDivElement>)
           position: 'absolute',
         }}
       />
-      {suffixNode}
-      {clearNode}
+      {getSuffixNode()}
     </div>
   )
 }

@@ -1,4 +1,7 @@
+@import '../../style/themes/index';
 @import './token.less';
+
+@datePicker-prefix-cls: ~'@{kd-prefix}-date-picker';
 
 .input-wrapper() {
   display: inline-flex;
@@ -71,6 +74,10 @@
   line-height: calc(@height - (@padding-vertical * 2) - 2);
   font-size: @fonSize;
   padding: @padding-vertical @padding-horizontal;
+
+  &.@{datePicker-prefix-cls}-underline {
+    padding: @padding-vertical 0;
+  }
 }
 
 .today-after(@background) {

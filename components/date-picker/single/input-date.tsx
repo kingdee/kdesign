@@ -1,4 +1,4 @@
-import React, { useRef } from 'react'
+import React, { useRef, useState } from 'react'
 import classnames from 'classnames'
 
 import { Icon } from '../../index'
@@ -70,14 +70,35 @@ function InputDate(props: InputDateProps, ref: React.RefObject<HTMLDivElement>) 
   } = props
 
   const preventBlurRef = useRef<boolean>(false)
+  const [isMouseEnter, setIsMouseEnter] = useState<boolean>(false)
 
   const placeholder = getPlaceholder(picker, locale, propsPlaceholder)
 
-  const suffixNode = (
-    <span className={`${prefixCls}-suffix`}>
-      {suffixIcon || <Icon type={picker === 'time' ? 'waiting' : 'date'} />}
-    </span>
-  )
+  const getSuffixNode = () => {
+    if (isMouseEnter && (hoverValue || text)) {
+      return null
+    }
+
+    return (
+      <span className={`${prefixCls}-suffix`}>
+        {suffixIcon || <Icon type={picker === 'time' ? 'waiting' : 'date'} />}
+      </span>
+    )
+  }
+
+  const mouseEnterHandle: React.MouseEventHandler<HTMLDivElement> = (e) => {
+    setIsMouseEnter(true)
+    if (typeof onMouseEnter === 'function') {
+      onMouseEnter(e)
+    }
+  }
+
+  const mouseLeaveHandle: React.MouseEventHandler<HTMLDivElement> = (e) => {
+    setIsMouseEnter(false)
+    if (typeof onMouseLeave === 'function') {
+      onMouseLeave(e)
+    }
+  }
 
   let clearNode: React.ReactNode
   if (allowClear && dateValue && !disabled) {
@@ -95,7 +116,7 @@ function InputDate(props: InputDateProps, ref: React.RefObject<HTMLDivElement>) 
         }}
         className={`${prefixCls}-clear`}
       >
-        {clearIcon || <Icon type="close" />}
+        {clearIcon || <Icon type="close-solid" />}
       </span>
     )
   }
@@ -167,8 +188,8 @@ function InputDate(props: InputDateProps, ref: React.RefObject<HTMLDivElement>) 
       style={style}
       onMouseDown={onInternalonMouseDown}
       onMouseUp={onInternalMouseUp}
-      onMouseEnter={onMouseEnter}
-      onMouseLeave={onMouseLeave}
+      onMouseEnter={mouseEnterHandle}
+      onMouseLeave={mouseLeaveHandle}
       onContextMenu={onContextMenu}
       onClick={onClick}
       {...dataOrAriaProps}
@@ -198,7 +219,7 @@ function InputDate(props: InputDateProps, ref: React.RefObject<HTMLDivElement>) 
           {...inputProps}
           size={getInputSize(picker, format)}
         />
-        {suffixNode}
+        {getSuffixNode()}
         {clearNode}
       </div>
     </div>

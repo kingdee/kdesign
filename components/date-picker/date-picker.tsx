@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from 'react'
 import classnames from 'classnames'
 
-import { DateType, InnerLocale, InnerLocaleKey, PickerMode, TimeUnit } from './interface'
+import { DateType, InnerLocale, PickerMode, TimeUnit } from './interface'
 import ConfigContext from '../config-provider/ConfigContext'
 import { useMergedState, useOnClickOutside } from '../_utils/hooks'
 import { getCompProps } from '../_utils'
@@ -24,7 +24,6 @@ import {
   setTime,
 } from './utils/date-fns'
 import useTextValueMapping from './hooks/use-text-value-mapping'
-import { getCompLangMsg } from '../locale'
 import { BorderType, InputSiteType } from '../input/input'
 import getExtraFooter from './utils/get-extra-footer'
 import getRanges from './utils/get-ranges'
@@ -178,11 +177,11 @@ function DatePicker(props: Partial<PickerProps>) {
 
   const needConfirmButton: boolean = (picker === 'date' && !!showTime) || picker === 'time'
 
-  const datePickerLang: InnerLocale = locale
-    ? getCompLangMsg({ componentName: 'DatePicker' }, (_componentName: string, label: InnerLocaleKey) => {
-        return locale[label]
-      })
-    : globalLocale.getCompLangMsg({ componentName: 'DatePicker' })
+  const datePickerLang: InnerLocale = Object.assign(
+    {},
+    globalLocale.getCompLangMsg({ componentName: 'DatePicker' }),
+    locale || {},
+  )
 
   // console.log(_format)
 
@@ -236,17 +235,17 @@ function DatePicker(props: Partial<PickerProps>) {
     valueText,
     onTextChange: (newText: string) => {
       if (newText === '') {
-        setSelectedValue(null)
-        setDateValue(null)
+        triggerChange(null)
+        setViewDate(null)
       } else if (newText && newText.length === _format.length) {
         const inputTempDate = parseDate(newText, _format)
         if (inputTempDate && (!disabledDate || !disabledDate(inputTempDate))) {
           if (picker !== 'year') {
-            setSelectedValue(inputTempDate)
-            setDateValue(inputTempDate)
+            triggerChange(inputTempDate)
+            setViewDate(inputTempDate)
           } else if (isValid(inputTempDate)) {
-            setSelectedValue(inputTempDate)
-            setDateValue(inputTempDate)
+            triggerChange(inputTempDate)
+            setViewDate(inputTempDate)
           }
         }
       }

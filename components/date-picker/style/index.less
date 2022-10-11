@@ -4,8 +4,6 @@
 
 
 @datePicker-prefix-cls: ~'@{kd-prefix}-date-picker';
-// @rangePicker-prefix-cls: ~'@{kd-prefix}-rangePicker';
-// @datePicker-prefix-cls-input: ~'@{datePicker-prefix-cls}-input';
 @datePicker-prefix-cls-panel: ~'@{datePicker-prefix-cls}-panel';
 
 @datePicker-calendar-text: 24px;
@@ -21,14 +19,6 @@
     input {
       font-size: @date-small-font-size;
     }
-
-    .@{datePicker-prefix-cls}-clear {
-      right: calc(@date-small-font-size + 1px);
-    }
-
-    &.@{datePicker-prefix-cls}-range .@{datePicker-prefix-cls}-clear {
-      right: calc(@date-small-font-size + 12px);
-    }
   }
 
   &-large {
@@ -37,14 +27,6 @@
     input {
       font-size: @date-large-font-size;
     }
-
-    .@{datePicker-prefix-cls}-clear {
-      right:calc(@date-large-font-size + 1px);
-    }
-
-    &.@{datePicker-prefix-cls}-range .@{datePicker-prefix-cls}-clear {
-      right: calc(@date-large-font-size + 9px);
-    }
   }
 
   &-middle {
@@ -52,14 +34,6 @@
 
     input {
       font-size: @date-middle-font-size;
-    }
-
-    .@{datePicker-prefix-cls}-clear {
-      right: calc(@date-middle-font-size + 1px);
-    }
-
-    &.@{datePicker-prefix-cls}-range .@{datePicker-prefix-cls}-clear {
-      right: calc(@date-middle-font-size + 11px);
     }
   }
 
@@ -102,6 +76,7 @@
 
   &-range {
     display: inline-flex;
+    align-items: center;
     position: relative;
 
     &-separator {
@@ -146,15 +121,12 @@
     .@{datePicker-prefix-cls}-clear {
       opacity: 1;
     }
-
-    .@{datePicker-prefix-cls}-suffix {
-      color: @date-color-background-checked;
-    }
   }
 
   &-clear {
     position: absolute;
     top: 50%;
+    right: 0;
     color: @date-icon-color;
     line-height: 1;
     background: @date-clear-background-color;
@@ -167,7 +139,19 @@
     }
 
     &:hover {
-      color: @date-clear-background-color-hover;
+      color: @date-color-background-checked;
+    }
+  }
+
+  .@{datePicker-prefix-cls}-range-clear {
+    align-self: center;
+    margin-left: @date-suffix-spacing-margin-left;
+    color: @date-icon-color;
+    line-height: 1;
+    cursor: pointer;
+
+    &:hover {
+      color: @date-color-background-checked;
     }
   }
 
@@ -809,8 +793,6 @@
       }
     }
   }
-
-
 }
 
 .@{datePicker-prefix-cls}-container {
@@ -834,6 +816,7 @@
       line-height: @date-panel-header-height;
       font-size: @date-container-font-size;
       border-bottom: .5px solid @date-container-color-border;
+      cursor: pointer;
     }
   }
 }

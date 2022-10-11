@@ -1,0 +1,58 @@
+---
+title: 国际化
+order: 11
+---
+
+可使用`locale`属性进行国际化配置，仅作用于单个组件。
+
+```jsx
+import React from 'react'
+import ReactDOM from 'react-dom'
+import { RangePicker } from '@kdcloudjs/kdesign'
+
+function Demo() {
+  //内置基础配置
+  const baseLocale = {
+    placeholder: '请选择日期',
+    yearPlaceholder: '请选择年份',
+    quarterPlaceholder: '请选择季度',
+    monthPlaceholder: '请选择月份',
+    weekPlaceholder: '请选择周',
+    timePlaceholder: '请选择时间',
+    now: '此刻',
+    confrim: '确定',
+    today: '今天',
+    month: '月',
+    year: '年',
+    weekTitle: ['日', '一', '二', '三', '四', '五', '六'],
+    rangePlaceholder: ['开始日期', '结束日期'],
+    rangeYearPlaceholder: ['开始年份', '结束年份'],
+    rangeMonthPlaceholder: ['开始月份', '结束月份'],
+    rangeWeekPlaceholder: ['开始周', '结束周'],
+    rangeQuarterPlaceholder: ['开始季度', '结束季度'],
+    rangeTimePlaceholder: ['开始时间', '结束时间'],
+  }
+
+  return (
+    <div>
+      <div className="demo-range-picker">
+        <RangePicker locale={baseLocale} />
+      </div>
+      <div className="demo-range-picker">
+        <div className="demo-range-picker">
+          <RangePicker locale={{month: '期'}} placeholder={['开始期数','结束期数']} picker="month"/>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+ReactDOM.render(<Demo />, mountNode)
+```
+
+```css
+.demo-range-picker {
+  width: 150px;
+  margin: 10px 0;
+}
+```

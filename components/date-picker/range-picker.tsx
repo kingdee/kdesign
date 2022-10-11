@@ -6,7 +6,6 @@ import {
   InnerLocale,
   RangeValue,
   EventValue,
-  InnerLocaleKey,
   DisabledTimes,
   PanelMode,
   SharedTimeProps,
@@ -44,7 +43,6 @@ import {
 } from './utils/date-fns'
 import useTextValueMapping from './hooks/use-text-value-mapping'
 import useRangeViewDates from './hooks/use-range-view-dates'
-import { getCompLangMsg } from '../locale'
 import useRangeDisabled from './hooks/use-range-disabled'
 import { PickerBaseProps, PickerDateProps, PickerTimeProps } from './date-picker'
 import getExtraFooter from './utils/get-extra-footer'
@@ -234,11 +232,11 @@ function DatePicker(props: Partial<RangePickerProps>) {
 
   const needConfirmButton: boolean = (picker === 'date' && !!showTime) || picker === 'time'
 
-  const datePickerLang: InnerLocale = locale
-    ? getCompLangMsg({ componentName: 'DatePicker' }, (_componentName: string, label: InnerLocaleKey) => {
-        return locale[label]
-      })
-    : globalLocale.getCompLangMsg({ componentName: 'DatePicker' })
+  const datePickerLang: InnerLocale = Object.assign(
+    {},
+    globalLocale.getCompLangMsg({ componentName: 'DatePicker' }),
+    locale || {},
+  )
   // ref
   const panelDivRef = React.useRef<HTMLDivElement>(null)
   const inputDivRef = React.useRef<HTMLDivElement>(null)
@@ -351,7 +349,7 @@ function DatePicker(props: Partial<RangePickerProps>) {
         inputTempDate = selectedValue[0]
       }
       if (inputTempDate) {
-        setSelectedValue(updateValues(selectedValue, inputTempDate, index))
+        triggerChange(updateValues(selectedValue, inputTempDate, index), index)
         setViewDate(inputTempDate, index)
       }
     } else if (newText && newText.length === _format.length) {
@@ -360,10 +358,10 @@ function DatePicker(props: Partial<RangePickerProps>) {
       const disabledFunc = index === 0 ? disabledStartDate : disabledEndDate
       if (inputTempDate && (!disabledFunc || !disabledFunc(inputTempDate))) {
         if (picker !== 'year') {
-          setSelectedValue(updateValues(selectedValue, inputTempDate, index))
+          triggerChange(updateValues(selectedValue, inputTempDate, index), index)
           setViewDate(inputTempDate, index)
         } else if (isValid(inputTempDate)) {
-          setSelectedValue(updateValues(selectedValue, inputTempDate, index))
+          triggerChange(updateValues(selectedValue, inputTempDate, index), index)
           setViewDate(inputTempDate, index)
         }
       }
@@ -513,7 +511,6 @@ function DatePicker(props: Partial<RangePickerProps>) {
     // 外部回调
     if (onCalendarChange) {
       const info: RangeInfo = { range: sourceIndex === 0 ? 'start' : 'end' }
-
       onCalendarChange(values, [startStr, endStr], info)
     }
 
