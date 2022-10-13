@@ -128,10 +128,6 @@ textarea {
 
 		&-focused {
 			border-color: @input-border-color-focused;
-
-      .@{input-prefix-cls}-clear-icon, .@{input-prefix-cls}-textarea-clear-icon {
-        color: @input-border-color-focused;
-      }
 		}
 
     &-disabled {
@@ -153,8 +149,9 @@ textarea {
 		.@{input-prefix-cls} {
 			&-textarea-clear-icon {
 				position: absolute;
+        z-index: 2;
 				right: 8px;
-				top: -2px;
+				top: 3px;
 			}
 		}
 	}
