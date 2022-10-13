@@ -162,11 +162,6 @@ const InternalSelect: React.ForwardRefRenderFunction<ISelectProps<SelectValue>> 
     }
   }, [initValue, realChildren])
 
-  // 更新搜索框的值，判断清除按钮显隐
-  // useEffect(() => {
-  //   setSearchInput(searchRef.current?.value)
-  // }, [searchRef.current?.value])
-
   useEffect(() => {
     if (optionShow === false) {
       handleClear()
@@ -176,7 +171,6 @@ const InternalSelect: React.ForwardRefRenderFunction<ISelectProps<SelectValue>> 
   const handleFocus = useCallback(
     (e: React.ChangeEvent<HTMLSpanElement>) => {
       e.stopPropagation()
-      console.log(1)
       onFocus && onFocus(e)
     },
     [onFocus],
@@ -185,7 +179,6 @@ const InternalSelect: React.ForwardRefRenderFunction<ISelectProps<SelectValue>> 
   const handleBlur = useCallback(
     (e: React.ChangeEvent<HTMLSpanElement>) => {
       e.stopPropagation()
-      console.log(2)
       onBlur && onBlur(e)
     },
     [onBlur],
@@ -661,10 +654,7 @@ const InternalSelect: React.ForwardRefRenderFunction<ISelectProps<SelectValue>> 
           className={selectionCls}
           onClick={handleClick}
           tabIndex={disabled ? -1 : 0}
-          onFocus={(e) => {
-            handleFocus(e)
-            searchRef.current?.focus()
-          }}
+          onFocus={() => searchRef.current?.focus()}
           onBlur={() => searchRef.current?.blur()}
         >
           {/* 单选模式Input  多选输入框 */}
