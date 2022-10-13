@@ -12,7 +12,7 @@ import { Select } from '@kdcloudjs/kdesign'
 
 function Demo() {
   const { Option } = Select
-  const arr = [
+  const options = [
     {
       children: '苹果',
       value: 'apple',
@@ -33,17 +33,9 @@ function Demo() {
   const style = {
     width: 230,
   }
-  const [options, setOptions] = React.useState(arr)
-  const handleSearch = (value) => {
-    const searchOptions = arr.filter((item) => {
-      return item.children.indexOf(value) > -1
-    })
-    setOptions([...searchOptions])
-  }
-
   return (
     <>
-      <Select showSearch onSearch={handleSearch} style={style}>
+      <Select showSearch style={style} optionFilterProp="children">
         {options.map((item) => {
           return (
             <Option value={item.value} key={item.value}>
