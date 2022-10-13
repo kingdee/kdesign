@@ -10,16 +10,28 @@ exports[`Select render no child without errors 1`] = `
       onBlur={[Function]}
       onClick={[Function]}
       onFocus={[Function]}
+      tabIndex={0}
     >
       <div
         className="kd-select-underline kd-select-size-middle kd-select-wrapper kd-select-single"
       >
         <span
-          className="kd-select-single-text"
-        />
+          className="kd-select-selection-search"
+        >
+          <input
+            className="kd-select-selection-search-input"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onFocus={[Function]}
+            readOnly={true}
+            value=""
+          />
+        </span>
         <span
           className="kd-select-placeholder"
-        />
+        >
+          请输入需要搜索的内容
+        </span>
         <span
           className="kd-select-suffix"
         >
@@ -55,16 +67,28 @@ exports[`Select render null or undefined without errors 1`] = `
       onBlur={[Function]}
       onClick={[Function]}
       onFocus={[Function]}
+      tabIndex={0}
     >
       <div
         className="kd-select-underline kd-select-size-middle kd-select-wrapper kd-select-single"
       >
         <span
-          className="kd-select-single-text"
-        />
+          className="kd-select-selection-search"
+        >
+          <input
+            className="kd-select-selection-search-input"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onFocus={[Function]}
+            readOnly={true}
+            value=""
+          />
+        </span>
         <span
           className="kd-select-placeholder"
-        />
+        >
+          请输入需要搜索的内容
+        </span>
         <span
           className="kd-select-suffix"
         >
@@ -96,13 +120,30 @@ exports[`Select renders correctly 1`] = `
 >
   <span
     class="kd-select-selector"
+    tabindex="0"
   >
     <div
-      class="kd-select-underline kd-select-size-middle kd-select-wrapper kd-select-multiple"
+      class="kd-select-underline kd-select-size-middle kd-select-wrapper kd-select-multiple kd-select-placeholder"
     >
       <span
+        class="kd-select-selection-search"
+        style="width:4px"
+      >
+        <input
+          class="kd-select-selection-search-input"
+          value=""
+        />
+        <span
+          class="kd-select-selection-search-mirror"
+        >
+           
+        </span>
+      </span>
+      <span
         class="kd-select-placeholder"
-      />
+      >
+        请输入需要搜索的内容
+      </span>
       <span
         class="kd-select-suffix"
       >
@@ -125,16 +166,25 @@ exports[`Select renders correctly 2`] = `
 >
   <span
     class="kd-select-selector"
+    tabindex="0"
   >
     <div
       class="kd-select-underline kd-select-size-middle kd-select-wrapper kd-select-single"
     >
       <span
-        class="kd-select-single-text"
-      />
+        class="kd-select-selection-search"
+      >
+        <input
+          class="kd-select-selection-search-input"
+          readonly=""
+          value=""
+        />
+      </span>
       <span
         class="kd-select-placeholder"
-      />
+      >
+        请输入需要搜索的内容
+      </span>
       <span
         class="kd-select-suffix"
       >
@@ -157,16 +207,25 @@ exports[`Select renders correctly 3`] = `
 >
   <span
     class="kd-select-selector"
+    tabindex="0"
   >
     <div
       class="kd-select-borderless kd-select-size-middle kd-select-wrapper kd-select-single"
     >
       <span
-        class="kd-select-single-text"
-      />
+        class="kd-select-selection-search"
+      >
+        <input
+          class="kd-select-selection-search-input"
+          readonly=""
+          value=""
+        />
+      </span>
       <span
         class="kd-select-placeholder"
-      />
+      >
+        请输入需要搜索的内容
+      </span>
       <span
         class="kd-select-suffix"
       >
@@ -189,16 +248,25 @@ exports[`Select renders correctly 4`] = `
 >
   <span
     class="kd-select-selector"
+    tabindex="0"
   >
     <div
       class="kd-select-underline kd-select-size-middle kd-select-wrapper kd-select-single"
     >
       <span
-        class="kd-select-single-text"
-      />
+        class="kd-select-selection-search"
+      >
+        <input
+          class="kd-select-selection-search-input"
+          readonly=""
+          value=""
+        />
+      </span>
       <span
         class="kd-select-placeholder"
-      />
+      >
+        请输入需要搜索的内容
+      </span>
       <span
         class="kd-select-suffix"
       >
@@ -221,16 +289,25 @@ exports[`Select renders correctly 5`] = `
 >
   <span
     class="kd-select-selector"
+    tabindex="0"
   >
     <div
       class="kd-select-bordered kd-select-size-middle kd-select-wrapper kd-select-single"
     >
       <span
-        class="kd-select-single-text"
-      />
+        class="kd-select-selection-search"
+      >
+        <input
+          class="kd-select-selection-search-input"
+          readonly=""
+          value=""
+        />
+      </span>
       <span
         class="kd-select-placeholder"
-      />
+      >
+        请输入需要搜索的内容
+      </span>
       <span
         class="kd-select-suffix"
       >
@@ -253,16 +330,25 @@ exports[`Select renders correctly 6`] = `
 >
   <span
     class="kd-select-selector"
+    tabindex="0"
   >
     <div
       class="kd-select-underline kd-select-size-large kd-select-wrapper kd-select-single"
     >
       <span
-        class="kd-select-single-text"
-      />
+        class="kd-select-selection-search"
+      >
+        <input
+          class="kd-select-selection-search-input"
+          readonly=""
+          value=""
+        />
+      </span>
       <span
         class="kd-select-placeholder"
-      />
+      >
+        请输入需要搜索的内容
+      </span>
       <span
         class="kd-select-suffix"
       >
@@ -285,16 +371,25 @@ exports[`Select renders correctly 7`] = `
 >
   <span
     class="kd-select-selector"
+    tabindex="0"
   >
     <div
       class="kd-select-underline kd-select-size-middle kd-select-wrapper kd-select-single"
     >
       <span
-        class="kd-select-single-text"
-      />
+        class="kd-select-selection-search"
+      >
+        <input
+          class="kd-select-selection-search-input"
+          readonly=""
+          value=""
+        />
+      </span>
       <span
         class="kd-select-placeholder"
-      />
+      >
+        请输入需要搜索的内容
+      </span>
       <span
         class="kd-select-suffix"
       >
@@ -317,16 +412,25 @@ exports[`Select renders correctly 8`] = `
 >
   <span
     class="kd-select-selector"
+    tabindex="0"
   >
     <div
       class="kd-select-underline kd-select-size-small kd-select-wrapper kd-select-single"
     >
       <span
-        class="kd-select-single-text"
-      />
+        class="kd-select-selection-search"
+      >
+        <input
+          class="kd-select-selection-search-input"
+          readonly=""
+          value=""
+        />
+      </span>
       <span
         class="kd-select-placeholder"
-      />
+      >
+        请输入需要搜索的内容
+      </span>
       <span
         class="kd-select-suffix"
       >

@@ -266,20 +266,6 @@ describe('Select', () => {
     content.find('.kd-select-icon-clear').simulate('click')
     expect(onChange).toHaveBeenCalled()
   })
-  // 15. Focus
-  it('Focus', () => {
-    const onFocus = jest.fn()
-    const wrapper = mount(<Select onFocus={onFocus}></Select>)
-    wrapper.find('.kd-select-selector').simulate('focus')
-    expect(onFocus).toHaveBeenCalled()
-  })
-  // 16. Blur
-  it('Blur', () => {
-    const onBlur = jest.fn()
-    const wrapper = mount(<Select onBlur={onBlur}></Select>)
-    wrapper.find('.kd-select-selector').simulate('blur')
-    expect(onBlur).toHaveBeenCalled()
-  })
 
   // 17. set maxTagHolder
   it('set maxTagHolder', () => {

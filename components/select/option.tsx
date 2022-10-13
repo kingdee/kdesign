@@ -53,7 +53,7 @@ const InternalOption: React.ForwardRefRenderFunction<unknown, ISelectOptionProps
   const titleText = typeof children !== 'object' ? children : null
 
   const checkStyle = {
-    height: '22px',
+    minHeight: '22px',
     background: 'none',
   }
 

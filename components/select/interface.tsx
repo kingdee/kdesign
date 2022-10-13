@@ -37,6 +37,8 @@ export interface AbstractSelectProps extends PopperProps {
   listHeight?: number // 下拉列表滚动高度
   labelInValue?: boolean // 每个选项的 label 包装到 value 中
   maxTagPlaceholder?: React.ReactNode | ((omittedValues: LabeledValue[]) => React.ReactNode) // 隐藏 tag 时显示的内容
+  filterOption?: boolean | ((inputValue: string, option?: OptionsType) => boolean)
+  optionFilterProp?: string
 }
 
 export interface LabeledValue {
