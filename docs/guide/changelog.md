@@ -4,6 +4,33 @@ title: 更新日志
 hiddenAnchor: true
 ---
 
+## [1.6.7](https://github.com/kdcloudone/kdesign/compare/v1.6.6...v1.6.7)
+`2022-10-13`
+* carousel
+  * 去除列表元素的默认样式
+* cascader
+  * 更新清空按钮悬浮样式
+* form
+  * 更新文档
+  * item为label添加htmlFor属性
+* input
+  * 修复清空按钮样式
+* modal
+  * 修复强控制提示弹窗demo的多次点击重复隐藏问题
+* search
+  * 增加搜索框圆角
+* select
+  * 调整选择器清除按钮样式
+  * 去除选择器多余代码
+  * 新增支持直接在输入框内输入内容搜索
+* split-panel
+  * 去掉分割容器拖动transition
+* steps
+  * 修复title多行情况下布局错乱问题
+* 更新清空按钮颜色
+* 修复bug及优化样式
+* 添加融合行悬浮高亮
+
 ## [1.6.6](https://github.com/kdcloudone/kdesign/compare/v1.6.5...v1.6.6)
 `2022-09-29`
 * tooltip
