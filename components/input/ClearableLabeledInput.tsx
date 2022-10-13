@@ -60,7 +60,7 @@ const ClearableInput: React.FC<ClearableInputProps> = (props) => {
     })
     return (
       <span onClick={handleReset} className={clearIconclasses}>
-        {typeof allowClear === 'boolean' ? <Icon type="close" /> : allowClear}
+        {typeof allowClear === 'boolean' ? <Icon type="close-solid" /> : allowClear}
       </span>
     )
   }
