@@ -9,9 +9,12 @@ import ReactDOM from 'react-dom'
 import { Slider } from '@kdcloudjs/kdesign'
 
 function Demo() {
+  const handleChange = (v) => {
+    console.log(v, 'hancdfas')
+  }
   return (
     <>
-      <Slider className="slider-container" defaultValue={30}/>
+      <Slider className="slider-container" defaultValue={30} onAfterChange={handleChange}/>
     </>
   )
 }
