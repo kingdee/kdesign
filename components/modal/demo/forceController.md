@@ -52,7 +52,6 @@ function Demo() {
   }, [time, startTimeout])
 
   const closeModal = React.useCallback(() => {
-    console.log('click', clickStatus.current)
     if (clickStatus.current) return
     clickStatus.current = true
     setInfo(`延时${time / 1000}秒关闭弹窗`)
