@@ -129,7 +129,8 @@ subtitle: 日期选择器
 |  | --kd-c-date-picker-input-color-background | --kd-g-color-white | #fff |
 |  | --kd-c-date-picker-input-color-background-disabled | --kd-g-color-background-contain-disabled | #f5f5f5 |
 |  | --kd-c-date-picker-input-color-focused | --kd-g-color-text-primary | #212121 |
-|  | --kd-c-date-picker-icon-color | --kd-g-color-disabled | #b2b2b2 |
+|  | --kd-c-date-picker-icon-color | - | #d9d9d9 |
+|  | --kd-c-date-picker-icon-color-hover | - | #999 |
 |  | --kd-c-date-picker-clear-color-background | --kd-g-color-background | #fff |
 |  | --kd-c-date-picker-clear-color-background-hover | --kd-g-color-theme-5 | rgb(135, 173, 255) |
 |  | --kd-c-date-picker-clear-color-background-focused | --kd-g-color-theme | #5582f3 |
