@@ -17,7 +17,6 @@
     &-panel {
         position: absolute;
         overflow: hidden;
-        transition: all calc(@transition-duration - 0.1s) @ease-out;
         &.left-panel, &.right-panel {
             top: 0;
             bottom: 0;
@@ -54,7 +53,6 @@
           position: absolute;
           transform: translate(-50%, -50%);
           z-index: 10;
-          transition: all calc(@transition-duration - 0.1s) @ease-out;
           &.is-active {
             .@{split-prefix-cls}-trigger-arrow {
               border-color: @split-panel-trigger-arrow-color;
@@ -95,7 +93,6 @@
           display: inline-flex;
           align-items: center;
           justify-content: center;
-          transition: all calc(@transition-duration - 0.1s) @ease-out;
           box-sizing: border-box;
           border: @split-panel-arrow-border-width solid transparent;
           .@{kd-prefix}icon {
