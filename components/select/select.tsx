@@ -415,7 +415,7 @@ const InternalSelect: React.ForwardRefRenderFunction<ISelectProps<SelectValue>> 
       <>
         {iconShow && (
           <span onClick={handleReset} className={clearIconCls}>
-            {<Icon type="close" /> || clearIcon}
+            {<Icon type="close-solid" /> || clearIcon}
           </span>
         )}
         {showArrow && <span className={arrowIconCls}>{suffixIcon || <Icon type="arrow-down" />}</span>}

@@ -236,6 +236,13 @@
     &:hover .@{select-prefix-cls}-icon-clear {
       opacity: 1;
     }
+
+    .@{select-prefix-cls}-icon-clear {
+      color: @select-clear-color;
+      &:hover {
+        color: @select-clear-color-hover;
+      }
+    }
     &-text {
       color: @select-single-color-text;
       .over();
@@ -338,6 +345,12 @@
     }
     &:hover .@{select-prefix-cls}-icon-clear {
       opacity: 1;
+    }
+    .@{select-prefix-cls}-icon-clear {
+      color: @select-clear-color;
+      &:hover {
+        color: @select-clear-color-hover;
+      }
     }
     &-selector {
       position: relative;
