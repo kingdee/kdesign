@@ -107,6 +107,11 @@
     background: #fafafa;
   }
 
+  .@{submenu-prefix-cls}:not(.@{submenu-prefix-cls}-disabled):not(.@{submenu-prefix-cls}-active):hover,
+  .@{submenu-prefix-cls}-hover {
+    .menu-light-hover();
+  }
+
   .@{menuitem-prefix-cls}:not(.@{menuitem-prefix-cls}-disabled):not(.@{menuitem-prefix-cls}-active):hover {
     .menu-light-hover();
   }
