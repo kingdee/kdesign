@@ -4,29 +4,8 @@
 
 @dropdown-prefix-cls: ~'@{kd-prefix}-dropdown';
 @dropdown-trigger-prefix-cls: ~'@{dropdown-prefix-cls}-trigger';
-@dropdown-link-prefix-cls: ~'@{dropdown-prefix-cls}-link';
 
 @dropdown-line-height: 18px;
-
-.@{dropdown-link-prefix-cls} {
-  color: @color-theme;
-  text-decoration: none;
-  background-color: transparent;
-  outline: noned;
-  cursor: pointer;
-  transition: color @duration-promptly, background-color @duration-promptly;
-  -webkit-text-decoration-skip: objects;
-
-  &.disabled,
-  &.disabled:hover {
-    cursor: default;
-    color: @color-disabled;
-  }
-
-  &:hover {
-    color: @color-theme-hover;
-  }
-}
 
 .@{dropdown-trigger-prefix-cls} {
   outline: none;

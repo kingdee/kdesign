@@ -48,3 +48,13 @@ function Demo() {
 
 ReactDOM.render(<Demo />, mountNode)
 ```
+
+```css
+.kd-dropdown-link {
+  color: #5582f3;
+}
+
+.kd-dropdown-link:hover {
+  color: #87adff;
+}
+```
