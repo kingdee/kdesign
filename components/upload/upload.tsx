@@ -1,7 +1,7 @@
 import * as React from 'react'
 import classNames from 'classnames'
 import ConfigContext from '../config-provider/ConfigContext'
-import { UploadProps, UploadProgressEvent, UploadRequestError, UploadFile, Action } from './interface'
+import { UploadProps, UploadProgressEvent, UploadRequestError, UploadFile, Action, IFileItem } from './interface'
 import { getCompProps } from '../_utils'
 import Icon from '../icon'
 import request from './request'
@@ -339,7 +339,7 @@ const InternalUpload: React.ForwardRefRenderFunction<unknown, UploadProps> = (pr
               itemRender ? (
                 itemRender(<Item {...{ file, prefixCls, listType, handleReUpload, handleRemove }} />, file, setFileList)
               ) : (
-                <Item {...{ file, prefixCls, listType, handleReUpload, handleRemove }} />
+                <Item key={file.uid} {...{ file, prefixCls, listType, handleReUpload, handleRemove }} />
               ),
             )}
         </ul>
@@ -348,14 +348,7 @@ const InternalUpload: React.ForwardRefRenderFunction<unknown, UploadProps> = (pr
   )
 }
 
-interface IItem {
-  file: UploadFile
-  prefixCls: string
-  listType: string
-  handleReUpload: (file: UploadFile, e: React.MouseEvent) => void
-  handleRemove: (file: UploadFile, e: React.MouseEvent) => void
-}
-const Item: React.FC<IItem> = ({ file, prefixCls, listType, handleReUpload, handleRemove }) => {
+const Item: React.FC<IFileItem> = ({ file, prefixCls, listType, handleReUpload, handleRemove }) => {
   const mapStatus: Record<string, string> = {
     uploading: 'loadding',
     error: 'warning-solid',
@@ -364,7 +357,7 @@ const Item: React.FC<IItem> = ({ file, prefixCls, listType, handleReUpload, hand
     notStart: 'attachment',
   }
   return (
-    <li key={file.uid} className={classNames(`${prefixCls}-${listType}-list-item`, { error: file.status === 'error' })}>
+    <li className={classNames(`${prefixCls}-${listType}-list-item`, { error: file.status === 'error' })}>
       {listType === 'text' ? (
         <>
           <span className={`${prefixCls}-${listType}-list-item-icon`}>

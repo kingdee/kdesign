@@ -57,6 +57,8 @@ subtitle: 输入框
 | color | --kd-c-input-color-text | --kd-g-color-text-primary | #212121 |
 |  | --kd-c-input-placeholder-color-text | --kd-g-color-text-placeholder | #ccc |
 |  | --kd-c-input-color-border | - | #999 |
+|  | --kd-c-input-clear-color | - | #d9d9d9 |
+|  | --kd-c-input-clear-color-hover | - | #999 |
 |  | --kd-c-input-color-background | --kd-g-color-white | #fff |
 |  | --kd-c-input-color-background-disabled | --kd-g-color-background-contain-disabled | #f5f5f5 |
 |  | --kd-c-input-color-border-focused | --kd-g-color-theme | #5582f3 |

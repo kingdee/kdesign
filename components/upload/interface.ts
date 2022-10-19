@@ -159,3 +159,11 @@ export interface UploadRequestOption<T = any> {
   headers?: HttpRequestHeader
   method: UploadRequestMethod
 }
+
+export interface IFileItem {
+  file: UploadFile
+  prefixCls: string
+  listType: string
+  handleReUpload: (file: UploadFile, e: React.MouseEvent) => void
+  handleRemove: (file: UploadFile, e: React.MouseEvent) => void
+}
