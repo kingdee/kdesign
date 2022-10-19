@@ -143,7 +143,7 @@ function DatePicker(props: Partial<PickerProps>) {
     disabledHours,
     disabledMinutes,
     disabledSeconds,
-    // getPopupContainer,
+    getPopupContainer,
     panelRender,
     renderExtraFooter,
     // onPanelChange,
@@ -516,6 +516,7 @@ function DatePicker(props: Partial<PickerProps>) {
       popperStyle: popupStyle,
       visible: openValue,
       placement: 'bottomLeft',
+      getPopupContainer,
     },
   )
 }

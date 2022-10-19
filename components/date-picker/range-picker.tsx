@@ -82,6 +82,7 @@ export interface RangePickerSharedProps {
   activePickerIndex?: 0 | 1
   dateRender?: RangeDateRender
   panelRender?: (originPanel: React.ReactNode) => React.ReactNode
+  getPopupContainer?: (node: HTMLElement) => HTMLElement
 }
 
 type OmitPickerProps<Props> = Omit<
@@ -228,6 +229,7 @@ function DatePicker(props: Partial<RangePickerProps>) {
     onFocus,
     onBlur,
     onOk,
+    getPopupContainer,
   } = datePickerProps as MergedRangePickerProps
 
   const needConfirmButton: boolean = (picker === 'date' && !!showTime) || picker === 'time'
@@ -876,6 +878,7 @@ function DatePicker(props: Partial<RangePickerProps>) {
       popperStyle: style,
       visible: mergedOpen,
       placement: 'bottomLeft',
+      getPopupContainer,
     },
   )
 }
