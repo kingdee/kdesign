@@ -52,6 +52,7 @@ class FormStore {
     resetFields: this.resetFields,
     setFieldValue: this.setFieldValue,
     setFieldsValue: this.setFieldsValue,
+    setRules: this.setRules,
     validateFields: this.validateFields,
     submit: this.submit,
     getInternalHooks: this.getInternalHooks,
@@ -294,15 +295,15 @@ class FormStore {
         this.notifyObservers(this.store, namePathList || [], 'validateFinish')
       })
       .catch(({ errorInfos }) => {
+        this.errorMessages = {}
+
         const { fields = {} } = errorInfos
         Object.keys(fields).forEach((name) => {
-          // 取第一个错误的信息
           this.errorMessages[name] = fields[name][0].message
         })
         this.notifyObservers(this.store, namePathList || [], 'validateFinish')
       })
 
-    // 返回 promise 给外部调用者
     return validatePromise
   }
 

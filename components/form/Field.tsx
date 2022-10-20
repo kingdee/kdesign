@@ -76,6 +76,7 @@ const Field: React.FC<FormItemProps> = (props) => {
     vertical,
     getDefaultValue,
     local,
+    setRules,
     disabled: formDisabled,
   } = fieldContext
   const { registerField, dispatch, setDefaultValues } = getInternalHooks(INTERNAL_HOOK_KEY)!
@@ -141,7 +142,7 @@ const Field: React.FC<FormItemProps> = (props) => {
     return false
   })
 
-  const mergedRequired = required || !!rulesRequired
+  const mergedRequired = required || rulesRequired
   if (
     Array.isArray(rules) &&
     !rules.some((rule) => Object.prototype.hasOwnProperty.call(rule, 'required')) &&
@@ -175,6 +176,10 @@ const Field: React.FC<FormItemProps> = (props) => {
       setDefaultValues({ [name]: defaultValue })
     }
   }, [name, registerField])
+
+  useEffect(() => {
+    setRules(name, mergeRules)
+  }, [mergedRequired, name, mergeRules])
 
   const formPrefixCls = getPrefixCls?.(prefixCls, 'form', customizePrefixcls)
   const formItemClassName = classnames(
