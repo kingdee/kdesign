@@ -4,6 +4,26 @@ title: 更新日志
 hiddenAnchor: true
 ---
 
+## [1.6.10](https://github.com/kdcloudone/kdesign/compare/v1.6.8...v1.6.10)
+`2022-10-21`
+* form
+  * 修复rules不更新问题
+* menu
+  * 修复亮色模式悬浮色bug
+* dropdown
+  * kd-dropdown-link样式写入demo
+* link
+  * kd-dropdown-link样式写入demo
+* upload
+  * 添加itemRender 支持
+  * 优化代码结构和处理警告
+* 添加getPopupContainer属性
+
+## [1.6.8](https://github.com/kdcloudone/kdesign/compare/v1.6.7...v1.6.8)
+`2022-10-13`
+* slider
+  * 修复onAfterChange在移出到边界外不触发的问题
+
 ## [1.6.7](https://github.com/kdcloudone/kdesign/compare/v1.6.6...v1.6.7)
 `2022-10-13`
 * carousel
