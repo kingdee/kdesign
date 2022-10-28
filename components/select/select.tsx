@@ -236,19 +236,20 @@ const InternalSelect: React.ForwardRefRenderFunction<ISelectProps<SelectValue>> 
 
   const getOptionLabel = useCallback(
     (obj) => {
+      const text = 'options' in selectProps ? 'label' : optionLabelProp
       if (obj.props) {
-        if (optionLabelProp) {
-          return obj?.props[optionLabelProp]
+        if (text) {
+          return obj?.props[text]
         }
         return obj.props?.children
       } else {
-        if (optionLabelProp) {
-          return obj[optionLabelProp]
+        if (text) {
+          return obj[text]
         }
       }
       return obj?.label
     },
-    [optionLabelProp],
+    [optionLabelProp, selectProps],
   )
 
   // 点击下拉列表中某项回调

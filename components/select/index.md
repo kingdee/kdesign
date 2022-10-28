@@ -36,7 +36,7 @@ subtitle: 选择器
 | mode | 下拉框模式（设置单选或多选） | `single` `multiple` | `single` | 0.0.17 |
 | notFoundContent | 当下拉列表为空时显示的内容 | ReactNode | `Not Found` | 0.0.17 |
 | optionFilterProp | 搜索时过滤对应的 option 属性 | string | label | 1.6.7 |
-| optionLabelProp | 回填到选择框的 Option 的属性值 | string | children | 1.6.7 |
+| optionLabelProp | 回填到选择框的 Option 的属性值 | string | options存在时为 label,反之为 children | 1.6.7 |
 | options | 数据化配置选项内容，相比 jsx 定义会获得更好的渲染性能 | { label, value }\[] | - | 0.0.17 |
 | placeholder | 选择框默认文字 | string | - | 0.0.17 |
 | showArrow | 是否显示下拉小箭头 | boolean | 单选为 true，多选为 false | 0.0.17 |
