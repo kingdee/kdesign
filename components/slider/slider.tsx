@@ -30,6 +30,7 @@ export interface ISliderProps {
   tooltipVisible?: boolean
   tooltipPlacemant?: PlacementType
   value?: number | number[]
+  getPopupContainer?: () => React.ReactNode
   vertical?: boolean
   onAfterChange?: (value?: number | number[]) => void
   onChange?: (value?: number | number[]) => void
@@ -56,6 +57,7 @@ const InteranalSlider = (props: ISliderProps, ref: unknown): FunctionComponentEl
     tooltipVisible,
     tooltipPlacement,
     value: propsValue,
+    getPopupContainer,
     onAfterChange,
     onChange,
     onBlur,
@@ -251,6 +253,7 @@ const InteranalSlider = (props: ISliderProps, ref: unknown): FunctionComponentEl
         min={min}
         max={max}
         bound={value}
+        getPopupContainer={getPopupContainer}
       />
       <Marks
         marks={marks}

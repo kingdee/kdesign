@@ -15,7 +15,7 @@ subtitle: 滑动输入
 | defaultValue | 设置初始取值。当 `range` 为 false 时，使用 number，否则用 \[number, number] | number \| \[number, number] | 0 \| \[0, 0] |  | 1.0.0 |
 | disabled | 值为 true 时，滑块为禁用状态 | boolean | false |  | 1.0.0 |
 | dots | 是否只能拖拽到刻度上 | boolean | false |  | 1.0.0 |
-| getTooltipPopupContainer | Tooltip 渲染父节点，默认渲染到 body 上 | (triggerNode) => HTMLElement | () => document.body |  | 1.0.0 |
+| getPopupContainer | Tooltip 渲染父节点，默认渲染到 body 上 | (triggerNode) => HTMLElement | () => document.body |  | 1.6.12 |
 | included | `marks` 不为空对象时有效，值为 true 时表示值为包含关系，false 表示并列 | boolean | true |  | 1.0.0 |
 | marks | 刻度标记，key 的类型必须为 `number` 且取值在闭区间 \[min, max] 内，每个标签可以单独设置样式 | object | { number: ReactNode } or { number: { style: CSSProperties, label: ReactNode } } |  | 1.0.0 |
 | max | 最大值 | number | 100 |  | 1.0.0 |
