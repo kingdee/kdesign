@@ -263,6 +263,9 @@ const InternalSelect: React.ForwardRefRenderFunction<ISelectProps<SelectValue>> 
           return child?.value === key
         }
       }) || {}
+    if (isMultiple) {
+      searchRef.current?.focus()
+    }
     const optionsObj = obj.props ? obj.props : obj || {}
     if (value !== undefined) {
       if (isMultiple) {
