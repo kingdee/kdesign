@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react'
+import React, { FunctionComponentElement, useContext, useEffect } from 'react'
 import classnames from 'classnames'
 
 import { DateType, InnerLocale, PickerMode, TimeUnit } from './interface'
@@ -91,7 +91,10 @@ interface MergedPickerProps extends OmitType {
   picker?: PickerMode
 }
 
-function DatePicker(props: Partial<PickerProps>) {
+const InternalDatePicker = (
+  props: Partial<PickerProps>,
+  ref: unknown,
+): FunctionComponentElement<Partial<PickerProps>> => {
   const { prefixCls: customPrefixcls } = props
 
   const {
@@ -163,7 +166,7 @@ function DatePicker(props: Partial<PickerProps>) {
 
   // ref
   const panelDivRef = React.useRef<HTMLDivElement>(null)
-  const inputDivRef = React.useRef<HTMLDivElement>(null)
+  const inputDivRef = (ref as any) || React.createRef<HTMLElement>()
   const popperRef = React.useRef<HTMLInputElement>(null)
   const inputRef = React.useRef<HTMLInputElement>(null)
 
@@ -521,4 +524,6 @@ function DatePicker(props: Partial<PickerProps>) {
   )
 }
 
+const DatePicker = React.forwardRef<unknown, Partial<PickerProps>>(InternalDatePicker)
+DatePicker.displayName = 'DatePicker'
 export default DatePicker

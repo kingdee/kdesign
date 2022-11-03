@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react'
+import React, { FunctionComponentElement, useContext, useEffect } from 'react'
 import isSameWeek from 'date-fns/isSameWeek'
 
 import {
@@ -173,7 +173,10 @@ function canValueTrigger(
   return false
 }
 
-function DatePicker(props: Partial<RangePickerProps>) {
+const InternalRangePicker = (
+  props: Partial<RangePickerProps>,
+  ref: unknown,
+): FunctionComponentElement<Partial<RangePickerProps>> => {
   const { prefixCls: customPrefixcls } = props
 
   const {
@@ -241,7 +244,7 @@ function DatePicker(props: Partial<RangePickerProps>) {
   )
   // ref
   const panelDivRef = React.useRef<HTMLDivElement>(null)
-  const inputDivRef = React.useRef<HTMLDivElement>(null)
+  const inputDivRef = (ref as any) || React.createRef<HTMLElement>()
   const startInputDivRef = React.useRef<HTMLDivElement>(null)
   const endInputDivRef = React.useRef<HTMLDivElement>(null)
   const separatorRef = React.useRef<HTMLDivElement>(null)
@@ -883,4 +886,6 @@ function DatePicker(props: Partial<RangePickerProps>) {
   )
 }
 
-export default DatePicker
+const RangePicker = React.forwardRef<unknown, Partial<RangePickerProps>>(InternalRangePicker)
+RangePicker.displayName = 'RangePicker'
+export default RangePicker
