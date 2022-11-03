@@ -4,6 +4,19 @@ title: 更新日志
 hiddenAnchor: true
 ---
 
+## [1.6.12](https://github.com/kdcloudone/kdesign/compare/v1.6.11...v1.6.12)
+`2022-11-03`
+* select
+  * 解决多选时选中后输入框不聚焦问题
+* slider
+  * 添加getPopupContainer的api方法
+* 修复ref问题
+
+## [1.6.11](https://github.com/kdcloudone/kdesign/compare/v1.6.10...v1.6.11)
+`2022-10-28`
+* select
+  * 修复选择器回填值显示问题
+
 ## [1.6.10](https://github.com/kdcloudone/kdesign/compare/v1.6.8...v1.6.10)
 `2022-10-21`
 * form
