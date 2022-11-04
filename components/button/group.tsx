@@ -6,7 +6,7 @@ import { Button, Icon } from '../index'
 import usePopper from '../_utils/usePopper'
 import { toArray } from '../_utils/react-children'
 import { tuple } from '../_utils/type'
-import { ButtonType } from './button'
+import { ButtonType, ButtonSize } from './button'
 
 export const ButtonGroupTypes = tuple('basic', 'similar')
 export type ButtonGroupType = typeof ButtonGroupTypes[number]
@@ -16,15 +16,17 @@ export interface OverlayType {
 }
 
 export interface ButtonGroupProps {
-  style?: CSSProperties
-  className?: string
-  children?: ReactNode
-  onClick?: () => void
-  overlay?: Array<OverlayType>
-  icon?: [ReactNode, ReactNode]
-  type?: ButtonGroupType
   buttonType?: ButtonType
+  children?: ReactNode
+  className?: string
   disabled?: boolean
+  icon?: [ReactNode, ReactNode]
+  overlay?: Array<OverlayType>
+  size?: ButtonSize
+  style?: CSSProperties
+  type?: ButtonGroupType
+  onClick?: () => void
+  onItemClick?: (data: OverlayType) => void
 }
 
 const InternalButtonGroup = (
@@ -44,6 +46,7 @@ const InternalButtonGroup = (
     overlay,
     icon,
     type,
+    size,
     buttonType,
     disabled,
     onVisibleChange,
@@ -68,22 +71,22 @@ const InternalButtonGroup = (
     return (
       <div style={style} className={btnGroupClasses} ref={refBtnGroup}>
         {isBsicType && (
-          <Button type={buttonType} disabled={disabled}>
+          <Button type={buttonType} size={size} disabled={disabled}>
             {children}
             <span className={`${btnGroupPrefixCls}-basic-icon`}>{optionShow ? iconUp : iconDown}</span>
           </Button>
         )}
         {!isBsicType && (
-          <Button type={buttonType} disabled={disabled} onClick={onClick}>
+          <Button type={buttonType} size={size} disabled={disabled} onClick={onClick}>
             {children}
           </Button>
         )}
         {!isBsicType && (
           <span className={`${btnGroupPrefixCls}-trigger`} ref={triggerRef}>
             {optionShow ? (
-              <Button icon={iconUp} type={buttonType} disabled={disabled} />
+              <Button icon={iconUp} type={buttonType} size={size} disabled={disabled} />
             ) : (
-              <Button icon={iconDown} type={buttonType} disabled={disabled} />
+              <Button icon={iconDown} type={buttonType} size={size} disabled={disabled} />
             )}
           </span>
         )}
@@ -101,6 +104,7 @@ const InternalButtonGroup = (
     children,
     optionShow,
     onClick,
+    size,
   ])
 
   const handleItemClick = useCallback(

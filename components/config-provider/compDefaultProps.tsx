@@ -24,6 +24,7 @@ const compDefaultProps = {
   ButtonGroup: {
     buttonType: 'primary',
     type: 'basic',
+    size: 'middle',
   },
   Card: {
     hoverable: false,

@@ -110,5 +110,6 @@ module.exports = {
     'react/display-name': 0,
     'no-self-assign': 0,
     'standard/no-callback-literal': 0,
+    'react/no-unknown-property': 0,
   },
 }
