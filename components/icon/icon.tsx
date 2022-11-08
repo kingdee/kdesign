@@ -21,7 +21,7 @@ export interface IIconProps extends React.HTMLAttributes<HTMLElement> {
 const InternalIcon: React.ForwardRefRenderFunction<HTMLElement, IIconProps> = (props: IIconProps, ref: unknown) => {
   const { compDefaultProps: userDefaultProps } = useContext(ConfigContext)
   const iconProps = getCompProps('Icon', userDefaultProps, props)
-  const { type, spin, style, prefix, className, rotate, onClick, onMouseEnter, onMouseLeave } = iconProps
+  const { type, spin, style, prefix, className, rotate, onClick, onMouseEnter, onMouseLeave, ...others } = iconProps
 
   const innerRef = React.useRef<HTMLElement>()
   const iconRef = (ref as any) || innerRef
@@ -58,6 +58,7 @@ const InternalIcon: React.ForwardRefRenderFunction<HTMLElement, IIconProps> = (p
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
       style={iconStyle}
+      {...others}
       ref={iconRef}
     />
   )
