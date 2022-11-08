@@ -12,7 +12,7 @@ import { Select } from '@kdcloudjs/kdesign'
 
 function Demo() {
   const { Option } = Select
-  const optionsList = [
+  const options = [
     {
       children: '苹果',
       value: 'apple',
@@ -54,13 +54,6 @@ function Demo() {
       value: 'blueberry',
     },
   ]
-  const [options, setOptions] = React.useState(optionsList)
-  const handleSearch = (value) => {
-    const searchOptions = optionsList.filter((item) => {
-      return item.children.indexOf(value) > -1
-    })
-    setOptions([...searchOptions])
-  }
   const handleChange = (value) => {
     console.log(value)
   }
@@ -73,10 +66,10 @@ function Demo() {
       <Select
         placeholder="请输入名称"
         mode="multiple"
-        defaultValue={['apple', 'strawberry', 'lemon']}
+        defaultValue={['apple', 'strawberry']}
         style={style}
         borderType="bordered"
-        onSearch={handleSearch}
+        optionFilterProp="children"
         onChange={handleChange}>
         {options.map((item) => {
           return (

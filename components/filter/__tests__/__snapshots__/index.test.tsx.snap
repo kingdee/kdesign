@@ -1678,16 +1678,25 @@ exports[`Filter renders correctly 4`] = `
               >
                 <span
                   class="kd-select-selector"
+                  tabindex="0"
                 >
                   <div
                     class="kd-select-bordered kd-select-size-middle kd-select-wrapper kd-select-single"
                   >
                     <span
-                      class="kd-select-single-text"
-                    />
+                      class="kd-select-selection-search"
+                    >
+                      <input
+                        class="kd-select-selection-search-input"
+                        readonly=""
+                        value=""
+                      />
+                    </span>
                     <span
                       class="kd-select-placeholder"
-                    />
+                    >
+                      请输入需要搜索的内容
+                    </span>
                     <span
                       class="kd-select-suffix"
                     >
@@ -1712,16 +1721,25 @@ exports[`Filter renders correctly 4`] = `
               >
                 <span
                   class="kd-select-selector"
+                  tabindex="0"
                 >
                   <div
                     class="kd-select-bordered kd-select-size-middle kd-select-wrapper kd-select-single"
                   >
                     <span
-                      class="kd-select-single-text"
-                    />
+                      class="kd-select-selection-search"
+                    >
+                      <input
+                        class="kd-select-selection-search-input"
+                        readonly=""
+                        value=""
+                      />
+                    </span>
                     <span
                       class="kd-select-placeholder"
-                    />
+                    >
+                      请输入需要搜索的内容
+                    </span>
                     <span
                       class="kd-select-suffix"
                     >
@@ -2280,16 +2298,25 @@ exports[`Filter renders correctly 5`] = `
               >
                 <span
                   class="kd-select-selector"
+                  tabindex="0"
                 >
                   <div
                     class="kd-select-bordered kd-select-size-middle kd-select-wrapper kd-select-single"
                   >
                     <span
-                      class="kd-select-single-text"
-                    />
+                      class="kd-select-selection-search"
+                    >
+                      <input
+                        class="kd-select-selection-search-input"
+                        readonly=""
+                        value=""
+                      />
+                    </span>
                     <span
                       class="kd-select-placeholder"
-                    />
+                    >
+                      请输入需要搜索的内容
+                    </span>
                     <span
                       class="kd-select-suffix"
                     >
@@ -2314,16 +2341,25 @@ exports[`Filter renders correctly 5`] = `
               >
                 <span
                   class="kd-select-selector"
+                  tabindex="0"
                 >
                   <div
                     class="kd-select-bordered kd-select-size-middle kd-select-wrapper kd-select-single"
                   >
                     <span
-                      class="kd-select-single-text"
-                    />
+                      class="kd-select-selection-search"
+                    >
+                      <input
+                        class="kd-select-selection-search-input"
+                        readonly=""
+                        value=""
+                      />
+                    </span>
                     <span
                       class="kd-select-placeholder"
-                    />
+                    >
+                      请输入需要搜索的内容
+                    </span>
                     <span
                       class="kd-select-suffix"
                     >

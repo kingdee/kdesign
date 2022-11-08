@@ -24,6 +24,7 @@ const compDefaultProps = {
   ButtonGroup: {
     buttonType: 'primary',
     type: 'basic',
+    size: 'middle',
   },
   Card: {
     hoverable: false,
@@ -127,6 +128,10 @@ const compDefaultProps = {
     mode: 'single',
     defaultOpen: false,
     showArrow: true,
+    placeholder: '请输入需要搜索的内容',
+    filterOption: true,
+    optionLabelProp: 'children',
+    optionFilterProp: 'label',
   },
   Image: {
     preview: true,
@@ -280,6 +285,7 @@ const compDefaultProps = {
     borderType: 'underline',
     disabled: false,
     count: true,
+    countPosition: 'outter',
     maxLength: 255,
   },
   Timeline: {

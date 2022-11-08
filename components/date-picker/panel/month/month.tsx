@@ -15,22 +15,6 @@ import Context from '../../context'
 import { DateType, RangeValue } from '../../interface'
 import useRangeCls from '../../hooks/use-range-cls'
 
-export const monthsNumToText = [
-  '1月',
-  '2月',
-  '3月',
-  '4月',
-  '5月',
-  '6月',
-  '7月',
-  '8月',
-  '9月',
-  '10月',
-  '11月',
-  '12月',
-  '13月',
-]
-
 const monthsThreeColumns = [
   [0, 1, 2],
   [3, 4, 5],
@@ -55,6 +39,7 @@ function Month(props: MonthProps) {
     rangeValue,
     panelPosition,
     hoverRangedValue,
+    locale,
   } = context
 
   const { disabledDate } = props
@@ -104,7 +89,6 @@ function Month(props: MonthProps) {
   const getMonthClassNames = (i: number) => {
     return classnames(`${prefixCls}-month-text`, {
       [`${prefixCls}-month-text-selected`]: getMonthSelected(i),
-
       [`${prefixCls}-month-text-today`]: getMonthToday(i),
     })
   }
@@ -128,10 +112,7 @@ function Month(props: MonthProps) {
     }
   }
 
-  const renderMonthItem = (i: number) => {
-    const monthsText = monthsNumToText[i]
-    return <span className={getMonthClassNames(i)}>{monthsText}</span>
-  }
+  const renderMonthItem = (i: number) => <span className={getMonthClassNames(i)}>{`${i + 1}${locale.month}`}</span>
 
   const renderMonth = () => {
     const monthLayout = monthsThreeColumns

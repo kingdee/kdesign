@@ -1,4 +1,4 @@
-import React, { FunctionComponentElement, useContext, useEffect, useRef, useState } from 'react'
+import React, { FunctionComponentElement, useContext, useEffect, useRef } from 'react'
 import classNames from 'classnames'
 import ConfigContext from '../config-provider/ConfigContext'
 import { getCompProps } from '../_utils'
@@ -30,6 +30,7 @@ export interface ISliderProps {
   tooltipVisible?: boolean
   tooltipPlacemant?: PlacementType
   value?: number | number[]
+  getPopupContainer?: () => React.ReactNode
   vertical?: boolean
   onAfterChange?: (value?: number | number[]) => void
   onChange?: (value?: number | number[]) => void
@@ -56,6 +57,7 @@ const InteranalSlider = (props: ISliderProps, ref: unknown): FunctionComponentEl
     tooltipVisible,
     tooltipPlacement,
     value: propsValue,
+    getPopupContainer,
     onAfterChange,
     onChange,
     onBlur,
@@ -81,7 +83,13 @@ const InteranalSlider = (props: ISliderProps, ref: unknown): FunctionComponentEl
     defaultValue,
     value: propsValue,
   })
-  const [dragging, setDraging] = useState(false)
+  const isDragging = useRef(false)
+  const valueRef = useRef(
+    useMergedState(0, {
+      defaultValue,
+      value: propsValue,
+    }) as any,
+  )
 
   let mouseOffset: number
   const addDocumentMouseEvents = () => {
@@ -137,10 +145,10 @@ const InteranalSlider = (props: ISliderProps, ref: unknown): FunctionComponentEl
   }
   const onEnd = () => {
     removeDocumentEvents()
-    if (dragging) {
-      onAfterChange && onAfterChange(value)
+    if (isDragging.current) {
+      onAfterChange && onAfterChange(valueRef.current)
     }
-    setDraging(false)
+    isDragging.current = false
   }
   const handleTouchStart = () => {
     // console.log('object :>> ', 'object', addDocumentMouseEvents)
@@ -160,10 +168,11 @@ const InteranalSlider = (props: ISliderProps, ref: unknown): FunctionComponentEl
       position = handlePosition
     }
     // 设置状态值
-    setDraging(true)
+    isDragging.current = true
     const newV = calcValueByPos(position)
     if (newV !== value) {
       setValue(newV)
+      valueRef.current = newV
     }
     onChange && onChange(newV)
     // 监听document的鼠标事件
@@ -185,20 +194,22 @@ const InteranalSlider = (props: ISliderProps, ref: unknown): FunctionComponentEl
   const handleMouseMove = (e: MouseEvent) => {
     if (!sliderRef.current) {
       removeDocumentEvents()
-      if (dragging) {
+      if (isDragging.current) {
         onAfterChange(value)
       }
-      setDraging(false)
+      isDragging.current = false
       return
     }
     const position = vertical ? e.clientY : e.pageX
     const newV = calcValueByPos(position - mouseOffset)
     if (newV !== value) {
       setValue(newV)
+      valueRef.current = newV
     }
 
     onChange && onChange(newV)
   }
+
   useEffect(() => {
     return () => {
       removeDocumentEvents()
@@ -213,7 +224,7 @@ const InteranalSlider = (props: ISliderProps, ref: unknown): FunctionComponentEl
       style={style}
       onTouchStart={disabled ? noop : handleTouchStart}
       onMouseDown={disabled ? noop : handleMouseDown}
-      onMouseUp={disabled ? noop : handleMouseUp}
+      // onMouseUp={disabled ? noop : handleMouseUp}
       onKeyDown={disabled ? noop : handleKeyDown}
       onFocus={disabled ? noop : handleFocus}
       onBlur={disabled ? noop : handleBlur}
@@ -242,6 +253,7 @@ const InteranalSlider = (props: ISliderProps, ref: unknown): FunctionComponentEl
         min={min}
         max={max}
         bound={value}
+        getPopupContainer={getPopupContainer}
       />
       <Marks
         marks={marks}

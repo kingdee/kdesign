@@ -4,6 +4,76 @@ title: 更新日志
 hiddenAnchor: true
 ---
 
+## [1.6.12](https://github.com/kdcloudone/kdesign/compare/v1.6.11...v1.6.12)
+`2022-11-03`
+* select
+  * 解决多选时选中后输入框不聚焦问题
+* slider
+  * 添加getPopupContainer的api方法
+* 修复ref问题
+
+## [1.6.11](https://github.com/kdcloudone/kdesign/compare/v1.6.10...v1.6.11)
+`2022-10-28`
+* select
+  * 修复选择器回填值显示问题
+
+## [1.6.10](https://github.com/kdcloudone/kdesign/compare/v1.6.8...v1.6.10)
+`2022-10-21`
+* form
+  * 修复rules不更新问题
+* menu
+  * 修复亮色模式悬浮色bug
+* dropdown
+  * kd-dropdown-link样式写入demo
+* link
+  * kd-dropdown-link样式写入demo
+* upload
+  * 添加itemRender 支持
+  * 优化代码结构和处理警告
+* 添加getPopupContainer属性
+
+## [1.6.8](https://github.com/kdcloudone/kdesign/compare/v1.6.7...v1.6.8)
+`2022-10-13`
+* slider
+  * 修复onAfterChange在移出到边界外不触发的问题
+
+## [1.6.7](https://github.com/kdcloudone/kdesign/compare/v1.6.6...v1.6.7)
+`2022-10-13`
+* carousel
+  * 去除列表元素的默认样式
+* cascader
+  * 更新清空按钮悬浮样式
+* form
+  * 更新文档
+  * item为label添加htmlFor属性
+* input
+  * 修复清空按钮样式
+* modal
+  * 修复强控制提示弹窗demo的多次点击重复隐藏问题
+* search
+  * 增加搜索框圆角
+* select
+  * 调整选择器清除按钮样式
+  * 去除选择器多余代码
+  * 新增支持直接在输入框内输入内容搜索
+* split-panel
+  * 去掉分割容器拖动transition
+* steps
+  * 修复title多行情况下布局错乱问题
+* 更新清空按钮颜色
+* 修复bug及优化样式
+* 添加融合行悬浮高亮
+
+## [1.6.6](https://github.com/kdcloudone/kdesign/compare/v1.6.5...v1.6.6)
+`2022-09-29`
+* tooltip
+  * 修复重复的token变量
+* input
+  * 开放countPosition属性用来摆放计数器位置
+* table
+  * 添加表格向外提供的api
+* 文档内容更新
+
 ## [1.6.5](https://github.com/kdcloudone/kdesign/compare/v1.6.4...v1.6.5)
 `2022-09-22`
 * cascader

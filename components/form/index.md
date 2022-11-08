@@ -33,21 +33,22 @@ subtitle: 表单
 | onValuesChange | 字段值更新时触发回调事件 | `function({changedValues, allValues})` | | | 1.0.0 |
 
 ### Form.Item
-| 属性 | 说明 | 类型 | 默认值 | 可选值 | 版本 |
-| --- | --- | --- | --- | --- | --- |
-| className | 传入表单的自定义类名 | string | | | 1.0.0 |
-| defaultValue | 默认值 | { string: any } | | | 1.0.0 |
-| disabled | 表单是否禁用 | boolean | false ||1.0.0 |
-| hidden | 是否隐藏 | boolean | | | 1.0.0 |
-| label | 标签内容 | `string | number` | | | 1.0.0 |
-| labelAlign | 标签的对齐方式 | LabelAlign | 'left' | `'left' | 'right'` | 1.0.0 |
-| labelWidth | 标签的宽度 | `string | number` | | | 1.0.0 |
-| layout | 表单布局 | `FormLayout` | `'vertical'` | `'horizontal' | 'vertical' | 'inline'` | 1.0.0 |
-| name | item名称 | `string` | | | 1.0.0 |
-| required | 是否必录 | `boolean` | `false` | | 1.0.0 |
-| rules | 校验规则 | `Rule[]` | | | 1.0.0 |
-| validateTrigger | 字段校验的时机 | `string` | `'onchange'` | | 1.0.0 |
-| wrappedWidth | 输入控件宽度 | `string | number` | | | 1.0.0 |
+| 属性              | 说明 | 类型 | 默认值 | 可选值 | 版本         |
+|-----------------| --- | --- | --- | --- |------------|
+| className       | 传入表单的自定义类名 | string | | | 1.0.0      |
+| defaultValue    | 默认值 | { string: any } | | | 1.0.0      |
+| disabled        | 表单是否禁用 | boolean | false ||1.0.0 |
+| hidden          | 是否隐藏 | boolean | | | 1.0.0      |
+| label           | 标签内容 | `string | number` | |            | 1.0.0 |
+| labelAlign      | 标签的对齐方式 | LabelAlign | 'left' | `'left' | 'right'`   | 1.0.0 |
+| labelWidth      | 标签的宽度 | `string | number` | |            | 1.0.0 |
+| layout          | 表单布局 | `FormLayout` | `'vertical'` | `'horizontal' | 'vertical' | 'inline'` | 1.0.0 |
+| name            | item名称 | `string` | | | 1.0.0      |
+| required        | 是否必录 | `boolean` | `false` | | 1.0.0      |
+| rules           | 校验规则 | `Rule[]` | | | 1.0.0      |
+| validateTrigger | 字段校验的时机 | `string` | `'onchange'` | | 1.0.0      |
+| wrappedWidth    | 输入控件宽度 | `string | number` | |            | 1.0.0 |
+| htmlFor         | 设置子元素 label htmlFor 属性 | string | | | 1.6.7      |
 
 ### FormInstance
 | 属性 | 说明 | 类型 | 默认值 | 可选值 | 版本 |

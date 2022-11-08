@@ -31,6 +31,7 @@ export interface FormInstance<Values = any> {
   resetFields: (fields?: NamePath[]) => void
   setFieldsValue: (value: Values) => void
   setFieldValue: (name: NamePath, value: Values) => void
+  setRules: (name: NamePath, rules: any) => void
   validateFields: (namePathList?: NamePath[]) => Promise<Values>
   submit: () => void
   getInternalHooks: (secret: string) => InternalHooks | null

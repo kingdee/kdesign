@@ -12,6 +12,7 @@ import { Button, Modal } from '@kdcloudjs/kdesign'
 
 function Demo() {
   const [visible, setVisible] = React.useState(false)
+  const clickStatus = React.useRef(false)
   const handleClick = (bool) => {
     setVisible(bool)
   }
@@ -51,10 +52,13 @@ function Demo() {
   }, [time, startTimeout])
 
   const closeModal = React.useCallback(() => {
+    if (clickStatus.current) return
+    clickStatus.current = true
     setInfo(`延时${time / 1000}秒关闭弹窗`)
     setStartTimeout(true)
     setTimeout(() => {
       handleClick(false)
+      clickStatus.current = false
     }, 5000)
   }, [time])
   return (

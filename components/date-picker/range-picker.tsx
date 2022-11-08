@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react'
+import React, { FunctionComponentElement, useContext, useEffect } from 'react'
 import isSameWeek from 'date-fns/isSameWeek'
 
 import {
@@ -6,7 +6,6 @@ import {
   InnerLocale,
   RangeValue,
   EventValue,
-  InnerLocaleKey,
   DisabledTimes,
   PanelMode,
   SharedTimeProps,
@@ -44,7 +43,6 @@ import {
 } from './utils/date-fns'
 import useTextValueMapping from './hooks/use-text-value-mapping'
 import useRangeViewDates from './hooks/use-range-view-dates'
-import { getCompLangMsg } from '../locale'
 import useRangeDisabled from './hooks/use-range-disabled'
 import { PickerBaseProps, PickerDateProps, PickerTimeProps } from './date-picker'
 import getExtraFooter from './utils/get-extra-footer'
@@ -84,6 +82,7 @@ export interface RangePickerSharedProps {
   activePickerIndex?: 0 | 1
   dateRender?: RangeDateRender
   panelRender?: (originPanel: React.ReactNode) => React.ReactNode
+  getPopupContainer?: (node: HTMLElement) => HTMLElement
 }
 
 type OmitPickerProps<Props> = Omit<
@@ -174,7 +173,10 @@ function canValueTrigger(
   return false
 }
 
-function DatePicker(props: Partial<RangePickerProps>) {
+const InternalRangePicker = (
+  props: Partial<RangePickerProps>,
+  ref: unknown,
+): FunctionComponentElement<Partial<RangePickerProps>> => {
   const { prefixCls: customPrefixcls } = props
 
   const {
@@ -230,18 +232,19 @@ function DatePicker(props: Partial<RangePickerProps>) {
     onFocus,
     onBlur,
     onOk,
+    getPopupContainer,
   } = datePickerProps as MergedRangePickerProps
 
   const needConfirmButton: boolean = (picker === 'date' && !!showTime) || picker === 'time'
 
-  const datePickerLang: InnerLocale = locale
-    ? getCompLangMsg({ componentName: 'DatePicker' }, (_componentName: string, label: InnerLocaleKey) => {
-        return locale[label]
-      })
-    : globalLocale.getCompLangMsg({ componentName: 'DatePicker' })
+  const datePickerLang: InnerLocale = Object.assign(
+    {},
+    globalLocale.getCompLangMsg({ componentName: 'DatePicker' }),
+    locale || {},
+  )
   // ref
   const panelDivRef = React.useRef<HTMLDivElement>(null)
-  const inputDivRef = React.useRef<HTMLDivElement>(null)
+  const inputDivRef = (ref as any) || React.createRef<HTMLElement>()
   const startInputDivRef = React.useRef<HTMLDivElement>(null)
   const endInputDivRef = React.useRef<HTMLDivElement>(null)
   const separatorRef = React.useRef<HTMLDivElement>(null)
@@ -351,7 +354,7 @@ function DatePicker(props: Partial<RangePickerProps>) {
         inputTempDate = selectedValue[0]
       }
       if (inputTempDate) {
-        setSelectedValue(updateValues(selectedValue, inputTempDate, index))
+        triggerChange(updateValues(selectedValue, inputTempDate, index), index)
         setViewDate(inputTempDate, index)
       }
     } else if (newText && newText.length === _format.length) {
@@ -360,10 +363,10 @@ function DatePicker(props: Partial<RangePickerProps>) {
       const disabledFunc = index === 0 ? disabledStartDate : disabledEndDate
       if (inputTempDate && (!disabledFunc || !disabledFunc(inputTempDate))) {
         if (picker !== 'year') {
-          setSelectedValue(updateValues(selectedValue, inputTempDate, index))
+          triggerChange(updateValues(selectedValue, inputTempDate, index), index)
           setViewDate(inputTempDate, index)
         } else if (isValid(inputTempDate)) {
-          setSelectedValue(updateValues(selectedValue, inputTempDate, index))
+          triggerChange(updateValues(selectedValue, inputTempDate, index), index)
           setViewDate(inputTempDate, index)
         }
       }
@@ -513,7 +516,6 @@ function DatePicker(props: Partial<RangePickerProps>) {
     // 外部回调
     if (onCalendarChange) {
       const info: RangeInfo = { range: sourceIndex === 0 ? 'start' : 'end' }
-
       onCalendarChange(values, [startStr, endStr], info)
     }
 
@@ -879,8 +881,11 @@ function DatePicker(props: Partial<RangePickerProps>) {
       popperStyle: style,
       visible: mergedOpen,
       placement: 'bottomLeft',
+      getPopupContainer,
     },
   )
 }
 
-export default DatePicker
+const RangePicker = React.forwardRef<unknown, Partial<RangePickerProps>>(InternalRangePicker)
+RangePicker.displayName = 'RangePicker'
+export default RangePicker

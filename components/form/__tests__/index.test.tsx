@@ -51,7 +51,7 @@ describe('Form', () => {
   it('Field handleValueChange', async () => {
     wrapper = mount(
       <Form>
-        <Form.Item name="test">
+        <Form.Item name="test" htmlFor="form_test">
           <Input />
         </Form.Item>
       </Form>,
@@ -95,7 +95,7 @@ describe('Form', () => {
   it('Field defaultValue', async () => {
     wrapper = mount(
       <Form>
-        <Form.Item name="test" defaultValue="king">
+        <Form.Item name="test" defaultValue="king" htmlFor="form_test">
           <Input />
         </Form.Item>
       </Form>,

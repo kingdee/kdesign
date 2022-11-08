@@ -1,13 +1,13 @@
 ---
 title: 预设日期范围
-order: 11
+order: 13
 ---
 
 ```jsx
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { RangePicker, Icon } from '@kdcloudjs/kdesign'
-import { startOfWeek, endOfWeek, startOfMonth, endOfMonth, startOfToday, endOfToday } from 'date-fns'
+import { startOfWeek, endOfWeek, startOfMonth, endOfMonth, startOfToday, endOfToday, startOfQuarter, endOfQuarter, startOfYear, endOfYear } from 'date-fns'
 
 function Demo() {
   const now = new Date()
@@ -16,10 +16,22 @@ function Demo() {
     本周: [startOfWeek(now),endOfWeek(now)],
     本月: [startOfMonth(now), endOfMonth(now)],
   }
+  const ranges2 = {
+    今年: [startOfYear(now), endOfYear(now)],
+    本月: [startOfMonth(now), endOfMonth(now)],
+    本季度: [startOfQuarter(now), endOfQuarter(now)],
+  }
 
   return (
-    <div className="demo-range-picker">
+    <div>
+      <div className="demo-range-picker">
         <RangePicker ranges={ranges}  suffixIcon={<Icon type="search" />} allowClear/>
+      </div>
+      <div className="demo-range-picker">
+        <div className="demo-range-picker">
+          <RangePicker picker="month" ranges={ranges2} />
+        </div>
+      </div>
     </div>
   )
 }

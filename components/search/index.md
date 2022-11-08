@@ -109,7 +109,8 @@ subtitle: 搜索
 |  | --kd-c-search-dropdown-desc-font-size | - | 12px |
 |  | --kd-c-search-input-font-size | - | 12px |
 | motion | --kd-c-search-motion-duration | --kd-g-duration | 0.3s |
-| radius | --kd-c-search-radius-border | --kd-g-radius-border | 2px |
+| radius | --kd-c-search-dropdown-radius-border | --kd-g-radius-border | 2px |
+|  | --kd-c-search-radius-border | --kd-g-radius-border | 2px |
 | sizing | --kd-c-search-icon-font-size | - | 16px |
 |  | --kd-c-search-sizing-width-small | - | 200px |
 |  | --kd-c-search-sizing-width-middle | - | 260px |

@@ -1,4 +1,4 @@
-import React, { CSSProperties } from 'react'
+import React, { CSSProperties, useState } from 'react'
 import { Icon } from '../index'
 import classNames from 'classnames'
 import { tuple } from '../_utils/type'
@@ -47,11 +47,21 @@ const ClearableInput: React.FC<ClearableInputProps> = (props) => {
     numberMark,
   } = props
 
+  const [isMouseEnter, setIsMouseEnter] = useState<boolean>(false)
+
+  const mouseEnterHandle: React.MouseEventHandler<HTMLDivElement> = () => {
+    setIsMouseEnter(true)
+  }
+
+  const mouseLeaveHandle: React.MouseEventHandler<HTMLDivElement> = () => {
+    setIsMouseEnter(false)
+  }
+
   const renderClearIcon = () => {
     if (!allowClear) {
       return null
     }
-    const needClear = !disabled && value
+    const needClear = !disabled && value && isMouseEnter
     const clearIconclasses = classNames({
       [`${prefixCls}-textarea-clear-icon`]: inputType === ClearableInputType[1],
       [`${prefixCls}-clear-icon`]: inputType === ClearableInputType[0],
@@ -60,7 +70,7 @@ const ClearableInput: React.FC<ClearableInputProps> = (props) => {
     })
     return (
       <span onClick={handleReset} className={clearIconclasses}>
-        {typeof allowClear === 'boolean' ? <Icon type="close" /> : allowClear}
+        {typeof allowClear === 'boolean' ? <Icon type="close-solid" /> : allowClear}
       </span>
     )
   }
@@ -95,7 +105,12 @@ const ClearableInput: React.FC<ClearableInputProps> = (props) => {
       { [className!]: className && !addonBefore && !addonAfter },
     )
     return (
-      <span className={inputWrapperClasses} style={style}>
+      <span
+        className={inputWrapperClasses}
+        style={style}
+        onMouseEnter={mouseEnterHandle}
+        onMouseLeave={mouseLeaveHandle}
+      >
         {prefixNode}
         {React.cloneElement(originElement, { style: null })}
         {suffixNode}
@@ -146,7 +161,12 @@ const ClearableInput: React.FC<ClearableInputProps> = (props) => {
       [`${prefixCls}-wrapper-textarea`]: true,
     })
     return (
-      <span className={textAreaWrapperClasses} style={wrapperStyle}>
+      <span
+        className={textAreaWrapperClasses}
+        style={wrapperStyle}
+        onMouseEnter={mouseEnterHandle}
+        onMouseLeave={mouseLeaveHandle}
+      >
         {originElement}
         {renderClearIcon()}
         {numberMark && numberMark}

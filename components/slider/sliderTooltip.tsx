@@ -39,4 +39,6 @@ const SliderTooltip = React.forwardRef<unknown, ISliderTooltipProps>((props: ISl
   )
 })
 
+SliderTooltip.displayName = 'SliderTooltip'
+
 export default SliderTooltip

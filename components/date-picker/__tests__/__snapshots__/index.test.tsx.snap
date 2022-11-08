@@ -26,7 +26,7 @@ Array [
         class="kd-date-picker-clear"
       >
         <i
-          class="kdicon kdicon-close"
+          class="kdicon kdicon-close-solid"
         />
       </span>
     </div>
@@ -562,7 +562,7 @@ Array [
         class="kd-date-picker-clear"
       >
         <i
-          class="kdicon kdicon-close"
+          class="kdicon kdicon-close-solid"
         />
       </span>
     </div>
@@ -1098,7 +1098,7 @@ Array [
         class="kd-date-picker-clear"
       >
         <i
-          class="kdicon kdicon-close"
+          class="kdicon kdicon-close-solid"
         />
       </span>
     </div>
@@ -1634,7 +1634,7 @@ Array [
         class="kd-date-picker-clear"
       >
         <i
-          class="kdicon kdicon-close"
+          class="kdicon kdicon-close-solid"
         />
       </span>
     </div>
@@ -2170,7 +2170,7 @@ Array [
         class="kd-date-picker-clear"
       >
         <i
-          class="kdicon kdicon-close"
+          class="kdicon kdicon-close-solid"
         />
       </span>
     </div>
@@ -2706,7 +2706,7 @@ Array [
         class="kd-date-picker-clear"
       >
         <i
-          class="kdicon kdicon-close"
+          class="kdicon kdicon-close-solid"
         />
       </span>
     </div>
@@ -2912,7 +2912,7 @@ Array [
         class="kd-date-picker-clear"
       >
         <i
-          class="kdicon kdicon-close"
+          class="kdicon kdicon-close-solid"
         />
       </span>
     </div>
@@ -3030,7 +3030,7 @@ Array [
         class="kd-date-picker-clear"
       >
         <i
-          class="kdicon kdicon-close"
+          class="kdicon kdicon-close-solid"
         />
       </span>
     </div>
@@ -3247,7 +3247,7 @@ Array [
         class="kd-date-picker-clear"
       >
         <i
-          class="kdicon kdicon-close"
+          class="kdicon kdicon-close-solid"
         />
       </span>
     </div>

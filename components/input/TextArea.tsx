@@ -13,6 +13,7 @@ export interface textAreaProps extends React.TextareaHTMLAttributes<HTMLInputEle
   borderType?: BorderType // none/underline/bordered
   defaultValue?: string // 输入框默认内容
   count?: boolean // 计数开关
+  countPosition?: string // 计数开关位置 inner/outter
   value?: any // 输入框内容
   canResize?: boolean // 是否可调整大小
   disabled?: boolean // 是否锁定
@@ -40,6 +41,7 @@ const InternalTextarea = (props: textAreaProps, ref: unknown): FunctionComponent
     borderType,
     defaultValue,
     count,
+    countPosition,
     autoSize,
     className,
     prefixCls: customPrefixcls,
@@ -95,7 +97,7 @@ const InternalTextarea = (props: textAreaProps, ref: unknown): FunctionComponent
   }
 
   const handleBlur = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-    showNumberMark && setShowNumberMark(false)
+    // showNumberMark && setShowNumberMark(false)
     onBlur && onBlur(e)
   }
 
@@ -116,8 +118,11 @@ const InternalTextarea = (props: textAreaProps, ref: unknown): FunctionComponent
       enteredLength = maxLength
     }
     if (count && showNumberMark && !disabled && maxLength !== '' && maxLength >= 0) {
+      const countClass = classNames(`${textAreaPrefixCls}-textarea-mark`, {
+        [`${textAreaPrefixCls}-textarea-mark-inner`]: countPosition === 'inner',
+      })
       return (
-        <div className={`${textAreaPrefixCls}-textarea-mark`}>
+        <div className={countClass}>
           {enteredLength}/{maxLength}
         </div>
       )

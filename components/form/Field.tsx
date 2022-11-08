@@ -23,6 +23,7 @@ export interface FormItemProps {
   labelWidth?: string | number
   labelAlign?: LabelAlign
   name: NamePath // 名
+  htmlFor?: string
   prefixCls?: string // 控件前置类名
   required?: boolean // 必填，不设置的话根据校验规则生成
   rules?: Rule[] // 校验规则
@@ -75,12 +76,14 @@ const Field: React.FC<FormItemProps> = (props) => {
     vertical,
     getDefaultValue,
     local,
+    setRules,
     disabled: formDisabled,
   } = fieldContext
   const { registerField, dispatch, setDefaultValues } = getInternalHooks(INTERNAL_HOOK_KEY)!
 
   const {
     name,
+    htmlFor: customizeHtmlFor,
     children,
     className,
     disabled,
@@ -97,6 +100,7 @@ const Field: React.FC<FormItemProps> = (props) => {
     valuePropName,
   } = props
 
+  const htmlFor = customizeHtmlFor || (name ? `form_${name}_${(Math.random() * 100).toFixed(0)}` : undefined)
   let childrenNode: any = null
   let innerValuePropName = 'value'
   const childrenArray = toArray(children)
@@ -138,7 +142,7 @@ const Field: React.FC<FormItemProps> = (props) => {
     return false
   })
 
-  const mergedRequired = required || !!rulesRequired
+  const mergedRequired = required || rulesRequired
   if (
     Array.isArray(rules) &&
     !rules.some((rule) => Object.prototype.hasOwnProperty.call(rule, 'required')) &&
@@ -172,6 +176,10 @@ const Field: React.FC<FormItemProps> = (props) => {
       setDefaultValues({ [name]: defaultValue })
     }
   }, [name, registerField])
+
+  useEffect(() => {
+    setRules(name, mergeRules)
+  }, [mergedRequired, name, mergeRules])
 
   const formPrefixCls = getPrefixCls?.(prefixCls, 'form', customizePrefixcls)
   const formItemClassName = classnames(
@@ -256,10 +264,25 @@ const Field: React.FC<FormItemProps> = (props) => {
 
   return (
     <div className={formItemClassName}>
-      <FieldLabel value={label} width={labelWidth} textAlign={labelAlign} requiredMark={mergedRequired} />
+      <FieldLabel
+        htmlFor={htmlFor}
+        value={label}
+        width={labelWidth}
+        textAlign={labelAlign}
+        requiredMark={mergedRequired}
+      />
       <FieldWrapper width={wrapperWidth} validateMessage={validateMessage}>
         {childrenArray.map((child: React.ReactElement, index) => {
-          const keys = mergeProps({ disabled, [innerValuePropName]: value, ...trigger, key: index }, child)
+          const keys = mergeProps(
+            {
+              disabled,
+              [innerValuePropName]: value,
+              ...trigger,
+              key: index,
+              id: customizeHtmlFor ? undefined : htmlFor,
+            },
+            child,
+          )
           return child ? React.cloneElement(child, keys) : child
         })}
       </FieldWrapper>

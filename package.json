@@ -1,6 +1,6 @@
 {
   "name": "@kdcloudjs/kdesign",
-  "version": "1.6.5",
+  "version": "1.6.13",
   "description": "KDesign 金蝶前端react 组件库",
   "title": "kdesign",
   "keywords": [
@@ -107,10 +107,11 @@
     "@types/enzyme": "^3.10.7",
     "@types/jest": "^26.0.14",
     "@types/jest-image-snapshot": "^4.1.0",
-    "@types/lodash": "^4.14.159",
+    "@types/lodash": "ts3.9",
     "@types/puppeteer": "^3.0.2",
     "@types/react": "^16.9.21",
     "@types/react-dom": "^16.9.5",
+    "@types/responselike": "ts3.9",
     "@typescript-eslint/eslint-plugin": "^3.0.0",
     "@typescript-eslint/parser": "^3.0.0",
     "algoliasearch": "^4.5.1",
