@@ -101,4 +101,5 @@ subtitle: 选择器
 |  | --kd-c-select-sizing-height-large | - | 36px |
 |  | --kd-c-select-sizing-height-middle | - | 30px |
 |  | --kd-c-select-sizing-height-small | - | 24px |
+| spacing | --kd-c-select-bordered-spacing-padding-left | - | 8px |
 | z-index | --kd-c-select-z-index | --kd-g-z-index-popper | 1050 |
