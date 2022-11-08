@@ -83,7 +83,7 @@
 
   &-bordered {
     border: 1px solid @select-border-g-color-border;
-    padding-left: 8px !important;
+    padding-left: @select-bordered !important;
     border-radius: 2px;
     &:hover:not(.@{select-prefix-cls}-multiple-disabled):not(.@{select-prefix-cls}-single-disabled) {
       border: 1px solid @select-g-color-border-hover;
@@ -91,6 +91,12 @@
 
     .@{select-prefix-cls}-suffix {
       padding-right: 8px;
+    }
+
+    &.@{select-prefix-cls}-single {
+      .@{select-prefix-cls}-selection-search {
+        left: @select-bordered;
+      }
     }
   }
 
