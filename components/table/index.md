@@ -60,6 +60,7 @@ return <Table dataSource={dataSource} columns={columns} />
 | columnDrag | 拖动表头来调整列的位置配置 | [columnDrag](#columnDrag) | - | - | 1.0.0 |
 | columnResize | 手动调整列宽的大小配置 | [columnResize](#columnResize) | - | - | 1.0.0 |
 | rangeSelection | 范围选中功能配置 | [rangeSelection](#rangeSelection) | - | - | 1.0.0 |
+| components | 表格内部组件替换 |  [组件替换](#组件替换) | - | - | 1.0.0 |
 <br/>
 
 
@@ -298,5 +299,17 @@ interface TableRangeSelection {
     rangeSelectedChange?(params: any): void;
     /** 是否阻止keydown的默认行为 */
     preventkDefaultOfKeyDownEvent?: boolean;
+}
+```
+
+### 组件替换
+属性`components`可替换表格内部的一些子组件，如：加载动画图标、数据为空的展现效果。
+
+```ts
+interface Components {
+      /** 表格加载时的加载图标 */
+      LoadingIcon?: React.ComponentType;
+      /** 数据为空时，表格的展示内容。 */
+      EmptyContent?: React.ComponentType;
 }
 ```
