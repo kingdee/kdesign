@@ -41,6 +41,6 @@ order: 80
     )
   }
  
-  return <Table dataSource={dataSource} columns={columns} columnDraggable={true} />
+  return <Table dataSource={dataSource} columns={columns} columnDrag={true} />
 }
 ```
