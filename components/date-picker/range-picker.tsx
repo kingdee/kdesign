@@ -480,17 +480,13 @@ const InternalRangePicker = (
     let values = newValue
     let startValue = getValue(values, 0)
     let endValue = getValue(values, 1)
-    // >>>>> Format start & end values
+
     if (startValue && endValue && isAfter(startValue, endValue)) {
       if (
-        // WeekPicker only compare week
         (picker === 'week' && !isSameWeek(startValue, endValue)) ||
-        // QuotaPicker only compare week
         (picker === 'quarter' && !isSameQuarter(startValue, endValue)) ||
-        // Other non-TimePicker compare date
         (picker !== 'week' && picker !== 'quarter' && picker !== 'time' && !isSameDay(startValue, endValue))
       ) {
-        // Clean up end date when start date is after end date
         if (sourceIndex === 0) {
           values = [startValue, null]
           endValue = null
@@ -499,12 +495,10 @@ const InternalRangePicker = (
           values = [null, endValue]
         }
 
-        // Clean up cache since invalidate
         openRecordsRef.current = {
           [sourceIndex]: true,
         }
       } else if (picker === 'time' && order === true) {
-        // Reorder when in same date
         values = reorderValues(values)
       }
     }
@@ -513,7 +507,6 @@ const InternalRangePicker = (
     const startStr = values && values[0] ? formatDate(values[0], _format) : ''
     const endStr = values && values[1] ? formatDate(values[1], _format) : ''
 
-    // 外部回调
     if (onCalendarChange) {
       const info: RangeInfo = { range: sourceIndex === 0 ? 'start' : 'end' }
       onCalendarChange(values, [startStr, endStr], info)
@@ -525,19 +518,12 @@ const InternalRangePicker = (
     const canTrigger = values === null || (canStartValueTrigger && canEndValueTrigger)
 
     if (canTrigger) {
-      // Trigger onChange only when value is validate
       setInnerValue(values)
-      if (
-        onChange &&
-        (!isEqual(getValue(selectedValue, 0)!, startValue) || !isEqual(getValue(selectedValue, 1)!, endValue))
-      ) {
+      if (onChange && (!isEqual(getValue(dateValue, 0)!, startValue) || !isEqual(getValue(dateValue, 1)!, endValue))) {
         onChange(values, [startStr, endStr])
       }
     }
 
-    // >>>>> Open picker when
-
-    // Always open another picker if possible
     let nextOpenIndex: 0 | 1 | null = null
     if (sourceIndex === 0 && !mergedDisabled[1]) {
       nextOpenIndex = 1
@@ -551,7 +537,6 @@ const InternalRangePicker = (
       (!openRecordsRef.current[nextOpenIndex] || !getValue(values, nextOpenIndex)) &&
       getValue(values, sourceIndex)
     ) {
-      // Delay to focus to avoid input blur trigger expired selectedValues
       triggerOpenAndFocus(nextOpenIndex)
     } else {
       triggerOpen(false, sourceIndex)
@@ -877,7 +862,6 @@ const InternalRangePicker = (
       trigger: 'click',
       prefixCls: `${datePickerPrefixCls}-panel`,
       arrow: false,
-      popperClassName: className,
       popperStyle: style,
       visible: mergedOpen,
       placement: 'bottomLeft',
