@@ -76,7 +76,6 @@ const Field: React.FC<FormItemProps> = (props) => {
     vertical,
     getDefaultValue,
     local,
-    setRules,
     disabled: formDisabled,
   } = fieldContext
   const { registerField, dispatch, setDefaultValues } = getInternalHooks(INTERNAL_HOOK_KEY)!
@@ -93,7 +92,7 @@ const Field: React.FC<FormItemProps> = (props) => {
     labelWidth,
     labelAlign,
     required,
-    rules = [],
+    rules,
     wrapperWidth,
     validateTrigger,
     defaultValue,
@@ -131,55 +130,55 @@ const Field: React.FC<FormItemProps> = (props) => {
     }
   }
 
-  const rulesRequired = rules.some((rule) => {
-    if (rule && typeof rule === 'object' && rule.required) {
-      return true
-    }
-    if (typeof rule === 'function') {
-      const ruleEntity = rule(fieldContext)
-      return ruleEntity && ruleEntity.required
-    }
-    return false
-  })
-
-  const mergedRequired = required || rulesRequired
-  if (
-    Array.isArray(rules) &&
-    !rules.some((rule) => Object.prototype.hasOwnProperty.call(rule, 'required')) &&
-    required
-  ) {
-    rules.push({ required: true, message: `${local && local.requiredMessage}${label}` })
-  }
-
-  let mergeRules = rules
-  if (mergeRules.length) {
-    mergeRules = rules.map((r) => {
-      if (typeof r === 'function') {
-        return r(fieldContext)
+  const mergedRequired =
+    required ||
+    rules?.some((rule) => {
+      if (rule && typeof rule === 'object' && rule.required) {
+        return true
       }
-      return r
+      if (typeof rule === 'function') {
+        const ruleEntity = rule(fieldContext)
+        return ruleEntity && ruleEntity.required
+      }
+      return false
     })
+
+  const mergeRule = () => {
+    let mergeRules = Array.isArray(rules) ? [...rules] : []
+
+    if (!mergeRules.some((rule) => Object.prototype.hasOwnProperty.call(rule, 'required')) && required) {
+      mergeRules.push({ required: true, message: `${local && local.requiredMessage}${label}` })
+    }
+    if (mergeRules.length) {
+      mergeRules = mergeRules.map((r) => {
+        if (typeof r === 'function') {
+          return r(fieldContext)
+        }
+        return r
+      })
+    }
+
+    return mergeRules
   }
 
-  const itemRef = React.useRef({
+  const item = {
     onStoreChange: onStoreChange,
     meta: {
-      rules: mergeRules,
+      rules: mergeRule(),
       name,
       trigger: validateTrigger,
     },
-  })
+  }
+
+  const itemRef = React.useRef(item)
+  itemRef.current = item
 
   useEffect(() => {
-    registerField(name, itemRef.current)
+    registerField(name, itemRef)
     if (defaultValue !== undefined) {
       setDefaultValues({ [name]: defaultValue })
     }
   }, [name, registerField])
-
-  useEffect(() => {
-    setRules(name, mergeRules)
-  }, [mergedRequired, name, mergeRules])
 
   const formPrefixCls = getPrefixCls?.(prefixCls, 'form', customizePrefixcls)
   const formItemClassName = classnames(
@@ -224,7 +223,7 @@ const Field: React.FC<FormItemProps> = (props) => {
     if (!ch) {
       return {}
     }
-    const { onChange: faChange, disabled: faDisabled, ...rest } = fa
+    const { onChange: faChange, disabled: faDisabled, ...faRest } = fa
     const {
       onChange: chChange,
       [innerValuePropName]: chValue,
@@ -253,13 +252,36 @@ const Field: React.FC<FormItemProps> = (props) => {
       forceUpdate()
     }
 
-    return {
-      ...rest,
+    const mergeResult: any = {
+      ...faRest,
       onChange,
       defaultValue,
       [innerValuePropName]: fieldValue,
       disabled: chDisabled !== undefined ? chDisabled : faDisabled !== undefined ? faDisabled : formDisabled,
     }
+
+    const mergeEventArray = []
+
+    if (validateTrigger) {
+      if (Array.isArray(validateTrigger)) {
+        mergeEventArray.push(...validateTrigger.filter((v) => v !== DEFAULT_TRIGGER))
+      } else if (validateTrigger !== DEFAULT_TRIGGER) {
+        mergeEventArray.push(validateTrigger)
+      }
+    }
+
+    mergeEventArray.forEach((eventName) => {
+      mergeResult[eventName] = () => {
+        if (fa?.[eventName] && typeof fa[eventName] === 'function') {
+          fa[eventName]()
+        }
+        if (ch.props?.[eventName] && typeof ch.props[eventName] === 'function') {
+          ch.props[eventName]()
+        }
+      }
+    })
+
+    return mergeResult
   }
 
   return (

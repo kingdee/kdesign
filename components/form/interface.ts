@@ -18,7 +18,7 @@ export interface FieldError {
 }
 
 export interface Fields {
-  [name: string]: FieldInstance
+  [name: string]: { current: FieldInstance }
 }
 
 // FormInstance, use for external
@@ -31,7 +31,6 @@ export interface FormInstance<Values = any> {
   resetFields: (fields?: NamePath[]) => void
   setFieldsValue: (value: Values) => void
   setFieldValue: (name: NamePath, value: Values) => void
-  setRules: (name: NamePath, rules: any) => void
   validateFields: (namePathList?: NamePath[]) => Promise<Values>
   submit: () => void
   getInternalHooks: (secret: string) => InternalHooks | null
@@ -94,7 +93,7 @@ export interface InternalHooks {
   dispatch: (action: ReducerAction) => void
   setDefaultValues: (values: Store) => void
   setCallbacks: (callbacks: Callbacks) => void
-  registerField: (name: NamePath, field: FieldInstance) => void
+  registerField: (name: NamePath, field: { current: FieldInstance }) => void
 }
 
 export type NotifySource =

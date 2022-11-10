@@ -14,7 +14,6 @@ import {
   NamePath,
   NotifySource,
   ReducerAction,
-  Rule,
   Store,
   StoreValue,
 } from '../interface'
@@ -33,8 +32,6 @@ class FormStore {
 
   private fields: Fields = {}
 
-  private rules: { [name: string]: Rule[] } = {}
-
   private errorMessages: FieldError = {}
 
   private callbacks: Callbacks = {}
@@ -52,7 +49,6 @@ class FormStore {
     resetFields: this.resetFields,
     setFieldValue: this.setFieldValue,
     setFieldsValue: this.setFieldsValue,
-    setRules: this.setRules,
     validateFields: this.validateFields,
     submit: this.submit,
     getInternalHooks: this.getInternalHooks,
@@ -175,22 +171,18 @@ class FormStore {
   private getRules = (namePathList?: NamePath[]) => {
     this.warningUnhooked()
 
-    if (!namePathList) {
-      return this.rules
+    let list = cloneDeep(namePathList)
+    if (!list) {
+      list = Object.keys(this.fields)
     }
     const rules: any = {}
-    namePathList.forEach((name) => {
-      if (this.rules[name]) {
-        rules[name] = cloneDeep(this.rules[name])
+    list.forEach((name) => {
+      const { current } = this.fields[name]
+      if (current?.meta?.rules) {
+        rules[name] = cloneDeep(current?.meta?.rules)
       }
     })
     return Object.keys(rules).length === 0 ? null : rules
-  }
-
-  private setRules = (name: NamePath, rules: any) => {
-    this.warningUnhooked()
-
-    set(this.rules, name, rules)
   }
 
   private setCallbacks = (callbacks: Callbacks) => {
@@ -241,18 +233,10 @@ class FormStore {
    * @param name Field 名称
    * @param field Field 实例
    */
-  private registerField = (name: NamePath, field: FieldInstance) => {
+  private registerField = (name: NamePath, field: { current: FieldInstance }) => {
     this.warningUnhooked()
 
     this.fields[name] = field
-    const { meta } = field
-    if (meta.rules !== undefined) {
-      this.setRules(name, meta.rules)
-      // TODO: 初始化的时候是否需要校验？？
-      // this.validateFields([name]).catch(({ errorInfos }) => {
-      //   this.validateFieldFaild(errorInfos, 'internal')
-      // })
-    }
   }
 
   private validateFields = (namePathList?: NamePath[]): Promise<any> => {
@@ -295,7 +279,9 @@ class FormStore {
         this.notifyObservers(this.store, namePathList || [], 'validateFinish')
       })
       .catch(({ errorInfos }) => {
-        this.errorMessages = {}
+        if (!namePathList) {
+          this.errorMessages = {}
+        }
 
         const { fields = {} } = errorInfos
         Object.keys(fields).forEach((name) => {
@@ -332,7 +318,7 @@ class FormStore {
   private notifyObservers = (prevStore: Store, namePathList: NamePath[] | null, source: NotifySource) => {
     this.warningUnhooked()
 
-    Object.values(this.fields).forEach(({ onStoreChange }) => {
+    Object.values(this.fields).forEach(({ current: { onStoreChange } }) => {
       const stores = {
         prev: prevStore,
         curr: this.store,
