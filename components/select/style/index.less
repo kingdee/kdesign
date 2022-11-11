@@ -84,7 +84,7 @@
   &-bordered {
     border: 1px solid @select-border-g-color-border;
     padding-left: @select-bordered !important;
-    border-radius: 2px;
+    border-radius: @select-border-radius-border;
     &:hover:not(.@{select-prefix-cls}-multiple-disabled):not(.@{select-prefix-cls}-single-disabled) {
       border: 1px solid @select-g-color-border-hover;
     }
@@ -102,7 +102,7 @@
 
   &-wrapper {
     transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
-    padding: 1px 28px 1px 0;
+    padding: @select-wrapper-padding;
     max-width: 100%;
     color: #212121;
     display: flex;
