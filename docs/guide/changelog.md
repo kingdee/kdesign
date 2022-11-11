@@ -4,6 +4,30 @@ title: 更新日志
 hiddenAnchor: true
 ---
 
+## [1.6.14](https://github.com/kdcloudone/kdesign/compare/v1.6.13...v1.6.14)
+`2022-11-11`
+* date-picker
+  * 修复className、placeholder及onChange问题
+* form
+  * 修复校验及监听事件失效问题
+* icon
+  * 修复props传值问题
+* message
+  * 更新api文档
+* select
+  * 调整选择器有边框时光标位置
+  * 新增select token
+* table
+  * 修复表格demo拖拽列排序问题
+* tooltip
+  * 添加控制浮层箭头显示的属性arrow
+
+## [1.6.13](https://github.com/kdcloudone/kdesign/compare/v1.6.12...v1.6.13)
+`2022-11-04`
+* button
+  * 修复ts报错以及size不生效的问题
+* 修复自动化构建报错问题
+
 ## [1.6.12](https://github.com/kdcloudone/kdesign/compare/v1.6.11...v1.6.12)
 `2022-11-03`
 * select
