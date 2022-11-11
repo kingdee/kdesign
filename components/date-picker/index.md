@@ -123,7 +123,7 @@ subtitle: 日期选择器
 | color | --kd-c-date-picker-color-background-checked | --kd-g-color-theme | #5582f3 |
 |  | --kd-c-date-picker-wrapper-color-background | --kd-g-color-background | #fff |
 |  | --kd-c-date-picker-input-color | --kd-g-color-text-primary | #212121 |
-|  | --kd-c-date-picker-input-color-placeholder | --kd-g-color-disabled | #b2b2b2 |
+|  | --kd-c-date-picker-input-color-placeholder | - | #f2f2f2 |
 |  | --kd-c-date-picker-input-underline-color | - | #999 |
 |  | --kd-c-date-picker-input-color-border | --kd-g-color-border-strong | #d9d9d9 |
 |  | --kd-c-date-picker-input-color-disabled | --kd-g-color-disabled | #b2b2b2 |

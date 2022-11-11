@@ -97,9 +97,11 @@ subtitle: 选择器
 |  | --kd-c-select-line-height-middle | - | 22px |
 |  | --kd-c-select-line-height-small | - | 14px |
 | radius | --kd-c-select-radius-border | --kd-g-radius-border | 2px |
+|  | --kd-c-select-bordered-radius-border | - | 2px |
 | sizing | --kd-c-select-item-sizing-height | - | 22px |
 |  | --kd-c-select-sizing-height-large | - | 36px |
 |  | --kd-c-select-sizing-height-middle | - | 30px |
 |  | --kd-c-select-sizing-height-small | - | 24px |
 | spacing | --kd-c-select-bordered-spacing-padding-left | - | 8px |
+|  | --kd-c-select-wrapper-spacing-padding | - | 1px 28px 1px 0 |
 | z-index | --kd-c-select-z-index | --kd-g-z-index-popper | 1050 |
