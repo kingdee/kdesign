@@ -29,7 +29,7 @@ const Tooltip = React.forwardRef<unknown, TooltipProps>((props, ref) => {
   const popperProps = {
     ...allProps,
     prefixCls,
-    arrow: true,
+    // arrow: true,
   }
 
   const tipPopper = typeof tip === 'function' ? tip() : tip

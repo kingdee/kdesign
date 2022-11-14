@@ -317,6 +317,7 @@ const compDefaultProps = {
   ToolTip: {
     placement: 'top',
     trigger: 'hover',
+    arrow: true,
   },
   Tabs: {
     type: 'line',

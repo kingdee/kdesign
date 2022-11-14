@@ -29,6 +29,7 @@ subtitle: 文字提示
 
 | 参数 | 说明 | 类型 | 默认值 | 版本 |
 | --- | --- | --- | --- | --- |
+| arrow | 是否显示浮层小箭头 | boolean | true | 1.6.14 |
 | defaultVisible | 默认显隐 | boolean | false | 1.0.0 |
 | disabled | 是否禁用 | boolean | false | 1.0.0 |
 | getPopupContainer | 浮层渲染父节点，默认渲染到 body 上 | function(locatorNode) | () => document.body | 1.0.0 |
