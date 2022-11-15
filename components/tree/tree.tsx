@@ -184,13 +184,13 @@ const InternalTree = React.forwardRef((props: TreeProps, ref: any): React.Functi
     filterTreeNode,
     isSearching,
   )
-  const spreadAttrData = React.useMemo(() => {
+  const { spreadAttrData, posData } = React.useMemo(() => {
     return getSpreadAttrData(flattenAllData, expandedKeys)
   }, [flattenAllData, expandedKeys])
 
   const filterData = React.useMemo(() => {
-    return getFilterData(spreadAttrData, filterTreeNode, isSearching)
-  }, [spreadAttrData, isSearching])
+    return getFilterData(spreadAttrData, filterTreeNode, isSearching, posData)
+  }, [spreadAttrData, isSearching, posData])
 
   const [viewportHeight] = useViewportHeight(height, listRef)
   const [visibleData] = useVisibleDataMemo(virtual, filterData, viewportHeight, estimatedItemSize, start)
