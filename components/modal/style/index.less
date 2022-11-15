@@ -23,6 +23,14 @@
   &-container {
     position: relative;
     z-index: @modal-z-index-dialog;
+
+    &-show {
+      animation: kdModalEffect calc(@transition-duration - 0.1s) @ease both;
+    }
+
+    &-hidden {
+      display: none
+    }
   }
   &-mask {
     .overlay(@modal-mask-color-background, 0);

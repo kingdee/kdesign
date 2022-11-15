@@ -247,8 +247,12 @@ const Modal: React.FC<IModalProps> = (props: IModalProps): ReactElement | React.
       proxyCloseModal(onCancel)
     }
   }, [proxyCloseModal, onCancel, maskClosable])
+
+  const isHidden = !destroyOnClose && !(isForceController ? visible : innerVisible)
   const modalClasses = classNames(modalPrefixCls, className, {
     [`${modalPrefixCls}-container`]: true,
+    [`${modalPrefixCls}-container-hidden`]: isHidden,
+    [`${modalPrefixCls}-container-show`]: !isHidden,
   })
   const headerClass = `${modalPrefixCls}-header`
   const container = (
@@ -304,10 +308,8 @@ const Modal: React.FC<IModalProps> = (props: IModalProps): ReactElement | React.
   // 没有容器应该是不用居中的
   // 但仍可拖拽
   const defaultPosition = modalContainer ? { x: -(width! / 2), y: -(height! / 2) } : { x: 0, y: 0 }
-  const isHidden = !destroyOnClose && !(isForceController ? visible : innerVisible)
-  const compStyle = isHidden ? { display: 'none' } : {}
   const comp: ReactElement = (
-    <div className={modalClasses} style={compStyle}>
+    <div className={modalClasses}>
       {/* 增加clickOutside */}
       {mask && <div onClick={handleMaskClick} className={`${modalPrefixCls}-mask`} style={maskStyle}></div>}
       <Draggable
