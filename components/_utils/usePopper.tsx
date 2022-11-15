@@ -62,6 +62,7 @@ export interface PopperProps {
   placement?: PlacementType
   popperStyle?: React.CSSProperties
   trigger?: TriggerType | Array<TriggerType>
+  clickToClose?: boolean
   onTrigger?: (trigger: TriggerType) => void
   onVisibleChange?: (visible: boolean) => void
   getTriggerElement?: (locatorNode: HTMLElement) => HTMLElement
@@ -167,6 +168,7 @@ function usePopper(locatorElement: React.ReactElement, popperElement: React.Reac
     mouseLeaveDelay = 0.1,
     defaultVisible = false,
     autoPlacement = true,
+    clickToClose = true,
     getTriggerElement = (locatorNode) => locatorNode,
     getPopupContainer = () => document.body,
   } = props
@@ -551,7 +553,7 @@ function usePopper(locatorElement: React.ReactElement, popperElement: React.Reac
         if (e.type === 'mouseenter') {
           mouseenterTimer = window.setTimeout(() => showPopper(e.type), mouseEnterDelay * 1000)
         } else if (e.type === 'mouseup' && visible) {
-          hidePopper()
+          clickToClose && hidePopper()
         } else {
           showPopper(e.type)
         }

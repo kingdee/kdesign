@@ -54,13 +54,13 @@ const InternalSelect: React.ForwardRefRenderFunction<ISelectProps<SelectValue>> 
     defaultValue,
   })
   const realChildren = Array.isArray(options) ? options : toArray(children) // options配置项和默认children
-  const innerRef = React.useRef<HTMLElement>()
+  const innerRef = useRef<HTMLElement>()
   const selectRef = (ref as any) || innerRef
   const searchRef = useRef<any>(null) // 搜索框ref
   const selectionRef = useRef<any>(null)
   const dropDownRef = useRef<any>(null)
   const multipleRef = useRef<any>({ selectedVal: isMultiple ? [] : null, selectMulOpts: [] }) // 多选ref已选中项
-  const measureRef = React.useRef<HTMLSpanElement>(null)
+  const measureRef = useRef<HTMLSpanElement>(null)
   const [mulOptions, setMulOptions] = useState<any>([])
   const [singleVal, setSingleVal] = useState<any>('')
   const [optionShow, setOptionShow] = useState<boolean>(!!props.visible || defaultOpen) // 下拉列表是否展示
@@ -102,7 +102,7 @@ const InternalSelect: React.ForwardRefRenderFunction<ISelectProps<SelectValue>> 
     [`${selectPrefixCls}-wrapper`]: true,
   })
 
-  React.useEffect(() => {
+  useEffect(() => {
     setOptionShow(!!props.visible)
   }, [props.visible])
 
@@ -688,6 +688,7 @@ const InternalSelect: React.ForwardRefRenderFunction<ISelectProps<SelectValue>> 
     defaultVisible: optionShow,
     visible: optionShow,
     onVisibleChange: handleVisibleChange,
+    clickToClose: !isShowSearch,
   }
   return usePopper(renderSelect(), renderContent(), popperProps)
 }
