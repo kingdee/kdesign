@@ -205,6 +205,7 @@ const InternalCarousel = (props: CarouselProps, ref: unknown): FunctionComponent
   const rootClassName = classNames(className, {
     [`${carouselPrefixCls}-root`]: true,
   })
+
   const renderDisplayList = () => {
     let content
     if (isFadeEffect) {
@@ -227,6 +228,7 @@ const InternalCarousel = (props: CarouselProps, ref: unknown): FunctionComponent
     }
     return content
   }
+
   return (
     <div
       className={rootClassName}
@@ -236,8 +238,8 @@ const InternalCarousel = (props: CarouselProps, ref: unknown): FunctionComponent
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
-      {children?.length && renderDisplayList()}
-      {children?.length && showDot() && (
+      {children?.length ? renderDisplayList() : null}
+      {children?.length && showDot() ? (
         <Slidebar
           number={children.length}
           currentIndex={currentIndex}
@@ -245,8 +247,8 @@ const InternalCarousel = (props: CarouselProps, ref: unknown): FunctionComponent
           parentPrefixCls={carouselPrefixCls}
           dotPosition={dotPosition}
           onClick={handleClick}
-        ></Slidebar>
-      )}
+        />
+      ) : null}
     </div>
   )
 }
