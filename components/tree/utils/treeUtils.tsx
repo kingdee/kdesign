@@ -55,14 +55,13 @@ export const getHalfChecked = (halfCheckedKeys: string[], key: string) => {
  * @param data
  * @param pos
  */
-const isAllParentExpand = (data: any[], pos: string) => {
+const isAllParentExpand = (_data: any[], pos: string, posData: any) => {
   let expand = true
   while (pos.lastIndexOf('-') > -1 && expand) {
     pos = pos.substring(0, pos.lastIndexOf('-'))
-    const parentNode = data.find((item) => {
-      return item.pos === pos
-    })
-    expand = parentNode?.expand
+    if (posData[pos]) {
+      expand = posData[pos]?.expand
+    }
   }
   return expand
 }
@@ -81,7 +80,7 @@ export const getAllFilterKeys = (data: any[], filterTreeNode: FunctionConstructo
   return [...new Set(allFilterKeys)]
 }
 
-export const getFilterData = (data: any[], filterTreeNode: FunctionConstructor, isSearching: boolean) => {
+export const getFilterData = (data: any[], filterTreeNode: FunctionConstructor, isSearching: boolean, posData = {}) => {
   let filterData = data
   let allFilterKeys: any = null
   if (isSearching) {
@@ -91,7 +90,7 @@ export const getFilterData = (data: any[], filterTreeNode: FunctionConstructor, 
   const newData: any[] = []
   filterData.forEach((item) => {
     const { pos } = item
-    const parentExpand = isAllParentExpand(filterData, pos)
+    const parentExpand = isAllParentExpand(filterData, pos, posData)
     if (parentExpand) {
       newData.push(item)
     }
@@ -181,12 +180,13 @@ export const getMaxLevel = (data: any[]) => {
  * @param defaultExpandAll
  */
 export const getSpreadAttrData = (treeData: any[], expandedKeys: string[]) => {
-  const newTreeData: any[] = []
+  const spreadAttrData: any[] = []
+  const posData: any = {}
   treeData.forEach((item) => {
     const { title, key, icon, disabled, checkable, pos, level, hasChildNode, selectable, ...others } = item
     const itemExpand = getExpand(expandedKeys, key)
     const expand = itemExpand || false
-    newTreeData.push({
+    const dataItem = {
       title,
       key,
       level,
@@ -198,9 +198,11 @@ export const getSpreadAttrData = (treeData: any[], expandedKeys: string[]) => {
       checkable,
       selectable,
       ...others,
-    })
+    }
+    posData[pos] = dataItem
+    spreadAttrData.push(dataItem)
   })
-  return newTreeData
+  return { spreadAttrData, posData }
 }
 
 export const addKeys = (prevKeys: string[] = [], newKeys: string[] = []) => {
