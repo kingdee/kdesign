@@ -59,6 +59,7 @@ export interface TableRowSelection {
   column?: Partial<ArtColumnStaticPart> // 选择列的 column 配置，可指定 width，lock, title, align, features 等属性 对应 checkboxColumn、radioColumn
   onChange?: (selectedRowKeys: string[], actionRowkey?: string, actionRowskeys?: string[], action?: string) => void
   isDisabled?(row: any, rowIndex: number): boolean // 判断一行中的是否要禁用
+  highlightRowWhenSelected?: boolean // 是否高亮选中行
 }
 
 export type TableRowDetail = RowDetailFeatureOptions
