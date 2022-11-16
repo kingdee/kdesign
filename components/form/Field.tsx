@@ -78,7 +78,7 @@ const Field: React.FC<FormItemProps> = (props) => {
     local,
     disabled: formDisabled,
   } = fieldContext
-  const { registerField, dispatch, setDefaultValues } = getInternalHooks(INTERNAL_HOOK_KEY)!
+  const { registerField, dispatch, setDefaultValues, deleteField } = getInternalHooks(INTERNAL_HOOK_KEY)!
 
   const {
     name,
@@ -179,6 +179,12 @@ const Field: React.FC<FormItemProps> = (props) => {
       setDefaultValues({ [name]: defaultValue })
     }
   }, [name, registerField])
+
+  useEffect(() => {
+    return () => {
+      deleteField(name)
+    }
+  }, [])
 
   const formPrefixCls = getPrefixCls?.(prefixCls, 'form', customizePrefixcls)
   const formItemClassName = classnames(

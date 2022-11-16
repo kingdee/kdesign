@@ -94,6 +94,7 @@ export interface InternalHooks {
   setDefaultValues: (values: Store) => void
   setCallbacks: (callbacks: Callbacks) => void
   registerField: (name: NamePath, field: { current: FieldInstance }) => void
+  deleteField: (name: NamePath) => void
 }
 
 export type NotifySource =

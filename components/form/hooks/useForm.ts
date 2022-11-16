@@ -17,7 +17,7 @@ import {
   Store,
   StoreValue,
 } from '../interface'
-// import useForceUpdate from './useForceUpdate'
+
 import devwarning from '../../_utils/devwarning'
 
 export const INTERNAL_HOOK_KEY = '__KD_INTERNAL_FORM_HOOK__'
@@ -25,7 +25,6 @@ export const INTERNAL_HOOK_KEY = '__KD_INTERNAL_FORM_HOOK__'
 class FormStore {
   private isMounted = false
 
-  // private forceRootUpdate:() => void
   private defaultValues: Store = {}
 
   private store: Store = {}
@@ -35,10 +34,6 @@ class FormStore {
   private errorMessages: FieldError = {}
 
   private callbacks: Callbacks = {}
-
-  // constructor (forceRootUpdate: () => void) {
-  //   this.forceRootUpdate = forceRootUpdate
-  // }
 
   public getForm = (): FormInstance => ({
     getFieldValue: this.getFieldValue,
@@ -66,6 +61,7 @@ class FormStore {
       setDefaultValues: this.setDefaultValues,
       setCallbacks: this.setCallbacks,
       registerField: this.registerField,
+      deleteField: this.deleteField,
     }
   }
 
@@ -227,16 +223,18 @@ class FormStore {
     }
   }
 
-  /**
-   * 注册 Field
-   * Field 如果带有验证规则的话，则注册时进行校验
-   * @param name Field 名称
-   * @param field Field 实例
-   */
   private registerField = (name: NamePath, field: { current: FieldInstance }) => {
     this.warningUnhooked()
 
     this.fields[name] = field
+  }
+
+  private deleteField = (name: NamePath) => {
+    this.warningUnhooked()
+
+    Object.hasOwnProperty.call(this.fields, name) && delete this.fields[name]
+    Object.hasOwnProperty.call(this.errorMessages, name) && delete this.errorMessages[name]
+    Object.hasOwnProperty.call(this.store, name) && delete this.store[name]
   }
 
   private validateFields = (namePathList?: NamePath[]): Promise<any> => {
@@ -330,17 +328,11 @@ class FormStore {
 
 function useForm(form?: any): [any] {
   const formRef = React.useRef<FormInstance>()
-  // const forceUpdate = useForceUpdate()
 
   if (!formRef.current) {
     if (form) {
       formRef.current = form
     } else {
-      // Create a new FormStore if not provided
-      // const forceReRender = () => {
-      //   forceUpdate()
-      // }
-
       const formStore: FormStore = new FormStore()
       formRef.current = formStore.getForm()
     }
