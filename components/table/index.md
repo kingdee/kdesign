@@ -145,6 +145,7 @@ return <Table dataSource={dataSource} columns={columns} />
 | isDisabled | 判断一行中的 checkbox 是否要禁用 | (row, rowIndex) => boolean| `-` | `-` | 1.0.0 |
 | clickArea | 点击事件的响应区域 | string | `checkbox` | `checkbox` `cell` `row` | 1.0.0 |
 | stopClickEventPropagation | 是否对触发 onChange 的 click 事件调用 event.stopPropagation() | boolean | `false` | `true` `false` | 1.0.0 |
+| highlightRowWhenSelected | 是否高亮被选中的行 | boolean | `false` | `true` `false` | 1.6.15 | 
 
 <br/>
 

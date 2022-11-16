@@ -16,16 +16,13 @@ import ReactDOM from 'react-dom'
 import { Radio,Table } from '@kdcloudjs/kdesign'
 
 function Demo() {
-  const [ selected, setSelected ] = React.useState([])
+  const [ selected, setSelected ] = React.useState(['2'])
   const [ selectedType, setSelectedType ] = React.useState('checkbox')
 
   const handleSelectedTypeChange = e => {
     setSelected(selected.splice(0,1))
     setSelectedType(e.target.value)
   }
-  const handleChange = (v) => {
-    setSelected(v)
-  } 
 
   const dataSource = [
     {id: "1", "No":1,"order":"AP-202009-00001","from":"陕西环宇科技","to":"深圳环球科技","amount":"26,800.00","balance":"5,200.00"},
@@ -40,20 +37,22 @@ function Demo() {
     { code: 'order', name: '单据号', width: 200 },
     { code: 'from', name: '来户', width: 200 },
     { code: 'to', name: '往户', width: 200 },
-    { code: 'amount', name: '应付金额', width: 100, align: 'right' },
-    { code: 'balance', name: '应收余额', width: 100, align: 'right' }
+    { code: 'amount', name: '应付金额', width: 150, align: 'right' },
+    { code: 'balance', name: '应收余额', width: 150, align: 'right' }
   ]
 
 
   const rowSelection = {
      type: selectedType,
      value: selected,
-     onChange: setSelected
+     onChange: setSelected,
+     column: { lock: true },
+     highlightRowWhenSelected: true
   }
 
 
   return (
-    <div>
+    <div style={{ width: 875 }}>
       <Radio.Group onChange={handleSelectedTypeChange} value={selectedType}>
         <Radio value={'checkbox'}>多选</Radio> 
         <Radio value={'radio'}>单选</Radio>
