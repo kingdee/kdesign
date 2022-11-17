@@ -187,9 +187,9 @@ const InternalSelect: React.ForwardRefRenderFunction<ISelectProps<SelectValue>> 
   // 点击组件
   const handleClick = () => {
     if (disabled) return
-    if (!optionShow) {
+    if (optionShow) {
       const { onDropdownVisibleChange } = selectProps
-      onDropdownVisibleChange && onDropdownVisibleChange(!optionShow)
+      onDropdownVisibleChange && onDropdownVisibleChange(true)
     }
   }
 
