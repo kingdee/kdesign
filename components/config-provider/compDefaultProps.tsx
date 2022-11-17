@@ -135,6 +135,7 @@ const compDefaultProps = {
   },
   Image: {
     preview: true,
+    scales: [25, 50, 75, 100, 125, 150, 200],
   },
   InputNumber: {
     type: 'text',
