@@ -4,6 +4,39 @@ title: 更新日志
 hiddenAnchor: true
 ---
 
+## [1.6.15](https://github.com/kdcloudone/kdesign/compare/v1.6.14...v1.6.15)
+`2022-11-17`
+* button
+  * 添加文字按钮icon属性
+* icon
+  * 添加文字按钮icon属性
+* carousel
+  * 添加切换按钮
+  * 修复空数据渲染问题
+* dropdown
+  * Dropdown 的定位元素为input的时候定位不准确的问题
+  * 修复选择器onDropdownVisibleChange不触发问题
+* input
+  * Dropdown 的定位元素为input的时候定位不准确的问题
+* form
+  * 修复动态表单项问题
+* image
+  * 新增scalesAPI,控制图像预览缩放大小
+* modal
+  * 添加弹窗动画
+* select
+  * 修复选择器搜索模式下点击输入框导致搜索内容被清空问题
+  * 修复选择器onDropdownVisibleChange不触发问题
+  * 修复选择器onVisibleChange多次触发问题
+* tree
+  * 修复树组件可勾选模式下卡顿问题
+  * 修复树组件虚拟模式卡顿问题
+* table
+  * 行选中增加高亮已选行属性及说明
+* tooltip
+  * 重复执行onVisibleChange
+* 多次触发onVisibleChange 事件
+
 ## [1.6.14](https://github.com/kdcloudone/kdesign/compare/v1.6.13...v1.6.14)
 `2022-11-11`
 * date-picker
