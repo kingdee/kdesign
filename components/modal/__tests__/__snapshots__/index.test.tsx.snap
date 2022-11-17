@@ -2,7 +2,7 @@
 
 exports[`Modal renders correctly 1`] = `
 <div
-  class="kd-modal kd-modal-container"
+  class="kd-modal kd-modal-container kd-modal-container-show"
 >
   <div
     class="kd-modal-mask"
@@ -70,7 +70,7 @@ exports[`Modal renders correctly 1`] = `
 
 exports[`Modal renders correctly 2`] = `
 <div
-  class="kd-modal kd-modal-container"
+  class="kd-modal kd-modal-container kd-modal-container-show"
 >
   <div
     class="kd-modal-mask"
@@ -141,7 +141,7 @@ exports[`Modal renders correctly 2`] = `
 
 exports[`Modal renders correctly 3`] = `
 <div
-  class="kd-modal kd-modal-container"
+  class="kd-modal kd-modal-container kd-modal-container-show"
 >
   <div
     class="kd-modal-mask"
@@ -199,7 +199,7 @@ exports[`Modal renders correctly 3`] = `
 
 exports[`Modal renders correctly 4`] = `
 <div
-  class="kd-modal kd-modal-container"
+  class="kd-modal kd-modal-container kd-modal-container-show"
 >
   <div
     class="kd-modal-mask"
@@ -257,7 +257,7 @@ exports[`Modal renders correctly 4`] = `
 
 exports[`Modal renders correctly 5`] = `
 <div
-  class="kd-modal kd-modal-container"
+  class="kd-modal kd-modal-container kd-modal-container-show"
 >
   <div
     class="kd-modal-mask"
@@ -325,7 +325,7 @@ exports[`Modal renders correctly 5`] = `
 
 exports[`Modal should draggable use right 1`] = `
 <div
-  class="kd-modal kd-modal-container"
+  class="kd-modal kd-modal-container kd-modal-container-show"
 >
   <div
     class="kd-modal-mask"
@@ -393,7 +393,7 @@ exports[`Modal should draggable use right 1`] = `
 
 exports[`Modal should draggable use right 2`] = `
 <div
-  class="kd-modal kd-modal-container"
+  class="kd-modal kd-modal-container kd-modal-container-show"
 >
   <div
     class="kd-modal-mask"
@@ -462,7 +462,7 @@ exports[`Modal should draggable use right 2`] = `
 exports[`Modal should getContainer use right 1`] = `
 <div>
   <div
-    class="kd-modal kd-modal-container"
+    class="kd-modal kd-modal-container kd-modal-container-show"
   >
     <div
       class="kd-modal-mask"
@@ -532,7 +532,7 @@ exports[`Modal should getContainer use right 1`] = `
 exports[`Modal should getContainer use right 2`] = `
 <div>
   <div
-    class="kd-modal kd-modal-container"
+    class="kd-modal kd-modal-container kd-modal-container-show"
   >
     <div
       class="kd-modal-mask"
@@ -604,7 +604,7 @@ exports[`Modal should getContainer use right 3`] = `
   class="test-get-container"
 >
   <div
-    class="kd-modal kd-modal-container"
+    class="kd-modal kd-modal-container kd-modal-container-show"
   >
     <div
       class="kd-modal-mask"
@@ -683,8 +683,7 @@ exports[`Modal should getContainer use right 4`] = `
         containerInfo={
           <body>
             <div
-              class="kd-modal kd-modal-container"
-              style="display: none;"
+              class="kd-modal kd-modal-container kd-modal-container-hidden"
             >
               <div
                 class="kd-modal-mask"
@@ -749,7 +748,7 @@ exports[`Modal should getContainer use right 4`] = `
               </div>
             </div>
             <div
-              class="kd-modal kd-modal-container"
+              class="kd-modal kd-modal-container kd-modal-container-show"
             >
               <div
                 class="kd-modal-mask"
@@ -817,8 +816,7 @@ exports[`Modal should getContainer use right 4`] = `
         }
       >
         <div
-          className="kd-modal kd-modal-container"
-          style={Object {}}
+          className="kd-modal kd-modal-container kd-modal-container-show"
         >
           <div
             className="kd-modal-mask"
