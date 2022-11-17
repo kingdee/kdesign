@@ -104,7 +104,7 @@ describe('Select', () => {
       </Select>,
     )
     wrapper.find('.kd-select-selector').simulate('click')
-    expect(onDropdownVisibleChange).toHaveBeenCalled()
+    expect(onDropdownVisibleChange).not.toHaveBeenCalled()
     expect(onChange).not.toHaveBeenCalled()
   })
 

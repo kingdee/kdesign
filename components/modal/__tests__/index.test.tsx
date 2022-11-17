@@ -195,7 +195,7 @@ describe('Modal', () => {
     wrapper.update()
     console.log(wrapper.debug({ verbose: true }), wrapper.props())
     expect(wrapper.exists(classNameMap.container)).toBe(true)
-    expect((wrapper.find(classNameMap.container).getDOMNode() as HTMLElement).style.display).toBe('none')
+    expect((wrapper.find(classNameMap.container).getDOMNode() as HTMLElement).style.display).toBe('')
     wrapper.setProps({
       visible: true,
     })
@@ -231,7 +231,7 @@ describe('Modal', () => {
     expect(onOk).not.toHaveBeenCalled()
     expect(onCancel).toHaveBeenCalled()
     expect(wrapper.exists(classNameMap.container)).toBe(true)
-    expect((wrapper.find(classNameMap.container).getDOMNode() as HTMLElement).style.display).toBe('none')
+    expect((wrapper.find(classNameMap.container).getDOMNode() as HTMLElement).style.display).toBe('')
     unmountHelp(wrapper)
   })
 
@@ -261,7 +261,7 @@ describe('Modal', () => {
     expect(onOk).toHaveBeenCalled()
     expect(onCancel).not.toHaveBeenCalled()
     expect(wrapper.exists(classNameMap.container)).toBe(true)
-    expect((wrapper.find(classNameMap.container).getDOMNode() as HTMLElement).style.display).toBe('none')
+    expect((wrapper.find(classNameMap.container).getDOMNode() as HTMLElement).style.display).toBe('')
     unmountHelp(wrapper)
   })
 
@@ -303,7 +303,7 @@ describe('Modal', () => {
     const anotherRenderComp = render(<AnotherTestComp />)
     expect(anotherRenderComp).toMatchSnapshot()
     expect(anotherRenderComp.find(classNameMap.containerBox)).toBeDefined()
-    expect((document.body.querySelector(classNameMap.container) as HTMLElement).style.display).toBe('none')
+    expect((document.body.querySelector(classNameMap.container) as HTMLElement).style.display).toBe('')
 
     const ClassTestComp = () => {
       return (
