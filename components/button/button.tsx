@@ -132,6 +132,7 @@ const InternalButton = (props: IButtonProps, ref: unknown): FunctionComponentEle
     case 'text':
       return (
         <span ref={buttonRef} className={btnClasses} onClick={handleClick} disabled={disabled} {...others}>
+          {iconNode}
           {children}
         </span>
       )
