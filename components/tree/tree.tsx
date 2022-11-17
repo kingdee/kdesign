@@ -12,7 +12,7 @@ import {
   delKey,
   getFilterData,
   getSpreadAttrData,
-  getDataCheckededState,
+  getAllCheckedKeys,
   getDataCheckededStateStrictly,
   getAllChildKeys,
   getPos,
@@ -88,6 +88,14 @@ export type TreeNodeData = {
   selectable?: boolean
 }
 
+export type KeysDataType = {
+  [key: string]: TreeNodeData & { pathParentKeys: string[] }
+}
+
+export type PosDataType = {
+  [key: string]: TreeNodeData
+}
+
 const InternalTree = React.forwardRef((props: TreeProps, ref: any): React.FunctionComponentElement<TreeProps> => {
   const { getPrefixCls, prefixCls, compDefaultProps: userDefaultProps } = useContext(ConfigContext)
 
@@ -141,18 +149,9 @@ const InternalTree = React.forwardRef((props: TreeProps, ref: any): React.Functi
   const treeRootClassName = `${treePrefixCls}-root`
   const estimatedItemSize = innerEstimatedItemSize // 节点高度
 
-  const { flattenAllData, maxLevel } = React.useMemo(() => {
+  const { flattenAllData, maxLevel, keysData } = React.useMemo(() => {
     return flattenAll(treeData, [])
   }, [treeData])
-
-  const [checkedKeys, halfCheckedKeys, setCheckedKeys, setHalfCheckedKeys] = useChecked(
-    checkStrictly,
-    checkedKeysProps,
-    defaultCheckedKeys,
-    flattenAllData,
-    maxLevel,
-    checkable,
-  )
 
   const [scrollKey, setScrollKey] = React.useState(scrollToKey)
   const [start, setStart] = React.useState(0)
@@ -183,14 +182,25 @@ const InternalTree = React.forwardRef((props: TreeProps, ref: any): React.Functi
     isInit,
     filterTreeNode,
     isSearching,
+    keysData,
   )
   const { spreadAttrData, posData } = React.useMemo(() => {
     return getSpreadAttrData(flattenAllData, expandedKeys)
   }, [flattenAllData, expandedKeys])
 
+  const [checkedKeys, halfCheckedKeys, setCheckedKeys, setHalfCheckedKeys] = useChecked(
+    checkStrictly,
+    checkedKeysProps,
+    defaultCheckedKeys,
+    flattenAllData,
+    maxLevel,
+    checkable,
+    keysData,
+  )
+
   const filterData = React.useMemo(() => {
-    return getFilterData(spreadAttrData, filterTreeNode, isSearching, posData)
-  }, [spreadAttrData, isSearching, posData])
+    return getFilterData(spreadAttrData, filterTreeNode, isSearching, posData, keysData)
+  }, [spreadAttrData, isSearching, posData, keysData])
 
   const [viewportHeight] = useViewportHeight(height, listRef)
   const [visibleData] = useVisibleDataMemo(virtual, filterData, viewportHeight, estimatedItemSize, start)
@@ -263,11 +273,17 @@ const InternalTree = React.forwardRef((props: TreeProps, ref: any): React.Functi
   )
 
   const handleCheck = React.useCallback(
-    (key: string, value: boolean, node: any, event: MouseEvent, pos: string) => {
+    (key: string, value: boolean, node: any, event: MouseEvent, _pos: string) => {
       const newCheckedKeys = value ? addKeys(checkedKeys, [key]) : delKey(checkedKeys, [key])
       const checkState = checkStrictly
         ? getDataCheckededStateStrictly(newCheckedKeys)
-        : getDataCheckededState(spreadAttrData, newCheckedKeys, halfCheckedKeys, maxLevel, false, pos, value)
+        : getAllCheckedKeys(key, value, checkedKeys, keysData, halfCheckedKeys)
+      if (!('checkedKeys' in TreeProps)) {
+        setCheckedKeys(checkState.checkedKeys)
+        setHalfCheckedKeys(checkState.halfCheckedKeys)
+      } else {
+        setHalfCheckedKeys(checkState.halfCheckedKeys)
+      }
       onCheck &&
         onCheck(checkState.checkedKeys, { event, node, checked: value, halfCheckedKeys: checkState.halfCheckedKeys })
     },
@@ -412,7 +428,11 @@ const InternalTree = React.forwardRef((props: TreeProps, ref: any): React.Functi
 
   useEffect(() => {
     setHalfCheckedKeys(halfCheckedKeys)
-  }, [halfCheckedKeys])
+  }, [halfCheckedKeys, setHalfCheckedKeys])
+
+  useEffect(() => {
+    setCheckedKeys(checkedKeys)
+  }, [checkedKeys, setCheckedKeys])
 
   return (
     <div className={treeNodeClassName} style={style} ref={scrollRef} onScroll={handleScroll}>

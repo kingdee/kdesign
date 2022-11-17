@@ -1,4 +1,4 @@
-import { TreeNodeData } from '../tree'
+import { TreeNodeData, KeysDataType } from '../tree'
 
 const DRAG_OFFSET = 0.3
 
@@ -12,14 +12,25 @@ const DRAG_OFFSET = 0.3
  */
 export const flattenAll = (treeData: any[], newTreeData: TreeNodeData[] = [], level = 0, pos?: string) => {
   let maxLevel = 0
+  const keysData: KeysDataType = {}
   const fn = (treeData: any[], newTreeData: TreeNodeData[] = [], level = 0, pos?: string, parent: any = null) => {
     treeData &&
       treeData.forEach((item, index) => {
         const { children, title, key, ...others } = item
-        item.parent = parent
         const _pos = pos ? `${pos}-${index}` : `${index}`
         const hasChildNode = item.isLeaf ? false : children && children instanceof Array && children.length > 0
-        const flattenNode: any = { title, key, pos: _pos, hasChildNode, level, parent, ...others }
+        const flattenNode: any = {
+          title,
+          key,
+          pos: _pos,
+          hasChildNode,
+          children,
+          level,
+          parentKey: parent?.key || null,
+          pathParentKeys: parent ? [...(parent?.pathParentKeys || []), parent?.key] : [],
+          ...others,
+        }
+        keysData[key] = flattenNode
         newTreeData.push(flattenNode)
         let _level = level
         if (maxLevel < level) {
@@ -31,7 +42,7 @@ export const flattenAll = (treeData: any[], newTreeData: TreeNodeData[] = [], le
     return newTreeData
   }
   const flattenAllData = fn(treeData, newTreeData, level, pos)
-  return { flattenAllData, maxLevel }
+  return { flattenAllData, maxLevel, keysData }
 }
 
 export const getExpand = (expandedKeys: string[], key: string) => {
@@ -66,7 +77,7 @@ const isAllParentExpand = (_data: any[], pos: string, posData: any) => {
   return expand
 }
 
-export const getAllFilterKeys = (data: any[], filterTreeNode: FunctionConstructor): any[] => {
+export const getAllFilterKeys = (data: any[], filterTreeNode: FunctionConstructor, keysData: KeysDataType): any[] => {
   const allFilterKeys: any[] = []
   data
     .filter((item: any) => filterTreeNode?.(item))
@@ -74,17 +85,23 @@ export const getAllFilterKeys = (data: any[], filterTreeNode: FunctionConstructo
       let node = { ...item }
       while (node) {
         allFilterKeys.push(node.key)
-        node = node.parent
+        node = keysData?.[node?.parentKey] || null
       }
     })
   return [...new Set(allFilterKeys)]
 }
 
-export const getFilterData = (data: any[], filterTreeNode: FunctionConstructor, isSearching: boolean, posData = {}) => {
+export const getFilterData = (
+  data: any[],
+  filterTreeNode: FunctionConstructor,
+  isSearching: boolean,
+  posData = {},
+  keysData = {},
+) => {
   let filterData = data
   let allFilterKeys: any = null
   if (isSearching) {
-    allFilterKeys = getAllFilterKeys(filterData, filterTreeNode)
+    allFilterKeys = getAllFilterKeys(filterData, filterTreeNode, keysData)
     filterData = filterData.filter((item) => allFilterKeys.includes(item.key))
   }
   const newData: any[] = []
@@ -98,14 +115,13 @@ export const getFilterData = (data: any[], filterTreeNode: FunctionConstructor, 
   return newData
 }
 
-const hasParentChecked = (data: any[], checkedKeys: string[], pos = '') => {
+const hasParentChecked = (_data: any[], checkedKeys: string[], pos = '', posData: any) => {
   let checked = false
   while (pos.lastIndexOf('-') > -1 && !checked) {
     pos = pos.substring(0, pos.lastIndexOf('-'))
-    const parentNode = data.find((item) => {
-      return item.pos === pos
-    })
-    checked = getChecked(checkedKeys, parentNode.key)
+    if (posData[pos]) {
+      checked = getChecked(checkedKeys, posData[pos]?.key)
+    }
   }
   return checked
 }
@@ -261,7 +277,14 @@ export const getInitCheckedKeys = (data: any[], keys: string[]) => {
   return Array.from(new Set([...checkedKeys, ...keys]))
 }
 
-export const getInitCheckededState = (data: any[], checkedKeys: string[] = [], maxLevel: number, init = false) => {
+export const getInitCheckededState = (
+  data: any[],
+  checkedKeys: string[] = [],
+  maxLevel: number,
+  init = false,
+  posData: any,
+  _keysData: KeysDataType,
+) => {
   const _checkedKeys = [...checkedKeys]
   const _halfCheckedKeys: string[] = []
   for (let i = maxLevel; i >= 0; i--) {
@@ -273,7 +296,7 @@ export const getInitCheckededState = (data: any[], checkedKeys: string[] = [], m
         const _allChildChecked = item.hasChildNode && allChildChecked(data, _checkedKeys, item.pos, item.level, init)
         const _hasChildChecked = _hasChildCheckState?.checked
         const _hasHalfChildChecked = _hasChildCheckState?.halfChecked
-        const _hasParentChecked = hasParentChecked(data, checkedKeys, item.pos)
+        const _hasParentChecked = hasParentChecked(data, checkedKeys, item.pos, posData)
         const checked = selfChecked || _hasParentChecked || _allChildChecked
         if (checked) {
           _checkedKeys.push(item.key)
@@ -286,6 +309,136 @@ export const getInitCheckededState = (data: any[], checkedKeys: string[] = [], m
     })
   }
   return { checkedKeys: Array.from(new Set(_checkedKeys)), halfCheckedKeys: Array.from(new Set(_halfCheckedKeys)) }
+}
+
+export function getChildNodeKeys(node: TreeNodeData, keysNodeProps: KeysDataType): Set<string> {
+  const nodes: Set<string> = new Set()
+  const loop = (children: TreeNodeData[]) => {
+    children.map((child) => {
+      const key = child.key
+      const item = keysNodeProps[key]
+      if (!item || item.disabled || item.checkable === false) {
+        return
+      }
+      nodes.add(key)
+      loop(item.children || [])
+    })
+  }
+  if (node) {
+    loop(node.children || [])
+  }
+  return nodes
+}
+
+const updateParent = (
+  key: string,
+  keysNodeProps: KeysDataType,
+  allKeys: Set<string>,
+  halfCheckedKeysSet: Set<string>,
+) => {
+  const pathParentKeys = [...keysNodeProps[key].pathParentKeys]
+
+  // 逐级更新父节点的状态
+  pathParentKeys.reverse().forEach((itemKey) => {
+    const parent = keysNodeProps[itemKey]
+    if (parent && !parent.disabled && parent.checkable !== false) {
+      let total = 0
+      let number = 0
+      ;(parent as any).children.some(({ key }: TreeNodeData) => {
+        const item = keysNodeProps[key]
+        // 不符合可选条件
+        if (!item || item.disabled || item.checkable === false) {
+          return false
+        }
+        total++
+        if (allKeys.has(key)) {
+          number++
+        } else if (halfCheckedKeysSet.has(key)) {
+          // 只要有一个半选，就不用再算了 ，父节点是半选
+          number += 0.5
+          return true
+        }
+      })
+
+      if (!number || number === total) {
+        halfCheckedKeysSet.delete(itemKey)
+      } else {
+        halfCheckedKeysSet.add(itemKey)
+      }
+
+      if (number && number === total) {
+        allKeys.add(itemKey)
+      } else {
+        allKeys.delete(itemKey)
+      }
+    }
+  })
+}
+
+export const getInitCheckededKeys = (checkedKeys: string[] = [], keysNodeProps: KeysDataType) => {
+  const checkedKeysSet = new Set<string>(checkedKeys || [])
+  const halfCheckedKeysSet = new Set<string>()
+  const childCheckedKeysSet = new Set<string>()
+
+  checkedKeys.forEach((key) => {
+    if (!childCheckedKeysSet.has(key)) {
+      const childKeys = getChildNodeKeys(keysNodeProps[key], keysNodeProps)
+      childKeys.forEach((v) => {
+        childCheckedKeysSet.add(v)
+      })
+    }
+
+    if (keysNodeProps[key] && !keysNodeProps[key].pathParentKeys.some((_key) => checkedKeysSet.has(_key))) {
+      updateParent(key, keysNodeProps, checkedKeysSet, halfCheckedKeysSet)
+    }
+  })
+
+  return {
+    checkedKeys: [...new Set([...checkedKeysSet, ...childCheckedKeysSet])],
+    halfCheckedKeys: [...halfCheckedKeysSet],
+  }
+}
+
+export function getAllCheckedKeys(
+  key: string,
+  checked: boolean,
+  checkedKeys: string[],
+  keysNodeProps: KeysDataType,
+  halfCheckedKeys: string[],
+) {
+  if (!keysNodeProps[key]) {
+    return {
+      checkedKeys,
+      halfCheckedKeys,
+    }
+  }
+  const checkedKeysSet = new Set(checkedKeys)
+  const halfCheckedKeysSet = new Set(halfCheckedKeys)
+  const childKeys = getChildNodeKeys(keysNodeProps[key], keysNodeProps)
+  const allKeys = checkedKeysSet
+
+  if (checked) {
+    // 选中节点，找到所有符合条件的子节点的key
+    allKeys.add(key)
+    halfCheckedKeysSet.delete(key)
+    childKeys.forEach((v) => {
+      allKeys.add(v)
+    })
+  } else {
+    halfCheckedKeysSet.delete(key)
+    // 移除所有符合条件的子节点的key
+    allKeys.delete(key)
+    childKeys.forEach((v) => {
+      allKeys.delete(v)
+    })
+  }
+
+  updateParent(key, keysNodeProps, checkedKeysSet, halfCheckedKeysSet)
+
+  return {
+    checkedKeys: [...allKeys],
+    halfCheckedKeys: [...halfCheckedKeysSet],
+  }
 }
 
 export const getDataCheckededState = (
@@ -399,6 +552,7 @@ export const getInitExpandedKeys = (
   expandScrollkeys: string[] = [],
   filterTreeNode: FunctionConstructor,
   isSearching: boolean,
+  keysData: KeysDataType,
 ) => {
   let keys: string[] = expandedKeys?.concat(expandScrollkeys) || defaultExpandedKeys?.concat(expandScrollkeys) || []
 
@@ -421,7 +575,7 @@ export const getInitExpandedKeys = (
   }
 
   if (isSearching) {
-    keys = [...keys, ...getAllFilterKeys(data, filterTreeNode)]
+    keys = [...keys, ...getAllFilterKeys(data, filterTreeNode, keysData)]
   }
   return Array.from(new Set([...keys]))
 }
