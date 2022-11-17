@@ -126,3 +126,4 @@ subtitle: 按钮
 |  | --kd-c-button-spacing-padding-horizontal-large | - | 8px |
 |  | --kd-c-button-group-dropdown-item-horizonta | - | 12px |
 |  | --kd-c-button-icon-spacing-padding-horizontal | - | 4px |
+|  | --kd-c-button-text-icon-spacing-margin-right | - | 4px |
