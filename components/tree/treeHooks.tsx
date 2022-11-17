@@ -1,7 +1,7 @@
-import { TreeNodeData } from './tree'
+import { TreeNodeData, KeysDataType } from './tree'
 import React, { useEffect, useState } from 'react'
 import {
-  getInitCheckededState,
+  getInitCheckededKeys,
   getDataCheckededStateStrictly,
   getInitExpandedKeys,
   getPos,
@@ -56,16 +56,17 @@ export const useChecked = (
   checkStrictly: boolean,
   checkedKeysProps: string[],
   defaultCheckedKeys: string[],
-  flattenAllData: any[],
-  maxLevel: number,
+  _flattenAllData: any[],
+  _maxLevel: number,
   checkable: boolean,
+  keysData: KeysDataType,
 ) => {
   const initialCheckedState = React.useMemo(() => {
     if (!checkable) return { checkedKeys: [], halfCheckedKeys: [] }
     return checkStrictly
       ? getDataCheckededStateStrictly(checkedKeysProps || defaultCheckedKeys)
-      : getInitCheckededState(flattenAllData, checkedKeysProps || defaultCheckedKeys, maxLevel, true)
-  }, [flattenAllData, checkedKeysProps, defaultCheckedKeys, checkStrictly, maxLevel, checkable])
+      : getInitCheckededKeys(checkedKeysProps || defaultCheckedKeys, keysData)
+  }, [checkable, checkStrictly, checkedKeysProps, defaultCheckedKeys, keysData])
   const [checkedKeys, setCheckedKeys] = React.useState(initialCheckedState.checkedKeys)
   const [halfCheckedKeys, setHalfCheckedKeys] = React.useState(initialCheckedState.halfCheckedKeys)
   const nextCheckedKeys = initialCheckedState.checkedKeys
@@ -90,6 +91,7 @@ export const useExpand = (
   isInit: boolean,
   filterTreeNode: FunctionConstructor,
   isSearching: boolean,
+  keysData: KeysDataType,
 ) => {
   let expandScrollkeys: string[] = []
   if (scrollKey) {
@@ -107,6 +109,7 @@ export const useExpand = (
       expandScrollkeys,
       filterTreeNode,
       isSearching,
+      keysData,
     )
   }, [
     flattenAllData,
@@ -118,6 +121,7 @@ export const useExpand = (
     scrollKey,
     filterTreeNode,
     isSearching,
+    keysData,
   ])
 
   const newExpandedKeys = React.useMemo(() => {
