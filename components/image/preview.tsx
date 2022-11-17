@@ -17,6 +17,7 @@ export interface PreviewProps {
   alt?: string
   name?: string
   size?: string
+  scales?: Array<number>
   visible: boolean
   type?: PreviewType
   className?: string
@@ -42,7 +43,19 @@ const Preview: React.FC<PreviewProps> = (props) => {
   // 属性需要合并一遍用户定义的默认属性
   const allProps = getCompProps('Image', userDefaultProps, props)
 
-  const { src, alt, name, size, visible, onClose, current, length, operations, prefixCls: customPrefixcls } = allProps
+  const {
+    src,
+    alt,
+    name,
+    size,
+    scales,
+    visible,
+    onClose,
+    current,
+    length,
+    operations,
+    prefixCls: customPrefixcls,
+  } = allProps
 
   // className前缀
   const prefixCls = getPrefixCls!(pkgPrefixCls, 'image', customPrefixcls)
@@ -56,15 +69,29 @@ const Preview: React.FC<PreviewProps> = (props) => {
   const [previewSrc, setPreviewSrc] = React.useState(src)
 
   const [scale, setScale] = React.useState(1)
+
+  const maxScale = scales[scales.length - 1] / 100
+  const minScale = scales[0] / 100
+
   React.useEffect(() => {
     if (show) {
       document.body.style.overflow = 'hidden'
 
       const throMouseWheel = throttle((e: IWheelEvent) => {
         if (e.wheelDelta > 0) {
-          setScale(scale + 0.1)
+          if (scale > maxScale) return
+          if (scale + 0.1 > maxScale) {
+            setScale(maxScale)
+          } else {
+            setScale(scale + 0.1)
+          }
         } else if (e.wheelDelta < 0) {
-          if (scale > 1) setScale(scale - 0.1)
+          if (scale < minScale) return
+          if (scale - 0.1 < minScale) {
+            setScale(minScale)
+          } else {
+            setScale(scale - 0.1)
+          }
         }
       }, 200)
       document.addEventListener('mousewheel', throMouseWheel)
@@ -77,11 +104,12 @@ const Preview: React.FC<PreviewProps> = (props) => {
     }
   }, [show, scale])
   const handleZoomOut = () => {
-    const newScale = scale - 1
-    setScale(Math.max(newScale, 1))
+    const nextScale = scales.findLast((s: number) => s / 100 < scale)
+    if (nextScale !== undefined) setScale(nextScale / 100)
   }
   const handleZoomIn = () => {
-    setScale(scale + 1)
+    const nextScale = scales.find((s: number) => s / 100 > scale)
+    if (nextScale !== undefined) setScale(nextScale / 100)
   }
 
   const previewImgProps: Record<string, unknown> = {
@@ -105,8 +133,8 @@ const Preview: React.FC<PreviewProps> = (props) => {
         {props.type !== 'upload' && length && (
           <Icon type="arrow-left" className={classNames({ disabled: current <= 0 })} onClick={props.onPrevious} />
         )}
-        <Icon type="shrink" className={classNames({ disabled: scale <= 1 })} onClick={handleZoomOut} />
-        <Icon type="zoom" onClick={handleZoomIn} />
+        <Icon type="shrink" className={classNames({ disabled: scale <= minScale })} onClick={handleZoomOut} />
+        <Icon type="zoom" className={classNames({ disabled: scale >= maxScale })} onClick={handleZoomIn} />
         {props.type !== 'upload' && operations}
         {props.type !== 'upload' && length && (
           <Icon type="arrow-right" className={classNames({ disabled: current >= length - 1 })} onClick={props.onNext} />
