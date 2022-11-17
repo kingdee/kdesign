@@ -1,4 +1,4 @@
-import React, { CSSProperties, FunctionComponentElement, useContext, useImperativeHandle } from 'react'
+import React, { CSSProperties, FunctionComponentElement, isValidElement, useContext, useImperativeHandle } from 'react'
 import classNames from 'classnames'
 import ConfigContext from '../config-provider/ConfigContext'
 import { getCompProps } from '../_utils'
@@ -10,6 +10,7 @@ import { FadeList } from './fadeList'
 import { SlideList } from './slideList'
 import { DisplayList } from './displayList'
 import { Slidebar } from './slidebar'
+import Icon from '../icon'
 
 export const DotPositionTypes = tuple('top', 'left', 'bottom', 'right')
 export type DotPositionType = typeof DotPositionTypes[number]
@@ -17,6 +18,7 @@ export const EffectTypes = tuple('scrollx', 'fade')
 export type EffectType = typeof EffectTypes[number]
 export interface CarouselProps {
   autoplay?: boolean
+  jumpNode?: boolean | React.ReactNode[]
   children?: React.ReactNode
   dotPosition?: string
   dots?: boolean | { dotsClassName: string; activeDotsClassName: string }
@@ -34,6 +36,7 @@ const InternalCarousel = (props: CarouselProps, ref: unknown): FunctionComponent
   const carouselProps = getCompProps('Carousel', userDefaultProps, props)
   const {
     autoplay,
+    jumpNode,
     dotPosition,
     children,
     dots,
@@ -229,6 +232,79 @@ const InternalCarousel = (props: CarouselProps, ref: unknown): FunctionComponent
     return content
   }
 
+  const renderJumpNode = () => {
+    if (children?.length && jumpNode) {
+      const jumpClassPrefix = `${carouselPrefixCls}-jump`
+      const leftClick = (e: React.MouseEvent) => {
+        e.stopPropagation()
+        if (currentIndex !== 0) {
+          prev()
+        }
+      }
+      const rightClick = (e: React.MouseEvent) => {
+        e.stopPropagation()
+        if (currentIndex !== children.length - 1) {
+          next()
+        }
+      }
+
+      const mergeNode = (node: React.ReactElement, type: 'left' | 'right') => {
+        const onClick = (evt: any) => {
+          const { onClick: chClick } = node.props
+
+          if (type === 'left') {
+            leftClick(evt)
+          } else {
+            rightClick(evt)
+          }
+          if (typeof chClick === 'function') {
+            chClick(evt)
+          }
+        }
+        return {
+          ...node.props,
+          onClick,
+        }
+      }
+
+      const leftNode = (
+        <div
+          className={classNames(jumpClassPrefix, `${jumpClassPrefix}-left`, {
+            [`${jumpClassPrefix}-disabled`]: currentIndex <= 0,
+          })}
+        >
+          {Array.isArray(jumpNode) && jumpNode.length > 0 && isValidElement(jumpNode[0]) ? (
+            React.cloneElement(jumpNode[0], mergeNode(jumpNode[0], 'left'))
+          ) : (
+            <Icon className={`${jumpClassPrefix}-icon`} type={'arrow-left-circle-solid'} onClick={leftClick} />
+          )}
+        </div>
+      )
+
+      const rightNode = (
+        <div
+          className={classNames(jumpClassPrefix, `${jumpClassPrefix}-right`, {
+            [`${jumpClassPrefix}-disabled`]: currentIndex >= children.length - 1,
+          })}
+        >
+          {Array.isArray(jumpNode) && jumpNode.length > 1 && isValidElement(jumpNode[1]) ? (
+            React.cloneElement(jumpNode[1], mergeNode(jumpNode[1], 'right'))
+          ) : (
+            <Icon className={`${jumpClassPrefix}-icon`} type={'arrow-right-circle-solid'} onClick={rightClick} />
+          )}
+        </div>
+      )
+
+      return (
+        <>
+          {leftNode}
+          {rightNode}
+        </>
+      )
+    }
+    return null
+  }
+
   return (
     <div
       className={rootClassName}
@@ -249,6 +325,7 @@ const InternalCarousel = (props: CarouselProps, ref: unknown): FunctionComponent
           onClick={handleClick}
         />
       ) : null}
+      {renderJumpNode()}
     </div>
   )
 }

@@ -10,6 +10,8 @@ import copy from 'copy'
 import { Icon, Message } from '@kdcloudjs/kdesign'
 
 const solidIcon = [
+  'arrow-left-circle-solid',
+  'arrow-right-circle-solid',
   'arrow-up-solid',
   'arrow-right-solid',
   'arrow-down-solid',
