@@ -43,6 +43,7 @@ title: Image
 | operations | 操作栏配置 | React.ReactElement[] | - | 1.0.0 |
 | size | 图像大小 | string | - | 1.0.0 |
 | src | 图片地址 | string | - | 1.0.0 |
+| scales | 图片预览缩放比例 | Array | [25, 50, 75, 100, 125, 150, 200] | 1.6.15 |
 | type | 预览框类型 | `default` \| `upload` | `default` | 1.0.0 |
 | visible | 预览框是否显示 | boolean | false | 1.0.0 |
 | onClose | 关闭预览框的回调 | (e) => void | - | 1.0.0 |
