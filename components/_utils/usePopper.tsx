@@ -450,6 +450,7 @@ function usePopper(locatorElement: React.ReactElement, popperElement: React.Reac
     if (exist && visible) {
       let mouseleaveTimer: number
       const handleHidePopper = (e: MouseEvent) => {
+        if (!visible) return
         const triggerNode = getTriggerElement(locatorRef.current)
         const triggerRect = triggerNode.getBoundingClientRect()
         const popperRect = popperRef.current.getBoundingClientRect()
@@ -472,7 +473,7 @@ function usePopper(locatorElement: React.ReactElement, popperElement: React.Reac
         }
       }
 
-      const debounceHidePopper = debounce(handleHidePopper, 10, { leading: true })
+      const debounceHidePopper = debounce(handleHidePopper, 200, { leading: true })
 
       const mapEvent: NormalProps = {
         hover: 'mousemove',
