@@ -1,7 +1,6 @@
-@import "../../style/themes/token.less";
+@import '../../style/themes/token.less';
 
 @input-prefix: '--@{kd-prefix}-c-input';
-
 
 // color
 @input-font-color-inner: var(~'@{input-prefix}-color-text', @color-text-primary);
@@ -10,10 +9,16 @@
 @input-clear-color: var(~'@{input-prefix}-clear-color', #d9d9d9);
 @input-clear-color-hover: var(~'@{input-prefix}-clear-color-hover', #999);
 @input-background-color-inner: var(~'@{input-prefix}-color-background', @color-white);
-@input-background-color-disabled-inner: var(~'@{input-prefix}-color-background-disabled', @color-background-contain-disabled);
+@input-background-color-disabled-inner: var(
+  ~'@{input-prefix}-color-background-disabled',
+  @color-background-contain-disabled
+);
 @input-border-color-focused: var(~'@{input-prefix}-color-border-focused', @color-theme);
 @input-border-color-disabled-inner: var(~'@{input-prefix}-color-border-disabled', @color-border-strong);
-@input-underline-border-color-disabled-inner: var(~'@{input-prefix}-underline-color-border-disabled', @color-border-weak);
+@input-underline-border-color-disabled-inner: var(
+  ~'@{input-prefix}-underline-color-border-disabled',
+  @color-border-weak
+);
 @input-color-disabled-inner: var(~'@{input-prefix}-color-disabled', @color-disabled);
 @input-affix-color: var(~'@{input-prefix}-affix-color-text', #666);
 
@@ -33,6 +38,8 @@
 @input-middle-height-inner: var(~'@{input-prefix}-sizing-height-middle', 30px);
 @input-large-height-inner: var(~'@{input-prefix}-sizing-height-large', 36px);
 @input-border-width-inner: var(~'@{input-prefix}-sizing-border', 1px);
+@input-wrapper-padding-left: var(~'@{input-prefix}-wrapper-padding-left', 0px);
+@input-padding-left: var(~'@{input-prefix}-padding-left', 9px);
 
 // spacing
 @input-small-padding-vertical-inner: var(~'@{input-prefix}-spacing-padding-vertical-small', 3px);
@@ -41,11 +48,3 @@
 @input-middle-padding-horizontal-inner: var(~'@{input-prefix}-spacing-padding-horizontal-middle', 9px);
 @input-large-padding-vertical-inner: var(~'@{input-prefix}-spacing-padding-vertical-large', 8px);
 @input-large-padding-horizontal-inner: var(~'@{input-prefix}-spacing-padding-horizontal-large', 9px);
-
-
-
-
-
-
-
-
