@@ -676,8 +676,10 @@ const InternalSelect: React.ForwardRefRenderFunction<ISelectProps<SelectValue>> 
   }
 
   const handleVisibleChange = (visible: boolean) => {
-    props.visible === undefined && setOptionShow(visible)
-    onVisibleChange && onVisibleChange(visible)
+    if (visible !== optionShow) {
+      props.visible === undefined && setOptionShow(visible)
+      onVisibleChange && onVisibleChange(visible)
+    }
   }
 
   const popperProps = {
