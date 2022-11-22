@@ -25,6 +25,7 @@ export type TableApi = {
   getColumns: () => any[]
   getDataSource: () => any[]
   getFooterDataSource: () => any[]
+  clearRangeSelection: () => void
 }
 
 export type TableInstance = {
