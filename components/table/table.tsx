@@ -22,6 +22,7 @@ import useContextMenu from './feature/contextMenu'
 import useRangeSelection from './feature/useRangeSelection'
 import useＭergeCellHover from './feature/mergeCellHover'
 import devWarning from '../_utils/devwarning'
+import useFooterDataSource from './feature/useFooterDataSource'
 
 const Table = forwardRef<unknown, TableProps>((props: TableProps, ref) => {
   const {
@@ -77,11 +78,11 @@ const Table = forwardRef<unknown, TableProps>((props: TableProps, ref) => {
   const pipelineRef = useRef<TablePipeline>(pipeline)
   pipelineRef.current = pipeline
 
-  if (footerDataSource) {
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
-    pipeline.footerDataSource(footerDataSource)
-  }
+  // if (footerDataSource) {
+  //   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  //   // @ts-ignore
+  //   pipeline.footerDataSource(footerDataSource)
+  // }
 
   useImperativeHandle(
     ref,
@@ -90,6 +91,7 @@ const Table = forwardRef<unknown, TableProps>((props: TableProps, ref) => {
         getColumns: pipelineRef.current.getColumns?.bind(pipelineRef.current),
         getDataSource: pipelineRef.current.getDataSource?.bind(pipelineRef.current),
         getFooterDataSource: pipelineRef.current.getFooterDataSource?.bind(pipelineRef.current),
+        clearRangeSelection: pipelineRef.current.clearRangeSelection?.bind(pipelineRef.current),
       },
     }),
   )
@@ -108,6 +110,7 @@ const Table = forwardRef<unknown, TableProps>((props: TableProps, ref) => {
   useContextMenu(pipeline, contextMenu)
   useRangeSelection(pipeline, rangeSelection)
   useＭergeCellHover(pipeline)
+  useFooterDataSource(pipeline, footerDataSource)
 
   /* -------------------------------------------------------------------------- */
   /* after useTablePipeline, merge pipeline.getProps result                     */
