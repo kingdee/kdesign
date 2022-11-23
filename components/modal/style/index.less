@@ -58,6 +58,7 @@
       padding: @modal-header-sizing-padding-vertical @modal-header-sizing-padding-horizontal;
       align-items: center;
       height: @modal-header-sizing-height;
+      flex-shrink: 0;
       .@{modal-prefix-cls}-title-container {
         display: flex;
         justify-content: center;
@@ -113,6 +114,7 @@
       align-items: center;
       font-size: @modal-footer-font-size;
       color: @modal-footer-font-color;
+      flex-shrink: 0;
     }
     // each(@modal-footer-type-set, {
     //   .@{modal-prefix-cls}-@{key}-footer {
