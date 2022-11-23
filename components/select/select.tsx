@@ -380,9 +380,8 @@ const InternalSelect: React.ForwardRefRenderFunction<ISelectProps<SelectValue>> 
   }
 
   // 多选模式下清除某一项
-  const handleRemove = (e: any) => {
+  const handleRemove = (e: any, tag: any) => {
     if (disabled) return
-    const tag = e.currentTarget.parentNode.getAttribute('data-tag')
     const { selectedVal, selectMulOpts } = multipleRef.current
     const idx = selectedVal.indexOf(tag)
     selectedVal.splice(idx, 1)
@@ -605,7 +604,7 @@ const InternalSelect: React.ForwardRefRenderFunction<ISelectProps<SelectValue>> 
                       size={size}
                       closable
                       disabled={disabled}
-                      onClose={handleRemove}
+                      onClose={(e) => handleRemove(e, value)}
                       data-tag={value}
                     >
                       {label}
