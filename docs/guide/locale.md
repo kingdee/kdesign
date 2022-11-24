@@ -12,7 +12,7 @@ kdesign 目前只提供了中文的语言包，后续将陆续提供其他语言
 import zhCN from '@kdcloudjs/kdesign/lib/locale/zh-CN.tsx';
 
 return (
-  <ConfigProvider locale={zhCN}>
+  <ConfigProvider locale={{ localeConfig: { localeData: zhCN } }}>
     <App />
   </ConfigProvider>
 );
