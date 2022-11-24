@@ -92,6 +92,7 @@ return <Table dataSource={dataSource} columns={columns} />
 | --- | --- | --- | --- | --- | --- |
 | sortable | 是否开启排序功能 | boolean \| (a,b)=>boolean | `false` | `true` `false`  | 1.0.0 |
 | filterable | 是否开启过滤功能 | boolean \| (filterValue) => (value) =>boolean | `false` | `true` `false`  | 1.0.0 |
+| resizeable | 是否开启表头拖拽功能 | boolean \| (a,b)=>boolean | `false` | `true` `false`  | 1.0.0 |
 <br/>
 
 
@@ -119,7 +120,7 @@ return <Table dataSource={dataSource} columns={columns} />
 - column.getSpanRect 返回一个 SpanRect 的对象来表示对应单元所处的合并后的位置。
 - SpanRect 的具体类型为 { left: number, right: number, top: number, bottom: number }
   - 注意其中 left/top 是 inclusive 的，right/bottom 是 exclusive 的。
-  
+
 不开启虚拟滚动时，单元格合并可以通过 column.getCellProps(...) 返回 colSpan / rowSpan 进行实现。
 
 #### 预估行高
@@ -219,7 +220,7 @@ SortHeaderCellProps {
 ```
 <br/>
 
-### rowDetail 
+### rowDetail
 详情行功能
 
 | 属性 | 说明 | 类型 | 默认值 | 可选值 | 版本 |
@@ -270,7 +271,7 @@ interface ColumnDragOptions { onColumnDragStopped?: (columnMoved: boolean, colum
 属性`columnResize`为`true`或设置`ColumnResizeOptions`时表头右侧会显示拖拽线，按住可以手动调整列宽的大小
 
 ```ts
-interface ColumnResizeOptions { 
+interface ColumnResizeOptions {
     /** 列宽受控模式，此处优先级高于列定义的宽度 */
     columnSize?: ColumnSize;
     /** 列的最小宽度，默认为 60 */
