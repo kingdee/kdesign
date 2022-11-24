@@ -27,7 +27,7 @@ function Demo() {
         <Radio.Button value="small">Small</Radio.Button>
       </Radio.Group>
       <br />
-      <Select mode="multiple" placeholder="请选择" borderType="bordered" size={size} style={style}>
+      <Select mode="multiple" placeholder="请选择" borderType="bordered" size={size} style={style} optionFilterProp="children">
         <Option value="apple">苹果</Option>
         <Option value="lemon">柠檬</Option>
         <Option value="watermelon">西瓜</Option>
@@ -35,7 +35,7 @@ function Demo() {
       </Select>
       <br />
       <br />
-      <Select borderType="bordered" placeholder="请输入名称" size={size} style={style}>
+      <Select borderType="bordered" placeholder="请输入名称" size={size} style={style} optionFilterProp="children">
         <Option value="apple">苹果</Option>
         <Option value="lemon">柠檬</Option>
         <Option value="watermelon">西瓜</Option>
