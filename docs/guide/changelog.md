@@ -4,6 +4,19 @@ title: 更新日志
 hiddenAnchor: true
 ---
 
+## [1.6.16](https://github.com/kdcloudone/kdesign/compare/v1.6.15...v1.6.16)
+`2022-11-24`
+* date-picker
+  * 修复allowClear显示错误
+* modal
+  * 修复弹窗内容过高时导致头部跟尾部高度被压缩问题
+* select
+  * 修复Option的value设置为number类型，删除tag异常的问题
+  * demo调整
+* tag
+  * 修复Option的value设置为number类型，删除tag异常的问题
+* 更新国际化文档
+
 ## [1.6.15](https://github.com/kdcloudone/kdesign/compare/v1.6.14...v1.6.15)
 `2022-11-17`
 * button

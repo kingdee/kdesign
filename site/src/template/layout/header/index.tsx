@@ -81,7 +81,7 @@ const Header = (props: NavProps) => {
             <Nav list={navList} pathname={pathname} />
             <div className="header-search">
               <DocsSearch appId={appIdQS} indexName={indexNameQS} apiKey={apiKeyQS} />
-              <div className="header-version">v 1.6.15</div>
+              <div className="header-version">v 1.6.16</div>
               <a
                 href="https://github.com/kdcloudone/kdesign"
                 rel="noreferrer"
