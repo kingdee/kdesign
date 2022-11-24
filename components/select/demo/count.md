@@ -17,7 +17,7 @@ function Demo() {
   }
   return (
     <>
-      <Select mode="multiple" borderType="bordered" style={style} maxTagCount={3}>
+      <Select mode="multiple" borderType="bordered" style={style} maxTagCount={3} optionFilterProp="children">
         <Option value="apple">苹果</Option>
         <Option value="orange">橘子</Option>
         <Option value="grape">葡萄</Option>
