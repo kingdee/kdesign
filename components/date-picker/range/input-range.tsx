@@ -177,7 +177,7 @@ function InputDate(props: InputRangeProps, ref: React.RefObject<HTMLDivElement>)
   }
 
   const getSuffixNode = () => {
-    if (isMouseEnter && (startHoverValue || endHoverValue || startText || endText)) {
+    if (isMouseEnter && (startHoverValue || endHoverValue || startText || endText) && allowClear) {
       return clearNode
     }
 
