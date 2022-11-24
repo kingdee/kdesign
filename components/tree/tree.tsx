@@ -168,8 +168,13 @@ const InternalTree = React.forwardRef((props: TreeProps, ref: any): React.Functi
   const [dragOverNodeKey, setDragOverNodeKey] = React.useState<any>(null)
   const [loadedKeys, setLoadedKeys] = React.useState<Set<string>>(new Set())
   const [loadingKeys, setLoadingKeys] = React.useState<Set<string>>(new Set())
+  const [searchExpandedKeys, setSearchExpandedKeys] = React.useState<Array<string>>([])
 
   const isSearching = React.useMemo(() => typeof filterTreeNode === 'function' && filterValue, [filterValue])
+
+  useEffect(() => {
+    setSearchExpandedKeys([])
+  }, [filterValue])
 
   const [expandedKeys, setExpandedKeys] = useExpand(
     flattenAllData,
@@ -183,6 +188,7 @@ const InternalTree = React.forwardRef((props: TreeProps, ref: any): React.Functi
     filterTreeNode,
     isSearching,
     keysData,
+    searchExpandedKeys,
   )
   const { spreadAttrData, posData } = React.useMemo(() => {
     return getSpreadAttrData(flattenAllData, expandedKeys)
@@ -263,6 +269,10 @@ const InternalTree = React.forwardRef((props: TreeProps, ref: any): React.Functi
     (key: string, expanded: boolean, node: any) => {
       const newExpandedKeys = expanded ? addKeys(expandedKeys, [key]) : delKey(expandedKeys, [key])
       onExpand && onExpand(newExpandedKeys, { node, expanded: expanded })
+      if (isSearching) {
+        const newSearchExpandedKeys = expanded ? addKeys(searchExpandedKeys, [key]) : delKey(searchExpandedKeys, [key])
+        setSearchExpandedKeys(newSearchExpandedKeys)
+      }
       setScrollKey('')
       setIsInit(false)
       if (expanded && loadData) {
