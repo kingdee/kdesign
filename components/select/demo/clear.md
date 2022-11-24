@@ -26,7 +26,7 @@ function Demo() {
       </Select>
       <br />
       <br />
-      <Select allowClear mode="multiple" borderType="bordered" style={style}>
+      <Select allowClear mode="multiple" borderType="bordered" style={style} optionFilterProp="children">
         <Option value="apple">
           <span style={{ color: '#f00' }}>苹果</span>
         </Option>
