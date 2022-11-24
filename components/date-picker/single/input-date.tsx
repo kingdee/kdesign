@@ -75,7 +75,7 @@ function InputDate(props: InputDateProps, ref: React.RefObject<HTMLDivElement>) 
   const placeholder = getPlaceholder(picker, locale, propsPlaceholder)
 
   const getSuffixNode = () => {
-    if (isMouseEnter && (hoverValue || text)) {
+    if (isMouseEnter && (hoverValue || text) && allowClear) {
       return null
     }
 
