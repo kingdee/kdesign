@@ -2,10 +2,13 @@
 @import './mixin.less';
 
 @inputNumber-prefix-cls: ~'@{kd-prefix}-inputNumber';
+@inputWrapper-prefix-cls: ~'@{kd-prefix}-wrapper';
 .@{inputNumber-prefix-cls} {
   width: 100px;
   height: @stepper-input-middle-sizing-height;
 
+  --kd-c-input-wrapper-padding-left: 9px;
+  --kd-c-input-padding-left: 0;
   input {
     text-align: center;
     color: @stepper-input-color;
