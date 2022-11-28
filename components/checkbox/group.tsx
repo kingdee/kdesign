@@ -5,9 +5,7 @@ import ConfigContext from '../config-provider/ConfigContext'
 import { getCompProps } from '../_utils'
 import { tuple } from '../_utils/type'
 import { isArrayValueRepeat } from '../_utils/arrayUtil'
-import isArray from 'lodash/isArray'
 import Checkbox from './checkbox'
-import isBoolean from 'lodash/isBoolean'
 import devWarning from '../_utils/devwarning'
 
 export const CheckboxTypes = tuple('default', 'square')
@@ -16,10 +14,22 @@ export type CheckboxType = typeof CheckboxTypes[number]
 export const CheckboxSizes = tuple('large', 'middle', 'small')
 export type CheckboxSize = typeof CheckboxSizes[number]
 
+export type CheckboxValueType = string | number
+export interface CheckboxGroupContext {
+  name?: string
+  isControlled?: boolean
+  groupValue?: Array<CheckboxValueType>
+  checkboxType?: CheckboxType
+  disabled?: boolean
+  onCheckboxGroupChange?: (checkedValue: CheckboxValueType, isChecked: boolean) => void
+}
+
+export const GroupContext = React.createContext<CheckboxGroupContext | null>(null)
+
 export interface CheckboxGroupProps {
   name?: string // CheckboxGroup下所有 input[type="checkbox"] 的 name 属性
   size?: CheckboxSize // 大小，只对按钮样式生效
-  value?: string[] // 用于设置当前选中的值
+  value?: Array<CheckboxValueType> // 用于设置当前选中的值
   checkboxType?: CheckboxType // 多选框类型（默认类型/标签类型）
   disabled?: boolean // 设置整个多选组不可用
   defaultValue?: string[] | string // 默认选中的值
@@ -48,47 +58,55 @@ const CheckboxGroup = React.forwardRef<HTMLDivElement, CheckboxGroupProps>((prop
     value,
     name,
   } = CheckboxProps
-  const [groupValue, setGroupValue] = React.useState(defaultValue)
+
+  const initData =
+    value || (Array.isArray(defaultValue) ? defaultValue : typeof defaultValue !== 'undefined' ? [defaultValue] : [])
+
+  const [groupValue, setGroupValue] = React.useState([])
+
+  const innerValue = React.useRef(initData)
+
   React.useEffect(() => {
-    if (value) {
-      setGroupValue(value)
-    }
-  }, [value])
+    innerValue.current =
+      value || (Array.isArray(defaultValue) ? defaultValue : typeof defaultValue !== 'undefined' ? [defaultValue] : [])
+    setGroupValue(innerValue.current)
+  }, [value, defaultValue])
+
+  const isControlled = typeof value !== 'undefined'
+
   const checkboxGroupPrefixCls = getPrefixCls!(prefixCls, 'checkbox-group', customPrefixcls) // 按钮样式前缀
 
-  devWarning(isArrayValueRepeat(value), 'checkboxGroup', `variable value's value should be unique `)
+  devWarning(isArrayValueRepeat(groupValue), 'checkboxGroup', `variable value's value should be unique `)
 
-  const getDisabled = (optionDisabled: boolean) => {
-    return isBoolean(optionDisabled) ? optionDisabled : disabled
+  const getReduceItem = (targetValue: CheckboxValueType) => {
+    return innerValue.current.filter((d: CheckboxValueType) => d !== targetValue)
+  }
+  const getAddItem = (targetValue: CheckboxValueType) => {
+    return innerValue.current.indexOf(targetValue) > -1 ? innerValue.current : innerValue.current.concat(targetValue)
   }
 
-  const getChecked = (props: any, value: any[]) => {
-    return isArray(value)
-      ? value.includes(props?.value || props) || value.includes(String(props?.value || props))
-      : String(value) === String(props?.value || props)
-  }
-
-  const getReduceItem = (targetValue: any) => {
-    const index = value.indexOf(targetValue)
-    value.splice(index, 1)
-    return value
-  }
-  const getAddItem = (targetValue: any) => {
-    return value.concat(targetValue)
-  }
-
-  const onCheckboxChange = (ev: React.ChangeEvent<HTMLInputElement>, item: any) => {
-    const val = ev.target.value
-    const checked = ev.target.checked
+  const onCheckboxChange = (checkedValue: CheckboxValueType, isChecked: boolean) => {
     let newVal: Array<any> = []
-    if (checked) {
-      newVal = getAddItem(val)
+    if (isChecked) {
+      newVal = getAddItem(checkedValue)
     } else {
-      newVal = getReduceItem(val)
+      newVal = getReduceItem(checkedValue)
     }
-    setGroupValue(newVal)
+    if (!isControlled) {
+      innerValue.current = newVal
+    }
     onChange && onChange(newVal)
-    item.props?.onChange && item.props.onChange(ev)
+  }
+
+  const context = {
+    groupValue: groupValue,
+    disabled: disabled,
+    name: name,
+    isControlled,
+    checkboxType: checkboxType,
+    onCheckboxGroupChange: (checkedValue: CheckboxValueType, isChecked: boolean) => {
+      onCheckboxChange(checkedValue, isChecked)
+    },
   }
 
   const renderByOptions = (): React.ReactNode => {
@@ -96,51 +114,25 @@ const CheckboxGroup = React.forwardRef<HTMLDivElement, CheckboxGroupProps>((prop
       return (
         <Checkbox
           size={size}
-          disabled={getDisabled(option.disabled)}
+          disabled={option.disabled}
           key={index}
           name={name}
-          defaultChecked={getChecked(option, defaultValue)}
-          checked={getChecked(option, groupValue)}
+          defaultChecked={option.defaultValue}
+          checked={option.checked}
           checkboxType={checkboxType}
           value={option?.value || option}
-          onChange={(e: React.ChangeEvent<HTMLInputElement>) => onCheckboxChange(e, option)}
+          onChange={option.onChange}
         >
           {option.label || option}
         </Checkbox>
       )
     })
   }
-
-  const renderChildren = (): React.ReactNode => {
-    return React.Children.map(children, (item: any) => {
-      let groupProps = {}
-      groupProps = {
-        name,
-        size,
-        onChange: (e: React.ChangeEvent<HTMLInputElement>) => onCheckboxChange(e, item),
-        checkboxType: checkboxType || item.props?.checkboxType,
-        disabled: isBoolean(disabled) ? disabled : item.props?.disabled,
-        checked: getChecked(item.props, groupValue),
-        defaultChecked: getChecked(item.props, defaultValue),
-      }
-
-      return React.cloneElement(item, {
-        ...item.props,
-        ...groupProps,
-      })
-    })
-  }
-
-  const renderCheckbox = (): React.ReactNode => {
-    if (isArray(options)) {
-      return renderByOptions()
-    } else if (children) {
-      return renderChildren()
-    }
-  }
   return (
     <ul className={classnames(checkboxGroupPrefixCls, className)} style={style} ref={ref as any}>
-      {renderCheckbox()}
+      <GroupContext.Provider value={context}>
+        {options && options.length > 0 ? renderByOptions() : children}
+      </GroupContext.Provider>
     </ul>
   )
 })

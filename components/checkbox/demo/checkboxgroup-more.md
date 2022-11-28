@@ -21,30 +21,22 @@ const checkboxStyle2 = {
 class Demo extends React.Component {
   constructor() {
     super()
-    this.state = { value1: [], value2: [] }
     this.onChange1 = this.onChange1.bind(this)
     this.onChange2 = this.onChange2.bind(this)
   }
 
   onChange1(value) {
     console.log('checkbox1 checked', value)
-    this.setState({
-      value1: value,
-    })
   }
 
   onChange2(value) {
     console.log('checkbox2 checked', value)
-    this.setState({
-      value2: value,
-    })
   }
 
   render() {
-    const { value1, value2 } = this.state
     return (
       <div style={{ display: 'flex', width: 300 }}>
-        <Checkbox.Group onChange={this.onChange1} value={value1} checkboxType={'default'}>
+        <Checkbox.Group onChange={this.onChange1}  checkboxType={'default'}>
           <Checkbox style={checkboxStyle1} value={1}>
             Option A
           </Checkbox>
@@ -56,11 +48,10 @@ class Demo extends React.Component {
           </Checkbox>
           <Checkbox style={checkboxStyle1} value={4}>
             More...
-            {value1.includes(String(4)) ? <Input style={{ width: 100, marginLeft: 10, display: 'none' }} /> : null}
           </Checkbox>
         </Checkbox.Group>
         <br />
-        <Checkbox.Group onChange={this.onChange2} value={value2} checkboxType={'square'}>
+        <Checkbox.Group onChange={this.onChange2} checkboxType={'square'}>
           <Checkbox style={checkboxStyle2} value={1}>
             Option A
           </Checkbox>
@@ -72,7 +63,6 @@ class Demo extends React.Component {
           </Checkbox>
           <Checkbox style={checkboxStyle2} value={4}>
             More...
-            {value2.includes(String(4)) ? <Input style={{ width: 100, marginLeft: 10, display: 'none' }} /> : null}
           </Checkbox>
         </Checkbox.Group>
       </div>

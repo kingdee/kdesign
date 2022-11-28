@@ -13,7 +13,7 @@ import { Checkbox, Input } from '@kdcloudjs/kdesign'
 class Demo extends React.Component {
   constructor() {
     super()
-    this.state = { value: ['1'] }
+    this.state = { value: [1] }
     this.onChange = this.onChange.bind(this)
     this.onChangeAll = this.onChangeAll.bind(this)
     this.getChecked = this.getChecked.bind(this)
@@ -31,7 +31,7 @@ class Demo extends React.Component {
     console.log('onChangeAll checked', e.target.checked)
     let newValue
     if (e.target.checked) {
-      newValue = ['1', '2', '3', '4']
+      newValue = [1, 2, 3, 4]
     } else {
       newValue = []
     }
