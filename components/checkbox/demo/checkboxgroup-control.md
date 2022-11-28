@@ -1,30 +1,42 @@
 ---
 order: 5
-title: Checkbox.Group 组合 - 内嵌Checkbox
+title: Checkbox.Group 组合 - 受控
 ---
-
-内嵌 `Checkbox`
+受控组件
 
 ```jsx
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { Checkbox, Input } from '@kdcloudjs/kdesign'
+import { Checkbox, Input,Button } from '@kdcloudjs/kdesign'
 
 class Demo extends React.Component {
   constructor() {
     super()
+    this.state = { value: [] }
     this.onChange = this.onChange.bind(this)
+    this.onClick = this.onClick.bind(this)
   }
 
   onChange(value) {
     console.log('checkboxgroup checked', value)
   }
 
+  onClick() {
+     console.log('checkboxgroup checked', [1, 2])
+     this.setState({
+      value: [1,2],
+    })
+  }
+
   render() {
+    const { value } = this.state
     return (
       <div>
+        <Button type="primary" onClick={this.onClick}>点击选择Option A&B</Button>
         <br />
-        <Checkbox.Group onChange={this.onChange}  checkboxType={'default'}>
+        <br />
+        <Checkbox.Group onChange={this.onChange} value={value} checkboxType={'default'}>
+          <div>
           <Checkbox value={1}>
             Option A
           </Checkbox>
@@ -36,7 +48,9 @@ class Demo extends React.Component {
           </Checkbox>
           <Checkbox value={4}>
             More...
+            {value.includes(String(4)) ? <Input style={{ width: 100, marginLeft: 10, display: 'none' }} /> : null}
           </Checkbox>
+          </div>
         </Checkbox.Group>
       </div>
     )

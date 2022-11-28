@@ -2,6 +2,7 @@ import React from 'react'
 import { mount } from 'enzyme'
 import mountTest from '../../../tests/shared/mountTest'
 import Checkbox, { CheckboxSizes, CheckboxTypes } from '../index'
+import type { CheckboxSize, CheckboxType } from '../index'
 const defaultCheckboxProps = {
   defaultChecked: false,
   // checkboxType: 'default',
@@ -39,7 +40,7 @@ describe('Checkbox', () => {
   })
 
   it('test CheckboxTypes', () => {
-    CheckboxTypes.forEach((type) => {
+    CheckboxTypes.forEach((type: CheckboxType) => {
       const wrapper = mount(
         <Checkbox checkboxType={type} {...defaultCheckboxProps}>
           Text
@@ -50,7 +51,7 @@ describe('Checkbox', () => {
   })
 
   it('test CheckboxSizes', () => {
-    CheckboxSizes.forEach((size) => {
+    CheckboxSizes.forEach((size: CheckboxSize) => {
       const wrapper = mount(
         <Checkbox size={size} {...defaultCheckboxProps} checkboxType="default">
           Text
@@ -120,7 +121,7 @@ describe('Checkbox', () => {
   })
 
   it('test checkbox group setting by children ', () => {
-    const value = ['1']
+    const value = [1]
     const wrapper = mount(
       <Checkbox.Group
         {...defaultCheckboxGroupProps}
