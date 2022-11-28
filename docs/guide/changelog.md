@@ -4,6 +4,12 @@ title: 更新日志
 hiddenAnchor: true
 ---
 
+## [1.6.17](https://github.com/kdcloudone/kdesign/compare/v1.6.16...v1.6.17)
+`2022-11-28`
+* checkbox
+  * * stepper
+  * * popperRef所在的区域mouseleave被禁止了后无法消失
+
 ## [1.6.16](https://github.com/kdcloudone/kdesign/compare/v1.6.15...v1.6.16)
 `2022-11-24`
 * date-picker
