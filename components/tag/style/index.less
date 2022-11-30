@@ -7,6 +7,12 @@
 @colors: @tag-process-color, @tag-success-color, @tag-warning-color, @tag-error-color, @tag-end-color, @tag-expired-color;
 
 .@{tag-prefix-cls} {
+  &-ellipsis {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
   &-size-small {
     .tag-size(@tag-small-font-size, @tag-small-height, @tag-small-padding-horizontal);
   }
@@ -89,6 +95,9 @@
   // 图标设置外边距
   &-text {
     margin-left: 6px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   &-closable-disabled {

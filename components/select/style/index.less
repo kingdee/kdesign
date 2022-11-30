@@ -158,10 +158,15 @@
       min-width: 75px;
 
       &-content {
-        display: flex;
-        align-items: center;
-        flex: auto;
         .over();
+
+        .@{kd-prefix}-checkbox {
+          width: 100%;
+
+          .@{kd-prefix}-checkbox-children {
+            display: inline-block;
+          }
+        }
       }
 
       &:hover:not(&-selected):not(&-disabled) {
@@ -208,7 +213,7 @@
     justify-content: center;
     margin-left: 8px;
   }
-  &-single {
+  .@{select-prefix-cls}-single {
     .@{select-prefix-cls}-selection {
       &-search {
         position: absolute;
@@ -223,6 +228,10 @@
           height: 100%;
           width: 100%;
         }
+      }
+      &-item {
+        display: inline-block;
+        .over();
       }
     }
     &-focused {
@@ -270,14 +279,14 @@
     cursor: default;
     user-select: none;
     &-small {
-      height: 18px;
+      height: 20px;
       line-height: 18px;
       font-size: 12px;
     }
 
     &-middle {
       font-size: 12px;
-      height: 18px;
+      height: 20px;
       line-height: 18px;
     }
 
@@ -320,6 +329,9 @@
   // 多选
   &-multiple {
     .@{select-prefix-cls}-selection {
+      &-tag {
+        max-width: calc(100% - 5px);
+      }
       &-search {
         position: relative;
         max-width: 100%;
