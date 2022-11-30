@@ -80,7 +80,7 @@ const InteranalTag = (props: ITagProps, ref: unknown): FunctionComponentElement<
     if (typeof child === 'string' && icon) {
       return <span className={`${tagPrefixCls}-text`}>{child}</span>
     }
-    return child
+    return <span className={`${tagPrefixCls}-ellipsis`}>{child}</span>
   }
 
   // 预设的颜色值

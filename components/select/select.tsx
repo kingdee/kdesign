@@ -532,7 +532,7 @@ const InternalSelect: React.ForwardRefRenderFunction<ISelectProps<SelectValue>> 
   // 处理多选tag
   const handleMaxTagHolder = useCallback(() => {
     const { maxTagPlaceholder } = selectProps
-    const TagStyle = { margin: '2px 8px 2px 0' }
+    const TagStyle = { margin: '2px 8px 2px 0', maxWidth: '100%' }
     if (typeof maxTagPlaceholder === 'function') {
       return (
         <Tag type="edit" style={TagStyle} size={size} disabled={disabled}>
@@ -588,7 +588,7 @@ const InternalSelect: React.ForwardRefRenderFunction<ISelectProps<SelectValue>> 
       [`${selectPrefixCls}-selection-item`]: true,
       [`${selectPrefixCls}-selection-item-${size}`]: size,
     })
-    const TagStyle = { margin: '2px 8px 2px 0' }
+    const TagStyle = { margin: '2px 8px 2px 0', maxWidth: '100%' }
     return (
       <div className={multipleCls} ref={selectionRef}>
         {Array.isArray(mulOptions) && (
@@ -597,7 +597,7 @@ const InternalSelect: React.ForwardRefRenderFunction<ISelectProps<SelectValue>> 
               const { label, value } = item
               return (
                 (!maxTagCount || index <= maxTagCount - 1) && (
-                  <span key={value}>
+                  <span key={value} className={classNames(`${selectPrefixCls}-selection-tag`)}>
                     <Tag
                       type="edit"
                       style={TagStyle}

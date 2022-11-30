@@ -182,7 +182,10 @@ const compDefaultProps = {
     disabled: false,
     popupOffset: [0, 0],
   },
-  Message: {},
+  Message: {
+    closable: false,
+    duration: 3000,
+  },
   Notice: {},
   Notification: {},
   Pagination: {
