@@ -2,11 +2,13 @@
 title: 拖拽列排序
 order: 80
 ---
-属性[columnDrag](#columnDrag)为true或ColumnDragOptions时可以拖动表头来调整列的位置
+属性[columnDrag](#columnDrag)配置时可以开启拖动表头来调整列的位置，目前支持受控的方式设置新的列顺序，否则顺序不会改变。
 
 ```jsx
 () => {
   import { Table } from '@kdcloudjs/kdesign'
+  import { useState } from 'react'
+
   const dataSource = [
     {id: "1", "No":1,"order":"AP-202009-00001","from":"陕西环宇科技","to":"深圳环球科技","amount":"26,800.00","balance":"5,200.00"},
     {id: "2", "No":2,"order":"AP-202009-00001","from":"陕西环宇科技","to":"深圳环球科技","amount":"236,800.00","balance":"1,500.00"},
@@ -15,7 +17,7 @@ order: 80
     {id: "5", "No":5,"order":"AP-202009-00004","from":"陕西环宇科技","to":"深圳环球科技","amount":"236,800.00","balance":"1,500.00"}
   ]
 
-  const columns = [
+  const _columns = [
     { code: 'No', name: '序号', width: 60, align: 'center' },
     { code: 'order', name: '单据号', width: 200, },
     { code: 'from', name: '来户', width: 200,  },
@@ -23,24 +25,24 @@ order: 80
     { code: 'amount', name: '应付金额', width: 100, align: 'right',  },
     { code: 'balance', name: '应收余额', width: 100, align: 'right',  }
   ]
-  function SortIcon ({ size = 32, style, className, order }) {
-    return (
-      <svg
-        style={style}
-        className={className}
-        focusable="false"
-        preserveAspectRatio="xMidYMid meet"
-        width={size}
-        height={size}
-        viewBox="0 0 32 32"
-        aria-hidden="true"
-      >
-        <path fill={order === 'asc' ? '#23A3FF' : '#bfbfbf'} transform="translate(0, 6)" d="M8 8L16 0 24 8z" />
-        <path fill={order === 'desc' ? '#23A3FF' : '#bfbfbf'} transform="translate(0, -6)" d="M24 24L16 32 8 24z " />
-      </svg>
-    )
+
+  const [columns, setColumns] = useState(_columns)
+
+  const handleColumnDragStopped = (columnMoved, nextColumns) => {
+     const columnSeq = nextColumns.reduce((result, col, colIndex) => {
+        result[col.code] = colIndex
+        return result
+     }, {})
+
+     setColumns(
+       _columns.reduce((result, col) => {
+          result[columnSeq[col.code]] = { ...col }
+          return result
+       }, [])
+     )
   }
+
  
-  return <Table dataSource={dataSource} columns={columns} columnDrag={true} />
+  return <Table dataSource={dataSource} columns={columns} columnDrag={{ onColumnDragStopped: handleColumnDragStopped }} />
 }
 ```
