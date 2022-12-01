@@ -27,7 +27,7 @@ export interface ArgsProps extends Partial<NotificationProps> {
 
 const defaultStyle = {}
 const defaultDuration = 3000
-const defaultClosable = true
+const defaultClosable = false
 const defaultOffset = '40px'
 const defaultSuffixCls = 'message'
 const defaultPlacement = 'message'
