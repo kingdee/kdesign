@@ -77,6 +77,7 @@ const InteranalTag = (props: ITagProps, ref: unknown): FunctionComponentElement<
 
   // 对children进行进一步处理 当标签包含图标时 文本内容需要用标签包裹设置外边距
   const handleChild = function (child: React.ReactChild) {
+    if (!child) return null
     if (typeof child === 'string' && icon) {
       return <span className={`${tagPrefixCls}-text`}>{child}</span>
     }

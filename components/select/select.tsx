@@ -532,16 +532,15 @@ const InternalSelect: React.ForwardRefRenderFunction<ISelectProps<SelectValue>> 
   // 处理多选tag
   const handleMaxTagHolder = useCallback(() => {
     const { maxTagPlaceholder } = selectProps
-    const TagStyle = { margin: '2px 8px 2px 0', maxWidth: '100%' }
     if (typeof maxTagPlaceholder === 'function') {
       return (
-        <Tag type="edit" style={TagStyle} size={size} disabled={disabled}>
+        <Tag type="edit" size={size} disabled={disabled}>
           {maxTagPlaceholder(mulOptions)}
         </Tag>
       )
     } else {
       return (
-        <Tag type="edit" style={TagStyle} size={size} disabled={disabled}>
+        <Tag type="edit" size={size} disabled={disabled}>
           {maxTagPlaceholder}
         </Tag>
       )
