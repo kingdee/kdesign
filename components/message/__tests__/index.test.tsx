@@ -31,6 +31,7 @@ describe('Message', () => {
         onClose,
         content: 'test destory',
         duration: 0,
+        closable: true,
       })
     })
     expect(document.querySelectorAll('.kd-message-content-close').length).toBe(1)

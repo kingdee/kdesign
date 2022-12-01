@@ -10,7 +10,6 @@
   box-sizing: border-box;
   background-color: transparent;
   cursor: pointer;
-  margin: 0 8px 2px 0;
   vertical-align: middle;
 
   &-selector:hover {
@@ -331,6 +330,11 @@
     .@{select-prefix-cls}-selection {
       &-tag {
         max-width: calc(100% - 5px);
+
+        .@{kd-prefix}-tag {
+          margin: 2px 8px 2px 0;
+          max-width: 100%;
+        }
       }
       &-search {
         position: relative;

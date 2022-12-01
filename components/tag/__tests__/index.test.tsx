@@ -53,8 +53,8 @@ describe('Tag', () => {
           {null}
           {undefined}
         </Tag>,
-      ),
-    ).toBeEmptyRender()
+      ).find('.kd-tag-ellipsis').length,
+    ).toBe(1)
   })
 
   // 5. displayName
