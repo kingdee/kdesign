@@ -109,7 +109,7 @@ const InternalSelect: React.ForwardRefRenderFunction<ISelectProps<SelectValue>> 
   // realchildren更新时数据处理---待解决
   useEffect(() => {
     if (isMultiple) {
-      multipleRef.current.selectedVal = initValue || []
+      multipleRef.current.selectedVal = Array.isArray(initValue) ? [...initValue] : initValue || []
       if (Array.isArray(initValue)) {
         if (realChildren?.length) {
           const arr: any = []
