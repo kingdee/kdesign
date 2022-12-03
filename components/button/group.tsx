@@ -3,7 +3,7 @@ import classNames from 'classnames'
 import ConfigContext from '../config-provider/ConfigContext'
 import { getCompProps } from '../_utils'
 import { Button, Icon } from '../index'
-import usePopper from '../_utils/usePopper'
+import usePopper, { PopperProps } from '../_utils/usePopper'
 import { toArray } from '../_utils/react-children'
 import { tuple } from '../_utils/type'
 import { ButtonType, ButtonSize } from './button'
@@ -15,7 +15,7 @@ export interface OverlayType {
   label?: React.ReactNode
 }
 
-export interface ButtonGroupProps {
+export interface ButtonGroupProps extends PopperProps {
   buttonType?: ButtonType
   children?: ReactNode
   className?: string
