@@ -27,6 +27,8 @@ subtitle: 按钮
 | onClick | 点击按钮时的回调 | (event) => void | `-` | `-` | 1.0.0 |
 | htmlType | 设置 button 原生的 type 值 | string | `-` | `submit` `button` `reset` | 1.0.0 |
 
+更多属性请参考 [Tooltip](/components/tooltip/#API)。
+
 ### Button.Dropdown
 
 | 属性 | 说明 | 类型 | 默认值 | 可选值 | 版本 |
