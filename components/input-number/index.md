@@ -24,6 +24,7 @@ subtitle: 数值输入框
 | mustInPrecisionScope | 输入限制在精度范围 | boolean | `true` | `true`\|`false` | 1.0.0 |
 | mustInScope | 输入内容是否必须在设定的数字范围内(不在范围内则不允许输入) | boolean | `false` | `true`\|`false` | 1.0.0 |
 | showDecimalTailZero | 是否显示小数尾部 0 | boolean | `false` | `true`\|`false` | 1.0.0 |
+| size | 控件大小 | string | `middle` | `small` `middle` `large` | 1.0.0 |
 | stepOption | 步进器模式配置，设置后开启步进功能，可配置`type`(步进器类型)，`step`(步长)，`stepBtnClassName`(步进按钮样式)) | StepOption { type?: 'embed' \| 'base', step?: number, stepBtnClassName?: string } | `-` | `-` | 1.0.0 |
 | symbol | 货币符号 | string | `-` | `-` | 1.0.0 |
 | zeroShow | 为零是否显示 | boolean | `false` | `true` `false` | 1.0.0 |

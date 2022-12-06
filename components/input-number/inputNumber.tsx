@@ -14,6 +14,7 @@ import { serialization } from '../_utils/numberUtil'
 import { formatEditNumber, formatNumber, FormatParam } from '../_utils/formatUtil'
 import devWarning from '../_utils/devwarning'
 import Big from 'big.js'
+import classNames from 'classnames'
 
 export type StepType = 'embed' | 'base'
 
@@ -69,6 +70,7 @@ const InternalInputNumber = (props: InputNumberProps, ref: unknown): FunctionCom
     prefix,
     suffix,
     formatter,
+    className,
     ...others
   } = inputNumberProps
   const initVal = value === undefined ? defaultValue : value
@@ -312,7 +314,7 @@ const InternalInputNumber = (props: InputNumberProps, ref: unknown): FunctionCom
       onFocus={handleFocus}
       onBlur={handleBlur}
       onKeyDown={handleKeyDown}
-      className={inputPrefixCls}
+      className={classNames(inputPrefixCls, className)}
     />
   )
 }
