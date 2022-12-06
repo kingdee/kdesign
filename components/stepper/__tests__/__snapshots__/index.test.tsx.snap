@@ -2,7 +2,7 @@
 
 exports[`Stepper renders correctly 1`] = `
 <span
-  class="kd-input-wrapper kd-input-wrapper-size-middle kd-inputNumber"
+  class="kd-input-wrapper kd-input-wrapper-size-middle kd-inputNumber kd-inputNumber-stepper"
 >
   <span
     class="kd-input-prefix"
@@ -38,7 +38,7 @@ exports[`Stepper renders correctly 1`] = `
 
 exports[`Stepper renders correctly 2`] = `
 <span
-  class="kd-input-wrapper kd-input-wrapper-size-middle kd-inputNumber"
+  class="kd-input-wrapper kd-input-wrapper-size-middle kd-inputNumber kd-inputNumber-stepper"
 >
   <input
     class="kd-input kd-input-size-middle"
@@ -73,7 +73,7 @@ exports[`Stepper renders correctly 2`] = `
 
 exports[`Stepper renders correctly 3`] = `
 <span
-  class="kd-input-wrapper kd-input-wrapper-size-middle kd-inputNumber"
+  class="kd-input-wrapper kd-input-wrapper-size-middle kd-inputNumber kd-inputNumber-stepper"
 >
   <span
     class="kd-input-prefix"
