@@ -212,6 +212,7 @@ const InternalStepper = (props: StepperProps, ref: unknown): FunctionComponentEl
     <InputNumber
       {...omit(inputNumberProps, ['step', 'type', 'stepBtnClassName', 'value', 'defaultValue'])}
       ref={inputNumberRef}
+      className={`${inputPrefixCls}-stepper`}
       stepperrref={stepperrref}
       value={value}
       prefix={getStepPrefix()}
