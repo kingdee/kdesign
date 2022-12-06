@@ -187,13 +187,7 @@
   }
 
   &.hidden {
-    opacity: 0;
-    visibility: hidden;
-    display: none;
-    animation: kdZoomTopLeftOut calc(@menu-motion-duration - 0.1s) cubic-bezier(0, .4, .4, 1) forwards;
-    transition: opacity, visibility;
-    transition-duration: calc(@menu-motion-duration - 0.1s);
-    transition-timing-function: cubic-bezier(0.4, 0, 0.6, 1);
+    .menu-hidden()
   }
 
   .@{submenu-prefix-cls} {
@@ -223,12 +217,7 @@
       }
 
       &-hide {
-        opacity: 0;
-        visibility: hidden;
-        animation: kdZoomTopLeftOut calc(@menu-motion-duration - 0.1s) cubic-bezier(0, .4, .4, 1) forwards;
-        transition: opacity, visibility;
-        transition-duration: calc(@menu-motion-duration - 0.1s);
-        transition-timing-function: cubic-bezier(0.4, 0, 0.6, 1);
+        .menu-hidden()
       }
     }
   }
