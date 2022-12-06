@@ -330,8 +330,8 @@ const InternalSelect: React.ForwardRefRenderFunction<ISelectProps<SelectValue>> 
   // 多选模式下选中所有 与清除所有 (可以优化)
   const handleSelectAll = () => {
     let { selectedVal, selectMulOpts } = multipleRef.current
-    if (realChildren?.length !== selectedVal.length) {
-      realChildren.map((child: any) => {
+    if (filledOptions?.length !== selectedVal.length) {
+      filledOptions.map((child: any) => {
         const { value } = child.props || child
         if (!selectedVal.includes(value)) {
           selectedVal.push(value)
@@ -339,6 +339,7 @@ const InternalSelect: React.ForwardRefRenderFunction<ISelectProps<SelectValue>> 
         }
       })
       setMulOptions([...selectMulOpts])
+      setSearchValue('')
     } else {
       multipleRef.current.selectedVal = selectedVal = []
       multipleRef.current.selectMulOpts = selectMulOpts = []
@@ -467,10 +468,6 @@ const InternalSelect: React.ForwardRefRenderFunction<ISelectProps<SelectValue>> 
     return filledOptions?.length === 0 && <div className={emptyListCls}>{emptyContent}</div>
   }
 
-  // const isShowSearch = useCallback(() => {
-  //   return !showSearch ? false : !!searchValue
-  // }, [showSearch, searchValue])
-
   const isShowSearch = useMemo(() => {
     return isBoolean(showSearch) ? showSearch : isMultiple
   }, [isMultiple, showSearch])
@@ -496,8 +493,8 @@ const InternalSelect: React.ForwardRefRenderFunction<ISelectProps<SelectValue>> 
       height: '30px',
       background: 'none',
     }
-    const indeterminate = mulOptions.length > 0 && mulOptions.length < realChildren.length
-    const checked = mulOptions.length === realChildren.length
+    const indeterminate = mulOptions.length > 0 && mulOptions.length < filledOptions.length
+    const checked = mulOptions.length === filledOptions.length
     return (
       <>
         {
