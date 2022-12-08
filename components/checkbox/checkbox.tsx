@@ -134,7 +134,7 @@ const InternalCheckbox: React.ForwardRefRenderFunction<unknown, CheckboxProps> =
   const handleChange = useCallback(
     (e) => {
       onChange && onChange(e)
-      checkboxGroup?.onCheckboxGroupChange && checkboxGroup?.onCheckboxGroupChange(value, e.target.checked)
+      checkboxGroup?.onCheckboxGroupChange && checkboxGroup?.onCheckboxGroupChange(value, e.target.checked, e)
       if (!checkboxGroup?.isControlled) {
         setSelected(e.target.checked)
       }

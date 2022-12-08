@@ -21,7 +21,11 @@ export interface CheckboxGroupContext {
   groupValue?: Array<CheckboxValueType>
   checkboxType?: CheckboxType
   disabled?: boolean
-  onCheckboxGroupChange?: (checkedValue: CheckboxValueType, isChecked: boolean) => void
+  onCheckboxGroupChange?: (
+    checkedValue: CheckboxValueType,
+    isChecked: boolean,
+    e: React.ChangeEvent<HTMLInputElement>,
+  ) => void
 }
 
 export const GroupContext = React.createContext<CheckboxGroupContext | null>(null)
@@ -85,7 +89,11 @@ const CheckboxGroup = React.forwardRef<HTMLDivElement, CheckboxGroupProps>((prop
     return innerValue.current.indexOf(targetValue) > -1 ? innerValue.current : innerValue.current.concat(targetValue)
   }
 
-  const onCheckboxChange = (checkedValue: CheckboxValueType, isChecked: boolean) => {
+  const onCheckboxChange = (
+    checkedValue: CheckboxValueType,
+    isChecked: boolean,
+    e: React.ChangeEvent<HTMLInputElement>,
+  ) => {
     let newVal: Array<any> = []
     if (isChecked) {
       newVal = getAddItem(checkedValue)
@@ -95,7 +103,7 @@ const CheckboxGroup = React.forwardRef<HTMLDivElement, CheckboxGroupProps>((prop
     if (!isControlled) {
       innerValue.current = newVal
     }
-    onChange && onChange(newVal)
+    onChange && onChange(e, newVal)
   }
 
   const context = {
@@ -104,8 +112,12 @@ const CheckboxGroup = React.forwardRef<HTMLDivElement, CheckboxGroupProps>((prop
     name: name,
     isControlled,
     checkboxType: checkboxType,
-    onCheckboxGroupChange: (checkedValue: CheckboxValueType, isChecked: boolean) => {
-      onCheckboxChange(checkedValue, isChecked)
+    onCheckboxGroupChange: (
+      checkedValue: CheckboxValueType,
+      isChecked: boolean,
+      e: React.ChangeEvent<HTMLInputElement>,
+    ) => {
+      onCheckboxChange(checkedValue, isChecked, e)
     },
   }
 
