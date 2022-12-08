@@ -4,6 +4,33 @@ title: 更新日志
 hiddenAnchor: true
 ---
 
+## [1.6.21](https://github.com/kdcloudone/kdesign/compare/v1.6.20...v1.6.21)
+`2022-12-08`
+* checkbox
+  * group onchange 事件添加返回值checkedValue
+* menu
+  * 修复点击失效问题 [#169](https://github.com/kdcloudone/kdesign/issues/169)
+* radio
+  * 修复radio value 无法识别number和字符串 [#171](https://github.com/kdcloudone/kdesign/issues/171)
+* 修复ts版本升级导致的报错
+
+## [1.6.20](https://github.com/kdcloudone/kdesign/compare/v1.6.19...v1.6.20)
+`2022-12-06`
+* button
+  * 解决类型未定义导致ts报错问题
+  * demo调整
+* input
+  * 修复数值输入框size设置不生效问题
+* input-number
+  * 修复数值输入框size设置不生效问题
+* select
+  * 修复多选搜索时全选问题
+
+## [1.6.19](https://github.com/kdcloudone/kdesign/compare/v1.6.18...v1.6.19)
+`2022-12-02`
+* select
+  * 修复多选模式下数据流问题
+
 ## [1.6.18](https://github.com/kdcloudone/kdesign/compare/v1.6.17...v1.6.18)
 `2022-12-01`
 * select

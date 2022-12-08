@@ -1,6 +1,6 @@
 {
   "name": "@kdcloudjs/kdesign",
-  "version": "1.6.20",
+  "version": "1.6.21",
   "description": "KDesign 金蝶前端react 组件库",
   "title": "kdesign",
   "keywords": [
@@ -103,11 +103,11 @@
     "@babel/preset-react": "^7.10.4",
     "@babel/preset-typescript": "^7.10.4",
     "@commitlint/config-conventional": "^9.1.2",
+    "@types/babel__traverse": "7.17.1",
     "@types/big.js": "^6.0.0",
     "@types/classnames": "^2.2.10",
     "@types/enzyme": "^3.10.7",
     "@types/jest": "^26.0.14",
-    "@types/babel__traverse": "7.17.1",
     "@types/jest-image-snapshot": "^4.1.0",
     "@types/lodash": "ts3.9",
     "@types/puppeteer": "^3.0.2",
