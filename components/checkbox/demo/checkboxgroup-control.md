@@ -17,12 +17,12 @@ class Demo extends React.Component {
     this.onClick = this.onClick.bind(this)
   }
 
-  onChange(value) {
-    console.log('checkboxgroup checked', value)
+  onChange(e, value) {
+    console.log('checkboxgroup:', e, value)
   }
 
   onClick() {
-     console.log('checkboxgroup checked', [1, 2])
+     console.log('checkboxgroup checked:', [1, 2])
      this.setState({
       value: [1,2],
     })

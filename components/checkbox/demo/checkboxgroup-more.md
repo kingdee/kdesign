@@ -25,12 +25,12 @@ class Demo extends React.Component {
     this.onChange2 = this.onChange2.bind(this)
   }
 
-  onChange1(value) {
-    console.log('checkbox1 checked', value)
+  onChange1(e, value) {
+    console.log('checkbox1', e, value)
   }
 
-  onChange2(value) {
-    console.log('checkbox2 checked', value)
+  onChange2(e, value) {
+    console.log('checkbox2 checked',e, value)
   }
 
   render() {

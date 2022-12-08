@@ -32,21 +32,21 @@ class Demo extends React.Component {
     }
   }
 
-  onChange1(list) {
+  onChange1(e, list) {
     console.log('checkboxGroup1', list)
     this.setState({
       value1: list,
     })
   }
 
-  onChange2(list) {
+  onChange2(e, list) {
     console.log('checkboxGroup2', list)
     this.setState({
       value2: list,
     })
   }
 
-  onChange3(list) {
+  onChange3(e, list) {
     console.log('checkboxGroup3', list)
     this.setState({
       value3: list,

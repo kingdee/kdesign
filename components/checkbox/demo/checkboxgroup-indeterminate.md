@@ -20,8 +20,8 @@ class Demo extends React.Component {
     this.getIndeterminate = this.getIndeterminate.bind(this)
   }
 
-  onChange(value) {
-    console.log('checkboxgroup checked', value)
+  onChange(e, value) {
+    console.log('checkboxgroup checked', e, value)
     this.setState({
       value: value,
     })
