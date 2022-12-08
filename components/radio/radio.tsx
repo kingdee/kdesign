@@ -48,7 +48,9 @@ const InternalRadio: React.ForwardRefRenderFunction<HTMLElement, IRadioProps> = 
   }, [checked, defaultChecked, context?.value])
 
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (disabled) return
     setIsChecked(e.target.checked)
+
     if (props.onChange) {
       props.onChange(e)
     }
