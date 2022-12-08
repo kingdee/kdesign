@@ -1,7 +1,7 @@
 import * as React from 'react'
 import classNames from 'classnames'
 import ConfigContext from '../config-provider/ConfigContext'
-import { IRadioGroupProps, IRadioOptionType } from './interface'
+import { IRadioGroupProps, IRadioOptionType, RadioValueType } from './interface'
 import { getCompProps } from '../_utils'
 import Radio from './radio'
 import { RadioGroupContextProvider } from './context'
@@ -14,20 +14,19 @@ const RadioGroup = React.forwardRef<HTMLDivElement, IRadioGroupProps>((props, re
 
   // 从props更新value值
   React.useEffect(() => {
-    if (props.value) {
+    if (props.value !== undefined) {
       setValue(props.value)
     }
   }, [props.value])
 
-  const onRadioChange = (ev: React.ChangeEvent<HTMLInputElement>) => {
+  const onRadioChange = (ev: React.ChangeEvent<HTMLInputElement>, checkedValue: RadioValueType) => {
     const lastValue = value
-    const val = ev.target.value
     if (!('value' in props)) {
-      setValue(val)
+      setValue(checkedValue)
     }
     const { onChange } = props
-    if (onChange && val !== lastValue) {
-      onChange(ev)
+    if (onChange && checkedValue !== lastValue) {
+      onChange(ev, checkedValue)
     }
   }
 

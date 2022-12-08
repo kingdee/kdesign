@@ -1,10 +1,13 @@
 import React, { useEffect, MutableRefObject } from 'react'
 import classNames from 'classnames'
 import isBoolean from 'lodash/isBoolean'
+import isNumber from 'lodash/isNumber'
+import isString from 'lodash/isString'
 import ConfigContext from '../config-provider/ConfigContext'
 import { IRadioProps } from './interface'
 import { getCompProps } from '../_utils'
 import RadioGroupContext from './context'
+import devWarning from '../_utils/devwarning'
 
 const InternalRadio: React.ForwardRefRenderFunction<HTMLElement, IRadioProps> = (props, ref) => {
   const context = React.useContext(RadioGroupContext)
@@ -18,23 +21,31 @@ const InternalRadio: React.ForwardRefRenderFunction<HTMLElement, IRadioProps> = 
     children,
     className,
     radioType,
+    value,
+    disabled,
     defaultChecked,
     prefixCls: customPrefixcls,
     ...restProps
   } = getCompProps('Radio', userDefaultProps, props) // 属性需要合并一遍用户定义的默认属性
 
-  const getChecked = () => {
-    return isBoolean(checked) ? checked : defaultChecked
-  }
+  devWarning(
+    !(isNumber(value) || isString(value)) && value !== '',
+    'radio',
+    'radio `value` type must string or number ',
+  )
+  devWarning(value === '', 'radio', 'radio value type is not empty string ')
+
+  const mergedDisabled = context?.disabled || restProps.disabled
+  const initValue = context ? value === context.value : isBoolean(checked) ? checked : defaultChecked
 
   const getPrefix = (radioType: string) => `radio${radioType === 'square' ? `-${radioType}` : ''}`
   const radioPrefixCls = getPrefixCls?.(prefixCls, getPrefix(radioType), customPrefixcls) // 样式前缀
-  const [isChecked, setIsChecked] = React.useState(getChecked())
-  React.useEffect(() => {
-    checked !== undefined && setIsChecked(checked)
-  }, [checked])
+  const [isChecked, setIsChecked] = React.useState(initValue)
 
-  const radioProps = { ...restProps }
+  React.useEffect(() => {
+    let checkedValue = context ? value === context.value : isBoolean(checked) ? checked : defaultChecked
+    setIsChecked(checkedValue)
+  }, [checked, defaultChecked, context?.value])
 
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setIsChecked(e.target.checked)
@@ -43,23 +54,15 @@ const InternalRadio: React.ForwardRefRenderFunction<HTMLElement, IRadioProps> = 
     }
 
     if (context?.onChange) {
-      context.onChange(e)
+      context.onChange(e, value)
     }
-  }
-
-  radioProps.onChange = onChange
-
-  if (context) {
-    radioProps.name = context.name
-    radioProps.checked = String(props.value) === String(context.value)
-    radioProps.disabled = props.disabled || context.disabled
   }
 
   const classString = classNames(
     {
       [`${radioPrefixCls}`]: true,
-      [`${radioPrefixCls}-disabled`]: radioProps.disabled,
-      [`${radioPrefixCls}-checked`]: context ? radioProps.checked : isChecked,
+      [`${radioPrefixCls}-disabled`]: disabled,
+      [`${radioPrefixCls}-checked`]: isChecked,
     },
     className,
   ) // 单选包裹元素class名称
@@ -83,7 +86,16 @@ const InternalRadio: React.ForwardRefRenderFunction<HTMLElement, IRadioProps> = 
   return (
     // eslint-disable-next-line
     <label className={classString} style={style} ref={mergedRef as any}>
-      <input type="radio" className={`${radioPrefixCls}-input`} {...radioProps} />
+      <input
+        type="radio"
+        className={`${radioPrefixCls}-input`}
+        checked={isChecked}
+        onChange={onChange}
+        value={value}
+        name={context?.name}
+        disabled={mergedDisabled}
+        {...restProps}
+      />
       {children !== undefined ? <span className={`${radioPrefixCls}-text`}>{children}</span> : null}
     </label>
   )

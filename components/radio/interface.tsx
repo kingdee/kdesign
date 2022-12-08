@@ -33,7 +33,7 @@ export interface IRadioGroupProps {
   value?: any
   className?: string
   style?: React.CSSProperties
-  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>, value: RadioValueType) => void
   size?: SizeType
   name?: string
   children?: React.ReactNode
@@ -44,7 +44,7 @@ export interface IRadioGroupProps {
 }
 
 export interface IRadioGroupContextProps {
-  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void
+  onChange: (e: React.ChangeEvent<HTMLInputElement>, value: RadioValueType) => void
   value: any
   disabled?: boolean
   name?: string
