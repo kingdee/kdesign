@@ -63,7 +63,8 @@
     "pub:beta": "npm run test:all && npm run build && cross-env PUB_ENV=pub np --no-cleanup --anyBranch --no-tests --tag=beta",
     "prepublishOnly": "node scripts/guard.js",
     "new": "node scripts/create-component.js",
-    "token": "node scripts/generate-token.js"
+    "token": "node scripts/generate-token.js",
+    "preinstall": "npx force-resolutions"
   },
   "browserslist": [
     "last 2 versions",
@@ -106,6 +107,7 @@
     "@types/classnames": "^2.2.10",
     "@types/enzyme": "^3.10.7",
     "@types/jest": "^26.0.14",
+    "@types/babel__traverse": "7.17.1",
     "@types/jest-image-snapshot": "^4.1.0",
     "@types/lodash": "ts3.9",
     "@types/puppeteer": "^3.0.2",
@@ -236,6 +238,9 @@
     "commitizen": {
       "path": "./node_modules/cz-customizable"
     }
+  },
+  "resolutions": {
+    "@types/babel__traverse": "7.17.1"
   },
   "license": "Apache-2.0"
 }
