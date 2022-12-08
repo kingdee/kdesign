@@ -25,6 +25,8 @@ subtitle: 单选
 | disabled       | 禁用 Radio                        | boolean               | false     | 1.0.0 |
 | radioType      | 单选类型                          | `default` \| `square` | `default` | 1.0.0 |
 | value          | 根据 value 进行比较，判断是否选中 | any                   | -         | 1.0.0 |
+| onChange | 选项变化时的回调函数 | function(e: Event) | - | 1.0.0 |
+
 
 ### RadioGroup
 
@@ -39,7 +41,7 @@ subtitle: 单选
 | optionType | 用于设置 Radio `options` 类型 | `default` \| `square` \| `button` | `default` | 1.0.0 |
 | size | 大小，只对按钮样式生效 | `large` \| `middle` \| `small` | - | 1.0.0 |
 | value | 用于设置当前选中的值 | any | - | 1.0.0 |
-| onChange | 选项变化时的回调函数 | function(e:Event) | - | 1.0.0 |
+| onChange | 选项变化时的回调函数 | function(e: Event, checkedValue) | - | 1.6.19 |
 
 ## 方法
 

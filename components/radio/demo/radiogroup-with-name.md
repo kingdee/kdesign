@@ -13,11 +13,11 @@ import { Radio } from '@kdcloudjs/kdesign'
 function Demo() {
   return (
     <div style={{ width: '350px' }}>
-    <Radio.Group name="radiogroup" defaultValue={1}>
-      <Radio value={1}>A</Radio>
-      <Radio value={2}>B</Radio>
-      <Radio value={3}>C</Radio>
-      <Radio value={4}>D</Radio>
+    <Radio.Group name="radiogroup" defaultValue={'AAAA'}>
+      <Radio value={'AAAA'}>A</Radio>
+      <Radio value={'BBBB'}>B</Radio>
+      <Radio value={'CCCC'}>C</Radio>
+      <Radio value={'DDDD'}>D</Radio>
     </Radio.Group>
     </div>
   )

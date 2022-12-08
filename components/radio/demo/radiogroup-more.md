@@ -23,18 +23,15 @@ class Demo extends React.Component {
     this.onChange = this.onChange.bind(this)
   }
 
-  onChange(e) {
-    console.log('radio checked', typeof e.target.value)
-    this.setState({
-      value: e.target.value,
-    })
+  onChange(e, checkValue) {
+    console.log('radio checked', e, checkValue)
   }
 
   render() {
     const { value } = this.state
     return (
       <div style={{ width: '350px' }}>
-      <Radio.Group onChange={this.onChange} value={value} style={{ width: 400 }}>
+      <Radio.Group onChange={this.onChange} style={{ width: 400 }}>
         <Radio style={radioStyle} value={1}>
           Option A
         </Radio>
