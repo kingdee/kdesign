@@ -6,9 +6,18 @@
 .@{inputNumber-prefix-cls} {
   width: 100px;
 
-  --kd-c-input-sizing-height-middle: 28px;
-  --kd-c-input-wrapper-padding-left: 9px;
-  --kd-c-input-padding-left: 0;
+  &.@{kd-prefix}-input-wrapper {
+    padding-left: @stepper-input-wrapper-padding-left !important;
+
+    .@{kd-prefix}-input {
+      padding-left: @stepper-input-padding-left;
+    }
+
+    &-size-middle {
+      height: @stepper-middle-height;
+      line-height: @stepper-middle-height;
+    }
+  }
   input {
     text-align: center;
     color: @stepper-input-color;
