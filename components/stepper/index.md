@@ -50,4 +50,7 @@ subtitle: 步进器
 | sizing | --kd-c-stepper-input-small-sizing-height | - | 20px |
 |  | --kd-c-stepper-input-middle-sizing-height | - | 28px |
 |  | --kd-c-stepper-input-large-sizing-height | - | 36px |
+|  | --kd-c-stepper-padding-left | - | 9px |
+|  | --kd-c-stepper-input-padding-left | - | 0px |
+|  | --kd-c-stepper-sizing-height | - | 28px |
 | spacing | --kd-c-stepper-input-spacing-padding-horizontal | - | 9px |
