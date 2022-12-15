@@ -220,6 +220,7 @@ const InternalRangePicker = (
     secondStep = 1,
     suffixIcon,
 
+    panelRender,
     renderExtraFooter,
     disabledHours,
     disabledMinutes,
@@ -613,7 +614,11 @@ const InternalRangePicker = (
       mergedActivePickerIndex,
       disabledDate: mergedActivePickerIndex === 0 ? disabledStartDate : disabledEndDate,
     }
-    return <Panel {...panelProps} />
+    let panelNode: React.ReactNode = <Panel {...panelProps} />
+    if (panelRender) {
+      panelNode = panelRender(panelNode)
+    }
+    return panelNode
   }
 
   const extraNode = getExtraFooter(datePickerPrefixCls, mergedModes[mergedActivePickerIndex], renderExtraFooter)
