@@ -4,6 +4,12 @@ title: 更新日志
 hiddenAnchor: true
 ---
 
+## [1.6.22](https://github.com/kdcloudone/kdesign/compare/v1.6.21...v1.6.22)
+`2022-12-16`
+* radio
+  * 禁用态依旧能选中 [#180](https://github.com/kdcloudone/kdesign/issues/180)
+* 修复时间范围自定义render问题
+
 ## [1.6.21](https://github.com/kdcloudone/kdesign/compare/v1.6.20...v1.6.21)
 `2022-12-08`
 * checkbox
