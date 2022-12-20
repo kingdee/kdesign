@@ -29,6 +29,9 @@ subtitle: 级联选择
 | fieldNames | 自定义 options 中 label name children 的字段名称 | object | { label: `label`, value: `value`, children: `children` } | 1.0.0 |
 | getPopupContainer | 菜单渲染父节点。默认渲染到 body 上 | function(triggerNode) | () => document.body | 1.0.0 |
 | loadData | 动态加载选项 | - | 1.0.0 |
+| maxTagCount | 最多显示多少个 tag | number | - | 1.6.23 |
+| maxTagPlaceholder | 隐藏 tag 时显示的内容 | ReactNode \| function(omittedValues) | - | 1.6.23 |
+| mode | 下拉框模式（设置单选或多选） | `single` `multiple` | `single` | 1.6.23 |
 | notFoundContent | 下拉列表为空时显示的内容 | string | `No Data` |  |
 | options | 可选项数据源 | [Option](#Option)\[] | - |  1.0.0 |
 | placeholder | 输入框占位文本 | string | - | 1.0.0 |
@@ -74,6 +77,9 @@ interface Option {
 |  | --kd-c-cascader-color-background-selected | --kd-g-color-background-ongoing | #f2f9ff |
 |  | --kd-c-cascader-color-text-disabled | --kd-g-color-disabled | #b2b2b2 |
 |  | --kd-c-cascader-clear-color-text | - | #d9d9d9 |
+|  | --kd-c-cascader-color-border-foucs | --kd-g-color-theme | #5582f3 |
+|  | --kd-c-cascader-icon-clear-color-text | - | #d9d9d9 |
+|  | --kd-c-cascader-icon-clear-color-text-hover | - | #999 |
 | font | --kd-c-cascader-font-size | --kd-g-font-size-small | 12px |
 |  | --kd-c-cascader-font-weight | - | 'normal' |
 | radius | --kd-c-cascader-radius-border | --kd-g-radius-border | 2px |

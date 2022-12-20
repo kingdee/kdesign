@@ -39,6 +39,7 @@ const compDefaultProps = {
     intervalTime: 4000,
   },
   Cascader: {
+    mode: 'single', // multiple single
     allowClear: true,
     expandTrigger: 'click',
     notFoundContent: 'No Data',
