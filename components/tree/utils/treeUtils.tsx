@@ -361,13 +361,13 @@ const updateParent = (
   // 逐级更新父节点的状态
   pathParentKeys.reverse().forEach((itemKey) => {
     const parent = keysNodeProps[itemKey]
-    if (parent && !parent.disabled && parent.checkable !== false) {
+    if (parent && parent.checkable !== false) {
       let total = 0
       let number = 0
       ;(parent as any).children.some(({ key }: TreeNodeData) => {
         const item = keysNodeProps[key]
         // 不符合可选条件
-        if (!item || item.disabled || item.checkable === false) {
+        if (!item || item.checkable === false) {
           return false
         }
         total++
