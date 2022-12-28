@@ -20,7 +20,7 @@ export interface ISelectOptionProps {
 const InternalOption: React.ForwardRefRenderFunction<unknown, ISelectOptionProps> = (props, ref: unknown) => {
   const optionRef = useRef<HTMLDivElement>(null) || (ref as any)
   const [isSelected, setSelected] = useState<boolean>(false)
-  const { className, children, value = null, disabled, values, isMultiple, onChangeSelect } = props
+  const { className, children, value = null, disabled, values, isMultiple, onChangeSelect, title } = props
   const optionProps: ISelectOptionProps = { ...props }
   const { getPrefixCls, prefixCls } = useContext(ConfigContext)
   const selectOptionPrefixCls = getPrefixCls!(prefixCls, 'select-item')
@@ -50,7 +50,7 @@ const InternalOption: React.ForwardRefRenderFunction<unknown, ISelectOptionProps
     onChangeSelect && onChangeSelect(value, children, isSelected)
   }
 
-  const titleText = typeof children !== 'object' ? children : null
+  const titleText = title || (typeof children !== 'object' ? children : null)
 
   const checkStyle = {
     minHeight: '22px',
