@@ -27,7 +27,7 @@ const Tooltip = React.forwardRef<unknown, TooltipProps>((props, ref) => {
     { ref: children.ref || ref },
   )
   const onVisibleChange = (v: boolean) => {
-    if (status.current === v) return
+    if (status.current === v && allProps.visible === undefined) return
     status.current = v
     props.onVisibleChange && props.onVisibleChange(v)
   }
