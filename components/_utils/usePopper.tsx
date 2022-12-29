@@ -481,7 +481,9 @@ function usePopper(locatorElement: React.ReactElement, popperElement: React.Reac
         contextMenu: 'mousedown',
       }
 
-      popperNode?.addEventListener('mouseleave', debounceHidePopper)
+      if (matchTrigger('hover')) {
+        popperNode?.addEventListener('mouseleave', debounceHidePopper)
+      }
 
       Array.isArray(trigger)
         ? trigger.forEach((action: string) => document.addEventListener(mapEvent[action], debounceHidePopper))
