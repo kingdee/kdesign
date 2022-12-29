@@ -4,6 +4,24 @@ title: 更新日志
 hiddenAnchor: true
 ---
 
+## [1.6.24](https://github.com/kdcloudone/kdesign/compare/v1.6.23...v1.6.24)
+`2022-12-29`
+* select
+  * 修复下拉项title设置不生效问题
+  * 修改select组件全边框状态时光标的位置
+* tooltip
+  * 不论使用哪种触发方式移出poper的时候都出发隐藏
+  * 修复第二次点击不触发onVisibleChange [#183](https://github.com/kdcloudone/kdesign/issues/183)
+* tree
+  * 修复禁用节点勾选bug
+
+## [1.6.23](https://github.com/kdcloudone/kdesign/compare/v1.6.22...v1.6.23)
+`2022-12-20`
+* stepper
+  * 调整步进器token
+* cascader
+  * 新增级联多选功能
+
 ## [1.6.22](https://github.com/kdcloudone/kdesign/compare/v1.6.21...v1.6.22)
 `2022-12-16`
 * radio
