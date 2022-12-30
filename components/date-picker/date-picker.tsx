@@ -1,11 +1,11 @@
-import React, { FunctionComponentElement, useContext, useEffect } from 'react'
+import React, { FunctionComponentElement, useContext, useEffect, useState } from 'react'
 import classnames from 'classnames'
 
 import { DateType, InnerLocale, PickerMode, TimeUnit } from './interface'
 import ConfigContext from '../config-provider/ConfigContext'
 import { useMergedState, useOnClickOutside } from '../_utils/hooks'
 import { getCompProps } from '../_utils'
-import Context from './context'
+import Context, { ISelectType } from './context'
 import Panel, { PickerPanelBaseProps, PickerPanelDateProps, PickerPanelTimeProps } from './date-panel'
 import InputDate, { InputDateProps } from './single/input-date'
 import { getDefaultFormat, getDataOrAriaProps, getInternalNextMode, generateUnits } from './utils'
@@ -90,6 +90,8 @@ type OmitType = Omit<PickerBaseProps, 'picker'> & Omit<PickerDateProps, 'picker'
 interface MergedPickerProps extends OmitType {
   picker?: PickerMode
 }
+
+export type IInnerPicker = undefined | 'year' | 'month'
 
 const InternalDatePicker = (
   props: Partial<PickerProps>,
@@ -185,8 +187,6 @@ const InternalDatePicker = (
     globalLocale.getCompLangMsg({ componentName: 'DatePicker' }),
     locale || {},
   )
-
-  // console.log(_format)
 
   // 原始数据
   const [dateValue, setDateValue] = useMergedState(null, {
@@ -286,6 +286,8 @@ const InternalDatePicker = (
     },
   )
 
+  const [innerPicker, setInnerPicker] = useState<IInnerPicker>(undefined)
+
   useEffect(() => {
     setInnerMode(picker)
   }, [picker])
@@ -339,14 +341,20 @@ const InternalDatePicker = (
     triggerInnerOpen(newOpen)
   }
 
-  const onContextSelect = (date: DateType, type: 'key' | 'mouse' | 'submit') => {
-    if (type === 'submit' || (type !== 'key' && !needConfirmButton)) {
+  const onContextSelect = (date: DateType, type: ISelectType) => {
+    if (type === 'inner') {
       setViewDate(date)
-      triggerChange(date)
-      triggerOpen(false)
+      setSelectedValue(date)
+      setDateValue(date)
     } else {
-      setViewDate(date)
-      triggerChange(date)
+      if (type === 'submit' || (type !== 'key' && !needConfirmButton)) {
+        setViewDate(date)
+        triggerChange(date)
+        triggerOpen(false)
+      } else {
+        setViewDate(date)
+        triggerChange(date)
+      }
     }
   }
 
@@ -443,10 +451,12 @@ const InternalDatePicker = (
           setViewDate,
           onDateMouseEnter: onEnter,
           onDateMouseLeave: onLeave,
+          innerPicker,
+          setInnerPicker,
         }}
       >
         {panelNode}
-        {extraFooter || rangesNode || todayNode ? (
+        {(extraFooter || rangesNode || todayNode) && innerPicker === undefined ? (
           <div className={`${datePickerPrefixCls}-footer`}>
             {extraFooter}
             {rangesNode}

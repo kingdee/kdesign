@@ -10,6 +10,7 @@ import {
   isBefore,
   isSameMonth,
   getStartOfMonth,
+  setYearOrMonthOfDate,
 } from '../../utils/date-fns'
 import Context from '../../context'
 import { DateType, RangeValue } from '../../interface'
@@ -40,6 +41,8 @@ function Month(props: MonthProps) {
     panelPosition,
     hoverRangedValue,
     locale,
+    innerPicker,
+    setInnerPicker,
   } = context
 
   const { disabledDate } = props
@@ -107,8 +110,15 @@ function Month(props: MonthProps) {
   })
 
   const handleClick = (date: DateType) => {
-    if (!(disabledDate && disabledDate(date))) {
-      onSelect(date, 'mouse')
+    if (innerPicker === undefined) {
+      if (!(disabledDate && disabledDate(date))) {
+        onSelect(date, 'mouse')
+      }
+    } else {
+      //
+      const _viewDate = viewDate
+      onSelect(setYearOrMonthOfDate(_viewDate, date, 'month'), 'inner')
+      setInnerPicker(undefined)
     }
   }
 

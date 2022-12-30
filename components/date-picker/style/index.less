@@ -627,6 +627,17 @@
 
     &-text {
       flex: 1;
+
+      &-inner {
+        cursor: pointer;
+
+        &:hover {
+          color: @date-color-background-checked;
+        }
+        &:nth-child(2) {
+          margin-left: 13px;
+        }
+      }
     }
   }
 
