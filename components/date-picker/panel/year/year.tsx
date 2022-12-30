@@ -12,15 +12,18 @@ import {
   getStartOfYear,
   isSameYear,
   isBefore,
+  setYearOrMonthOfDate,
 } from '../../utils/date-fns'
-import { DateType, RangeValue } from '../../interface'
+import { DateType, PickerMode, RangeValue } from '../../interface'
 import useRangeCls from '../../hooks/use-range-cls'
+import { getClosingViewDate } from '../../utils'
 
 export interface YearProps {
   yearItemNumber: number
   minDate?: DateType
   maxDate?: DateType
   disabledDate?: (date: DateType) => boolean
+  picker?: PickerMode
 }
 
 function Year(props: YearProps) {
@@ -35,9 +38,11 @@ function Year(props: YearProps) {
     rangeValue,
     panelPosition,
     hoverRangedValue,
+    innerPicker,
+    setInnerPicker,
   } = context
 
-  const { yearItemNumber, disabledDate } = props
+  const { yearItemNumber, disabledDate, picker = 'date' } = props
 
   let _dateValue: RangeValue | DateType
   if (panelPosition) {
@@ -99,8 +104,20 @@ function Year(props: YearProps) {
   })
 
   const handleClick = (date: DateType) => {
-    if (!(disabledDate && disabledDate(date))) {
-      onSelect(date, 'mouse')
+    if (innerPicker === undefined) {
+      if (!(disabledDate && disabledDate(date))) {
+        onSelect(date, 'mouse')
+      }
+    } else {
+      //
+      let _viewDate = viewDate
+      if (panelPosition) {
+        _viewDate = getClosingViewDate(viewDate, picker, -1)
+      }
+      // date = addYears(_viewDate, 1)
+
+      onSelect(setYearOrMonthOfDate(_viewDate, date), 'inner')
+      setInnerPicker(undefined)
     }
   }
 

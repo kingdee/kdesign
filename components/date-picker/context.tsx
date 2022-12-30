@@ -1,10 +1,13 @@
 import * as React from 'react'
 import { DateType, InnerLocale, RangeValue, TimeUnit } from './interface'
+import { IInnerPicker } from './date-picker'
 
 export type ContextOperationRefProps = {
   onKeyDown?: (e: React.KeyboardEvent<HTMLElement>) => boolean
   onClose?: () => void
 }
+
+export type ISelectType = 'key' | 'mouse' | 'submit' | 'inner'
 
 export interface SingleContextProps {
   prefixCls: string
@@ -23,9 +26,11 @@ export interface SingleContextProps {
   seconds?: TimeUnit[]
   disabledTimePanel?: boolean
   setViewDate: (date: DateType, index?: 0 | 1) => void
-  onSelect: (date: DateType, type: 'key' | 'mouse' | 'submit') => void
+  onSelect: (date: DateType, type: ISelectType) => void
   onDateMouseEnter: (date: DateType) => void
   onDateMouseLeave: (arg?: boolean) => void
+  innerPicker: IInnerPicker
+  setInnerPicker: (p: IInnerPicker) => void
 }
 
 const Context = React.createContext<SingleContextProps>({} as SingleContextProps)

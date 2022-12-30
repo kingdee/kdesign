@@ -324,3 +324,20 @@ export function getLowerBoundTime(
   const lowerBoundSecond = Math.floor(second / secondStep) * secondStep
   return [lowerBoundHour, lowerBoundMinute, lowerBoundSecond]
 }
+
+export const setYearOrMonthOfDate = (date1: DateType, date2: DateType, type = 'year') => {
+  let y = new Date(date1).getFullYear()
+  if (type === 'year') {
+    y = new Date(date2).getFullYear()
+  }
+  let m = new Date(date1 || date2).getMonth() + 1
+  if (type === 'month') {
+    m = new Date(date2).getMonth() + 1
+  }
+  const d = new Date(date1 || date2).getDate()
+  const h = new Date(date1 || date2).getHours()
+  const mi = new Date(date1 || date2).getMinutes()
+  const s = new Date(date1 || date2).getSeconds()
+
+  return new Date(`${y}-${m}-${d} ${h}:${mi}:${s}`)
+}

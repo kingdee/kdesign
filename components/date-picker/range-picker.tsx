@@ -1,4 +1,4 @@
-import React, { FunctionComponentElement, useContext, useEffect } from 'react'
+import React, { FunctionComponentElement, useContext, useEffect, useState } from 'react'
 import isSameWeek from 'date-fns/isSameWeek'
 
 import {
@@ -15,7 +15,7 @@ import {
 import ConfigContext from '../config-provider/ConfigContext'
 import { useMergedState, useOnClickOutside } from '../_utils/hooks'
 import { getCompProps } from '../_utils'
-import Context from './context'
+import Context, { ISelectType } from './context'
 import Panel from './date-panel'
 import InputDate, { InputRangeProps } from './range/input-range'
 import {
@@ -44,7 +44,7 @@ import {
 import useTextValueMapping from './hooks/use-text-value-mapping'
 import useRangeViewDates from './hooks/use-range-view-dates'
 import useRangeDisabled from './hooks/use-range-disabled'
-import { PickerBaseProps, PickerDateProps, PickerTimeProps } from './date-picker'
+import { IInnerPicker, PickerBaseProps, PickerDateProps, PickerTimeProps } from './date-picker'
 import getExtraFooter from './utils/get-extra-footer'
 import getRanges from './utils/get-ranges'
 import classNames from 'classnames'
@@ -413,6 +413,8 @@ const InternalRangePicker = (
     value: mode,
   })
 
+  const [innerPicker, setInnerPicker] = useState<IInnerPicker>(undefined)
+
   useEffect(() => {
     setInnerModes([picker, picker])
   }, [picker])
@@ -550,7 +552,7 @@ const InternalRangePicker = (
     setHoverRangedValue([null, null])
   })
 
-  const onSelect = (date: DateType, type: 'key' | 'mouse' | 'submit') => {
+  const onSelect = (date: DateType, type: ISelectType) => {
     const values = updateValues(selectedValue, date, mergedActivePickerIndex)
 
     if (type === 'submit' || (type !== 'key' && !needConfirmButton)) {
@@ -668,6 +670,8 @@ const InternalRangePicker = (
             setViewDate,
             onDateMouseEnter: onDateMouseEnter,
             onDateMouseLeave: onDateMouseLeave,
+            innerPicker,
+            setInnerPicker,
           }}
         >
           {renderPanel()}
@@ -687,6 +691,8 @@ const InternalRangePicker = (
             setViewDate,
             onDateMouseEnter: onDateMouseEnter,
             onDateMouseLeave: onDateMouseLeave,
+            innerPicker,
+            setInnerPicker,
           }}
         >
           {renderPanel()}
@@ -719,6 +725,8 @@ const InternalRangePicker = (
             setViewDate,
             onDateMouseEnter: onDateMouseEnter,
             onDateMouseLeave: onDateMouseLeave,
+            innerPicker,
+            setInnerPicker,
           }}
         >
           <Panel
