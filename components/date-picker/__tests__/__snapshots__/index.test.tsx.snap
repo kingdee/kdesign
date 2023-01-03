@@ -59,10 +59,14 @@ Array [
           <span
             class="kd-date-picker-header-text"
           >
-            <span>
+            <span
+              class="kd-date-picker-header-text-inner"
+            >
               2000年
             </span>
-            <span>
+            <span
+              class="kd-date-picker-header-text-inner"
+            >
               1月
             </span>
           </span>
@@ -595,10 +599,14 @@ Array [
           <span
             class="kd-date-picker-header-text"
           >
-            <span>
+            <span
+              class="kd-date-picker-header-text-inner"
+            >
               2000年
             </span>
-            <span>
+            <span
+              class="kd-date-picker-header-text-inner"
+            >
               1月
             </span>
           </span>
@@ -1131,10 +1139,14 @@ Array [
           <span
             class="kd-date-picker-header-text"
           >
-            <span>
+            <span
+              class="kd-date-picker-header-text-inner"
+            >
               2000年
             </span>
-            <span>
+            <span
+              class="kd-date-picker-header-text-inner"
+            >
               1月
             </span>
           </span>
@@ -1667,10 +1679,14 @@ Array [
           <span
             class="kd-date-picker-header-text"
           >
-            <span>
+            <span
+              class="kd-date-picker-header-text-inner"
+            >
               2000年
             </span>
-            <span>
+            <span
+              class="kd-date-picker-header-text-inner"
+            >
               1月
             </span>
           </span>
@@ -2203,10 +2219,14 @@ Array [
           <span
             class="kd-date-picker-header-text"
           >
-            <span>
+            <span
+              class="kd-date-picker-header-text-inner"
+            >
               2000年
             </span>
-            <span>
+            <span
+              class="kd-date-picker-header-text-inner"
+            >
               1月
             </span>
           </span>
@@ -4663,10 +4683,14 @@ Array [
           <span
             class="kd-date-picker-header-text"
           >
-            <span>
+            <span
+              class="kd-date-picker-header-text-inner"
+            >
               2016年
             </span>
-            <span>
+            <span
+              class="kd-date-picker-header-text-inner"
+            >
               11月
             </span>
           </span>
