@@ -83,6 +83,8 @@ export interface RangePickerSharedProps {
   dateRender?: RangeDateRender
   panelRender?: (originPanel: React.ReactNode) => React.ReactNode
   getPopupContainer?: (node: HTMLElement) => HTMLElement
+  popupRef?: React.Ref<any>
+  popupStyle?: React.CSSProperties
 }
 
 type OmitPickerProps<Props> = Omit<
@@ -203,6 +205,8 @@ const InternalRangePicker = (
     allowEmpty,
     className,
     style,
+    popupStyle,
+    popupRef,
     borderType,
     separator,
     ranges,
@@ -251,7 +255,7 @@ const InternalRangePicker = (
   const separatorRef = React.useRef<HTMLDivElement>(null)
   const startInputRef = React.useRef<HTMLInputElement>(null)
   const endInputRef = React.useRef<HTMLInputElement>(null)
-  const popperRef = React.useRef<HTMLInputElement>(null)
+  const popperRef = popupRef || React.createRef<HTMLInputElement>()
 
   const openRecordsRef = React.useRef<Record<number, boolean>>({})
 
@@ -556,9 +560,8 @@ const InternalRangePicker = (
     const values = updateValues(selectedValue, date, mergedActivePickerIndex)
 
     if (type === 'submit' || (type !== 'key' && !needConfirmButton)) {
-      // triggerChange will also update selected values
       triggerChange(values, mergedActivePickerIndex)
-      // clear hover value style
+
       if (mergedActivePickerIndex === 0) {
         onStartLeave()
       } else {
@@ -875,7 +878,7 @@ const InternalRangePicker = (
       trigger: 'click',
       prefixCls: `${datePickerPrefixCls}-panel`,
       arrow: false,
-      popperStyle: style,
+      popperStyle: popupStyle,
       visible: mergedOpen,
       placement: 'bottomLeft',
       getPopupContainer,

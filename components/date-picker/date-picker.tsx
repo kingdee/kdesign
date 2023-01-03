@@ -32,6 +32,7 @@ import usePopper from '../_utils/usePopper'
 export interface PickerSharedProps extends React.AriaAttributes {
   dropdownClassName?: string
   popupStyle?: React.CSSProperties
+  popupRef?: React.Ref<any>
   transitionName?: string
   placeholder?: string
   allowClear?: boolean
@@ -116,6 +117,7 @@ const InternalDatePicker = (
     className,
     dropdownClassName,
     popupStyle,
+    popupRef,
     locale,
     inputReadOnly,
     allowClear,
@@ -169,7 +171,7 @@ const InternalDatePicker = (
   // ref
   const panelDivRef = React.useRef<HTMLDivElement>(null)
   const inputDivRef = (ref as any) || React.createRef<HTMLElement>()
-  const popperRef = React.useRef<HTMLInputElement>(null)
+  const popperRef = popupRef || React.createRef<HTMLInputElement>()
   const inputRef = React.useRef<HTMLInputElement>(null)
 
   const isHourStepValid = 24 % hourStep === 0
