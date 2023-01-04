@@ -39,7 +39,7 @@ subtitle: 多选
 | options | 以配置形式设置子元素 | string\[] \| Array&lt;{ label: string value: string disabled?: boolean }> | - | 1.0.0 |
 | size | 大小，只对按钮样式生效 | `large` \| `middle` \| `small` | - | 1.0.0 |
 | value | 用于设置当前选中的值 | string[] | - | 1.0.0 |
-| onChange | 选项变化时的回调函数 | function(e:Event, checkedValue) | - | 1.6.19 |
+| onChange | 选项变化时的回调函数 | function(checkedValue, e:Event) | - | 1.6.26 |
 
 ## 方法
 

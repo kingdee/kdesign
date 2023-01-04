@@ -20,7 +20,7 @@ function Demo() {
           checkboxType="square"
           value={1}
           onChange={(e) => {
-            console.log(e.target.value)
+            console.log(e.target.checked)
           }}>
           Square Checkbox
         </Checkbox>
