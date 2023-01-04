@@ -103,7 +103,7 @@ const CheckboxGroup = React.forwardRef<HTMLDivElement, CheckboxGroupProps>((prop
     if (!isControlled) {
       innerValue.current = newVal
     }
-    onChange && onChange(e, newVal)
+    onChange && onChange(newVal, e)
   }
 
   const context = {

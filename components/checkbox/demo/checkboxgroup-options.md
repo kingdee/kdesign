@@ -32,21 +32,21 @@ class Demo extends React.Component {
     }
   }
 
-  onChange1(e, list) {
-    console.log('checkboxGroup1', list)
+  onChange1(list, e) {
+    console.log('checkboxGroup1', list, e)
     this.setState({
       value1: list,
     })
   }
 
-  onChange2(e, list) {
+  onChange2(list, e) {
     console.log('checkboxGroup2', list)
     this.setState({
       value2: list,
     })
   }
 
-  onChange3(e, list) {
+  onChange3(list, e) {
     console.log('checkboxGroup3', list)
     this.setState({
       value3: list,
@@ -57,16 +57,16 @@ class Demo extends React.Component {
     const { value1, value2, value3 } = this.state
     return (
       <div  style={{ width: '300px' }}>
-        <Checkbox.Group options={plainOptions} onChange={(list) => this.onChange1(list)} value={value1} />
+        <Checkbox.Group options={plainOptions} onChange={(list,e) => this.onChange1(list, e)} value={value1} />
         <br />
         <Checkbox.Group
           options={options}
           checkboxType="square"
-          onChange={(list) => this.onChange2(list)}
+          onChange={(list, e) => this.onChange2(list, e)}
           value={value2}
         />
         <br />
-        <Checkbox.Group options={optionsWithDisabled} onChange={(list) => this.onChange3(list)} value={value3} />
+        <Checkbox.Group options={optionsWithDisabled} onChange={(list, e) => this.onChange3(list, e)} value={value3} />
         <br />
       </div>
     )

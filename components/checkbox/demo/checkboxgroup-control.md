@@ -17,8 +17,8 @@ class Demo extends React.Component {
     this.onClick = this.onClick.bind(this)
   }
 
-  onChange(e, value) {
-    console.log('checkboxgroup:', e, value)
+  onChange(value, e) {
+    console.log('checkboxgroup:', value, e)
   }
 
   onClick() {
