@@ -170,8 +170,10 @@ const InternalDatePicker = (
 
   // ref
   const panelDivRef = React.useRef<HTMLDivElement>(null)
-  const inputDivRef = (ref as any) || React.createRef<HTMLElement>()
-  const popperRef = popupRef || React.createRef<HTMLInputElement>()
+  const inputDivRefDefault = React.useRef<HTMLElement>(null)
+  const inputDivRef = (ref as any) || inputDivRefDefault
+  const popperRefDefault = React.useRef<HTMLElement>(null)
+  const popperRef = popupRef || popperRefDefault
   const inputRef = React.useRef<HTMLInputElement>(null)
 
   const isHourStepValid = 24 % hourStep === 0
@@ -428,7 +430,7 @@ const InternalDatePicker = (
   }
 
   // 渲染日期选择表盘
-  function renderPanel() {
+  const renderPanel = () => {
     let panelNode: React.ReactNode = <Panel {...panelProps} />
 
     if (panelRender) {
