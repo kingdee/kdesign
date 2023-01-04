@@ -545,10 +545,24 @@ const InternalSelect: React.ForwardRefRenderFunction<ISelectProps<SelectValue>> 
   }, [mulOptions])
 
   const renderSingle = () => {
+    const obj =
+      realChildren?.find((child: any) => {
+        if (child && child.props) {
+          return child.props?.value === initValue
+        } else {
+          return child?.value === initValue
+        }
+      }) || {}
+    let title = ''
+    if (obj.props) {
+      title = obj?.props?.title || obj?.props?.label || obj?.props?.children
+    } else {
+      title = obj?.title || obj?.label || obj?.children
+    }
     const hiddenStyle = (isShowSearch && !!searchValue) || singleVal ? { visibility: 'hidden' as const } : undefined
     return (
       <>
-        <div className={singleCls} ref={selectionRef}>
+        <div className={singleCls} ref={selectionRef} title={title}>
           <span className={`${selectPrefixCls}-selection-search`}>
             <input
               ref={searchRef}
