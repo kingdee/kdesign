@@ -291,8 +291,6 @@ const InternalTree = React.forwardRef((props: TreeProps, ref: any): React.Functi
       if (!('checkedKeys' in TreeProps)) {
         setCheckedKeys(checkState.checkedKeys)
         setHalfCheckedKeys(checkState.halfCheckedKeys)
-      } else {
-        setHalfCheckedKeys(checkState.halfCheckedKeys)
       }
       onCheck &&
         onCheck(checkState.checkedKeys, { event, node, checked: value, halfCheckedKeys: checkState.halfCheckedKeys })
