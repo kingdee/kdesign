@@ -411,7 +411,7 @@ const InternalSelect: React.ForwardRefRenderFunction<ISelectProps<SelectValue>> 
     return (
       <>
         {iconShow && (
-          <span onClick={handleReset} className={clearIconCls}>
+          <span onClick={handleReset} onMouseDown={(e) => e.preventDefault()} className={clearIconCls}>
             {<Icon type="close-solid" /> || clearIcon}
           </span>
         )}
@@ -607,7 +607,11 @@ const InternalSelect: React.ForwardRefRenderFunction<ISelectProps<SelectValue>> 
               const { label, value } = item
               return (
                 (!maxTagCount || index <= maxTagCount - 1) && (
-                  <span key={value} className={classNames(`${selectPrefixCls}-selection-tag`)}>
+                  <span
+                    key={value}
+                    className={classNames(`${selectPrefixCls}-selection-tag`)}
+                    onMouseDown={(e) => e.preventDefault()}
+                  >
                     <Tag
                       type="edit"
                       style={TagStyle}
