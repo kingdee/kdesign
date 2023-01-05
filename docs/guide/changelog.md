@@ -4,6 +4,25 @@ title: 更新日志
 hiddenAnchor: true
 ---
 
+## [1.6.26](https://github.com/kdcloudone/kdesign/compare/v1.6.25...v1.6.26)
+`2023-01-05`
+* checkbox
+  * checkboxgroup onchangeAPI 破坏性修改,参数checkedValue与 e:Event互换位置
+* filter
+  * 修复单测问题点
+* select
+  * 修复单选模式下选中后title显示问题
+  * 修复多选时删除所选项问题
+* stepper
+  * 修复嵌入式步进器递增按钮点击区域不灵敏问题
+* tree
+  * 修复可勾选受控状态时半选按钮显示问题
+
+## [1.6.25](https://github.com/kdcloudone/kdesign/compare/v1.6.24...v1.6.25)
+`2023-01-03`
+* 修复快速选择时间
+* 修复面板ref赋值
+
 ## [1.6.24](https://github.com/kdcloudone/kdesign/compare/v1.6.23...v1.6.24)
 `2022-12-29`
 * select
