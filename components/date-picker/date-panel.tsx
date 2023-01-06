@@ -214,10 +214,22 @@ function Panel(props: MergedPickerPanelProps) {
     return {
       children: (
         <>
-          <span className={`${prefixCls}-header-text-inner`} onClick={onHeaderYearClick}>
+          <span
+            className={classnames(`${prefixCls}-header-text-inner`, {
+              [`${prefixCls}-header-text-inner-active`]: innerPicker === 'year',
+              [`${prefixCls}-header-text-inner-hover`]: picker === 'date',
+            })}
+            onClick={onHeaderYearClick}
+          >
             {year + locale.year}
           </span>
-          <span className={`${prefixCls}-header-text-inner`} onClick={onHeaderMonthClick}>
+          <span
+            className={classnames(`${prefixCls}-header-text-inner`, {
+              [`${prefixCls}-header-text-inner-active`]: innerPicker === 'month',
+              [`${prefixCls}-header-text-inner-hover`]: picker === 'date',
+            })}
+            onClick={onHeaderMonthClick}
+          >
             {month + locale.month}
           </span>
         </>

@@ -629,11 +629,15 @@
       flex: 1;
 
       &-inner {
-        cursor: pointer;
-
-        &:hover {
+        &-active {
           color: @date-color-background-checked;
         }
+
+        &-hover:hover {
+          color: @date-color-background-checked;
+          cursor: pointer;
+        }
+
         &:nth-child(2) {
           margin-left: 13px;
         }
