@@ -65,4 +65,13 @@ export interface ISelectProps<T extends SelectValue> extends AbstractSelectProps
   onSearch?: (value?: string) => void
   onClear?: () => void
   onDropdownVisibleChange?: (value?: T) => void
+  tagRender?: (props: TagProps) => void
+}
+
+export interface TagProps {
+  value?: string
+  label?: React.ReactNode
+  disabled: boolean
+  size: SelectSize
+  onClose: () => void
 }
