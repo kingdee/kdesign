@@ -12,6 +12,16 @@ export const TotalTypes = tuple('page', 'row', 'all')
 export type pageType = typeof PageTypes[number]
 export type totalType = typeof TotalTypes[number]
 
+export interface IIcons {
+  first: React.ReactElement
+  last: React.ReactElement
+  prev: React.ReactElement
+  next: React.ReactElement
+  down: React.ReactElement
+  jumpPrev: React.ReactElement
+  jumpNext: React.ReactElement
+}
+
 export interface IPaginationProps {
   total?: number
   current?: number
@@ -33,6 +43,7 @@ export interface IPaginationProps {
   onChange?: (page: number, pageSize?: number) => void
   showQuickJumper?: boolean | { goButton?: React.ReactNode }
   onShowSizeChange?: (current: number, size: number) => void
+  icons?: Partial<IIcons>
 }
 
 const Pagination: React.FC<IPaginationProps> = (props) => {
@@ -63,6 +74,7 @@ const Pagination: React.FC<IPaginationProps> = (props) => {
     showSizeChanger,
     onShowSizeChange,
     hideOnSinglePage,
+    icons,
     prefixCls: customPrefixcls,
   } = getCompProps('Pagination', userDefaultProps, props)
   devWarning(PageTypes.indexOf(pageType) === -1, 'Pagination', `cannot found pageType '${pageType}'`)
@@ -96,6 +108,20 @@ const Pagination: React.FC<IPaginationProps> = (props) => {
 
   // pageSize切换器是否展开
   const [isOpen, setIsOpen] = React.useState(false)
+
+  // icons
+  const innerIcon: IIcons = Object.assign(
+    {
+      first: <Icon type="first" />,
+      last: <Icon type="last" />,
+      prev: <Icon type="arrow-left" />,
+      next: <Icon type="arrow-right" />,
+      down: <Icon type="arrow-down" />,
+      jumpPrev: <Icon type="double-arrow-left" />,
+      jumpNext: <Icon type="double-arrow-right" />,
+    },
+    icons || {},
+  )
 
   // 切换pageSize
   const handleChangeSize = (key: string) => {
@@ -225,22 +251,22 @@ const Pagination: React.FC<IPaginationProps> = (props) => {
       <ul className={`${prefixCls}-action`}>
         <li {...itemAttr('action-item', paginationLangMsg.first)}>
           <button onClick={handleFirst} disabled={page === 1 || disabled}>
-            <Icon type="first" />
+            {innerIcon.first}
           </button>
         </li>
         <li {...itemAttr('action-item', paginationLangMsg.prevPage)}>
           <button onClick={handlePrev} disabled={page === 1 || disabled}>
-            <Icon type="arrow-left" />
+            {innerIcon.prev}
           </button>
         </li>
         <li {...itemAttr('action-item', paginationLangMsg.nextPage)}>
           <button onClick={handleNext} disabled={page === totalPage || disabled}>
-            <Icon type="arrow-right" />
+            {innerIcon.next}
           </button>
         </li>
         <li {...itemAttr('action-item', paginationLangMsg.last)}>
           <button onClick={handleLast} disabled={page === totalPage || disabled}>
-            <Icon type="last" />
+            {innerIcon.last}
           </button>
         </li>
       </ul>
@@ -260,14 +286,13 @@ const Pagination: React.FC<IPaginationProps> = (props) => {
             {...dropdownProps}
             onVisibleChange={dropdownVisibleChange}
           >
-            <button className={`${prefixCls}-selector-size`}>
+            <button
+              className={classNames(`${prefixCls}-selector-size`, `${prefixCls}-options-dropdown`, {
+                [`${prefixCls}-options-dropdown-open`]: isOpen,
+              })}
+            >
               <span>{locale.getLangMsg('Pagination', 'perPage', { size })}</span>
-              <Icon
-                type="arrow-down"
-                className={classNames(`${prefixCls}-dropdown-icon`, {
-                  [`${prefixCls}-dropdown-icon-open`]: isOpen,
-                })}
-              />
+              {innerIcon.down}
             </button>
           </Dropdown>
         </div>
@@ -281,7 +306,7 @@ const Pagination: React.FC<IPaginationProps> = (props) => {
       <ul className={classNames(`${prefixCls}-action`, { bordered, disabled })}>
         <li {...itemAttr('action-item', paginationLangMsg.prevPage)}>
           <button onClick={handlePrev} disabled={page === 1 || disabled}>
-            <Icon type="arrow-left" />
+            {innerIcon.prev}
           </button>
         </li>
         <li {...itemAttr('action-item', `${page}/${totalPage}`)}>
@@ -304,7 +329,7 @@ const Pagination: React.FC<IPaginationProps> = (props) => {
         </li>
         <li {...itemAttr('action-item', paginationLangMsg.nextPage)}>
           <button onClick={handleNext} disabled={page === totalPage || disabled}>
-            <Icon type="arrow-right" />
+            {innerIcon.next}
           </button>
         </li>
       </ul>
@@ -319,7 +344,7 @@ const Pagination: React.FC<IPaginationProps> = (props) => {
       <ul className={`${prefixCls}-pages`}>
         <li {...itemAttr('pages-item', paginationLangMsg.prevPage)}>
           <button onClick={handlePrev} disabled={page === 1 || disabled}>
-            <Icon type="arrow-left" />
+            {innerIcon.prev}
           </button>
         </li>
         {lessPages.map((item, index) => (
@@ -331,7 +356,7 @@ const Pagination: React.FC<IPaginationProps> = (props) => {
         ))}
         <li {...itemAttr('pages-item', paginationLangMsg.nextPage)}>
           <button onClick={handleNext} disabled={page === totalPage || disabled}>
-            <Icon type="arrow-right" />
+            {innerIcon.next}
           </button>
         </li>
       </ul>
@@ -361,30 +386,31 @@ const Pagination: React.FC<IPaginationProps> = (props) => {
       <ul className={`${prefixCls}-pages`}>
         <li {...itemAttr('pages-item', paginationLangMsg.prevPage)}>
           <button onClick={handlePrev} disabled={page === 1 || disabled}>
-            <Icon type="arrow-left" />
+            {innerIcon.prev}
           </button>
         </li>
         {nicetyPages.map((item, index) => {
           const handleChangePage = () =>
             typeof item === 'string' ? (item === '<<' ? jumpPrev() : jumpNext()) : changePage(item)
           const pageText = typeof item === 'string' ? '...' : item
-          const jumperIconType = item === '<<' ? 'double-arrow-left' : 'double-arrow-right'
+          const jumperIconType = item === '<<' ? innerIcon.jumpPrev : innerIcon.jumpNext
           const title =
             typeof item === 'string' ? paginationLangMsg[item === '<<' ? 'forward' : 'backward'] : String(item)
           return (
             <li key={index} {...itemAttr('pages-item', title, item === page)}>
               <button onClick={handleChangePage} disabled={disabled}>
                 {pageText}
-                {typeof item === 'string' && (
-                  <Icon type={jumperIconType} className={`${prefixCls}-pages-jumper-icon`} />
-                )}
+                {typeof item === 'string' &&
+                  React.cloneElement(jumperIconType, {
+                    className: `${prefixCls}-pages-jumper-icon`,
+                  })}
               </button>
             </li>
           )
         })}
         <li {...itemAttr('pages-item', paginationLangMsg.nextPage)}>
           <button onClick={handleNext} disabled={page === totalPage || disabled}>
-            <Icon type="arrow-right" />
+            {innerIcon.next}
           </button>
         </li>
       </ul>
@@ -420,14 +446,13 @@ const Pagination: React.FC<IPaginationProps> = (props) => {
                 {...dropdownProps}
                 onVisibleChange={dropdownVisibleChange}
               >
-                <button className={`${prefixCls}-options-size`}>
+                <button
+                  className={classNames(`${prefixCls}-options-size`, `${prefixCls}-options-dropdown`, {
+                    [`${prefixCls}-options-dropdown-open`]: isOpen,
+                  })}
+                >
                   {size}
-                  <Icon
-                    type="arrow-down"
-                    className={classNames(`${prefixCls}-dropdown-icon`, {
-                      [`${prefixCls}-dropdown-icon-open`]: isOpen,
-                    })}
-                  />
+                  {innerIcon.down}
                 </button>
               </Dropdown>
             ),
