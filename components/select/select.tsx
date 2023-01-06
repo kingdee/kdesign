@@ -47,6 +47,7 @@ const InternalSelect: React.ForwardRefRenderFunction<ISelectProps<SelectValue>> 
     optionFilterProp,
     optionLabelProp,
     popperStyle = {},
+    tagRender,
   } = selectProps
   const isMultiple = mode === 'multiple' // 是否多选
   const [initValue, setInitValue] = useMergedState(undefined, {
@@ -612,17 +613,21 @@ const InternalSelect: React.ForwardRefRenderFunction<ISelectProps<SelectValue>> 
                     className={classNames(`${selectPrefixCls}-selection-tag`)}
                     onMouseDown={(e) => e.preventDefault()}
                   >
-                    <Tag
-                      type="edit"
-                      style={TagStyle}
-                      size={size}
-                      closable
-                      disabled={disabled}
-                      onClose={(e) => handleRemove(e, value)}
-                      data-tag={value}
-                    >
-                      {label}
-                    </Tag>
+                    {typeof tagRender === 'function' ? (
+                      tagRender?.({ onClose: handleRemove, value, label, disabled, size })
+                    ) : (
+                      <Tag
+                        type="edit"
+                        style={TagStyle}
+                        size={size}
+                        closable
+                        disabled={disabled}
+                        onClose={(e) => handleRemove(e, value)}
+                        data-tag={value}
+                      >
+                        {label}
+                      </Tag>
+                    )}
                   </span>
                 )
               )

@@ -60,12 +60,12 @@ Array [
             class="kd-date-picker-header-text"
           >
             <span
-              class="kd-date-picker-header-text-inner"
+              class="kd-date-picker-header-text-inner kd-date-picker-header-text-inner-hover"
             >
               2000年
             </span>
             <span
-              class="kd-date-picker-header-text-inner"
+              class="kd-date-picker-header-text-inner kd-date-picker-header-text-inner-hover"
             >
               1月
             </span>
@@ -600,12 +600,12 @@ Array [
             class="kd-date-picker-header-text"
           >
             <span
-              class="kd-date-picker-header-text-inner"
+              class="kd-date-picker-header-text-inner kd-date-picker-header-text-inner-hover"
             >
               2000年
             </span>
             <span
-              class="kd-date-picker-header-text-inner"
+              class="kd-date-picker-header-text-inner kd-date-picker-header-text-inner-hover"
             >
               1月
             </span>
@@ -1140,12 +1140,12 @@ Array [
             class="kd-date-picker-header-text"
           >
             <span
-              class="kd-date-picker-header-text-inner"
+              class="kd-date-picker-header-text-inner kd-date-picker-header-text-inner-hover"
             >
               2000年
             </span>
             <span
-              class="kd-date-picker-header-text-inner"
+              class="kd-date-picker-header-text-inner kd-date-picker-header-text-inner-hover"
             >
               1月
             </span>
@@ -1680,12 +1680,12 @@ Array [
             class="kd-date-picker-header-text"
           >
             <span
-              class="kd-date-picker-header-text-inner"
+              class="kd-date-picker-header-text-inner kd-date-picker-header-text-inner-hover"
             >
               2000年
             </span>
             <span
-              class="kd-date-picker-header-text-inner"
+              class="kd-date-picker-header-text-inner kd-date-picker-header-text-inner-hover"
             >
               1月
             </span>
@@ -4684,12 +4684,12 @@ Array [
             class="kd-date-picker-header-text"
           >
             <span
-              class="kd-date-picker-header-text-inner"
+              class="kd-date-picker-header-text-inner kd-date-picker-header-text-inner-hover"
             >
               2016年
             </span>
             <span
-              class="kd-date-picker-header-text-inner"
+              class="kd-date-picker-header-text-inner kd-date-picker-header-text-inner-hover"
             >
               11月
             </span>
