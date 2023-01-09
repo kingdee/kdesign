@@ -139,9 +139,7 @@ export function getMaxNumberByPrecision(integerPrecision: number, decimalPrecisi
  * @param {string|number} number 待判断的值
  */
 export function isExp(number: string | number): boolean {
-  number = Number(number)
-  if (isNaN(number) || !isFinite(number)) return false
-  return /^(?!-0(\.0+)?(e|$))-?(0|[1-9]\d*)(\.\d+)?(e-?(0|[1-9]\d*))?$/i.test(number.toString())
+  return /\d+\.?\d*e[+-]*\d+/i.test(number.toString())
 }
 
 /**
