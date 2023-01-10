@@ -84,7 +84,7 @@ const InternalUpload: React.ForwardRefRenderFunction<unknown, UploadProps> = (pr
 
   const uploadFiles = (files: Array<UploadFile>) => {
     files.forEach((file: UploadFile) => {
-      file.originFileObj = new File([file], file.type)
+      file.originFileObj = new File([file], file.name, { type: file.type })
       file.uid = getUid()
       file.status = 'notStart'
       file.fileName = allProps.name || file.name
