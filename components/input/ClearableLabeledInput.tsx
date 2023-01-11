@@ -5,7 +5,7 @@ import { tuple } from '../_utils/type'
 import { InputSiteType, BorderType } from './input'
 const ClearableInputType = tuple('input', 'text')
 export function hasPrefixSuffix(props: ClearableInputProps) {
-  return !!(props.prefix || props.suffix || props.allowClear)
+  return !!(props.prefix || props.suffix || props.allowClear || !!props.inputCount)
 }
 interface ClearableInputProps {
   prefixCls: string
@@ -25,6 +25,7 @@ interface ClearableInputProps {
   addonBefore?: React.ReactNode
   addonAfter?: React.ReactNode
   numberMark?: React.ReactNode
+  inputCount?: React.ReactNode
 }
 const ClearableInput: React.FC<ClearableInputProps> = (props) => {
   const {
@@ -45,6 +46,7 @@ const ClearableInput: React.FC<ClearableInputProps> = (props) => {
     addonAfter,
     focused,
     numberMark,
+    inputCount,
   } = props
 
   const [isMouseEnter, setIsMouseEnter] = useState<boolean>(false)
@@ -76,11 +78,12 @@ const ClearableInput: React.FC<ClearableInputProps> = (props) => {
   }
 
   const renderSuffix = () => {
-    if (suffix || (!disabled && !!allowClear)) {
+    if (suffix || (!disabled && !!allowClear) || inputCount) {
       return (
         <span className={`${prefixCls}-suffix`}>
           {renderClearIcon()}
-          {suffix}
+          {inputCount && <span style={{ marginRight: suffix ? 9 : 0 }}>{inputCount}</span>}
+          <span>{suffix}</span>
         </span>
       )
     }

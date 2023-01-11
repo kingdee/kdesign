@@ -15,20 +15,25 @@ textarea {
   overflow: auto;
   resize: vertical;
 }
+
 .@{input-prefix-cls} {
   .input(@input-prefix-cls);
+
   transition: border-color @transition-duration-inner;
+
   &-countWrapper {
     position: relative;
     display: inline-block;
     width: 100%;
   }
+
   &-textarea {
     .input(@input-prefix-cls);
     transition: border-color @transition-duration-inner;
     max-width: 100%;
     height: auto;
     vertical-align: bottom;
+
     &-mark {
       position: absolute;
       right: 0;
@@ -39,48 +44,59 @@ textarea {
       line-height: 18px;
       background-color: #fff;
     }
+
     &-mark-inner {
       top: auto;
       bottom: 5px;
       right: 8px;
     }
   }
+
   &-no-resize {
     resize: none;
   }
+
   &-borderless {
     border: 0;
     padding-left: 0 !important;
+
     &:focus {
       border: 0;
     }
   }
+
   &-underline {
     border: none;
     border-bottom: 1px solid @input-color-border;
     border-radius: 0;
     padding-left: 0 !important;
   }
+
   &-disabled {
     background-color: @input-background-color-disabled-inner;
     border-color: @input-border-color-disabled-inner;
     color: @input-affix-color;
     cursor: not-allowed;
   }
+
   &-underline&-disabled {
     color: @input-color-disabled-inner;
     background-color: @input-background-color-inner;
     border-color: @input-underline-border-color-disabled-inner;
   }
+
   &-size-small {
     .input-size(@input-small-height-inner, @input-small-font-size-inner, @input-small-padding-vertical-inner, @input-small-padding-horizontal-inner);
   }
+
   &-size-middle {
     .input-size(@input-middle-height-inner, @input-middle-font-size-inner, @input-small-padding-vertical-inner, @input-small-padding-horizontal-inner);
   }
+
   &-size-large {
     .input-size(@input-large-height-inner, @input-large-font-size-inner, @input-small-padding-vertical-inner, @input-small-padding-horizontal-inner);
   }
+
   &-wrapper {
     padding-left: @input-wrapper-padding-left !important;
     .input(@wrapper-prefix-cls);
@@ -90,11 +106,13 @@ textarea {
     padding-top: 0 !important;
     padding-bottom: 0 !important;
     overflow: hidden;
+
     .@{input-prefix-cls} {
       border: none;
       padding-left: @input-padding-left;
       padding-right: 0;
       height: 100%;
+
       &-suffix,
       &-prefix {
         display: flex;
@@ -104,25 +122,32 @@ textarea {
         word-break: keep-all;
         color: @input-affix-color;
       }
+
       &-suffix {
         margin-left: 4px;
       }
+
       &-prefix {
         margin-right: 4px;
       }
     }
+
     &-size-small {
       .input-size(@input-small-height-inner, @input-small-font-size-inner, @input-small-padding-vertical-inner, @input-small-padding-horizontal-inner);
     }
+
     &-size-middle {
       .input-size(@input-middle-height-inner, @input-middle-font-size-inner, @input-small-padding-vertical-inner, @input-middle-padding-horizontal-inner);
     }
+
     &-size-large {
       .input-size(@input-large-height-inner, @input-large-font-size-inner, @input-small-padding-vertical-inner, @input-large-padding-horizontal-inner);
     }
+
     &-borderless {
       .border-less;
     }
+
     &-underline {
       .underline;
     }
@@ -142,12 +167,14 @@ textarea {
       }
     }
   }
+
   &-wrapper-textarea {
     .input(@input-prefix-cls);
     border: none !important;
     padding: 0 !important;
     position: relative;
     display: inline-block;
+
     .@{input-prefix-cls} {
       &-textarea-clear-icon {
         position: absolute;
@@ -157,13 +184,16 @@ textarea {
       }
     }
   }
+
   &-clear-icon,
   &-textarea-clear-icon {
     .input-clear-icon;
   }
+
   &-clear-icon-hidden {
     visibility: hidden;
   }
+
   &-clear-icon-rightSpace {
     margin-right: 4px;
   }
@@ -173,6 +203,7 @@ textarea {
     width: 100%;
     text-align: start;
     vertical-align: top;
+
     .@{input-prefix-cls} {
       &-group {
         box-sizing: border-box;
@@ -189,19 +220,23 @@ textarea {
         width: 100%;
         border-collapse: separate;
         border-spacing: 0;
+
         & > .@{input-prefix-cls}-wrapper {
           &:not(:first-child):not(:last-child) {
             border-radius: 0;
           }
+
           &:first-child:not(:last-child) {
             border-top-right-radius: 0;
             border-bottom-right-radius: 0;
           }
+
           &:not(:first-child):last-child {
             border-top-left-radius: 0;
             border-bottom-left-radius: 0;
           }
         }
+
         .@{input-prefix-cls}-group-addon {
           position: relative;
           color: @input-affix-color;
@@ -216,11 +251,13 @@ textarea {
           display: flex;
           align-items: center;
           height: @input-middle-height-inner;
+
           &:first-child {
             border-top-right-radius: 0;
             border-bottom-right-radius: 0;
             border-right: none;
           }
+
           &:last-child {
             border-top-left-radius: 0;
             border-bottom-left-radius: 0;
@@ -230,9 +267,11 @@ textarea {
           &-borderless {
             .border-less;
           }
+
           &-underline {
             .underline;
           }
+
           &-disabled {
             background-color: @input-background-color-disabled-inner;
             border-color: @input-border-color-disabled-inner;
@@ -241,16 +280,19 @@ textarea {
           }
         }
       }
+
       &-group-size-small {
         .@{input-prefix-cls}-group-addon {
           height: @input-small-height-inner;
         }
       }
+
       &-group-middle-small {
         .@{input-prefix-cls}-group-addon {
           height: @input-middle-height-inner;
         }
       }
+
       &-group-large-small {
         .@{input-prefix-cls}-group-addon {
           height: @input-large-height-inner;
@@ -258,7 +300,12 @@ textarea {
       }
     }
   }
+
   &-allowClear-spacing {
     padding-right: 20px;
+  }
+
+  &-input-mark-inner {
+    color: @input-placeholder-color-inner;
   }
 }
