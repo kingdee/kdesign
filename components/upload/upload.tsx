@@ -337,9 +337,13 @@ const InternalUpload: React.ForwardRefRenderFunction<unknown, UploadProps> = (pr
           {showUploadList &&
             fileList.map((file: UploadFile) =>
               itemRender ? (
-                itemRender(<Item {...{ file, prefixCls, listType, handleReUpload, handleRemove }} />, file, setFileList)
+                itemRender(
+                  <Item {...{ file, prefixCls, listType, handleReUpload, handleRemove, disabled }} />,
+                  file,
+                  setFileList,
+                )
               ) : (
-                <Item key={file.uid} {...{ file, prefixCls, listType, handleReUpload, handleRemove }} />
+                <Item key={file.uid} {...{ file, prefixCls, listType, handleReUpload, handleRemove, disabled }} />
               ),
             )}
         </ul>
@@ -348,7 +352,7 @@ const InternalUpload: React.ForwardRefRenderFunction<unknown, UploadProps> = (pr
   )
 }
 
-const Item: React.FC<IFileItem> = ({ file, prefixCls, listType, handleReUpload, handleRemove }) => {
+const Item: React.FC<IFileItem> = ({ file, prefixCls, listType, handleReUpload, handleRemove, disabled }) => {
   const mapStatus: Record<string, string> = {
     uploading: 'loadding',
     error: 'warning-solid',
@@ -377,13 +381,15 @@ const Item: React.FC<IFileItem> = ({ file, prefixCls, listType, handleReUpload, 
                 重新上传
               </a>
             )}
-            <a
-              href="true"
-              className={`${prefixCls}-${listType}-list-item-delete`}
-              onClick={handleRemove.bind(this, file)}
-            >
-              删除
-            </a>
+            {!disabled && (
+              <a
+                href="true"
+                className={`${prefixCls}-${listType}-list-item-delete`}
+                onClick={handleRemove.bind(this, file)}
+              >
+                删除
+              </a>
+            )}
           </div>
         </>
       ) : file.status === 'uploading' ? (
@@ -396,22 +402,24 @@ const Item: React.FC<IFileItem> = ({ file, prefixCls, listType, handleReUpload, 
             <Icon type={mapStatus[file.status as string]} style={{ verticalAlign: 'top' }} />
             上传失败
           </div>
-          <div className={`${prefixCls}-${listType}-list-item-action`}>
-            <a
-              href="true"
-              className={`${prefixCls}-${listType}-list-item-reupload`}
-              onClick={handleReUpload.bind(this, file)}
-            >
-              重新上传
-            </a>
-            <a
-              href="true"
-              className={`${prefixCls}-${listType}-list-item-delete`}
-              onClick={handleRemove.bind(this, file)}
-            >
-              删除
-            </a>
-          </div>
+          {!disabled && (
+            <div className={`${prefixCls}-${listType}-list-item-action`}>
+              <a
+                href="true"
+                className={`${prefixCls}-${listType}-list-item-reupload`}
+                onClick={handleReUpload.bind(this, file)}
+              >
+                重新上传
+              </a>
+              <a
+                href="true"
+                className={`${prefixCls}-${listType}-list-item-delete`}
+                onClick={handleRemove.bind(this, file)}
+              >
+                删除
+              </a>
+            </div>
+          )}
         </div>
       ) : (
         <Image
