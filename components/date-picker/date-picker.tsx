@@ -228,11 +228,15 @@ const InternalDatePicker = (
   const _format = getDefaultFormat(format, picker, showTime && !disabledTimePanel, use12Hours)
 
   // 面板展示日期
-  const [viewDate, setViewDate] = useMergedState<DateType | null, DateType>(null, {
-    // value: pickerValue,
-    defaultValue: defaultPickerValue || dateValue,
-    postState: (date) => date || newDate(),
-  })
+  const [viewDate, setInnerViewDate] = useState<DateType>(defaultPickerValue || dateValue || new Date())
+
+  const setViewDate = (date: DateType | null) => {
+    setInnerViewDate(date || new Date())
+  }
+
+  useEffect(() => {
+    setViewDate(dateValue)
+  }, [dateValue])
 
   // text
   const valueText = useValueTexts(selectedValue, { format: _format })
