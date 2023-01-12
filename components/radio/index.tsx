@@ -21,6 +21,7 @@ interface CompoundedComponent extends React.ForwardRefExoticComponent<IRadioProp
 
 const Radio = InternalRadio as CompoundedComponent
 Radio.Group = Group
+Radio.Group.displayName = 'RadioGroup'
 Radio.Button = Button
 export { Group, Button }
 export default Radio
