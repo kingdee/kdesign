@@ -88,13 +88,19 @@ const Dropdown = React.forwardRef<unknown, DropDownProps>((props, ref) => {
       props.visible === undefined && setVisible(false)
     }
   }
-
+  const cloneObj = React.cloneElement(menu, {
+    selectedKey,
+    onClick: handleItemClick,
+    selectable: menuSelectable,
+  })
   const menuElement = isMenu ? (
-    React.cloneElement(menu, {
-      selectedKey,
-      onClick: handleItemClick,
-      selectable: menuSelectable,
-    })
+    Array.isArray(menu.props?.children) ? (
+      cloneObj
+    ) : (
+      <ul className={`${prefixCls}-menu`} onClick={handleItemClick} role="menu">
+        {menu.props.children}
+      </ul>
+    )
   ) : (
     <ul className={`${prefixCls}-menu`} onClick={handleItemClick} role="menu">
       {menu.map(({ key: itemKey, label, href, danger, divided, disabled }: MenuItem) => {
