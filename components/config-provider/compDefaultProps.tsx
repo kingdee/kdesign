@@ -149,6 +149,7 @@ const compDefaultProps = {
     mask: '',
     mustInScope: false,
     mustInPrecisionScope: true,
+    numberMode: false,
   },
   Layout: {},
   Modal: {

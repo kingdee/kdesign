@@ -43,6 +43,7 @@ export interface InputNumberProps extends InputProps {
   stepOption?: StepOption
   stepperrref?: any
   formatter?: (value: string | undefined) => string
+  numberMode?: boolean
 }
 
 const InternalInputNumber = (props: InputNumberProps, ref: unknown): FunctionComponentElement<InputNumberProps> => {
@@ -67,6 +68,7 @@ const InternalInputNumber = (props: InputNumberProps, ref: unknown): FunctionCom
     minMark,
     max,
     maxMark,
+    numberMode,
     prefix,
     suffix,
     formatter,
@@ -74,7 +76,7 @@ const InternalInputNumber = (props: InputNumberProps, ref: unknown): FunctionCom
     ...others
   } = inputNumberProps
   const initVal = value === undefined ? defaultValue : value
-  const [inputValue, setInputValue] = useState(serialization(initVal || ''))
+  const [inputValue, setInputValue] = useState(serialization(initVal !== undefined ? initVal + '' : ''))
   const inputStatus = useRef({ isHandleChange: false, inputFocused: false })
   const inputPrefixCls = getPrefixCls!(prefixCls, 'inputNumber', inputNumberProps.prefixCls)
   const thisInputNumberRef = useRef<HTMLElement>()
@@ -102,7 +104,7 @@ const InternalInputNumber = (props: InputNumberProps, ref: unknown): FunctionCom
 
   const handleEventAttachValue = (
     event: React.ChangeEvent<HTMLInputElement> | React.FocusEvent<HTMLInputElement>,
-    value: string,
+    value: string | number,
   ) => {
     return Object.assign({}, event, { target: { value: value } })
   }
@@ -139,7 +141,7 @@ const InternalInputNumber = (props: InputNumberProps, ref: unknown): FunctionCom
     }
 
     value === undefined && setInputValue(legalNumber)
-    onChange && onChange(handleEventAttachValue(event, legalNumber))
+    onChange && onChange(handleEventAttachValue(event, numberMode ? Number(legalNumber) : legalNumber))
   }
 
   const handleFocus = (event: React.FocusEvent<HTMLInputElement>) => {
