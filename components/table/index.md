@@ -61,6 +61,7 @@ return <Table dataSource={dataSource} columns={columns} />
 | columnResize | 手动调整列宽的大小配置 | [columnResize](#columnResize) | - | - | 1.0.0 |
 | rangeSelection | 范围选中功能配置 | [rangeSelection](#rangeSelection) | - | - | 1.0.0 |
 | components | 表格内部组件替换 |  [组件替换](#组件替换) | - | - | 1.0.0 |
+| getRowProps | 更新每一行的props | (record: any, rowIndex: number) => {}  | - | - | 1.0.0 |
 <br/>
 
 
@@ -146,7 +147,7 @@ return <Table dataSource={dataSource} columns={columns} />
 | isDisabled | 判断一行中的 checkbox 是否要禁用 | (row, rowIndex) => boolean| `-` | `-` | 1.0.0 |
 | clickArea | 点击事件的响应区域 | string | `checkbox` | `checkbox` `cell` `row` | 1.0.0 |
 | stopClickEventPropagation | 是否对触发 onChange 的 click 事件调用 event.stopPropagation() | boolean | `false` | `true` `false` | 1.0.0 |
-| highlightRowWhenSelected | 是否高亮被选中的行 | boolean | `false` | `true` `false` | 1.6.15 | 
+| highlightRowWhenSelected | 是否高亮被选中的行 | boolean | `false` | `true` `false` | 1.6.15 |
 
 <br/>
 
@@ -249,12 +250,14 @@ SortHeaderCellProps {
 | openKeys | (受控用法) 当前展开的 keys | string[] | `-` | `-` | 1.0.0 |
 | onChangeOpenKeys | (受控用法) openKeys 改变的回调 | (nextKeys: string[], key: string, action: 'expand' &#124; 'collapse') => void | `-` | `-` | 1.0.0 |
 | isLeafNode | 自定义叶子节点的判定逻辑 | (node: any, nodeMeta: { depth: number; expanded: boolean; rowKey: string }) => boolean | `-` | `-` | 1.0.0 |
+| icon | 展开折叠图标 | React.ReactNode | `-` | `-` | 1.0.0 |
 | iconIndent | icon 的缩进值。一般为负数，此时 icon 将向左偏移，默认从 pipeline.ctx.indents 中获取 | number | `-` | `-` | 1.0.0 |
 | iconGap | icon 与右侧文本的距离，默认从 pipeline.ctx.indents 中获取 | number | `-` | `-` | 1.0.0 |
 | indentSize | 每一级缩进产生的距离，默认从 pipeline.ctx.indents 中获取 | number | `-` | `-` | 1.0.0 |
 | clickArea | 点击事件的响应区域 | string | `cell` | `'cell'` &#124; `'content'` &#124; `'icon'` | 1.0.0 |
 | stopClickEventPropagation | 是否对触发展开/收拢的 click 事件调用 event.stopPropagation() | boolean | `false` | `true` &#124; `false` | 1.0.0 |
 | treeMetaKey | 指定表格每一行元信息的记录字段 | string &#124; symbol | `Symbol('treeMetaSymbol')` | `-` | 1.0.0 |
+| expandColCode | 指定展开列 | string | 默认指定展开列为第一列 | `-` | 1.0.0 |
 <br/>
 
 
@@ -272,46 +275,21 @@ interface ColumnDragOptions { onColumnDragStopped?: (columnMoved: boolean, colum
 属性`columnResize`为`true`或设置`ColumnResizeOptions`时表头右侧会显示拖拽线，按住可以手动调整列宽的大小
 
 ```ts
-interface ColumnResizeOptions {
-    /** 列宽受控模式，此处优先级高于列定义的宽度 */
-    columnSize?: ColumnSize;
-    /** 列的最小宽度，默认为 60 */
-    minSize?: number;
-    /** 如果列宽数组中没有提供有效的宽度，fallbackSize 将作为该列的宽度，默认为 150 */
-    fallbackSize?: number;
-    /** 列的最大宽度，默认为 1000 */
-    maxSize?: number;
-    onChangeSize?(nextSize: ColumnSize): void;
-    afterChangeSize?(nextSize: ColumnSize, changedColumnSize: ChangedColumnSize[]): void
-}
+interface ColumnResizeOptions { /** 列宽受控模式，此处优先级高于列定义的宽度 \*/ columnSize?: ColumnSize; /** 列的最小宽度，默认为 60 _/ minSize?: number; /\*\* 如果列宽数组中没有提供有效的宽度，fallbackSize 将作为该列的宽度，默认为 150 _/ fallbackSize?: number; /\*_ 列的最大宽度，默认为 1000 _/ maxSize?: number; onChangeSize?(nextSize: ColumnSize): void; afterChangeSize?(nextSize: ColumnSize, changedColumnSize: ChangedColumnSize[]): void }
 
-interface columnSize { [key: string]: number }
-interface ChangedColumnSize {
-    code: string;
-    width: number;
-}
+interface columnSize { [key: string]: number } interface ChangedColumnSize { code: string; width: number; }
 ```
 
 ### rangeSelection
 
 属性`rangeSelection`为`{}`或设置`TableRangeSelection`时表体内部可范围选中表格
 ```ts
-interface TableRangeSelection {
-    /** 范围选中回调函数 */
-    rangeSelectedChange?(params: any): void;
-    /** 是否阻止keydown的默认行为 */
-    preventkDefaultOfKeyDownEvent?: boolean;
-}
+interface TableRangeSelection { /** 范围选中回调函数 \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \*/ rangeSelectedChange?(params: any): void; /** 是否阻止 keydown 的默认行为 \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \*/ preventkDefaultOfKeyDownEvent?: boolean; }
 ```
 
 ### 组件替换
 属性`components`可替换表格内部的一些子组件，如：加载动画图标、数据为空的展现效果。
 
 ```ts
-interface Components {
-      /** 表格加载时的加载图标 */
-      LoadingIcon?: React.ComponentType;
-      /** 数据为空时，表格的展示内容。 */
-      EmptyContent?: React.ComponentType;
-}
+interface Components { /** 表格加载时的加载图标 \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \*/ LoadingIcon?: React.ComponentType; /** 数据为空时，表格的展示内容。 \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \*/ EmptyContent?: React.ComponentType; }
 ```
