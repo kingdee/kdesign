@@ -428,7 +428,7 @@ const Item: React.FC<IFileItem> = ({ file, prefixCls, listType, handleReUpload, 
           size={getFileSize(file.size)}
           src={file.thumbUrl || file.url}
           style={{ width: '100%', height: '100%' }}
-          operations={[<Icon key="1" type="delete" onClick={handleRemove.bind(this, file)} />]}
+          operations={disabled ? [] : [<Icon key="1" type="delete" onClick={handleRemove.bind(this, file)} />]}
         />
       )}
     </li>
