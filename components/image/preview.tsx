@@ -5,6 +5,7 @@ import { getCompProps } from '../_utils'
 import { ConfigContext } from '../config-provider'
 import Icon from '../icon'
 import throttle from 'lodash/throttle'
+import findLast from 'lodash/findLast'
 import Draggable from 'react-draggable'
 
 export type PreviewType = 'default' | 'upload'
@@ -104,7 +105,7 @@ const Preview: React.FC<PreviewProps> = (props) => {
     }
   }, [show, scale])
   const handleZoomOut = () => {
-    const nextScale = scales.findLast((s: number) => s / 100 < scale)
+    const nextScale = findLast(scales, (s: number) => s / 100 < scale)
     if (nextScale !== undefined) setScale(nextScale / 100)
   }
   const handleZoomIn = () => {
