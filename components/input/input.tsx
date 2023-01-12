@@ -129,11 +129,7 @@ const InternalInput = (props: InputProps, ref: unknown): FunctionComponentElemen
     }
     if (count && showNumberMark && !disabled) {
       return (
-        <div
-          className={classNames(`${inputPrefixCls}-input-mark-inner`, {
-            // [`${inputPrefixCls}-input-mark-outside`]: countPosition === 'inner',
-          })}
-        >
+        <div className={classNames(`${inputPrefixCls}-input-mark-inner`)}>
           {enteredLength}
           {maxLength !== undefined ? `/${maxLength}` : null}
         </div>
@@ -164,7 +160,7 @@ const InternalInput = (props: InputProps, ref: unknown): FunctionComponentElemen
     if (focused && !showNumberMark) {
       setShowNumberMark(true)
     }
-    if (!focused && showNumberMark && !value?.length) {
+    if (!focused && showNumberMark) {
       setShowNumberMark(false)
     }
   }, [focused])

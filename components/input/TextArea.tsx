@@ -146,7 +146,7 @@ const InternalTextarea = (props: textAreaProps, ref: unknown): FunctionComponent
     if (focused && !showNumberMark) {
       setShowNumberMark(true)
     }
-    if (!focused && showNumberMark && !value?.length) {
+    if (!focused && showNumberMark) {
       setShowNumberMark(false)
     }
   }, [focused])
