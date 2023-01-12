@@ -13,24 +13,26 @@ export interface PreviewGroupProps {
 const PreviewGroup: React.FC<PreviewGroupProps> = ({ children, className, style, previewType, operations }) => {
   const images: Array<ImageProps> = React.useMemo(
     () =>
-      React.Children.count(children) > 1
+      Array.isArray(children)
         ? (children as Array<React.ReactElement>)
             .filter((image: React.ReactElement) => image.props.src)
             .map((image: React.ReactElement) => image.props)
-        : [children ? (children as React.ReactElement).props : {}],
+        : [children !== undefined ? (children as React.ReactElement).props : {}],
     [children],
   )
 
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const refs = images.map(() => React.useRef<HTMLImageElement>())
-  const [image, setImage] = React.useState<ImageProps>(images[0])
+  const [image, setImage] = React.useState<ImageProps>(images[0] || {})
   const [current, setCurrent] = React.useState<number>(0)
   const [exit, setExit] = React.useState(false)
   React.useEffect(() => {
     exit && setVisible(true)
   }, [exit])
   React.useEffect(() => {
-    setImage(images[current])
+    if (images[current]) {
+      setImage(images[current])
+    }
   }, [current, images])
 
   const [visible, setVisible] = React.useState(false)
