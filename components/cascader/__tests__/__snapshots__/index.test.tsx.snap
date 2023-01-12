@@ -19,9 +19,11 @@ exports[`Cascader renders correctly 1`] = `
       <span
         class="kd-input-suffix"
       >
-        <i
-          class="kdicon kdicon-arrow-down"
-        />
+        <span>
+          <i
+            class="kdicon kdicon-arrow-down"
+          />
+        </span>
       </span>
     </span>
     <span
@@ -50,9 +52,11 @@ exports[`Cascader renders correctly 2`] = `
       <span
         class="kd-input-suffix"
       >
-        <i
-          class="kdicon kdicon-arrow-down"
-        />
+        <span>
+          <i
+            class="kdicon kdicon-arrow-down"
+          />
+        </span>
       </span>
     </span>
     <span
@@ -81,9 +85,11 @@ exports[`Cascader renders correctly 3`] = `
       <span
         class="kd-input-suffix"
       >
-        <i
-          class="kdicon kdicon-arrow-down"
-        />
+        <span>
+          <i
+            class="kdicon kdicon-arrow-down"
+          />
+        </span>
       </span>
     </span>
     <span
