@@ -72,6 +72,7 @@ export interface RangePickerSharedProps {
   separator?: React.ReactNode
   allowEmpty?: [boolean, boolean]
   suffixIcon?: React.ReactNode
+  clearIcon?: React.ReactNode
   mode?: [PanelMode, PanelMode]
   onChange?: (values: RangeValue, formatString: [string | null, string | null]) => void
   onCalendarChange?: (values: RangeValue, formatString: [string | null, string | null], info: RangeInfo) => void
@@ -223,7 +224,7 @@ const InternalRangePicker = (
     minuteStep = 1,
     secondStep = 1,
     suffixIcon,
-
+    clearIcon,
     panelRender,
     renderExtraFooter,
     disabledHours,
@@ -793,6 +794,7 @@ const InternalRangePicker = (
     endOpen,
     needConfirmButton,
     suffixIcon,
+    clearIcon,
     format: _format,
     open: mergedOpen,
     readOnly: inputReadOnly,

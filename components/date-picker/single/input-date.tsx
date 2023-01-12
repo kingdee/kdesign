@@ -104,12 +104,10 @@ function InputDate(props: InputDateProps, ref: React.RefObject<HTMLDivElement>) 
   if (allowClear && dateValue && !disabled) {
     clearNode = (
       <span
-        onMouseDown={(e) => {
-          e.preventDefault()
+        onMouseUp={(e) => {
           e.stopPropagation()
         }}
-        onMouseUp={(e) => {
-          e.preventDefault()
+        onClick={(e) => {
           e.stopPropagation()
           triggerChange(null)
           triggerOpen(false)
