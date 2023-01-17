@@ -429,8 +429,6 @@ const InternalTree = React.forwardRef((props: TreeProps, ref: any): React.Functi
     if (scrollToKey) {
       setSelectedKeys([scrollToKey])
       setScrollKey(scrollToKey)
-    } else {
-      setSelectedKeys([])
     }
   }, [scrollToKey])
 
@@ -461,7 +459,10 @@ const InternalTree = React.forwardRef((props: TreeProps, ref: any): React.Functi
             item.onDrop = handleDrop
             item.onSelect = handleSelect
             item.checked = checked
-            item.selected = getSelected(selectedKeys, item.key)
+            item.selected = getSelected(
+              Array.isArray(selectedKeys) && selectedKeys[0] ? [selectedKeys[0]] : selectedKeys,
+              item.key,
+            )
             item.indeterminate = indeterminate
             item.disabled = getDisabled(disabled, item.disabled)
             item.showIcon = showIcon || false
