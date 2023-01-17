@@ -234,11 +234,12 @@ const Field: React.FC<FormItemProps> = (props) => {
     } = ch.props
 
     const onChange = (...evt: any) => {
+      const iv = getInputValueFormProp(evt[0], evt)
       if (chValue === undefined) {
-        const iv = getInputValueFormProp(evt[0], evt)
         setFieldValue(iv)
-        dispatch({ type: 'updateValue', namePath: name, value: iv })
       }
+
+      dispatch({ type: 'updateValue', namePath: name, value: iv })
 
       if (typeof chChange === 'function') {
         chChange(...evt)
