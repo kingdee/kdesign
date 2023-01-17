@@ -308,6 +308,8 @@ const InternalDatePicker = (
       } else if (valueText !== text) {
         resetText()
       }
+    } else {
+      setInnerPicker(undefined)
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [openValue, valueText])
@@ -329,9 +331,6 @@ const InternalDatePicker = (
   })
 
   const triggerChange = (newValue: DateType | null) => {
-    setSelectedValue(newValue)
-    setDateValue(newValue)
-
     if (onSelect) {
       onSelect(newValue!)
     }
@@ -339,6 +338,8 @@ const InternalDatePicker = (
     if (onChange && !isEqual(dateValue, newValue)) {
       onChange(newValue, (newValue ? formatDate(newValue, _format) : '') as string)
     }
+    setSelectedValue(newValue)
+    setDateValue(newValue)
   }
 
   const triggerOpen = (newOpen: boolean) => {
@@ -352,8 +353,6 @@ const InternalDatePicker = (
   const onContextSelect = (date: DateType, type: ISelectType) => {
     if (type === 'inner') {
       setViewDate(date)
-      setSelectedValue(date)
-      setDateValue(date)
     } else {
       if (type === 'submit' || (type !== 'key' && !needConfirmButton)) {
         setViewDate(date)

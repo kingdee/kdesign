@@ -348,7 +348,7 @@ function Panel(props: MergedPickerPanelProps) {
     }
   }
 
-  const showHeader = !((picker === 'date' && showTime) || picker === 'time')
+  const showHeader = !((picker === 'date' && showTime) || picker === 'time') || innerPicker !== undefined
 
   const containerCls = classnames(`${prefixCls}-warpper`)
   return (
