@@ -165,26 +165,33 @@ const InternalInputNumber = (props: InputNumberProps, ref: unknown): FunctionCom
 
   const handleNumericalAccuracy = (numerical: string): string => {
     let resultNumerical = ''
-    const [integerValue, decimalValue = ''] = numerical.split('.')
+    let [integerValue, decimalValue = ''] = numerical.split('.')
+    let sign = ''
+    if (integerValue.includes('-')) {
+      integerValue = integerValue.replace('-', '')
+      sign = '-'
+    }
     const integerValueLength = integerValue.length
     const decimalValueLength = decimalValue.length
 
     if (typeof decimalLength === 'number' && typeof digitLength === 'number') {
       if (integerValueLength > digitLength - decimalLength) {
-        resultNumerical = integerValue.substr(0, digitLength - decimalLength)
+        resultNumerical = `${sign}${integerValue.substr(0, digitLength - decimalLength)}`
       } else if (decimalValueLength > decimalLength) {
-        resultNumerical = `${integerValue}.${decimalValue.substr(0, decimalLength)}`
+        resultNumerical = `${sign}${integerValue}.${decimalValue.substr(0, decimalLength)}`
       }
     } else if (typeof decimalLength !== 'number' && typeof digitLength === 'number') {
       if (integerValueLength >= digitLength) {
-        resultNumerical = integerValue.substr(0, digitLength)
+        resultNumerical = `${sign}${integerValue.substr(0, digitLength)}`
       } else {
         resultNumerical = decimalValueLength
-          ? `${integerValue}.${decimalValue.substr(0, digitLength - integerValueLength)}`
-          : integerValue
+          ? `${sign}${integerValue}.${decimalValue.substr(0, digitLength - integerValueLength)}`
+          : `${sign}${integerValue}`
       }
     } else if (typeof decimalLength === 'number' && typeof digitLength !== 'number') {
-      resultNumerical = decimalValueLength ? `${integerValue}.${decimalValue.substr(0, decimalLength)}` : integerValue
+      resultNumerical = decimalValueLength
+        ? `${sign}${integerValue}.${decimalValue.substr(0, decimalLength)}`
+        : `${sign}${integerValue}`
     } else {
       resultNumerical = numerical
     }
