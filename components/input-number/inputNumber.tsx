@@ -175,7 +175,9 @@ const InternalInputNumber = (props: InputNumberProps, ref: unknown): FunctionCom
     const decimalValueLength = decimalValue.length
 
     if (typeof decimalLength === 'number' && typeof digitLength === 'number') {
-      if (integerValueLength > digitLength - decimalLength) {
+      if (decimalValueLength <= decimalLength && integerValueLength <= digitLength - decimalLength) {
+        resultNumerical = numerical
+      } else if (integerValueLength > digitLength - decimalLength) {
         resultNumerical = `${sign}${integerValue.substr(0, digitLength - decimalLength)}`
       } else if (decimalValueLength > decimalLength) {
         resultNumerical = `${sign}${integerValue}.${decimalValue.substr(0, decimalLength)}`
