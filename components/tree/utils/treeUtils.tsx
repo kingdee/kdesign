@@ -574,24 +574,27 @@ export const getInitExpandedKeys = (
   isSearching: boolean,
   keysData: KeysDataType,
   searchExpandedKeys: string[],
+  isInit: boolean,
 ) => {
   let keys: string[] = expandedKeys?.concat(expandScrollkeys) || defaultExpandedKeys?.concat(expandScrollkeys) || []
 
-  if (defaultExpandAll) {
-    keys = getAllNodeKeys(data)
-  } else {
-    if (defaultExpandRoot) {
-      const rootKey = getRootKeys(data)
-      if (rootKey) {
-        keys = keys.concat(rootKey)
+  if (isInit) {
+    if (defaultExpandAll) {
+      keys = getAllNodeKeys(data)
+    } else {
+      if (defaultExpandRoot) {
+        const rootKey = getRootKeys(data)
+        if (rootKey) {
+          keys = keys.concat(rootKey)
+        }
       }
-    }
-    if (defaultExpandParent) {
-      const parentKeys: string[] = []
-      keys.forEach((key) => {
-        parentKeys.push(...getAllParentKeys(data, key))
-      })
-      keys = keys.concat(parentKeys)
+      if (defaultExpandParent) {
+        const parentKeys: string[] = []
+        keys.forEach((key) => {
+          parentKeys.push(...getAllParentKeys(data, key))
+        })
+        keys = keys.concat(parentKeys)
+      }
     }
   }
 
