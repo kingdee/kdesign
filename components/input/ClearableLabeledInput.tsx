@@ -18,6 +18,7 @@ interface ClearableInputProps {
   style?: CSSProperties
   disabled?: boolean
   focused?: boolean
+  count?: boolean
   borderType?: BorderType
   size?: InputSiteType
   suffix?: React.ReactNode
@@ -47,6 +48,7 @@ const ClearableInput: React.FC<ClearableInputProps> = (props) => {
     focused,
     numberMark,
     inputCount,
+    count,
   } = props
 
   const [isMouseEnter, setIsMouseEnter] = useState<boolean>(false)
@@ -91,7 +93,7 @@ const ClearableInput: React.FC<ClearableInputProps> = (props) => {
   }
 
   const renderInputWithFixNode = (originElement: React.ReactElement) => {
-    if (!hasPrefixSuffix(props)) {
+    if (!hasPrefixSuffix(props) && !count) {
       return originElement
     }
     const suffixNode = renderSuffix()
@@ -122,7 +124,7 @@ const ClearableInput: React.FC<ClearableInputProps> = (props) => {
   }
 
   const renderInputWithLabel = (originElement: React.ReactElement) => {
-    if (!addonBefore && !addonAfter) {
+    if (!addonBefore && !addonAfter && !count) {
       return originElement
     }
     const addonClassName = classNames(`${prefixCls}-group-addon`, {
