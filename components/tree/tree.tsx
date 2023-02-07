@@ -268,6 +268,9 @@ const InternalTree = React.forwardRef((props: TreeProps, ref: any): React.Functi
   const handleExpand = React.useCallback(
     (key: string, expanded: boolean, node: any) => {
       const newExpandedKeys = expanded ? addKeys(expandedKeys, [key]) : delKey(expandedKeys, [key])
+      if (expandedKeysProps === undefined) {
+        setExpandedKeys(newExpandedKeys)
+      }
       onExpand && onExpand(newExpandedKeys, { node, expanded: expanded })
       if (isSearching) {
         const newSearchExpandedKeys = expanded ? addKeys(searchExpandedKeys, [key]) : delKey(searchExpandedKeys, [key])
