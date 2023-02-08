@@ -330,25 +330,33 @@ const InternalSelect: React.ForwardRefRenderFunction<ISelectProps<SelectValue>> 
 
   // 多选模式下选中所有 与清除所有 (可以优化)
   const handleSelectAll = () => {
-    let { selectedVal, selectMulOpts } = multipleRef.current
-    if (!('value' in selectProps)) {
-      if (filledOptions?.length !== selectedVal.length) {
-        filledOptions.map((child: any) => {
-          const { value } = child.props || child
-          if (!selectedVal.includes(value)) {
-            selectedVal.push(value)
-            selectMulOpts.push({ value, label: getOptionLabel(child) })
-          }
-        })
-        setMulOptions([...selectMulOpts])
+    const { selectedVal, selectMulOpts } = multipleRef.current
+    let newSelectedVal = [...selectedVal]
+    let newSelectMulOpts = [...selectMulOpts]
+    if (filledOptions?.length !== newSelectedVal.length) {
+      filledOptions.map((child: any) => {
+        const { value } = child.props || child
+        if (!newSelectedVal.includes(value)) {
+          newSelectedVal.push(value)
+          newSelectMulOpts.push({ value, label: getOptionLabel(child) })
+        }
+      })
+      if (typeof value === 'undefined') {
+        multipleRef.current.selectedVal = newSelectedVal
+        multipleRef.current.selectMulOpts = newSelectMulOpts
+        setMulOptions([...newSelectMulOpts])
         setSearchValue('')
-      } else {
-        multipleRef.current.selectedVal = selectedVal = []
-        multipleRef.current.selectMulOpts = selectMulOpts = []
+      }
+    } else {
+      newSelectedVal = []
+      newSelectMulOpts = []
+      if (typeof value === 'undefined') {
+        multipleRef.current.selectedVal = []
+        multipleRef.current.selectMulOpts = []
         setMulOptions([])
       }
     }
-    onChange && onChange(labelInValue ? selectMulOpts : selectedVal, selectMulOpts)
+    onChange && onChange(labelInValue ? newSelectMulOpts : newSelectedVal, newSelectMulOpts)
   }
 
   // 输入框变化搜索内容
