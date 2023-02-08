@@ -1,0 +1,175 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Tree renders correctly 1`] = `
+<div
+  class="kd-tree"
+>
+  <div
+    class="kd-tree-plantom"
+  />
+  <div
+    class="kd-tree-root"
+  >
+    <div
+      class="kd-tree-node-item kd-tree-node-item-hover kd-tree-node-item-0"
+      style="height:32px"
+    >
+      <div
+        class="kd-tree-node-draggabled kd-tree-node-root"
+        draggable="false"
+      >
+        <span
+          class="kd-tree-node-icon kd-tree-node-animation-collapse"
+        >
+          <i
+            class="kdicon kdicon-arrow-right-solid"
+          />
+        </span>
+        <div
+          class="kd-tree-node-title-wrap"
+        >
+          <label
+            class="kd-checkbox kd-checkbox-middle kd-checkbox-default"
+          >
+            <span
+              class="kd-checkbox-default-wrapper kd-checkbox-default-wrapper-size kd-checkbox-default-margin"
+            >
+              <input
+                class="kd-checkbox-input"
+                type="checkbox"
+              />
+            </span>
+            <span
+              class="kd-checkbox-children"
+            >
+              <span
+                class="kd-tree-node-title"
+              >
+                0
+              </span>
+            </span>
+          </label>
+        </div>
+      </div>
+    </div>
+    <div
+      class="kd-tree-node-item kd-tree-node-item-hover kd-tree-node-item-1"
+      style="height:32px"
+    >
+      <div
+        class="kd-tree-node-draggabled kd-tree-node-root"
+        draggable="false"
+      >
+        <span
+          class="kd-tree-node-icon kd-tree-node-animation-collapse"
+        >
+          <i
+            class="kdicon kdicon-arrow-right-solid"
+          />
+        </span>
+        <div
+          class="kd-tree-node-title-wrap"
+        >
+          <label
+            class="kd-checkbox kd-checkbox-middle kd-checkbox-default"
+          >
+            <span
+              class="kd-checkbox-default-wrapper kd-checkbox-default-wrapper-size kd-checkbox-default-margin"
+            >
+              <input
+                class="kd-checkbox-input"
+                type="checkbox"
+              />
+            </span>
+            <span
+              class="kd-checkbox-children"
+            >
+              <span
+                class="kd-tree-node-title"
+              >
+                1
+              </span>
+            </span>
+          </label>
+        </div>
+      </div>
+    </div>
+    <div
+      class="kd-tree-node-item kd-tree-node-item-hover kd-tree-node-item-2"
+      style="height:32px"
+    >
+      <div
+        class="kd-tree-node-draggabled kd-tree-node-root"
+        draggable="false"
+      >
+        <span
+          class="kd-tree-node-icon-hidden"
+        />
+        <div
+          class="kd-tree-node-title-wrap"
+        >
+          <label
+            class="kd-checkbox kd-checkbox-middle kd-checkbox-default"
+          >
+            <span
+              class="kd-checkbox-default-wrapper kd-checkbox-default-wrapper-size kd-checkbox-default-margin"
+            >
+              <input
+                class="kd-checkbox-input"
+                type="checkbox"
+              />
+            </span>
+            <span
+              class="kd-checkbox-children"
+            >
+              <span
+                class="kd-tree-node-title"
+              >
+                2
+              </span>
+            </span>
+          </label>
+        </div>
+      </div>
+    </div>
+    <div
+      class="kd-tree-node-item kd-tree-node-item-hover kd-tree-node-item-3"
+      style="height:32px"
+    >
+      <div
+        class="kd-tree-node-draggabled kd-tree-node-root"
+        draggable="false"
+      >
+        <span
+          class="kd-tree-node-icon-hidden"
+        />
+        <div
+          class="kd-tree-node-title-wrap"
+        >
+          <label
+            class="kd-checkbox kd-checkbox-middle kd-checkbox-default"
+          >
+            <span
+              class="kd-checkbox-default-wrapper kd-checkbox-default-wrapper-size kd-checkbox-default-margin"
+            >
+              <input
+                class="kd-checkbox-input"
+                type="checkbox"
+              />
+            </span>
+            <span
+              class="kd-checkbox-children"
+            >
+              <span
+                class="kd-tree-node-title"
+              >
+                3
+              </span>
+            </span>
+          </label>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
