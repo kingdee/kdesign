@@ -133,6 +133,7 @@ export const useExpand = (
   React.useEffect(() => {
     setExpandedKeys(initialExpandedKeys)
   }, [
+    flattenAllData,
     expandedKeysProps,
     searchExpandedKeys,
     defaultExpandAll,

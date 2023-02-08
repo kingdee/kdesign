@@ -1,5 +1,5 @@
 import React from 'react'
-import { mount } from 'enzyme'
+import { mount, render } from 'enzyme'
 import Tree from '../index'
 import mountTest from '../../../tests/shared/mountTest'
 import { createDragEventTarget as createEventData } from '../../../tests/shared/simulateEvent'
@@ -118,6 +118,11 @@ const expandIconNum = 5
 describe('Tree', () => {
   mountTest(() => <Tree {...defaultTreeProps} />)
 
+  it('renders correctly', () => {
+    const wrapper = render(<Tree {...defaultTreeProps}></Tree>)
+    expect(wrapper).toMatchSnapshot()
+  })
+
   it('should have displayName static property', () => {
     const wrapper = mount(<Tree {...defaultTreeProps}></Tree>)
     expect((wrapper.type() as any).displayName).toBe('Tree')
@@ -125,6 +130,12 @@ describe('Tree', () => {
   it('should expand all nodes , when defaultExpandAll property is true', () => {
     const wrapper = mount(<Tree {...defaultTreeProps}></Tree>)
     wrapper.setProps({ defaultExpandAll: true })
+    wrapper.update()
+    expect(wrapper.find('.kd-tree-node-animation-expand').length).toBe(expandIconNum)
+  })
+  it('should expand all nodes , when defaultExpandAll property is true, and treeData change', () => {
+    const wrapper = mount(<Tree {...defaultTreeProps} defaultExpandAll={true} treeData={[]}></Tree>)
+    wrapper.setProps({ treeData: treeData })
     wrapper.update()
     expect(wrapper.find('.kd-tree-node-animation-expand').length).toBe(expandIconNum)
   })
