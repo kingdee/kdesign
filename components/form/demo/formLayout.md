@@ -17,7 +17,7 @@ function Demo() {
   }
 
   return (
-    <div className="demo" style={{ width: '800px', textAlign: 'center' }}>
+    <div className="demo" style={{ width: '800px' }}>
       <Form
         labelWidth={50}
         form={form}
