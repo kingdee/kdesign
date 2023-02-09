@@ -95,10 +95,6 @@ export default function usePickerInput({
         }, 0)
       } else if (open) {
         triggerOpen(false)
-
-        if (valueChangedRef.current) {
-          onSubmit()
-        }
       }
       setFocused(false)
 

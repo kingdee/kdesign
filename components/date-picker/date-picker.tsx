@@ -228,11 +228,15 @@ const InternalDatePicker = (
   const _format = getDefaultFormat(format, picker, showTime && !disabledTimePanel, use12Hours)
 
   // 面板展示日期
-  const [viewDate, setViewDate] = useMergedState<DateType | null, DateType>(null, {
-    // value: pickerValue,
-    defaultValue: defaultPickerValue || dateValue,
-    postState: (date) => date || newDate(),
-  })
+  const [viewDate, setInnerViewDate] = useState<DateType>(defaultPickerValue || dateValue || new Date())
+
+  const setViewDate = (date: DateType | null) => {
+    setInnerViewDate(date || new Date())
+  }
+
+  useEffect(() => {
+    setViewDate(dateValue)
+  }, [dateValue])
 
   // text
   const valueText = useValueTexts(selectedValue, { format: _format })
@@ -304,6 +308,8 @@ const InternalDatePicker = (
       } else if (valueText !== text) {
         resetText()
       }
+    } else {
+      setInnerPicker(undefined)
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [openValue, valueText])
@@ -325,9 +331,6 @@ const InternalDatePicker = (
   })
 
   const triggerChange = (newValue: DateType | null) => {
-    setSelectedValue(newValue)
-    setDateValue(newValue)
-
     if (onSelect) {
       onSelect(newValue!)
     }
@@ -335,6 +338,8 @@ const InternalDatePicker = (
     if (onChange && !isEqual(dateValue, newValue)) {
       onChange(newValue, (newValue ? formatDate(newValue, _format) : '') as string)
     }
+    setSelectedValue(newValue)
+    setDateValue(newValue)
   }
 
   const triggerOpen = (newOpen: boolean) => {
@@ -348,8 +353,6 @@ const InternalDatePicker = (
   const onContextSelect = (date: DateType, type: ISelectType) => {
     if (type === 'inner') {
       setViewDate(date)
-      setSelectedValue(date)
-      setDateValue(date)
     } else {
       if (type === 'submit' || (type !== 'key' && !needConfirmButton)) {
         setViewDate(date)

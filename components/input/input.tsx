@@ -1,4 +1,4 @@
-import React, { FunctionComponentElement, useContext, useCallback, useState, useRef } from 'react'
+import React, { FunctionComponentElement, useContext, useState, useRef, useEffect } from 'react'
 import classNames from 'classnames'
 import ConfigContext from '../config-provider/ConfigContext'
 import { getCompProps } from '../_utils'
@@ -35,6 +35,7 @@ export interface InputProps extends Omit<React.InputHTMLAttributes<HTMLInputElem
   onPressEnter?: (_: string, event: React.KeyboardEvent) => void
   value?: any
   readonly?: 'readonly'
+  count?: boolean
 }
 const InternalInput = (props: InputProps, ref: unknown): FunctionComponentElement<InputProps> => {
   const { getPrefixCls, prefixCls, compDefaultProps: userDefaultProps } = useContext(ConfigContext)
@@ -53,6 +54,8 @@ const InternalInput = (props: InputProps, ref: unknown): FunctionComponentElemen
     defaultValue,
     value: propsValue,
     className,
+    maxLength,
+    count,
     ...others
   } = inputProps
   devWarning(InputSiteTypes.indexOf(size) === -1, 'input', `cannot found input size '${size}'`)
@@ -62,6 +65,7 @@ const InternalInput = (props: InputProps, ref: unknown): FunctionComponentElemen
     defaultValue,
   })
   const [focused, setFocused] = useState(false)
+  const [showNumberMark, setShowNumberMark] = useState(true)
   const thisInputRef = useRef<HTMLElement>()
   const inputRef = (ref as any) || thisInputRef
   const inputPrefixCls = getPrefixCls!(prefixCls, 'input', customPrefixcls) // 按钮样式前缀
@@ -77,29 +81,20 @@ const InternalInput = (props: InputProps, ref: unknown): FunctionComponentElemen
     { [className!]: className && !hasPrefixSuffix(inputProps) && !addonBefore && !addonAfter },
   )
 
-  const handleFocus = useCallback(
-    (event) => {
-      setFocused(true)
-      onFocus && onFocus(event)
-    },
-    [onFocus],
-  )
+  const handleFocus = (event: React.FocusEvent<HTMLInputElement, Element>) => {
+    setFocused(true)
+    onFocus && onFocus(event)
+  }
 
-  const handleBlur = useCallback(
-    (event) => {
-      setFocused(false)
-      onBlur && onBlur(event)
-    },
-    [onBlur],
-  )
+  const handleBlur = (event: React.FocusEvent<HTMLInputElement, Element>) => {
+    setFocused(false)
+    onBlur && onBlur(event)
+  }
 
-  const handleChange = useCallback(
-    (event) => {
-      propsValue === undefined && setValue(event.target.value)
-      onChange && onChange(event)
-    },
-    [onChange],
-  )
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    propsValue === undefined && setValue(event.target.value)
+    onChange && onChange(event)
+  }
 
   const handleReset = () => {
     setValue('')
@@ -127,6 +122,28 @@ const InternalInput = (props: InputProps, ref: unknown): FunctionComponentElemen
   delete inputDomProps.addonBefore
   delete inputDomProps.className
 
+  const renderCount = () => {
+    let enteredLength = value ? value.length : 0
+    if (maxLength !== undefined && enteredLength >= maxLength) {
+      enteredLength = maxLength
+    }
+    if (count && showNumberMark && !disabled) {
+      return (
+        <div
+          className={classNames(`${inputPrefixCls}-input-mark-inner`)}
+          onMouseDown={(e) => {
+            e.stopPropagation()
+            e.preventDefault()
+          }}
+        >
+          {enteredLength}
+          {maxLength !== undefined ? `/${maxLength}` : null}
+        </div>
+      )
+    }
+    return null
+  }
+
   const renderInput = () => {
     return (
       <input
@@ -135,6 +152,7 @@ const InternalInput = (props: InputProps, ref: unknown): FunctionComponentElemen
         disabled={disabled}
         className={inputClasses}
         value={fixControlledValue(value)}
+        maxLength={maxLength}
         {...inputDomProps}
         onFocus={handleFocus}
         onBlur={handleBlur}
@@ -143,6 +161,15 @@ const InternalInput = (props: InputProps, ref: unknown): FunctionComponentElemen
       />
     )
   }
+
+  useEffect(() => {
+    if (focused && !showNumberMark) {
+      setShowNumberMark(true)
+    }
+    if (!focused && showNumberMark) {
+      setShowNumberMark(false)
+    }
+  }, [focused])
 
   return (
     <ClearableInput
@@ -153,6 +180,8 @@ const InternalInput = (props: InputProps, ref: unknown): FunctionComponentElemen
       prefixCls={inputPrefixCls}
       element={renderInput()}
       focused={focused}
+      count={count}
+      inputCount={renderCount()}
     />
   )
 }

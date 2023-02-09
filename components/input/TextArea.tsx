@@ -63,6 +63,8 @@ const InternalTextarea = (props: textAreaProps, ref: unknown): FunctionComponent
     value: propsValue,
     defaultValue,
   })
+
+  const [focused, setFocused] = useState(false)
   const [showNumberMark, setShowNumberMark] = useState(false)
 
   const resizeTextarea = useCallback(() => {
@@ -85,19 +87,19 @@ const InternalTextarea = (props: textAreaProps, ref: unknown): FunctionComponent
 
   useResizeObserver(textareaRef.current, resizeTextarea)
 
-  const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+  const handleChange = (e: React.FocusEvent<HTMLInputElement, Element>) => {
     if (value === undefined) return
     setValue(e.target.value)
     onChange && onChange(e)
   }
 
-  const handleFocus = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-    !showNumberMark && setShowNumberMark(true)
+  const handleFocus = (e: React.FocusEvent<HTMLInputElement, Element>) => {
+    setFocused(true)
     onFocus && onFocus(e)
   }
 
   const handleBlur = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-    // showNumberMark && setShowNumberMark(false)
+    setFocused(false)
     onBlur && onBlur(e)
   }
 
@@ -139,6 +141,15 @@ const InternalTextarea = (props: textAreaProps, ref: unknown): FunctionComponent
       setValue(propsValue)
     }
   }, [propsValue, setValue])
+
+  useEffect(() => {
+    if (focused && !showNumberMark) {
+      setShowNumberMark(true)
+    }
+    if (!focused && showNumberMark) {
+      setShowNumberMark(false)
+    }
+  }, [focused])
 
   const renderTextArea = (prefixCls: string) => {
     const hadCount = count && !disabled && !allowClear

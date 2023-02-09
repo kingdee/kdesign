@@ -6,7 +6,6 @@ import {
   getInitExpandedKeys,
   getPos,
   getAllParentKeys,
-  getExpandedKeys,
 } from './utils/treeUtils'
 
 export const useViewportHeight = (height: number, listRef: React.RefObject<HTMLElement>) => {
@@ -112,6 +111,7 @@ export const useExpand = (
       isSearching,
       keysData,
       searchExpandedKeys,
+      isInit,
     )
   }, [
     flattenAllData,
@@ -125,17 +125,22 @@ export const useExpand = (
     isSearching,
     keysData,
     searchExpandedKeys,
+    isInit,
   ])
 
-  const newExpandedKeys = React.useMemo(() => {
-    return getExpandedKeys(expandedKeysProps, expandScrollkeys)
-  }, [expandedKeysProps])
-
   const [expandedKeys, setExpandedKeys] = React.useState(initialExpandedKeys)
+
   React.useEffect(() => {
-    const keys = isInit || isSearching ? initialExpandedKeys : newExpandedKeys
-    setExpandedKeys(keys)
-  }, [newExpandedKeys, initialExpandedKeys, isSearching, isInit])
+    setExpandedKeys(initialExpandedKeys)
+  }, [
+    expandedKeysProps,
+    searchExpandedKeys,
+    defaultExpandAll,
+    defaultExpandedKeys,
+    defaultExpandRoot,
+    defaultExpandParent,
+  ])
+
   return [expandedKeys, setExpandedKeys] as const
 }
 

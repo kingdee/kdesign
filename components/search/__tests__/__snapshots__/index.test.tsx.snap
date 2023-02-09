@@ -36,6 +36,7 @@ exports[`Search render no child without errors 1`] = `
         }
         focused={false}
         handleReset={[Function]}
+        inputCount={null}
         inputType="input"
         onBlur={[Function]}
         onChange={[Function]}
@@ -103,6 +104,7 @@ exports[`Search render null or undefined without errors 1`] = `
         }
         focused={false}
         handleReset={[Function]}
+        inputCount={null}
         inputType="input"
         onBlur={[Function]}
         onChange={[Function]}
