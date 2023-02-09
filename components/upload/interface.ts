@@ -164,7 +164,6 @@ export interface IFileItem {
   file: UploadFile
   prefixCls: string
   listType: string
-  disabled: boolean
   handleReUpload: (file: UploadFile, e: React.MouseEvent) => void
   handleRemove: (file: UploadFile, e: React.MouseEvent) => void
 }

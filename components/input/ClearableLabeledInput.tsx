@@ -5,7 +5,7 @@ import { tuple } from '../_utils/type'
 import { InputSiteType, BorderType } from './input'
 const ClearableInputType = tuple('input', 'text')
 export function hasPrefixSuffix(props: ClearableInputProps) {
-  return !!(props.prefix || props.suffix || props.allowClear || !!props.inputCount)
+  return !!(props.prefix || props.suffix || props.allowClear)
 }
 interface ClearableInputProps {
   prefixCls: string
@@ -18,7 +18,6 @@ interface ClearableInputProps {
   style?: CSSProperties
   disabled?: boolean
   focused?: boolean
-  count?: boolean
   borderType?: BorderType
   size?: InputSiteType
   suffix?: React.ReactNode
@@ -26,7 +25,6 @@ interface ClearableInputProps {
   addonBefore?: React.ReactNode
   addonAfter?: React.ReactNode
   numberMark?: React.ReactNode
-  inputCount?: React.ReactNode
 }
 const ClearableInput: React.FC<ClearableInputProps> = (props) => {
   const {
@@ -47,8 +45,6 @@ const ClearableInput: React.FC<ClearableInputProps> = (props) => {
     addonAfter,
     focused,
     numberMark,
-    inputCount,
-    count,
   } = props
 
   const [isMouseEnter, setIsMouseEnter] = useState<boolean>(false)
@@ -80,12 +76,11 @@ const ClearableInput: React.FC<ClearableInputProps> = (props) => {
   }
 
   const renderSuffix = () => {
-    if (suffix || (!disabled && !!allowClear) || inputCount) {
+    if (suffix || (!disabled && !!allowClear)) {
       return (
         <span className={`${prefixCls}-suffix`}>
           {renderClearIcon()}
-          {inputCount && <span style={{ marginRight: suffix ? 9 : 0 }}>{inputCount}</span>}
-          <span>{suffix}</span>
+          {suffix}
         </span>
       )
     }
@@ -93,7 +88,7 @@ const ClearableInput: React.FC<ClearableInputProps> = (props) => {
   }
 
   const renderInputWithFixNode = (originElement: React.ReactElement) => {
-    if (!hasPrefixSuffix(props) && !count) {
+    if (!hasPrefixSuffix(props)) {
       return originElement
     }
     const suffixNode = renderSuffix()
@@ -124,7 +119,7 @@ const ClearableInput: React.FC<ClearableInputProps> = (props) => {
   }
 
   const renderInputWithLabel = (originElement: React.ReactElement) => {
-    if (!addonBefore && !addonAfter && !count) {
+    if (!addonBefore && !addonAfter) {
       return originElement
     }
     const addonClassName = classNames(`${prefixCls}-group-addon`, {

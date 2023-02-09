@@ -331,22 +331,20 @@ const InternalSelect: React.ForwardRefRenderFunction<ISelectProps<SelectValue>> 
   // 多选模式下选中所有 与清除所有 (可以优化)
   const handleSelectAll = () => {
     let { selectedVal, selectMulOpts } = multipleRef.current
-    if (!('value' in selectProps)) {
-      if (filledOptions?.length !== selectedVal.length) {
-        filledOptions.map((child: any) => {
-          const { value } = child.props || child
-          if (!selectedVal.includes(value)) {
-            selectedVal.push(value)
-            selectMulOpts.push({ value, label: getOptionLabel(child) })
-          }
-        })
-        setMulOptions([...selectMulOpts])
-        setSearchValue('')
-      } else {
-        multipleRef.current.selectedVal = selectedVal = []
-        multipleRef.current.selectMulOpts = selectMulOpts = []
-        setMulOptions([])
-      }
+    if (filledOptions?.length !== selectedVal.length) {
+      filledOptions.map((child: any) => {
+        const { value } = child.props || child
+        if (!selectedVal.includes(value)) {
+          selectedVal.push(value)
+          selectMulOpts.push({ value, label: getOptionLabel(child) })
+        }
+      })
+      setMulOptions([...selectMulOpts])
+      setSearchValue('')
+    } else {
+      multipleRef.current.selectedVal = selectedVal = []
+      multipleRef.current.selectMulOpts = selectMulOpts = []
+      setMulOptions([])
     }
     onChange && onChange(labelInValue ? selectMulOpts : selectedVal, selectMulOpts)
   }
@@ -380,7 +378,6 @@ const InternalSelect: React.ForwardRefRenderFunction<ISelectProps<SelectValue>> 
       setInitValue('')
     }
     onClear && onClear('')
-    setSearchValue('')
     onChange && onChange(isMultiple ? '' : undefined)
   }
 
@@ -408,8 +405,7 @@ const InternalSelect: React.ForwardRefRenderFunction<ISelectProps<SelectValue>> 
       [`${selectPrefixCls}-icon-arrow-focus`]: optionShow,
     })
 
-    const iconShow =
-      allowClear && !disabled && ((isMultiple ? mulOptions.length > 0 : (selectedVal ?? '') !== '') || searchValue)
+    const iconShow = allowClear && !disabled && (isMultiple ? mulOptions.length > 0 : (selectedVal ?? '') !== '')
     const clearIconCls = classNames({
       [`${selectPrefixCls}-icon-clear`]: true,
     })

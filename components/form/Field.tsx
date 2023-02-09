@@ -199,33 +199,37 @@ const Field: React.FC<FormItemProps> = (props) => {
 
   const value = getFieldValue(name)
   const validateMessage = getFieldError(name)
-  const getInputValueFormProp = (evt: any, payload: any = undefined) => {
+  const getInputValueFormProp = (evt: any) => {
     let inputValue
-
-    if (innerDisplayName === 'RadioGroup' && payload) {
-      inputValue = payload[1]
-    } else if (
-      Object.prototype.hasOwnProperty.call(evt, 'target') &&
-      FormEventValuePropNames.includes(innerValuePropName)
-    ) {
+    if (Object.prototype.hasOwnProperty.call(evt, 'target') && FormEventValuePropNames.includes(innerValuePropName)) {
       inputValue = evt.target?.[innerValuePropName as FormEventValuePropNamesType]
     } else {
       inputValue = evt
     }
-
     return inputValue
   }
+  const handleValueChange = React.useCallback(
+    (evt: any) => {
+      const inputValue = getInputValueFormProp(evt)
+      dispatch({ type: 'updateValue', namePath: name, value: inputValue })
+    },
+    [name],
+  )
 
   const handleValueValidate = React.useCallback(() => {
     dispatch({ type: 'validateField', namePath: name })
   }, [name])
 
+  const trigger = {
+    [DEFAULT_TRIGGER]: handleValueChange,
+    ...generateEventHandler(handleValueValidate, validateTrigger),
+  }
+
   const mergeProps = (fa: { [x: string]: any }, ch: React.ReactElement) => {
     if (!ch) {
       return {}
     }
-
-    const { ...faRest } = fa
+    const { onChange: faChange, disabled: faDisabled, ...faRest } = fa
     const {
       onChange: chChange,
       [innerValuePropName]: chValue,
@@ -234,13 +238,12 @@ const Field: React.FC<FormItemProps> = (props) => {
     } = ch.props
 
     const onChange = (...evt: any) => {
-      const iv = getInputValueFormProp(evt[0], evt)
       if (chValue === undefined) {
-        setFieldValue(iv)
+        setFieldValue(getInputValueFormProp(evt[0]))
       }
-
-      dispatch({ type: 'updateValue', namePath: name, value: iv })
-
+      if (typeof faChange === 'function') {
+        faChange(...evt)
+      }
       if (typeof chChange === 'function') {
         chChange(...evt)
       }
@@ -260,7 +263,7 @@ const Field: React.FC<FormItemProps> = (props) => {
       onChange,
       defaultValue,
       [innerValuePropName]: fieldValue,
-      disabled: chDisabled !== undefined ? chDisabled : disabled !== undefined ? disabled : formDisabled,
+      disabled: chDisabled !== undefined ? chDisabled : faDisabled !== undefined ? faDisabled : formDisabled,
     }
 
     const mergeEventArray = []
@@ -300,7 +303,9 @@ const Field: React.FC<FormItemProps> = (props) => {
         {childrenArray.map((child: React.ReactElement, index) => {
           const keys = mergeProps(
             {
-              ...generateEventHandler(handleValueValidate, validateTrigger),
+              disabled,
+              [innerValuePropName]: value,
+              ...trigger,
               key: index,
               id: customizeHtmlFor ? undefined : htmlFor,
             },

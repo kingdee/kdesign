@@ -449,16 +449,16 @@ function usePopper(locatorElement: React.ReactElement, popperElement: React.Reac
   useEffect(() => {
     if (exist && visible) {
       let mouseleaveTimer: number
-      const triggerNode = getTriggerElement(locatorRef.current)
       const handleHidePopper = (e: MouseEvent) => {
+        const triggerNode = getTriggerElement(locatorRef.current)
         const triggerRect = triggerNode.getBoundingClientRect()
         const popperRect = popperRef.current.getBoundingClientRect()
-        const left = triggerRect.left
-        const right = triggerRect.right
-        const top = triggerRect.top
-        const bottom = triggerRect.bottom
+        const left = /left/.test(nextPlacement) ? popperRect.right : triggerRect.left
+        const right = /right/.test(nextPlacement) ? popperRect.left : triggerRect.right
+        const top = /top/.test(nextPlacement) ? popperRect.bottom : triggerRect.top
+        const bottom = /bottom/.test(nextPlacement) ? popperRect.top : triggerRect.bottom
         const { clientX: X, clientY: Y } = e
-        const inTriggerRect = X > left + 2 && X < right - 2 && Y > top + 2 && Y < bottom - 2
+        const inTriggerRect = X > left - 2 && X < right + 2 && Y > top - 2 && Y < bottom + 2
         const inPopperRect = X > popperRect.left && X < popperRect.right && Y > popperRect.top && Y < popperRect.bottom
         const ableArea = matchTrigger('contextMenu') ? inPopperRect : inTriggerRect || inPopperRect
 
@@ -466,12 +466,9 @@ function usePopper(locatorElement: React.ReactElement, popperElement: React.Reac
           mouseleaveTimer && clearTimeout(mouseleaveTimer)
           matchTrigger('focus') && triggerNode.focus()
         } else {
-          if (matchTrigger('hover')) {
-            mouseleaveTimer && clearTimeout(mouseleaveTimer)
-            mouseleaveTimer = window.setTimeout(hidePopper, mouseLeaveDelay * 3000)
-          } else {
-            hidePopper()
-          }
+          matchTrigger('hover')
+            ? (mouseleaveTimer = window.setTimeout(hidePopper, mouseLeaveDelay * 1000))
+            : hidePopper()
         }
       }
 
@@ -485,9 +482,6 @@ function usePopper(locatorElement: React.ReactElement, popperElement: React.Reac
       }
 
       if (matchTrigger('hover')) {
-        triggerNode?.removeEventListener('mouseleave', debounceHidePopper)
-        popperNode?.removeEventListener('mouseleave', debounceHidePopper)
-        triggerNode?.addEventListener('mouseleave', debounceHidePopper)
         popperNode?.addEventListener('mouseleave', debounceHidePopper)
       }
 
@@ -496,7 +490,6 @@ function usePopper(locatorElement: React.ReactElement, popperElement: React.Reac
         : document.addEventListener(mapEvent[trigger], debounceHidePopper)
 
       return () => {
-        triggerNode?.removeEventListener('mouseleave', debounceHidePopper)
         popperNode?.removeEventListener('mouseleave', debounceHidePopper)
         Array.isArray(trigger)
           ? trigger.forEach((action: string) => document.removeEventListener(mapEvent[action], debounceHidePopper))

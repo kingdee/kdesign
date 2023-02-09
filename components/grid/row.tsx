@@ -3,7 +3,6 @@ import classNames from 'classnames'
 import { getCompProps } from '../_utils'
 import { ConfigContext } from '../config-provider'
 import throttle from 'lodash/throttle'
-import { testBrowserType } from '../_utils/testBrowserType'
 
 type Align = 'top' | 'middle' | 'bottom' | 'stretch'
 type Justify = 'start' | 'end' | 'center' | 'space-around' | 'space-between'
@@ -49,9 +48,6 @@ const Row: React.FC<RowProps> = (props) => {
     justify,
     prefixCls: customPrefixcls,
   } = getCompProps('Row', userDefaultProps, props)
-
-  // 浏览器名称
-  const isSogou = testBrowserType(/^sogou/i, 0)
 
   // className前缀
   const prefixCls = getPrefixCls!(pkgPrefixCls, 'row', customPrefixcls)
@@ -103,7 +99,7 @@ const Row: React.FC<RowProps> = (props) => {
   }
 
   return (
-    <div className={classNames(prefixCls, className, { nowrap: !wrap }, { 'sogou-row': isSogou })} style={styleString}>
+    <div className={classNames(prefixCls, className, { nowrap: !wrap })} style={styleString}>
       {React.Children.map(children, (child: React.ReactElement) => React.cloneElement(child, { winWidth }))}
     </div>
   )

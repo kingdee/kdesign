@@ -2,7 +2,6 @@ import * as React from 'react'
 import classNames from 'classnames'
 import { getCompProps } from '../_utils'
 import { ConfigContext } from '../config-provider'
-import { testBrowserType } from '../_utils/testBrowserType'
 
 interface ColBase {
   span?: number
@@ -45,9 +44,6 @@ const Col: React.FC<ColProps> = (props) => {
     className,
     prefixCls: customPrefixcls,
   } = getCompProps('Col', userDefaultProps, props)
-
-  // 浏览器名称
-  const isSogou = testBrowserType(/^sogou/i, 0)
 
   // className前缀
   const prefixCls = getPrefixCls!(pkgPrefixCls, 'col', customPrefixcls)
@@ -105,7 +101,7 @@ const Col: React.FC<ColProps> = (props) => {
   }
 
   return (
-    <div className={classNames(prefixCls, className, { 'sogou-col': isSogou })} style={styleString}>
+    <div className={classNames(prefixCls, className)} style={styleString}>
       {children}
     </div>
   )

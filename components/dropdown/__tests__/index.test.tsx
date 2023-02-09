@@ -167,28 +167,28 @@ describe('Dropdown', () => {
     expect(onItemClick).not.toHaveBeenCalledWith('菜单1')
   })
 
-  // it('should menu item onClick', () => {
-  //   const onClick = jest.fn()
-  //   const menu = (
-  //     <Menu onClick={onClick}>
-  //       <Item key="one">
-  //         <a target="_blank" rel="noopener noreferrer" href="https://www.kdcloud.com/">
-  //           菜单1
-  //         </a>
-  //       </Item>
-  //     </Menu>
-  //   )
+  it('should menu item onClick', () => {
+    const onClick = jest.fn()
+    const menu = (
+      <Menu onClick={onClick}>
+        <Item key="one">
+          <a target="_blank" rel="noopener noreferrer" href="https://www.kdcloud.com/">
+            菜单1
+          </a>
+        </Item>
+      </Menu>
+    )
 
-  //   const wrapper = mount(
-  //     <div ref={wrapperRef}>
-  //       <Dropdown visible menu={menu} trigger={'click'} getPopupContainer={() => wrapperRef.current}>
-  //         <span />
-  //       </Dropdown>
-  //     </div>,
-  //   )
-  //   wrapper.find('.kd-dropdown-menu').find('.kd-dropdown-menu-item').at(0).simulate('click')
-  //   expect(onClick).toHaveBeenCalledWith('one')
-  // })
+    const wrapper = mount(
+      <div ref={wrapperRef}>
+        <Dropdown visible menu={menu} trigger={'click'} getPopupContainer={() => wrapperRef.current}>
+          <span />
+        </Dropdown>
+      </div>,
+    )
+    wrapper.find('.kd-dropdown-menu').find('.kd-dropdown-menu-item').at(0).simulate('click')
+    expect(onClick).toHaveBeenCalledWith('one')
+  })
 
   it('should menu item danger and divided', () => {
     const menu = (

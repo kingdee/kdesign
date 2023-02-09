@@ -150,10 +150,12 @@ function InputDate(props: InputRangeProps, ref: React.RefObject<HTMLDivElement>)
   ) {
     clearNode = (
       <span
-        onMouseUp={(e) => {
+        onMouseDown={(e) => {
+          e.preventDefault()
           e.stopPropagation()
         }}
-        onClick={(e) => {
+        onMouseUp={(e) => {
+          e.preventDefault()
           e.stopPropagation()
           let values = dateValue
 

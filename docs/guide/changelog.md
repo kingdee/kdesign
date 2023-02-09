@@ -4,46 +4,6 @@ title: 更新日志
 hiddenAnchor: true
 ---
 
-## [1.6.28](https://github.com/kdcloudone/kdesign/compare/v1.6.27...v1.6.28)
-`2023-01-12`
-* date-picker
-  * 修复面板不更新及清除图标问题
-* dropdown
-  * children特殊值处理bug [#202](https://github.com/kdcloudone/kdesign/issues/202)
-* form
-  * 修复radio取值问题
-* radio
-  * 修复radio取值问题
-* image
-  * previewGroup的children为空时报错 [#201](https://github.com/kdcloudone/kdesign/issues/201)
-  * 特定浏览器下预览图片时点击放大缩小按钮报错 [#193](https://github.com/kdcloudone/kdesign/issues/193)
-* input
-  * 修复数值输入框小数位不对问题
-  * value传入数字报错 [#208](https://github.com/kdcloudone/kdesign/issues/208)
-  * 实现input计数展示
-  * 修复计数器显隐问题
-* input-number
-  * 修复数值输入框小数位不对问题
-  * value传入数字报错 [#208](https://github.com/kdcloudone/kdesign/issues/208)
-* select
-  * 修复选择器清空问题 [#182](https://github.com/kdcloudone/kdesign/issues/182)
-  * 修复选择器全选受控问题
-* upload
-  * 修复禁用下可删除问题
-  * 修复origin属性问题
-
-## [1.6.27](https://github.com/kdcloudone/kdesign/compare/v1.6.26...v1.6.27)
-`2023-01-06`
-* date-picker
-  * 修复快速选择年月样式
-* pagination
-  * 新增图标替换功能
-* select
-  * 新增tagRender功能
-* tag
-  * 新增tagRender功能
-* ref重复渲染问题
-
 ## [1.6.26](https://github.com/kdcloudone/kdesign/compare/v1.6.25...v1.6.26)
 `2023-01-05`
 * checkbox
