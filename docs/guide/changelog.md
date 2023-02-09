@@ -4,6 +4,48 @@ title: 更新日志
 hiddenAnchor: true
 ---
 
+## [1.6.31](https://github.com/kdcloudone/kdesign/compare/v1.6.30...v1.6.31)
+`2023-02-09`
+* form
+  * 修复label布局问题 fix [#224](https://github.com/kdcloudone/kdesign/issues/224)
+* grid
+  * 栅格容器在搜狗浏览器下存在兼容性问题，没有上下间隔 fix [#227](https://github.com/kdcloudone/kdesign/issues/227)
+* select
+  * 下拉选择中点击全选触发的 onChange 回调没有返回值 fix [#234](https://github.com/kdcloudone/kdesign/issues/234)
+  * 修复占位提示和下拉箭头重合问题 fix [#221](https://github.com/kdcloudone/kdesign/issues/221)
+* tree
+  * 修复树控件treeData更新展开节点不更新问题 fix [#235](https://github.com/kdcloudone/kdesign/issues/235)
+
+## [1.6.30](https://github.com/kdcloudone/kdesign/compare/v1.6.29...v1.6.30)
+`2023-02-07`
+* cascader
+  * 修复级联选择未固定下拉面板高度问题
+* date-picker
+  * 修复失焦触发onChange及样式问题
+* input
+  * 修复设置为负数最大长度显示问题 fixed [#220](https://github.com/kdcloudone/kdesign/issues/220)
+  * digitLength和decimalLength同时配置，导致录入不了文本问题 fix [#222](https://github.com/kdcloudone/kdesign/issues/222)
+  * 修复count下聚集问题
+* input-number
+  * 修复设置为负数最大长度显示问题 fixed [#220](https://github.com/kdcloudone/kdesign/issues/220)
+  * digitLength和decimalLength同时配置，导致录入不了文本问题 fix [#222](https://github.com/kdcloudone/kdesign/issues/222)
+* tooltip
+  * trigger添加mouseleave事件控制显隐
+* select
+  * 修复传入selectedKeys无选中效果问题 fix [#215](https://github.com/kdcloudone/kdesign/issues/215)
+* tree
+  * 修复传入selectedKeys无选中效果问题 fix [#215](https://github.com/kdcloudone/kdesign/issues/215)
+  * 修复tree组件展开收起问题 fix [#216](https://github.com/kdcloudone/kdesign/issues/216)
+
+## [1.6.29](https://github.com/kdcloudone/kdesign/compare/v1.6.28...v1.6.29)
+`2023-01-17`
+* date-picker
+  * 修复面板重置问题
+* form
+  * 修复form受控值onChange触发问题
+* upload
+  * 修复图片禁用问题
+
 ## [1.6.28](https://github.com/kdcloudone/kdesign/compare/v1.6.27...v1.6.28)
 `2023-01-12`
 * date-picker
