@@ -468,7 +468,7 @@ function usePopper(locatorElement: React.ReactElement, popperElement: React.Reac
         } else {
           if (matchTrigger('hover')) {
             mouseleaveTimer && clearTimeout(mouseleaveTimer)
-            mouseleaveTimer = window.setTimeout(hidePopper, mouseLeaveDelay * 3000)
+            mouseleaveTimer = window.setTimeout(hidePopper, mouseLeaveDelay * 1000)
           } else {
             hidePopper()
           }
