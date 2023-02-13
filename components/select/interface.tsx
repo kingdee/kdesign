@@ -1,6 +1,7 @@
 import * as React from 'react'
 import { tuple } from '../_utils/type'
 import { PopperProps } from '../_utils/usePopper'
+import { AvailableVirtualListProps } from '../virtual-list'
 export const SelectSizes = tuple('large', 'middle', 'small') // 选择框大小
 export type SelectSize = typeof SelectSizes[number]
 
@@ -40,6 +41,7 @@ export interface AbstractSelectProps extends PopperProps {
   filterOption?: boolean | ((inputValue: string, option?: OptionsType) => boolean)
   optionFilterProp?: string
   optionLabelProp?: string
+  virtualListProps?: AvailableVirtualListProps | boolean
 }
 
 export interface LabeledValue {

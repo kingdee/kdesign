@@ -15,7 +15,7 @@ subtitle: 选择器
 ### Select
 
 | 参数 | 说明 | 类型 | 默认值 | 版本 |
-| --- | --- | --- | --- | --- |
+| --- | --- | --- | --- | --- | --- |
 | allowClear | 支持清除 | boolean | false | 0.0.17 |
 | autoFocus | 默认获取焦点 | boolean | false | 0.0.17 |
 | borderType | 边框类型 | `underline` `bordered` `none` | `underline` | 0.0.17 |
@@ -36,7 +36,7 @@ subtitle: 选择器
 | mode | 下拉框模式（设置单选或多选） | `single` `multiple` | `single` | 0.0.17 |
 | notFoundContent | 当下拉列表为空时显示的内容 | ReactNode | `Not Found` | 0.0.17 |
 | optionFilterProp | 搜索时过滤对应的 option 属性 | string | label | 1.6.7 |
-| optionLabelProp | 回填到选择框的 Option 的属性值 | string | options存在时为 label,反之为 children | 1.6.7 |
+| optionLabelProp | 回填到选择框的 Option 的属性值 | string | options 存在时为 label,反之为 children | 1.6.7 |
 | options | 数据化配置选项内容，相比 jsx 定义会获得更好的渲染性能 | { label, value }\[] | - | 0.0.17 |
 | placeholder | 选择框默认文字 | string | - | 0.0.17 |
 | showArrow | 是否显示下拉小箭头 | boolean | 单选为 true，多选为 false | 0.0.17 |
@@ -44,6 +44,7 @@ subtitle: 选择器
 | size | 选择框大小 | `large` \| `middle` \| `small` | `middle` | 0.0.17 |
 | suffixIcon | 自定义的选择框后缀图标 | ReactNode | - | 0.0.17 |
 | value | 指定当前选中的条目 | string \| string\[]<br />number \| number\[] | - | 0.0.17 |
+| virtualListProps | 传递虚拟滚动属性。 | boolean \| [AvailableVirtualListProps](#AvailableVirtualListProps) | false | 1.6.29 |
 | onBlur | 失去焦点时回调 | function | - | 0.0.17 |
 | onChange | 选中 option，或 input 的 value 变化时，调用此函数 | function(value, option:Option \| Array&lt;Option>) | - | 0.0.17 |
 | onClear | 清除内容时回调 | function | - | 0.0.17 |
@@ -58,50 +59,57 @@ subtitle: 选择器
 
 ### Option props
 
-| 参数 | 说明 | 类型 | 默认值 | 版本 |
-| --- | --- | --- | --- | --- |
-| className | Option 器类名 | string | - | 0.0.17 |
-| disabled | 是否禁用 | boolean | false | 0.0.17 |
-| title | 选中该 Option 后，Select 的 title | string | - | 0.0.17 |
-| value | 默认根据此属性值进行筛选 | string \| number | - | 0.0.17 |
+| 参数      | 说明                              | 类型             | 默认值 | 版本   |
+| --------- | --------------------------------- | ---------------- | ------ | ------ |
+| className | Option 器类名                     | string           | -      | 0.0.17 |
+| disabled  | 是否禁用                          | boolean          | false  | 0.0.17 |
+| title     | 选中该 Option 后，Select 的 title | string           | -      | 0.0.17 |
+| value     | 默认根据此属性值进行筛选          | string \| number | -      | 0.0.17 |
+
+### AvailableVirtualListProps
+
+| 参数       | 说明                                                   | 类型             | 默认值 | 版本   |
+| ---------- | ------------------------------------------------------ | ---------------- | ------ | ------ |
+| height     | 可视区域高度                                           | string \| number | 300    | 1.6.29 |
+| threshold  | 启用虚拟滚动的元素数量的阈值，使用' null '或数据小于阈值不启用虚拟滚动 | number           | 100    | 1.6.29 |
 
 ## Design Token
 
-| 分类 | 组件token | 全局token | 默认值 |
-| --- | --- | --- | --- |
-| color | --kd-c-select-dropdown-color-background | --kd-g-color-background | #fff |
-|  | --kd-c-select-item-color-background-disabled | - | #fff |
-|  | --kd-c-select-color-background | - | #f5f5f5 |
-|  | --kd-c-select-color-background-selected | --kd-g-color-theme-3 | rgb(227, 238, 255) |
-|  | --kd-c-select-color-border | --kd-g-color-input | #999 |
-|  | --kd-c-select-color-border-foucs | --kd-g-color-theme | #5582f3 |
-|  | --kd-c-select-color-border-hover | --kd-g-color-theme | #5582f3 |
-|  | --kd-c-select-border-color-border | --kd-g-color-border-strong | #d9d9d9 |
-|  | --kd-c-select-placeholder-color-text | - | #b2b2b2 |
-|  | --kd-c-select-item-color-text-selected | --kd-g-color-theme | #5582f3 |
-|  | --kd-c-select-footer-color-text | --kd-g-color-text-primary | #212121 |
-|  | --kd-c-select-footer-color-text-selected | - | #0e5fd8 |
-|  | --kd-c-select-item-color-text-disabled | --kd-g-color-disabled | #b2b2b2 |
-|  | --kd-c-select-color-background-disabled | - | #f5f5f5 |
-|  | --kd-c-select-color-text-disabled | --kd-g-color-disabled | #b2b2b2 |
-|  | --kd-c-select-arrow-icon-color-text-disabled | - | #b2b2b2 |
-|  | --kd-c-select-single-color-text | --kd-g-color-text-primary | #212121 |
-|  | --kd-c-select-icon-clear-color-text | - | #d9d9d9 |
-|  | --kd-c-select-icon-clear-color-text-hover | - | #999 |
-| font | --kd-c-select-dropdown-font-size | - | 12px |
-|  | --kd-c-select-font-size-large | - | 16px |
-|  | --kd-c-select-font-size-middle | - | 14px |
-|  | --kd-c-select-font-size-small | - | 12px |
-| line-height | --kd-c-select-dropdown-line-height | - | 22px |
-|  | --kd-c-select-line-height-large | - | 28px |
-|  | --kd-c-select-line-height-middle | - | 22px |
-|  | --kd-c-select-line-height-small | - | 14px |
-| radius | --kd-c-select-radius-border | --kd-g-radius-border | 2px |
-|  | --kd-c-select-bordered-radius-border | - | 2px |
-| sizing | --kd-c-select-item-sizing-height | - | 22px |
-|  | --kd-c-select-sizing-height-large | - | 36px |
-|  | --kd-c-select-sizing-height-middle | - | 30px |
-|  | --kd-c-select-sizing-height-small | - | 24px |
-| spacing | --kd-c-select-bordered-spacing-padding-left | - | 8px |
-|  | --kd-c-select-wrapper-spacing-padding | - | 1px 28px 1px 0 |
-| z-index | --kd-c-select-z-index | --kd-g-z-index-popper | 1050 |
+| 分类        | 组件 token                                   | 全局 token                 | 默认值             |
+| ----------- | -------------------------------------------- | -------------------------- | ------------------ |
+| color       | --kd-c-select-dropdown-color-background      | --kd-g-color-background    | #fff               |
+|             | --kd-c-select-item-color-background-disabled | -                          | #fff               |
+|             | --kd-c-select-color-background               | -                          | #f5f5f5            |
+|             | --kd-c-select-color-background-selected      | --kd-g-color-theme-3       | rgb(227, 238, 255) |
+|             | --kd-c-select-color-border                   | --kd-g-color-input         | #999               |
+|             | --kd-c-select-color-border-foucs             | --kd-g-color-theme         | #5582f3            |
+|             | --kd-c-select-color-border-hover             | --kd-g-color-theme         | #5582f3            |
+|             | --kd-c-select-border-color-border            | --kd-g-color-border-strong | #d9d9d9            |
+|             | --kd-c-select-placeholder-color-text         | -                          | #b2b2b2            |
+|             | --kd-c-select-item-color-text-selected       | --kd-g-color-theme         | #5582f3            |
+|             | --kd-c-select-footer-color-text              | --kd-g-color-text-primary  | #212121            |
+|             | --kd-c-select-footer-color-text-selected     | -                          | #0e5fd8            |
+|             | --kd-c-select-item-color-text-disabled       | --kd-g-color-disabled      | #b2b2b2            |
+|             | --kd-c-select-color-background-disabled      | -                          | #f5f5f5            |
+|             | --kd-c-select-color-text-disabled            | --kd-g-color-disabled      | #b2b2b2            |
+|             | --kd-c-select-arrow-icon-color-text-disabled | -                          | #b2b2b2            |
+|             | --kd-c-select-single-color-text              | --kd-g-color-text-primary  | #212121            |
+|             | --kd-c-select-icon-clear-color-text          | -                          | #d9d9d9            |
+|             | --kd-c-select-icon-clear-color-text-hover    | -                          | #999               |
+| font        | --kd-c-select-dropdown-font-size             | -                          | 12px               |
+|             | --kd-c-select-font-size-large                | -                          | 16px               |
+|             | --kd-c-select-font-size-middle               | -                          | 14px               |
+|             | --kd-c-select-font-size-small                | -                          | 12px               |
+| line-height | --kd-c-select-dropdown-line-height           | -                          | 22px               |
+|             | --kd-c-select-line-height-large              | -                          | 28px               |
+|             | --kd-c-select-line-height-middle             | -                          | 22px               |
+|             | --kd-c-select-line-height-small              | -                          | 14px               |
+| radius      | --kd-c-select-radius-border                  | --kd-g-radius-border       | 2px                |
+|             | --kd-c-select-bordered-radius-border         | -                          | 2px                |
+| sizing      | --kd-c-select-item-sizing-height             | -                          | 22px               |
+|             | --kd-c-select-sizing-height-large            | -                          | 36px               |
+|             | --kd-c-select-sizing-height-middle           | -                          | 30px               |
+|             | --kd-c-select-sizing-height-small            | -                          | 24px               |
+| spacing     | --kd-c-select-bordered-spacing-padding-left  | -                          | 8px                |
+|             | --kd-c-select-wrapper-spacing-padding        | -                          | 1px 28px 1px 0     |
+| z-index     | --kd-c-select-z-index                        | --kd-g-z-index-popper      | 1050               |
