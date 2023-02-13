@@ -9,6 +9,7 @@ import { Icon, Checkbox, Tag } from '../index'
 import Option from './option'
 import { ISelectProps, SelectValue } from './interface'
 import usePopper from '../_utils/usePopper'
+import VirtualList from '../virtual-list'
 
 const INPUT_MIN_WIDTH = 4 // 输入框最小宽度
 
@@ -48,6 +49,7 @@ const InternalSelect: React.ForwardRefRenderFunction<ISelectProps<SelectValue>> 
     optionLabelProp,
     popperStyle = {},
     tagRender,
+    virtualListProps,
   } = selectProps
   const isMultiple = mode === 'multiple' // 是否多选
   const [initValue, setInitValue] = useMergedState(undefined, {
@@ -489,14 +491,33 @@ const InternalSelect: React.ForwardRefRenderFunction<ISelectProps<SelectValue>> 
   const renderContent = () => {
     const { dropdownRender, listHeight } = selectProps
     const { selectedVal } = multipleRef.current
-    let childrenToRender = filledOptions
+    let childrenToRender: any = filledOptions
+    let eleOptionList: any = filledOptions
     if (Array.isArray(childrenToRender) && childrenToRender.length > 0) {
       childrenToRender = childrenToRender.map((item: any, index: number) => {
         if (item === null || item === undefined) return
         const temp = renderOption(item, index)
         return temp
       })
+
+      eleOptionList = (
+        <VirtualList
+          role="listbox"
+          data={childrenToRender}
+          itemKey={(child) => child.props?.value}
+          onMouseDown={(e) => e?.preventDefault()}
+          isStaticItemHeight={true}
+          height={listHeight || 300}
+          measureLongestItem={false}
+          {...virtualListProps}
+        >
+          {(child) => {
+            return child
+          }}
+        </VirtualList>
+      )
     }
+
     const heightStyle = {
       maxHeight: listHeight || '300px',
     }
@@ -512,7 +533,7 @@ const InternalSelect: React.ForwardRefRenderFunction<ISelectProps<SelectValue>> 
       <>
         {
           <div className={dropDownCls} style={dropDownStyle} ref={dropDownRef}>
-            {!dropdownRender && childrenToRender.length > 0 && dropRender(childrenToRender, heightStyle)}
+            {!dropdownRender && childrenToRender.length > 0 && dropRender(eleOptionList, heightStyle)}
             {/* 下拉列表为空 */}
             {renderNotContent()}
             {/* 拓展菜单 */}

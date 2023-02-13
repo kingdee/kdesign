@@ -15,6 +15,7 @@ function ComponentOverview(props: any) {
       const { subtitle, filename = '', title } = child
       const path = '/' + filename.split('/').splice(0, 2).join('/')
       // const imgSrc = require('~../../static/image/overview/component-overview-Image.png')
+      if (title === 'VirtualList') return
       return (
         <dl className="overview-card-dl" key={subtitle}>
           <dt className="overview-card-dt">
