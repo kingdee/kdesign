@@ -9,6 +9,7 @@ import devWarning from '../_utils/devwarning'
 import { tuple } from '../_utils/type'
 import { omit } from '../_utils/omit'
 import { useMergedState } from '../_utils/hooks'
+import { isExp } from '../_utils/numberUtil'
 
 export const StepTypes = tuple('embed', 'base')
 export type StepType = typeof StepTypes[number]
@@ -105,7 +106,9 @@ const InternalStepper = (props: StepperProps, ref: unknown): FunctionComponentEl
     if (typeof stepNum !== 'number') {
       return false
     }
-    const startingNumber = parseFloat(stepperrref.current.value) || parseFloat(inputNumberProps.min) || 0
+    const startingNumber = isExp(stepperrref.current.value)
+      ? Big(stepperrref.current.value).valueOf()
+      : stepperrref.current.value || parseFloat(inputNumberProps.min) || 0
     const calculationResults = new Big(startingNumber)[type](stepNum).valueOf()
     const legalNumber = stepperrref.current.verifiValue(calculationResults)
     if (legalNumber === false) {
