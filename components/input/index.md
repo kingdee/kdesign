@@ -27,7 +27,7 @@ subtitle: 输入框
 | disabled | 输入框禁用状态 | boolean | `false` | `true` `false` | 1.0.0  |
 | maxLength | 原生属性，最大输入长度 | number | `-` | `-` | 1.0.0  |
 | minLength | 原生属性，最小输入长度 | number | `-` | `-` | 1.0.0  |
-| plcaeholder | 输入框内容为空时的输入提示 | string | `请输入` | `-` | 1.0.0  |
+| placeholder | 输入框内容为空时的输入提示 | string | `请输入` | `-` | 1.0.0  |
 | prefix | 带有前缀图标的 input | string / ReactNode | `-` | `-` | 1.0.0  |
 | size | 控件大小 | string | `middle` | `small` `middle` `large` | 1.0.0  |
 | suffix | 带有后缀图标的 input | string / ReactNode | `-` | `-` | 1.0.0  |
