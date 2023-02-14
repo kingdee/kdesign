@@ -169,11 +169,10 @@ const InternalDatePicker = (
   } = datePickerProps
 
   // ref
-  const panelDivRef = React.useRef<HTMLDivElement>(null)
   const inputDivRefDefault = React.useRef<HTMLElement>(null)
   const inputDivRef = (ref as any) || inputDivRefDefault
-  const popperRefDefault = React.useRef<HTMLElement>(null)
-  const popperRef = popupRef || popperRefDefault
+  const popperRefDefault = React.useRef<HTMLDivElement>(null)
+  const popperRef = (popupRef as any) || popperRefDefault
   const inputRef = React.useRef<HTMLInputElement>(null)
 
   const isHourStepValid = 24 % hourStep === 0
@@ -303,9 +302,7 @@ const InternalDatePicker = (
   useEffect(() => {
     if (!openValue) {
       setSelectedValue(dateValue)
-      if (valueText === '') {
-        triggerTextChange('')
-      } else if (valueText !== text) {
+      if (valueText !== text) {
         resetText()
       }
     } else {
@@ -476,7 +473,7 @@ const InternalDatePicker = (
 
   const inputProps: InputDateProps = {
     inputRef,
-    panelDivRef,
+    panelDivRef: popperRef,
 
     id,
     autoFocus,
