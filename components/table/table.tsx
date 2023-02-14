@@ -23,7 +23,7 @@ import useRangeSelection from './feature/useRangeSelection'
 import useＭergeCellHover from './feature/mergeCellHover'
 import devWarning from '../_utils/devwarning'
 import useFooterDataSource from './feature/useFooterDataSource'
-
+import usecolGroupExtendable from './feature/colGroupExtendable'
 const Table = forwardRef<unknown, TableProps>((props: TableProps, ref) => {
   const {
     columns,
@@ -57,6 +57,7 @@ const Table = forwardRef<unknown, TableProps>((props: TableProps, ref) => {
     stickyScrollHeight,
     scrollbarWidth,
     scrollLoad,
+    columnGroupExtend = {},
   } = props
 
   const { getPrefixCls, prefixCls } = useContext(ConfigContext)
@@ -111,6 +112,7 @@ const Table = forwardRef<unknown, TableProps>((props: TableProps, ref) => {
   useRangeSelection(pipeline, rangeSelection)
   useＭergeCellHover(pipeline)
   useFooterDataSource(pipeline, footerDataSource)
+  usecolGroupExtendable(pipeline, columnGroupExtend)
 
   /* -------------------------------------------------------------------------- */
   /* after useTablePipeline, merge pipeline.getProps result                     */

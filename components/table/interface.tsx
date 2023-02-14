@@ -8,6 +8,7 @@ import {
   ColumnResizeOptions,
   ContextMenuFeatureOptions,
   RangeSelectionFeatureOptions,
+  colGroupExtendOption,
 } from '@kdcloudjs/table/es/table/pipeline/features'
 
 type TablePropsOfComponents = Pick<BaseTableProps, 'components'> & {
@@ -44,6 +45,7 @@ export interface TableProps extends TablePropsOfExtend, TablePropsOfComponents {
   columnResize?: boolean | ColumnResizeOptions
   contextMenu?: IContextMenu
   rangeSelection?: TableRangeSelection
+  columnGroupExtend?: colGroupExtendOption
 }
 
 export type RowSelectionType = 'checkbox' | 'radio'
