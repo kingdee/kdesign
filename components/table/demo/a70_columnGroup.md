@@ -9,6 +9,10 @@ import ReactDOM from 'react-dom'
 import { Table } from '@kdcloudjs/kdesign'
 
 function Demo() {
+  const [ expandStatus, setExpandStatus ] = React.useState({personTotal:true})
+  const onChangeExtendStatus = (curStatus,changeValue) => {
+      setExpandStatus(curStatus)
+  }
   const occupations = ['UED', '客服', '产品', '运营', '前端', '数据']
   const dataSource = occupations.map((occupation) => ({
     occupation,
@@ -32,6 +36,9 @@ function Demo() {
       width: 240,
       align: 'center',
       code: 'personTotal',
+      features:{
+         showExtendIcon:true,
+      },
       children: [
         { code: 'hc_2014', name: '2014年', width: 80,align: 'center' },
         { code: 'hc_2015', name: '2015年', width: 80, align: 'center' },
@@ -70,8 +77,7 @@ function Demo() {
       ]
     }
   ]
-
-  return <Table className="bordered" dataSource={dataSource} columns={columns} columnResizeable={true} />
+  return <Table className="bordered" dataSource={dataSource} columns={columns} columnResizeable={true} columnGroupExtend={{extendStatus:expandStatus,onChangeExtendStatus:onChangeExtendStatus}}/>
 }
 
 ReactDOM.render(<Demo />, mountNode)
