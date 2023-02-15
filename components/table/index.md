@@ -72,11 +72,11 @@ return <Table dataSource={dataSource} columns={columns} />
 | --- | --- | --- | --- | --- | --- |
 | name | 列的名称 | string | - | - | 1.0.0 |
 | code | 在数据中的字段 | string | - | - | 1.0.0 |
-| title | 列标题的展示名称；在页面中进行展示时，该字段将覆盖 name 字段 | string | - | - | 1.0.0 |
+| title | 列标题的展示名称；在页面中进行展示时，该字段将覆盖 name 字段 | ReactNode | - | - | 1.0.0 |
 | width | 列的宽度，如果该列是锁定的，则宽度为必传项 | number | - | - | 1.0.0 |
 | align | 单元格中的文本或内容的 对其方向 | string | `-` | `left` `center` `right` | 1.0.0 |
 | verticalAlign | 单元格中的文本或内容的 垂直水平轴对其方向 | string | `middle` | `top` `bottom` `middle` | 1.0.0 |
-| hidden | 是否隐藏 | boolean | `false` | `true` `false` | 1.0.0 |
+| hidden | 是否隐藏(已经过时，如果需要隐藏该列，请传入时将其从 columns 数组中移除) | boolean | `false` | `true` `false` | 1.0.0 |
 | lock | 是否锁列 | boolean | - | `HTMLTableCellElement` | 1.0.0 |
 | headerCellProps | 表头单元格的 props | number | - | - | 1.0.0 |
 | features | 功能开关, 具体项见下表 | { [key: string]: any } | - | - | 1.0.0 |
