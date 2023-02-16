@@ -4,6 +4,22 @@ title: 更新日志
 hiddenAnchor: true
 ---
 
+## [1.6.33](https://github.com/kdcloudone/kdesign/compare/v1.6.32...v1.6.33)
+`2023-02-16`
+* date-picker
+  * 修复onChange多次触发问题
+* table
+  * 添加表格分组列展开收缩特性
+
+## [1.6.32](https://github.com/kdcloudone/kdesign/compare/v1.6.31...v1.6.32)
+`2023-02-13`
+* stepper
+  * 大数值下显示与操作bug fixs [#229](https://github.com/kdcloudone/kdesign/issues/229)
+* tooltip
+  * 消失时间太久的问题
+* select
+  * 新增虚拟滚动 fix [#174](https://github.com/kdcloudone/kdesign/issues/174)
+
 ## [1.6.31](https://github.com/kdcloudone/kdesign/compare/v1.6.30...v1.6.31)
 `2023-02-09`
 * form
