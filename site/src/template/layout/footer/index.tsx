@@ -52,11 +52,11 @@ const Footer = (props: any) => {
             粤ICP备05041751号
           </a>
           <a
-            href="https://www.beian.gov.cn/portal/registerSystemInfo?recordcode=44030502002324"
+            href="https://www.beian.gov.cn/portal/registerSystemInfo?recordcode=44030502008641"
             target="_blank"
             rel="noreferrer"
           >
-            粤公网安备 44030502002324号
+            粤公网安备 44030502008641号
           </a>
         </div>
         {/* <div>法律声明及隐私政策</div> */}
