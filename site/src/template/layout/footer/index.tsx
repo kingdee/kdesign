@@ -5,6 +5,7 @@ import KuiWechat from './../../../static/image/kui_wechat.jpg'
 
 const Footer = (props: any) => {
   const { isTransparent } = props
+  const currentYear = new Date().getFullYear()
   return (
     <div className={isTransparent ? 'footer transparent' : 'footer'}>
       <div className="footer-top">
@@ -46,11 +47,15 @@ const Footer = (props: any) => {
       </div>
       <div className="footer-bottom">
         <div>
-          ©1993 - 2022金蝶软件（中国）有限公司
+          ©1993 - {currentYear}金蝶软件（中国）有限公司
           <a href="https://beian.miit.gov.cn/" target="_blank" rel="noreferrer">
             粤ICP备05041751号
           </a>
-          <a href="http://www.beian.gov.cn/" target="_blank" rel="noreferrer">
+          <a
+            href="https://www.beian.gov.cn/portal/registerSystemInfo?recordcode=44030502002324"
+            target="_blank"
+            rel="noreferrer"
+          >
             粤公网安备 44030502002324号
           </a>
         </div>
