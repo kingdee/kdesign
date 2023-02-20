@@ -12,7 +12,7 @@ req.keys().forEach((mod) => {
   }
   const match = mod.match(/^\.\/([^_][\w-]+)\/index\.tsx?$/)
   if (match && match[1]) {
-    if (['message', 'notification', 'virtual-list'].includes(match[1])) {
+    if (['message', 'notification'].includes(match[1])) {
       // need nextUI modify
       // message & notification should not be capitalized
       exports[match[1]] = v
