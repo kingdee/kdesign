@@ -35,7 +35,7 @@ subtitle: 分页
 | onShowSizeChange | pageSize 变化后的回调                                                             | function(current, size)                    | - | 1.0.0 |
 | icons            | 替换图标                                                                        | IIcon                                  | {} | 1.0.0 |
 
-## IIcon
+### IIcon
 
 | key      | 说明   |
 |----------|------|
