@@ -24,6 +24,8 @@ import useＭergeCellHover from './feature/mergeCellHover'
 import devWarning from '../_utils/devwarning'
 import useFooterDataSource from './feature/useFooterDataSource'
 import usecolGroupExtendable from './feature/colGroupExtendable'
+import getApi from './api'
+
 const Table = forwardRef<unknown, TableProps>((props: TableProps, ref) => {
   const {
     columns,
@@ -88,12 +90,7 @@ const Table = forwardRef<unknown, TableProps>((props: TableProps, ref) => {
   useImperativeHandle(
     ref,
     (): TableInstance => ({
-      api: {
-        getColumns: pipelineRef.current.getColumns?.bind(pipelineRef.current),
-        getDataSource: pipelineRef.current.getDataSource?.bind(pipelineRef.current),
-        getFooterDataSource: pipelineRef.current.getFooterDataSource?.bind(pipelineRef.current),
-        clearRangeSelection: pipelineRef.current.clearRangeSelection?.bind(pipelineRef.current),
-      },
+      api: getApi(pipelineRef),
     }),
   )
 
