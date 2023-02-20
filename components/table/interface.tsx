@@ -27,6 +27,9 @@ export type TableApi = {
   getDataSource: () => any[]
   getFooterDataSource: () => any[]
   clearRangeSelection: () => void
+  getHeightCache: () => number[]
+  ensureRowIndexVisible: (rowIndex: number, position?: string | undefined) => void
+  ensureColumnVisible: (code: string) => void
 }
 
 export type TableInstance = {
