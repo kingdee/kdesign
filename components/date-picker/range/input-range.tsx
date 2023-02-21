@@ -143,40 +143,38 @@ function InputDate(props: InputRangeProps, ref: React.RefObject<HTMLDivElement>)
     }
   }
 
-  let clearNode: React.ReactNode
-  if (
-    allowClear &&
-    ((getValue(dateValue, 0) && !mergedDisabled[0]) || (getValue(dateValue, 1) && !mergedDisabled[1]))
-  ) {
-    clearNode = (
-      <span
-        onMouseUp={(e) => {
-          e.stopPropagation()
-        }}
-        onClick={(e) => {
-          e.stopPropagation()
-          let values = dateValue
-
-          if (!mergedDisabled[0]) {
-            values = updateValues(values, null, 0)
-          }
-          if (!mergedDisabled[1]) {
-            values = updateValues(values, null, 1)
-          }
-          triggerChange(values)
-          triggerOpen(false, mergedActivePickerIndex)
-          setHoverRangedValue([null, null])
-        }}
-        className={`${prefixCls}-range-clear`}
-      >
-        {clearIcon || <Icon type="close-solid" />}
-      </span>
-    )
-  }
-
   const getSuffixNode = () => {
-    if (isMouseEnter && (startHoverValue || endHoverValue || startText || endText) && allowClear) {
-      return clearNode
+    if (
+      isMouseEnter &&
+      (startHoverValue || endHoverValue || startText || endText) &&
+      allowClear &&
+      !mergedDisabled[0] &&
+      !mergedDisabled[1]
+    ) {
+      return (
+        <span
+          onMouseUp={(e) => {
+            e.stopPropagation()
+          }}
+          onClick={(e) => {
+            e.stopPropagation()
+            let values = dateValue
+
+            if (!mergedDisabled[0]) {
+              values = updateValues(values, null, 0)
+            }
+            if (!mergedDisabled[1]) {
+              values = updateValues(values, null, 1)
+            }
+            triggerChange(values)
+            triggerOpen(false, mergedActivePickerIndex)
+            setHoverRangedValue([null, null])
+          }}
+          className={`${prefixCls}-range-clear`}
+        >
+          {clearIcon || <Icon type="close-solid" />}
+        </span>
+      )
     }
 
     return (
