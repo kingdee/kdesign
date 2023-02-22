@@ -93,8 +93,12 @@ const Dropdown = React.forwardRef<unknown, DropDownProps>((props, ref) => {
     onClick: handleItemClick,
     selectable: menuSelectable,
   })
+
+  const isItem =
+    React.Children.count(menu.props?.children) === 1 && menu.props?.children?.type?.displayName === 'DropdownMenuItem'
+
   const menuElement = isMenu ? (
-    Array.isArray(menu.props?.children) ? (
+    Array.isArray(menu.props?.children) || isItem ? (
       cloneObj
     ) : (
       <ul className={`${prefixCls}-menu`} onClick={handleItemClick} role="menu">
