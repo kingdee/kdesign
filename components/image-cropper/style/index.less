@@ -20,7 +20,7 @@
   height: 44px;
   background: @bg2;
   border-radius: 4px;
-  
+
   .@{image-cropper-prefix-cls}-btn-container {
     padding-left: 28px;
     font-size: 24px;
@@ -31,9 +31,18 @@
       border-right: 1px solid #ccc;
     }
 
-    i {
+    & > i,
+    & > .@{kd-prefix}-upload {
       margin-right: 20px;
       cursor: pointer;
+    }
+
+    .@{kd-prefix}-upload {
+      display: flex;
+
+      &-handle {
+        display: flex;
+      }
     }
   }
 
