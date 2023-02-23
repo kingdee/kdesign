@@ -95,7 +95,10 @@ const Dropdown = React.forwardRef<unknown, DropDownProps>((props, ref) => {
   })
 
   const isItem =
-    React.Children.count(menu.props?.children) === 1 && menu.props?.children?.type?.displayName === 'DropdownMenuItem'
+    (React.Children.count(menu.props?.children) === 1 &&
+      menu.props?.children?.type?.displayName === 'DropdownMenuItem') ||
+    Array.isArray(menu.props?.children?.props?.children) ||
+    menu.props?.children?.props?.children.type?.displayName === 'DropdownMenuItem'
 
   const menuElement = isMenu ? (
     Array.isArray(menu.props?.children) || isItem ? (
