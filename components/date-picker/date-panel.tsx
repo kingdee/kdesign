@@ -275,12 +275,8 @@ function Panel(props: MergedPickerPanelProps) {
   }
 
   const onNext = () => {
-    if (panelPosition) {
-      setViewDate(viewDate, mergedActivePickerIndex)
-    } else {
-      const date = addMonths(viewDate, 1)
-      setViewDate(date)
-    }
+    const date = addMonths(viewDate, 1)
+    setViewDate(date, mergedActivePickerIndex)
   }
 
   let panel
