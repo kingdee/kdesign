@@ -735,10 +735,7 @@ const InternalRangePicker = (
             setInnerPicker,
           }}
         >
-          <Panel
-            {...datePickerProps}
-            disabledDate={mergedActivePickerIndex === 0 ? disabledStartDate : disabledEndDate}
-          />
+          {renderPanel()}
         </Context.Provider>
       )
     }
