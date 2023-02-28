@@ -75,8 +75,22 @@ function InputDate(props: InputDateProps, ref: React.RefObject<HTMLDivElement>) 
   const placeholder = getPlaceholder(picker, locale, propsPlaceholder)
 
   const getSuffixNode = () => {
-    if (isMouseEnter && (hoverValue || text) && allowClear) {
-      return null
+    if (isMouseEnter && (hoverValue || text) && allowClear && !disabled) {
+      return (
+        <span
+          onMouseUp={(e) => {
+            e.stopPropagation()
+          }}
+          onClick={(e) => {
+            e.stopPropagation()
+            triggerChange(null)
+            triggerOpen(false)
+          }}
+          className={`${prefixCls}-clear`}
+        >
+          {clearIcon || <Icon type="close-solid" />}
+        </span>
+      )
     }
 
     return (
@@ -98,25 +112,6 @@ function InputDate(props: InputDateProps, ref: React.RefObject<HTMLDivElement>) 
     if (typeof onMouseLeave === 'function') {
       onMouseLeave(e)
     }
-  }
-
-  let clearNode: React.ReactNode
-  if (allowClear && dateValue && !disabled) {
-    clearNode = (
-      <span
-        onMouseUp={(e) => {
-          e.stopPropagation()
-        }}
-        onClick={(e) => {
-          e.stopPropagation()
-          triggerChange(null)
-          triggerOpen(false)
-        }}
-        className={`${prefixCls}-clear`}
-      >
-        {clearIcon || <Icon type="close-solid" />}
-      </span>
-    )
   }
 
   const onInternalMouseUp: React.MouseEventHandler<HTMLDivElement> = (...args) => {
@@ -218,7 +213,6 @@ function InputDate(props: InputDateProps, ref: React.RefObject<HTMLDivElement>) 
           size={getInputSize(picker, format)}
         />
         {getSuffixNode()}
-        {clearNode}
       </div>
     </div>
   )

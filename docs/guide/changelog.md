@@ -4,6 +4,38 @@ title: 更新日志
 hiddenAnchor: true
 ---
 
+## [1.6.36](https://github.com/kdcloudone/kdesign/compare/v1.6.35...v1.6.36)
+`2023-02-23`
+* date-picker
+  * 修复切换年月异常 fix [#256](https://github.com/kdcloudone/kdesign/issues/256)
+* dropdown
+  * menu 包含framgement 的时候不能传递class
+* menu
+  * menu 包含framgement 的时候不能传递class
+* image
+  * 图片裁剪重新上传按钮和其他按钮没有对启 fix [#238](https://github.com/kdcloudone/kdesign/issues/238)
+* image-cropper
+  * 图片裁剪重新上传按钮和其他按钮没有对启 fix [#238](https://github.com/kdcloudone/kdesign/issues/238)
+* select
+  * 修复可搜索选择器无法点击自身关闭下拉框问题
+
+## [1.6.35](https://github.com/kdcloudone/kdesign/compare/v1.6.34...v1.6.35)
+`2023-02-22`
+* date-picker
+  * 修复disabled时清除图标异常 fix [#256](https://github.com/kdcloudone/kdesign/issues/256)
+* select
+  * 当选项字符数较多时，多选框大小会被压缩 fix [#258](https://github.com/kdcloudone/kdesign/issues/258)
+  * 修复视觉bug fix [#247](https://github.com/kdcloudone/kdesign/issues/247)
+* tree
+  * 自定义展开收起图标鼠标可点击范围太小 fix [#236](https://github.com/kdcloudone/kdesign/issues/236)
+* 修复ts报错
+
+## [1.6.34](https://github.com/kdcloudone/kdesign/compare/v1.6.33...v1.6.34)
+`2023-02-20`
+* rate
+  * 修复自定义样式不生效的问题
+* 更新单测配置文件
+
 ## [1.6.33](https://github.com/kdcloudone/kdesign/compare/v1.6.32...v1.6.33)
 `2023-02-16`
 * date-picker

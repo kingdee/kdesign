@@ -126,6 +126,33 @@ describe('Dropdown', () => {
     expect(onItemClick).toHaveBeenCalled()
   })
 
+  it('only one menuItem should trigger onItemClick', () => {
+    const onItemClick = jest.fn()
+
+    let menu = (
+      <Dropdown.Menu>
+        <Dropdown.Item key="1">
+          <span>菜单1</span>
+        </Dropdown.Item>
+      </Dropdown.Menu>
+    )
+    const wrapper = mount(
+      <div ref={wrapperRef}>
+        <Dropdown
+          visible
+          menu={menu}
+          trigger={'click'}
+          onItemClick={onItemClick}
+          getPopupContainer={() => wrapperRef.current}
+        >
+          <span />
+        </Dropdown>
+      </div>,
+    )
+    wrapper.find('.kd-dropdown-menu').find('.kd-dropdown-menu-item').at(0).simulate('click')
+    expect(onItemClick).toHaveBeenCalled()
+  })
+
   it('should menu has arrow', () => {
     const wrapper = mount(
       <div ref={wrapperRef}>
@@ -142,10 +169,8 @@ describe('Dropdown', () => {
     const onItemClick = jest.fn()
     const menu = (
       <Menu>
-        <Item disabled>
-          <a target="_blank" rel="noopener noreferrer" href="https://www.kingdee.com/">
-            菜单1
-          </a>
+        <Item key="1" disabled>
+          <span>菜单1</span>
         </Item>
       </Menu>
     )
@@ -164,31 +189,8 @@ describe('Dropdown', () => {
       </div>,
     )
     wrapper.find('.kd-dropdown-menu').find('.kd-dropdown-menu-item').at(0).simulate('click')
-    expect(onItemClick).not.toHaveBeenCalledWith('菜单1')
+    expect(onItemClick).not.toBeCalled()
   })
-
-  // it('should menu item onClick', () => {
-  //   const onClick = jest.fn()
-  //   const menu = (
-  //     <Menu onClick={onClick}>
-  //       <Item key="one">
-  //         <a target="_blank" rel="noopener noreferrer" href="https://www.kdcloud.com/">
-  //           菜单1
-  //         </a>
-  //       </Item>
-  //     </Menu>
-  //   )
-
-  //   const wrapper = mount(
-  //     <div ref={wrapperRef}>
-  //       <Dropdown visible menu={menu} trigger={'click'} getPopupContainer={() => wrapperRef.current}>
-  //         <span />
-  //       </Dropdown>
-  //     </div>,
-  //   )
-  //   wrapper.find('.kd-dropdown-menu').find('.kd-dropdown-menu-item').at(0).simulate('click')
-  //   expect(onClick).toHaveBeenCalledWith('one')
-  // })
 
   it('should menu item danger and divided', () => {
     const menu = (
@@ -216,7 +218,26 @@ describe('Dropdown', () => {
     expect(wrapper.find('.kd-dropdown-menu').find('.kd-dropdown-menu-item').at(0)).toHaveClassName('danger')
     expect(wrapper.find('.kd-dropdown-menu').find('.kd-dropdown-menu-item').at(1)).toHaveClassName('divided')
   })
+  it('should extend menu class ', () => {
+    const menu = (
+      <Menu className="myClass">
+        <Item danger>
+          <a target="_blank" rel="noopener noreferrer" href="https://www.kingdee.com/">
+            菜单1
+          </a>
+        </Item>
+      </Menu>
+    )
 
+    const wrapper = mount(
+      <div ref={wrapperRef}>
+        <Dropdown visible menu={menu} trigger={'click'} getPopupContainer={() => wrapperRef.current}>
+          <span />
+        </Dropdown>
+      </div>,
+    )
+    expect(wrapper.find('.kd-dropdown-menu').at(0)).toHaveClassName('myClass')
+  })
   it('should menu item can select able', () => {
     const wrapper = mount(
       <div ref={wrapperRef}>

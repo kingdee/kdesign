@@ -741,7 +741,7 @@ const InternalSelect: React.ForwardRefRenderFunction<ISelectProps<SelectValue>> 
     defaultVisible: optionShow,
     visible: optionShow,
     onVisibleChange: handleVisibleChange,
-    clickToClose: !isShowSearch,
+    clickToClose: !(isShowSearch && searchValue),
   }
   return usePopper(renderSelect(), renderContent(), popperProps)
 }

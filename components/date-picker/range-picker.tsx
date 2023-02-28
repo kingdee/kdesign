@@ -86,6 +86,7 @@ export interface RangePickerSharedProps {
   getPopupContainer?: (node: HTMLElement) => HTMLElement
   popupRef?: React.Ref<any>
   popupStyle?: React.CSSProperties
+  dropdownClassName?: string
 }
 
 type OmitPickerProps<Props> = Omit<
@@ -207,6 +208,7 @@ const InternalRangePicker = (
     className,
     style,
     popupStyle,
+    dropdownClassName,
     popupRef,
     borderType,
     separator,
@@ -733,10 +735,7 @@ const InternalRangePicker = (
             setInnerPicker,
           }}
         >
-          <Panel
-            {...datePickerProps}
-            disabledDate={mergedActivePickerIndex === 0 ? disabledStartDate : disabledEndDate}
-          />
+          {renderPanel()}
         </Context.Provider>
       )
     }
@@ -881,6 +880,7 @@ const InternalRangePicker = (
       prefixCls: `${datePickerPrefixCls}-panel`,
       arrow: false,
       popperStyle: popupStyle,
+      popperClassName: dropdownClassName,
       visible: mergedOpen,
       placement: 'bottomLeft',
       getPopupContainer,

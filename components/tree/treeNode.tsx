@@ -177,11 +177,7 @@ const TreeNode = React.forwardRef<unknown, TreeNodeProps>((props, ref) => {
       [`${treeNodePrefixCls}-indent-line`]: !!showLine,
     })
     for (let i = 0; i < level; i++) {
-      indentArr.push(
-        <span className={className} key={i} style={{ height: `${estimatedItemSize}` }}>
-          &nbsp;&nbsp;&nbsp;&nbsp;
-        </span>,
-      )
+      indentArr.push(<span className={className} key={i} style={{ height: `${estimatedItemSize}` }}></span>)
     }
     return indentArr
   }

@@ -22,13 +22,6 @@ Array [
           class="kdicon kdicon-date"
         />
       </span>
-      <span
-        class="kd-date-picker-clear"
-      >
-        <i
-          class="kdicon kdicon-close-solid"
-        />
-      </span>
     </div>
   </div>,
   <div
@@ -560,13 +553,6 @@ Array [
       >
         <i
           class="kdicon kdicon-date"
-        />
-      </span>
-      <span
-        class="kd-date-picker-clear"
-      >
-        <i
-          class="kdicon kdicon-close-solid"
         />
       </span>
     </div>
@@ -1102,13 +1088,6 @@ Array [
           class="kdicon kdicon-date"
         />
       </span>
-      <span
-        class="kd-date-picker-clear"
-      >
-        <i
-          class="kdicon kdicon-close-solid"
-        />
-      </span>
     </div>
   </div>,
   <div
@@ -1640,13 +1619,6 @@ Array [
       >
         <i
           class="kdicon kdicon-date"
-        />
-      </span>
-      <span
-        class="kd-date-picker-clear"
-      >
-        <i
-          class="kdicon kdicon-close-solid"
         />
       </span>
     </div>
@@ -2182,13 +2154,6 @@ Array [
           class="kdicon kdicon-date"
         />
       </span>
-      <span
-        class="kd-date-picker-clear"
-      >
-        <i
-          class="kdicon kdicon-close-solid"
-        />
-      </span>
     </div>
   </div>,
   <div
@@ -2722,13 +2687,6 @@ Array [
           class="kdicon kdicon-date"
         />
       </span>
-      <span
-        class="kd-date-picker-clear"
-      >
-        <i
-          class="kdicon kdicon-close-solid"
-        />
-      </span>
     </div>
   </div>,
   <div
@@ -2928,13 +2886,6 @@ Array [
           class="kdicon kdicon-date"
         />
       </span>
-      <span
-        class="kd-date-picker-clear"
-      >
-        <i
-          class="kdicon kdicon-close-solid"
-        />
-      </span>
     </div>
   </div>,
   <div
@@ -3044,13 +2995,6 @@ Array [
       >
         <i
           class="kdicon kdicon-date"
-        />
-      </span>
-      <span
-        class="kd-date-picker-clear"
-      >
-        <i
-          class="kdicon kdicon-close-solid"
         />
       </span>
     </div>
@@ -3261,13 +3205,6 @@ Array [
       >
         <i
           class="kdicon kdicon-waiting"
-        />
-      </span>
-      <span
-        class="kd-date-picker-clear"
-      >
-        <i
-          class="kdicon kdicon-close-solid"
         />
       </span>
     </div>
