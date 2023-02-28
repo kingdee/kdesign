@@ -77,7 +77,7 @@ function Demo() {
       ]
     }
   ]
-  return <Table className="bordered" dataSource={dataSource} columns={columns} columnResizeable={true} columnGroupExtend={{extendStatus:expandStatus,onChangeExtendStatus:onChangeExtendStatus}}/>
+  return <Table className="bordered" dataSource={dataSource} columns={columns} columnResize={true} columnGroupExtend={{extendStatus:expandStatus,onChangeExtendStatus:onChangeExtendStatus}}/>
 }
 
 ReactDOM.render(<Demo />, mountNode)
