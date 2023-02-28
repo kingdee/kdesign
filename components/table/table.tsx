@@ -103,13 +103,13 @@ const Table = forwardRef<unknown, TableProps>((props: TableProps, ref) => {
   useSort(pipeline, sort)
   useAutoRowSpan(pipeline, autoRowSpan)
   useTreeMode(pipeline, treeMode)
+  usecolGroupExtendable(pipeline, columnGroupExtend)
   useColumnResize(pipeline, columnResize)
   useColumnDrag(pipeline, columnDrag)
   useContextMenu(pipeline, contextMenu)
   useRangeSelection(pipeline, rangeSelection)
   useＭergeCellHover(pipeline)
   useFooterDataSource(pipeline, footerDataSource)
-  usecolGroupExtendable(pipeline, columnGroupExtend)
 
   /* -------------------------------------------------------------------------- */
   /* after useTablePipeline, merge pipeline.getProps result                     */
