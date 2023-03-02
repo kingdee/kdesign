@@ -1,6 +1,6 @@
 {
   "name": "@kdcloudjs/kdesign",
-  "version": "1.6.37",
+  "version": "1.6.38",
   "description": "KDesign 金蝶前端react 组件库",
   "title": "kdesign",
   "keywords": [
@@ -77,7 +77,7 @@
     "@babel/runtime": "^7.10.4",
     "@babel/runtime-corejs3": "^7.11.2",
     "@babel/standalone": "^7.14.3",
-    "@kdcloudjs/table": "canary",
+    "@kdcloudjs/table": "1.1.5-canary.3",
     "@popperjs/core": "^2.5.4",
     "async-validator": "^3.5.1",
     "axios": "^0.21.1",

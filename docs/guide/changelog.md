@@ -4,6 +4,21 @@ title: 更新日志
 hiddenAnchor: true
 ---
 
+## [1.6.38](https://github.com/kdcloudone/kdesign/compare/v1.6.37...v1.6.38)
+`2023-03-02`
+* image
+  * 支持设置裁剪区域百分比 fix [#270](https://github.com/kdcloudone/kdesign/issues/270)
+* image-cropper
+  * 支持设置裁剪区域百分比 fix [#270](https://github.com/kdcloudone/kdesign/issues/270)
+* radio
+  * onChange 控制被选中项的bug [#273](https://github.com/kdcloudone/kdesign/issues/273)
+* 修复prettier版本更新导致的格式校验报错
+
+## [1.6.37](https://github.com/kdcloudone/kdesign/compare/v1.6.36...v1.6.37)
+`2023-02-28`
+* table
+  * 修复分组列收起后,拖拽列宽鼠标位置不正确 bug
+
 ## [1.6.36](https://github.com/kdcloudone/kdesign/compare/v1.6.35...v1.6.36)
 `2023-02-23`
 * date-picker
