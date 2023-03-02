@@ -370,6 +370,7 @@ const compDefaultProps = {
     viewMode: 0,
     aspectRatio: NaN,
     okText: '确认裁剪',
+    autoCropArea: 0.5,
   },
   Anchor: {
     type: 'bookmarks',

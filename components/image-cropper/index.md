@@ -16,6 +16,7 @@ subtitle: 图片裁剪
 
 | 属性 | 说明 | 类型 | 默认值 | 可选值 | 版本 |
 | --- | --- | --- | --- | --- | --- |
+| autoCropArea | 裁剪区域大小(百分比) | number | `0.5` | 数字 | 1.0.0 |
 | aspectRatio | 定义裁切框的可拖动的长宽比 | number | `NaN` | 数字，或者数学计算公式如 16/9、4/3 | 1.0.0 |
 | containerHeight | 高度 | number | `830` | - | 1.0.0 |
 | cropBoxMovable | 是否开启裁切框可拖动 | boolean | `true` | `true` `false` | 1.0.0 |
