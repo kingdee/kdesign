@@ -9,12 +9,12 @@ import { RadioGroupContextProvider } from './context'
 const RadioGroup = React.forwardRef<HTMLDivElement, IRadioGroupProps>((props, ref) => {
   const { getPrefixCls, prefixCls, compDefaultProps: userDefaultProps } = React.useContext(ConfigContext)
 
-  const initValue = props.value === undefined ? props.defaultValue : props.value
+  const initValue = typeof props.value === 'undefined' ? props.defaultValue : props.value
   const [value, setValue] = React.useState(initValue)
 
   // 从props更新value值
   React.useEffect(() => {
-    if (props.value !== undefined) {
+    if (typeof props.value !== 'undefined') {
       setValue(props.value)
     }
   }, [props.value])
