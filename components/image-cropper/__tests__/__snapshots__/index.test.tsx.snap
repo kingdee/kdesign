@@ -8,6 +8,7 @@ exports[`ImageCropper render no child without errors 1`] = `
     body={
       <ForwardRef
         aspectRatio={NaN}
+        autoCropArea={0.5}
         className="kd-image-cropper-container"
         dragMode="crop"
         imgSrc=""
@@ -243,6 +244,7 @@ exports[`ImageCropper render no child without errors 1`] = `
               >
                 <ForwardRef
                   aspectRatio={NaN}
+                  autoCropArea={0.5}
                   className="kd-image-cropper-container"
                   dragMode="crop"
                   imgSrc=""
@@ -427,6 +429,7 @@ exports[`ImageCropper render null or undefined ImageCropper without errors 1`] =
     body={
       <ForwardRef
         aspectRatio={NaN}
+        autoCropArea={0.5}
         className="kd-image-cropper-container"
         dragMode="crop"
         imgSrc=""
@@ -763,6 +766,7 @@ exports[`ImageCropper render null or undefined ImageCropper without errors 1`] =
               >
                 <ForwardRef
                   aspectRatio={NaN}
+                  autoCropArea={0.5}
                   className="kd-image-cropper-container"
                   dragMode="crop"
                   imgSrc=""
