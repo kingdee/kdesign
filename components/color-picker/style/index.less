@@ -1,0 +1,247 @@
+@import '../../style/themes/index';
+@import './mixin.less';
+@import './token.less';
+
+@color-picker-prefix-cls: ~'@{kd-prefix}-color-picker';
+
+.@{color-picker-prefix-cls}-container {
+    position: relative;
+
+    .@{color-picker-prefix-cls}-input {
+        width: 230px;
+        height: 28px;
+        border-bottom: 1px solid rgba(217, 217, 217, 1);
+    }
+
+    .@{color-picker-prefix-cls}-icon-container {
+        position: absolute;
+        top: 4px;
+        right: 6px;
+        cursor: pointer;
+
+        .@{color-picker-prefix-cls}-icon {
+            width: 20px;
+            height: 20px;
+            border-radius: 2px;
+            line-height: 18px;
+            text-align: center;
+            color: @bg;
+
+            &-underline {
+                margin-right: -6px;
+            }
+
+            &-up {
+                .kdicon-arrow-down {
+                    transform: rotate(180deg);
+                    transition: transform @transition-duration-quickly ease-in-out;
+                }
+            }
+
+            &-down {
+                .kdicon-arrow-down {
+                    transform: rotate(0deg);
+                    transition: transform @transition-duration-quickly ease-in-out;
+                }
+            }
+        }
+    }
+
+}
+
+.@{color-picker-prefix-cls}-pop {
+
+    &.topLeft.hidden,
+    &.bottomLeft.hidden,
+    &.topRight.hidden,
+    &.bottomRight.hidden {
+        opacity: 0;
+        visibility: hidden;
+        transition: all calc(@transition-duration - 0.1s) @ease;
+    }
+
+    .@{color-picker-prefix-cls}-panel {
+        box-sizing: border-box;
+        width: 304px;
+        padding: 8px 12px 8px;
+        background: #FFFFFF;
+        box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.15);
+        border-radius: 2px;
+        transform-origin: top left;
+        z-index: @color-picker-panel-z-index;
+
+        &-chrome {
+            width: 278px !important;
+            box-shadow: none !important;
+
+            &>div:last-child {
+                padding: 9px 0 4px !important;
+
+                .flexbox-fix:first-child {
+                    display: flex;
+                    flex-direction: row-reverse;
+
+                    &>div:first-child {
+                        &>div {
+                            width: 28px !important;
+                            height: 28px !important;
+                            border-radius: 50% !important;
+                            margin-top: -1px !important;
+                            margin-left: 4px !important;
+                        }
+                    }
+
+                    &>div:last-child {
+
+                        .hue-horizontal {
+                            width: 240px !important;
+                            height: 12px !important;
+                            border-radius: 6px !important;
+                            padding: unset !important;
+
+                            &>div>div {
+                                margin-top: 1px;
+                            }
+                        }
+
+                        &>div:last-child {
+                            &>div {
+                                width: 240px !important;
+                                height: 12px !important;
+                                margin: unset;
+
+                                &>div:first-child {
+                                    border-radius: 6px !important;
+                                }
+
+                                &>div:nth-child(2) {
+                                    border-radius: 6px !important;
+                                }
+
+                                &>div:last-child {
+                                    margin: unset !important;
+
+                                    &>div>div {
+                                        margin-top: 1px;
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                }
+
+                .flexbox-fix:last-child {
+                    display: none !important;
+                }
+            }
+
+        }
+
+        &-switch {
+            margin: 8px 0 4px;
+            font-size: 12px;
+            color: #666666;
+            letter-spacing: 0;
+            line-height: 16px;
+            font-weight: 400;
+
+            span {
+                vertical-align: middle;
+                margin-right: 9px;
+            }
+        }
+
+        &-input {
+            display: inline-block;
+            position: relative;
+            margin-top: 8px;
+            margin-bottom: 12px;
+
+            &-no-recommend {
+                margin-bottom: 8px;
+            }
+
+            .@{kd-prefix}-select {
+
+                &.bottomLeft,
+                &.topLeft {
+                    position: absolute;
+                    width: 60px !important;
+                    background: #FFFFFF;
+                    right: 0;
+                    left: unset !important;
+                    box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.20);
+                    border-radius: 2px;
+                }
+
+                .@{kd-prefix}-select-dropdown {
+                    overflow: hidden;
+                }
+            }
+
+            .@{kd-prefix}-select-bordered {
+                border-radius: 2px;
+                width: 212px;
+                height: 28px;
+                min-height: 28px;
+                margin-top: -2px;
+
+                .@{kd-prefix}-select-placeholder {
+                    left: 8px;
+                }
+            }
+
+            .active-option {
+                background-color: #E3EBFF;
+            }
+        }
+
+        &-transparent {
+            width: 60px;
+            height: 28px;
+            margin-left: 8px;
+            text-align: center;
+        }
+
+        &-colorDivContainer {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            grid-column-gap: 8px;
+            grid-row-gap: 8px;
+
+            li {
+                position: relative;
+                box-sizing: border-box;
+                width: 16px;
+                height: 16px;
+                border: 1px solid rgba(0, 0, 0, 0.05);
+                border-radius: 2px;
+                list-style: none;
+                cursor: pointer;
+
+                .square {
+                    display: none;
+                    position: absolute;
+                    box-sizing: inherit;
+                    top: -3px;
+                    left: -3px;
+                    width: 20px;
+                    height: 20px;
+                    border: 1px solid rgba(178, 178, 176, 1);
+                    border-radius: 4px;
+
+                    &-click {
+                        display: block;
+                    }
+                }
+
+                &:hover {
+                    .square {
+                        display: block;
+                    }
+                }
+            }
+        }
+    }
+}

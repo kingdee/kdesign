@@ -57,6 +57,11 @@ const compDefaultProps = {
   CollapsePanel: {
     disabled: false,
   },
+  ColorPicker: {
+    showChangeColorTypeInput: true,
+    showPresetColor: true,
+    borderType: 'bordered',
+  },
   Checkbox: {
     defaultChecked: false,
     checkboxType: 'default',
