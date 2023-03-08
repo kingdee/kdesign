@@ -239,7 +239,11 @@ const InternalSelect: React.ForwardRefRenderFunction<ISelectProps<SelectValue>> 
 
   const getOptionLabel = useCallback(
     (obj) => {
-      const text = 'options' in selectProps ? 'label' : optionLabelProp
+      const text =
+        Object.prototype.hasOwnProperty.call(selectProps, 'options') &&
+        !Object.prototype.hasOwnProperty.call(props, 'optionLabelProp')
+          ? 'label'
+          : optionLabelProp
       if (obj.props) {
         if (text) {
           return obj?.props[text]
