@@ -30,7 +30,6 @@ export interface AbstractSelectProps extends PopperProps {
   id?: string
   children?: React.ReactNode
   options?: OptionsType[]
-  loading?: boolean // 加载中状态
   clearIcon?: React.ReactNode // 清除图标
   searchIcon?: React.ReactNode // 搜索图标
   suffixIcon?: React.ReactNode // 选择框后缀图标
@@ -62,6 +61,7 @@ export interface ISelectProps<T extends SelectValue> extends AbstractSelectProps
   autoFocus?: boolean
   onChange?: (value?: T, option?: React.ReactElement<any> | React.ReactElement<any>[]) => void
   onSelect?: (value?: T extends (infer I)[] ? I : T, option?: React.ReactElement<any>) => void
+  onDeselect?: (value?: T extends (infer I)[] ? I : T, option?: React.ReactElement<any>) => void
   onBlur?: (value?: T) => void
   onFocus?: () => void
   onSearch?: (value?: string) => void
