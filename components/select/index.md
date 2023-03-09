@@ -39,7 +39,7 @@ subtitle: 选择器
 | optionLabelProp | 回填到选择框的 Option 的属性值 | string | options 存在时为 label,反之为 children | 1.6.7 |
 | options | 数据化配置选项内容，相比 jsx 定义会获得更好的渲染性能 | { label, value }\[] | - | 1.0.0 |
 | placeholder | 选择框默认文字 | string | - | 1.0.0 |
-| showArrow | 是否显示下拉小箭头 | boolean | 单选为 true，多选为 false | 1.0.0 |
+| showArrow | 是否显示下拉小箭头 | boolean | true | 1.0.0 |
 | showSearch | 是否展示搜索框 | boolean | 单选为 false，多选为 true | 1.0.0 |
 | size | 选择框大小 | `large` \| `middle` \| `small` | `middle` | 1.0.0 |
 | suffixIcon | 自定义的选择框后缀图标 | ReactNode | - | 1.0.0 |
