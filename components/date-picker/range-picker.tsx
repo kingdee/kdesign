@@ -561,17 +561,22 @@ const InternalRangePicker = (
 
   const onSelect = (date: DateType, type: ISelectType) => {
     const values = updateValues(selectedValue, date, mergedActivePickerIndex)
-
-    if (type === 'submit' || (type !== 'key' && !needConfirmButton)) {
-      triggerChange(values, mergedActivePickerIndex)
-
-      if (mergedActivePickerIndex === 0) {
-        onStartLeave()
-      } else {
-        onEndLeave()
+    if (type === 'inner') {
+      if (values && values[mergedActivePickerIndex]) {
+        setViewDate(values[mergedActivePickerIndex], mergedActivePickerIndex)
       }
     } else {
-      setSelectedValue(values)
+      if (type === 'submit' || (type !== 'key' && !needConfirmButton)) {
+        triggerChange(values, mergedActivePickerIndex)
+
+        if (mergedActivePickerIndex === 0) {
+          onStartLeave()
+        } else {
+          onEndLeave()
+        }
+      } else {
+        setSelectedValue(values)
+      }
     }
   }
 
@@ -606,6 +611,8 @@ const InternalRangePicker = (
       if (!endValueTexts.length || endValueTexts[0] === '') {
         triggerEndTextChange('')
       }
+    } else {
+      setInnerPicker(undefined)
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [mergedOpen, startValueTexts, endValueTexts])
@@ -707,7 +714,7 @@ const InternalRangePicker = (
       panels = (
         <div className={classNames(`${datePickerPrefixCls}-container-date`)}>
           {leftPanel}
-          {rightPanel}
+          {innerPicker === undefined ? rightPanel : null}
         </div>
       )
     } else {
