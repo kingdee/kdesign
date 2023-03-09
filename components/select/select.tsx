@@ -70,6 +70,7 @@ const InternalSelect: React.ForwardRefRenderFunction<ISelectProps<SelectValue>> 
   // const [searchInput, setSearchInput] = useState<string>('') // 搜索框值
   const [searchValue, setSearchValue] = useState<any>('') // 搜索框定时器
   const [inputWidth, setInputWidth] = useState(INPUT_MIN_WIDTH) // 输入框宽度
+  const [focusd, setFocusd] = useState(autoFocus)
   const selectPrefixCls = getPrefixCls!(prefixCls, 'select', customPrefixcls)
   // 选择器样式
   const selectCls = classNames(selectPrefixCls, className, {
@@ -174,6 +175,7 @@ const InternalSelect: React.ForwardRefRenderFunction<ISelectProps<SelectValue>> 
   const handleFocus = useCallback(
     (e: React.ChangeEvent<HTMLSpanElement>) => {
       e.stopPropagation()
+      setFocusd(true)
       onFocus && onFocus(e)
     },
     [onFocus],
@@ -182,6 +184,7 @@ const InternalSelect: React.ForwardRefRenderFunction<ISelectProps<SelectValue>> 
   const handleBlur = useCallback(
     (e: React.ChangeEvent<HTMLSpanElement>) => {
       e.stopPropagation()
+      setFocusd(false)
       onBlur && onBlur(e)
     },
     [onBlur],
@@ -369,6 +372,7 @@ const InternalSelect: React.ForwardRefRenderFunction<ISelectProps<SelectValue>> 
   const handleSearchChange = useCallback(
     (event: React.ChangeEvent<HTMLInputElement>) => {
       const val = event.currentTarget.value
+      setOptionShow(true)
       setSearchValue(val)
       onSearch?.(val)
     },
@@ -490,6 +494,12 @@ const InternalSelect: React.ForwardRefRenderFunction<ISelectProps<SelectValue>> 
   const isShowSearch = useMemo(() => {
     return isBoolean(showSearch) ? showSearch : isMultiple
   }, [isMultiple, showSearch])
+
+  useEffect(() => {
+    if (isShowSearch && autoFocus && !disabled) {
+      searchRef.current?.focus()
+    }
+  }, [isShowSearch, autoFocus, disabled])
 
   // 渲染下拉列表框
   const renderContent = () => {
@@ -628,7 +638,7 @@ const InternalSelect: React.ForwardRefRenderFunction<ISelectProps<SelectValue>> 
     const multipleCls = classNames(commCls, {
       [`${selectPrefixCls}-multiple-disabled`]: disabled,
       [`${selectPrefixCls}-${mode}`]: mode,
-      [`${selectPrefixCls}-focused`]: autoFocus || optionShow,
+      [`${selectPrefixCls}-focused`]: focusd || optionShow,
       [`${selectPrefixCls}-placeholder`]: placeholder && !mulOptions.length,
     })
 
@@ -703,7 +713,7 @@ const InternalSelect: React.ForwardRefRenderFunction<ISelectProps<SelectValue>> 
   const singleCls = classNames(commCls, {
     [`${selectPrefixCls}-single`]: true,
     [`${selectPrefixCls}-single-disabled`]: disabled,
-    [`${selectPrefixCls}-single-focused`]: (autoFocus && !disabled) || optionShow,
+    [`${selectPrefixCls}-single-focused`]: (focusd && !disabled) || optionShow,
   })
 
   const renderSelect = () => {
