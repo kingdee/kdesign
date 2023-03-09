@@ -4,6 +4,13 @@ title: 更新日志
 hiddenAnchor: true
 ---
 
+## [1.6.39](https://github.com/kdcloudone/kdesign/compare/v1.6.38...v1.6.39)
+`2023-03-09`
+* date-picker
+  * 修复面板箭头问题
+  * 修复内存泄露问题
+  * 修复时间范围快速选择年月问题
+
 ## [1.6.38](https://github.com/kdcloudone/kdesign/compare/v1.6.37...v1.6.38)
 `2023-03-02`
 * image
