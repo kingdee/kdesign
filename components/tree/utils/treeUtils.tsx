@@ -26,7 +26,7 @@ export const flattenAll = (treeData: any[], newTreeData: TreeNodeData[] = [], le
           hasChildNode,
           children,
           level,
-          parentKey: parent?.key || null,
+          parentKey: (parent?.key ?? '') !== '' ? parent?.key : null,
           pathParentKeys: parent ? [...(parent?.pathParentKeys || []), parent?.key] : [],
           ...others,
         }
