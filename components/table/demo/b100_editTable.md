@@ -34,7 +34,10 @@ function Demo() {
         style: {
         },
         onClick(event) {
-          setActiveCell({ row: rowIndex, col });
+          const { row: preRow, col: preCol } = activeCell
+          if (preRow !== rowIndex || preCol !== col) {
+            setActiveCell({ row: rowIndex, col })
+          }
         }
       };
     };
