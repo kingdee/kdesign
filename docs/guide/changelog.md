@@ -4,6 +4,26 @@ title: 更新日志
 hiddenAnchor: true
 ---
 
+## [1.6.40](https://github.com/kdcloudone/kdesign/compare/v1.6.39...v1.6.40)
+`2023-03-16`
+* button
+  * 修复文字按钮禁用状态下触发click事件 fix [#281](https://github.com/kdcloudone/kdesign/issues/281)
+* input
+  * 修复suffix问题
+* select
+  * 修复传入options时optionLabelProp无效问题
+  * 修复autoFocus不生效问题
+  * 修复clearIcon不生效问题
+* icon
+  * 修复clearIcon不生效问题
+* filter
+  * 修复当父节点key值为0时filterTreeNode失效 fix [#280](https://github.com/kdcloudone/kdesign/issues/280)
+* tree
+  * 修复当父节点key值为0时filterTreeNode失效 fix [#280](https://github.com/kdcloudone/kdesign/issues/280)
+  * 修复节点过滤时部分节点不展开问题 fix [#278](https://github.com/kdcloudone/kdesign/issues/278)
+* upload
+  * 修复children渲染问题
+
 ## [1.6.39](https://github.com/kdcloudone/kdesign/compare/v1.6.38...v1.6.39)
 `2023-03-09`
 * date-picker
