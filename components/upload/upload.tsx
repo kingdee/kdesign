@@ -1,4 +1,4 @@
-import * as React from 'react'
+import React, { Children } from 'react'
 import classNames from 'classnames'
 import ConfigContext from '../config-provider/ConfigContext'
 import { UploadProps, UploadProgressEvent, UploadRequestError, UploadFile, Action, IFileItem } from './interface'
@@ -59,6 +59,8 @@ const InternalUpload: React.ForwardRefRenderFunction<unknown, UploadProps> = (pr
   } = allProps
 
   const [fileList, setFileList] = React.useState<Array<UploadFile>>(props.fileList || props.defaultFileList || [])
+  const hasChildren = children && Children.toArray(children).length > 0
+
   React.useEffect(() => {
     props.fileList && setFileList(props.fileList)
   }, [props.fileList])
@@ -314,7 +316,7 @@ const InternalUpload: React.ForwardRefRenderFunction<unknown, UploadProps> = (pr
 
   return (
     <div className={classNames(prefixCls, { disabled }, className)} style={style}>
-      {listType === 'text' && (
+      {listType === 'text' && hasChildren && (
         <label className={classNames({ [`${prefixCls}-${type}`]: true, hover })} {...dragEvents}>
           <span className={`${prefixCls}-handle`}>{children}</span>
           <span className={`${prefixCls}-input`}>
@@ -324,7 +326,7 @@ const InternalUpload: React.ForwardRefRenderFunction<unknown, UploadProps> = (pr
       )}
       {(listType === 'picture' || !(listType === 'text' && (!showUploadList || !fileList.length))) && (
         <ul className={`${prefixCls}-${listType}-list`}>
-          {listType === 'picture' && children && (
+          {listType === 'picture' && hasChildren && (
             <li className={classNames(`${prefixCls}-${listType}-list-item`)}>
               <label className={`${prefixCls}-select`}>
                 <span className={`${prefixCls}-handle`}>{children}</span>
