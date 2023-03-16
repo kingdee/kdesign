@@ -69,8 +69,8 @@ const InternalButton = (props: IButtonProps, ref: unknown): FunctionComponentEle
    * @param {React.MouseEvent<HTMLButtonElement | HTMLAnchorElement, MouseEvent>} e 事件对象
    */
   const handleClick = (e: React.MouseEvent<HTMLButtonElement | HTMLAnchorElement, MouseEvent>) => {
-    if (loading) {
-      // 加载中不触发点击事件
+    if (loading || disabled) {
+      // 加载中和禁用状态不触发点击事件
       return
     }
     const waveStatus = buttonRef.current.getAttribute('click-animating-wave')
