@@ -85,7 +85,7 @@ const ClearableInput: React.FC<ClearableInputProps> = (props) => {
         <span className={`${prefixCls}-suffix`}>
           {renderClearIcon()}
           {inputCount && <span style={{ marginRight: suffix ? 9 : 0 }}>{inputCount}</span>}
-          <span>{suffix}</span>
+          {suffix}
         </span>
       )
     }
