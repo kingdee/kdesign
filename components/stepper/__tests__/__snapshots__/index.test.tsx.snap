@@ -25,14 +25,12 @@ exports[`Stepper renders correctly 1`] = `
   <span
     class="kd-input-suffix"
   >
-    <span>
-      <span
-        class="kd-inputNumber-baseStep kd-inputNumber-baseStep-increase kd-inputNumber-baseStep-middle"
-      >
-        <i
-          class="kdicon kd-inputNumber-icon kdicon-add"
-        />
-      </span>
+    <span
+      class="kd-inputNumber-baseStep kd-inputNumber-baseStep-increase kd-inputNumber-baseStep-middle"
+    >
+      <i
+        class="kdicon kd-inputNumber-icon kdicon-add"
+      />
     </span>
   </span>
 </span>
@@ -51,24 +49,22 @@ exports[`Stepper renders correctly 2`] = `
   <span
     class="kd-input-suffix"
   >
-    <span>
+    <span
+      class="kd-inputNumber-embedStep kd-inputNumber-embedStep-middle"
+    >
       <span
-        class="kd-inputNumber-embedStep kd-inputNumber-embedStep-middle"
+        class="kd-inputNumber-embedStep-plus"
       >
-        <span
-          class="kd-inputNumber-embedStep-plus"
-        >
-          <i
-            class="kdicon kd-inputNumber-icon kdicon-arrow-up"
-          />
-        </span>
-        <span
-          class="kd-inputNumber-embedStep-minus"
-        >
-          <i
-            class="kdicon kd-inputNumber-icon kdicon-arrow-down"
-          />
-        </span>
+        <i
+          class="kdicon kd-inputNumber-icon kdicon-arrow-up"
+        />
+      </span>
+      <span
+        class="kd-inputNumber-embedStep-minus"
+      >
+        <i
+          class="kdicon kd-inputNumber-icon kdicon-arrow-down"
+        />
       </span>
     </span>
   </span>
@@ -100,14 +96,12 @@ exports[`Stepper renders correctly 3`] = `
   <span
     class="kd-input-suffix"
   >
-    <span>
-      <span
-        class="kd-inputNumber-baseStep kd-inputNumber-baseStep-increase kd-inputNumber-baseStep-middle"
-      >
-        <i
-          class="kdicon kd-inputNumber-icon kdicon-add"
-        />
-      </span>
+    <span
+      class="kd-inputNumber-baseStep kd-inputNumber-baseStep-increase kd-inputNumber-baseStep-middle"
+    >
+      <i
+        class="kdicon kd-inputNumber-icon kdicon-add"
+      />
     </span>
   </span>
 </span>
