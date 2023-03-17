@@ -1,6 +1,6 @@
 ---
 title: 输入框图标
-order: 3
+order: 4
 ---
 
 可配置属性 suffixIcon 自定义输入框右侧的图标
@@ -11,8 +11,8 @@ import ReactDOM from 'react-dom'
 import { ColorPicker, Icon } from '@kdcloudjs/kdesign'
 
 function Demo() {
-  const homeIcon = (colorArr) => {
-    return <Icon type="notice" style={{ color: colorArr[2].value, fontSize: '20px', marginTop: '-4px' }} />
+  const homeIcon = (rgbColor) => {
+    return <Icon type="notice" style={{ color: rgbColor, fontSize: '20px', marginTop: '-4px' }} />
   }
 
   const onChange = (inputValue) => {

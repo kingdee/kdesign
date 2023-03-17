@@ -1,7 +1,3 @@
-export interface IColorTypes {
-  type: 'HEX' | 'HSB' | 'RGB' | 'HSL' | 'themeColor'
-  value: string
-}
 export const colorTypes = [
   {
     type: 'HEX',
@@ -9,7 +5,7 @@ export const colorTypes = [
   },
   {
     type: 'HSB',
-    value: 'hsb(0,0,70)',
+    value: 'hsb(0,0%,70%)',
   },
   {
     type: 'RGB',
@@ -17,6 +13,6 @@ export const colorTypes = [
   },
   {
     type: 'HSL',
-    value: 'hsl(0,0,70)',
+    value: 'hsl(0,0%,70%)',
   },
 ]

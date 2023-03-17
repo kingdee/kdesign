@@ -58,9 +58,13 @@ const compDefaultProps = {
     disabled: false,
   },
   ColorPicker: {
-    showChangeColorTypeInput: true,
-    showPresetColor: true,
     borderType: 'bordered',
+    defaultOpen: false,
+    functionalColorName: '#themeColor',
+    switchName: { name: '跟随主题色', internationalName: 'followFunctionalColor' },
+    placeholder: '#',
+    showColorTransfer: true,
+    showPresetColor: true,
   },
   Checkbox: {
     defaultChecked: false,

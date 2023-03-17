@@ -50,51 +50,80 @@ export const colorFormat = (colorStr: string, alpha = 1, outType: IOutType = 'al
 
 export const getColorObj = (colorStr: string) => {
   const colorArray = colorStr.split(',')
-  const s = colorArray[1]
   const type = validateColor(colorStr)
+
   if (type === 'HSB' || type === 'HSBA') {
+    const s = removePercentage(colorArray[1])
     if (type === 'HSB') {
       const h = colorArray[0].replace('hsb(', '')
       const b = colorArray[2].replace(')', '')
-      return { h: strFixed(h), s: strFixed(s), v: strFixed(b) }
+      return { h: h, s: s, v: removePercentage(b) }
     } else {
-      const h = colorArray[0].replace('hslb(', '')
-      const l = colorArray[2]
+      const h = colorArray[0].replace('hsba(', '')
+      const b = colorArray[2]
       const a = colorArray[3].replace(')', '')
-      return { h: strFixed(h), s: strFixed(s), v: strFixed(l), alpha: a }
+      return { h: +h, s: s, v: removePercentage(b), alpha: +a }
     }
   } else if (type === 'HSL' || type === 'HSLA') {
+    const s = addPercentage(colorArray[1])
     if (type === 'HSL') {
       const h = colorArray[0].replace('hsl(', '')
       const l = colorArray[2].replace(')', '')
-      return `hsl(${h},${s}%,${l}%)`
+      return `hsl(${h},${s},${addPercentage(l)})`
     } else {
       const h = colorArray[0].replace('hsla(', '')
       const l = colorArray[2]
       const a = colorArray[3].replace(')', '')
-      return `hsla(${h},${s}%,${l}%,${a})`
+      return `hsla(${h},${s},${addPercentage(l)},${a})`
+    }
+  } else if (type === 'RGB' || type === 'RGBA') {
+    const g = colorArray[1]
+    if (type === 'RGB') {
+      const r = colorArray[0].replace('rgb(', '')
+      const b = colorArray[2].replace(')', '')
+      return `rgb(${strFixed(r)},${strFixed(g)},${strFixed(b)})`
+    } else {
+      const r = colorArray[0].replace('rgba(', '')
+      const b = colorArray[2]
+      const a = colorArray[3].replace(')', '')
+      return `rgba(${strFixed(r)},${strFixed(g)},${strFixed(b)},${strFixed(a, 2)})`
     }
   } else {
     return colorStr
   }
 }
 
-const colorToStr = (obj: any) => {
+const addPercentage = (parameter: string): string => {
+  return parameter?.indexOf('%') !== -1
+    ? parameter
+    : +parameter > 0 && +parameter <= 1
+    ? +parameter * 100 + '%'
+    : parameter + '%'
+}
+const removePercentage = (parameter: string): number => {
+  return parameter?.indexOf('%') !== -1
+    ? +parameter.replace('%', '')
+    : +parameter > 0 && +parameter <= 1
+    ? +parameter * 100
+    : +parameter
+}
+
+const colorToStr = (obj: any): string => {
   const arr = obj.color
   if (obj.valpha === 1) {
-    return `${obj.model === 'hsv' ? 'hsb' : 'hsl'}(${strFixed(arr[0])}, ${strFixed(arr[1])}, ${strFixed(arr[2])})`
+    return `${obj.model === 'hsv' ? 'hsb' : 'hsl'}(${strFixed(arr[0])}, ${strFixed(arr[1])}%, ${strFixed(arr[2])}%)`
   } else {
-    return `${obj.model === 'hsv' ? 'hsba' : 'hsla'}(${strFixed(arr[0])}, ${strFixed(arr[1])}, ${strFixed(
+    return `${obj.model === 'hsv' ? 'hsba' : 'hsla'}(${strFixed(arr[0])}, ${strFixed(arr[1])}%, ${strFixed(
       arr[2],
-    )}, ${strFixed(obj.valpha, 2)})`
+    )}%, ${strFixed(obj.valpha, 2)})`
   }
 }
 
-export const strFixed = (numStr: string | number, num = 0) => {
+export const strFixed = (numStr: string | number, num = 0): number => {
   return +(+numStr).toFixed(num)
 }
 
-export const valOfCorrespondingType = (currentColorType: string) => {
+export const valOfCorrespondingType = (currentColorType: string): number | undefined => {
   let index
   switch (currentColorType) {
     case 'HEX':
@@ -113,7 +142,7 @@ export const valOfCorrespondingType = (currentColorType: string) => {
   return index
 }
 
-export const highlightPresetColorIndex = (color: string, colorArr: string[]) => {
+export const highlightPresetColorIndex = (color: string, colorArr: string[]): number => {
   const index = colorArr.findIndex((val) => {
     return val === color
   })
