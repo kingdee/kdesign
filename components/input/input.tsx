@@ -129,13 +129,7 @@ const InternalInput = (props: InputProps, ref: unknown): FunctionComponentElemen
     }
     if (count && showNumberMark && !disabled) {
       return (
-        <div
-          className={classNames(`${inputPrefixCls}-input-mark-inner`)}
-          onMouseDown={(e) => {
-            e.stopPropagation()
-            e.preventDefault()
-          }}
-        >
+        <div className={classNames(`${inputPrefixCls}-input-mark-inner`)}>
           {enteredLength}
           {maxLength !== undefined ? `/${maxLength}` : null}
         </div>

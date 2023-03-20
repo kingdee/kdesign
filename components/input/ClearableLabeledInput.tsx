@@ -61,6 +61,11 @@ const ClearableInput: React.FC<ClearableInputProps> = (props) => {
     setIsMouseEnter(false)
   }
 
+  const mouseDownHandle: React.MouseEventHandler<HTMLDivElement> = (e) => {
+    e.stopPropagation()
+    e.preventDefault()
+  }
+
   const renderClearIcon = () => {
     if (!allowClear) {
       return null
@@ -82,7 +87,7 @@ const ClearableInput: React.FC<ClearableInputProps> = (props) => {
   const renderSuffix = () => {
     if (suffix || (!disabled && !!allowClear) || inputCount) {
       return (
-        <span className={`${prefixCls}-suffix`}>
+        <span className={`${prefixCls}-suffix`} onMouseDown={mouseDownHandle}>
           {renderClearIcon()}
           {inputCount && <span style={{ marginRight: suffix ? 9 : 0 }}>{inputCount}</span>}
           {suffix}
@@ -97,7 +102,11 @@ const ClearableInput: React.FC<ClearableInputProps> = (props) => {
       return originElement
     }
     const suffixNode = renderSuffix()
-    const prefixNode = prefix ? <span className={`${prefixCls}-prefix`}>{prefix}</span> : null
+    const prefixNode = prefix ? (
+      <span className={`${prefixCls}-prefix`} onMouseDown={mouseDownHandle}>
+        {prefix}
+      </span>
+    ) : null
     const inputWrapperClasses = classNames(
       {
         [`${prefixCls}-wrapper`]: true,
