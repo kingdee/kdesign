@@ -208,6 +208,12 @@ const Cascader = React.forwardRef<unknown, CascaderProps>((props, ref) => {
         )
   }, [currentOptions, fieldNames.label, isMultiple])
 
+  const values = useMemo(() => {
+    return !isMultiple
+      ? currentOptions.map(({ value }: CascaderOptionType) => value as string)
+      : currentOptions.map((option) => option.map(({ value }: CascaderOptionType) => value as string))
+  }, [currentOptions, isMultiple])
+
   const allowClear = allProps.allowClear && value.length > 0
 
   const locatorProps = {
@@ -300,7 +306,7 @@ const Cascader = React.forwardRef<unknown, CascaderProps>((props, ref) => {
             <>
               {currentOptions.map((option: CascaderOptionType[], index: number) => {
                 return (
-                  <span key={JSON.stringify(labels[index])} className={classNames(`${prefixCls}-selection-tag`)}>
+                  <span key={JSON.stringify(values[index])} className={classNames(`${prefixCls}-selection-tag`)}>
                     {(!maxTagCount || index <= maxTagCount - 1) && (
                       <Tag type="edit" style={TagStyle} closable onClose={(e) => handleRemove(e, option)}>
                         {displayRender(labels[index], option)}
