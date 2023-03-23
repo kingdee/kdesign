@@ -4,6 +4,20 @@ title: 更新日志
 hiddenAnchor: true
 ---
 
+## [1.7.0](https://github.com/kdcloudone/kdesign/compare/v1.6.40...v1.7.0)
+`2023-03-23`
+* cascader
+  * 选择后反选对应的显示内容错误 fix [#289](https://github.com/kdcloudone/kdesign/issues/289)
+  * 选择两个label相同的选项报错 fix [#290](https://github.com/kdcloudone/kdesign/issues/290)
+* input
+  * 修复mouseDown失焦问题 fix [#295](https://github.com/kdcloudone/kdesign/issues/295)
+* select
+  * 新增树选择器
+* tree
+  * 新增树选择器
+* tree-select
+  * 新增树选择器
+
 ## [1.6.40](https://github.com/kdcloudone/kdesign/compare/v1.6.39...v1.6.40)
 `2023-03-16`
 * button
