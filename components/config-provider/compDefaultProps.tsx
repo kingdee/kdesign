@@ -414,6 +414,21 @@ const compDefaultProps = {
     size: 'middle',
     underscore: false,
   },
+  TreeSelect: {
+    size: 'middle',
+    borderType: 'underline',
+    mode: 'single',
+    defaultOpen: false,
+    showArrow: true,
+    placeholder: '请输入需要搜索的内容',
+    optionLabelProp: 'title',
+    treeNodeFilterProp: 'title',
+    showSearch: true,
+    switcherIcon: function () {
+      return <Icon type="arrow-right-solid" />
+    },
+    expandOnClickNode: false,
+  },
 }
 
 export default compDefaultProps

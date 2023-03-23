@@ -1,0 +1,29 @@
+@import './token.less';
+
+.item() {
+  position: relative;
+  display: block;
+  font-weight: normal;
+  font-size: @tree-select-list-font-size;
+  min-height: @tree-select-dropdown-height;
+  padding: 5px 12px;
+  color: @tree-select-font-color;
+  line-height: @tree-select-dropdown-line-height;
+}
+
+.focusColor() {
+  border-color: @tree-select-g-color-border-foucs !important;
+}
+
+.select-input-size(@height, @maxHeight, @lineHeight, @fontSize) {
+  min-height: @height;
+  max-height: calc(@maxHeight * 3 - 10px);
+  font-size: @fontSize;
+}
+
+.over() {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
