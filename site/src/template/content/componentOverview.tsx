@@ -14,7 +14,15 @@ function ComponentOverview(props: any) {
     const cardList = children.map((child) => {
       const { subtitle, filename = '', title } = child
       const path = '/' + filename.split('/').splice(0, 2).join('/')
-      // const imgSrc = require('~../../static/image/overview/component-overview-Image.png')
+      let imgSrc
+      try {
+        imgSrc =
+          // eslint-disable-next-line @typescript-eslint/no-var-requires
+          require(`../../static/image/overview/component-overview-${title}.svg`)?.default
+      } catch (error) {
+        imgSrc = require(`../../static/image/overview/component-overview-Button.svg`)?.default
+      }
+
       if (title === 'VirtualList') return
       return (
         <dl className="overview-card-dl" key={subtitle}>
@@ -22,7 +30,7 @@ function ComponentOverview(props: any) {
             <a href={path} className="overview-card-link">
               <img
                 /* eslint-disable-next-line */
-                src={require(`../../static/image/overview/component-overview-${title}.svg`).default}
+                src={imgSrc}
                 className="overview-card-img"
                 alt=""
               />
