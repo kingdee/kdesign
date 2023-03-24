@@ -18,7 +18,8 @@
   align-items: center;
 
   .@{pagination-prefix-cls}-total {
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
     margin-right: 12px;
   }
 
@@ -64,7 +65,8 @@
 
     .@{pagination-action-prefix-cls}-item {
       .reset-component;
-      display: inline-block;
+      display: inline-flex;
+      align-items: center;
 
       &.bordered {
         margin-right: calc(2 * @pagination-button-spacing);
@@ -376,7 +378,8 @@
   &.nicety {
     .@{pagination-pages-prefix-cls} {
       .reset-component;
-      display: inline-block;
+      display: inline-flex;
+      align-items: center;
 
       &-item {
         .reset-component;

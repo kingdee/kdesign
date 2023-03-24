@@ -11,5 +11,7 @@ exports[`ConfigProvider customGetLangMsg 1`] = `
 exports[`ConfigProvider renders correctly 1`] = `
 <div
   class="kd-pagination"
-/>
+>
+  第一页
+</div>
 `;
