@@ -43,7 +43,7 @@ const InternalRadio: React.ForwardRefRenderFunction<HTMLElement, IRadioProps> = 
   const [isChecked, setIsChecked] = React.useState(initValue)
 
   React.useEffect(() => {
-    let checkedValue = context ? value === context.value : isBoolean(checked) ? checked : defaultChecked
+    const checkedValue = context ? value === context.value : isBoolean(checked) ? checked : defaultChecked
     setIsChecked(checkedValue)
   }, [checked, defaultChecked, context?.value])
 
