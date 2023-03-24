@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="176px" height="92px" viewBox="0 0 176 92" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>编组 58备份</title>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="160" height="66"></rect>
+        <filter x="-7.8%" y="-17.4%" width="115.6%" height="137.9%" filterUnits="objectBoundingBox" id="filter-2">
+            <feOffset dx="0" dy="1" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="4" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.08 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+        <rect id="path-3" x="136" y="24" width="18" height="18" rx="4"></rect>
+    </defs>
+    <g id="页面-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="PC组件概览备份-3" transform="translate(-657.000000, -1941.000000)">
+            <g id="编组备份" transform="translate(665.000000, 1941.000000)">
+                <rect id="矩形备份-47" fill="#D4D9E3" x="0" y="0" width="32" height="12" rx="2"></rect>
+                <rect id="矩形备份-88" stroke-opacity="0.05" stroke="#000000" fill="#276FF5" x="148.5" y="0.5" width="11" height="11" rx="2"></rect>
+                <g id="编组-26" transform="translate(0.000000, 2.000000)">
+                    <g id="0.-全局样式/1.图标/1.系统图标/线性图标/时间" transform="translate(154.000000, 4.000000) scale(1, -1) translate(-154.000000, -4.000000) translate(150.875000, 2.250000)" fill="#FFFFFF" fill-rule="nonzero">
+                        <path d="M5.60983496,0.109834957 L3.125,2.59466991 L0.640165043,0.109834957 C0.493718434,-0.0366116524 0.256281566,-0.0366116524 0.109834957,0.109834957 C-0.0366116524,0.256281566 -0.0366116524,0.493718434 0.109834957,0.640165043 L2.85983496,3.39016504 C3.00628157,3.53661165 3.24371843,3.53661165 3.39016504,3.39016504 L6.14016504,0.640165043 C6.28661165,0.493718434 6.28661165,0.256281566 6.14016504,0.109834957 C5.99371843,-0.0366116524 5.75628157,-0.0366116524 5.60983496,0.109834957 Z" id="颜色"></path>
+                    </g>
+                    <rect id="矩形备份-13" fill="#276FF5" x="0" y="12" width="160" height="1"></rect>
+                </g>
+                <g id="编组-4" transform="translate(0.000000, 17.000000)">
+                    <g id="矩形">
+                        <use fill="black" fill-opacity="1" filter="url(#filter-2)" xlink:href="#path-1"></use>
+                        <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-1"></use>
+                    </g>
+                    <rect id="矩形备份-145" stroke-opacity="0.05" stroke="#000000" fill="#A1F5E8" x="8.5" y="5.5" width="13" height="13" rx="2"></rect>
+                    <rect id="矩形备份-146" stroke-opacity="0.05" stroke="#000000" fill="#B3D5FF" x="138.5" y="5.5" width="13" height="13" rx="2"></rect>
+                    <rect id="矩形备份-165" stroke-opacity="0.05" stroke="#000000" fill="#D4A8FF" x="112.5" y="5.5" width="13" height="13" rx="2"></rect>
+                    <rect id="矩形备份-47" stroke-opacity="0.05" stroke="#000000" fill="#FFADB6" x="86.5" y="5.5" width="13" height="13" rx="2"></rect>
+                    <rect id="矩形备份-68" stroke-opacity="0.05" stroke="#000000" fill="#DDFF8F" x="34.5" y="5.5" width="13" height="13" rx="2"></rect>
+                    <rect id="矩形备份-94" stroke-opacity="0.05" stroke="#000000" fill="#FFE0A6" x="60.5" y="5.5" width="13" height="13" rx="2"></rect>
+                    <rect id="矩形备份-176" stroke-opacity="0.05" stroke="#000000" fill="#404040" x="112.5" y="47.5" width="13" height="13" rx="2"></rect>
+                    <rect id="矩形备份-168" stroke-opacity="0.05" stroke="#000000" fill="#FAFAFA" x="8.5" y="47.5" width="13" height="13" rx="2"></rect>
+                    <rect id="矩形备份-170" stroke-opacity="0.05" stroke="#000000" fill="#F2F2F2" x="34.5" y="47.5" width="13" height="13" rx="2"></rect>
+                    <rect id="矩形备份-172" stroke-opacity="0.05" stroke="#000000" fill="#D9D9D9" x="60.5" y="47.5" width="13" height="13" rx="2"></rect>
+                    <rect id="矩形备份-174" stroke-opacity="0.05" stroke="#000000" fill="#999999" x="86.5" y="47.5" width="13" height="13" rx="2"></rect>
+                    <rect id="矩形备份-178" stroke-opacity="0.05" stroke="#000000" fill="#000000" x="138.5" y="47.5" width="13" height="13" rx="2"></rect>
+                    <rect id="矩形备份-141" stroke-opacity="0.05" stroke="#000000" fill="#16B8B1" x="8.5" y="26.5" width="13" height="13" rx="2"></rect>
+                    <g id="矩形备份-458">
+                        <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-3"></use>
+                        <rect stroke="#E5E5E5" stroke-width="1" x="135.5" y="23.5" width="19" height="19" rx="4"></rect>
+                        <rect stroke="#999999" stroke-width="1" stroke-linejoin="square" x="136.5" y="24.5" width="17" height="17" rx="4"></rect>
+                    </g>
+                    <rect id="矩形备份-142" stroke-opacity="0.05" stroke="#000000" fill="#276FF5" x="138.5" y="26.5" width="13" height="13" rx="2"></rect>
+                    <rect id="矩形备份-163" stroke-opacity="0.05" stroke="#000000" fill="#701DF0" x="112.5" y="26.5" width="13" height="13" rx="2"></rect>
+                    <rect id="矩形备份-45" stroke-opacity="0.05" stroke="#000000" fill="#FB2323" x="86.5" y="26.5" width="13" height="13" rx="2"></rect>
+                    <rect id="矩形备份-64" stroke-opacity="0.05" stroke="#000000" fill="#77C404" x="34.5" y="26.5" width="13" height="13" rx="2"></rect>
+                    <rect id="矩形备份-90" stroke-opacity="0.05" stroke="#000000" fill="#FF991C" x="60.5" y="26.5" width="13" height="13" rx="2"></rect>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
