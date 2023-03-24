@@ -15,7 +15,9 @@ function Demo() {
     <div style={{ width: '550px' }}>
       <Pagination pageType="nicety" defaultCurrent={1} total={50} />
       <br />
+      <br />
       <Pagination pageType="nicety" defaultCurrent={2} total={200} showQuickJumper={false} />
+      <br />
       <br />
       <Pagination pageType="nicety" defaultCurrent={3} total={50} showSizeChanger />
     </div>

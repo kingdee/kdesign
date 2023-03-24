@@ -15,7 +15,9 @@ function Demo() {
     <div style={{ width: '300px' }}>
       <Pagination pageType="bill" total={50} />
       <br />
+      <br />
       <Pagination pageType="bill" total={50} bordered />
+      <br />
       <br />
       <Pagination pageType="bill" total={50} showSizeChanger showQuickJumper />
     </div>
