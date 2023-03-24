@@ -35,13 +35,14 @@ class LocaleCache {
    * @returns 设置后的语言对应的语言包
    */
   setLocalesData(locale: string, localeData?: LocaleDataType) {
-    const newLocaleData = localeData || this.localesData[locale]
-    if (!newLocaleData) {
+    if (!(localeData || this.localesData[locale])) {
       console.error(`缺少语言${locale}对应的语言包，请检查后重新设置`)
       return
     }
-    this.locale = locale
-    this.localesData[locale] = newLocaleData
+    const newLocaleData = { ...zhCNData, ...localeData }
+    const newLocale = locale || newLocaleData?.locale
+    this.locale = newLocale
+    this.localesData[newLocale] = newLocaleData
     return localeData
   }
 
