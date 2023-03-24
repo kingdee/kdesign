@@ -47,7 +47,6 @@ subtitle: 分页
 | jumpNext | 向后多页 |
 | down     | 下拉   |
 
-
 ## Design Token
 
 | 分类 | 组件token | 全局token | 默认值 |

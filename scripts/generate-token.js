@@ -12,6 +12,7 @@ const transformComponentArr = [
   'cascader',
   'checkbox',
   'collapse',
+  'color-picker',
   'date-picker',
   'drawer',
   'dropdown',

@@ -125,3 +125,5 @@ export { default as BaseData } from './base-data'
 export { default as Link } from './link'
 
 export { default as TreeSelect } from './tree-select'
+
+export { default as ColorPicker } from './color-picker'
