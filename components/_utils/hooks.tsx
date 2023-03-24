@@ -1,4 +1,4 @@
-import { useEffect, RefObject, useState, useRef } from 'react'
+import { useEffect, RefObject, useState, useRef, useReducer } from 'react'
 import ResizeObserver from 'resize-observer-polyfill'
 import devWarning from './devwarning'
 
@@ -214,4 +214,49 @@ export function useResizeObserver(
       resizeObserver && resizeObserver.disconnect()
     }
   }, [element, handler])
+}
+
+export function useIsFirstRender() {
+  const isFirst = useRef<boolean>(true)
+  useEffect(() => {
+    isFirst.current = false
+  }, [])
+  return isFirst.current
+}
+
+export function useForceUpdate() {
+  const [, dispatch] = useReducer((v) => v + 1, 0)
+  return dispatch
+}
+
+export function useStateWithPromise<T>(defaultVal: T): [T, (updater: any) => Promise<T>] {
+  const [state, setState] = useState({
+    value: defaultVal,
+    resolve: (e: any) => {
+      // eslint-disable-next-line no-unused-expressions, @typescript-eslint/no-unused-expressions
+      e
+    },
+  })
+
+  useEffect(() => {
+    state.resolve(state.value)
+  }, [state])
+
+  return [
+    state.value,
+    (updater) => {
+      return new Promise((resolve) => {
+        setState((prevState) => {
+          let nextVal = updater
+          if (typeof updater === 'function') {
+            nextVal = updater(prevState.value)
+          }
+          return {
+            value: nextVal,
+            resolve,
+          }
+        })
+      })
+    },
+  ]
 }

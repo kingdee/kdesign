@@ -1,6 +1,6 @@
 ---
 title: 设置默认值
-order: 8
+order: 7
 ---
 
 可配置属性 defaultValue 设置颜色面板的默认值

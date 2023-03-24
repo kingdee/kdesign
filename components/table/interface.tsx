@@ -8,6 +8,7 @@ import {
   ColumnResizeOptions,
   ContextMenuFeatureOptions,
   RangeSelectionFeatureOptions,
+  colGroupExtendOption,
 } from '@kdcloudjs/table/es/table/pipeline/features'
 
 type TablePropsOfComponents = Pick<BaseTableProps, 'components'> & {
@@ -26,6 +27,9 @@ export type TableApi = {
   getDataSource: () => any[]
   getFooterDataSource: () => any[]
   clearRangeSelection: () => void
+  getHeightCache: () => number[]
+  ensureRowIndexVisible: (rowIndex: number, position?: string | undefined) => void
+  ensureColumnVisible: (code: string) => void
 }
 
 export type TableInstance = {
@@ -44,6 +48,7 @@ export interface TableProps extends TablePropsOfExtend, TablePropsOfComponents {
   columnResize?: boolean | ColumnResizeOptions
   contextMenu?: IContextMenu
   rangeSelection?: TableRangeSelection
+  columnGroupExtend?: colGroupExtendOption
 }
 
 export type RowSelectionType = 'checkbox' | 'radio'

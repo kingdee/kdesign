@@ -43,8 +43,6 @@ export interface IColorPickerProps extends PopperProps {
   showColorPickerBox: boolean
   // 颜色选择面板显隐配置
   defaultOpen: boolean
-  // 颜色面板显隐受控
-  visible: boolean
   // 当颜色选择器的值发生变化时触发的回调函数
   onChange: (inputValue: string, formatColorArr: Array<IColorTypesObj>) => void
 }

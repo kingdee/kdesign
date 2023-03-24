@@ -1,9 +1,9 @@
 ---
-title: 颜色值受控
+title: 颜色值联动受控
 order: 9
 ---
 
-可配置属性 value 设置颜色面板的值
+受控组件
 
 ```jsx
 import React from 'react'
@@ -18,7 +18,18 @@ function Demo() {
     setColor(inputValue)
   }
 
-  return <ColorPicker onChange={onChange} value={color} showSwitch functionalColor="#0000ff" showColorPickerBox />
+  const handleClick = () => {
+    setColor('green')
+  }
+
+  return (
+    <>
+      <Button style={{ marginBottom: '20px' }} onClick={handleClick}>
+        改变颜色
+      </Button>
+      <ColorPicker onChange={onChange} value={color} showSwitch functionalColor="#0000ff" showColorPickerBox />
+    </>
+  )
 }
 
 ReactDOM.render(<Demo />, mountNode)

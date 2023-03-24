@@ -33,6 +33,7 @@ subtitle: 树控件
 | filterValue | 节点过滤关键字 | string | - | - | 1.5.3 |
 | height | 设置虚拟滚动容器高度 | number | - | - | 1.0.0 |
 | icon | 自定义树节点图标 | ReactNode \| (props) => ReactNode | - | - | 1.0.0 |
+| loadData | 异步加载数据 | function(node) | - | 1.5.5 |
 | scrollToKey | 滚动到某个树节点 | string | - | - | 1.0.0 |
 | selectedKeys | （受控）设置选中的树节点 | string[] | - | - | 1.0.0 |
 | showIcon | 是否展示节点图标 | boolean | `false` | `true` `false` | 1.0.0 |

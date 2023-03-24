@@ -4,6 +4,152 @@ title: 更新日志
 hiddenAnchor: true
 ---
 
+## [1.7.0](https://github.com/kdcloudone/kdesign/compare/v1.6.40...v1.7.0)
+`2023-03-23`
+* cascader
+  * 选择后反选对应的显示内容错误 fix [#289](https://github.com/kdcloudone/kdesign/issues/289)
+  * 选择两个label相同的选项报错 fix [#290](https://github.com/kdcloudone/kdesign/issues/290)
+* input
+  * 修复mouseDown失焦问题 fix [#295](https://github.com/kdcloudone/kdesign/issues/295)
+* select
+  * 新增树选择器
+* tree
+  * 新增树选择器
+* tree-select
+  * 新增树选择器
+
+## [1.6.40](https://github.com/kdcloudone/kdesign/compare/v1.6.39...v1.6.40)
+`2023-03-16`
+* button
+  * 修复文字按钮禁用状态下触发click事件 fix [#281](https://github.com/kdcloudone/kdesign/issues/281)
+* input
+  * 修复suffix问题
+* select
+  * 修复传入options时optionLabelProp无效问题
+  * 修复autoFocus不生效问题
+  * 修复clearIcon不生效问题
+* icon
+  * 修复clearIcon不生效问题
+* filter
+  * 修复当父节点key值为0时filterTreeNode失效 fix [#280](https://github.com/kdcloudone/kdesign/issues/280)
+* tree
+  * 修复当父节点key值为0时filterTreeNode失效 fix [#280](https://github.com/kdcloudone/kdesign/issues/280)
+  * 修复节点过滤时部分节点不展开问题 fix [#278](https://github.com/kdcloudone/kdesign/issues/278)
+* upload
+  * 修复children渲染问题
+
+## [1.6.39](https://github.com/kdcloudone/kdesign/compare/v1.6.38...v1.6.39)
+`2023-03-09`
+* date-picker
+  * 修复面板箭头问题
+  * 修复内存泄露问题
+  * 修复时间范围快速选择年月问题
+
+## [1.6.38](https://github.com/kdcloudone/kdesign/compare/v1.6.37...v1.6.38)
+`2023-03-02`
+* image
+  * 支持设置裁剪区域百分比 fix [#270](https://github.com/kdcloudone/kdesign/issues/270)
+* image-cropper
+  * 支持设置裁剪区域百分比 fix [#270](https://github.com/kdcloudone/kdesign/issues/270)
+* radio
+  * onChange 控制被选中项的bug [#273](https://github.com/kdcloudone/kdesign/issues/273)
+* 修复prettier版本更新导致的格式校验报错
+
+## [1.6.37](https://github.com/kdcloudone/kdesign/compare/v1.6.36...v1.6.37)
+`2023-02-28`
+* table
+  * 修复分组列收起后,拖拽列宽鼠标位置不正确 bug
+
+## [1.6.36](https://github.com/kdcloudone/kdesign/compare/v1.6.35...v1.6.36)
+`2023-02-23`
+* date-picker
+  * 修复切换年月异常 fix [#256](https://github.com/kdcloudone/kdesign/issues/256)
+* dropdown
+  * menu 包含framgement 的时候不能传递class
+* menu
+  * menu 包含framgement 的时候不能传递class
+* image
+  * 图片裁剪重新上传按钮和其他按钮没有对启 fix [#238](https://github.com/kdcloudone/kdesign/issues/238)
+* image-cropper
+  * 图片裁剪重新上传按钮和其他按钮没有对启 fix [#238](https://github.com/kdcloudone/kdesign/issues/238)
+* select
+  * 修复可搜索选择器无法点击自身关闭下拉框问题
+
+## [1.6.35](https://github.com/kdcloudone/kdesign/compare/v1.6.34...v1.6.35)
+`2023-02-22`
+* date-picker
+  * 修复disabled时清除图标异常 fix [#256](https://github.com/kdcloudone/kdesign/issues/256)
+* select
+  * 当选项字符数较多时，多选框大小会被压缩 fix [#258](https://github.com/kdcloudone/kdesign/issues/258)
+  * 修复视觉bug fix [#247](https://github.com/kdcloudone/kdesign/issues/247)
+* tree
+  * 自定义展开收起图标鼠标可点击范围太小 fix [#236](https://github.com/kdcloudone/kdesign/issues/236)
+* 修复ts报错
+
+## [1.6.34](https://github.com/kdcloudone/kdesign/compare/v1.6.33...v1.6.34)
+`2023-02-20`
+* rate
+  * 修复自定义样式不生效的问题
+* 更新单测配置文件
+
+## [1.6.33](https://github.com/kdcloudone/kdesign/compare/v1.6.32...v1.6.33)
+`2023-02-16`
+* date-picker
+  * 修复onChange多次触发问题
+* table
+  * 添加表格分组列展开收缩特性
+
+## [1.6.32](https://github.com/kdcloudone/kdesign/compare/v1.6.31...v1.6.32)
+`2023-02-13`
+* stepper
+  * 大数值下显示与操作bug fixs [#229](https://github.com/kdcloudone/kdesign/issues/229)
+* tooltip
+  * 消失时间太久的问题
+* select
+  * 新增虚拟滚动 fix [#174](https://github.com/kdcloudone/kdesign/issues/174)
+
+## [1.6.31](https://github.com/kdcloudone/kdesign/compare/v1.6.30...v1.6.31)
+`2023-02-09`
+* form
+  * 修复label布局问题 fix [#224](https://github.com/kdcloudone/kdesign/issues/224)
+* grid
+  * 栅格容器在搜狗浏览器下存在兼容性问题，没有上下间隔 fix [#227](https://github.com/kdcloudone/kdesign/issues/227)
+* select
+  * 下拉选择中点击全选触发的 onChange 回调没有返回值 fix [#234](https://github.com/kdcloudone/kdesign/issues/234)
+  * 修复占位提示和下拉箭头重合问题 fix [#221](https://github.com/kdcloudone/kdesign/issues/221)
+* tree
+  * 修复树控件treeData更新展开节点不更新问题 fix [#235](https://github.com/kdcloudone/kdesign/issues/235)
+
+## [1.6.30](https://github.com/kdcloudone/kdesign/compare/v1.6.29...v1.6.30)
+`2023-02-07`
+* cascader
+  * 修复级联选择未固定下拉面板高度问题
+* date-picker
+  * 修复失焦触发onChange及样式问题
+* input
+  * 修复设置为负数最大长度显示问题 fixed [#220](https://github.com/kdcloudone/kdesign/issues/220)
+  * digitLength和decimalLength同时配置，导致录入不了文本问题 fix [#222](https://github.com/kdcloudone/kdesign/issues/222)
+  * 修复count下聚集问题
+* input-number
+  * 修复设置为负数最大长度显示问题 fixed [#220](https://github.com/kdcloudone/kdesign/issues/220)
+  * digitLength和decimalLength同时配置，导致录入不了文本问题 fix [#222](https://github.com/kdcloudone/kdesign/issues/222)
+* tooltip
+  * trigger添加mouseleave事件控制显隐
+* select
+  * 修复传入selectedKeys无选中效果问题 fix [#215](https://github.com/kdcloudone/kdesign/issues/215)
+* tree
+  * 修复传入selectedKeys无选中效果问题 fix [#215](https://github.com/kdcloudone/kdesign/issues/215)
+  * 修复tree组件展开收起问题 fix [#216](https://github.com/kdcloudone/kdesign/issues/216)
+
+## [1.6.29](https://github.com/kdcloudone/kdesign/compare/v1.6.28...v1.6.29)
+`2023-01-17`
+* date-picker
+  * 修复面板重置问题
+* form
+  * 修复form受控值onChange触发问题
+* upload
+  * 修复图片禁用问题
+
 ## [1.6.28](https://github.com/kdcloudone/kdesign/compare/v1.6.27...v1.6.28)
 `2023-01-12`
 * date-picker

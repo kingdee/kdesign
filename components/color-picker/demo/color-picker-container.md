@@ -1,6 +1,6 @@
 ---
 title: 配置拾色容器
-order: 7
+order: 6
 ---
 
 可配置属性 showColorPickerBox 控制拾色容器的显隐

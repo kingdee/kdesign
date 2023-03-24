@@ -1,4 +1,16 @@
-import React, { FunctionComponentElement, useContext, useEffect, useState } from 'react'
+import React, {
+  FunctionComponentElement,
+  useContext,
+  useEffect,
+  useState,
+  useRef,
+  ReactNode,
+  useMemo,
+  forwardRef,
+  Ref,
+  FocusEventHandler,
+  CSSProperties,
+} from 'react'
 import isSameWeek from 'date-fns/isSameWeek'
 
 import {
@@ -13,7 +25,7 @@ import {
   TimeUnit,
 } from './interface'
 import ConfigContext from '../config-provider/ConfigContext'
-import { useMergedState, useOnClickOutside } from '../_utils/hooks'
+import { useMergedState } from '../_utils/hooks'
 import { getCompProps } from '../_utils'
 import Context, { ISelectType } from './context'
 import Panel from './date-panel'
@@ -58,7 +70,7 @@ export interface RangeInfo {
   range: RangeType
 }
 
-export type RangeDateRender = (currentDate: DateType, today: DateType, info: RangeInfo) => React.ReactNode
+export type RangeDateRender = (currentDate: DateType, today: DateType, info: RangeInfo) => ReactNode
 
 export interface RangePickerSharedProps {
   id?: string
@@ -69,23 +81,24 @@ export interface RangePickerSharedProps {
   disabled?: boolean | [boolean, boolean]
   disabledTimePanel?: (date: EventValue, type: RangeType) => DisabledTimes
   ranges?: Record<string, DateType[] | (() => DateType[])>
-  separator?: React.ReactNode
+  separator?: ReactNode
   allowEmpty?: [boolean, boolean]
-  suffixIcon?: React.ReactNode
-  clearIcon?: React.ReactNode
+  suffixIcon?: ReactNode
+  clearIcon?: ReactNode
   mode?: [PanelMode, PanelMode]
   onChange?: (values: RangeValue, formatString: [string | null, string | null]) => void
   onCalendarChange?: (values: RangeValue, formatString: [string | null, string | null], info: RangeInfo) => void
   onPanelChange?: (values: RangeValue, modes: [PanelMode, PanelMode]) => void
-  onFocus?: React.FocusEventHandler<HTMLInputElement>
-  onBlur?: React.FocusEventHandler<HTMLInputElement>
+  onFocus?: FocusEventHandler<HTMLInputElement>
+  onBlur?: FocusEventHandler<HTMLInputElement>
   onOk?: (dates: RangeValue) => void
   activePickerIndex?: 0 | 1
   dateRender?: RangeDateRender
-  panelRender?: (originPanel: React.ReactNode) => React.ReactNode
+  panelRender?: (originPanel: ReactNode) => ReactNode
   getPopupContainer?: (node: HTMLElement) => HTMLElement
-  popupRef?: React.Ref<any>
-  popupStyle?: React.CSSProperties
+  popupRef?: Ref<any>
+  popupStyle?: CSSProperties
+  dropdownClassName?: string
 }
 
 type OmitPickerProps<Props> = Omit<
@@ -207,6 +220,7 @@ const InternalRangePicker = (
     className,
     style,
     popupStyle,
+    dropdownClassName,
     popupRef,
     borderType,
     separator,
@@ -249,18 +263,20 @@ const InternalRangePicker = (
     locale || {},
   )
   // ref
-  const panelDivRef = React.useRef<HTMLDivElement>(null)
-  const inputDivRef = (ref as any) || React.createRef<HTMLElement>()
-  const startInputDivRef = React.useRef<HTMLDivElement>(null)
-  const endInputDivRef = React.useRef<HTMLDivElement>(null)
-  const separatorRef = React.useRef<HTMLDivElement>(null)
-  const startInputRef = React.useRef<HTMLInputElement>(null)
-  const endInputRef = React.useRef<HTMLInputElement>(null)
-  const popperRef = popupRef || React.createRef<HTMLInputElement>()
+  const panelDivRef = useRef<HTMLDivElement>(null)
+  const defaultRef = useRef<HTMLInputElement>(null)
+  const inputDivRef = (ref as any) || defaultRef
+  const startInputDivRef = useRef<HTMLDivElement>(null)
+  const endInputDivRef = useRef<HTMLDivElement>(null)
+  const separatorRef = useRef<HTMLDivElement>(null)
+  const startInputRef = useRef<HTMLInputElement>(null)
+  const endInputRef = useRef<HTMLInputElement>(null)
+  const defaultPopupRef = useRef<HTMLInputElement>(null)
+  const popperRef = popupRef || defaultPopupRef
 
-  const openRecordsRef = React.useRef<Record<number, boolean>>({})
+  const openRecordsRef = useRef<Record<number, boolean>>({})
 
-  const mergedDisabled = React.useMemo<[boolean, boolean]>(() => {
+  const mergedDisabled = useMemo<[boolean, boolean]>(() => {
     if (Array.isArray(disabled)) {
       return disabled
     }
@@ -390,7 +406,7 @@ const InternalRangePicker = (
     onTextChange: (newText) => onTextChange(newText, 1),
   })
 
-  const [hoverRangedValue, setHoverRangedValue] = React.useState<RangeValue>([null, null])
+  const [hoverRangedValue, setHoverRangedValue] = useState<RangeValue>([null, null])
 
   const [startHoverValue, onStartEnter, onStartLeave] = useHoverValue(startText, {
     format: _format,
@@ -424,15 +440,6 @@ const InternalRangePicker = (
     setInnerModes([picker, picker])
   }, [picker])
 
-  // const triggerModesChange = (modes: [PanelMode, PanelMode], values: RangeValue) => {
-  //   setInnerModes(modes)
-
-  //   if (onPanelChange) {
-  //     onPanelChange(values, modes)
-  //   }
-  // }
-
-  // ========================= Disable Date ==========================
   const [disabledStartDate, disabledEndDate] = useRangeDisabled(
     {
       picker,
@@ -444,12 +451,7 @@ const InternalRangePicker = (
     openRecordsRef.current[0],
   )
 
-  // const onResetText = () => {
-  //   resetEndText()
-  //   resetStartText()
-  // }
-
-  const triggerRef = React.useRef<any>()
+  const triggerRef = useRef<any>()
   const triggerOpen = (newOpen: boolean, index: 0 | 1) => {
     if (newOpen) {
       clearTimeout(triggerRef.current)
@@ -551,25 +553,30 @@ const InternalRangePicker = (
     }
   }
 
-  useOnClickOutside([popperRef, inputDivRef], () => {
-    setViewDate(null, 0)
-    setViewDate(null, 1)
-    setHoverRangedValue([null, null])
-  })
+  // useOnClickOutside([popperRef, inputDivRef], () => {
+  //   setViewDate(null, 0)
+  //   setViewDate(null, 1)
+  //   setHoverRangedValue([null, null])
+  // })
 
   const onSelect = (date: DateType, type: ISelectType) => {
     const values = updateValues(selectedValue, date, mergedActivePickerIndex)
-
-    if (type === 'submit' || (type !== 'key' && !needConfirmButton)) {
-      triggerChange(values, mergedActivePickerIndex)
-
-      if (mergedActivePickerIndex === 0) {
-        onStartLeave()
-      } else {
-        onEndLeave()
+    if (type === 'inner') {
+      if (values && values[mergedActivePickerIndex]) {
+        setViewDate(values[mergedActivePickerIndex], mergedActivePickerIndex)
       }
     } else {
-      setSelectedValue(values)
+      if (type === 'submit' || (type !== 'key' && !needConfirmButton)) {
+        triggerChange(values, mergedActivePickerIndex)
+
+        if (mergedActivePickerIndex === 0) {
+          onStartLeave()
+        } else {
+          onEndLeave()
+        }
+      } else {
+        setSelectedValue(values)
+      }
     }
   }
 
@@ -604,6 +611,11 @@ const InternalRangePicker = (
       if (!endValueTexts.length || endValueTexts[0] === '') {
         triggerEndTextChange('')
       }
+      setViewDate(null, 0)
+      setViewDate(null, 1)
+      setHoverRangedValue([null, null])
+    } else {
+      setInnerPicker(undefined)
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [mergedOpen, startValueTexts, endValueTexts])
@@ -620,7 +632,7 @@ const InternalRangePicker = (
       mergedActivePickerIndex,
       disabledDate: mergedActivePickerIndex === 0 ? disabledStartDate : disabledEndDate,
     }
-    let panelNode: React.ReactNode = <Panel {...panelProps} />
+    let panelNode: ReactNode = <Panel {...panelProps} />
     if (panelRender) {
       panelNode = panelRender(panelNode)
     }
@@ -656,7 +668,7 @@ const InternalRangePicker = (
 
   // 渲染日期选择表盘
   const renderPanels = () => {
-    let panels: React.ReactNode
+    let panels: ReactNode
     const viewDate = getViewDate(mergedActivePickerIndex)
     if (picker !== 'time' && !showTime) {
       const nextViewDate = getClosingViewDate(viewDate, picker, 1, yearItemNumber)
@@ -705,7 +717,7 @@ const InternalRangePicker = (
       panels = (
         <div className={classNames(`${datePickerPrefixCls}-container-date`)}>
           {leftPanel}
-          {rightPanel}
+          {innerPicker === undefined ? rightPanel : null}
         </div>
       )
     } else {
@@ -733,10 +745,7 @@ const InternalRangePicker = (
             setInnerPicker,
           }}
         >
-          <Panel
-            {...datePickerProps}
-            disabledDate={mergedActivePickerIndex === 0 ? disabledStartDate : disabledEndDate}
-          />
+          {renderPanel()}
         </Context.Provider>
       )
     }
@@ -881,6 +890,7 @@ const InternalRangePicker = (
       prefixCls: `${datePickerPrefixCls}-panel`,
       arrow: false,
       popperStyle: popupStyle,
+      popperClassName: dropdownClassName,
       visible: mergedOpen,
       placement: 'bottomLeft',
       getPopupContainer,
@@ -888,6 +898,6 @@ const InternalRangePicker = (
   )
 }
 
-const RangePicker = React.forwardRef<unknown, Partial<RangePickerProps>>(InternalRangePicker)
+const RangePicker = forwardRef<unknown, Partial<RangePickerProps>>(InternalRangePicker)
 RangePicker.displayName = 'RangePicker'
 export default RangePicker

@@ -9,6 +9,7 @@ import { Icon, Checkbox, Tag } from '../index'
 import Option from './option'
 import { ISelectProps, SelectValue } from './interface'
 import usePopper from '../_utils/usePopper'
+import VirtualList from '../virtual-list'
 
 const INPUT_MIN_WIDTH = 4 // 输入框最小宽度
 
@@ -48,6 +49,7 @@ const InternalSelect: React.ForwardRefRenderFunction<ISelectProps<SelectValue>> 
     optionLabelProp,
     popperStyle = {},
     tagRender,
+    virtualListProps,
   } = selectProps
   const isMultiple = mode === 'multiple' // 是否多选
   const [initValue, setInitValue] = useMergedState(undefined, {
@@ -68,6 +70,7 @@ const InternalSelect: React.ForwardRefRenderFunction<ISelectProps<SelectValue>> 
   // const [searchInput, setSearchInput] = useState<string>('') // 搜索框值
   const [searchValue, setSearchValue] = useState<any>('') // 搜索框定时器
   const [inputWidth, setInputWidth] = useState(INPUT_MIN_WIDTH) // 输入框宽度
+  const [focusd, setFocusd] = useState(autoFocus)
   const selectPrefixCls = getPrefixCls!(prefixCls, 'select', customPrefixcls)
   // 选择器样式
   const selectCls = classNames(selectPrefixCls, className, {
@@ -172,6 +175,7 @@ const InternalSelect: React.ForwardRefRenderFunction<ISelectProps<SelectValue>> 
   const handleFocus = useCallback(
     (e: React.ChangeEvent<HTMLSpanElement>) => {
       e.stopPropagation()
+      setFocusd(true)
       onFocus && onFocus(e)
     },
     [onFocus],
@@ -180,6 +184,7 @@ const InternalSelect: React.ForwardRefRenderFunction<ISelectProps<SelectValue>> 
   const handleBlur = useCallback(
     (e: React.ChangeEvent<HTMLSpanElement>) => {
       e.stopPropagation()
+      setFocusd(false)
       onBlur && onBlur(e)
     },
     [onBlur],
@@ -237,7 +242,11 @@ const InternalSelect: React.ForwardRefRenderFunction<ISelectProps<SelectValue>> 
 
   const getOptionLabel = useCallback(
     (obj) => {
-      const text = 'options' in selectProps ? 'label' : optionLabelProp
+      const text =
+        Object.prototype.hasOwnProperty.call(selectProps, 'options') &&
+        !Object.prototype.hasOwnProperty.call(props, 'optionLabelProp')
+          ? 'label'
+          : optionLabelProp
       if (obj.props) {
         if (text) {
           return obj?.props[text]
@@ -363,6 +372,7 @@ const InternalSelect: React.ForwardRefRenderFunction<ISelectProps<SelectValue>> 
   const handleSearchChange = useCallback(
     (event: React.ChangeEvent<HTMLInputElement>) => {
       const val = event.currentTarget.value
+      setOptionShow(true)
       setSearchValue(val)
       onSearch?.(val)
     },
@@ -425,7 +435,7 @@ const InternalSelect: React.ForwardRefRenderFunction<ISelectProps<SelectValue>> 
       <>
         {iconShow && (
           <span onClick={handleReset} onMouseDown={(e) => e.preventDefault()} className={clearIconCls}>
-            {<Icon type="close-solid" /> || clearIcon}
+            {clearIcon || <Icon type="close-solid" />}
           </span>
         )}
         {showArrow && <span className={arrowIconCls}>{suffixIcon || <Icon type="arrow-down" />}</span>}
@@ -485,18 +495,43 @@ const InternalSelect: React.ForwardRefRenderFunction<ISelectProps<SelectValue>> 
     return isBoolean(showSearch) ? showSearch : isMultiple
   }, [isMultiple, showSearch])
 
+  useEffect(() => {
+    if (isShowSearch && autoFocus && !disabled) {
+      searchRef.current?.focus()
+    }
+  }, [isShowSearch, autoFocus, disabled])
+
   // 渲染下拉列表框
   const renderContent = () => {
     const { dropdownRender, listHeight } = selectProps
     const { selectedVal } = multipleRef.current
-    let childrenToRender = filledOptions
+    let childrenToRender: any = filledOptions
+    let eleOptionList: any = filledOptions
     if (Array.isArray(childrenToRender) && childrenToRender.length > 0) {
       childrenToRender = childrenToRender.map((item: any, index: number) => {
         if (item === null || item === undefined) return
         const temp = renderOption(item, index)
         return temp
       })
+
+      eleOptionList = (
+        <VirtualList
+          role="listbox"
+          data={childrenToRender}
+          itemKey={(child) => child.props?.value}
+          onMouseDown={(e) => e?.preventDefault()}
+          isStaticItemHeight={true}
+          height={listHeight || 300}
+          measureLongestItem={false}
+          {...virtualListProps}
+        >
+          {(child) => {
+            return child
+          }}
+        </VirtualList>
+      )
     }
+
     const heightStyle = {
       maxHeight: listHeight || '300px',
     }
@@ -512,7 +547,7 @@ const InternalSelect: React.ForwardRefRenderFunction<ISelectProps<SelectValue>> 
       <>
         {
           <div className={dropDownCls} style={dropDownStyle} ref={dropDownRef}>
-            {!dropdownRender && childrenToRender.length > 0 && dropRender(childrenToRender, heightStyle)}
+            {!dropdownRender && childrenToRender.length > 0 && dropRender(eleOptionList, heightStyle)}
             {/* 下拉列表为空 */}
             {renderNotContent()}
             {/* 拓展菜单 */}
@@ -603,7 +638,7 @@ const InternalSelect: React.ForwardRefRenderFunction<ISelectProps<SelectValue>> 
     const multipleCls = classNames(commCls, {
       [`${selectPrefixCls}-multiple-disabled`]: disabled,
       [`${selectPrefixCls}-${mode}`]: mode,
-      [`${selectPrefixCls}-focused`]: autoFocus || optionShow,
+      [`${selectPrefixCls}-focused`]: focusd || optionShow,
       [`${selectPrefixCls}-placeholder`]: placeholder && !mulOptions.length,
     })
 
@@ -678,7 +713,7 @@ const InternalSelect: React.ForwardRefRenderFunction<ISelectProps<SelectValue>> 
   const singleCls = classNames(commCls, {
     [`${selectPrefixCls}-single`]: true,
     [`${selectPrefixCls}-single-disabled`]: disabled,
-    [`${selectPrefixCls}-single-focused`]: (autoFocus && !disabled) || optionShow,
+    [`${selectPrefixCls}-single-focused`]: (focusd && !disabled) || optionShow,
   })
 
   const renderSelect = () => {
@@ -720,7 +755,7 @@ const InternalSelect: React.ForwardRefRenderFunction<ISelectProps<SelectValue>> 
     defaultVisible: optionShow,
     visible: optionShow,
     onVisibleChange: handleVisibleChange,
-    clickToClose: !isShowSearch,
+    clickToClose: !(isShowSearch && searchValue),
   }
   return usePopper(renderSelect(), renderContent(), popperProps)
 }

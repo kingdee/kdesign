@@ -184,9 +184,18 @@ export const getChecked = (checkedKeys: any[], key: string) => {
 }
 
 const getCheckedNodes = (flatNodes: CascaderOptionType[], checkedKeys: string[]) => {
-  return flatNodes.filter((node: CascaderOptionType) => {
-    return checkedKeys?.includes(node.value as string)
-  })
+  const result = []
+  for (let i = 0; i < checkedKeys.length; i++) {
+    const key = checkedKeys[i]
+    for (let j = 0; j < flatNodes.length; j++) {
+      const obj = flatNodes[j]
+      if (obj.value === key) {
+        result.push(obj)
+        break
+      }
+    }
+  }
+  return result
 }
 
 export const addKeys = (prevKeys: any[] = [], newKeys: any[] = []) => {

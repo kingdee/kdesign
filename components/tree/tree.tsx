@@ -53,10 +53,11 @@ export interface TreeProps {
   virtual?: boolean
   scrollToKey?: string
   selectedKeys?: string[]
+  notFoundContent?: ReactNode
   loadData?: () => void
   onCheck?: (checkedKeys: string[], { checked, node, event, halfCheckedKeys }: any) => void
   onExpand?: (expandedKeys: string[], { expanded, node }: any) => void
-  onSelect?: ({ checked, node, event }: any) => void
+  onSelect?: (keys: string[], { checked, node, event }: any) => void
   onDragStart?: ({ event, node }: any) => void
   onDragOver?: ({ event, node }: any) => void
   onDragLeave?: ({ event, node }: any) => void
@@ -139,6 +140,7 @@ const InternalTree = React.forwardRef((props: TreeProps, ref: any): React.Functi
     filterValue,
     expandOnClickNode,
     loadData,
+    notFoundContent,
   } = TreeProps
 
   const treePrefixCls = getPrefixCls!(prefixCls, 'tree', customPrefixcls) // 树样式前缀
@@ -170,7 +172,7 @@ const InternalTree = React.forwardRef((props: TreeProps, ref: any): React.Functi
   const [loadingKeys, setLoadingKeys] = React.useState<Set<string>>(new Set())
   const [searchExpandedKeys, setSearchExpandedKeys] = React.useState<Array<string>>([])
 
-  const isSearching = React.useMemo(() => typeof filterTreeNode === 'function' && filterValue, [filterValue])
+  const isSearching = React.useMemo(() => typeof filterTreeNode === 'function' && !!filterValue, [filterValue])
 
   useEffect(() => {
     setSearchExpandedKeys([])
@@ -447,6 +449,7 @@ const InternalTree = React.forwardRef((props: TreeProps, ref: any): React.Functi
     <div className={treeNodeClassName} style={style} ref={scrollRef} onScroll={handleScroll}>
       <div ref={plantomRef as any} className={`${treePrefixCls}-plantom`}></div>
       <div className={treeRootClassName} ref={listRef as any}>
+        {!visibleData?.length && notFoundContent}
         {visibleData &&
           visibleData.map((item: any) => {
             const checked = getChecked(checkedKeys, item.key)

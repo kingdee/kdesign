@@ -31,8 +31,7 @@ subtitle: 颜色选择器
 | showColorPickerBox | 是否展示拾色容器 | boolean | false | 1.7.0 |
 | suffixIcon | color-picker 输入框右侧图标(其中 color 为 RGB 格式的字符串，可以同步颜色选择面板的透明度) | (rgbColor: string) => React.ReactNode | - | 1.7.0 |
 | value | 设置输入框的值，可以是十六进制、RGB 、HSB 、HSL 或者颜色英文名称 | string | - | 1.7.0 |
-| visible | 手动控制浮层显隐 | boolean | - | 1.7.0 |
-| onChange | 输入框颜色值发生变化时触发的回调函数 | (inputValue: string) => void | - | 1.7.0 |
+| onChange | 输入框颜色值发生变化时触发的回调函数 | (inputValue: string, colorObj:{type: `HEX` \| `HSB` \| `RGB` \| `HSL`, value: string}) => void | - | 1.7.0 |
 
 ## Design Token
 

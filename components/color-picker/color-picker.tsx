@@ -40,7 +40,6 @@ const ColorPicker: FC<Partial<IColorPickerProps>> = (props) => {
     placeholder,
     defaultValue,
     defaultOpen,
-    visible,
     suffixIcon,
     onChange,
   } = colorPickerProps
@@ -48,7 +47,7 @@ const ColorPicker: FC<Partial<IColorPickerProps>> = (props) => {
   const [correctColorValue, setCorrectColorValue] = useState<string>(defaultValue || defaultSystemColor)
   const [currentColorType, setCurrentColorType] = useState<IColorTypesObj['type']>('HEX')
   const [colTypeArr, setColTypeArr] = useState<Array<IColorTypesObj>>(colorTypes as IColorTypesObj[])
-  const [showPanel, setShowPanel] = useState<boolean>(visible ?? defaultOpen)
+  const [showPanel, setShowPanel] = useState<boolean>(defaultOpen)
   const [alpha, setAlpha] = useState<number>(1)
   const [alphaNoVerifyVal, setAlphaNoVerifyVal] = useState<string>(alpha * 100 + '%')
   const [isFollow, setIsFollow] = useState<boolean>(false)
@@ -107,9 +106,7 @@ const ColorPicker: FC<Partial<IColorPickerProps>> = (props) => {
   }
 
   const handleClick = () => {
-    if (visible === undefined) {
-      setShowPanel(!showPanel)
-    }
+    setShowPanel(!showPanel)
   }
 
   useEffect(() => {
@@ -121,12 +118,6 @@ const ColorPicker: FC<Partial<IColorPickerProps>> = (props) => {
       }
     }
   }, [value, defaultValue])
-
-  useEffect(() => {
-    if (visible !== undefined) {
-      setShowPanel(visible)
-    }
-  }, [visible])
 
   const afterIcon = () => {
     const afterIconContainerCls = classNames(`${colorPickerPrefixCls}-icon`, {

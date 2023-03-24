@@ -195,29 +195,29 @@ describe('ColorPicker', () => {
     defaultOpenWrapper.update()
     expect(defaultOpenWrapper.exists('.kd-color-picker-panel-chrome')).toBeTruthy()
 
-    // visible
-    const TestVisible = () => {
-      const [visible, setVisible] = React.useState(true)
-      return (
-        <>
-          <button
-            onClick={() => {
-              setVisible(!visible)
-            }}
-          ></button>
-          <ColorPicker visible={visible}></ColorPicker>
-        </>
-      )
-    }
-    const wrapper = mount(<TestVisible></TestVisible>)
-    expect(wrapper.exists('.kd-color-picker-pop')).toBeTruthy()
-    expect(wrapper.find('.kd-color-picker-pop').hasClass('hidden')).toBeFalsy()
-    wrapper.find('.kd-color-picker-input').at(0).simulate('click')
-    expect(wrapper.find('.kd-color-picker-pop').hasClass('hidden')).toBeFalsy()
-    wrapper.find('button').simulate('click')
-    expect(wrapper.find('.kd-color-picker-pop').hasClass('hidden')).toBeTruthy()
+    // // visible
+    // const TestVisible = () => {
+    //   const [visible, setVisible] = React.useState(true)
+    //   return (
+    //     <>
+    //       <button
+    //         onClick={() => {
+    //           setVisible(!visible)
+    //         }}
+    //       ></button>
+    //       <ColorPicker visible={visible}></ColorPicker>
+    //     </>
+    //   )
+    // }
+    // const wrapper = mount(<TestVisible></TestVisible>)
+    // expect(wrapper.exists('.kd-color-picker-pop')).toBeTruthy()
+    // expect(wrapper.find('.kd-color-picker-pop').hasClass('hidden')).toBeFalsy()
+    // wrapper.find('.kd-color-picker-input').at(0).simulate('click')
+    // expect(wrapper.find('.kd-color-picker-pop').hasClass('hidden')).toBeFalsy()
+    // wrapper.find('button').simulate('click')
+    // expect(wrapper.find('.kd-color-picker-pop').hasClass('hidden')).toBeTruthy()
 
-    wrapper.unmount()
+    // wrapper.unmount()
     underlineWrapper.unmount()
     borderedWrapper.unmount()
     customSuffixWrapper.unmount()
@@ -240,7 +240,7 @@ describe('ColorPicker', () => {
     wrapper.update()
     testCommonState(wrapper, '#34343409', '4%')
     wrapper.find('.kd-color-picker-panel-input').simulate('click')
-    // !Select组件的defaultOpen有问题，无法测试
+    // !Select组件的defaultOpen有问题
     // expect(wrapper.find('.kd-select').hasClass('kd-select-visible')).toBeTruthy()
     // expect(wrapper.find('.kd-select-item-option').length).toEqual(4)
     // expect(wrapper.find('.kd-select-item-option').at(0).text()).toEqual('HEX')
@@ -288,7 +288,7 @@ describe('ColorPicker', () => {
     wrapper.unmount()
   })
 
-  // !暂无测试方法
+  // !color-picker-box
   // it('should display the correct color values and corrent opacity when clicking on different positions of color picker box', () => {
   //   const wrapper = mount(
   //     <ColorPicker {...defaultColorPickerProps} defaultOpen showColorPickerBox></ColorPicker>,

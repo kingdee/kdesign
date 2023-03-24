@@ -1,6 +1,6 @@
 ---
 title: 系统预设颜色
-order: 6
+order: 5
 ---
 
 可配置属性 presetColor 自定义预设颜色，并通过 showPresetColor 属性控制预设颜色容器的显隐

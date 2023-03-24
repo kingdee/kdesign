@@ -32,6 +32,7 @@ export interface ImageCropperProps {
   customComponents?: customComponentsProps
   showDeaultToolbar?: boolean
   cropBoxMovable?: boolean
+  autoCropArea?: number
   onClose?: () => void
   onCropSuccess?: (file: File) => void
   onCropFailed?: () => void
@@ -67,6 +68,7 @@ const InternalImageCropper = (
     cropBoxMovable,
     customComponents,
     showDeaultToolbar,
+    autoCropArea,
     ...restProps
   } = getCompProps('ImageCropper', userDefaultProps, props)
 
@@ -107,6 +109,7 @@ const InternalImageCropper = (
       zoomOnWheel={zoomOnWheel}
       cropBoxMovable={cropBoxMovable}
       imgSrc={cropperSrc}
+      autoCropArea={autoCropArea}
       ref={cropperRef}
     />
   )

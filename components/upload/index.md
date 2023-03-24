@@ -20,26 +20,26 @@ title: Upload
 
 | 参数 | 说明 | 类型 | 默认值 | 版本 |
 | --- | --- | --- | --- | --- |
-| accept | 接受上传的文件类型, 详见 [input accept Attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/file#accept) | string | - | 0.0.17 |
-| action | 上传的地址 | string \| (file) => Promise&lt;string> | - | 0.0.17 |
-| beforeUpload | 上传文件之前的钩子，参数为上传的文件，若返回 `false` 则停止上传。支持返回一个 Promise 对象，Promise 对象 reject 时则停止上传，resolve 时开始上传（ resolve 传入 `File` 或 `Blob` 对象则上传 resolve 传入对象）。**注意：IE9 不支持该方法** | (file, fileList) => boolean \| Promise&lt;File> | - | 0.0.17 |
-| data | 上传所需额外参数或返回上传额外参数的方法 | object\|(file) => object \| Promise&lt;object> | - | 0.0.17 |
-| defaultFileList | 默认已经上传的文件列表 | object\[] | - | 0.0.17 |
-| directory | 支持上传文件夹（[caniuse](https://caniuse.com/#feat=input-file-directory)） | boolean | false | 0.0.17 |
-| disabled | 是否禁用 | boolean | false | 0.0.17 |
-| fileList | 已经上传的文件列表（受控） | object\[] | - | 0.0.17 |
-| itemRender | 自定义上传列表项 | (originNode: ReactElement, file: UploadFile, fileList?: object\[]) => React.ReactNode | - | 0.0.17 |
-| listType | 上传列表的内建样式，支持二种基本样式 `text`, `picture` | string | `text` | 0.0.17 |
-| method | 上传请求的 http method | string | `post` | 0.0.17 |
-| multiple | 是否支持多选文件，`ie10+` 支持。开启后按住 ctrl 可选择多个文件 | boolean | false | 0.0.17 |
-| name | 发到后台的文件参数名 | string | `file` | 0.0.17 |
-| showUploadList | 是否展示文件列表 | boolean | true | 0.0.17 |
-| transformFile | 在上传之前转换文件。支持返回一个 Promise 对象 | function(file): string \| Blob \| File \| Promise<string \| Blob \| File> | - |  0.0.17 |
-| withCredentials | 上传请求时是否携带 cookie | boolean | false | 0.0.17 |
-| onChange | 上传文件改变时的状态，详见 [onChange](#onChange) | function | - | 0.0.17 |
-| onPreview | 点击文件链接或预览图标时的回调 | function(file) | - | 0.0.17 |
-| onRemove   | 点击移除文件时的回调，返回值为 false 时不移除。支持返回一个 Promise 对象，Promise 对象 resolve(false) 或 reject 时不移除               | function(file): boolean \| Promise | -   | 0.0.17 |
-| onStart | 开始上传触发的回调 | function(file) | - | 0.0.17 |
+| accept | 接受上传的文件类型, 详见 [input accept Attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/file#accept) | string | - | 1.0.0 |
+| action | 上传的地址 | string \| (file) => Promise&lt;string> | - | 1.0.0 |
+| beforeUpload | 上传文件之前的钩子，参数为上传的文件，若返回 `false` 则停止上传。支持返回一个 Promise 对象，Promise 对象 reject 时则停止上传，resolve 时开始上传（ resolve 传入 `File` 或 `Blob` 对象则上传 resolve 传入对象）。**注意：IE9 不支持该方法** | (file, fileList) => boolean \| Promise&lt;File> | - | 1.0.0 |
+| data | 上传所需额外参数或返回上传额外参数的方法 | object\|(file) => object \| Promise&lt;object> | - | 1.0.0 |
+| defaultFileList | 默认已经上传的文件列表 | object\[] | - | 1.0.0 |
+| directory | 支持上传文件夹（[caniuse](https://caniuse.com/#feat=input-file-directory)） | boolean | false | 1.0.0 |
+| disabled | 是否禁用 | boolean | false | 1.0.0 |
+| fileList | 已经上传的文件列表（受控） | object\[] | - | 1.0.0 |
+| itemRender | 自定义上传列表项 | (originNode: ReactElement, file: UploadFile, fileList?: object\[]) => React.ReactNode | - | 1.0.0 |
+| listType | 上传列表的内建样式，支持二种基本样式 `text`, `picture` | string | `text` | 1.0.0 |
+| method | 上传请求的 http method | string | `post` | 1.0.0 |
+| multiple | 是否支持多选文件，`ie10+` 支持。开启后按住 ctrl 可选择多个文件 | boolean | false | 1.0.0 |
+| name | 发到后台的文件参数名 | string | `file` | 1.0.0 |
+| showUploadList | 是否展示文件列表 | boolean | true | 1.0.0 |
+| transformFile | 在上传之前转换文件。支持返回一个 Promise 对象 | function(file): string \| Blob \| File \| Promise<string \| Blob \| File> | - |  1.0.0 |
+| withCredentials | 上传请求时是否携带 cookie | boolean | false | 1.0.0 |
+| onChange | 上传文件改变时的状态，详见 [onChange](#onChange) | function | - | 1.0.0 |
+| onPreview | 点击文件链接或预览图标时的回调 | function(file) | - | 1.0.0 |
+| onRemove   | 点击移除文件时的回调，返回值为 false 时不移除。支持返回一个 Promise 对象，Promise 对象 resolve(false) 或 reject 时不移除               | function(file): boolean \| Promise | -   | 1.0.0 |
+| onStart | 开始上传触发的回调 | function(file) | - | 1.0.0 |
 
 ### onChange
 

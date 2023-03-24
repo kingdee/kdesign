@@ -23,6 +23,8 @@ import useRangeSelection from './feature/useRangeSelection'
 import useＭergeCellHover from './feature/mergeCellHover'
 import devWarning from '../_utils/devwarning'
 import useFooterDataSource from './feature/useFooterDataSource'
+import usecolGroupExtendable from './feature/colGroupExtendable'
+import getApi from './api'
 
 const Table = forwardRef<unknown, TableProps>((props: TableProps, ref) => {
   const {
@@ -57,6 +59,7 @@ const Table = forwardRef<unknown, TableProps>((props: TableProps, ref) => {
     stickyScrollHeight,
     scrollbarWidth,
     scrollLoad,
+    columnGroupExtend = {},
   } = props
 
   const { getPrefixCls, prefixCls } = useContext(ConfigContext)
@@ -87,12 +90,7 @@ const Table = forwardRef<unknown, TableProps>((props: TableProps, ref) => {
   useImperativeHandle(
     ref,
     (): TableInstance => ({
-      api: {
-        getColumns: pipelineRef.current.getColumns?.bind(pipelineRef.current),
-        getDataSource: pipelineRef.current.getDataSource?.bind(pipelineRef.current),
-        getFooterDataSource: pipelineRef.current.getFooterDataSource?.bind(pipelineRef.current),
-        clearRangeSelection: pipelineRef.current.clearRangeSelection?.bind(pipelineRef.current),
-      },
+      api: getApi(pipelineRef),
     }),
   )
 
@@ -105,6 +103,7 @@ const Table = forwardRef<unknown, TableProps>((props: TableProps, ref) => {
   useSort(pipeline, sort)
   useAutoRowSpan(pipeline, autoRowSpan)
   useTreeMode(pipeline, treeMode)
+  usecolGroupExtendable(pipeline, columnGroupExtend)
   useColumnResize(pipeline, columnResize)
   useColumnDrag(pipeline, columnDrag)
   useContextMenu(pipeline, contextMenu)

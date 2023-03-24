@@ -32,6 +32,7 @@ export interface CropperProps {
   modal?: boolean
   zoomOnWheel?: boolean
   cropBoxMovable?: boolean
+  autoCropArea?: number
   onCropSuccess?: () => void
 }
 
@@ -57,6 +58,7 @@ const Cropper = forwardRef<CropperInstance | null, CropperProps>((props, forward
     dragMode,
     viewMode,
     aspectRatio,
+    autoCropArea,
     modal = true,
     zoomOnWheel = true,
     cropBoxMovable = true,
@@ -72,9 +74,9 @@ const Cropper = forwardRef<CropperInstance | null, CropperProps>((props, forward
       dragMode: dragMode,
       cropBoxMovable: cropBoxMovable,
       modal: modal,
-      autoCropArea: 0.5,
+      autoCropArea: autoCropArea,
     }),
-    [aspectRatio, viewMode, zoomOnWheel, dragMode, modal, cropBoxMovable],
+    [aspectRatio, viewMode, zoomOnWheel, dragMode, cropBoxMovable, modal, autoCropArea],
   )
 
   useEffect(() => {

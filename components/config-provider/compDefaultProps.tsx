@@ -379,6 +379,7 @@ const compDefaultProps = {
     viewMode: 0,
     aspectRatio: NaN,
     okText: '确认裁剪',
+    autoCropArea: 0.5,
   },
   Anchor: {
     type: 'bookmarks',
@@ -421,6 +422,21 @@ const compDefaultProps = {
   Link: {
     size: 'middle',
     underscore: false,
+  },
+  TreeSelect: {
+    size: 'middle',
+    borderType: 'underline',
+    mode: 'single',
+    defaultOpen: false,
+    showArrow: true,
+    placeholder: '请输入需要搜索的内容',
+    optionLabelProp: 'title',
+    treeNodeFilterProp: 'title',
+    showSearch: true,
+    switcherIcon: function () {
+      return <Icon type="arrow-right-solid" />
+    },
+    expandOnClickNode: false,
   },
 }
 

@@ -26,7 +26,7 @@ export const flattenAll = (treeData: any[], newTreeData: TreeNodeData[] = [], le
           hasChildNode,
           children,
           level,
-          parentKey: parent?.key || null,
+          parentKey: (parent?.key ?? '') !== '' ? parent?.key : null,
           pathParentKeys: parent ? [...(parent?.pathParentKeys || []), parent?.key] : [],
           ...others,
         }
@@ -104,7 +104,7 @@ export const getAllFilterKeys = (data: any[], filterTreeNode: FunctionConstructo
     let node = { ...item }
     while (node) {
       allFilterKeys.add(node.key)
-      !filterKeys.map((i) => i.key).includes(node.key) && filterExpandKeys.add(node.key)
+      filterExpandKeys.add(node.key)
       node = keysData?.[node?.parentKey] || null
     }
   })
