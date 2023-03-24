@@ -4,6 +4,15 @@ title: 更新日志
 hiddenAnchor: true
 ---
 
+## [1.7.1](https://github.com/kdcloudone/kdesign/compare/v1.7.0...v1.7.1)
+`2023-03-24`
+* pagination
+  * 修复样式问题 fix [#288](https://github.com/kdcloudone/kdesign/issues/288)
+* color-picker
+  * add color-picker component
+* 添加组件概览缩略图默认值
+* 修复国际化配置需全量传入参数问题 fix [#297](https://github.com/kdcloudone/kdesign/issues/297)
+
 ## [1.7.0](https://github.com/kdcloudone/kdesign/compare/v1.6.40...v1.7.0)
 `2023-03-23`
 * cascader
