@@ -13,7 +13,7 @@ kdesign 目前只提供了中文的语言包，后续将陆续提供其他语言
 import zhCN from '@kdcloudjs/kdesign/lib/locale/zh-CN.tsx'
 
 return (
-  <ConfigProvider locale={{ localeConfig: { localeData: zhCN } }}>
+  <ConfigProvider value={{ localeConfig: { localeData: zhCN } }}>
     <App />
   </ConfigProvider>
 )
@@ -53,7 +53,9 @@ const locale = {
   'Progress.success': '加载成功',
   'Pagination.prevPage': '上一页',
   'Pagination.nextPage': '下一页',
-  'Pagination.total': '共{total}页',
+  'Pagination.total': '共{page}页{row}条',
+  'Pagination.page': '共{page}页',
+  'Pagination.row': '共{row}条',
   'Pagination.first': '第一页',
   'Pagination.last': '最后一页',
   'Pagination.perPage': '{size}条/页',
