@@ -14,17 +14,18 @@
   .reset-component;
   color: @pagination-text-color;
   font-size: @pagination-font-size;
+  display: flex;
+  align-items: center;
 
   .@{pagination-prefix-cls}-total {
     display: inline-block;
     margin-right: 12px;
-    vertical-align: middle;
   }
 
   .@{pagination-prefix-cls}-current {
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
     margin-right: 12px;
-    vertical-align: middle;
 
     .@{pagination-prefix-cls}-current-input {
       box-sizing: border-box;
@@ -58,8 +59,8 @@
 
   .@{pagination-action-prefix-cls} {
     .reset-component;
-    display: inline-block;
-    vertical-align: middle;
+    display: inline-flex;
+    align-items: center;
 
     .@{pagination-action-prefix-cls}-item {
       .reset-component;
@@ -91,7 +92,6 @@
         border-radius: @radius-border;
         cursor: pointer;
         outline: none;
-        vertical-align: middle;
         transition: border-color @duration-promptly;
 
         &:hover,
@@ -134,11 +134,11 @@
   .@{pagination-selector-prefix-cls} {
     .reset-component;
     position: relative;
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
     margin-left: 20px;
     outline: none;
     height: @pagination-size;
-    vertical-align: middle;
 
     .@{pagination-selector-prefix-cls}-size {
       box-sizing: border-box;
@@ -215,11 +215,11 @@
 
       &-item {
         .reset-component;
-        display: inline-block;
         height: @pagination-size;
         overflow: hidden;
         margin: 0 8px;
-        vertical-align: middle;
+        display: inline-flex;
+        align-items: center;
         color: @color-text-primary;
 
         &:first-child,
@@ -229,7 +229,6 @@
 
         .@{pagination-prefix-cls}-current {
           margin-right: 2px;
-          vertical-align: middle;
 
           .@{pagination-prefix-cls}-current-input {
             margin: 0;
@@ -242,7 +241,6 @@
         }
 
         .@{pagination-prefix-cls}-total {
-          vertical-align: middle;
           margin-right: 0;
         }
 
@@ -260,7 +258,9 @@
           border-radius: @radius-border;
           cursor: pointer;
           outline: none;
-          vertical-align: middle;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
           transition: border-color @duration-promptly;
 
           &:hover,
@@ -308,9 +308,9 @@
       &-item {
         .reset-component;
         position: relative;
-        display: inline-block;
+        display: inline-flex;
+        align-items: center;
         margin-right: @pagination-button-spacing;
-        vertical-align: middle;
 
         &:last-child {
           margin-right: 0;
@@ -359,6 +359,9 @@
           border: none;
           background: @color-background;
           transition: color @duration-promptly, border-color @duration-promptly;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
 
           &:disabled {
             cursor: not-allowed;
@@ -378,9 +381,9 @@
       &-item {
         .reset-component;
         position: relative;
-        display: inline-block;
+        display: inline-flex;
+        align-items: center;
         margin-right: @pagination-button-spacing;
-        vertical-align: middle;
 
         &:last-child {
           margin-right: 0;
@@ -429,6 +432,9 @@
           padding: 0 6px;
           cursor: pointer;
           outline: none;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
           font-size: @pagination-font-size;
           color: @color-text-primary;
           border-radius: @radius-border;
@@ -462,9 +468,9 @@
     }
 
     .@{pagination-jumper-prefix-cls} {
-      display: inline-block;
+      display: inline-flex;
+      align-items: center;
       margin-left: 4px;
-      vertical-align: middle;
 
       .@{pagination-jumper-prefix-cls}-input {
         box-sizing: border-box;
@@ -499,8 +505,9 @@
         width: @pagination-size;
         height: @pagination-size;
         margin-left: @pagination-button-spacing;
-        line-height: @pagination-size;
-        vertical-align: top;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
         cursor: pointer;
         outline: none;
         color: @color-text-primary;
@@ -530,25 +537,24 @@
     .@{pagination-options-prefix-cls} {
       .reset-component;
       position: relative;
-      display: inline-block;
+      display: inline-flex;
+      align-items: center;
       margin-left: 22px;
       outline: none;
       height: @pagination-size;
       color: @color-text-primary;
-      vertical-align: middle;
 
       .@{pagination-options-prefix-cls}-size {
         position: relative;
         box-sizing: border-box;
-        display: inline-block;
+        display: inline-flex;
+        align-items: center;
         min-width: 64px;
         height: @pagination-size;
         margin-right: 8px;
         padding: 0 24px 0 4px;
-        line-height: @pagination-size;
         font-size: @pagination-font-size;
         color: @color-text-primary;
-        text-align: left;
         border-radius: @radius-border;
         border: @pagination-border-size solid @color-border-strong;
         background: @color-background;
