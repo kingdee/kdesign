@@ -179,7 +179,11 @@
                 }
 
                 .@{kd-prefix}-select-dropdown {
-                    overflow: hidden;
+                    .@{kd-prefix}-select-item-option {
+                        display: flex;
+                        justify-content: center;
+                        min-width: unset;
+                    }
                 }
             }
 
