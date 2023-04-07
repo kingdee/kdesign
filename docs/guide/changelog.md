@@ -4,6 +4,23 @@ title: 更新日志
 hiddenAnchor: true
 ---
 
+## [1.7.2](https://github.com/kdcloudone/kdesign/compare/v1.7.1...v1.7.2)
+`2023-04-07`
+* color-picker
+  * 修复单测问题点
+  * 修复ColorPicker中第三方包color不被babel编译的问题
+  * 颜色面板下拉框中的option未固定位置 [#307](https://github.com/kdcloudone/kdesign/issues/307)
+* modal
+  * 修复多层弹窗拖拽会同时移动问题 fix [#312](https://github.com/kdcloudone/kdesign/issues/312)
+  * 修复modal传入style不生效问题 fix [#317](https://github.com/kdcloudone/kdesign/issues/317)
+  * 修复modal拖拽不能控制拖拽边界 fix [#318](https://github.com/kdcloudone/kdesign/issues/318)
+* select
+  * 更新选择器单测
+* dropdown
+  * 当子元素只有一个时，Dropdown.menu设置的属性不生效 (https://github.com/kdcloudone/kdesign/issues/308)
+* menu
+  * 当子元素只有一个时，Dropdown.menu设置的属性不生效 (https://github.com/kdcloudone/kdesign/issues/308)
+
 ## [1.7.1](https://github.com/kdcloudone/kdesign/compare/v1.7.0...v1.7.1)
 `2023-03-24`
 * pagination
