@@ -31,6 +31,7 @@ export interface IModalProps {
   body?: ReactNode
   bodyClassName?: string
   bodyStyle?: CSSProperties
+  style?: CSSProperties
   cancelButtonProps?: IButtonProps
   cancelText?: ReactNode
   className?: string
@@ -101,6 +102,7 @@ const Modal: React.FC<IModalProps> = (props: IModalProps): ReactElement | React.
     visible,
     width,
     showline,
+    ...others
   } = modalProps
   const isForceController = visible !== undefined
   const [innerVisible, setInnerVisible] = useState(isForceController ? visible : true) // 需要根据visible来判断，不能一开始为true再去设置false
@@ -309,7 +311,7 @@ const Modal: React.FC<IModalProps> = (props: IModalProps): ReactElement | React.
   // 但仍可拖拽
   const defaultPosition = modalContainer ? { x: -(width! / 2), y: -(height! / 2) } : { x: 0, y: 0 }
   const comp: ReactElement = (
-    <div className={modalClasses}>
+    <div className={modalClasses} {...others}>
       {/* 增加clickOutside */}
       {mask && <div onClick={handleMaskClick} className={`${modalPrefixCls}-mask`} style={maskStyle}></div>}
       <Draggable
