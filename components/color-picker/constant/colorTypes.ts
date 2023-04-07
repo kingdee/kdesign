@@ -5,14 +5,14 @@ export const colorTypes = [
   },
   {
     type: 'HSB',
-    value: 'hsb(0,0%,70%)',
+    value: 'hsb(0, 0%, 70%)',
   },
   {
     type: 'RGB',
-    value: 'rgb(178,178,178)',
+    value: 'rgb(178, 178, 178)',
   },
   {
     type: 'HSL',
-    value: 'hsl(0,0%,70%)',
+    value: 'hsl(0, 0%, 70%)',
   },
 ]
