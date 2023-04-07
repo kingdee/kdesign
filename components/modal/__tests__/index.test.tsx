@@ -32,7 +32,6 @@ const unmountHelp = (wrapper: ReactWrapper) => {
   }).not.toThrow()
 }
 describe('Modal', () => {
-  mountTest(Modal!)
   ModalTypes.forEach((type) => {
     mountTest(() => <Modal type={type} getContainer={false} />)
   })
