@@ -99,7 +99,7 @@ describe('ColorPicker', () => {
     }
     const customSuffixWrapper = mount(<ColorPicker suffixIcon={suffix} />)
     expect(customSuffixWrapper.find('.suffix-icon')).toBeTruthy()
-    expect(customSuffixWrapper.find('.suffix-icon')).toHaveStyle('color', 'rgb(178,178,178)')
+    expect(customSuffixWrapper.find('.suffix-icon')).toHaveStyle('color', 'rgb(178, 178, 178)')
     customSuffixWrapper.setProps({ value: 'red' })
     customSuffixWrapper.update()
     expect(customSuffixWrapper.find('.suffix-icon')).toHaveStyle('color', 'rgb(255, 0, 0)')
