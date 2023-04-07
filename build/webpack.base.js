@@ -4,7 +4,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const FilterWarningsPlugin = require('webpack-filter-warnings-plugin')
 const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin')
 const WebpackBar = require('webpackbar')
-const CleanUpStatsPlugin = require('./plugins/CleanUpStatsPlugin');
+const CleanUpStatsPlugin = require('./plugins/CleanUpStatsPlugin')
 
 const pkg = require('../package.json')
 const bannerText = `
@@ -17,10 +17,10 @@ module.exports = {
   devtool: 'source-map',
   output: {
     path: path.resolve(__dirname, '../dist/'),
-    filename: '[name].js'
+    filename: '[name].js',
   },
   resolve: {
-    extensions: ['.tsx', '.ts', '.js', 'json']
+    extensions: ['.tsx', '.ts', '.js', 'json'],
   },
   externals: {
     react: {
@@ -41,7 +41,15 @@ module.exports = {
       {
         test: /\.(j|t)sx?$/,
         exclude: /node_modules/,
-        loader: 'babel-loader'
+        loader: 'babel-loader',
+      },
+      {
+        test: /\/node_modules\/.*\.js$/,
+        exclude: /node_modules\/(?!color)/,
+        loader: 'babel-loader',
+        options: {
+          presets: ['@babel/preset-env'],
+        },
       },
       {
         test: /\.css$/,
@@ -50,16 +58,16 @@ module.exports = {
           {
             loader: 'css-loader',
             options: {
-              sourceMap: true
-            }
+              sourceMap: true,
+            },
           },
           {
             loader: 'postcss-loader',
             options: {
-              sourceMap: true
-            }
-          }
-        ]
+              sourceMap: true,
+            },
+          },
+        ],
       },
       {
         test: /\.less$/,
@@ -68,33 +76,33 @@ module.exports = {
           {
             loader: 'css-loader',
             options: {
-              sourceMap: true
-            }
+              sourceMap: true,
+            },
           },
           {
             loader: 'postcss-loader',
             options: {
-              sourceMap: true
-            }
+              sourceMap: true,
+            },
           },
           {
             loader: 'less-loader',
             options: {
               lessOptions: {
-                javascriptEnabled: true
+                javascriptEnabled: true,
               },
-              sourceMap: true
-            }
-          }
-        ]
+              sourceMap: true,
+            },
+          },
+        ],
       },
       {
         test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
         loader: 'url-loader',
         options: {
           limit: 10000,
-          minetype: 'image/svg+xml'
-        }
+          minetype: 'image/svg+xml',
+        },
       },
       {
         test: /\.(woff2?|eot|ttf|otf|svg)(\?.*)?$/,
@@ -103,25 +111,25 @@ module.exports = {
       {
         test: /\.(png|jpg|jpeg|gif)(\?v=\d+\.\d+\.\d+)?$/i,
         loader: 'url-loader',
-        options: { limit: 10000 }
-      }
-    ]
+        options: { limit: 10000 },
+      },
+    ],
   },
   plugins: [
     new MiniCssExtractPlugin({
-      filename: '[name].css'
+      filename: '[name].css',
     }),
     new CleanUpStatsPlugin(),
     new webpack.BannerPlugin(bannerText),
     new WebpackBar({
       name: 'kdesign build',
-      color: '#276ff5'
+      color: '#276ff5',
     }),
     new CaseSensitivePathsPlugin(), // .Using this plugin helps alleviate cases where developers working on OSX
     new FilterWarningsPlugin({
       // suppress conflicting order warnings from mini-css-extract-plugin.
       // see https://github.com/webpack-contrib/mini-css-extract-plugin/issues/250
-      exclude: /mini-css-extract-plugin[^]*Conflicting order between:/
-    })
-  ]
+      exclude: /mini-css-extract-plugin[^]*Conflicting order between:/,
+    }),
+  ],
 }
