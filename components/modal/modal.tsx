@@ -323,6 +323,7 @@ const InternalModal = (
   // 没有容器应该是不用居中的
   // 但仍可拖拽
   const handleDragStart = (e: DraggableEvent, data: DraggableData) => {
+    e?.stopPropagation()
     onDragStart?.(e, data)
   }
   const defaultPosition = modalContainer ? { x: -(width! / 2), y: -(height! / 2) } : { x: 0, y: 0 }
