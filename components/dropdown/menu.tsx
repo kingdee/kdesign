@@ -40,9 +40,12 @@ const Menu = React.forwardRef<unknown, MenuProps>((props, ref) => {
   const prefixCls = getPrefixCls!(pkgPrefixCls, 'dropdown-menu', customPrefixcls)
 
   const cloneItem = (item: React.ReactElement, index?: number) => {
+    if (!React.isValidElement(item)) {
+      return item
+    }
     const key = item.key || index
     const selected = selectable && String(selectedKey) === String(key)
-    return React.cloneElement(item, { key, selected, defaultKey: key })
+    return React.cloneElement(item as any, { key, selected, defaultKey: key })
   }
 
   return (

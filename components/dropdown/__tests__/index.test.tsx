@@ -219,8 +219,8 @@ describe('Dropdown', () => {
     expect(wrapper.find('.kd-dropdown-menu').find('.kd-dropdown-menu-item').at(1)).toHaveClassName('divided')
   })
   it('should extend menu class ', () => {
-    const menu = (
-      <Menu className="myClass">
+    const menu1 = (
+      <Menu className="myClass1">
         <Item danger>
           <a target="_blank" rel="noopener noreferrer" href="https://www.kingdee.com/">
             菜单1
@@ -231,12 +231,38 @@ describe('Dropdown', () => {
 
     const wrapper = mount(
       <div ref={wrapperRef}>
-        <Dropdown visible menu={menu} trigger={'click'} getPopupContainer={() => wrapperRef.current}>
+        <Dropdown visible menu={menu1} trigger={'click'} getPopupContainer={() => wrapperRef.current}>
           <span />
         </Dropdown>
       </div>,
     )
-    expect(wrapper.find('.kd-dropdown-menu').at(0)).toHaveClassName('myClass')
+    expect(wrapper.find('.kd-dropdown-menu').at(0)).toHaveClassName('myClass1')
+
+    const menu2 = (
+      <Menu className="myClass2">
+        <>
+          <Item danger>
+            <a target="_blank" rel="noopener noreferrer" href="https://www.kingdee.com/">
+              菜单1
+            </a>
+          </Item>
+          <Item danger>
+            <a target="_blank" rel="noopener noreferrer" href="https://www.kingdee.com/">
+              菜单2
+            </a>
+          </Item>
+        </>
+      </Menu>
+    )
+
+    const wrapper2 = mount(
+      <div ref={wrapperRef}>
+        <Dropdown visible menu={menu2} trigger={'click'} getPopupContainer={() => wrapperRef.current}>
+          <span />
+        </Dropdown>
+      </div>,
+    )
+    expect(wrapper2.find('.kd-dropdown-menu').at(0)).toHaveClassName('myClass2')
   })
   it('should menu item can select able', () => {
     const wrapper = mount(
