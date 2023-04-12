@@ -1,54 +1,56 @@
 @import '../../style/themes/token.less';
 
-@select-custom-prefix: ~'--@{kd-prefix}-c-tree-select';
-
+@tree-select-custom-prefix: ~'--@{kd-prefix}-c-tree-select';
 
 // color
-@tree-select-dropdown-bg: var(~'@{select-custom-prefix}-dropdown-color-background', @color-background);
-@tree-select-disabled-option-bg: var(~'@{select-custom-prefix}-item-color-background-disabled', #fff);
-@tree-select-item-active-bg: var(~'@{select-custom-prefix}-color-background', #f5f5f5);
-@tree-select-item-selected-bg: var(~'@{select-custom-prefix}-color-background-selected', @color-theme-3);
-@tree-select-g-color-border: var(~'@{select-custom-prefix}-color-border', @color-input);
-@tree-select-g-color-border-foucs: var(~'@{select-custom-prefix}-color-border-foucs', @color-theme);
-@tree-select-g-color-border-hover: var(~'@{select-custom-prefix}-color-border-hover', @color-theme);
-@tree-select-border-g-color-border: var(~'@{select-custom-prefix}-border-color-border', @color-border-strong);
-@tree-select-placeholder-color: var(~'@{select-custom-prefix}-placeholder-color-text', #b2b2b2);
-@tree-select-item-selected-color: var(~'@{select-custom-prefix}-item-color-text-selected', @color-theme);
-@tree-select-font-color: var(~'@{select-custom-prefix}-footer-color-text', @color-text-primary);
-@tree-select-footer-g-text-color-selected: var(~'@{select-custom-prefix}-footer-color-text-selected', #0e5fd8);
-@tree-select-g-item-text-color-disabled: var(~'@{select-custom-prefix}-item-color-text-disabled', @color-disabled);
-@tree-select-color-background-disabled: var(~'@{select-custom-prefix}-color-background-disabled', #f5f5f5);
-@tree-select-color-text-disabled: var(~'@{select-custom-prefix}-color-text-disabled', @color-disabled);
-@tree-select-arrow-icon-color-text-disabled: var(~'@{select-custom-prefix}-arrow-icon-color-text-disabled', #b2b2b2);
-@tree-select-single-color-text: var(~'@{select-custom-prefix}-single-color-text', @color-text-primary);
-@tree-select-clear-color: var(~'@{select-custom-prefix}-icon-clear-color-text', #d9d9d9);
-@tree-select-clear-color-hover: var(~'@{select-custom-prefix}-icon-clear-color-text-hover', #999);
+@tree-select-dropdown-bg: var(~'@{tree-select-custom-prefix}-dropdown-color-background', @color-background);
+@tree-select-disabled-option-bg: var(~'@{tree-select-custom-prefix}-item-color-background-disabled', #fff);
+@tree-select-item-active-bg: var(~'@{tree-select-custom-prefix}-color-background', #f5f5f5);
+@tree-select-item-selected-bg: var(~'@{tree-select-custom-prefix}-color-background-selected', @color-theme-3);
+@tree-select-g-color-border: var(~'@{tree-select-custom-prefix}-color-border', @color-input);
+@tree-select-g-color-border-foucs: var(~'@{tree-select-custom-prefix}-color-border-foucs', @color-theme);
+@tree-select-g-color-border-hover: var(~'@{tree-select-custom-prefix}-color-border-hover', @color-theme);
+@tree-select-border-g-color-border: var(~'@{tree-select-custom-prefix}-border-color-border', @color-border-strong);
+@tree-select-placeholder-color: var(~'@{tree-select-custom-prefix}-placeholder-color-text', #b2b2b2);
+@tree-select-item-selected-color: var(~'@{tree-select-custom-prefix}-item-color-text-selected', @color-theme);
+@tree-select-font-color: var(~'@{tree-select-custom-prefix}-footer-color-text', @color-text-primary);
+@tree-select-footer-g-text-color-selected: var(~'@{tree-select-custom-prefix}-footer-color-text-selected', #0e5fd8);
+@tree-select-g-item-text-color-disabled: var(~'@{tree-select-custom-prefix}-item-color-text-disabled', @color-disabled);
+@tree-select-color-background-disabled: var(~'@{tree-select-custom-prefix}-color-background-disabled', #f5f5f5);
+@tree-select-color-text-disabled: var(~'@{tree-select-custom-prefix}-color-text-disabled', @color-disabled);
+@tree-select-arrow-icon-color-text-disabled: var(
+  ~'@{tree-select-custom-prefix}-arrow-icon-color-text-disabled',
+  #b2b2b2
+);
+@tree-select-single-color-text: var(~'@{tree-select-custom-prefix}-single-color-text', @color-text-primary);
+@tree-select-clear-color: var(~'@{tree-select-custom-prefix}-icon-clear-color-text', #d9d9d9);
+@tree-select-clear-color-hover: var(~'@{tree-select-custom-prefix}-icon-clear-color-text-hover', #999);
 
 // font
-@tree-select-list-font-size: var(~'@{select-custom-prefix}-dropdown-font-size', 12px); // 下拉列表文字大小
-@tree-select-large-font-size: var(~'@{select-custom-prefix}-font-size-large', 16px); // 大号字体
-@tree-select-middle-font-size: var(~'@{select-custom-prefix}-font-size-middle', 14px); // 中号高度
-@tree-select-small-font-size: var(~'@{select-custom-prefix}-font-size-small', 12px); // 小号高度
+@tree-select-list-font-size: var(~'@{tree-select-custom-prefix}-dropdown-font-size', 12px); // 下拉列表文字大小
+@tree-select-large-font-size: var(~'@{tree-select-custom-prefix}-font-size-large', 16px); // 大号字体
+@tree-select-middle-font-size: var(~'@{tree-select-custom-prefix}-font-size-middle', 14px); // 中号高度
+@tree-select-small-font-size: var(~'@{tree-select-custom-prefix}-font-size-small', 12px); // 小号高度
 
 // line-height
-@tree-select-dropdown-line-height: var(~'@{select-custom-prefix}-dropdown-line-height', 22px);
-@tree-select-large-line-height: var(~'@{select-custom-prefix}-line-height-large', 28px);
-@tree-select-middle-line-height: var(~'@{select-custom-prefix}-line-height-middle', 22px);
-@tree-select-small-line-height: var(~'@{select-custom-prefix}-line-height-small', 14px);
+@tree-select-dropdown-line-height: var(~'@{tree-select-custom-prefix}-dropdown-line-height', 22px);
+@tree-select-large-line-height: var(~'@{tree-select-custom-prefix}-line-height-large', 28px);
+@tree-select-middle-line-height: var(~'@{tree-select-custom-prefix}-line-height-middle', 22px);
+@tree-select-small-line-height: var(~'@{tree-select-custom-prefix}-line-height-small', 14px);
 
 // sizing
-@tree-select-dropdown-height: var(~'@{select-custom-prefix}-item-sizing-height', 22px);
-@tree-select-large-height: var(~'@{select-custom-prefix}-sizing-height-large', 36px); // 大号高度 lh:28px
-@tree-select-middle-height: var(~'@{select-custom-prefix}-sizing-height-middle', 32px); // 中号高度lh:22px
-@tree-select-small-height: var(~'@{select-custom-prefix}-sizing-height-small', 24px); // 小号高度lh:12px
+@tree-select-dropdown-height: var(~'@{tree-select-custom-prefix}-item-sizing-height', 22px);
+@tree-select-large-height: var(~'@{tree-select-custom-prefix}-sizing-height-large', 36px); // 大号高度 lh:28px
+@tree-select-middle-height: var(~'@{tree-select-custom-prefix}-sizing-height-middle', 32px); // 中号高度lh:22px
+@tree-select-small-height: var(~'@{tree-select-custom-prefix}-sizing-height-small', 24px); // 小号高度lh:12px
 
 // spacing
-@tree-select-bordered: var(~'@{select-custom-prefix}-bordered-spacing-padding-left', 8px);
-@tree-select-wrapper-padding: var(~'@{select-custom-prefix}-wrapper-spacing-padding', 1px 28px 1px 0);
+@tree-select-bordered: var(~'@{tree-select-custom-prefix}-bordered-spacing-padding-left', 8px);
+@tree-select-wrapper-padding: var(~'@{tree-select-custom-prefix}-wrapper-spacing-padding', 1px 28px 1px 0);
 
 // radius
-@tree-select-g-radius-border: var(~'@{select-custom-prefix}-radius-border', @radius-border);
-@tree-select-border-radius-border: var(~'@{select-custom-prefix}-bordered-radius-border', 2px);
+@tree-select-g-radius-border: var(~'@{tree-select-custom-prefix}-radius-border', @radius-border);
+@tree-select-border-radius-border: var(~'@{tree-select-custom-prefix}-bordered-radius-border', 2px);
 
 // z-index
-@tree-select-z-index: var(~'@{select-custom-prefix}-z-index', @z-index-popper);
+@tree-select-z-index: var(~'@{tree-select-custom-prefix}-z-index', @z-index-popper);
