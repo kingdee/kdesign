@@ -4,6 +4,21 @@ title: 更新日志
 hiddenAnchor: true
 ---
 
+## [1.7.3](https://github.com/kdcloudone/kdesign/compare/v1.7.2...v1.7.3)
+`2023-04-13`
+* select
+  * 修复defaultOpen默认打开下拉面板不生效 fix [#313](https://github.com/kdcloudone/kdesign/issues/313)
+  * 修复下拉面板树样式与视觉稿不一致问题 fix [#323](https://github.com/kdcloudone/kdesign/issues/323)
+  * 修复token命名重复问题 fix [#321](https://github.com/kdcloudone/kdesign/issues/321)
+  * 修复defaultSelectedKeys不生效 fix [#322](https://github.com/kdcloudone/kdesign/issues/322)
+* tree
+  * 修复下拉面板树样式与视觉稿不一致问题 fix [#323](https://github.com/kdcloudone/kdesign/issues/323)
+  * 修复token命名重复问题 fix [#321](https://github.com/kdcloudone/kdesign/issues/321)
+  * 修复defaultSelectedKeys不生效 fix [#322](https://github.com/kdcloudone/kdesign/issues/322)
+* tree-select
+  * 修复下拉面板树样式与视觉稿不一致问题 fix [#323](https://github.com/kdcloudone/kdesign/issues/323)
+  * 修复token命名重复问题 fix [#321](https://github.com/kdcloudone/kdesign/issues/321)
+
 ## [1.7.2](https://github.com/kdcloudone/kdesign/compare/v1.7.1...v1.7.2)
 `2023-04-07`
 * color-picker
