@@ -432,6 +432,7 @@ const compDefaultProps = {
     placeholder: '请输入需要搜索的内容',
     optionLabelProp: 'title',
     treeNodeFilterProp: 'title',
+    treeExpandOnClickNode: true,
     showSearch: true,
     switcherIcon: function () {
       return <Icon type="arrow-right-solid" />
