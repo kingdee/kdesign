@@ -66,7 +66,10 @@ const InternalSelect: React.ForwardRefRenderFunction<ISelectProps<SelectValue>> 
   const measureRef = useRef<HTMLSpanElement>(null)
   const [mulOptions, setMulOptions] = useState<any>([])
   const [singleVal, setSingleVal] = useState<any>('')
-  const [optionShow, setOptionShow] = useState<boolean>(!!props.visible || defaultOpen) // 下拉列表是否展示
+  const [optionShow, setOptionShow] = useState<boolean>(
+    typeof props.visible === 'undefined' ? !!defaultOpen : !!props.visible,
+  )
+  // 下拉列表是否展示
   // const [searchInput, setSearchInput] = useState<string>('') // 搜索框值
   const [searchValue, setSearchValue] = useState<any>('') // 搜索框定时器
   const [inputWidth, setInputWidth] = useState(INPUT_MIN_WIDTH) // 输入框宽度
@@ -107,7 +110,9 @@ const InternalSelect: React.ForwardRefRenderFunction<ISelectProps<SelectValue>> 
   })
 
   useEffect(() => {
-    setOptionShow(!!props.visible)
+    if (typeof props.visible !== 'undefined') {
+      setOptionShow(props.visible)
+    }
   }, [props.visible])
 
   // realchildren更新时数据处理---待解决
