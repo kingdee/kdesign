@@ -40,7 +40,7 @@ describe('ColorPicker', () => {
     expect((wrapper.type() as any).displayName).toBe('ColorPicker')
   })
   // 6.api
-  it('should have api property', () => {
+  it('should show the correct API function', () => {
     const underlineWrapper = mount(<ColorPicker {...defaultColorPickerProps} borderType="underline"></ColorPicker>)
     const borderedWrapper = mount(<ColorPicker {...defaultColorPickerProps} borderType="bordered"></ColorPicker>)
 
@@ -195,6 +195,19 @@ describe('ColorPicker', () => {
     defaultOpenWrapper.update()
     expect(defaultOpenWrapper.exists('.kd-color-picker-panel-chrome')).toBeTruthy()
 
+    // getPopupContainer
+    const wrapperRef = React.createRef() as any
+    const popuContainer = mount(
+      <div ref={wrapperRef}>
+        <ColorPicker
+          defaultOpen
+          {...defaultColorPickerProps}
+          getPopupContainer={() => wrapperRef.current}
+        ></ColorPicker>
+      </div>,
+    )
+    expect(popuContainer.find('.kd-color-picker-pop').length).toBe(1)
+
     // // visible
     // const TestVisible = () => {
     //   const [visible, setVisible] = React.useState(true)
@@ -301,4 +314,28 @@ describe('ColorPicker', () => {
   //     })
   //   testCommonState(wrapper, '#7d4a4acf', '81%')
   // })
+
+  // 8.controlled & uncontrolled
+  it('should display value when both value and defaultValue exist', () => {
+    const wrapper = mount(<ColorPicker value="red" defaultValue="blue" />)
+    expect(wrapper.find('.kd-color-picker-input').at(0).props().value).toBe('red')
+  })
+  it('should display defaultValue when only defaultValue exists', () => {
+    const wrapper = mount(<ColorPicker defaultValue="blue" />)
+    expect(wrapper.find('.kd-color-picker-input').at(0).props().value).toBe('blue')
+  })
+  it('should not change value when selected in the component', () => {
+    const wrapper = mount(<ColorPicker defaultOpen value="blue" />)
+    wrapper.find('.kd-color-picker-panel-colorDivContainer').childAt(0).simulate('click')
+    expect(wrapper.find('.kd-color-picker-input').at(0).props().value).toBe('blue')
+  })
+  it('should change value when use onChange event', () => {
+    let changeValue = 'blue'
+    const handleChangeValue = jest.fn((colorValue) => {
+      expect(colorValue).toEqual('#a1ecff')
+      changeValue = colorValue
+    })
+    const wrapper = mount(<ColorPicker defaultOpen value={changeValue} onChange={handleChangeValue} />)
+    wrapper.find('.kd-color-picker-panel-colorDivContainer').childAt(0).simulate('click')
+  })
 })
