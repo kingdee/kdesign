@@ -313,6 +313,7 @@ const InternalTreeSelect: React.ForwardRefRenderFunction<ITreeSelectProps<TreeSe
       icon: treeIcon,
       showIcon: showTreeIcon,
       switcherIcon,
+      onlyExpandOnClickIcon: true,
       notFoundContent: renderNotContent(),
       filterTreeNode: defFilterTreeNode,
       onSelect: handleSelect,

@@ -31,6 +31,8 @@ export interface TreeNodeProps {
   estimatedItemSize?: number
   dragOver?: boolean
   isLeaf?: boolean
+  expandOnClickNode?: boolean
+  onlyExpandOnClickIcon?: boolean
   onCheck?: (
     key: string,
     value: boolean,
@@ -81,6 +83,7 @@ const TreeNode = React.forwardRef<unknown, TreeNodeProps>((props, ref) => {
     dragOver,
     dropPosition,
     expandOnClickNode,
+    onlyExpandOnClickIcon,
     loading,
     onExpand,
     onCheck,
@@ -195,6 +198,7 @@ const TreeNode = React.forwardRef<unknown, TreeNodeProps>((props, ref) => {
     if (loading) {
       return <Spin type="component" />
     }
+
     const showExpandIcon = !isLeaf()
     if (showExpandIcon) {
       if (Array.isArray(switcherIcon) && switcherIcon.length === 2) {
@@ -203,7 +207,9 @@ const TreeNode = React.forwardRef<unknown, TreeNodeProps>((props, ref) => {
             className={classNames(`${treeNodePrefixCls}-icon`, {
               [`${treeNodePrefixCls}-icon-hover`]: !expandOnClickNode,
             })}
-            onClick={expandOnClickNode ? undefined : handleExpandIconClick}
+            onClick={
+              expandOnClickNode ? (onlyExpandOnClickIcon ? handleExpandIconClick : undefined) : handleExpandIconClick
+            }
           >
             {expandState ? renderIcon(switcherIcon[1]) : renderIcon(switcherIcon[0])}
           </span>
@@ -216,7 +222,9 @@ const TreeNode = React.forwardRef<unknown, TreeNodeProps>((props, ref) => {
             [`${treeNodePrefixCls}-animation-collapse`]: !expandState,
             [`${treeNodePrefixCls}-icon-hover`]: !expandOnClickNode,
           })}
-          onClick={expandOnClickNode ? undefined : handleExpandIconClick}
+          onClick={
+            expandOnClickNode ? (onlyExpandOnClickIcon ? handleExpandIconClick : undefined) : handleExpandIconClick
+          }
         >
           {renderIcon(switcherIcon || <Icon type="arrow-right-solid" />)}
         </span>
@@ -325,10 +333,12 @@ const TreeNode = React.forwardRef<unknown, TreeNodeProps>((props, ref) => {
   const handleClick = React.useCallback(
     (e: MouseEvent) => {
       e.stopPropagation()
-      expandOnClickNode && handleExpandIconClick()
+      if (expandOnClickNode) {
+        !onlyExpandOnClickIcon && handleExpandIconClick()
+      }
       handleSelect(e)
     },
-    [expandOnClickNode, handleExpandIconClick, handleSelect],
+    [expandOnClickNode, handleExpandIconClick, handleSelect, onlyExpandOnClickIcon],
   )
 
   const handleDragStart = React.useCallback(

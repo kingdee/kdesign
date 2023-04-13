@@ -68,6 +68,7 @@ export interface TreeProps {
   setTreeNodeStyle?: (node: any) => Map<string, string>
   estimatedItemSize?: number
   expandOnClickNode?: boolean
+  onlyExpandOnClickIcon?: boolean
 }
 
 export type TreeNodeData = {
@@ -139,6 +140,7 @@ const InternalTree = React.forwardRef((props: TreeProps, ref: any): React.Functi
     filterTreeNode,
     filterValue,
     expandOnClickNode,
+    onlyExpandOnClickIcon = false,
     loadData,
     notFoundContent,
   } = TreeProps
@@ -485,6 +487,7 @@ const InternalTree = React.forwardRef((props: TreeProps, ref: any): React.Functi
             item.dragOver = dragOverNodeKey === item.key && dropPosition === 0
             item.dropPosition = dropPosition
             item.expandOnClickNode = expandOnClickNode
+            item.onlyExpandOnClickIcon = onlyExpandOnClickIcon
             item.loading = loadingKeys.has(item.key) && !loadedKeys.has(item.key)
             item.loadData = loadData
             return <TreeNode {...item} key={item.key} ref={treeNodeRef} />
