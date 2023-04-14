@@ -1,5 +1,29 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Card render no child without errors 1`] = `
+<Card>
+  <div
+    className="kd-card"
+  >
+    <div
+      className="kd-card-body"
+    />
+  </div>
+</Card>
+`;
+
+exports[`Card render null or undefined without errors 1`] = `
+<Card>
+  <div
+    className="kd-card"
+  >
+    <div
+      className="kd-card-body"
+    />
+  </div>
+</Card>
+`;
+
 exports[`Card renders correctly 1`] = `
 <div
   class="kd-card"
