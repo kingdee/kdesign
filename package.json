@@ -184,7 +184,7 @@
     "omit.js": "^2.0.2",
     "optimize-css-assets-webpack-plugin": "^5.0.3",
     "post-loader": "^2.0.0",
-    "postcss": "^8.2.15",
+    "postcss": "8.4.21",
     "postcss-pxtorem": "^6.0.0",
     "prettier": "2.8.0",
     "react": "^16.13.0",
