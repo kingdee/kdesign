@@ -4,6 +4,12 @@ title: 更新日志
 hiddenAnchor: true
 ---
 
+## [1.7.4](https://github.com/kdcloudone/kdesign/compare/v1.7.3...v1.7.4)
+`2023-04-21`
+* table
+  * 修复筛选条件等于\&不等于不生效的问题 fix [#310](https://github.com/kdcloudone/kdesign/issues/310)
+* 修复由于postcss升级导致的ts报错
+
 ## [1.7.3](https://github.com/kdcloudone/kdesign/compare/v1.7.2...v1.7.3)
 `2023-04-13`
 * select
