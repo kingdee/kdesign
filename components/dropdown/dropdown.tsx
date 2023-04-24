@@ -70,7 +70,9 @@ const Dropdown = React.forwardRef<unknown, DropDownProps>((props, ref) => {
   )
 
   React.useEffect(() => {
-    setSelectedKey(props.selectedKey)
+    if (typeof props.selectedKey !== 'undefined') {
+      setSelectedKey(props.selectedKey)
+    }
   }, [props.selectedKey])
 
   const menuSelectable = menu.props?.selectable === undefined ? selectable : menu.props?.selectable

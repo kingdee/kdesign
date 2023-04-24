@@ -7,22 +7,24 @@ import mountTest from '../../../tests/shared/mountTest'
 
 const menu = (
   <Menu>
-    <Item>
+    <Item key="1">
       <a target="_blank" rel="noopener noreferrer" href="https://www.kingdee.com/">
         菜单1
       </a>
     </Item>
-    <Item>
+    <Item key="2">
       <a target="_blank" rel="noopener noreferrer" href="https://www.kdcloud.com/">
         菜单2
       </a>
     </Item>
-    <Item>
+    <Item key="3">
       <a target="_blank" rel="noopener noreferrer" href="https://www.yunzhijia.com/">
         菜单3
       </a>
     </Item>
-    <Item danger>a danger item</Item>
+    <Item danger key="4">
+      a danger item
+    </Item>
   </Menu>
 )
 
@@ -274,5 +276,93 @@ describe('Dropdown', () => {
     )
     wrapper.find('.kd-dropdown-menu').find('.kd-dropdown-menu-item').at(0).simulate('click')
     expect(wrapper.find('.kd-dropdown-menu').find('.kd-dropdown-menu-item').at(0)).toHaveClassName('selected')
+  })
+
+  it('should props defaultKey can select key', () => {
+    const wrapper = mount(
+      <div ref={wrapperRef}>
+        <Dropdown arrow visible menu={menu} getPopupContainer={() => wrapperRef.current} selectable defaultKey="2">
+          <span />
+        </Dropdown>
+      </div>,
+    )
+    expect(wrapper.find('.kd-dropdown-menu').find('.kd-dropdown-menu-item').at(1)).toHaveClassName('selected')
+  })
+
+  it('should props selectedKey can select key', () => {
+    const wrapper = mount(
+      <div ref={wrapperRef}>
+        <Dropdown arrow visible menu={menu} getPopupContainer={() => wrapperRef.current} selectable selectedKey="2">
+          <span />
+        </Dropdown>
+      </div>,
+    )
+    expect(wrapper.find('.kd-dropdown-menu').find('.kd-dropdown-menu-item').at(1)).toHaveClassName('selected')
+  })
+
+  it('should select selectedKey when both selectedKey and defaultKey exist', () => {
+    const wrapper = mount(
+      <div ref={wrapperRef}>
+        <Dropdown
+          arrow
+          visible
+          menu={menu}
+          getPopupContainer={() => wrapperRef.current}
+          selectable
+          selectedKey="2"
+          defaultKey="1"
+        >
+          <span />
+        </Dropdown>
+      </div>,
+    )
+    expect(wrapper.find('.kd-dropdown-menu').find('.kd-dropdown-menu-item').at(1)).toHaveClassName('selected')
+  })
+
+  it('should onItemClick change selectKey when click the dropdown MenuItem', () => {
+    const onItemClick = jest.fn((...rest) => {
+      rest.map((item) => {
+        expect(item).toEqual('2')
+      })
+    })
+    const wrapper = mount(
+      <div ref={wrapperRef}>
+        <Dropdown
+          arrow
+          visible
+          menu={menu}
+          getPopupContainer={() => wrapperRef.current}
+          selectable
+          onItemClick={onItemClick}
+        >
+          <span />
+        </Dropdown>
+      </div>,
+    )
+    wrapper.find('.kd-dropdown-menu').find('.kd-dropdown-menu-item').at(1).simulate('click')
+  })
+  it('should onClick change selectKey when click the dropdown MenuItem', () => {
+    const onClick = jest.fn((...rest) => {
+      rest.map((item) => {
+        expect(item).toEqual('1')
+      })
+    })
+    const clickMenu = (
+      <Menu onClick={onClick}>
+        <Item key="1">
+          <a target="_blank" rel="noopener noreferrer" href="https://www.kingdee.com/">
+            菜单1
+          </a>
+        </Item>
+      </Menu>
+    )
+    const wrapper = mount(
+      <div ref={wrapperRef}>
+        <Dropdown arrow visible menu={clickMenu} getPopupContainer={() => wrapperRef.current} selectable>
+          <span />
+        </Dropdown>
+      </div>,
+    )
+    wrapper.find('.kd-dropdown-menu').find('.kd-dropdown-menu-item').at(0).simulate('click')
   })
 })
