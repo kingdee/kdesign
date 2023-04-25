@@ -1,0 +1,89 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Carousel render no child without errors 1`] = `
+<Carousel>
+  <div
+    className="kd-carousel-root"
+    onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
+    onTransitionEnd={[Function]}
+  />
+</Carousel>
+`;
+
+exports[`Carousel render null or undefined without errors 1`] = `
+<Carousel>
+  <div
+    className="kd-carousel-root"
+    onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
+    onTransitionEnd={[Function]}
+  >
+    <ForwardRef
+      items={
+        Array [
+          null,
+          undefined,
+        ]
+      }
+      parentPrefixCls="kd-carousel"
+    >
+      <ul
+        className="kd-carousel-list kd-carousel-list-slide"
+      >
+        <li
+          className="kd-carousel-list-item"
+          key="0"
+        />
+        <li
+          className="kd-carousel-list-item"
+          key="1"
+        />
+        <li
+          className="kd-carousel-list-item"
+          key="2"
+        />
+        <li
+          className="kd-carousel-list-item"
+          key="3"
+        />
+      </ul>
+    </ForwardRef>
+    <Component
+      currentIndex={0}
+      dotPosition="bottom"
+      dotsClassName={true}
+      number={2}
+      onClick={[Function]}
+      parentPrefixCls="kd-carousel"
+    >
+      <ul
+        className="kd-carousel-slidebar kd-carousel-slidebar-bottom"
+      >
+        <li
+          className="kd-carousel-slidebar-dot kd-carousel-slidebar-dot-active"
+          key="0"
+        >
+          <button
+            onClick={[Function]}
+          />
+        </li>
+        <li
+          className="kd-carousel-slidebar-dot"
+          key="1"
+        >
+          <button
+            onClick={[Function]}
+          />
+        </li>
+      </ul>
+    </Component>
+  </div>
+</Carousel>
+`;
+
+exports[`Carousel renders correctly 1`] = `
+<div
+  class="kd-carousel-root"
+/>
+`;
