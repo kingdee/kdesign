@@ -9,6 +9,7 @@ import Menus from './Menus'
 import './index.less'
 import logo from './../../../static/image/logo.svg'
 import Search from './../../../static/image/top_search.png'
+import Login from './login'
 // import Version from './version'
 
 const appIdQS = 'J5MHBTB51H'
@@ -73,6 +74,7 @@ const Header = (props: NavProps) => {
           <div className="header-search-m" onClick={showModal}>
             <img src={Search} style={{ width: '20px' }} />
           </div>
+          <Login></Login>
         </div>
         <div className="header-wapper" style={width}>
           <Menus hiddenInPc={false} />
@@ -97,6 +99,7 @@ const Header = (props: NavProps) => {
               </a>
             </div>
           </div>
+          <Login></Login>
         </div>
       </>
     )
