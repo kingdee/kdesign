@@ -15,7 +15,15 @@ function Demo() {
     console.log('color', inputValue)
   }
 
-  return <ColorPicker onChange={onChange} showColorPickerBox={true} />
+  return (
+    <>
+      <ColorPicker onChange={onChange} showColorPickerBox={{ showBox: true, showHue: true, showOpacity: true }} />
+      <br />
+      <ColorPicker onChange={onChange} showColorPickerBox={{ showBox: false, showHue: true, showOpacity: true }} />
+      <br />
+      <ColorPicker onChange={onChange} showColorPickerBox={{ showBox: true, showHue: false, showOpacity: false }} />
+    </>
+  )
 }
 
 ReactDOM.render(<Demo />, mountNode)

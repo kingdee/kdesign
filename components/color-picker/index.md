@@ -28,7 +28,7 @@ subtitle: 颜色选择器
 | showSwitch | 是否展示跟随功能色开关，**注意：设置了功能色才能显示跟随功能色开关** | boolean | false | 1.7.0 |
 | showColorTransfer | 是否展示颜色格式转换下拉框及透明度输入框 | boolean | true | 1.7.0 |  |
 | showPresetColor | 是否展示预设颜色 | boolean | true | 1.7.0 |
-| showColorPickerBox | 是否展示拾色容器 | boolean | false | 1.7.0 |
+| showColorPickerBox | 是否展示拾色容器 | { showBox?: boolean; showHue?: boolean; showOpacity?: boolean } | { showBox: false, showHue: false, showOpacity: false } | 1.7.0 |
 | suffixIcon | color-picker 输入框右侧图标(其中 color 为 RGB 格式的字符串，可以同步颜色选择面板的透明度) | (rgbColor: string) => React.ReactNode | - | 1.7.0 |
 | value | 设置输入框的值，可以是十六进制、RGB 、HSB 、HSL 或者颜色英文名称 | string | - | 1.7.0 |
 | onChange | 输入框颜色值发生变化时触发的回调函数 | (inputValue: string, colorObj:{type: `HEX` \| `HSB` \| `RGB` \| `HSL`, value: string}) => void | - | 1.7.0 |
