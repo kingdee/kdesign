@@ -190,10 +190,18 @@ describe('ColorPicker', () => {
     expect(defaultOpenWrapper.exists('.kd-color-picker-panel-transparent')).toBeTruthy()
 
     // showColorPickerBox
-    expect(defaultOpenWrapper.exists('.kd-color-picker-panel-chrome')).toBeFalsy()
-    defaultOpenWrapper.setProps({ showColorPickerBox: true })
+    expect(
+      defaultOpenWrapper.exists(
+        '.kd-color-picker-panel-chrome-no-box.kd-color-picker-panel-chrome-no-hue.kd-color-picker-panel-chrome-no-opacity',
+      ),
+    ).toBeTruthy()
+    defaultOpenWrapper.setProps({ showColorPickerBox: { showBox: true, showHue: true, showOpacity: true } })
     defaultOpenWrapper.update()
-    expect(defaultOpenWrapper.exists('.kd-color-picker-panel-chrome')).toBeTruthy()
+    expect(
+      defaultOpenWrapper.exists(
+        '.kd-color-picker-panel-chrome-no-box.kd-color-picker-panel-chrome-no-hue.kd-color-picker-panel-chrome-no-opacity',
+      ),
+    ).toBeFalsy()
 
     // getPopupContainer
     const wrapperRef = React.createRef() as any

@@ -65,6 +65,7 @@ const compDefaultProps = {
     placeholder: '#',
     showColorTransfer: true,
     showPresetColor: true,
+    showColorPickerBox: { showBox: false, showHue: false, showOpacity: false },
   },
   Checkbox: {
     defaultChecked: false,
