@@ -140,6 +140,7 @@ export const useExpand = (
     defaultExpandedKeys,
     defaultExpandRoot,
     defaultExpandParent,
+    scrollKey,
   ])
 
   return [expandedKeys, setExpandedKeys] as const
