@@ -72,7 +72,7 @@ const Login = () => {
           .then((res) => {
             const { token } = res.data.data
             // 设置cookie时效
-            Cookies.set('token', token, { expires: 7 })
+            Cookies.set('token', token, { expires: 7, domain: '.kingdee.design' })
             loginMethods(token)
             if (state) {
               window.location = (window.location.origin + decodeURIComponent(state.split('=')[1])) as any
