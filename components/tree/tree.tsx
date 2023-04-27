@@ -69,6 +69,7 @@ export interface TreeProps {
   estimatedItemSize?: number
   expandOnClickNode?: boolean
   onlyExpandOnClickIcon?: boolean
+  showIcon?: boolean
 }
 
 export type TreeNodeData = {
