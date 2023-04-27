@@ -302,6 +302,7 @@ const Field: React.FC<FormItemProps> = (props) => {
             {
               ...generateEventHandler(handleValueValidate, validateTrigger),
               key: index,
+              status: typeof validateMessage !== 'undefined' ? 'error' : undefined,
               id: customizeHtmlFor ? undefined : htmlFor,
             },
             child,
