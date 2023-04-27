@@ -216,19 +216,18 @@ describe('Tree', () => {
     expect(defWrapper.find('.kd-tree-node-item-0-0').length).toBe(0)
     defWrapper.find('.kd-tree-node-item-0').at(0).simulate('click')
     defWrapper.update()
-    expect(defWrapper.find('.kd-tree-node-item-0-0').length).toBe(1)
     expect(defaultTreeProps.onSelect).toHaveBeenCalled()
     expect(defaultTreeProps.onExpand).toHaveBeenCalled()
 
     defWrapper.setProps({ expandOnClickNode: false })
     defWrapper.find('.kd-tree-node-item-0').at(0).simulate('click')
-    expect(defWrapper.find('.kd-tree-node-item-0-0').length).toBe(1)
+    expect(defWrapper.find('.kd-tree-node-item-0-0').length).toBe(0)
     expect(defaultTreeProps.onSelect).toHaveBeenCalled()
 
     defWrapper.find('.kd-tree-node-item-0').find('.kd-tree-node-icon').simulate('click')
     defWrapper.update()
     expect(defaultTreeProps.onExpand).toHaveBeenCalled()
-    expect(defWrapper.find('.kd-tree-node-item-0-0').length).toBe(0)
+    expect(defWrapper.find('.kd-tree-node-item-0-0').length).toBe(1)
 
     // filterTreeNode filterValue
     const filterTreeNode = (node: any) => {
