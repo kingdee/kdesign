@@ -78,8 +78,8 @@ const InternalInput = (props: InputProps, ref: unknown): FunctionComponentElemen
       [`${inputPrefixCls}-size-${size}`]: size,
       [`${inputPrefixCls}-borderless`]: borderType === 'none',
       [`${inputPrefixCls}-underline`]: borderType === 'underline',
-      [`${inputPrefixCls}-disabled`]: disabled,
       [`${inputPrefixCls}-error`]: status === 'error',
+      [`${inputPrefixCls}-disabled`]: disabled,
     },
     { [className!]: className && !hasPrefixSuffix(inputProps) && !addonBefore && !addonAfter },
   )

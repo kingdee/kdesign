@@ -1,9 +1,11 @@
+@import '../../style/themes/index';
 @import './token.less';
+@input-prefix-cls: ~'@{kd-prefix}-input';
 
 // 输入框默认样式Mixins
 .input(@prefix) {
   @disabled-prefix-cls: ~'@{prefix}-disabled';
-  @error-prefix-cls: ~'@{prefix}-error';
+  @error-prefix-cls: ~'@{input-prefix-cls}-error';
   width: 100%;
   min-width: 0;
   border: @input-border-width-inner solid @input-border-color-disabled-inner;
