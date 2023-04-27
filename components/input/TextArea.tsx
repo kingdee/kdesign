@@ -173,10 +173,10 @@ const InternalTextarea = (props: textAreaProps, ref: unknown): FunctionComponent
             [`${prefixCls}-size-${size}`]: size,
             [`${prefixCls}-borderless`]: borderType === 'none',
             [`${prefixCls}-underline`]: borderType === 'underline',
-            [`${prefixCls}-disabled`]: disabled,
             [`${prefixCls}-no-resize`]: canResize !== true,
             [`${prefixCls}-allowClear-spacing`]: !!allowClear,
             [`${prefixCls}-error`]: status === 'error',
+            [`${prefixCls}-disabled`]: disabled,
           },
           { [className!]: className && !allowClear && !hadCount },
         )}
