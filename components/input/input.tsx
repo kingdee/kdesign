@@ -36,6 +36,7 @@ export interface InputProps extends Omit<React.InputHTMLAttributes<HTMLInputElem
   value?: any
   readonly?: 'readonly'
   count?: boolean
+  status?: 'error'
 }
 const InternalInput = (props: InputProps, ref: unknown): FunctionComponentElement<InputProps> => {
   const { getPrefixCls, prefixCls, compDefaultProps: userDefaultProps } = useContext(ConfigContext)
@@ -56,6 +57,7 @@ const InternalInput = (props: InputProps, ref: unknown): FunctionComponentElemen
     className,
     maxLength,
     count,
+    status,
     ...others
   } = inputProps
   devWarning(InputSiteTypes.indexOf(size) === -1, 'input', `cannot found input size '${size}'`)
@@ -77,6 +79,7 @@ const InternalInput = (props: InputProps, ref: unknown): FunctionComponentElemen
       [`${inputPrefixCls}-borderless`]: borderType === 'none',
       [`${inputPrefixCls}-underline`]: borderType === 'underline',
       [`${inputPrefixCls}-disabled`]: disabled,
+      [`${inputPrefixCls}-error`]: status === 'error',
     },
     { [className!]: className && !hasPrefixSuffix(inputProps) && !addonBefore && !addonAfter },
   )

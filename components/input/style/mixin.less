@@ -3,6 +3,7 @@
 // 输入框默认样式Mixins
 .input(@prefix) {
   @disabled-prefix-cls: ~'@{prefix}-disabled';
+  @error-prefix-cls: ~'@{prefix}-error';
   width: 100%;
   min-width: 0;
   border: @input-border-width-inner solid @input-border-color-disabled-inner;
@@ -29,10 +30,10 @@
     box-shadow: none;
     outline: none;
   }
-  &:not(.@{disabled-prefix-cls}):hover {
+  &:not(.@{disabled-prefix-cls}):not(.@{error-prefix-cls}):hover {
     border-color: @input-border-color-focused;
   }
-  &:not(.@{disabled-prefix-cls}):focus {
+  &:not(.@{disabled-prefix-cls}):not(.@{error-prefix-cls}):focus {
     color: @input-focus-color;
     border-color: @input-border-color-focused;
   }
