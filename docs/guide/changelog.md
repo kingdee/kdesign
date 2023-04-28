@@ -4,6 +4,32 @@ title: 更新日志
 hiddenAnchor: true
 ---
 
+## [1.7.6](https://github.com/kdcloudone/kdesign/compare/v1.7.5...v1.7.6)
+`2023-04-28`
+* input
+  * 修复校验状态样式
+  * 添加校验状态
+* form
+  * 传递校验属性 fix [#330](https://github.com/kdcloudone/kdesign/issues/330)
+* 修改登录功能cookie中的domin
+
+## [1.7.5](https://github.com/kdcloudone/kdesign/compare/v1.7.4...v1.7.5)
+`2023-04-27`
+* card
+  * 更新卡片单测
+* carousel
+  * 更新走马灯单测
+* color-picker
+  * 更新颜色选择器单测
+  * 透明度可配置隐藏 [#329](https://github.com/kdcloudone/kdesign/issues/329)
+* dropdown
+  * Dropdown defaultKey 不生效[#326](https://github.com/kdcloudone/kdesign/issues/326)
+* tree
+  * 更新树组件单测
+  * 修复单测报错
+  * 修复重新设置scrollToKey父节点不展开问题 fix [#334](https://github.com/kdcloudone/kdesign/issues/334)
+* 新增登录登出功能
+
 ## [1.7.4](https://github.com/kdcloudone/kdesign/compare/v1.7.3...v1.7.4)
 `2023-04-21`
 * table
