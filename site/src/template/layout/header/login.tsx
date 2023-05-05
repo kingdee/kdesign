@@ -37,7 +37,7 @@ const Login = () => {
   const handleLoginClick = async () => {
     if (!Cookies.get('token')) {
       delInfo()
-      location.href = tempAddress + `/login?state=${window.location}`
+      location.href = tempAddress + `/login?state=${window.location.href}`
     } else {
       loginMethods(Cookies.get('token'))
     }
@@ -75,7 +75,7 @@ const Login = () => {
             Cookies.set('token', token, { expires: 7, domain: '.kingdee.design' })
             loginMethods(token)
             if (state) {
-              window.location = (window.location.origin + decodeURIComponent(state.split('=')[1])) as any
+              window.location = decodeURIComponent(state.split('=')[1]) as any
             }
           })
           .catch(() => {
