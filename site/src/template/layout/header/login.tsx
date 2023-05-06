@@ -8,13 +8,7 @@ const Login = () => {
   const avatarRef = useRef<HTMLDivElement>(null)
 
   const delInfo = () => {
-    sessionStorage.removeItem('downloadIconInfo')
-    sessionStorage.removeItem('staticIconResources')
-    sessionStorage.removeItem('iconPageState')
-    sessionStorage.removeItem('downloadIlluInfo')
-    sessionStorage.removeItem('staticIlluResources')
-    sessionStorage.removeItem('illuPageState')
-    Cookies.remove('token')
+    Cookies.remove('token', { domain: '.kingdee.design' })
     setAvatar('')
   }
 
@@ -27,7 +21,7 @@ const Login = () => {
     if (data.data && Object.keys(data.data).length > 0) {
       setAvatar(data.data.avatar)
     } else {
-      Cookies.remove('token')
+      Cookies.remove('token', { domain: '.kingdee.design' })
     }
   }
   const logoutMethods = () => {
@@ -47,41 +41,10 @@ const Login = () => {
     logoutMethods()
   }
 
-  document.addEventListener('click', () => {
-    sessionStorage.getItem('iconPageState') && sessionStorage.removeItem('iconPageState')
-    sessionStorage.getItem('illuPageState') && sessionStorage.removeItem('illuPageState')
-  })
-
   useEffect(() => {
     // 登录验证
-    const searchArr = window.location.hash.replace(/\S*\?/, '').split('&')
-    const code = searchArr.find((item: string | string[]) => {
-      return item.indexOf('code') === 0
-    })
-    const state = searchArr.find((item: string | string[]) => {
-      return item.indexOf('state') === 0
-    })
     if (Cookies.get('token')) {
       loginMethods(Cookies.get('token'))
-    } else {
-      if (code) {
-        const params = new URLSearchParams()
-        params.append('code', code.split('=')[1])
-        request
-          .post('/authCode', params)
-          .then((res) => {
-            const { token } = res.data.data
-            // 设置cookie时效
-            Cookies.set('token', token, { expires: 7, domain: '.kingdee.design' })
-            loginMethods(token)
-            if (state) {
-              window.location = decodeURIComponent(state.split('=')[1]) as any
-            }
-          })
-          .catch(() => {
-            delInfo()
-          })
-      }
     }
   }, [])
 
