@@ -88,6 +88,7 @@ const InternalTreeSelect: React.ForwardRefRenderFunction<ITreeSelectProps<TreeSe
     onTreeExpand,
     onSelect,
     onCheck,
+    dropdownRender,
   } = treeSelectProps
   const isMultiple = mode === 'multiple' // 是否多选
   const [initValue, setInitValue] = useMergedState(isMultiple ? [] : undefined, {
@@ -251,7 +252,6 @@ const InternalTreeSelect: React.ForwardRefRenderFunction<ITreeSelectProps<TreeSe
 
   const handleCheck = (keys: string[], state: any) => {
     onCheck?.(keys, state)
-    console.log(1111, state)
     onChange?.(keys)
     !Object.hasOwnProperty.call(treeSelectProps, 'value') && setInitValue(keys)
   }
@@ -352,8 +352,7 @@ const InternalTreeSelect: React.ForwardRefRenderFunction<ITreeSelectProps<TreeSe
       <>
         {
           <div className={dropDownCls} style={dropDownStyle} ref={dropDownRef}>
-            {dropRender()}
-            {/* 拓展菜单 */}
+            {dropdownRender ? dropdownRender?.(dropRender()) : dropRender()}
           </div>
         }
       </>
