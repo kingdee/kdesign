@@ -144,10 +144,10 @@
 
     .@{pagination-selector-prefix-cls}-size {
       box-sizing: border-box;
-      display: inline-block;
+      display: inline-flex;
+      align-items: center;
       padding: 0;
       line-height: @pagination-size;
-      font-size: @pagination-font-size;
       color: @color-text-primary;
       border-radius: @radius-border;
       background: @color-background;
@@ -586,8 +586,13 @@
           right: 5px;
           line-height: calc(@pagination-size - 2px);
           font-size: @pagination-icon-size;
-          color: @pagination-hover-color;
           transform: translateY(-50%);
+        }
+
+        &:hover {
+          i {
+            color: @pagination-hover-color;
+          }
         }
 
         &.@{pagination-prefix-cls}-options-dropdown-open {
