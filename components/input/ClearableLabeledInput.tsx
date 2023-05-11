@@ -87,10 +87,9 @@ const ClearableInput: React.FC<ClearableInputProps> = (props) => {
   }
 
   const renderSuffix = () => {
-    if (suffix || (!disabled && !!allowClear) || inputCount) {
+    if (suffix || inputCount) {
       return (
         <span className={`${prefixCls}-suffix`} onMouseDown={mouseDownHandle}>
-          {renderClearIcon()}
           {inputCount && <span style={{ marginRight: suffix ? 9 : 0 }}>{inputCount}</span>}
           {suffix}
         </span>
@@ -130,6 +129,7 @@ const ClearableInput: React.FC<ClearableInputProps> = (props) => {
       >
         {prefixNode}
         {React.cloneElement(originElement, { style: null })}
+        {renderClearIcon()}
         {suffixNode}
       </span>
     )

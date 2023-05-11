@@ -157,9 +157,12 @@ textarea {
     }
 
     &-disabled {
-      background-color: @input-background-color-disabled-inner;
       border-color: @input-border-color-disabled-inner;
       cursor: not-allowed;
+
+      &:not(.@{input-prefix-cls}-wrapper-underline) {
+        background-color: @input-background-color-disabled-inner;
+      }
 
       .@{input-prefix-cls}-suffix,
       .@{input-prefix-cls}-prefix {
@@ -192,6 +195,7 @@ textarea {
 
   &-clear-icon-hidden {
     visibility: hidden;
+    display: none;
   }
 
   &-clear-icon-rightSpace {
