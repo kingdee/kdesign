@@ -10,7 +10,7 @@ subtitle: 树选择器
 ## API
 
 | 属性 | 说明 | 类型 | 默认值 | 版本 |
-| --- | --- | --- | --- | --- |
+| --- | --- | --- | --- | --- | --- |
 | allowClear | 支持清除 | boolean | false | 1.7.0 |
 | autoFocus | 默认获取焦点 | boolean | false | 1.7.0 |
 | borderType | 边框类型 | `underline` `bordered` `none` | `underline` | 1.7.0 |
@@ -19,6 +19,7 @@ subtitle: 树选择器
 | defaultValue | 指定默认选中的条目 | string \| string\[]<br />number \| number\[] | - | 1.7.0 |
 | disabled | 是否禁用 | boolean | false | 1.7.0 |
 | dropdownClassName | 下拉菜单的 className 属性 | string | - | 1.7.0 |
+| dropdownRender | 自定义下拉框内容 | (originNode: ReactNode) => ReactNode | - | 1.7.9 |
 | dropdownStyle | 下拉菜单的 style 属性 | CSSProperties | - | 1.7.0 |
 | filterTreeNode | 根据输入项进行筛选，默认用 treeNodeFilterProp 的值作为要筛选的 TreeNode 的属性值 | function(treeNode: TreeNode, inputValue: string) (函数需要返回 bool 值) | - | 1.7.0 |
 | getPopupContainer | 菜单渲染父节点。默认渲染到 body 上，如果你遇到菜单滚动定位问题，试试修改为滚动的区域，并相对其定位。[示例](https://codesandbox.io/s/4j168r7jw0) | function(triggerNode) | () => document.body | 1.7.0 |
@@ -57,7 +58,7 @@ subtitle: 树选择器
 
 ## Design Token
 
-| 分类 | 组件token | 全局token | 默认值 |
+| 分类 | 组件 token | 全局 token | 默认值 |
 | --- | --- | --- | --- |
 | color | --kd-c-tree-select-dropdown-color-background | --kd-g-color-background | #fff |
 |  | --kd-c-tree-select-item-color-background-disabled | - | #fff |
