@@ -4,6 +4,31 @@ title: 更新日志
 hiddenAnchor: true
 ---
 
+## [1.7.9](https://github.com/kdcloudone/kdesign/compare/v1.7.8...v1.7.9)
+`2023-05-12`
+* input
+  * allowClear占位问题 fix [#348](https://github.com/kdcloudone/kdesign/issues/348)
+* dropdown
+  * 新增dropdownRender属性 fix [#343](https://github.com/kdcloudone/kdesign/issues/343)
+* select
+  * 新增dropdownRender属性 fix [#343](https://github.com/kdcloudone/kdesign/issues/343)
+* tree
+  * 新增dropdownRender属性 fix [#343](https://github.com/kdcloudone/kdesign/issues/343)
+* tree-select
+  * 新增dropdownRender属性 fix [#343](https://github.com/kdcloudone/kdesign/issues/343)
+* 修改从组件库登录成功后停留在首页的bug
+* 修改组件库登录功能
+
+## [1.7.8](https://github.com/kdcloudone/kdesign/compare/v1.7.7...v1.7.8)
+`2023-05-08`
+* table
+  * 修复新增自适应宽度特性导致的报错
+
+## [1.7.7](https://github.com/kdcloudone/kdesign/compare/v1.7.6...v1.7.7)
+`2023-05-06`
+* table
+  * 新增列宽自适应功能 fix [#249](https://github.com/kdcloudone/kdesign/issues/249)
+
 ## [1.7.6](https://github.com/kdcloudone/kdesign/compare/v1.7.5...v1.7.6)
 `2023-04-28`
 * input
