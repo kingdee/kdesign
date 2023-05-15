@@ -1,17 +1,14 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import ConfigContext from '../config-provider/ConfigContext'
 import { getCompProps } from '../_utils'
 import classNames from 'classnames'
 import { tuple } from '../_utils/type'
 import { PanelProps } from './panel'
-import isArray from 'lodash/isArray'
-import isBoolean from 'lodash/isBoolean'
 import devwarning from '../_utils/devwarning'
 export const IconPositionTypes = tuple('left', 'right')
 export type IconPositionType = typeof IconPositionTypes[number]
-export type keyType = string[] | string | number[] | number | NONE_KEY_TYPE
-export type NONE_KEY_TYPE = undefined
-const NONE_KEY = undefined
+export type PanelKeyType = string | number
+export type keyType = string[] | string | number[] | number | undefined
 export interface CollapseProps {
   accordion?: boolean // 是否手风琴模式
   activeKey?: keyType // 当前激活 tab 面板的 key
@@ -41,80 +38,51 @@ const InternalCollapse = React.forwardRef<unknown, CollapseProps>((props, ref) =
   } = getCompProps('Collapse', userDefaultProps, props)
   const CollapsePrefixCls = getPrefixCls!(prefixCls, 'collapse', customPrefixcls) // 样式前缀
 
-  const getDefaultActivePanelKey = () => {
-    // const _defaultActiveKey =
-    //   defaultActiveKey !== NONE_KEY
-    //     ? defaultActiveKey
-    //     : React.Children.map(children, (item, index) => {
-    //         if (index === 0) return item.props?.panelKey
-    //       })
-    // return isBoolean(activeKey) ? activeKey : _defaultActiveKey
-    return isBoolean(activeKey) ? activeKey : defaultActiveKey
+  const [innerKey, setInnerKey] = useState<PanelKeyType[]>([])
+  const convertActiveKey = (newKey: keyType) => {
+    let ret: PanelKeyType[] = []
+    if (Array.isArray(newKey)) {
+      ret = newKey
+    } else if (typeof newKey === 'string' || typeof newKey === 'number') {
+      ret = [newKey]
+    }
+    if (accordion && ret.length) {
+      ret = [ret[0]]
+    }
+    return ret
   }
+  useEffect(() => {
+    if (typeof activeKey !== 'undefined') {
+      setInnerKey(convertActiveKey(activeKey))
+    }
+  }, [activeKey])
+  useEffect(() => {
+    if (typeof activeKey !== 'undefined' || typeof defaultActiveKey !== 'undefined') {
+      setInnerKey(convertActiveKey(typeof activeKey !== 'undefined' ? activeKey : defaultActiveKey))
+    }
+  }, [])
 
-  const [activePanelKey, setActivePanelKey] = React.useState(getDefaultActivePanelKey())
-
-  const getPanelExpand = (panelKey: any, accordion: boolean, activeKey: number): boolean => {
-    const _activeKey = getActiveKey(accordion, activeKey)
-    return isInclude(_activeKey, panelKey)
-  }
-
-  const getActiveKey = (accordion: boolean, activeKey: number): number | string => {
-    let _activeKey = activeKey
+  const onPanelChange = (key: PanelKeyType) => {
+    let newKey: PanelKeyType[] = []
     if (accordion) {
-      if (isArray(activeKey)) {
-        _activeKey = activeKey[0] // accordion 模式下默认第一个元素
+      if (innerKey.includes(key)) {
+        newKey = []
+      } else {
+        newKey = [key]
       }
-    }
-    return _activeKey
-  }
-
-  const isInclude = (activePanelKey: keyType, key: keyType): boolean => {
-    if (isArray(activePanelKey)) {
-      return activePanelKey.includes(key as never) || activePanelKey.includes(String(key) as never)
     } else {
-      return String(activePanelKey) === String(key)
-    }
-  }
-
-  const getRemoveKey = (key: keyType): keyType => {
-    if (isArray(activePanelKey)) {
-      return activePanelKey.filter((element) => {
-        return element !== key
-      })
-    }
-    return NONE_KEY
-  }
-
-  const getAddKey = (key: keyType): keyType => {
-    if (isArray(activePanelKey)) {
-      return [...activePanelKey, key]
-    }
-    return activePanelKey ? [activePanelKey, key] : key
-  }
-
-  const getNewActiveKey = (key: keyType): keyType => {
-    if (isInclude(activePanelKey, key)) {
-      if (accordion) {
-        return NONE_KEY
+      if (innerKey.includes(key)) {
+        newKey = innerKey.filter((d) => d !== key)
+      } else {
+        newKey = [...innerKey, key]
       }
-      return getRemoveKey(key)
-    } else {
-      if (accordion) {
-        return key
-      }
-      return getAddKey(key)
     }
-  }
 
-  const onPanelChange = React.useCallback(
-    (key: keyType | NONE_KEY_TYPE) => {
-      key = getNewActiveKey(key)
-      setActivePanelKey(key)
-      onChange && onChange()
-    },
-    [onChange, activePanelKey, accordion],
-  )
+    if (typeof activeKey === 'undefined') {
+      setInnerKey(newKey)
+    }
+    onChange && onChange(newKey)
+  }
 
   const renderPanel = () => {
     return React.Children.map(children, (item: any) => {
@@ -122,15 +90,13 @@ const InternalCollapse = React.forwardRef<unknown, CollapseProps>((props, ref) =
         devwarning(true, 'Collapse', 'children必须为Collapse.Panel')
         return item
       }
-      const expand = getPanelExpand(item.props?.panelKey, accordion, activePanelKey)
-      const defaultExpand = getPanelExpand(item.props?.panelKey, accordion, defaultActiveKey)
+
       return React.cloneElement(item, {
         expandIcon,
         expandIconPosition,
         onChange: onPanelChange,
         bordered,
-        expand,
-        defaultExpand,
+        innerKey,
         ...item.props,
       })
     })
