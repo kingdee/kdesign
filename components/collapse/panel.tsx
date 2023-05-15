@@ -1,10 +1,9 @@
-import React, { useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import classNames from 'classnames'
 import ConfigContext from '../config-provider/ConfigContext'
 import { getCompProps } from '../_utils'
 import Icon from '../icon'
-import { IconPositionType, keyType } from './collapse'
-import isBoolean from 'lodash/isBoolean'
+import { IconPositionType, PanelKeyType } from './collapse'
 
 export interface PanelProps {
   disabled?: boolean
@@ -12,13 +11,13 @@ export interface PanelProps {
   expandIcon?: React.ReactNode | ((props: PanelProps) => React.ReactNode) // 自定义切换图标
   bordered?: boolean // 是否边框风格折叠面板
   expandIconPosition?: IconPositionType // 设置切换图标位置
-  onChange?: (key: keyType) => void // 切换面板时的回调
+  onChange?: (key: PanelKeyType) => void // 切换面板时的回调
   extra?: React.ReactNode | ((props: PanelProps) => React.ReactNode)
   assist?: React.ReactNode | ((props: PanelProps) => React.ReactNode)
   expand?: boolean
   defaultExpand?: boolean
   children?: React.ReactNode
-  panelKey?: any
+  panelKey?: PanelKeyType
   style?: React.CSSProperties
   className?: string
 }
@@ -31,8 +30,7 @@ const Panel = React.forwardRef<unknown, PanelProps>((props, ref) => {
     header,
     onChange,
     panelKey,
-    defaultExpand,
-    expand,
+    innerKey,
     bordered,
     expandIcon,
     expandIconPosition,
@@ -48,20 +46,25 @@ const Panel = React.forwardRef<unknown, PanelProps>((props, ref) => {
   const setHeightTimerRef = useRef<any>(null)
   const setAutoHeightTimerRef = useRef<any>(null)
   const [expandAnimation, setExpandAnimation] = useState<any>(null)
-  const getExpand = () => {
-    return isBoolean(expand) ? expand : defaultExpand
-  }
+  const [expand, setExpand] = useState<boolean>(false)
+
+  useEffect(() => {
+    const newValue = innerKey.includes(panelKey)
+    if (newValue !== expand) {
+      setExpand(newValue)
+      setExpandAnimation(true)
+    }
+  }, [innerKey])
 
   const handleClick = () => {
     if (disabled) return
-    setExpandAnimation(true)
     onChange && onChange(panelKey)
   }
   const renderIcon = () => {
     const iconClassName = classNames({
       [`${panelPrefixCls}-icon`]: true,
-      [`${panelPrefixCls}-animation-expand`]: !getExpand(),
-      [`${panelPrefixCls}-animation-collapse`]: getExpand(),
+      [`${panelPrefixCls}-animation-expand`]: !expand,
+      [`${panelPrefixCls}-animation-collapse`]: expand,
       [`${panelPrefixCls}-disabled`]: disabled,
     })
     return (
