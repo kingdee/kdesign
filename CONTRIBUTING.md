@@ -22,7 +22,7 @@ KDesign团队成员都是用 Yarn 进行包管理。下面的指令我们也会�
 8. 提交 pull request, 如果有对应的 issue，请进行关联。
 
 同步最新的组件库代码，请参照以下的操作步骤：
-1. 添加远程仓库，运行 `git add kd https://github.com/kdcloudone/kdesign.git`, 关联的远程仓库名kd可按照自己的需要命名
+1. 添加远程仓库，运行 `git add remote kd https://github.com/kdcloudone/kdesign.git`, 关联的远程仓库名kd可按照自己的需要命名
 2. 同步kdesign组件库最新的代码到本地仓库，运行`git fetch kd`
 3. 同步组件库最新代码到本地main分支，运行 `git rebase kd/main`
 4. 推送最新代码到远程, `git push origin main`, 如果推送失败，可以使用 `git push origin main -f`
