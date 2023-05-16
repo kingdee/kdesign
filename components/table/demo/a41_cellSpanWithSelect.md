@@ -40,7 +40,7 @@ function Demo() {
       }
       return {
         'data-row-id': record.id,
-        onMouseEnter: createHoverHandle((key, tbody) => {
+        onMouseOver: createHoverHandle((key, tbody) => {
           tbody.querySelector(`tr[data-row-id="${key}"]`).classList.add('row-hover')
         }),
         onMouseLeave: createHoverHandle((key, tbody) => {
