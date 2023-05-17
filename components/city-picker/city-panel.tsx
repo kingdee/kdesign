@@ -105,6 +105,7 @@ const CityPanel: React.FC<CityPanelProps> = ({ groups, commons, cityList, onSele
     if (commons && currentGroup === cityPickerLang.common) {
       setList([commons[activedIndex] || []])
       setGroupKeys(null)
+      setActivedGroupIndex(index)
       return
     }
 
