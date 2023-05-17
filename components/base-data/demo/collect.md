@@ -11,6 +11,7 @@ import { BaseData } from '@kdcloudjs/kdesign'
 function Demo() {
   const [collectArr, setCollectArr] = React.useState([])
   const [historyList, setHistoryList] = React.useState([])
+  const [historyKeySet, setHistoryKeySet] = React.useState(new Set())
   const [value, setValue] = React.useState([])
 
   const columns = [
@@ -54,7 +55,11 @@ function Demo() {
   }
 
   const handleSelect = (a, item) => {
-    setHistoryList([item, ...historyList])
+    if(!historyKeySet.has(item.value)){
+      historyKeySet.add(item.value)
+      setHistoryKeySet(historyKeySet)
+      setHistoryList([item, ...historyList])
+    }
   }
 
   return (
