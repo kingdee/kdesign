@@ -23,7 +23,7 @@ function Demo() {
     <>
       <Slider className="slider-tooltip-container" tooltipVisible={false} value={val} min={0} max={10} onChange={(v) => handleSliderChange(v)}/>
 
-      <Stepper className="slider-inputnumber" placeholder="基本使用" borderType="bordered" value={val + ''} onChange={(e) => handleChange(e)} min={'0'} max={'10'}/>
+      <Stepper className="slider-inputnumber" placeholder="基本使用" borderType="bordered" value={val} onChange={(e) => handleChange(e)} min={0} max={10}/>
     </>
   )
 }
