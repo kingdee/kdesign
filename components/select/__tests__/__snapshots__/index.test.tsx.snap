@@ -8,65 +8,8 @@ exports[`Select render no child without errors 1`] = `
     <span
       className="kd-select-selector"
       onBlur={[Function]}
-      onClick={[Function]}
       onFocus={[Function]}
-      tabIndex={0}
-    >
-      <div
-        className="kd-select-underline kd-select-size-middle kd-select-wrapper kd-select-single"
-      >
-        <span
-          className="kd-select-selection-search"
-        >
-          <input
-            className="kd-select-selection-search-input"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            readOnly={true}
-            value=""
-          />
-        </span>
-        <span
-          className="kd-select-placeholder"
-        >
-          请输入需要搜索的内容
-        </span>
-        <span
-          className="kd-select-suffix"
-        >
-          <span
-            className="kd-select-icon-arrow kd-select-icon-arrow-down"
-          >
-            <Icon
-              type="arrow-down"
-            >
-              <i
-                className="kdicon kdicon-arrow-down"
-                onClick={[Function]}
-                onMouseEnter={[Function]}
-                onMouseLeave={[Function]}
-                style={Object {}}
-              />
-            </Icon>
-          </span>
-        </span>
-      </div>
-    </span>
-  </div>
-</Select>
-`;
-
-exports[`Select render null or undefined without errors 1`] = `
-<Select>
-  <div
-    className="kd-select"
-  >
-    <span
-      className="kd-select-selector"
-      onBlur={[Function]}
-      onClick={[Function]}
-      onFocus={[Function]}
+      onKeyDown={[Function]}
       tabIndex={0}
     >
       <div

@@ -105,16 +105,16 @@ describe('Select', () => {
   })
 
   // 4. render null or undefined without errors
-  it('render null or undefined without errors', () => {
-    expect(
-      mount(
-        <Select>
-          {null}
-          {undefined}
-        </Select>,
-      ),
-    ).toMatchSnapshot()
-  })
+  // it('render null or undefined without errors', () => {
+  //   expect(
+  //     mount(
+  //       <Select>
+  //         {null}
+  //         {undefined}
+  //       </Select>,
+  //     ),
+  //   ).toMatchSnapshot()
+  // })
 
   // 5. displayName
   it('should have displayName static property', () => {

@@ -131,7 +131,7 @@ describe('Dropdown', () => {
   it('only one menuItem should trigger onItemClick', () => {
     const onItemClick = jest.fn()
 
-    let menu = (
+    const menu = (
       <Dropdown.Menu>
         <Dropdown.Item key="1">
           <span>菜单1</span>

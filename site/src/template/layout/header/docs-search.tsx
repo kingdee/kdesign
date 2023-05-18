@@ -3,7 +3,17 @@ import algoliasearch, { SearchIndex } from 'algoliasearch'
 import debounce from 'lodash/debounce'
 import { Input, Icon } from 'kdesign'
 
-function DocsSearch({ appId, indexName, apiKey }: { appId: any; indexName: any; apiKey: any }) {
+function DocsSearch({
+  appId,
+  indexName,
+  apiKey,
+  transformData,
+}: {
+  appId: any
+  indexName: any
+  apiKey: any
+  transformData: any
+}) {
   const docsearchRef = useRef<HTMLInputElement>(null)
   const [kuiIndex, setKuiIndex] = useState<SearchIndex>()
   const [fetch, setfetch] = useState(false)
@@ -41,6 +51,9 @@ function DocsSearch({ appId, indexName, apiKey }: { appId: any; indexName: any; 
                 // setHitsPerPage(hitsPerPage)
                 // setNbPages(nbPages)
                 // setPage(page)
+                if (transformData) {
+                  transformData(hits)
+                }
                 setResList(hits)
               } else {
                 setResList([])
