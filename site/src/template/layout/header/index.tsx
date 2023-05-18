@@ -15,6 +15,10 @@ import Login from './login'
 const appIdQS = 'J5MHBTB51H'
 const apiKeyQS = 'e2ed9a8a86cf9a0e71db39c0114f1aab'
 const indexNameQS = 'KDesign'
+const transformData = function(suggestions:any[]){
+  return suggestions.map(suggestion=>{suggestion.url = suggestion.url.replace('https://react.kingdee.design',''); return suggestion;});
+}
+
 const width = {}
 
 const navList = [
@@ -82,7 +86,7 @@ const Header = (props: NavProps) => {
           <div className="header-content ">
             <Nav list={navList} pathname={pathname} />
             <div className="header-search">
-              <DocsSearch appId={appIdQS} indexName={indexNameQS} apiKey={apiKeyQS} />
+              <DocsSearch appId={appIdQS} indexName={indexNameQS} apiKey={apiKeyQS} transformData={transformData}/>
               <div className="header-version">v 1.7.13</div>
               <a
                 href="https://github.com/kdcloudone/kdesign"
