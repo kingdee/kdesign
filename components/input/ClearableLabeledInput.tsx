@@ -80,7 +80,7 @@ const ClearableInput: React.FC<ClearableInputProps> = (props) => {
       [`${prefixCls}-clear-icon-rightSpace`]: suffix,
     })
     return (
-      <span onClick={handleReset} className={clearIconclasses}>
+      <span onMouseDown={mouseDownHandle} onClick={handleReset} className={clearIconclasses}>
         {typeof allowClear === 'boolean' ? <Icon type="close-solid" /> : allowClear}
       </span>
     )
