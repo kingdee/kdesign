@@ -31,19 +31,37 @@ jest.mock('react', () => {
 })
 
 describe('SplitPanel', () => {
-  // mount test
+  // 1.mount test
   mountTest(SplitPanel)
+
   SplitPanelModes.forEach((mode) => {
     mountTest(() => <SplitPanel mode={mode} />)
   })
 
-  // render test
+  // 2.render test
   it('renders correctly', () => {
     SplitPanelModes.forEach((mode) => {
       expect(render(<SplitPanel mode={mode} />)).toMatchSnapshot()
     })
   })
 
+  // 3.render no child without errors
+  it('render no child without errors', () => {
+    expect(mount(<SplitPanel></SplitPanel>)).toMatchSnapshot()
+  })
+
+  // 4.render null or undefined without errors
+  it('render null or undefined without errors', () => {
+    expect(
+      mount(
+        <SplitPanel>
+          {null}
+          {undefined}
+        </SplitPanel>,
+      ),
+    ).toMatchSnapshot()
+  })
+  // 5.test warn
   // warns if mode is wrong
   it('warns if type is wrong', () => {
     const mockWarn = jest.fn()
@@ -66,7 +84,13 @@ describe('SplitPanel', () => {
     expect(mockWarn.mock.calls[0][0]).toMatch("Warning: [kdesign]-split-panel: incorrect prop 'defaultSplit'")
   })
 
-  // test defaultSplit compute correctly
+  // 6.displayName
+  it('should have displayName static property', () => {
+    const wrapper = mount(<SplitPanel></SplitPanel>)
+    expect((wrapper.type() as any).displayName).toBe('SplitPanel')
+  })
+
+  // 7.test defaultSplit compute correctly
   it('test defaultSplit compute correctly', () => {
     const wrapper = mount(<SplitPanel defaultSplit="50px" />)
     expect(wrapper.find('.kd-split-panel').first().prop('style')).toHaveProperty('right', '75%')
@@ -78,7 +102,7 @@ describe('SplitPanel', () => {
     expect(wrapper.find('.kd-split-panel').first().prop('style')).toHaveProperty('right', '100%')
   })
 
-  // test compute min and max correctly
+  // 8.test compute min and max correctly
   it('test compute min and max correctly', () => {
     const wrapper = mount(<SplitPanel min={0.6} max={0.6} />)
     expect(wrapper.find('.kd-split-panel').first().prop('style')).toHaveProperty('right', '60%')
@@ -96,7 +120,7 @@ describe('SplitPanel', () => {
     expect(wrapper.find('.kd-split-panel').first().prop('style')).toHaveProperty('right', '40%')
   })
 
-  // test drag trigger line
+  // 9.test drag trigger line
   it('test drag trigger line', () => {
     document.documentElement.scrollLeft = 0
     document.documentElement.scrollTop = 0
@@ -130,7 +154,7 @@ describe('SplitPanel', () => {
     expect(onMoveEnd).toHaveBeenCalledTimes(1)
   })
 
-  // test move instance is over the min or max value
+  // 9.test move instance is over the min or max value
   it('test move instance is over the min or max value', () => {
     document.documentElement.scrollLeft = 0
     document.documentElement.scrollTop = 0
@@ -174,7 +198,7 @@ describe('SplitPanel', () => {
     expect(onMoveEnd).toHaveBeenCalledTimes(1)
   })
 
-  // test fold correctly
+  // 10.test fold correctly
   it('test fold correctly', () => {
     const onFold = jest.fn()
     const wrapper = mount(<SplitPanel min={0.2} max={0.2} onFold={onFold} />)
@@ -238,7 +262,7 @@ describe('SplitPanel', () => {
     })
   })
 
-  it('test canFold is falsy', () => {
+  it('test canFold is false', () => {
     const wrapper = mount(<SplitPanel canFold={false} />)
     expect(wrapper.find('.kd-split-trigger-arrow').length).toBe(0)
   })
