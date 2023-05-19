@@ -39,6 +39,7 @@ function Demo() {
           }
       }
       return {
+        'className': 'row-hover',
         'data-row-id': record.id,
         onMouseOver: createHoverHandle((key, tbody) => {
           tbody.querySelector(`tr[data-row-id="${key}"]`).classList.add('row-hover')
