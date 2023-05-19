@@ -1,5 +1,22 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Menu render no child without errors 1`] = `
+<Menu>
+  <div
+    className="kd-menu kd-menu-vertical kd-menu-dark"
+    onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
+    role="menu"
+    style={
+      Object {
+        "transition": "width 0.2s cubic-bezier(0,.4,.4,1)",
+        "width": undefined,
+      }
+    }
+  />
+</Menu>
+`;
+
 exports[`Menu renders correctly 1`] = `
 <div
   class="kd-menu kd-menu-vertical kd-menu-dark"
