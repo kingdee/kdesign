@@ -17,7 +17,7 @@ function Demo() {
     closeIcon: {
       content: '关闭图标',
       Component: () => {
-        return <Icon type="loading" />
+        return <Icon type="loadding" />
       },
     },
     footer: {
