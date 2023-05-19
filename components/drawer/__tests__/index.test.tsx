@@ -34,10 +34,12 @@ const unmountHelp = (wrapper: ReactWrapper) => {
   }).not.toThrow()
 }
 describe('Drawer', () => {
-  mountTest(Drawer!)
+  // 1. mount test
+  mountTest(Drawer)
   PlacementTypes.forEach((type) => {
     mountTest(() => <Drawer placement={type} />)
   })
+  // 2. render test
   it('renders correctly', () => {
     expect(render(<Drawer getContainer={false} />)).toMatchSnapshot()
     PlacementTypes.forEach((type) => {
@@ -52,7 +54,22 @@ describe('Drawer', () => {
     expect(mockWarn).toHaveBeenCalledTimes(1)
     expect(mockWarn.mock.calls[0][0]).toMatch("Warning: [kdesign]-drawer: cannot found drawer type 'who am I'")
   })
-
+  // 3. render no child without errors
+  it('render no child without errors', () => {
+    expect(mount(<Drawer></Drawer>)).toMatchSnapshot()
+  })
+  // 4. render null or undefined without errors
+  it('render null or undefined without errors', () => {
+    expect(
+      mount(
+        <Drawer>
+          {null}
+          {undefined}
+        </Drawer>,
+      ),
+    ).toMatchSnapshot()
+  })
+  // 5. displayName
   it('should have displayName static property', () => {
     const wrapper = mount(<Drawer></Drawer>)
     expect((wrapper.type() as any).displayName).toBe('Drawer')
@@ -78,7 +95,8 @@ describe('Drawer', () => {
       }).not.toThrow()
     },
   )
-
+  // 6. api
+  // className footerClassName headerClassName maskClassName titleClassName
   it('should className use right', () => {
     const wrapper = mount(
       <Drawer
@@ -104,12 +122,13 @@ describe('Drawer', () => {
 
     unmountHelp(wrapper)
   })
-
+  // closable
   it('should closable use right', () => {
     const wrapper = mount(<Drawer closable={false} />)
     expect(wrapper.exists(classNameMap.closeIcon)).toBe(false)
     unmountHelp(wrapper)
   })
+  // keyboard
   it('should keyboard use right', () => {
     const onClose = () => {
       wrapper.setProps({
@@ -152,6 +171,7 @@ describe('Drawer', () => {
     expect(wrapper.exists(classNameMap.hideBox)).toBe(false)
     unmountHelp(wrapper)
   })
+  // maskClosable
   it('should maskClosable use right', () => {
     const onClose = () => {
       wrapper.setProps({
@@ -172,7 +192,7 @@ describe('Drawer', () => {
     expect(wrapper.exists(classNameMap.hideBox)).toBe(false)
     unmountHelp(wrapper)
   })
-
+  // mask
   it('should mask use right', () => {
     const wrapper = mount(<Drawer mask={false} visible />)
     expect(wrapper.exists(classNameMap.mask)).toBe(false)
@@ -184,7 +204,7 @@ describe('Drawer', () => {
     expect(wrapper.exists(classNameMap.mask)).toBe(true)
     unmountHelp(wrapper)
   })
-
+  // visible
   it('should visible use right', () => {
     const onClose = () =>
       setTimeout(() => {
@@ -205,7 +225,7 @@ describe('Drawer', () => {
 
     unmountHelp(wrapper)
   })
-
+  // width
   it.each([['width', ['left', 'right']]])('should %s use right', (prop: 'width', placementTypesList) => {
     PlacementTypes.forEach((type) => {
       const wrapper = mount(<Drawer visible {...{ [prop]: 500 }} placement={type} />)
@@ -227,11 +247,14 @@ describe('Drawer', () => {
       }
     })
   })
+  // zIndex
   it('should zIndex use right', () => {
     const wrapper = mount(<Drawer visible width={500} zIndex={10} />)
     expect((wrapper.find(classNameMap.box).getDOMNode() as HTMLElement).style.zIndex).toBe('10')
     unmountHelp(wrapper)
   })
+
+  // get container
   it('should getContainer use right', () => {
     // 通过relative来验证
     const mockWarn = jest.fn()
@@ -296,6 +319,7 @@ describe('Drawer', () => {
       'Warning: [kdesign]-drawer: getContainer"s returnValue/value is not a correct CSSSelector',
     )
   })
+  // forceRender
   it('should forceRender use right', () => {
     const onClose = () => {
       wrapper.setProps({
@@ -329,7 +353,7 @@ describe('Drawer', () => {
     expect(wrapper.exists('.test-force')).toBe(true)
     unmountHelp(wrapper)
   })
-
+  // destroyOnClose
   it('should destroyOnClose, use right', () => {
     const onClose = () => {
       wrapper.setProps({
@@ -350,6 +374,7 @@ describe('Drawer', () => {
     unmountHelp(wrapper)
   })
 
+  // ConfigProvider
   it('should config use config provider', () => {
     const modalConfig = {
       compDefaultProps: {
