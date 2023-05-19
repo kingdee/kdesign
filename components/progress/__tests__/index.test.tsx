@@ -5,12 +5,14 @@ import Progress, { ProgressType } from '../index'
 import { ProgressTypes, ProgressStatuses } from '../progress'
 
 describe('Progress', () => {
-  // mount test
+  // 1.mount test
   mountTest(Progress)
+
   ProgressTypes.forEach((type) => {
     mountTest(() => <Progress type={type} />)
   })
 
+  // 2.render test
   it('renders correctly', () => {
     ProgressTypes.forEach((type) => {
       expect(render(<Progress type={type} />)).toMatchSnapshot()
@@ -20,7 +22,30 @@ describe('Progress', () => {
       expect(render(<Progress status={status} />)).toMatchSnapshot()
     })
   })
+  // 3.render no child without errors
+  it('render no child without errors', () => {
+    expect(mount(<Progress />)).toMatchSnapshot()
+  })
 
+  // 4.render null or undefined without errors
+  it('render null or undefined without errors', () => {
+    expect(
+      mount(
+        <Progress>
+          {null}
+          {undefined}
+        </Progress>,
+      ),
+    ).toMatchSnapshot()
+  })
+
+  // 5.displayName
+  it('should have displayName static property', () => {
+    const wrapper = mount(<Progress></Progress>)
+    expect((wrapper.type() as any).displayName).toBe('Progress')
+  })
+
+  // 6. warn test
   it('warns if type is wrong', () => {
     const mockWarn = jest.fn()
     jest.spyOn(console, 'warn').mockImplementation(mockWarn)
@@ -40,11 +65,6 @@ describe('Progress', () => {
     )
   })
 
-  it('should have displayName static property', () => {
-    const wrapper = mount(<Progress />)
-    expect((wrapper.type() as any).displayName).toBe('Progress')
-  })
-
   it('should class use right', () => {
     const DefaultProgress = mount(<Progress />)
     expect(DefaultProgress.find('.kd-progress')).toHaveClassName('.kd-progress-status-normal')
@@ -60,27 +80,32 @@ describe('Progress', () => {
       expect(TestProgress.find('.kd-progress')).toHaveClassName(`.kd-progress-status-${status}`)
     })
   })
-
+  // api
   it('should props width render right', () => {
     const TestProgress = mount(<Progress type="circle" width={100} />)
     expect(TestProgress.find('.kd-progress-circle-box')).toHaveStyle('width', '100px')
   })
-
+  // percent
   it('should props percent render right', () => {
     const TestProgress = mount(<Progress percent={30} />)
     expect(TestProgress.find('.kd-progress-bg')).toHaveStyle('width', '30%')
   })
-
+  // strokeWidth
   it('should props strokeWidth render right', () => {
     const TestProgress = mount(<Progress percent={30} strokeWidth={10} />)
     expect(TestProgress.find('.kd-progress-bg')).toHaveStyle('height', '10px')
   })
-
+  // strokeColor
   it('should props strokeColor render right', () => {
     const TestProgress = mount(<Progress percent={30} strokeColor="#333" />)
     expect(TestProgress.find('.kd-progress-bg')).toHaveStyle('background', '#333')
   })
-
+  // trailColor
+  it('should props trailColor render right', () => {
+    const TestProgress = mount(<Progress percent={30} trailColor="#333" />)
+    expect(TestProgress.find('.kd-progress-inner')).toHaveStyle('backgroundColor', '#333')
+  })
+  // showInfo
   it('should props showInfo render right', () => {
     const LineProgress = mount(<Progress percent={30} showInfo={false} />)
     const CircleProgress = mount(<Progress type="circle" percent={30} showInfo={false} />)
@@ -96,6 +121,17 @@ describe('Progress', () => {
     expect(successProgress).toHaveText('加载成功')
     expect(failureProgress).toHaveText('加载失败')
   })
+  it('should props textMap render right', () => {
+    const loadingDom = (
+      <>
+        <span style={{ float: 'left', textAlign: 'left' }}>loading...</span>
+        <span style={{ float: 'right', textAlign: 'right' }}>30%</span>
+      </>
+    )
+    const TestProgress = mount(<Progress percent={30} infoPosition="bottom" textMap={[loadingDom]} />)
+    expect(TestProgress.find('.kd-progress-special-text').exists()).toBe(true)
+    expect(TestProgress).toHaveText('loading...30%')
+  })
 
   it('should gradient progress which type is circle render right', () => {
     const TestProgress = mount(
@@ -109,5 +145,17 @@ describe('Progress', () => {
       />,
     )
     expect(TestProgress).toContainMatchingElement('linearGradient')
+  })
+  // test format
+  it('should props format render right', () => {
+    const TestProgress = mount(<Progress percent={30} type="circle" format={(percent) => `${percent} days`} />)
+    expect(TestProgress.find('.kd-progress-text')).toHaveText('30 days')
+  })
+  // test onProcess callback
+  it('should onProcess called when percent change', () => {
+    const onProcessMock = jest.fn()
+    const TestProgress = mount(<Progress percent={30} onProcess={onProcessMock} />)
+    TestProgress.setProps({ percent: 40 })
+    expect(onProcessMock).toHaveBeenCalled()
   })
 })
