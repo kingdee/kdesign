@@ -1,5 +1,121 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Progress render no child without errors 1`] = `
+<Progress>
+  <div
+    className="kd-progress kd-progress-type-line kd-progress-status-normal kd-progress-show-info"
+    type="line"
+  >
+    <Line
+      infoPosition="right"
+      percent={0}
+      prefixCls="kd-progress"
+      showInfo={true}
+      strokeWidth={8}
+      trailColor="#E5E5E5"
+      trailWidth={8}
+      type="line"
+    >
+      <div
+        className="kd-progress-outer"
+      >
+        <div
+          className="kd-progress-inner"
+          style={
+            Object {
+              "backgroundColor": "#E5E5E5",
+            }
+          }
+        >
+          <div
+            className="kd-progress-bg"
+            style={
+              Object {
+                "background": undefined,
+                "height": "8px",
+                "width": "0%",
+              }
+            }
+          />
+        </div>
+      </div>
+      <span
+        className="kd-progress-text"
+      >
+        <span
+          className="kd-progress-text-percent"
+        >
+          0
+        </span>
+        <span
+          className="kd-progress-text-unit"
+        >
+          %
+        </span>
+      </span>
+    </Line>
+  </div>
+</Progress>
+`;
+
+exports[`Progress render null or undefined without errors 1`] = `
+<Progress>
+  <div
+    className="kd-progress kd-progress-type-line kd-progress-status-normal kd-progress-show-info"
+    type="line"
+  >
+    <Line
+      infoPosition="right"
+      percent={0}
+      prefixCls="kd-progress"
+      showInfo={true}
+      strokeWidth={8}
+      trailColor="#E5E5E5"
+      trailWidth={8}
+      type="line"
+    >
+      <div
+        className="kd-progress-outer"
+      >
+        <div
+          className="kd-progress-inner"
+          style={
+            Object {
+              "backgroundColor": "#E5E5E5",
+            }
+          }
+        >
+          <div
+            className="kd-progress-bg"
+            style={
+              Object {
+                "background": undefined,
+                "height": "8px",
+                "width": "0%",
+              }
+            }
+          />
+        </div>
+      </div>
+      <span
+        className="kd-progress-text"
+      >
+        <span
+          className="kd-progress-text-percent"
+        >
+          0
+        </span>
+        <span
+          className="kd-progress-text-unit"
+        >
+          %
+        </span>
+      </span>
+    </Line>
+  </div>
+</Progress>
+`;
+
 exports[`Progress renders correctly 1`] = `
 <div
   class="kd-progress kd-progress-type-line kd-progress-status-normal kd-progress-show-info"
