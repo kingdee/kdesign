@@ -9,11 +9,13 @@ function MDocsSearch({
   indexName,
   apiKey,
   hideModal,
+  parseUrl,
 }: {
   appId: any
   indexName: any
   apiKey: any
   hideModal: any
+  parseUrl: (url: string) => string
 }) {
   const docsearchRef = useRef<HTMLInputElement>(null)
   const [kuiIndex, setKuiIndex] = useState<SearchIndex>()
@@ -154,7 +156,7 @@ function MDocsSearch({
                   .filter((n) => n)
                 return (
                   <li className="res-item" key={objectID}>
-                    <a href={url}>
+                    <a href={parseUrl(url)}>
                       <div className="item-left text-ellipsis">
                         <div
                           className="category text-ellipsis"

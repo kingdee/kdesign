@@ -3,7 +3,17 @@ import algoliasearch, { SearchIndex } from 'algoliasearch'
 import debounce from 'lodash/debounce'
 import { Input, Icon } from 'kdesign'
 
-function DocsSearch({ appId, indexName, apiKey }: { appId: any; indexName: any; apiKey: any }) {
+function DocsSearch({
+  appId,
+  indexName,
+  apiKey,
+  parseUrl,
+}: {
+  appId: any
+  indexName: any
+  apiKey: any
+  parseUrl: (url: string) => string
+}) {
   const docsearchRef = useRef<HTMLInputElement>(null)
   const [kuiIndex, setKuiIndex] = useState<SearchIndex>()
   const [fetch, setfetch] = useState(false)
@@ -120,7 +130,7 @@ function DocsSearch({ appId, indexName, apiKey }: { appId: any; indexName: any; 
                   .filter((n) => n)
                 return (
                   <li className="res-item" key={objectID}>
-                    <a href={url}>
+                    <a href={parseUrl(url)}>
                       <div className="item-left">
                         <div
                           className="category text-ellipsis"
