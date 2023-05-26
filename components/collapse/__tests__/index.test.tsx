@@ -276,4 +276,13 @@ describe('Collapse', () => {
       'kdicon-warning-solid',
     )
   })
+
+  it('should render with correct panelKey', () => {
+    const wrapper = mount(
+      <Collapse {...collapseProps}>
+        <Collapse.Panel header="header" panelKey="1" />
+      </Collapse>,
+    )
+    expect(wrapper.find('Panel').prop('panelKey')).toEqual('1')
+  })
 })

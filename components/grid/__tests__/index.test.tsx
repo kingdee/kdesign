@@ -33,6 +33,11 @@ describe('Grid', () => {
     expect((colWrapper.type() as any).displayName).toBe('Col')
   })
 
+  it('when align is bottom', () => {
+    const wrapper = mount(<Row align="bottom" />)
+    expect(wrapper.find('div').first()).toHaveStyle({ alignItems: 'flex-end' })
+  })
+
   it('when typeof gutter is number', () => {
     const wrapper = mount(<Row gutter={20} />)
     expect(wrapper.find('div').first()).toHaveStyle('--cgap', '20px')
