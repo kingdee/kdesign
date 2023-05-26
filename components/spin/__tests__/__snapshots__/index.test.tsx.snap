@@ -118,3 +118,23 @@ exports[`Spin renders correctly 4`] = `
   </div>
 </div>
 `;
+
+exports[`Spin should render custom indicator 1`] = `
+<div
+  class="kd-spin kd-spin-page kd-spin-indicator-container"
+>
+  <div
+    class="custom-indicator"
+  />
+</div>
+`;
+
+exports[`Spin should render custom indicator when it's set 1`] = `
+<div
+  class="kd-spin kd-spin-page kd-spin-indicator-container"
+>
+  <div
+    class="custom-indicator"
+  />
+</div>
+`;

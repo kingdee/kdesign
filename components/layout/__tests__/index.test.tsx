@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { mount, render } from 'enzyme'
+import { mount } from 'enzyme'
 import Layout from '..'
 import Icon from '../../icon'
 import Menu from '../../menu'
@@ -93,17 +93,22 @@ describe('Layout', () => {
     expect(wrapper.find('.kd-layout-sider')).toHaveClassName('kd-layout-sider-has-trigger')
   })
 
-  it('should have 50% width of sidebar', async () => {
+  it('should have 50% and className width of sidebar', async () => {
     const wrapper = mount(
       <Layout>
         <div>
-          <Sider width="50%">Sider</Sider>
+          <Sider width="50%" className="my-Sider" style={{ padding: 0 }}>
+            Sider
+          </Sider>
         </div>
         <Content>Content</Content>
       </Layout>,
     )
+    // console.log(wrapper.debug())
+    expect(wrapper.find('Sider').at(0)).toHaveClassName('my-Sider')
     expect(wrapper.find('.kd-layout-sider').at(0)).toHaveStyle('maxWidth', '50%')
     expect(wrapper.find('.kd-layout-sider').at(0)).toHaveStyle('flex', '0 0 50%')
+    expect(wrapper.find('.kd-layout-sider').at(0)).toHaveStyle('padding', 0)
   })
 
   describe('zeroWidth', () => {
@@ -120,7 +125,7 @@ describe('Layout', () => {
     })
 
     describe('should collapsible', () => {
-      it('uncontrolled', () => {
+      it('onCollapse', () => {
         const onCollapse = jest.fn()
 
         const wrapper = mount(
@@ -158,6 +163,20 @@ describe('Layout', () => {
         wrapper.find('.kd-layout-sider-zero-width-trigger').simulate('click')
         expect(wrapper.find(Sider).prop('collapsed')).toBeFalsy()
       })
+
+      it('defaultCollapsed', () => {
+        const Demo = () => {
+          return (
+            <Layout>
+              <Sider defaultCollapsed>Sider</Sider>
+              <Content>Content</Content>
+            </Layout>
+          )
+        }
+
+        const wrapper = mount(<Demo />)
+        expect(wrapper.find('.kd-layout-sider')).toHaveClassName('kd-layout-sider-collapsed')
+      })
     })
   })
 
@@ -169,11 +188,6 @@ describe('Layout', () => {
   it('detect kd-layout-sider-light when set light theme', async () => {
     const wrapper = mount(<Sider theme="light">Sider</Sider>)
     expect(wrapper.find('.kd-layout-sider')).toHaveClassName('kd-layout-sider-light')
-  })
-
-  it('renders string width correctly', () => {
-    const wrapper = render(<Sider width="200">Sider</Sider>)
-    expect(wrapper).toMatchSnapshot()
   })
 
   it('should be controlled by collapsed', () => {
@@ -241,7 +255,34 @@ describe('Sider', () => {
         </Menu>
       </Sider>,
     )
+
     expect(wrapper.find('.kd-layout-sider-zero-width-trigger').find('.my-trigger')).toHaveLength(1)
+  })
+
+  it('hides trigger when trigger is set to null', () => {
+    const wrapper = mount(
+      <Sider collapsedWidth={0} collapsible trigger={null}>
+        <Menu theme="dark" mode="inline" defaultSelectedKey={'1'}>
+          <Menu.Item key="1">
+            <Icon type="user" />
+            <span>nav 1</span>
+          </Menu.Item>
+        </Menu>
+      </Sider>,
+    )
+    expect(wrapper.find('.kd-layout-sider-zero-width-trigger')).toHaveLength(0)
+  })
+
+  it('reverses arrow when Sider is on the right', () => {
+    const wrapper = mount(
+      <Layout>
+        <Content>Content</Content>
+        <Sider className="site-layout-background" width={200} collapsible reverseArrow={false}>
+          Sider
+        </Sider>
+      </Layout>,
+    )
+    expect(wrapper.find('.kdicon-unfoldmenu')).toHaveLength(1)
   })
 
   it('should get aside element from ref', () => {
