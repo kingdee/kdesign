@@ -4,6 +4,30 @@ title: 更新日志
 hiddenAnchor: true
 ---
 
+## [1.7.11](https://github.com/kdcloudone/kdesign/compare/v1.7.10...v1.7.11)
+`2023-05-26`
+* search
+  * 修复 MDocsSearch 搜索结果显示异常的问题 fixed kdcloudone[#378](https://github.com/kdcloudone/kdesign/issues/378)
+* pagination
+  * 修复页目数视觉问题
+
+## [1.7.10](https://github.com/kdcloudone/kdesign/compare/v1.7.9...v1.7.10)
+`2023-05-19`
+* drawer
+  * 更新抽屉组件单测
+* input
+  * 修复清空按钮触发失焦问题 fix [#371](https://github.com/kdcloudone/kdesign/issues/371)
+* menu
+  * 更新menu组件单测
+* progress
+  * 更新进度条组件单测
+* split-panel
+  * 更新分割容器组件单测
+* switch
+  * 更新开关组件单测
+* collapse
+  * 新增受控模式 fix [#341](https://github.com/kdcloudone/kdesign/issues/341)
+
 ## [1.7.9](https://github.com/kdcloudone/kdesign/compare/v1.7.8...v1.7.9)
 `2023-05-12`
 * input
