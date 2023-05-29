@@ -6,6 +6,8 @@
   position: relative;
   padding-left: @anchor-link-left;
   box-sizing: border-box;
+  background: @anchor-bg;
+  z-index: @zIndex-popper;
 
   &-wrapper {
     overflow: auto;
@@ -154,7 +156,7 @@
   &-link {
     padding: @anchor-link-padding;
 
-    &>.@{anchor-prefix-cls}-link {
+    & > .@{anchor-prefix-cls}-link {
       padding: @anchor-link-secondary-padding;
     }
 
@@ -193,6 +195,6 @@
   &.hidden {
     opacity: 0;
     visibility: hidden;
-    transition: all calc(@anchor-transition-duration - 0.1s) cubic-bezier(0.4,0,0.6,1);
+    transition: all calc(@anchor-transition-duration - 0.1s) cubic-bezier(0.4, 0, 0.6, 1);
   }
 }
