@@ -2,7 +2,7 @@ import React, { useContext } from 'react'
 import ConfigContext from '../config-provider/ConfigContext'
 import uniqueId from 'lodash/uniqueId'
 
-function DefaultEmptyImg() {
+function DefaultEmptyImg(props: any) {
   const { getPrefixCls, prefixCls } = useContext(ConfigContext)
   const emptyPrefixCls = getPrefixCls!(prefixCls, 'empty')
   const linearGradientId = uniqueId(emptyPrefixCls + '-default-linearGradient')
@@ -14,6 +14,7 @@ function DefaultEmptyImg() {
       viewBox="0 0 168 96"
       version="1.1"
       xmlns="http://www.w3.org/2000/svg"
+      style={props.style}
     >
       <title>编组</title>
       <defs>
