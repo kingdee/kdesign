@@ -11,6 +11,9 @@ import { omit } from '../_utils/omit'
 import { useMergedState } from '../_utils/hooks'
 import { isExp } from '../_utils/numberUtil'
 
+Big.PE = 40
+Big.NE = -40
+
 export const StepTypes = tuple('embed', 'base')
 export type StepType = typeof StepTypes[number]
 export interface StepperProps extends InputNumberProps {
@@ -100,6 +103,11 @@ const InternalStepper = (props: StepperProps, ref: unknown): FunctionComponentEl
     )
   }
 
+  const isLegal = (value: any) => {
+    const reg = /^[0-9]*\.?[0-9]+$/
+    return reg?.test(value)
+  }
+
   type StepBtnType = 'plus' | 'minus'
   const handleStepChang = (type: StepBtnType) => {
     const stepNum = parseFloat(step)
@@ -108,33 +116,41 @@ const InternalStepper = (props: StepperProps, ref: unknown): FunctionComponentEl
     }
     const startingNumber = isExp(stepperrref.current.value)
       ? Big(stepperrref.current.value).valueOf()
-      : stepperrref.current.value || parseFloat(inputNumberProps.min) || 0
-    const calculationResults = new Big(startingNumber)[type](stepNum).valueOf()
+      : stepperrref.current.value || inputNumberProps.min || 0
+    const currentValue = new Big(startingNumber)[type](stepNum)
+    const calculationResults = currentValue.valueOf()
     const legalNumber = stepperrref.current.verifiValue(calculationResults)
     if (legalNumber === false) {
       return false
     }
-    if (typeof max === 'number') {
-      if (Number(legalNumber) + step > max) {
+    const nextPlus = new Big(calculationResults).plus(stepNum)
+    const nextMinus = new Big(calculationResults).minus(stepNum)
+    if (isLegal(max)) {
+      const maxBig = new Big(max)
+      if (nextPlus.cmp(maxBig) === 1) {
         setMinusdisabled(true)
       } else {
         setMinusdisabled(false)
       }
-      if (Number(legalNumber) > max) {
+      if (currentValue.cmp(maxBig) === 1) {
         return false
       }
+    } else {
+      setMinusdisabled(false)
     }
-    if (typeof min === 'number') {
-      if (Number(legalNumber) - step < min) {
+    if (isLegal(min)) {
+      const minBig = new Big(min)
+      if (minBig.cmp(nextMinus) === 1) {
         setPlusdisabled(true)
       } else {
         setPlusdisabled(false)
       }
-      if (Number(legalNumber) < min) {
+      if (minBig.cmp(currentValue) === 1) {
         return false
       }
+    } else {
+      setPlusdisabled(false)
     }
-    // props?.value === undefined && stepperrref.current.setValue(legalNumber)
     props?.value === undefined && setValue(legalNumber)
     onChange && onChange({ target: { value: legalNumber } })
   }
