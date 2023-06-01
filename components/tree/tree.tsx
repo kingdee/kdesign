@@ -16,7 +16,6 @@ import {
   getDataCheckededStateStrictly,
   getAllChildKeys,
   getPos,
-  getSelected,
   calcDropPosition,
 } from './utils/treeUtils'
 import {
@@ -468,10 +467,11 @@ const InternalTree = React.forwardRef((props: TreeProps, ref: any): React.Functi
             item.onDrop = handleDrop
             item.onSelect = handleSelect
             item.checked = checked
-            item.selected = getSelected(
-              Array.isArray(selectedKeys) && selectedKeys[0] ? [selectedKeys[0]] : selectedKeys,
-              item.key,
-            )
+            item.selected = checkable
+              ? false
+              : Array.isArray(selectedKeys)
+              ? selectedKeys?.[0] === item.key
+              : selectedKeys === item.key
             item.indeterminate = indeterminate
             item.disabled = getDisabled(disabled, item.disabled)
             item.showIcon = showIcon || false
