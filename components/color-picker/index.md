@@ -37,6 +37,7 @@ subtitle: 颜色选择器
 
 | 分类 | 组件token | 全局token | 默认值 |
 | --- | --- | --- | --- |
+| color | --kd-c-color-picker-panel-option-color-background-selected | --kd-g-color-theme-3 | rgb(227, 238, 255) |
 | font | --kd-c-color-picker-input-font-size | --kd-g-font-size-middle | 14px |
 |  | --kd-c-color-picker-panel-select-font-size | --kd-g-font-size-middle | 14px |
 |  | --kd-c-color-picker-panel-alpha-font-size | --kd-g-font-size-middle | 14px |
