@@ -96,7 +96,7 @@ const InternalTreeSelect: React.ForwardRefRenderFunction<ITreeSelectProps<TreeSe
     defaultValue,
   })
   const [expandedKeys, setExpandedKeys] = useState(treeExpandedKeys)
-  const [selectedKeys, setSelectedKeys] = useState<string[]>([])
+  const [selectedKeys, setSelectedKeys] = useState<string[]>(initValue)
   const innerRef = useRef<HTMLElement>()
   const selectRef = (ref as any) || innerRef
   const searchRef = useRef<any>(null) // 搜索框ref
