@@ -76,4 +76,13 @@ describe('Empty', () => {
     mount(<Empty ref={ref} />)
     expect(ref.current instanceof HTMLDivElement).toBe(true)
   })
+
+  // 10. api test
+  it('api test', () => {
+    const wrapper = mount(<Empty imageStyle={{ height: '200px' }} />)
+    expect(wrapper.find('.kd-empty-image').props().style?.height).toEqual('200px')
+
+    const wrapperSrc = mount(<Empty image="" imageStyle={{ height: '200px' }} />)
+    expect(wrapperSrc.find('.kd-empty-image').props().style?.height).toEqual('200px')
+  })
 })

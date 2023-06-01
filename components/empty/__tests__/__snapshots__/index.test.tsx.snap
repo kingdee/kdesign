@@ -17,129 +17,6 @@ exports[`Empty renders correctly 1`] = `
     </title>
     <defs>
       <linearGradient
-        id="kd-empty-default-linearGradient2"
-        x1="50%"
-        x2="50%"
-        y1="0%"
-        y2="100%"
-      >
-        <stop
-          offset="0%"
-          stop-color="#D6DCE7"
-        />
-        <stop
-          offset="100%"
-          stop-color="#D6DCE7"
-          stop-opacity="0"
-        />
-      </linearGradient>
-    </defs>
-    <g
-      fill="none"
-      fill-rule="evenodd"
-      id="页面-1"
-      stroke="none"
-      stroke-width="1"
-    >
-      <g
-        id="编组"
-      >
-        <g
-          id="编组"
-          transform="translate(36.000000, 0.000000)"
-        >
-          <path
-            d="M63,9 L63,24 L78,24 L78,84 C78,85.6568542 76.6568542,87 75,87 L21,87 C19.3431458,87 18,85.6568542 18,84 L18,12 C18,10.3431458 19.3431458,9 21,9 L63,9 Z"
-            fill="#E2E8F3"
-            id="路径"
-          />
-          <rect
-            fill="#CAD0DB"
-            height="9"
-            id="矩形"
-            width="9"
-            x="24"
-            y="24"
-          />
-          <polygon
-            fill="#EEF4FF"
-            id="矩形"
-            points="63 9 78 24 63 24"
-          />
-          <rect
-            fill="#CAD0DB"
-            height="6"
-            id="矩形"
-            width="48"
-            x="24"
-            y="39"
-          />
-          <rect
-            fill="#CAD0DB"
-            height="6"
-            id="矩形"
-            width="24"
-            x="24"
-            y="51"
-          />
-        </g>
-        <g
-          fill="url(#kd-empty-default-linearGradient2)"
-          id="背景/云"
-          opacity="0.300000012"
-          transform="translate(108.000000, 40.000000)"
-        >
-          <g
-            id="形状结合"
-          >
-            <path
-              d="M3,39 L3,24 C3,15.7157288 9.71572875,9 18,9 C25.4616776,9 31.6508469,14.4482558 32.8063948,21.5836543 C33.797875,21.2064779 34.8748247,21 36,21 C40.9705627,21 45,25.0294373 45,30 L45,39 L3,39 Z"
-            />
-          </g>
-        </g>
-        <g
-          fill="url(#kd-empty-default-linearGradient2)"
-          id="背景/云"
-          opacity="0.300000012"
-          transform="translate(12.000000, 32.000000)"
-        >
-          <g
-            id="形状结合"
-            transform="translate(24.000000, 24.000000) scale(-1, 1) translate(-24.000000, -24.000000) "
-          >
-            <path
-              d="M3,39 L3,24 C3,15.7157288 9.71572875,9 18,9 C25.4616776,9 31.6508469,14.4482558 32.8063948,21.5836543 C33.797875,21.2064779 34.8748247,21 36,21 C40.9705627,21 45,25.0294373 45,30 L45,39 L3,39 Z"
-            />
-          </g>
-        </g>
-      </g>
-    </g>
-  </svg>
-  <div
-    class="kd-empty-description"
-  >
-    暂无数据
-  </div>
-</div>
-`;
-
-exports[`Empty renders correctly 2`] = `
-<div
-  class="kd-empty"
->
-  <svg
-    class="kd-empty-image"
-    height="96px"
-    version="1.1"
-    viewBox="0 0 168 96"
-    width="168px"
-    xmlns="http://www.w3.org/2000/svg"
-  >
-    <title>
-      编组
-    </title>
-    <defs>
-      <linearGradient
         id="kd-empty-default-linearGradient3"
         x1="50%"
         x2="50%"
@@ -241,29 +118,12 @@ exports[`Empty renders correctly 2`] = `
   <div
     class="kd-empty-description"
   >
-    我是空组件
-  </div>
-</div>
-`;
-
-exports[`Empty renders correctly 3`] = `
-<div
-  class="kd-empty"
->
-  <img
-    alt="empty"
-    class="kd-empty-image"
-    src="http://ikd.kingdee.com/ikd2/images/common/empty-content.png"
-  />
-  <div
-    class="kd-empty-description"
-  >
     暂无数据
   </div>
 </div>
 `;
 
-exports[`Empty renders correctly 4`] = `
+exports[`Empty renders correctly 2`] = `
 <div
   class="kd-empty"
 >
@@ -362,6 +222,146 @@ exports[`Empty renders correctly 4`] = `
         </g>
         <g
           fill="url(#kd-empty-default-linearGradient4)"
+          id="背景/云"
+          opacity="0.300000012"
+          transform="translate(12.000000, 32.000000)"
+        >
+          <g
+            id="形状结合"
+            transform="translate(24.000000, 24.000000) scale(-1, 1) translate(-24.000000, -24.000000) "
+          >
+            <path
+              d="M3,39 L3,24 C3,15.7157288 9.71572875,9 18,9 C25.4616776,9 31.6508469,14.4482558 32.8063948,21.5836543 C33.797875,21.2064779 34.8748247,21 36,21 C40.9705627,21 45,25.0294373 45,30 L45,39 L3,39 Z"
+            />
+          </g>
+        </g>
+      </g>
+    </g>
+  </svg>
+  <div
+    class="kd-empty-description"
+  >
+    我是空组件
+  </div>
+</div>
+`;
+
+exports[`Empty renders correctly 3`] = `
+<div
+  class="kd-empty"
+>
+  <img
+    alt="empty"
+    class="kd-empty-image"
+    src="http://ikd.kingdee.com/ikd2/images/common/empty-content.png"
+  />
+  <div
+    class="kd-empty-description"
+  >
+    暂无数据
+  </div>
+</div>
+`;
+
+exports[`Empty renders correctly 4`] = `
+<div
+  class="kd-empty"
+>
+  <svg
+    class="kd-empty-image"
+    height="96px"
+    version="1.1"
+    viewBox="0 0 168 96"
+    width="168px"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <title>
+      编组
+    </title>
+    <defs>
+      <linearGradient
+        id="kd-empty-default-linearGradient5"
+        x1="50%"
+        x2="50%"
+        y1="0%"
+        y2="100%"
+      >
+        <stop
+          offset="0%"
+          stop-color="#D6DCE7"
+        />
+        <stop
+          offset="100%"
+          stop-color="#D6DCE7"
+          stop-opacity="0"
+        />
+      </linearGradient>
+    </defs>
+    <g
+      fill="none"
+      fill-rule="evenodd"
+      id="页面-1"
+      stroke="none"
+      stroke-width="1"
+    >
+      <g
+        id="编组"
+      >
+        <g
+          id="编组"
+          transform="translate(36.000000, 0.000000)"
+        >
+          <path
+            d="M63,9 L63,24 L78,24 L78,84 C78,85.6568542 76.6568542,87 75,87 L21,87 C19.3431458,87 18,85.6568542 18,84 L18,12 C18,10.3431458 19.3431458,9 21,9 L63,9 Z"
+            fill="#E2E8F3"
+            id="路径"
+          />
+          <rect
+            fill="#CAD0DB"
+            height="9"
+            id="矩形"
+            width="9"
+            x="24"
+            y="24"
+          />
+          <polygon
+            fill="#EEF4FF"
+            id="矩形"
+            points="63 9 78 24 63 24"
+          />
+          <rect
+            fill="#CAD0DB"
+            height="6"
+            id="矩形"
+            width="48"
+            x="24"
+            y="39"
+          />
+          <rect
+            fill="#CAD0DB"
+            height="6"
+            id="矩形"
+            width="24"
+            x="24"
+            y="51"
+          />
+        </g>
+        <g
+          fill="url(#kd-empty-default-linearGradient5)"
+          id="背景/云"
+          opacity="0.300000012"
+          transform="translate(108.000000, 40.000000)"
+        >
+          <g
+            id="形状结合"
+          >
+            <path
+              d="M3,39 L3,24 C3,15.7157288 9.71572875,9 18,9 C25.4616776,9 31.6508469,14.4482558 32.8063948,21.5836543 C33.797875,21.2064779 34.8748247,21 36,21 C40.9705627,21 45,25.0294373 45,30 L45,39 L3,39 Z"
+            />
+          </g>
+        </g>
+        <g
+          fill="url(#kd-empty-default-linearGradient5)"
           id="背景/云"
           opacity="0.300000012"
           transform="translate(12.000000, 32.000000)"
