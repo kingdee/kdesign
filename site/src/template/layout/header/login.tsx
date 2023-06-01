@@ -12,7 +12,7 @@ const Login = () => {
     setAvatar('')
   }
 
-  const loginMethods = async (token?: string) => {
+  const loginMethods = async (token?: string, autoLogin?: boolean) => {
     const res = await request.get('/currentUser', {
       headers: { Authorization: 'Bearer ' + token },
     })
@@ -22,18 +22,20 @@ const Login = () => {
       setAvatar(data.data.avatar)
     } else {
       Cookies.remove('token', { domain: '.kingdee.design' })
+      if (autoLogin) location.href = tempAddress + `/login?state=${window.location.href}`
     }
   }
   const logoutMethods = () => {
     request.get('/loginOut')
     delInfo()
+    window.location.reload()
   }
   const handleLoginClick = async () => {
     if (!Cookies.get('token')) {
       delInfo()
       location.href = tempAddress + `/login?state=${window.location.href}`
     } else {
-      loginMethods(Cookies.get('token'))
+      loginMethods(Cookies.get('token'), true)
     }
   }
   const handleLogoutClick = (e: React.MouseEvent<HTMLDivElement>) => {
