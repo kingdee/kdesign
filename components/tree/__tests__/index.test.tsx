@@ -205,12 +205,14 @@ describe('Tree', () => {
     expect(defaultTreeProps.onSelect).not.toBeCalled()
 
     // defaultSelectedKeys selectedKeys
-    const defWrapper = mount(<Tree {...defaultTreeProps} defaultSelectedKeys={['0']} />)
+    const defWrapper = mount(<Tree {...defaultTreeProps} defaultSelectedKeys={['0']} checkable={false} />)
     expect(defWrapper.find('.kd-tree-node-item-0').hasClass('kd-tree-node-selected')).toBe(true)
 
     defWrapper.setProps({ selectedKeys: ['1'] })
     defWrapper.update()
     expect(defWrapper.find('.kd-tree-node-item-1').hasClass('kd-tree-node-selected')).toBe(true)
+
+    defWrapper.setProps({ checkable: true })
 
     // expandOnClickNode onSelect onExpand
     expect(defWrapper.find('.kd-tree-node-item-0-0').length).toBe(0)
