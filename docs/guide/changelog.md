@@ -4,6 +4,37 @@ title: 更新日志
 hiddenAnchor: true
 ---
 
+## [1.7.13](https://github.com/kdcloudone/kdesign/compare/v1.7.12...v1.7.13)
+`2023-06-02`
+* anchor
+  * 纵向锚点增加背景色 fix [#360](https://github.com/kdcloudone/kdesign/issues/360)
+* modal
+  * 修复maskClassName不生效 fix [#413](https://github.com/kdcloudone/kdesign/issues/413)
+* stepper
+  * 修复大数字时自增或自减操作丢失精度 fix [#385](https://github.com/kdcloudone/kdesign/issues/385)
+* select
+  * 多选时onChange第二个参数返回nodes数组 fix [#388](https://github.com/kdcloudone/kdesign/issues/388)
+  * 修复单选初始化时设置value无行选中效果问题 fix [#387](https://github.com/kdcloudone/kdesign/issues/387)
+* tree
+  * 多选时onChange第二个参数返回nodes数组 fix [#388](https://github.com/kdcloudone/kdesign/issues/388)
+  * 修复单选初始化时设置value无行选中效果问题 fix [#387](https://github.com/kdcloudone/kdesign/issues/387)
+  * 去除多选时行选中效果 fix [#401](https://github.com/kdcloudone/kdesign/issues/401)
+* tree-select
+  * 多选时onChange第二个参数返回nodes数组 fix [#388](https://github.com/kdcloudone/kdesign/issues/388)
+  * 修复单选初始化时设置value无行选中效果问题 fix [#387](https://github.com/kdcloudone/kdesign/issues/387)
+* color-picker
+  * 新增颜色类型下拉面板选项背景色的design token [#386](https://github.com/kdcloudone/kdesign/issues/386)
+* 修复在窗口尺寸变化时首页退出登录的问题 [#399](https://github.com/kdcloudone/kdesign/issues/399)
+
+## [1.7.12](https://github.com/kdcloudone/kdesign/compare/v1.7.11...v1.7.12)
+`2023-05-26`
+* select
+  * 修复面板高度超出时无法滚动的bug
+* tree
+  * 修复面板高度超出时无法滚动的bug
+* tree-select
+  * 修复面板高度超出时无法滚动的bug
+
 ## [1.7.11](https://github.com/kdcloudone/kdesign/compare/v1.7.10...v1.7.11)
 `2023-05-26`
 * search
