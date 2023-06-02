@@ -99,6 +99,7 @@ const InternalModal = (
     mask,
     maskClosable,
     maskStyle,
+    maskClassName,
     okButtonProps,
     okText,
     onCancel,
@@ -330,7 +331,15 @@ const InternalModal = (
   const comp: ReactElement = (
     <div className={modalClasses} {...others}>
       {/* 增加clickOutside */}
-      {mask && <div onClick={handleMaskClick} className={`${modalPrefixCls}-mask`} style={maskStyle}></div>}
+      {mask && (
+        <div
+          onClick={handleMaskClick}
+          className={classNames(maskClassName, {
+            [`${modalPrefixCls}-mask`]: true,
+          })}
+          style={maskStyle}
+        ></div>
+      )}
       <Draggable
         defaultPosition={defaultPosition}
         handle={`.${headerClass}`}
