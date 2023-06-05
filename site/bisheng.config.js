@@ -20,6 +20,9 @@ function editBabelConfig(rules) {
 }
 
 module.exports = {
+  devServerConfig: {
+    disableHostCheck: true,
+  },
   source: {
     // 读取markdown文件的目录
     components: './components',
