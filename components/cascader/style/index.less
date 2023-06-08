@@ -29,9 +29,14 @@
   }
 
   &.disabled {
+    cursor: not-allowed;
+
     .@{cascader-picker-prefix-cls}-input {
-      cursor: not-allowed;
       border-color: @color-border-strong;
+
+      input {
+        cursor: not-allowed;
+      }
 
       .@{kd-prefix}-input-suffix,
       i[class*='kdicon'] {
@@ -210,6 +215,11 @@
     align-items: center;
     flex-wrap: wrap;
     width: 100%;
+  }
+
+  &-disabled,
+  &-disabled:hover {
+    cursor: not-allowed;
   }
 
   &-placeholder {

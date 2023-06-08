@@ -214,7 +214,7 @@ const Cascader = React.forwardRef<unknown, CascaderProps>((props, ref) => {
       : currentOptions.map((option) => option.map(({ value }: CascaderOptionType) => value as string))
   }, [currentOptions, isMultiple])
 
-  const allowClear = allProps.allowClear && value.length > 0
+  const allowClear = allProps.allowClear && !disabled && value.length > 0
 
   const locatorProps = {
     style,
@@ -249,7 +249,7 @@ const Cascader = React.forwardRef<unknown, CascaderProps>((props, ref) => {
       [`${prefixCls}-icon-arrow-focus`]: visible,
     })
 
-    const iconShow = allowClear && !disabled && currentOptions.length > 0
+    const iconShow = allowClear && currentOptions.length > 0
     const clearIconCls = classNames({
       [`${prefixCls}-icon-clear`]: true,
     })
@@ -289,7 +289,7 @@ const Cascader = React.forwardRef<unknown, CascaderProps>((props, ref) => {
   const renderMultiple = () => {
     const { maxTagCount, maxTagPlaceholder } = allProps
     const multipleCls = classNames({
-      disabled: disabled,
+      [`${prefixCls}-disabled`]: disabled,
       [`${prefixCls}-multiple`]: true,
       [`${prefixCls}-bordered`]: bordered,
     })
@@ -308,7 +308,7 @@ const Cascader = React.forwardRef<unknown, CascaderProps>((props, ref) => {
                 return (
                   <span key={JSON.stringify(values[index])} className={classNames(`${prefixCls}-selection-tag`)}>
                     {(!maxTagCount || index <= maxTagCount - 1) && (
-                      <Tag type="edit" style={TagStyle} closable onClose={(e) => handleRemove(e, option)}>
+                      <Tag type="edit" style={TagStyle} closable={allowClear} onClose={(e) => handleRemove(e, option)}>
                         {displayRender(labels[index], option)}
                       </Tag>
                     )}
