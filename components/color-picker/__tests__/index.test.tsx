@@ -1,6 +1,8 @@
 import React from 'react'
 import { mount, render } from 'enzyme'
 import ColorPicker from '../index'
+import ColorPickerPanel from '../color-picker-panel'
+import ConfigProvider from '../../config-provider/index'
 import { BorderTypes, IColorPickerProps } from '../interface'
 import mountTest from '../../../tests/shared/mountTest'
 
@@ -15,15 +17,48 @@ describe('ColorPicker', () => {
   // 2.render test
   it('renders correctly', () => {
     BorderTypes.forEach((type) => {
-      const wrapper = render(<ColorPicker borderType={type}></ColorPicker>)
+      const wrapper = render(
+        <ColorPicker borderType={type} defaultOpen={false} placeholder="#" showSwitch={false}></ColorPicker>,
+      )
       expect(wrapper).toMatchSnapshot()
     })
   })
-  // 3. render no child without errors
+  // #region 3.warns in component
+  it('should warns when set wrong "functionalColor" of prop', () => {
+    const mockWarn = jest.fn()
+    jest.spyOn(console, 'warn').mockImplementation(mockWarn)
+    const props = {
+      defaultOpen: true,
+      functionalColor: '234',
+      showSwitch: true,
+    }
+    const wrapper = mount(<ColorPicker {...props} />)
+    wrapper.find('.kd-switch').simulate('click')
+    expect(mockWarn).toHaveBeenCalledTimes(1)
+    expect(mockWarn.mock.calls[0][0]).toMatch(
+      "Warning: [kdesign]-color-picker: 'themeColor' must be hexadecimal, RGB, HSB, HSL or English color name",
+    )
+  })
+  it('should warns when set wrong "presetColor" of prop', () => {
+    const mockWarn = jest.fn()
+    jest.spyOn(console, 'warn').mockImplementation(mockWarn)
+    const props = {
+      defaultOpen: true,
+      presetColor: ['123'],
+    }
+    mount(<ColorPicker {...props} />)
+    expect(mockWarn).toHaveBeenCalledTimes(1)
+    expect(mockWarn.mock.calls[0][0]).toMatch(
+      "Warning: [kdesign]-color-picker: 'presetColor' must be an array of hexadecimal, RGB, HSB, HSL or English color name string type",
+    )
+  })
+  // #endregion
+
+  // 4.render no child without errors
   it('renders correctly with no child', () => {
     expect(mount(<ColorPicker></ColorPicker>)).toMatchSnapshot()
   })
-  // 4. render null or undefined without errors
+  // 5.render null or undefined without errors
   it('renders correctly with null or undefined', () => {
     expect(
       mount(
@@ -34,12 +69,14 @@ describe('ColorPicker', () => {
       ),
     ).toMatchSnapshot()
   })
-  // 5.displayName
+  // 6.displayName
   it('should have displayName static property', () => {
     const wrapper = mount(<ColorPicker></ColorPicker>)
     expect((wrapper.type() as any).displayName).toBe('ColorPicker')
+    expect(ColorPickerPanel.displayName).toBe('ColorPickerPanel')
   })
-  // 6.api
+
+  // #region 7.api test
   it('should show the correct API function', () => {
     const underlineWrapper = mount(<ColorPicker {...defaultColorPickerProps} borderType="underline"></ColorPicker>)
     const borderedWrapper = mount(<ColorPicker {...defaultColorPickerProps} borderType="bordered"></ColorPicker>)
@@ -216,7 +253,8 @@ describe('ColorPicker', () => {
     )
     expect(popuContainer.find('.kd-color-picker-pop').length).toBe(1)
 
-    // // visible
+    //! visible api暂未开发
+    // visible
     // const TestVisible = () => {
     //   const [visible, setVisible] = React.useState(true)
     //   return (
@@ -247,7 +285,32 @@ describe('ColorPicker', () => {
     defaultOpenWrapper.unmount()
   })
 
-  // 7.click
+  // controlled & uncontrolled
+  it('should display value when both value and defaultValue exist', () => {
+    const wrapper = mount(<ColorPicker value="red" defaultValue="blue" />)
+    expect(wrapper.find('.kd-color-picker-input').at(0).props().value).toBe('red')
+  })
+  it('should display defaultValue when only defaultValue exists', () => {
+    const wrapper = mount(<ColorPicker defaultValue="blue" />)
+    expect(wrapper.find('.kd-color-picker-input').at(0).props().value).toBe('blue')
+  })
+  it('should not change value when selected in the component', () => {
+    const wrapper = mount(<ColorPicker defaultOpen value="blue" />)
+    wrapper.find('.kd-color-picker-panel-colorDivContainer').childAt(0).simulate('click')
+    expect(wrapper.find('.kd-color-picker-input').at(0).props().value).toBe('blue')
+  })
+  it('should change value when use onChange event', () => {
+    let changeValue = 'blue'
+    const handleChangeValue = jest.fn((colorValue) => {
+      expect(colorValue).toEqual('#a1ecff')
+      changeValue = colorValue
+    })
+    const wrapper = mount(<ColorPicker defaultOpen value={changeValue} onChange={handleChangeValue} />)
+    wrapper.find('.kd-color-picker-panel-colorDivContainer').childAt(0).simulate('click')
+  })
+  // #endregion
+
+  // #region 8.component interaction(event)
   const testCommonState = (wrapper: any, colorValue: string, opacity: string) => {
     expect(wrapper.find('.kd-color-picker-input').at(0).prop('value')).toEqual(colorValue)
     expect((wrapper.find('.kd-select-wrapper').getDOMNode() as HTMLDivElement).title).toEqual(colorValue)
@@ -261,7 +324,7 @@ describe('ColorPicker', () => {
     wrapper.update()
     testCommonState(wrapper, '#34343409', '4%')
     wrapper.find('.kd-color-picker-panel-input').simulate('click')
-    // !Select组件的defaultOpen有问题
+    //! Select组件的defaultOpen有问题
     // expect(wrapper.find('.kd-select').hasClass('kd-select-visible')).toBeTruthy()
     // expect(wrapper.find('.kd-select-item-option').length).toEqual(4)
     // expect(wrapper.find('.kd-select-item-option').at(0).text()).toEqual('HEX')
@@ -309,7 +372,7 @@ describe('ColorPicker', () => {
     wrapper.unmount()
   })
 
-  // !color-picker-box
+  //! react-color无法模拟内部点击事件
   // it('should display the correct color values and corrent opacity when clicking on different positions of color picker box', () => {
   //   const wrapper = mount(
   //     <ColorPicker {...defaultColorPickerProps} defaultOpen showColorPickerBox></ColorPicker>,
@@ -321,29 +384,56 @@ describe('ColorPicker', () => {
   //       rgb: { r: 125, g: 74, b: 74, a: 0.81 },
   //     })
   //   testCommonState(wrapper, '#7d4a4acf', '81%')
-  // })
+  // })w
+  // #endregion
 
-  // 8.controlled & uncontrolled
-  it('should display value when both value and defaultValue exist', () => {
-    const wrapper = mount(<ColorPicker value="red" defaultValue="blue" />)
-    expect(wrapper.find('.kd-color-picker-input').at(0).props().value).toBe('red')
+  // 9.class state
+  // data-test向下传递
+  it('should ensure native API or custom API can pass', () => {
+    expect(mount(<ColorPicker data-index="1"></ColorPicker>)).toHaveProp('data-index', '1')
   })
-  it('should display defaultValue when only defaultValue exists', () => {
-    const wrapper = mount(<ColorPicker defaultValue="blue" />)
-    expect(wrapper.find('.kd-color-picker-input').at(0).props().value).toBe('blue')
+
+  // 10.config provider
+  it('should provide the correct configuration by using configuration provider', () => {
+    const colorPickerConfig = {
+      compDefaultProps: {
+        ColorPicker: {
+          borderType: 'underline',
+          defaultOpen: true,
+          functionalColorName: '#themeColor',
+          switchName: { name: '跟随主题色', internationalName: 'followFunctionalColor' },
+          placeholder: '??',
+          showColorTransfer: true,
+          showPresetColor: true,
+          showColorPickerBox: { showBox: false, showHue: false, showOpacity: false },
+        },
+      },
+    }
+    const wrapper = mount(
+      <ConfigProvider value={colorPickerConfig}>
+        <ColorPicker></ColorPicker>
+      </ConfigProvider>,
+    )
+    expect(wrapper.find('.kd-input-underline')).toExist()
+    expect(wrapper.find('.kd-color-picker-panel')).toExist()
+    expect(wrapper.find('.kd-color-picker-panel-switch')).not.toExist()
+    expect(wrapper.find('.kd-color-picker-input').at(0).prop('placeholder')).toEqual('??')
+    expect(wrapper.find('.kd-color-picker-panel-input')).toExist()
+    expect(wrapper.find('.kd-color-picker-panel-transparent')).toExist()
+    expect(wrapper.find('.kd-color-picker-panel-transparent')).toExist()
+    expect(wrapper.find('.kd-color-picker-panel-colorDivContainer')).toExist()
+    expect(
+      wrapper.find(
+        '.kd-color-picker-panel-chrome-no-box.kd-color-picker-panel-chrome-no-hue.kd-color-picker-panel-chrome-no-opacity',
+      ),
+    ).toExist()
   })
-  it('should not change value when selected in the component', () => {
-    const wrapper = mount(<ColorPicker defaultOpen value="blue" />)
-    wrapper.find('.kd-color-picker-panel-colorDivContainer').childAt(0).simulate('click')
-    expect(wrapper.find('.kd-color-picker-input').at(0).props().value).toBe('blue')
-  })
-  it('should change value when use onChange event', () => {
-    let changeValue = 'blue'
-    const handleChangeValue = jest.fn((colorValue) => {
-      expect(colorValue).toEqual('#a1ecff')
-      changeValue = colorValue
-    })
-    const wrapper = mount(<ColorPicker defaultOpen value={changeValue} onChange={handleChangeValue} />)
-    wrapper.find('.kd-color-picker-panel-colorDivContainer').childAt(0).simulate('click')
-  })
+
+  //! ref api暂未开发，antd未提供
+  // 11.ref test
+  // it('should get correct dom from ref of props', () => {
+  //   const ref = React.createRef()
+  //   mount(<ColorPicker ref={ref}></ColorPicker>)
+  //   expect(ref.current instanceof HTMLInputElement).toBe(true)
+  // })
 })
