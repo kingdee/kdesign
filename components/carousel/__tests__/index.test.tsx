@@ -1,6 +1,7 @@
 import React from 'react'
 import { mount, render } from 'enzyme'
 import Carousel from '../index'
+import ConfigProvider from '../../config-provider/index'
 import { act } from 'react-dom/test-utils'
 
 const itemStyle = {
@@ -59,24 +60,47 @@ describe('Carousel', () => {
     ).toMatchSnapshot()
   })
 
-  // 3.render no child without errors
+  // #region 3.warns in component
+  it('should warns when set wrong "dotPosition" of prop', () => {
+    const mockWarn = jest.fn()
+    jest.spyOn(console, 'warn').mockImplementation(mockWarn)
+    const props = {
+      dotPosition: '123',
+    }
+    mount(<Carousel {...props} />)
+    expect(mockWarn).toHaveBeenCalledTimes(1)
+    expect(mockWarn.mock.calls[0][0]).toMatch("Warning: [kdesign]-carousel: cannot found dotPosition type '123'")
+  })
+  it('should warns when set wrong "effect" of prop', () => {
+    const mockWarn = jest.fn()
+    jest.spyOn(console, 'warn').mockImplementation(mockWarn)
+    const props = {
+      effect: 'wave',
+    }
+    mount(<Carousel {...props} />)
+    expect(mockWarn).toHaveBeenCalledTimes(1)
+    expect(mockWarn.mock.calls[0][0]).toMatch("Warning: [kdesign]-carousel: cannot found effect type 'wave'")
+  })
+  // #endregion
+
+  // 4.render no child without errors
   it('render no child without errors', () => {
     expect(mount(<Carousel></Carousel>)).toMatchSnapshot()
   })
 
-  // 4.render null or undefined without errors
+  // 5.render null or undefined without errors
   it('render null or undefined without errors', () => {
-    expect(
-      mount(
-        <Carousel>
-          {null}
-          {undefined}
-        </Carousel>,
-      ),
-    ).toMatchSnapshot()
+    const wrapper = mount(
+      <Carousel>
+        {null}
+        {undefined}
+      </Carousel>,
+    )
+    expect(wrapper).toMatchSnapshot()
+    expect(wrapper.find('.kd-carousel-root')).toHaveText('')
   })
 
-  // 5.displayName
+  // 6.displayName
   it('should have displayName static property', () => {
     const wrapper = mount(
       <Carousel>
@@ -97,8 +121,9 @@ describe('Carousel', () => {
     expect((wrapper.type() as any).displayName).toBe('Carousel')
   })
 
-  // #region 6.API
-  //! autoplay:无法测试,元素没有表现切换的标志
+  // #region 7.API
+  //! 无法测试,元素没有表现切换的标志
+  // autoplay
   it('should autoplay when set autoplay of props', () => {
     jest.useFakeTimers()
     const wrapper = mount(
@@ -124,7 +149,17 @@ describe('Carousel', () => {
     jest.useRealTimers()
   })
 
-  // dotPositio && dots of boolean
+  // className
+  it('should show correct class name when set "className" of props', () => {
+    expect(mount(<Carousel className="my-carousel"></Carousel>)).toHaveClassName('my-carousel')
+  })
+
+  // style
+  it("should show correct style when set 'style' of props", () => {
+    expect(mount(<Carousel style={{ backgroundColor: 'red' }}></Carousel>)).toHaveStyle('backgroundColor', 'red')
+  })
+
+  // dotPosition && dots of boolean
   it('should show correct dot position when set "dotPosition" of props', () => {
     const wrapper = mount(
       <Carousel {...props}>
@@ -418,10 +453,9 @@ describe('Carousel', () => {
       'all 0.3s cubic-bezier(0.4,0,0.6,1)',
     )
   })
-
   // #endregion
 
-  // #region 7.methods
+  // #region 8.methods
   // getRef()
   it('should get correct dom element when use "getRef" methods', () => {
     const carouselRef = React.createRef<any>()
@@ -554,8 +588,88 @@ describe('Carousel', () => {
 
   // #endregion
 
-  // 8.ref
-  it('test ref', () => {
+  // 8.class state
+  // data-test向下传递
+  it('should ensure native API or custom API can pass', () => {
+    expect(mount(<Carousel data-index="1"></Carousel>)).toHaveProp('data-index', '1')
+  })
+
+  // 9.component interaction(event)
+  it('the click of the previous button or the next button should be disabled when the jump node position is first or last', () => {
+    const carouselRef = React.createRef<any>()
+    const wrapper = mount(
+      <Carousel ref={carouselRef} jumpNode={true}>
+        <div style={itemStyle}>
+          <h3>1</h3>
+        </div>
+        <div style={itemStyle}>
+          <h3>2</h3>
+        </div>
+        <div style={itemStyle}>
+          <h3>3</h3>
+        </div>
+        <div style={itemStyle}>
+          <h3>4</h3>
+        </div>
+      </Carousel>,
+    )
+    expect(wrapper.find('.kd-carousel-jump').at(0)).toHaveClassName('kd-carousel-jump-disabled')
+    expect(wrapper.find('.kd-carousel-jump').at(1)).not.toHaveClassName('kd-carousel-jump-disabled')
+    act(() => {
+      carouselRef.current.jumpTo(3, false)
+    })
+    wrapper.update()
+    expect(wrapper.find('.kd-carousel-jump').at(0)).not.toHaveClassName('kd-carousel-jump-disabled')
+    expect(wrapper.find('.kd-carousel-jump').at(1)).toHaveClassName('kd-carousel-jump-disabled')
+  })
+
+  // 10.config provider
+  it('should provide the correct configuration by using configuration provider', () => {
+    const carouselRef = React.createRef<any>()
+    const carouselConfig = {
+      compDefaultProps: {
+        Carousel: {
+          autoplay: true,
+          dots: true,
+          dotPosition: 'top',
+          easing: 'cubic-bezier(0.4,0,0.6,1)',
+          effect: 'scrollx',
+          intervalTime: 4000,
+        },
+      },
+    }
+    const wrapper = mount(
+      <ConfigProvider value={carouselConfig}>
+        <Carousel ref={carouselRef}>
+          <div style={itemStyle}>
+            <h3>1</h3>
+          </div>
+          <div style={itemStyle}>
+            <h3>2</h3>
+          </div>
+          <div style={itemStyle}>
+            <h3>3</h3>
+          </div>
+          <div style={itemStyle}>
+            <h3>4</h3>
+          </div>
+        </Carousel>
+      </ConfigProvider>,
+    )
+    expect(wrapper.find('.kd-carousel-slidebar')).toExist()
+    expect(wrapper.find('.kd-carousel-slidebar-top')).toExist()
+    expect(wrapper.find('.kd-carousel-list-slide')).toExist()
+    expect(wrapper.find('.kd-carousel-list-fade')).not.toExist()
+    expect(wrapper.find('.kd-carousel-list-display')).not.toExist()
+    carouselRef.current.next()
+    expect((wrapper.find('.kd-carousel-list').getDOMNode() as HTMLUListElement).style).toHaveProperty(
+      'transition',
+      'all 0.3s cubic-bezier(0.4,0,0.6,1)',
+    )
+  })
+
+  // 11.ref test
+  it('should get correct dom from ref of props', () => {
     const carouselRef = React.createRef<any>()
     mount(
       <Carousel {...props} ref={carouselRef}>
@@ -593,34 +707,5 @@ describe('Carousel', () => {
         carouselRef.current.jumpTo(3, false)
       }).not.toThrow()
     })
-  })
-
-  // 9.disable prev button and next button
-  it('the click of the previous button or the next button should be disabled when the plane position is first or last ', () => {
-    const carouselRef = React.createRef<any>()
-    const wrapper = mount(
-      <Carousel ref={carouselRef} jumpNode={true}>
-        <div style={itemStyle}>
-          <h3>1</h3>
-        </div>
-        <div style={itemStyle}>
-          <h3>2</h3>
-        </div>
-        <div style={itemStyle}>
-          <h3>3</h3>
-        </div>
-        <div style={itemStyle}>
-          <h3>4</h3>
-        </div>
-      </Carousel>,
-    )
-    expect(wrapper.find('.kd-carousel-jump').at(0)).toHaveClassName('kd-carousel-jump-disabled')
-    expect(wrapper.find('.kd-carousel-jump').at(1)).not.toHaveClassName('kd-carousel-jump-disabled')
-    act(() => {
-      carouselRef.current.jumpTo(3, false)
-    })
-    wrapper.update()
-    expect(wrapper.find('.kd-carousel-jump').at(0)).not.toHaveClassName('kd-carousel-jump-disabled')
-    expect(wrapper.find('.kd-carousel-jump').at(1)).toHaveClassName('kd-carousel-jump-disabled')
   })
 })
