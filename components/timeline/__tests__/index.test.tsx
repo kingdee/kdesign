@@ -1,7 +1,8 @@
 import React from 'react'
-import { mount } from 'enzyme'
+import { mount, render } from 'enzyme'
 import TimeLine from '..'
 import mountTest from '../../../tests/shared/mountTest'
+import ConfigProvider from '../../config-provider/index'
 
 const { Item } = TimeLine
 
@@ -15,10 +16,133 @@ const wrapperFactory = (timeLineProps = {}, labelItems?: any) =>
     </TimeLine>,
   )
 
+const RenderWrapperFactory = (timeLineProps = {}, labelItems?: any) =>
+  render(
+    <TimeLine {...timeLineProps}>
+      <Item key="1">foo</Item>
+      <Item key="2">bar</Item>
+      <Item key="3">baz</Item>
+      {labelItems}
+    </TimeLine>,
+  )
+
 describe('TimeLine', () => {
+  // 1. mount test
   mountTest(TimeLine)
   mountTest(TimeLine.Item)
 
+  // 2. render test
+  describe('render correct', () => {
+    it('snapshot render correct', () => {
+      const pendingDot = <i>dot</i>
+      const green = 'green'
+      const red = 'red'
+      const blue = 'blue'
+      const gray = 'gray'
+      expect(RenderWrapperFactory()).toMatchSnapshot()
+      expect(RenderWrapperFactory({ pending })).toMatchSnapshot()
+      expect(RenderWrapperFactory({ pending, pendingDot })).toMatchSnapshot()
+      expect(RenderWrapperFactory({ pending, reverse: true, mode: 'alternate' })).toMatchSnapshot()
+      expect(
+        RenderWrapperFactory({}, [
+          <Item key="4" color={green}>
+            foo green
+          </Item>,
+          <Item key="5" color={red}>
+            foo red
+          </Item>,
+          <Item key="6" color={blue}>
+            foo blue
+          </Item>,
+          <Item key="7" color={gray}>
+            foo gray
+          </Item>,
+        ]),
+      ).toMatchSnapshot()
+    })
+  })
+
+  // 3. warns in component
+
+  // 4. render null or undefined without errors
+  describe('render null or undefined without errors', () => {
+    it('render null without errors', () => {
+      const wrapper = mount(
+        <TimeLine>
+          {null}
+          {undefined}
+        </TimeLine>,
+      )
+      expect(wrapper.find('ul').children()).not.toExist()
+    })
+
+    it('item render null without errors', () => {
+      const wrapper = mount(
+        <TimeLine>
+          <Item>
+            {null}
+            {undefined}
+          </Item>
+        </TimeLine>,
+      )
+      expect(wrapper.find('.kd-timeline-item').first()).toHaveClassName('last')
+      expect(wrapper.find('.kd-timeline-item .kd-timeline-item-content').text()).toBe('')
+    })
+  })
+  // 5. displayName
+  describe('should have displayName static property', () => {
+    it('displayName', () => {
+      const wrapper = mount(<TimeLine></TimeLine>)
+      expect((wrapper.type() as any).displayName).toBe('Timeline')
+    })
+  })
+  // 6. class state
+
+  // 7.component interaction(event)
+
+  // 8.config provider
+  describe('should config use config provider', () => {
+    it('should config use config provider', () => {
+      const timelineConfig = {
+        compDefaultProps: {
+          Timeline: {
+            reverse: true,
+            mode: 'right',
+            labelWidth: 100,
+            lineHeight: 24,
+          },
+        },
+      }
+      const wrapper = mount(
+        <ConfigProvider value={timelineConfig}>
+          <TimeLine style={{ width: 300 }}>
+            <TimeLine.Item label="2022-10-01">节点内容一</TimeLine.Item>
+            <TimeLine.Item label="2022-10-02">节点内容二</TimeLine.Item>
+            <TimeLine.Item label="2022-10-03">节点内容三</TimeLine.Item>
+          </TimeLine>
+        </ConfigProvider>,
+      )
+      expect(wrapper.find('.kd-timeline.right .last .kd-timeline-item-content').text()).toEqual('节点内容一')
+      expect(wrapper.find('.kd-timeline.right .last .kd-timeline-item-label').props().style?.width).toEqual('100px')
+      expect(wrapper.find('.kd-timeline.right .last .kd-timeline-item-content').props().style?.lineHeight).toEqual(
+        '24px',
+      )
+    })
+  })
+
+  // 9. ref test
+  // describe('ref test', () => {
+  //   it('should get Demo element from ref', () => {
+  //     const ref = React.createRef()
+  //     mount(<TimeLine ref={ref}></TimeLine>)
+  //     expect(ref.current instanceof HTMLElement).toBe(true)
+
+  //     mount(<TimeLine ref={ref} type="text"></TimeLine>)
+  //     expect(ref.current instanceof HTMLSpanElement).toBe(true)
+  //   })
+  // })
+
+  // 10. api test
   describe('renders items without passing any props correctly', () => {
     const wrapper = wrapperFactory()
 
@@ -33,12 +157,22 @@ describe('TimeLine', () => {
     it('its last item is marked as the last item', () => {
       expect(wrapper.find('li.kd-timeline-item').last()).toHaveClassName('last')
     })
-
-    it('should have displayName static property', () => {
-      expect((wrapper.type() as any).displayName).toBe('Timeline')
-    })
   })
 
+  // labelWidth lineHeight
+  it('renders labelWidth lineHeight correctly', () => {
+    const wrapper = mount(
+      <TimeLine labelWidth={80} lineHeight={25} mode="right">
+        <TimeLine.Item label="2022-10-01">节点内容一</TimeLine.Item>
+        <TimeLine.Item label="2022-10-02">节点内容二</TimeLine.Item>
+        <TimeLine.Item label="2022-10-03">节点内容三</TimeLine.Item>
+      </TimeLine>,
+    )
+    expect(wrapper.find('li.last .kd-timeline-item-label').props().style?.width).toEqual('80px')
+    expect(wrapper.find('li.last .kd-timeline-item-content').props().style?.lineHeight).toEqual('25px')
+  })
+
+  // pending pendingDot
   describe('renders pending item', () => {
     const pending = <div>pending...</div>
     const pendingDot = <i>dot</i>
@@ -85,6 +219,7 @@ describe('TimeLine', () => {
     })
   })
 
+  // reverse
   describe('the item rendering sequence is controlled by reverse', () => {
     it('items is in order when prop reverse is false', () => {
       const wrapper = wrapperFactory({ reverse: false })
@@ -111,6 +246,7 @@ describe('TimeLine', () => {
     })
   })
 
+  // mode
   describe('renders Timeline mode correctly', () => {
     it('has 3 timeline item that has className right when mode is right', () => {
       const wrapper = wrapperFactory({ mode: 'right' })
@@ -123,6 +259,7 @@ describe('TimeLine', () => {
     })
   })
 
+  // color
   describe('render Timeline Item with props correctly', () => {
     it('renders Timeline item with color correctly', () => {
       const green = 'green'
@@ -160,6 +297,7 @@ describe('TimeLine', () => {
       )
     })
 
+    // dot
     it('renders Timeline item with dot correctly', () => {
       const dot = <i>dot</i>
       const wrapper = wrapperFactory(
@@ -173,6 +311,7 @@ describe('TimeLine', () => {
       expect(itemDot).toContainReact(dot)
     })
 
+    // label
     it('renders Timeline item with label correctly', () => {
       const label = '2020-01-01'
       const wrapper = wrapperFactory(
