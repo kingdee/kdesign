@@ -2,6 +2,7 @@ import React from 'react'
 import { mount, render } from 'enzyme'
 import Card from '..'
 import mountTest from '../../../tests/shared/mountTest'
+import ConfigProvider from '../../config-provider/index'
 import Checkbox from '../../checkbox'
 import Tag from '../../tag'
 
@@ -38,6 +39,17 @@ describe('Card', () => {
   })
 
   // #region 6.API
+
+  // className
+  it('should show correct class name when set "className" of props', () => {
+    expect(mount(<Card className="my-card"></Card>)).toHaveClassName('my-card')
+  })
+
+  // style
+  it("should show correct style when set 'style' of props", () => {
+    expect(mount(<Card style={{ backgroundColor: 'red' }}></Card>)).toHaveStyle('backgroundColor', 'red')
+  })
+
   // actions
   it('show actions correctly', () => {
     const actions = [
@@ -170,4 +182,37 @@ describe('Card', () => {
     expect(wrapper.find('.kd-card-header')).toHaveText('title')
   })
   // #endregion
+
+  // 7.class state
+  // data-test向下传递
+  it('should ensure native API or custom API can pass', () => {
+    expect(mount(<Card data-index="1"></Card>)).toHaveProp('data-index', '1')
+  })
+
+  // 8.config provider
+  it('should provide the correct configuration by using configuration provider', () => {
+    const cardConfig = {
+      compDefaultProps: {
+        Card: {
+          hoverable: true,
+          selectable: true,
+        },
+      },
+    }
+    const wrapper = mount(
+      <ConfigProvider value={cardConfig}>
+        <Card>Demo Text</Card>
+      </ConfigProvider>,
+    )
+    expect(wrapper.find('.hoverable')).toExist()
+    expect(wrapper.find('.kd-checkbox')).toExist()
+  })
+
+  //! api暂未开发，antd提供ref
+  // 9.ref test
+  // it('should get correct dom from ref of props', () => {
+  //   const ref = React.createRef()
+  //     mount(<Card ref={ref}></Card>)
+  //     expect(ref.current instanceof HTMLElement).toBe(true)
+  // })
 })
