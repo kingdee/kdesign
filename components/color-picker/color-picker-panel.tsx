@@ -180,7 +180,7 @@ const ColorPickerPanel: FC<IColorPickerPanelProps> = (props) => {
           }
         }
       }
-      devWarning(!inputValType, 'color-picker', "'themeColor' must be hexadecimal, RGB, HSB, HSL or color English name")
+      devWarning(!inputValType, 'color-picker', "'themeColor' must be hexadecimal, RGB, HSB, HSL or English color name")
     }
     if (switchValue) {
       onChange && onChange(functionalColorName, formatArr as IColorTypesObj[])
@@ -207,7 +207,11 @@ const ColorPickerPanel: FC<IColorPickerPanelProps> = (props) => {
     const isTrueFormat = colorArr.every((hexColor) => {
       return ['HEX', 'HSB', 'RGB', 'HSL', 'colorName'].indexOf(validateColor(hexColor)) !== -1
     })
-    devWarning(!isTrueFormat, 'color-picker', "'presetColor' must be Array of the HEX string type")
+    devWarning(
+      !isTrueFormat,
+      'color-picker',
+      "'presetColor' must be an array of hexadecimal, RGB, HSB, HSL or English color name string type",
+    )
     return isTrueFormat
   }
 
