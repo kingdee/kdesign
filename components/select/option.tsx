@@ -12,15 +12,29 @@ export interface ISelectOptionProps {
   children?: any // update
   className?: string
   index?: number
+  activeIndex?: number
   style?: React.CSSProperties
   isMultiple?: boolean
   onChangeSelect?: (key: SelectValue, label: string | undefined, isSelected: boolean) => void
+  onChangeActiveIndex?: (index: any) => void
 }
 
 const InternalOption: React.ForwardRefRenderFunction<unknown, ISelectOptionProps> = (props, ref: unknown) => {
   const optionRef = useRef<HTMLDivElement>(null) || (ref as any)
   const [isSelected, setSelected] = useState<boolean>(false)
-  const { className, children, value = null, disabled, values, isMultiple, onChangeSelect, title } = props
+  const {
+    className,
+    children,
+    value = null,
+    disabled,
+    values,
+    isMultiple,
+    onChangeSelect,
+    onChangeActiveIndex,
+    title,
+    activeIndex,
+    index,
+  } = props
   const optionProps: ISelectOptionProps = { ...props }
   const { getPrefixCls, prefixCls } = useContext(ConfigContext)
   const selectOptionPrefixCls = getPrefixCls!(prefixCls, 'select-item')
@@ -33,6 +47,7 @@ const InternalOption: React.ForwardRefRenderFunction<unknown, ISelectOptionProps
   })
   const optionCls = classNames(selectOptionPrefixCls, className, {
     [`${selectOptionPrefixCls}-option`]: true,
+    [`${selectOptionPrefixCls}-option-active`]: activeIndex === index,
     [`${selectOptionPrefixCls}-option-selected`]: isSelected,
     [`${selectOptionPrefixCls}-option-disabled`]: disabled,
   })
@@ -40,7 +55,6 @@ const InternalOption: React.ForwardRefRenderFunction<unknown, ISelectOptionProps
   const contentCls = classNames({
     [`${selectOptionPrefixCls}-option-content`]: true,
   })
-
   const handleClick = (e: React.MouseEvent<HTMLDivElement>) => {
     e.preventDefault()
     if (optionProps.disabled || value === undefined) return
@@ -49,7 +63,9 @@ const InternalOption: React.ForwardRefRenderFunction<unknown, ISelectOptionProps
     }
     onChangeSelect && onChangeSelect(value, children, isSelected)
   }
-
+  const handleOnMouseMove = () => {
+    onChangeActiveIndex && onChangeActiveIndex(index)
+  }
   const titleText = title || (typeof children !== 'object' ? children : null)
 
   const checkStyle = {
@@ -59,7 +75,13 @@ const InternalOption: React.ForwardRefRenderFunction<unknown, ISelectOptionProps
 
   return (
     <>
-      <div ref={optionRef} className={optionCls} title={titleText} onClick={handleClick}>
+      <div
+        ref={optionRef}
+        className={optionCls}
+        title={titleText}
+        onClick={handleClick}
+        onMouseMove={handleOnMouseMove}
+      >
         <div className={contentCls}>
           {/* {children} */}
           {isMultiple ? (
