@@ -88,7 +88,7 @@ function Demo() {
 
   return (
     <div style={{ width: '200px' }}>
-      <Cascader options={options} onChange={onChange} placeholder="Please select" />
+      <Cascader options={options} autoFocus onChange={onChange} placeholder="Please select" />
       <br />
       <br />
       <Cascader options={options} onChange={onChange} placeholder="Please select" bordered />

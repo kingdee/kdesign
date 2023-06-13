@@ -18,6 +18,7 @@ export type CheckboxValueType = string | number
 export interface CheckboxGroupContext {
   name?: string
   isControlled?: boolean
+  size?: CheckboxSize // 大小，只对按钮样式生效
   groupValue?: Array<CheckboxValueType>
   checkboxType?: CheckboxType
   disabled?: boolean
@@ -36,7 +37,7 @@ export interface CheckboxGroupProps {
   value?: Array<CheckboxValueType> // 用于设置当前选中的值
   checkboxType?: CheckboxType // 多选框类型（默认类型/标签类型）
   disabled?: boolean // 设置整个多选组不可用
-  defaultValue?: string[] | string // 默认选中的值
+  defaultValue?: Array<CheckboxValueType> // 默认选中的值
   options?: string[] | Array<{ label?: string; value: string; disabled?: boolean }> // 以配置形式设置子元素
   style?: Record<string, unknown> // 内联样式
   className?: string // 样式名
@@ -45,7 +46,6 @@ export interface CheckboxGroupProps {
   onChange?: React.MouseEventHandler<HTMLElement> // 点击事件
 }
 const CheckboxGroup = React.forwardRef<HTMLDivElement, CheckboxGroupProps>((props, ref) => {
-  // const CheckboxGroup = (props: CheckboxGroupProps): FunctionComponentElement<CheckboxGroupProps> => {
   const { getPrefixCls, prefixCls, compDefaultProps: userDefaultProps } = useContext(ConfigContext)
   const CheckboxProps = getCompProps('Checkbox', userDefaultProps, props) // 按钮属性需要合并一遍用户定义的默认属性
   const {
@@ -61,6 +61,7 @@ const CheckboxGroup = React.forwardRef<HTMLDivElement, CheckboxGroupProps>((prop
     defaultValue,
     value,
     name,
+    ...rest
   } = CheckboxProps
 
   const initData =
@@ -110,6 +111,7 @@ const CheckboxGroup = React.forwardRef<HTMLDivElement, CheckboxGroupProps>((prop
     groupValue: groupValue,
     disabled: disabled,
     name: name,
+    size: size,
     isControlled,
     checkboxType: checkboxType,
     onCheckboxGroupChange: (
@@ -141,11 +143,12 @@ const CheckboxGroup = React.forwardRef<HTMLDivElement, CheckboxGroupProps>((prop
     })
   }
   return (
-    <ul className={classnames(checkboxGroupPrefixCls, className)} style={style} ref={ref as any}>
+    <ul className={classnames(checkboxGroupPrefixCls, className)} style={style} ref={ref as any} {...rest}>
       <GroupContext.Provider value={context}>
         {options && options.length > 0 ? renderByOptions() : children}
       </GroupContext.Provider>
     </ul>
   )
 })
+CheckboxGroup.displayName = 'CheckboxGroup'
 export default React.memo(CheckboxGroup)
