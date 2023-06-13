@@ -51,6 +51,7 @@ const InternalCheckbox: React.ForwardRefRenderFunction<unknown, CheckboxProps> =
   const mergedDisabled = checkboxGroup?.disabled || disabled
   const mergedCheckboxType = checkboxGroup?.checkboxType || checkboxType
   const mergedName = checkboxGroup?.name || name
+  const mergedSize = checkboxGroup?.size || size
 
   const initChecked = checkboxGroup?.groupValue
     ? checkboxGroup?.groupValue.indexOf(value) > -1
@@ -76,7 +77,7 @@ const InternalCheckbox: React.ForwardRefRenderFunction<unknown, CheckboxProps> =
     `cannot found checkbox type '${mergedCheckboxType}'`,
   )
 
-  devWarning(CheckboxSizes.indexOf(size) === -1, 'checkbox', `cannot found size type '${size}'`)
+  devWarning(CheckboxSizes.indexOf(mergedSize) === -1, 'checkbox', `cannot found size type '${mergedSize}'`)
 
   const checkboxPrefixCls = getPrefixCls!(prefixCls, 'checkbox', customPrefixcls)
 
@@ -91,7 +92,7 @@ const InternalCheckbox: React.ForwardRefRenderFunction<unknown, CheckboxProps> =
   const getDefaultClassName = classNames(className, {
     [`${checkboxPrefixCls}`]: true,
     [`${checkboxPrefixCls}-no-child`]: !children,
-    [`${checkboxPrefixCls}-${size}`]: true && !!children,
+    [`${checkboxPrefixCls}-${mergedSize}`]: true && !!children,
     [`${checkboxPrefixCls}-${mergedCheckboxType}`]: true,
     [`${checkboxPrefixCls}-${mergedCheckboxType}-disabled`]: mergedDisabled,
     checked: selected,
@@ -100,6 +101,7 @@ const InternalCheckbox: React.ForwardRefRenderFunction<unknown, CheckboxProps> =
   const getSquareClassName = classNames(className, {
     [`${checkboxPrefixCls}`]: true,
     [`${checkboxPrefixCls}-${mergedCheckboxType}`]: true,
+    [`${checkboxPrefixCls}-${mergedSize}`]: true && !!children,
     [`${checkboxPrefixCls}-${mergedCheckboxType}-disabled`]: mergedDisabled,
     [`${checkboxPrefixCls}-${mergedCheckboxType}-checked`]: selected && !mergedDisabled,
     checked: selected,

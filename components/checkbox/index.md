@@ -41,13 +41,11 @@ subtitle: 多选
 | value | 用于设置当前选中的值 | string[] | - | 1.0.0 |
 | onChange | 选项变化时的回调函数 | function(checkedValue, e:Event) | - | 1.6.26 |
 
-## 方法
-
 ## Design Token
 
 | 分类 | 组件token | 全局token | 默认值 |
 | --- | --- | --- | --- |
-| colors | --kd-c-checkbox-color-theme | --kd-g-color-theme | #5582f3 |
+| color | --kd-c-checkbox-color-theme | --kd-g-color-theme | #5582f3 |
 |  | --kd-c-checkbox-color-text-primary | - | #212121 |
 |  | --kd-c-checkbox-color-border | - | #d9d9d9 |
 |  | --kd-c-checkbox-color-border-active | --kd-g-color-theme | #5582f3 |

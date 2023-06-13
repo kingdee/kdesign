@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Dropdown menu is Array 1`] = `
+exports[`Dropdown API Test menu is Array 1`] = `
 <Dropdown
   menu={Array []}
 >

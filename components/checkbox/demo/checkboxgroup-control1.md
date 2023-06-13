@@ -30,7 +30,7 @@ class Demo extends React.Component {
         <div>已选择： {value}</div>
         <br />
         <br />
-        <Checkbox.Group onChange={this.onChange} value={value} checkboxType={'default'}>
+        <Checkbox.Group onChange={this.onChange}  checkboxType="square" name="kd_checked" size="small">
           <Checkbox value={"A"}>
             Option A
           </Checkbox>

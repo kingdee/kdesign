@@ -1,5 +1,73 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Alert API test should showIcon & closable use right 1`] = `
+<div
+  class="kd-alert kd-alert-closable kd-alert-leave kd-alert-container alert-success-bg-color alert-success-border-color"
+>
+  <div
+    class="kd-alert-icon alert-success-icon-color"
+  >
+    <i
+      class="kdicon kdicon-right-solid"
+    />
+  </div>
+  <div
+    class="kd-alert-message"
+  />
+</div>
+`;
+
+exports[`Alert API test should showIcon & closable use right 2`] = `
+<div
+  class="kd-alert kd-alert-leave kd-alert-container alert-success-bg-color alert-success-border-color"
+>
+  <div
+    class="kd-alert-icon alert-success-icon-color"
+  >
+    <i
+      class="kdicon kdicon-right-solid"
+    />
+  </div>
+  <div
+    class="kd-alert-message"
+  />
+</div>
+`;
+
+exports[`Alert API test should showIcon & closable use right 3`] = `
+<div
+  class="kd-alert kd-alert-closable kd-alert-leave kd-alert-container alert-success-bg-color alert-success-border-color"
+>
+  <div
+    class="kd-alert-message kd-alert-without-icon-message"
+  />
+</div>
+`;
+
+exports[`Alert API test should showIcon & closable use right 4`] = `
+<div
+  class="kd-alert kd-alert-leave kd-alert-container alert-success-bg-color alert-success-border-color"
+>
+  <div
+    class="kd-alert-message kd-alert-without-icon-message"
+  />
+</div>
+`;
+
+exports[`Alert render null or undefined without errors 1`] = `
+<Alert>
+  <div
+    className="kd-alert kd-alert-leave kd-alert-container alert-warning-bg-color alert-warning-border-color"
+    onMouseOut={[Function]}
+    onMouseOver={[Function]}
+  >
+    <div
+      className="kd-alert-message kd-alert-without-icon-message"
+    />
+  </div>
+</Alert>
+`;
+
 exports[`Alert renders correctly 1`] = `
 <div
   class="kd-alert kd-alert-leave kd-alert-container alert-warning-bg-color alert-warning-border-color"
@@ -43,60 +111,6 @@ exports[`Alert renders correctly 4`] = `
 exports[`Alert renders correctly 5`] = `
 <div
   class="kd-alert kd-alert-leave kd-alert-container alert-error-bg-color alert-error-border-color"
->
-  <div
-    class="kd-alert-message kd-alert-without-icon-message"
-  />
-</div>
-`;
-
-exports[`Alert should showIcon & closable use right 1`] = `
-<div
-  class="kd-alert kd-alert-closable kd-alert-leave kd-alert-container alert-success-bg-color alert-success-border-color"
->
-  <div
-    class="kd-alert-icon alert-success-icon-color"
-  >
-    <i
-      class="kdicon kdicon-right-solid"
-    />
-  </div>
-  <div
-    class="kd-alert-message"
-  />
-</div>
-`;
-
-exports[`Alert should showIcon & closable use right 2`] = `
-<div
-  class="kd-alert kd-alert-leave kd-alert-container alert-success-bg-color alert-success-border-color"
->
-  <div
-    class="kd-alert-icon alert-success-icon-color"
-  >
-    <i
-      class="kdicon kdicon-right-solid"
-    />
-  </div>
-  <div
-    class="kd-alert-message"
-  />
-</div>
-`;
-
-exports[`Alert should showIcon & closable use right 3`] = `
-<div
-  class="kd-alert kd-alert-closable kd-alert-leave kd-alert-container alert-success-bg-color alert-success-border-color"
->
-  <div
-    class="kd-alert-message kd-alert-without-icon-message"
-  />
-</div>
-`;
-
-exports[`Alert should showIcon & closable use right 4`] = `
-<div
-  class="kd-alert kd-alert-leave kd-alert-container alert-success-bg-color alert-success-border-color"
 >
   <div
     class="kd-alert-message kd-alert-without-icon-message"
