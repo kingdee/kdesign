@@ -3,6 +3,7 @@ import { render, mount } from 'enzyme'
 import Select from '../index'
 import { SelectSizes, BorderTypes, Modes, ISelectProps, SelectValue } from '../interface'
 import mountTest from '../../../tests/shared/mountTest'
+import ConfigProvider from '../../config-provider/index'
 
 interface compProps {
   value: any
@@ -122,7 +123,15 @@ describe('Select', () => {
     expect((wrapper.type() as any).displayName).toBe('Select')
   })
 
-  // 6. select all or unselect all when multiple Select
+  // 6. class state
+  it('should className or style use right', () => {
+    const wrapper = mount(<Select className="my-test" style={{ color: 'red' }} data-test="test"></Select>)
+    expect(wrapper.find('.kd-select')).toHaveClassName('.my-test')
+    expect(wrapper.find('.kd-select')).toHaveStyle('color', 'red')
+    expect(wrapper.prop('data-test')).toEqual('test')
+  })
+
+  // 7.component interaction(event)
   it('select all or unselect all when multiple Select', () => {
     let value = []
     const onChange = jest.fn((val) => {
@@ -158,7 +167,43 @@ describe('Select', () => {
     expect(value.length).toBe(3)
   })
 
-  // 7. value & defaultValue(single&multiple)
+  // 8.config provider
+  describe('8.config provider', () => {
+    it('should config use config provider', () => {
+      const selectConfig = {
+        compDefaultProps: {
+          Select: {
+            size: 'small',
+          },
+        },
+      }
+      const wrapper = mount(
+        <ConfigProvider value={selectConfig}>
+          <Select {...defaultselectProps} mode="single" />
+        </ConfigProvider>,
+      )
+      expect(wrapper.find('.kd-select-wrapper')).toHaveClassName('.kd-select-size-small')
+
+      const mulWrapper = mount(
+        <ConfigProvider value={selectConfig}>
+          <Select {...defaultselectProps} mode="multiple" />
+        </ConfigProvider>,
+      )
+      expect(mulWrapper.find('.kd-select-wrapper')).toHaveClassName('.kd-select-size-small')
+    })
+  })
+
+  // 9. ref test
+  describe('9. ref test', () => {
+    it('should get Demo element from ref', () => {
+      const ref = React.createRef() as any
+      mount(<Select ref={ref}></Select>)
+      expect((ref.current as HTMLElement).classList.contains('kd-select')).toBe(true)
+    })
+  })
+
+  // 10. api test
+  // value & defaultValue(single&multiple)
   testValueAndDefaultValue(
     Select,
     { options: optionsData, value: 'apple', defaultValue: 'orange', defaultOpen: true },
@@ -206,8 +251,6 @@ describe('Select', () => {
       },
     },
   )
-
-  // 8. api
   it('api test', () => {
     const singlewrapper = mount(<Select {...defaultselectProps} mode="single"></Select>)
     const multiplewrapper = mount(<Select {...defaultselectProps} mode="multiple"></Select>)
