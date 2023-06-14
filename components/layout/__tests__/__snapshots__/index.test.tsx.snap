@@ -1,20 +1,139 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Layout renders string width correctly 1`] = `
-<aside
-  class="kd-layout-sider kd-layout-sider-dark"
-  style="flex:0 0 200;max-width:200;min-width:200;width:200"
-  width="200"
->
-  <div
-    class="kd-layout-sider-children"
+exports[`Layout 2. render test Header, Footer, Sider, Content 1 1`] = `
+<Layout>
+  <BasicLayout
+    prefixCls="kd-layout"
+    tagName="section"
   >
-    Sider
-  </div>
-</aside>
+    <section
+      className="kd-layout"
+      style={Object {}}
+    >
+      <Header>
+        <Basic
+          prefixCls="kd-layout-header"
+          tagName="header"
+        >
+          <header
+            className="kd-layout-header"
+          >
+            Header
+          </header>
+        </Basic>
+      </Header>
+      <Content>
+        <Basic
+          prefixCls="kd-layout-content"
+          tagName="main"
+        >
+          <main
+            className="kd-layout-content"
+          >
+            Content
+          </main>
+        </Basic>
+      </Content>
+      <Footer>
+        <Basic
+          prefixCls="kd-layout-footer"
+          tagName="footer"
+        >
+          <footer
+            className="kd-layout-footer"
+          >
+            Footer
+          </footer>
+        </Basic>
+      </Footer>
+    </section>
+  </BasicLayout>
+</Layout>
 `;
 
-exports[`Layout should be controlled by collapsed 1`] = `
+exports[`Layout 2. render test Header, Footer, Sider, Content 2  1`] = `
+<Layout>
+  <BasicLayout
+    prefixCls="kd-layout"
+    tagName="section"
+  >
+    <section
+      className="kd-layout"
+      style={Object {}}
+    >
+      <Header>
+        <Basic
+          prefixCls="kd-layout-header"
+          tagName="header"
+        >
+          <header
+            className="kd-layout-header"
+          >
+            Header
+          </header>
+        </Basic>
+      </Header>
+      <Layout>
+        <BasicLayout
+          prefixCls="kd-layout"
+          tagName="section"
+        >
+          <section
+            className="kd-layout kd-layout-has-sider"
+            style={Object {}}
+          >
+            <Sider>
+              <aside
+                className="kd-layout-sider kd-layout-sider-dark"
+                style={
+                  Object {
+                    "flex": "0 0 200px",
+                    "maxWidth": "200px",
+                    "minWidth": "200px",
+                    "width": "200px",
+                  }
+                }
+              >
+                <div
+                  className="kd-layout-sider-children"
+                >
+                  Sider
+                </div>
+              </aside>
+            </Sider>
+            <Content>
+              <Basic
+                prefixCls="kd-layout-content"
+                tagName="main"
+              >
+                <main
+                  className="kd-layout-content"
+                >
+                  Content
+                </main>
+              </Basic>
+            </Content>
+          </section>
+        </BasicLayout>
+      </Layout>
+      <Footer>
+        <Basic
+          prefixCls="kd-layout-footer"
+          tagName="footer"
+        >
+          <footer
+            className="kd-layout-footer"
+          >
+            Footer
+          </footer>
+        </Basic>
+      </Footer>
+    </section>
+  </BasicLayout>
+</Layout>
+`;
+
+exports[`Layout 2. render test should be controlled by collapsed 1`] = `
 <Sider>
   <aside
     className="kd-layout-sider kd-layout-sider-dark"
@@ -36,7 +155,7 @@ exports[`Layout should be controlled by collapsed 1`] = `
 </Sider>
 `;
 
-exports[`Layout should be controlled by collapsed 2`] = `
+exports[`Layout 2. render test should be controlled by collapsed 2`] = `
 <Sider
   collapsed={true}
 >
@@ -58,4 +177,39 @@ exports[`Layout should be controlled by collapsed 2`] = `
     </div>
   </aside>
 </Sider>
+`;
+
+exports[`Layout render null or undefined Layout without errors 1`] = `
+<section
+  className="kd-layout kd-layout-has-sider"
+  style={Object {}}
+>
+  <Sider>
+    <aside
+      className="kd-layout-sider kd-layout-sider-dark"
+      style={
+        Object {
+          "flex": "0 0 200px",
+          "maxWidth": "200px",
+          "minWidth": "200px",
+          "width": "200px",
+        }
+      }
+    >
+      <div
+        className="kd-layout-sider-children"
+      />
+    </aside>
+  </Sider>
+  <Content>
+    <Basic
+      prefixCls="kd-layout-content"
+      tagName="main"
+    >
+      <main
+        className="kd-layout-content"
+      />
+    </Basic>
+  </Content>
+</section>
 `;
