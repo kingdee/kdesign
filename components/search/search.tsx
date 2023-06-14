@@ -100,17 +100,14 @@ const InternalSearch: React.ForwardRefRenderFunction<ISearchProps, IQuickSearchP
     if (!suffix) {
       return null
     }
-    return (
-      !prefix &&
-      (typeof suffix === 'boolean' && suffix ? (
-        <span className={`${searchPrefixCls}-suffix`}>
-          <Icon className="kd-search-prefix" type="search" />
-        </span>
-      ) : (
-        suffix
-      ))
+    return typeof suffix === 'boolean' && suffix ? (
+      <span className={`${searchPrefixCls}-suffix`}>
+        <Icon className="kd-search-prefix" type="search" />
+      </span>
+    ) : (
+      suffix
     )
-  }, [suffix, prefix, searchPrefixCls])
+  }, [suffix, searchPrefixCls])
 
   if (type === 'quick-search') {
     return (
