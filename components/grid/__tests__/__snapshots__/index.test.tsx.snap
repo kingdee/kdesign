@@ -1,15 +1,81 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Grid should render Col 1`] = `
+exports[`Grid 2. render test should render Col 1`] = `
 <div
   class="kd-col"
   style="flex:0 0 8.333333333333332%;max-width:8.333333333333332%"
 />
 `;
 
-exports[`Grid should render Row 1`] = `
+exports[`Grid 2. render test should render Row 1`] = `
 <div
   class="kd-row"
   style="--cgap:12px;align-items:flex-start;justify-content:flex-start"
 />
+`;
+
+exports[`Grid 2. render test should render Row gutter 12 1`] = `
+<div
+  class="kd-row"
+  style="--cgap:12px;align-items:flex-start;justify-content:flex-start"
+>
+  <div
+    class="kd-col"
+    style="flex:0 0 33.33333333333333%;max-width:33.33333333333333%"
+  >
+    <div>
+      col-8
+    </div>
+  </div>
+  <div
+    class="kd-col"
+    style="flex:0 0 33.33333333333333%;max-width:33.33333333333333%"
+  >
+    <div>
+      col-8
+    </div>
+  </div>
+  <div
+    class="kd-col"
+    style="flex:0 0 33.33333333333333%;max-width:33.33333333333333%"
+  >
+    <div>
+      col-8
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Grid 4. render null or undefined without errors render null or undefined Row Col without errors 1`] = `
+<Row>
+  <div
+    className="kd-row"
+    style={
+      Object {
+        "--cgap": "12px",
+        "alignItems": "flex-start",
+        "justifyContent": "flex-start",
+      }
+    }
+  >
+    <Col
+      key=".0"
+      winWidth={1024}
+    >
+      <div
+        className="kd-col"
+        style={
+          Object {
+            "flex": "0 0 100%",
+            "left": undefined,
+            "marginLeft": undefined,
+            "maxWidth": "100%",
+            "order": undefined,
+            "right": undefined,
+          }
+        }
+      />
+    </Col>
+  </div>
+</Row>
 `;
