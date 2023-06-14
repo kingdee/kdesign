@@ -1,5 +1,168 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Space 2.render test should render correct 1`] = `
+<div>
+  <div
+    class="kd-space kd-space-horizontal kd-space-align-center"
+    style="--cgap:8px"
+  >
+    <span>
+      1
+    </span>
+    <span>
+      2
+    </span>
+  </div>
+  <div
+    class="kd-space kd-space-horizontal kd-space-align-center"
+    style="--cgap:16px"
+  >
+    <span>
+      1
+    </span>
+    <span>
+      2
+    </span>
+  </div>
+  <div
+    class="kd-space kd-space-horizontal kd-space-align-center"
+    style="--cgap:24px"
+  >
+    <span>
+      1
+    </span>
+    <span>
+      2
+    </span>
+  </div>
+</div>
+`;
+
+exports[`Space 2.render test should render correct with children 1`] = `
+<div
+  class="kd-space kd-space-horizontal kd-space-align-center"
+  style="--cgap:8px"
+>
+  <span>
+    text1
+  </span>
+  <span>
+    text1
+  </span>
+  <span>
+    text3
+  </span>
+</div>
+`;
+
+exports[`Space 2.render test should render width multiple chidren 1`] = `
+<div
+  class="kd-space kd-space-horizontal kd-space-align-center"
+  style="--cgap:8px"
+>
+  <span>
+    Text
+  </span>
+  <button
+    class="kd-btn kd-btn-second kd-btn-size-middle"
+    click-animating-wave="false"
+    type="button"
+  >
+    <span>
+      Button
+    </span>
+  </button>
+  <span>
+    Text
+  </span>
+  <button
+    class="kd-btn kd-btn-second kd-btn-size-middle"
+    click-animating-wave="false"
+    type="button"
+  >
+    <span>
+      Delete
+    </span>
+  </button>
+  <button
+    class="kd-btn kd-btn-second kd-btn-size-middle"
+    click-animating-wave="false"
+    disabled=""
+    type="button"
+  >
+    <span>
+      Delete
+    </span>
+  </button>
+  <span>
+    1
+  </span>
+  <span>
+    Text
+  </span>
+</div>
+`;
+
+exports[`Space 2.render test split 1`] = `
+<div
+  class="kd-space kd-space-horizontal kd-space-align-center"
+  style="--cgap:8px"
+>
+  <span>
+    text1
+  </span>
+  <span>
+    -
+  </span>
+  <span>
+    text1
+  </span>
+  <span>
+    -
+  </span>
+  <span>
+    text3
+  </span>
+</div>
+`;
+
+exports[`Space 2.render test split 2`] = `
+<div
+  class="kd-space kd-space-horizontal kd-space-align-center"
+  style="--cgap:8px"
+>
+  <span>
+    text1
+  </span>
+  <span>
+    |
+  </span>
+  <span>
+    text1
+  </span>
+  <span>
+    |
+  </span>
+  <span>
+    text3
+  </span>
+</div>
+`;
+
+exports[`Space render null or undefined Space without errors 1`] = `
+<Space>
+  <div
+    className="kd-space kd-space-horizontal kd-space-align-center"
+    style={
+      Object {
+        "--cgap": "8px",
+        "--rgap": undefined,
+      }
+    }
+  />
+</Space>
+`;
+
 exports[`Space should render correct 1`] = `
 <div>
   <div
