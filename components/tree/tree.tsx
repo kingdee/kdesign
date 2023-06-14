@@ -69,6 +69,8 @@ export interface TreeProps {
   expandOnClickNode?: boolean
   onlyExpandOnClickIcon?: boolean
   showIcon?: boolean
+  style?: React.CSSProperties
+  className?: string
 }
 
 export type TreeNodeData = {
@@ -137,17 +139,19 @@ const InternalTree = React.forwardRef((props: TreeProps, ref: any): React.Functi
     setTreeNodeClassName = () => '',
     estimatedItemSize: innerEstimatedItemSize,
     style,
+    className,
     filterTreeNode,
     filterValue,
     expandOnClickNode,
     onlyExpandOnClickIcon = false,
     loadData,
     notFoundContent,
+    ...others
   } = TreeProps
 
   const treePrefixCls = getPrefixCls!(prefixCls, 'tree', customPrefixcls) // 树样式前缀
   const treeNodePrefixCls = getPrefixCls!(prefixCls, 'tree-node', customPrefixcls) // 树节点样式前缀
-  const treeNodeClassName = classNames({
+  const treeNodeClassName = classNames(className, {
     [`${treePrefixCls}`]: true,
   })
   const treeRootClassName = `${treePrefixCls}-root`
@@ -448,7 +452,7 @@ const InternalTree = React.forwardRef((props: TreeProps, ref: any): React.Functi
   }, [checkedKeys, setCheckedKeys])
 
   return (
-    <div className={treeNodeClassName} style={style} ref={scrollRef} onScroll={handleScroll}>
+    <div className={treeNodeClassName} style={style} ref={scrollRef} onScroll={handleScroll} {...others}>
       <div ref={plantomRef as any} className={`${treePrefixCls}-plantom`}></div>
       <div className={treeRootClassName} ref={listRef as any}>
         {!visibleData?.length && notFoundContent}
