@@ -3,6 +3,7 @@ import { render, mount } from 'enzyme'
 import Search from '../index'
 import { SearchSizeTypes, BorderTypes } from '../interface'
 import mountTest from '../../../tests/shared/mountTest'
+import ConfigProvider from '../../config-provider/index'
 
 describe('Search', () => {
   // 1.mount test
@@ -26,9 +27,15 @@ describe('Search', () => {
     expect(wrapper).toMatchSnapshot()
   })
 
-  // 3. render no child without errors
-  it('render no child without errors', () => {
-    expect(mount(<Search></Search>)).toMatchSnapshot()
+  // 3. warns in component
+  describe('3. warns in component', () => {
+    it('warns if type is wrong', () => {
+      const mockWarn = jest.fn()
+      jest.spyOn(console, 'warn').mockImplementation(mockWarn)
+      const size = 'size-test'
+      render(<Search size={size as any} />)
+      expect(mockWarn.mock.calls[0][0]).toMatch("Warning: [kdesign]-search: cannot found search size 'size-test'")
+    })
   })
 
   // 4. render null or undefined without errors
@@ -47,6 +54,17 @@ describe('Search', () => {
   it('should have displayName static property', () => {
     const wrapper = mount(<Search></Search>)
     expect((wrapper.type() as any).displayName).toBe('Search')
+  })
+
+  // 6. class state
+  it('should class use right', () => {
+    const wrapper = mount(
+      <Search type="quick-search" className="my-test" style={{ color: 'red' }} disabled data-test="test"></Search>,
+    )
+    expect(wrapper.prop('data-test')).toEqual('test')
+    expect(wrapper.find('.kd-quick-search')).toHaveStyle('color', 'red')
+    expect(wrapper.find('.kd-quick-search')).toHaveClassName('.my-test')
+    expect(wrapper.find('.kd-quick-search-disabled')).toExist()
   })
 
   // 7. component interaction(event)
@@ -207,5 +225,70 @@ describe('Search', () => {
     )
     wrapper.find('.kd-quick-search-input').simulate('change', { target: { value: '1' } })
     expect(wrapper.find('.kd-quick-search-npl').length).toBeTruthy()
+  })
+
+  it('prefix suffix', () => {
+    const wrapper = mount(<Search prefix="prefix-test" suffix="suffix-test" />)
+    expect(wrapper.find('.kd-input-prefix').text()).toBe('prefix-test')
+    expect(wrapper.find('.kd-input-suffix').text()).toBe('suffix-test')
+  })
+
+  it('quick search api test', () => {
+    const onSearch = jest.fn()
+    const wrapper = mount(
+      <Search
+        type="quick-search"
+        onSearch={onSearch}
+        dropdownStyle={{ color: 'red' }}
+        listHeight={100}
+        desc={['1', '2']}
+        tags={[
+          { value: '1', tag: '全部' },
+          { value: '2', tag: '发现人' },
+        ]}
+      />,
+    )
+
+    wrapper.find('.kd-quick-search-input').simulate('change', { target: { value: '12' } })
+    expect(onSearch).toBeCalled()
+
+    // dropdownStyle
+    expect(wrapper.find('.kd-quick-search-dropdown')).toHaveStyle('color', 'red')
+
+    // listHeight
+    expect(wrapper.find('.kd-quick-search-dropdown-scroll')).toHaveStyle('maxHeight', 100)
+
+    // tags
+    expect(wrapper.find('.kd-quick-search-option').length).toBe(2)
+  })
+
+  // 8.config provider
+  it('should config use config provider', () => {
+    const localeData = {
+      'Search.placeholder': 'Please enter what you want to search for',
+    }
+    const searchConfig = {
+      compDefaultProps: {
+        Search: {
+          size: 'small',
+        },
+      },
+      localeConfig: { localeData, locale: 'zh-EN' },
+    }
+    const wrapper = mount(
+      <ConfigProvider value={searchConfig}>
+        <Search />
+      </ConfigProvider>,
+    )
+    expect(wrapper.find('.kd-search')).toHaveClassName('.kd-search-size-small')
+    expect(wrapper.find('input').prop('placeholder')).toBe('Please enter what you want to search for')
+  })
+
+  // 9. ref test
+  it('should get Demo element from ref', () => {
+    const ref = React.createRef()
+    mount(<Search ref={ref} type="quick-search" />)
+    expect(ref.current instanceof HTMLElement).toBe(true)
+    expect((ref.current as HTMLElement).classList.contains('kd-quick-search')).toBe(true)
   })
 })
