@@ -37,6 +37,7 @@ export interface InputProps extends Omit<React.InputHTMLAttributes<HTMLInputElem
   readonly?: 'readonly'
   count?: boolean
   status?: 'error'
+  style?: Record<string, unknown>
 }
 const InternalInput = (props: InputProps, ref: unknown): FunctionComponentElement<InputProps> => {
   const { getPrefixCls, prefixCls, compDefaultProps: userDefaultProps } = useContext(ConfigContext)
