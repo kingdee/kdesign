@@ -58,7 +58,6 @@ textarea {
 
   &-borderless {
     border: 0;
-    padding-left: 0 !important;
 
     &:focus {
       border: 0;
@@ -98,7 +97,7 @@ textarea {
   }
 
   &-wrapper {
-    padding-left: @input-wrapper-padding-left !important;
+    padding-left: @input-wrapper-padding-left;
     .input(@wrapper-prefix-cls);
     transition: border-color @transition-duration-inner;
     display: inline-flex;
@@ -121,15 +120,6 @@ textarea {
         justify-content: center;
         word-break: keep-all;
         color: @input-affix-color;
-      }
-
-      &-suffix {
-        margin-left: 4px;
-      }
-
-      &-prefix {
-        margin-right: 4px;
-        margin-left: 8px;
       }
     }
 
