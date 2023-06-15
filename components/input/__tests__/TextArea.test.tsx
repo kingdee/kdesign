@@ -35,10 +35,17 @@ describe('TextArea', () => {
     )
   })
 
-  // 4. placeholder
-  it('placeholder', () => {
-    const wrapper = mount(<TextArea placeholder={'kd'} />)
-    expect(wrapper.find('textarea').at(0).props().placeholder).toBe('kd')
+  // 4. render null or undefined without errors
+  describe('4. render null or undefined without errors', () => {
+    it('render null or undefined without errors', () => {
+      const wrapper = (
+        <TextArea>
+          {null}
+          {undefined}
+        </TextArea>
+      )
+      expect(wrapper).toMatchSnapshot()
+    })
   })
 
   // 5. displayName
@@ -79,6 +86,18 @@ describe('TextArea', () => {
     // cannotResize
     const CannotResizeInput = mount(<TextArea canResize={false} />)
     expect(CannotResizeInput.find('.kd-input-no-resize')).toHaveLength(1)
+
+    // style & data-test & className & disabled
+    const onClick = jest.fn()
+    const otherInput = mount(
+      <TextArea style={{ width: 60 }} data-test={'test'} className="my-class" disabled onClick={onClick} />,
+    )
+    expect(otherInput.find('textarea').props().style?.width).toEqual(60)
+    expect(otherInput.find('textarea').prop('data-test')).toEqual('test')
+    expect(otherInput.find('textarea')).toHaveClassName('my-class')
+    expect(otherInput.find('textarea').props().disabled).toBe(true)
+    otherInput.simulate('click')
+    expect(onClick).not.toHaveBeenCalled()
   })
 
   // 7.component interaction(event)
@@ -148,26 +167,23 @@ describe('TextArea', () => {
     expect((ref.current as HTMLElement).classList.contains('kd-input-textarea')).toBe(true)
   })
 
-  // 10. value & defaultValue
-  it('value & defaultValue', () => {
-    const wrapperDefault = mount(<TextArea defaultValue={'defaultValue'} />)
-    expect(wrapperDefault.find('textarea').props().value).toBe('defaultValue')
+  // 10. api test
+  describe('api test', () => {
+    it('value & defaultValue', () => {
+      const wrapperDefault = mount(<TextArea defaultValue={'defaultValue'} />)
+      expect(wrapperDefault.find('textarea').props().value).toBe('defaultValue')
 
-    let value = 'value'
-    const onChange = jest.fn((e) => {
-      value = e.target.value
+      let value = 'value'
+      const onChange = jest.fn((e) => {
+        value = e.target.value
+      })
+      const wrapperValue = mount(<TextArea defaultValue={'defaultValue'} value={value} onChange={onChange} />)
+      expect(wrapperValue.find('textarea').props().value).toBe('value')
+      wrapperValue.find('textarea').simulate('change', { target: { value: '12' } })
+      expect(onChange).toHaveBeenCalled()
+      expect(value).toBe('12')
     })
-    const wrapperValue = mount(<TextArea defaultValue={'defaultValue'} value={value} onChange={onChange} />)
-    expect(wrapperValue.find('textarea').props().value).toBe('value')
-    wrapperValue.find('textarea').simulate('change', { target: { value: '12' } })
-    expect(onChange).toHaveBeenCalled()
-    expect(value).toBe('12')
-    wrapperValue.find('textarea').simulate('change', { target: { value: undefined } })
-    expect(wrapperDefault.find('textarea').props().value).toBe('defaultValue')
-  })
 
-  // 11. other api
-  describe('other api', () => {
     it('allowClear', function () {
       let value = '123'
       const onChange = jest.fn((e) => {
@@ -213,6 +229,11 @@ describe('TextArea', () => {
       // can't keyup
       wrapperCount.find('textarea').simulate('keyDown', { keyCode: 90 })
       expect(wrapperCount.find('textarea').props().value).toBe('defaultValue')
+    })
+
+    it('placeholder', () => {
+      const wrapper = mount(<TextArea placeholder={'kd'} />)
+      expect(wrapper.find('textarea').at(0).props().placeholder).toBe('kd')
     })
   })
 })

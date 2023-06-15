@@ -39,10 +39,17 @@ describe('Input', () => {
     expect(mockWarn.mock.calls[0][0]).toMatch("Warning: [kdesign]-input: cannot found input borderType 'who am I'")
   })
 
-  // 4. placeholder
-  it('placeholder', () => {
-    const wrapper = mount(<Input placeholder={'kd'} />)
-    expect(wrapper.find('.kd-input').props().placeholder).toBe('kd')
+  // 4. render null or undefined without errors
+  describe('4. render null or undefined without errors', () => {
+    it('render null or undefined without errors', () => {
+      const wrapper = (
+        <Input>
+          {null}
+          {undefined}
+        </Input>
+      )
+      expect(wrapper).toMatchSnapshot()
+    })
   })
 
   // 5. displayName
@@ -52,7 +59,7 @@ describe('Input', () => {
   })
 
   // 6. class state
-  it('should class use right', () => {
+  it('class & style', () => {
     // default
     const DefaultInput = mount(<Input />)
     expect(DefaultInput.find('.kd-input')).toHaveClassName('.kd-input-size-middle')
@@ -94,6 +101,18 @@ describe('Input', () => {
     const AddonInput = mount(<Input placeholder="请输入" borderType="bordered" addonBefore="金额" addonAfter="rmb" />)
     expect(AddonInput.find('.kd-input-group')).toHaveLength(1)
     expect(AddonInput.find('.kd-input-group-addon')).toHaveLength(2)
+
+    // style & data-test & className & disabled
+    const onClick = jest.fn()
+    const otherInput = mount(
+      <Input style={{ width: 60 }} data-test={'test'} className="my-class" disabled onClick={onClick} />,
+    )
+    expect(otherInput.find('input').props().style?.width).toEqual(60)
+    expect(otherInput.find('input').prop('data-test')).toEqual('test')
+    expect(otherInput.find('input')).toHaveClassName('my-class')
+    expect(otherInput.find('input').props().disabled).toBe(true)
+    otherInput.simulate('click')
+    expect(onClick).not.toHaveBeenCalled()
   })
 
   // 7.component interaction(event)
@@ -162,27 +181,29 @@ describe('Input', () => {
     expect((ref.current as HTMLElement).classList.contains('kd-input')).toBe(true)
   })
 
-  // 10. value & defaultValue
-  it('value & defaultValue', () => {
-    const wrapperDefault = mount(<Input defaultValue={'defaultValue'} />)
-    expect(wrapperDefault.find('input').props().value).toBe('defaultValue')
+  // 10. api test
+  describe('api test', () => {
+    it('value & defaultValue', () => {
+      const wrapperDefault = mount(<Input defaultValue={'defaultValue'} />)
+      expect(wrapperDefault.find('input').props().value).toBe('defaultValue')
 
-    let value = 'value'
-    const onChange = jest.fn((e) => {
-      value = e.target.value
+      let value = 'value'
+      const onChange = jest.fn((e) => {
+        value = e.target.value
+      })
+      const wrapperValue = mount(<Input defaultValue={'defaultValue'} value={value} onChange={onChange} />)
+      expect(wrapperValue.find('input').props().value).toBe('value')
+      wrapperValue.find('input').simulate('change', { target: { value: '12' } })
+      expect(onChange).toHaveBeenCalled()
+      expect(value).toBe('12')
     })
-    const wrapperValue = mount(<Input defaultValue={'defaultValue'} value={value} onChange={onChange} />)
-    expect(wrapperValue.find('input').props().value).toBe('value')
-    wrapperValue.find('input').simulate('change', { target: { value: '12' } })
-    expect(onChange).toHaveBeenCalled()
-    expect(value).toBe('12')
-    wrapperValue.find('input').simulate('change', { target: { value: undefined } })
-    expect(wrapperDefault.find('input').props().value).toBe('defaultValue')
-  })
 
-  // 11. other api
-  describe('other api', () => {
-    it('allowClear', function () {
+    it('placeholder', () => {
+      const wrapper = mount(<Input placeholder={'kd'} />)
+      expect(wrapper.find('.kd-input').props().placeholder).toBe('kd')
+    })
+
+    it('allowClear', () => {
       let value = '123'
       const onChange = jest.fn((e) => {
         value = e.target.value
@@ -195,7 +216,8 @@ describe('Input', () => {
       expect(value).toBe('')
     })
 
-    it('maxLength & minLength', function () {
+    it('maxLength & minLength', () => {
+      // maxLength
       const wrapperMax = mount(<Input maxLength={2} />)
       expect(wrapperMax.find('input').props().maxLength).toBe(2)
 

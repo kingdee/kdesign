@@ -1,5 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`TextArea 4. render null or undefined without errors render null or undefined without errors 1`] = `<TextArea />`;
+
 exports[`TextArea renders correctly 1`] = `
 <span
   class="kd-input-countWrapper "
