@@ -140,6 +140,7 @@ const CityPicker: MenuType = ({
     visible: popperVisible,
     placement: 'bottomLeft',
     trigger: 'focus',
+    prefixCls: `${cityPickerPrefixCls}-panel`,
     onVisibleChange: handlePopperVisibleChange,
   }
   const panel = inputVal.length > 0 ? searchPanel : cityPanel
