@@ -31,7 +31,7 @@ function flattenTreeData(treeData: TreeNodeData[]) {
     return key
   }
 
-  treeData.forEach((node) => {
+  treeData?.forEach((node) => {
     flatten(node)
   })
 

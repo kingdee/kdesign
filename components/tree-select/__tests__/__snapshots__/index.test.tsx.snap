@@ -1,0 +1,375 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TreeSelect 2. render test renders correctly 1`] = `
+<div
+  class="kd-tree-select"
+>
+  <span
+    class="kd-tree-select-selector"
+    tabindex="0"
+  >
+    <div
+      class="kd-tree-select-underline kd-tree-select-size-middle kd-tree-select-wrapper kd-tree-select-single"
+      title=""
+    >
+      <span
+        class="kd-tree-select-selection-search"
+      >
+        <input
+          class="kd-tree-select-selection-search-input"
+          value=""
+        />
+      </span>
+      <span
+        class="kd-tree-select-placeholder"
+      >
+        请输入需要搜索的内容
+      </span>
+      <span
+        class="kd-tree-select-suffix"
+      >
+        <span
+          class="kd-tree-select-icon-arrow kd-tree-select-icon-arrow-down"
+        >
+          <i
+            class="kdicon kdicon-arrow-down"
+          />
+        </span>
+      </span>
+    </div>
+  </span>
+</div>
+`;
+
+exports[`TreeSelect 2. render test renders correctly 2`] = `
+<div
+  class="kd-tree-select"
+>
+  <span
+    class="kd-tree-select-selector"
+    tabindex="0"
+  >
+    <div
+      class="kd-tree-select-borderless kd-tree-select-size-middle kd-tree-select-wrapper kd-tree-select-single"
+      title=""
+    >
+      <span
+        class="kd-tree-select-selection-search"
+      >
+        <input
+          class="kd-tree-select-selection-search-input"
+          value=""
+        />
+      </span>
+      <span
+        class="kd-tree-select-placeholder"
+      >
+        请输入需要搜索的内容
+      </span>
+      <span
+        class="kd-tree-select-suffix"
+      >
+        <span
+          class="kd-tree-select-icon-arrow kd-tree-select-icon-arrow-down"
+        >
+          <i
+            class="kdicon kdicon-arrow-down"
+          />
+        </span>
+      </span>
+    </div>
+  </span>
+</div>
+`;
+
+exports[`TreeSelect 2. render test renders correctly 3`] = `
+<div
+  class="kd-tree-select"
+>
+  <span
+    class="kd-tree-select-selector"
+    tabindex="0"
+  >
+    <div
+      class="kd-tree-select-underline kd-tree-select-size-middle kd-tree-select-wrapper kd-tree-select-single"
+      title=""
+    >
+      <span
+        class="kd-tree-select-selection-search"
+      >
+        <input
+          class="kd-tree-select-selection-search-input"
+          value=""
+        />
+      </span>
+      <span
+        class="kd-tree-select-placeholder"
+      >
+        请输入需要搜索的内容
+      </span>
+      <span
+        class="kd-tree-select-suffix"
+      >
+        <span
+          class="kd-tree-select-icon-arrow kd-tree-select-icon-arrow-down"
+        >
+          <i
+            class="kdicon kdicon-arrow-down"
+          />
+        </span>
+      </span>
+    </div>
+  </span>
+</div>
+`;
+
+exports[`TreeSelect 2. render test renders correctly 4`] = `
+<div
+  class="kd-tree-select"
+>
+  <span
+    class="kd-tree-select-selector"
+    tabindex="0"
+  >
+    <div
+      class="kd-tree-select-bordered kd-tree-select-size-middle kd-tree-select-wrapper kd-tree-select-single"
+      title=""
+    >
+      <span
+        class="kd-tree-select-selection-search"
+      >
+        <input
+          class="kd-tree-select-selection-search-input"
+          value=""
+        />
+      </span>
+      <span
+        class="kd-tree-select-placeholder"
+      >
+        请输入需要搜索的内容
+      </span>
+      <span
+        class="kd-tree-select-suffix"
+      >
+        <span
+          class="kd-tree-select-icon-arrow kd-tree-select-icon-arrow-down"
+        >
+          <i
+            class="kdicon kdicon-arrow-down"
+          />
+        </span>
+      </span>
+    </div>
+  </span>
+</div>
+`;
+
+exports[`TreeSelect 2. render test renders correctly 5`] = `
+<div
+  class="kd-tree-select"
+>
+  <span
+    class="kd-tree-select-selector"
+    tabindex="0"
+  >
+    <div
+      class="kd-tree-select-underline kd-tree-select-size-large kd-tree-select-wrapper kd-tree-select-single"
+      title=""
+    >
+      <span
+        class="kd-tree-select-selection-search"
+      >
+        <input
+          class="kd-tree-select-selection-search-input"
+          value=""
+        />
+      </span>
+      <span
+        class="kd-tree-select-placeholder"
+      >
+        请输入需要搜索的内容
+      </span>
+      <span
+        class="kd-tree-select-suffix"
+      >
+        <span
+          class="kd-tree-select-icon-arrow kd-tree-select-icon-arrow-down"
+        >
+          <i
+            class="kdicon kdicon-arrow-down"
+          />
+        </span>
+      </span>
+    </div>
+  </span>
+</div>
+`;
+
+exports[`TreeSelect 2. render test renders correctly 6`] = `
+<div
+  class="kd-tree-select"
+>
+  <span
+    class="kd-tree-select-selector"
+    tabindex="0"
+  >
+    <div
+      class="kd-tree-select-underline kd-tree-select-size-middle kd-tree-select-wrapper kd-tree-select-single"
+      title=""
+    >
+      <span
+        class="kd-tree-select-selection-search"
+      >
+        <input
+          class="kd-tree-select-selection-search-input"
+          value=""
+        />
+      </span>
+      <span
+        class="kd-tree-select-placeholder"
+      >
+        请输入需要搜索的内容
+      </span>
+      <span
+        class="kd-tree-select-suffix"
+      >
+        <span
+          class="kd-tree-select-icon-arrow kd-tree-select-icon-arrow-down"
+        >
+          <i
+            class="kdicon kdicon-arrow-down"
+          />
+        </span>
+      </span>
+    </div>
+  </span>
+</div>
+`;
+
+exports[`TreeSelect 2. render test renders correctly 7`] = `
+<div
+  class="kd-tree-select"
+>
+  <span
+    class="kd-tree-select-selector"
+    tabindex="0"
+  >
+    <div
+      class="kd-tree-select-underline kd-tree-select-size-small kd-tree-select-wrapper kd-tree-select-single"
+      title=""
+    >
+      <span
+        class="kd-tree-select-selection-search"
+      >
+        <input
+          class="kd-tree-select-selection-search-input"
+          value=""
+        />
+      </span>
+      <span
+        class="kd-tree-select-placeholder"
+      >
+        请输入需要搜索的内容
+      </span>
+      <span
+        class="kd-tree-select-suffix"
+      >
+        <span
+          class="kd-tree-select-icon-arrow kd-tree-select-icon-arrow-down"
+        >
+          <i
+            class="kdicon kdicon-arrow-down"
+          />
+        </span>
+      </span>
+    </div>
+  </span>
+</div>
+`;
+
+exports[`TreeSelect 2. render test renders correctly 8`] = `
+<div
+  class="kd-tree-select"
+>
+  <span
+    class="kd-tree-select-selector"
+    tabindex="0"
+  >
+    <div
+      class="kd-tree-select-underline kd-tree-select-size-middle kd-tree-select-wrapper kd-tree-select-multiple kd-tree-select-placeholder"
+    >
+      <span
+        class="kd-tree-select-selection-search"
+        style="width:4px"
+      >
+        <input
+          class="kd-tree-select-selection-search-input"
+          value=""
+        />
+        <span
+          class="kd-tree-select-selection-search-mirror"
+        >
+           
+        </span>
+      </span>
+      <span
+        class="kd-tree-select-placeholder"
+      >
+        请输入需要搜索的内容
+      </span>
+      <span
+        class="kd-tree-select-suffix"
+      >
+        <span
+          class="kd-tree-select-icon-arrow kd-tree-select-icon-arrow-down"
+        >
+          <i
+            class="kdicon kdicon-arrow-down"
+          />
+        </span>
+      </span>
+    </div>
+  </span>
+</div>
+`;
+
+exports[`TreeSelect 2. render test renders correctly 9`] = `
+<div
+  class="kd-tree-select"
+>
+  <span
+    class="kd-tree-select-selector"
+    tabindex="0"
+  >
+    <div
+      class="kd-tree-select-underline kd-tree-select-size-middle kd-tree-select-wrapper kd-tree-select-single"
+      title=""
+    >
+      <span
+        class="kd-tree-select-selection-search"
+      >
+        <input
+          class="kd-tree-select-selection-search-input"
+          value=""
+        />
+      </span>
+      <span
+        class="kd-tree-select-placeholder"
+      >
+        请输入需要搜索的内容
+      </span>
+      <span
+        class="kd-tree-select-suffix"
+      >
+        <span
+          class="kd-tree-select-icon-arrow kd-tree-select-icon-arrow-down"
+        >
+          <i
+            class="kdicon kdicon-arrow-down"
+          />
+        </span>
+      </span>
+    </div>
+  </span>
+</div>
+`;
