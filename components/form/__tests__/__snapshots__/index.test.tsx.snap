@@ -1,0 +1,656 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Form renders correctly 1`] = `
+<Form>
+  <form
+    className="kd-form kd-form-vertical"
+    onReset={[Function]}
+    onSubmit={[Function]}
+    size="middle"
+  >
+    <Item
+      label="name"
+      name=""
+    >
+      <div
+        className="kd-form kd-form-field kd-form-field-vertical"
+      >
+        <FieldLabel
+          value="name"
+        >
+          <div
+            className="kd-form-field-label"
+            style={
+              Object {
+                "width": undefined,
+              }
+            }
+          >
+            <label
+              className=""
+              title="name"
+            >
+              name
+            </label>
+          </div>
+        </FieldLabel>
+        <FieldWrapper>
+          <div
+            className="kd-form-field-wrapper"
+            style={
+              Object {
+                "width": undefined,
+              }
+            }
+          >
+            <Input
+              key="0"
+              onChange={[Function]}
+            >
+              <ClearableInput
+                borderType="underline"
+                element={
+                  <input
+                    className="kd-input kd-input-size-middle kd-input-underline"
+                    onBlur={[Function]}
+                    onChange={[Function]}
+                    onFocus={[Function]}
+                    onKeyUp={[Function]}
+                    type="text"
+                    value=""
+                  />
+                }
+                focused={false}
+                handleReset={[Function]}
+                inputCount={null}
+                inputType="input"
+                onChange={[Function]}
+                prefixCls="kd-input"
+                size="middle"
+                type="text"
+                value=""
+              >
+                <input
+                  className="kd-input kd-input-size-middle kd-input-underline"
+                  onBlur={[Function]}
+                  onChange={[Function]}
+                  onFocus={[Function]}
+                  onKeyUp={[Function]}
+                  type="text"
+                  value=""
+                />
+              </ClearableInput>
+            </Input>
+          </div>
+        </FieldWrapper>
+      </div>
+    </Item>
+  </form>
+</Form>
+`;
+
+exports[`Form renders correctly 2`] = `
+<Form
+  labelAlign="left"
+  labelWidth={100}
+>
+  <form
+    className="kd-form kd-form-vertical"
+    onReset={[Function]}
+    onSubmit={[Function]}
+    size="middle"
+  >
+    <Item
+      label="name"
+      name=""
+    >
+      <div
+        className="kd-form kd-form-field kd-form-field-vertical"
+      >
+        <FieldLabel
+          value="name"
+        >
+          <div
+            className="kd-form-field-label"
+            style={
+              Object {
+                "width": 100,
+              }
+            }
+          >
+            <label
+              className=""
+              title="name"
+            >
+              name
+            </label>
+          </div>
+        </FieldLabel>
+        <FieldWrapper>
+          <div
+            className="kd-form-field-wrapper"
+            style={
+              Object {
+                "width": undefined,
+              }
+            }
+          >
+            <Input
+              key="0"
+              onChange={[Function]}
+            >
+              <ClearableInput
+                borderType="underline"
+                element={
+                  <input
+                    className="kd-input kd-input-size-middle kd-input-underline"
+                    onBlur={[Function]}
+                    onChange={[Function]}
+                    onFocus={[Function]}
+                    onKeyUp={[Function]}
+                    type="text"
+                    value=""
+                  />
+                }
+                focused={false}
+                handleReset={[Function]}
+                inputCount={null}
+                inputType="input"
+                onChange={[Function]}
+                prefixCls="kd-input"
+                size="middle"
+                type="text"
+                value=""
+              >
+                <input
+                  className="kd-input kd-input-size-middle kd-input-underline"
+                  onBlur={[Function]}
+                  onChange={[Function]}
+                  onFocus={[Function]}
+                  onKeyUp={[Function]}
+                  type="text"
+                  value=""
+                />
+              </ClearableInput>
+            </Input>
+          </div>
+        </FieldWrapper>
+      </div>
+    </Item>
+  </form>
+</Form>
+`;
+
+exports[`Form renders correctly 3`] = `
+<Form
+  labelAlign="right"
+  labelWidth={100}
+>
+  <form
+    className="kd-form kd-form-vertical"
+    onReset={[Function]}
+    onSubmit={[Function]}
+    size="middle"
+  >
+    <Item
+      label="name"
+      name=""
+    >
+      <div
+        className="kd-form kd-form-field kd-form-field-vertical"
+      >
+        <FieldLabel
+          value="name"
+        >
+          <div
+            className="kd-form-field-label kd-form-field-label-right"
+            style={
+              Object {
+                "width": 100,
+              }
+            }
+          >
+            <label
+              className=""
+              title="name"
+            >
+              name
+            </label>
+          </div>
+        </FieldLabel>
+        <FieldWrapper>
+          <div
+            className="kd-form-field-wrapper"
+            style={
+              Object {
+                "width": undefined,
+              }
+            }
+          >
+            <Input
+              key="0"
+              onChange={[Function]}
+            >
+              <ClearableInput
+                borderType="underline"
+                element={
+                  <input
+                    className="kd-input kd-input-size-middle kd-input-underline"
+                    onBlur={[Function]}
+                    onChange={[Function]}
+                    onFocus={[Function]}
+                    onKeyUp={[Function]}
+                    type="text"
+                    value=""
+                  />
+                }
+                focused={false}
+                handleReset={[Function]}
+                inputCount={null}
+                inputType="input"
+                onChange={[Function]}
+                prefixCls="kd-input"
+                size="middle"
+                type="text"
+                value=""
+              >
+                <input
+                  className="kd-input kd-input-size-middle kd-input-underline"
+                  onBlur={[Function]}
+                  onChange={[Function]}
+                  onFocus={[Function]}
+                  onKeyUp={[Function]}
+                  type="text"
+                  value=""
+                />
+              </ClearableInput>
+            </Input>
+          </div>
+        </FieldWrapper>
+      </div>
+    </Item>
+  </form>
+</Form>
+`;
+
+exports[`Form renders correctly 4`] = `
+<Form
+  labelAlign="right"
+  labelWidth={100}
+  layout="horizontal"
+  wrappedWidth={200}
+>
+  <form
+    className="kd-form kd-form-horizontal"
+    onReset={[Function]}
+    onSubmit={[Function]}
+    size="middle"
+    wrappedWidth={200}
+  >
+    <Item
+      label="name"
+      name=""
+    >
+      <div
+        className="kd-form kd-form-field"
+      >
+        <FieldLabel
+          value="name"
+        >
+          <div
+            className="kd-form-field-label kd-form-field-label-right"
+            style={
+              Object {
+                "width": 100,
+              }
+            }
+          >
+            <label
+              className=""
+              title="name"
+            >
+              name
+            </label>
+          </div>
+        </FieldLabel>
+        <FieldWrapper>
+          <div
+            className="kd-form-field-wrapper"
+            style={
+              Object {
+                "width": undefined,
+              }
+            }
+          >
+            <Input
+              key="0"
+              onChange={[Function]}
+            >
+              <ClearableInput
+                borderType="underline"
+                element={
+                  <input
+                    className="kd-input kd-input-size-middle kd-input-underline"
+                    onBlur={[Function]}
+                    onChange={[Function]}
+                    onFocus={[Function]}
+                    onKeyUp={[Function]}
+                    type="text"
+                    value=""
+                  />
+                }
+                focused={false}
+                handleReset={[Function]}
+                inputCount={null}
+                inputType="input"
+                onChange={[Function]}
+                prefixCls="kd-input"
+                size="middle"
+                type="text"
+                value=""
+              >
+                <input
+                  className="kd-input kd-input-size-middle kd-input-underline"
+                  onBlur={[Function]}
+                  onChange={[Function]}
+                  onFocus={[Function]}
+                  onKeyUp={[Function]}
+                  type="text"
+                  value=""
+                />
+              </ClearableInput>
+            </Input>
+          </div>
+        </FieldWrapper>
+      </div>
+    </Item>
+  </form>
+</Form>
+`;
+
+exports[`Form renders correctly 5`] = `
+<Form
+  labelAlign="right"
+  labelWidth={100}
+  layout="vertical"
+  wrappedWidth={200}
+>
+  <form
+    className="kd-form kd-form-vertical"
+    onReset={[Function]}
+    onSubmit={[Function]}
+    size="middle"
+    wrappedWidth={200}
+  >
+    <Item
+      label="name"
+      name=""
+    >
+      <div
+        className="kd-form kd-form-field kd-form-field-vertical"
+      >
+        <FieldLabel
+          value="name"
+        >
+          <div
+            className="kd-form-field-label kd-form-field-label-right"
+            style={
+              Object {
+                "width": 100,
+              }
+            }
+          >
+            <label
+              className=""
+              title="name"
+            >
+              name
+            </label>
+          </div>
+        </FieldLabel>
+        <FieldWrapper>
+          <div
+            className="kd-form-field-wrapper"
+            style={
+              Object {
+                "width": undefined,
+              }
+            }
+          >
+            <Input
+              key="0"
+              onChange={[Function]}
+            >
+              <ClearableInput
+                borderType="underline"
+                element={
+                  <input
+                    className="kd-input kd-input-size-middle kd-input-underline"
+                    onBlur={[Function]}
+                    onChange={[Function]}
+                    onFocus={[Function]}
+                    onKeyUp={[Function]}
+                    type="text"
+                    value=""
+                  />
+                }
+                focused={false}
+                handleReset={[Function]}
+                inputCount={null}
+                inputType="input"
+                onChange={[Function]}
+                prefixCls="kd-input"
+                size="middle"
+                type="text"
+                value=""
+              >
+                <input
+                  className="kd-input kd-input-size-middle kd-input-underline"
+                  onBlur={[Function]}
+                  onChange={[Function]}
+                  onFocus={[Function]}
+                  onKeyUp={[Function]}
+                  type="text"
+                  value=""
+                />
+              </ClearableInput>
+            </Input>
+          </div>
+        </FieldWrapper>
+      </div>
+    </Item>
+  </form>
+</Form>
+`;
+
+exports[`Form renders correctly 6`] = `
+<Form
+  labelAlign="right"
+  labelWidth={100}
+  layout="inline"
+  wrappedWidth={200}
+>
+  <form
+    className="kd-form kd-form-inline"
+    onReset={[Function]}
+    onSubmit={[Function]}
+    size="middle"
+    wrappedWidth={200}
+  >
+    <Item
+      label="name"
+      name=""
+    >
+      <div
+        className="kd-form kd-form-field"
+      >
+        <FieldLabel
+          value="name"
+        >
+          <div
+            className="kd-form-field-label kd-form-field-label-right"
+            style={
+              Object {
+                "width": 100,
+              }
+            }
+          >
+            <label
+              className=""
+              title="name"
+            >
+              name
+            </label>
+          </div>
+        </FieldLabel>
+        <FieldWrapper>
+          <div
+            className="kd-form-field-wrapper"
+            style={
+              Object {
+                "width": undefined,
+              }
+            }
+          >
+            <Input
+              key="0"
+              onChange={[Function]}
+            >
+              <ClearableInput
+                borderType="underline"
+                element={
+                  <input
+                    className="kd-input kd-input-size-middle kd-input-underline"
+                    onBlur={[Function]}
+                    onChange={[Function]}
+                    onFocus={[Function]}
+                    onKeyUp={[Function]}
+                    type="text"
+                    value=""
+                  />
+                }
+                focused={false}
+                handleReset={[Function]}
+                inputCount={null}
+                inputType="input"
+                onChange={[Function]}
+                prefixCls="kd-input"
+                size="middle"
+                type="text"
+                value=""
+              >
+                <input
+                  className="kd-input kd-input-size-middle kd-input-underline"
+                  onBlur={[Function]}
+                  onChange={[Function]}
+                  onFocus={[Function]}
+                  onKeyUp={[Function]}
+                  type="text"
+                  value=""
+                />
+              </ClearableInput>
+            </Input>
+          </div>
+        </FieldWrapper>
+      </div>
+    </Item>
+  </form>
+</Form>
+`;
+
+exports[`Form renders correctly 7`] = `
+<Form
+  disabled={true}
+>
+  <form
+    className="kd-form kd-form-vertical"
+    onReset={[Function]}
+    onSubmit={[Function]}
+    size="middle"
+  >
+    <Item
+      label="name"
+      name=""
+      required={true}
+    >
+      <div
+        className="kd-form kd-form-field kd-form-field-vertical"
+      >
+        <FieldLabel
+          requiredMark={true}
+          value="name"
+        >
+          <div
+            className="kd-form-field-label"
+            style={
+              Object {
+                "width": undefined,
+              }
+            }
+          >
+            <label
+              className="kd-form-field-label-required-mark"
+              title="name"
+            >
+              name
+            </label>
+          </div>
+        </FieldLabel>
+        <FieldWrapper>
+          <div
+            className="kd-form-field-wrapper"
+            style={
+              Object {
+                "width": undefined,
+              }
+            }
+          >
+            <Input
+              disabled={true}
+              key="0"
+              onChange={[Function]}
+            >
+              <ClearableInput
+                borderType="underline"
+                disabled={true}
+                element={
+                  <input
+                    className="kd-input kd-input-size-middle kd-input-underline kd-input-disabled"
+                    disabled={true}
+                    onBlur={[Function]}
+                    onChange={[Function]}
+                    onFocus={[Function]}
+                    onKeyUp={[Function]}
+                    type="text"
+                    value=""
+                  />
+                }
+                focused={false}
+                handleReset={[Function]}
+                inputCount={null}
+                inputType="input"
+                onChange={[Function]}
+                prefixCls="kd-input"
+                size="middle"
+                type="text"
+                value=""
+              >
+                <input
+                  className="kd-input kd-input-size-middle kd-input-underline kd-input-disabled"
+                  disabled={true}
+                  onBlur={[Function]}
+                  onChange={[Function]}
+                  onFocus={[Function]}
+                  onKeyUp={[Function]}
+                  type="text"
+                  value=""
+                />
+              </ClearableInput>
+            </Input>
+          </div>
+        </FieldWrapper>
+      </div>
+    </Item>
+  </form>
+</Form>
+`;
