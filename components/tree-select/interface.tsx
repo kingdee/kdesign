@@ -37,7 +37,7 @@ export interface AbstractSelectProps extends PopperProps {
 }
 
 export type ITreeProps = {
-  treeData?: TreeNodeData
+  treeData?: TreeNodeData[]
   treeDefaultExpandAll?: boolean
   treeDefaultExpandedKeys?: string[]
   treeExpandedKeys?: string[]
@@ -48,6 +48,10 @@ export type ITreeProps = {
   treeNodeFilterProp?: string
   treeNodeLabelProp?: string
   expandOnClickNode?: boolean
+  treeCheckStrictly?: boolean
+  treeExpandOnClickNode?: boolean
+  showTreeIcon?: boolean
+  treeLoadData?: () => void
 }
 
 export type TreeSelectValue = string | string[] | number | number[] | undefined
