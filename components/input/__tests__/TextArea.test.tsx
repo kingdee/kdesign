@@ -2,22 +2,28 @@ import React from 'react'
 import { render, mount } from 'enzyme'
 // import Icon from '../../icon'
 import ConfigProvider from '../../config-provider/index'
-import { TextArea, BorderTypes, BorderType } from '../index'
-// import mountTest from '../../../tests/shared/mountTest'
+import { TextArea, InputSiteTypes, BorderTypes, BorderType } from '../index'
+import mountTest from '../../../tests/shared/mountTest'
 
 describe('TextArea', () => {
-  // 1.mount test
-  // mountTest(TextArea)
+  // 1. mount test
+  mountTest(TextArea)
 
-  // 2.render test
+  // 2. render test
   it('renders correctly', () => {
     expect(render(<TextArea />)).toMatchSnapshot()
+
+    expect(render(<TextArea autoSize={{ minRows: 2, maxRows: 6 }} />)).toMatchSnapshot()
+
+    InputSiteTypes.forEach((type) => {
+      expect(render(<TextArea size={type} />)).toMatchSnapshot()
+    })
     BorderTypes.forEach((type) => {
       expect(render(<TextArea borderType={type} />)).toMatchSnapshot()
     })
   })
 
-  // 3.warns in component
+  // 3. warns in component
   it('warns if borderType is wrong', () => {
     const mockWarn = jest.fn()
     jest.spyOn(console, 'warn').mockImplementation(mockWarn)
@@ -29,9 +35,15 @@ describe('TextArea', () => {
     )
   })
 
+  // 4. placeholder
+  it('placeholder', () => {
+    const wrapper = mount(<TextArea placeholder={'kd'} />)
+    expect(wrapper.find('textarea').at(0).props().placeholder).toBe('kd')
+  })
+
   // 5. displayName
   it('should have displayName static property', () => {
-    const wrapper = mount(<TextArea style={{ height: 200 }} />)
+    const wrapper = mount(<TextArea />)
     expect((wrapper.type() as any).displayName).toBe('TextArea')
   })
 
@@ -45,6 +57,11 @@ describe('TextArea', () => {
     // disabled
     const DisabledInput = mount(<TextArea disabled />)
     expect(DisabledInput.find('.kd-input-textarea')).toHaveClassName('.kd-input-disabled')
+
+    InputSiteTypes.forEach((size) => {
+      const TestButton = mount(<TextArea size={size} />)
+      expect(TestButton.find(`.kd-input-textarea`)).toHaveClassName(`.kd-input-size-${size}`)
+    })
 
     BorderTypes.forEach((type) => {
       if (type === 'bordered') return
@@ -65,7 +82,6 @@ describe('TextArea', () => {
   })
 
   // 7.component interaction(event)
-
   it('onChange ', () => {
     let value = ''
     const onChange = jest.fn((e) => {
@@ -78,21 +94,18 @@ describe('TextArea', () => {
     expect(onChange).toHaveBeenCalled()
     expect(value).toBe('12')
   })
-
   it('Focus ', () => {
     const onFocus = jest.fn()
     const wrapper = mount(<TextArea onFocus={onFocus} />)
     wrapper.find('textarea').simulate('focus', { target: { value: '12' } })
     expect(onFocus).toHaveBeenCalled()
   })
-
   it('Blur ', () => {
     const onBlur = jest.fn()
     const wrapper = mount(<TextArea onBlur={onBlur} />)
     wrapper.find('textarea').simulate('blur', { target: { value: '12' } })
     expect(onBlur).toHaveBeenCalled()
   })
-
   it('Reset', () => {
     let value = '123'
     const onChange = jest.fn((e) => {
@@ -103,7 +116,6 @@ describe('TextArea', () => {
     expect(onChange).toHaveBeenCalled()
     expect(value).toBe('')
   })
-
   it('key enter', () => {
     const onKeyUp = jest.fn()
     const wrapper = mount(<TextArea onKeyUp={onKeyUp} />)
@@ -129,10 +141,78 @@ describe('TextArea', () => {
     expect(wrapper.find('.kd-input-textarea')).toHaveClassName('.kd-input-disabled')
   })
 
-  // // 9. ref test
+  // 9. ref test
   it('should get button element from ref', () => {
     const ref = React.createRef()
     mount(<TextArea ref={ref} />)
-    expect(ref.current instanceof HTMLTextAreaElement).toBe(true)
+    expect((ref.current as HTMLElement).classList.contains('kd-input-textarea')).toBe(true)
+  })
+
+  // 10. value & defaultValue
+  it('value & defaultValue', () => {
+    const wrapperDefault = mount(<TextArea defaultValue={'defaultValue'} />)
+    expect(wrapperDefault.find('textarea').props().value).toBe('defaultValue')
+
+    let value = 'value'
+    const onChange = jest.fn((e) => {
+      value = e.target.value
+    })
+    const wrapperValue = mount(<TextArea defaultValue={'defaultValue'} value={value} onChange={onChange} />)
+    expect(wrapperValue.find('textarea').props().value).toBe('value')
+    wrapperValue.find('textarea').simulate('change', { target: { value: '12' } })
+    expect(onChange).toHaveBeenCalled()
+    expect(value).toBe('12')
+    wrapperValue.find('textarea').simulate('change', { target: { value: undefined } })
+    expect(wrapperDefault.find('textarea').props().value).toBe('defaultValue')
+  })
+
+  // 11. other api
+  describe('other api', () => {
+    it('allowClear', function () {
+      let value = '123'
+      const onChange = jest.fn((e) => {
+        value = e.target.value
+      })
+      const onBlur = jest.fn()
+      const wrapper = mount(<TextArea onChange={onChange} onBlur={onBlur} allowClear />)
+      wrapper.find('textarea').simulate('mouseenter')
+      wrapper.find('.kd-input-textarea-clear-icon').simulate('click')
+      expect(onChange).toHaveBeenCalled()
+      expect(onBlur).not.toHaveBeenCalled()
+      expect(value).toBe('')
+    })
+
+    it('maxLength & minLength', function () {
+      // maxLength
+      const wrapperMax = mount(<TextArea maxLength={2} />)
+      expect(wrapperMax.find('textarea').props().maxLength).toBe(2)
+
+      // minLength
+      const wrapperMin = mount(<TextArea minLength={2} />)
+      expect(wrapperMin.find('textarea').props().minLength).toBe(2)
+    })
+
+    it('count & countPosition', function () {
+      // count
+      const wrapperCount = mount(<TextArea defaultValue={'defaultValue'} count />)
+      wrapperCount.find('textarea').simulate('focus')
+      expect(wrapperCount.find('.kd-input-textarea-mark').text()).toBe('12/255')
+
+      // count max
+      wrapperCount.setProps({ maxLength: 12 })
+      wrapperCount.update()
+      wrapperCount.find('textarea').simulate('focus')
+      expect(wrapperCount.find('.kd-input-textarea-mark').text()).toBe('12/12')
+
+      // countPosition
+      wrapperCount.setProps({ countPosition: 'inner' })
+      wrapperCount.update()
+      wrapperCount.find('textarea').simulate('focus')
+      expect(wrapperCount.find('.kd-input-textarea-mark-inner')).toHaveLength(1)
+
+      // can't keyup
+      wrapperCount.find('textarea').simulate('keyDown', { keyCode: 90 })
+      expect(wrapperCount.find('textarea').props().value).toBe('defaultValue')
+    })
   })
 })
