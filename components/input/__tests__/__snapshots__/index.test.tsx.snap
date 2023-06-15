@@ -1,5 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Input 4. render null or undefined without errors render null or undefined without errors 1`] = `<Input />`;
+
 exports[`Input renders correctly 1`] = `
 <input
   class="kd-input kd-input-size-middle kd-input-underline"
