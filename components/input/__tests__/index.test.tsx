@@ -8,9 +8,6 @@ import mountTest from '../../../tests/shared/mountTest'
 describe('Input', () => {
   // 1.mount test
   mountTest(Input)
-  InputSiteTypes.forEach((type) => {
-    mountTest(() => <Input size={type} />)
-  })
 
   // 2.render test
   it('renders correctly', () => {
@@ -40,6 +37,12 @@ describe('Input', () => {
     render(<Input borderType={borderType} />)
     expect(mockWarn).toHaveBeenCalledTimes(1)
     expect(mockWarn.mock.calls[0][0]).toMatch("Warning: [kdesign]-input: cannot found input borderType 'who am I'")
+  })
+
+  // 4. placeholder
+  it('placeholder', () => {
+    const wrapper = mount(<Input placeholder={'kd'} />)
+    expect(wrapper.find('.kd-input').props().placeholder).toBe('kd')
   })
 
   // 5. displayName
@@ -74,6 +77,11 @@ describe('Input', () => {
     const AllowClearInput = mount(<Input allowClear />)
     expect(AllowClearInput.find('.kd-input-clear-icon')).toHaveLength(1)
 
+    // count
+    const CountInput = mount(<Input count />)
+    CountInput.find('input').simulate('focus')
+    expect(CountInput.find('.kd-input-input-mark-inner')).toHaveLength(1)
+
     // suffix and prefix
     const FixClearInput = mount(<Input placeholder="请输入" prefix="金额" suffix="rmb" />)
     expect(FixClearInput.find('.kd-input-suffix')).toHaveLength(1)
@@ -89,48 +97,41 @@ describe('Input', () => {
   })
 
   // 7.component interaction(event)
-  it('onChange ', () => {
-    let value = ''
-    const onChange = jest.fn((e) => {
-      value = e.target.value
-    })
-    const wrapper = mount(<Input onChange={onChange} />)
-    wrapper.simulate('change', { target: { value: '12' } })
-    expect(onChange).toHaveBeenCalled()
-    expect(value).toBe('12')
-  })
-
-  it('Focus ', () => {
+  it('event', () => {
+    const onChange = jest.fn()
     const onFocus = jest.fn()
-    const wrapper = mount(<Input onFocus={onFocus} />)
-    wrapper.find('input').simulate('focus', { target: { value: '12' } })
-    expect(onFocus).toHaveBeenCalled()
-  })
-
-  it('Blur ', () => {
     const onBlur = jest.fn()
-    const wrapper = mount(<Input onBlur={onBlur} />)
-    wrapper.find('input').simulate('blur', { target: { value: '12' } })
-    expect(onBlur).toHaveBeenCalled()
-  })
-
-  it('Reset', () => {
-    let value = '123'
-    const onChange = jest.fn((e) => {
-      value = e.target.value
-    })
-    const wrapper = mount(<Input onChange={onChange} allowClear />)
-    wrapper.find('.kd-input-clear-icon').simulate('click')
-    expect(onChange).toHaveBeenCalled()
-    expect(value).toBe('')
-  })
-
-  it('key enter', () => {
     const onKeyUp = jest.fn()
-    const wrapper = mount(<Input onKeyUp={onKeyUp} />)
-    wrapper.simulate('focus')
-    wrapper.simulate('keyup', { key: 'Enter' })
+    const onPressEnter = jest.fn()
+    const wrapper = mount(
+      <Input
+        onChange={onChange}
+        onFocus={onFocus}
+        onBlur={onBlur}
+        onKeyUp={onKeyUp}
+        onPressEnter={onPressEnter}
+        allowClear
+      />,
+    )
+
+    // onChange
+    wrapper.find('input').simulate('change')
+    expect(onChange).toHaveBeenCalled()
+
+    // onFocus
+    wrapper.find('input').simulate('focus')
+    expect(onFocus).toHaveBeenCalled()
+
+    // onBlur
+    wrapper.find('input').simulate('blur')
+    expect(onBlur).toHaveBeenCalled()
+
+    // onPressEnter
+    wrapper.find('input').simulate('focus')
+    wrapper.find('input').simulate('keyup', { key: 'Enter' })
+    expect(onBlur).toHaveBeenCalled()
     expect(onKeyUp).toHaveBeenCalled()
+    expect(onPressEnter).toHaveBeenCalled()
   })
 
   // 8.config provider
@@ -139,6 +140,8 @@ describe('Input', () => {
       compDefaultProps: {
         Input: {
           disabled: true,
+          size: 'small',
+          borderType: 'none',
         },
       },
     }
@@ -148,12 +151,57 @@ describe('Input', () => {
       </ConfigProvider>,
     )
     expect(wrapper.find('.kd-input')).toHaveClassName('.kd-input-disabled')
+    expect(wrapper.find(`.kd-input`)).toHaveClassName(`.kd-input-size-small`)
+    expect(wrapper.find(`.kd-input`)).toHaveClassName(`.kd-input-borderless`)
   })
 
   // 9. ref test
   it('should get button element from ref', () => {
     const ref = React.createRef()
     mount(<Input ref={ref} />)
-    expect(ref.current instanceof HTMLInputElement).toBe(true)
+    expect((ref.current as HTMLElement).classList.contains('kd-input')).toBe(true)
+  })
+
+  // 10. value & defaultValue
+  it('value & defaultValue', () => {
+    const wrapperDefault = mount(<Input defaultValue={'defaultValue'} />)
+    expect(wrapperDefault.find('input').props().value).toBe('defaultValue')
+
+    let value = 'value'
+    const onChange = jest.fn((e) => {
+      value = e.target.value
+    })
+    const wrapperValue = mount(<Input defaultValue={'defaultValue'} value={value} onChange={onChange} />)
+    expect(wrapperValue.find('input').props().value).toBe('value')
+    wrapperValue.find('input').simulate('change', { target: { value: '12' } })
+    expect(onChange).toHaveBeenCalled()
+    expect(value).toBe('12')
+    wrapperValue.find('input').simulate('change', { target: { value: undefined } })
+    expect(wrapperDefault.find('input').props().value).toBe('defaultValue')
+  })
+
+  // 11. other api
+  describe('other api', () => {
+    it('allowClear', function () {
+      let value = '123'
+      const onChange = jest.fn((e) => {
+        value = e.target.value
+      })
+      const onBlur = jest.fn()
+      const wrapper = mount(<Input onChange={onChange} onBlur={onBlur} allowClear />)
+      wrapper.find('.kd-input-clear-icon').simulate('click')
+      expect(onChange).toHaveBeenCalled()
+      expect(onBlur).not.toHaveBeenCalled()
+      expect(value).toBe('')
+    })
+
+    it('maxLength & minLength', function () {
+      const wrapperMax = mount(<Input maxLength={2} />)
+      expect(wrapperMax.find('input').props().maxLength).toBe(2)
+
+      // minLength
+      const wrapperMin = mount(<Input minLength={2} />)
+      expect(wrapperMin.find('input').props().minLength).toBe(2)
+    })
   })
 })
