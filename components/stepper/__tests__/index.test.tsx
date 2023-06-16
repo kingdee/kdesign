@@ -56,6 +56,28 @@ describe('Stepper', () => {
       expect(EmbedStepInput.find('.kd-inputNumber-embedStep')).toHaveLength(1)
     })
 
+    it('data-test style className', () => {
+      const wrapper = mount(
+        <Stepper type="base" data-test="input-field" style={{ padding: 0 }} className="my-className" />,
+      )
+      expect(wrapper.find('[data-test="input-field"]')).toExist()
+      expect(wrapper.find('.kd-input-wrapper')).toHaveStyle('padding', 0)
+      expect(wrapper.find('.my-className')).toExist()
+    })
+
+    it('test disabled', () => {
+      const onChange = jest.fn()
+      const wrapper = mount(<Stepper type="base" disabled onChange={onChange} />)
+      expect(wrapper.find(`.kd-input-wrapper.kd-input-wrapper-disabled input.kd-input-disabled`)).toExist()
+      expect(
+        wrapper.find(
+          `.kd-input-wrapper.kd-input-wrapper-disabled .kd-inputNumber-baseStep.kd-inputNumber-baseStep-disabled`,
+        ),
+      ).toExist()
+      wrapper.find(`.kd-input-wrapper`).simulate('click')
+      expect(onChange).not.toHaveBeenCalled()
+    })
+
     it('baseStep handleStepChang step', () => {
       let value = '0'
       const onChange = jest.fn((e) => {
@@ -167,7 +189,7 @@ describe('Stepper', () => {
       const Config = {
         compDefaultProps: {
           Stepper: {
-            size: 'middle',
+            step: 10,
           },
         },
       }
@@ -177,7 +199,7 @@ describe('Stepper', () => {
       })
       const wrapper = mount(
         <ConfigProvider value={Config}>
-          <Stepper type="base" onChange={onChange} value={10} step={10} />
+          <Stepper type="base" onChange={onChange} value={10} />
         </ConfigProvider>,
       )
       wrapper.find('.kd-inputNumber-baseStep').at(0).simulate('mousedown')
