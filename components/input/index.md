@@ -30,6 +30,7 @@ subtitle: 输入框
 | placeholder | 输入框内容为空时的输入提示 | string | `请输入` | `-` | 1.0.0  |
 | prefix | 带有前缀图标的 input | string / ReactNode | `-` | `-` | 1.0.0  |
 | size | 控件大小 | string | `middle` | `small` `middle` `large` | 1.0.0  |
+| status | 设置校验状态 | string | `-` | `error` | 1.7.5 |
 | suffix | 带有后缀图标的 input | string / ReactNode | `-` | `-` | 1.0.0  |
 | value | 输入框内容 | string | `-` | `-` | 1.0.0  |
 | onChange | 输入框内容变化时的回调 | (event) => void | `-` | `-` | 1.0.0  |
@@ -50,6 +51,7 @@ subtitle: 输入框
 | defaultValue | 输入框默认内容 | string | `-` | `-` | 1.0.0 |
 | maxLength | 最大输入长度 | number | `255` | `-` | 1.0.0 |
 | size | 控件大小 | string | `middle` | `small` `middle` `large` | 1.0.0 |
+| status | 设置校验状态 | string | `-` | `error` | 1.7.5 |
 | value | 输入框内容 | string | `-` | `-` | 1.0.0 |
 
 ## Design Token
@@ -68,6 +70,7 @@ subtitle: 输入框
 |  | --kd-c-input-underline-color-border-disabled | --kd-g-color-border-weak | #e5e5e5 |
 |  | --kd-c-input-color-disabled | --kd-g-color-disabled | #b2b2b2 |
 |  | --kd-c-input-affix-color-text | - | #666 |
+|  | --kd-c-input-color-error | --kd-g-color-error | #fb2323 |
 | font | --kd-c-input-font-size-small | --kd-g-font-size-small | 12px |
 |  | --kd-c-input-font-size-middle | --kd-g-font-size-middle | 14px |
 |  | --kd-c-input-font-size-large | --kd-g-font-size-large | 16px |

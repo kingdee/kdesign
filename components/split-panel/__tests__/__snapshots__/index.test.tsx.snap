@@ -1,5 +1,175 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`SplitPanel render no child without errors 1`] = `
+<SplitPanel>
+  <div
+    className="kd-split-wrapper"
+  >
+    <div
+      className="kd-split-horizontal"
+    >
+      <div
+        className="kd-split-panel left-panel"
+        style={
+          Object {
+            "right": "50%",
+          }
+        }
+      />
+      <div
+        className="kd-split-trigger-con can-drag"
+        style={
+          Object {
+            "left": "50%",
+          }
+        }
+      >
+        <Memo(Trigger)
+          handleMousedown={[Function]}
+          hideFirstPanel={[Function]}
+          hideSecondPanel={[Function]}
+          mode="vertical"
+          prefixCls="kd-split"
+          showFoldIcons={true}
+          style={Object {}}
+        >
+          <div
+            className="kd-split-trigger kd-split-trigger-vertical"
+            onMouseDown={[Function]}
+            style={Object {}}
+          />
+          <span
+            className="kd-split-trigger-arrow is-vertical left"
+            onClick={[Function]}
+          >
+            <Icon
+              type="arrow-left-solid"
+            >
+              <i
+                className="kdicon kdicon-arrow-left-solid"
+                onClick={[Function]}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
+                style={Object {}}
+              />
+            </Icon>
+          </span>
+          <span
+            className="kd-split-trigger-arrow is-vertical right"
+            onClick={[Function]}
+          >
+            <Icon
+              type="arrow-right-solid"
+            >
+              <i
+                className="kdicon kdicon-arrow-right-solid"
+                onClick={[Function]}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
+                style={Object {}}
+              />
+            </Icon>
+          </span>
+        </Memo(Trigger)>
+      </div>
+      <div
+        className="kd-split-panel right-panel"
+        style={
+          Object {
+            "left": "50%",
+          }
+        }
+      />
+    </div>
+  </div>
+</SplitPanel>
+`;
+
+exports[`SplitPanel render null or undefined without errors 1`] = `
+<SplitPanel>
+  <div
+    className="kd-split-wrapper"
+  >
+    <div
+      className="kd-split-horizontal"
+    >
+      <div
+        className="kd-split-panel left-panel"
+        style={
+          Object {
+            "right": "50%",
+          }
+        }
+      />
+      <div
+        className="kd-split-trigger-con can-drag"
+        style={
+          Object {
+            "left": "50%",
+          }
+        }
+      >
+        <Memo(Trigger)
+          handleMousedown={[Function]}
+          hideFirstPanel={[Function]}
+          hideSecondPanel={[Function]}
+          mode="vertical"
+          prefixCls="kd-split"
+          showFoldIcons={true}
+          style={Object {}}
+        >
+          <div
+            className="kd-split-trigger kd-split-trigger-vertical"
+            onMouseDown={[Function]}
+            style={Object {}}
+          />
+          <span
+            className="kd-split-trigger-arrow is-vertical left"
+            onClick={[Function]}
+          >
+            <Icon
+              type="arrow-left-solid"
+            >
+              <i
+                className="kdicon kdicon-arrow-left-solid"
+                onClick={[Function]}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
+                style={Object {}}
+              />
+            </Icon>
+          </span>
+          <span
+            className="kd-split-trigger-arrow is-vertical right"
+            onClick={[Function]}
+          >
+            <Icon
+              type="arrow-right-solid"
+            >
+              <i
+                className="kdicon kdicon-arrow-right-solid"
+                onClick={[Function]}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
+                style={Object {}}
+              />
+            </Icon>
+          </span>
+        </Memo(Trigger)>
+      </div>
+      <div
+        className="kd-split-panel right-panel"
+        style={
+          Object {
+            "left": "50%",
+          }
+        }
+      />
+    </div>
+  </div>
+</SplitPanel>
+`;
+
 exports[`SplitPanel renders correctly 1`] = `
 <div
   class="kd-split-wrapper"

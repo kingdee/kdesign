@@ -26,7 +26,8 @@ export interface IAlertProps {
   closable?: boolean
   closeNode?: ReactNode
   delayOffTime?: number
-  className?: string // 样式名
+  className?: string
+  style?: Record<string, unknown>
   prefixCls?: string // 样式前缀
   onClose?: () => void
   extra?: ReactNode
@@ -75,6 +76,7 @@ const Alert: React.FC<IAlertProps> = (props: IAlertProps): ReactElement | React.
     showIcon,
     icon,
     className,
+    style,
     prefixCls: customPrefixcls,
     closable,
     closeNode,
@@ -83,6 +85,7 @@ const Alert: React.FC<IAlertProps> = (props: IAlertProps): ReactElement | React.
     extra,
     banner,
     bannerOffset,
+    ...othersProps
   } = alertProps
   devWarning(AlertTypes.indexOf(type!) === -1, 'alert', `cannot found alert type '${type}'`)
   const [visible, setVisible] = useState(true)
@@ -190,11 +193,8 @@ const Alert: React.FC<IAlertProps> = (props: IAlertProps): ReactElement | React.
       className={classNames(alertClasses, getAlertColorType('bg'), getAlertColorType('border'))}
       {...events}
       ref={alertRef}
-      // style={
-      //   banner ? {
-      //     order: originOrder--
-      //   } : {}
-      // }
+      style={style}
+      {...othersProps}
     >
       {showIcon && iconNode}
       <div

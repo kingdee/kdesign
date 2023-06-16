@@ -44,7 +44,11 @@ const InteranalEmpty = (props: IEmptyProps, ref: unknown): FunctionComponentElem
 
   const imgClasses = classNames(`${emptyPrefixCls}-image`)
   const imgNode =
-    typeof image === 'string' ? <img src={image} className={imgClasses} style={imageStyle} alt="empty" /> : image
+    typeof image === 'string' ? (
+      <img src={image} className={imgClasses} style={imageStyle} alt="empty" />
+    ) : typeof image === 'boolean' ? null : (
+      React.cloneElement(image, { style: imageStyle })
+    )
 
   const descriptionNode =
     description === undefined ? (

@@ -34,6 +34,7 @@
       align-items: center;
       justify-content: space-between;
       height: 100%;
+      min-width: 450px;
 
       .header-nav {
         height: 100%;
@@ -70,7 +71,8 @@
             align-items: center;
 
 
-            .kd-input-wrapper-size-middle, .kd-input {
+            .kd-input-wrapper-size-middle,
+            .kd-input {
               background: #F3F6FA;
               height: 36px;
               font-size: 12px;
@@ -224,6 +226,7 @@
 }
 
 @media (max-width: 1200px) {
+
   .header,
   .header-wapper {
     width: 100% !important;
@@ -238,12 +241,13 @@
 
     .header-m {
       width: 100%;
+      min-width: 380px;
       height: 50px;
       display: flex;
       align-items: center;
       justify-content: space-between;
 
-      .header-icon{
+      .header-icon {
         display: flex;
         align-items: center;
       }
@@ -252,13 +256,19 @@
         padding-left: 5px;
         padding-top: 10px;
       }
+
       .header-logo {
         padding-top: 12px;
         text-align: center;
       }
+
       .header-search-m {
-        padding-top: 6px;
-        margin-right: 15px;
+        display: flex;
+        margin-right: -40px;
+      }
+
+      .loginButton {
+        margin-right: 0;
       }
     }
 

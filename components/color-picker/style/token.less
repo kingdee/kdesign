@@ -2,8 +2,8 @@
 
 @color-picker-custom-prefix: ~'--@{kd-prefix}-c-color-picker';
 
-// z-index
-@color-picker-panel-z-index: var(~'@{color-picker-custom-prefix}-panel-z-index', @z-index-popper);
+// color
+@color-picker-panel-option-color-background: var(~'@{color-picker-custom-prefix}-panel-option-color-background-selected', @color-theme-3);
 
 // font
 @color-picker-input-font-size: var(~'@{color-picker-custom-prefix}-input-font-size', @font-size-middle);
@@ -20,3 +20,6 @@
 @color-picker-panel-select-sizing-height: var(~'@{color-picker-custom-prefix}-panel-select-sizing-height', 28px);
 @color-picker-panel-preset-sizing-width: var(~'@{color-picker-custom-prefix}-panel-preset-sizing-width', 16px);
 @color-picker-panel-preset-sizing-height: var(~'@{color-picker-custom-prefix}-panel-preset-sizing-height', 16px);
+
+// z-index
+@color-picker-panel-z-index: var(~'@{color-picker-custom-prefix}-panel-z-index', @z-index-popper);

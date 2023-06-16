@@ -4,6 +4,150 @@ title: 更新日志
 hiddenAnchor: true
 ---
 
+## [1.7.13](https://github.com/kdcloudone/kdesign/compare/v1.7.12...v1.7.13)
+`2023-06-02`
+* anchor
+  * 纵向锚点增加背景色 fix [#360](https://github.com/kdcloudone/kdesign/issues/360)
+* modal
+  * 修复maskClassName不生效 fix [#413](https://github.com/kdcloudone/kdesign/issues/413)
+* stepper
+  * 修复大数字时自增或自减操作丢失精度 fix [#385](https://github.com/kdcloudone/kdesign/issues/385)
+* select
+  * 多选时onChange第二个参数返回nodes数组 fix [#388](https://github.com/kdcloudone/kdesign/issues/388)
+  * 修复单选初始化时设置value无行选中效果问题 fix [#387](https://github.com/kdcloudone/kdesign/issues/387)
+* tree
+  * 多选时onChange第二个参数返回nodes数组 fix [#388](https://github.com/kdcloudone/kdesign/issues/388)
+  * 修复单选初始化时设置value无行选中效果问题 fix [#387](https://github.com/kdcloudone/kdesign/issues/387)
+  * 去除多选时行选中效果 fix [#401](https://github.com/kdcloudone/kdesign/issues/401)
+* tree-select
+  * 多选时onChange第二个参数返回nodes数组 fix [#388](https://github.com/kdcloudone/kdesign/issues/388)
+  * 修复单选初始化时设置value无行选中效果问题 fix [#387](https://github.com/kdcloudone/kdesign/issues/387)
+* color-picker
+  * 新增颜色类型下拉面板选项背景色的design token [#386](https://github.com/kdcloudone/kdesign/issues/386)
+* 修复在窗口尺寸变化时首页退出登录的问题 [#399](https://github.com/kdcloudone/kdesign/issues/399)
+
+## [1.7.12](https://github.com/kdcloudone/kdesign/compare/v1.7.11...v1.7.12)
+`2023-05-26`
+* select
+  * 修复面板高度超出时无法滚动的bug
+* tree
+  * 修复面板高度超出时无法滚动的bug
+* tree-select
+  * 修复面板高度超出时无法滚动的bug
+
+## [1.7.11](https://github.com/kdcloudone/kdesign/compare/v1.7.10...v1.7.11)
+`2023-05-26`
+* search
+  * 修复 MDocsSearch 搜索结果显示异常的问题 fixed kdcloudone[#378](https://github.com/kdcloudone/kdesign/issues/378)
+* pagination
+  * 修复页目数视觉问题
+
+## [1.7.10](https://github.com/kdcloudone/kdesign/compare/v1.7.9...v1.7.10)
+`2023-05-19`
+* drawer
+  * 更新抽屉组件单测
+* input
+  * 修复清空按钮触发失焦问题 fix [#371](https://github.com/kdcloudone/kdesign/issues/371)
+* menu
+  * 更新menu组件单测
+* progress
+  * 更新进度条组件单测
+* split-panel
+  * 更新分割容器组件单测
+* switch
+  * 更新开关组件单测
+* collapse
+  * 新增受控模式 fix [#341](https://github.com/kdcloudone/kdesign/issues/341)
+
+## [1.7.9](https://github.com/kdcloudone/kdesign/compare/v1.7.8...v1.7.9)
+`2023-05-12`
+* input
+  * allowClear占位问题 fix [#348](https://github.com/kdcloudone/kdesign/issues/348)
+* dropdown
+  * 新增dropdownRender属性 fix [#343](https://github.com/kdcloudone/kdesign/issues/343)
+* select
+  * 新增dropdownRender属性 fix [#343](https://github.com/kdcloudone/kdesign/issues/343)
+* tree
+  * 新增dropdownRender属性 fix [#343](https://github.com/kdcloudone/kdesign/issues/343)
+* tree-select
+  * 新增dropdownRender属性 fix [#343](https://github.com/kdcloudone/kdesign/issues/343)
+* 修改从组件库登录成功后停留在首页的bug
+* 修改组件库登录功能
+
+## [1.7.8](https://github.com/kdcloudone/kdesign/compare/v1.7.7...v1.7.8)
+`2023-05-08`
+* table
+  * 修复新增自适应宽度特性导致的报错
+
+## [1.7.7](https://github.com/kdcloudone/kdesign/compare/v1.7.6...v1.7.7)
+`2023-05-06`
+* table
+  * 新增列宽自适应功能 fix [#249](https://github.com/kdcloudone/kdesign/issues/249)
+
+## [1.7.6](https://github.com/kdcloudone/kdesign/compare/v1.7.5...v1.7.6)
+`2023-04-28`
+* input
+  * 修复校验状态样式
+  * 添加校验状态
+* form
+  * 传递校验属性 fix [#330](https://github.com/kdcloudone/kdesign/issues/330)
+* 修改登录功能cookie中的domin
+
+## [1.7.5](https://github.com/kdcloudone/kdesign/compare/v1.7.4...v1.7.5)
+`2023-04-27`
+* card
+  * 更新卡片单测
+* carousel
+  * 更新走马灯单测
+* color-picker
+  * 更新颜色选择器单测
+  * 透明度可配置隐藏 [#329](https://github.com/kdcloudone/kdesign/issues/329)
+* dropdown
+  * Dropdown defaultKey 不生效[#326](https://github.com/kdcloudone/kdesign/issues/326)
+* tree
+  * 更新树组件单测
+  * 修复单测报错
+  * 修复重新设置scrollToKey父节点不展开问题 fix [#334](https://github.com/kdcloudone/kdesign/issues/334)
+* 新增登录登出功能
+
+## [1.7.4](https://github.com/kdcloudone/kdesign/compare/v1.7.3...v1.7.4)
+`2023-04-21`
+* table
+  * 修复筛选条件等于\&不等于不生效的问题 fix [#310](https://github.com/kdcloudone/kdesign/issues/310)
+* 修复由于postcss升级导致的ts报错
+
+## [1.7.3](https://github.com/kdcloudone/kdesign/compare/v1.7.2...v1.7.3)
+`2023-04-13`
+* select
+  * 修复defaultOpen默认打开下拉面板不生效 fix [#313](https://github.com/kdcloudone/kdesign/issues/313)
+  * 修复下拉面板树样式与视觉稿不一致问题 fix [#323](https://github.com/kdcloudone/kdesign/issues/323)
+  * 修复token命名重复问题 fix [#321](https://github.com/kdcloudone/kdesign/issues/321)
+  * 修复defaultSelectedKeys不生效 fix [#322](https://github.com/kdcloudone/kdesign/issues/322)
+* tree
+  * 修复下拉面板树样式与视觉稿不一致问题 fix [#323](https://github.com/kdcloudone/kdesign/issues/323)
+  * 修复token命名重复问题 fix [#321](https://github.com/kdcloudone/kdesign/issues/321)
+  * 修复defaultSelectedKeys不生效 fix [#322](https://github.com/kdcloudone/kdesign/issues/322)
+* tree-select
+  * 修复下拉面板树样式与视觉稿不一致问题 fix [#323](https://github.com/kdcloudone/kdesign/issues/323)
+  * 修复token命名重复问题 fix [#321](https://github.com/kdcloudone/kdesign/issues/321)
+
+## [1.7.2](https://github.com/kdcloudone/kdesign/compare/v1.7.1...v1.7.2)
+`2023-04-07`
+* color-picker
+  * 修复单测问题点
+  * 修复ColorPicker中第三方包color不被babel编译的问题
+  * 颜色面板下拉框中的option未固定位置 [#307](https://github.com/kdcloudone/kdesign/issues/307)
+* modal
+  * 修复多层弹窗拖拽会同时移动问题 fix [#312](https://github.com/kdcloudone/kdesign/issues/312)
+  * 修复modal传入style不生效问题 fix [#317](https://github.com/kdcloudone/kdesign/issues/317)
+  * 修复modal拖拽不能控制拖拽边界 fix [#318](https://github.com/kdcloudone/kdesign/issues/318)
+* select
+  * 更新选择器单测
+* dropdown
+  * 当子元素只有一个时，Dropdown.menu设置的属性不生效 (https://github.com/kdcloudone/kdesign/issues/308)
+* menu
+  * 当子元素只有一个时，Dropdown.menu设置的属性不生效 (https://github.com/kdcloudone/kdesign/issues/308)
+
 ## [1.7.1](https://github.com/kdcloudone/kdesign/compare/v1.7.0...v1.7.1)
 `2023-03-24`
 * pagination

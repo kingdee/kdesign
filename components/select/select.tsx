@@ -10,7 +10,7 @@ import Option from './option'
 import { ISelectProps, SelectValue } from './interface'
 import usePopper from '../_utils/usePopper'
 import VirtualList from '../virtual-list'
-
+import KeyCode from '../_utils/KeyCode'
 const INPUT_MIN_WIDTH = 4 // 输入框最小宽度
 
 const InternalSelect: React.ForwardRefRenderFunction<ISelectProps<SelectValue>> = (props: any, ref: unknown) => {
@@ -66,7 +66,10 @@ const InternalSelect: React.ForwardRefRenderFunction<ISelectProps<SelectValue>> 
   const measureRef = useRef<HTMLSpanElement>(null)
   const [mulOptions, setMulOptions] = useState<any>([])
   const [singleVal, setSingleVal] = useState<any>('')
-  const [optionShow, setOptionShow] = useState<boolean>(!!props.visible || defaultOpen) // 下拉列表是否展示
+  const [optionShow, setOptionShow] = useState<boolean>(
+    typeof props.visible === 'undefined' ? !!defaultOpen : !!props.visible,
+  )
+  // 下拉列表是否展示
   // const [searchInput, setSearchInput] = useState<string>('') // 搜索框值
   const [searchValue, setSearchValue] = useState<any>('') // 搜索框定时器
   const [inputWidth, setInputWidth] = useState(INPUT_MIN_WIDTH) // 输入框宽度
@@ -107,7 +110,9 @@ const InternalSelect: React.ForwardRefRenderFunction<ISelectProps<SelectValue>> 
   })
 
   useEffect(() => {
-    setOptionShow(!!props.visible)
+    if (typeof props.visible !== 'undefined') {
+      setOptionShow(props.visible)
+    }
   }, [props.visible])
 
   // realchildren更新时数据处理---待解决
@@ -191,13 +196,13 @@ const InternalSelect: React.ForwardRefRenderFunction<ISelectProps<SelectValue>> 
   )
 
   // 点击组件
-  const handleClick = () => {
-    if (disabled) return
-    if (optionShow) {
-      const { onDropdownVisibleChange } = selectProps
-      onDropdownVisibleChange && onDropdownVisibleChange(true)
-    }
-  }
+  // const handleClick = () => {
+  //   if (disabled) return
+  //   if (optionShow) {
+  //     const { onDropdownVisibleChange } = selectProps
+  //     onDropdownVisibleChange && onDropdownVisibleChange(true)
+  //   }
+  // }
 
   useEffect(() => {
     selectionRef.current.addEventListener('mouseup', (e: MouseEvent) => {
@@ -451,8 +456,12 @@ const InternalSelect: React.ForwardRefRenderFunction<ISelectProps<SelectValue>> 
           {...child.props}
           key={index}
           index={index}
+          activeIndex={activeIndex}
           onChangeSelect={handleOption}
           values={multipleRef.current.selectedVal}
+          onChangeActiveIndex={(i) => {
+            setActiveIndex(i)
+          }}
         />
       )
     } else {
@@ -462,8 +471,12 @@ const InternalSelect: React.ForwardRefRenderFunction<ISelectProps<SelectValue>> 
           value={child?.value}
           key={index}
           index={index}
+          activeIndex={activeIndex}
           onChangeSelect={handleOption}
           values={multipleRef.current.selectedVal}
+          onChangeActiveIndex={(i) => {
+            setActiveIndex(i)
+          }}
           {...child}
         >
           {child?.label || child?.value}
@@ -500,7 +513,7 @@ const InternalSelect: React.ForwardRefRenderFunction<ISelectProps<SelectValue>> 
       searchRef.current?.focus()
     }
   }, [isShowSearch, autoFocus, disabled])
-
+  const optionsListRef: any = React.useRef(null)
   // 渲染下拉列表框
   const renderContent = () => {
     const { dropdownRender, listHeight } = selectProps
@@ -523,6 +536,7 @@ const InternalSelect: React.ForwardRefRenderFunction<ISelectProps<SelectValue>> 
           isStaticItemHeight={true}
           height={listHeight || 300}
           measureLongestItem={false}
+          ref={optionsListRef}
           {...virtualListProps}
         >
           {(child) => {
@@ -715,16 +729,102 @@ const InternalSelect: React.ForwardRefRenderFunction<ISelectProps<SelectValue>> 
     [`${selectPrefixCls}-single-disabled`]: disabled,
     [`${selectPrefixCls}-single-focused`]: (focusd && !disabled) || optionShow,
   })
-
+  // keyboard
+  const getActiveIndex = (index: number, offset = 1): number => {
+    const len = filledOptions.length
+    for (let i = 0; i < len; i += 1) {
+      const current = (index + i * offset + len) % len
+      const { props } = filledOptions[current]
+      if (!props?.disabled) {
+        return current
+      }
+    }
+    return -1
+  }
+  // reset activeIndex
+  useEffect(() => {
+    if (searchValue) {
+      setActiveIndex(getActiveIndex(0))
+    }
+  }, [searchValue])
+  useEffect(() => {
+    if (optionShow && !disabled) {
+      const { onDropdownVisibleChange } = selectProps
+      onDropdownVisibleChange && onDropdownVisibleChange(true)
+    }
+  }, [optionShow])
+  const [activeIndex, setActiveIndex] = useState(getActiveIndex(0))
+  const onInternalKeyDown: React.KeyboardEventHandler<HTMLSpanElement> = (e) => {
+    const { which } = e
+    // open
+    if (which === KeyCode.ENTER || which === KeyCode.UP || which === KeyCode.DOWN) {
+      e.preventDefault()
+      setOptionShow(true)
+    }
+    // backspace
+    const { selectedVal, selectMulOpts } = multipleRef.current
+    // isMultiple
+    if (which === KeyCode.BACKSPACE && !searchValue && isMultiple && selectedVal.length && selectMulOpts.length) {
+      selectedVal.splice(-1, 1)
+      selectMulOpts.splice(-1, 1)
+      setMulOptions([...selectMulOpts])
+      onChange && onChange(labelInValue ? selectMulOpts : selectedVal, selectMulOpts)
+      // !isMultiple
+    } else if (which === KeyCode.BACKSPACE && allowClear && !isMultiple) {
+      setInitValue('')
+      onClear && onClear('')
+      setSearchValue('')
+      onChange && onChange(undefined)
+    }
+    // optionsList: up、down、enter
+    if (optionShow) {
+      let offset = 0
+      if (which === KeyCode.UP) {
+        offset = -1
+      } else if (which === KeyCode.DOWN) {
+        offset = 1
+      } else if (which === KeyCode.ENTER) {
+        const item = filledOptions[activeIndex]
+        const key = item.props?.value || item.value
+        const label = item.props?.children || item.label
+        handleOption(key, label, true)
+        // search
+        if (searchValue) {
+          setActiveIndex(
+            realChildren.findIndex((child) => {
+              if (child && child.props) {
+                return child.props?.value === key
+              } else {
+                return child?.value === key
+              }
+            }),
+          )
+        }
+        if (!isMultiple) {
+          setOptionShow(false)
+        }
+      } else if (which === KeyCode.ESC) {
+        setOptionShow(false)
+      }
+      if (offset !== 0) {
+        const nextActiveIndex = getActiveIndex(activeIndex + offset, offset)
+        if (optionsListRef.current) {
+          optionsListRef.current.scrollTo({ index: nextActiveIndex })
+        }
+        setActiveIndex(nextActiveIndex)
+        e.preventDefault()
+      }
+    }
+  }
   const renderSelect = () => {
     return (
       <div className={selectCls} ref={selectRef} style={style}>
         <span
           className={selectionCls}
-          onClick={handleClick}
           tabIndex={disabled ? -1 : 0}
           onFocus={() => searchRef.current?.focus()}
           onBlur={() => searchRef.current?.blur()}
+          onKeyDown={onInternalKeyDown}
         >
           {/* 单选模式Input  多选输入框 */}
           {!isMultiple ? renderSingle() : renderMultiple()}

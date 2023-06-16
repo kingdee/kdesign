@@ -36,6 +36,7 @@ const InternalQuickSearch: React.ForwardRefRenderFunction<IQuickSearchProps> = (
     onSearch,
     disabled,
     borderType,
+    ...others
   } = props
 
   const realChildren = Array.isArray(tags) && tags.length ? tags : toArray(children) // tags配置项和默认children
@@ -300,7 +301,7 @@ const InternalQuickSearch: React.ForwardRefRenderFunction<IQuickSearchProps> = (
 
   const renderSelect = () => {
     return (
-      <div className={quickSearchCls} ref={quickSearchRef} style={style} onClick={handleClickInputFosus}>
+      <div className={quickSearchCls} ref={quickSearchRef} style={style} onClick={handleClickInputFosus} {...others}>
         <span className={classNames({ [`${quickSearchPrefixCls}-prefix`]: true })}>
           <Icon type="search" />
         </span>

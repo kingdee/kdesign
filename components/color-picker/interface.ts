@@ -40,7 +40,7 @@ export interface IColorPickerProps extends PopperProps {
   // 用户自定义的预设颜色
   presetColor: string[]
   // 是否展示拾色容器
-  showColorPickerBox: boolean
+  showColorPickerBox: { showBox: boolean; showHue: boolean; showOpacity: boolean }
   // 颜色选择面板显隐配置
   defaultOpen: boolean
   // 当颜色选择器的值发生变化时触发的回调函数
@@ -63,7 +63,7 @@ export interface IColorPickerPanelProps {
   showSwitch?: boolean
   showColorTransfer?: boolean
   showPresetColor?: boolean
-  showColorPickerBox?: boolean
+  showColorPickerBox?: { showBox?: boolean; showHue?: boolean; showOpacity?: boolean }
   value: string
   setCurrentColorType: (currentColorType: IColorTypesObj['type']) => void
   setColTypeArr: (colTypeArr: Array<IColorTypesObj>) => void

@@ -58,7 +58,6 @@ textarea {
 
   &-borderless {
     border: 0;
-    padding-left: 0 !important;
 
     &:focus {
       border: 0;
@@ -98,7 +97,7 @@ textarea {
   }
 
   &-wrapper {
-    padding-left: @input-wrapper-padding-left !important;
+    padding-left: @input-wrapper-padding-left;
     .input(@wrapper-prefix-cls);
     transition: border-color @transition-duration-inner;
     display: inline-flex;
@@ -122,14 +121,6 @@ textarea {
         word-break: keep-all;
         color: @input-affix-color;
       }
-
-      &-suffix {
-        margin-left: 4px;
-      }
-
-      &-prefix {
-        margin-right: 4px;
-      }
     }
 
     &-size-small {
@@ -152,14 +143,17 @@ textarea {
       .underline;
     }
 
-    &-focused {
+    &-focused:not(.@{input-prefix-cls}-error) {
       border-color: @input-border-color-focused;
     }
 
     &-disabled {
-      background-color: @input-background-color-disabled-inner;
       border-color: @input-border-color-disabled-inner;
       cursor: not-allowed;
+
+      &:not(.@{input-prefix-cls}-wrapper-underline) {
+        background-color: @input-background-color-disabled-inner;
+      }
 
       .@{input-prefix-cls}-suffix,
       .@{input-prefix-cls}-prefix {
@@ -192,6 +186,7 @@ textarea {
 
   &-clear-icon-hidden {
     visibility: hidden;
+    display: none;
   }
 
   &-clear-icon-rightSpace {
@@ -307,5 +302,9 @@ textarea {
 
   &-input-mark-inner {
     color: @input-placeholder-color-inner;
+  }
+
+  &-error:not(.@{input-prefix-cls}-disabled):not(.@{input-prefix-cls}-wrapper-disabled):not(.@{input-prefix-cls}-group-addon-disabled) {
+    border-color: @input-error-color;
   }
 }

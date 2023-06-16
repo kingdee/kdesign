@@ -1,0 +1,102 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Checkbox render null or undefined without errors 1`] = `
+<Checkbox>
+  <label
+    className="kd-checkbox kd-checkbox-middle kd-checkbox-default"
+  >
+    <span
+      className="kd-checkbox-default-wrapper kd-checkbox-default-wrapper-size kd-checkbox-default-margin"
+    >
+      <input
+        checked={false}
+        className="kd-checkbox-input"
+        disabled={false}
+        onChange={[Function]}
+        type="checkbox"
+      />
+    </span>
+    <span
+      className="kd-checkbox-children"
+    />
+  </label>
+</Checkbox>
+`;
+
+exports[`Checkbox render null or undefined without errors 2`] = `
+<CheckboxGroup>
+  <ul
+    className="kd-checkbox-group"
+    defaultChecked={false}
+    indeterminate={false}
+  />
+</CheckboxGroup>
+`;
+
+exports[`Checkbox render test 1`] = `
+<Checkbox
+  defaultChecked={false}
+  disabled={false}
+  indeterminate={false}
+  onChange={[MockFunction]}
+>
+  <label
+    className="kd-checkbox kd-checkbox-middle kd-checkbox-default"
+  >
+    <span
+      className="kd-checkbox-default-wrapper kd-checkbox-default-wrapper-size kd-checkbox-default-margin"
+    >
+      <input
+        checked={false}
+        className="kd-checkbox-input"
+        disabled={false}
+        onChange={[Function]}
+        type="checkbox"
+      />
+    </span>
+    <span
+      className="kd-checkbox-children"
+    >
+      Text
+    </span>
+  </label>
+</Checkbox>
+`;
+
+exports[`Checkbox render test 2`] = `
+<CheckboxGroup>
+  <ul
+    className="kd-checkbox-group"
+    defaultChecked={false}
+    indeterminate={false}
+  >
+    <Checkbox
+      defaultChecked={false}
+      disabled={false}
+      indeterminate={false}
+      onChange={[MockFunction]}
+    >
+      <label
+        className="kd-checkbox kd-checkbox-middle kd-checkbox-default"
+      >
+        <span
+          className="kd-checkbox-default-wrapper kd-checkbox-default-wrapper-size kd-checkbox-default-margin"
+        >
+          <input
+            checked={false}
+            className="kd-checkbox-input"
+            disabled={false}
+            onChange={[Function]}
+            type="checkbox"
+          />
+        </span>
+        <span
+          className="kd-checkbox-children"
+        >
+          Text
+        </span>
+      </label>
+    </Checkbox>
+  </ul>
+</CheckboxGroup>
+`;

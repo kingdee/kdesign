@@ -21,6 +21,7 @@ const RefForm: RefForm = InternalForm as RefForm
 
 RefForm.FormProvider = FormProvider
 RefForm.Item = Item
+RefForm.Item.displayName = 'Item'
 RefForm.useForm = useForm
 RefForm.displayName = 'Form'
 

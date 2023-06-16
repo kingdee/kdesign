@@ -51,13 +51,12 @@ const generateEventHandler = (handler: EventHandler<any>, validateTrigger?: stri
   return eventHandler
 }
 
-const INNER_VALUE_PROPS_LIST = [
+export const INNER_VALUE_PROPS_LIST = [
   { name: 'Radio', propName: 'checked' },
   { name: 'Checkbox', propName: 'checked' },
   { name: 'Switch', propName: 'checked' },
   { name: 'Upload', propName: 'fileList' },
-  { name: 'Transfer', propName: 'targetKey' },
-  { name: 'RangePicker', propName: 'ranges' },
+  { name: 'Transfer', propName: 'targetKeys' },
 ]
 
 const Field: React.FC<FormItemProps> = (props) => {
@@ -302,6 +301,7 @@ const Field: React.FC<FormItemProps> = (props) => {
             {
               ...generateEventHandler(handleValueValidate, validateTrigger),
               key: index,
+              status: typeof validateMessage !== 'undefined' ? 'error' : undefined,
               id: customizeHtmlFor ? undefined : htmlFor,
             },
             child,

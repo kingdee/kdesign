@@ -17,6 +17,7 @@ import ConfigContext from '../config-provider/ConfigContext'
 import { getCompProps } from '../_utils'
 import devWarning from '../_utils/devwarning'
 import Draggable from 'react-draggable'
+import type { DraggableBounds, DraggableEventHandler, DraggableEvent, DraggableData } from 'react-draggable'
 import { getLangMsg } from '../locale/locale'
 import { useHideDocumentScrollBar } from '../_utils/hooks'
 type CSSSelector = string
@@ -31,6 +32,7 @@ export interface IModalProps {
   body?: ReactNode
   bodyClassName?: string
   bodyStyle?: CSSProperties
+  style?: CSSProperties
   cancelButtonProps?: IButtonProps
   cancelText?: ReactNode
   className?: string
@@ -63,9 +65,16 @@ export interface IModalProps {
   visible?: boolean
   width?: number
   showline?: boolean
+  bounds?: DraggableBounds | string | false
+  onDragStart?: DraggableEventHandler
+  onDrag?: DraggableEventHandler
+  onDragStop?: DraggableEventHandler
 }
 type ClickMouseEvent = React.MouseEvent<HTMLButtonElement | HTMLAnchorElement, MouseEvent>
-const Modal: React.FC<IModalProps> = (props: IModalProps): ReactElement | React.ReactPortal | null => {
+const InternalModal = (
+  props: IModalProps,
+  ref: React.RefObject<HTMLDivElement>,
+): ReactElement | React.ReactPortal | null => {
   const { getPrefixCls, prefixCls, compDefaultProps: userDefaultProps } = useContext(ConfigContext)
   const modalProps: IModalProps = getCompProps('Modal', userDefaultProps, props) // 属性需要合并一遍用户定义的默认属性
   const {
@@ -90,6 +99,7 @@ const Modal: React.FC<IModalProps> = (props: IModalProps): ReactElement | React.
     mask,
     maskClosable,
     maskStyle,
+    maskClassName,
     okButtonProps,
     okText,
     onCancel,
@@ -101,11 +111,17 @@ const Modal: React.FC<IModalProps> = (props: IModalProps): ReactElement | React.
     visible,
     width,
     showline,
+    onDragStart,
+    onDrag,
+    onDragStop,
+    bounds,
+    ...others
   } = modalProps
   const isForceController = visible !== undefined
   const [innerVisible, setInnerVisible] = useState(isForceController ? visible : true) // 需要根据visible来判断，不能一开始为true再去设置false
   const previousActiveElement = useRef<HTMLElement | null>(null)
-  const containerRef = useRef<HTMLDivElement>(null)
+  const innerRef = useRef<HTMLDivElement>(null)
+  const containerRef = ref || innerRef
   const modalPrefixCls = getPrefixCls!(prefixCls, 'modal', customPrefixcls)
   devWarning(ModalTypes.indexOf(type!) === -1, 'modal', `cannot found modal type '${type}'`)
   let modalContainer: Element | CSSSelector | undefined | null | false =
@@ -307,15 +323,30 @@ const Modal: React.FC<IModalProps> = (props: IModalProps): ReactElement | React.
   )
   // 没有容器应该是不用居中的
   // 但仍可拖拽
+  const handleDragStart = (e: DraggableEvent, data: DraggableData) => {
+    onDragStart?.(e, data)
+  }
   const defaultPosition = modalContainer ? { x: -(width! / 2), y: -(height! / 2) } : { x: 0, y: 0 }
   const comp: ReactElement = (
-    <div className={modalClasses}>
+    <div className={modalClasses} {...others}>
       {/* 增加clickOutside */}
-      {mask && <div onClick={handleMaskClick} className={`${modalPrefixCls}-mask`} style={maskStyle}></div>}
+      {mask && (
+        <div
+          onClick={handleMaskClick}
+          className={classNames(maskClassName, {
+            [`${modalPrefixCls}-mask`]: true,
+          })}
+          style={maskStyle}
+        ></div>
+      )}
       <Draggable
         defaultPosition={defaultPosition}
         handle={`.${headerClass}`}
         disabled={!draggable}
+        onStart={handleDragStart}
+        onDrag={onDrag}
+        onStop={onDragStop}
+        bounds={bounds}
         cancel={`.${modalPrefixCls}-title-container, .${modalPrefixCls}-close-icon`}
       >
         {container}
@@ -327,5 +358,6 @@ const Modal: React.FC<IModalProps> = (props: IModalProps): ReactElement | React.
   return renderComp || null
 }
 
+const Modal = React.forwardRef<unknown, IModalProps>(InternalModal)
 Modal.displayName = 'Modal'
 export default Modal

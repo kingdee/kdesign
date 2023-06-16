@@ -31,7 +31,7 @@ function flattenTreeData(treeData: TreeNodeData[]) {
     return key
   }
 
-  treeData.forEach((node) => {
+  treeData?.forEach((node) => {
     flatten(node)
   })
 
@@ -88,6 +88,7 @@ const InternalTreeSelect: React.ForwardRefRenderFunction<ITreeSelectProps<TreeSe
     onTreeExpand,
     onSelect,
     onCheck,
+    dropdownRender,
   } = treeSelectProps
   const isMultiple = mode === 'multiple' // 是否多选
   const [initValue, setInitValue] = useMergedState(isMultiple ? [] : undefined, {
@@ -95,7 +96,7 @@ const InternalTreeSelect: React.ForwardRefRenderFunction<ITreeSelectProps<TreeSe
     defaultValue,
   })
   const [expandedKeys, setExpandedKeys] = useState(treeExpandedKeys)
-  const [selectedKeys, setSelectedKeys] = useState<string[]>([])
+  const [selectedKeys, setSelectedKeys] = useState<string[]>(initValue)
   const innerRef = useRef<HTMLElement>()
   const selectRef = (ref as any) || innerRef
   const searchRef = useRef<any>(null) // 搜索框ref
@@ -251,8 +252,10 @@ const InternalTreeSelect: React.ForwardRefRenderFunction<ITreeSelectProps<TreeSe
 
   const handleCheck = (keys: string[], state: any) => {
     onCheck?.(keys, state)
-    console.log(1111, state)
-    onChange?.(keys)
+    onChange?.(
+      keys,
+      keys.map((key) => TreeMap.get(key)),
+    )
     !Object.hasOwnProperty.call(treeSelectProps, 'value') && setInitValue(keys)
   }
 
@@ -313,6 +316,7 @@ const InternalTreeSelect: React.ForwardRefRenderFunction<ITreeSelectProps<TreeSe
       icon: treeIcon,
       showIcon: showTreeIcon,
       switcherIcon,
+      onlyExpandOnClickIcon: true,
       notFoundContent: renderNotContent(),
       filterTreeNode: defFilterTreeNode,
       onSelect: handleSelect,
@@ -351,8 +355,7 @@ const InternalTreeSelect: React.ForwardRefRenderFunction<ITreeSelectProps<TreeSe
       <>
         {
           <div className={dropDownCls} style={dropDownStyle} ref={dropDownRef}>
-            {dropRender()}
-            {/* 拓展菜单 */}
+            {dropdownRender ? dropdownRender?.(dropRender()) : dropRender()}
           </div>
         }
       </>

@@ -140,6 +140,7 @@ export const useExpand = (
     defaultExpandedKeys,
     defaultExpandRoot,
     defaultExpandParent,
+    scrollKey,
   ])
 
   return [expandedKeys, setExpandedKeys] as const
@@ -185,7 +186,7 @@ export const useScrollToKey = (
 export const useSelect = (selectedKeysProps: string[], defaultSelectedKeys: string[]) => {
   const [selectedKeys, setSelectedKeys] = useState(selectedKeysProps || defaultSelectedKeys)
   useEffect(() => {
-    setSelectedKeys(selectedKeysProps)
+    selectedKeysProps && setSelectedKeys(selectedKeysProps)
   }, [selectedKeysProps])
   return [selectedKeys, setSelectedKeys] as const
 }

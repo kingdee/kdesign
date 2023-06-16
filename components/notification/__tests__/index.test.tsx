@@ -1,7 +1,11 @@
 import Notification from '../index'
 import { act } from 'react-dom/test-utils'
+import React from 'react'
 
 describe('Notification', () => {
+  const ALL_TYPE = ['info', 'primary']
+  const ALL_PLACEMENT = ['topLeft', 'topRight', 'bottomLeft', 'bottomRight']
+
   beforeEach(() => {
     jest.useFakeTimers()
   })
@@ -11,9 +15,85 @@ describe('Notification', () => {
     jest.useRealTimers()
   })
 
-  const ALL_TYPE = ['info', 'primary']
+  // 1. event
+  describe('event', () => {
+    // onClose
+    it('onClose', () => {
+      const onClose = jest.fn()
+      act(() => {
+        Notification.open({
+          onClose,
+          content: 'test',
+          duration: 0,
+        })
+      })
+      expect(document.querySelectorAll('.kd-notice-content-title-close').length).toBe(1)
+      const element = document.querySelectorAll('.kd-notice-content-title-close')[0] as HTMLElement
+      element.click()
+      expect(onClose).toHaveBeenCalled()
+    })
 
-  it('all type notification renders correctly', () => {
+    // destroy
+    it('destroy', () => {
+      ALL_TYPE.forEach((type) => {
+        act(() => {
+          Notification[type]({
+            key: type,
+            content: 'test',
+            duration: 0,
+          })
+        })
+      })
+      expect(document.querySelectorAll('.kd-notice').length).toBe(2)
+
+      act(() => {
+        Notification.destroy('info')
+      })
+
+      expect(document.querySelectorAll('.kd-notice').length).toBe(1)
+      const el = document.querySelector('.kd-notice-info') || 0
+      expect(el).toEqual(0)
+
+      act(() => {
+        Notification.destroy()
+      })
+      expect(document.querySelectorAll('.kd-notice').length).toBe(0)
+    })
+
+    // update
+    it('update', () => {
+      act(() => {
+        Notification.info({
+          key: 'message_key',
+          content: 'test update',
+          closable: false,
+          duration: 0,
+        })
+      })
+      expect(document.querySelector('.kd-notice-info')).toBeTruthy()
+      expect(document.querySelector('.kd-notice-info .kd-notice-content-title-close')).toBeFalsy()
+
+      const contentEl = document.querySelector('.kd-notice .kd-notice-content-description') as HTMLElement
+      expect(contentEl.textContent).toEqual('test update')
+
+      act(() => {
+        Notification.primary({
+          key: 'message_key',
+          content: 'already update',
+          closable: true,
+          duration: 2000,
+        })
+      })
+
+      expect(document.querySelector('.kd-notice-info')).toBeFalsy()
+      expect(document.querySelector('.kd-notice-primary')).toBeTruthy()
+      expect(document.querySelector('.kd-notice-primary .kd-notice-content-title-close')).toBeTruthy()
+      expect(contentEl.textContent).toEqual('already update')
+    })
+  })
+
+  // 2. render test
+  it('render test', () => {
     ALL_TYPE.forEach((type) => {
       act(() => {
         Notification[type]({ content: 'test render' })
@@ -22,130 +102,135 @@ describe('Notification', () => {
       const contentEl = document.querySelector(`.kd-notice-${type} .kd-notice-content-description`) as HTMLElement
       expect(contentEl.textContent).toEqual('test render')
     })
+
+    ALL_PLACEMENT.forEach((placement: any) => {
+      act(() => {
+        Notification.info({ content: 'test render', placement })
+      })
+      expect(document.querySelector(`.kd-notice-box-${placement}`)).toBeTruthy()
+      const contentEl = document.querySelector(
+        `.kd-notice-box-${placement} .kd-notice-content-description`,
+      ) as HTMLElement
+      expect(contentEl.textContent).toEqual('test render')
+    })
   })
 
-  it('trigger onClose method', () => {
-    const onClose = jest.fn()
+  // 3. className
+  it('className', () => {
     act(() => {
       Notification.open({
-        onClose,
+        className: 'my-class',
         content: 'test destory',
         duration: 0,
       })
     })
-    expect(document.querySelectorAll('.kd-notice-content-title-close').length).toBe(1)
-    const element = document.querySelectorAll('.kd-notice-content-title-close')[0] as HTMLElement
-    element.click()
-    expect(onClose).toHaveBeenCalled()
+    const el = document.querySelectorAll('.kd-notice')
+    expect(el.length).toBe(1)
+    expect(el[0].getAttribute('class')).toBe('kd-notice my-class kd-notice-primary')
   })
 
-  it('should destroy messages correctly', () => {
-    ALL_TYPE.forEach((type) => {
+  // 4. style
+  it('style', () => {
+    act(() => {
+      Notification.open({
+        style: { background: 'red' },
+        content: 'test',
+        duration: 0,
+      })
+    })
+    const el = document.querySelectorAll('.kd-notice')
+    expect(el.length).toBe(1)
+    expect(el[0].getAttribute('style')).toBe('background: red;')
+  })
+
+  // 5. other api
+  describe('other api', () => {
+    it('title / footer / content / showIcon / icon', () => {
       act(() => {
-        Notification[type]({
-          key: type,
-          content: 'test destory',
+        Notification.open({
+          title: 'title',
+          icon: 'icon',
+          showIcon: true,
+          footer: <div className={'my-footer'}>footer</div>,
+          content: 'content',
           duration: 0,
         })
       })
-    })
-    expect(document.querySelectorAll('.kd-notice').length).toBe(2)
 
-    act(() => {
-      Notification.destroy('info')
+      expect(document.querySelectorAll('.kd-notice-content-title-left-icon')[0].textContent).toBe('icon')
+      expect(document.querySelectorAll('.kd-notice-content-title-left-text')[0].textContent).toBe('title')
+      expect(document.querySelectorAll('.my-footer')[0].textContent).toBe('footer')
+      expect(document.querySelectorAll('.kd-notice-content-description')[0].textContent).toBe('content')
     })
 
-    expect(document.querySelectorAll('.kd-notice').length).toBe(1)
-    const el = document.querySelector('.kd-notice-info') || 0
-    expect(el).toEqual(0)
+    it('title / content ReactNode', () => {
+      act(() => {
+        Notification.open({
+          title: <div className={'my-title'}>title</div>,
+          content: <div className={'my-content'}>content</div>,
+          duration: 0,
+        })
+      })
 
-    act(() => {
-      Notification.destroy()
+      expect(document.querySelectorAll('.my-title')[0].textContent).toBe('title')
+      expect(document.querySelectorAll('.my-content')[0].textContent).toBe('content')
     })
-    expect(document.querySelectorAll('.kd-notice').length).toBe(0)
+
+    it('closable / closeNode', () => {
+      act(() => {
+        Notification.open({
+          closable: true,
+          closeNode: <div className={'my-close'}>X</div>,
+          content: 'test',
+          duration: 0,
+        })
+      })
+
+      expect(document.querySelectorAll('.my-close').length).toBe(1)
+      expect(document.querySelectorAll('.my-close')[0].textContent).toBe('X')
+    })
   })
 
-  it('should update messages by key correctly', () => {
-    act(() => {
-      Notification.info({
-        key: 'message_key',
-        content: 'test update',
-        closable: false,
-        duration: 0,
+  // 6. special
+  describe('special', () => {
+    it('should display when mouse over', () => {
+      act(() => {
+        Notification.info({
+          content: 'test mouse over',
+          duration: 1000,
+        })
       })
-    })
-    expect(document.querySelector('.kd-notice-info')).toBeTruthy()
-    expect(document.querySelector('.kd-notice-info .kd-notice-content-title-close')).toBeFalsy()
+      const el = document.querySelector('.kd-notice-info') as HTMLElement
+      expect(el).toBeTruthy()
 
-    const contentEl = document.querySelector('.kd-notice .kd-notice-content-description') as HTMLElement
-    expect(contentEl.textContent).toEqual('test update')
-
-    act(() => {
-      Notification.primary({
-        key: 'message_key',
-        content: 'already update',
-        closable: true,
-        duration: 2000,
+      act(() => {
+        const mouseenterEvent = new Event('mouseenter')
+        el.dispatchEvent(mouseenterEvent)
+        jest.runTimersToTime(1000)
       })
+
+      expect(el).toBeTruthy()
     })
 
-    expect(document.querySelector('.kd-notice-info')).toBeFalsy()
-    expect(document.querySelector('.kd-notice-primary')).toBeTruthy()
-    expect(document.querySelector('.kd-notice-primary .kd-notice-content-title-close')).toBeTruthy()
-    expect(contentEl.textContent).toEqual('already update')
-  })
-
-  it('should be able to config style', () => {
-    act(() => {
-      Notification.info({
-        content: 'test custom style',
-        duration: 0,
-        style: {
-          marginTop: '20vh',
-        },
+    it('close message trigger onClose with key argument when using the onClose arguments', () => {
+      let closeCount = 0
+      act(() => {
+        Notification.info({
+          content: 'test custom style',
+          key: 'callback',
+          onClose: (key: string) => {
+            expect(key).toBe('callback')
+            closeCount += 1
+          },
+        })
       })
-    })
-    const el = document.querySelector('.kd-notice-info') as HTMLElement
-    expect(el.style.marginTop).toBe('20vh')
-  })
 
-  it('close message trigger onClose with key argument when using the onClose arguments', () => {
-    let closeCount = 0
-    act(() => {
-      Notification.info({
-        content: 'test custom style',
-        key: 'callback',
-        onClose: (key: string) => {
-          expect(key).toBe('callback')
-          closeCount += 1
-        },
+      expect(closeCount).toEqual(0)
+
+      act(() => {
+        jest.runTimersToTime(3000)
       })
+      expect(closeCount).toEqual(0)
     })
-
-    expect(closeCount).toEqual(0)
-
-    act(() => {
-      jest.runTimersToTime(3000)
-    })
-    expect(closeCount).toEqual(0)
-  })
-
-  it('should display when mouse over', () => {
-    act(() => {
-      Notification.info({
-        content: 'test mouse over',
-        duration: 1000,
-      })
-    })
-    const el = document.querySelector('.kd-notice-info') as HTMLElement
-    expect(el).toBeTruthy()
-
-    act(() => {
-      const mouseenterEvent = new Event('mouseenter')
-      el.dispatchEvent(mouseenterEvent)
-      jest.runTimersToTime(1000)
-    })
-
-    expect(el).toBeTruthy()
   })
 })

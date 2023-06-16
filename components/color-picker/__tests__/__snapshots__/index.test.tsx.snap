@@ -15,7 +15,7 @@ exports[`ColorPicker renders correctly 1`] = `
   >
     <div
       class="kd-color-picker-icon kd-color-picker-icon-underline kd-color-picker-icon-down"
-      style="background-color:rgb(178,178,178)"
+      style="background-color:rgb(178, 178, 178)"
     >
       <i
         class="kdicon kdicon-arrow-down"
@@ -40,7 +40,7 @@ exports[`ColorPicker renders correctly 2`] = `
   >
     <div
       class="kd-color-picker-icon kd-color-picker-icon-bordered kd-color-picker-icon-down"
-      style="background-color:rgb(178,178,178)"
+      style="background-color:rgb(178, 178, 178)"
     >
       <i
         class="kdicon kdicon-arrow-down"
@@ -112,7 +112,7 @@ exports[`ColorPicker renders correctly with no child 1`] = `
         className="kd-color-picker-icon kd-color-picker-icon-bordered kd-color-picker-icon-down"
         style={
           Object {
-            "backgroundColor": "rgb(178,178,178)",
+            "backgroundColor": "rgb(178, 178, 178)",
           }
         }
       >
@@ -195,7 +195,7 @@ exports[`ColorPicker renders correctly with null or undefined 1`] = `
         className="kd-color-picker-icon kd-color-picker-icon-bordered kd-color-picker-icon-down"
         style={
           Object {
-            "backgroundColor": "rgb(178,178,178)",
+            "backgroundColor": "rgb(178, 178, 178)",
           }
         }
       >

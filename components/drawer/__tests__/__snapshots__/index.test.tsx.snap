@@ -1,5 +1,219 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Drawer render no child without errors 1`] = `
+<Drawer>
+  <Portal
+    containerInfo={
+      <body>
+        <div
+          class="kd-drawer kd-drawer-hide"
+          style="z-index: 1050;"
+        >
+          <div
+            class="kd-drawer-mask"
+          />
+          <div
+            class="kd-drawer-container-box kd-drawer-has-container-box kd-drawer-container-right"
+            style="right: 0px; width: 320px; transform: translateX(100%);"
+          >
+            <div
+              class="kd-drawer-header"
+            >
+              <div
+                class="kd-drawer-title"
+              />
+              <div
+                class="kd-drawer-close-icon"
+              >
+                <i
+                  class="kdicon kdicon-close"
+                />
+              </div>
+            </div>
+            <div
+              class="kd-drawer-body"
+            />
+          </div>
+        </div>
+      </body>
+    }
+  >
+    <div
+      className="kd-drawer kd-drawer-hide"
+      style={
+        Object {
+          "zIndex": 1050,
+        }
+      }
+    >
+      <div
+        className="kd-drawer-mask"
+        onClick={[Function]}
+      />
+      <div
+        className="kd-drawer-container-box kd-drawer-has-container-box kd-drawer-container-right"
+        style={
+          Object {
+            "right": 0,
+            "transform": "translateX(100%)",
+            "width": 320,
+          }
+        }
+      >
+        <div
+          className="kd-drawer-header"
+        >
+          <div
+            className="kd-drawer-title"
+          />
+          <div
+            className="kd-drawer-close-icon"
+            onClick={[Function]}
+          >
+            <Icon
+              type="close"
+            >
+              <i
+                className="kdicon kdicon-close"
+                onClick={[Function]}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
+                style={Object {}}
+              />
+            </Icon>
+          </div>
+        </div>
+        <div
+          className="kd-drawer-body"
+        />
+      </div>
+    </div>
+  </Portal>
+</Drawer>
+`;
+
+exports[`Drawer render null or undefined without errors 1`] = `
+<Drawer>
+  <Portal
+    containerInfo={
+      <body>
+        <div
+          class="kd-drawer kd-drawer-hide"
+          style="z-index: 1050;"
+        >
+          <div
+            class="kd-drawer-mask"
+          />
+          <div
+            class="kd-drawer-container-box kd-drawer-has-container-box kd-drawer-container-right"
+            style="right: 0px; width: 320px; transform: translateX(100%);"
+          >
+            <div
+              class="kd-drawer-header"
+            >
+              <div
+                class="kd-drawer-title"
+              />
+              <div
+                class="kd-drawer-close-icon"
+              >
+                <i
+                  class="kdicon kdicon-close"
+                />
+              </div>
+            </div>
+            <div
+              class="kd-drawer-body"
+            />
+          </div>
+        </div>
+        <div
+          class="kd-drawer kd-drawer-hide"
+          style="z-index: 1050;"
+        >
+          <div
+            class="kd-drawer-mask"
+          />
+          <div
+            class="kd-drawer-container-box kd-drawer-has-container-box kd-drawer-container-right"
+            style="right: 0px; width: 320px; transform: translateX(100%);"
+          >
+            <div
+              class="kd-drawer-header"
+            >
+              <div
+                class="kd-drawer-title"
+              />
+              <div
+                class="kd-drawer-close-icon"
+              >
+                <i
+                  class="kdicon kdicon-close"
+                />
+              </div>
+            </div>
+            <div
+              class="kd-drawer-body"
+            />
+          </div>
+        </div>
+      </body>
+    }
+  >
+    <div
+      className="kd-drawer kd-drawer-hide"
+      style={
+        Object {
+          "zIndex": 1050,
+        }
+      }
+    >
+      <div
+        className="kd-drawer-mask"
+        onClick={[Function]}
+      />
+      <div
+        className="kd-drawer-container-box kd-drawer-has-container-box kd-drawer-container-right"
+        style={
+          Object {
+            "right": 0,
+            "transform": "translateX(100%)",
+            "width": 320,
+          }
+        }
+      >
+        <div
+          className="kd-drawer-header"
+        >
+          <div
+            className="kd-drawer-title"
+          />
+          <div
+            className="kd-drawer-close-icon"
+            onClick={[Function]}
+          >
+            <Icon
+              type="close"
+            >
+              <i
+                className="kdicon kdicon-close"
+                onClick={[Function]}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
+                style={Object {}}
+              />
+            </Icon>
+          </div>
+        </div>
+        <div
+          className="kd-drawer-body"
+        />
+      </div>
+    </div>
+  </Portal>
+</Drawer>
+`;
+
 exports[`Drawer renders correctly 1`] = `
 <div
   class="kd-drawer kd-drawer-hide kd-drawer-not-at-body"

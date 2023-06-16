@@ -1,0 +1,460 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TimeLine render correct snapshot render correct 1`] = `
+<ul
+  class="kd-timeline"
+>
+  <li
+    class="kd-timeline-item"
+    position=""
+  >
+    <div
+      class="kd-timeline-item-tail"
+      style="margin-top:16px"
+    />
+    <div
+      class="kd-timeline-item-dot blue"
+      style="top:9px"
+    />
+    <div
+      class="kd-timeline-item-content"
+      style="line-height:18px"
+    >
+      foo
+    </div>
+  </li>
+  <li
+    class="kd-timeline-item"
+    position=""
+  >
+    <div
+      class="kd-timeline-item-tail"
+      style="margin-top:16px"
+    />
+    <div
+      class="kd-timeline-item-dot blue"
+      style="top:9px"
+    />
+    <div
+      class="kd-timeline-item-content"
+      style="line-height:18px"
+    >
+      bar
+    </div>
+  </li>
+  <li
+    class="kd-timeline-item last"
+    position=""
+  >
+    <div
+      class="kd-timeline-item-tail"
+      style="margin-top:16px"
+    />
+    <div
+      class="kd-timeline-item-dot blue"
+      style="top:9px"
+    />
+    <div
+      class="kd-timeline-item-content"
+      style="line-height:18px"
+    >
+      baz
+    </div>
+  </li>
+</ul>
+`;
+
+exports[`TimeLine render correct snapshot render correct 2`] = `
+<ul
+  class="kd-timeline pending"
+>
+  <li
+    class="kd-timeline-item"
+    position=""
+  >
+    <div
+      class="kd-timeline-item-tail"
+      style="margin-top:16px"
+    />
+    <div
+      class="kd-timeline-item-dot blue"
+      style="top:9px"
+    />
+    <div
+      class="kd-timeline-item-content"
+      style="line-height:18px"
+    >
+      foo
+    </div>
+  </li>
+  <li
+    class="kd-timeline-item"
+    position=""
+  >
+    <div
+      class="kd-timeline-item-tail"
+      style="margin-top:16px"
+    />
+    <div
+      class="kd-timeline-item-dot blue"
+      style="top:9px"
+    />
+    <div
+      class="kd-timeline-item-content"
+      style="line-height:18px"
+    >
+      bar
+    </div>
+  </li>
+  <li
+    class="kd-timeline-item last"
+    position=""
+  >
+    <div
+      class="kd-timeline-item-tail"
+      style="margin-top:16px"
+    />
+    <div
+      class="kd-timeline-item-dot blue"
+      style="top:9px"
+    />
+    <div
+      class="kd-timeline-item-content"
+      style="line-height:18px"
+    >
+      baz
+    </div>
+  </li>
+  <li
+    class="kd-timeline-item pending"
+    position=""
+  >
+    <div
+      class="kd-timeline-item-tail"
+      style="margin-top:16px"
+    />
+    <div
+      class="kd-timeline-item-dot custom blue"
+      style="top:9px"
+    >
+      <i
+        class="kdicon kdicon-loadding icon-spin"
+      />
+    </div>
+    <div
+      class="kd-timeline-item-content"
+      style="line-height:18px"
+    />
+  </li>
+</ul>
+`;
+
+exports[`TimeLine render correct snapshot render correct 3`] = `
+<ul
+  class="kd-timeline pending"
+>
+  <li
+    class="kd-timeline-item"
+    position=""
+  >
+    <div
+      class="kd-timeline-item-tail"
+      style="margin-top:16px"
+    />
+    <div
+      class="kd-timeline-item-dot blue"
+      style="top:9px"
+    />
+    <div
+      class="kd-timeline-item-content"
+      style="line-height:18px"
+    >
+      foo
+    </div>
+  </li>
+  <li
+    class="kd-timeline-item"
+    position=""
+  >
+    <div
+      class="kd-timeline-item-tail"
+      style="margin-top:16px"
+    />
+    <div
+      class="kd-timeline-item-dot blue"
+      style="top:9px"
+    />
+    <div
+      class="kd-timeline-item-content"
+      style="line-height:18px"
+    >
+      bar
+    </div>
+  </li>
+  <li
+    class="kd-timeline-item last"
+    position=""
+  >
+    <div
+      class="kd-timeline-item-tail"
+      style="margin-top:16px"
+    />
+    <div
+      class="kd-timeline-item-dot blue"
+      style="top:9px"
+    />
+    <div
+      class="kd-timeline-item-content"
+      style="line-height:18px"
+    >
+      baz
+    </div>
+  </li>
+  <li
+    class="kd-timeline-item pending"
+    position=""
+  >
+    <div
+      class="kd-timeline-item-tail"
+      style="margin-top:16px"
+    />
+    <div
+      class="kd-timeline-item-dot custom blue"
+      style="top:9px"
+    >
+      <i>
+        dot
+      </i>
+    </div>
+    <div
+      class="kd-timeline-item-content"
+      style="line-height:18px"
+    />
+  </li>
+</ul>
+`;
+
+exports[`TimeLine render correct snapshot render correct 4`] = `
+<ul
+  class="kd-timeline pending reverse alternate"
+>
+  <li
+    class="kd-timeline-item pending"
+    position=""
+  >
+    <div
+      class="kd-timeline-item-tail"
+      style="margin-top:16px"
+    />
+    <div
+      class="kd-timeline-item-dot custom blue"
+      style="top:9px"
+    >
+      <i
+        class="kdicon kdicon-loadding icon-spin"
+      />
+    </div>
+    <div
+      class="kd-timeline-item-content"
+      style="line-height:18px"
+    />
+  </li>
+  <li
+    class="kd-timeline-item"
+    position=""
+  >
+    <div
+      class="kd-timeline-item-tail"
+      style="margin-top:16px"
+    />
+    <div
+      class="kd-timeline-item-dot blue"
+      style="top:9px"
+    />
+    <div
+      class="kd-timeline-item-content"
+      style="line-height:18px"
+    >
+      baz
+    </div>
+  </li>
+  <li
+    class="kd-timeline-item"
+    position=""
+  >
+    <div
+      class="kd-timeline-item-tail"
+      style="margin-top:16px"
+    />
+    <div
+      class="kd-timeline-item-dot blue"
+      style="top:9px"
+    />
+    <div
+      class="kd-timeline-item-content"
+      style="line-height:18px"
+    >
+      bar
+    </div>
+  </li>
+  <li
+    class="kd-timeline-item last"
+    position=""
+  >
+    <div
+      class="kd-timeline-item-tail"
+      style="margin-top:16px"
+    />
+    <div
+      class="kd-timeline-item-dot blue"
+      style="top:9px"
+    />
+    <div
+      class="kd-timeline-item-content"
+      style="line-height:18px"
+    >
+      foo
+    </div>
+  </li>
+</ul>
+`;
+
+exports[`TimeLine render correct snapshot render correct 5`] = `
+<ul
+  class="kd-timeline"
+>
+  <li
+    class="kd-timeline-item"
+    position=""
+  >
+    <div
+      class="kd-timeline-item-tail"
+      style="margin-top:16px"
+    />
+    <div
+      class="kd-timeline-item-dot blue"
+      style="top:9px"
+    />
+    <div
+      class="kd-timeline-item-content"
+      style="line-height:18px"
+    >
+      foo
+    </div>
+  </li>
+  <li
+    class="kd-timeline-item"
+    position=""
+  >
+    <div
+      class="kd-timeline-item-tail"
+      style="margin-top:16px"
+    />
+    <div
+      class="kd-timeline-item-dot blue"
+      style="top:9px"
+    />
+    <div
+      class="kd-timeline-item-content"
+      style="line-height:18px"
+    >
+      bar
+    </div>
+  </li>
+  <li
+    class="kd-timeline-item"
+    position=""
+  >
+    <div
+      class="kd-timeline-item-tail"
+      style="margin-top:16px"
+    />
+    <div
+      class="kd-timeline-item-dot blue"
+      style="top:9px"
+    />
+    <div
+      class="kd-timeline-item-content"
+      style="line-height:18px"
+    >
+      baz
+    </div>
+  </li>
+  <li
+    class="kd-timeline-item"
+    position=""
+  >
+    <div
+      class="kd-timeline-item-tail"
+      style="margin-top:16px"
+    />
+    <div
+      class="kd-timeline-item-dot green"
+      style="top:9px"
+    />
+    <div
+      class="kd-timeline-item-content"
+      style="line-height:18px"
+    >
+      foo green
+    </div>
+  </li>
+  <li
+    class="kd-timeline-item"
+    position=""
+  >
+    <div
+      class="kd-timeline-item-tail"
+      style="margin-top:16px"
+    />
+    <div
+      class="kd-timeline-item-dot red"
+      style="top:9px"
+    />
+    <div
+      class="kd-timeline-item-content"
+      style="line-height:18px"
+    >
+      foo red
+    </div>
+  </li>
+  <li
+    class="kd-timeline-item"
+    position=""
+  >
+    <div
+      class="kd-timeline-item-tail"
+      style="margin-top:16px"
+    />
+    <div
+      class="kd-timeline-item-dot blue"
+      style="top:9px"
+    />
+    <div
+      class="kd-timeline-item-content"
+      style="line-height:18px"
+    >
+      foo blue
+    </div>
+  </li>
+  <li
+    class="kd-timeline-item last"
+    position=""
+  >
+    <div
+      class="kd-timeline-item-tail"
+      style="margin-top:16px"
+    />
+    <div
+      class="kd-timeline-item-dot gray"
+      style="top:9px"
+    />
+    <div
+      class="kd-timeline-item-content"
+      style="line-height:18px"
+    >
+      foo gray
+    </div>
+  </li>
+</ul>
+`;

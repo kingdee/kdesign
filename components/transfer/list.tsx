@@ -128,7 +128,7 @@ const ITransferList = (props: TransferListProps, ref: any) => {
     if (filterOption) {
       return filterOption(filterValue, item)
     }
-    return text.indexOf(filterValue) > -1
+    return text?.indexOf(filterValue) > -1
   }
 
   const renderListBody = (renderList: RenderListFunction | undefined, props: TransferListBodyProps) => {

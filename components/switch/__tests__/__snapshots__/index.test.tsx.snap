@@ -1,5 +1,31 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Switch render no child without errors 1`] = `
+<Switch>
+  <span
+    className="kd-switch kd-switch-size-small"
+    onClick={[Function]}
+  >
+    <div
+      className="kd-switch-inner"
+    />
+  </span>
+</Switch>
+`;
+
+exports[`Switch render null or undefined without errors 1`] = `
+<Switch>
+  <span
+    className="kd-switch kd-switch-size-small"
+    onClick={[Function]}
+  >
+    <div
+      className="kd-switch-inner"
+    />
+  </span>
+</Switch>
+`;
+
 exports[`Switch renders correctly 1`] = `
 <span
   class="kd-switch kd-switch-size-small"

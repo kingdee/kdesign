@@ -26,6 +26,7 @@ subtitle: 提示弹窗
 | body | 自定义渲染对话框内容 | ReactNode | - | - | 1.0.0 |
 | bodyClassName | 对话框主体内容 className | string | - | - | 1.0.0 |
 | bodyStyle | 对话框主体内容 style | CSSProperties | - | - | 1.0.0 |
+| bounds | 拖拽边界 | {left?: number, top?: number, right?: number, bottom?: number} | - | - | 1.7.2 |
 | cancelButtonProps | 取消按钮属性（可接收 Button 控件的所有属性） | ButtonProps | - | - | 1.0.0 |
 | cancelText | 取消按钮文本 | string | 取消 | - | 1.0.0 |
 | className | 传入反馈浮层组件的样式 | String | - | - | 1.0.0 |
@@ -44,6 +45,9 @@ subtitle: 提示弹窗
 | maskClosable | 点击蒙层是否允许关闭 | boolean | true | - | 1.0.0 |
 | maskStyle | 遮罩 styles | CSSProperties | - | - | 1.0.0 |
 | okButtonProps | 确定按钮属性（可接收 Button 控件的所有属性） | ButtonProps | - | - | 1.0.0 |
+| onDragStart | 开始拖拽的回调,如果返回`false`则不触发操作 | (event, data) => void \| false | - | - | 1.7.2 |
+| onDrag | 拖拽时的回调,如果返回`false`则不触发操作 | (event, data) => void \| false | - | - | 1.7.2 |
+| onDragStop | 拖拽结束时的回调,如果返回`false`则不触发操作 | (event, data) => void \| false | - | - | 1.7.2 |
 | okText | 确定按钮文本 | string | 确定 | - | 1.0.0 |
 | onCancel | 点击遮罩层或右上角叉或取消按钮的回调 | (evt?) => void | - | - | 1.0.0 |
 | onOk | 点击确定回调 | (evt?) => void | - | - | 1.0.0 |
@@ -63,7 +67,7 @@ subtitle: 提示弹窗
 
 ## Design Token
 
-| 分类 | 组件token | 全局token | 默认值 |
+| 分类 | 组件 token | 全局 token | 默认值 |
 | --- | --- | --- | --- |
 | color | --kd-c-modal-color-text-primary | --kd-g-color-text-primary | #212121 |
 |  | --kd-c-modal-color-text-secondary | --kd-g-color-text-secondary | #666 |

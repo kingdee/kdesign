@@ -2,7 +2,6 @@ import React from 'react'
 import { mount, render, ReactWrapper } from 'enzyme'
 import Modal from '../index'
 import { ModalType, ModalTypes } from '../modal'
-// import { act } from 'react-dom/test-utils'
 import mountTest from '../../../tests/shared/mountTest'
 import { simulateEvent } from '../../../tests/shared/simulateEvent'
 import ConfigProvider from '../../config-provider/index'
@@ -25,6 +24,7 @@ const classNameMap = {
   containerBox: `.${prefixClassName}-container-box`,
   body: `.${prefixClassName}-body`,
   footer: `.${prefixClassName}-footer`,
+  showline: `.${prefixClassName}-showline`,
 }
 const unmountHelp = (wrapper: ReactWrapper) => {
   expect(() => {
@@ -32,16 +32,20 @@ const unmountHelp = (wrapper: ReactWrapper) => {
   }).not.toThrow()
 }
 describe('Modal', () => {
-  mountTest(Modal!)
+  // 1.mount test
   ModalTypes.forEach((type) => {
     mountTest(() => <Modal type={type} getContainer={false} />)
   })
+
+  // 2.render test
   it('renders correctly', () => {
     expect(render(<Modal getContainer={false} />)).toMatchSnapshot()
     ModalTypes.forEach((type) => {
       expect(render(<Modal type={type} getContainer={false} />)).toMatchSnapshot()
     })
   })
+
+  // 3. warns in component
   it('warns if type is wrong', () => {
     const mockWarn = jest.fn()
     jest.spyOn(console, 'warn').mockImplementation(mockWarn)
@@ -51,10 +55,36 @@ describe('Modal', () => {
     expect(mockWarn.mock.calls[0][0]).toMatch("Warning: [kdesign]-modal: cannot found modal type 'who am I'")
   })
 
+  // 5. displayName
   it('should have displayName static property', () => {
     const wrapper = mount(<Modal></Modal>)
     expect((wrapper.type() as any).displayName).toBe('Modal')
   })
+
+  // 6. class state
+  it('should className or style use right', () => {
+    const wrapper = mount(
+      <Modal
+        body={'test'}
+        bodyClassName={'test-body'}
+        bodyStyle={{ overflow: 'hidden' }}
+        className={'test-over'}
+        maskStyle={{ color: 'red' }}
+        maskClassName={'mask-test'}
+        style={{ background: 'red' }}
+        data-test="test"
+      />,
+    )
+    expect(wrapper.exists('.test-body')).toBe(true)
+    expect(wrapper.find('.test-body')).toHaveStyle('overflow', 'hidden')
+    expect(wrapper.exists('.test-over')).toBe(true)
+    expect(wrapper.find(classNameMap.mask)).toHaveStyle('color', 'red')
+    expect(wrapper.find(classNameMap.mask).exists('.mask-test')).toBe(true)
+    expect(wrapper.find('.kd-modal')).toHaveStyle('background', 'red')
+    expect(wrapper.prop('data-test')).toEqual('test')
+    unmountHelp(wrapper)
+  })
+
   const customedReactNodeProp = ['body', 'title', 'footer', 'titleIcon']
   const generatorCustomedReactNode = (prop: string) => {
     return [
@@ -66,7 +96,7 @@ describe('Modal', () => {
     ]
   }
   it.each(customedReactNodeProp.map(generatorCustomedReactNode))(
-    'should %s use right',
+    'should custom element use right',
     (prop: string, CustomedNode, className) => {
       const wrapper = mount(<Modal {...{ [prop]: <CustomedNode /> }} />)
       expect(wrapper.exists(className)).toBe(true)
@@ -75,6 +105,7 @@ describe('Modal', () => {
       }).not.toThrow()
     },
   )
+  // 7.component interaction(event)
   it('should draggable use right', () => {
     ;[true, false].forEach((draggable) => {
       expect(render(<Modal draggable={draggable} getContainer={false} />)).toMatchSnapshot()
@@ -169,6 +200,11 @@ describe('Modal', () => {
     wrapper.update()
     expect(spyDivFocus).toBeCalledTimes(4)
 
+    // closeIcon showline
+    wrapper.setProps({ closable: false, showline: false })
+    expect(wrapper.exists(classNameMap.closeIcon)).toBe(false)
+    expect(wrapper.exists(classNameMap.showline)).toBe(false)
+
     unmountHelp(wrapper)
   })
 
@@ -193,7 +229,6 @@ describe('Modal', () => {
     expect(wrapper.exists(classNameMap.containerBox)).toBe(true)
     jest.advanceTimersByTime(1000)
     wrapper.update()
-    console.log(wrapper.debug({ verbose: true }), wrapper.props())
     expect(wrapper.exists(classNameMap.container)).toBe(true)
     expect((wrapper.find(classNameMap.container).getDOMNode() as HTMLElement).style.display).toBe('')
     wrapper.setProps({
@@ -222,12 +257,28 @@ describe('Modal', () => {
         visible: false,
       }),
     )
-    const wrapper = mount(<Modal visible onOk={onOk} onCancel={onCancel} keyboard />)
+    const wrapper = mount(
+      <Modal
+        visible
+        onOk={onOk}
+        onCancel={onCancel}
+        cancelText="cancel"
+        okText="ok"
+        cancelButtonProps={{ style: { color: 'red' } }}
+        okButtonProps={{ style: { color: 'red' } }}
+        keyboard
+      />,
+    )
 
     simulateEvent(document.body, 'keydown', {
       key: 'Escape',
     })
     wrapper.update()
+    // cancelText okText cancelButtonProps okButtonProps
+    expect(wrapper.find(classNameMap.ok).text()).toBe('ok')
+    expect(wrapper.find(classNameMap.cancel).text()).toBe('cancel')
+    expect(wrapper.find(classNameMap.ok)).toHaveStyle('color', 'red')
+    expect(wrapper.find(classNameMap.cancel)).toHaveStyle('color', 'red')
     expect(onOk).not.toHaveBeenCalled()
     expect(onCancel).toHaveBeenCalled()
     expect(wrapper.exists(classNameMap.container)).toBe(true)
@@ -331,23 +382,6 @@ describe('Modal', () => {
     )
   })
 
-  it('should className use right', () => {
-    const wrapper = mount(
-      <Modal
-        body={'test'}
-        bodyClassName={'test-body'}
-        bodyStyle={{ overflow: 'hidden' }}
-        className={'test-over'}
-        maskStyle={{ color: 'red' }}
-      />,
-    )
-    expect(wrapper.exists('.test-body')).toBe(true)
-    expect((wrapper.find('.test-body').getDOMNode() as HTMLElement).style.overflow).toBe('hidden')
-    expect(wrapper.exists('.test-over')).toBe(true)
-    expect((wrapper.find(classNameMap.mask).getDOMNode() as HTMLElement).style.color).toBe('red')
-    unmountHelp(wrapper)
-  })
-
   it('should width & height use right', () => {
     const wrapper = mount(<Modal height={1000} width={500} />)
     expect((wrapper.find(classNameMap.containerBox).getDOMNode() as HTMLElement).style.height).toBe('1000px')
@@ -370,6 +404,7 @@ describe('Modal', () => {
     unmountHelp(wrapper)
   })
 
+  // 8.config provider
   it('should config use config provider', () => {
     const modalConfig = {
       compDefaultProps: {
@@ -384,5 +419,14 @@ describe('Modal', () => {
       </ConfigProvider>,
     )
     expect(wrapper.find('.kd-modal-footer')).toHaveClassName('.kd-modal-warning-footer')
+  })
+
+  // 9. ref test
+  describe('9. ref test', () => {
+    it('should get Demo element from ref', () => {
+      const ref = React.createRef() as any
+      mount(<Modal ref={ref}></Modal>)
+      expect((ref.current as HTMLElement).classList.contains('kd-modal-container-box')).toBe(true)
+    })
   })
 })

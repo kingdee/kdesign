@@ -1,8 +1,11 @@
+@import '../../style/themes/index';
 @import './token.less';
+@input-prefix-cls: ~'@{kd-prefix}-input';
 
 // 输入框默认样式Mixins
 .input(@prefix) {
   @disabled-prefix-cls: ~'@{prefix}-disabled';
+  @error-prefix-cls: ~'@{input-prefix-cls}-error';
   width: 100%;
   min-width: 0;
   border: @input-border-width-inner solid @input-border-color-disabled-inner;
@@ -29,10 +32,10 @@
     box-shadow: none;
     outline: none;
   }
-  &:not(.@{disabled-prefix-cls}):hover {
+  &:not(.@{disabled-prefix-cls}):not(.@{error-prefix-cls}):hover {
     border-color: @input-border-color-focused;
   }
-  &:not(.@{disabled-prefix-cls}):focus {
+  &:not(.@{disabled-prefix-cls}):not(.@{error-prefix-cls}):focus {
     color: @input-focus-color;
     border-color: @input-border-color-focused;
   }
@@ -43,11 +46,32 @@
   line-height: calc(@height - (@padding-vertical * 2) - (@input-border-width * 2));
   font-size: @fonSize;
   padding: @padding-vertical @padding-horizontal;
+
+  .@{input-prefix-cls}-suffix {
+    margin-left: calc(@padding-vertical * 2);
+  }
+
+  .@{input-prefix-cls}-prefix {
+    margin-right: calc(@padding-vertical * 2);
+  }
+
+  &.@{input-prefix-cls}-underline {
+    padding-right: 0;
+    padding-left: 0;
+  }
+
+  &.@{input-prefix-cls}-wrapper-underline {
+    padding-right: 0;
+    padding-left: 0;
+  }
 }
 
 .input-clear-icon() {
   cursor: pointer;
   color: @input-clear-color;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 
   &:hover {
     color: @input-clear-color-hover;

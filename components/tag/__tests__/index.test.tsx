@@ -164,4 +164,29 @@ describe('Tag', () => {
     mount(<Tag ref={ref} type="status"></Tag>)
     expect(ref.current instanceof HTMLSpanElement).toBe(true)
   })
+
+  // 10. api test
+  it('api test', () => {
+    // closable disabled color
+    TagTypes.forEach((type) => {
+      const tagDemo = mount(<Tag type={type} closable color="#f00" disabled></Tag>)
+      if (type === 'edit') {
+        expect(tagDemo.find('.kd-tag .kd-tag-close-icon')).toExist()
+        expect(tagDemo.find('.kd-tag.kd-tag-closable-disabled')).toExist()
+      } else {
+        expect(tagDemo.find('.kd-tag .kd-tag-close-icon')).not.toExist()
+        expect(tagDemo.find('.kd-tag.kd-tag-closable-disabled')).not.toExist()
+      }
+      // color
+      if (type === 'attribute') {
+        expect(tagDemo.find('.kd-tag.kd-tag-has-color').props()?.style?.backgroundColor).toEqual('#f00')
+      } else {
+        expect(tagDemo.find('.kd-tag').props()?.style?.backgroundColor).not.toEqual('#f00')
+      }
+    })
+
+    // closeIcon
+    const tagDemo = mount(<Tag type="edit" closable closeIcon={<Icon type="add"></Icon>}></Tag>)
+    expect(tagDemo.find('.kd-tag .kdicon-add')).toExist()
+  })
 })

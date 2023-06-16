@@ -59,7 +59,11 @@ const ColorPickerPanel: FC<IColorPickerPanelProps> = (props) => {
   const { getPrefixCls, prefixCls, locale } = useContext(ConfigContext)
   const colorPickerPrefixCls = getPrefixCls!(prefixCls, 'color-picker')
   const panelCls = classNames(`${colorPickerPrefixCls}-panel`)
-  const panelChromePickerCls = classNames(`${colorPickerPrefixCls}-panel-chrome`)
+  const panelChromePickerCls = classNames(`${colorPickerPrefixCls}-panel-chrome`, {
+    [`${colorPickerPrefixCls}-panel-chrome-no-box`]: !showColorPickerBox?.showBox,
+    [`${colorPickerPrefixCls}-panel-chrome-no-hue`]: !showColorPickerBox?.showHue,
+    [`${colorPickerPrefixCls}-panel-chrome-no-opacity`]: !showColorPickerBox?.showOpacity,
+  })
   const panelFollowThemeCls = classNames(`${colorPickerPrefixCls}-panel-switch`)
   const panelInputCls = classNames(`${colorPickerPrefixCls}-panel-input`, {
     [`${colorPickerPrefixCls}-panel-input-no-recommend`]: !showPresetColor,
@@ -115,8 +119,6 @@ const ColorPickerPanel: FC<IColorPickerPanelProps> = (props) => {
     if (value === undefined) {
       setAlphaNoVerifyVal(e.target.value)
       if (regPercentage.test(val)) {
-        console.log(1)
-
         formatArr = colorFormat(correctColorValue, +val.replace('%', '') / 100, 'all', true) as IColorTypesObj[]
         outValue = formatArr[valOfCorrespondingType(currentColorType) as number].value
         setPanelState(formatArr, outValue, outValue, +val.replace('%', '') / 100)
@@ -124,7 +126,6 @@ const ColorPickerPanel: FC<IColorPickerPanelProps> = (props) => {
           highlightPresetColorIndex(formatArr[0].value, presetColorToHEX(presetColor || systemPresetColor)),
         )
       } else if (regDot.test(val)) {
-        console.log(2)
         formatArr = colorFormat(correctColorValue, +val, 'all', true) as IColorTypesObj[]
         outValue = formatArr[valOfCorrespondingType(currentColorType) as number].value
         setPanelState(formatArr, outValue, outValue, strFixed(val, 2))
@@ -132,7 +133,6 @@ const ColorPickerPanel: FC<IColorPickerPanelProps> = (props) => {
           highlightPresetColorIndex(formatArr[0].value, presetColorToHEX(presetColor || systemPresetColor)),
         )
       } else {
-        console.log(3)
         formatArr = colorFormat(correctColorValue, 1, 'all', true) as IColorTypesObj[]
         outValue = formatArr[valOfCorrespondingType(currentColorType) as number].value
         setPanelState(formatArr, outValue, outValue, 1)
@@ -180,7 +180,7 @@ const ColorPickerPanel: FC<IColorPickerPanelProps> = (props) => {
           }
         }
       }
-      devWarning(!inputValType, 'color-picker', "'themeColor' must be hexadecimal, RGB, HSB, HSL or color English name")
+      devWarning(!inputValType, 'color-picker', "'themeColor' must be hexadecimal, RGB, HSB, HSL or English color name")
     }
     if (switchValue) {
       onChange && onChange(functionalColorName, formatArr as IColorTypesObj[])
@@ -207,7 +207,11 @@ const ColorPickerPanel: FC<IColorPickerPanelProps> = (props) => {
     const isTrueFormat = colorArr.every((hexColor) => {
       return ['HEX', 'HSB', 'RGB', 'HSL', 'colorName'].indexOf(validateColor(hexColor)) !== -1
     })
-    devWarning(!isTrueFormat, 'color-picker', "'presetColor' must be Array of the HEX string type")
+    devWarning(
+      !isTrueFormat,
+      'color-picker',
+      "'presetColor' must be an array of hexadecimal, RGB, HSB, HSL or English color name string type",
+    )
     return isTrueFormat
   }
 
@@ -217,13 +221,11 @@ const ColorPickerPanel: FC<IColorPickerPanelProps> = (props) => {
 
   return (
     <div className={panelCls} ref={panelClsRef}>
-      {showColorPickerBox && (
-        <ChromePicker
-          className={panelChromePickerCls}
-          color={colTypeArr[2].value}
-          onChange={handleChromeChange}
-        ></ChromePicker>
-      )}
+      <ChromePicker
+        className={panelChromePickerCls}
+        color={colTypeArr[2].value}
+        onChange={handleChromeChange}
+      ></ChromePicker>
       {functionalColor && showSwitch && (
         <div className={panelFollowThemeCls}>
           <span>

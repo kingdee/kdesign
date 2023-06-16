@@ -1,6 +1,6 @@
 import React from 'react'
 import { mount, render } from 'enzyme'
-import Menu from '../index'
+import Menu, { MenuProps } from '../index'
 import Icon from '../../icon'
 import mountTest from '../../../tests/shared/mountTest'
 import { isString, isNumber, getColumnWidthList, getWrapWidth, getItemWidth } from '../util'
@@ -23,6 +23,11 @@ describe('Menu', () => {
         </Menu>,
       ),
     ).toMatchSnapshot()
+  })
+
+  // 3. render no child without errors
+  it('render no child without errors', () => {
+    expect(mount(<Menu></Menu>)).toMatchSnapshot()
   })
 
   // 4. render null or undefined without errors
@@ -55,56 +60,24 @@ describe('Menu', () => {
       onMouseLeave: jest.fn(),
       onMouseEnter: jest.fn(),
       onClick: jest.fn(),
-      triggerSubMenuAction: 'click',
+      triggerSubMenuAction: 'hover',
+      inlineIndent: 24,
+      forceSubMenuRender: true,
     }
-
-    const itemProps: any = {
-      onMouseLeave: jest.fn(),
-      onMouseEnter: jest.fn(),
-    }
-
-    // default
-    const menuWrapper = mount(
-      <Menu {...props}>
-        <Menu.Item {...itemProps}>111</Menu.Item>
-      </Menu>,
-    )
-    menuWrapper.simulate('mouseleave')
-    menuWrapper.simulate('mouseenter')
-
-    expect(props.onMouseLeave).toHaveBeenCalled()
-    expect(props.onMouseEnter).toHaveBeenCalled()
-
-    props.onMouseLeave = ''
-    props.onMouseEnter = ''
-    props.selectedKey = 1
-    props.openKeys = ['sub1']
-    menuWrapper.setProps(props)
-
-    menuWrapper.find('li').simulate('click')
-
-    expect(props.onClick).toHaveBeenCalled()
-
-    menuWrapper.find('li').simulate('mouseleave')
-    menuWrapper.find('li').simulate('mouseenter')
-
-    expect(itemProps.onMouseLeave).toHaveBeenCalled()
-    expect(itemProps.onMouseEnter).toHaveBeenCalled()
-
-    props.triggerSubMenuAction = 'hover'
 
     const subMenuWrapper = mount(
       <Menu {...props}>
-        <Menu.SubMenu title="sub1" icon={<Icon type="add" />} popupOffset={[20]}>
-          <Menu.Item>1111</Menu.Item>
+        <Menu.Item key="1">标签一</Menu.Item>
+        <Menu.SubMenu title="标签二" key="sub1">
+          <Menu.Item key="2">标签二-1</Menu.Item>
+          <Menu.Item key="3">标签二-2</Menu.Item>
         </Menu.SubMenu>
-        <Menu.SubMenu title="sub2" subMenuMode="horizontal" popupOffset={[]}>
-          <Menu.Item>1111</Menu.Item>
+        <Menu.SubMenu title="标签三" key="sub2">
+          <Menu.Item key="4">标签三-1</Menu.Item>
+          <Menu.Item key="5">标签三-2</Menu.Item>
         </Menu.SubMenu>
       </Menu>,
     )
-
-    subMenuWrapper.find('.kd-menu-submenu').at(0).simulate('click')
     subMenuWrapper.find('.kd-menu-submenu').at(0).simulate('mouseenter')
     subMenuWrapper.find('.kd-menu-submenu').at(0).simulate('mouseleave')
 
@@ -161,7 +134,63 @@ describe('Menu', () => {
     //   </Menu>,
     // )
   })
+  // api test
+  it('api test', () => {
+    const props = {
+      openKeys: ['sub1'],
+      selectedKey: '2',
+      mode: 'inline',
+    } as MenuProps
+    const onOpenChangeMock = jest.fn((data) => {
+      props.openKeys = data
+    })
+    const menuWrapper = mount(
+      <Menu {...props} onOpenChange={onOpenChangeMock}>
+        <Menu.Item key="1">标签一</Menu.Item>
+        <Menu.SubMenu title="标签二" key="sub1">
+          <Menu.Item key="2">标签二-1</Menu.Item>
+          <Menu.Item key="3">标签二-2</Menu.Item>
+        </Menu.SubMenu>
+        <Menu.SubMenu title="标签三" key="sub2">
+          <Menu.Item key="4">标签三-1</Menu.Item>
+          <Menu.Item key="5">标签三-2</Menu.Item>
+        </Menu.SubMenu>
+      </Menu>,
+    )
+    // openKeys
+    expect(menuWrapper.find('.kd-menu-submenu').at(0)).toHaveClassName('kd-menu-submenu-active')
 
+    // selectedKey
+    menuWrapper.setProps({ selectedKey: '1' })
+    menuWrapper.update()
+    expect(menuWrapper.find('.kd-menu-item').at(0)).toHaveClassName('kd-menu-item-active')
+
+    // theme
+    expect(menuWrapper.find('.kd-menu')).toHaveClassName('kd-menu-dark')
+    menuWrapper.setProps({ theme: 'light' })
+    expect(menuWrapper.find('.kd-menu')).toHaveClassName('kd-menu-light')
+
+    // accordion
+    menuWrapper.setProps({ accordion: true })
+    menuWrapper.update()
+    menuWrapper.find('.kd-menu-submenu').at(1).simulate('click')
+    // 根据子标签的height为0来判断subMenu是否折叠起来了
+    expect((menuWrapper.find('.kd-menu-submenu').at(0).getDOMNode().lastElementChild as HTMLElement).style.height).toBe(
+      '0px',
+    )
+    expect(onOpenChangeMock).toHaveBeenCalled()
+
+    // inlineIndent
+    expect((menuWrapper.find('.kd-menu-item-title').at(0).getDOMNode() as HTMLElement).style.paddingLeft).toBe('50px')
+    menuWrapper.setProps({ inlineIndent: 24 })
+    menuWrapper.update()
+    expect((menuWrapper.find('.kd-menu-item-title').at(0).getDOMNode() as HTMLElement).style.paddingLeft).toBe('24px')
+
+    // collapsed
+    menuWrapper.setProps({ collapsed: true })
+    menuWrapper.update()
+    expect(menuWrapper.find('.kd-menu')).toHaveClassName('kd-menu-collapsed')
+  })
   it('util test', () => {
     expect(isString('222')).toBe(true)
     expect(isString(222)).toBe(false)

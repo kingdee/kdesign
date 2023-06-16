@@ -57,6 +57,8 @@ export interface CascaderProps extends PopperProps {
   changeOnSelect?: boolean
   notFoundContent?: string
   value?: CascaderValueType
+  maxTagCount?: number
+  maxTagPlaceholder?: React.ReactNode | ((omittedValues: number) => string)
   children?: React.ReactNode
   mode?: 'single' | 'multiple'
   style?: React.CSSProperties
@@ -107,6 +109,7 @@ const Cascader = React.forwardRef<unknown, CascaderProps>((props, ref) => {
     onPopupVisibleChange,
     onPopperVisibleChange,
     prefixCls: customPrefixcls,
+    ...otherProps
   } = allProps
 
   // className前缀
@@ -300,7 +303,7 @@ const Cascader = React.forwardRef<unknown, CascaderProps>((props, ref) => {
     })
     const TagStyle = { margin: '2px 8px 2px 0', maxWidth: '100%' }
     return (
-      <div className={multipleCls} ref={triggerRef as any} style={style}>
+      <div className={multipleCls} ref={triggerRef as any} style={style} {...otherProps}>
         <div className={`${prefixCls}-multiple-wrapper`} ref={wrapperRef as any}>
           {Array.isArray(currentOptions) && (
             <>
@@ -334,7 +337,7 @@ const Cascader = React.forwardRef<unknown, CascaderProps>((props, ref) => {
   }
 
   const renderSingle = () => (
-    <span {...locatorProps} ref={mergeRef}>
+    <span {...locatorProps} ref={mergeRef} {...otherProps}>
       {React.Children.count(children) === 1 && children.type ? (
         React.cloneElement(children, { ref: triggerRef as any })
       ) : (

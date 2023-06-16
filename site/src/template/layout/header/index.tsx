@@ -9,11 +9,19 @@ import Menus from './Menus'
 import './index.less'
 import logo from './../../../static/image/logo.svg'
 import Search from './../../../static/image/top_search.png'
+import Login from './login'
 // import Version from './version'
 
 const appIdQS = 'J5MHBTB51H'
 const apiKeyQS = 'e2ed9a8a86cf9a0e71db39c0114f1aab'
 const indexNameQS = 'KDesign'
+const transformData = function (suggestions: any[]) {
+  return suggestions.map((suggestion) => {
+    suggestion.url = suggestion.url.replace('https://react.kingdee.design', '')
+    return suggestion
+  })
+}
+
 const width = {}
 
 const navList = [
@@ -73,6 +81,7 @@ const Header = (props: NavProps) => {
           <div className="header-search-m" onClick={showModal}>
             <img src={Search} style={{ width: '20px' }} />
           </div>
+          <Login></Login>
         </div>
         <div className="header-wapper" style={width}>
           <Menus hiddenInPc={false} />
@@ -80,8 +89,8 @@ const Header = (props: NavProps) => {
           <div className="header-content ">
             <Nav list={navList} pathname={pathname} />
             <div className="header-search">
-              <DocsSearch appId={appIdQS} indexName={indexNameQS} apiKey={apiKeyQS} />
-              <div className="header-version">v 1.7.1</div>
+              <DocsSearch appId={appIdQS} indexName={indexNameQS} apiKey={apiKeyQS} transformData={transformData} />
+              <div className="header-version">v 1.7.13</div>
               <a
                 href="https://github.com/kdcloudone/kdesign"
                 rel="noreferrer"
@@ -97,6 +106,7 @@ const Header = (props: NavProps) => {
               </a>
             </div>
           </div>
+          <Login></Login>
         </div>
       </>
     )

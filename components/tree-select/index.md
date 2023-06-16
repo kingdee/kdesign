@@ -10,7 +10,7 @@ subtitle: 树选择器
 ## API
 
 | 属性 | 说明 | 类型 | 默认值 | 版本 |
-| --- | --- | --- | --- | --- |
+| --- | --- | --- | --- | --- | --- |
 | allowClear | 支持清除 | boolean | false | 1.7.0 |
 | autoFocus | 默认获取焦点 | boolean | false | 1.7.0 |
 | borderType | 边框类型 | `underline` `bordered` `none` | `underline` | 1.7.0 |
@@ -19,6 +19,7 @@ subtitle: 树选择器
 | defaultValue | 指定默认选中的条目 | string \| string\[]<br />number \| number\[] | - | 1.7.0 |
 | disabled | 是否禁用 | boolean | false | 1.7.0 |
 | dropdownClassName | 下拉菜单的 className 属性 | string | - | 1.7.0 |
+| dropdownRender | 自定义下拉框内容 | (originNode: ReactNode) => ReactNode | - | 1.7.9 |
 | dropdownStyle | 下拉菜单的 style 属性 | CSSProperties | - | 1.7.0 |
 | filterTreeNode | 根据输入项进行筛选，默认用 treeNodeFilterProp 的值作为要筛选的 TreeNode 的属性值 | function(treeNode: TreeNode, inputValue: string) (函数需要返回 bool 值) | - | 1.7.0 |
 | getPopupContainer | 菜单渲染父节点。默认渲染到 body 上，如果你遇到菜单滚动定位问题，试试修改为滚动的区域，并相对其定位。[示例](https://codesandbox.io/s/4j168r7jw0) | function(triggerNode) | () => document.body | 1.7.0 |
@@ -57,41 +58,42 @@ subtitle: 树选择器
 
 ## Design Token
 
-| 分类        | 组件 token                                        | 全局 token                 | 默认值             |
-| ----------- | ------------------------------------------------- | -------------------------- | ------------------ |
-| color       | --kd-c-tree-select-dropdown-color-background      | --kd-g-color-background    | #fff               |
-|             | --kd-c-tree-select-item-color-background-disabled | -                          | #fff               |
-|             | --kd-c-tree-select-color-background               | -                          | #f5f5f5            |
-|             | --kd-c-tree-select-color-background-selected      | --kd-g-color-theme-3       | rgb(227, 238, 255) |
-|             | --kd-c-tree-select-color-border                   | --kd-g-color-input         | #999               |
-|             | --kd-c-tree-select-color-border-foucs             | --kd-g-color-theme         | #5582f3            |
-|             | --kd-c-tree-select-color-border-hover             | --kd-g-color-theme         | #5582f3            |
-|             | --kd-c-tree-select-border-color-border            | --kd-g-color-border-strong | #d9d9d9            |
-|             | --kd-c-tree-select-placeholder-color-text         | -                          | #b2b2b2            |
-|             | --kd-c-tree-select-item-color-text-selected       | --kd-g-color-theme         | #5582f3            |
-|             | --kd-c-tree-select-footer-color-text              | --kd-g-color-text-primary  | #212121            |
-|             | --kd-c-tree-select-footer-color-text-selected     | -                          | #0e5fd8            |
-|             | --kd-c-tree-select-item-color-text-disabled       | --kd-g-color-disabled      | #b2b2b2            |
-|             | --kd-c-tree-select-color-background-disabled      | -                          | #f5f5f5            |
-|             | --kd-c-tree-select-color-text-disabled            | --kd-g-color-disabled      | #b2b2b2            |
-|             | --kd-c-tree-select-arrow-icon-color-text-disabled | -                          | #b2b2b2            |
-|             | --kd-c-tree-select-single-color-text              | --kd-g-color-text-primary  | #212121            |
-|             | --kd-c-tree-select-icon-clear-color-text          | -                          | #d9d9d9            |
-|             | --kd-c-tree-select-icon-clear-color-text-hover    | -                          | #999               |
-| font        | --kd-c-tree-select-dropdown-font-size             | -                          | 12px               |
-|             | --kd-c-tree-select-font-size-large                | -                          | 16px               |
-|             | --kd-c-tree-select-font-size-middle               | -                          | 14px               |
-|             | --kd-c-tree-select-font-size-small                | -                          | 12px               |
-| line-height | --kd-c-tree-select-dropdown-line-height           | -                          | 22px               |
-|             | --kd-c-tree-select-line-height-large              | -                          | 28px               |
-|             | --kd-c-tree-select-line-height-middle             | -                          | 22px               |
-|             | --kd-c-tree-select-line-height-small              | -                          | 14px               |
-| radius      | --kd-c-tree-select-radius-border                  | --kd-g-radius-border       | 2px                |
-|             | --kd-c-tree-select-bordered-radius-border         | -                          | 2px                |
-| sizing      | --kd-c-tree-select-item-sizing-height             | -                          | 22px               |
-|             | --kd-c-tree-select-sizing-height-large            | -                          | 36px               |
-|             | --kd-c-tree-select-sizing-height-middle           | -                          | 30px               |
-|             | --kd-c-tree-select-sizing-height-small            | -                          | 24px               |
-| spacing     | --kd-c-tree-select-bordered-spacing-padding-left  | -                          | 8px                |
-|             | --kd-c-tree-select-wrapper-spacing-padding        | -                          | 1px 28px 1px 0     |
-| z-index     | --kd-c-tree-select-z-index                        | --kd-g-z-index-popper      | 1050               |
+| 分类 | 组件 token | 全局 token | 默认值 |
+| --- | --- | --- | --- |
+| color | --kd-c-tree-select-dropdown-color-background | --kd-g-color-background | #fff |
+|  | --kd-c-tree-select-item-color-background-disabled | - | #fff |
+|  | --kd-c-tree-select-color-background | - | #f5f5f5 |
+|  | --kd-c-tree-select-color-background-selected | --kd-g-color-theme-3 | rgb(227, 238, 255) |
+|  | --kd-c-tree-select-color-border | --kd-g-color-input | #999 |
+|  | --kd-c-tree-select-color-border-foucs | --kd-g-color-theme | #5582f3 |
+|  | --kd-c-tree-select-color-border-hover | --kd-g-color-theme | #5582f3 |
+|  | --kd-c-tree-select-border-color-border | --kd-g-color-border-strong | #d9d9d9 |
+|  | --kd-c-tree-select-placeholder-color-text | - | #b2b2b2 |
+|  | --kd-c-tree-select-item-color-text-selected | --kd-g-color-theme | #5582f3 |
+|  | --kd-c-tree-select-footer-color-text | --kd-g-color-text-primary | #212121 |
+|  | --kd-c-tree-select-footer-color-text-selected | - | #0e5fd8 |
+|  | --kd-c-tree-select-item-color-text-disabled | --kd-g-color-disabled | #b2b2b2 |
+|  | --kd-c-tree-select-color-background-disabled | - | #f5f5f5 |
+|  | --kd-c-tree-select-color-text-disabled | --kd-g-color-disabled | #b2b2b2 |
+|  | --kd-c-tree-select-arrow-icon-color-text-disabled | - | #b2b2b2 |
+|  | --kd-c-tree-select-single-color-text | --kd-g-color-text-primary | #212121 |
+|  | --kd-c-tree-select-icon-clear-color-text | - | #d9d9d9 |
+|  | --kd-c-tree-select-icon-clear-color-text-hover | - | #999 |
+| font | --kd-c-tree-select-dropdown-font-size | - | 12px |
+|  | --kd-c-tree-select-font-size-large | - | 16px |
+|  | --kd-c-tree-select-font-size-middle | - | 14px |
+|  | --kd-c-tree-select-font-size-small | - | 12px |
+| line-height | --kd-c-tree-select-dropdown-line-height | - | 22px |
+|  | --kd-c-tree-select-line-height-large | - | 28px |
+|  | --kd-c-tree-select-line-height-middle | - | 22px |
+|  | --kd-c-tree-select-line-height-small | - | 14px |
+| radius | --kd-c-tree-select-radius-border | --kd-g-radius-border | 2px |
+|  | --kd-c-tree-select-bordered-radius-border | - | 2px |
+| sizing | --kd-c-tree-select-item-sizing-height | - | 22px |
+|  | --kd-c-tree-select-sizing-height-large | - | 36px |
+|  | --kd-c-tree-select-sizing-height-middle | - | 32px |
+|  | --kd-c-tree-select-sizing-height-small | - | 24px |
+| spacing | --kd-c-tree-select-bordered-spacing-padding-left | - | 8px |
+|  | --kd-c-tree-select-wrapper-spacing-padding | - | 1px 28px 1px 0 |
+|  | --kd-c-tree-select-dropdown-node-spacing-padding-horizontal | - | 16px |
+| z-index | --kd-c-tree-select-z-index | --kd-g-z-index-popper | 1050 |

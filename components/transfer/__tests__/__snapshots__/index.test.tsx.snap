@@ -1,5 +1,289 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Transfer render no child without errors 1`] = `
+<Transfer
+  dataSource={Array []}
+>
+  <div
+    className="kd-transfer"
+  >
+    <ForwardRef(ITransferList)
+      checkedKeys={Array []}
+      dataSource={Array []}
+      direction="left"
+      handleClear={[Function]}
+      handleFilter={[Function]}
+      noDataContent={
+        <React.Fragment>
+          <img
+            alt="暂无数据"
+            height={96}
+            src="test-file-stub"
+          />
+          <span
+            className="kd-transfer-list-body-not-found-tip"
+          >
+            暂无数据
+          </span>
+        </React.Fragment>
+      }
+      onItemSelect={[Function]}
+      onItemSelectAll={[Function]}
+      placeholder="请输入需要搜索的内容"
+      prefixCls="kd-transfer-list"
+      showSearch={false}
+      style={Object {}}
+      titleText="可选列表"
+    >
+      <div
+        className="kd-transfer-list"
+        style={Object {}}
+      >
+        <div
+          className="kd-transfer-list-header"
+        >
+          <div
+            className="kd-transfer-list-header-left"
+          >
+            <div
+              className="kd-transfer-list-header-select-all"
+            >
+              <Checkbox
+                checked={false}
+                indeterminate={false}
+                onChange={[Function]}
+              >
+                <label
+                  className="kd-checkbox kd-checkbox-no-child kd-checkbox-default"
+                >
+                  <span
+                    className="kd-checkbox-default-no-child kd-checkbox-default-wrapper"
+                  >
+                    <input
+                      checked={false}
+                      className="kd-checkbox-input"
+                      onChange={[Function]}
+                      type="checkbox"
+                    />
+                  </span>
+                </label>
+              </Checkbox>
+            </div>
+            <span
+              className="kd-transfer-list-header-title"
+            >
+              可选列表
+            </span>
+          </div>
+          <span
+            className="kd-transfer-list-header-selected"
+          >
+            (0/0)
+          </span>
+        </div>
+        <div
+          className="kd-transfer-list-body"
+        >
+          <div
+            className="kd-transfer-list-body-not-found"
+          >
+            <img
+              alt="暂无数据"
+              height={96}
+              src="test-file-stub"
+            />
+            <span
+              className="kd-transfer-list-body-not-found-tip"
+            >
+              暂无数据
+            </span>
+          </div>
+        </div>
+      </div>
+    </ForwardRef(ITransferList)>
+    <Operation
+      className="kd-transfer-operation"
+      leftActive={false}
+      moveToLeft={[Function]}
+      moveToRight={[Function]}
+      rightActive={false}
+    >
+      <div
+        className="kd-transfer-operation"
+      >
+        <Button
+          disabled={true}
+          icon={
+            <Icon
+              type="arrow-right"
+            />
+          }
+          onClick={[Function]}
+          size="small"
+          type="ghost"
+        >
+          <button
+            className="kd-btn kd-btn-ghost kd-btn-size-small kd-btn-icon-only"
+            click-animating-wave="false"
+            disabled={true}
+            onClick={[Function]}
+            type="button"
+          >
+            <span
+              className="kd-btn-iconWrapper-left"
+            >
+              <Icon
+                type="arrow-right"
+              >
+                <i
+                  className="kdicon kdicon-arrow-right"
+                  onClick={[Function]}
+                  onMouseEnter={[Function]}
+                  onMouseLeave={[Function]}
+                  style={Object {}}
+                />
+              </Icon>
+            </span>
+            <span />
+          </button>
+        </Button>
+        <Button
+          disabled={true}
+          icon={
+            <Icon
+              type="arrow-left"
+            />
+          }
+          onClick={[Function]}
+          size="small"
+          type="ghost"
+        >
+          <button
+            className="kd-btn kd-btn-ghost kd-btn-size-small kd-btn-icon-only"
+            click-animating-wave="false"
+            disabled={true}
+            onClick={[Function]}
+            type="button"
+          >
+            <span
+              className="kd-btn-iconWrapper-left"
+            >
+              <Icon
+                type="arrow-left"
+              >
+                <i
+                  className="kdicon kdicon-arrow-left"
+                  onClick={[Function]}
+                  onMouseEnter={[Function]}
+                  onMouseLeave={[Function]}
+                  style={Object {}}
+                />
+              </Icon>
+            </span>
+            <span />
+          </button>
+        </Button>
+      </div>
+    </Operation>
+    <ForwardRef(ITransferList)
+      checkedKeys={Array []}
+      dataSource={Array []}
+      direction="right"
+      handleClear={[Function]}
+      handleFilter={[Function]}
+      noDataContent={
+        <React.Fragment>
+          <img
+            alt="暂无数据"
+            height={96}
+            src="test-file-stub"
+          />
+          <span
+            className="kd-transfer-list-body-not-found-tip"
+          >
+            暂无数据
+          </span>
+        </React.Fragment>
+      }
+      onItemRemove={[Function]}
+      onItemSelect={[Function]}
+      onItemSelectAll={[Function]}
+      placeholder="请输入需要搜索的内容"
+      prefixCls="kd-transfer-list"
+      showSearch={false}
+      style={Object {}}
+      titleText="已选列表"
+    >
+      <div
+        className="kd-transfer-list"
+        style={Object {}}
+      >
+        <div
+          className="kd-transfer-list-header"
+        >
+          <div
+            className="kd-transfer-list-header-left"
+          >
+            <div
+              className="kd-transfer-list-header-select-all"
+            >
+              <Checkbox
+                checked={false}
+                indeterminate={false}
+                onChange={[Function]}
+              >
+                <label
+                  className="kd-checkbox kd-checkbox-no-child kd-checkbox-default"
+                >
+                  <span
+                    className="kd-checkbox-default-no-child kd-checkbox-default-wrapper"
+                  >
+                    <input
+                      checked={false}
+                      className="kd-checkbox-input"
+                      onChange={[Function]}
+                      type="checkbox"
+                    />
+                  </span>
+                </label>
+              </Checkbox>
+            </div>
+            <span
+              className="kd-transfer-list-header-title"
+            >
+              已选列表
+            </span>
+          </div>
+          <span
+            className="kd-transfer-list-header-selected"
+          >
+            (0/0)
+          </span>
+        </div>
+        <div
+          className="kd-transfer-list-body"
+        >
+          <div
+            className="kd-transfer-list-body-not-found"
+          >
+            <img
+              alt="暂无数据"
+              height={96}
+              src="test-file-stub"
+            />
+            <span
+              className="kd-transfer-list-body-not-found-tip"
+            >
+              暂无数据
+            </span>
+          </div>
+        </div>
+      </div>
+    </ForwardRef(ITransferList)>
+  </div>
+</Transfer>
+`;
+
 exports[`Transfer renders correctly 1`] = `
 <div
   class="kd-transfer"

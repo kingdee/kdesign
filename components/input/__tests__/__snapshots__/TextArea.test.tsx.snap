@@ -1,5 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`TextArea 4. render null or undefined without errors render null or undefined without errors 1`] = `<TextArea />`;
+
 exports[`TextArea renders correctly 1`] = `
 <span
   class="kd-input-countWrapper "
@@ -16,7 +18,7 @@ exports[`TextArea renders correctly 2`] = `
   class="kd-input-countWrapper "
 >
   <textarea
-    class="kd-input-textarea kd-input-size-middle kd-input-borderless kd-input-no-resize"
+    class="kd-input-textarea kd-input-size-middle kd-input-underline kd-input-no-resize"
     maxlength="255"
   />
 </span>
@@ -27,13 +29,57 @@ exports[`TextArea renders correctly 3`] = `
   class="kd-input-countWrapper "
 >
   <textarea
-    class="kd-input-textarea kd-input-size-middle kd-input-underline kd-input-no-resize"
+    class="kd-input-textarea kd-input-size-large kd-input-underline kd-input-no-resize"
     maxlength="255"
   />
 </span>
 `;
 
 exports[`TextArea renders correctly 4`] = `
+<span
+  class="kd-input-countWrapper "
+>
+  <textarea
+    class="kd-input-textarea kd-input-size-middle kd-input-underline kd-input-no-resize"
+    maxlength="255"
+  />
+</span>
+`;
+
+exports[`TextArea renders correctly 5`] = `
+<span
+  class="kd-input-countWrapper "
+>
+  <textarea
+    class="kd-input-textarea kd-input-size-small kd-input-underline kd-input-no-resize"
+    maxlength="255"
+  />
+</span>
+`;
+
+exports[`TextArea renders correctly 6`] = `
+<span
+  class="kd-input-countWrapper "
+>
+  <textarea
+    class="kd-input-textarea kd-input-size-middle kd-input-borderless kd-input-no-resize"
+    maxlength="255"
+  />
+</span>
+`;
+
+exports[`TextArea renders correctly 7`] = `
+<span
+  class="kd-input-countWrapper "
+>
+  <textarea
+    class="kd-input-textarea kd-input-size-middle kd-input-underline kd-input-no-resize"
+    maxlength="255"
+  />
+</span>
+`;
+
+exports[`TextArea renders correctly 8`] = `
 <span
   class="kd-input-countWrapper "
 >

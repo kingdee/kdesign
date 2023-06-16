@@ -22,6 +22,7 @@ export interface textAreaProps extends React.TextareaHTMLAttributes<HTMLInputEle
   style?: Record<string, unknown> // 内联样式
   size?: InputSiteType
   autoSize?: AutoSizeType | boolean
+  status?: 'error'
 }
 
 export interface AutoSizeType {
@@ -54,6 +55,7 @@ const InternalTextarea = (props: textAreaProps, ref: unknown): FunctionComponent
     placeholder,
     style,
     size,
+    status,
     ...others
   } = textAreaProps
   const textAreaPrefixCls = getPrefixCls!(prefixCls, 'input', customPrefixcls) // TextArea样式前缀
@@ -171,9 +173,10 @@ const InternalTextarea = (props: textAreaProps, ref: unknown): FunctionComponent
             [`${prefixCls}-size-${size}`]: size,
             [`${prefixCls}-borderless`]: borderType === 'none',
             [`${prefixCls}-underline`]: borderType === 'underline',
-            [`${prefixCls}-disabled`]: disabled,
             [`${prefixCls}-no-resize`]: canResize !== true,
             [`${prefixCls}-allowClear-spacing`]: !!allowClear,
+            [`${prefixCls}-error`]: status === 'error',
+            [`${prefixCls}-disabled`]: disabled,
           },
           { [className!]: className && !allowClear && !hadCount },
         )}
