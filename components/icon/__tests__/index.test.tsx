@@ -83,6 +83,13 @@ describe('Icon', () => {
       const wrapper = mount(<Icon type="add" style={{ color: 'red' }} />)
       expect(wrapper.find('i').first()).toHaveStyle({ color: 'red' })
     })
+
+    it('data-test style className', () => {
+      const wrapper = mount(<Icon type="add" data-test="icon-test" style={{ padding: 0 }} className="my-className" />)
+      expect(wrapper.find('[data-test="icon-test"]')).toExist()
+      expect(wrapper.find('.kdicon.kdicon-add')).toHaveStyle('padding', 0)
+      expect(wrapper.find('.kdicon.my-className.kdicon-add')).toExist()
+    })
   })
 
   // 7.component interaction(event)
@@ -102,7 +109,6 @@ describe('Icon', () => {
           <Icon type="add" />
         </ConfigProvider>,
       )
-      // console.log(wrapper.debug())
       expect(wrapper.find('.kingdeeicon-add')).toExist()
     })
   })

@@ -15,15 +15,3 @@ exports[`Icon 4. render null or undefined without errors render null or undefine
   style={Object {}}
 />
 `;
-
-exports[`Icon should render Col 1`] = `
-<i
-  class="kdicon kdicon-add"
-/>
-`;
-
-exports[`Icon should render Icon 1`] = `
-<i
-  class="kdicon kdicon-add"
-/>
-`;
