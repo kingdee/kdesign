@@ -13,6 +13,7 @@ import { Utils } from './article'
 import Frame from './frame'
 import transformer from './transformerIframeCode'
 import * as dateFns from 'date-fns'
+import * as KdesignIcons from '@kdcloudjs/kdesign-icons'
 
 export type Props = {
   code: string
@@ -54,6 +55,7 @@ const allScope: Record<string, any> = {
   '@kdcloudjs/kdesign': { ...kdesign },
   lodash: { ...lodash, _: lodash },
   'date-fns': dateFns,
+  '@kdcloudjs/kdesign-icons': { ...KdesignIcons },
 }
 
 const getDependencies = (code: string, codeArr: string[]) => {
