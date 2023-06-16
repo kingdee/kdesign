@@ -10,6 +10,7 @@ import './index.less'
 import logo from './../../../static/image/logo.svg'
 import Search from './../../../static/image/top_search.png'
 import Login from './login'
+import { version as kdesignVersion } from '../../../../../package.json'
 // import Version from './version'
 
 const appIdQS = 'J5MHBTB51H'
@@ -91,6 +92,8 @@ const Header = (props: NavProps) => {
             <div className="header-search">
               <DocsSearch appId={appIdQS} indexName={indexNameQS} apiKey={apiKeyQS} transformData={transformData} />
               <div className="header-version">v 1.7.13</div>
+              <DocsSearch appId={appIdQS} indexName={indexNameQS} apiKey={apiKeyQS} />
+              <div className="header-version">v {kdesignVersion}</div>
               <a
                 href="https://github.com/kdcloudone/kdesign"
                 rel="noreferrer"
