@@ -63,7 +63,7 @@ const locale = {
   'Pagination.forward': '向前5页',
   'Pagination.backward': '向后5页',
   'Transfer.selectAll': '全选',
-  'Transfer.searchPlaceholder': '请输入需要搜索的内容',
+  'Transfer.searchPlaceholder': ['请输入需要搜索的内容', '请输入需要搜索的内容'],
   'Transfer.leftTitle': '可选列表',
   'Transfer.rightTitle': '已选列表',
   'Transfer.emptyTip': '暂无数据',
