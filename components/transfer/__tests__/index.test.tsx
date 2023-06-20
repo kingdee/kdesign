@@ -562,6 +562,12 @@ describe('Transfer', () => {
 
   // 10.config provider
   it('should provide the correct configuration by using configuration provider', () => {
+    const localeData = {
+      'Transfer.searchPlaceholder': [
+        'Please enter what you want to search for',
+        'Please enter what you want to search for 2',
+      ],
+    }
     const transferConfig = {
       compDefaultProps: {
         Transfer: {
@@ -571,6 +577,7 @@ describe('Transfer', () => {
           listStyle: { width: '300px' },
         },
       },
+      localeConfig: { localeData, locale: 'zh-EN' },
     }
     const wrapper = mount(
       <ConfigProvider value={transferConfig}>
@@ -580,6 +587,8 @@ describe('Transfer', () => {
     expect(wrapper.find('.kd-transfer-list-body-not-found')).toHaveLength(2)
     expect(wrapper.find('.kd-transfer-list-body-search-wrapper')).toHaveLength(2)
     expect(wrapper.find('.kd-transfer-list').at(0)).toHaveStyle('width', '300px')
+    expect(wrapper.find('.kd-input').at(0).prop('placeholder')).toEqual('Please enter what you want to search for')
+    expect(wrapper.find('.kd-input').at(1).prop('placeholder')).toEqual('Please enter what you want to search for 2')
   })
 
   //! ref未关联到dom上
