@@ -3,6 +3,7 @@ import { render, mount } from 'enzyme'
 import mountTest from '../../../tests/shared/mountTest'
 import Progress, { ProgressType } from '../index'
 import { ProgressTypes, ProgressStatuses } from '../progress'
+import ConfigProvider from '../../config-provider/index'
 
 describe('Progress', () => {
   // 1.mount test
@@ -64,7 +65,7 @@ describe('Progress', () => {
       'Warning: [kdesign]-progress: props width only effect when type is circle',
     )
   })
-
+  // 7.class state
   it('should class use right', () => {
     const DefaultProgress = mount(<Progress />)
     expect(DefaultProgress.find('.kd-progress')).toHaveClassName('.kd-progress-status-normal')
@@ -80,7 +81,7 @@ describe('Progress', () => {
       expect(TestProgress.find('.kd-progress')).toHaveClassName(`.kd-progress-status-${status}`)
     })
   })
-  // api
+  // 8.api
   it('should props width render right', () => {
     const TestProgress = mount(<Progress type="circle" width={100} />)
     expect(TestProgress.find('.kd-progress-circle-box')).toHaveStyle('width', '100px')
@@ -158,4 +159,37 @@ describe('Progress', () => {
     TestProgress.setProps({ percent: 40 })
     expect(onProcessMock).toHaveBeenCalled()
   })
+
+  // 9.config provider
+  it('should config use config provider', () => {
+    const localeData = {
+      'Progress.circleLoadingDesc': 'loading',
+    }
+    const searchConfig = {
+      compDefaultProps: {
+        Progress: {
+          type: 'circle',
+          percent: 50,
+        },
+      },
+      localeConfig: { localeData, locale: 'zh-EN' },
+    }
+    const wrapper = mount(
+      <ConfigProvider value={searchConfig}>
+        <Progress />
+      </ConfigProvider>,
+    )
+    expect(wrapper.find('.kd-progress')).toHaveClassName('.kd-progress-type-circle')
+    expect(wrapper.find('.kd-progress-text-percent').text()).toBe('50')
+    expect(wrapper.find('.kd-progress-special-text').text()).toBe('loading')
+  })
+
+  // 10. ref test
+  // no ref,can't test
+  // it('should get Demo element from ref', () => {
+  //   const ref = React.createRef()
+  //   mount(<Progress ref={ref} type="line" />)
+  //   expect(ref.current instanceof HTMLElement).toBe(true)
+  //   expect((ref.current as HTMLElement).classList.contains('kd-progress-type-line')).toBe(true)
+  // })
 })
