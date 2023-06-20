@@ -42,7 +42,7 @@ const locale = {
   'CityPicker.internation': '国际',
   'CityPicker.common': '常用',
   'CityPicker.noData': '暂无数据',
-  'ColorPicker.followFunctionalColor': '跟随主题色',
+  'ColorPicker.followFunctionalColor': '跟随功能色',
   'Search.placeholder': '请输入需要搜索的内容',
   'Search.desc': ['空格代表"或"，回车代表"且"'],
   'Search.nplDesc': '智能搜索',

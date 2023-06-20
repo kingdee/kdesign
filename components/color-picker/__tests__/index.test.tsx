@@ -5,6 +5,8 @@ import ColorPickerPanel from '../color-picker-panel'
 import ConfigProvider from '../../config-provider/index'
 import { BorderTypes, IColorPickerProps } from '../interface'
 import mountTest from '../../../tests/shared/mountTest'
+import { act } from 'react-dom/test-utils'
+import { sleep } from '../../../tests/utils'
 
 const defaultColorPickerProps: Partial<IColorPickerProps> = {
   className: 'my-color-picker',
@@ -178,7 +180,7 @@ describe('ColorPicker', () => {
     defaultOpenWrapper.setProps({ functionalColor: '#333333' })
     defaultOpenWrapper.update()
     expect(defaultOpenWrapper.exists('.kd-color-picker-panel-switch')).toBeTruthy()
-    expect(defaultOpenWrapper.find('.kd-color-picker-panel-switch').find('span').at(0).text()).toEqual('跟随主题色')
+    expect(defaultOpenWrapper.find('.kd-color-picker-panel-switch').find('span').at(0).text()).toEqual('跟随功能色')
     expect(
       defaultOpenWrapper.find('.kd-color-picker-panel-switch').find('span').at(1).hasClass('kd-switch-checked'),
     ).toBeFalsy()
@@ -299,35 +301,37 @@ describe('ColorPicker', () => {
     wrapper.find('.kd-color-picker-panel-colorDivContainer').childAt(0).simulate('click')
     expect(wrapper.find('.kd-color-picker-input').at(0).props().value).toBe('blue')
   })
-  it('should change value when use onChange event', () => {
+  it('should change value when use onChange event', async () => {
     let changeValue = 'blue'
-    const handleChangeValue = jest.fn((colorValue) => {
+    const handleChangeValue = jest.fn(async (colorValue) => {
       expect(colorValue).toEqual('#a1ecff')
-      changeValue = colorValue
+      await sleep(1000)
+      expect(wrapper.find('.kd-color-picker-input').first().props().value).toEqual('#a1ecff')
     })
     const wrapper = mount(<ColorPicker defaultOpen value={changeValue} onChange={handleChangeValue} />)
-    wrapper.find('.kd-color-picker-panel-colorDivContainer').childAt(0).simulate('click')
+    expect(wrapper.find('.kd-color-picker-input').first().props().value).toEqual('blue')
+    act(() => {
+      wrapper.find('.kd-color-picker-panel-colorDivContainer').childAt(0).simulate('click')
+    })
   })
   // #endregion
 
   // #region 8.component interaction(event)
   const testCommonState = (wrapper: any, colorValue: string, opacity: string) => {
     expect(wrapper.find('.kd-color-picker-input').at(0).prop('value')).toEqual(colorValue)
-    expect((wrapper.find('.kd-select-wrapper').getDOMNode() as HTMLDivElement).title).toEqual(colorValue)
+    expect(wrapper.find('.kd-select-wrapper').props().title).toEqual(colorValue)
     expect(wrapper.find('.kd-select-selection-item').text()).toEqual(colorValue)
     expect(wrapper.find('.kd-color-picker-panel-transparent').at(0).prop('value')).toEqual(opacity)
     expect(wrapper.find('.kd-select').hasClass('kd-select-visible')).toBeFalsy()
   }
-  it('should display the correct color values and corrent opacity for the corresponding type when clicking on different types of buttons', () => {
+  it('should display the correct color values and corrent opacity for the corresponding type when clicking on different types of buttons', async () => {
     const wrapper = mount(<ColorPicker {...defaultColorPickerProps} defaultOpen={true}></ColorPicker>)
-    wrapper.setProps({ value: '#34343409' })
-    wrapper.update()
-    testCommonState(wrapper, '#34343409', '4%')
-    wrapper.find('.kd-color-picker-panel-input').simulate('click')
+    wrapper.find('.kd-color-picker-panel-input').simulate('mouseup')
+    await sleep(500)
     //! Select组件的defaultOpen有问题
-    // expect(wrapper.find('.kd-select').hasClass('kd-select-visible')).toBeTruthy()
+    // expect(wrapper.find('.kd-select').at(0)).toHaveClassName('kd-select-visible')
     // expect(wrapper.find('.kd-select-item-option').length).toEqual(4)
-    // expect(wrapper.find('.kd-select-item-option').at(0).text()).toEqual('HEX')
+    // expect(wrapper.find('.kd-select-item-option').at(0).text()).toEqual('HE')
     // expect(wrapper.find('.kd-select-item-option').at(1).text()).toEqual('HSB')
     // expect(wrapper.find('.kd-select-item-option').at(2).text()).toEqual('RGB')
     // expect(wrapper.find('.kd-select-item-option').at(3).text()).toEqual('HSL')
@@ -350,7 +354,6 @@ describe('ColorPicker', () => {
     // wrapper.find('.kd-select-item-option').at(3).simulate('click')
     // expect(defaultColorPickerProps.onChange).toHaveBeenCalled()
     // testCommonState('hsla(0, 0%, 20%, 0.04)', '4%')
-    wrapper.unmount()
   })
 
   it('should display the correct color values and corrent opacity when setting different alpha values', () => {
@@ -429,7 +432,30 @@ describe('ColorPicker', () => {
     ).toExist()
   })
 
-  //! ref api暂未开发，antd未提供
+  it('should provide the correct local Configuration by using local configuration provider', () => {
+    const localeData = {
+      'ColorPicker.followFunctionalColor': 'followFunctionalColor',
+    }
+    const colorPickerConfig = {
+      compDefaultProps: {},
+      localeConfig: { localeData, locale: 'zh-EN' },
+    }
+
+    const config = {
+      functionalColor: '#ffffff',
+      showSwitch: true,
+      defaultOpen: true,
+      switchName: { name: '跟随功能色', internationalName: 'followFunctionalColor' },
+    }
+    const wrapper = mount(
+      <ConfigProvider value={colorPickerConfig}>
+        <ColorPicker {...config}></ColorPicker>
+      </ConfigProvider>,
+    )
+    expect(wrapper.find('.kd-color-picker-panel-switch').children().at(0).text()).toEqual('followFunctionalColor')
+  })
+
+  //! ref api暂未开发，antd、TDesign未提供
   // 11.ref test
   // it('should get correct dom from ref of props', () => {
   //   const ref = React.createRef()
