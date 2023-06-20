@@ -1,0 +1,303 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Upload render defaultFileList without error 1`] = `
+<Upload
+  action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
+  defaultFileList={
+    Array [
+      Object {
+        "name": "xxx.png",
+        "response": "Server Error 500",
+        "size": "100",
+        "status": "done",
+        "uid": "1",
+        "url": "http://www.baidu.com/xxx.png",
+      },
+      Object {
+        "name": "yyy.png",
+        "size": "100",
+        "status": "done",
+        "uid": "2",
+        "url": "http://www.baidu.com/yyy.png",
+      },
+      Object {
+        "name": "zzz.png",
+        "response": "Server Error 500",
+        "size": "100",
+        "status": "error",
+        "uid": "3",
+        "url": "http://www.baidu.com/zzz.png",
+      },
+    ]
+  }
+>
+  <div
+    className="kd-upload"
+  >
+    <ul
+      className="kd-upload-text-list"
+    >
+      <Item
+        disabled={false}
+        file={
+          Object {
+            "name": "xxx.png",
+            "response": "Server Error 500",
+            "size": "100",
+            "status": "done",
+            "uid": "1",
+            "url": "http://www.baidu.com/xxx.png",
+          }
+        }
+        handleReUpload={[Function]}
+        handleRemove={[Function]}
+        key="1"
+        listType="text"
+        prefixCls="kd-upload"
+      >
+        <li
+          className="kd-upload-text-list-item"
+        >
+          <span
+            className="kd-upload-text-list-item-icon"
+          >
+            <Icon
+              spin={false}
+              type="attachment"
+            >
+              <i
+                className="kdicon kdicon-attachment"
+                onClick={[Function]}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
+                style={Object {}}
+              />
+            </Icon>
+          </span>
+          <span
+            className="kd-upload-text-list-item-name"
+            title="xxx.png"
+          >
+            xxx.png
+          </span>
+          <span
+            className="kd-upload-text-list-item-size"
+          >
+            (
+            100bytes
+            )
+          </span>
+          <div
+            className="kd-upload-text-list-item-action"
+          >
+            <a
+              className="kd-upload-text-list-item-delete"
+              href="true"
+              onClick={[Function]}
+            >
+              删除
+            </a>
+          </div>
+        </li>
+      </Item>
+      <Item
+        disabled={false}
+        file={
+          Object {
+            "name": "yyy.png",
+            "size": "100",
+            "status": "done",
+            "uid": "2",
+            "url": "http://www.baidu.com/yyy.png",
+          }
+        }
+        handleReUpload={[Function]}
+        handleRemove={[Function]}
+        key="2"
+        listType="text"
+        prefixCls="kd-upload"
+      >
+        <li
+          className="kd-upload-text-list-item"
+        >
+          <span
+            className="kd-upload-text-list-item-icon"
+          >
+            <Icon
+              spin={false}
+              type="attachment"
+            >
+              <i
+                className="kdicon kdicon-attachment"
+                onClick={[Function]}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
+                style={Object {}}
+              />
+            </Icon>
+          </span>
+          <span
+            className="kd-upload-text-list-item-name"
+            title="yyy.png"
+          >
+            yyy.png
+          </span>
+          <span
+            className="kd-upload-text-list-item-size"
+          >
+            (
+            100bytes
+            )
+          </span>
+          <div
+            className="kd-upload-text-list-item-action"
+          >
+            <a
+              className="kd-upload-text-list-item-delete"
+              href="true"
+              onClick={[Function]}
+            >
+              删除
+            </a>
+          </div>
+        </li>
+      </Item>
+      <Item
+        disabled={false}
+        file={
+          Object {
+            "name": "zzz.png",
+            "response": "Server Error 500",
+            "size": "100",
+            "status": "error",
+            "uid": "3",
+            "url": "http://www.baidu.com/zzz.png",
+          }
+        }
+        handleReUpload={[Function]}
+        handleRemove={[Function]}
+        key="3"
+        listType="text"
+        prefixCls="kd-upload"
+      >
+        <li
+          className="kd-upload-text-list-item error"
+        >
+          <span
+            className="kd-upload-text-list-item-icon"
+          >
+            <Icon
+              spin={false}
+              type="warning-solid"
+            >
+              <i
+                className="kdicon kdicon-warning-solid"
+                onClick={[Function]}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
+                style={Object {}}
+              />
+            </Icon>
+          </span>
+          <span
+            className="kd-upload-text-list-item-name"
+            title="zzz.png"
+          >
+            zzz.png
+          </span>
+          <span
+            className="kd-upload-text-list-item-size"
+          >
+            (
+            100bytes
+            )
+          </span>
+          <div
+            className="kd-upload-text-list-item-action"
+          >
+            <a
+              className="kd-upload-text-list-item-reupload"
+              href="true"
+              onClick={[Function]}
+            >
+              重新上传
+            </a>
+            <a
+              className="kd-upload-text-list-item-delete"
+              href="true"
+              onClick={[Function]}
+            >
+              删除
+            </a>
+          </div>
+        </li>
+      </Item>
+    </ul>
+  </div>
+</Upload>
+`;
+
+exports[`Upload render no child without errors 1`] = `
+<Upload>
+  <div
+    className="kd-upload"
+  />
+</Upload>
+`;
+
+exports[`Upload render null or undefined without errors 1`] = `
+<Upload>
+  <div
+    className="kd-upload"
+  />
+</Upload>
+`;
+
+exports[`Upload renders correctly 1`] = `
+<div
+  class="kd-upload"
+>
+  <label
+    class="kd-upload-drag"
+  >
+    <span
+      class="kd-upload-handle"
+    >
+      <div>
+        <i
+          class="kdicon kdicon-add"
+          style="font-size:16px;color:#666;font-weight:bolder"
+        />
+        <div>
+          点击或拖拽上传
+        </div>
+      </div>
+    </span>
+    <span
+      class="kd-upload-input"
+    >
+      <input
+        title=""
+        type="file"
+      />
+    </span>
+  </label>
+</div>
+`;
+
+exports[`Upload renders correctly 2`] = `
+<div
+  class="kd-upload"
+/>
+`;
+
+exports[`Upload renders correctly 3`] = `
+<div
+  class="kd-upload"
+>
+  <ul
+    class="kd-upload-picture-list"
+  />
+</div>
+`;
+

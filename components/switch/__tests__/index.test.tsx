@@ -39,8 +39,10 @@ describe('Switch', () => {
   })
   // 6.className
   it('should class use right', () => {
-    const DefaultSwitch = mount(<Switch />)
-    expect(DefaultSwitch.find('.kd-switch')).toHaveClassName('.kd-switch-size-small')
+    SwitchSizes.forEach((size) => {
+      const TestSwitch = mount(<Switch size={size} />)
+      expect(TestSwitch.find('.kd-switch')).toHaveClassName(`.kd-switch-size-${size}`)
+    })
 
     const DefaultCheckedSwitch = mount(<Switch defaultChecked />)
     expect(DefaultCheckedSwitch.find('.kd-switch')).toHaveClassName('.kd-switch-checked')
@@ -55,7 +57,7 @@ describe('Switch', () => {
     const DisabledSwitch = mount(<Switch disabled />)
     expect(DisabledSwitch.find('.kd-switch')).toHaveClassName('.kd-switch-disabled')
   })
-  // can not be clicked when disabled or loading
+  // 7.can not be clicked when disabled or loading
   it('should not clickable when switch is loading', () => {
     const onClick = jest.fn()
     const wrapper = mount(<Switch loading onClick={onClick} />)
@@ -69,14 +71,29 @@ describe('Switch', () => {
     wrapper.simulate('click')
     expect(onClick).not.toHaveBeenCalledWith()
   })
-
+  // 8.uncontrolled and full controlled
+  it('uncontrolled', () => {
+    const wrapper = mount(<Switch></Switch>)
+    wrapper.simulate('click')
+    expect(wrapper.find('.kd-switch')).toHaveClassName('.kd-switch-checked')
+    wrapper.simulate('click')
+    expect(wrapper.find('.kd-switch')).not.toHaveClassName('.kd-switch-checked')
+  })
+  it('full controlled', () => {
+    const wrapper = mount(<Switch checked={false}></Switch>)
+    wrapper.simulate('click')
+    expect(wrapper.find('.kd-switch')).not.toHaveClassName('.kd-switch-checked')
+    wrapper.setProps({ checked: true })
+    expect(wrapper.find('.kd-switch')).toHaveClassName('.kd-switch-checked')
+  })
   const defaultSwitchProps = {
     unCheckedChildren: '关闭',
     checkedChildren: '开启',
     onClick: jest.fn(),
     onChange: jest.fn(),
   }
-  // api
+
+  // 9.api
   it('api test', () => {
     const wrapper = mount(<Switch {...defaultSwitchProps}></Switch>)
 
@@ -89,4 +106,12 @@ describe('Switch', () => {
     // onChange
     expect(defaultSwitchProps.onChange).toHaveBeenCalled()
   })
+
+  // 10.ref test
+  // switch组件暂未暴露ref
+  // it('should get Switch element from ref', () => {
+  //   const ref = React.createRef()
+  //   mount(<Switch ref={ref}></Switch>)
+  //   expect(ref.current instanceof HTMLSpanElement).toBe(true)
+  // })
 })

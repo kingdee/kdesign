@@ -14,6 +14,8 @@ declare module '*.jpg'
 
 declare module '@babel/standalone'
 
+declare module '@kdcloudjs/kdesign-icons'
+
 declare interface Window {
   IFRAME_CODES: any
 }
