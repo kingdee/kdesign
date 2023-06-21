@@ -167,6 +167,7 @@ const Notification: any = {
   destroy: (key?: React.Key) => {
     NotificationApi.destroy(key)
   },
+  displayName: 'Notification',
 }
 
 export default Notification

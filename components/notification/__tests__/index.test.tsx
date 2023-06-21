@@ -1,6 +1,7 @@
 import Notification from '../index'
 import { act } from 'react-dom/test-utils'
 import React from 'react'
+import { sleep } from '../../../tests/utils'
 
 describe('Notification', () => {
   const ALL_TYPE = ['info', 'primary']
@@ -15,83 +16,7 @@ describe('Notification', () => {
     jest.useRealTimers()
   })
 
-  // 1. event
-  describe('event', () => {
-    // onClose
-    it('onClose', () => {
-      const onClose = jest.fn()
-      act(() => {
-        Notification.open({
-          onClose,
-          content: 'test',
-          duration: 0,
-        })
-      })
-      expect(document.querySelectorAll('.kd-notice-content-title-close').length).toBe(1)
-      const element = document.querySelectorAll('.kd-notice-content-title-close')[0] as HTMLElement
-      element.click()
-      expect(onClose).toHaveBeenCalled()
-    })
-
-    // destroy
-    it('destroy', () => {
-      ALL_TYPE.forEach((type) => {
-        act(() => {
-          Notification[type]({
-            key: type,
-            content: 'test',
-            duration: 0,
-          })
-        })
-      })
-      expect(document.querySelectorAll('.kd-notice').length).toBe(2)
-
-      act(() => {
-        Notification.destroy('info')
-      })
-
-      expect(document.querySelectorAll('.kd-notice').length).toBe(1)
-      const el = document.querySelector('.kd-notice-info') || 0
-      expect(el).toEqual(0)
-
-      act(() => {
-        Notification.destroy()
-      })
-      expect(document.querySelectorAll('.kd-notice').length).toBe(0)
-    })
-
-    // update
-    it('update', () => {
-      act(() => {
-        Notification.info({
-          key: 'message_key',
-          content: 'test update',
-          closable: false,
-          duration: 0,
-        })
-      })
-      expect(document.querySelector('.kd-notice-info')).toBeTruthy()
-      expect(document.querySelector('.kd-notice-info .kd-notice-content-title-close')).toBeFalsy()
-
-      const contentEl = document.querySelector('.kd-notice .kd-notice-content-description') as HTMLElement
-      expect(contentEl.textContent).toEqual('test update')
-
-      act(() => {
-        Notification.primary({
-          key: 'message_key',
-          content: 'already update',
-          closable: true,
-          duration: 2000,
-        })
-      })
-
-      expect(document.querySelector('.kd-notice-info')).toBeFalsy()
-      expect(document.querySelector('.kd-notice-primary')).toBeTruthy()
-      expect(document.querySelector('.kd-notice-primary .kd-notice-content-title-close')).toBeTruthy()
-      expect(contentEl.textContent).toEqual('already update')
-    })
-  })
-
+  // 1. mount test
   // 2. render test
   it('render test', () => {
     ALL_TYPE.forEach((type) => {
@@ -114,37 +39,121 @@ describe('Notification', () => {
       expect(contentEl.textContent).toEqual('test render')
     })
   })
-
-  // 3. className
-  it('className', () => {
-    act(() => {
-      Notification.open({
-        className: 'my-class',
-        content: 'test destory',
-        duration: 0,
-      })
-    })
-    const el = document.querySelectorAll('.kd-notice')
-    expect(el.length).toBe(1)
-    expect(el[0].getAttribute('class')).toBe('kd-notice my-class kd-notice-primary')
+  // 3. warns in component
+  // 4. render null or undefined without errors
+  // 5. displayName
+  it('displayName', () => {
+    expect(Notification.displayName).toEqual('Notification')
   })
+  // 6. class state
+  describe('class state', () => {
+    // className
+    it('className', () => {
+      act(() => {
+        Notification.open({
+          className: 'my-class',
+          content: 'test destory',
+          duration: 0,
+        })
+      })
+      const el = document.querySelectorAll('.kd-notice')
+      expect(el.length).toBe(1)
+      expect(el[0].getAttribute('class')).toBe('kd-notice my-class kd-notice-primary')
+    })
 
-  // 4. style
-  it('style', () => {
+    // style
+    it('style', () => {
+      act(() => {
+        Notification.open({
+          style: { background: 'red' },
+          content: 'test',
+          duration: 0,
+        })
+      })
+      const el = document.querySelectorAll('.kd-notice')
+      expect(el.length).toBe(1)
+      expect(el[0].getAttribute('style')).toBe('background: red;')
+    })
+  })
+  // 7.component interaction(event)
+  // onClose
+  it('onClose', async () => {
+    const onClose = jest.fn()
     act(() => {
       Notification.open({
-        style: { background: 'red' },
+        onClose,
         content: 'test',
         duration: 0,
       })
     })
-    const el = document.querySelectorAll('.kd-notice')
-    expect(el.length).toBe(1)
-    expect(el[0].getAttribute('style')).toBe('background: red;')
+    expect(document.querySelectorAll('.kd-notice-content-title-close').length).toBe(1)
+    const element = document.querySelectorAll('.kd-notice-content-title-close')[0] as HTMLElement
+    element.click()
+    await sleep(1000)
+    expect(onClose).toHaveBeenCalled()
   })
 
-  // 5. other api
-  describe('other api', () => {
+  // destroy
+  it('destroy', () => {
+    ALL_TYPE.forEach((type) => {
+      act(() => {
+        Notification[type]({
+          key: type,
+          content: 'test',
+          duration: 0,
+        })
+      })
+    })
+    expect(document.querySelectorAll('.kd-notice').length).toBe(2)
+
+    act(() => {
+      Notification.destroy('info')
+    })
+
+    expect(document.querySelectorAll('.kd-notice').length).toBe(1)
+    const el = document.querySelector('.kd-notice-info') || 0
+    expect(el).toEqual(0)
+
+    act(() => {
+      Notification.destroy()
+    })
+    expect(document.querySelectorAll('.kd-notice').length).toBe(0)
+  })
+
+  // update
+  it('update', () => {
+    act(() => {
+      Notification.info({
+        key: 'message_key',
+        content: 'test update',
+        closable: false,
+        duration: 0,
+      })
+    })
+    expect(document.querySelector('.kd-notice-info')).toBeTruthy()
+    expect(document.querySelector('.kd-notice-info .kd-notice-content-title-close')).toBeFalsy()
+
+    const contentEl = document.querySelector('.kd-notice .kd-notice-content-description') as HTMLElement
+    expect(contentEl.textContent).toEqual('test update')
+
+    act(() => {
+      Notification.primary({
+        key: 'message_key',
+        content: 'already update',
+        closable: true,
+        duration: 2000,
+      })
+    })
+
+    expect(document.querySelector('.kd-notice-info')).toBeFalsy()
+    expect(document.querySelector('.kd-notice-primary')).toBeTruthy()
+    expect(document.querySelector('.kd-notice-primary .kd-notice-content-title-close')).toBeTruthy()
+    expect(contentEl.textContent).toEqual('already update')
+  })
+  // 8.config provider
+  // 9. ref test
+  // 10. api test
+  describe('api test', () => {
     it('title / footer / content / showIcon / icon', () => {
       act(() => {
         Notification.open({
@@ -190,9 +199,8 @@ describe('Notification', () => {
       expect(document.querySelectorAll('.my-close')[0].textContent).toBe('X')
     })
   })
-
-  // 6. special
-  describe('special', () => {
+  // 11. special case
+  describe('special case', () => {
     it('should display when mouse over', () => {
       act(() => {
         Notification.info({
