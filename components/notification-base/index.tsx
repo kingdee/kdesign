@@ -37,15 +37,17 @@ const NotificationApi = {
   destroy: (key?: React.Key) => {
     if (key) {
       Object.keys(notificationInstance).forEach((placement) => {
-        const instance = notificationInstance[placement].instance
-        const { notices } = instance
-        if (Array.isArray(notices) && notices.length) {
-          const flag = notices.some((notice) => {
-            return notice.key === key
-          })
+        const instance = notificationInstance[placement]?.instance
+        if (instance) {
+          const { notices } = instance
+          if (Array.isArray(notices) && notices.length) {
+            const flag = notices.some((notice) => {
+              return notice.key === key
+            })
 
-          if (flag) {
-            instance.remove(key)
+            if (flag) {
+              instance.remove(key)
+            }
           }
         }
       })
