@@ -6,6 +6,7 @@ import DatePicker from '../index'
 import locale from '../locale/zh_CN'
 import { Locale } from '../interface'
 import { formatDate } from '../utils/date-fns'
+import { sleep } from '../../../tests/utils'
 
 const TEST_DAY = '2000-01-01 00:00:00'
 
@@ -456,5 +457,41 @@ describe('date-picker', () => {
       const wrapper = mount(<DatePicker {...defaultProps} picker={picker as any} locale={userPlaceholder} />)
       expect(wrapper.find('input').props().placeholder).toBe(userPlaceholder[p as any])
     })
+  })
+
+  // 16. popupContainer & popup
+  it('popupContainer & popup', async () => {
+    const ref: any = React.createRef()
+    const onOpenChange = jest.fn()
+    const wrapper = mount(
+      <div ref={ref}>
+        <DatePicker
+          defaultValue={new Date(TEST_DAY)}
+          onOpenChange={onOpenChange}
+          getPopupContainer={() => ref.current}
+        />
+      </div>,
+    )
+
+    // init
+    expect(wrapper.find('.kd-date-picker-panel').length).toEqual(0)
+
+    // open
+    wrapper.find('.kd-date-picker').at(0).simulate('mouseup')
+    await sleep(100)
+    expect(onOpenChange).toHaveBeenCalled()
+    expect(onOpenChange).toHaveBeenCalledTimes(1)
+    expect(ref.current.querySelectorAll('.kd-date-picker-panel').length).toEqual(1)
+    expect(ref.current.querySelectorAll('.kd-date-picker-panel')[0].classList.contains('hidden')).toBeFalsy()
+    // or
+    expect(wrapper.find('.kd-date-picker-panel').length).toEqual(1)
+    expect(wrapper.find('.kd-date-picker-panel').hasClass('hidden')).toBeFalsy()
+
+    // select & close
+    wrapper.find('.kd-date-picker-calendar-text').at(0).simulate('click')
+    await sleep(100)
+    expect(wrapper.find('.kd-date-picker-panel').hasClass('hidden')).toBeTruthy()
+    expect(wrapper.find('input').props().value).toEqual('1999-12-26')
+    expect(onOpenChange).toHaveBeenCalledTimes(2)
   })
 })
