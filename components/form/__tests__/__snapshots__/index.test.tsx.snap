@@ -1,5 +1,15 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Form 4. render null or undefined without errors render item null or undefined without errors 1`] = `
+<Form>
+  <Item
+    name="name"
+  />
+</Form>
+`;
+
+exports[`Form 4. render null or undefined without errors render null or undefined without errors 1`] = `<Form />`;
+
 exports[`Form renders correctly 1`] = `
 <Form>
   <form

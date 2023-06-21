@@ -1,5 +1,5 @@
 import React from 'react'
-import { mount, ReactWrapper, render } from 'enzyme'
+import { mount, ReactWrapper } from 'enzyme'
 import { sleep } from '../../../tests/utils'
 import Form from '../index'
 import Input from '../../input'
@@ -47,6 +47,7 @@ describe('Form', () => {
 
   // 1. mount test
   mountTest(Form)
+  mountTest(Item)
 
   // 2. render test
   it('renders correctly', () => {
@@ -85,15 +86,9 @@ describe('Form', () => {
     ).toMatchSnapshot()
   })
 
-  // 3. displayName
-  it('should have displayName static property', () => {
-    expect(Form.displayName).toBe('Form')
-    expect(Item.displayName).toBe('Item')
-  })
-
-  // 4. warns in component
+  // 3. warns in component
   it('warns in component', () => {
-    render(
+    wrapper = mount(
       <Form>
         <Item name="name">
           <Input />
@@ -107,108 +102,55 @@ describe('Form', () => {
       errorList.push(...d)
     })
 
-    expect(
-      errorList.includes('Warning: [kdesign]-Form.Item: Children of Form.Item is not a valid element'),
-    ).toBeTruthy()
     expect(errorList.includes('Warning: [kdesign]-Form.Item: Form.Item must have only child')).toBeTruthy()
   })
 
-  // 5. className
-  it('className', () => {
-    wrapper = mount(
-      <Form className={'my-form'}>
-        <Item className={'my-item'} label="name" name="username">
-          <Input />
-        </Item>
-      </Form>,
-    )
-    expect(wrapper.find('.my-form')).toBeTruthy()
-    expect(wrapper.find('.my-item')).toBeTruthy()
-  })
-
-  // 6. config provider
-  it('should config use config provider', () => {
-    const config = {
-      compDefaultProps: {
-        Form: {
-          layout: 'vertical',
-          labelAlign: 'right',
-          size: 'small',
-        },
-      },
-    }
-    const wrapper = mount(
-      <ConfigProvider value={config}>
+  // 4. render null or undefined without errors
+  describe('4. render null or undefined without errors', () => {
+    it('render null or undefined without errors', () => {
+      const wrapper = (
         <Form>
-          <Item label="name" name="username">
-            <Input />
+          {null}
+          {undefined}
+        </Form>
+      )
+      expect(wrapper).toMatchSnapshot()
+    })
+    it('render item null or undefined without errors', () => {
+      const wrapper = (
+        <Form>
+          <Item name="name">
+            {null}
+            {undefined}
           </Item>
         </Form>
-      </ConfigProvider>,
-    )
-    expect(wrapper.find('form')).toHaveClassName('.kd-form-vertical')
-    expect(wrapper.find(`.kd-form-field-label`)).toHaveClassName(`.kd-form-field-label-right`)
-    expect(wrapper.find('.kd-input-size-small')).toBeTruthy()
+      )
+      expect(wrapper).toMatchSnapshot()
+    })
   })
 
-  // 7. defaultValue
-  it('defaultValue', function () {
-    wrapper = mount(
-      <Form defaultValues={{ username: 'tom' }}>
-        <Item label="name" name="username">
-          <Input />
-        </Item>
-      </Form>,
-    )
-    expect(wrapper.find('input').at(0).props().value).toBe('tom')
-    wrapper = mount(
-      <Form>
-        <Item defaultValue={'jack'} label="name" name="username">
-          <Input />
-        </Item>
-      </Form>,
-    )
-    expect(wrapper.find('input').at(0).props().value).toBe('jack')
+  // 5. displayName
+  it('should have displayName static property', () => {
+    expect(Form.displayName).toBe('Form')
+    expect(Item.displayName).toBe('Item')
   })
 
-  // 8. disabled
-  it('disabled', async () => {
-    wrapper = mount(
-      <Form disabled>
-        <Item label="name" name="username">
-          <Input />
-        </Item>
-      </Form>,
-    )
-
-    expect(wrapper.find('.kd-input-disabled')).toHaveLength(1)
-    expect(wrapper.find('input').props().disabled).toBeTruthy()
-
-    wrapper = mount(
-      <Form>
-        <Item disabled label="name" name="username">
-          <Input />
-        </Item>
-      </Form>,
-    )
-    expect(wrapper.find('.kd-input-disabled')).toHaveLength(1)
-    expect(wrapper.find('input').props().disabled).toBeTruthy()
+  // 6. class state
+  describe('6. class state', () => {
+    it('className', () => {
+      wrapper = mount(
+        <Form className={'my-form'}>
+          <Item className={'my-item'} label="name" name="username">
+            <Input />
+          </Item>
+        </Form>,
+      )
+      expect(wrapper.find('.my-form')).toBeTruthy()
+      expect(wrapper.find('.my-item')).toBeTruthy()
+    })
   })
 
-  // 9. htmlFor
-  it('htmlFor', () => {
-    const wrapper = mount(
-      <Form>
-        <Item htmlFor="name" label="name" name="username">
-          <Input />
-        </Item>
-      </Form>,
-    )
-
-    expect(wrapper.find('label').props().htmlFor).toBe('name')
-  })
-
-  // 10. form event
+  // 7. form event
   it('event', async () => {
     let errorInfo = null
     let result = null
@@ -258,126 +200,271 @@ describe('Form', () => {
     expect(wrapper.find('input').props().value).toBe('')
   })
 
-  // 11. instance
-  it('instance', async () => {
-    const mockInstance = {
-      submit: jest.fn(),
-      getInternalHooks: jest.fn().mockReturnValue({
-        setDefaultValues: jest.fn(),
-        setCallbacks: jest.fn(),
-      }),
-    }
-    jest.spyOn(Form, 'useForm').mockReturnValue([mockInstance])
-    const [instance] = Form.useForm()
-    wrapper = mount(<Form form={instance}></Form>)
-    wrapper.find('form').first().simulate('submit')
-    expect(instance.submit).toHaveBeenCalled()
-  })
-
-  // 12. error message & rules & validateTrigger
-  it('error message & rules & validateTrigger', async () => {
-    wrapper = mount(
-      <Form>
-        <Form.Item
-          name="test"
-          label="test"
-          validateTrigger={'onChange'}
-          rules={[
-            { required: true, message: '请输入' },
-            { min: 6, message: '请输入至少6位字符' },
-          ]}
-        >
-          <Input />
-        </Form.Item>
-      </Form>,
-    )
-
-    wrapper.find('input').simulate('change', { target: { value: '' } })
-    await sleep(200)
-    wrapper.update()
-    expect(wrapper.find('.kd-form-field-wrapper-message').length).toBeTruthy()
-    expect(wrapper.find('.kd-form-field-wrapper-message').at(0).text()).toEqual('请输入')
-
-    wrapper.find('input').simulate('change', { target: { value: 'king' } })
-    await sleep(200)
-    wrapper.update()
-    expect(wrapper.find('input').at(0).props().value).toEqual('king')
-    expect(wrapper.find('.kd-form-field-wrapper-message').length).toBeTruthy()
-    expect(wrapper.find('.kd-form-field-wrapper-message').at(0).text()).toEqual('请输入至少6位字符')
-  })
-
-  // 13. other api
-  it('other api', async () => {
-    let result = null
-    const onFinish = jest.fn((v) => {
-      result = v
-    })
-    const mockData = []
-    for (let i = 1; i < 10; i++) {
-      mockData.push({
-        key: i.toString(),
-        title: `选项${i}`,
-        description: `选项描述${i}`,
-        disabled: i % 6 === 0,
-      })
-    }
-
-    const wrapper = mount(
-      <Form onFinish={onFinish}>
-        <Item name="radio">
-          <Radio value={'radio'} checked={true} />
-        </Item>
-        <Item name="radiogroup">
-          <Radio.Group name="radiogroup" value={'AAAA'}>
-            <Radio value={'AAAA'}>A</Radio>
-            <Radio value={'BBBB'}>B</Radio>
-          </Radio.Group>
-        </Item>
-        <Item name="checkbox">
-          <Checkbox value={'checkbox'} checked={true} />
-        </Item>
-        <Item name="checkboxgroup">
-          <Checkbox.Group name="checkboxgroup" value={['AAAA']}>
-            <Checkbox value={'AAAA'}>A</Checkbox>
-            <Checkbox value={'BBBB'}>B</Checkbox>
-          </Checkbox.Group>
-        </Item>
-        <Item name="switch">
-          <Switch checked={true} />
-        </Item>
-        <Item name="upload">
-          <Upload fileList={[{ uid: '123', name: '123.png', status: 'done', size: 123, type: '' } as any]} />
-        </Item>
-        <Item name="transfer">
-          <Transfer dataSource={mockData} targetKeys={['1', '2', '3'] as any} render={(item) => item.title} />
-        </Item>
-        <Item name="rangepicker">
-          <RangePicker value={[new Date('2000-10-01'), new Date('2000-10-31')]} />
-        </Item>
-      </Form>,
-    )
-
-    wrapper.find('form').first().simulate('submit')
-    await sleep(100)
-    expect(result).toEqual({
-      values: {
-        checkbox: true,
-        checkboxgroup: ['AAAA'],
-        radio: true,
-        radiogroup: 'AAAA',
-        switch: true,
-        transfer: ['1', '2', '3'],
-        rangepicker: [new Date('2000-10-01'), new Date('2000-10-31')],
-        upload: [
-          {
-            name: '123.png',
-            size: 123,
-            status: 'done',
-            type: '',
-            uid: '123',
-          },
-        ],
+  // 8. config provider
+  it('should config use config provider', () => {
+    const config = {
+      compDefaultProps: {
+        Form: {
+          layout: 'vertical',
+          labelAlign: 'right',
+          size: 'small',
+        },
       },
+    }
+    const wrapper = mount(
+      <ConfigProvider value={config}>
+        <Form>
+          <Item label="name" name="username">
+            <Input />
+          </Item>
+        </Form>
+      </ConfigProvider>,
+    )
+    expect(wrapper.find('form')).toHaveClassName('.kd-form-vertical')
+    expect(wrapper.find(`.kd-form-field-label`)).toHaveClassName(`.kd-form-field-label-right`)
+    expect(wrapper.find('.kd-input-size-small')).toBeTruthy()
+  })
+
+  // 9. ref test
+  it('ref & FormInstance', async () => {
+    const ref: any = React.createRef()
+    const onFinishFailed = jest.fn()
+    const onFinish = jest.fn()
+    wrapper = mount(
+      <Form ref={ref} defaultValues={{ firstname: 'tom' }} onFinishFailed={onFinishFailed} onFinish={onFinish}>
+        <Item label="firstname" name="firstname">
+          <Input />
+        </Item>
+        <Item label="lastname" name="lastname" required>
+          <Input />
+        </Item>
+      </Form>,
+    )
+
+    const instance = ref.current
+    // getFieldValue
+    const firstname = instance.getFieldValue('firstname')
+    expect(firstname).toEqual('tom')
+
+    // getFieldsValue
+    expect(instance.getFieldsValue(['firstname', 'lastname'])).toEqual({ firstname: 'tom', lastname: undefined })
+
+    // setFieldValue
+    instance.setFieldValue('firstname', 'tom1')
+    expect(instance.getFieldValue('firstname')).toEqual('tom1')
+
+    // setFieldsValue
+    instance.setFieldsValue({ lastname: 'tom2' })
+    expect(instance.getFieldValue('lastname')).toEqual('tom2')
+
+    // validateFields
+    const data = await instance.validateFields()
+    expect(data).toEqual({ values: { firstname: 'tom1', lastname: 'tom2' } })
+
+    // resetFields
+    instance.resetFields()
+    expect(instance.getFieldsValue(['firstname', 'lastname'])).toEqual({ firstname: 'tom', lastname: '' })
+
+    // submit
+    instance.submit()
+    await sleep(100)
+    expect(onFinishFailed).toHaveBeenCalled()
+    await expect(instance.validateFields()).rejects.toEqual({
+      errorInfos: {
+        fields: {
+          lastname: [
+            {
+              field: 'lastname',
+              message: '请输入您的lastname',
+            },
+          ],
+        },
+        values: { firstname: 'tom', lastname: '' },
+      },
+      errors: [{ field: 'lastname', message: '请输入您的lastname' }],
+    })
+
+    // getFieldError
+    expect(instance.getFieldError('lastname')).toEqual('请输入您的lastname')
+  })
+
+  // 10. api test
+  describe('api test', () => {
+    it('defaultValue', function () {
+      wrapper = mount(
+        <Form defaultValues={{ username: 'tom' }}>
+          <Item label="name" name="username">
+            <Input />
+          </Item>
+        </Form>,
+      )
+      expect(wrapper.find('input').at(0).props().value).toBe('tom')
+      wrapper = mount(
+        <Form>
+          <Item defaultValue={'jack'} label="name" name="username">
+            <Input />
+          </Item>
+        </Form>,
+      )
+      expect(wrapper.find('input').at(0).props().value).toBe('jack')
+    })
+
+    it('disabled', async () => {
+      wrapper = mount(
+        <Form disabled>
+          <Item label="name" name="username">
+            <Input />
+          </Item>
+        </Form>,
+      )
+
+      expect(wrapper.find('.kd-input-disabled')).toHaveLength(1)
+      expect(wrapper.find('input').props().disabled).toBeTruthy()
+
+      wrapper = mount(
+        <Form>
+          <Item disabled label="name" name="username">
+            <Input />
+          </Item>
+        </Form>,
+      )
+      expect(wrapper.find('.kd-input-disabled')).toHaveLength(1)
+      expect(wrapper.find('input').props().disabled).toBeTruthy()
+    })
+
+    it('htmlFor', () => {
+      const wrapper = mount(
+        <Form>
+          <Item htmlFor="name" label="name" name="username">
+            <Input />
+          </Item>
+        </Form>,
+      )
+
+      expect(wrapper.find('label').props().htmlFor).toBe('name')
+    })
+
+    it('error message & rules & validateTrigger', async () => {
+      wrapper = mount(
+        <Form>
+          <Form.Item
+            name="test"
+            label="test"
+            validateTrigger={'onChange'}
+            rules={[
+              { required: true, message: '请输入' },
+              { min: 6, message: '请输入至少6位字符' },
+            ]}
+          >
+            <Input />
+          </Form.Item>
+        </Form>,
+      )
+
+      wrapper.find('input').simulate('change', { target: { value: '' } })
+      await sleep(200)
+      wrapper.update()
+      expect(wrapper.find('.kd-form-field-wrapper-message').length).toBeTruthy()
+      expect(wrapper.find('.kd-form-field-wrapper-message').at(0).text()).toEqual('请输入')
+
+      wrapper.find('input').simulate('change', { target: { value: 'king' } })
+      await sleep(200)
+      wrapper.update()
+      expect(wrapper.find('input').at(0).props().value).toEqual('king')
+      expect(wrapper.find('.kd-form-field-wrapper-message').length).toBeTruthy()
+      expect(wrapper.find('.kd-form-field-wrapper-message').at(0).text()).toEqual('请输入至少6位字符')
+    })
+  })
+
+  // 11. special case
+  describe('special case', () => {
+    it('get value_', async () => {
+      let result = null
+      const onFinish = jest.fn((v) => {
+        result = v
+      })
+      const mockData = []
+      for (let i = 1; i < 10; i++) {
+        mockData.push({
+          key: i.toString(),
+          title: `选项${i}`,
+          description: `选项描述${i}`,
+          disabled: i % 6 === 0,
+        })
+      }
+
+      const wrapper = mount(
+        <Form onFinish={onFinish}>
+          <Item name="radio">
+            <Radio value={'radio'} checked={true} />
+          </Item>
+          <Item name="radiogroup">
+            <Radio.Group name="radiogroup" value={'AAAA'}>
+              <Radio value={'AAAA'}>A</Radio>
+              <Radio value={'BBBB'}>B</Radio>
+            </Radio.Group>
+          </Item>
+          <Item name="checkbox">
+            <Checkbox value={'checkbox'} checked={true} />
+          </Item>
+          <Item name="checkboxgroup">
+            <Checkbox.Group name="checkboxgroup" value={['AAAA']}>
+              <Checkbox value={'AAAA'}>A</Checkbox>
+              <Checkbox value={'BBBB'}>B</Checkbox>
+            </Checkbox.Group>
+          </Item>
+          <Item name="switch">
+            <Switch checked={true} />
+          </Item>
+          <Item name="upload">
+            <Upload fileList={[{ uid: '123', name: '123.png', status: 'done', size: 123, type: '' } as any]} />
+          </Item>
+          <Item name="transfer">
+            <Transfer dataSource={mockData} targetKeys={['1', '2', '3'] as any} render={(item) => item.title} />
+          </Item>
+          <Item name="rangepicker">
+            <RangePicker value={[new Date('2000-10-01'), new Date('2000-10-31')]} />
+          </Item>
+        </Form>,
+      )
+
+      wrapper.find('form').first().simulate('submit')
+      await sleep(100)
+      expect(result).toEqual({
+        values: {
+          checkbox: true,
+          checkboxgroup: ['AAAA'],
+          radio: true,
+          radiogroup: 'AAAA',
+          switch: true,
+          transfer: ['1', '2', '3'],
+          rangepicker: [new Date('2000-10-01'), new Date('2000-10-31')],
+          upload: [
+            {
+              name: '123.png',
+              size: 123,
+              status: 'done',
+              type: '',
+              uid: '123',
+            },
+          ],
+        },
+      })
+    })
+
+    it('instance', async () => {
+      const mockInstance = {
+        submit: jest.fn(),
+        getInternalHooks: jest.fn().mockReturnValue({
+          setDefaultValues: jest.fn(),
+          setCallbacks: jest.fn(),
+        }),
+      }
+      jest.spyOn(Form, 'useForm').mockReturnValue([mockInstance])
+      const [instance] = Form.useForm()
+      wrapper = mount(<Form form={instance}></Form>)
+      wrapper.find('form').first().simulate('submit')
+      expect(instance.submit).toHaveBeenCalled()
     })
   })
 })
