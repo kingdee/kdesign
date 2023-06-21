@@ -5,6 +5,7 @@ import MockDate from 'mockdate'
 import { RangePicker } from '../index'
 import { Locale } from '../interface'
 import locale from '../locale/zh_CN'
+import { sleep } from '../../../tests/utils'
 
 const START_DAY = '2000-10-01 00:00:00'
 const END_DAY = '2000-10-31 01:00:00'
@@ -443,5 +444,38 @@ describe('RangePicker', () => {
       expect(wrapper.find('input').at(0).props().placeholder).toEqual(userPlaceholder[p as any][0])
       expect(wrapper.find('input').at(1).props().placeholder).toEqual(userPlaceholder[p as any][1])
     })
+  })
+
+  // 16. popupContainer & popup
+  it('popupContainer & popup', async () => {
+    const ref: any = React.createRef()
+    const onOpenChange = jest.fn()
+    const wrapper = mount(
+      <div ref={ref}>
+        <RangePicker defaultValue={TEST_DAY} onOpenChange={onOpenChange} getPopupContainer={() => ref.current} />
+      </div>,
+    )
+
+    // init
+    expect(wrapper.find('.kd-date-picker-panel').length).toEqual(0)
+
+    // open
+    wrapper.find('input').at(0).simulate('mousedown')
+    await sleep(100)
+    expect(onOpenChange).toHaveBeenCalled()
+    expect(onOpenChange).toHaveBeenCalledTimes(1)
+    expect(ref.current.querySelectorAll('.kd-date-picker-panel').length).toEqual(1)
+    expect(ref.current.querySelectorAll('.kd-date-picker-panel')[0].classList.contains('hidden')).toBeFalsy()
+    // or
+    expect(wrapper.find('.kd-date-picker-panel').length).toEqual(1)
+    expect(wrapper.find('.kd-date-picker-panel').hasClass('hidden')).toBeFalsy()
+
+    // select & close
+    wrapper.find('input').at(0).simulate('focus')
+    wrapper.find('.kd-date-picker-calendar-text').at(0).simulate('click')
+    wrapper.find('.kd-date-picker-calendar-text').at(1).simulate('click')
+    await sleep(100)
+    expect(wrapper.find('.kd-date-picker-panel').hasClass('hidden')).toBeTruthy()
+    expect(onOpenChange).toHaveBeenCalledTimes(2)
   })
 })
