@@ -567,7 +567,7 @@ const InternalSelect: React.ForwardRefRenderFunction<ISelectProps<SelectValue>> 
             {/* 拓展菜单 */}
             <div>{dropdownRender && dropdownRender(dropRender(childrenToRender, heightStyle))}</div>
             {/* 多选模式-----底部 */}
-            {isMultiple && (
+            {isMultiple && realChildren.length > 0 && (
               <div className={multipleFooterCls}>
                 <Checkbox
                   style={checkboxStyle}
@@ -578,7 +578,7 @@ const InternalSelect: React.ForwardRefRenderFunction<ISelectProps<SelectValue>> 
                   全选
                 </Checkbox>
                 <span className={`${selectPrefixCls}-multiple-footer-hadSelected`}>
-                  已选<span>{isMultiple ? selectedVal.length : 0}</span>项
+                  已选<span>{selectedVal.length}</span>项
                 </span>
               </div>
             )}
