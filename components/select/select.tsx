@@ -306,7 +306,9 @@ const InternalSelect: React.ForwardRefRenderFunction<ISelectProps<SelectValue>> 
         }
       } else {
         props.visible === undefined && setOptionShow(false)
-        onChange && onChange(labelInValue ? { value: key, label } : key, { ...optionsObj, value: key, label })
+        initValue !== key &&
+          onChange &&
+          onChange(labelInValue ? { value: key, label } : key, { ...optionsObj, value: key, label })
       }
       onSelect && onSelect(key)
       return
@@ -316,7 +318,9 @@ const InternalSelect: React.ForwardRefRenderFunction<ISelectProps<SelectValue>> 
       multipleRef.current.selectedVal = key
       setInitValue(key)
       props.visible === undefined && setOptionShow(false)
-      onChange && onChange(labelInValue ? { value: key, label } : key, { ...optionsObj, value: key, label })
+      initValue !== key &&
+        onChange &&
+        onChange(labelInValue ? { value: key, label } : key, { ...optionsObj, value: key, label })
     } else {
       const { selectedVal, selectMulOpts } = multipleRef.current
       if (selectedVal.includes(key)) {
