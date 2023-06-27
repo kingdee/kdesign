@@ -525,7 +525,7 @@ const InternalTreeSelect: React.ForwardRefRenderFunction<ITreeSelectProps<TreeSe
 
   const popperProps = {
     ...treeSelectProps,
-    prefixCls: selectPrefixCls,
+    prefixCls: `${selectPrefixCls}-panel`,
     placement: 'bottomLeft',
     popperStyle: catchStyle(),
     defaultVisible: optionShow,
