@@ -74,6 +74,11 @@ const InternalSelect: React.ForwardRefRenderFunction<ISelectProps<SelectValue>> 
   const [searchValue, setSearchValue] = useState<any>('') // 搜索框定时器
   const [inputWidth, setInputWidth] = useState(INPUT_MIN_WIDTH) // 输入框宽度
   const [focusd, setFocusd] = useState(autoFocus)
+
+  const isShowSearch = useMemo(() => {
+    return isBoolean(showSearch) ? showSearch : isMultiple
+  }, [isMultiple, showSearch])
+
   const selectPrefixCls = getPrefixCls!(prefixCls, 'select', customPrefixcls)
   // 选择器样式
   const selectCls = classNames(selectPrefixCls, className, {
@@ -107,6 +112,7 @@ const InternalSelect: React.ForwardRefRenderFunction<ISelectProps<SelectValue>> 
     [`${selectPrefixCls}-borderless`]: borderType === 'none',
     [`${selectPrefixCls}-size-${size}`]: size,
     [`${selectPrefixCls}-wrapper`]: true,
+    [`${selectPrefixCls}-show-search`]: isShowSearch,
   })
 
   useEffect(() => {
@@ -507,10 +513,6 @@ const InternalSelect: React.ForwardRefRenderFunction<ISelectProps<SelectValue>> 
     const emptyContent = notFoundContent || '暂无数据'
     return filledOptions?.length === 0 && <div className={emptyListCls}>{emptyContent}</div>
   }
-
-  const isShowSearch = useMemo(() => {
-    return isBoolean(showSearch) ? showSearch : isMultiple
-  }, [isMultiple, showSearch])
 
   useEffect(() => {
     if (isShowSearch && autoFocus && !disabled) {
