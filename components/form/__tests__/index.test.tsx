@@ -4,6 +4,7 @@ import { sleep } from '../../../tests/utils'
 import Form from '../index'
 import Input from '../../input'
 import Radio from '../../radio'
+import Select from '../../select'
 import Checkbox from '../../checkbox'
 import Switch from '../../switch'
 import Upload from '../../upload'
@@ -378,7 +379,7 @@ describe('Form', () => {
 
   // 11. special case
   describe('special case', () => {
-    it('get value_', async () => {
+    it('get value', async () => {
       let result = null
       const onFinish = jest.fn((v) => {
         result = v
@@ -465,6 +466,28 @@ describe('Form', () => {
       wrapper = mount(<Form form={instance}></Form>)
       wrapper.find('form').first().simulate('submit')
       expect(instance.submit).toHaveBeenCalled()
+    })
+
+    it('clear select', async () => {
+      let value = 'male'
+      const onChange = jest.fn((e) => {
+        value = e
+      })
+      const ref: any = React.createRef()
+      wrapper = mount(
+        <Form ref={ref}>
+          <Item label="name" name="username">
+            <Select placeholder="请选择" allowClear value={value} onChange={onChange}>
+              <Select.Option value="male">male</Select.Option>
+              <Select.Option value="female">female</Select.Option>
+            </Select>
+          </Item>
+        </Form>,
+      )
+      wrapper.find('.kd-select-icon-clear').simulate('click')
+      expect(onChange).toHaveBeenCalled()
+      expect(value).toEqual(undefined)
+      expect(ref.current.getFieldValue('username')).toEqual(undefined)
     })
   })
 })

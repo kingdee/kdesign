@@ -204,6 +204,7 @@ const Field: React.FC<FormItemProps> = (props) => {
     if (innerDisplayName === 'RadioGroup' && payload) {
       inputValue = payload[1]
     } else if (
+      evt &&
       Object.prototype.hasOwnProperty.call(evt, 'target') &&
       FormEventValuePropNames.includes(innerValuePropName)
     ) {
