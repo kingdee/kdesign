@@ -375,6 +375,11 @@ describe('ColorPicker', () => {
     wrapper.unmount()
   })
 
+  it('select search input should always be readonly', () => {
+    const wrapper = mount(<ColorPicker {...defaultColorPickerProps} defaultOpen={true}></ColorPicker>)
+    expect((wrapper.find('.kd-select-selection-search-input').getDOMNode() as HTMLInputElement).readOnly).toBeTruthy()
+  })
+
   //! react-color无法模拟内部点击事件
   // it('should display the correct color values and corrent opacity when clicking on different positions of color picker box', () => {
   //   const wrapper = mount(

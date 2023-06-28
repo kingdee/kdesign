@@ -244,7 +244,6 @@ const ColorPickerPanel: FC<IColorPickerPanelProps> = (props) => {
               value={correctColorValue}
               placeholder="#"
               onChange={handleTypeChange}
-              showSearch
               optionLabelProp="value"
               getPopupContainer={() => panelInputRef.current as HTMLInputElement}
             >
