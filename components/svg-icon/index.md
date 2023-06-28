@@ -6,7 +6,7 @@ title: SVG Icon
 subtitle: 图标
 ---
 
-更加丰富的图标组件，以 SVG 组件的形式来使用图标，超过 1400+的SVG图标， 按需加载，查找更多图标请前往KDesign图标资源库 iconpage https://kingdee.design/resource/iconpage
+超过 1400+的SVG图标， 按需加载。
 
 ## 使用方法
 
@@ -16,8 +16,7 @@ subtitle: 图标
 yarn add @kdcloudjs/kdesign-icons
 ```
 查找或者copy 图标代码，请访问https://kingdee.design/resource/iconpage 
-
-![KDesign-icons-demo](https://kui.kingdee.com/assets/image/iconpage_demo.png)
+<img src="https://kui.kingdee.com/assets/image/iconpage_demo.png" alt="图片描述" width="200" height="auto">
 
 ## API
 
