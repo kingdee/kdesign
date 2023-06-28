@@ -75,6 +75,13 @@ describe('Drawer', () => {
     expect((wrapper.type() as any).displayName).toBe('Drawer')
   })
 
+  // 6.className state
+  it('should class use right', () => {
+    const wrapper = mount(<Drawer className="my-test" visible data-test="test"></Drawer>)
+    expect(wrapper.prop('data-test')).toEqual('test')
+    expect(wrapper.find(classNameMap.box)).toHaveClassName('my-test')
+  })
+
   const customedReactNodeProp = ['title', 'footer', 'closeIcon']
   const generatorCustomedReactNode = (prop: string) => {
     return [
@@ -95,7 +102,7 @@ describe('Drawer', () => {
       }).not.toThrow()
     },
   )
-  // 6. api
+  // 7. api
   // className footerClassName headerClassName maskClassName titleClassName
   it('should className use right', () => {
     const wrapper = mount(
@@ -374,7 +381,7 @@ describe('Drawer', () => {
     unmountHelp(wrapper)
   })
 
-  // ConfigProvider
+  // 8.ConfigProvider
   it('should config use config provider', () => {
     const modalConfig = {
       compDefaultProps: {
@@ -389,5 +396,12 @@ describe('Drawer', () => {
       </ConfigProvider>,
     )
     expect(wrapper.find(classNameMap.containerBox)).toHaveClassName(`.${prefixClassName}-container-left`)
+  })
+  // 9. ref test
+  it('should get Demo element from ref', () => {
+    const ref = React.createRef()
+    mount(<Drawer visible ref={ref} />)
+    expect(ref.current instanceof HTMLElement).toBe(true)
+    expect((ref.current as HTMLElement).classList.contains('kd-drawer')).toBe(true)
   })
 })
