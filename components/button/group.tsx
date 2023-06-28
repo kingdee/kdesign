@@ -27,6 +27,7 @@ export interface ButtonGroupProps extends PopperProps {
   type?: ButtonGroupType
   onClick?: () => void
   onItemClick?: (data: OverlayType) => void
+  loading?: boolean
 }
 
 const InternalButtonGroup = (
@@ -50,6 +51,7 @@ const InternalButtonGroup = (
     buttonType,
     disabled,
     onVisibleChange,
+    loading,
   } = buttonGoupProps
 
   const [optionShow, setOptionShow] = useState<boolean>(false) // 下拉列表是否展示
@@ -71,13 +73,13 @@ const InternalButtonGroup = (
     return (
       <div style={style} className={btnGroupClasses} ref={refBtnGroup}>
         {isBsicType && (
-          <Button type={buttonType} size={size} disabled={disabled}>
+          <Button type={buttonType} size={size} disabled={disabled} loading={loading}>
             {children}
             <span className={`${btnGroupPrefixCls}-basic-icon`}>{optionShow ? iconUp : iconDown}</span>
           </Button>
         )}
         {!isBsicType && (
-          <Button type={buttonType} size={size} disabled={disabled} onClick={onClick}>
+          <Button type={buttonType} size={size} disabled={disabled} onClick={onClick} loading={loading}>
             {children}
           </Button>
         )}
