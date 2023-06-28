@@ -60,6 +60,7 @@ exports[`Upload render defaultFileList without error 1`] = `
         >
           <span
             className="kd-upload-text-list-item-icon"
+            onClick={[Function]}
           >
             <Icon
               spin={false}
@@ -76,6 +77,7 @@ exports[`Upload render defaultFileList without error 1`] = `
           </span>
           <span
             className="kd-upload-text-list-item-name"
+            onClick={[Function]}
             title="xxx.png"
           >
             xxx.png
@@ -122,6 +124,7 @@ exports[`Upload render defaultFileList without error 1`] = `
         >
           <span
             className="kd-upload-text-list-item-icon"
+            onClick={[Function]}
           >
             <Icon
               spin={false}
@@ -138,6 +141,7 @@ exports[`Upload render defaultFileList without error 1`] = `
           </span>
           <span
             className="kd-upload-text-list-item-name"
+            onClick={[Function]}
             title="yyy.png"
           >
             yyy.png
@@ -185,6 +189,7 @@ exports[`Upload render defaultFileList without error 1`] = `
         >
           <span
             className="kd-upload-text-list-item-icon"
+            onClick={[Function]}
           >
             <Icon
               spin={false}
@@ -201,6 +206,7 @@ exports[`Upload render defaultFileList without error 1`] = `
           </span>
           <span
             className="kd-upload-text-list-item-name"
+            onClick={[Function]}
             title="zzz.png"
           >
             zzz.png
@@ -300,4 +306,3 @@ exports[`Upload renders correctly 3`] = `
   />
 </div>
 `;
-
