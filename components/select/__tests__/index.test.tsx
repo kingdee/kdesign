@@ -167,6 +167,25 @@ describe('Select', () => {
     expect(value.length).toBe(3)
   })
 
+  it('onChange is not triggered when the singlle selector selects the same value', () => {
+    const onChange = jest.fn()
+    const { Option } = Select
+    const wrapper = mount(
+      <Select placeholder="请输入名称" onChange={onChange} value="apple" defaultOpen={true}>
+        <Option value="apple">苹果</Option>
+        <Option value="lemon">柠檬</Option>
+        <Option value="watermelon">西瓜</Option>
+      </Select>,
+    )
+    wrapper.find('.kd-select-item').at(0).simulate('click')
+    expect(onChange).not.toHaveBeenCalled()
+  })
+
+  it('When the drop-down item is 0, the Select All button is not displayed', () => {
+    const wrapper = mount(<Select placeholder="请输入名称" mode="multiple" defaultOpen={true}></Select>)
+    expect(wrapper.find('.kd-select-multiple-footer')).not.toHaveClassName('.kd-checkbox-input')
+  })
+
   // 8.config provider
   describe('8.config provider', () => {
     it('should config use config provider', () => {
@@ -375,8 +394,8 @@ describe('Select', () => {
 
     // labelInValue
     defaultOpenSingle.setProps({ labelInValue: true })
-    defaultOpenSingle.find('.kd-select-item').at(0).simulate('click')
-    expect(selectValue.value).toBe('apple')
+    defaultOpenSingle.find('.kd-select-item').at(1).simulate('click')
+    expect(selectValue.value).toBe('orange')
 
     defaultOpenMultiple.setProps({ labelInValue: true })
     defaultOpenMultiple.find('.kd-select-item').at(1).simulate('click')
