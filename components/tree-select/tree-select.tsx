@@ -89,6 +89,7 @@ const InternalTreeSelect: React.ForwardRefRenderFunction<ITreeSelectProps<TreeSe
     onSelect,
     onCheck,
     dropdownRender,
+    onlyExpandOnClickIcon,
   } = treeSelectProps
   const isMultiple = mode === 'multiple' // 是否多选
   const [initValue, setInitValue] = useMergedState(isMultiple ? [] : undefined, {
@@ -316,7 +317,7 @@ const InternalTreeSelect: React.ForwardRefRenderFunction<ITreeSelectProps<TreeSe
       icon: treeIcon,
       showIcon: showTreeIcon,
       switcherIcon,
-      onlyExpandOnClickIcon: true,
+      onlyExpandOnClickIcon: onlyExpandOnClickIcon,
       notFoundContent: renderNotContent(),
       filterTreeNode: defFilterTreeNode,
       onSelect: handleSelect,
