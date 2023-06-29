@@ -26,8 +26,10 @@ subtitle: 卡片
 | selectable | 是否可被选中 | boolean | false | 1.0.0 |
 | tags | 标签组，位置在标题下面 | Array&lt;ReactNode> | - | 1.0.0 |
 | title | 卡片标题 | ReactNode | - | 1.0.0 |
+| onClick | 点击卡片时的回调 | (event) => void | `-` | `-` | 1.7.16 |
 
 ### Avatar
+
 ```js
 {
   src: string, // 头像地址

@@ -208,6 +208,13 @@ describe('Card', () => {
     expect(wrapper.find('.kd-checkbox')).toExist()
   })
 
+  it('should clickable ', () => {
+    const onClick = jest.fn()
+    const wrapper = mount(<Card onClick={onClick}>text</Card>)
+    wrapper.simulate('click')
+    expect(onClick).toHaveBeenCalled()
+  })
+
   //! api暂未开发，antd提供ref
   // 9.ref test
   // it('should get correct dom from ref of props', () => {

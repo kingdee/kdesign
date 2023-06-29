@@ -4,6 +4,7 @@ exports[`Card render no child without errors 1`] = `
 <Card>
   <div
     className="kd-card"
+    onClick={[Function]}
   >
     <div
       className="kd-card-body"
@@ -16,6 +17,7 @@ exports[`Card render null or undefined without errors 1`] = `
 <Card>
   <div
     className="kd-card"
+    onClick={[Function]}
   >
     <div
       className="kd-card-body"

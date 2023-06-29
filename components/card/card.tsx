@@ -24,6 +24,7 @@ export interface CardProps {
   bodyStyle?: React.CSSProperties
   actions?: Array<React.ReactNode>
   extra?: Array<React.ReactNode>
+  onClick?: React.MouseEventHandler<HTMLElement> // 点击事件
 }
 
 const Card: React.FC<CardProps> = (props) => {
@@ -43,6 +44,7 @@ const Card: React.FC<CardProps> = (props) => {
     bodyStyle,
     selectable,
     checkboxProps,
+    onClick,
     prefixCls: customPrefixcls,
   } = getCompProps('Card', userDefaultProps, props)
 
@@ -51,8 +53,12 @@ const Card: React.FC<CardProps> = (props) => {
 
   const cardClassName = classNames(prefixCls, { hoverable }, className)
 
+  const handleClick = (e: React.MouseEvent<HTMLDivElement>) => {
+    onClick?.(e)
+  }
+
   return (
-    <div className={cardClassName} style={style}>
+    <div className={cardClassName} style={style} onClick={handleClick}>
       {title && !avatar && (
         <header className={`${prefixCls}-header`} style={headStyle}>
           {title}
