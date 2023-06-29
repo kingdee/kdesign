@@ -434,6 +434,7 @@ const compDefaultProps = {
     optionLabelProp: 'title',
     treeNodeFilterProp: 'title',
     treeExpandOnClickNode: true,
+    onlyExpandOnClickIcon: true,
     showSearch: true,
     switcherIcon: function () {
       return <Icon type="arrow-right-solid" />
