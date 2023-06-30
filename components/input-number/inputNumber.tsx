@@ -222,7 +222,7 @@ const InternalInputNumber = (props: InputNumberProps, ref: unknown): FunctionCom
       return false
     }
     setInputValue(legalNumber)
-    onChange && onChange({ target: { value: legalNumber } })
+    onChange && onChange({ target: { value: numberMode ? Number(legalNumber) : legalNumber } })
   }
 
   const handleKeyDown = (event: KeyboardEvent) => {
