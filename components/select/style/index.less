@@ -122,6 +122,12 @@
 
   &-show-search {
     cursor: text;
+
+    &.@{select-prefix-cls}-single .@{select-prefix-cls}-selection-search {
+      .@{select-prefix-cls}-selection-search-input {
+        cursor: text;
+      }
+    }
   }
 
   &-dropdown {
@@ -236,6 +242,7 @@
           background: transparent;
           height: 100%;
           width: 100%;
+          cursor: pointer;
         }
       }
       &-item {
