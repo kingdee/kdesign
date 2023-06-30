@@ -35,6 +35,7 @@ subtitle: 按钮
 | --- | --- | --- | --- | --- | --- |
 | buttonType | 按钮类型 | string | `primary` | `primary` `second` | 1.2.0 |
 | disabled | 按钮禁用状态 | boolean | `false` | `true` `false` | 1.2.0 |
+| loading | 按钮加载状态（加载中的按钮将不能触发点击事件） | boolean | `false` | `true` `false` | 1.7.16 |
 | size | 按钮尺寸 | string | `middle` | `small` `middle` `large` | 1.2.0 |
 | icon | 自定义图标 | [ReactNode, ReactNode] | - | - | 1.2.0 |
 | type | 按钮类型 | string | `basic` | `similar` | 1.2.0 |
@@ -44,7 +45,7 @@ subtitle: 按钮
 
 ## Design Token
 
-| 分类 | 组件token | 全局token | 默认值 |
+| 分类 | 组件 token | 全局 token | 默认值 |
 | --- | --- | --- | --- |
 | color | --kd-c-button-primary-color-background | --kd-g-color-theme | #5582f3 |
 |  | --kd-c-button-primary-color-border | --kd-g-color-theme | #5582f3 |

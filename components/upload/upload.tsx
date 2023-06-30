@@ -56,6 +56,7 @@ const InternalUpload: React.ForwardRefRenderFunction<unknown, UploadProps> = (pr
     itemRender,
     showUploadList,
     prefixCls: customPrefixcls,
+    onPreview,
   } = allProps
 
   const [fileList, setFileList] = React.useState<Array<UploadFile>>(props.fileList || props.defaultFileList || [])
@@ -340,12 +341,15 @@ const InternalUpload: React.ForwardRefRenderFunction<unknown, UploadProps> = (pr
             fileList.map((file: UploadFile) =>
               itemRender ? (
                 itemRender(
-                  <Item {...{ file, prefixCls, listType, handleReUpload, handleRemove, disabled }} />,
+                  <Item {...{ file, prefixCls, listType, handleReUpload, handleRemove, disabled, onPreview }} />,
                   file,
                   setFileList,
                 )
               ) : (
-                <Item key={file.uid} {...{ file, prefixCls, listType, handleReUpload, handleRemove, disabled }} />
+                <Item
+                  key={file.uid}
+                  {...{ file, prefixCls, listType, handleReUpload, handleRemove, disabled, onPreview }}
+                />
               ),
             )}
         </ul>
@@ -354,7 +358,15 @@ const InternalUpload: React.ForwardRefRenderFunction<unknown, UploadProps> = (pr
   )
 }
 
-const Item: React.FC<IFileItem> = ({ file, prefixCls, listType, handleReUpload, handleRemove, disabled }) => {
+const Item: React.FC<IFileItem> = ({
+  file,
+  prefixCls,
+  listType,
+  handleReUpload,
+  handleRemove,
+  disabled,
+  onPreview,
+}) => {
   const mapStatus: Record<string, string> = {
     uploading: 'loadding',
     error: 'warning-solid',
@@ -362,14 +374,19 @@ const Item: React.FC<IFileItem> = ({ file, prefixCls, listType, handleReUpload, 
     success: 'attachment',
     notStart: 'attachment',
   }
+
+  const handlePreview = () => {
+    onPreview && onPreview(file)
+  }
+
   return (
     <li className={classNames(`${prefixCls}-${listType}-list-item`, { error: file.status === 'error' })}>
       {listType === 'text' ? (
         <>
-          <span className={`${prefixCls}-${listType}-list-item-icon`}>
+          <span className={`${prefixCls}-${listType}-list-item-icon`} onClick={handlePreview}>
             <Icon spin={file.status === 'uploading'} type={mapStatus[file.status as string]} />
           </span>
-          <span className={`${prefixCls}-${listType}-list-item-name`} title={file.name}>
+          <span className={`${prefixCls}-${listType}-list-item-name`} title={file.name} onClick={handlePreview}>
             {file.name}
           </span>
           <span className={`${prefixCls}-${listType}-list-item-size`}>({getFileSize(file.size)})</span>
@@ -425,6 +442,7 @@ const Item: React.FC<IFileItem> = ({ file, prefixCls, listType, handleReUpload, 
         </div>
       ) : (
         <Image
+          onClick={handlePreview}
           previewType="upload"
           name={file.name}
           size={getFileSize(file.size)}

@@ -49,6 +49,7 @@ subtitle: 树选择器
 | onChange | 选中树节点时调用此函数 | function(key, node) | - | 1.7.0 |
 | onClear | 清除内容时回调 | function | - | 1.7.0 |
 | onFocus | 获得焦点时回调 | function | - | 1.7.0 |
+| onlyExpandOnClickIcon | 是否通过点击图标进行展开收起 | boolean | - | 1.7.16 |
 | onSearch | 文本框值变化时回调 | function(value: string) | - | 1.7.0 |
 | onSelect | 被选中时调用 | function(value, {checked: bool, node, event}) | - | 1.7.0 |
 | onTreeExpand | 展示节点时调用 | function(expandedKeys, {event, node}) | - | 1.7.0 |

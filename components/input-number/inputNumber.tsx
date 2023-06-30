@@ -99,7 +99,7 @@ const InternalInputNumber = (props: InputNumberProps, ref: unknown): FunctionCom
   }
 
   useEffect(() => {
-    setInputValue(value)
+    setInputValue(serialization(value + ''))
   }, [value])
 
   const handleEventAttachValue = (
