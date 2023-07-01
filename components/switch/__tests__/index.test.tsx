@@ -3,6 +3,7 @@ import { render, mount } from 'enzyme'
 import mountTest from '../../../tests/shared/mountTest'
 import Switch from '../index'
 import { SwitchSizes } from '../switch'
+import ConfigProvider from '../../config-provider/index'
 
 describe('Switch', () => {
   // 1.mount test
@@ -107,7 +108,29 @@ describe('Switch', () => {
     expect(defaultSwitchProps.onChange).toHaveBeenCalled()
   })
 
-  // 10.ref test
+  // 10.config provider
+  it('should config use config provider', () => {
+    const switchConfig = {
+      compDefaultProps: {
+        Switch: {
+          size: 'large',
+          defaultChecked: true,
+          disabled: true,
+          loading: true,
+        },
+      },
+    }
+    const wrapper = mount(
+      <ConfigProvider value={switchConfig}>
+        <Switch />
+      </ConfigProvider>,
+    )
+    expect(wrapper.find('.kd-switch')).toHaveClassName('kd-switch-size-large')
+    expect(wrapper.find('.kd-switch')).toHaveClassName('kd-switch-checked')
+    expect(wrapper.find('.kd-switch')).toHaveClassName('kd-switch-disabled')
+    expect(wrapper.find('.kd-switch')).toHaveClassName('kd-switch-loading')
+  })
+  // 11.ref test
   // switch组件暂未暴露ref
   // it('should get Switch element from ref', () => {
   //   const ref = React.createRef()

@@ -13,7 +13,7 @@ describe('locale', () => {
     expect(okText).toBe(localeCacher.localesData[localeCacher.locale]['Modal.okText'])
     const perPage = getLangMsg('Pagination', 'perPage', { size: 10 })
     getLangMsg('Pagination', 'perPage', { size: <Button>10</Button> })
-    expect(perPage).toBe('10条/页')
+    expect(perPage).toBe('10 条/页')
   })
   it('localeCacher getLocal', () => {
     const local = localeCacher.getLocal()

@@ -217,9 +217,9 @@ describe('Card', () => {
 
   //! api暂未开发，antd提供ref
   // 9.ref test
-  // it('should get correct dom from ref of props', () => {
-  //   const ref = React.createRef()
-  //     mount(<Card ref={ref}></Card>)
-  //     expect(ref.current instanceof HTMLElement).toBe(true)
-  // })
+  it('should get correct dom from ref of props', () => {
+    const ref = React.createRef<HTMLDivElement>()
+    mount(<Card ref={ref}></Card>)
+    expect(ref.current instanceof HTMLDivElement).toBeTruthy()
+  })
 })

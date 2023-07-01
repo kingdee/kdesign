@@ -25,9 +25,10 @@ export interface CardProps {
   actions?: Array<React.ReactNode>
   extra?: Array<React.ReactNode>
   onClick?: React.MouseEventHandler<HTMLElement> // 点击事件
+  ref?: React.ForwardedRef<HTMLDivElement>
 }
 
-const Card: React.FC<CardProps> = (props) => {
+const Card: React.FC<CardProps> = React.forwardRef<HTMLDivElement, CardProps>((props, ref) => {
   const { getPrefixCls, prefixCls: pkgPrefixCls, compDefaultProps: userDefaultProps } = React.useContext(ConfigContext)
   // 属性需要合并一遍用户定义的默认属性
   const {
@@ -58,7 +59,7 @@ const Card: React.FC<CardProps> = (props) => {
   }
 
   return (
-    <div className={cardClassName} style={style} onClick={handleClick}>
+    <div ref={ref} className={cardClassName} style={style} onClick={handleClick}>
       {title && !avatar && (
         <header className={`${prefixCls}-header`} style={headStyle}>
           {title}
@@ -84,7 +85,7 @@ const Card: React.FC<CardProps> = (props) => {
       {extra && <div className={`${prefixCls}-extra`}>{extra}</div>}
     </div>
   )
-}
+})
 
 Card.displayName = 'Card'
 
