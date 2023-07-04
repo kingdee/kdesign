@@ -708,4 +708,18 @@ describe('Carousel', () => {
       }).not.toThrow()
     })
   })
+
+  // 12.special case
+  it('should correctly render contents when data is asynchronously fetched during compoennt is first render', async () => {
+    const fetchData = jest.fn().mockResolvedValue({ list: [1, 2, 3, 4] })
+    const wrapper = mount(
+      <Carousel>
+        {(await fetchData()).list.map((item: number, i: number) => {
+          return <div key={i}>{item}</div>
+        })}
+      </Carousel>,
+    )
+    expect(wrapper.find('.kd-carousel-list-item')).toHaveLength(6)
+    expect(wrapper.find('.kd-carousel-list-item').at(1)).toHaveClassName('kd-carousel-list-item-active')
+  })
 })
