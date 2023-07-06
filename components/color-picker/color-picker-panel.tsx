@@ -49,6 +49,7 @@ const ColorPickerPanel: FC<IColorPickerPanelProps> = (props) => {
     showColorTransfer,
     showPresetColor,
     showColorPickerBox,
+    showColorPickerPanel,
     value,
   } = props
   const panelInputRef = useRef<HTMLInputElement>(null)
@@ -69,7 +70,9 @@ const ColorPickerPanel: FC<IColorPickerPanelProps> = (props) => {
     [`${colorPickerPrefixCls}-panel-input-no-recommend`]: !showPresetColor,
   })
   const transparentCls = classNames(`${colorPickerPrefixCls}-panel-transparent`)
-  const colorDivContainerCls = classNames(`${colorPickerPrefixCls}-panel-colorDivContainer`)
+  const colorDivContainerCls = classNames(`${colorPickerPrefixCls}-panel-colorDivContainer`, {
+    [`${colorPickerPrefixCls}-panel-colorDivContainer-unset-color`]: presetColor?.length === 0,
+  })
 
   const colorLiClick = (index: number, colorValue: string) => {
     const formatArr = colorFormat(colorValue, alpha) as IColorTypesObj[]
@@ -220,79 +223,83 @@ const ColorPickerPanel: FC<IColorPickerPanelProps> = (props) => {
   })
 
   return (
-    <div className={panelCls} ref={panelClsRef}>
-      <ChromePicker
-        className={panelChromePickerCls}
-        color={colTypeArr[2].value}
-        onChange={handleChromeChange}
-      ></ChromePicker>
-      {functionalColor && showSwitch && (
-        <div className={panelFollowThemeCls}>
-          <span>
-            {(switchName?.internationalName && locale.getLangMsg('ColorPicker', switchName.internationalName)) ||
-              switchName.name}
-          </span>
-          <Switch checked={isFollow} onChange={handleSwitchChange} />
-        </div>
-      )}
-      {showColorTransfer && (
-        <>
-          <div className={panelInputCls} ref={panelInputRef}>
-            <Select
-              disabled={isFollow}
-              borderType="bordered"
-              value={correctColorValue}
-              placeholder="#"
-              onChange={handleTypeChange}
-              optionLabelProp="value"
-              getPopupContainer={() => panelInputRef.current as HTMLInputElement}
-            >
-              {colTypeArr.map((obj, i) => {
-                return (
-                  <Option
-                    title={obj.value}
-                    value={obj.value}
-                    className={classNames({
-                      'active-option': obj.type === currentColorType && obj.value === correctColorValue,
-                    })}
-                    key={i}
-                  >
-                    {obj.type}
-                  </Option>
-                )
-              })}
-            </Select>
-          </div>
-          <Input
-            className={transparentCls}
-            onChange={handleAlphaChange}
-            onBlur={handleAlphaBlur}
-            borderType="bordered"
-            value={alphaNoVerifyVal}
-            disabled={isFollow}
-          ></Input>
-        </>
-      )}
-      {showPresetColor && (
-        <div className={colorDivContainerCls}>
-          {((checkUserPresetColor(presetColor) && presetColorToHEX(presetColor)) || systemPresetColor).map(
-            (colorValue: string, i) => {
-              return (
-                <li
-                  key={i}
-                  style={{ backgroundColor: `${colorValue}` }}
-                  onClick={() => {
-                    colorLiClick(i, colorValue)
-                  }}
+    <>
+      {showColorPickerPanel && (
+        <div className={panelCls} ref={panelClsRef}>
+          <ChromePicker
+            className={panelChromePickerCls}
+            color={colTypeArr[2].value}
+            onChange={handleChromeChange}
+          ></ChromePicker>
+          {functionalColor && showSwitch && (
+            <div className={panelFollowThemeCls}>
+              <span>
+                {(switchName?.internationalName && locale.getLangMsg('ColorPicker', switchName.internationalName)) ||
+                  switchName.name}
+              </span>
+              <Switch checked={isFollow} onChange={handleSwitchChange} />
+            </div>
+          )}
+          {showColorTransfer && (
+            <>
+              <div className={panelInputCls} ref={panelInputRef}>
+                <Select
+                  disabled={isFollow}
+                  borderType="bordered"
+                  value={correctColorValue}
+                  placeholder="#"
+                  onChange={handleTypeChange}
+                  optionLabelProp="value"
+                  getPopupContainer={() => panelInputRef.current as HTMLInputElement}
                 >
-                  <div className={classNames('square', { 'square-click': clickedColorIndex === i })}></div>
-                </li>
-              )
-            },
+                  {colTypeArr.map((obj, i) => {
+                    return (
+                      <Option
+                        title={obj.value}
+                        value={obj.value}
+                        className={classNames({
+                          'active-option': obj.type === currentColorType && obj.value === correctColorValue,
+                        })}
+                        key={i}
+                      >
+                        {obj.type}
+                      </Option>
+                    )
+                  })}
+                </Select>
+              </div>
+              <Input
+                className={transparentCls}
+                onChange={handleAlphaChange}
+                onBlur={handleAlphaBlur}
+                borderType="bordered"
+                value={alphaNoVerifyVal}
+                disabled={isFollow}
+              ></Input>
+            </>
+          )}
+          {showPresetColor && (
+            <div className={colorDivContainerCls}>
+              {((checkUserPresetColor(presetColor) && presetColorToHEX(presetColor)) || systemPresetColor).map(
+                (colorValue: string, i) => {
+                  return (
+                    <li
+                      key={i}
+                      style={{ backgroundColor: `${colorValue}` }}
+                      onClick={() => {
+                        colorLiClick(i, colorValue)
+                      }}
+                    >
+                      <div className={classNames('square', { 'square-click': clickedColorIndex === i })}></div>
+                    </li>
+                  )
+                },
+              )}
+            </div>
           )}
         </div>
       )}
-    </div>
+    </>
   )
 }
 

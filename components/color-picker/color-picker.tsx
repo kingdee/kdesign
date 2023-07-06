@@ -58,6 +58,14 @@ const ColorPicker: FC<Partial<IColorPickerProps>> = (props) => {
   const containerCls = classNames(`${colorPickerPrefixCls}-container`)
   const inputCls = classNames(`${colorPickerPrefixCls}-input`, className)
   const inputRef = useRef<HTMLInputElement>(null)
+  const showColorPickerPanel =
+    showColorTransfer ||
+    (typeof showPresetColor === 'boolean' && showPresetColor && presetColor?.length) ||
+    typeof showPresetColor === 'undefined' ||
+    (functionalColor?.length && showSwitch) ||
+    showColorPickerBox?.showBox ||
+    showColorPickerBox?.showHue ||
+    showColorPickerBox?.showOpacity
 
   const setIconColor = (value: string) => {
     value === functionalColorName ? setIsFollow(true) : setIsFollow(false)
@@ -132,7 +140,7 @@ const ColorPicker: FC<Partial<IColorPickerProps>> = (props) => {
         className={afterIconContainerCls}
         style={{ backgroundColor: `${colTypeArr[2].value || defaultSystemColor}` }}
       >
-        <Icon type="arrow-down"></Icon>
+        {showColorPickerPanel && <Icon type="arrow-down"></Icon>}
       </div>
     )
   }
@@ -185,6 +193,7 @@ const ColorPicker: FC<Partial<IColorPickerProps>> = (props) => {
       setColTypeArr={setColTypeArr}
       currentColorType={currentColorType}
       setCurrentColorType={setCurrentColorType}
+      showColorPickerPanel={showColorPickerPanel}
     />
   )
 
