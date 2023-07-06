@@ -60,10 +60,17 @@ const Dropdown = React.forwardRef<unknown, DropDownProps>((props, ref) => {
     setVisible(!!props.visible)
   }, [props.visible])
 
-  const child = React.cloneElement(React.Children.only(children), {
-    ref: children.ref || ref,
-    className: classNames(`${prefixCls}-trigger`, children.props.className, { disabled }),
-  })
+  const child =
+    children && children?.type?.displayName === 'Input' ? (
+      <span className={classNames(`${prefixCls}-trigger`, `${prefixCls}-trigger-container`)} ref={ref as any}>
+        {children}
+      </span>
+    ) : (
+      React.cloneElement(React.Children.only(children), {
+        ref: children.ref || ref,
+        className: classNames(`${prefixCls}-trigger`, children.props.className, { disabled }),
+      })
+    )
 
   const isMenu = menu.type === Menu
 
