@@ -45,6 +45,7 @@ const Card: React.FC<CardProps> = React.forwardRef<HTMLDivElement, CardProps>((p
     selectable,
     checkboxProps,
     prefixCls: customPrefixcls,
+    ...others
   } = getCompProps('Card', userDefaultProps, props)
 
   // className前缀
@@ -53,7 +54,7 @@ const Card: React.FC<CardProps> = React.forwardRef<HTMLDivElement, CardProps>((p
   const cardClassName = classNames(prefixCls, { hoverable }, className)
 
   return (
-    <div ref={ref} className={cardClassName} style={style}>
+    <div ref={ref} className={cardClassName} style={style} {...others}>
       {title && !avatar && (
         <header className={`${prefixCls}-header`} style={headStyle}>
           {title}
