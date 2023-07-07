@@ -112,7 +112,8 @@ const SchemeFilter: React.FC<ISchemeProps> = (props) => {
 
   const handleChangeOption = (index: number, value: any) => {
     const nextScheme = cloneDeep(scheme)
-    nextScheme.items[index] = { ...nextScheme.items[index], value }
+    const realValue = value.target !== undefined ? value.target.value : value
+    nextScheme.items[index] = { ...nextScheme.items[index], value: realValue }
     setScheme(nextScheme)
   }
 
