@@ -286,6 +286,8 @@ const InternalSelect: React.ForwardRefRenderFunction<ISelectProps<SelectValue>> 
       }) || {}
     if (isMultiple) {
       searchRef.current?.focus()
+    } else {
+      searchRef.current?.blur()
     }
     const optionsObj = obj.props ? obj.props : obj || {}
     if (value !== undefined) {
