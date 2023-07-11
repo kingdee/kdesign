@@ -112,7 +112,7 @@ const InternalSelect: React.ForwardRefRenderFunction<ISelectProps<SelectValue>> 
     [`${selectPrefixCls}-borderless`]: borderType === 'none',
     [`${selectPrefixCls}-size-${size}`]: size,
     [`${selectPrefixCls}-wrapper`]: true,
-    [`${selectPrefixCls}-show-search`]: isShowSearch,
+    [`${selectPrefixCls}-show-search`]: isShowSearch && focusd,
   })
 
   useEffect(() => {
