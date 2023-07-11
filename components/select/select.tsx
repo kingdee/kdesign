@@ -761,7 +761,7 @@ const InternalSelect: React.ForwardRefRenderFunction<ISelectProps<SelectValue>> 
       onDropdownVisibleChange && onDropdownVisibleChange(true)
     }
   }, [optionShow])
-  const [activeIndex, setActiveIndex] = useState(getActiveIndex(0))
+  const [activeIndex, setActiveIndex] = useState(isShowSearch ? getActiveIndex(0) : -1)
   const onInternalKeyDown: React.KeyboardEventHandler<HTMLSpanElement> = (e) => {
     const { which } = e
     // open
@@ -849,6 +849,9 @@ const InternalSelect: React.ForwardRefRenderFunction<ISelectProps<SelectValue>> 
   }
 
   const handleVisibleChange = (visible: boolean) => {
+    if (!visible) {
+      setActiveIndex(isShowSearch ? getActiveIndex(0) : -1)
+    }
     if (visible !== optionShow) {
       props.visible === undefined && setOptionShow(visible)
       onVisibleChange && onVisibleChange(visible)

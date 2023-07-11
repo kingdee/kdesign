@@ -63,8 +63,11 @@ const InternalOption: React.ForwardRefRenderFunction<unknown, ISelectOptionProps
     }
     onChangeSelect && onChangeSelect(value, children, isSelected)
   }
-  const handleOnMouseMove = () => {
+  const handleOnMouseEnter = () => {
     onChangeActiveIndex && onChangeActiveIndex(index)
+  }
+  const handleOnMouseLeave = () => {
+    onChangeActiveIndex && onChangeActiveIndex(-1)
   }
   const titleText = title || (typeof children !== 'object' ? children : null)
 
@@ -80,7 +83,8 @@ const InternalOption: React.ForwardRefRenderFunction<unknown, ISelectOptionProps
         className={optionCls}
         title={titleText}
         onClick={handleClick}
-        onMouseMove={handleOnMouseMove}
+        onMouseEnter={handleOnMouseEnter}
+        onMouseLeave={handleOnMouseLeave}
       >
         <div className={contentCls}>
           {/* {children} */}
