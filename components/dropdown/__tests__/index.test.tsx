@@ -4,6 +4,7 @@ import Dropdown from '../index'
 import ConfigProvider from '../../config-provider'
 import { Placements, Triggers } from '../../_utils/usePopper'
 import { Menu, Item } from '../menu'
+import Input from '../../input'
 import mountTest from '../../../tests/shared/mountTest'
 
 const menu = (
@@ -149,7 +150,7 @@ describe('Dropdown', () => {
     it('only one menuItem should trigger onItemClick', () => {
       const onItemClick = jest.fn()
 
-      let menu = (
+      const menu = (
         <Dropdown.Menu>
           <Dropdown.Item key="1">
             <span>菜单1</span>
@@ -426,4 +427,22 @@ describe('Dropdown', () => {
     expect(ref.current instanceof HTMLSpanElement).toBe(true)
   })
   // 11. special case
+  describe('special case', () => {
+    it('input as child', () => {
+      let visible = null
+      const onVisibleChange = jest.fn((v) => {
+        visible = v
+      })
+
+      const wapper = mount(
+        <Dropdown menu={menu} trigger={'focus'} onVisibleChange={onVisibleChange}>
+          <Input />
+        </Dropdown>,
+      )
+      wapper.find('input').simulate('focus')
+      expect(onVisibleChange).toHaveBeenCalled()
+      wapper.find('input').simulate('blur')
+      expect(visible).toEqual(false)
+    })
+  })
 })
