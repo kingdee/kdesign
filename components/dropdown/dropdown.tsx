@@ -49,6 +49,7 @@ const Dropdown = React.forwardRef<unknown, DropDownProps>((props, ref) => {
     onItemClick,
     defaultVisible,
     onVisibleChange,
+    trigger,
     prefixCls: customPrefixcls,
   } = allProps
 
@@ -60,10 +61,26 @@ const Dropdown = React.forwardRef<unknown, DropDownProps>((props, ref) => {
     setVisible(!!props.visible)
   }, [props.visible])
 
+  const handleVisibleChange = (visible: boolean) => {
+    props.visible === undefined && setVisible(visible)
+    onVisibleChange && onVisibleChange(visible)
+  }
+
   const child =
     children && children?.type?.displayName === 'Input' ? (
       <span className={classNames(`${prefixCls}-trigger`, `${prefixCls}-trigger-container`)} ref={ref as any}>
-        {children}
+        {trigger === 'focus'
+          ? React.cloneElement(React.Children.only(children), {
+              onFocus: (e: React.FocusEvent<HTMLInputElement, Element>) => {
+                children.props.onFocus && children.props.onFocus(e)
+                handleVisibleChange(true)
+              },
+              onBlur: (e: React.FocusEvent<HTMLInputElement, Element>) => {
+                children.props.onBlur && children.props.onBlur(e)
+                handleVisibleChange(false)
+              },
+            })
+          : children}
       </span>
     ) : (
       React.cloneElement(React.Children.only(children), {
@@ -142,11 +159,6 @@ const Dropdown = React.forwardRef<unknown, DropDownProps>((props, ref) => {
       })}
     </ul>
   )
-
-  const handleVisibleChange = (visible: boolean) => {
-    props.visible === undefined && setVisible(visible)
-    onVisibleChange && onVisibleChange(visible)
-  }
 
   const popperProps = {
     ...allProps,
