@@ -64,6 +64,8 @@ const InternalSelect: React.ForwardRefRenderFunction<ISelectProps<SelectValue>> 
   const dropDownRef = useRef<any>(null)
   const multipleRef = useRef<any>({ selectedVal: isMultiple ? [] : null, selectMulOpts: [] }) // 多选ref已选中项
   const measureRef = useRef<HTMLSpanElement>(null)
+  const clearRef = useRef<HTMLSpanElement>(null)
+
   const [mulOptions, setMulOptions] = useState<any>([])
   const [singleVal, setSingleVal] = useState<any>('')
   const [optionShow, setOptionShow] = useState<boolean>(
@@ -434,7 +436,6 @@ const InternalSelect: React.ForwardRefRenderFunction<ISelectProps<SelectValue>> 
   // 渲染后缀图标
   const renderSuffix = () => {
     const { suffixIcon } = selectProps
-    const { selectedVal } = multipleRef.current
     // 选择器下拉icon样式
     const arrowIconCls = classNames({
       [`${selectPrefixCls}-icon-arrow`]: true,
@@ -444,14 +445,14 @@ const InternalSelect: React.ForwardRefRenderFunction<ISelectProps<SelectValue>> 
     })
 
     const iconShow =
-      allowClear && !disabled && ((isMultiple ? mulOptions.length > 0 : (selectedVal ?? '') !== '') || searchValue)
+      allowClear && !disabled && ((isMultiple ? mulOptions.length > 0 : (singleVal ?? '') !== '') || searchValue)
     const clearIconCls = classNames({
       [`${selectPrefixCls}-icon-clear`]: true,
     })
     return (
       <>
         {iconShow && (
-          <span onClick={handleReset} onMouseDown={(e) => e.preventDefault()} className={clearIconCls}>
+          <span onClick={handleReset} onMouseDown={(e) => e.preventDefault()} className={clearIconCls} ref={clearRef}>
             {clearIcon || <Icon type="close-solid" />}
           </span>
         )}
@@ -761,6 +762,17 @@ const InternalSelect: React.ForwardRefRenderFunction<ISelectProps<SelectValue>> 
       onDropdownVisibleChange && onDropdownVisibleChange(true)
     }
   }, [optionShow])
+
+  useEffect(() => {
+    const fn = (e: MouseEvent) => {
+      e.stopPropagation()
+    }
+    clearRef.current?.addEventListener('mouseup', fn)
+    return () => {
+      clearRef.current?.removeEventListener('mouseup', fn)
+    }
+  }, [singleVal, mulOptions])
+
   const [activeIndex, setActiveIndex] = useState(isShowSearch ? getActiveIndex(0) : -1)
   const onInternalKeyDown: React.KeyboardEventHandler<HTMLSpanElement> = (e) => {
     const { which } = e
