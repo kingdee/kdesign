@@ -41,7 +41,7 @@ const InternalSelect: React.ForwardRefRenderFunction<ISelectProps<SelectValue>> 
     children,
     options,
     placeholder,
-    dropdownStyle,
+    dropdownStyle = {},
     style,
     clearIcon,
     filterOption,
@@ -559,7 +559,6 @@ const InternalSelect: React.ForwardRefRenderFunction<ISelectProps<SelectValue>> 
       maxHeight: listHeight || '300px',
     }
     // 下拉框style属性
-    const dropDownStyle = Object.assign({ width: style?.width }, dropdownStyle)
     const checkboxStyle = {
       height: '30px',
       background: 'none',
@@ -569,7 +568,7 @@ const InternalSelect: React.ForwardRefRenderFunction<ISelectProps<SelectValue>> 
     return (
       <>
         {
-          <div className={dropDownCls} style={dropDownStyle} ref={dropDownRef}>
+          <div className={dropDownCls} style={dropdownStyle} ref={dropDownRef}>
             {!dropdownRender && childrenToRender.length > 0 && dropRender(eleOptionList, heightStyle)}
             {/* 下拉列表为空 */}
             {renderNotContent()}
@@ -856,7 +855,14 @@ const InternalSelect: React.ForwardRefRenderFunction<ISelectProps<SelectValue>> 
   const catchStyle = () => {
     if (selectRef?.current) {
       const { width } = selectRef.current?.getBoundingClientRect()
-      return { width: dropdownStyle?.width || (width > 75 ? width : 75), zIndex: 1050, ...popperStyle }
+      return {
+        minWidth: width,
+        maxWidth: 600,
+        ...dropdownStyle,
+        width: dropdownStyle?.width || 'auto',
+        zIndex: 1050,
+        ...popperStyle,
+      }
     }
   }
 
