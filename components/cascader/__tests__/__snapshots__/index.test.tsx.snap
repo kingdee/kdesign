@@ -2,14 +2,13 @@
 
 exports[`Cascader render null or undefined without errors 1`] = `
 <Cascader>
-  <span
-    allowClear={true}
+  <div
     className="kd-cascader-picker"
-    popupPlacement="bottomLeft"
     tabIndex={0}
   >
-    <span>
+    <div>
       <Input
+        borderType="underline"
         className="kd-cascader-picker-input"
         readOnly={true}
         suffix={
@@ -53,6 +52,7 @@ exports[`Cascader render null or undefined without errors 1`] = `
         >
           <span
             className="kd-input-wrapper kd-input-wrapper-size-middle kd-input-wrapper-underline kd-cascader-picker-input"
+            onClick={[Function]}
             onMouseEnter={[Function]}
             onMouseLeave={[Function]}
           >
@@ -90,8 +90,8 @@ exports[`Cascader render null or undefined without errors 1`] = `
       <span
         className="kd-cascader-picker-label"
       />
-    </span>
-  </span>
+    </div>
+  </div>
 </Cascader>
 `;
 
