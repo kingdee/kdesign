@@ -183,7 +183,7 @@
 }
 
 .@{kd-prefix}-cascader {
-  &-bordered-single {
+  &-bordered:not(.@{kd-prefix}-cascader-multiple) {
     .@{cascader-picker-prefix-cls}-label {
       padding-left: 9px;
     }
@@ -192,9 +192,9 @@
     }
   }
 
-  &-bordered-multiple {
+  &-bordered&-multiple {
     border: 1px solid #d9d9d9;
-    padding-left: 8px !important;
+    padding-left: 8px;
     border-radius: 2px;
 
     .@{kd-prefix}-cascader-suffix {

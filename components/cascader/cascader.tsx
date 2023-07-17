@@ -277,7 +277,7 @@ const Cascader = React.forwardRef<unknown, CascaderProps>((props, ref) => {
     const multipleCls = classNames({
       disabled: disabled,
       [`${prefixCls}-multiple`]: true,
-      [`${prefixCls}-bordered-multiple`]: bordered,
+      [`${prefixCls}-bordered`]: bordered,
     })
 
     const itemCls = classNames({
@@ -337,7 +337,7 @@ const Cascader = React.forwardRef<unknown, CascaderProps>((props, ref) => {
         expand: visible,
         allowClear,
         disabled: disabled,
-        [`${prefixCls}-bordered-single`]: bordered,
+        [`${prefixCls}-bordered`]: bordered,
       }),
     }
 

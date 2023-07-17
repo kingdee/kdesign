@@ -159,7 +159,7 @@ exports[`Cascader renders correctly 2`] = `
 
 exports[`Cascader renders correctly 3`] = `
 <div
-  class="kd-cascader-picker kd-cascader-bordered-single"
+  class="kd-cascader-picker kd-cascader-bordered"
   tabindex="0"
 >
   <div>
