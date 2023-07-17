@@ -66,7 +66,7 @@ exports[`Select renders correctly 1`] = `
     tabindex="0"
   >
     <div
-      class="kd-select-underline kd-select-size-middle kd-select-wrapper kd-select-show-search kd-select-multiple kd-select-placeholder"
+      class="kd-select-underline kd-select-size-middle kd-select-wrapper kd-select-multiple kd-select-placeholder"
     >
       <span
         class="kd-select-selection-search"
