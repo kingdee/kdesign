@@ -16,7 +16,7 @@ export interface CollapseProps {
   defaultActiveKey?: string[] | string | number[] | number // 初始化选中面板的 key
   expandIcon?: React.ReactNode | ((props: PanelProps) => React.ReactNode) // 自定义切换图标
   expandIconPosition?: IconPositionType // 设置切换图标位置
-  onChange?: () => void // 切换面板时的回调
+  onChange?: (v: any) => void // 切换面板时的回调
   style?: React.CSSProperties
   className?: string
   children?: React.ReactNode
