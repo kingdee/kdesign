@@ -11,39 +11,3 @@ exports[`Image renders correctly 1`] = `
   />
 </div>
 `;
-
-exports[`Image renders operations 1`] = `
-<Image
-  operations={
-    Array [
-      <Icon
-        onClick={[Function]}
-        title="下载"
-        type="download"
-      />,
-    ]
-  }
-  src="https://kui.kingdee.com/assets/image/img02.jpg"
-  width={142}
->
-  <div
-    className="kd-image error"
-    style={
-      Object {
-        "height": undefined,
-        "width": 142,
-      }
-    }
-  >
-    <img
-      className="kd-image-img"
-      src=""
-      style={
-        Object {
-          "height": undefined,
-        }
-      }
-    />
-  </div>
-</Image>
-`;
