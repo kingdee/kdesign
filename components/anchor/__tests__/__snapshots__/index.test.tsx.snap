@@ -1,33 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Anchor render null or undefined buttons without errors 1`] = `
-<Anchor>
-  <div
-    className="kd-anchor-wrapper"
-  >
-    <div
-      className="kd-anchor"
-      style={
-        Object {
-          "position": "fixed",
-          "top": 0,
-          "width": 0,
-        }
-      }
-    >
-      <div
-        className="kd-anchor-line"
-      >
-        <span
-          className="kd-anchor-line-slider"
-        />
-      </div>
-    </div>
-  </div>
-</Anchor>
-`;
-
-exports[`Anchor renders correctly 1`] = `
+exports[`Anchor 2.render test renders correctly 1`] = `
 <div
   class="kd-anchor-wrapper"
 >
@@ -55,7 +28,7 @@ exports[`Anchor renders correctly 1`] = `
 </div>
 `;
 
-exports[`Anchor renders correctly 2`] = `
+exports[`Anchor 2.render test renders correctly 2`] = `
 <div
   class="kd-anchor-wrapper"
 >
@@ -83,7 +56,7 @@ exports[`Anchor renders correctly 2`] = `
 </div>
 `;
 
-exports[`Anchor renders correctly 3`] = `
+exports[`Anchor 2.render test renders correctly 3`] = `
 <div
   class="kd-anchor-menu-wrapper"
   style="width:100%"
@@ -129,7 +102,7 @@ exports[`Anchor renders correctly 3`] = `
 </div>
 `;
 
-exports[`Anchor renders correctly 4`] = `
+exports[`Anchor 2.render test renders correctly 4`] = `
 <span
   class="kd-anchor-advanced-arrows"
 >
@@ -137,4 +110,31 @@ exports[`Anchor renders correctly 4`] = `
     class="kdicon kdicon-location-solid"
   />
 </span>
+`;
+
+exports[`Anchor 4.render null or undefined without errors render null or undefined buttons without errors 1`] = `
+<Anchor>
+  <div
+    className="kd-anchor-wrapper"
+  >
+    <div
+      className="kd-anchor"
+      style={
+        Object {
+          "position": "fixed",
+          "top": 0,
+          "width": 0,
+        }
+      }
+    >
+      <div
+        className="kd-anchor-line"
+      >
+        <span
+          className="kd-anchor-line-slider"
+        />
+      </div>
+    </div>
+  </div>
+</Anchor>
 `;
