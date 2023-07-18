@@ -1,6 +1,97 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Avatar render null or undefined buttons without errors 1`] = `
+exports[`Avatar 2.render test renders correctly 1`] = `
+<span
+  class="kd-avatar kd-avatar-md kd-avatar-circle"
+>
+  <span
+    class="kd-avatar-string"
+    style="opacity:0"
+  >
+    Avatar
+  </span>
+</span>
+`;
+
+exports[`Avatar 2.render test renders correctly 2`] = `
+<span
+  class="kd-avatar kd-avatar-lg kd-avatar-circle"
+>
+  <span
+    class="kd-avatar-string"
+    style="opacity:0"
+  >
+    Avatar
+  </span>
+</span>
+`;
+
+exports[`Avatar 2.render test renders correctly 3`] = `
+<span
+  class="kd-avatar kd-avatar-md kd-avatar-circle"
+>
+  <span
+    class="kd-avatar-string"
+    style="opacity:0"
+  >
+    Avatar
+  </span>
+</span>
+`;
+
+exports[`Avatar 2.render test renders correctly 4`] = `
+<span
+  class="kd-avatar kd-avatar-sm kd-avatar-circle"
+>
+  <span
+    class="kd-avatar-string"
+    style="opacity:0"
+  >
+    Avatar
+  </span>
+</span>
+`;
+
+exports[`Avatar 2.render test renders correctly 5`] = `
+<span
+  class="kd-avatar kd-avatar-xs kd-avatar-circle"
+>
+  <span
+    class="kd-avatar-string"
+    style="opacity:0"
+  >
+    Avatar
+  </span>
+</span>
+`;
+
+exports[`Avatar 2.render test renders correctly 6`] = `
+<span
+  class="kd-avatar kd-avatar-md kd-avatar-circle"
+>
+  <span
+    class="kd-avatar-string"
+    style="opacity:0"
+  >
+    Avatar
+  </span>
+</span>
+`;
+
+exports[`Avatar 2.render test renders correctly 7`] = `
+<span
+  class="kd-avatar kd-avatar-md kd-avatar-square"
+>
+  <span
+    class="kd-avatar-string"
+    style="opacity:0"
+  >
+    Avatar
+  </span>
+</span>
+`;
+
+exports[`Avatar 4. render null or undefined without errors render null or undefined buttons without errors 1`] = `
 <Avatar>
   <span
     className="kd-avatar kd-avatar-md kd-avatar-circle"
@@ -18,98 +109,7 @@ exports[`Avatar render null or undefined buttons without errors 1`] = `
 </Avatar>
 `;
 
-exports[`Avatar renders correctly 1`] = `
-<span
-  class="kd-avatar kd-avatar-md kd-avatar-circle"
->
-  <span
-    class="kd-avatar-string"
-    style="opacity:0"
-  >
-    Avatar
-  </span>
-</span>
-`;
-
-exports[`Avatar renders correctly 2`] = `
-<span
-  class="kd-avatar kd-avatar-lg kd-avatar-circle"
->
-  <span
-    class="kd-avatar-string"
-    style="opacity:0"
-  >
-    Avatar
-  </span>
-</span>
-`;
-
-exports[`Avatar renders correctly 3`] = `
-<span
-  class="kd-avatar kd-avatar-md kd-avatar-circle"
->
-  <span
-    class="kd-avatar-string"
-    style="opacity:0"
-  >
-    Avatar
-  </span>
-</span>
-`;
-
-exports[`Avatar renders correctly 4`] = `
-<span
-  class="kd-avatar kd-avatar-sm kd-avatar-circle"
->
-  <span
-    class="kd-avatar-string"
-    style="opacity:0"
-  >
-    Avatar
-  </span>
-</span>
-`;
-
-exports[`Avatar renders correctly 5`] = `
-<span
-  class="kd-avatar kd-avatar-xs kd-avatar-circle"
->
-  <span
-    class="kd-avatar-string"
-    style="opacity:0"
-  >
-    Avatar
-  </span>
-</span>
-`;
-
-exports[`Avatar renders correctly 6`] = `
-<span
-  class="kd-avatar kd-avatar-md kd-avatar-circle"
->
-  <span
-    class="kd-avatar-string"
-    style="opacity:0"
-  >
-    Avatar
-  </span>
-</span>
-`;
-
-exports[`Avatar renders correctly 7`] = `
-<span
-  class="kd-avatar kd-avatar-md kd-avatar-square"
->
-  <span
-    class="kd-avatar-string"
-    style="opacity:0"
-  >
-    Avatar
-  </span>
-</span>
-`;
-
-exports[`Avatar should handle onError correctly 1`] = `
+exports[`Avatar 7.component interaction(event) should handle onError correctly 1`] = `
 <Foo>
   <Avatar
     onError={[Function]}
