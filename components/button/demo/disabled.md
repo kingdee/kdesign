@@ -12,6 +12,11 @@ import { Button } from '@kdcloudjs/kdesign'
 
 function Demo() {
   const demoButtonStyle = { margin: '0px 8px 8px 0' }
+  const overlay1 = [
+    { value: '1', label: '发布' },
+    { value: '2', label: '生成凭证' },
+    { value: '3', label: '打印' },
+  ]
   return (
     <div style={{ width: '400px' }}>
       <Button type="primary" style={demoButtonStyle} disabled>
@@ -32,6 +37,9 @@ function Demo() {
       <Button type="text" style={demoButtonStyle} disabled>
         text
       </Button>
+      <Button.Dropdown overlay={overlay1} style={demoButtonStyle} disabled>
+        更多
+      </Button.Dropdown>
     </div>
   )
 }
