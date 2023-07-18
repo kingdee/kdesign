@@ -31,7 +31,7 @@ subtitle: 锚点
 | getCurrentAnchor | 自定义高亮的锚点 | () => string | - |  | 1.0.0 |
 | icon | 高级锚点显示图标 | ReactNode | - | - | 1.0.0
 | lockedIcon | 自定义锁定图标：\[未锁定图标, 锁定后的图标]，为 false 时隐藏 | boolean \| \[ReactNode, ReactNode] | - |  | 1.0.0 |
-| offsetTop | 距离窗口顶部达到指定偏移量后触发 | number |  |  | 1.0.0 |
+| offsetTop | 距离窗口顶部指定偏移量后触发固定(affix为true时) | number |  |  | 1.0.0 |
 | onChange | 监听锚点链接改变 | (currentActiveLink: string) => void | - |  | 1.0.0 |
 | onClick | `click` 事件的 handler | function(e: Event, link: Object) | - |  | 1.0.0 |
 | targetOffset | 锚点滚动偏移量，默认与 offsetTop 相同 | number | - | - | 1.5.1 |
