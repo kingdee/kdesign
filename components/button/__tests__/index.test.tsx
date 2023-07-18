@@ -158,10 +158,6 @@ describe('Button', () => {
     expect(ref.current instanceof HTMLSpanElement).toBe(true)
   })
 
-  // 10. react controlled component
-
-  // 11. component inner logic test
-
   it('text attributes should not use with shape or loading', () => {
     const wrapper = mount(
       <Button shape="circle" type="text">
@@ -169,5 +165,39 @@ describe('Button', () => {
       </Button>,
     )
     expect(wrapper.find('.kd-btn-shape-circle').length).toBe(0)
+  })
+
+  // 10. api test
+
+  describe('10. api test', () => {
+    it('block API test', () => {
+      const wrapper = mount(<Button block>block Button</Button>)
+      expect(wrapper.find(`.kd-btn`)).toHaveClassName(`.kd-btn-block`)
+
+      ButtonShapes.forEach((shape) => {
+        const TestButton = mount(
+          <Button block shape={shape}>
+            block Button
+          </Button>,
+        )
+        expect(TestButton.find(`.kd-btn`)).not.toHaveClassName(`.kd-btn-block`)
+      })
+    })
+
+    it('bordered API test', () => {
+      const BorderedButton = mount(<Button bordered={true}>Button Text</Button>)
+      expect(BorderedButton.find(`.kd-btn`)).not.toHaveClassName(`.kd-btn-no-border`)
+    })
+
+    it('htmlType API test', () => {
+      ButtonHTMLTypes.forEach((htmlType) => {
+        const TestButton = mount(
+          <Button block htmlType={htmlType}>
+            test Button
+          </Button>,
+        )
+        expect(TestButton.find(`.kd-btn`).prop('type')).toEqual(htmlType)
+      })
+    })
   })
 })
