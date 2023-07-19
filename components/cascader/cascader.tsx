@@ -375,7 +375,6 @@ const Cascader = forwardRef<unknown, CascaderProps>((props, ref) => {
               </span>
               {allowClear && <Icon type="close-solid" className={`${prefixCls}-picker-close`} onClick={handleClear} />}
             </div>
-            {}
           </>
         )}
       </div>
@@ -431,8 +430,10 @@ const Cascader = forwardRef<unknown, CascaderProps>((props, ref) => {
       ({ [fieldNames.value]: value }: CascaderOptionType) => value as string | number,
     )
 
-    setCurrentOptions(selectedOptions)
-    props.value === undefined && setValue(selectedValue as CascaderValueType)
+    if (typeof props.value === 'undefined') {
+      setCurrentOptions(selectedOptions)
+      setValue(selectedValue as CascaderValueType)
+    }
     props.onChange && props.onChange(selectedValue as CascaderValueType, selectedOptions)
   }
 
@@ -495,7 +496,7 @@ const Cascader = forwardRef<unknown, CascaderProps>((props, ref) => {
                           disabled={opt.disabled}
                           onChange={(e) => onMultipleChecked(opt, e.target.checked)}
                           className={`${prefixCls}-checkbox`}
-                        ></Checkbox>
+                        />
                         {node}
                       </>
                     ) : (
