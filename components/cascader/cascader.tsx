@@ -1,4 +1,16 @@
-import React, { useMemo, useCallback, useState, useRef } from 'react'
+import React, {
+  useMemo,
+  useCallback,
+  useState,
+  useRef,
+  useEffect,
+  ReactNode,
+  CSSProperties,
+  forwardRef,
+  useContext,
+  Children,
+  cloneElement,
+} from 'react'
 import classNames from 'classnames'
 import { tuple } from '../_utils/type'
 import { getCompProps } from '../_utils'
@@ -13,7 +25,7 @@ import { flattenAll, useChecked, getHalfChecked, getChecked, getMultipleCheckVal
 
 export interface CascaderOptionType {
   value?: string
-  label?: React.ReactNode
+  label?: ReactNode
   disabled?: boolean
   isLeaf?: boolean
   loading?: boolean
@@ -58,12 +70,12 @@ export interface CascaderProps extends PopperProps {
   notFoundContent?: string
   value?: CascaderValueType
   maxTagCount?: number
-  maxTagPlaceholder?: React.ReactNode | ((omittedValues: number) => string)
-  children?: React.ReactNode
+  maxTagPlaceholder?: ReactNode | ((omittedValues: number) => string)
+  children?: ReactNode
   mode?: 'single' | 'multiple'
-  style?: React.CSSProperties
-  suffixIcon?: React.ReactNode
-  expandIcon?: React.ReactNode
+  style?: CSSProperties
+  suffixIcon?: ReactNode
+  expandIcon?: ReactNode
   defaultPopupVisible?: boolean
   defaultValue?: CascaderValueType
   popupPlacement?: CascaderPlacementType
@@ -73,14 +85,14 @@ export interface CascaderProps extends PopperProps {
   onPopupVisibleChange?: (visible: boolean) => void
   onPopperVisibleChange?: (visible: boolean) => void
   loadData?: (selectedOptions: CascaderOptionType[]) => void
-  dropdownRender?: (menus: React.ReactNode) => React.ReactNode
+  dropdownRender?: (menus: ReactNode) => ReactNode
   getPopupContainer?: (triggerNode: HTMLElement) => HTMLElement
   onChange?: (value: CascaderValueType, currentOptions?: CascaderOptionType[]) => void
-  displayRender?: (label: string[], currentOptions?: CascaderOptionType[]) => React.ReactNode
+  displayRender?: (label: string[], currentOptions?: CascaderOptionType[]) => ReactNode
 }
 
-const Cascader = React.forwardRef<unknown, CascaderProps>((props, ref) => {
-  const { getPrefixCls, prefixCls: pkgPrefixCls, compDefaultProps: userDefaultProps } = React.useContext(ConfigContext)
+const Cascader = forwardRef<unknown, CascaderProps>((props, ref) => {
+  const { getPrefixCls, prefixCls: pkgPrefixCls, compDefaultProps: userDefaultProps } = useContext(ConfigContext)
 
   // 属性需要合并一遍用户定义的默认属性
   const allProps = getCompProps('Cascader', userDefaultProps, props)
@@ -121,11 +133,11 @@ const Cascader = React.forwardRef<unknown, CascaderProps>((props, ref) => {
   const pickerRef = useRef<HTMLSpanElement>()
   const triggerRef = useRef<HTMLSpanElement>()
   const wrapperRef = useRef<HTMLDivElement>()
-
   const mergeRef = (ref || pickerRef) as any
+  const refMaxTagHolder = useRef<any>(null)
 
   const [visible, setVisible] = useState(!!props.popperVisible || !!props.popupVisible || defaultPopupVisible)
-  React.useEffect(() => {
+  useEffect(() => {
     setVisible(!!props.popperVisible || !!props.popupVisible)
   }, [props.popperVisible, props.popupVisible])
 
@@ -133,7 +145,7 @@ const Cascader = React.forwardRef<unknown, CascaderProps>((props, ref) => {
   const [currentOptions, setCurrentOptions] = useState<CascaderOptionType[]>([])
   const [selectedOptions, setSelectedOptions] = useState<CascaderOptionType[]>([])
   const [value, setValue] = useState<CascaderValueType>(props.value || defaultValue || [])
-  React.useEffect(() => {
+  useEffect(() => {
     props.value && setValue(props.value)
   }, [props.value])
 
@@ -143,7 +155,7 @@ const Cascader = React.forwardRef<unknown, CascaderProps>((props, ref) => {
 
   const [checkedKeys, halfCheckedKeys] = useChecked(value, flattenData, keysData, isMultiple)
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (!isMultiple && value && options?.length > 0) {
       const currentOptions: CascaderOptionType[] = []
       const menus = [options]
@@ -165,7 +177,7 @@ const Cascader = React.forwardRef<unknown, CascaderProps>((props, ref) => {
     }
   }, [options, value, selectedOptions, fieldNames, isMultiple])
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (isMultiple && value && options?.length > 0) {
       const currentOptions: CascaderOptionType[] = []
       const lastselectedOptions = value[value?.length - 1] || []
@@ -191,13 +203,13 @@ const Cascader = React.forwardRef<unknown, CascaderProps>((props, ref) => {
     }
   }, [options, value, fieldNames, isMultiple])
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (allProps.autoFocus) {
       mergeRef.current?.focus()
     }
   }, [allProps.autoFocus, mergeRef])
 
-  React.useEffect(() => {
+  useEffect(() => {
     wrapperRef.current?.addEventListener('mouseup', (e: MouseEvent) => {
       const isCloseBtn = (e?.target as Element)?.className.indexOf('kd-tag-close-icon') > -1
       if (isCloseBtn) {
@@ -268,6 +280,14 @@ const Cascader = React.forwardRef<unknown, CascaderProps>((props, ref) => {
     }
   }, [disabled, maxTagPlaceholder, currentOptions])
 
+  useEffect(() => {
+    if (maxTagCount && currentOptions.length > maxTagCount) {
+      if (maxTagPlaceholder) {
+        refMaxTagHolder.current = handleMaxTagHolder() || null
+      }
+    }
+  }, [maxTagCount, currentOptions])
+
   const handleRemove = (e: any, opt: any) => {
     e.stopPropagation()
     onMultipleChecked([...opt].pop(), false)
@@ -285,6 +305,7 @@ const Cascader = React.forwardRef<unknown, CascaderProps>((props, ref) => {
       [`${prefixCls}-tag-describe`]: true,
     })
     const TagStyle = { margin: '2px 8px 2px 0', maxWidth: '100%' }
+
     return (
       <div className={multipleCls} ref={triggerRef as any} style={style} {...otherProps}>
         <div className={`${prefixCls}-multiple-wrapper`} ref={wrapperRef as any}>
@@ -303,7 +324,7 @@ const Cascader = React.forwardRef<unknown, CascaderProps>((props, ref) => {
               })}
               {maxTagCount && currentOptions.length > maxTagCount ? (
                 maxTagPlaceholder ? (
-                  handleMaxTagHolder()
+                  refMaxTagHolder.current
                 ) : (
                   <span className={itemCls}>
                     <span className={`${prefixCls}-tag-describe-content`}>共{currentOptions.length}项</span>
@@ -343,8 +364,8 @@ const Cascader = React.forwardRef<unknown, CascaderProps>((props, ref) => {
 
     return (
       <div {...singleProps} ref={mergeRef} {...otherProps}>
-        {React.Children.count(children) === 1 && children.type ? (
-          React.cloneElement(children, { ref: triggerRef as any })
+        {Children.count(children) === 1 && children.type ? (
+          cloneElement(children, { ref: triggerRef as any })
         ) : (
           <>
             <div ref={triggerRef as any}>
