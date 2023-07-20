@@ -28,8 +28,15 @@ function Demo() {
         return (
           <Button
             key={index}
-            onClick={() => {
-              Modal[type]({ title: map[type], body: `这是${map[type]}类型的提示弹窗`, bodyStyle, getContainer: () => false })
+            onMouseDown={(event) => event.preventDefault()}
+            onClick={(event) => {
+              event.preventDefault()
+              Modal[type]({
+                title: map[type],
+                body: `这是${map[type]}类型的提示弹窗`,
+                bodyStyle,
+                getContainer: () => false,
+              })
             }}>
             {map[type]}
           </Button>
