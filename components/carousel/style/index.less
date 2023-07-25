@@ -1,6 +1,7 @@
 @import '../../style/themes/index';
 @import './mixin.less';
 @carousel-prefix-cls: ~'@{kd-prefix}-carousel';
+
 .@{carousel-prefix-cls} {
   &-root {
     position: relative;
@@ -27,18 +28,23 @@
 
     &-slide {
       width: 100%;
+
       .@{carousel-prefix-cls}-list-item {
         opacity: 1;
         border-radius: @carousel-boder-radius;
+
         &-animation {
           transition: opacity 0.3s ease;
         }
+
         &-none-animation {
           transition: none;
         }
+
         &-not-hidden {
           opacity: 1;
         }
+
         &-hidden {
           opacity: 0;
         }
@@ -47,30 +53,40 @@
 
     &-fade {
       flex: 1;
+
       .@{carousel-prefix-cls}-list-item {
         opacity: 1;
+
         &-animation {
           transition: opacity 0.3s ease;
         }
+
         &-none-animation {
           transition: none;
         }
+
         &-not-hidden {
           opacity: 1;
+          z-index: 1;
         }
+
         &-hidden {
           opacity: 0;
+          z-index: 0;
         }
       }
     }
 
     &-display {
       width: 100%;
+
       .@{carousel-prefix-cls}-list-item {
         display: block;
+
         &-not-hidden {
           display: block;
         }
+
         &-hidden {
           display: none;
         }
@@ -82,25 +98,29 @@
     position: absolute;
     list-style: none;
     padding: 0;
+    z-index: 1;
 
     &-left {
       .vertical;
       left: @carousel-dots-margin-left;
     }
+
     &-right {
       .vertical;
       right: @carousel-dots-margin-right;
     }
+
     &-bottom {
       .horizontal;
       bottom: @carousel-dots-margin-bottom;
     }
+
     &-top {
       .horizontal;
       top: @carousel-dots-margin-top;
     }
 
-    &-dot > button {
+    &-dot>button {
       display: block;
       border-radius: @carousel-dots-boder-radius;
       box-sizing: border-box;
@@ -123,9 +143,11 @@
       width: 100%;
       cursor: pointer;
       outline: none;
+
       &-active {
         opacity: 1;
-        & > button {
+
+        &>button {
           background-color: @carousel-dots-color-background-active;
           opacity: 1;
         }
@@ -139,6 +161,7 @@
     left: unset;
     right: 16px;
     transform: translateY(-50%);
+    z-index: 1;
 
     &-left {
       left: 16px;
@@ -149,7 +172,7 @@
       cursor: pointer;
     }
 
-    > *:first-child {
+    >*:first-child {
       display: flex;
       align-items: center;
       justify-content: center;
@@ -173,12 +196,14 @@
     }
   }
 }
+
 .vertical {
   display: flex;
   flex-direction: column;
   top: 50%;
   transform: translateY(-50%);
-  & > li {
+
+  &>li {
     margin: @carousel-dots-marigin 0;
     width: @carousel-dots-height;
     height: @carousel-dots-width;
@@ -190,7 +215,8 @@
   flex-direction: row;
   left: 50%;
   transform: translateX(-50%);
-  & > li {
+
+  &>li {
     margin: 0 @carousel-dots-marigin;
     height: @carousel-dots-height;
     width: @carousel-dots-width;

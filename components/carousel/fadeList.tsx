@@ -17,6 +17,7 @@ export const FadeList = React.forwardRef((props: FadeListProps, ref: any) => {
   const itemRef = React.useRef<HTMLElement>(null)
   const fadeListPrefixCls = `${parentPrefixCls}-list-fade`
   const listPrefixCls = `${parentPrefixCls}-list`
+
   const renderItems = () => {
     return items.map((item, index) => {
       const opacityClassName =
