@@ -67,6 +67,7 @@ subtitle: 多选
 |  | --kd-c-checkbox-default-input-sizing-height | - | 14px |
 |  | --kd-c-checkbox-default-input-sizing-width | - | 14px |
 |  | --kd-c-checkbox-default-input-border-width | - | 1px |
+|  | --kd-c-checkbox-default-input-label-max-width | - | - |
 |  | --kd-c-checkbox-square-triangle-sizing-height | - | 18px |
 |  | --kd-c-checkbox-square-triangle-sizing-width | - | 18px |
 |  | --kd-c-checkbox-default-indeterminate-sizing-square | - | 6px |

@@ -36,7 +36,7 @@
     z-index: 1;
   }
   &-children {
-    display: inline-flex;
+    display: inline-block;
     justify-content: center;
     align-items: center;
     z-index: 999;
@@ -44,6 +44,7 @@
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
+    max-width: @checkbox-default-input-label-max-width;
 
     .kd-input-underline {
       background-color: transparent;

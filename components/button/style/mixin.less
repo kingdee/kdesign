@@ -30,12 +30,13 @@
 	color: @color;
 }
 // 各个按钮尺寸的样式Mixins
-.btn-size(@height, @font-size, @padding-vertical, @padding-horizontal, @min-width) {
+.btn-size(@height, @font-size, @padding-vertical, @padding-horizontal, @min-width,@max-width) {
 	height: @height;
 	min-width: @min-width;
 	line-height: calc(@height - (@padding-vertical * 2) - (@btn-border-width * 2));
 	font-size: @font-size;
 	padding: @padding-vertical @padding-horizontal;
+	max-width: @max-width;
 }
 // 圆形按钮不同尺寸的样式Mixins
 .btn-shape-circle-width(@width) {

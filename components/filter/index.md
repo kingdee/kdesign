@@ -111,3 +111,5 @@ interface Field {
 |  | --kd-c-filter-condition-label-font-size | --kd-g-font-size-middle | 14px |
 |  | --kd-c-filter-handle-font-size | --kd-g-font-size-middle | 14px |
 |  | --kd-c-filter-body-tabs-item-font-size | --kd-g-font-size-middle | 14px |
+| sizing | --kd-c-filter-body-condition-label-width | - | - |
+|  | --kd-c-filter-body-condition-option-max-width | - | - |

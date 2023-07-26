@@ -67,6 +67,9 @@ subtitle: 单选
 | radius | --kd-c-radio-radius-border-width | - | 1px |
 | sizing | --kd-c-radio-square-sizing-width-height | - | 14px |
 |  | --kd-c-radio-square-sizing-height | - | 32px |
+|  | --kd-c-radio-default-label-max-width | - | - |
+|  | --kd-c-radio-square-label-max-width | - | - |
+|  | --kd-c-radio-button-label-max-width | - | - |
 | spacing | --kd-c-radio-spacing-margin-right | - | 8px |
 |  | --kd-c-radio-square-spacing-padding-vertical | - | 6px |
 |  | --kd-c-radio-square-spacing-padding-horizontal | - | 12px |
