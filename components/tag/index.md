@@ -54,6 +54,8 @@ subtitle: 标签
 | sizing | --kd-c-tag-sizing-height-small | - | 20px |
 |  | --kd-c-tag-sizing-height-middle | - | 20px |
 |  | --kd-c-tag-sizing-height-large | - | 24px |
+|  | --kd-c-tag-sizing-max-width | - | - |
+|  | --kd-c-tag-sizing-min-width | - | - |
 | spacing | --kd-c-tag-spacing-padding-horizontal-small | - | 6px |
 |  | --kd-c-tag-spacing-padding-horizontal-middle | - | 7px |
 |  | --kd-c-tag-spacing-padding-horizontal-large | - | 8px |

@@ -58,6 +58,7 @@ subtitle: 穿梭框
 | font | --kd-c-transfer-font-size | - | 12px |
 | sizing | --kd-c-transfer-list-item-sizing-height | - | 32px |
 |  | --kd-c-transfer-list-item-content-sizing-height | - | 320px |
+|  | --kd-c-transfer-list-sizing-width | - | 250px |
 |  | --kd-c-transfer-header-sizing-height | - | 36px |
 |  | --kd-c-transfer-search-sizing-height | - | 32px |
 |  | --kd-c-transfer-pagination-sizing-height | - | 36px |

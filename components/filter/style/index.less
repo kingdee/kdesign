@@ -36,6 +36,7 @@
       &-item-text {
         max-width: 224px;
         .ellipsis;
+        display: block;
       }
     }
 
@@ -130,6 +131,7 @@
         padding: 11px 0 10px;
         color: @color-text-third;
         line-height: 18px;
+        width: @filter-body-condition-label-width;
       }
 
       &-options {
@@ -154,6 +156,11 @@
         border: 1px solid transparent;
         cursor: pointer;
         white-space: nowrap;
+        max-width: @filter-body-condition-option-max-width;
+        overflow: hidden;
+        display: inline-block;
+        text-overflow: ellipsis;
+
 
         &:not(:last-child) {
           margin-right: 24px;

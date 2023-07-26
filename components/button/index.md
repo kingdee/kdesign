@@ -115,10 +115,13 @@ subtitle: 按钮
 | sizing | --kd-c-button-sizing-border | - | 1px |
 |  | --kd-c-button-sizing-height-small | - | 24px |
 |  | --kd-c-button-sizing-min-width-small | - | 60px |
+|  | --kd-c-button-sizing-max-width-small | - | - |
 |  | --kd-c-button-sizing-height-middle | - | 28px |
 |  | --kd-c-button-sizing-min-width-middle | - | 60px |
+|  | --kd-c-button-sizing-max-width-middle | - | - |
 |  | --kd-c-button-sizing-height-large | - | 32px |
 |  | --kd-c-button-sizing-min-width-large | - | 80px |
+|  | --kd-c-button-sizing-max-width-large | - | - |
 |  | --kd-c-button--group-dropdown-item-height | - | 30px |
 |  | --kd-c-button-group-dropdown-min-width | - | 80px |
 | spacing | --kd-c-button-spacing-padding-vertical-small | - | 3px |

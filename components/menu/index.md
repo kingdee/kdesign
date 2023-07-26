@@ -72,4 +72,6 @@ subtitle: 导航菜单
 | font | --kd-c-menu-icon-font-size | --kd-g-font-size-xx-large | 20px |
 | motion | --kd-c-menu-motion-duration | --kd-g-duration | 0.3s |
 | sizing | --kd-c-menu-item-sizing-height | - | 50px |
+|  | --kd-c-menu-sizing-max-width | - | - |
+|  | --kd-c-menu-sizing-min-width | - | - |
 | z-index | --kd-c-menu-z-index | --kd-g-z-index-dialog | 1050 |

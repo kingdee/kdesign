@@ -13,6 +13,7 @@
   overflow: hidden;
   list-style: none;
 
+
   .@{timeline-item-prefix-cls} {
     .reset-component;
     position: relative;
@@ -84,6 +85,8 @@
       margin: 0 0 0 calc(2 * (@timeline-dot-size - @timeline-width) + @timeline-gap);
       word-break: break-word;
       color: @timeline-content-color-text;
+      max-width: @timeline-content-max-width;
+      min-width: @timeline-content-min-width;
 
       > * {
         margin: 0;
