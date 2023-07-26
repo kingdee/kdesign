@@ -213,9 +213,11 @@ const InternalUpload: React.ForwardRefRenderFunction<unknown, UploadProps> = (pr
     })
   }
 
-  const handleRemove = (file: UploadFile, e: React.MouseEvent) => {
+  const handleRemove = (originFile: UploadFile, e: React.MouseEvent) => {
     e.preventDefault()
+    const file: UploadFile = { ...originFile, status: 'removed' }
     const files = fileList.filter((fileItem: UploadFile) => fileItem.uid !== file.uid)
+
     if (onRemove) {
       const remove = onRemove(file)
       if (remove && typeof remove !== 'boolean' && remove.then) {
