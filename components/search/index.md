@@ -122,4 +122,5 @@ subtitle: 搜索
 |  | --kd-c-search-panel-sizing-height | - | 60px |
 |  | --kd-c-search-dropdown-option-sizing-height | - | 32px |
 |  | --kd-c-search-sizing-border-width | - | 1px |
+|  | --kd-c-search-tag-sizing-max-width | - | - |
 | spacing | --kd-c-search-dropdown-option-spacing-padding-horizontal | - | 12px |

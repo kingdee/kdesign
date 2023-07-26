@@ -51,4 +51,6 @@ subtitle: 时间轴
 |  | --kd-c-timeline-content-color-text | --kd-g-color-text-primary | #212121 |
 | font | --kd-c-timeline-content-font-size | --kd-g-font-size-small | 12px |
 | sizing | --kd-c-timeline-sizing-width | - | 1px |
+|  | --kd-c-timeline-content-sizing-max-width | - | - |
+|  | --kd-c-timeline-content-sizing-min-width | - | - |
 | spacing | --kd-c-timeline-spacing-padding-bottom | - | 24px |
