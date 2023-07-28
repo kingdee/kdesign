@@ -24,6 +24,7 @@ export interface DropDownProps extends PopperProps {
   children?: React.ReactNode
   onItemClick?: (key: string) => void
   menu: React.ReactElement | Array<MenuItem>
+  menuAnimation?: boolean
 }
 
 const findItem: (element: any) => any = (element) => {
@@ -51,11 +52,12 @@ const Dropdown = React.forwardRef<unknown, DropDownProps>((props, ref) => {
     onVisibleChange,
     trigger,
     prefixCls: customPrefixcls,
+    menuAnimation,
+    popperStyle,
   } = allProps
 
-  // className前缀
   const prefixCls = getPrefixCls!(pkgPrefixCls, 'dropdown', customPrefixcls)
-
+  const innerAnimation = typeof menuAnimation === 'boolean' ? menuAnimation : trigger !== 'contextMenu'
   const [visible, setVisible] = React.useState(!!props.visible || defaultVisible)
   React.useEffect(() => {
     setVisible(!!props.visible)
@@ -164,6 +166,7 @@ const Dropdown = React.forwardRef<unknown, DropDownProps>((props, ref) => {
     ...allProps,
     visible,
     prefixCls,
+    popperStyle: innerAnimation ? popperStyle : { animation: 'none', ...popperStyle },
     onVisibleChange: handleVisibleChange,
   }
 
