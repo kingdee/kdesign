@@ -1,4 +1,14 @@
-import React, { Children } from 'react'
+import React, {
+  Children,
+  FC,
+  forwardRef,
+  ForwardRefRenderFunction,
+  useContext,
+  useEffect,
+  useImperativeHandle,
+  useRef,
+  useState,
+} from 'react'
 import classNames from 'classnames'
 import ConfigContext from '../config-provider/ConfigContext'
 import { UploadProps, UploadProgressEvent, UploadRequestError, UploadFile, Action, IFileItem } from './interface'
@@ -35,10 +45,9 @@ function abort(file?: UploadFile) {
   }
 }
 
-const InternalUpload: React.ForwardRefRenderFunction<unknown, UploadProps> = (props, ref) => {
-  const { getPrefixCls, prefixCls: pkgPrefixCls, compDefaultProps: userDefaultProps } = React.useContext(ConfigContext)
-  const innerRef = React.useRef<HTMLInputElement>()
-  const mergedRef = (ref as any) || innerRef
+const InternalUpload: ForwardRefRenderFunction<unknown, UploadProps> = (props, ref) => {
+  const { getPrefixCls, prefixCls: pkgPrefixCls, compDefaultProps: userDefaultProps } = useContext(ConfigContext)
+  const inputRef = useRef<HTMLInputElement>(null)
 
   const allProps = getCompProps('Upload', userDefaultProps, props) // 属性需要合并一遍用户定义的默认属性
 
@@ -59,14 +68,14 @@ const InternalUpload: React.ForwardRefRenderFunction<unknown, UploadProps> = (pr
     onPreview,
   } = allProps
 
-  const [fileList, setFileList] = React.useState<Array<UploadFile>>(props.fileList || props.defaultFileList || [])
+  const [fileList, setFileList] = useState<Array<UploadFile>>(props.fileList || props.defaultFileList || [])
   const hasChildren = children && Children.toArray(children).length > 0
 
-  React.useEffect(() => {
+  useEffect(() => {
     props.fileList && setFileList(props.fileList)
   }, [props.fileList])
 
-  React.useEffect(() => {
+  useEffect(() => {
     return abort
   }, [])
 
@@ -86,17 +95,19 @@ const InternalUpload: React.ForwardRefRenderFunction<unknown, UploadProps> = (pr
   }
 
   const uploadFiles = (files: Array<UploadFile>) => {
-    files.forEach((file: UploadFile) => {
-      file.originFileObj = new File([file], file.name, { type: file.type })
-      file.uid = getUid()
-      file.status = 'notStart'
-      file.fileName = allProps.name || file.name
-    })
-    const newFileList: Array<UploadFile> = [...fileList, ...files]
-    files.forEach((file: UploadFile) => {
-      props.fileList === undefined && setFileList(fileList)
-      upload(file, newFileList)
-    })
+    if (Array.isArray(files) && files.length) {
+      files.forEach((file: UploadFile) => {
+        file.originFileObj = new File([file], file.name, { type: file.type })
+        file.uid = getUid()
+        file.status = 'notStart'
+        file.fileName = allProps.name || file.name
+      })
+      const newFileList: Array<UploadFile> = [...fileList, ...files]
+      files.forEach((file: UploadFile) => {
+        props.fileList === undefined && setFileList(fileList)
+        upload(file, newFileList)
+      })
+    }
   }
 
   const upload = (file: UploadFile, fileList: Array<UploadFile>) => {
@@ -213,41 +224,49 @@ const InternalUpload: React.ForwardRefRenderFunction<unknown, UploadProps> = (pr
     })
   }
 
-  const handleRemove = (originFile: UploadFile, e: React.MouseEvent) => {
-    e.preventDefault()
-    const file: UploadFile = { ...originFile, status: 'removed' }
-    const files = fileList.filter((fileItem: UploadFile) => fileItem.uid !== file.uid)
+  const handleRemove = (originFile: UploadFile, e: React.MouseEvent | undefined = undefined) => {
+    if (e) {
+      e.preventDefault()
+    }
+    if (originFile) {
+      const file: UploadFile = { ...originFile, status: 'removed' }
+      const files = fileList.filter((fileItem: UploadFile) => fileItem.uid !== file.uid)
 
-    if (onRemove) {
-      const remove = onRemove(file)
-      if (remove && typeof remove !== 'boolean' && remove.then) {
-        remove
-          .then((flag: boolean) => {
-            if (flag) {
-              onFileListChange(file, files)
-              abort(file)
-            }
-          })
-          .catch((e: Error) => {
-            console.log(e)
-          })
-      } else if (remove !== false) {
+      if (onRemove) {
+        const remove = onRemove(file)
+        if (remove && typeof remove !== 'boolean' && remove.then) {
+          remove
+            .then((flag: boolean) => {
+              if (flag) {
+                onFileListChange(file, files)
+                abort(file)
+              }
+            })
+            .catch((e: Error) => {
+              console.log(e)
+            })
+        } else if (remove !== false) {
+          onFileListChange(file, files)
+          abort(file)
+        }
+      } else {
         onFileListChange(file, files)
         abort(file)
       }
-    } else {
-      onFileListChange(file, files)
-      abort(file)
     }
   }
 
-  const handleReUpload = (file: UploadFile, e: React.MouseEvent) => {
-    e.preventDefault()
-    file.percent = 0
-    file.status = 'uploading'
-    const files = fileList.map((fileItem: UploadFile) => (fileItem.uid === file.uid ? file : fileItem))
-    onFileListChange(file, files)
-    upload(file, files)
+  const handleReUpload = (file: UploadFile, e: React.MouseEvent | undefined = undefined) => {
+    if (e) {
+      e.preventDefault()
+    }
+    if (file) {
+      file.percent = 0
+      file.status = 'uploading'
+      const files = fileList.map((fileItem: UploadFile) => (fileItem.uid === file.uid ? file : fileItem))
+      onFileListChange(file, files)
+      upload(file, files)
+    }
   }
 
   const prefixCls = getPrefixCls!(pkgPrefixCls, 'upload', customPrefixcls)
@@ -263,7 +282,7 @@ const InternalUpload: React.ForwardRefRenderFunction<unknown, UploadProps> = (pr
   }
 
   const dragEvents: Record<string, unknown> = {}
-  const [hover, setHover] = React.useState(false)
+  const [hover, setHover] = useState(false)
 
   if (type === 'drag') {
     const onFileDrop = (e: React.DragEvent<HTMLElement>) => {
@@ -304,7 +323,7 @@ const InternalUpload: React.ForwardRefRenderFunction<unknown, UploadProps> = (pr
     dragEvents.onDragLeave = onFileLeave
   }
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (type === 'drag') {
       const stopDrop = (e: MouseEvent) => e.preventDefault()
       document.addEventListener('drop', stopDrop)
@@ -317,13 +336,22 @@ const InternalUpload: React.ForwardRefRenderFunction<unknown, UploadProps> = (pr
     }
   }, [type])
 
+  useImperativeHandle(ref, () => ({
+    fileList,
+    uploadFiles,
+    reUploadFile: handleReUpload,
+    removeFile: handleRemove,
+    abortFile: abort,
+    input: inputRef.current,
+  }))
+
   return (
     <div className={classNames(prefixCls, { disabled }, className)} style={style}>
       {listType === 'text' && hasChildren && (
         <label className={classNames({ [`${prefixCls}-${type}`]: true, hover })} {...dragEvents}>
           <span className={`${prefixCls}-handle`}>{children}</span>
           <span className={`${prefixCls}-input`}>
-            <input title="" type="file" {...inputFileProps} ref={mergedRef} />
+            <input title="" type="file" {...inputFileProps} ref={inputRef} />
           </span>
         </label>
       )}
@@ -334,7 +362,7 @@ const InternalUpload: React.ForwardRefRenderFunction<unknown, UploadProps> = (pr
               <label className={`${prefixCls}-select`}>
                 <span className={`${prefixCls}-handle`}>{children}</span>
                 <span className={`${prefixCls}-input`}>
-                  <input title="" type="file" {...inputFileProps} ref={mergedRef} />
+                  <input title="" type="file" {...inputFileProps} ref={inputRef} />
                 </span>
               </label>
             </li>
@@ -360,15 +388,7 @@ const InternalUpload: React.ForwardRefRenderFunction<unknown, UploadProps> = (pr
   )
 }
 
-const Item: React.FC<IFileItem> = ({
-  file,
-  prefixCls,
-  listType,
-  handleReUpload,
-  handleRemove,
-  disabled,
-  onPreview,
-}) => {
+const Item: FC<IFileItem> = ({ file, prefixCls, listType, handleReUpload, handleRemove, disabled, onPreview }) => {
   const mapStatus: Record<string, string> = {
     uploading: 'loadding',
     error: 'warning-solid',
@@ -457,7 +477,7 @@ const Item: React.FC<IFileItem> = ({
   )
 }
 
-const Upload = React.forwardRef<unknown, UploadProps>(InternalUpload)
+const Upload = forwardRef<unknown, UploadProps>(InternalUpload)
 Upload.displayName = 'Upload'
 
 export default Upload
