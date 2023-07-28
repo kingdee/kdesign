@@ -20,6 +20,7 @@ subtitle: 下拉菜单
 | --- | --- | --- | --- | --- |
 | defaultKey | 默认选中选项的Key | string \| number | - | 1.0.0 |
 | menu | 菜单 | `Dropdown.Menu` \| <br />Array&lt;{<br />label: string <br />key?: string <br />danger?: boolean <br />divided?: boolean <br />disabled?: boolean <br />href?: string <br />}> | - | 1.0.0 |
+| menuAnimation | 菜单点击动画 | boolean | trigger为`contextMenu`时false，其它true | 1.7.19 |
 | selectable | 菜单是否可选中 | boolean | false | 1.0.0 |
 | selectedKey | 选中选项的Key | string \| number | - | 1.0.0 |
 | onItemClick | 菜单点击事件 | (key: string) => void | - | 1.0.0 |
