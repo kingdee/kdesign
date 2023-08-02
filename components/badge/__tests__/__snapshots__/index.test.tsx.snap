@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Badge renders correctly 1`] = `
+exports[`Badge 2.render test renders correctly 1`] = `
 <span
   class="kd-badge kd-badge-status kd-badge-not-a-wrapper"
 >
@@ -13,7 +13,7 @@ exports[`Badge renders correctly 1`] = `
 </span>
 `;
 
-exports[`Badge renders correctly 2`] = `
+exports[`Badge 2.render test renders correctly 2`] = `
 <span
   class="kd-badge kd-badge-status kd-badge-not-a-wrapper"
 >
@@ -26,7 +26,7 @@ exports[`Badge renders correctly 2`] = `
 </span>
 `;
 
-exports[`Badge renders correctly 3`] = `
+exports[`Badge 2.render test renders correctly 3`] = `
 <span
   class="kd-badge kd-badge-status kd-badge-not-a-wrapper"
 >
@@ -39,7 +39,7 @@ exports[`Badge renders correctly 3`] = `
 </span>
 `;
 
-exports[`Badge renders correctly 4`] = `
+exports[`Badge 2.render test renders correctly 4`] = `
 <span
   class="kd-badge kd-badge-status kd-badge-not-a-wrapper"
 >
@@ -52,7 +52,7 @@ exports[`Badge renders correctly 4`] = `
 </span>
 `;
 
-exports[`Badge renders correctly 5`] = `
+exports[`Badge 2.render test renders correctly 5`] = `
 <span
   class="kd-badge kd-badge-status kd-badge-not-a-wrapper"
 >
@@ -65,7 +65,7 @@ exports[`Badge renders correctly 5`] = `
 </span>
 `;
 
-exports[`Badge renders correctly 6`] = `
+exports[`Badge 2.render test renders correctly 6`] = `
 <span
   class="kd-badge kd-badge-not-a-wrapper"
 >
@@ -78,7 +78,7 @@ exports[`Badge renders correctly 6`] = `
 </span>
 `;
 
-exports[`Badge renders correctly 7`] = `
+exports[`Badge 2.render test renders correctly 7`] = `
 <span
   class="kd-badge kd-badge-not-a-wrapper"
 >
