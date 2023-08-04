@@ -441,6 +441,19 @@ const compDefaultProps = {
     },
     expandOnClickNode: false,
   },
+  CityPicker: {
+    type: 'domestic',
+    loading: false,
+    size: 'small',
+    borderType: 'underline',
+    defaultOpen: false,
+    showArrow: true,
+    placeholder: '',
+    description: '城市',
+    showDescription: true,
+    optionHighlightProps: 'highlightText',
+    allowClear: true,
+  },
 }
 
 export default compDefaultProps

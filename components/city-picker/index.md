@@ -14,49 +14,41 @@ order: 3
 
 ## API
 
-| 属性 | 说明 | 类型 | 默认值 | 可选值 | 版本 |
-| --- | --- | --- | --- | --- | --- |
-| cityList | 城市列表数据 | `Record<CityGroups, Citys>` | - | - | 1.0.0 |
-| className | 类名 | string | - | - | 1.0.0 |
-| commons | 常用城市数据 | `Record<CityGroups, Array<Citys>>` | - | - | 1.0.0 |
-| disabled | 禁用 | boolean | `false` | `true`、`false` | 1.0.0
-| groups | 分组数据 | `Array<string>` | - | - | 1.0.0 |
-| inputClassName | 输入框类名 | string | - | - | 1.0.0 |
-| inputStyle | 输入框样式 | `React.CSSProperty` | - | - | 1.0.0 |
-| placeholder | 输入框占位文字 | string | - | - | 1.0.0 |
-| showTitle | 标题显示 | boolean | `true` | `true`、`false` | 1.0.0
-| style | 样式 | `React.CSSProperty` | - | - | 1.0.0 |
-| title | 标题 | string | - | - | 1.0.0 |
+| 属性 | 说明 | 类型 | 默认值 | 版本 |
+| --- | --- | --- | --- | --- |
+| allowClear | 支持清除 | boolean | false | 1.7.20 |
+| borderType | 边框类型 | `underline` `bordered` `none` | `underline` | 1.7.20 |
+| clearIcon | 自定义的清空图标 | ReactNode | - | 1.7.20 |
+| commonList | 常用城市列表数据 | [City](#City)\[] | - | 1.7.20 |
+| defaultOpen | 是否默认展开下拉菜单 | boolean | false | 1.7.20 |
+| defaultValue | 指定默认选中的条目 | string \| string\[]<br />number \| number\[] | - | 1.7.20 |
+| disabled | 是否禁用 | boolean | false | 1.7.20 |
+| domesticList | 国内城市列表数据 | [City](#City)\[] | - | 1.7.20 |
+| dropdownStyle | 下拉菜单的 style 属性 | CSSProperties | - | 1.7.20 |
+| foreignList | 国际城市列表数据 | [City](#City)\[] | - | 1.7.20 |
+| getPopupContainer | 菜单渲染父节点。默认渲染到 body 上，如果你遇到菜单滚动定位问题，试试修改为滚动的区域，并相对其定位。[示例](https://codesandbox.io/s/4j168r7jw0) | function(triggerNode) | () => document.body | 1.7.20 |
+| itemRender | 自定义下拉列表项 | (city: [City](#City)) => React.ReactNode | - | 1.7.20 |
+| loading | 加载中状态 | boolean | false | 1.7.20 |
+| notFoundContent | 当下拉列表为空时显示的内容 | ReactNode | `Not Found` | 1.7.20 |
+| placeholder | 选择框默认文字 | string | - | 1.7.20 |
+| showArrow | 是否显示下拉小箭头 | boolean | true | 1.7.20 |
+| suffixIcon | 自定义的选择框后缀图标 | ReactNode | - | 1.7.20 |
+| type | 城市选择组件类型 | `domestic`、`foreign` | `domestic` | 1.7.20 |
+| value | 指定当前选中的条目 | string \| number | - | 1.7.20 |
+| optionHighlightProps | 搜索时根据该属性值高亮城市名 | string | `highlightText` | 1.7.20 |
+| onBlur | 失去焦点时回调 | function | - | 1.7.20 |
+| onChange | 选中 option，或 input 的 value 变化时，调用此函数 | function(value: string \| number, city: [City](#City)) | - | 1.7.20 |
+| onClear | 清除内容时回调 | function | - | 1.7.20 |
+| onFocus | 获得焦点时回调 | function | - | 1.7.20 |
+| onSearch | 文本框值变化时回调 | function(value: string) | - | 1.7.20 |
+| onVisibleChange | 显示隐藏的回调 | (visible) => void | - | 1.7.20 |
 
-## CityGroups
+### City
 
-| 属性 | 说明 | 类型 | 默认值 | 可选值 | 版本 |
-| --- | --- | --- | --- | --- | --- |
-| CityGroups | 城市类型 | - | - | `domestic`、`foreign` | 1.0.0 |
-
-## Citys
-
-| 属性 | 说明 | 类型 | 默认值 | 可选值 | 版本 |
-| --- | --- | --- | --- | --- | --- |
-| Citys | 根据关键字进行分组的城市组 | `[key: string]: Array<City>` | - | - | 1.0.0 |
-
-## City
-| 属性 | 说明 | 类型 | 默认值 | 可选值 | 版本 |
-| --- | --- | --- | --- | --- | --- |
-| id | 城市 Id | string | - | - | 1.0.0 |
-| country | 国家 | string | - | - | 1.0.0 |
-| province | 省份 | string | - | - | 1.0.0 |
-| name | 城市名 | string | - | - | 1.0.0 |
-
-## Design Token
-
-| 分类 | 组件token | 全局token | 默认值 |
-| --- | --- | --- | --- |
-| color | --kd-c-city-picker-color | --kd-g-color-theme | #5582f3 |
-|  | --kd-c-city-picker-color-background | --kd-g-color-background-contain | #fafafa |
-|  | --kd-c-city-picker-panel-item-color | --kd-g-color-text-primary | #212121 |
-|  | --kd-c-city-picker-color-background-hover | --kd-g-color-hover | #f5f5f5 |
-| sizing | --kd-c-city-picker-panel-sizing-width | - | 460px |
-|  | --kd-c-city-picker-panel-sizing-height | - | 373px |
-| font | --kd-c-city-picker-panel-font-size | - | 12px |
-| radius | --kd-c-city-picker-panel-radius-border | --kd-g-radius-border | 2px |
+| 属性          | 说明                   | 类型                | 默认值 | 可选值 | 版本   |
+| ------------- | ---------------------- | ------------------- | ------ | ------ | ------ |
+| id            | 城市 Id                | string \| number    | -      | -      | 1.7.20 |
+| country       | 国家                   | string              | -      | -      | 1.7.20 |
+| highlightText | 高亮下拉面板中的城市名 | string \| string\[] | -      | -      | 1.7.20 |
+| province      | 省份                   | string              | -      | -      | 1.7.20 |
+| name          | 城市名                 | string              | -      | -      | 1.7.20 |

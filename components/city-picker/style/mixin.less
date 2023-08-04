@@ -1,5 +1,28 @@
+@import './token.less';
 
-// code component mixin here
-.test() {
-  display: inline;
+.item() {
+  position: relative;
+  display: block;
+  font-weight: normal;
+  font-size: @city-picker-list-font-size;
+  min-height: @city-picker-dropdown-height;
+  padding: 5px 12px;
+  color: @city-picker-font-color;
+  line-height: @city-picker-dropdown-line-height;
+}
+
+.focusColor() {
+  border-color: @city-picker-g-color-border-foucs !important;
+}
+
+.select-input-size(@height, @maxHeight, @lineHeight, @fontSize) {
+  min-height: @height;
+  max-height: calc(@maxHeight * 3 - 10px);
+  font-size: @fontSize;
+}
+
+.over() {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
