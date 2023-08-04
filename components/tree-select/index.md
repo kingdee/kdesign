@@ -59,7 +59,7 @@ subtitle: 树选择器
 
 ## Design Token
 
-| 分类 | 组件 token | 全局 token | 默认值 |
+| 分类 | 组件token | 全局token | 默认值 |
 | --- | --- | --- | --- |
 | color | --kd-c-tree-select-dropdown-color-background | --kd-g-color-background | #fff |
 |  | --kd-c-tree-select-item-color-background-disabled | - | #fff |

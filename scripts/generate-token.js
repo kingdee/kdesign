@@ -131,9 +131,9 @@ function tranComponentTokenToObj(name) {
     const tokenCateDataArr = v.match(/(@[\w-]+):[^;]+/g)
     if (!tokenCateDataArr) return null
     obj[category] = tokenCateDataArr.map((token) => {
-      const [, cLess, cToken, cValue] = /(@[\w-]+):\s*var\(~'@{[\w-]+}-([\w-]+)',\s*(@[\w-]+|[^@]+)\)/g.exec(token)
+      const [, cLess, cToken, , cValue] = /(@[\w-]+):\s*var\(~'@{[\w-]+}-([\w-]+)'(,\s*(@[\w-]+|[^@]+))?\)/g.exec(token)
       const componentTokenName = `--${tokenBrandPrefix}-c-${name}-${cToken}`
-      if (cValue.indexOf('@') > -1) {
+      if (cValue && cValue.indexOf('@') > -1) {
         return {
           cLess,
           cToken: componentTokenName,
@@ -145,7 +145,7 @@ function tranComponentTokenToObj(name) {
           cLess,
           cToken: componentTokenName,
           gToken: '-',
-          cValue,
+          cValue: cValue || '-',
         }
       }
     })

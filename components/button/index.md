@@ -45,7 +45,7 @@ subtitle: 按钮
 
 ## Design Token
 
-| 分类 | 组件 token | 全局 token | 默认值 |
+| 分类 | 组件token | 全局token | 默认值 |
 | --- | --- | --- | --- |
 | color | --kd-c-button-primary-color-background | --kd-g-color-theme | #5582f3 |
 |  | --kd-c-button-primary-color-border | --kd-g-color-theme | #5582f3 |
@@ -118,6 +118,7 @@ subtitle: 按钮
 |  | --kd-c-button-sizing-height-middle | - | 28px |
 |  | --kd-c-button-sizing-min-width-middle | - | 60px |
 |  | --kd-c-button-sizing-height-large | - | 32px |
+|  | --kd-c-button-sizing-max-width-middle | - | - |
 |  | --kd-c-button-sizing-min-width-large | - | 80px |
 |  | --kd-c-button--group-dropdown-item-height | - | 30px |
 |  | --kd-c-button-group-dropdown-min-width | - | 80px |
