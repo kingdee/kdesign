@@ -1,25 +1,53 @@
-@import "../../style/themes/token.less";
+@import '../../style/themes/token.less';
 
-@city-picker-prefix: '--@{kd-prefix}-c-city-picker';
-
-
+@city-picker-custom-prefix: ~'--@{kd-prefix}-c-city-picker';
 
 // color
-@city-picker-theme-color: var(~'@{city-picker-prefix}-color', @color-theme);
-@city-picker-panel-item-color: var(~'@{city-picker-prefix}-panel-item-color', @color-text-primary);
-@city-picker-background-color: var(~'@{city-picker-prefix}-color-background', @color-background-contain);
-@city-picker-background-hover-color: var(~'@{city-picker-prefix}-color-background-hover', @color-hover);
-
+@city-picker-dropdown-bg: var(~'@{city-picker-custom-prefix}-dropdown-color-background', @color-background);
+@city-picker-disabled-option-bg: var(~'@{city-picker-custom-prefix}-item-color-background-disabled', #fff);
+@city-picker-item-active-bg: var(~'@{city-picker-custom-prefix}-color-background', #f5f5f5);
+@city-picker-item-selected-bg: var(~'@{city-picker-custom-prefix}-color-background-selected', #f2f6ff);
+@city-picker-g-color-border: var(~'@{city-picker-custom-prefix}-color-border', @color-input);
+@city-picker-g-color-border-foucs: var(~'@{city-picker-custom-prefix}-color-border-foucs', @color-theme);
+@city-picker-g-color-border-hover: var(~'@{city-picker-custom-prefix}-color-border-hover', @color-theme);
+@city-picker-border-g-color-border: var(~'@{city-picker-custom-prefix}-border-color-border', @color-border-strong);
+@city-picker-placeholder-color: var(~'@{city-picker-custom-prefix}-placeholder-color-text', #b2b2b2);
+@city-picker-font-color: var(~'@{city-picker-custom-prefix}-footer-color-text', @color-text-primary);
+@city-picker-g-item-text-color-disabled: var(~'@{city-picker-custom-prefix}-item-color-text-disabled', @color-disabled);
+@city-picker-color-background-disabled: var(~'@{city-picker-custom-prefix}-color-background-disabled', #fff);
+@city-picker-color-text-disabled: var(~'@{city-picker-custom-prefix}-color-text-disabled', @color-disabled);
+@city-picker-arrow-icon-color-text-disabled: var(
+  ~'@{city-picker-custom-prefix}-arrow-icon-color-text-disabled',
+  #b2b2b2
+);
+@city-picker-clear-color: var(~'@{city-picker-custom-prefix}-icon-clear-color-text', #d9d9d9);
+@city-picker-clear-color-hover: var(~'@{city-picker-custom-prefix}-icon-clear-color-text-hover', #999);
 
 // font
-@city-picker-panel-font-size: var(~'@{city-picker-prefix}-panel-font-size', 12px);
+@city-picker-list-font-size: var(~'@{city-picker-custom-prefix}-dropdown-font-size', 12px); // 下拉列表文字大小
+@city-picker-large-font-size: var(~'@{city-picker-custom-prefix}-font-size-large', 16px); // 大号字体
+@city-picker-middle-font-size: var(~'@{city-picker-custom-prefix}-font-size-middle', 14px); // 中号高度
+@city-picker-small-font-size: var(~'@{city-picker-custom-prefix}-font-size-small', 12px); // 小号高度
 
-// radius
-@city-picker-panel-radius-border: var(~'@{city-picker-prefix}-panel-radius-border', @radius-border);
+// line-height
+@city-picker-dropdown-line-height: var(~'@{city-picker-custom-prefix}-dropdown-line-height', 22px);
+@city-picker-large-line-height: var(~'@{city-picker-custom-prefix}-line-height-large', 28px);
+@city-picker-middle-line-height: var(~'@{city-picker-custom-prefix}-line-height-middle', 22px);
+@city-picker-small-line-height: var(~'@{city-picker-custom-prefix}-line-height-small', 14px);
 
 // sizing
-@city-picker-panel-sizing-width: var(~'@{city-picker-prefix}-panel-sizing-width', 460px);
-@city-picker-panel-sizing-height: var(~'@{city-picker-prefix}-panel-sizing-height', 373px);
+@city-picker-dropdown-height: var(~'@{city-picker-custom-prefix}-item-sizing-height', 22px);
+@city-picker-large-height: var(~'@{city-picker-custom-prefix}-sizing-height-large', 36px); // 大号高度 lh:28px
+@city-picker-middle-height: var(~'@{city-picker-custom-prefix}-sizing-height-middle', 30px); // 中号高度lh:22px
+@city-picker-small-height: var(~'@{city-picker-custom-prefix}-sizing-height-small', 24px); // 小号高度lh:12px
 
+// spacing
+@city-picker-bordered: var(~'@{city-picker-custom-prefix}-bordered-spacing-padding-left', 8px);
+@city-picker-wrapper-padding: var(~'@{city-picker-custom-prefix}-wrapper-spacing-padding', 1px 24px 1px 0);
 
+// radius
+@city-picker-g-radius-border: var(~'@{city-picker-custom-prefix}-radius-border', @radius-border);
+@city-picker-border-radius-border: var(~'@{city-picker-custom-prefix}-bordered-radius-border', 2px);
 
+// z-index
+@city-picker-z-index: var(~'@{city-picker-custom-prefix}-z-index', @z-index-popper);
