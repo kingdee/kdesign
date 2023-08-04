@@ -1,4 +1,4 @@
-import React, { useCallback, useContext, useEffect, useState, useRef } from 'react'
+import React, { useContext, useEffect, useState, useRef } from 'react'
 import classNames from 'classnames'
 import { GroupContext, CheckboxTypes, CheckboxSizes } from './group'
 import ConfigContext from '../config-provider/ConfigContext'
@@ -92,7 +92,7 @@ const InternalCheckbox: React.ForwardRefRenderFunction<unknown, CheckboxProps> =
   const getDefaultClassName = classNames(className, {
     [`${checkboxPrefixCls}`]: true,
     [`${checkboxPrefixCls}-no-child`]: !children,
-    [`${checkboxPrefixCls}-${mergedSize}`]: true && !!children,
+    [`${checkboxPrefixCls}-${mergedSize}`]: !!children,
     [`${checkboxPrefixCls}-${mergedCheckboxType}`]: true,
     [`${checkboxPrefixCls}-${mergedCheckboxType}-disabled`]: mergedDisabled,
     checked: selected,
@@ -101,7 +101,7 @@ const InternalCheckbox: React.ForwardRefRenderFunction<unknown, CheckboxProps> =
   const getSquareClassName = classNames(className, {
     [`${checkboxPrefixCls}`]: true,
     [`${checkboxPrefixCls}-${mergedCheckboxType}`]: true,
-    [`${checkboxPrefixCls}-${mergedSize}`]: true && !!children,
+    [`${checkboxPrefixCls}-${mergedSize}`]: !!children,
     [`${checkboxPrefixCls}-${mergedCheckboxType}-disabled`]: mergedDisabled,
     [`${checkboxPrefixCls}-${mergedCheckboxType}-checked`]: selected && !mergedDisabled,
     checked: selected,
@@ -133,16 +133,13 @@ const InternalCheckbox: React.ForwardRefRenderFunction<unknown, CheckboxProps> =
     [`${checkboxPrefixCls}-${mergedCheckboxType}-inner`]: true,
   })
 
-  const handleChange = useCallback(
-    (e) => {
-      onChange && onChange(e)
-      checkboxGroup?.onCheckboxGroupChange && checkboxGroup?.onCheckboxGroupChange(value, e.target.checked, e)
-      if (!checkboxGroup?.isControlled) {
-        setSelected(e.target.checked)
-      }
-    },
-    [onChange],
-  )
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    onChange && onChange(e)
+    checkboxGroup?.onCheckboxGroupChange && checkboxGroup?.onCheckboxGroupChange(value, e.target.checked, e)
+    if (!checkboxGroup?.isControlled) {
+      setSelected(e.target.checked)
+    }
+  }
 
   useEffect(() => {
     isBoolean(checked) && checked !== selected && setSelected(checked)
