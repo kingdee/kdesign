@@ -3,7 +3,7 @@ title: 日期选择器日期禁用
 order: 3
 ---
 
-日期选择器 `disabledDate`
+日期选择器的日期禁用，可通过 `disabledDate` 控制，需要注意的是， `disabledDate` 只能禁用日期，禁用时间需要使用 `disabledHours`、`disabledMinutes`、`disabledSeconds`
 
 ```jsx
 import React from 'react'
