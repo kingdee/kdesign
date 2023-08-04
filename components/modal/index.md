@@ -67,7 +67,7 @@ subtitle: 提示弹窗
 
 ## Design Token
 
-| 分类 | 组件 token | 全局 token | 默认值 |
+| 分类 | 组件token | 全局token | 默认值 |
 | --- | --- | --- | --- |
 | color | --kd-c-modal-color-text-primary | --kd-g-color-text-primary | #212121 |
 |  | --kd-c-modal-color-text-secondary | --kd-g-color-text-secondary | #666 |
