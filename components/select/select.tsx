@@ -131,18 +131,21 @@ const InternalSelect: React.ForwardRefRenderFunction<ISelectProps<SelectValue>> 
         if (realChildren?.length) {
           const arr: any = []
           ;(initValue as any[]).map((item: any) => {
-            const obj =
-              realChildren?.find((child: any) => {
-                if (child && child.props) {
-                  return child.props.value === item
-                } else {
-                  return child.value === item
-                }
-              }) || {}
-            if (options && options.length) {
-              arr.push({ value: obj?.value, label: obj?.label || obj?.value })
+            const obj = realChildren?.find((child: any) => {
+              if (child && child.props) {
+                return child.props.value === item
+              } else {
+                return child.value === item
+              }
+            })
+            if (obj) {
+              if (options && options.length) {
+                arr.push({ value: obj?.value, label: obj?.label || obj?.value })
+              } else {
+                arr.push({ value: obj.props?.value, label: obj.props?.children })
+              }
             } else {
-              arr.push({ value: obj.props?.value, label: obj.props?.children })
+              arr.push({ value: item, label: item })
             }
           })
           setMulOptions([...arr])
@@ -159,19 +162,21 @@ const InternalSelect: React.ForwardRefRenderFunction<ISelectProps<SelectValue>> 
     if (!isMultiple) {
       multipleRef.current.selectedVal = initValue // 默认选中值
       if (initValue !== undefined) {
-        const obj =
-          realChildren?.find((child: any) => {
-            if (child && child.props) {
-              return child.props?.value === initValue
-            } else {
-              return child?.value === initValue
-            }
-          }) || {}
-        if (options && options.length) {
-          setSingleVal(getOptionLabel(obj) || obj?.value)
+        const obj = realChildren?.find((child: any) => {
+          if (child && child.props) {
+            return child.props?.value === initValue
+          } else {
+            return child?.value === initValue
+          }
+        })
+        if (obj) {
+          if (options && options.length) {
+            setSingleVal(getOptionLabel(obj) || obj?.value)
+          } else {
+            setSingleVal(getOptionLabel(obj))
+          }
         } else {
-          // setSingleVal(obj.props?.children)
-          setSingleVal(getOptionLabel(obj))
+          setSingleVal(initValue)
         }
       } else {
         setSingleVal(undefined)
