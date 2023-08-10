@@ -140,16 +140,20 @@ const InternalTreeSelect: React.ForwardRefRenderFunction<ITreeSelectProps<TreeSe
 
   useEffect(() => {
     const arr = []
-    if (isMultiple && initValue?.length) {
+    if (isMultiple) {
       for (let index = 0; index < initValue.length; index++) {
         const key = initValue[index]
         if (TreeMap.has(key)) {
           arr.push(TreeMap.get(key))
+        } else {
+          arr.push({ key, title: key })
         }
       }
     } else {
       if (TreeMap.has(initValue)) {
         arr.push(TreeMap.get(initValue))
+      } else {
+        typeof initValue !== undefined && arr.push({ key: initValue, title: initValue })
       }
     }
     setSelectTreeNodes(arr)
