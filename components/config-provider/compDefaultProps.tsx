@@ -440,6 +440,8 @@ const compDefaultProps = {
       return <Icon type="arrow-right-solid" />
     },
     expandOnClickNode: false,
+    listHeight: 184,
+    virtual: true,
   },
   CityPicker: {
     type: 'domestic',

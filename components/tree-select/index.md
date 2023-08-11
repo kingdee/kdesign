@@ -23,6 +23,7 @@ subtitle: 树选择器
 | dropdownStyle | 下拉菜单的 style 属性 | CSSProperties | - | 1.7.0 |
 | filterTreeNode | 根据输入项进行筛选，默认用 treeNodeFilterProp 的值作为要筛选的 TreeNode 的属性值 | function(treeNode: TreeNode, inputValue: string) (函数需要返回 bool 值) | - | 1.7.0 |
 | getPopupContainer | 菜单渲染父节点。默认渲染到 body 上，如果你遇到菜单滚动定位问题，试试修改为滚动的区域，并相对其定位。[示例](https://codesandbox.io/s/4j168r7jw0) | function(triggerNode) | () => document.body | 1.7.0 |
+| listHeight | 设置弹窗最大滚动高度 | number | - | 1.7.21 |
 | maxTagCount | 最多显示多少个 tag | number | - | 1.7.0 |
 | maxTagPlaceholder | 隐藏 tag 时显示的内容 | ReactNode \| function(omittedValues) | - | 1.7.0 |
 | mode | 下拉框模式（设置单选或多选） | `single` `multiple` | `single` | 1.7.0 |
@@ -33,6 +34,7 @@ subtitle: 树选择器
 | showArrow | 是否显示下拉小箭头 | boolean | true | 1.7.0 |
 | showSearch | 是否展示搜索框 | boolean | true | 1.7.0 |
 | showTreeIcon | 是否展示节点图标 | boolean | false | 1.7.0 |
+| virtual | 是否开启虚滚动 | boolean | `true` | `true` `false` | 1.7.0 |
 | size | 选择框大小 | `large` \| `middle` \| `small` | `middle` | 1.7.0 |
 | suffixIcon | 自定义的选择框后缀图标 | ReactNode | - | 1.7.0 |
 | switcherIcon | 自定义树节点的折叠/展开图标 | ReactNode \| [ReactNode, ReactNode] | - | 1.7.0 |
@@ -97,4 +99,5 @@ subtitle: 树选择器
 | spacing | --kd-c-tree-select-bordered-spacing-padding-left | - | 8px |
 |  | --kd-c-tree-select-wrapper-spacing-padding | - | 1px 28px 1px 0 |
 |  | --kd-c-tree-select-dropdown-node-spacing-padding-horizontal | - | 16px |
+|  | --kd-c-tree-select-dropdown-spacing-padding-vertical | - | 8px |
 | z-index | --kd-c-tree-select-z-index | --kd-g-z-index-popper | 1050 |

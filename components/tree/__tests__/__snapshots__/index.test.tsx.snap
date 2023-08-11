@@ -5,11 +5,18 @@ exports[`Tree renders correctly 1`] = `
   class="kd-tree"
 >
   <div
-    class="kd-tree-plantom"
-  />
-  <div
     class="kd-tree-root"
-  />
+  >
+    <div
+      style="overflow-y:auto;overflow-anchor:none;max-height:300px"
+    >
+      <div>
+        <div
+          style="display:flex;flex-direction:column"
+        />
+      </div>
+    </div>
+  </div>
 </div>
 `;
 
@@ -18,11 +25,18 @@ exports[`Tree renders correctly 2`] = `
   class="kd-tree"
 >
   <div
-    class="kd-tree-plantom"
-  />
-  <div
     class="kd-tree-root"
-  />
+  >
+    <div
+      style="overflow-y:auto;overflow-anchor:none;max-height:300px"
+    >
+      <div>
+        <div
+          style="display:flex;flex-direction:column"
+        />
+      </div>
+    </div>
+  </div>
 </div>
 `;
 
@@ -30,9 +44,6 @@ exports[`Tree renders correctly 3`] = `
 <div
   class="kd-tree"
 >
-  <div
-    class="kd-tree-plantom"
-  />
   <div
     class="kd-tree-root"
   >
