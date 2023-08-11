@@ -4,6 +4,7 @@ import cloneDeep from 'lodash/cloneDeep'
 import ConfigContext from '../config-provider/ConfigContext'
 import { getCompProps } from '../_utils'
 import TreeNode from './treeNode'
+import VirtualList, { VirtualListHandle } from '../virtual-list'
 import {
   getChecked,
   getHalfChecked,
@@ -18,15 +19,7 @@ import {
   getPos,
   calcDropPosition,
 } from './utils/treeUtils'
-import {
-  useChecked,
-  useExpand,
-  usePlantomHeightEffect,
-  useViewportHeight,
-  useVisibleDataMemo,
-  useScrollToKey,
-  useSelect,
-} from './treeHooks'
+import { useChecked, useExpand, useSelect } from './treeHooks'
 import isBoolean from 'lodash/isBoolean'
 
 export interface TreeProps {
@@ -150,7 +143,6 @@ const InternalTree = React.forwardRef((props: TreeProps, ref: any): React.Functi
   } = TreeProps
 
   const treePrefixCls = getPrefixCls!(prefixCls, 'tree', customPrefixcls) // 树样式前缀
-  const treeNodePrefixCls = getPrefixCls!(prefixCls, 'tree-node', customPrefixcls) // 树节点样式前缀
   const treeNodeClassName = classNames(className, {
     [`${treePrefixCls}`]: true,
   })
@@ -162,15 +154,14 @@ const InternalTree = React.forwardRef((props: TreeProps, ref: any): React.Functi
   }, [treeData])
 
   const [scrollKey, setScrollKey] = React.useState(scrollToKey)
-  const [start, setStart] = React.useState(0)
   const [selectedKeys, setSelectedKeys] = useSelect(selectedKeysProps, defaultSelectedKeys)
   const listRef = React.useRef<HTMLElement>(null)
-  const plantomRef = React.useRef<HTMLElement>(null)
   const rootRef = React.useRef<HTMLElement>(null)
   const scrollRef = ref || rootRef
   const treeNodeRef = React.useRef<any>(null)
   const dragNodeRef = React.useRef<any>(null)
   const delayedDragEnterRef = React.useRef<any>(null)
+  const virtualListRef = React.useRef<VirtualListHandle>(null)
   const [isInit, setIsInit] = React.useState(true)
   const [dropPosition, setDropPosition] = React.useState<any>(null)
   const [dragOverNodeKey, setDragOverNodeKey] = React.useState<any>(null)
@@ -216,10 +207,10 @@ const InternalTree = React.forwardRef((props: TreeProps, ref: any): React.Functi
     return getFilterData(spreadAttrData, filterTreeNode, isSearching, posData, keysData)
   }, [spreadAttrData, isSearching, posData, keysData])
 
-  const [viewportHeight] = useViewportHeight(height, listRef)
-  const [visibleData] = useVisibleDataMemo(virtual, filterData, viewportHeight, estimatedItemSize, start)
-
-  const index = React.useMemo(() => {
+  useEffect(() => {
+    if (typeof scrollKey === 'undefined') {
+      return
+    }
     let scrollIndex = 0
     for (let i = 0; i < filterData.length; i++) {
       if (filterData[i].key === scrollKey) {
@@ -227,22 +218,19 @@ const InternalTree = React.forwardRef((props: TreeProps, ref: any): React.Functi
         break
       }
     }
-    return scrollIndex
-  }, [filterData, scrollKey])
-  useScrollToKey(scrollKey, index, estimatedItemSize, scrollRef, viewportHeight, treeNodePrefixCls)
-
-  usePlantomHeightEffect(plantomRef, filterData, estimatedItemSize)
-
-  const handleScroll = useCallback(() => {
-    if (!virtual) return
-    const scrollTop = scrollRef.current.scrollTop
-    setStart(Math.floor(scrollTop / estimatedItemSize))
-
-    const tempStartOffset = scrollTop - (scrollTop % estimatedItemSize)
-    if (listRef.current && virtual) {
-      listRef.current.style.transform = `translate3d(0,${tempStartOffset}px,0)`
+    if (virtual) {
+      virtualListRef.current?.scrollTo({ index: scrollIndex })
+    } else {
+      const wrapperDom = scrollRef.current
+      const node = wrapperDom ? wrapperDom?.children[0]?.children[scrollIndex] : null
+      if (node && wrapperDom) {
+        const containerHeight = wrapperDom.clientHeight
+        const targetHeight = node.clientHeight
+        const scrollPosition = node.offsetTop + targetHeight - containerHeight
+        wrapperDom.scrollTop = scrollPosition
+      }
     }
-  }, [listRef, scrollRef, virtual, estimatedItemSize])
+  }, [filterData, scrollKey, virtual])
 
   const handleNodeLoad = useCallback(
     (loadedKeys: Set<string>, loadingKeys: Set<string>, data: any) => {
@@ -284,7 +272,7 @@ const InternalTree = React.forwardRef((props: TreeProps, ref: any): React.Functi
         const newSearchExpandedKeys = expanded ? addKeys(searchExpandedKeys, [key]) : delKey(searchExpandedKeys, [key])
         setSearchExpandedKeys(newSearchExpandedKeys)
       }
-      setScrollKey('')
+      setScrollKey(undefined)
       setIsInit(false)
       if (expanded && loadData) {
         handleNodeLoad(loadedKeys, loadingKeys, node)
@@ -451,52 +439,67 @@ const InternalTree = React.forwardRef((props: TreeProps, ref: any): React.Functi
     setCheckedKeys(checkedKeys)
   }, [checkedKeys, setCheckedKeys])
 
+  const renderTreeNode = (item: any) => {
+    const checked = getChecked(checkedKeys, item.key)
+    const indeterminate = getHalfChecked(halfCheckedKeys, item.key)
+    item.nodeKey = item.key
+    item.onExpand = handleExpand
+    item.onCheck = handleCheck
+    item.onDragStart = handleDragStart
+    item.onDragOver = handleDragOver
+    item.onDragLeave = handleDragLeave
+    item.onDragEnter = handleDragEnter
+    item.onDragEnd = handleDragEnd
+    item.onDrop = handleDrop
+    item.onSelect = handleSelect
+    item.checked = checked
+    item.selected = checkable
+      ? false
+      : Array.isArray(selectedKeys)
+      ? selectedKeys?.[0] === item.key
+      : selectedKeys === item.key
+    item.indeterminate = indeterminate
+    item.disabled = getDisabled(disabled, item.disabled)
+    item.showIcon = showIcon || false
+    item.checkable = getCheckable(checkable, item.checkable) // 哪个优先
+    item.selectable = getSelectable(item.selectable)
+    item.icon = item.icon || icon
+    item.switcherIcon = item.switcherIcon || switcherIcon
+    item.estimatedItemSize = estimatedItemSize
+    item.draggable = draggable
+    item.className = setTreeNodeClassName(Object.assign({}, item))
+    item.style = setTreeNodeStyle(Object.assign({}, item))
+    item.getDragNode = getDragNode
+    item.setDragNode = setDragNode
+    item.dragOver = dragOverNodeKey === item.key && dropPosition === 0
+    item.dropPosition = dropPosition
+    item.expandOnClickNode = expandOnClickNode
+    item.onlyExpandOnClickIcon = onlyExpandOnClickIcon
+    item.loading = loadingKeys.has(item.key) && !loadedKeys.has(item.key)
+    item.loadData = loadData
+    return <TreeNode {...item} key={item.key} ref={treeNodeRef} />
+  }
+
   return (
-    <div className={treeNodeClassName} style={style} ref={scrollRef} onScroll={handleScroll} {...others}>
-      <div ref={plantomRef as any} className={`${treePrefixCls}-plantom`}></div>
+    <div className={treeNodeClassName} style={style} ref={scrollRef} {...others}>
       <div className={treeRootClassName} ref={listRef as any}>
-        {!visibleData?.length && notFoundContent}
-        {visibleData &&
-          visibleData.map((item: any) => {
-            const checked = getChecked(checkedKeys, item.key)
-            const indeterminate = getHalfChecked(halfCheckedKeys, item.key)
-            item.nodeKey = item.key
-            item.onExpand = handleExpand
-            item.onCheck = handleCheck
-            item.onDragStart = handleDragStart
-            item.onDragOver = handleDragOver
-            item.onDragLeave = handleDragLeave
-            item.onDragEnter = handleDragEnter
-            item.onDragEnd = handleDragEnd
-            item.onDrop = handleDrop
-            item.onSelect = handleSelect
-            item.checked = checked
-            item.selected = checkable
-              ? false
-              : Array.isArray(selectedKeys)
-              ? selectedKeys?.[0] === item.key
-              : selectedKeys === item.key
-            item.indeterminate = indeterminate
-            item.disabled = getDisabled(disabled, item.disabled)
-            item.showIcon = showIcon || false
-            item.checkable = getCheckable(checkable, item.checkable) // 哪个优先
-            item.selectable = getSelectable(item.selectable)
-            item.icon = item.icon || icon
-            item.switcherIcon = item.switcherIcon || switcherIcon
-            item.estimatedItemSize = estimatedItemSize
-            item.draggable = draggable
-            item.className = setTreeNodeClassName(Object.assign({}, item))
-            item.style = setTreeNodeStyle(Object.assign({}, item))
-            item.getDragNode = getDragNode
-            item.setDragNode = setDragNode
-            item.dragOver = dragOverNodeKey === item.key && dropPosition === 0
-            item.dropPosition = dropPosition
-            item.expandOnClickNode = expandOnClickNode
-            item.onlyExpandOnClickIcon = onlyExpandOnClickIcon
-            item.loading = loadingKeys.has(item.key) && !loadedKeys.has(item.key)
-            item.loadData = loadData
-            return <TreeNode {...item} key={item.key} ref={treeNodeRef} />
-          })}
+        {!filterData?.length && notFoundContent}
+        {virtual ? (
+          <VirtualList
+            className={className}
+            style={style}
+            ref={virtualListRef}
+            data={filterData}
+            isStaticItemHeight={true}
+            itemKey={(item) => item?.key}
+            height={height}
+            itemHeight={estimatedItemSize}
+          >
+            {renderTreeNode}
+          </VirtualList>
+        ) : (
+          filterData.map(renderTreeNode)
+        )}
       </div>
     </div>
   )

@@ -90,6 +90,7 @@ const InternalTreeSelect: React.ForwardRefRenderFunction<ITreeSelectProps<TreeSe
     onCheck,
     dropdownRender,
     onlyExpandOnClickIcon,
+    listHeight,
   } = treeSelectProps
   const isMultiple = mode === 'multiple' // 是否多选
   const [initValue, setInitValue] = useMergedState(isMultiple ? [] : undefined, {
@@ -326,6 +327,7 @@ const InternalTreeSelect: React.ForwardRefRenderFunction<ITreeSelectProps<TreeSe
       filterTreeNode: defFilterTreeNode,
       onSelect: handleSelect,
       onExpand: handleExpand,
+      height: listHeight,
     }
 
     if (isMultiple) {
@@ -355,7 +357,7 @@ const InternalTreeSelect: React.ForwardRefRenderFunction<ITreeSelectProps<TreeSe
 
   // 渲染下拉列表框
   const renderContent = () => {
-    const dropDownStyle = Object.assign({ width: style?.width }, dropdownStyle)
+    const dropDownStyle = Object.assign({ width: style?.width, maxHeight: virtual ? 'unset' : '' }, dropdownStyle)
     return (
       <>
         {

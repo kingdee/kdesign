@@ -52,7 +52,7 @@ export interface TreeNodeProps {
   getDragNode?: () => TreeNodeData
 }
 
-const TreeNode = React.forwardRef<unknown, TreeNodeProps>((props, ref) => {
+const TreeNode = React.forwardRef<unknown, TreeNodeProps>((props) => {
   const { getPrefixCls, prefixCls, compDefaultProps: userDefaultProps } = useContext(ConfigContext)
 
   const TreeNodeProps = getCompProps('TreeNode', userDefaultProps, props) // 按钮属性需要合并一遍用户定义的默认属性
@@ -319,7 +319,6 @@ const TreeNode = React.forwardRef<unknown, TreeNodeProps>((props, ref) => {
     },
     [onSelect, selectable, disabled, nodeData, nodeKey],
   )
-  React.useImperativeHandle(ref, () => ({ selectNode: handleSelect }))
 
   const handleExpandIconClick = useCallback(
     (e?: MouseEvent) => {
