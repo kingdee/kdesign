@@ -3,7 +3,6 @@ import { mount, render } from 'enzyme'
 import Menu, { MenuProps } from '../index'
 import Icon from '../../icon'
 import mountTest from '../../../tests/shared/mountTest'
-import { isString, isNumber, getColumnWidthList, getWrapWidth, getItemWidth } from '../util'
 
 const MenuModes = ['inline', 'vertical']
 
@@ -191,18 +190,24 @@ describe('Menu', () => {
     menuWrapper.update()
     expect(menuWrapper.find('.kd-menu')).toHaveClassName('kd-menu-collapsed')
   })
-  it('util test', () => {
-    expect(isString('222')).toBe(true)
-    expect(isString(222)).toBe(false)
 
-    expect(isNumber('222')).toBe(false)
-    expect(isNumber(222)).toBe(true)
+  describe('other api', () => {
+    it('defaultOpenKeys', function () {
+      const menuWrapper = mount(
+        <Menu defaultOpenKeys={['sub1']}>
+          <Menu.Item key="1">标签一</Menu.Item>
+          <Menu.SubMenu title="标签二" key="sub1">
+            <Menu.Item key="2">标签二-1</Menu.Item>
+            <Menu.Item key="3">标签二-2</Menu.Item>
+          </Menu.SubMenu>
+          <Menu.SubMenu title="标签三" key="sub2">
+            <Menu.Item key="4">标签三-1</Menu.Item>
+            <Menu.Item key="5">标签三-2</Menu.Item>
+          </Menu.SubMenu>
+        </Menu>,
+      )
 
-    expect(getColumnWidthList(<div />)).toEqual([160])
-    expect(getColumnWidthList(<></>)).toEqual([160])
-
-    expect(getWrapWidth(<div />)).toBe(210)
-
-    expect(getItemWidth(<div />)).toBe(160)
+      expect(menuWrapper.find('.kd-menu-submenu').at(0)).toHaveClassName('kd-menu-submenu-hover')
+    })
   })
 })

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import {
   KeyType,
   MenuMode,
@@ -44,7 +44,7 @@ const isFunction = (fn: any): boolean => {
 const openSubMenuSet = new Set<string>()
 
 const Menu: MenuType = (props) => {
-  const { getPrefixCls, prefixCls: pkgPrefixCls, compDefaultProps: userDefaultProps } = React.useContext(ConfigContext)
+  const { getPrefixCls, prefixCls: pkgPrefixCls, compDefaultProps: userDefaultProps } = useContext(ConfigContext)
 
   const { selectedKey: userSelectedKey, openKeys: userOpenKeys } = props
   const {
@@ -60,6 +60,7 @@ const Menu: MenuType = (props) => {
     theme,
     collapsed,
     accordion,
+    defaultOpenKeys,
     ...restProps
   } = getCompProps('Menu', userDefaultProps, props)
 
@@ -68,9 +69,9 @@ const Menu: MenuType = (props) => {
   devWarning(['inline', 'vertical', undefined].indexOf(mode!) === -1, 'menu', `cannot found menu mode '${mode}'`)
   devWarning(mode !== 'inline' && accordion !== undefined, 'menu', `'accordion' is valid only in mode='inline'`)
 
-  const [selectedKey, setSelectedKey] = React.useState<KeyType>('')
-  const [selectedKeyPath, setSelectedKeyPath] = React.useState<KeyType[]>([])
-  const [openKeys, setOpenKeys] = React.useState<KeyType[]>([])
+  const [selectedKey, setSelectedKey] = useState<KeyType>('')
+  const [selectedKeyPath, setSelectedKeyPath] = useState<KeyType[]>([])
+  const [openKeys, setOpenKeys] = useState<KeyType[]>([])
 
   if (mode === 'inline') {
     restProps.triggerSubMenuAction = 'click'
@@ -88,6 +89,15 @@ const Menu: MenuType = (props) => {
       setSelectedKey(userSelectedKey)
     }
   }, [userSelectedKey])
+
+  useEffect(() => {
+    if (Array.isArray(defaultOpenKeys)) {
+      setOpenKeys(defaultOpenKeys)
+      defaultOpenKeys.forEach((d) => {
+        openSubMenuSet.add(d)
+      })
+    }
+  }, [])
 
   useEffect(() => {
     if (userOpenKeys !== undefined && Array.isArray(userOpenKeys)) {
