@@ -16,6 +16,10 @@ export function replaceElement(
   return React.cloneElement(element, typeof props === 'function' ? props(element.props || {}) : props)
 }
 
+export function isFragment(child: any): boolean {
+  return child && isValidElement(child) && child.type === React.Fragment
+}
+
 export function cloneElement(element: React.ReactNode, props?: RenderProps): React.ReactElement {
   return replaceElement(element, element, props) as React.ReactElement
 }
