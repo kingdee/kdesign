@@ -47,7 +47,7 @@ export interface CheckboxGroupProps {
 }
 const CheckboxGroup = React.forwardRef<HTMLDivElement, CheckboxGroupProps>((props, ref) => {
   const { getPrefixCls, prefixCls, compDefaultProps: userDefaultProps } = useContext(ConfigContext)
-  const CheckboxProps = getCompProps('Checkbox', userDefaultProps, props) // 按钮属性需要合并一遍用户定义的默认属性
+  const CheckboxProps = getCompProps('CheckboxGroup', userDefaultProps, props) // 多选组属性需要合并一遍用户定义的默认属性
   const {
     checkboxType,
     className,
