@@ -220,7 +220,7 @@ const Cascader = React.forwardRef<unknown, CascaderProps>((props, ref) => {
       : currentOptions.map((option) => option.map(({ value }: CascaderOptionType) => value as string))
   }, [currentOptions, isMultiple])
 
-  const allowClear = customAllowClear && value.length > 0
+  const allowClear = customAllowClear && value.length > 0 && !disabled
 
   const handleClear = () => {
     onChange([])
@@ -275,7 +275,7 @@ const Cascader = React.forwardRef<unknown, CascaderProps>((props, ref) => {
 
   const renderMultiple = () => {
     const multipleCls = classNames({
-      disabled: disabled,
+      [`${prefixCls}-disabled`]: disabled,
       [`${prefixCls}-multiple`]: true,
       [`${prefixCls}-bordered`]: bordered,
     })
@@ -294,7 +294,13 @@ const Cascader = React.forwardRef<unknown, CascaderProps>((props, ref) => {
                 return (
                   <span key={JSON.stringify(values[index])} className={classNames(`${prefixCls}-selection-tag`)}>
                     {(!maxTagCount || index <= maxTagCount - 1) && (
-                      <Tag type="edit" style={TagStyle} closable onClose={(e) => handleRemove(e, option)}>
+                      <Tag
+                        type="edit"
+                        disabled={disabled}
+                        style={TagStyle}
+                        closable
+                        onClose={(e) => handleRemove(e, option)}
+                      >
                         {displayRender(labels[index], option)}
                       </Tag>
                     )}
@@ -336,7 +342,7 @@ const Cascader = React.forwardRef<unknown, CascaderProps>((props, ref) => {
       className: classNames(`${prefixCls}-picker`, className, {
         expand: visible,
         allowClear,
-        disabled: disabled,
+        [`${prefixCls}-disabled`]: disabled,
         [`${prefixCls}-bordered`]: bordered,
       }),
     }
