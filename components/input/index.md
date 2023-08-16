@@ -54,6 +54,14 @@ subtitle: 输入框
 | status | 设置校验状态 | string | `-` | `error` | 1.7.5 |
 | value | 输入框内容 | string | `-` | `-` | 1.0.0 |
 
+### InputInstance
+
+| 参数 | 说明 | 类型 | 版本 |
+|--------| --- | --- |--------|
+| blur | 取消焦点 | - | 1.7.22 |
+| focus | 获取焦点 | - | 1.7.22 |
+| select | 获取焦点 | - | 1.7.22 |
+
 ## Design Token
 
 | 分类 | 组件token | 全局token | 默认值 |

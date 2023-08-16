@@ -175,10 +175,15 @@ describe('Input', () => {
   })
 
   // 9. ref test
-  it('should get button element from ref', () => {
-    const ref = React.createRef()
-    mount(<Input ref={ref} />)
-    expect((ref.current as HTMLElement).classList.contains('kd-input')).toBe(true)
+  it('ref', () => {
+    const ref: any = React.createRef()
+    const onBlur = jest.fn()
+    const onFocus = jest.fn()
+    mount(<Input ref={ref} onBlur={onBlur} onFocus={onFocus} />)
+    expect((ref.current?.input as HTMLElement).classList.contains('kd-input')).toBe(true)
+    expect(ref.current?.focus).toBeTruthy()
+    expect(ref.current?.blur).toBeTruthy()
+    expect(ref.current?.select).toBeTruthy()
   })
 
   // 10. api test
