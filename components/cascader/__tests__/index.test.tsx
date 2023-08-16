@@ -4,6 +4,7 @@ import ConfigProvider from '../../config-provider'
 import Icon from '../../icon'
 import Cascader from '..'
 import mountTest from '../../../tests/shared/mountTest'
+import { sleep } from '../../../tests/utils'
 
 const options = [
   {
@@ -96,6 +97,7 @@ describe('Cascader', () => {
     expect(render(<Cascader options={options} placeholder="Please select" />)).toMatchSnapshot()
     expect(render(<Cascader options={options} placeholder="Please select" bordered />)).toMatchSnapshot()
   })
+
   // 3. warns in components
   // 4. render null or undefined without errors
   it('render null or undefined without errors', () => {
@@ -108,6 +110,7 @@ describe('Cascader', () => {
       ),
     ).toMatchSnapshot()
   })
+
   // 5.displayName
   it('should have displayName static property', () => {
     const wrapper = mount(<Cascader options={options} placeholder="Please select" />)
@@ -432,7 +435,7 @@ describe('Cascader', () => {
     // mode
     const wrapper = mount(<Cascader options={options} bordered data-test="test" disabled mode="multiple" />)
     expect(wrapper.find('.kd-cascader-multiple')).toHaveClassName('kd-cascader-bordered')
-    expect(wrapper.find('.kd-cascader-multiple')).toHaveClassName('disabled')
+    expect(wrapper.find('.kd-cascader-multiple')).toHaveClassName('kd-cascader-disabled')
     expect(wrapper.find('.kd-cascader-multiple').prop('data-test')).toEqual('test')
     const wrapperSingle = mount(<Cascader options={options} data-test="test" bordered disabled />)
     expect(wrapperSingle.find('.kd-input-wrapper')).not.toHaveClassName('kd-input-wrapper-underline')
@@ -459,4 +462,25 @@ describe('Cascader', () => {
   })
   // 10. ref test
   // 11. special case
+  describe('special case', () => {
+    it('disabled operate', async () => {
+      const ref: any = React.createRef()
+      const onOpenChange = jest.fn()
+      const wrapper = mount(
+        <div ref={ref}>
+          <Cascader
+            options={options}
+            disabled
+            onPopperVisibleChange={onOpenChange}
+            getPopupContainer={() => ref.current}
+          />
+        </div>,
+      )
+
+      expect(wrapper.find('.kd-cascader-menus').length).toEqual(0)
+      wrapper.find('.kd-cascader-picker').simulate('mouseup')
+      await sleep(100)
+      expect(ref.current.querySelectorAll('.kd-cascader-menus').length).toEqual(0)
+    })
+  })
 })
