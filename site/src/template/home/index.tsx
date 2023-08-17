@@ -46,6 +46,10 @@ function InforList(props: any) {
   return <div className="wrapper">{listItems}</div>
 }
 class Home extends React.Component {
+  componentDidMount() {
+    document.title = '首页 - KDesign React'
+  }
+
   render() {
     return (
       <div className="home home-container">
