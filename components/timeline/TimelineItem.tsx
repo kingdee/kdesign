@@ -61,6 +61,8 @@ const TimelineItem: React.FC<TimeLineItemProps> = (props) => {
         }
       : {}
 
+  const marginDistance = pending ? Math.round(lineHeight / 2 + 12 / 2 + 2) : Math.round(lineHeight / 2 + 9 / 2 + 2)
+
   return (
     <li {...restProps} className={itemClassName}>
       {label && (
@@ -68,7 +70,7 @@ const TimelineItem: React.FC<TimeLineItemProps> = (props) => {
           {label}
         </div>
       )}
-      <div className={`${prefixCls}-tail`} style={{ marginTop: lineHeight - 2 }} />
+      <div className={`${prefixCls}-tail`} style={{ marginTop: marginDistance }} />
       <div className={dotClassName} style={dotStyle}>
         {dot}
       </div>
