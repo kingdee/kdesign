@@ -241,7 +241,7 @@
   &.pending .@{timeline-item-prefix-cls}.last .@{timeline-item-prefix-cls}-tail {
     display: block;
     height: calc(100% - 14px);
-    border-left: 2px dotted @timeline-line-color;
+    border-left: 1px dotted @timeline-line-color;
   }
 
   &.reverse .@{timeline-item-prefix-cls}.last .@{timeline-item-prefix-cls}-tail {
@@ -250,10 +250,9 @@
 
   &.reverse .@{timeline-item-prefix-cls}.pending {
     .@{timeline-item-prefix-cls}-tail {
-      top: 15px;
       display: block;
       height: calc(100% - 15px);
-      border-left: 2px dotted @timeline-line-color;
+      border-left: 1px dotted @timeline-line-color;
     }
     .@{timeline-item-prefix-cls}-content {
       min-height: 48px;
