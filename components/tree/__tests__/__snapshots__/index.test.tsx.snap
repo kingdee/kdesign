@@ -8,7 +8,7 @@ exports[`Tree renders correctly 1`] = `
     class="kd-tree-root"
   >
     <div
-      style="overflow-y:auto;overflow-anchor:none;max-height:300px"
+      style="overflow-y:auto;overflow-anchor:none;max-height:100%"
     >
       <div>
         <div
@@ -28,7 +28,7 @@ exports[`Tree renders correctly 2`] = `
     class="kd-tree-root"
   >
     <div
-      style="overflow-y:auto;overflow-anchor:none;max-height:300px"
+      style="overflow-y:auto;overflow-anchor:none;max-height:100%"
     >
       <div>
         <div
