@@ -12,22 +12,6 @@
   cursor: pointer;
   background: @cascader-bg-color;
 
-  &:focus > &-input {
-    border-color: @cascader-active-color;
-
-    .@{kd-prefix}-input-suffix,
-    i[class*='kdicon'] {
-      color: @cascader-active-color;
-    }
-  }
-
-  &:hover > &-input {
-    .@{kd-prefix}-input-suffix,
-    i[class*='kdicon'] {
-      color: @cascader-active-color;
-    }
-  }
-
   &.disabled {
     .@{cascader-picker-prefix-cls}-input {
       cursor: not-allowed;
@@ -54,19 +38,16 @@
   }
 
   &-input {
-    background-color: transparent !important;
+    background-color: transparent;
     transition: all 0.2s;
 
     > input {
-      color: transparent !important;
+      color: transparent;
       cursor: pointer;
     }
 
     &.expand {
-      border-color: @cascader-active-color;
-
       i[class*='kdicon'] {
-        color: @cascader-active-color;
         transform: rotate(180deg);
       }
     }
@@ -267,10 +248,6 @@
         transform: rotate(0deg);
         transition: transform calc(@transition-duration - 0.1s) @ease;
       }
-
-      &-focus {
-        color: @cascader-g-color-border-foucs;
-      }
     }
 
     &-clear {
@@ -310,5 +287,19 @@
 
   &-disabled {
     cursor: not-allowed;
+  }
+
+  &-picker:hover, &-expand {
+    .kd-input-wrapper {
+      border-color: @cascader-g-color-border-foucs;
+    }
+  }
+
+  &-multiple:hover, &-expand {
+    border-color: @cascader-g-color-border-foucs;
+  }
+
+  &-bordered&-multiple&-expand{
+    border-color: @cascader-g-color-border-foucs;
   }
 }
