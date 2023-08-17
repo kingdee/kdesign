@@ -4,7 +4,6 @@ exports[`Cascader render null or undefined without errors 1`] = `
 <Cascader>
   <div
     className="kd-cascader-picker"
-    tabIndex={0}
   >
     <div>
       <Input
@@ -98,7 +97,6 @@ exports[`Cascader render null or undefined without errors 1`] = `
 exports[`Cascader renders correctly 1`] = `
 <div
   class="kd-cascader-picker"
-  tabindex="0"
 >
   <div>
     <span
@@ -129,7 +127,6 @@ exports[`Cascader renders correctly 1`] = `
 exports[`Cascader renders correctly 2`] = `
 <div
   class="kd-cascader-picker"
-  tabindex="0"
 >
   <div>
     <span
@@ -160,7 +157,6 @@ exports[`Cascader renders correctly 2`] = `
 exports[`Cascader renders correctly 3`] = `
 <div
   class="kd-cascader-picker kd-cascader-bordered"
-  tabindex="0"
 >
   <div>
     <span
