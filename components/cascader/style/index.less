@@ -12,22 +12,6 @@
   cursor: pointer;
   background: @cascader-bg-color;
 
-  &:focus > &-input {
-    border-color: @cascader-active-color;
-
-    .@{kd-prefix}-input-suffix,
-    i[class*='kdicon'] {
-      color: @cascader-active-color;
-    }
-  }
-
-  &:hover > &-input {
-    .@{kd-prefix}-input-suffix,
-    i[class*='kdicon'] {
-      color: @cascader-active-color;
-    }
-  }
-
   &.disabled {
     .@{cascader-picker-prefix-cls}-input {
       cursor: not-allowed;
@@ -54,7 +38,7 @@
   }
 
   &-input {
-    background-color: transparent !important;
+    background-color: transparent;
     transition: all 0.2s;
 
     > input {
@@ -63,10 +47,7 @@
     }
 
     &.expand {
-      border-color: @cascader-active-color;
-
       i[class*='kdicon'] {
-        color: @cascader-active-color;
         transform: rotate(180deg);
       }
     }
@@ -105,7 +86,7 @@
     transform: scale(0.9) translateY(-50%);
 
     &:hover {
-      color: @cascader-active-color;
+      color: @cascader-clear-color-hover;
     }
   }
 }
@@ -267,10 +248,6 @@
         transform: rotate(0deg);
         transition: transform calc(@transition-duration - 0.1s) @ease;
       }
-
-      &-focus {
-        color: @cascader-g-color-border-foucs;
-      }
     }
 
     &-clear {
@@ -297,7 +274,6 @@
       &-content {
         display: inline-flex;
         align-items: center;
-        vertical-align: middle;
         padding: 0 7px;
         overflow: hidden;
         white-space: nowrap;
@@ -310,5 +286,43 @@
 
   &-disabled {
     cursor: not-allowed;
+
+    .@{kd-prefix}-cascader-picker-label {
+      color: @cascader-disabled-color;
+    }
+
+    .@{kd-prefix}-cascader-picker-input {
+      background-color: @cascader-disabled-color-background;
+
+      > input {
+        background-color: @cascader-disabled-color-background;
+      }
+    }
+
+    &.kd-cascader-multiple {
+      background-color: @cascader-disabled-color-background;
+    }
+
+    .kd-cascader-suffix {
+      color: @cascader-disabled-color;
+    }
+
+    .kd-cascader-tag-describe-content {
+      color: @cascader-disabled-color;
+    }
+  }
+
+  &-picker:not(&-disabled):hover, &-expand {
+    .kd-input-wrapper {
+      border-color: @cascader-g-color-border-focus;
+    }
+  }
+
+  &-multiple:not(&-disabled):hover, &-expand {
+    border-color: @cascader-g-color-border-focus;
+  }
+
+  &-bordered&-multiple&-expand{
+    border-color: @cascader-g-color-border-focus;
   }
 }

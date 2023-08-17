@@ -275,6 +275,7 @@ const Cascader = React.forwardRef<unknown, CascaderProps>((props, ref) => {
 
   const renderMultiple = () => {
     const multipleCls = classNames({
+      [`${prefixCls}-expand`]: visible,
       [`${prefixCls}-disabled`]: disabled,
       [`${prefixCls}-multiple`]: true,
       [`${prefixCls}-bordered`]: bordered,
@@ -340,7 +341,7 @@ const Cascader = React.forwardRef<unknown, CascaderProps>((props, ref) => {
       style,
       tabIndex: 0,
       className: classNames(`${prefixCls}-picker`, className, {
-        expand: visible,
+        [`${prefixCls}-expand`]: visible,
         allowClear,
         [`${prefixCls}-disabled`]: disabled,
         [`${prefixCls}-bordered`]: bordered,

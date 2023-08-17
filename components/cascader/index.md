@@ -69,17 +69,16 @@ interface Option {
 
 | 分类 | 组件token | 全局token | 默认值 |
 | --- | --- | --- | --- |
-| colors | --kd-c-cascader-color-active | - | #999 |
-|  | --kd-c-cascader-color-text | --kd-g-color-text-primary | #212121 |
+| colors | --kd-c-cascader-color-text | --kd-g-color-text-primary | #212121 |
 |  | --kd-c-cascader-color-background | --kd-g-color-white | #fff |
 |  | --kd-c-cascader-color-background-hover | --kd-g-color-hover | #f5f5f5 |
 |  | --kd-c-cascader-color-text-selected | --kd-g-color-theme | #5582f3 |
 |  | --kd-c-cascader-color-background-selected | --kd-g-color-background-ongoing | #f2f9ff |
 |  | --kd-c-cascader-color-text-disabled | --kd-g-color-disabled | #b2b2b2 |
+|  | --kd-c-cascader-color-background-disabled | --kd-g-color-background-contain-disabled | #f5f5f5 |
 |  | --kd-c-cascader-clear-color-text | - | #d9d9d9 |
-|  | --kd-c-cascader-color-border-foucs | --kd-g-color-theme | #5582f3 |
-|  | --kd-c-cascader-icon-clear-color-text | - | #d9d9d9 |
 |  | --kd-c-cascader-icon-clear-color-text-hover | - | #999 |
+|  | --kd-c-cascader-color-border-foucs | --kd-g-color-theme | #5582f3 |
 | font | --kd-c-cascader-font-size | --kd-g-font-size-small | 12px |
 |  | --kd-c-cascader-font-weight | - | 'normal' |
 | radius | --kd-c-cascader-radius-border | --kd-g-radius-border | 2px |
