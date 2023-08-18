@@ -71,7 +71,7 @@ subtitle: 导航菜单
 |  | --kd-c-menu-light-color-background-active | - | #e3ebff |
 | font | --kd-c-menu-icon-font-size | --kd-g-font-size-xx-large | 20px |
 | motion | --kd-c-menu-motion-duration | --kd-g-duration | 0.3s |
-| sizing | --kd-c-menu-item-sizing-height | - | 50px |
-|  | --kd-c-menu-sizing-max-width | - | - |
-|  | --kd-c-menu-sizing-min-width | - | - |
+| sizing | --kd-c-menu-sizing-max-width | - | - |
+|  | --kd-c-menu-sizing-min-width | - | 138px |
+|  | --kd-c-menu-item-sizing-height | - | 50px |
 | z-index | --kd-c-menu-z-index | --kd-g-z-index-dialog | 1050 |

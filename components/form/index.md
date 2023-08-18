@@ -76,6 +76,6 @@ subtitle: 表单
 |  | --kd-c-form-field-message-line-height | - | 18px |
 | spacing | --kd-c-form-field-spacing-margin-right | - | 30px |
 |  | --kd-c-form-field-spacing-margin-bottom | - | 22px |
-|  | --kd-c-form-field-label-spacing-margin-bottom | - | 5px |
 |  | --kd-c-form-field-message-spacing-padding-horizontal | - | 2px |
 |  | --kd-c-form-field-message-spacing-padding-vertical | - | 8px |
+|  | --kd-c-form-field-label-spacing-margin-bottom | - | 5px |
