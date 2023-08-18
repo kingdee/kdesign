@@ -62,7 +62,7 @@ const InternalSearch: React.ForwardRefRenderFunction<ISearchProps, IQuickSearchP
 
   const handlePressEnter = useCallback(
     (_: string, event: React.KeyboardEvent) => {
-      onPressEnter && onPressEnter?.(searchRef.current.value, event)
+      onPressEnter && onPressEnter?.(searchRef.current?.input?.value, event)
     },
     [onPressEnter, searchRef],
   )

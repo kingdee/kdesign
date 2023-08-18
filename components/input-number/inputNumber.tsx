@@ -218,7 +218,7 @@ const InternalInputNumber = (props: InputNumberProps, ref: unknown): FunctionCom
       devWarning(true, 'inputNumber', `stepOption.step必须为一个数值`)
       return false
     }
-    const startingNumber = parseFloat(inputNumberRef.current.value) || 0
+    const startingNumber = parseFloat(inputNumberRef.current?.input?.value) || 0
     const calculationResults = new Big(startingNumber)[type](step).valueOf()
     const legalNumber = verifiValue(calculationResults)
     if (legalNumber === false) {
