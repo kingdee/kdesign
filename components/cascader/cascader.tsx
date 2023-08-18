@@ -1,4 +1,4 @@
-import React, { useMemo, useCallback, useState, useRef, useEffect, forwardRef } from 'react'
+import React, { useMemo, useCallback, useState, useRef, useEffect, forwardRef, useImperativeHandle } from 'react'
 import classNames from 'classnames'
 import { tuple } from '../_utils/type'
 import { getCompProps } from '../_utils'
@@ -18,6 +18,7 @@ export interface CascaderOptionType {
   isLeaf?: boolean
   loading?: boolean
   children?: Array<CascaderOptionType>
+
   [key: string]: any
 }
 
@@ -79,7 +80,13 @@ export interface CascaderProps extends PopperProps {
   displayRender?: (label: string[], currentOptions?: CascaderOptionType[]) => React.ReactNode
 }
 
-const Cascader = forwardRef<unknown, CascaderProps>((props, ref) => {
+export interface CascaderRef {
+  focus: () => void
+  blur: () => void
+  input: HTMLInputElement | null
+}
+
+const Cascader = forwardRef<CascaderRef, CascaderProps>((props, ref) => {
   const { getPrefixCls, prefixCls: pkgPrefixCls, compDefaultProps: userDefaultProps } = React.useContext(ConfigContext)
 
   // 属性需要合并一遍用户定义的默认属性
@@ -116,14 +123,12 @@ const Cascader = forwardRef<unknown, CascaderProps>((props, ref) => {
     ...otherProps
   } = allProps
 
-  // className前缀
   const prefixCls = getPrefixCls!(pkgPrefixCls, 'cascader', customPrefixcls)
 
-  const pickerRef = useRef<HTMLSpanElement>()
-  const triggerRef = useRef<HTMLSpanElement>()
-  const wrapperRef = useRef<HTMLDivElement>()
-
-  const mergeRef = (ref || pickerRef) as any
+  const pickerRef = useRef<HTMLInputElement>(null)
+  const triggerRef = useRef<HTMLDivElement>()
+  const labelRef = useRef<HTMLDivElement>()
+  const clearRef = useRef<HTMLDivElement>()
 
   const [visible, setVisible] = useState(!!props.popperVisible || !!props.popupVisible || defaultPopupVisible)
   useEffect(() => {
@@ -144,69 +149,6 @@ const Cascader = forwardRef<unknown, CascaderProps>((props, ref) => {
 
   const [checkedKeys, halfCheckedKeys] = useChecked(value, flattenData, keysData, isMultiple)
 
-  useEffect(() => {
-    if (!isMultiple && value && options?.length > 0) {
-      const currentOptions: CascaderOptionType[] = []
-      const menus = [options]
-      const scanOptions = (options: Array<CascaderOptionType>) => {
-        options.forEach((option: CascaderOptionType) => {
-          if (value.includes(String(option[fieldNames.value]))) {
-            currentOptions.push(option)
-            if (option[fieldNames.children]?.length) {
-              menus.push(option[fieldNames.children])
-              scanOptions(option[fieldNames.children])
-            }
-          }
-        })
-      }
-      scanOptions(options)
-
-      setMenus(menus)
-      setCurrentOptions(currentOptions)
-    }
-  }, [options, value, selectedOptions, fieldNames, isMultiple])
-
-  useEffect(() => {
-    if (isMultiple && value && options?.length > 0) {
-      const currentOptions: CascaderOptionType[] = []
-      const lastselectedOptions = value[value?.length - 1] || []
-      const menus = [options]
-      const scanOptions = (options: Array<CascaderOptionType>) => {
-        options.forEach((option: CascaderOptionType) => {
-          if (lastselectedOptions.includes(String(option[fieldNames.value]))) {
-            currentOptions.push(option)
-            if (option[fieldNames.children]?.length) {
-              menus.push(option[fieldNames.children])
-              scanOptions(option[fieldNames.children])
-            }
-          }
-        })
-      }
-      scanOptions(options)
-      const newMultipleOptions = value?.map((item) => {
-        return Array.isArray(item) ? item.map((key: string) => keysData[key]) : []
-      })
-
-      setMenus(menus)
-      setCurrentOptions(newMultipleOptions)
-    }
-  }, [options, value, fieldNames, isMultiple])
-
-  useEffect(() => {
-    if (autoFocus) {
-      mergeRef.current?.focus()
-    }
-  }, [autoFocus, mergeRef])
-
-  useEffect(() => {
-    wrapperRef.current?.addEventListener('mouseup', (e: MouseEvent) => {
-      const isCloseBtn = (e?.target as Element)?.className.indexOf('kd-tag-close-icon') > -1
-      if (isCloseBtn) {
-        e.stopPropagation()
-      }
-    })
-  }, [])
-
   const labels = useMemo(() => {
     return !isMultiple
       ? currentOptions.map(({ [fieldNames.label]: label }: CascaderOptionType) => label as string)
@@ -223,7 +165,17 @@ const Cascader = forwardRef<unknown, CascaderProps>((props, ref) => {
 
   const allowClear = customAllowClear && value.length > 0 && !disabled
 
-  const handleClear = () => {
+  const handleMouseUp = (e: MouseEvent) => {
+    const cln = (e?.target as Element)?.className
+    const isCloseBtn = cln.indexOf('kd-tag-close-icon') > -1 || cln.indexOf('kdicon') > -1
+
+    if (isCloseBtn) {
+      e.stopPropagation()
+    }
+  }
+
+  const handleClear = (e: any) => {
+    e.stopPropagation()
     onChange([])
   }
 
@@ -254,7 +206,7 @@ const Cascader = forwardRef<unknown, CascaderProps>((props, ref) => {
     readOnly: true,
     borderType: bordered ? 'bordered' : 'underline',
     disabled: disabled,
-    ref: mergeRef,
+    ref: pickerRef,
     className: classNames(`${prefixCls}-picker-input`, { expand: visible }),
     suffix: props.suffixIcon || <Icon type="arrow-down" className={classNames({ expand: visible })} />,
   }
@@ -278,11 +230,11 @@ const Cascader = forwardRef<unknown, CascaderProps>((props, ref) => {
           <>
             <div ref={triggerRef as any}>
               <Input {...inputProps} />
-              <span className={`${prefixCls}-picker-label`}>
+              <div className={`${prefixCls}-picker-label`}>
                 {labels?.length ? displayRender(labels, currentOptions) : ''}
-              </span>
+              </div>
               {allowClear && (
-                <div className={`${prefixCls}-picker-close`} onClick={handleClear}>
+                <div ref={clearRef as any} className={`${prefixCls}-picker-close`} onClick={handleClear}>
                   {clearIcon || <Icon type="close-solid" />}
                 </div>
               )}
@@ -310,7 +262,8 @@ const Cascader = forwardRef<unknown, CascaderProps>((props, ref) => {
       [`${prefixCls}-tag-describe`]: true,
     })
 
-    const TagStyle = { margin: '2px 8px 2px 0', maxWidth: '100%' }
+    const tagStyle = { margin: '2px 8px 2px 0', maxWidth: '100%' }
+
     return (
       <div {...multipleProps} {...otherProps}>
         {React.Children.count(children) === 1 && children.type ? (
@@ -318,7 +271,7 @@ const Cascader = forwardRef<unknown, CascaderProps>((props, ref) => {
         ) : (
           <div ref={triggerRef as any}>
             <Input {...inputProps} />
-            <span className={`${prefixCls}-picker-label`}>
+            <div className={`${prefixCls}-picker-label`} ref={labelRef as any}>
               {Array.isArray(currentOptions) && currentOptions.length ? (
                 <>
                   {currentOptions.map((option: CascaderOptionType[], index: number) => {
@@ -328,7 +281,7 @@ const Cascader = forwardRef<unknown, CascaderProps>((props, ref) => {
                           <Tag
                             type="edit"
                             disabled={disabled}
-                            style={TagStyle}
+                            style={tagStyle}
                             closable
                             onClose={(e) => handleRemove(e, option)}
                           >
@@ -349,9 +302,9 @@ const Cascader = forwardRef<unknown, CascaderProps>((props, ref) => {
                   ) : null}
                 </>
               ) : null}
-            </span>
+            </div>
             {allowClear && (
-              <div className={`${prefixCls}-picker-close`} onClick={handleClear}>
+              <div ref={clearRef as any} className={`${prefixCls}-picker-close`} onClick={handleClear}>
                 {clearIcon || <Icon type="close-solid" />}
               </div>
             )}
@@ -423,6 +376,75 @@ const Cascader = forwardRef<unknown, CascaderProps>((props, ref) => {
     onPopperVisibleChange && onPopperVisibleChange(visible)
     visible && setSelectedOptions(currentOptions.slice(0))
   }
+
+  useEffect(() => {
+    if (!isMultiple && value && options?.length > 0) {
+      const currentOptions: CascaderOptionType[] = []
+      const menus = [options]
+      const scanOptions = (options: Array<CascaderOptionType>) => {
+        options.forEach((option: CascaderOptionType) => {
+          if (value.includes(String(option[fieldNames.value]))) {
+            currentOptions.push(option)
+            if (option[fieldNames.children]?.length) {
+              menus.push(option[fieldNames.children])
+              scanOptions(option[fieldNames.children])
+            }
+          }
+        })
+      }
+      scanOptions(options)
+
+      setMenus(menus)
+      setCurrentOptions(currentOptions)
+    }
+  }, [options, value, selectedOptions, fieldNames, isMultiple])
+
+  useEffect(() => {
+    if (isMultiple && value && options?.length > 0) {
+      const currentOptions: CascaderOptionType[] = []
+      const lastselectedOptions = value[value?.length - 1] || []
+      const menus = [options]
+      const scanOptions = (options: Array<CascaderOptionType>) => {
+        options.forEach((option: CascaderOptionType) => {
+          if (lastselectedOptions.includes(String(option[fieldNames.value]))) {
+            currentOptions.push(option)
+            if (option[fieldNames.children]?.length) {
+              menus.push(option[fieldNames.children])
+              scanOptions(option[fieldNames.children])
+            }
+          }
+        })
+      }
+      scanOptions(options)
+      const newMultipleOptions = value?.map((item) => {
+        return Array.isArray(item) ? item.map((key: string) => keysData[key]) : []
+      })
+
+      setMenus(menus)
+      setCurrentOptions(newMultipleOptions)
+    }
+  }, [options, value, fieldNames, isMultiple])
+
+  useEffect(() => {
+    if (autoFocus) {
+      pickerRef.current?.focus()
+    }
+  }, [autoFocus, pickerRef])
+
+  useEffect(() => {
+    labelRef.current?.addEventListener('mouseup', handleMouseUp)
+    clearRef.current?.addEventListener('mouseup', handleMouseUp)
+  }, [allowClear])
+
+  useImperativeHandle(ref, () => ({
+    blur: () => {
+      pickerRef.current?.blur()
+    },
+    focus: () => {
+      pickerRef.current?.focus()
+    },
+    input: pickerRef.current,
+  }))
 
   const cascaderMenus = (
     <>
