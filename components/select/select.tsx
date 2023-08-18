@@ -1,4 +1,13 @@
-import React, { useContext, useRef, useEffect, useState, useCallback, useLayoutEffect, useMemo } from 'react'
+import React, {
+  useContext,
+  useRef,
+  useEffect,
+  useState,
+  useCallback,
+  useLayoutEffect,
+  useMemo,
+  useImperativeHandle,
+} from 'react'
 import { useMergedState } from '../_utils/hooks'
 import isBoolean from 'lodash/isBoolean'
 import classNames from 'classnames'
@@ -57,8 +66,7 @@ const InternalSelect: React.ForwardRefRenderFunction<ISelectProps<SelectValue>> 
     defaultValue,
   })
   const realChildren = Array.isArray(options) ? options : toArray(children) // options配置项和默认children
-  const innerRef = useRef<HTMLElement>()
-  const selectRef = (ref as any) || innerRef
+  const selectRef = useRef<any>()
   const searchRef = useRef<any>(null) // 搜索框ref
   const selectionRef = useRef<any>(null)
   const dropDownRef = useRef<any>(null)
@@ -776,6 +784,20 @@ const InternalSelect: React.ForwardRefRenderFunction<ISelectProps<SelectValue>> 
       clearRef.current?.removeEventListener('mouseup', fn)
     }
   }, [singleVal, mulOptions])
+
+  useImperativeHandle(ref as any, () => {
+    return {
+      select: selectRef.current,
+      focus: () => {
+        setFocusd(true)
+        searchRef.current?.focus()
+      },
+      blur: () => {
+        setFocusd(false)
+        searchRef.current?.blur()
+      },
+    }
+  })
 
   const [activeIndex, setActiveIndex] = useState(isShowSearch ? getActiveIndex(0) : -1)
   const onInternalKeyDown: React.KeyboardEventHandler<HTMLSpanElement> = (e) => {
