@@ -27,8 +27,6 @@ exports[`Checkbox render null or undefined without errors 2`] = `
 <CheckboxGroup>
   <ul
     className="kd-checkbox-group"
-    defaultChecked={false}
-    indeterminate={false}
   />
 </CheckboxGroup>
 `;
@@ -67,8 +65,6 @@ exports[`Checkbox render test 2`] = `
 <CheckboxGroup>
   <ul
     className="kd-checkbox-group"
-    defaultChecked={false}
-    indeterminate={false}
   >
     <Checkbox
       defaultChecked={false}
