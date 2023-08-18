@@ -91,5 +91,7 @@ subtitle: 树控件
 |  | --kd-c-tree-expand-icon-loading-sizing-width | - | 16px |
 |  | --kd-c-tree-node-icon-sizing-height | - | 16px |
 |  | --kd-c-tree-node-icon-sizing-width | - | 16px |
+|  | --kd-c-tree-root-sizing-max-width | - | - |
+|  | --kd-c-tree-root-sizing-min-width | - | - |
 | spacing | --kd-c-tree-spacing-margin-left | - | 0px |
 |  | --kd-c-tree-spacing-padding-vertical | - | 3px |
