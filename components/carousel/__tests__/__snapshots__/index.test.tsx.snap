@@ -20,6 +20,7 @@ exports[`Carousel render null or undefined without errors 1`] = `
     onTransitionEnd={[Function]}
   >
     <ForwardRef
+      currentIndex={0}
       items={
         Array [
           null,
@@ -36,7 +37,7 @@ exports[`Carousel render null or undefined without errors 1`] = `
           key="0"
         />
         <li
-          className="kd-carousel-list-item"
+          className="kd-carousel-list-item kd-carousel-list-item-active"
           key="1"
         />
         <li

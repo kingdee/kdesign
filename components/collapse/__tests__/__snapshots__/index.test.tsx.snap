@@ -1,0 +1,179 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`collapse 2. render test renders accordion  1`] = `
+<div
+  class="kd-collapse"
+>
+  <div
+    class="kd-collapse-panel"
+  >
+    <span
+      class="kd-collapse-panel-top"
+    >
+      <span
+        class="kd-collapse-panel-left"
+      >
+        <span
+          class="kd-collapse-panel-icon kd-collapse-panel-animation-expand"
+        >
+          <i
+            class="kdicon kdicon-arrow-right-solid"
+          />
+        </span>
+        <span
+          class="kd-collapse-panel-header"
+        >
+          This is the header
+        </span>
+      </span>
+      <span
+        class="kd-collapse-panel-middle"
+      />
+      <span
+        class="kd-collapse-panel-right"
+      />
+    </span>
+    <div
+      class="kd-collapse-panel-children-hide"
+    >
+      <div
+        class=""
+      >
+        折叠面板内容
+      </div>
+    </div>
+  </div>
+  <div
+    class="kd-collapse-panel"
+  >
+    <span
+      class="kd-collapse-panel-top"
+    >
+      <span
+        class="kd-collapse-panel-left"
+      >
+        <span
+          class="kd-collapse-panel-icon kd-collapse-panel-animation-expand"
+        >
+          <i
+            class="kdicon kdicon-arrow-right-solid"
+          />
+        </span>
+        <span
+          class="kd-collapse-panel-header"
+        >
+          This is the header
+        </span>
+      </span>
+      <span
+        class="kd-collapse-panel-middle"
+      />
+      <span
+        class="kd-collapse-panel-right"
+      />
+    </span>
+    <div
+      class="kd-collapse-panel-children-hide"
+    >
+      <div
+        class=""
+      >
+        折叠面板内容
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`collapse 2. render test renders correctly 1`] = `
+<div
+  class="kd-collapse"
+>
+  <div
+    class="kd-collapse-panel"
+  >
+    <span
+      class="kd-collapse-panel-top"
+    >
+      <span
+        class="kd-collapse-panel-left"
+      >
+        <span
+          class="kd-collapse-panel-icon kd-collapse-panel-animation-expand"
+        >
+          <i
+            class="kdicon kdicon-arrow-right-solid"
+          />
+        </span>
+        <span
+          class="kd-collapse-panel-header"
+        >
+          This is the header
+        </span>
+      </span>
+      <span
+        class="kd-collapse-panel-middle"
+      />
+      <span
+        class="kd-collapse-panel-right"
+      />
+    </span>
+    <div
+      class="kd-collapse-panel-children-hide"
+    >
+      <div
+        class=""
+      >
+        折叠面板内容
+      </div>
+    </div>
+  </div>
+  <div
+    class="kd-collapse-panel"
+  >
+    <span
+      class="kd-collapse-panel-top"
+    >
+      <span
+        class="kd-collapse-panel-left"
+      >
+        <span
+          class="kd-collapse-panel-icon kd-collapse-panel-animation-expand"
+        >
+          <i
+            class="kdicon kdicon-arrow-right-solid"
+          />
+        </span>
+        <span
+          class="kd-collapse-panel-header"
+        >
+          This is the header
+        </span>
+      </span>
+      <span
+        class="kd-collapse-panel-middle"
+      />
+      <span
+        class="kd-collapse-panel-right"
+      />
+    </span>
+    <div
+      class="kd-collapse-panel-children-hide"
+    >
+      <div
+        class=""
+      >
+        折叠面板内容
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`collapse 4. render null or undefined without errors Collapse render null or undefined without errors 1`] = `
+<Collapse>
+  <div
+    className="kd-collapse"
+  />
+</Collapse>
+`;

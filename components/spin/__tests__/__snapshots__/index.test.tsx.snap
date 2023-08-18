@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Spin renders correctly 1`] = `
+exports[`Spin 2. render test renders correctly 1`] = `
 <div
   class="kd-spin-children-wrapper"
 >
@@ -32,7 +32,7 @@ exports[`Spin renders correctly 1`] = `
 </div>
 `;
 
-exports[`Spin renders correctly 2`] = `
+exports[`Spin 2. render test renders correctly 2`] = `
 <div
   class="kd-spin-children-wrapper"
 >
@@ -64,7 +64,7 @@ exports[`Spin renders correctly 2`] = `
 </div>
 `;
 
-exports[`Spin renders correctly 3`] = `
+exports[`Spin 2. render test renders correctly 3`] = `
 <div
   class="kd-spin-children-wrapper"
 >
@@ -96,7 +96,7 @@ exports[`Spin renders correctly 3`] = `
 </div>
 `;
 
-exports[`Spin renders correctly 4`] = `
+exports[`Spin 2. render test renders correctly 4`] = `
 <div
   class="kd-spin-children-wrapper"
 >
@@ -117,4 +117,53 @@ exports[`Spin renders correctly 4`] = `
     Text
   </div>
 </div>
+`;
+
+exports[`Spin 2. render test should render custom indicator 1`] = `
+<div
+  class="kd-spin kd-spin-page kd-spin-indicator-container"
+>
+  <div
+    class="custom-indicator"
+  />
+</div>
+`;
+
+exports[`Spin 4. render null or undefined without errors render null or undefined spin without errors 1`] = `
+<Spin>
+  <div
+    className="kd-spin-children-wrapper"
+  >
+    <div
+      className="kd-spin kd-spin-page kd-spin-indicator-container kd-spin-has-children"
+      style={null}
+    >
+      <div
+        className="kd-spin-dot-spin"
+      >
+        <i
+          className="kd-spin-dot-item"
+        />
+        <i
+          className="kd-spin-dot-item"
+        />
+        <i
+          className="kd-spin-dot-item"
+        />
+        <i
+          className="kd-spin-dot-item"
+        />
+      </div>
+    </div>
+    <div
+      className="kd-spin-children-container"
+    />
+  </div>
+</Spin>
+`;
+
+exports[`Spin 4. render null or undefined without errors render null or undefined spin without errors 2`] = `
+<Spin
+  spinning={false}
+/>
 `;

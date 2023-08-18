@@ -623,6 +623,28 @@ describe('Carousel', () => {
     expect(wrapper.find('.kd-carousel-jump').at(1)).toHaveClassName('kd-carousel-jump-disabled')
   })
 
+  it('should get the correct information when click the carousel item', () => {
+    let num = 0
+    const wrapper = mount(
+      <Carousel jumpNode={true}>
+        {[1, 2, 3, 4].map((item, i) => (
+          <div
+            onClick={() => {
+              num = item
+            }}
+            style={itemStyle}
+            key={i}
+          >
+            <h3>{item}</h3>
+          </div>
+        ))}
+      </Carousel>,
+    )
+    expect(num).toEqual(0)
+    wrapper.find('.kd-carousel-list-item').at(1).find('div').simulate('click')
+    expect(num).toEqual(1)
+  })
+
   // 10.config provider
   it('should provide the correct configuration by using configuration provider', () => {
     const carouselRef = React.createRef<any>()
@@ -707,5 +729,19 @@ describe('Carousel', () => {
         carouselRef.current.jumpTo(3, false)
       }).not.toThrow()
     })
+  })
+
+  // 12.special case
+  it('should correctly render contents when data is asynchronously fetched during compoennt is first render', async () => {
+    const fetchData = jest.fn().mockResolvedValue({ list: [1, 2, 3, 4] })
+    const wrapper = mount(
+      <Carousel>
+        {(await fetchData()).list.map((item: number, i: number) => {
+          return <div key={i}>{item}</div>
+        })}
+      </Carousel>,
+    )
+    expect(wrapper.find('.kd-carousel-list-item')).toHaveLength(6)
+    expect(wrapper.find('.kd-carousel-list-item').at(1)).toHaveClassName('kd-carousel-list-item-active')
   })
 })

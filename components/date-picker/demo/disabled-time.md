@@ -1,7 +1,9 @@
 ---
-title: 时间选择器
+title: 时间选择器时间禁用
 order: 9
 ---
+
+时间选择器时间禁用 `disabledHours`、`disabledMinutes`、`disabledSeconds`
 
 ```jsx
 import React from 'react'
@@ -9,7 +11,7 @@ import ReactDOM from 'react-dom'
 import { DatePicker } from '@kdcloudjs/kdesign'
 
 function Demo() {
-  const demoStyle = { margin: '10px 0' }
+
   return (
     <div  style={{ width: '150px' }}>
       <div>

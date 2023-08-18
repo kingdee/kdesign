@@ -1,4 +1,4 @@
-import React, { CSSProperties, useState } from 'react'
+import React, { CSSProperties, useRef, useState } from 'react'
 import { Icon } from '../index'
 import classNames from 'classnames'
 import { tuple } from '../_utils/type'
@@ -53,6 +53,7 @@ const ClearableInput: React.FC<ClearableInputProps> = (props) => {
     status,
   } = props
 
+  const fixRef = useRef(null)
   const [isMouseEnter, setIsMouseEnter] = useState<boolean>(false)
 
   const mouseEnterHandle: React.MouseEventHandler<HTMLDivElement> = () => {
@@ -66,6 +67,11 @@ const ClearableInput: React.FC<ClearableInputProps> = (props) => {
   const mouseDownHandle: React.MouseEventHandler<HTMLDivElement> = (e) => {
     e.stopPropagation()
     e.preventDefault()
+  }
+
+  const clickHandle: React.MouseEventHandler<HTMLSpanElement> = (e) => {
+    e.stopPropagation()
+    ;(fixRef.current as any as HTMLElement)?.querySelector('input')?.focus()
   }
 
   const renderClearIcon = () => {
@@ -123,7 +129,9 @@ const ClearableInput: React.FC<ClearableInputProps> = (props) => {
     return (
       <span
         className={inputWrapperClasses}
+        ref={fixRef}
         style={style}
+        onClick={clickHandle}
         onMouseEnter={mouseEnterHandle}
         onMouseLeave={mouseLeaveHandle}
       >

@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Icon 2. render test should render Icon 1`] = `
+<i
+  class="kdicon kdicon-add"
+/>
+`;
+
+exports[`Icon 4. render null or undefined without errors render null or undefined without errors 1`] = `
+<i
+  className="kdicon kdicon-add"
+  onClick={[Function]}
+  onMouseEnter={[Function]}
+  onMouseLeave={[Function]}
+  style={Object {}}
+/>
+`;

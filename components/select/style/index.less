@@ -21,7 +21,8 @@
     .@{select-prefix-cls}-icon-active {
       color: #3761ca;
     }
-    .@{select-prefix-cls}-selection-item {
+
+    & div.@{select-prefix-cls}-show-search .@{select-prefix-cls}-selection-item {
       color: @select-placeholder-color;
     }
   }
@@ -39,10 +40,6 @@
       &-down {
         transform: rotate(0deg);
         transition: transform calc(@transition-duration - 0.1s) @ease;
-      }
-
-      &-focus {
-        color: @select-g-color-border-foucs;
       }
     }
 
@@ -135,7 +132,7 @@
     left: 0;
     z-index: @select-z-index;
     box-sizing: border-box;
-    padding: 4px 0; // update
+    padding: 8px 0; // update
     margin: 0;
     overflow: auto;
     font-size: @select-list-font-size; // update
@@ -182,10 +179,6 @@
             display: inline-block;
           }
         }
-      }
-
-      &:hover:not(&-selected):not(&-disabled) {
-        background-color: @select-item-active-bg;
       }
 
       &-active:not(&-disabled) {

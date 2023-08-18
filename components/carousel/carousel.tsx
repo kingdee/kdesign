@@ -90,8 +90,8 @@ const InternalCarousel = (props: CarouselProps, ref: unknown): FunctionComponent
     if (!listRef.current) return
     listRef.current.style.cssText = needAnimation
       ? `transform: translateX(${posX}px); transition:all 0.3s ${easing}`
-      : `transform: translateX(${posX}px); transition:'none'`
-  }, [needAnimation, easing, posX])
+      : `transform: translateX(${posX}px); transition:none`
+  }, [children?.length, needAnimation, easing, posX])
 
   const jumpTo = React.useCallback(
     (index: number, needAnimation: boolean) => {
@@ -227,7 +227,9 @@ const InternalCarousel = (props: CarouselProps, ref: unknown): FunctionComponent
         <DisplayList items={children} parentPrefixCls={carouselPrefixCls} currentIndex={currentIndex} ref={listRef} />
       )
     } else {
-      content = <SlideList items={children} parentPrefixCls={carouselPrefixCls} ref={listRef} />
+      content = (
+        <SlideList items={children} parentPrefixCls={carouselPrefixCls} currentIndex={currentIndex} ref={listRef} />
+      )
     }
     return content
   }

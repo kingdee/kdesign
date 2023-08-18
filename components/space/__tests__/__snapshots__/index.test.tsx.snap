@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Space should render correct 1`] = `
+exports[`Space 2.render test should render correct 1`] = `
 <div>
   <div
     class="kd-space kd-space-horizontal kd-space-align-center"
@@ -38,7 +38,7 @@ exports[`Space should render correct 1`] = `
 </div>
 `;
 
-exports[`Space should render correct with children 1`] = `
+exports[`Space 2.render test should render correct with children 1`] = `
 <div
   class="kd-space kd-space-horizontal kd-space-align-center"
   style="--cgap:8px"
@@ -55,7 +55,7 @@ exports[`Space should render correct with children 1`] = `
 </div>
 `;
 
-exports[`Space should render width multiple chidren 1`] = `
+exports[`Space 2.render test should render width multiple chidren 1`] = `
 <div
   class="kd-space kd-space-horizontal kd-space-align-center"
   style="--cgap:8px"
@@ -103,7 +103,7 @@ exports[`Space should render width multiple chidren 1`] = `
 </div>
 `;
 
-exports[`Space split 1`] = `
+exports[`Space 2.render test split 1`] = `
 <div
   class="kd-space kd-space-horizontal kd-space-align-center"
   style="--cgap:8px"
@@ -126,7 +126,7 @@ exports[`Space split 1`] = `
 </div>
 `;
 
-exports[`Space split 2`] = `
+exports[`Space 2.render test split 2`] = `
 <div
   class="kd-space kd-space-horizontal kd-space-align-center"
   style="--cgap:8px"
@@ -147,4 +147,18 @@ exports[`Space split 2`] = `
     text3
   </span>
 </div>
+`;
+
+exports[`Space render null or undefined Space without errors 1`] = `
+<Space>
+  <div
+    className="kd-space kd-space-horizontal kd-space-align-center"
+    style={
+      Object {
+        "--cgap": "8px",
+        "--rgap": undefined,
+      }
+    }
+  />
+</Space>
 `;

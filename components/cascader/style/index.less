@@ -8,9 +8,9 @@
 
 .@{cascader-picker-prefix-cls} {
   position: relative;
-  display: inline-block;
   outline: none;
   cursor: pointer;
+  background: @cascader-bg-color;
 
   &:focus > &-input {
     border-color: @cascader-active-color;
@@ -47,7 +47,7 @@
     left: 0;
     width: 100%;
     height: 20px;
-    padding: 0 24px 0 9px;
+    padding: 0 24px 0 0;
     line-height: 20px;
     transform: translateY(-50%);
     .ellipsis;
@@ -78,7 +78,7 @@
   }
 
   &.allowClear:hover {
-    > .@{cascader-picker-prefix-cls}-close {
+    .@{cascader-picker-prefix-cls}-close {
       opacity: 1;
       visibility: visible;
       transition: all 0.2s;
@@ -95,7 +95,7 @@
   &-close {
     position: absolute;
     top: 50%;
-    right: 9px;
+    right: 0;
     opacity: 0;
     cursor: pointer;
     visibility: hidden;
@@ -183,10 +183,23 @@
 }
 
 .@{kd-prefix}-cascader {
-  &-bordered {
+  &-bordered:not(.@{kd-prefix}-cascader-multiple) {
+    .@{cascader-picker-prefix-cls}-label {
+      padding-left: 9px;
+    }
+    .@{cascader-picker-prefix-cls}-close {
+      right: 10px;
+    }
+  }
+
+  &-bordered&-multiple {
     border: 1px solid #d9d9d9;
-    padding-left: 8px !important;
+    padding-left: 8px;
     border-radius: 2px;
+
+    .@{kd-prefix}-cascader-suffix {
+      right: 9px;
+    }
   }
 
   &-multiple {
@@ -203,6 +216,7 @@
     overflow-x: hidden;
     position: relative;
     border-bottom: 1px solid #d9d9d9;
+    background: @cascader-bg-color;
   }
 
   &-multiple-wrapper {

@@ -167,4 +167,19 @@ describe('Upload', () => {
     wrapper.find('.kd-upload-text-list-item-icon').at(0).simulate('click')
     expect(onPreview).toHaveBeenCalledTimes(2)
   })
+
+  it('onRemove', () => {
+    let value = { ...defaultFileList[0] }
+    const onRemove = jest.fn((v) => {
+      value = v
+    })
+    const wrapper = mount(
+      <Upload {...defaultUploadProps} onRemove={onRemove}>
+        {uploadButton}
+      </Upload>,
+    )
+    wrapper.find('.kd-upload-text-list-item-delete').at(0).simulate('click')
+    expect(onRemove).toHaveBeenCalled()
+    expect(value.status).toEqual('removed')
+  })
 })

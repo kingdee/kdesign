@@ -213,10 +213,14 @@ describe('ColorPicker', () => {
     expect(defaultOpenWrapper.find('.kd-color-picker-panel-colorDivContainer').children('li').length).toEqual(5)
     defaultOpenWrapper.setProps({ showPresetColor: false })
     defaultOpenWrapper.update()
+    expect(defaultOpenWrapper.exists('.kd-color-picker-panel-input-no-recommend')).toBeTruthy()
     expect(defaultOpenWrapper.exists('.kd-color-picker-panel-colorDivContainer')).toBeFalsy()
     defaultOpenWrapper.setProps({ showPresetColor: true })
     defaultOpenWrapper.update()
     expect(defaultOpenWrapper.exists('.kd-color-picker-panel-colorDivContainer')).toBeTruthy()
+    defaultOpenWrapper.setProps({ presetColor: [] })
+    defaultOpenWrapper.update()
+    expect(defaultOpenWrapper.exists('.kd-color-picker-panel-colorDivContainer-unset-color')).toBeTruthy()
 
     // showColorTransfer
     defaultOpenWrapper.setProps({ showColorTransfer: false })
@@ -378,6 +382,16 @@ describe('ColorPicker', () => {
   it('select search input should always be readonly', () => {
     const wrapper = mount(<ColorPicker {...defaultColorPickerProps} defaultOpen={true}></ColorPicker>)
     expect((wrapper.find('.kd-select-selection-search-input').getDOMNode() as HTMLInputElement).readOnly).toBeTruthy()
+  })
+
+  it('should not render color picker panel when all configuration is closed', () => {
+    const wrapper = mount(<ColorPicker defaultOpen={true}></ColorPicker>)
+    expect(wrapper.find('.kd-color-picker-panel')).toExist()
+    expect(wrapper.find('.kdicon-arrow-down')).toExist()
+    wrapper.setProps({ showColorTransfer: false, showPresetColor: false })
+    wrapper.update()
+    expect(wrapper.find('.kd-color-picker-panel')).not.toExist()
+    expect(wrapper.find('.kdicon-arrow-down')).not.toExist()
   })
 
   //! react-color无法模拟内部点击事件

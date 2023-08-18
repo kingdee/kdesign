@@ -80,6 +80,8 @@ subtitle: 输入框
 |  | --kd-c-input-sizing-height-middle | - | 30px |
 |  | --kd-c-input-sizing-height-large | - | 36px |
 |  | --kd-c-input-sizing-border | - | 1px |
+|  | --kd-c-input-wrapper-padding-left | - | 0px |
+|  | --kd-c-input-padding-left | - | 0px |
 | spacing | --kd-c-input-spacing-padding-vertical-small | - | 3px |
 |  | --kd-c-input-spacing-padding-horizontal-small | - | 9px |
 |  | --kd-c-input-spacing-padding-vertical-middle | - | 5px |

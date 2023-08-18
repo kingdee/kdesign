@@ -64,6 +64,7 @@ export interface IColorPickerPanelProps {
   showColorTransfer?: boolean
   showPresetColor?: boolean
   showColorPickerBox?: { showBox?: boolean; showHue?: boolean; showOpacity?: boolean }
+  showColorPickerPanel: boolean
   value: string
   setCurrentColorType: (currentColorType: IColorTypesObj['type']) => void
   setColTypeArr: (colTypeArr: Array<IColorTypesObj>) => void

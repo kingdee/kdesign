@@ -1,9 +1,9 @@
 ---
-title: 日期范围选择类型
+title: 日期范围选择器日期禁用
 order: 6
 ---
 
-日期范围选择五种风格：日期范围选择、周范围选择、月份范围选择、季度范围选择、年份范围选择
+日期范围选择器的日期禁用，可通过 `disabledDate` 控制，需要注意的是， `disabledDate` 只能禁用日期，禁用时间需要使用 `disabledHours`、`disabledMinutes`、`disabledSeconds`
 
 ```jsx
 import React from 'react'
@@ -11,13 +11,10 @@ import ReactDOM from 'react-dom'
 import { RangePicker } from '@kdcloudjs/kdesign'
 
 function Demo() {
-  const demoStyle = { margin: '10px 0' }
   const disabledDate = (date) => {
     return date && date < new Date('2021-01-28')
   }
-  // const disabledDate1 = (date) => {
-  //   return date && date < new Date('2020-10-25')
-  // }
+
   return (
     <div  style={{ width: '250px' }}>
       <div>

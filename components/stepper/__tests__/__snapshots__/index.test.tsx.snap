@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Stepper renders correctly 1`] = `
+exports[`Stepper 2. render test renders correctly 1`] = `
 <span
   class="kd-input-wrapper kd-input-wrapper-size-middle kd-inputNumber kd-inputNumber-stepper"
 >
@@ -36,7 +36,7 @@ exports[`Stepper renders correctly 1`] = `
 </span>
 `;
 
-exports[`Stepper renders correctly 2`] = `
+exports[`Stepper 2. render test renders correctly 2`] = `
 <span
   class="kd-input-wrapper kd-input-wrapper-size-middle kd-inputNumber kd-inputNumber-stepper"
 >
@@ -71,7 +71,7 @@ exports[`Stepper renders correctly 2`] = `
 </span>
 `;
 
-exports[`Stepper renders correctly 3`] = `
+exports[`Stepper 2. render test renders correctly 3`] = `
 <span
   class="kd-input-wrapper kd-input-wrapper-size-middle kd-inputNumber kd-inputNumber-stepper"
 >

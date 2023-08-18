@@ -71,6 +71,17 @@ title: Upload
 
 3. `event` 上传中的服务端响应内容，包含了上传进度等信息，高级浏览器支持。
 
+### UploadInstance
+
+| 参数 | 说明 | 类型 | 版本     |
+| --- | --- | --- |--------|
+| fileList | 组件fileList属性 | file[] | 1.7.19 |
+| uploadFiles | 上传文件 | (files: files) => void | 1.7.19 |
+| reUploadFile | 重新单个文件| (file: file) => void | 1.7.19 |
+| removeFile | 删除单个文件| (file: file) => void | 1.7.19 |
+| abortFile | 中断单个上传文件，传入空为中断所有| (file?: file) => void | 1.7.19 |
+| input | input Ref | - | 1.7.19 |
+
 ## FAQ
 
 ### 服务端如何实现？

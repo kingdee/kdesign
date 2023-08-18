@@ -52,6 +52,7 @@ export type ITreeProps = {
   treeExpandOnClickNode?: boolean
   showTreeIcon?: boolean
   treeLoadData?: () => void
+  listHeight?: number
 }
 
 export type TreeSelectValue = string | string[] | number | number[] | undefined

@@ -37,18 +37,18 @@ subtitle: 走马灯
 
 ## Design Token
 
-| 分类    | 组件 token                            | 全局 token | 默认值  |
-| ------- | ------------------------------------- | ---------- | ------- |
-| color   | --kd-c-carousel-dots-color-background | -          | #D8D8D8 |
-|         | --kd-c-carousel-dots-color-hover      | -          | #666666 |
-|         | --kd-c-carousel-jump-icon-color       | -          | #D9D9D9 |
-|         | --kd-c-carousel-jump-icon-color-hover | -          | #666666 |
-| radius  | --kd-c-carousel-dots-border-radius    | -          | 2px     |
-|         | --kd-c-carousel-border-radius         | -          | 0px     |
-| sizing  | --kd-c-carousel-dots-sizing-width     | -          | 12px    |
-|         | --kd-c-carousel-dots-sizing-height    | -          | 4px     |
-| spacing | --kd-c-carousel-spacing-margin-top    | -          | 12px    |
-|         | --kd-c-carousel-spacing-margin-bottom | -          | 12px    |
-|         | --kd-c-carousel-spacing-margin-left   | -          | 12px    |
-|         | --kd-c-carousel-spacing-margin-right  | -          | 12px    |
-|         | --kd-c-carousel-dots-spacing-margin   | -          | 4px     |
+| 分类 | 组件token | 全局token | 默认值 |
+| --- | --- | --- | --- |
+| color | --kd-c-carousel-dots-color-background | - | #D8D8D8 |
+|  | --kd-c-carousel-dots-color-hover | - | #666666 |
+|  | --kd-c-carousel-jump-icon-color | - | #D9D9D9 |
+|  | --kd-c-carousel-jump-icon-color-hover | - | #666666 |
+| radius | --kd-c-carousel-dots-border-radius | - | 2px |
+|  | --kd-c-carousel-border-radius | - | 0px |
+| sizing | --kd-c-carousel-dots-sizing-width | - | 12px |
+|  | --kd-c-carousel-dots-sizing-height | - | 4px |
+| spacing | --kd-c-carousel-spacing-margin-top | - | 12px |
+|  | --kd-c-carousel-spacing-margin-bottom | - | 12px |
+|  | --kd-c-carousel-spacing-margin-left | - | 12px |
+|  | --kd-c-carousel-spacing-margin-right | - | 12px |
+|  | --kd-c-carousel-dots-spacing-margin | - | 4px |
