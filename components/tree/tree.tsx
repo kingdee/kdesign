@@ -494,6 +494,8 @@ const InternalTree = React.forwardRef((props: TreeProps, ref: any): React.Functi
             itemKey={(item) => item?.key}
             height={height}
             itemHeight={estimatedItemSize}
+            outerStyle={{ overflow: 'unset' }}
+            innerStyle={{ minWidth: '100%', width: 'max-contnet' }}
           >
             {renderTreeNode}
           </VirtualList>
