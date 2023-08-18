@@ -99,6 +99,9 @@ const InternalInputNumber = (props: InputNumberProps, ref: unknown): FunctionCom
   }
 
   useEffect(() => {
+    if (typeof value === 'undefined') {
+      return
+    }
     setInputValue(serialization(value + ''))
   }, [value])
 
@@ -277,6 +280,9 @@ const InternalInputNumber = (props: InputNumberProps, ref: unknown): FunctionCom
   }
 
   useEffect(() => {
+    if (typeof value === 'undefined') {
+      return
+    }
     const { isHandleChange, inputFocused } = inputStatus.current
     if (isHandleChange) {
       return
