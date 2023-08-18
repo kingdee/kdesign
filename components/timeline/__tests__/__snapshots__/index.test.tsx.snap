@@ -131,7 +131,7 @@ exports[`TimeLine render correct snapshot render correct 2`] = `
   >
     <div
       class="kd-timeline-item-tail"
-      style="margin-top:16px"
+      style="margin-top:17px"
     />
     <div
       class="kd-timeline-item-dot custom blue"
@@ -216,7 +216,7 @@ exports[`TimeLine render correct snapshot render correct 3`] = `
   >
     <div
       class="kd-timeline-item-tail"
-      style="margin-top:16px"
+      style="margin-top:17px"
     />
     <div
       class="kd-timeline-item-dot custom blue"
@@ -244,7 +244,7 @@ exports[`TimeLine render correct snapshot render correct 4`] = `
   >
     <div
       class="kd-timeline-item-tail"
-      style="margin-top:16px"
+      style="margin-top:17px"
     />
     <div
       class="kd-timeline-item-dot custom blue"

@@ -207,8 +207,11 @@ describe('InputNumber', () => {
 
   // 9. ref test
   it('should get inputNumber element from ref', () => {
-    const ref = React.createRef()
+    const ref: any = React.createRef()
     mount(<InputNumber ref={ref} />)
-    expect((ref.current as HTMLElement).classList.contains('kd-input')).toBe(true)
+    expect((ref.current?.input as HTMLElement).classList.contains('kd-input')).toBe(true)
+    expect(ref.current?.focus).toBeTruthy()
+    expect(ref.current?.blur).toBeTruthy()
+    expect(ref.current?.select).toBeTruthy()
   })
 })

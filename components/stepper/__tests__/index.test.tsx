@@ -211,8 +211,11 @@ describe('Stepper', () => {
 
   // 9. ref test
   it('should get stepper element from ref', () => {
-    const ref = React.createRef()
+    const ref: any = React.createRef()
     mount(<Stepper ref={ref} />)
-    expect(ref.current instanceof HTMLInputElement).toBe(true)
+    expect((ref.current?.input as HTMLInputElement).classList.contains('kd-input')).toBe(true)
+    expect(ref.current?.focus).toBeTruthy()
+    expect(ref.current?.blur).toBeTruthy()
+    expect(ref.current?.select).toBeTruthy()
   })
 })
