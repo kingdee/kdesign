@@ -73,6 +73,7 @@ const InternalInputNumber = (props: InputNumberProps, ref: unknown): FunctionCom
     suffix,
     formatter,
     className,
+    onKeyDown,
     ...others
   } = inputNumberProps
   const initVal = value === undefined ? defaultValue : value
@@ -229,6 +230,7 @@ const InternalInputNumber = (props: InputNumberProps, ref: unknown): FunctionCom
   }
 
   const handleKeyDown = (event: KeyboardEvent) => {
+    onKeyDown?.(event)
     if (!stepOption || props.disabled || props.readOnly) {
       return
     }

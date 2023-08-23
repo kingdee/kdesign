@@ -30,6 +30,7 @@ subtitle: 数值输入框
 | symbol | 货币符号 | string | `-` | `-` | 1.0.0 |
 | value | 当前值, 设置为 `number`类型，当数值超过Number能表示的最大值会损失精度 | string \| number | `-` | `-` | 1.0.0 |
 | onChange | 输入框内容变化时的回调 | (event) => void | `-` | `-` | 1.0.0  |
+| onKeyDown | 键盘事件回调 | (e: Event) => void | `-` | `-` | 1.7.24 |
 | zeroShow | 为零是否显示 | boolean | `false` | `true` `false` | 1.0.0 |
 
 ## Design Token
