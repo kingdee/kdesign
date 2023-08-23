@@ -260,10 +260,12 @@ const InternalInputNumber = (props: InputNumberProps, ref: unknown): FunctionCom
     // 还原最小值
     if (typeof min === 'number' && bigValue.lt(min)) {
       _inputValue = min.toString()
+      onChange?.(handleEventAttachValue(event, numberMode ? Number(_inputValue) : _inputValue))
     }
     // 还原最大值
-    if (typeof min === 'number' && bigValue.gt(max)) {
+    if (typeof max === 'number' && bigValue.gt(max)) {
       _inputValue = max.toString()
+      onChange?.(handleEventAttachValue(event, numberMode ? Number(_inputValue) : _inputValue))
     }
     // 超过精度位数直接截断
     _inputValue = handleNumericalAccuracy(_inputValue)
