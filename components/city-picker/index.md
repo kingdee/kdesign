@@ -25,6 +25,7 @@ order: 3
 | disabled | 是否禁用 | boolean | false | 1.7.20 |
 | domesticList | 国内城市列表数据 | [City](#City)\[] | - | 1.7.20 |
 | dropdownStyle | 下拉菜单的 style 属性 | CSSProperties | - | 1.7.20 |
+| description | 描述内容 | ReactNode | - | 1.7.20 |
 | foreignList | 国际城市列表数据 | [City](#City)\[] | - | 1.7.20 |
 | getPopupContainer | 菜单渲染父节点。默认渲染到 body 上，如果你遇到菜单滚动定位问题，试试修改为滚动的区域，并相对其定位。[示例](https://codesandbox.io/s/4j168r7jw0) | function(triggerNode) | () => document.body | 1.7.20 |
 | itemRender | 自定义下拉列表项 | (city: [City](#City)) => React.ReactNode | - | 1.7.20 |
@@ -32,6 +33,7 @@ order: 3
 | notFoundContent | 当下拉列表为空时显示的内容 | ReactNode | `Not Found` | 1.7.20 |
 | placeholder | 选择框默认文字 | string | - | 1.7.20 |
 | showArrow | 是否显示下拉小箭头 | boolean | true | 1.7.20 |
+| showDescription | 是否显示描述内容 | boolean | true | 1.7.20 |
 | suffixIcon | 自定义的选择框后缀图标 | ReactNode | - | 1.7.20 |
 | type | 城市选择组件类型 | `domestic`、`foreign` | `domestic` | 1.7.20 |
 | value | 指定当前选中的条目 | string \| number | - | 1.7.20 |
@@ -41,7 +43,8 @@ order: 3
 | onClear | 清除内容时回调 | function | - | 1.7.20 |
 | onFocus | 获得焦点时回调 | function | - | 1.7.20 |
 | onSearch | 文本框值变化时回调 | function(value: string) | - | 1.7.20 |
-| onVisibleChange | 显示隐藏的回调 | (visible) => void | - | 1.7.20 |
+| onTabPaneChange | 切换页签时的回调 | function(value: string) | - | 1.7.24 |
+| onVisibleChange | 显示隐藏的回调 | (id: string) => void | - | 1.7.20 |
 
 ### City
 

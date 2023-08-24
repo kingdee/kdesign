@@ -50,6 +50,7 @@ export interface CityPickerProps {
   onSearch?: (value: string) => void
   onClear?: () => void
   itemRender?: (city: City) => React.ReactNode
+  onTabPaneChange?: (id: Type) => void
 }
 
 export interface ICityPickerOptionProps {
