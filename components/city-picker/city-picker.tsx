@@ -48,6 +48,7 @@ const InternalSelect: React.ForwardRefRenderFunction<CityPickerProps> = (props: 
     domesticList = [],
     foreignList = [],
     itemRender,
+    onTabPaneChange,
   } = selectProps
   const [initValue, setInitValue] = useMergedState(undefined, {
     value,
@@ -269,6 +270,7 @@ const InternalSelect: React.ForwardRefRenderFunction<CityPickerProps> = (props: 
 
   const toggleTabPane = (type: Type) => {
     setTabsValue(type)
+    onTabPaneChange?.(type)
   }
 
   // 渲染下拉列表框
