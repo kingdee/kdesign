@@ -6,6 +6,7 @@ import React, {
   useRef,
   useCallback,
   useImperativeHandle,
+  useMemo,
 } from 'react'
 import Input, { InputProps } from '../input'
 import ConfigContext from '../config-provider/ConfigContext'
@@ -15,6 +16,7 @@ import { formatEditNumber, formatNumber, FormatParam } from '../_utils/formatUti
 import devWarning from '../_utils/devwarning'
 import Big from 'big.js'
 import classNames from 'classnames'
+import useSelectionRange from './useSelectionRange'
 
 export type StepType = 'embed' | 'base'
 
@@ -143,6 +145,7 @@ const InternalInputNumber = (props: InputNumberProps, ref: unknown): FunctionCom
     if (legalNumber === false) {
       return false
     }
+    updateSelectionRangePosition(event)
 
     value === undefined && setInputValue(legalNumber)
     onChange && onChange(handleEventAttachValue(event, numberMode ? Number(legalNumber) : legalNumber))
@@ -324,11 +327,20 @@ const InternalInputNumber = (props: InputNumberProps, ref: unknown): FunctionCom
     setValue: (value: any) => setInputValue(value),
   }))
 
+  const displayedInputValue = useMemo<string>(() => {
+    return formatter ? formatter(inputValue) : inputValue
+  }, [inputValue, formatter])
+
+  const updateSelectionRangePosition = useSelectionRange({
+    inputElement: inputNumberRef.current?.input,
+    inputValue: displayedInputValue,
+  })
+
   return (
     <Input
       {...others}
       ref={inputNumberRef}
-      value={inputValue ? formatter?.(inputValue) || inputValue : inputValue}
+      value={displayedInputValue}
       prefix={prefix}
       suffix={suffix}
       onChange={handleChange}
