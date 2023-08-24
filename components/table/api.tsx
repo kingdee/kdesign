@@ -94,6 +94,26 @@ export default function getApi(pipelineRef: React.MutableRefObject<TablePipeline
     const colLeft = columnNodes.slice(0, index).reduce((acc, col) => {
       return acc + col.width
     }, 0)
+
+    let lockColumnLeft = 0
+    let lockColumnRight = 0
+
+    for (let i = 0; i < columnNodes.length; i++) {
+      if (columnNodes[i]?.lock) {
+        lockColumnLeft += columnNodes[i].width
+      } else {
+        break
+      }
+    }
+
+    for (let i = columnNodes.length - 1; i >= 0; i--) {
+      if (columnNodes[i]?.lock) {
+        lockColumnRight += columnNodes[i].width
+      } else {
+        break
+      }
+    }
+
     const colLeftPixel = colLeft // 目标列前面列宽总和
     const colRightPixel = colLeftPixel + column.width
 
@@ -103,8 +123,8 @@ export default function getApi(pipelineRef: React.MutableRefObject<TablePipeline
     const vScrollLeft = scrollPosition
     const vScrollRight = scrollPosition + viewportWidth
 
-    const pxLeft = colLeftPixel
-    const pxRight = colRightPixel - viewportWidth
+    const pxLeft = colLeftPixel - lockColumnLeft
+    const pxRight = colRightPixel - viewportWidth + lockColumnRight
 
     const colBeforeViewport = vScrollLeft > colLeftPixel // 滚动距离大于目标列前面列宽总和，说明目标列在视口之前
     const colPastViewport = vScrollRight < colRightPixel // 目标列是视口之后
