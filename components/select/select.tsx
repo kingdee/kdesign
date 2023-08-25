@@ -831,6 +831,7 @@ const InternalSelect: React.ForwardRefRenderFunction<ISelectProps<SelectValue>> 
         offset = 1
       } else if (which === KeyCode.ENTER) {
         const item = filledOptions[activeIndex]
+        if (!item) return
         const key = item.props?.value || item.value
         const label = item.props?.children || item.label
         handleOption(key, label, true)
