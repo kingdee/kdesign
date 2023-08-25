@@ -8,7 +8,7 @@ title: 受控显隐
 ```jsx
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { Dropdown, Icon, Switch } from '@kdcloudjs/kdesign'
+import { Dropdown, Icon, Switch, Input } from '@kdcloudjs/kdesign'
 
 function Demo() {
   const [visible, setVisible] = React.useState(false)
@@ -32,9 +32,7 @@ function Demo() {
       <Switch onChange={changeVisible} />
     </div>
     <Dropdown menu={menu} visible={visible}>
-      <a href="true" className="kd-dropdown-link" style={{ width: '100px', display: 'block' }} onClick={(e) => e.preventDefault()}>
-        Hover me <Icon type="arrow-down" />
-      </a>
+      <Input borderType="bordered" prefix="KDesign" suffix="Kdesign" />
     </Dropdown>
     </>
   )

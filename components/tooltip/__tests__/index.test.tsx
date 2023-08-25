@@ -1,6 +1,7 @@
 import React from 'react'
 import { mount } from 'enzyme'
 import Tooltip from '../index'
+import Input from '../../input'
 import ConfigProvider from '../../config-provider'
 
 // import mountTest from '../../../tests/shared/mountTest'
@@ -115,7 +116,7 @@ describe('Tooltip', () => {
         'rightBottom',
       ]
       placementArray.forEach((p: any) => {
-        let wrapper = mount(
+        const wrapper = mount(
           <Tooltip tip="text" defaultVisible placement={p}>
             <span>text</span>
           </Tooltip>,
@@ -211,4 +212,14 @@ describe('Tooltip', () => {
 
   // 10. ref test
   // 11. special case
+  describe('special case', () => {
+    it('测试ref返回值不为dom元素', () => {
+      const wrapper = mount(
+        <Tooltip tip="tips text">
+          <Input borderType="bordered" prefix="KDesign" suffix="Kdesign" />
+        </Tooltip>,
+      )
+      expect(wrapper).toMatchSnapshot()
+    })
+  })
 })

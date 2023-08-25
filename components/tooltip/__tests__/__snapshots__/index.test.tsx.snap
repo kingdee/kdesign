@@ -9,3 +9,72 @@ exports[`Tooltip render Test 1`] = `
   </span>
 </Tooltip>
 `;
+
+exports[`Tooltip special case 测试ref返回值不为dom元素 1`] = `
+<Tooltip
+  tip="tips text"
+>
+  <Input
+    borderType="bordered"
+    prefix="KDesign"
+    suffix="Kdesign"
+  >
+    <ClearableInput
+      borderType="bordered"
+      element={
+        <input
+          className="kd-input kd-input-size-middle"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          onKeyUp={[Function]}
+          prefix="KDesign"
+          type="text"
+          value=""
+        />
+      }
+      focused={false}
+      handleReset={[Function]}
+      inputCount={null}
+      inputType="input"
+      prefix="KDesign"
+      prefixCls="kd-input"
+      size="middle"
+      suffix="Kdesign"
+      type="text"
+      value=""
+    >
+      <span
+        className="kd-input-wrapper kd-input-wrapper-size-middle"
+        onClick={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+      >
+        <span
+          className="kd-input-prefix"
+          onMouseDown={[Function]}
+        >
+          KDesign
+        </span>
+        <input
+          className="kd-input kd-input-size-middle"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          onKeyUp={[Function]}
+          prefix="KDesign"
+          style={null}
+          type="text"
+          value=""
+        />
+        <span
+          className="kd-input-suffix"
+          onMouseDown={[Function]}
+        >
+          Kdesign
+        </span>
+      </span>
+    </ClearableInput>
+  </Input>
+</Tooltip>
+`;
