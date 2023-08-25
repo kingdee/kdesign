@@ -906,7 +906,7 @@ const InternalSelect: React.ForwardRefRenderFunction<ISelectProps<SelectValue>> 
 
   const popperProps = {
     ...selectProps,
-    prefixCls: selectPrefixCls,
+    prefixCls: `${selectPrefixCls}-dropdown-panel${isMultiple ? ` ${selectPrefixCls}-multiple-dropdown-panel` : ''}`,
     placement: 'bottomLeft',
     popperStyle: catchStyle(),
     defaultVisible: optionShow,

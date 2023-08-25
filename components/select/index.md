@@ -119,4 +119,5 @@ subtitle: 选择器
 |  | --kd-c-select-sizing-height-small | - | 24px |
 | spacing | --kd-c-select-bordered-spacing-padding-left | - | 8px |
 |  | --kd-c-select-wrapper-spacing-padding | - | 1px 28px 1px 0 |
+|  | --kd-c-select-dropdown-spacing-padding-vertical | - | 8px |
 | z-index | --kd-c-select-z-index | --kd-g-z-index-popper | 1050 |
