@@ -49,6 +49,7 @@ export interface VirtualListProps<T> extends Omit<React.HTMLAttributes<any>, 'ch
   scrollOptions?: ScrollIntoViewOptions
   needFiller?: boolean
   outerStyle?: CSSProperties
+  innerStyle?: CSSProperties
   onScroll?: React.UIEventHandler<HTMLElement>
 }
 
@@ -142,7 +143,7 @@ const VirtualList: React.ForwardRefExoticComponent<VirtualListProps<any> & React
       itemKey,
       threshold = 100,
       wrapper: WrapperTagName = 'div',
-      height: propHeight = 300,
+      height: propHeight = '100%',
       isStaticItemHeight = true,
       itemHeight: propItemHeight,
       measureLongestItem,
@@ -150,6 +151,7 @@ const VirtualList: React.ForwardRefExoticComponent<VirtualListProps<any> & React
       onScroll,
       needFiller = true,
       outerStyle,
+      innerStyle,
       ...restProps
     } = props
 
@@ -612,6 +614,7 @@ const VirtualList: React.ForwardRefExoticComponent<VirtualListProps<any> & React
                 height={itemTotalHeight}
                 offset={state.status === 'MEASURE_DONE' ? state.startItemTop : 0}
                 outerStyle={outerStyle}
+                innerStyle={innerStyle}
               >
                 {renderChildren(data.slice(state.startIndex, state.endIndex + 1), state.startIndex)}
               </Filler>

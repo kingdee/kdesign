@@ -4,6 +4,7 @@ import ConfigContext from '../config-provider/ConfigContext'
 import { getCompProps } from '../_utils'
 import { Menu, Item } from './menu'
 import usePopper, { PopperProps } from '../_utils/usePopper'
+import { isFragment } from '../_utils/reactNode'
 
 type MenuItem = {
   key?: string
@@ -85,12 +86,21 @@ const Dropdown = React.forwardRef<unknown, DropDownProps>((props, ref) => {
           : children}
       </span>
     ) : (
-      React.cloneElement(React.Children.only(children), {
-        ref: children.ref || ref,
-        className: classNames(`${prefixCls}-trigger`, children.props.className, { disabled }),
+      React.cloneElement(React.isValidElement(children) && !isFragment(children) ? children : <span>{children}</span>, {
+        ref:
+          React.isValidElement(children) && !isFragment(children) && (children as any).ref
+            ? (children as any).ref
+            : ref,
+        className: classNames(
+          `${prefixCls}-trigger`,
+          React.isValidElement(children) &&
+            !isFragment(children) &&
+            children.props &&
+            (children.props as any).className,
+          { disabled },
+        ),
       })
     )
-
   const isMenu = menu.type === Menu
 
   const [selectedKey, setSelectedKey] = React.useState(

@@ -1,5 +1,6 @@
 import React, { useRef } from 'react'
 import { getCompProps } from '../_utils'
+import { isFragment } from '../_utils/reactNode'
 import { ConfigContext } from '../config-provider'
 import usePopper, { PopperProps } from '../_utils/usePopper'
 
@@ -23,8 +24,11 @@ const Tooltip = React.forwardRef<unknown, TooltipProps>((props, ref) => {
   const prefixCls = getPrefixCls!(pkgPrefixCls, 'tooltip', customPrefixcls)
 
   const tiplocator = React.cloneElement(
-    React.Children.count(children) === 1 && children.type ? children : <span>{children}</span>,
-    { ref: children.ref || ref },
+    React.isValidElement(children) && !isFragment(children) ? children : <span>{children}</span>,
+    {
+      ref:
+        React.isValidElement(children) && !isFragment(children) && (children as any).ref ? (children as any).ref : ref,
+    },
   )
   const onVisibleChange = (v: boolean) => {
     if (status.current === v && allProps.visible === undefined) return

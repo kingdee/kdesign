@@ -216,8 +216,12 @@ describe('Select', () => {
   describe('9. ref test', () => {
     it('should get Demo element from ref', () => {
       const ref = React.createRef() as any
-      mount(<Select ref={ref}></Select>)
-      expect((ref.current as HTMLElement).classList.contains('kd-select')).toBe(true)
+      const onFocus = jest.fn()
+      const onBlur = jest.fn()
+      mount(<Select ref={ref} onBlur={onBlur} onFocus={onFocus}></Select>)
+      expect((ref.current?.select as HTMLElement).classList.contains('kd-select')).toBe(true)
+      expect(ref.current?.select?.focus).toBeTruthy()
+      expect(ref.current?.select?.blur).toBeTruthy()
     })
   })
 

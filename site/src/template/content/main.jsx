@@ -149,7 +149,7 @@ class Content extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-    const { location } = this.props
+    const { location, localizedPageData } = this.props
     const { location: prevLocation = {} } = prevProps || {}
     if (!prevProps || prevLocation.pathname !== location.pathname) {
       this.bindScroller()
@@ -161,6 +161,8 @@ class Content extends React.Component {
     if (!window.location.hash && prevLocation.pathname !== location.pathname) {
       window.scrollTo(0, 0)
     }
+    const title = localizedPageData?.meta?.subtitle || localizedPageData?.meta?.title
+    document.title = title ? `${title} - KDesign React` : 'KDesign React'
   }
 
   componentWillUnmount() {

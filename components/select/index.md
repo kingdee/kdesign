@@ -73,6 +73,13 @@ subtitle: 选择器
 | height     | 可视区域高度                                           | string \| number | 300    | 1.6.29 |
 | threshold  | 启用虚拟滚动的元素数量的阈值，使用' null '或数据小于阈值不启用虚拟滚动 | number           | 100    | 1.6.29 |
 
+### InputInstance
+
+| 参数 | 说明 | 类型 | 版本 |
+| --- | --- | --- |--------|
+| blur | 取消焦点 | - | 1.7.22 |
+| focus | 获取焦点 | - | 1.7.22 |
+
 ## Design Token
 
 | 分类 | 组件token | 全局token | 默认值 |

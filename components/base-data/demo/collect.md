@@ -54,6 +54,8 @@ function Demo() {
   }
 
   const handleSelect = (a, item) => {
+    const index = historyList.findIndex(v => v.value === a)
+    index > -1 && historyList.splice(index, 1)
     setHistoryList([item, ...historyList])
   }
 
