@@ -29,8 +29,8 @@ const InternalOption: React.ForwardRefRenderFunction<unknown, ICityPickerOptionP
           itemRender(city)
         ) : (
           <>
-            <div className={`${selectOptionPrefixCls}-content`}>{children}</div>
-            <div className={`${selectOptionPrefixCls}-info`}>{renderCityInfo?.(city, true)}</div>
+            <span className={`${selectOptionPrefixCls}-content`}>{children}</span>
+            <span className={`${selectOptionPrefixCls}-info`}>{renderCityInfo?.(city, true)}</span>
           </>
         )}
       </div>
