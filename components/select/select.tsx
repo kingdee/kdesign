@@ -805,7 +805,7 @@ const InternalSelect: React.ForwardRefRenderFunction<ISelectProps<SelectValue>> 
     // open
     if (which === KeyCode.ENTER || which === KeyCode.UP || which === KeyCode.DOWN) {
       e.preventDefault()
-      setOptionShow(true)
+      handleVisibleChange(true)
     }
     // backspace
     const { selectedVal, selectMulOpts } = multipleRef.current
@@ -848,10 +848,10 @@ const InternalSelect: React.ForwardRefRenderFunction<ISelectProps<SelectValue>> 
           )
         }
         if (!isMultiple) {
-          setOptionShow(false)
+          handleVisibleChange(false)
         }
       } else if (which === KeyCode.ESC) {
-        setOptionShow(false)
+        handleVisibleChange(false)
       }
       if (offset !== 0) {
         const nextActiveIndex = getActiveIndex(activeIndex + offset, offset)
