@@ -9,14 +9,10 @@ import usePopper from '../_utils/usePopper'
 import Option from './option'
 import escapeRegExp from 'lodash/escapeRegExp'
 
-const tabsData = [
-  { id: 'domestic', name: '国内' },
-  { id: 'foreign', name: '国际/中国港澳台' },
-]
-
 const InternalSelect: React.ForwardRefRenderFunction<CityPickerProps> = (props: any, ref: unknown) => {
-  const { getPrefixCls, prefixCls, compDefaultProps: userDefaultProps } = useContext(ConfigContext)
+  const { getPrefixCls, prefixCls, compDefaultProps: userDefaultProps, locale } = useContext(ConfigContext)
   const selectProps = getCompProps('CityPicker', userDefaultProps, props)
+  const cityPickerLangMsg = locale.getCompLangMsg({ componentName: 'CityPicker' })
   const {
     type,
     size,
@@ -54,6 +50,10 @@ const InternalSelect: React.ForwardRefRenderFunction<CityPickerProps> = (props: 
     value,
     defaultValue,
   })
+  const tabsData = [
+    { id: 'domestic', name: cityPickerLangMsg?.tabsDomestic },
+    { id: 'foreign', name: cityPickerLangMsg?.tabsInternation },
+  ]
   const innerRef = useRef<HTMLElement>()
   const selectRef = (ref as any) || innerRef
   const searchRef = useRef<any>(null) // 搜索框ref
@@ -292,13 +292,15 @@ const InternalSelect: React.ForwardRefRenderFunction<CityPickerProps> = (props: 
             )}
 
             {tabsValue === 'domestic'
-              ? renderNodeList(domesticList, '暂无数据')
-              : renderNodeList(foreignList, '暂无数据')}
+              ? renderNodeList(domesticList, cityPickerLangMsg?.emptyText)
+              : renderNodeList(foreignList, cityPickerLangMsg?.emptyText)}
           </>
         ) : (
           <>
-            {!!commonList.length && <div className={`${selectPrefixCls}-dropdown-common`}>常用</div>}
-            {renderNodeList(commonList, '无常用城市')}
+            {!!commonList.length && (
+              <div className={`${selectPrefixCls}-dropdown-common`}>{cityPickerLangMsg?.common}</div>
+            )}
+            {renderNodeList(commonList, cityPickerLangMsg?.commonEmptyText)}
           </>
         )}
       </>
