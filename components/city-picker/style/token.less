@@ -6,7 +6,7 @@
 @city-picker-dropdown-bg: var(~'@{city-picker-custom-prefix}-dropdown-color-background', @color-background);
 @city-picker-disabled-option-bg: var(~'@{city-picker-custom-prefix}-item-color-background-disabled', #fff);
 @city-picker-item-active-bg: var(~'@{city-picker-custom-prefix}-color-background', #f5f5f5);
-@city-picker-item-selected-bg: var(~'@{city-picker-custom-prefix}-color-background-selected', #f2f6ff);
+@city-picker-item-selected-bg: var(~'@{city-picker-custom-prefix}-color-background-selected', @color-theme-3);
 @city-picker-g-color-border: var(~'@{city-picker-custom-prefix}-color-border', @color-input);
 @city-picker-g-color-border-foucs: var(~'@{city-picker-custom-prefix}-color-border-foucs', @color-theme);
 @city-picker-g-color-border-hover: var(~'@{city-picker-custom-prefix}-color-border-hover', @color-theme);
@@ -16,12 +16,11 @@
 @city-picker-g-item-text-color-disabled: var(~'@{city-picker-custom-prefix}-item-color-text-disabled', @color-disabled);
 @city-picker-color-background-disabled: var(~'@{city-picker-custom-prefix}-color-background-disabled', #fff);
 @city-picker-color-text-disabled: var(~'@{city-picker-custom-prefix}-color-text-disabled', @color-disabled);
-@city-picker-arrow-icon-color-text-disabled: var(
-  ~'@{city-picker-custom-prefix}-arrow-icon-color-text-disabled',
-  #b2b2b2
-);
+@city-picker-arrow-icon-color-text-disabled: var(~'@{city-picker-custom-prefix}-arrow-icon-color-text-disabled', #b2b2b2);
 @city-picker-clear-color: var(~'@{city-picker-custom-prefix}-icon-clear-color-text', #d9d9d9);
 @city-picker-clear-color-hover: var(~'@{city-picker-custom-prefix}-icon-clear-color-text-hover', #999);
+@city-picker-list-item-color-selected: var(~'@{city-picker-custom-prefix}-list-item-color-text-selected', @color-theme);
+@city-picker-highlight-color: var(~'@{city-picker-custom-prefix}-highlight-color-text', @color-theme);
 
 // font
 @city-picker-list-font-size: var(~'@{city-picker-custom-prefix}-dropdown-font-size', 12px); // 下拉列表文字大小

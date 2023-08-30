@@ -11,6 +11,7 @@ const transformComponentArr = [
   'carousel',
   'cascader',
   'checkbox',
+  'city-picker',
   'collapse',
   'color-picker',
   'date-picker',
