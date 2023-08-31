@@ -104,12 +104,6 @@ const InternalSelect: React.ForwardRefRenderFunction<CityPickerProps> = (props: 
     }
   }, [props.visible])
 
-  useEffect(() => {
-    if (optionShow === false) {
-      handleClear()
-    }
-  }, [optionShow])
-
   const handleFocus = useCallback(
     (e: React.ChangeEvent<HTMLSpanElement>) => {
       e.stopPropagation()
@@ -423,6 +417,11 @@ const InternalSelect: React.ForwardRefRenderFunction<CityPickerProps> = (props: 
     visible: optionShow,
     onVisibleChange: handleVisibleChange,
     clickToClose: !searchValue,
+    onTransitionEnd: () => {
+      if (optionShow === false) {
+        handleClear()
+      }
+    },
   }
   return usePopper(renderCityPicker(), renderContent(), popperProps)
 }
