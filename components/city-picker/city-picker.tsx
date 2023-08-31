@@ -238,7 +238,7 @@ const InternalSelect: React.ForwardRefRenderFunction<CityPickerProps> = (props: 
     }
   }
 
-  const renderNodeList = (data: CityList, notContent: string) => {
+  const renderNodeList = (data: CityList, notContent: string, isCommon = false) => {
     if (!data.length) {
       return renderNotContent(notContent)
     }
@@ -250,7 +250,7 @@ const InternalSelect: React.ForwardRefRenderFunction<CityPickerProps> = (props: 
               key={item.id}
               value={initValue}
               city={item}
-              renderCityInfo={renderCityInfo}
+              renderCityInfo={(data, flag) => renderCityInfo(data, isCommon, flag)}
               onChangeSelect={handleOption}
               itemRender={itemRender}
             >
@@ -300,7 +300,7 @@ const InternalSelect: React.ForwardRefRenderFunction<CityPickerProps> = (props: 
             {!!commonList.length && (
               <div className={`${selectPrefixCls}-dropdown-common`}>{cityPickerLangMsg?.common}</div>
             )}
-            {renderNodeList(commonList, cityPickerLangMsg?.commonEmptyText)}
+            {renderNodeList(commonList, cityPickerLangMsg?.commonEmptyText, true)}
           </>
         )}
       </>
@@ -308,10 +308,10 @@ const InternalSelect: React.ForwardRefRenderFunction<CityPickerProps> = (props: 
   }
 
   const renderCityInfo = useCallback(
-    (data: City | null, flag = false, symbol = ', ') => {
+    (data: City | null, isCommon = false, flag = false, symbol = ', ') => {
       if (!data) return null
       if (isDomestic(type)) {
-        const curVal = tabsValue === 'domestic' ? data?.province : data?.country
+        const curVal = tabsValue === 'domestic' || isCommon ? data?.province : data?.country
         return `${flag && curVal ? symbol : ''}${curVal}`
       } else {
         return `${flag && data?.province ? symbol : ''}${data?.province}${
