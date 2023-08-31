@@ -67,6 +67,7 @@ export interface PopperProps {
   onVisibleChange?: (visible: boolean) => void
   getTriggerElement?: (locatorNode: HTMLElement) => HTMLElement
   getPopupContainer?: (locatorNode: HTMLElement) => HTMLElement
+  onTransitionEnd?: (e: React.TransitionEvent) => void
 }
 
 function getTranslate(node: Element, param: string) {
@@ -184,6 +185,7 @@ function usePopper(locatorElement: React.ReactElement, popperElement: React.Reac
     clickToClose = true,
     getTriggerElement = (locatorNode) => locatorNode,
     getPopupContainer = () => document.body,
+    onTransitionEnd,
   } = props
 
   const arrowWidth = Math.sqrt(2 * Math.pow(arrowSize, 2))
@@ -424,6 +426,7 @@ function usePopper(locatorElement: React.ReactElement, popperElement: React.Reac
       hidden: !visible,
       [`${nextPlacement}-active`]: active,
     }),
+    onTransitionEnd: typeof onTransitionEnd === 'function' ? onTransitionEnd : undefined,
   }
 
   const popperNode = popperRef.current
