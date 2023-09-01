@@ -49,6 +49,7 @@ subtitle: 表单
 | validateTrigger | 字段校验的时机 | `string` | `'onchange'` | | 1.0.0      |
 | wrappedWidth    | 输入控件宽度 | `string | number` | |            | 1.0.0 |
 | htmlFor         | 设置子元素 label htmlFor 属性 | string | | | 1.6.7      |
+| extra         | 额外的提示信息 | ReactNode | | | 1.7.25      |
 
 ### FormInstance
 | 属性 | 说明 | 类型 | 默认值 | 可选值 | 版本 |
@@ -70,6 +71,7 @@ subtitle: 表单
 | --- | --- | --- | --- |
 | color | --kd-c-form-field-color | --kd-g-color-text-secondary | #666 |
 |  | --kd-c-form-error-color | --kd-g-color-error | #fb2323 |
+|  | --kd-c-form-extra-color | --kd-g-color-text-third | #999 |
 | font | --kd-c-form-field-label-font-size | - | 12px |
 |  | --kd-c-form-field-message-font-size | - | 12px |
 | line-height | --kd-c-form-field-label-line-height | - | 18px |
