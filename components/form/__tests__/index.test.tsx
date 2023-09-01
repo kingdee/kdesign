@@ -141,7 +141,7 @@ describe('Form', () => {
     it('className', () => {
       wrapper = mount(
         <Form className={'my-form'}>
-          <Item className={'my-item'} label="name" name="username">
+          <Item className={'my-item'} label="name" name="username" extra={'extra'}>
             <Input />
           </Item>
         </Form>,
@@ -488,6 +488,18 @@ describe('Form', () => {
       expect(onChange).toHaveBeenCalled()
       expect(value).toEqual(undefined)
       expect(ref.current.getFieldValue('username')).toEqual(undefined)
+    })
+
+    it('extra', function () {
+      wrapper = mount(
+        <Form>
+          <Item name="username" extra="extra">
+            <Input />
+          </Item>
+        </Form>,
+      )
+      expect(wrapper.find('.kd-form-field-wrapper-extra')).toBeTruthy()
+      expect(wrapper.find('.kd-form-field-wrapper-extra-text').text()).toBe('extra')
     })
   })
 })
