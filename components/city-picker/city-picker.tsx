@@ -242,6 +242,7 @@ const InternalSelect: React.ForwardRefRenderFunction<CityPickerProps> = (props: 
               key={item.id}
               value={initValue}
               city={item}
+              className={searchValue ? `${selectPrefixCls}-list-item-match` : undefined}
               renderCityInfo={(data, flag) => renderCityInfo(data, isCommon, flag)}
               onChangeSelect={handleOption}
               itemRender={itemRender}

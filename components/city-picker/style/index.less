@@ -228,12 +228,23 @@
       &-selected:not(&-disabled) {
         background-color: @city-picker-item-selected-bg;
         color: @city-picker-list-item-color-selected;
+
+        .@{city-picker-prefix-cls}-list-item-info {
+          color: @city-picker-list-item-color-selected;
+        }
       }
 
       &-disabled {
         color: @city-picker-g-item-text-color-disabled;
         cursor: not-allowed;
         background-color: @city-picker-disabled-option-bg;
+      }
+    }
+
+    & > .@{city-picker-prefix-cls}-list-item-match {
+      color: @city-picker-font-color;
+      .@{city-picker-prefix-cls}-list-item-info {
+        color: @city-picker-placeholder-color;
       }
     }
   }
