@@ -93,9 +93,7 @@ const InternalSelect: React.ForwardRefRenderFunction<CityPickerProps> = (props: 
     if (typeof value === 'undefined') return
     const cityList = [...commonList, ...domesticList, ...foreignList]
     const city = cityList.find((city) => city.id === value)
-    if (city) {
-      setSeletedCity(city)
-    }
+    setSeletedCity(city)
   }, [commonList, domesticList, foreignList, value])
 
   useEffect(() => {
