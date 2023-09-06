@@ -453,6 +453,7 @@ const InternalTreeSelect: React.ForwardRefRenderFunction<ITreeSelectProps<TreeSe
                         disabled={disabled}
                         onClose={(e) => handleRemove(e, key)}
                         data-tag={key}
+                        title={label}
                       >
                         {label}
                       </Tag>

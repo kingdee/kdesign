@@ -27,6 +27,7 @@ export interface ITagProps {
   onClick?: React.MouseEventHandler<HTMLElement> // 点击时的回调
   onClose?: React.MouseEventHandler<HTMLElement> // 关闭时的回调
   children?: React.ReactNode // 子元素
+  title?: string
 }
 
 // remove this line and code Tag component here
