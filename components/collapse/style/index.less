@@ -9,8 +9,11 @@
   &-panel:last-child {
     border-top: none;
   }
-  &-panel:first-child {
+  &-panel-border&-panel:first-child {
     border-top: @collapse-border-width solid @collapse-border-color;
+  }
+  &-panel-border&-panel:not(:nth-child(1)) {
+    border-top: none;
   }
   &-panel {
     display: inline-flex;
