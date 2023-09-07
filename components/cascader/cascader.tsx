@@ -119,7 +119,6 @@ const Cascader = React.forwardRef<unknown, CascaderProps>((props, ref) => {
   const prefixCls = getPrefixCls!(pkgPrefixCls, 'cascader', customPrefixcls)
 
   const pickerRef = useRef<HTMLSpanElement>()
-  const triggerRef = useRef<HTMLSpanElement>()
   const wrapperRef = useRef<HTMLDivElement>()
 
   const mergeRef = (ref || pickerRef) as any
@@ -197,13 +196,21 @@ const Cascader = React.forwardRef<unknown, CascaderProps>((props, ref) => {
     }
   }, [allProps.autoFocus, mergeRef])
 
+  const handleMouseUp = (e: MouseEvent) => {
+    const cln = (e?.target as Element)?.className
+    const isCloseBtn = cln.indexOf('kd-tag-close-icon') > -1 || cln.indexOf('kdicon') > -1
+    console.log(cln, isCloseBtn)
+    if (isCloseBtn) {
+      e.stopPropagation()
+    }
+  }
+
   React.useEffect(() => {
-    wrapperRef.current?.addEventListener('mouseup', (e: MouseEvent) => {
-      const isCloseBtn = (e?.target as Element)?.className.indexOf('kd-tag-close-icon') > -1
-      if (isCloseBtn) {
-        e.stopPropagation()
-      }
-    })
+    wrapperRef.current?.addEventListener('mouseup', handleMouseUp)
+
+    return () => {
+      wrapperRef.current?.removeEventListener('mouseup', handleMouseUp)
+    }
   }, [])
 
   const labels = useMemo(() => {
@@ -287,7 +294,7 @@ const Cascader = React.forwardRef<unknown, CascaderProps>((props, ref) => {
     })
     const TagStyle = { margin: '2px 8px 2px 0', maxWidth: '100%' }
     return (
-      <div className={multipleCls} ref={triggerRef as any} style={style} {...otherProps}>
+      <div className={multipleCls} ref={mergeRef as any} style={style} {...otherProps}>
         <div className={`${prefixCls}-multiple-wrapper`} ref={wrapperRef as any}>
           {Array.isArray(currentOptions) && (
             <>
@@ -341,6 +348,7 @@ const Cascader = React.forwardRef<unknown, CascaderProps>((props, ref) => {
       style,
       tabIndex: 0,
       className: classNames(`${prefixCls}-picker`, className, {
+        [`${prefixCls}-single`]: true,
         [`${prefixCls}-expand`]: visible,
         allowClear,
         [`${prefixCls}-disabled`]: disabled,
@@ -351,10 +359,10 @@ const Cascader = React.forwardRef<unknown, CascaderProps>((props, ref) => {
     return (
       <div {...singleProps} ref={mergeRef} {...otherProps}>
         {React.Children.count(children) === 1 && children.type ? (
-          React.cloneElement(children, { ref: triggerRef as any })
+          React.cloneElement(children)
         ) : (
           <>
-            <div ref={triggerRef as any}>
+            <div className={`${prefixCls}-single-wrapper`} ref={wrapperRef as any}>
               <Input {...inputProps} />
               <span className={`${prefixCls}-picker-label`}>
                 {labels?.length ? displayRender(labels, currentOptions) : ''}
@@ -506,12 +514,12 @@ const Cascader = React.forwardRef<unknown, CascaderProps>((props, ref) => {
     gap: 4,
     visible,
     onVisibleChange,
-    trigger: 'click',
+    trigger: expandTrigger,
     getPopupContainer,
     prefixCls: `${prefixCls}-menus`,
     placement: allProps.popperPlacement || popupPlacement,
     popperClassName: allProps.popperClassName || allProps.popupClassName,
-    getTriggerElement: () => triggerRef.current,
+    getTriggerElement: () => mergeRef.current,
   }
 
   return usePopper(cascaderLocator, cascaderPopper, popperProps)
