@@ -35,9 +35,11 @@ const Panel = React.forwardRef<unknown, PanelProps>((props, ref) => {
     expandIcon,
     expandIconPosition,
     style,
+    title,
     className,
     children,
     prefixCls: customPrefixcls,
+    ...others
   } = getCompProps('CollapsePanel', userDefaultProps, props)
 
   const panelPrefixCls = getPrefixCls!(prefixCls, 'collapse-panel', customPrefixcls) // 样式前缀
@@ -86,7 +88,11 @@ const Panel = React.forwardRef<unknown, PanelProps>((props, ref) => {
     return (
       <span className={className} onClick={handleClick}>
         {expandIconPosition === 'left' ? renderIcon() : null}
-        {header && <span className={headerClassName}>{renderReactNode(header)}</span>}
+        {header && (
+          <span className={headerClassName} title={title}>
+            {renderReactNode(header)}
+          </span>
+        )}
       </span>
     )
   }
@@ -181,7 +187,7 @@ const Panel = React.forwardRef<unknown, PanelProps>((props, ref) => {
   }, [childrenRef.current, expandAnimation, expand])
 
   return (
-    <div className={rootClassName} style={style} ref={panelPrefixClsRef}>
+    <div className={rootClassName} style={style} ref={panelPrefixClsRef} {...others}>
       <span className={topClassName}>
         {renderLeft()}
         {renderMiddle()}

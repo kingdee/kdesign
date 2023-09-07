@@ -31,9 +31,10 @@ subtitle: 折叠面板
 | 属性     | 说明                           | 类型      | 默认值 | 可选值        | 版本   |
 | -------- | ------------------------------ | --------- | ------ | ------------- | ------ |
 | disabled | 禁用                           | boolean   | false  | true \| false | 1.0.0 |
-| extra    | 自定义渲染每个面板右上角的内容 | ReactNode | -      | -             | 1.0.0 |
+| extra    | 自定义渲染每个面板右上角的内容     | ReactNode | -      | -             | 1.0.0 |
 | header   | 折叠头内容                     | ReactNode | -      | -             | 1.0.0 |
 | key      | 对应 Collapse 的 activeKey     | string \| number | -      | -             | 1.0.0 |
+| title    | 对折叠头的描述性短语              | string           | -      | -             | 1.7.26 |
 
 ## Design Token
 
