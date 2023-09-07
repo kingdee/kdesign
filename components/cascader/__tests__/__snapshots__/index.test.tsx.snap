@@ -97,10 +97,12 @@ exports[`Cascader render null or undefined without errors 1`] = `
 
 exports[`Cascader renders correctly 1`] = `
 <div
-  class="kd-cascader-picker"
+  class="kd-cascader-picker kd-cascader-single"
   tabindex="0"
 >
-  <div>
+  <div
+    class="kd-cascader-single-wrapper"
+  >
     <span
       class="kd-input-wrapper kd-input-wrapper-size-middle kd-input-wrapper-underline kd-cascader-picker-input"
     >
@@ -128,10 +130,12 @@ exports[`Cascader renders correctly 1`] = `
 
 exports[`Cascader renders correctly 2`] = `
 <div
-  class="kd-cascader-picker"
+  class="kd-cascader-picker kd-cascader-single"
   tabindex="0"
 >
-  <div>
+  <div
+    class="kd-cascader-single-wrapper"
+  >
     <span
       class="kd-input-wrapper kd-input-wrapper-size-middle kd-input-wrapper-underline kd-cascader-picker-input"
     >
@@ -159,10 +163,12 @@ exports[`Cascader renders correctly 2`] = `
 
 exports[`Cascader renders correctly 3`] = `
 <div
-  class="kd-cascader-picker kd-cascader-bordered"
+  class="kd-cascader-picker kd-cascader-single kd-cascader-bordered"
   tabindex="0"
 >
-  <div>
+  <div
+    class="kd-cascader-single-wrapper"
+  >
     <span
       class="kd-input-wrapper kd-input-wrapper-size-middle kd-cascader-picker-input"
     >
