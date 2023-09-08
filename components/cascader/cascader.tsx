@@ -1,4 +1,4 @@
-import React, { useMemo, useCallback, useState, useRef } from 'react'
+import React, { useMemo, useCallback, useState, useRef, useEffect, useImperativeHandle } from 'react'
 import classNames from 'classnames'
 import { tuple } from '../_utils/type'
 import { getCompProps } from '../_utils'
@@ -112,16 +112,16 @@ const Cascader = React.forwardRef<unknown, CascaderProps>((props, ref) => {
     allowClear: customAllowClear,
     popupPlacement,
     maxTagCount,
+    autoFocus,
     ...otherProps
   } = allProps
 
   // className前缀
   const prefixCls = getPrefixCls!(pkgPrefixCls, 'cascader', customPrefixcls)
 
-  const pickerRef = useRef<HTMLSpanElement>()
+  const mergeRef = useRef<HTMLSpanElement>()
+  const inputRef = useRef<HTMLSpanElement>()
   const wrapperRef = useRef<HTMLDivElement>()
-
-  const mergeRef = (ref || pickerRef) as any
 
   const [visible, setVisible] = useState(!!props.popperVisible || !!props.popupVisible || defaultPopupVisible)
   React.useEffect(() => {
@@ -190,16 +190,43 @@ const Cascader = React.forwardRef<unknown, CascaderProps>((props, ref) => {
     }
   }, [options, value, fieldNames, isMultiple])
 
-  React.useEffect(() => {
-    if (allProps.autoFocus) {
-      mergeRef.current?.focus()
+  const handleFocus = () => {
+    if (!disabled) {
+      if (isMultiple) {
+        mergeRef.current?.focus()
+      } else {
+        inputRef.current?.focus()
+      }
     }
-  }, [allProps.autoFocus, mergeRef])
+  }
+
+  const handleBlur = () => {
+    if (!disabled) {
+      if (isMultiple) {
+        mergeRef.current?.blur()
+      } else {
+        inputRef.current?.blur()
+      }
+    }
+  }
+
+  useImperativeHandle(ref, () => {
+    return {
+      focus: handleFocus,
+      blur: handleBlur,
+      dom: mergeRef.current,
+    }
+  })
+
+  useEffect(() => {
+    if (autoFocus) {
+      handleFocus()
+    }
+  }, [autoFocus, inputRef])
 
   const handleMouseUp = (e: MouseEvent) => {
     const cln = (e?.target as Element)?.className
     const isCloseBtn = cln.indexOf('kd-tag-close-icon') > -1 || cln.indexOf('kdicon') > -1
-    console.log(cln, isCloseBtn)
     if (isCloseBtn) {
       e.stopPropagation()
     }
@@ -230,6 +257,8 @@ const Cascader = React.forwardRef<unknown, CascaderProps>((props, ref) => {
   const allowClear = customAllowClear && value.length > 0 && !disabled
 
   const handleClear = () => {
+    handleBlur()
+    setVisible(false)
     onChange([])
   }
 
@@ -294,7 +323,7 @@ const Cascader = React.forwardRef<unknown, CascaderProps>((props, ref) => {
     })
     const TagStyle = { margin: '2px 8px 2px 0', maxWidth: '100%' }
     return (
-      <div className={multipleCls} ref={mergeRef as any} style={style} {...otherProps}>
+      <div className={multipleCls} ref={mergeRef as any} style={style} {...otherProps} tabIndex={-1}>
         <div className={`${prefixCls}-multiple-wrapper`} ref={wrapperRef as any}>
           {Array.isArray(currentOptions) && (
             <>
@@ -336,6 +365,7 @@ const Cascader = React.forwardRef<unknown, CascaderProps>((props, ref) => {
   const renderSingle = () => {
     const inputProps: Record<string, unknown> = {
       value,
+      ref: inputRef,
       placeholder,
       readOnly: true,
       borderType: bordered ? 'bordered' : 'underline',

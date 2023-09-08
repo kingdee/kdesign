@@ -3,10 +3,12 @@
 exports[`Cascader render null or undefined without errors 1`] = `
 <Cascader>
   <div
-    className="kd-cascader-picker"
+    className="kd-cascader-picker kd-cascader-single"
     tabIndex={0}
   >
-    <div>
+    <div
+      className="kd-cascader-single-wrapper"
+    >
       <Input
         borderType="underline"
         className="kd-cascader-picker-input"
