@@ -79,6 +79,8 @@ interface Option {
 |  | --kd-c-cascader-clear-color-text | - | #d9d9d9 |
 |  | --kd-c-cascader-icon-clear-color-text-hover | - | #999 |
 |  | --kd-c-cascader-color-border-foucs | --kd-g-color-theme | #5582f3 |
+|  | --kd-c-cascader-tag-disabled-color | - | #d9d9d9 |
+|  | --kd-c-cascader-placeholder-color | --kd-g-color-text-placeholder | #ccc |
 | font | --kd-c-cascader-font-size | --kd-g-font-size-small | 12px |
 |  | --kd-c-cascader-font-weight | - | 'normal' |
 | radius | --kd-c-cascader-radius-border | --kd-g-radius-border | 2px |
