@@ -64,6 +64,7 @@ subtitle: 锚点
 | motion | --kd-c-anchor-duration-duration | --kd-g-duration | 0.3s |
 | sizing | --kd-c-anchor-sizing-width | - | 120px |
 |  | --kd-c-anchor-advanced-sizing-width | - | 160px |
+|  | --kd-c-anchor-horizontal-link-sizing-max-width | - | 96px |
 | spacing | --kd-c-anchor-spacing-vertical | - | 7px |
 |  | --kd-c-anchor-spacing-horizontal | - | 7px |
 |  | --kd-c-anchor-spacing-padding | - | 7px 8px |

@@ -87,5 +87,6 @@ interface Option {
 | sizing | --kd-c-cascader-sizing-height | - | 192px |
 |  | --kd-c-cascader-menu-sizing-min-width | - | 116px |
 |  | --kd-c-cascader-menu-item-sizing-height | - | 32px |
+|  | --kd-c-cascader-menu-item-label-sizing-width | - | 72px |
 | spacing | --kd-c-cascader-menu-spacing-padding-vertical | - | 8px |
 |  | --kd-c-cascader-menu-item-spacing-padding-horizontal | - | 12px |

@@ -216,6 +216,9 @@
   &-text {
     display: inline-block;
     transition: color @tab-g-motion-duration;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: @tab-pane-text-max-width;
     &-active,
     &:hover {
       color: @tabPane-font-color-active;
