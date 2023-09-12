@@ -202,6 +202,15 @@
       align-items: center;
       justify-content: center;
     }
+
+    &.topLeft.hidden,
+    &.bottomLeft.hidden,
+    &.topRight.hidden,
+    &.bottomRight.hidden {
+      opacity: 0;
+      visibility: hidden;
+      transition: all calc(@transition-duration - 0.1s) @ease;
+    }
   }
 
   &-list {
@@ -336,14 +345,5 @@
       color: @city-picker-placeholder-color;
       .over();
     }
-  }
-
-  &.topLeft.hidden,
-  &.bottomLeft.hidden,
-  &.topRight.hidden,
-  &.bottomRight.hidden {
-    opacity: 0;
-    visibility: hidden;
-    transition: all calc(@transition-duration - 0.1s) @ease;
   }
 }
