@@ -69,6 +69,7 @@ subtitle: 页签
 |  | --kd-c-tabs-pane-type-line-sizing-height-small | - | 32px |
 |  | --kd-c-tabs-pane-type-line-sizing-height-middle | - | 32px |
 |  | --kd-c-tabs-pane-type-dynamic-sizing-height | - | 32px |
+|  | --kd-c-tabs-pane-text-sizing-max-width | - | - |
 | spacing | --kd-c-tabs-pane-line-paddinng-horizontal | - | 20px |
 |  | --kd-c-tabs-pane-card-paddinng-horizontal | - | 18px |
 |  | --kd-c-tabs-pane-grid-paddinng-horizontal | - | 20px |

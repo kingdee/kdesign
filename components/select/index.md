@@ -117,6 +117,7 @@ subtitle: 选择器
 |  | --kd-c-select-sizing-height-large | - | 36px |
 |  | --kd-c-select-sizing-height-middle | - | 30px |
 |  | --kd-c-select-sizing-height-small | - | 24px |
+|  | --kd-c-select-item-sizing-max-width | - | - |
 | spacing | --kd-c-select-bordered-spacing-padding-left | - | 8px |
 |  | --kd-c-select-wrapper-spacing-padding | - | 1px 28px 1px 0 |
 |  | --kd-c-select-dropdown-spacing-padding-vertical | - | 8px |

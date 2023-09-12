@@ -144,12 +144,12 @@
       }
 
       &-label {
-        width: 72px;
+        width: @cascader-menu-item-label-width;
         .ellipsis;
       }
 
       &.last .@{cascader-menu-prefix-cls}-item-label {
-        width: 92px;
+        width: calc(@cascader-menu-item-label-width + 20px);
       }
 
       .@{kd-prefix}-cascader-checkbox {
