@@ -304,7 +304,11 @@ const InternalSelect: React.ForwardRefRenderFunction<CityPickerProps> = (props: 
     (data: City | null, isCommon = false, flag = false, symbol = ', ') => {
       if (!data) return null
       if (isDomestic(type)) {
-        const curVal = tabsValue === 'domestic' || isCommon ? data?.province : data?.country
+        if (isCommon) {
+          const curVal = data?.province ? data?.province : data?.country
+          return `${flag && curVal ? symbol : ''}${curVal}`
+        }
+        const curVal = tabsValue === 'domestic' ? data?.province : data?.country
         return `${flag && curVal ? symbol : ''}${curVal}`
       } else {
         return `${flag && (data?.province || data?.country) ? symbol : ''}${data?.province}${
