@@ -17,7 +17,8 @@ KDesign团队成员都是用 Yarn 进行包管理。下面的指令我们也会�
 3. 执行 yarn start 启动项目，默认会启动8003端口，你可以通过浏览器访问 [http://localhost:8003](http://localhost:8003).
 4. 对代码库进行更改。如果适用的话，请确保改写了相应的单测代码。
 5. 确认执行 yarn test 后所有的测试都是通过的。
-6. 如果进行了任何 props 更改，请手动更新组件下的 README 文件。如果进行了token的更改，请运行 yarn token进行token的自动生成
+6. 如果进行了任何 api 更改，请手动更新组件下的 index.md 文件。如果进行了token的更改，请运行 yarn token进行token的自动生成。
+7. 执行 yarn lint 对更改后的代码进行格式校验，对于格式不正确的位置可以使用 yarn lint-fix:script/style自动进行修复，对于不能自动修复的位置需要手动去修改。
 7. 执行 git cz进行commit, 请同时遵守 Commit 规范。
 8. 提交 pull request, 如果有对应的 issue，请进行关联。
 
@@ -56,11 +57,13 @@ $ yarn token
 ## Commit 指南
 KDesign团队成员使用commitizen进行git commit管理。所以使用 git cz 代替 git commit进行代码提交。当执行git cz后就会出现交互命令行辅助你进行commit信息提交。
 针对commit description部分我们做了如下要求：
-这是我们一条符合规范的提交信息示例："[table] 添加表头行/列合并功能"，所以我们的commit信息格式如下
+这是我们一条符合规范的提交信息示例："[table] 添加表头行/列合并功能 fix #268"，所以我们的commit信息格式如下
 
 ```bash
-[组件名/cli/others]: 动词(添加/修改/删除)....
+[组件名/cli/others]: 动词(添加/修改/删除)...关联issues(fix/fixes/fixed/close/closes/closed #268)
 ```
 
 - commit是对组件的修改,请在"[]"放括号内部填写组件名；如果是文档网站方面的更改请填写cli；其他情况请填写others
 - commit的具体描述请采用"动词+具体改动"的方式进行表述
+
+> 更多组件开发相关的介绍以及开发新组件的内容，请大家移步至[新组件开发贡献指南](./COMPONENT.md)
