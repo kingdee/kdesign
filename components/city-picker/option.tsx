@@ -5,7 +5,19 @@ import { City, ICityPickerOptionProps } from './interface'
 
 const InternalOption: React.ForwardRefRenderFunction<unknown, ICityPickerOptionProps> = (props, ref: unknown) => {
   const optionRef = useRef<HTMLDivElement>(null) || (ref as any)
-  const { children, value, disabled, className, onChangeSelect, city = {}, renderCityInfo, itemRender } = props
+  const {
+    children,
+    value,
+    disabled,
+    className,
+    activeIndex,
+    index,
+    onChangeSelect,
+    city = {},
+    renderCityInfo,
+    itemRender,
+    onChangeActiveIndex,
+  } = props
   const { id, name } = city as City
   const { getPrefixCls, prefixCls } = useContext(ConfigContext)
   const selectOptionPrefixCls = getPrefixCls!(prefixCls, 'city-picker-list-item')
@@ -14,6 +26,7 @@ const InternalOption: React.ForwardRefRenderFunction<unknown, ICityPickerOptionP
   const optionCls = classNames(selectOptionPrefixCls, className, {
     [`${selectOptionPrefixCls}-selected`]: isSelected,
     [`${selectOptionPrefixCls}-disabled`]: disabled,
+    [`${selectOptionPrefixCls}-active`]: activeIndex === index,
   })
 
   const handleClick = (e: React.MouseEvent<HTMLDivElement>) => {
@@ -22,9 +35,23 @@ const InternalOption: React.ForwardRefRenderFunction<unknown, ICityPickerOptionP
     onChangeSelect?.(city)
   }
 
+  const handleOnMouseEnter = () => {
+    onChangeActiveIndex && onChangeActiveIndex(index)
+  }
+  const handleOnMouseLeave = () => {
+    onChangeActiveIndex && onChangeActiveIndex(-1)
+  }
+
   return (
     <>
-      <div ref={optionRef} className={optionCls} title={name} onClick={handleClick}>
+      <div
+        ref={optionRef}
+        className={optionCls}
+        title={name}
+        onClick={handleClick}
+        onMouseEnter={handleOnMouseEnter}
+        onMouseLeave={handleOnMouseLeave}
+      >
         {typeof itemRender === 'function' ? (
           itemRender(city)
         ) : (

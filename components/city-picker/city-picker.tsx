@@ -1,4 +1,4 @@
-import React, { useContext, useRef, useEffect, useState, useCallback } from 'react'
+import React, { useContext, useRef, useEffect, useState, useCallback, useMemo } from 'react'
 import { useMergedState } from '../_utils/hooks'
 import classNames from 'classnames'
 import ConfigContext from '../config-provider/ConfigContext'
@@ -8,6 +8,7 @@ import { CityPickerProps, CityList, Type, City } from './interface'
 import usePopper from '../_utils/usePopper'
 import Option from './option'
 import escapeRegExp from 'lodash/escapeRegExp'
+import KeyCode from '../_utils/KeyCode'
 
 const InternalSelect: React.ForwardRefRenderFunction<CityPickerProps> = (props: any, ref: unknown) => {
   const { getPrefixCls, prefixCls, compDefaultProps: userDefaultProps, locale } = useContext(ConfigContext)
@@ -59,6 +60,7 @@ const InternalSelect: React.ForwardRefRenderFunction<CityPickerProps> = (props: 
   const searchRef = useRef<any>(null) // 搜索框ref
   const selectionRef = useRef<any>(null)
   const clearRef = useRef<HTMLSpanElement>(null)
+  const optionsListRef = useRef<HTMLDivElement>(null)
 
   const [optionShow, setOptionShow] = useState<boolean>(
     typeof props.visible === 'undefined' ? !!defaultOpen : !!props.visible,
@@ -235,8 +237,8 @@ const InternalSelect: React.ForwardRefRenderFunction<CityPickerProps> = (props: 
       return renderNotContent(notContent)
     }
     return (
-      <div className={`${selectPrefixCls}-list`}>
-        {data.map((item) => {
+      <div className={`${selectPrefixCls}-list`} ref={optionsListRef}>
+        {data.map((item, index) => {
           return (
             <Option
               key={item.id}
@@ -246,6 +248,11 @@ const InternalSelect: React.ForwardRefRenderFunction<CityPickerProps> = (props: 
               renderCityInfo={(data, flag) => renderCityInfo(data, isCommon, flag)}
               onChangeSelect={handleOption}
               itemRender={itemRender}
+              activeIndex={activeIndex}
+              index={index}
+              onChangeActiveIndex={(i) => {
+                setActiveIndex(i)
+              }}
             >
               {searchValue ? getHighlightText(item?.name, item?.[optionHighlightProps] || searchValue) : item?.name}
             </Option>
@@ -374,6 +381,81 @@ const InternalSelect: React.ForwardRefRenderFunction<CityPickerProps> = (props: 
     }
   }, [initValue])
 
+  // keyboard
+  const curkeyboardList = useMemo(() => {
+    if (!searchValue) {
+      return commonList
+    } else if (tabsValue === 'domestic') {
+      return domesticList
+    } else {
+      return foreignList
+    }
+  }, [commonList, domesticList, foreignList, searchValue, tabsValue])
+
+  const getActiveIndex = (index: number, offset = 1): number => {
+    const len = curkeyboardList.length
+    for (let i = 0; i < len; i += 1) {
+      const current = (index + i * offset + len) % len
+      return current
+    }
+    return -1
+  }
+
+  const [activeIndex, setActiveIndex] = useState(getActiveIndex(0))
+
+  const initActiveIndex = () => {
+    setActiveIndex(getActiveIndex(0))
+  }
+
+  useEffect(() => {
+    initActiveIndex()
+  }, [searchValue, tabsValue])
+
+  const onInternalKeyDown: React.KeyboardEventHandler<HTMLSpanElement> = (e) => {
+    const { which } = e
+    // open
+    if (which === KeyCode.ENTER || which === KeyCode.UP || which === KeyCode.DOWN) {
+      e.preventDefault()
+      setOptionShow(true)
+    }
+    // up、down、enter、esc
+    if (optionShow) {
+      let offset = 0
+      switch (which) {
+        case KeyCode.UP:
+          offset = -1
+          break
+        case KeyCode.DOWN:
+          offset = 1
+          break
+        case KeyCode.ENTER: {
+          const item = curkeyboardList[activeIndex]
+          if (!item) return
+          handleOption(item)
+          setOptionShow(false)
+          break
+        }
+        case KeyCode.ESC:
+          setOptionShow(false)
+          break
+        default:
+          break
+      }
+      if (offset !== 0) {
+        const nextActiveIndex = getActiveIndex(activeIndex + offset, offset)
+        const curDom = optionsListRef.current?.children?.[nextActiveIndex]
+        if (curDom) {
+          optionsListRef.current?.children[nextActiveIndex].scrollIntoView({
+            behavior: 'auto',
+            block: 'nearest',
+          })
+        }
+        setActiveIndex(nextActiveIndex)
+        e.preventDefault()
+      }
+    }
+  }
+
   const renderCityPicker = () => {
     return (
       <div className={cityPickerCls} ref={selectRef} style={style}>
@@ -383,6 +465,7 @@ const InternalSelect: React.ForwardRefRenderFunction<CityPickerProps> = (props: 
           tabIndex={disabled ? -1 : 0}
           onFocus={() => searchRef.current?.focus()}
           onBlur={() => searchRef.current?.blur()}
+          onKeyDown={onInternalKeyDown}
         >
           {renderSingle()}
         </span>
@@ -405,6 +488,9 @@ const InternalSelect: React.ForwardRefRenderFunction<CityPickerProps> = (props: 
   }
 
   const handleVisibleChange = (visible: boolean) => {
+    if (!visible) {
+      initActiveIndex()
+    }
     if (visible !== optionShow) {
       props.visible === undefined && setOptionShow(visible)
       onVisibleChange && onVisibleChange(visible)
