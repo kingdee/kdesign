@@ -510,7 +510,7 @@ export { default as ${componentObject} } from './${componentName}'
   const newCompDefaultPropString =
     compDefaultPropString.substring(0, insertIndexArr.index) +
     `
-  List: {},` +
+  ${componentObject}: {},` +
     insertIndexArr[0]
   fs.writeFileSync(
     `${path.resolve(__dirname, '../components/config-provider')}/compDefaultProps.tsx`,
