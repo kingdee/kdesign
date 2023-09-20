@@ -1,0 +1,52 @@
+@import '../../style/themes/token.less';
+
+@clipboard-custom-prefix: ~'--@{kd-prefix}-c-clipboard';
+
+// color
+@clipboard-font-color: var(~'@{clipboard-custom-prefix}-color-text', @color-theme); // color-theme为全局token
+
+// font
+@clipboard-g-font-weight: var(~'@{clipboard-custom-prefix}-font-weight', @font-weight-light); // 字体粗细
+@clipboard-small-font-size: var(~'@{clipboard-custom-prefix}-font-size-small', @font-size-small); // 小号 文字大小
+@clipboard-middle-font-size: var(~'@{clipboard-custom-prefix}-font-size-middle', @font-size-middle); // 中号 文字大小
+@clipboard-large-font-size: var(~'@{clipboard-custom-prefix}-font-size-large', @font-size-large); // 大号 文字大小
+
+@clipboard-icon-small-font-size: var(~'@{clipboard-custom-prefix}-icon-font-size-small', 14px); // 小号 图标大小
+@clipboard-icon-middle-font-size: var(~'@{clipboard-custom-prefix}-icon-font-size-middle', 16px); // 中号 图标大小
+@clipboard-icon-large-font-size: var(~'@{clipboard-custom-prefix}-icon-font-size-large', 18px); // 大号 图标大小
+
+// motion
+@clipboard-duration-fade: var(~'@{clipboard-custom-prefix}-motion-duration-fade', @duration-slowly);
+@clipboard-duration-wave: var(~'@{clipboard-custom-prefix}-motion-duration-wave', @duration-quickly);
+
+// sizing
+@clipboard-small-height: var(~'@{clipboard-custom-prefix}-sizing-height-small', 24px); // 小号 高度
+@clipboard-middle-height: var(~'@{clipboard-custom-prefix}-sizing-height-middle', 28px); // 中号 高度
+@clipboard-large-height: var(~'@{clipboard-custom-prefix}-sizing-height-large', 32px); // 大号 高度
+
+// spacing
+@clipboard-small-padding-vertical: var(
+  ~'@{clipboard-custom-prefix}-spacing-padding-vertical-small',
+  3px
+); // 小号 内间距 纵向
+@clipboard-small-padding-horizontal: var(
+  ~'@{clipboard-custom-prefix}-spacing-padding-horizontal-small',
+  8px
+); // 小号 内间距 横向
+@clipboard-middle-padding-vertical: var(
+  ~'@{clipboard-custom-prefix}-spacing-padding-vertical-middle',
+  5px
+); // 中号 内间距 纵向
+@clipboard-middle-padding-horizontal: var(
+  ~'@{clipboard-custom-prefix}-spacing-padding-horizontal-middle',
+  8px
+); // 中号 内间距 横向
+@clipboard-large-padding-vertical: var(
+  ~'@{clipboard-custom-prefix}-spacing-padding-vertical-large',
+  6px
+); // 大号 内间距 纵向
+@clipboard-large-padding-horizontal: var(
+  ~'@{clipboard-custom-prefix}-spacing-padding-horizontal-large',
+  8px
+); // 大号 内间距 横向
+@clipboard-icon-padding-horizontal: var(~'@{clipboard-custom-prefix}-icon-spacing-padding-horizontal', 4px);
