@@ -1,0 +1,32 @@
+@import '../../style/themes/index';
+@import './mixin.less';
+@clipboard-prefix-cls: ~'@{kd-prefix}-clipboard';
+
+.@{clipboard-prefix-cls} {
+  .clipboard;
+
+  &-size-small {
+    .clipboard-size(@clipboard-small-height, @clipboard-small-font-size, @clipboard-small-padding-vertical, @clipboard-small-padding-horizontal);
+    &.@{clipboard-prefix-cls}-icon-only {
+      .clipboard-icon-only(@clipboard-icon-small-font-size, @clipboard-icon-padding-horizontal);
+    }
+  }
+
+  &-size-middle {
+    .clipboard-size(@clipboard-middle-height, @clipboard-middle-font-size, @clipboard-middle-padding-vertical, @clipboard-middle-padding-horizontal);
+    &.@{clipboard-prefix-cls}-icon-only {
+      .clipboard-icon-only(@clipboard-icon-middle-font-size, @clipboard-icon-padding-horizontal);
+    }
+  }
+
+  &-size-large {
+    .clipboard-size(@clipboard-large-height, @clipboard-large-font-size, @clipboard-large-padding-vertical, @clipboard-large-padding-horizontal);
+    &.@{clipboard-prefix-cls}-icon-only {
+      .clipboard-icon-only(@clipboard-icon-large-font-size, @clipboard-icon-padding-horizontal);
+    }
+  }
+
+  .clipboard-space {
+    margin-left: 2px;
+  }
+}
