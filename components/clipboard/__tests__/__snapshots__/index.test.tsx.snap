@@ -1,0 +1,94 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Clipboard 2. render test renders correctly 1`] = `
+<div
+  class="kd-clipboard kd-clipboard-size-middle kd-clipboard-icon-only"
+>
+  <i
+    class="kdicon kdicon-copy-code"
+  />
+</div>
+`;
+
+exports[`Clipboard 2. render test renders correctly 2`] = `
+<div
+  class="kd-clipboard kd-clipboard-size-middle kd-clipboard-icon-only"
+  style="width:100px"
+>
+  <i
+    class="kdicon kdicon-copy-code"
+  />
+</div>
+`;
+
+exports[`Clipboard 2. render test renders correctly 3`] = `
+<div
+  class="kd-clipboard kd-clipboard-size-middle kd-clipboard-icon-only"
+>
+  <i
+    class="kdicon kdicon-copy-code"
+  />
+</div>
+`;
+
+exports[`Clipboard 2. render test renders correctly 4`] = `
+<div
+  class="kd-clipboard kd-clipboard-size-middle kd-clipboard-icon-only"
+>
+  <i
+    class="kdicon kdicon-copy-code"
+  />
+</div>
+`;
+
+exports[`Clipboard 2. render test renders correctly 5`] = `
+<div
+  class="kd-clipboard kd-clipboard-size-middle kd-clipboard-icon-only"
+>
+  <i
+    class="kdicon kdicon-copy-code"
+  />
+</div>
+`;
+
+exports[`Clipboard 2. render test renders correctly 6`] = `
+<div
+  class="kd-clipboard kd-clipboard-size-middle kd-clipboard-icon-only"
+>
+  <i
+    class="kdicon kdicon-copy-code"
+  />
+</div>
+`;
+
+exports[`Clipboard 2. render test renders correctly 7`] = `
+<div
+  class="kd-clipboard kd-clipboard-size-large kd-clipboard-icon-only"
+>
+  <i
+    class="kdicon kdicon-copy-code"
+  />
+</div>
+`;
+
+exports[`Clipboard 2. render test renders correctly 8`] = `
+<div
+  class="kd-clipboard kd-clipboard-size-middle kd-clipboard-icon-only"
+>
+  <i
+    class="kdicon kdicon-copy-code"
+  />
+</div>
+`;
+
+exports[`Clipboard 2. render test renders correctly 9`] = `
+<div
+  class="kd-clipboard kd-clipboard-size-small kd-clipboard-icon-only"
+>
+  <i
+    class="kdicon kdicon-copy-code"
+  />
+</div>
+`;
+
+exports[`Clipboard 4. render null or undefined without errors render null or undefined without errors 1`] = `<Clipboard />`;

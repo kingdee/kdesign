@@ -1,0 +1,39 @@
+@import './token.less';
+
+.clipboard() {
+  padding: 0;
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+  box-sizing: border-box;
+  font-weight: @clipboard-g-font-weight;
+  color: #bbbbbb;
+  cursor: pointer;
+  white-space: nowrap;
+  overflow: hidden;
+  user-select: none;
+
+  &:hover {
+    color: #5582f3;
+  }
+  &:disabled,
+  &[disabled] {
+    color: #bbbbbb;
+    cursor: not-allowed;
+  }
+}
+
+.clipboard-size(@height, @font-size, @padding-vertical, @padding-horizontal) {
+  height: @height;
+  padding: @padding-vertical @padding-horizontal;
+  font-size: @font-size;
+  line-height: calc(@height - (@padding-vertical) * 2);
+}
+
+.clipboard-icon-only(@font-size, @padding-horizontal) {
+  font-size: @font-size;
+  padding: 0 @padding-horizontal;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+}
