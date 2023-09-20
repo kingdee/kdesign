@@ -456,6 +456,11 @@ const compDefaultProps = {
     optionHighlightProps: 'highlightText',
     allowClear: true,
   },
+  Clipboard: {
+    action: 'copy',
+    disabled: false,
+    size: 'middle',
+  },
 }
 
 export default compDefaultProps
