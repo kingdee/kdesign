@@ -237,6 +237,7 @@ const InternalSelect: React.ForwardRefRenderFunction<CityPickerProps> = (props: 
 
   const handleOption = (city: City) => {
     handleVisibleChange(false)
+    city.type = tabsValue === 'domestic' ? 'domestic' : 'foreign'
     city?.id !== initValue && onChange?.(city?.id, city)
     if (typeof value === 'undefined') {
       setSeletedCity(city)
@@ -327,7 +328,11 @@ const InternalSelect: React.ForwardRefRenderFunction<CityPickerProps> = (props: 
           const curVal = data?.province ? data?.province : data?.country
           return `${flag && curVal ? symbol : ''}${curVal}`
         }
-        const curVal = tabsValue === 'domestic' ? data?.province : data?.country
+        if (data?.type) {
+          const curVal = data.type === 'domestic' ? data?.province || data?.country : data?.country
+          return `${flag && curVal ? symbol : ''}${curVal}`
+        }
+        const curVal = tabsValue === 'domestic' ? data?.province || data?.country : data?.country
         return `${flag && curVal ? symbol : ''}${curVal}`
       } else {
         return `${flag && (data?.province || data?.country) ? symbol : ''}${data?.province}${
