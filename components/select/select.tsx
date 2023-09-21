@@ -657,7 +657,7 @@ const InternalSelect: React.ForwardRefRenderFunction<ISelectProps<SelectValue>> 
               readOnly={!isShowSearch || !!disabled}
             />
           </span>
-          {singleVal && !searchValue && <span className={`${selectPrefixCls}-selection-item`}>{singleVal}</span>}
+          {singleVal && !searchValue ? <span className={`${selectPrefixCls}-selection-item`}>{singleVal}</span> : null}
           <span className={`${selectPrefixCls}-placeholder`} style={hiddenStyle}>
             {placeholder}
           </span>
