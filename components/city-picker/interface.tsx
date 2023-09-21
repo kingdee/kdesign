@@ -6,6 +6,7 @@ export type City = {
   country?: string
   province?: string
   name?: string
+  type?: 'domestic' | 'foreign'
   [key: string]: any
 }
 
