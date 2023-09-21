@@ -9,6 +9,14 @@ import usePopper from '../_utils/usePopper'
 import Option from './option'
 import escapeRegExp from 'lodash/escapeRegExp'
 import KeyCode from '../_utils/KeyCode'
+import isObject from 'lodash/isObject'
+
+const getCityId = (data: City | string | number) => {
+  if (isObject(data)) {
+    return data?.id
+  }
+  return data
+}
 
 const InternalSelect: React.ForwardRefRenderFunction<CityPickerProps> = (props: any, ref: unknown) => {
   const { getPrefixCls, prefixCls, compDefaultProps: userDefaultProps, locale } = useContext(ConfigContext)
@@ -48,8 +56,8 @@ const InternalSelect: React.ForwardRefRenderFunction<CityPickerProps> = (props: 
     onTabPaneChange,
   } = selectProps
   const [initValue, setInitValue] = useMergedState(undefined, {
-    value,
-    defaultValue,
+    value: getCityId(value),
+    defaultValue: getCityId(defaultValue),
   })
   const tabsData = [
     { id: 'domestic', name: cityPickerLangMsg?.tabsDomestic },
@@ -93,6 +101,10 @@ const InternalSelect: React.ForwardRefRenderFunction<CityPickerProps> = (props: 
 
   useEffect(() => {
     if (typeof value === 'undefined') return
+    if (isObject(value)) {
+      setSeletedCity(value)
+      return
+    }
     const cityList = [...commonList, ...domesticList, ...foreignList]
     const city = cityList.find((city) => city.id === value)
     setSeletedCity(city)

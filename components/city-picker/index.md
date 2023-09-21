@@ -36,7 +36,7 @@ order: 3
 | showDescription | 是否显示描述内容 | boolean | true | 1.7.20 |
 | suffixIcon | 自定义的选择框后缀图标 | ReactNode | - | 1.7.20 |
 | type | 城市选择组件类型 | `domestic`、`foreign` | `domestic` | 1.7.20 |
-| value | 指定当前选中的条目 | string \| number | - | 1.7.20 |
+| value | 指定当前选中的条目 | string \| number \| [City](#City) | - | 1.7.20 |
 | optionHighlightProps | 搜索时根据该属性值高亮城市名 | string | `highlightText` | 1.7.20 |
 | onBlur | 失去焦点时回调 | function | - | 1.7.20 |
 | onChange | 选中 option，或 input 的 value 变化时，调用此函数 | function(value: string \| number, city: [City](#City)) | - | 1.7.20 |
@@ -56,43 +56,42 @@ order: 3
 | province      | 省份                   | string              | -      | -      | 1.7.20 |
 | name          | 城市名                 | string              | -      | -      | 1.7.20 |
 
-
 ## Design Token
 
-| 分类 | 组件token | 全局token | 默认值 |
-| --- | --- | --- | --- |
-| color | --kd-c-city-picker-dropdown-color-background | --kd-g-color-background | #fff |
-|  | --kd-c-city-picker-item-color-background-disabled | - | #fff |
-|  | --kd-c-city-picker-color-background | - | #f5f5f5 |
-|  | --kd-c-city-picker-color-background-selected | --kd-g-color-theme-3 | rgb(227, 238, 255) |
-|  | --kd-c-city-picker-color-border | --kd-g-color-input | #999 |
-|  | --kd-c-city-picker-color-border-foucs | --kd-g-color-theme | #5582f3 |
-|  | --kd-c-city-picker-color-border-hover | --kd-g-color-theme | #5582f3 |
-|  | --kd-c-city-picker-border-color-border | --kd-g-color-border-strong | #d9d9d9 |
-|  | --kd-c-city-picker-placeholder-color-text | - | #b2b2b2 |
-|  | --kd-c-city-picker-footer-color-text | --kd-g-color-text-primary | #212121 |
-|  | --kd-c-city-picker-item-color-text-disabled | --kd-g-color-disabled | #b2b2b2 |
-|  | --kd-c-city-picker-color-background-disabled | - | #fff |
-|  | --kd-c-city-picker-color-text-disabled | --kd-g-color-disabled | #b2b2b2 |
-|  | --kd-c-city-picker-arrow-icon-color-text-disabled | - | #b2b2b2 |
-|  | --kd-c-city-picker-icon-clear-color-text | - | #d9d9d9 |
-|  | --kd-c-city-picker-icon-clear-color-text-hover | - | #999 |
-|  | --kd-c-city-picker-list-item-color-text-selected | --kd-g-color-theme | #5582f3 |
-|  | --kd-c-city-picker-highlight-color-text | --kd-g-color-theme | #5582f3 |
-| font | --kd-c-city-picker-dropdown-font-size | - | 12px |
-|  | --kd-c-city-picker-font-size-large | - | 16px |
-|  | --kd-c-city-picker-font-size-middle | - | 14px |
-|  | --kd-c-city-picker-font-size-small | - | 12px |
-| line-height | --kd-c-city-picker-dropdown-line-height | - | 22px |
-|  | --kd-c-city-picker-line-height-large | - | 28px |
-|  | --kd-c-city-picker-line-height-middle | - | 22px |
-|  | --kd-c-city-picker-line-height-small | - | 14px |
-| radius | --kd-c-city-picker-radius-border | --kd-g-radius-border | 2px |
-|  | --kd-c-city-picker-bordered-radius-border | - | 2px |
-| sizing | --kd-c-city-picker-item-sizing-height | - | 22px |
-|  | --kd-c-city-picker-sizing-height-large | - | 36px |
-|  | --kd-c-city-picker-sizing-height-middle | - | 30px |
-|  | --kd-c-city-picker-sizing-height-small | - | 24px |
-| spacing | --kd-c-city-picker-bordered-spacing-padding-left | - | 8px |
-|  | --kd-c-city-picker-wrapper-spacing-padding | - | 1px 24px 1px 0 |
-| z-index | --kd-c-city-picker-z-index | --kd-g-z-index-popper | 1050 |
+| 分类        | 组件 token                                        | 全局 token                 | 默认值             |
+| ----------- | ------------------------------------------------- | -------------------------- | ------------------ |
+| color       | --kd-c-city-picker-dropdown-color-background      | --kd-g-color-background    | #fff               |
+|             | --kd-c-city-picker-item-color-background-disabled | -                          | #fff               |
+|             | --kd-c-city-picker-color-background               | -                          | #f5f5f5            |
+|             | --kd-c-city-picker-color-background-selected      | --kd-g-color-theme-3       | rgb(227, 238, 255) |
+|             | --kd-c-city-picker-color-border                   | --kd-g-color-input         | #999               |
+|             | --kd-c-city-picker-color-border-foucs             | --kd-g-color-theme         | #5582f3            |
+|             | --kd-c-city-picker-color-border-hover             | --kd-g-color-theme         | #5582f3            |
+|             | --kd-c-city-picker-border-color-border            | --kd-g-color-border-strong | #d9d9d9            |
+|             | --kd-c-city-picker-placeholder-color-text         | -                          | #b2b2b2            |
+|             | --kd-c-city-picker-footer-color-text              | --kd-g-color-text-primary  | #212121            |
+|             | --kd-c-city-picker-item-color-text-disabled       | --kd-g-color-disabled      | #b2b2b2            |
+|             | --kd-c-city-picker-color-background-disabled      | -                          | #fff               |
+|             | --kd-c-city-picker-color-text-disabled            | --kd-g-color-disabled      | #b2b2b2            |
+|             | --kd-c-city-picker-arrow-icon-color-text-disabled | -                          | #b2b2b2            |
+|             | --kd-c-city-picker-icon-clear-color-text          | -                          | #d9d9d9            |
+|             | --kd-c-city-picker-icon-clear-color-text-hover    | -                          | #999               |
+|             | --kd-c-city-picker-list-item-color-text-selected  | --kd-g-color-theme         | #5582f3            |
+|             | --kd-c-city-picker-highlight-color-text           | --kd-g-color-theme         | #5582f3            |
+| font        | --kd-c-city-picker-dropdown-font-size             | -                          | 12px               |
+|             | --kd-c-city-picker-font-size-large                | -                          | 16px               |
+|             | --kd-c-city-picker-font-size-middle               | -                          | 14px               |
+|             | --kd-c-city-picker-font-size-small                | -                          | 12px               |
+| line-height | --kd-c-city-picker-dropdown-line-height           | -                          | 22px               |
+|             | --kd-c-city-picker-line-height-large              | -                          | 28px               |
+|             | --kd-c-city-picker-line-height-middle             | -                          | 22px               |
+|             | --kd-c-city-picker-line-height-small              | -                          | 14px               |
+| radius      | --kd-c-city-picker-radius-border                  | --kd-g-radius-border       | 2px                |
+|             | --kd-c-city-picker-bordered-radius-border         | -                          | 2px                |
+| sizing      | --kd-c-city-picker-item-sizing-height             | -                          | 22px               |
+|             | --kd-c-city-picker-sizing-height-large            | -                          | 36px               |
+|             | --kd-c-city-picker-sizing-height-middle           | -                          | 30px               |
+|             | --kd-c-city-picker-sizing-height-small            | -                          | 24px               |
+| spacing     | --kd-c-city-picker-bordered-spacing-padding-left  | -                          | 8px                |
+|             | --kd-c-city-picker-wrapper-spacing-padding        | -                          | 1px 24px 1px 0     |
+| z-index     | --kd-c-city-picker-z-index                        | --kd-g-z-index-popper      | 1050               |
