@@ -58,6 +58,7 @@
       opacity: 0;
       z-index: 1;
       position: absolute;
+      top: 0;
       background: #fff;
       transition: opacity 0.15s ease;
       &:hover {
@@ -74,6 +75,10 @@
     text-overflow: ellipsis;
     right: 24px;
     left: 0;
+    top: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
   }
 
   &-borderless {
@@ -277,6 +282,8 @@
 
   &-suffix {
     right: 0;
+    top: 0;
+    bottom: 0;
     position: absolute;
     display: flex;
     flex: 0;
