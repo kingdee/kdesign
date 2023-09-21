@@ -40,7 +40,7 @@ export interface CityPickerProps {
   clearIcon?: React.ReactNode // 清除图标
   suffixIcon?: React.ReactNode // 选择框后缀图标
   optionHighlightProps?: string // 搜索时 根据该属性值高亮城市名
-  value?: string | number
+  value?: string | number | City
   defaultValue?: string | number
   description?: React.ReactNode
   showDescription?: boolean
