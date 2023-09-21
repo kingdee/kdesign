@@ -51,7 +51,7 @@ const Row: React.FC<RowProps> = (props) => {
   } = getCompProps('Row', userDefaultProps, props)
 
   // 浏览器名称
-  const isSogou = testBrowserType(/^sogou/i, 0)
+  const isSogou = testBrowserType(/^sogou/i, 0) || /Trident|MSIE/.test(navigator.userAgent)
 
   // className前缀
   const prefixCls = getPrefixCls!(pkgPrefixCls, 'row', customPrefixcls)
