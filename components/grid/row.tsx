@@ -41,7 +41,10 @@ function getGap(gutter: gutterObject, width: number) {
   return gap
 }
 
-export const GapContext = createContext<GridContext | null>(null)
+export const GapContext = createContext<GridContext>({
+  gap: { h: 0, v: 0 },
+  winWidth: window.innerWidth,
+})
 
 const Row: React.FC<RowProps> = (props) => {
   const { getPrefixCls, prefixCls: pkgPrefixCls, compDefaultProps: userDefaultProps } = React.useContext(ConfigContext)
