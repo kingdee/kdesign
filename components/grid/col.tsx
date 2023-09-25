@@ -1,8 +1,9 @@
-import * as React from 'react'
+import React, { useContext } from 'react'
 import classNames from 'classnames'
 import { getCompProps } from '../_utils'
 import { ConfigContext } from '../config-provider'
 import { testBrowserType } from '../_utils/testBrowserType'
+import { GapContext } from './row'
 
 interface ColBase {
   span?: number
@@ -40,14 +41,22 @@ const Col: React.FC<ColProps> = (props) => {
     style,
     order,
     offset,
-    winWidth,
     children,
     className,
     prefixCls: customPrefixcls,
+    ...others
   } = getCompProps('Col', userDefaultProps, props)
 
+  const rowGroup = useContext(GapContext)
+  const mergedWinWidth = rowGroup!.winWidth
+  const gap = rowGroup!.gap
+
   // 浏览器名称
-  const isSogou = testBrowserType(/^sogou/i, 0) || /Trident|MSIE/.test(navigator.userAgent)
+  const isSogouOrIE = testBrowserType(/^sogou/i, 0) || /Trident|MSIE/.test(navigator.userAgent)
+  const colGapStyle: Record<string, any> = {
+    padding: `0 ${gap.h / 2}px`,
+  }
+  if (isSogouOrIE && gap.v) colGapStyle.marginBottom = gap.v
 
   // className前缀
   const prefixCls = getPrefixCls!(pkgPrefixCls, 'col', customPrefixcls)
@@ -55,23 +64,23 @@ const Col: React.FC<ColProps> = (props) => {
 
   let base = { span, pull, push, offset, order }
 
-  if (xs && winWidth > 0) {
+  if (xs && mergedWinWidth > 0) {
     if (xs.constructor === Number) base.span = xs
     if (xs.constructor === Object) base = { ...base, ...xs }
   }
-  if (sm && winWidth >= 600) {
+  if (sm && mergedWinWidth >= 600) {
     if (sm.constructor === Number) base.span = sm
     if (sm.constructor === Object) base = { ...base, ...sm }
   }
-  if (md && winWidth >= 1024) {
+  if (md && mergedWinWidth >= 1024) {
     if (md.constructor === Number) base.span = md
     if (md.constructor === Object) base = { ...base, ...md }
   }
-  if (lg && winWidth >= 1280) {
+  if (lg && mergedWinWidth >= 1280) {
     if (lg.constructor === Number) base.span = lg
     if (lg.constructor === Object) base = { ...base, ...lg }
   }
-  if (xl && winWidth >= 1920) {
+  if (xl && mergedWinWidth >= 1920) {
     if (xl.constructor === Number) base.span = xl
     if (xl.constructor === Object) base = { ...base, ...xl }
   }
@@ -101,11 +110,12 @@ const Col: React.FC<ColProps> = (props) => {
     left: base.push && (base.push / columns) * 100 + '%',
     right: base.pull && (base.pull / columns) * 100 + '%',
     marginLeft: base.offset && (base.offset / columns) * 100 + '%',
+    ...colGapStyle,
     ...style,
   }
 
   return (
-    <div className={classNames(prefixCls, className, { 'sogou-col': isSogou })} style={styleString}>
+    <div className={classNames(prefixCls, className)} style={styleString} {...others}>
       {children}
     </div>
   )
