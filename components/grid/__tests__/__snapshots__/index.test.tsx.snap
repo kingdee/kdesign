@@ -10,14 +10,14 @@ exports[`Grid 2. render test should render Col 1`] = `
 exports[`Grid 2. render test should render Row 1`] = `
 <div
   class="kd-row"
-  style="row-gap:0px;margin:0 -12px;align-items:flex-start;justify-content:flex-start"
+  style="row-gap:0px;margin:0 -6px;align-items:flex-start;justify-content:flex-start"
 />
 `;
 
 exports[`Grid 2. render test should render Row gutter 12 1`] = `
 <div
   class="kd-row"
-  style="row-gap:0px;margin:0 -12px;align-items:flex-start;justify-content:flex-start"
+  style="row-gap:0px;margin:0 -6px;align-items:flex-start;justify-content:flex-start"
 >
   <div
     class="kd-col"
@@ -54,7 +54,7 @@ exports[`Grid 4. render null or undefined without errors render null or undefine
       Object {
         "alignItems": "flex-start",
         "justifyContent": "flex-start",
-        "margin": "0 -12px",
+        "margin": "0 -6px",
         "row-gap": "0px",
       }
     }

@@ -19,7 +19,7 @@ subtitle: 自适应栅格
 
 | 成员 | 说明 | 类型 | 默认值 | 版本 |
 | --- | --- | --- | --- | --- |
-| align | 垂直对齐 | `top` \| `middle` \| `bottom` | `top` | `stretch` | 1.0.0 |
+| align | 垂直对齐 | `top` \| `middle` \| `bottom` | `top` \| `stretch` | 1.0.0 |
 | gutter | 间隔，支持像素值或响应式的对象两种写法来设置水平间隔 { xs: 8, sm: 16, md: 24}。或者使用数组形式同时设置 `[水平间距, 垂直间距]` | number \| object \| array | 12 | 1.0.0 |
 | justify | 水平对齐 | `start` \| `end` \| `center` \| `space-around` \| `space-between` | `start` | 1.0.0 |
 | wrap | 自动换行 | boolean | true | 1.0.0 |
