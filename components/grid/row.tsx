@@ -91,9 +91,9 @@ const Row: React.FC<RowProps> = (props) => {
 
   const rowStyle: Record<string, any> = {
     'row-gap': `${gap.v}px`,
-    margin: `0 ${-1 * gap.h}px`,
+    margin: `0 ${(-1 * gap.h) / 2}px`,
   }
-  if (gap.v && isSogouOrIe) rowStyle['margin-bottom'] = `${(-1 * gap.v) / 2}px`
+  if (gap.v && isSogouOrIe) rowStyle['margin-bottom'] = `${-1 * gap.v}px`
 
   const toalign: Record<string, string> = {
     top: 'flex-start',
