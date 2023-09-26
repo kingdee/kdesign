@@ -75,14 +75,15 @@ order: 3
 |             | --kd-c-city-picker-color-background-disabled      | -                          | #fff               |
 |             | --kd-c-city-picker-color-text-disabled            | --kd-g-color-disabled      | #b2b2b2            |
 |             | --kd-c-city-picker-arrow-icon-color-text-disabled | -                          | #b2b2b2            |
-|             | --kd-c-city-picker-icon-clear-color-text          | -                          | #d9d9d9            |
-|             | --kd-c-city-picker-icon-clear-color-text-hover    | -                          | #999               |
+|             | --kd-c-city-picker-icon-clear-color-text          | -                          | #666666            |
+|             | --kd-c-city-picker-icon-clear-color-text-hover    | --kd-g-color-theme         | #5582f3            |
 |             | --kd-c-city-picker-list-item-color-text-selected  | --kd-g-color-theme         | #5582f3            |
 |             | --kd-c-city-picker-highlight-color-text           | --kd-g-color-theme         | #5582f3            |
 | font        | --kd-c-city-picker-dropdown-font-size             | -                          | 12px               |
 |             | --kd-c-city-picker-font-size-large                | -                          | 16px               |
 |             | --kd-c-city-picker-font-size-middle               | -                          | 14px               |
 |             | --kd-c-city-picker-font-size-small                | -                          | 12px               |
+|             | --kd-c-city-picker-icon-clear-font-size           | -                          | 16px               |
 | line-height | --kd-c-city-picker-dropdown-line-height           | -                          | 22px               |
 |             | --kd-c-city-picker-line-height-large              | -                          | 28px               |
 |             | --kd-c-city-picker-line-height-middle             | -                          | 22px               |
