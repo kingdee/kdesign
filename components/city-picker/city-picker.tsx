@@ -194,7 +194,7 @@ const InternalSelect: React.ForwardRefRenderFunction<CityPickerProps> = (props: 
             className={`${selectPrefixCls}-icon-clear`}
             ref={clearRef}
           >
-            {clearIcon || <Icon type="close-solid" />}
+            {clearIcon || <Icon type="close" />}
           </span>
         )}
         {showArrow && <span className={arrowIconCls}>{suffixIcon || <Icon type="arrow-down" />}</span>}
