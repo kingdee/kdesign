@@ -464,12 +464,12 @@ const InternalSelect: React.ForwardRefRenderFunction<ISelectProps<SelectValue>> 
     })
     return (
       <>
-        {iconShow && (
+        {iconShow ? (
           <span onClick={handleReset} onMouseDown={(e) => e.preventDefault()} className={clearIconCls} ref={clearRef}>
             {clearIcon || <Icon type="close-solid" />}
           </span>
-        )}
-        {showArrow && <span className={arrowIconCls}>{suffixIcon || <Icon type="arrow-down" />}</span>}
+        ) : null}
+        {showArrow ? <span className={arrowIconCls}>{suffixIcon || <Icon type="arrow-down" />}</span> : null}
       </>
     )
   }
@@ -582,13 +582,13 @@ const InternalSelect: React.ForwardRefRenderFunction<ISelectProps<SelectValue>> 
       <>
         {
           <div className={dropDownCls} style={dropdownStyle} ref={dropDownRef}>
-            {!dropdownRender && childrenToRender.length > 0 && dropRender(eleOptionList, heightStyle)}
+            {!dropdownRender && childrenToRender.length > 0 ? dropRender(eleOptionList, heightStyle) : null}
             {/* 下拉列表为空 */}
             {renderNotContent()}
             {/* 拓展菜单 */}
-            <div>{dropdownRender && dropdownRender(dropRender(childrenToRender, heightStyle))}</div>
+            <div>{dropdownRender ? dropdownRender(dropRender(childrenToRender, heightStyle)) : null}</div>
             {/* 多选模式-----底部 */}
-            {isMultiple && realChildren.length > 0 && (
+            {isMultiple && realChildren.length > 0 ? (
               <div className={multipleFooterCls}>
                 <Checkbox
                   style={checkboxStyle}
@@ -602,7 +602,7 @@ const InternalSelect: React.ForwardRefRenderFunction<ISelectProps<SelectValue>> 
                   已选<span>{selectedVal.length}</span>项
                 </span>
               </div>
-            )}
+            ) : null}
           </div>
         }
       </>
@@ -684,35 +684,33 @@ const InternalSelect: React.ForwardRefRenderFunction<ISelectProps<SelectValue>> 
     const TagStyle = { margin: '2px 8px 2px 0', maxWidth: '100%' }
     return (
       <div className={multipleCls} ref={selectionRef}>
-        {Array.isArray(mulOptions) && (
+        {Array.isArray(mulOptions) ? (
           <>
             {mulOptions.map((item: any, index: number) => {
               const { label, value } = item
-              return (
-                (!maxTagCount || index <= maxTagCount - 1) && (
-                  <span
-                    key={value}
-                    className={classNames(`${selectPrefixCls}-selection-tag`)}
-                    onMouseDown={(e) => e.preventDefault()}
-                  >
-                    {typeof tagRender === 'function' ? (
-                      tagRender?.({ onClose: handleRemove, value, label, disabled, size })
-                    ) : (
-                      <Tag
-                        type="edit"
-                        style={TagStyle}
-                        size={size}
-                        closable
-                        disabled={disabled}
-                        onClose={(e) => handleRemove(e, value)}
-                        data-tag={value}
-                      >
-                        {label}
-                      </Tag>
-                    )}
-                  </span>
-                )
-              )
+              return !maxTagCount || index <= maxTagCount - 1 ? (
+                <span
+                  key={value}
+                  className={classNames(`${selectPrefixCls}-selection-tag`)}
+                  onMouseDown={(e) => e.preventDefault()}
+                >
+                  {typeof tagRender === 'function' ? (
+                    tagRender?.({ onClose: handleRemove, value, label, disabled, size })
+                  ) : (
+                    <Tag
+                      type="edit"
+                      style={TagStyle}
+                      size={size}
+                      closable
+                      disabled={disabled}
+                      onClose={(e) => handleRemove(e, value)}
+                      data-tag={value}
+                    >
+                      {label}
+                    </Tag>
+                  )}
+                </span>
+              ) : null
             })}
             {maxTagCount && mulOptions.length > maxTagCount ? (
               maxTagPlaceholder ? (
@@ -724,7 +722,7 @@ const InternalSelect: React.ForwardRefRenderFunction<ISelectProps<SelectValue>> 
               )
             ) : null}
           </>
-        )}
+        ) : null}
         <span className={`${selectPrefixCls}-selection-search`} style={{ width: inputWidth }}>
           <input
             ref={searchRef}
@@ -739,7 +737,9 @@ const InternalSelect: React.ForwardRefRenderFunction<ISelectProps<SelectValue>> 
             {searchValue}&nbsp;
           </span>
         </span>
-        <span className={`${selectPrefixCls}-placeholder`}>{!mulOptions.length && !searchValue && placeholder}</span>
+        <span className={`${selectPrefixCls}-placeholder`}>
+          {!mulOptions.length && !searchValue ? placeholder : null}
+        </span>
         <span className={`${selectPrefixCls}-suffix`}>{renderSuffix()}</span>
       </div>
     )

@@ -161,34 +161,36 @@ const InternalCheckbox: React.ForwardRefRenderFunction<unknown, CheckboxProps> =
   }, [])
 
   const getDefaultCheckbox = () => {
+    const inputProps: any = {
+      type: 'checkbox',
+      className: inputClassName,
+      onChange: handleChange,
+      checked: selected,
+      disabled: mergedDisabled,
+      name: mergedName,
+    }
+    if ((value ?? '') !== '') {
+      inputProps.value = value
+    }
     return (
       // eslint-disable-next-line
       <label className={getRootClassName} style={style} ref={labelRef} {...rest}>
         <span className={checkedWrapperClassName}>
-          {selected && (
+          {selected ? (
             <span className={innerIconClassName}>
               <Icon type="right-bold" className={`${checkboxPrefixCls}-${mergedCheckboxType}-inner-icon`} />
             </span>
-          )}
-          <input
-            type="checkbox"
-            className={inputClassName}
-            onChange={handleChange}
-            ref={ref as any}
-            value={value}
-            checked={selected}
-            disabled={mergedDisabled}
-            name={mergedName}
-          />
+          ) : null}
+          <input type="checkbox" ref={ref as any} {...inputProps} />
         </span>
-        {children && <span className={`${checkboxPrefixCls}-children`}>{children}</span>}
-        {!isDefaultType() && (
+        {children ? <span className={`${checkboxPrefixCls}-children`}>{children}</span> : null}
+        {!isDefaultType() ? (
           <span className={triangleClassName}>
             <span className={innerIconClassName}>
               <Icon type="right-bold" className={`${checkboxPrefixCls}-${mergedCheckboxType}-inner-icon`} />
             </span>
           </span>
-        )}
+        ) : null}
       </label>
     )
   }
