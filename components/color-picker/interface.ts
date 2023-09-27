@@ -43,8 +43,12 @@ export interface IColorPickerProps extends PopperProps {
   showColorPickerBox: { showBox: boolean; showHue: boolean; showOpacity: boolean }
   // 颜色选择面板显隐配置
   defaultOpen: boolean
+  // 面板显隐受控配置
+  visible: boolean
   // 当颜色选择器的值发生变化时触发的回调函数
   onChange: (inputValue: string, formatColorArr: Array<IColorTypesObj>) => void
+  // 面板显隐回调
+  onVisibleChange: (visible: boolean) => void
 }
 
 export interface IColorPickerPanelProps {
@@ -66,6 +70,8 @@ export interface IColorPickerPanelProps {
   showColorPickerBox?: { showBox?: boolean; showHue?: boolean; showOpacity?: boolean }
   showColorPickerPanel: boolean
   value: string
+  visible: boolean
+  showPanel: boolean
   setCurrentColorType: (currentColorType: IColorTypesObj['type']) => void
   setColTypeArr: (colTypeArr: Array<IColorTypesObj>) => void
   setClickedColorIndex: (clickedColorIndex: number) => void
@@ -76,4 +82,5 @@ export interface IColorPickerPanelProps {
   setInputColorValue: (colorValue: string) => void
   setShowPanel: (showPanel: boolean) => void
   onChange?: (inputValue: string, formatColorArr: Array<IColorTypesObj>) => void
+  onVisibleChange?: (visible: boolean) => void
 }

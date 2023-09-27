@@ -1,6 +1,6 @@
 ---
 title: 配置功能色
-order: 4
+order: 5
 ---
 
 可配置属性 functionalColor 自定义功能色，并通过跟随功能色开关进行切换

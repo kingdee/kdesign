@@ -40,14 +40,16 @@ const ColorPicker: FC<Partial<IColorPickerProps>> = (props) => {
     placeholder,
     defaultValue,
     defaultOpen,
+    visible,
     suffixIcon,
     onChange,
+    onVisibleChange,
   } = colorPickerProps
   const [inputColorValue, setInputColorValue] = useState<string>(defaultValue || '')
   const [correctColorValue, setCorrectColorValue] = useState<string>(defaultValue || defaultSystemColor)
   const [currentColorType, setCurrentColorType] = useState<IColorTypesObj['type']>('HEX')
   const [colTypeArr, setColTypeArr] = useState<Array<IColorTypesObj>>(colorTypes as IColorTypesObj[])
-  const [showPanel, setShowPanel] = useState<boolean>(defaultOpen)
+  const [showPanel, setShowPanel] = useState<boolean>(typeof visible === 'undefined' ? !!defaultOpen : !!visible)
   const [alpha, setAlpha] = useState<number>(1)
   const [alphaNoVerifyVal, setAlphaNoVerifyVal] = useState<string>(alpha * 100 + '%')
   const [isFollow, setIsFollow] = useState<boolean>(false)
@@ -114,8 +116,17 @@ const ColorPicker: FC<Partial<IColorPickerProps>> = (props) => {
   }
 
   const handleClick = () => {
-    setShowPanel(!showPanel)
+    if (typeof visible === 'undefined') {
+      setShowPanel(!showPanel)
+    }
+    onVisibleChange && onVisibleChange(!showPanel)
   }
+
+  useEffect(() => {
+    if (typeof visible !== 'undefined') {
+      setShowPanel(visible)
+    }
+  }, [visible])
 
   useEffect(() => {
     if (value) {
@@ -174,6 +185,9 @@ const ColorPicker: FC<Partial<IColorPickerProps>> = (props) => {
       switchName={switchName}
       presetColor={presetColor}
       value={value}
+      visible={visible}
+      showPanel={showPanel}
+      onVisibleChange={onVisibleChange}
       // private
       setInputColorValue={setInputColorValue}
       setCorrectColorValue={setCorrectColorValue}
@@ -203,6 +217,7 @@ const ColorPicker: FC<Partial<IColorPickerProps>> = (props) => {
     placement: 'bottomLeft',
     defaultVisible: showPanel,
     visible: showPanel,
+    onVisibleChange: null,
     clickToClose: false,
   }
 

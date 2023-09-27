@@ -1,6 +1,6 @@
 ---
-title: 颜色值联动受控
-order: 10
+title: 面板受控显示
+order: 3
 ---
 
 受控组件
@@ -11,23 +11,23 @@ import ReactDOM from 'react-dom'
 import { ColorPicker, Button } from '@kdcloudjs/kdesign'
 
 function Demo() {
-  const [color, setColor] = React.useState('#ff0000')
-
-  const onChange = (inputValue) => {
-    console.log('inputValue', inputValue)
-    setColor(inputValue)
-  }
+  const [visible, setVisible] = React.useState(false)
 
   const handleClick = () => {
-    setColor('green')
+    setVisible(!visible)
   }
 
   return (
     <>
       <Button style={{ marginBottom: '20px' }} onClick={handleClick}>
-        改变颜色
+        切换面板
       </Button>
-      <ColorPicker onChange={onChange} value={color} showSwitch functionalColor="#0000ff" showColorPickerBox />
+      <ColorPicker
+        visible={visible}
+        onVisibleChange={(vis) => {
+          console.log(vis)
+        }}
+      />
     </>
   )
 }
