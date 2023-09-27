@@ -62,15 +62,17 @@ const Table = forwardRef<unknown, TableProps>((props: TableProps, ref) => {
     columnGroupExtend = {},
   } = props
 
-  const { getPrefixCls, prefixCls } = useContext(ConfigContext)
+  const { getPrefixCls, prefixCls, locale } = useContext(ConfigContext)
 
   const tablePrefixCls = getPrefixCls!(prefixCls, customPrefixcls)
   const tableCls = classNames(tablePrefixCls, className)
+  const localeText = locale.getCompLangMsg({ componentName: 'Table' })
   const pipeline = useTablePipeline({
     components: {
       Checkbox: components?.Checkbox || Checkbox,
       Radio: components?.Radio || Radio,
     },
+    localeText,
   })
     .primaryKey(primaryKey === undefined ? '' : primaryKey)
     .input({
