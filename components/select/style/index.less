@@ -72,7 +72,7 @@
     left: 0;
     top: 0;
     bottom: 0;
-    z-index: -1;
+    pointer-events: none;
     display: flex;
     align-items: center;
   }
@@ -431,7 +431,7 @@
       &-hadSelected {
         color: #999999;
         padding-left: 12px;
-        > span {
+        &-number {
           color: @select-footer-g-text-color-selected;
           padding: 0 2px;
         }
