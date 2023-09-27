@@ -674,7 +674,6 @@ const InternalSelect: React.ForwardRefRenderFunction<ISelectProps<SelectValue>> 
       [`${selectPrefixCls}-multiple-disabled`]: disabled,
       [`${selectPrefixCls}-${mode}`]: mode,
       [`${selectPrefixCls}-focused`]: focusd || optionShow,
-      [`${selectPrefixCls}-placeholder`]: placeholder && !mulOptions.length,
     })
 
     const itemCls = classNames({
