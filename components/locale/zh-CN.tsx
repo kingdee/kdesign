@@ -68,6 +68,14 @@ const locale = {
   'Filter.settings': '设置',
   'Filter.schemeNamePlaceholder': '请输入方案名称',
   'Form.requiredMessage': '请输入您的',
+  'Table.contain': '包含',
+  'Table.notContain': '不包含',
+  'Table.equal': '等于',
+  'Table.notEqual': '不等于',
+  'Table.isNull': '为空',
+  'Table.notIsNull': '不为空',
+  'Table.resetFilter': '重置',
+  'Table.confirmFilter': '确定',
 }
 
 export default locale
