@@ -19,7 +19,7 @@ import { toLowerCase } from './utils/convertLetters'
 import Color from 'color'
 import { ChromePicker } from 'react-color'
 import devWarning from '../_utils/devwarning'
-import useOnClickOutside from './utils/hooks/useOnClickOutside'
+import { useOnClickOutside } from '../_utils/hooks'
 
 const ColorPickerPanel: FC<IColorPickerPanelProps> = (props) => {
   const {
@@ -33,6 +33,7 @@ const ColorPickerPanel: FC<IColorPickerPanelProps> = (props) => {
     setColTypeArr,
     setCurrentColorType,
     onChange,
+    onVisibleChange,
     alpha,
     alphaNoVerifyVal,
     clickedColorIndex,
@@ -51,6 +52,8 @@ const ColorPickerPanel: FC<IColorPickerPanelProps> = (props) => {
     showColorPickerBox,
     showColorPickerPanel,
     value,
+    visible,
+    showPanel,
   } = props
   const panelInputRef = useRef<HTMLInputElement>(null)
   const panelClsRef = useRef<HTMLInputElement>(null)
@@ -219,7 +222,10 @@ const ColorPickerPanel: FC<IColorPickerPanelProps> = (props) => {
   }
 
   useOnClickOutside([panelClsRef, inputRef], () => {
-    setShowPanel(false)
+    if (typeof visible === 'undefined') {
+      setShowPanel(false)
+    }
+    showPanel && onVisibleChange && onVisibleChange(false)
   })
 
   return (

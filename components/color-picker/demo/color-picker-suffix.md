@@ -1,6 +1,6 @@
 ---
 title: 输入框图标
-order: 3
+order: 4
 ---
 
 可配置属性 suffixIcon 自定义输入框右侧的图标
