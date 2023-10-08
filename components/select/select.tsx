@@ -586,7 +586,7 @@ const InternalSelect: React.ForwardRefRenderFunction<ISelectProps<SelectValue>> 
             {/* 下拉列表为空 */}
             {renderNotContent()}
             {/* 拓展菜单 */}
-            <div>{dropdownRender ? dropdownRender(dropRender(childrenToRender, heightStyle)) : null}</div>
+            <div>{dropdownRender ? dropdownRender(dropRender(eleOptionList, heightStyle)) : null}</div>
             {/* 多选模式-----底部 */}
             {isMultiple && realChildren.length > 0 ? (
               <div className={multipleFooterCls}>
