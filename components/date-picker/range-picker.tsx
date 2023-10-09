@@ -52,6 +52,7 @@ import {
   getHours,
   getMinutes,
   getSeconds,
+  isDate,
 } from './utils/date-fns'
 import useTextValueMapping from './hooks/use-text-value-mapping'
 import useRangeViewDates from './hooks/use-range-view-dates'
@@ -563,7 +564,7 @@ const InternalRangePicker = (
   const onSelect = (date: DateType, type: ISelectType) => {
     const values = updateValues(selectedValue, date, mergedActivePickerIndex)
     if (type === 'inner') {
-      if (values && values[mergedActivePickerIndex]) {
+      if (values && values[mergedActivePickerIndex] && isDate(values[mergedActivePickerIndex])) {
         setViewDate(values[mergedActivePickerIndex], mergedActivePickerIndex)
       }
     } else {

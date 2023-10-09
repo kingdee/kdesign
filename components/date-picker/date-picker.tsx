@@ -22,6 +22,7 @@ import {
   newDate,
   parseDate,
   setTime,
+  isDate,
 } from './utils/date-fns'
 import useTextValueMapping from './hooks/use-text-value-mapping'
 import { BorderType, InputSiteType } from '../input/input'
@@ -86,7 +87,6 @@ export interface PickerTimeProps extends PickerSharedProps, Omit<OmitPanelProps<
 
 export type PickerProps = PickerBaseProps | PickerDateProps | PickerTimeProps
 
-// TMP type to fit for ts 3.9.2
 type OmitType = Omit<PickerBaseProps, 'picker'> & Omit<PickerDateProps, 'picker'> & Omit<PickerTimeProps, 'picker'>
 
 interface MergedPickerProps extends OmitType {
@@ -113,7 +113,6 @@ const InternalDatePicker = (
 
   const {
     id,
-    // tabIndex,
     style,
     className,
     dropdownClassName,
@@ -126,7 +125,6 @@ const InternalDatePicker = (
     picker = 'date',
     mode,
     format,
-    // use12Hours,
     value,
     defaultValue,
     defaultPickerValue,
@@ -154,7 +152,6 @@ const InternalDatePicker = (
     getPopupContainer,
     panelRender,
     renderExtraFooter,
-    // onPanelChange,
     onChange,
     onSelect,
     onOpenChange,
@@ -170,7 +167,6 @@ const InternalDatePicker = (
     status,
   } = datePickerProps
 
-  // ref
   const inputDivRefDefault = React.useRef<HTMLElement>(null)
   const inputDivRef = (ref as any) || inputDivRefDefault
   const popperRefDefault = React.useRef<HTMLDivElement>(null)
@@ -181,10 +177,6 @@ const InternalDatePicker = (
   const isMinuteStepValid = 60 % minuteStep === 0
   const isSecondStepValid = 60 % secondStep === 0
 
-  // const hours = generateUnits(0, 23, hourStep, disabledHours && disabledHours())
-  // const minutes = generateUnits(0, 59, minuteStep, disabledMinutes && disabledMinutes(originHour))
-  // const seconds = generateUnits(0, 59, secondStep, disabledSeconds && disabledSeconds(originHour, minute))
-
   const needConfirmButton: boolean = (picker === 'date' && !!showTime) || picker === 'time'
 
   const datePickerLang: InnerLocale = Object.assign(
@@ -193,13 +185,11 @@ const InternalDatePicker = (
     locale || {},
   )
 
-  // 原始数据
   const [dateValue, setDateValue] = useMergedState(null, {
     value,
     defaultValue,
   })
 
-  // 选中的数据
   const [selectedValue, setSelectedValue] = React.useState<DateType | null>(dateValue)
 
   let hours: TimeUnit[]
@@ -228,21 +218,18 @@ const InternalDatePicker = (
 
   const _format = getDefaultFormat(format, picker, showTime && !disabledTimePanel, use12Hours)
 
-  // 面板展示日期
   const [viewDate, setInnerViewDate] = useState<DateType>(defaultPickerValue || dateValue || new Date())
 
-  const setViewDate = (date: DateType | null) => {
-    setInnerViewDate(date || new Date())
+  const setViewDate = (date: any) => {
+    setInnerViewDate(isDate(date) ? date : new Date())
   }
 
   useEffect(() => {
     setViewDate(dateValue)
   }, [dateValue])
 
-  // text
   const valueText = useValueTexts(selectedValue, { format: _format })
 
-  // input 展示
   const [text, triggerTextChange, resetText] = useTextValueMapping({
     valueText,
     onTextChange: (newText: string) => {
@@ -282,7 +269,6 @@ const InternalDatePicker = (
     },
   })
 
-  // Save panel is changed from which panel
   const [mergedMode, setInnerMode] = useMergedState(
     () => {
       if (picker === 'time') {
@@ -431,7 +417,6 @@ const InternalDatePicker = (
     onChange: setSelectedValue,
   }
 
-  // 渲染日期选择表盘
   const renderPanel = () => {
     let panelNode: React.ReactNode = <Panel {...panelProps} />
 
