@@ -13,6 +13,7 @@ import classNames from 'classnames'
 import ConfigContext from '../config-provider/ConfigContext'
 import { UploadProps, UploadProgressEvent, UploadRequestError, UploadFile, Action, IFileItem } from './interface'
 import { getCompProps } from '../_utils'
+import { getFileUtil } from '../_utils/ieUtil'
 import Icon from '../icon'
 import request from './request'
 import verifyFile from './verify-file'
@@ -97,7 +98,7 @@ const InternalUpload: ForwardRefRenderFunction<unknown, UploadProps> = (props, r
   const uploadFiles = (files: Array<UploadFile>) => {
     if (Array.isArray(files) && files.length) {
       files.forEach((file: UploadFile) => {
-        file.originFileObj = new File([file], file.name, { type: file.type })
+        file.originFileObj = getFileUtil(file, allProps?.name)
         file.uid = getUid()
         file.status = 'notStart'
         file.fileName = allProps.name || file.name
@@ -293,7 +294,7 @@ const InternalUpload: ForwardRefRenderFunction<unknown, UploadProps> = (props, r
           Array.prototype.slice.call(e.dataTransfer.items),
           (file: UploadFile) => verifyFile(file, accept),
           (file: UploadFile) => {
-            file.originFileObj = new File([file], file.type)
+            file.originFileObj = getFileUtil(file, allProps?.name)
             file.uid = getUid()
             file.status = 'notStart'
             file.fileName = allProps.name || file.name
