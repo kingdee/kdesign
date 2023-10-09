@@ -70,6 +70,7 @@ export interface PickerSharedProps extends React.AriaAttributes {
   onMouseLeave?: React.MouseEventHandler<HTMLDivElement>
   onClick?: React.MouseEventHandler<HTMLDivElement>
   onContextMenu?: React.MouseEventHandler<HTMLDivElement>
+  status?: 'error'
 }
 
 type OmitPanelProps<Props> = Omit<Props, 'onChange' | 'hideHeader' | 'pickerValue' | 'onPickerValueChange'>
@@ -166,6 +167,7 @@ const InternalDatePicker = (
     onContextMenu,
     onClick,
     onOk,
+    status,
   } = datePickerProps
 
   // ref
@@ -513,6 +515,7 @@ const InternalDatePicker = (
     triggerOpen,
     triggerChange,
     resetText,
+    status,
   }
 
   return usePopper(

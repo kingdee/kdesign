@@ -160,6 +160,7 @@ export interface InputCommonProps {
   prefixCls: string
   locale: InnerLocale
   dataOrAriaProps?: Record<string, any>
+  status?: 'error'
 }
 
 export interface OutPopperProps {

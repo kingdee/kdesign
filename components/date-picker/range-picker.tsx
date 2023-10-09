@@ -253,6 +253,7 @@ const InternalRangePicker = (
     onBlur,
     onOk,
     getPopupContainer,
+    status,
   } = datePickerProps as MergedRangePickerProps
 
   const needConfirmButton: boolean = (picker === 'date' && !!showTime) || picker === 'time'
@@ -823,6 +824,7 @@ const InternalRangePicker = (
     triggerChange,
     onFocus,
     onBlur,
+    status,
   }
 
   const renderConfig = () => {

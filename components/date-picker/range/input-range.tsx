@@ -99,6 +99,7 @@ function InputDate(props: InputRangeProps, ref: React.RefObject<HTMLDivElement>)
     triggerOpenAndFocus,
     setMergedActivePickerIndex,
     setHoverRangedValue,
+    status,
   } = props
 
   const preventBlurRef = useRef<boolean>(false)
@@ -248,6 +249,7 @@ function InputDate(props: InputRangeProps, ref: React.RefObject<HTMLDivElement>)
         [`${prefixCls}-${size}`]: size,
         [`${prefixCls}-disabled`]: mergedDisabled[0] && mergedDisabled[1],
         [`${prefixCls}-focused`]: mergedActivePickerIndex === 0 ? startFocused : endFocused,
+        [`${prefixCls}-error`]: status === 'error',
       })}
       style={style}
       onMouseDown={onInternalonMouseDown}
