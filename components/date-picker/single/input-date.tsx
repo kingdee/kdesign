@@ -67,6 +67,7 @@ function InputDate(props: InputDateProps, ref: React.RefObject<HTMLDivElement>) 
     triggerTextChange,
     triggerOpen,
     triggerChange,
+    status,
   } = props
 
   const preventBlurRef = useRef<boolean>(false)
@@ -177,6 +178,7 @@ function InputDate(props: InputDateProps, ref: React.RefObject<HTMLDivElement>) 
         [`${prefixCls}-disabled`]: disabled,
         [`${prefixCls}-focused`]: focused,
         [`${prefixCls}-${size}`]: size,
+        [`${prefixCls}-error`]: status === 'error',
       })}
       style={style}
       onMouseDown={onInternalonMouseDown}
