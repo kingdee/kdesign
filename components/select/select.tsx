@@ -23,8 +23,9 @@ import KeyCode from '../_utils/KeyCode'
 const INPUT_MIN_WIDTH = 4 // 输入框最小宽度
 
 const InternalSelect: React.ForwardRefRenderFunction<ISelectProps<SelectValue>> = (props: any, ref: unknown) => {
-  const { getPrefixCls, prefixCls, compDefaultProps: userDefaultProps } = useContext(ConfigContext)
+  const { getPrefixCls, prefixCls, compDefaultProps: userDefaultProps, locale } = useContext(ConfigContext)
   const selectProps = getCompProps('Select', userDefaultProps, props)
+  const selectLangMsg = locale.getCompLangMsg({ componentName: 'Select' })
   const {
     size,
     value,
@@ -596,10 +597,16 @@ const InternalSelect: React.ForwardRefRenderFunction<ISelectProps<SelectValue>> 
                   indeterminate={indeterminate}
                   onChange={handleSelectAll}
                 >
-                  全选
+                  {selectLangMsg?.selectAll}
                 </Checkbox>
                 <span className={`${selectPrefixCls}-multiple-footer-hadSelected`}>
-                  已选<span>{selectedVal.length}</span>项
+                  {locale.getLangMsg('Select', 'seleted', {
+                    size: (
+                      <span className={`${selectPrefixCls}-multiple-footer-hadSelected-number`}>
+                        {selectedVal.length}
+                      </span>
+                    ),
+                  })}
                 </span>
               </div>
             ) : null}

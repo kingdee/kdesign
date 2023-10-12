@@ -189,12 +189,17 @@ describe('Select', () => {
   // 8.config provider
   describe('8.config provider', () => {
     it('should config use config provider', () => {
+      const localeData = {
+        'Select.selectAll': '全部选中',
+        'Select.seleted': '{size}项',
+      }
       const selectConfig = {
         compDefaultProps: {
           Select: {
             size: 'small',
           },
         },
+        localeConfig: { localeData, locale: 'zh-EN' },
       }
       const wrapper = mount(
         <ConfigProvider value={selectConfig}>
@@ -205,10 +210,14 @@ describe('Select', () => {
 
       const mulWrapper = mount(
         <ConfigProvider value={selectConfig}>
-          <Select {...defaultselectProps} mode="multiple" />
+          <Select {...defaultselectProps} defaultOpen={true} mode="multiple" />
         </ConfigProvider>,
       )
       expect(mulWrapper.find('.kd-select-wrapper')).toHaveClassName('.kd-select-size-small')
+      expect(mulWrapper.find('.kd-select-multiple-footer').first().find('.kd-checkbox-children')).toHaveText('全部选中')
+      expect(mulWrapper.find('.kd-select-multiple-footer').find('.kd-select-multiple-footer-hadSelected')).toHaveText(
+        '0项',
+      )
     })
   })
 
