@@ -166,12 +166,12 @@ describe('ColorPicker', () => {
     const defaultOpenWrapper = mount(<ColorPicker defaultOpen={true} onChange={onChange}></ColorPicker>)
     expect(defaultOpenWrapper.exists('.kd-color-picker-pop')).toBeTruthy()
     expect(defaultOpenWrapper.find('.kd-select-selection-item').text()).toEqual('#b2b2b2')
-    expect(defaultOpenWrapper.find('.kd-color-picker-panel-transparent').at(0).prop('value')).toEqual('100%')
+    expect(defaultOpenWrapper.find('.kd-color-picker-panel-container-transparent').at(0).prop('value')).toEqual('100%')
     defaultOpenWrapper.setProps({ defaultValue: 'blue' })
     defaultOpenWrapper.update()
     expect(borderedDefValueWrapper.find('.kd-color-picker-input').at(0).prop('value')).toEqual('blue')
     expect(defaultOpenWrapper.find('.kd-select-selection-item').text()).toEqual('#0000ff')
-    expect(defaultOpenWrapper.find('.kd-color-picker-panel-transparent').at(0).prop('value')).toEqual('100%')
+    expect(defaultOpenWrapper.find('.kd-color-picker-panel-container-transparent').at(0).prop('value')).toEqual('100%')
 
     // functionalColor、functionalColorName、switchName、showSwitch
     defaultOpenWrapper.setProps({ showSwitch: true })
@@ -190,12 +190,13 @@ describe('ColorPicker', () => {
     expect(defaultOpenWrapper.find('.kd-switch').hasClass('kd-switch-checked')).toBeTruthy()
     expect(defaultOpenWrapper.find('.kd-select-selection-item').text()).toEqual('#333333')
     expect(defaultOpenWrapper.find('.kd-color-picker-input').at(0).prop('value')).toEqual('#themeColor')
-    expect(defaultOpenWrapper.find('.kd-color-picker-panel-transparent').at(0).prop('value')).toEqual('100%')
+    expect(defaultOpenWrapper.find('.kd-color-picker-panel-container-transparent').at(0).prop('value')).toEqual('100%')
     expect(
       (defaultOpenWrapper.find('.kd-select-selection-search-input').getDOMNode() as HTMLInputElement).readOnly,
     ).toBeTruthy()
     expect(
-      (defaultOpenWrapper.find('.kd-color-picker-panel-transparent').at(0).getDOMNode() as HTMLInputElement).disabled,
+      (defaultOpenWrapper.find('.kd-color-picker-panel-container-transparent').at(0).getDOMNode() as HTMLInputElement)
+        .disabled,
     ).toBeTruthy()
     defaultOpenWrapper.find('.kd-switch').simulate('click')
     defaultOpenWrapper.setProps({ functionalColorName: '#coolStyle', switchName: { name: '酷玩风格' } })
@@ -213,7 +214,6 @@ describe('ColorPicker', () => {
     expect(defaultOpenWrapper.find('.kd-color-picker-panel-colorDivContainer').children('li').length).toEqual(5)
     defaultOpenWrapper.setProps({ showPresetColor: false })
     defaultOpenWrapper.update()
-    expect(defaultOpenWrapper.exists('.kd-color-picker-panel-input-no-recommend')).toBeTruthy()
     expect(defaultOpenWrapper.exists('.kd-color-picker-panel-colorDivContainer')).toBeFalsy()
     defaultOpenWrapper.setProps({ showPresetColor: true })
     defaultOpenWrapper.update()
@@ -225,12 +225,12 @@ describe('ColorPicker', () => {
     // showColorTransfer
     defaultOpenWrapper.setProps({ showColorTransfer: false })
     defaultOpenWrapper.update()
-    expect(defaultOpenWrapper.exists('.kd-color-picker-panel-input')).toBeFalsy()
-    expect(defaultOpenWrapper.exists('.kd-color-picker-panel-transparent')).toBeFalsy()
+    expect(defaultOpenWrapper.exists('.kd-color-picker-panel-container-input')).toBeFalsy()
+    expect(defaultOpenWrapper.exists('.kd-color-picker-panel-container-transparent')).toBeFalsy()
     defaultOpenWrapper.setProps({ showColorTransfer: true })
     defaultOpenWrapper.update()
-    expect(defaultOpenWrapper.exists('.kd-color-picker-panel-input')).toBeTruthy()
-    expect(defaultOpenWrapper.exists('.kd-color-picker-panel-transparent')).toBeTruthy()
+    expect(defaultOpenWrapper.exists('.kd-color-picker-panel-container-input')).toBeTruthy()
+    expect(defaultOpenWrapper.exists('.kd-color-picker-panel-container-transparent')).toBeTruthy()
 
     // showColorPickerBox
     expect(
@@ -349,18 +349,18 @@ describe('ColorPicker', () => {
     expect(wrapper.find('.kd-color-picker-input').at(0).prop('value')).toEqual(colorValue)
     expect(wrapper.find('.kd-select-wrapper').props().title).toEqual(colorValue)
     expect(wrapper.find('.kd-select-selection-item').text()).toEqual(colorValue)
-    expect(wrapper.find('.kd-color-picker-panel-transparent').at(0).prop('value')).toEqual(opacity)
+    expect(wrapper.find('.kd-color-picker-panel-container-transparent').at(0).prop('value')).toEqual(opacity)
     expect(wrapper.find('.kd-select').hasClass('kd-select-visible')).toBeFalsy()
   }
 
   it('should display the correct color values and corrent opacity when setting different alpha values', () => {
     const wrapper = mount(<ColorPicker {...defaultColorPickerProps} defaultOpen={true}></ColorPicker>)
-    expect(wrapper.find('.kd-color-picker-panel-transparent').at(0).prop('value')).toEqual('100%')
+    expect(wrapper.find('.kd-color-picker-panel-container-transparent').at(0).prop('value')).toEqual('100%')
     wrapper
-      .find('.kd-color-picker-panel-transparent')
+      .find('.kd-color-picker-panel-container-transparent')
       .at(0)
       .simulate('change', { target: { value: '10%' } })
-    expect(wrapper.find('.kd-color-picker-panel-transparent').at(0).prop('value')).toEqual('10%')
+    expect(wrapper.find('.kd-color-picker-panel-container-transparent').at(0).prop('value')).toEqual('10%')
     testCommonState(wrapper, '#b2b2b21a', '10%')
     wrapper.unmount()
   })
@@ -433,9 +433,9 @@ describe('ColorPicker', () => {
     expect(wrapper.find('.kd-color-picker-panel')).toExist()
     expect(wrapper.find('.kd-color-picker-panel-switch')).not.toExist()
     expect(wrapper.find('.kd-color-picker-input').at(0).prop('placeholder')).toEqual('??')
-    expect(wrapper.find('.kd-color-picker-panel-input')).toExist()
-    expect(wrapper.find('.kd-color-picker-panel-transparent')).toExist()
-    expect(wrapper.find('.kd-color-picker-panel-transparent')).toExist()
+    expect(wrapper.find('.kd-color-picker-panel-container-input')).toExist()
+    expect(wrapper.find('.kd-color-picker-panel-container-transparent')).toExist()
+    expect(wrapper.find('.kd-color-picker-panel-container-transparent')).toExist()
     expect(wrapper.find('.kd-color-picker-panel-colorDivContainer')).toExist()
     expect(
       wrapper.find(
