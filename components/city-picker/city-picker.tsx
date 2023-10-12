@@ -185,7 +185,7 @@ const InternalSelect: React.ForwardRefRenderFunction<CityPickerProps> = (props: 
       [`${selectPrefixCls}-icon-arrow-focus`]: optionShow,
     })
 
-    const iconShow = allowClear && !disabled && ((initValue ?? '') !== '' || searchValue)
+    const iconShow = allowClear && !disabled && (initValue ?? '') !== ''
 
     return (
       <>
