@@ -76,6 +76,8 @@ const locale = {
   'Table.notIsNull': '不为空',
   'Table.resetFilter': '重置',
   'Table.confirmFilter': '确定',
+  'Select.selectAll': '全选',
+  'Select.seleted': '已选{size}项',
 }
 
 export default locale
