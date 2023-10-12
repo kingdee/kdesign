@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 // 开发环境
-const DEV_ENVIRONMENT_ADDRESS = 'http://172.20.166.92:7002/api'
+const DEV_ENVIRONMENT_ADDRESS = 'http://172.20.166.37:7002/api'
 // 生产环境
 const PRO_ENVIRONMENTAL_ADDRESS = 'https://kui.kingdee.com/kd/api'
 
