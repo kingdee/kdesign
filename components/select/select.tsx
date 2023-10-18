@@ -60,6 +60,7 @@ const InternalSelect: React.ForwardRefRenderFunction<ISelectProps<SelectValue>> 
     popperStyle = {},
     tagRender,
     virtualListProps,
+    status,
   } = selectProps
   const isMultiple = mode === 'multiple' // 是否多选
   const [initValue, setInitValue] = useMergedState(undefined, {
@@ -124,6 +125,7 @@ const InternalSelect: React.ForwardRefRenderFunction<ISelectProps<SelectValue>> 
     [`${selectPrefixCls}-size-${size}`]: size,
     [`${selectPrefixCls}-wrapper`]: true,
     [`${selectPrefixCls}-show-search`]: isShowSearch && focusd,
+    [`${selectPrefixCls}-error`]: status === 'error',
   })
 
   useEffect(() => {
