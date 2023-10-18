@@ -1,4 +1,4 @@
-import React, { useContext, ReactNode, useCallback, useEffect } from 'react'
+import React, { useContext, ReactNode, useCallback, useEffect, useMemo } from 'react'
 import classNames from 'classnames'
 import cloneDeep from 'lodash/cloneDeep'
 import ConfigContext from '../config-provider/ConfigContext'
@@ -141,12 +141,14 @@ const InternalTree = React.forwardRef((props: TreeProps, ref: any): React.Functi
     onlyExpandOnClickIcon = false,
     loadData,
     notFoundContent,
+    showLine,
     ...others
   } = TreeProps
 
   const treePrefixCls = getPrefixCls!(prefixCls, 'tree', customPrefixcls) // 树样式前缀
   const treeNodeClassName = classNames(className, {
     [`${treePrefixCls}`]: true,
+    [`${treePrefixCls}-show-line`]: showLine,
   })
   const treeRootClassName = `${treePrefixCls}-root`
   const estimatedItemSize = innerEstimatedItemSize // 节点高度
@@ -442,6 +444,16 @@ const InternalTree = React.forwardRef((props: TreeProps, ref: any): React.Functi
     setCheckedKeys(checkedKeys)
   }, [checkedKeys, setCheckedKeys])
 
+  const isSelectedNodeChildrenKey = (parentKeys: any = []) => {
+    const key = Array.isArray(selectedKeys) ? selectedKeys?.[0] : selectedKeys
+    return parentKeys.includes(key)
+  }
+
+  const seletedKeyLevel = useMemo(() => {
+    const key = Array.isArray(selectedKeys) ? selectedKeys?.[0] : selectedKeys
+    return keysData?.[key]?.level
+  }, [keysData, selectedKeys])
+
   const renderTreeNode = (item: any) => {
     const checked = getChecked(checkedKeys, item.key)
     const indeterminate = getHalfChecked(halfCheckedKeys, item.key)
@@ -480,7 +492,8 @@ const InternalTree = React.forwardRef((props: TreeProps, ref: any): React.Functi
     item.onlyExpandOnClickIcon = onlyExpandOnClickIcon
     item.loading = loadingKeys.has(item.key) && !loadedKeys.has(item.key)
     item.loadData = loadData
-    return <TreeNode {...item} key={item.key} ref={treeNodeRef} />
+    item.isActiveLine = showLine && isSelectedNodeChildrenKey(item.pathParentKeys)
+    return <TreeNode {...item} key={item.key} ref={treeNodeRef} activeLevel={seletedKeyLevel} />
   }
 
   return (
