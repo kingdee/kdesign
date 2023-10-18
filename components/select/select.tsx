@@ -814,12 +814,6 @@ const InternalSelect: React.ForwardRefRenderFunction<ISelectProps<SelectValue>> 
       selectMulOpts.splice(-1, 1)
       setMulOptions([...selectMulOpts])
       onChange && onChange(labelInValue ? selectMulOpts : selectedVal, selectMulOpts)
-      // !isMultiple
-    } else if (which === KeyCode.BACKSPACE && allowClear && !isMultiple) {
-      setInitValue('')
-      onClear && onClear('')
-      setSearchValue('')
-      onChange && onChange(undefined)
     }
     // optionsList: up、down、enter
     if (optionShow) {
