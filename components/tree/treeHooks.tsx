@@ -1,5 +1,5 @@
 import { TreeNodeData, KeysDataType } from './tree'
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useRef } from 'react'
 import {
   getInitCheckededKeys,
   getDataCheckededStateStrictly,
@@ -185,8 +185,13 @@ export const useScrollToKey = (
 
 export const useSelect = (selectedKeysProps: string[], defaultSelectedKeys: string[]) => {
   const [selectedKeys, setSelectedKeys] = useState(selectedKeysProps || defaultSelectedKeys)
+  const mounting = useRef(true)
   useEffect(() => {
-    selectedKeysProps && setSelectedKeys(selectedKeysProps)
+    if (mounting.current) {
+      mounting.current = false
+      return
+    }
+    setSelectedKeys(selectedKeysProps)
   }, [selectedKeysProps])
   return [selectedKeys, setSelectedKeys] as const
 }

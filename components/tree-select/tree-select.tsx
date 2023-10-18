@@ -355,6 +355,10 @@ const InternalTreeSelect: React.ForwardRefRenderFunction<ITreeSelectProps<TreeSe
     }
   }, [showSearch, autoFocus, disabled])
 
+  useEffect(() => {
+    setSelectedKeys(initValue)
+  }, [initValue])
+
   // 渲染下拉列表框
   const renderContent = () => {
     const dropDownStyle = Object.assign({ width: style?.width, maxHeight: virtual ? 'unset' : '' }, dropdownStyle)
