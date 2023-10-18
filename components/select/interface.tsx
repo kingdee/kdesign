@@ -59,6 +59,7 @@ export interface ISelectProps<T extends SelectValue> extends AbstractSelectProps
   defaultValue?: T
   mode?: Mode
   autoFocus?: boolean
+  status?: 'error'
   onChange?: (value?: T, option?: React.ReactElement<any> | React.ReactElement<any>[]) => void
   onSelect?: (value?: T extends (infer I)[] ? I : T, option?: React.ReactElement<any>) => void
   onDeselect?: (value?: T extends (infer I)[] ? I : T, option?: React.ReactElement<any>) => void
