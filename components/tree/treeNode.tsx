@@ -17,7 +17,8 @@ export interface TreeNodeProps {
   draggable?: boolean
   disableCheckbox?: boolean
   icon?: React.ReactNode | ((props: any) => React.ReactNode)
-  showLine?: boolean | { showLeafIcon: boolean }
+  isActiveLine?: boolean
+  activeLevel?: number
   showIcon?: boolean
   selected?: boolean
   style?: Map<string, string>
@@ -73,7 +74,8 @@ const TreeNode = React.forwardRef<unknown, TreeNodeProps>((props) => {
     hasChildNode,
     expand,
     title,
-    showLine,
+    isActiveLine,
+    activeLevel,
     showIcon,
     selected,
     setDragNode,
@@ -175,12 +177,17 @@ const TreeNode = React.forwardRef<unknown, TreeNodeProps>((props) => {
 
   const indent = () => {
     const indentArr = []
-    const className = classNames({
-      [`${treeNodePrefixCls}-indent`]: true,
-      [`${treeNodePrefixCls}-indent-line`]: !!showLine,
-    })
     for (let i = 0; i < level; i++) {
-      indentArr.push(<span className={className} key={i} style={{ height: `${estimatedItemSize}` }}></span>)
+      indentArr.push(
+        <span
+          className={classNames({
+            [`${treeNodePrefixCls}-indent`]: true,
+            [`${treeNodePrefixCls}-indent-active`]: !!isActiveLine && i === activeLevel,
+          })}
+          key={i}
+          style={{ height: `${estimatedItemSize}` }}
+        ></span>,
+      )
     }
     return indentArr
   }
@@ -343,6 +350,7 @@ const TreeNode = React.forwardRef<unknown, TreeNodeProps>((props) => {
   const handleDragStart = React.useCallback(
     (e) => {
       if (!draggable) return
+      e.target.classList.add(`${treeNodePrefixCls}-dragging`)
       setDragNode(nodeData)
       onDragStart && onDragStart(e, props)
     },
