@@ -61,6 +61,7 @@ export interface ITreeSelectProps<T extends TreeSelectValue> extends AbstractSel
   defaultValue?: T
   mode?: Mode
   autoFocus?: boolean
+  status?: 'error'
   onlyExpandOnClickIcon?: boolean
   onChange?: (value: T, treeNode: TreeNodeData) => void
   onSelect?: (value: T extends (infer I)[] ? I : T, { checked, node, event }: any) => void

@@ -91,6 +91,7 @@ const InternalTreeSelect: React.ForwardRefRenderFunction<ITreeSelectProps<TreeSe
     dropdownRender,
     onlyExpandOnClickIcon,
     listHeight,
+    status,
   } = treeSelectProps
   const isMultiple = mode === 'multiple' // 是否多选
   const [initValue, setInitValue] = useMergedState(isMultiple ? [] : undefined, {
@@ -137,6 +138,7 @@ const InternalTreeSelect: React.ForwardRefRenderFunction<ITreeSelectProps<TreeSe
     [`${selectPrefixCls}-borderless`]: borderType === 'none',
     [`${selectPrefixCls}-size-${size}`]: size,
     [`${selectPrefixCls}-wrapper`]: true,
+    [`${selectPrefixCls}-error`]: status === 'error',
   })
 
   useEffect(() => {
