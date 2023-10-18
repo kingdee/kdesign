@@ -36,6 +36,7 @@ subtitle: 树选择器
 | showTreeIcon | 是否展示节点图标 | boolean | false | 1.7.0 |
 | virtual | 是否开启虚滚动 | boolean | `true` | `true` `false` | 1.7.0 |
 | size | 选择框大小 | `large` \| `middle` \| `small` | `middle` | 1.7.0 |
+| status | 设置校验状态 | string | `-` | `error` | 1.7.37 |
 | suffixIcon | 自定义的选择框后缀图标 | ReactNode | - | 1.7.0 |
 | switcherIcon | 自定义树节点的折叠/展开图标 | ReactNode \| [ReactNode, ReactNode] | - | 1.7.0 |
 | tagRender | 自定义 tag 内容，多选时生效 | (props) => ReactNode | - | 1.7.0 |
@@ -61,7 +62,7 @@ subtitle: 树选择器
 
 ## Design Token
 
-| 分类 | 组件token | 全局token | 默认值 |
+| 分类 | 组件 token | 全局 token | 默认值 |
 | --- | --- | --- | --- |
 | color | --kd-c-tree-select-dropdown-color-background | --kd-g-color-background | #fff |
 |  | --kd-c-tree-select-item-color-background-disabled | - | #fff |
@@ -82,6 +83,7 @@ subtitle: 树选择器
 |  | --kd-c-tree-select-single-color-text | --kd-g-color-text-primary | #212121 |
 |  | --kd-c-tree-select-icon-clear-color-text | - | #d9d9d9 |
 |  | --kd-c-tree-select-icon-clear-color-text-hover | - | #999 |
+|  | --kd-c-tree-select-color-error | --kd-g-color-error | #fb2323 |
 | font | --kd-c-tree-select-dropdown-font-size | - | 12px |
 |  | --kd-c-tree-select-font-size-large | - | 16px |
 |  | --kd-c-tree-select-font-size-middle | - | 14px |
