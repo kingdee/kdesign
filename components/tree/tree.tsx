@@ -93,6 +93,8 @@ export type PosDataType = {
   [key: string]: TreeNodeData
 }
 
+export type SearchStatus = 'NONE' | 'SEARCH_START' | 'SEARCH_DONE'
+
 const InternalTree = React.forwardRef((props: TreeProps, ref: any): React.FunctionComponentElement<TreeProps> => {
   const { getPrefixCls, prefixCls, compDefaultProps: userDefaultProps } = useContext(ConfigContext)
 
@@ -167,12 +169,16 @@ const InternalTree = React.forwardRef((props: TreeProps, ref: any): React.Functi
   const [dragOverNodeKey, setDragOverNodeKey] = React.useState<any>(null)
   const [loadedKeys, setLoadedKeys] = React.useState<Set<string>>(new Set())
   const [loadingKeys, setLoadingKeys] = React.useState<Set<string>>(new Set())
-  const [searchExpandedKeys, setSearchExpandedKeys] = React.useState<Array<string>>([])
+  const [searchStatus, setSearchStatus] = React.useState<SearchStatus>('NONE')
 
   const isSearching = React.useMemo(() => typeof filterTreeNode === 'function' && !!filterValue, [filterValue])
 
   useEffect(() => {
-    setSearchExpandedKeys([])
+    if (isSearching) {
+      setSearchStatus('SEARCH_START')
+    } else {
+      setSearchStatus('NONE')
+    }
   }, [filterValue])
 
   const [expandedKeys, setExpandedKeys] = useExpand(
@@ -187,7 +193,7 @@ const InternalTree = React.forwardRef((props: TreeProps, ref: any): React.Functi
     filterTreeNode,
     isSearching,
     keysData,
-    searchExpandedKeys,
+    searchStatus,
   )
   const { spreadAttrData, posData } = React.useMemo(() => {
     return getSpreadAttrData(flattenAllData, expandedKeys)
@@ -268,12 +274,9 @@ const InternalTree = React.forwardRef((props: TreeProps, ref: any): React.Functi
         setExpandedKeys(newExpandedKeys)
       }
       onExpand && onExpand(newExpandedKeys, { node, expanded: expanded })
-      if (isSearching) {
-        const newSearchExpandedKeys = expanded ? addKeys(searchExpandedKeys, [key]) : delKey(searchExpandedKeys, [key])
-        setSearchExpandedKeys(newSearchExpandedKeys)
-      }
       setScrollKey(undefined)
       setIsInit(false)
+      setSearchStatus('SEARCH_DONE')
       if (expanded && loadData) {
         handleNodeLoad(loadedKeys, loadingKeys, node)
       }

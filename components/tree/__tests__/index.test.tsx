@@ -262,7 +262,7 @@ describe('Tree', () => {
     expect(defaultTreeProps.onExpand).toHaveBeenCalled()
 
     defWrapper.setProps({ expandOnClickNode: false })
-    defWrapper.find('.kd-tree-node-item-0').find('.kd-tree-node-icon').at(0).simulate('click')
+    defWrapper.find('.kd-tree-node-item-0').at(0).simulate('click')
     expect(defWrapper.find('.kd-tree-node-item-0-0').length).toBe(0)
     expect(defaultTreeProps.onSelect).toHaveBeenCalled()
 
