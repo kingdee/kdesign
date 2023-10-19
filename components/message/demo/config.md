@@ -8,7 +8,7 @@ order: 1
 ```jsx
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { Button, Message } from '@kdcloudjs/kdesign'
+import { Button, Message, Icon } from '@kdcloudjs/kdesign'
 
 function Demo() {
   const base = () => {
@@ -21,8 +21,9 @@ function Demo() {
 
   const success = () => {
     Message.success({
-      content: 'this is a success',
+      content: <div>this is a jsx success</div>,
       closable: true,
+      icon: <Icon type="user-info" />,
       duration: 0,
     })
   }
@@ -30,6 +31,7 @@ function Demo() {
   const warning = () => {
     Message.warning({
       content: 'this is a warning',
+      icon: true,
     })
   }
 
