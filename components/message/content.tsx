@@ -48,7 +48,7 @@ const Content: React.FC<ContentProps> = (args) => {
   }
 
   const getMainElement = () => {
-    if (typeof content === 'string') {
+    if (typeof content === 'string' || React.isValidElement(content)) {
       return (
         <>
           <div className={`${classPrefix}-main`}>
@@ -58,10 +58,6 @@ const Content: React.FC<ContentProps> = (args) => {
           {renderCloseIcon()}
         </>
       )
-    }
-
-    if (React.isValidElement(content)) {
-      return content
     }
 
     return null
