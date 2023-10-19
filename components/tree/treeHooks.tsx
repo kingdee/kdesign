@@ -1,4 +1,4 @@
-import { TreeNodeData, KeysDataType } from './tree'
+import { TreeNodeData, KeysDataType, SearchStatus } from './tree'
 import React, { useEffect, useState, useRef } from 'react'
 import {
   getInitCheckededKeys,
@@ -91,7 +91,7 @@ export const useExpand = (
   filterTreeNode: FunctionConstructor,
   isSearching: boolean,
   keysData: KeysDataType,
-  searchExpandedKeys: string[],
+  searchStatus: SearchStatus,
 ) => {
   let expandScrollkeys: string[] = []
   if (scrollKey) {
@@ -110,8 +110,8 @@ export const useExpand = (
       filterTreeNode,
       isSearching,
       keysData,
-      searchExpandedKeys,
       isInit,
+      searchStatus,
     )
   }, [
     flattenAllData,
@@ -124,8 +124,8 @@ export const useExpand = (
     filterTreeNode,
     isSearching,
     keysData,
-    searchExpandedKeys,
     isInit,
+    searchStatus,
   ])
 
   const [expandedKeys, setExpandedKeys] = React.useState(initialExpandedKeys)
@@ -135,12 +135,12 @@ export const useExpand = (
   }, [
     flattenAllData,
     expandedKeysProps,
-    searchExpandedKeys,
     defaultExpandAll,
     defaultExpandedKeys,
     defaultExpandRoot,
     defaultExpandParent,
     scrollKey,
+    searchStatus,
   ])
 
   return [expandedKeys, setExpandedKeys] as const

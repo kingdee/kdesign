@@ -1,4 +1,4 @@
-import { TreeNodeData, KeysDataType } from '../tree'
+import { TreeNodeData, KeysDataType, SearchStatus } from '../tree'
 
 const DRAG_OFFSET = 0.3
 
@@ -573,11 +573,10 @@ export const getInitExpandedKeys = (
   filterTreeNode: FunctionConstructor,
   isSearching: boolean,
   keysData: KeysDataType,
-  searchExpandedKeys: string[],
   isInit: boolean,
+  searchStatus: SearchStatus,
 ) => {
   let keys: string[] = expandedKeys?.concat(expandScrollkeys) || defaultExpandedKeys?.concat(expandScrollkeys) || []
-
   if (isInit) {
     if (defaultExpandAll) {
       keys = getAllNodeKeys(data)
@@ -598,10 +597,10 @@ export const getInitExpandedKeys = (
     }
   }
 
-  if (isSearching) {
-    keys = [...searchExpandedKeys, ...getAllFilterKeys(data, filterTreeNode, keysData).filterExpandKeys]
+  if (isSearching && searchStatus === 'SEARCH_START') {
+    keys = [...getAllFilterKeys(data, filterTreeNode, keysData).filterExpandKeys]
   }
-  return Array.from(new Set([...keys]))
+  return keys
 }
 
 export const getExpandedKeys = (expandedKeys: string[], expandScrollkeys: string[] = []) => {
