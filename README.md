@@ -2,6 +2,7 @@
 
 KDesign of React 是基于金蝶的企业级设计系统KDesign 实现的一套React UI组件库，主要用于企业级系统的构建。
 
+官网：[https://react.kingdee.design/](https://react.kingdee.design/)
 
 ## 特性
 - 提供开箱即用的 丰富的企业级 React UI 组件。
