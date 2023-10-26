@@ -80,6 +80,7 @@ const InternalInputNumber = (props: InputNumberProps, ref: unknown): FunctionCom
   } = inputNumberProps
   const initVal = value === undefined ? defaultValue : value
   const [inputValue, setInputValue] = useState(serialization(initVal !== undefined ? initVal + '' : ''))
+  const [forceUpdate, setForceUpdate] = useState(1)
   const inputStatus = useRef({ isHandleChange: false, inputFocused: false })
   const inputPrefixCls = getPrefixCls!(prefixCls, 'inputNumber', inputNumberProps.prefixCls)
   const thisInputNumberRef = useRef<HTMLElement>()
@@ -142,10 +143,11 @@ const InternalInputNumber = (props: InputNumberProps, ref: unknown): FunctionCom
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     inputStatus.current.isHandleChange = true
     const legalNumber = verifiValue(event.target.value)
+    updateSelectionRangePosition(event)
     if (legalNumber === false) {
+      setForceUpdate(forceUpdate + 1)
       return false
     }
-    updateSelectionRangePosition(event)
 
     value === undefined && setInputValue(legalNumber)
     onChange && onChange(handleEventAttachValue(event, numberMode ? Number(legalNumber) : legalNumber))
@@ -185,9 +187,13 @@ const InternalInputNumber = (props: InputNumberProps, ref: unknown): FunctionCom
       if (decimalValueLength <= decimalLength && integerValueLength <= digitLength - decimalLength) {
         resultNumerical = numerical
       } else if (integerValueLength > digitLength - decimalLength) {
-        resultNumerical = `${sign}${integerValue.substr(0, digitLength - decimalLength)}`
+        resultNumerical = mustInPrecisionScope
+          ? inputValue
+          : `${sign}${integerValue.substr(0, digitLength - decimalLength)}${decimalValue ? '.' + decimalValue : ''}`
       } else if (decimalValueLength > decimalLength) {
-        resultNumerical = `${sign}${integerValue}.${decimalValue.substr(0, decimalLength)}`
+        resultNumerical = mustInPrecisionScope
+          ? inputValue
+          : `${sign}${integerValue}.${decimalValue.substr(0, decimalLength)}`
       }
     } else if (typeof decimalLength !== 'number' && typeof digitLength === 'number') {
       if (integerValueLength >= digitLength) {
@@ -334,6 +340,7 @@ const InternalInputNumber = (props: InputNumberProps, ref: unknown): FunctionCom
   const updateSelectionRangePosition = useSelectionRange({
     inputElement: inputNumberRef.current?.input,
     inputValue: displayedInputValue,
+    forceUpdate,
   })
 
   return (
