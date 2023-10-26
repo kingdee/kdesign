@@ -121,6 +121,7 @@ const Cascader = React.forwardRef<unknown, CascaderProps>((props, ref) => {
 
   const mergeRef = useRef<HTMLSpanElement>()
   const inputRef = useRef<HTMLSpanElement>()
+  const suffixRef = useRef<HTMLSpanElement>(null)
   const wrapperRef = useRef<HTMLDivElement>()
 
   const [visible, setVisible] = useState(!!props.popperVisible || !!props.popupVisible || defaultPopupVisible)
@@ -233,10 +234,10 @@ const Cascader = React.forwardRef<unknown, CascaderProps>((props, ref) => {
   }
 
   React.useEffect(() => {
-    wrapperRef.current?.addEventListener('mouseup', handleMouseUp)
+    ;(isMultiple ? suffixRef : wrapperRef).current?.addEventListener('mouseup', handleMouseUp)
 
     return () => {
-      wrapperRef.current?.removeEventListener('mouseup', handleMouseUp)
+      ;(isMultiple ? suffixRef : wrapperRef).current?.removeEventListener('mouseup', handleMouseUp)
     }
   }, [])
 
@@ -356,8 +357,10 @@ const Cascader = React.forwardRef<unknown, CascaderProps>((props, ref) => {
             </>
           )}
           <span className={`${prefixCls}-placeholder`}>{!currentOptions.length && placeholder}</span>
-          <span className={`${prefixCls}-suffix`}>{renderSuffix()}</span>
         </div>
+        <span ref={suffixRef} className={`${prefixCls}-suffix`}>
+          {renderSuffix()}
+        </span>
       </div>
     )
   }

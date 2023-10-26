@@ -180,11 +180,12 @@
 
     .@{kd-prefix}-cascader-suffix {
       right: 9px;
+      top: 50%;
+      transform: translateY(-50%);
     }
   }
 
   &-multiple {
-    padding: 1px 28px 1px 0;
     transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
     width: 100%;
     min-height: 30px;
@@ -193,7 +194,6 @@
     display: flex;
     cursor: pointer;
     box-sizing: border-box;
-    overflow-y: auto;
     overflow-x: hidden;
     position: relative;
     border-bottom: 1px solid #d9d9d9;
@@ -210,6 +210,8 @@
     align-items: center;
     flex-wrap: wrap;
     width: 100%;
+    padding: 1px 28px 1px 0;
+    overflow-y: auto;
   }
 
   &-placeholder {
