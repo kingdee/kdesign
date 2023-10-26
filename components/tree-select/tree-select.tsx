@@ -156,7 +156,7 @@ const InternalTreeSelect: React.ForwardRefRenderFunction<ITreeSelectProps<TreeSe
       if (TreeMap.has(initValue)) {
         arr.push(TreeMap.get(initValue))
       } else {
-        typeof initValue !== undefined && arr.push({ key: initValue, title: initValue })
+        ;(initValue ?? '') !== '' && arr.push({ key: initValue, title: initValue })
       }
     }
     setSelectTreeNodes(arr)
