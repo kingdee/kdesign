@@ -1,0 +1,42 @@
+@import '../../style/themes/index';
+@import './mixin.less';
+@qrcode-prefix-cls: ~'@{kd-prefix}-qrcode';
+@qrcode-prefix-icon-cls: ~'@{kd-prefix}-icon';
+@--kd-c-spin-page-dot-spin-sizing-square: 30px;
+
+.@{qrcode-prefix-cls} {
+  .qrcode;
+  position: relative;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  border-radius: @qrcode-border-radius;
+  border: @qrcode-size-boder solid @qrcode-color-border;
+  padding: @qrcode-spacing-padding-horizontal;
+  font-size: @qrcode-font-size;
+  list-style: none;
+  overflow: hidden;
+
+  &-expired{
+    margin-bottom: @qrcode-spacing-margin-vertical;
+  }
+
+  &-mask{
+    position: absolute;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    color: @qrcode-color-text;
+    background: @qrcode-color-background;
+    text-align: center;
+  }
+  &-borderless{
+    border: none;
+  }
+}

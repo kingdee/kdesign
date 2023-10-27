@@ -462,6 +462,14 @@ const compDefaultProps = {
     disabled: false,
     size: 'middle',
   },
+  QRCode: {
+    value: 'https://www.kingdee.design/',
+    size: 86,
+    status: 'active',
+    type: 'canvas',
+    errorLevel: 'H',
+    color: '#000000',
+  },
 }
 
 export default compDefaultProps

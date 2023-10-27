@@ -129,3 +129,5 @@ export { default as TreeSelect } from './tree-select'
 export { default as ColorPicker } from './color-picker'
 
 export { default as Clipboard } from './clipboard'
+
+export { default as QRCode } from './qr-code'
