@@ -1,0 +1,168 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`QRCode 2. render test renders correctly 1`] = `
+<div
+  class="kd-qrcode"
+  style="width:104px;height:104px"
+>
+  <canvas
+    height="86"
+    style="height:86px;width:86px"
+    width="86"
+  />
+</div>
+`;
+
+exports[`QRCode 2. render test renders correctly 2`] = `
+<div
+  class="kd-qrcode"
+  style="width:104px;height:104px"
+>
+  <svg
+    height="86"
+    viewBox="0 0 33 33"
+    width="86"
+  >
+    <path
+      d="M0,0 h33v33H0z"
+      fill="#FFFFFF"
+      shape-rendering="crispEdges"
+    />
+    <path
+      d="M0 0h7v1H0zM11 0h1v1H11zM16 0h1v1H16zM19 0h2v1H19zM22 0h1v1H22zM24 0h1v1H24zM26,0 h7v1H26zM0 1h1v1H0zM6 1h1v1H6zM8 1h2v1H8zM11 1h2v1H11zM14 1h3v1H14zM18 1h2v1H18zM21 1h2v1H21zM26 1h1v1H26zM32,1 h1v1H32zM0 2h1v1H0zM2 2h3v1H2zM6 2h1v1H6zM8 2h1v1H8zM10 2h1v1H10zM12 2h1v1H12zM15 2h1v1H15zM17 2h6v1H17zM24 2h1v1H24zM26 2h1v1H26zM28 2h3v1H28zM32,2 h1v1H32zM0 3h1v1H0zM2 3h3v1H2zM6 3h1v1H6zM8 3h1v1H8zM10 3h1v1H10zM12 3h1v1H12zM15 3h3v1H15zM20 3h4v1H20zM26 3h1v1H26zM28 3h3v1H28zM32,3 h1v1H32zM0 4h1v1H0zM2 4h3v1H2zM6 4h1v1H6zM8 4h1v1H8zM10 4h2v1H10zM13 4h3v1H13zM17 4h1v1H17zM19 4h2v1H19zM22 4h2v1H22zM26 4h1v1H26zM28 4h3v1H28zM32,4 h1v1H32zM0 5h1v1H0zM6 5h1v1H6zM8 5h3v1H8zM13 5h1v1H13zM15 5h1v1H15zM17 5h2v1H17zM23 5h1v1H23zM26 5h1v1H26zM32,5 h1v1H32zM0 6h7v1H0zM8 6h1v1H8zM10 6h1v1H10zM12 6h1v1H12zM14 6h1v1H14zM16 6h1v1H16zM18 6h1v1H18zM20 6h1v1H20zM22 6h1v1H22zM24 6h1v1H24zM26,6 h7v1H26zM10 7h2v1H10zM14 7h1v1H14zM17 7h4v1H17zM22 7h3v1H22zM2 8h1v1H2zM5 8h7v1H5zM13 8h1v1H13zM15 8h1v1H15zM18 8h1v1H18zM20 8h1v1H20zM24 8h2v1H24zM27 8h5v1H27zM1 9h5v1H1zM9 9h1v1H9zM11 9h2v1H11zM14 9h4v1H14zM20 9h1v1H20zM23 9h5v1H23zM29 9h1v1H29zM31,9 h2v1H31zM3 10h1v1H3zM6 10h3v1H6zM11 10h2v1H11zM15 10h1v1H15zM17 10h2v1H17zM20 10h4v1H20zM27 10h2v1H27zM30 10h1v1H30zM32,10 h1v1H32zM0 11h5v1H0zM10 11h1v1H10zM18 11h1v1H18zM22 11h2v1H22zM26 11h2v1H26zM29 11h1v1H29zM31,11 h2v1H31zM1 12h1v1H1zM3 12h1v1H3zM5 12h2v1H5zM8 12h1v1H8zM10 12h1v1H10zM12 12h1v1H12zM14 12h2v1H14zM18 12h1v1H18zM20 12h5v1H20zM26 12h1v1H26zM28 12h2v1H28zM32,12 h1v1H32zM0 13h4v1H0zM5 13h1v1H5zM7 13h3v1H7zM11 13h2v1H11zM18 13h2v1H18zM21 13h4v1H21zM26 13h1v1H26zM29 13h2v1H29zM32,13 h1v1H32zM1 14h2v1H1zM6 14h2v1H6zM10 14h1v1H10zM13 14h1v1H13zM15 14h1v1H15zM17 14h2v1H17zM20 14h1v1H20zM23 14h1v1H23zM26 14h1v1H26zM28 14h1v1H28zM32,14 h1v1H32zM0 15h1v1H0zM2 15h1v1H2zM7 15h1v1H7zM9 15h2v1H9zM12 15h1v1H12zM14 15h1v1H14zM16 15h2v1H16zM22 15h1v1H22zM31,15 h2v1H31zM0 16h4v1H0zM5 16h3v1H5zM9 16h1v1H9zM11 16h3v1H11zM16 16h1v1H16zM19 16h1v1H19zM22 16h1v1H22zM26 16h2v1H26zM29 16h3v1H29zM1 17h2v1H1zM7 17h1v1H7zM11 17h1v1H11zM14 17h1v1H14zM17 17h1v1H17zM20 17h1v1H20zM23 17h1v1H23zM26 17h2v1H26zM30 17h1v1H30zM32,17 h1v1H32zM1 18h1v1H1zM4 18h1v1H4zM6 18h2v1H6zM9 18h1v1H9zM13 18h3v1H13zM17 18h2v1H17zM23 18h1v1H23zM27 18h1v1H27zM29,18 h4v1H29zM3 19h2v1H3zM7 19h2v1H7zM13 19h1v1H13zM16 19h2v1H16zM22 19h2v1H22zM26 19h4v1H26zM32,19 h1v1H32zM2 20h3v1H2zM6 20h1v1H6zM9 20h1v1H9zM11 20h3v1H11zM15 20h1v1H15zM17 20h1v1H17zM20 20h1v1H20zM23 20h1v1H23zM27 20h1v1H27zM4 21h2v1H4zM11 21h1v1H11zM13 21h2v1H13zM17 21h4v1H17zM29 21h1v1H29zM32,21 h1v1H32zM0 22h2v1H0zM3 22h5v1H3zM9 22h2v1H9zM15 22h1v1H15zM17 22h2v1H17zM20 22h1v1H20zM23 22h1v1H23zM25 22h2v1H25zM32,22 h1v1H32zM3 23h1v1H3zM5 23h1v1H5zM7 23h3v1H7zM11 23h2v1H11zM14 23h2v1H14zM17 23h1v1H17zM20 23h1v1H20zM22 23h1v1H22zM27 23h1v1H27zM29 23h1v1H29zM0 24h3v1H0zM5 24h4v1H5zM11 24h1v1H11zM13 24h4v1H13zM23 24h6v1H23zM32,24 h1v1H32zM8 25h1v1H8zM11 25h2v1H11zM14 25h3v1H14zM18 25h2v1H18zM21 25h1v1H21zM23 25h2v1H23zM28 25h2v1H28zM31,25 h2v1H31zM0 26h7v1H0zM8 26h1v1H8zM10 26h2v1H10zM14 26h1v1H14zM16 26h1v1H16zM18 26h1v1H18zM20 26h1v1H20zM24 26h1v1H24zM26 26h1v1H26zM28 26h1v1H28zM30 26h1v1H30zM32,26 h1v1H32zM0 27h1v1H0zM6 27h1v1H6zM8 27h1v1H8zM10 27h1v1H10zM13 27h5v1H13zM19 27h1v1H19zM21 27h1v1H21zM23 27h2v1H23zM28 27h1v1H28zM31,27 h2v1H31zM0 28h1v1H0zM2 28h3v1H2zM6 28h1v1H6zM10 28h1v1H10zM12 28h3v1H12zM16 28h2v1H16zM20 28h2v1H20zM23 28h7v1H23zM0 29h1v1H0zM2 29h3v1H2zM6 29h1v1H6zM9 29h4v1H9zM14 29h1v1H14zM16 29h1v1H16zM18 29h4v1H18zM23 29h1v1H23zM25 29h1v1H25zM27 29h5v1H27zM0 30h1v1H0zM2 30h3v1H2zM6 30h1v1H6zM8 30h1v1H8zM10 30h1v1H10zM12 30h1v1H12zM14 30h4v1H14zM19 30h2v1H19zM24 30h1v1H24zM28 30h2v1H28zM31,30 h2v1H31zM0 31h1v1H0zM6 31h1v1H6zM9 31h1v1H9zM12 31h1v1H12zM15 31h1v1H15zM17 31h1v1H17zM19 31h2v1H19zM22 31h1v1H22zM24 31h1v1H24zM26 31h1v1H26zM29 31h2v1H29zM0 32h7v1H0zM9 32h2v1H9zM12 32h2v1H12zM17 32h1v1H17zM24 32h1v1H24zM28 32h3v1H28zM32,32 h1v1H32z"
+      fill="#000000"
+      shape-rendering="crispEdges"
+    />
+  </svg>
+</div>
+`;
+
+exports[`QRCode 2. render test renders correctly 3`] = `
+<div
+  class="kd-qrcode"
+  style="width:104px;height:104px"
+>
+  <canvas
+    height="86"
+    style="height:86px;width:86px"
+    width="86"
+  />
+</div>
+`;
+
+exports[`QRCode 2. render test renders correctly 4`] = `
+<div
+  class="kd-qrcode"
+  style="width:104px;height:104px"
+>
+  <div
+    class="kd-qrcode-mask"
+  >
+    <p
+      class="kd-qrcode-expired"
+    >
+      二维码过期
+    </p>
+  </div>
+  <canvas
+    height="86"
+    style="height:86px;width:86px"
+    width="86"
+  />
+</div>
+`;
+
+exports[`QRCode 2. render test renders correctly 5`] = `
+<div
+  class="kd-qrcode"
+  style="width:104px;height:104px"
+>
+  <div
+    class="kd-qrcode-mask"
+  >
+    <div
+      class="kd-spin kd-spin-page kd-spin-indicator-container"
+    >
+      <div
+        class="kd-spin-dot-spin"
+      >
+        <i
+          class="kd-spin-dot-item"
+        />
+        <i
+          class="kd-spin-dot-item"
+        />
+        <i
+          class="kd-spin-dot-item"
+        />
+        <i
+          class="kd-spin-dot-item"
+        />
+      </div>
+    </div>
+  </div>
+  <canvas
+    height="86"
+    style="height:86px;width:86px"
+    width="86"
+  />
+</div>
+`;
+
+exports[`QRCode 2. render test renders correctly 6`] = `
+<div
+  class="kd-qrcode"
+  style="width:104px;height:104px"
+>
+  <canvas
+    height="86"
+    style="height:86px;width:86px"
+    width="86"
+  />
+</div>
+`;
+
+exports[`QRCode 2. render test renders correctly 7`] = `
+<div
+  class="kd-qrcode"
+  style="width:104px;height:104px"
+>
+  <canvas
+    height="86"
+    style="height:86px;width:86px"
+    width="86"
+  />
+</div>
+`;
+
+exports[`QRCode 2. render test renders correctly 8`] = `
+<div
+  class="kd-qrcode"
+  style="width:104px;height:104px"
+>
+  <canvas
+    height="86"
+    style="height:86px;width:86px"
+    width="86"
+  />
+</div>
+`;
+
+exports[`QRCode 2. render test renders correctly 9`] = `
+<div
+  class="kd-qrcode"
+  style="width:104px;height:104px"
+>
+  <canvas
+    height="86"
+    style="height:86px;width:86px"
+    width="86"
+  />
+</div>
+`;
+
+exports[`QRCode 3. render null or undefined without errors render null or undefined without errors 1`] = `
+<QRCode
+  value="https://www.kingdee.design/"
+/>
+`;

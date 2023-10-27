@@ -1,0 +1,24 @@
+@import '../../style/themes/token.less';
+@qrcode-custom-prefix: ~'--@{kd-prefix}-c-qrcode';
+// color
+@qrcode-color-text: var(~'@{qrcode-custom-prefix}-color-text', #111111);
+@qrcode-color-border: var(~'@{qrcode-custom-prefix}-color-border',rgba(5, 5, 5, 0.06));
+@qrcode-color-background: var(~'@{qrcode-custom-prefix}-color-background',rgba(255, 255, 255, 0.96));
+// font
+@qrcode-font-size: var(~'@{qrcode-custom-prefix}-font-size', 12px); // 组件级token
+
+// line-height
+
+// motion
+
+// radius
+@qrcode-border-radius: var(~'@{qrcode-custom-prefix}-border-radius', 2px);
+// shadow
+
+// sizing
+@qrcode-size-boder: var(~'@{qrcode-custom-prefix}-size-border',1px);
+@qrcode-size-spin: var(--kd-c-spin-page-dot-spin-sizing-square,28px);
+// spacing
+@qrcode-spacing-padding-horizontal: var(~'@{qrcode-custom-prefix}-spacing-padding-horizontal', 8px);
+@qrcode-spacing-margin-vertical: var(~'@{qrcode-custom-prefix}-spacing-margin-vertical',4px);
+// z-index
