@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { DateType, InnerLocale, RangeValue, TimeUnit } from './interface'
-import { IInnerPicker } from './date-picker'
+import { CellRenderProp, IInnerPicker } from './date-picker'
 
 export type ContextOperationRefProps = {
   onKeyDown?: (e: React.KeyboardEvent<HTMLElement>) => boolean
@@ -16,7 +16,7 @@ export interface SingleContextProps {
   dateValue?: DateType | null
   rangeValue?: RangeValue
   hoverRangedValue?: RangeValue
-  panelPosition?: string
+  panelPosition?: 'right' | 'left'
   open?: boolean
   originHour?: number
   minute?: number
@@ -31,6 +31,8 @@ export interface SingleContextProps {
   onDateMouseLeave: (arg?: boolean) => void
   innerPicker: IInnerPicker
   setInnerPicker: (p: IInnerPicker) => void
+  cellRender?: CellRenderProp
+  range?: 'start' | 'end'
 }
 
 const Context = React.createContext<SingleContextProps>({} as SingleContextProps)

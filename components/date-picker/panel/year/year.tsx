@@ -40,6 +40,8 @@ function Year(props: YearProps) {
     hoverRangedValue,
     innerPicker,
     setInnerPicker,
+    cellRender,
+    range,
   } = context
 
   const { yearItemNumber, disabledDate, picker = 'date' } = props
@@ -140,6 +142,8 @@ function Year(props: YearProps) {
         },
       }
 
+      const originNode = <span className={getYearClassNames(y)}>{y}</span>
+
       yearsList.push(
         <div
           className={classnames(
@@ -152,7 +156,9 @@ function Year(props: YearProps) {
           key={y}
           {..._props}
         >
-          <span className={getYearClassNames(y)}>{y}</span>
+          {typeof cellRender === 'function'
+            ? cellRender(y, { originNode, panelType: 'year', range, date: year }) || originNode
+            : originNode}
         </div>,
       )
     }

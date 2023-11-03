@@ -43,6 +43,8 @@ function Month(props: MonthProps) {
     locale,
     innerPicker,
     setInnerPicker,
+    cellRender,
+    range,
   } = context
 
   const { disabledDate } = props
@@ -122,8 +124,6 @@ function Month(props: MonthProps) {
     }
   }
 
-  const renderMonthItem = (i: number) => <span className={getMonthClassNames(i)}>{`${i + 1}${locale.month}`}</span>
-
   const renderMonth = () => {
     const monthLayout = monthsThreeColumns
     const monthLineCls = classnames(`${prefixCls}-month-line`)
@@ -152,9 +152,12 @@ function Month(props: MonthProps) {
             },
             getRangeCls(month),
           )
+          const originNode = <span className={getMonthClassNames(m)}>{`${m + 1}${locale.month}`}</span>
           return (
             <div className={monthItemCls} key={j} {..._props}>
-              {renderMonthItem(m)}
+              {typeof cellRender === 'function'
+                ? cellRender(m + 1, { originNode, panelType: 'month', range, date: month }) || originNode
+                : originNode}
             </div>
           )
         })}

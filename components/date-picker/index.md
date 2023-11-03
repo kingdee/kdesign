@@ -14,31 +14,32 @@ subtitle: 日期选择器
 
 ## API
 
-| 属性                | 说明                       | 类型                               | 默认值                 | 可选值 | 版本 |
-|-------------------|--------------------------|----------------------------------|---------------------| --- | --- |
-| allowClear        | 是否显示清除按钮                 | `boolean`                        | true                |  | 1.0.0 |
-| autoFocus         | 自动获取焦点                   | `boolean`                        | false               |  | 1.0.0 |
-| borderType        | 边框类型                     | `string`                         | `underline`         | `underline` `bordered` `none` | 1.0.0 |
-| className         | 选择器 className            | `string`                         |                     |  | 1.0.0 |
-| clearIcon         | 自定义的清除图标                 | `ReactNode`                      |                     |  | 1.0.0 |
-| defaultOpen       | 默认弹层展开                   | `boolean`                        | false               |  | 1.0.0 |
-| disabled          | 禁用                       | `boolean`                        | false               |  | 1.0.0 |
-| disabledDate      | 不可选择的日期                  | `(currentDate: Date) => boolean` |                     |  | 1.0.0 |
-| dropdownClassName | 日历面板 className           | `string`                         |                     |  | 1.0.0 |
-| format            | 展示的日期格式                  | `string`                         |                     |  | 1.0.0 |
-| inputReadOnly     | 输入框只读                    | `boolean`                        | false               |  | 1.0.0 |
-| open              | 控制弹层展开                   | `boolean`                        | false               |  | 1.0.0 |
-| picker            | 按钮类型                     | `PickerMode`                     | `date`              | `time` \| `date` \| `week` \| `month` \| `quarter` \| `year` | 1.0.0 |
-| placeholder       | 输入框提示文字                  | `string                          | [string, string]`   |  |  | 1.0.0 |
-| popupStyle        | 日历面板样式                   | `CSSProperties`                  | {}                  |  | 1.0.0 |
-| popupRef          | 日历面板ref                  | `Ref`                            | -                   |  | 1.0.0 |
-| size              | 控件大小                     | `string`                         | `middle`            | `small` `middle` `large` | 1.0.0 |
-| style             | 选择器样式                    | `CSSProperties`                  | {}                  |  | 1.0.0 |
-| suffixIcon        | 自定义的选择框后缀图标              | `ReactNode`                      |                     |  | 1.0.0 |
-| onOk              | 点击确定按钮的回调                | `() => void`                     |                     |  | 1.0.0 |
-| onOpenChange      | 弹出日历和关闭日历的回调             | `(open) => void`                 |                     |  | 1.0.0 |
-| onPanelChange     | 日历面板切换的回调                | `(value, mode) => void`          |                     |  | 1.0.0 |
+| 属性                | 说明                       | 类型                               | 默认值                 | 可选值 | 版本     |
+|-------------------|--------------------------|----------------------------------|---------------------| --- |--------|
+| allowClear        | 是否显示清除按钮                 | `boolean`                        | true                |  | 1.0.0  |
+| autoFocus         | 自动获取焦点                   | `boolean`                        | false               |  | 1.0.0  |
+| borderType        | 边框类型                     | `string`                         | `underline`         | `underline` `bordered` `none` | 1.0.0  |
+| className         | 选择器 className            | `string`                         |                     |  | 1.0.0  |
+| clearIcon         | 自定义的清除图标                 | `ReactNode`                      |                     |  | 1.0.0  |
+| defaultOpen       | 默认弹层展开                   | `boolean`                        | false               |  | 1.0.0  |
+| disabled          | 禁用                       | `boolean`                        | false               |  | 1.0.0  |
+| disabledDate      | 不可选择的日期                  | `(currentDate: Date) => boolean` |                     |  | 1.0.0  |
+| dropdownClassName | 日历面板 className           | `string`                         |                     |  | 1.0.0  |
+| format            | 展示的日期格式                  | `string`                         |                     |  | 1.0.0  |
+| inputReadOnly     | 输入框只读                    | `boolean`                        | false               |  | 1.0.0  |
+| open              | 控制弹层展开                   | `boolean`                        | false               |  | 1.0.0  |
+| picker            | 按钮类型                     | `PickerMode`                     | `date`              | `time` \| `date` \| `week` \| `month` \| `quarter` \| `year` | 1.0.0  |
+| placeholder       | 输入框提示文字                  | `string                          | [string, string]`   |  |        | 1.0.0 |
+| popupStyle        | 日历面板样式                   | `CSSProperties`                  | {}                  |  | 1.0.0  |
+| popupRef          | 日历面板ref                  | `Ref`                            | -                   |  | 1.0.0  |
+| size              | 控件大小                     | `string`                         | `middle`            | `small` `middle` `large` | 1.0.0  |
+| style             | 选择器样式                    | `CSSProperties`                  | {}                  |  | 1.0.0  |
+| suffixIcon        | 自定义的选择框后缀图标              | `ReactNode`                      |                     |  | 1.0.0  |
+| onOk              | 点击确定按钮的回调                | `() => void`                     |                     |  | 1.0.0  |
+| onOpenChange      | 弹出日历和关闭日历的回调             | `(open) => void`                 |                     |  | 1.0.0  |
+| onPanelChange     | 日历面板切换的回调                | `(value, mode) => void`          |                     |  | 1.0.0  |
 | getPopupContainer | 日历面板浮层渲染父节点，默认渲染到 body 上 | function(locatorNode)            | () => document.body |  | 1.6.10 |
+| cellRender | 自定义单元格的内容 | (current: DateType \| number, info: { <br>originNode: ReactElement<br>date?: DateType<br>panelType: 'time' \| 'date' \| 'week' \| 'month' \| 'quarter' \| 'year'<br>range?: 'start' \| 'end'<br>subType?: 'hour' \| 'minute' \| 'second' \| '12Hours' }) => React.ReactNode |  |  | 1.7.40 |
 
 ### DatePicker
 

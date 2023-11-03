@@ -255,6 +255,7 @@ const InternalRangePicker = (
     onOk,
     getPopupContainer,
     status,
+    cellRender,
   } = datePickerProps as MergedRangePickerProps
 
   const needConfirmButton: boolean = (picker === 'date' && !!showTime) || picker === 'time'
@@ -690,6 +691,8 @@ const InternalRangePicker = (
             onDateMouseLeave: onDateMouseLeave,
             innerPicker,
             setInnerPicker,
+            cellRender,
+            range: mergedActivePickerIndex === 0 ? 'start' : 'end',
           }}
         >
           {renderPanel()}
@@ -711,6 +714,8 @@ const InternalRangePicker = (
             onDateMouseLeave: onDateMouseLeave,
             innerPicker,
             setInnerPicker,
+            cellRender,
+            range: mergedActivePickerIndex === 0 ? 'start' : 'end',
           }}
         >
           {renderPanel()}
@@ -745,6 +750,8 @@ const InternalRangePicker = (
             onDateMouseLeave: onDateMouseLeave,
             innerPicker,
             setInnerPicker,
+            cellRender,
+            range: mergedActivePickerIndex === 0 ? 'start' : 'end',
           }}
         >
           {renderPanel()}
