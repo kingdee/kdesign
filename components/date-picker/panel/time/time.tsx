@@ -207,21 +207,21 @@ function TimePanel(props: TimePanelProps) {
     }
   }
 
-  addColumnNode(showHour, <TimeColumn key="hour" />, hour, hours, (num) => {
+  addColumnNode(showHour, <TimeColumn key="hour" subType={'hour'} />, hour, hours, (num) => {
     const time = setTime(isPM, num, minute, second)
     if (time) {
       onSelect(time, 'mouse')
     }
   })
 
-  addColumnNode(showMinute, <TimeColumn key="minute" />, minute, minutes, (num) => {
+  addColumnNode(showMinute, <TimeColumn key="minute" subType={'minute'} />, minute, minutes, (num) => {
     const time = setTime(isPM, hour, num, second)
     if (time) {
       onSelect(time, 'mouse')
     }
   })
 
-  addColumnNode(showSecond, <TimeColumn key="second" />, second, seconds, (num) => {
+  addColumnNode(showSecond, <TimeColumn key="second" subType={'second'} />, second, seconds, (num) => {
     const time = setTime(isPM, hour, minute, num)
     if (time) {
       onSelect(time, 'mouse')
@@ -235,7 +235,7 @@ function TimePanel(props: TimePanelProps) {
 
   addColumnNode(
     use12Hours === true,
-    <TimeColumn key="12hours" />,
+    <TimeColumn key="12hours" subType={'12Hours'} />,
     PMIndex,
     [
       { label: 'AM', value: 0, disabled: AMDisabled },

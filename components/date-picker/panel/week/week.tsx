@@ -50,6 +50,8 @@ function Week(props: WeekProps) {
     onSelect,
     onDateMouseEnter,
     onDateMouseLeave,
+    cellRender,
+    range,
   } = context
   const { showWeekNumber, day, picker, showTime, disabledDate } = props
 
@@ -194,9 +196,6 @@ function Week(props: WeekProps) {
         } else {
           now = dateValue || viewDate
         }
-        // if(hours) {
-
-        // }
         const dayTime = setTime(day, { hour: getHours(now), minute: getMinutes(now), second: getSeconds(now) })
         const _props = {
           onClick: () => handleDayClick(getEffectTime(dayTime)),
@@ -213,7 +212,8 @@ function Week(props: WeekProps) {
             }
           },
         }
-        // console.log('disabledDate', disabledDate)
+        const originNode = <div className={getDayClassNames(day)}>{date}</div>
+
         return (
           <div
             key={day.valueOf()}
@@ -227,18 +227,28 @@ function Week(props: WeekProps) {
             )}
             {..._props}
           >
-            <div className={getDayClassNames(day)}>{date}</div>
+            {typeof cellRender === 'function'
+              ? cellRender(day, { originNode, panelType: 'date', range, date: day }) || originNode
+              : originNode}
           </div>
         )
       }),
     )
 
-    const calenderLineCls = classnames({
-      [`${prefixCls}-calendar-line`]: picker !== 'week',
-      [`${prefixCls}-calendar-week-line`]: picker === 'week',
-      [`${prefixCls}-calendar-week-selected`]: picker === 'week' && getWeekSelected(startOfWeek),
-    })
-    return <div className={calenderLineCls}>{week}</div>
+    const originNode = (
+      <div
+        className={classnames({
+          [`${prefixCls}-calendar-line`]: picker !== 'week',
+          [`${prefixCls}-calendar-week-line`]: picker === 'week',
+          [`${prefixCls}-calendar-week-selected`]: picker === 'week' && getWeekSelected(startOfWeek),
+        })}
+      >
+        {week}
+      </div>
+    )
+    return typeof cellRender === 'function'
+      ? cellRender(weekNumber, { originNode, panelType: 'week', range, date: startOfWeek }) || originNode
+      : originNode
   }
 
   return <>{renderDays()}</>

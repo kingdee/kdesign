@@ -30,6 +30,19 @@ import getExtraFooter from './utils/get-extra-footer'
 import getRanges from './utils/get-ranges'
 import usePopper from '../_utils/usePopper'
 
+export type CellRenderSubType = 'hour' | 'minute' | 'second' | '12Hours'
+
+export type CellRenderProp = (
+  current: DateType | number,
+  info: {
+    originNode: React.ReactElement
+    panelType: 'time' | 'date' | 'week' | 'month' | 'quarter' | 'year'
+    date?: DateType
+    range?: 'start' | 'end'
+    subType?: CellRenderSubType
+  },
+) => React.ReactNode
+
 export interface PickerSharedProps extends React.AriaAttributes {
   dropdownClassName?: string
   popupStyle?: React.CSSProperties
@@ -72,6 +85,7 @@ export interface PickerSharedProps extends React.AriaAttributes {
   onClick?: React.MouseEventHandler<HTMLDivElement>
   onContextMenu?: React.MouseEventHandler<HTMLDivElement>
   status?: 'error'
+  cellRender?: CellRenderProp
 }
 
 type OmitPanelProps<Props> = Omit<Props, 'onChange' | 'hideHeader' | 'pickerValue' | 'onPickerValueChange'>
@@ -165,6 +179,7 @@ const InternalDatePicker = (
     onClick,
     onOk,
     status,
+    cellRender,
   } = datePickerProps
 
   const inputDivRefDefault = React.useRef<HTMLElement>(null)
@@ -444,6 +459,7 @@ const InternalDatePicker = (
           onDateMouseLeave: onLeave,
           innerPicker,
           setInnerPicker,
+          cellRender,
         }}
       >
         {panelNode}

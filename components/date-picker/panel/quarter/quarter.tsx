@@ -33,6 +33,8 @@ function Quarter(props: QuarterProps) {
     rangeValue,
     panelPosition,
     hoverRangedValue,
+    cellRender,
+    range,
   } = context
 
   const { disabledDate } = props
@@ -129,11 +131,16 @@ function Quarter(props: QuarterProps) {
         },
         getRangeCls(quarter),
       )
+      const originNode = (
+        <div className={getQuarterClassNames(i + 1)} {..._props}>
+          {n}
+        </div>
+      )
       return (
         <div key={n} className={quarterCls}>
-          <div className={getQuarterClassNames(i + 1)} {..._props}>
-            {n}
-          </div>
+          {typeof cellRender === 'function'
+            ? cellRender(i + 1, { originNode, panelType: 'quarter', range, date: quarter }) || originNode
+            : originNode}
         </div>
       )
     })

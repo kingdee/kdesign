@@ -7,6 +7,7 @@ import locale from '../locale/zh_CN'
 import { Locale } from '../interface'
 import { formatDate } from '../utils/date-fns'
 import { sleep } from '../../../tests/utils'
+import { format, startOfYear } from 'date-fns'
 
 const TEST_DAY = '2000-01-01 00:00:00'
 
@@ -493,5 +494,82 @@ describe('date-picker', () => {
     expect(wrapper.find('.kd-date-picker-panel').hasClass('hidden')).toBeTruthy()
     expect(wrapper.find('input').props().value).toEqual('1999-12-26')
     expect(onOpenChange).toHaveBeenCalledTimes(2)
+  })
+
+  // 17. cellRender
+  it('cellRender', () => {
+    const cellRender = (current: any, { originNode, panelType, subType, date }: any) => {
+      let flag = false
+
+      switch (panelType) {
+        case 'year':
+          flag = current === 1996
+          break
+        case 'quarter':
+          flag = format(date, 'yyyy-qqq') === format(startOfYear(new Date(TEST_DAY)), 'yyyy-qqq')
+          break
+        case 'month':
+          flag = format(date, 'yyyy-MM') === format(startOfYear(new Date(TEST_DAY)), 'yyyy-MM')
+          break
+        case 'week':
+          flag = current === 2
+          break
+        case 'date':
+          flag = format(date, 'yyyy-MM-dd') === format(new Date(TEST_DAY), 'yyyy-MM-dd')
+          break
+        case 'time':
+          flag = subType === 'hour' && current === 2
+          break
+      }
+
+      const style = { background: 'red' }
+      return flag ? React.cloneElement(originNode, { style }) : originNode
+    }
+
+    const TEST_LIST: any[] = [
+      {
+        picker: 'date',
+        selector: '.kd-date-picker-calendar-text',
+        index: 6,
+      },
+      {
+        picker: 'year',
+        selector: '.kd-date-picker-year-text',
+        index: 0,
+      },
+      {
+        picker: 'quarter',
+        selector: '.kd-date-picker-quarter-text',
+        index: 0,
+      },
+      {
+        picker: 'month',
+        selector: '.kd-date-picker-month-text',
+        index: 0,
+      },
+      {
+        picker: 'week',
+        selector: '.kd-date-picker-calendar-week-line',
+        index: 1,
+      },
+      {
+        picker: 'time',
+        selector: '.kd-date-picker-time-cell-inner',
+        index: 2,
+      },
+    ]
+
+    TEST_LIST.forEach(({ picker, selector, index }) => {
+      const wrapper = mount(
+        <DatePicker
+          picker={picker === 'data-time' ? 'date' : picker}
+          cellRender={cellRender}
+          {...defaultProps}
+          showTime={picker === 'data-time'}
+        />,
+      )
+
+      expect(wrapper.find(selector).at(index).prop('style')).toEqual({ background: 'red' })
+    })
   })
 })

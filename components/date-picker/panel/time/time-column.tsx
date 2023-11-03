@@ -4,6 +4,7 @@ import classNames from 'classnames'
 import { scrollTo, waitElementReady } from '../../utils'
 import Context from '../../context'
 import { DateType } from '../../interface'
+import { CellRenderSubType } from '../../date-picker'
 
 export interface Unit {
   label: React.ReactText
@@ -19,12 +20,13 @@ export interface TimeUnitColumnProps {
   selectValue?: DateType
   hideDisabledOptions?: boolean
   onSelect?: (value: number) => void
+  subType?: CellRenderSubType
 }
 
 function TimeUnitColumn(props: TimeUnitColumnProps) {
-  const { prefixCls, units, onSelect, value, hideDisabledOptions, selectValue } = props
+  const { prefixCls, units, onSelect, value, hideDisabledOptions, selectValue, subType } = props
   const cellPrefixCls = `${prefixCls}-cell`
-  const { open } = React.useContext(Context)
+  const { open, cellRender, range } = React.useContext(Context)
 
   const ulRef = useRef<HTMLUListElement>(null)
   const liRefs = useRef<Map<number, HTMLElement | null>>(new Map())
@@ -65,6 +67,8 @@ function TimeUnitColumn(props: TimeUnitColumnProps) {
           return null
         }
 
+        const originNode = <div className={`${cellPrefixCls}-inner`}>{unit.label}</div>
+
         return (
           <div
             key={unit.value}
@@ -82,7 +86,9 @@ function TimeUnitColumn(props: TimeUnitColumnProps) {
               onSelect!(unit.value)
             }}
           >
-            <div className={`${cellPrefixCls}-inner`}>{unit.label}</div>
+            {typeof cellRender === 'function'
+              ? cellRender(unit.value, { originNode, panelType: 'time', subType, range }) || originNode
+              : originNode}
           </div>
         )
       })}
