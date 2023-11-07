@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Rate renders correctly 1`] = `
+exports[`Rate 2.render test renders correctly 1`] = `
 <span
   class="kd-rate kd-rate-size-middle"
 >
@@ -157,7 +157,7 @@ exports[`Rate renders correctly 1`] = `
 </span>
 `;
 
-exports[`Rate renders correctly 2`] = `
+exports[`Rate 2.render test renders correctly 2`] = `
 <span
   class="kd-rate kd-rate-size-large"
 >
@@ -314,7 +314,7 @@ exports[`Rate renders correctly 2`] = `
 </span>
 `;
 
-exports[`Rate renders correctly 3`] = `
+exports[`Rate 2.render test renders correctly 3`] = `
 <span
   class="kd-rate kd-rate-size-middle"
 >
@@ -471,7 +471,7 @@ exports[`Rate renders correctly 3`] = `
 </span>
 `;
 
-exports[`Rate renders correctly 4`] = `
+exports[`Rate 2.render test renders correctly 4`] = `
 <span
   class="kd-rate kd-rate-size-small"
 >
@@ -626,4 +626,280 @@ exports[`Rate renders correctly 4`] = `
     </div>
   </span>
 </span>
+`;
+
+exports[`Rate 4. render null or undefined without errors render null or undefined buttons without errors 1`] = `
+<Rate>
+  <span
+    className="kd-rate kd-rate-size-middle"
+    onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
+  >
+    <span
+      className="kd-rate-item"
+      key="1"
+    >
+      <div
+        className="kd-rate-icon-view"
+      >
+        <span
+          className="kd-rate-icon-first"
+          onClick={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+        >
+          <span
+            className="kd-rate-icon-wrapper"
+          >
+            <Icon
+              type="star"
+            >
+              <i
+                className="kdicon kdicon-star"
+                onClick={[Function]}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
+                style={Object {}}
+              />
+            </Icon>
+          </span>
+        </span>
+        <span
+          className="kd-rate-icon-second"
+          onClick={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+        >
+          <span
+            className="kd-rate-icon-wrapper"
+          >
+            <Icon
+              type="star"
+            >
+              <i
+                className="kdicon kdicon-star"
+                onClick={[Function]}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
+                style={Object {}}
+              />
+            </Icon>
+          </span>
+        </span>
+      </div>
+    </span>
+    <span
+      className="kd-rate-item"
+      key="2"
+    >
+      <div
+        className="kd-rate-icon-view"
+      >
+        <span
+          className="kd-rate-icon-first"
+          onClick={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+        >
+          <span
+            className="kd-rate-icon-wrapper"
+          >
+            <Icon
+              type="star"
+            >
+              <i
+                className="kdicon kdicon-star"
+                onClick={[Function]}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
+                style={Object {}}
+              />
+            </Icon>
+          </span>
+        </span>
+        <span
+          className="kd-rate-icon-second"
+          onClick={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+        >
+          <span
+            className="kd-rate-icon-wrapper"
+          >
+            <Icon
+              type="star"
+            >
+              <i
+                className="kdicon kdicon-star"
+                onClick={[Function]}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
+                style={Object {}}
+              />
+            </Icon>
+          </span>
+        </span>
+      </div>
+    </span>
+    <span
+      className="kd-rate-item"
+      key="3"
+    >
+      <div
+        className="kd-rate-icon-view"
+      >
+        <span
+          className="kd-rate-icon-first"
+          onClick={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+        >
+          <span
+            className="kd-rate-icon-wrapper"
+          >
+            <Icon
+              type="star"
+            >
+              <i
+                className="kdicon kdicon-star"
+                onClick={[Function]}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
+                style={Object {}}
+              />
+            </Icon>
+          </span>
+        </span>
+        <span
+          className="kd-rate-icon-second"
+          onClick={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+        >
+          <span
+            className="kd-rate-icon-wrapper"
+          >
+            <Icon
+              type="star"
+            >
+              <i
+                className="kdicon kdicon-star"
+                onClick={[Function]}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
+                style={Object {}}
+              />
+            </Icon>
+          </span>
+        </span>
+      </div>
+    </span>
+    <span
+      className="kd-rate-item"
+      key="4"
+    >
+      <div
+        className="kd-rate-icon-view"
+      >
+        <span
+          className="kd-rate-icon-first"
+          onClick={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+        >
+          <span
+            className="kd-rate-icon-wrapper"
+          >
+            <Icon
+              type="star"
+            >
+              <i
+                className="kdicon kdicon-star"
+                onClick={[Function]}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
+                style={Object {}}
+              />
+            </Icon>
+          </span>
+        </span>
+        <span
+          className="kd-rate-icon-second"
+          onClick={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+        >
+          <span
+            className="kd-rate-icon-wrapper"
+          >
+            <Icon
+              type="star"
+            >
+              <i
+                className="kdicon kdicon-star"
+                onClick={[Function]}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
+                style={Object {}}
+              />
+            </Icon>
+          </span>
+        </span>
+      </div>
+    </span>
+    <span
+      className="kd-rate-item"
+      key="5"
+    >
+      <div
+        className="kd-rate-icon-view"
+      >
+        <span
+          className="kd-rate-icon-first"
+          onClick={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+        >
+          <span
+            className="kd-rate-icon-wrapper"
+          >
+            <Icon
+              type="star"
+            >
+              <i
+                className="kdicon kdicon-star"
+                onClick={[Function]}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
+                style={Object {}}
+              />
+            </Icon>
+          </span>
+        </span>
+        <span
+          className="kd-rate-icon-second"
+          onClick={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+        >
+          <span
+            className="kd-rate-icon-wrapper"
+          >
+            <Icon
+              type="star"
+            >
+              <i
+                className="kdicon kdicon-star"
+                onClick={[Function]}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
+                style={Object {}}
+              />
+            </Icon>
+          </span>
+        </span>
+      </div>
+    </span>
+  </span>
+</Rate>
 `;
