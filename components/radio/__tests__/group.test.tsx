@@ -167,4 +167,25 @@ describe('Radio Group', () => {
       })
     })
   })
+  // api test
+  describe('10.api test', () => {
+    it('api test', () => {
+      // defaultValue
+      const options = [{ label: 'Bamboo', value: 'bamboo' }]
+      const defaultValueRadioGroup = mount(<RadioGroup defaultValue="bamboo" options={options} />)
+      expect(defaultValueRadioGroup.find('.kd-radio').hasClass('kd-radio-checked')).toBe(true)
+      // disabled
+      const disabledRadioGroup = mount(
+        <Radio.Group name="radiogroup" disabled options={['Apple', 'Pear', 'Orange']}></Radio.Group>,
+      )
+      expect(disabledRadioGroup.find(`.kd-radio`).at(0)).toHaveClassName(`.kd-radio-disabled`)
+      expect(disabledRadioGroup.find(`.kd-radio`).at(1)).toHaveClassName(`.kd-radio-disabled`)
+      expect(disabledRadioGroup.find(`.kd-radio`).at(2)).toHaveClassName(`.kd-radio-disabled`)
+      // name
+      expect(disabledRadioGroup.find(`.kd-radio`).at(0).find('input').prop('name')).toEqual(`radiogroup`)
+      expect(disabledRadioGroup.find(`.kd-radio`).at(1).find('input').prop('name')).toEqual(`radiogroup`)
+      expect(disabledRadioGroup.find(`.kd-radio`).at(2).find('input').prop('name')).toEqual(`radiogroup`)
+      // size
+    })
+  })
 })
