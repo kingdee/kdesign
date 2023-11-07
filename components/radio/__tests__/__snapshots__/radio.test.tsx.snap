@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Radio should render correctly 1`] = `
+exports[`Radio 2.render test should render correctly 1`] = `
 <label
   class="myPrefix customized"
   style="color:red"
@@ -15,4 +15,37 @@ exports[`Radio should render correctly 1`] = `
     Test
   </span>
 </label>
+`;
+
+exports[`Radio 3.render no child without errors render no child without errors 1`] = `
+<Radio>
+  <label
+    className="kd-radio"
+  >
+    <input
+      checked={false}
+      className="kd-radio-input"
+      onChange={[Function]}
+      type="radio"
+    />
+  </label>
+</Radio>
+`;
+
+exports[`Radio 4. render null or undefined without errors render null or undefined without errors 1`] = `
+<Radio>
+  <label
+    className="kd-radio"
+  >
+    <input
+      checked={false}
+      className="kd-radio-input"
+      onChange={[Function]}
+      type="radio"
+    />
+    <span
+      className="kd-radio-text"
+    />
+  </label>
+</Radio>
 `;
