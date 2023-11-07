@@ -1,0 +1,676 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Pagination 2.render test renders correctly 1`] = `
+<div
+  class="kd-pagination"
+>
+  <span
+    class="kd-pagination-total"
+  >
+    共 5 页
+  </span>
+  <span
+    class="kd-pagination-current"
+  >
+    <span>
+      第 
+    </span>
+    <input
+      class="kd-pagination-current-input"
+      type="text"
+      value="1"
+    />
+    <span>
+       页
+    </span>
+  </span>
+  <ul
+    class="kd-pagination-action"
+  >
+    <li
+      class="kd-pagination-action-item"
+      title="第一页"
+    >
+      <button
+        disabled=""
+      >
+        <i
+          class="kdicon kdicon-first"
+        />
+      </button>
+    </li>
+    <li
+      class="kd-pagination-action-item"
+      title="上一页"
+    >
+      <button
+        disabled=""
+      >
+        <i
+          class="kdicon kdicon-arrow-left"
+        />
+      </button>
+    </li>
+    <li
+      class="kd-pagination-action-item"
+      title="下一页"
+    >
+      <button>
+        <i
+          class="kdicon kdicon-arrow-right"
+        />
+      </button>
+    </li>
+    <li
+      class="kd-pagination-action-item"
+      title="最后一页"
+    >
+      <button>
+        <i
+          class="kdicon kdicon-last"
+        />
+      </button>
+    </li>
+  </ul>
+</div>
+`;
+
+exports[`Pagination 2.render test renders correctly 2`] = `
+<div
+  class="kd-pagination"
+>
+  <span
+    class="kd-pagination-total"
+  >
+    共 5 页
+  </span>
+  <span
+    class="kd-pagination-current"
+  >
+    <span>
+      第 
+    </span>
+    <input
+      class="kd-pagination-current-input"
+      type="text"
+      value="1"
+    />
+    <span>
+       页
+    </span>
+  </span>
+  <ul
+    class="kd-pagination-action"
+  >
+    <li
+      class="kd-pagination-action-item"
+      title="第一页"
+    >
+      <button
+        disabled=""
+      >
+        <i
+          class="kdicon kdicon-first"
+        />
+      </button>
+    </li>
+    <li
+      class="kd-pagination-action-item"
+      title="上一页"
+    >
+      <button
+        disabled=""
+      >
+        <i
+          class="kdicon kdicon-arrow-left"
+        />
+      </button>
+    </li>
+    <li
+      class="kd-pagination-action-item"
+      title="下一页"
+    >
+      <button>
+        <i
+          class="kdicon kdicon-arrow-right"
+        />
+      </button>
+    </li>
+    <li
+      class="kd-pagination-action-item"
+      title="最后一页"
+    >
+      <button>
+        <i
+          class="kdicon kdicon-last"
+        />
+      </button>
+    </li>
+  </ul>
+</div>
+`;
+
+exports[`Pagination 2.render test renders correctly 3`] = `
+<div
+  class="kd-pagination"
+>
+  <ul
+    class="kd-pagination-action"
+  >
+    <li
+      class="kd-pagination-action-item"
+      title="第一页"
+    >
+      <button
+        disabled=""
+      >
+        <i
+          class="kdicon kdicon-first"
+        />
+      </button>
+    </li>
+    <li
+      class="kd-pagination-action-item"
+      title="上一页"
+    >
+      <button
+        disabled=""
+      >
+        <i
+          class="kdicon kdicon-arrow-left"
+        />
+      </button>
+    </li>
+    <li
+      class="kd-pagination-action-item"
+      title="下一页"
+    >
+      <button>
+        <i
+          class="kdicon kdicon-arrow-right"
+        />
+      </button>
+    </li>
+    <li
+      class="kd-pagination-action-item"
+      title="最后一页"
+    >
+      <button>
+        <i
+          class="kdicon kdicon-last"
+        />
+      </button>
+    </li>
+  </ul>
+</div>
+`;
+
+exports[`Pagination 2.render test renders correctly 4`] = `
+<div
+  class="kd-pagination simple"
+>
+  <ul
+    class="kd-pagination-action"
+  >
+    <li
+      class="kd-pagination-action-item"
+      title="上一页"
+    >
+      <button
+        disabled=""
+      >
+        <i
+          class="kdicon kdicon-arrow-left"
+        />
+      </button>
+    </li>
+    <li
+      class="kd-pagination-action-item"
+      title="1/5"
+    >
+      <span
+        class="kd-pagination-current"
+      >
+        <input
+          class="kd-pagination-current-input"
+          type="text"
+          value="1"
+        />
+      </span>
+      / 
+      <span
+        class="kd-pagination-total"
+      >
+        5
+      </span>
+    </li>
+    <li
+      class="kd-pagination-action-item"
+      title="下一页"
+    >
+      <button>
+        <i
+          class="kdicon kdicon-arrow-right"
+        />
+      </button>
+    </li>
+  </ul>
+</div>
+`;
+
+exports[`Pagination 2.render test renders correctly 5`] = `
+<div
+  class="kd-pagination less"
+>
+  <ul
+    class="kd-pagination-pages"
+  >
+    <li
+      class="kd-pagination-pages-item"
+      title="上一页"
+    >
+      <button
+        disabled=""
+      >
+        <i
+          class="kdicon kdicon-arrow-left"
+        />
+      </button>
+    </li>
+    <li
+      class="kd-pagination-pages-item active"
+      title="1"
+    >
+      <button>
+        1
+      </button>
+    </li>
+    <li
+      class="kd-pagination-pages-item"
+      title="2"
+    >
+      <button>
+        2
+      </button>
+    </li>
+    <li
+      class="kd-pagination-pages-item"
+      title="3"
+    >
+      <button>
+        3
+      </button>
+    </li>
+    <li
+      class="kd-pagination-pages-item"
+      title="4"
+    >
+      <button>
+        4
+      </button>
+    </li>
+    <li
+      class="kd-pagination-pages-item"
+      title="5"
+    >
+      <button>
+        5
+      </button>
+    </li>
+    <li
+      class="kd-pagination-pages-item"
+      title="下一页"
+    >
+      <button>
+        <i
+          class="kdicon kdicon-arrow-right"
+        />
+      </button>
+    </li>
+  </ul>
+</div>
+`;
+
+exports[`Pagination 2.render test renders correctly 6`] = `
+<div
+  class="kd-pagination nicety"
+>
+  <span
+    class="kd-pagination-total"
+  >
+    共 50 条
+  </span>
+  <ul
+    class="kd-pagination-pages"
+  >
+    <li
+      class="kd-pagination-pages-item"
+      title="上一页"
+    >
+      <button
+        disabled=""
+      >
+        <i
+          class="kdicon kdicon-arrow-left"
+        />
+      </button>
+    </li>
+    <li
+      class="kd-pagination-pages-item active"
+      title="1"
+    >
+      <button>
+        1
+      </button>
+    </li>
+    <li
+      class="kd-pagination-pages-item"
+      title="2"
+    >
+      <button>
+        2
+      </button>
+    </li>
+    <li
+      class="kd-pagination-pages-item"
+      title="3"
+    >
+      <button>
+        3
+      </button>
+    </li>
+    <li
+      class="kd-pagination-pages-item"
+      title="4"
+    >
+      <button>
+        4
+      </button>
+    </li>
+    <li
+      class="kd-pagination-pages-item"
+      title="5"
+    >
+      <button>
+        5
+      </button>
+    </li>
+    <li
+      class="kd-pagination-pages-item"
+      title="下一页"
+    >
+      <button>
+        <i
+          class="kdicon kdicon-arrow-right"
+        />
+      </button>
+    </li>
+  </ul>
+  <div
+    class="kd-pagination-jumper"
+  >
+    <input
+      class="kd-pagination-jumper-input"
+      type="text"
+      value=""
+    />
+    <button
+      class="kd-pagination-jumper-button"
+    >
+      GO
+    </button>
+  </div>
+</div>
+`;
+
+exports[`Pagination 3.render no child without errors render no child without errors 1`] = `
+<Pagination
+  defaultCurrent={1}
+  total={50}
+>
+  <div
+    className="kd-pagination"
+  >
+    <span
+      className="kd-pagination-total"
+    >
+      共 5 页
+    </span>
+    <span
+      className="kd-pagination-current"
+    >
+      <span
+        key="0"
+      >
+        第 
+      </span>
+      <input
+        className="kd-pagination-current-input"
+        key="1"
+        onBlur={[Function]}
+        onChange={[Function]}
+        onKeyUp={[Function]}
+        type="text"
+        value={1}
+      />
+      <span
+        key="2"
+      >
+         页
+      </span>
+    </span>
+    <ul
+      className="kd-pagination-action"
+    >
+      <li
+        className="kd-pagination-action-item"
+        title="第一页"
+      >
+        <button
+          disabled={true}
+          onClick={[Function]}
+        >
+          <Icon
+            type="first"
+          >
+            <i
+              className="kdicon kdicon-first"
+              onClick={[Function]}
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
+              style={Object {}}
+            />
+          </Icon>
+        </button>
+      </li>
+      <li
+        className="kd-pagination-action-item"
+        title="上一页"
+      >
+        <button
+          disabled={true}
+          onClick={[Function]}
+        >
+          <Icon
+            type="arrow-left"
+          >
+            <i
+              className="kdicon kdicon-arrow-left"
+              onClick={[Function]}
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
+              style={Object {}}
+            />
+          </Icon>
+        </button>
+      </li>
+      <li
+        className="kd-pagination-action-item"
+        title="下一页"
+      >
+        <button
+          onClick={[Function]}
+        >
+          <Icon
+            type="arrow-right"
+          >
+            <i
+              className="kdicon kdicon-arrow-right"
+              onClick={[Function]}
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
+              style={Object {}}
+            />
+          </Icon>
+        </button>
+      </li>
+      <li
+        className="kd-pagination-action-item"
+        title="最后一页"
+      >
+        <button
+          onClick={[Function]}
+        >
+          <Icon
+            type="last"
+          >
+            <i
+              className="kdicon kdicon-last"
+              onClick={[Function]}
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
+              style={Object {}}
+            />
+          </Icon>
+        </button>
+      </li>
+    </ul>
+  </div>
+</Pagination>
+`;
+
+exports[`Pagination 4. render null or undefined without errors render null or undefined without errors 1`] = `
+<Pagination
+  defaultCurrent={1}
+  total={50}
+>
+  <div
+    className="kd-pagination"
+  >
+    <span
+      className="kd-pagination-total"
+    >
+      共 5 页
+    </span>
+    <span
+      className="kd-pagination-current"
+    >
+      <span
+        key="0"
+      >
+        第 
+      </span>
+      <input
+        className="kd-pagination-current-input"
+        key="1"
+        onBlur={[Function]}
+        onChange={[Function]}
+        onKeyUp={[Function]}
+        type="text"
+        value={1}
+      />
+      <span
+        key="2"
+      >
+         页
+      </span>
+    </span>
+    <ul
+      className="kd-pagination-action"
+    >
+      <li
+        className="kd-pagination-action-item"
+        title="第一页"
+      >
+        <button
+          disabled={true}
+          onClick={[Function]}
+        >
+          <Icon
+            type="first"
+          >
+            <i
+              className="kdicon kdicon-first"
+              onClick={[Function]}
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
+              style={Object {}}
+            />
+          </Icon>
+        </button>
+      </li>
+      <li
+        className="kd-pagination-action-item"
+        title="上一页"
+      >
+        <button
+          disabled={true}
+          onClick={[Function]}
+        >
+          <Icon
+            type="arrow-left"
+          >
+            <i
+              className="kdicon kdicon-arrow-left"
+              onClick={[Function]}
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
+              style={Object {}}
+            />
+          </Icon>
+        </button>
+      </li>
+      <li
+        className="kd-pagination-action-item"
+        title="下一页"
+      >
+        <button
+          onClick={[Function]}
+        >
+          <Icon
+            type="arrow-right"
+          >
+            <i
+              className="kdicon kdicon-arrow-right"
+              onClick={[Function]}
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
+              style={Object {}}
+            />
+          </Icon>
+        </button>
+      </li>
+      <li
+        className="kd-pagination-action-item"
+        title="最后一页"
+      >
+        <button
+          onClick={[Function]}
+        >
+          <Icon
+            type="last"
+          >
+            <i
+              className="kdicon kdicon-last"
+              onClick={[Function]}
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
+              style={Object {}}
+            />
+          </Icon>
+        </button>
+      </li>
+    </ul>
+  </div>
+</Pagination>
+`;
