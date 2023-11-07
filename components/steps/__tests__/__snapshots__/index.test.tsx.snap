@@ -1,15 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Steps render null or undefined buttons without errors 1`] = `
-<Steps>
-  <div
-    className="kd-steps kd-steps-horizontal kd-steps-bottomLable"
-    style={Object {}}
-  />
-</Steps>
-`;
-
-exports[`Steps renders correctly 1`] = `
+exports[`Steps 2.render test renders correctly 1`] = `
 <div
   class="kd-steps kd-steps-horizontal kd-steps-bottomLable"
 >
@@ -90,7 +81,7 @@ exports[`Steps renders correctly 1`] = `
 </div>
 `;
 
-exports[`Steps renders correctly 2`] = `
+exports[`Steps 2.render test renders correctly 2`] = `
 <div
   class="kd-steps kd-steps-horizontal kd-steps-bottomLable"
 >
@@ -171,7 +162,7 @@ exports[`Steps renders correctly 2`] = `
 </div>
 `;
 
-exports[`Steps renders correctly 3`] = `
+exports[`Steps 2.render test renders correctly 3`] = `
 <div
   class="kd-steps kd-steps-vertical kd-steps-bottomLable"
 >
@@ -252,7 +243,7 @@ exports[`Steps renders correctly 3`] = `
 </div>
 `;
 
-exports[`Steps renders correctly 4`] = `
+exports[`Steps 2.render test renders correctly 4`] = `
 <div
   class="kd-steps kd-steps-horizontal kd-steps-leftLable"
 >
@@ -333,7 +324,7 @@ exports[`Steps renders correctly 4`] = `
 </div>
 `;
 
-exports[`Steps renders correctly 5`] = `
+exports[`Steps 2.render test renders correctly 5`] = `
 <div
   class="kd-steps kd-steps-horizontal kd-steps-rightLable"
 >
@@ -414,7 +405,7 @@ exports[`Steps renders correctly 5`] = `
 </div>
 `;
 
-exports[`Steps renders correctly 6`] = `
+exports[`Steps 2.render test renders correctly 6`] = `
 <div
   class="kd-steps kd-steps-horizontal kd-steps-topLable"
 >
@@ -495,7 +486,7 @@ exports[`Steps renders correctly 6`] = `
 </div>
 `;
 
-exports[`Steps renders correctly 7`] = `
+exports[`Steps 2.render test renders correctly 7`] = `
 <div
   class="kd-steps kd-steps-horizontal kd-steps-bottomLable"
 >
@@ -576,7 +567,7 @@ exports[`Steps renders correctly 7`] = `
 </div>
 `;
 
-exports[`Steps renders correctly 8`] = `
+exports[`Steps 2.render test renders correctly 8`] = `
 <div
   class="kd-steps kd-steps-horizontal kd-steps-bottomLable"
 >
@@ -657,7 +648,7 @@ exports[`Steps renders correctly 8`] = `
 </div>
 `;
 
-exports[`Steps renders correctly 9`] = `
+exports[`Steps 2.render test renders correctly 9`] = `
 <div
   class="kd-steps kd-steps-horizontal kd-steps-bottomLable"
 >
@@ -738,7 +729,7 @@ exports[`Steps renders correctly 9`] = `
 </div>
 `;
 
-exports[`Steps renders correctly 10`] = `
+exports[`Steps 2.render test renders correctly 10`] = `
 <div
   class="kd-steps kd-steps-horizontal kd-steps-bottomLable"
 >
@@ -821,7 +812,7 @@ exports[`Steps renders correctly 10`] = `
 </div>
 `;
 
-exports[`Steps renders correctly 11`] = `
+exports[`Steps 2.render test renders correctly 11`] = `
 <div
   class="kd-steps kd-steps-horizontal kd-steps-bottomLable"
 >
@@ -904,7 +895,7 @@ exports[`Steps renders correctly 11`] = `
 </div>
 `;
 
-exports[`Steps renders correctly 12`] = `
+exports[`Steps 2.render test renders correctly 12`] = `
 <div
   class="kd-steps kd-steps-horizontal kd-steps-bottomLable"
 >
@@ -1063,4 +1054,13 @@ exports[`Steps renders correctly 12`] = `
     </div>
   </div>
 </div>
+`;
+
+exports[`Steps 4.render null or undefined without errors render null or undefined buttons without errors 1`] = `
+<Steps>
+  <div
+    className="kd-steps kd-steps-horizontal kd-steps-bottomLable"
+    style={Object {}}
+  />
+</Steps>
 `;
