@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Typography renders correctly 1`] = `
+exports[`Typography 2.render test renders correctly 1`] = `
 <article
   class="kd-typography"
 >
@@ -8,7 +8,7 @@ exports[`Typography renders correctly 1`] = `
 </article>
 `;
 
-exports[`Typography renders correctly 2`] = `
+exports[`Typography 2.render test renders correctly 2`] = `
 <div
   class="kd-typography"
 >
@@ -16,7 +16,7 @@ exports[`Typography renders correctly 2`] = `
 </div>
 `;
 
-exports[`Typography renders correctly 3`] = `
+exports[`Typography 2.render test renders correctly 3`] = `
 <span
   class="kd-typography"
 >
@@ -24,7 +24,7 @@ exports[`Typography renders correctly 3`] = `
 </span>
 `;
 
-exports[`Typography renders correctly 4`] = `
+exports[`Typography 2.render test renders correctly 4`] = `
 <h1
   class="kd-typography"
 >
@@ -32,7 +32,7 @@ exports[`Typography renders correctly 4`] = `
 </h1>
 `;
 
-exports[`Typography renders correctly 5`] = `
+exports[`Typography 2.render test renders correctly 5`] = `
 <span
   class="kd-typography kd-typography-second"
 >
@@ -40,7 +40,7 @@ exports[`Typography renders correctly 5`] = `
 </span>
 `;
 
-exports[`Typography renders correctly 6`] = `
+exports[`Typography 2.render test renders correctly 6`] = `
 <span
   class="kd-typography kd-typography-success"
 >
@@ -48,7 +48,7 @@ exports[`Typography renders correctly 6`] = `
 </span>
 `;
 
-exports[`Typography renders correctly 7`] = `
+exports[`Typography 2.render test renders correctly 7`] = `
 <span
   class="kd-typography kd-typography-warning"
 >
@@ -56,7 +56,7 @@ exports[`Typography renders correctly 7`] = `
 </span>
 `;
 
-exports[`Typography renders correctly 8`] = `
+exports[`Typography 2.render test renders correctly 8`] = `
 <span
   class="kd-typography kd-typography-danger"
 >
@@ -64,7 +64,7 @@ exports[`Typography renders correctly 8`] = `
 </span>
 `;
 
-exports[`Typography renders correctly 9`] = `
+exports[`Typography 2.render test renders correctly 9`] = `
 <span
   class="kd-typography kd-typography-assist"
 >
@@ -72,7 +72,7 @@ exports[`Typography renders correctly 9`] = `
 </span>
 `;
 
-exports[`Typography renders correctly 10`] = `
+exports[`Typography 2.render test renders correctly 10`] = `
 <h1
   class="kd-typography"
 >
@@ -80,7 +80,7 @@ exports[`Typography renders correctly 10`] = `
 </h1>
 `;
 
-exports[`Typography renders correctly 11`] = `
+exports[`Typography 2.render test renders correctly 11`] = `
 <h2
   class="kd-typography"
 >
@@ -88,7 +88,7 @@ exports[`Typography renders correctly 11`] = `
 </h2>
 `;
 
-exports[`Typography renders correctly 12`] = `
+exports[`Typography 2.render test renders correctly 12`] = `
 <h3
   class="kd-typography"
 >
