@@ -194,6 +194,7 @@ const InternalTree = React.forwardRef((props: TreeProps, ref: any): React.Functi
     isSearching,
     keysData,
     searchStatus,
+    filterValue,
   )
   const { spreadAttrData, posData } = React.useMemo(() => {
     return getSpreadAttrData(flattenAllData, expandedKeys)
@@ -211,7 +212,7 @@ const InternalTree = React.forwardRef((props: TreeProps, ref: any): React.Functi
 
   const filterData = React.useMemo(() => {
     return getFilterData(spreadAttrData, filterTreeNode, isSearching, posData, keysData)
-  }, [spreadAttrData, isSearching, posData, keysData])
+  }, [spreadAttrData, isSearching, posData, keysData, filterValue])
 
   useEffect(() => {
     if (typeof scrollKey === 'undefined') {
