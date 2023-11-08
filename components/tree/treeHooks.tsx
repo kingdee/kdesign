@@ -92,6 +92,7 @@ export const useExpand = (
   isSearching: boolean,
   keysData: KeysDataType,
   searchStatus: SearchStatus,
+  filterValue: string,
 ) => {
   let expandScrollkeys: string[] = []
   if (scrollKey) {
@@ -141,6 +142,7 @@ export const useExpand = (
     defaultExpandParent,
     scrollKey,
     searchStatus,
+    filterValue,
   ])
 
   return [expandedKeys, setExpandedKeys] as const
