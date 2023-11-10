@@ -51,6 +51,7 @@ subtitle: 提示弹窗
 | okText | 确定按钮文本 | string | 确定 | - | 1.0.0 |
 | onCancel | 点击遮罩层或右上角叉或取消按钮的回调 | (evt?) => void | - | - | 1.0.0 |
 | onOk | 点击确定回调 | (evt?) => void | - | - | 1.0.0 |
+| overroll | 弹窗超出视口时是否可以滚动 | boolean | false | - | 1.7.40 |
 | showline | 是否显示分割线 | boolean | true | - | 1.0.0 |
 | title | 标题 | ReactNode | - | - | 1.0.0 |
 | titleIcon | 标题前面的显示 icon | ReactNode | - | - | 1.0.0 |
@@ -67,7 +68,7 @@ subtitle: 提示弹窗
 
 ## Design Token
 
-| 分类 | 组件token | 全局token | 默认值 |
+| 分类 | 组件 token | 全局 token | 默认值 |
 | --- | --- | --- | --- |
 | color | --kd-c-modal-color-text-primary | --kd-g-color-text-primary | #212121 |
 |  | --kd-c-modal-color-text-secondary | --kd-g-color-text-secondary | #666 |

@@ -178,6 +178,7 @@ const compDefaultProps = {
     cancelButtonProps: {},
     okButtonProps: {},
     showline: true,
+    overroll: false,
   },
   Menu: {
     mode: 'vertical',
