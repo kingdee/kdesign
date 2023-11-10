@@ -66,6 +66,7 @@ export interface IModalProps {
   width?: number
   showline?: boolean
   bounds?: DraggableBounds | string | false
+  overroll?: boolean
   onDragStart?: DraggableEventHandler
   onDrag?: DraggableEventHandler
   onDragStop?: DraggableEventHandler
@@ -115,12 +116,14 @@ const InternalModal = (
     onDrag,
     onDragStop,
     bounds,
+    overroll,
     ...others
   } = modalProps
   const isForceController = visible !== undefined
   const [innerVisible, setInnerVisible] = useState(isForceController ? visible : true) // 需要根据visible来判断，不能一开始为true再去设置false
   const previousActiveElement = useRef<HTMLElement | null>(null)
   const innerRef = useRef<HTMLDivElement>(null)
+  const wrapperRef = useRef<HTMLDivElement>(null)
   const containerRef = ref || innerRef
   const modalPrefixCls = getPrefixCls!(prefixCls, 'modal', customPrefixcls)
   devWarning(ModalTypes.indexOf(type!) === -1, 'modal', `cannot found modal type '${type}'`)
@@ -264,6 +267,12 @@ const InternalModal = (
     }
   }, [proxyCloseModal, onCancel, maskClosable])
 
+  const handleWrapperClick = (e: React.MouseEvent<HTMLElement>) => {
+    if (wrapperRef.current === e.target) {
+      handleMaskClick()
+    }
+  }
+
   const isHidden = !destroyOnClose && !(isForceController ? visible : innerVisible)
   const modalClasses = classNames(modalPrefixCls, className, {
     [`${modalPrefixCls}-container`]: true,
@@ -275,7 +284,7 @@ const InternalModal = (
     <div
       className={classNames({
         [`${modalPrefixCls}-container-box`]: true,
-        [`${modalPrefixCls}-has-container-box`]: modalContainer,
+        [`${modalPrefixCls}-has-container-box`]: modalContainer && !overroll,
         [`${modalPrefixCls}-showline`]: showline,
       })}
       style={{
@@ -339,18 +348,45 @@ const InternalModal = (
           style={maskStyle}
         ></div>
       )}
-      <Draggable
-        defaultPosition={defaultPosition}
-        handle={`.${headerClass}`}
-        disabled={!draggable}
-        onStart={handleDragStart}
-        onDrag={onDrag}
-        onStop={onDragStop}
-        bounds={bounds}
-        cancel={`.${modalPrefixCls}-title-container, .${modalPrefixCls}-close-icon`}
-      >
-        {container}
-      </Draggable>
+      {overroll ? (
+        <div
+          tabIndex={-1}
+          className={classNames({
+            [`${modalPrefixCls}-wrapper`]:
+              modalContainer && ((isForceController ? visible : innerVisible) || !destroyOnClose),
+          })}
+          ref={wrapperRef}
+          onClick={handleWrapperClick}
+        >
+          <div className={`${modalPrefixCls}-dialog`}>
+            <Draggable
+              defaultPosition={{ x: 0, y: 0 }}
+              handle={`.${headerClass}`}
+              disabled={!draggable}
+              onStart={handleDragStart}
+              onDrag={onDrag}
+              onStop={onDragStop}
+              bounds={bounds}
+              cancel={`.${modalPrefixCls}-title-container, .${modalPrefixCls}-close-icon`}
+            >
+              {container}
+            </Draggable>
+          </div>
+        </div>
+      ) : (
+        <Draggable
+          defaultPosition={defaultPosition}
+          handle={`.${headerClass}`}
+          disabled={!draggable}
+          onStart={handleDragStart}
+          onDrag={onDrag}
+          onStop={onDragStop}
+          bounds={bounds}
+          cancel={`.${modalPrefixCls}-title-container, .${modalPrefixCls}-close-icon`}
+        >
+          {container}
+        </Draggable>
+      )}
     </div>
   )
   const renderComp = ((isForceController ? visible : innerVisible) || !destroyOnClose) && comp
