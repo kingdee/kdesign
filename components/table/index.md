@@ -94,6 +94,7 @@ return <Table dataSource={dataSource} columns={columns} />
 | sortable | 是否开启排序功能 | boolean \| (a,b)=>boolean | `false` | `true` `false`  | 1.0.0 |
 | filterable | 是否开启过滤功能 | boolean \| (filterValue) => (value) =>boolean | `false` | `true` `false`  | 1.0.0 |
 | resizeable | 是否开启表头拖拽功能 | boolean \| (a,b)=>boolean | `false` | `true` `false`  | 1.0.0 |
+| flex | 按照 flex 值的比例将网格中的剩余空间分配给所有 flex 列 | number | `-` | `number` | 1.7.40 |
 <br/>
 
 
