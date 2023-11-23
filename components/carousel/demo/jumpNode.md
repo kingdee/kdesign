@@ -29,7 +29,7 @@ function Demo() {
     <div style={{ display: 'flex', flexDirection: 'column', flex: '1' }}>
       <p>默认切换按钮</p>
       <br />
-      <Carousel name="Carousel" ref={carouselRef} dots={false} jumpNode>
+      <Carousel ref={carouselRef} dots={false} jumpNode>
         {Array(4).fill(0).map((_,i)=>{
           return (
             <div style={itemStyle} key={i}>
@@ -41,7 +41,7 @@ function Demo() {
       <br />
       <p>自定义切换按钮</p>
       <br />
-      <Carousel name="Carousel" jumpNode={[<div class="jump-demo">上一页</div>,<div class="jump-demo">下一页</div>]}>
+      <Carousel jumpNode={[<div class="jump-demo">上一页</div>,<div class="jump-demo">下一页</div>]}>
         {Array(4).fill(0).map((_, i)=>{
           return (
             <div style={itemStyle} key={i}>

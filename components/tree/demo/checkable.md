@@ -106,14 +106,13 @@ function Demo() {
   return (
     <div style={{ width: '300px', height: '300px' }}>
       <Tree
-        name="Tree"
         treeData={data}
         expandedKeys={expandedKeys}
         checkedKeys={checkedKeys}
         selectedKeys={selectedKeys}
         onCheck={onCheck}
         onExpand={onExpand}
-        onSelect={onSelect}  
+        onSelect={onSelect}
         virtual={false}
         checkable={true}
       />

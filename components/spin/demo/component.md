@@ -13,7 +13,7 @@ import { Spin } from '@kdcloudjs/kdesign'
 function Demo() {
   return (
     <>
-      <Spin name="Spin" type="component" />
+      <Spin type="component" />
     </>
   )
 }

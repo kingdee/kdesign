@@ -15,9 +15,9 @@ function Demo() {
       collapseRef.current.parentNode.style.cssText = 'display:flex; flex:1; padding-left:20px;padding-right:20px;'
   }, [collapseRef.current])
   return (
-    <Collapse name="Collapse" expandIconPosition="left" ref={collapseRef} bordered>
+    <Collapse expandIconPosition="left" ref={collapseRef} bordered>
       <Collapse.Panel header="折叠面板1" panelKey="panel_1">
-        <Collapse name="Collapse" expandIconPosition="left" bordered>
+        <Collapse expandIconPosition="left" bordered>
           <Collapse.Panel header="嵌套面板1" panelKey="panel_1_1">
             嵌套面板内容1
           </Collapse.Panel>

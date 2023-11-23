@@ -17,7 +17,7 @@ function Demo() {
   }
   return (
     <div style={{ width: '350px' }}>
-    <Radio.Group name="radiogroup" value={v} onChange={handleChange}>
+    <Radio.Group value={v} onChange={handleChange}>
       <Radio value={'AAAA'}>A</Radio>
       <Radio value={'BBBB'}>B</Radio>
       <Radio value={'CCCC'}>C</Radio>

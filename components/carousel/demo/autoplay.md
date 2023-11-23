@@ -33,7 +33,6 @@ function Demo() {
   return (
     <div style={{ display: 'flex', flexDirection: 'column', flex: '1' }}>
       <Carousel
-        name="Carousel"
         dotPosition={dotPosition}
         ref={carouselRef}
         autoplay={true}

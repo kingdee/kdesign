@@ -26,7 +26,7 @@ function Demo() {
       <br />
       <Switch onChange={handleOnChange} style={{ width: '30px' }} />
       <br />
-      <Collapse name="Collapse" expandIconPosition={expandIconPosition} ref={collapseRef} bordered>
+      <Collapse expandIconPosition={expandIconPosition} ref={collapseRef} bordered>
         <Collapse.Panel
           header="This is the header1"
           panelKey="panel_1"

@@ -29,7 +29,7 @@ function Demo() {
     <div style={{ display: 'flex', flexDirection: 'column', flex: '1' }}>
       <p>滑动切换</p>
       <br />
-      <Carousel name="Carousel" dotPosition={dotPosition} ref={carouselRef}>
+      <Carousel dotPosition={dotPosition} ref={carouselRef}>
         <div style={itemStyle}>
           <h3>1</h3>
         </div>
@@ -46,7 +46,7 @@ function Demo() {
       <br />
       <p>渐显切换</p>
       <br />
-      <Carousel name="Carousel" dotPosition={dotPosition} ref={carouselRef} effect="fade">
+      <Carousel dotPosition={dotPosition} ref={carouselRef} effect="fade">
         <div style={itemStyle}>
           <h3>1</h3>
         </div>
@@ -63,7 +63,7 @@ function Demo() {
       <br />
       <p>无切换动画</p>
       <br />
-      <Carousel name="Carousel" ref={carouselRef} effect="none">
+      <Carousel ref={carouselRef} effect="none">
         <div style={itemStyle}>
           <h3>1</h3>
         </div>

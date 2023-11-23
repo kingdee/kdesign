@@ -15,7 +15,7 @@ function Demo() {
       collapseRef.current.parentNode.style.cssText = 'display:flex; flex:1; padding-left:20px;padding-right:20px;'
   }, [collapseRef.current])
   return (
-    <Collapse name="Collapse" ref={collapseRef}>
+    <Collapse ref={collapseRef}>
       <Collapse.Panel
         panelKey="panel_1"
         header={

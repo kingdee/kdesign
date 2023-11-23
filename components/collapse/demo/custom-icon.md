@@ -16,7 +16,6 @@ function Demo() {
   }, [collapseRef.current])
   return (
     <Collapse
-      name="Collapse"
       ref={collapseRef}
       expandIcon={() => {
         return <Icon type="arrow-right"></Icon>

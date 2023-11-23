@@ -19,7 +19,7 @@ function Demo() {
 
   return (
     <>
-      <Spin name="Spin" type="page" spinning={loading}>
+      <Spin type="page" spinning={loading}>
         <div
           style={{
             width: '400px',

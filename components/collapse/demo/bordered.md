@@ -18,7 +18,7 @@ function Demo() {
   }
 
   return (
-    <Collapse name="Collapse" bordered ref={collapseRef} style={collapseStyle}>
+    <Collapse bordered ref={collapseRef} style={collapseStyle}>
       <Collapse.Panel header={'This is the header1'} panelKey="panel_1">
         折叠面板内容1
       </Collapse.Panel>

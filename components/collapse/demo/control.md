@@ -20,7 +20,7 @@ function Demo() {
     setActiveKey(val)
   }
   return (
-    <Collapse name="Collapse" ref={collapseRef} activeKey={activeKey} onChange={onChange}>
+    <Collapse ref={collapseRef} activeKey={activeKey} onChange={onChange}>
       <Collapse.Panel header={'This is the header1'} panelKey="panel_1">
         折叠面板内容1
       </Collapse.Panel>

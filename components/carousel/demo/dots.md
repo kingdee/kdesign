@@ -29,7 +29,7 @@ function Demo() {
     <div style={{ display: 'flex', flexDirection: 'column', flex: '1' }}>
       <p>隐藏面板指示点</p>
       <br />
-      <Carousel name="Carousel" dotPosition={dotPosition} ref={carouselRef} dots={false} autoplay={true}>
+      <Carousel dotPosition={dotPosition} ref={carouselRef} dots={false} autoplay={true}>
         <div style={itemStyle}>
           <h3>1</h3>
         </div>
@@ -46,7 +46,7 @@ function Demo() {
       <br />
       <p>自定义面板指示点样式</p>
       <br />
-      <Carousel name="Carousel" dotPosition={dotPosition} ref={carouselRef} dots={dots} autoplay={true}>
+      <Carousel dotPosition={dotPosition} ref={carouselRef} dots={dots} autoplay={true}>
         <div style={itemStyle}>
           <h3>1</h3>
         </div>

@@ -14,7 +14,7 @@ function Demo() {
   const [v, setV] = React.useState('AAAA')
   return (
     <div style={{ width: '350px' }}>
-    <Radio.Group name="radiogroup" value={v}>
+    <Radio.Group value={v}>
       <Radio value={'AAAA'}>A</Radio>
       <Radio value={'BBBB'}>B</Radio>
       <Radio value={'CCCC'}>C</Radio>

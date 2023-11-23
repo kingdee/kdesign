@@ -31,7 +31,7 @@ function Demo() {
         checkedChildren="light"
         unCheckedChildren="dark"
       />
-      <Menu name="Menu" theme={!isDark && 'light'} style={menuStyle} inlineIndent={14} mode="inline">
+      <Menu theme={!isDark && 'light'} style={menuStyle} inlineIndent={14} mode="inline">
         <Menu.Item key="1" name="MenuItem">
           标签一
         </Menu.Item>

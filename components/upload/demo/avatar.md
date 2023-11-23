@@ -59,7 +59,6 @@ function Demo() {
 
   return (
     <Upload
-      name="avatar"
       listType="picture"
       className="avatar-uploader"
       showUploadList={false}
