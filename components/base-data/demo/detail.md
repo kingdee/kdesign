@@ -150,7 +150,6 @@ function Demo() {
         />
       </div>
         <Tree
-          name="Tree"
           treeData={treeData}
           expandedKeys={expandedKeys}
           selectedKeys={selectedKeys}

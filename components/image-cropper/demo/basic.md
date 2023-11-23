@@ -59,7 +59,6 @@ function Demo() {
   return (
     <div style={{ textAlign: 'center' }}>
       <Upload
-        name="avatar"
         listType="picture"
         className="avatar-uploader"
         showUploadList={false}

@@ -28,7 +28,7 @@ function Demo() {
     'marginLeft': '24px',
   }
   return (
-    <Collapse name="Collapse" ref={collapseRef}>
+    <Collapse ref={collapseRef}>
       <Collapse.Panel
         header="为右上角按钮添加样式"
         panelKey="panel_1"

@@ -15,7 +15,7 @@ function Demo() {
 
   return (
     <>
-      <Spin name="Spin" type="component" indicator={customIndicator} />
+      <Spin type="component" indicator={customIndicator} />
     </>
   )
 }

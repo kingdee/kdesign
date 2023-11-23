@@ -44,7 +44,6 @@ function Demo() {
 
       <br />
       <Carousel
-        name="Carousel"
         dotPosition={dotPosition}
         ref={carouselRef}
         afterChange={afterChange}

@@ -45,7 +45,7 @@ function Demo() {
 
   return (
     <>
-      <Menu name="Menu" style={menuStyle} onClick={handleClickItem} inlineIndent={24} collapsed={collapsed} additionalTools={additionTools()}>
+      <Menu style={menuStyle} onClick={handleClickItem} inlineIndent={24} collapsed={collapsed} additionalTools={additionTools()}>
         <Menu.Item key="1" name="MenuItem" disabled>
           标签一
         </Menu.Item>

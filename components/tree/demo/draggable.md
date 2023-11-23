@@ -169,7 +169,6 @@ function Demo() {
   return (
     <div style={{ width: '300px', height: '300px' }}>
       <Tree
-        name="Tree"
         treeData={treeData}
         expandedKeys={expandedKeys}
         checkedKeys={checkedKeys}

@@ -26,7 +26,7 @@ function Demo() {
   }
   return (
     <div style={{ display: 'flex', flexDirection: 'column', flex: '1' }}>
-      <Carousel name="Carousel" ref={carouselRef}>
+      <Carousel ref={carouselRef}>
         <div style={itemStyle}>
           <h3>1</h3>
         </div>

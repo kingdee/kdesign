@@ -18,7 +18,7 @@ function Demo() {
 
   return (
     <>
-      <Menu name="Menu" style={menuStyle} onClick={handleClickItem} inlineIndent={24}>
+      <Menu style={menuStyle} onClick={handleClickItem} inlineIndent={24}>
         <Menu.Item key="1" name="MenuItem" disabled>
           标签一
         </Menu.Item>

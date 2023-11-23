@@ -30,7 +30,6 @@ function Demo() {
 
   return (
     <Menu
-      name="Menu"
       style={menuStyle}
       mode="inline"
       inlineIndent={24}

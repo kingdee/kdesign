@@ -33,7 +33,6 @@ function Demo() {
         {collapsed ? '展开' : '收起'}
       </Button>
       <Menu
-        name="Menu"
         style={{ marginTop: '20px', border: '1px solid #f0f0f0' }}
         collapsed={collapsed}
         onMouseEnter={handleMouseEnter}

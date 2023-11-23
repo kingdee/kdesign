@@ -105,7 +105,6 @@ function Demo() {
     <div style={{ width: '300px', height: '300px' }}>
       <Input placeholder="输入关键字进行过滤" onChange={(e)=> setValue(e.target.value)} />
       <Tree
-        name="Tree"
         treeData={data}
         expandedKeys={expandedKeys}
         onSelect={onSelect}
