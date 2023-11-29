@@ -36,6 +36,7 @@ const Notice: FC<NoticeProps> = (props) => {
   } = noticeProps
   const noticePrefixCls = getPrefixCls!(prefixCls, suffixCls, customPrefixcls)
   let timer: any = null
+  let isTransition = false
   const noticeRef = useRef<any>()
 
   const noticeClasses = classNames(noticePrefixCls, className, {
@@ -49,7 +50,10 @@ const Notice: FC<NoticeProps> = (props) => {
   }
 
   const transitionEvent = () => {
-    onClose && onClose(key)
+    if (!isTransition) {
+      onClose && onClose(key)
+    }
+    isTransition = true
   }
 
   const clearEventListener = () => {
@@ -58,6 +62,7 @@ const Notice: FC<NoticeProps> = (props) => {
   }
 
   const handleClose = () => {
+    isTransition = false
     noticeRef.current?.classList.add(`${noticePrefixCls}-leave`)
     noticeRef.current?.addEventListener('animationend', animationEvent)
     noticeRef.current?.addEventListener('transitionend', transitionEvent)
