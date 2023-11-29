@@ -68,6 +68,7 @@ const InternalTextarea = (props: textAreaProps, ref: unknown): FunctionComponent
 
   const [focused, setFocused] = useState(false)
   const [showNumberMark, setShowNumberMark] = useState(false)
+  const [numberMarkError, setNumberMarkError] = useState<boolean>(false)
 
   const resizeTextarea = useCallback(() => {
     if (!autoSize || !textareaRef.current) {
@@ -117,17 +118,14 @@ const InternalTextarea = (props: textAreaProps, ref: unknown): FunctionComponent
   }
 
   const renderNumberMark = () => {
-    let enteredLength = value ? value.length : 0
-    if (enteredLength >= maxLength) {
-      enteredLength = maxLength
-    }
-    if (count && showNumberMark && !disabled && maxLength !== '' && maxLength >= 0) {
+    if (count && (showNumberMark || numberMarkError) && !disabled && maxLength !== '' && maxLength >= 0) {
       const countClass = classNames(`${textAreaPrefixCls}-textarea-mark`, {
         [`${textAreaPrefixCls}-textarea-mark-inner`]: countPosition === 'inner',
+        [`${textAreaPrefixCls}-textarea-mark-error`]: numberMarkError,
       })
       return (
         <div className={countClass}>
-          {enteredLength}/{maxLength}
+          {value ? value.length : 0}/{maxLength}
         </div>
       )
     }
@@ -137,6 +135,14 @@ const InternalTextarea = (props: textAreaProps, ref: unknown): FunctionComponent
   useEffect(() => {
     resizeTextarea()
   }, [value, resizeTextarea])
+
+  useEffect(() => {
+    if (value && maxLength && value.length > maxLength) {
+      setNumberMarkError(true)
+    } else {
+      setNumberMarkError(false)
+    }
+  }, [value])
 
   useEffect(() => {
     if (propsValue !== undefined) {
@@ -175,7 +181,7 @@ const InternalTextarea = (props: textAreaProps, ref: unknown): FunctionComponent
             [`${prefixCls}-underline`]: borderType === 'underline',
             [`${prefixCls}-no-resize`]: canResize !== true,
             [`${prefixCls}-allowClear-spacing`]: !!allowClear,
-            [`${prefixCls}-error`]: status === 'error',
+            [`${prefixCls}-error`]: status === 'error' || numberMarkError,
             [`${prefixCls}-disabled`]: disabled,
           },
           { [className!]: className && !allowClear && !hadCount },
