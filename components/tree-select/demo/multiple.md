@@ -81,11 +81,11 @@ const data = [
   },
 ]
 
-function Demo() {
+const Demo: React.FC = () => {
   const style = {
     width: '100%',
   }
-  const [value, setValue] = React.useState([])
+  const [value, setValue] = React.useState<Array<string>>([])
   const handleChange = (value) => {
     console.log('value', value)
     setValue(value)

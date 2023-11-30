@@ -8,7 +8,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { Button, Form, Input, Select, Radio } from '@kdcloudjs/kdesign'
 
-function Demo() {
+const Demo: React.FC = () => {
   const [form] = Form.useForm()
   const [layout, setLayout] = React.useState('horizontal')
 

@@ -10,7 +10,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { TextArea } from '@kdcloudjs/kdesign'
 
-function Demo() {
+const Demo: React.FC = () => {
   return <div style={{ width: '300px' }}><TextArea defaultValue="默认值默认值" /></div>
 }
 

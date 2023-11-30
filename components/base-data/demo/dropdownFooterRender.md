@@ -10,7 +10,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { BaseData } from '@kdcloudjs/kdesign'
 
-function Demo() {
+const Demo: React.FC = () => {
   const columns = [
     { title: '解码', key: 'value' },
     { title: '名称', key: 'label' },

@@ -10,10 +10,10 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 
 import { Layout, Menu, Icon } from '@kdcloudjs/kdesign'
-function Demo() {
+const Demo: React.FC = () => {
   const { Header, Sider, Content } = Layout
 
-  const [collapsed, setCollapsed] = React.useState(false)
+  const [collapsed, setCollapsed] = React.useState<boolean>(false)
 
   const toggle = () => {
     setCollapsed(!collapsed)

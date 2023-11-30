@@ -16,6 +16,8 @@ declare module '@babel/standalone'
 
 declare module '@kdcloudjs/kdesign-icons'
 
+declare module 'lz-string'
+
 declare interface Window {
   IFRAME_CODES: any
 }

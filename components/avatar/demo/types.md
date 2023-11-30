@@ -7,8 +7,9 @@ order: 2
 缺省状态配置为字符时，可自定义字符及背景颜色。
 
 ```jsx
+import React from 'react'
 import { Avatar, Icon, Image } from '@kdcloudjs/kdesign'
-function Demo() {
+const Demo: React.FC = () => {
   return (
     <div>
       <Avatar src={<Image src="https://kui.kingdee.com/assets/image/avatar_m.png" />} />

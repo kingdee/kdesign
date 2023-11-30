@@ -9,7 +9,7 @@ order: 5
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { BaseData, Dropdown, Icon } from '@kdcloudjs/kdesign'
-function Demo() {
+const Demo: React.FC = () => {
   const [searchField, setSearchField] = React.useState('all')
   const columns = [
     { title: '解码', key: 'value' },

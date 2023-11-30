@@ -9,10 +9,11 @@ title: 高级搜索
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { Search, Image } from '@kdcloudjs/kdesign'
+import type { resultProps } from '@kdcloudjs/kdesign'
 
-function Demo() {
-  const [panelResult, setPanelResult] = React.useState([])
-  const [panelSearchLoading, setPanelSearchLoading] = React.useState(false)
+const Demo: React.FC = () => {
+  const [panelResult, setPanelResult] = React.useState<Array<resultProps>>([])
+  const [panelSearchLoading, setPanelSearchLoading] = React.useState<boolean>(false)
 
   const panelTypes = [
     { label: '全部', code: 1 },

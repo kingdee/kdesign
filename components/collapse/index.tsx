@@ -1,4 +1,4 @@
-import InternalCollapse, { CollapseProps } from './collapse'
+import InternalCollapse, { CollapseProps, IconPositionType } from './collapse'
 import Panel from './panel'
 export { PanelProps } from './panel'
 interface CompoundedComponent
@@ -7,5 +7,5 @@ interface CompoundedComponent
 }
 const Collapse = InternalCollapse as CompoundedComponent
 Collapse.Panel = Panel
-export { Panel }
+export { Panel, IconPositionType }
 export default Collapse

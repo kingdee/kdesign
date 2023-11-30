@@ -23,7 +23,7 @@ const domestic = [
   { id: 10, name: '西安', province: '陕西省', country: '中国' },
 ]
 
-function Demo() {
+const Demo: React.FC = () => {
   return (
     <div>
       <CityPicker style={{ width: 230 }} domesticList={domestic} value={1} disabled />

@@ -8,7 +8,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { Rate } from '@kdcloudjs/kdesign'
 
-function Demo() {
+const Demo: React.FC = () => {
   return (
     <div  style={{ width: '150px' }}>
       <Rate defaultValue={3} style={{ fontSize: 36 }} />

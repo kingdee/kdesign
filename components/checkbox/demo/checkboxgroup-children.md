@@ -10,21 +10,15 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { Checkbox, Input } from '@kdcloudjs/kdesign'
 
-class Demo extends React.Component {
-  constructor() {
-    super()
-    this.onChange = this.onChange.bind(this)
-  }
-
-  onChange(value, e) {
+const Demo: React.FC = () => {
+  
+  const onChange = (value, e) => {
     console.log('checkboxgroup:', value, e)
   }
-
-  render() {
-    return (
-      <div>
+  return (
+    <div>
         <br />
-        <Checkbox.Group onChange={this.onChange}  checkboxType={'default'}>
+        <Checkbox.Group onChange={onChange}  checkboxType={'default'}>
           <Checkbox value={1}>
             Option A
           </Checkbox>
@@ -39,9 +33,9 @@ class Demo extends React.Component {
           </Checkbox>
         </Checkbox.Group>
       </div>
-    )
-  }
-}
+  )
+} 
+
 
 ReactDOM.render(<Demo />, mountNode)
 ```

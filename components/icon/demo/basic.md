@@ -172,7 +172,7 @@ const BaseIcon = [
   'sigma',
   'fold'
 ]
-function Demo() {
+const Demo: React.FC = () => {
   const handleClick = (type, e) => {
     copy(type)
     Message.success({

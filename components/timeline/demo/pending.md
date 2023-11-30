@@ -10,31 +10,26 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { Timeline, Button } from '@kdcloudjs/kdesign'
 
-class Demo extends React.Component {
-  constructor() {
-    super()
-    this.state = { reverse: false }
-    this.handleClick = this.handleClick.bind(this)
-  }
+const Demo: React.FC = () => {
 
-  handleClick() {
-    this.setState({ reverse: !this.state.reverse })
-  }
+  const [reverse, setReverse] = React.useState<boolean>(false)
 
-  render() {
-    return (
-      <div>
-        <Timeline pending="Recording..." reverse={this.state.reverse}>
+  const handleClick = () => {
+    setReverse(!reverse)
+  }
+  
+  return (
+    <div>
+        <Timeline pending="Recording..." reverse={reverse}>
           <Timeline.Item>创建服务站点 2021-11-01</Timeline.Item>
           <Timeline.Item>解决初始网络问题 2021-11-01</Timeline.Item>
           <Timeline.Item>技术测试 2021-11-01</Timeline.Item>
         </Timeline>
-        <Button type="primary" style={{ marginTop: 16 }} onClick={this.handleClick}>
+        <Button type="primary" style={{ marginTop: 16 }} onClick={handleClick}>
           Toggle Reverse
         </Button>
       </div>
-    )
-  }
+  )
 }
 
 ReactDOM.render(<Demo />, mountNode)

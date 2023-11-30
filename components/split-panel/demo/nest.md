@@ -10,7 +10,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { SplitPanel } from '@kdcloudjs/kdesign'
 
-function Demo() {
+const Demo: React.FC = () => {
   function Top() {
     return <div>top panel</div>
   }

@@ -83,7 +83,7 @@ const data = [
   },
 ]
 
-function Demo() {
+const Demo: React.FC = () => {
   const style = {
     width: 230,
     marginRight: 20,

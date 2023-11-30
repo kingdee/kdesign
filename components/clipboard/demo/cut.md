@@ -12,9 +12,9 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { Clipboard, Message, Input, TextArea, ColorPicker, DatePicker } from '@kdcloudjs/kdesign'
 
-function Demo() {
-  const [inputValue, setInputValue] = React.useState('这是一个输入框的剪切操作')
-  const [textAreaValue, setTextAreaValue] = React.useState(
+const Demo: React.FC = () => {
+  const [inputValue, setInputValue] = React.useState<string>('这是一个输入框的剪切操作')
+  const [textAreaValue, setTextAreaValue] = React.useState<string>(
     '这是一个多行文本框的剪切操作\n这是一个多行文本框的剪切操作\n这是一个多行文本框的剪切操作',
   )
 

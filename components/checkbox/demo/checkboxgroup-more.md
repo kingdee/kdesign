@@ -18,25 +18,19 @@ const checkboxStyle2 = {
   marginBottom: 12,
   marginRight: 12
 }
-class Demo extends React.Component {
-  constructor() {
-    super()
-    this.onChange1 = this.onChange1.bind(this)
-    this.onChange2 = this.onChange2.bind(this)
-  }
 
-  onChange1(value, e) {
+const Demo: React.FC = () => {
+  
+  const onChange1 = (value, e) => {
     console.log('checkbox1', value, e)
   }
-
-  onChange2(value, e) {
+  const onChange2 = (value, e) => {
     console.log('checkbox2 checked',value, e)
   }
 
-  render() {
-    return (
-      <div style={{ display: 'flex', width: 300 }}>
-        <Checkbox.Group onChange={this.onChange1}  checkboxType={'default'}>
+  return (
+    <div style={{ display: 'flex', width: 300 }}>
+        <Checkbox.Group onChange={onChange1}  checkboxType={'default'}>
           <Checkbox style={checkboxStyle1} value={1}>
             Option A
           </Checkbox>
@@ -51,7 +45,7 @@ class Demo extends React.Component {
           </Checkbox>
         </Checkbox.Group>
         <br />
-        <Checkbox.Group onChange={this.onChange2} checkboxType={'square'}>
+        <Checkbox.Group onChange={onChange2} checkboxType={'square'}>
           <Checkbox style={checkboxStyle2} value={1}>
             Option A
           </Checkbox>
@@ -66,9 +60,9 @@ class Demo extends React.Component {
           </Checkbox>
         </Checkbox.Group>
       </div>
-    )
-  }
+  )
 }
+
 
 ReactDOM.render(<Demo />, mountNode)
 ```

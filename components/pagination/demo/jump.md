@@ -10,7 +10,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { Pagination } from '@kdcloudjs/kdesign'
 
-function Demo() {
+const Demo: React.FC = () => {
   function onChange(pageNumber) {
     console.log('Page: ', pageNumber)
   }

@@ -10,7 +10,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { BaseData } from '@kdcloudjs/kdesign'
 
-function Demo() {
+const Demo: React.FC = () => {
   const handleSingleSelect = (item, options) => {
     console.log('item', item)
     console.log('options', options)

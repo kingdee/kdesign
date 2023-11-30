@@ -4,14 +4,16 @@ order: 2
 ---
 
 内置不同样式的文本
+
 ```jsx
 import React from 'react'
 import ReactDOM from 'react-dom'
+import { Typography } from '@kdcloudjs/kdesign'
 
-function Demo() {
-  import { Typography } from '@kdcloudjs/kdesign'
-  const style = { display: 'block', }
+const Demo: React.FC = () => {
+  const style = { display: 'block'}
   const { Text } = Typography
+  
   return (
     <>
       <Text style={style} >KDesign (default)</Text>
@@ -33,3 +35,4 @@ function Demo() {
 
 ReactDOM.render(<Demo />, mountNode)
 ```
+

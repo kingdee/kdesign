@@ -10,7 +10,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { Space } from '@kdcloudjs/kdesign'
 
-function Demo() {
+const Demo: React.FC = () => {
   return (
     <Space split={<span>|</span>} style={{ width: '200px' }}>
       <a href="true" onClick={e => e.preventDefault()}>Link</a>

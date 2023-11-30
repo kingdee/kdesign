@@ -15,23 +15,16 @@ const radioStyle = {
   height: '30px',
   lineHeight: '30px',
 }
+const Demo: React.FC = () => {
+  const [value, SetValue] = React.useState<number>(1)
 
-class Demo extends React.Component {
-  constructor() {
-    super()
-    this.state = { value: 1 }
-    this.onChange = this.onChange.bind(this)
-  }
-
-  onChange(e, checkValue) {
+  const onChange = (e, checkValue) => {
     console.log('radio checked', e, checkValue)
   }
 
-  render() {
-    const { value } = this.state
-    return (
-      <div style={{ width: '350px' }}>
-      <Radio.Group onChange={this.onChange} style={{ width: 400 }}>
+  return (
+    <div style={{ width: '350px' }}>
+      <Radio.Group onChange={onChange} style={{ width: 400 }}>
         <Radio style={radioStyle} value={1}>
           Option A
         </Radio>
@@ -47,8 +40,8 @@ class Demo extends React.Component {
         </Radio>
       </Radio.Group>
       </div>
-    )
-  }
+  )
+
 }
 
 ReactDOM.render(<Demo />, mountNode)

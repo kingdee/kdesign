@@ -8,8 +8,9 @@ title: 多选
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { Cascader } from '@kdcloudjs/kdesign'
+import type { CascaderValueType } from '@kdcloudjs/kdesign'
 
-function Demo() {
+const Demo: React.FC = () => {
   const options = [
     {
       value: 'guangdong',
@@ -81,7 +82,7 @@ function Demo() {
     },
   ]
 
-  const [value, setValue] = React.useState([['guangdong', 'shenzhen', 'nanshan']])
+  const [value, setValue] = React.useState<CascaderValueType>([['guangdong', 'shenzhen', 'nanshan']])
 
   function onChange(value) {
     console.log(value)

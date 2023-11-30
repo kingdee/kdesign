@@ -10,9 +10,9 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { Tag } from '@kdcloudjs/kdesign'
 
-function Demo() {
+const Demo: React.FC = () => {
   const demoTagStyle = { margin: '0 6px 2px 0', pointerEvents: 'none' }
-  const [tags, setTags] = React.useState(['tag1', 'tag2', 'tag3'])
+  const [tags, setTags] = React.useState<Array<string>>(['tag1', 'tag2', 'tag3'])
 
   const editWrapperStyle = {
     borderBottom: '1px solid #ccc',

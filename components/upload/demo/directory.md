@@ -10,7 +10,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { Upload, Button, Icon } from '@kdcloudjs/kdesign'
 
-function Demo() {
+const Demo: React.FC = () => {
   return (
     <Upload action="https://www.mocky.io/v2/5cc8019d300000980a055e76" style={{ width: 500 }} directory>
       <Button icon={<Icon type="upload" />}>

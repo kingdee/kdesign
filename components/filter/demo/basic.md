@@ -10,7 +10,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { Filter } from '@kdcloudjs/kdesign'
 
-function Demo() {
+const Demo: React.FC = () => {
   const defaultValue = { 
     organization: ['organ2', 'organ3'], 
     date: ['nearlyThreeMonths'],

@@ -10,8 +10,8 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { ColorPicker } from '@kdcloudjs/kdesign'
 
-function Demo() {
-  const onChange = (inputValue) => {
+const Demo: React.FC = () => {
+  const onChange = (inputValue: string) => {
     console.log('color', inputValue)
   }
   return <ColorPicker onChange={onChange} defaultOpen={true} />

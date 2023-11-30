@@ -9,8 +9,9 @@ title: 单向模式
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { Transfer } from '@kdcloudjs/kdesign'
+import type { TransferItem } from '@kdcloudjs/kdesign'
 
-function Demo() {
+const Demo: React.FC = () => {
   const mockData = []
   for (let i = 1; i < 20; i++) {
     mockData.push({
@@ -22,8 +23,8 @@ function Demo() {
   }
   const oriTargetKeys = mockData.filter((item) => +item.key % 3 >= 1).map((item) => item.key)
 
-  const [targetKeys, setTargetKeys] = React.useState(oriTargetKeys)
-  const [selectedKeys, setSelectedKeys] = React.useState([])
+  const [targetKeys, setTargetKeys] = React.useState<Array<TransferItem>>(oriTargetKeys)
+  const [selectedKeys, setSelectedKeys] = React.useState<Array<TransferItem>>([])
   const handleChange = (nextTargetKeys, direction, moveKeys) => {
     setTargetKeys(nextTargetKeys)
     console.log('targetKeys: ', nextTargetKeys)

@@ -6,5 +6,6 @@ const Button = InternalButton as typeof InternalButton & {
 }
 Button.Dropdown = Dropdown
 
-export { ButtonType, IButtonProps } from './button'
+export { ButtonType, IButtonProps, ButtonSize, ButtonShape, ButtonIconPlace, ButtonHTMLType } from './button'
+export { OverlayType, ButtonGroupType } from './group'
 export default Button

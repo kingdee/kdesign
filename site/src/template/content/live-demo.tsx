@@ -3,10 +3,11 @@ import ReactDOM from 'react-dom'
 import { LiveProvider, LiveEditor, LiveError, LivePreview } from 'react-live'
 import github from 'prism-react-renderer/themes/github'
 import * as kdesign from 'kdesign'
-import { Icon, Message } from 'kdesign'
+import { Icon, Message, Tooltip } from 'kdesign'
 import lodash from 'lodash'
 import copy from 'copy-to-clipboard'
 import axios from 'axios'
+import LZString from 'lz-string'
 import { Language } from 'prism-react-renderer'
 
 import { Utils } from './article'
@@ -17,6 +18,7 @@ import * as KdesignIcons from '@kdcloudjs/kdesign-icons'
 
 export type Props = {
   code: string
+  jsCode: string
   title: string
   content: Array<any>
   id: string
@@ -91,18 +93,79 @@ const getDependencies = (code: string, codeArr: string[]) => {
     return acc
   }, [] as Dependencie[])
 }
+function compress(string: string): string {
+  return LZString.compressToBase64(string)
+    .replace(/\+/g, '-') // Convert '+' to '-'
+    .replace(/\//g, '_') // Convert '/' to '_'
+    .replace(/=+$/, '') // Remove ending '='
+}
 
 function LiveDemo(props: Props) {
-  const { code, title, content, id, utils, lang, iframe, src, style, highlightedStyle } = props
-
+  const { code, jsCode, title, content, id, utils, lang, iframe, src, style, highlightedStyle } = props
   const editorEl = useRef<HTMLDivElement>(null)
   const styleEl = useRef<HTMLDivElement>(null)
+  const codeSandboxIconRef = useRef<HTMLFormElement>(null)
   const [expand, setExpand] = useState(false)
   const [height, setHeight] = useState<any>(0)
   const [liveCode, setLiveCode] = useState<string>()
   const [editCode, setEditCode] = useState<string>()
   const [scope, setScope] = useState<Record<string, any>>()
   const iframeRef = useRef<HTMLIFrameElement>(null)
+
+  const codesandboxPackage = {
+    title: `${title} - kdesign`,
+    main: 'index.jsx',
+    dependencies: {
+      react: '^18.0.0',
+      'react-dom': '^18.0.0',
+      'react-scripts': '^5.0.0',
+      '@kdcloudjs/kdesign': 'latest',
+    },
+    devDependencies: {
+      typescript: '^5.0.2',
+    },
+    scripts: {
+      start: 'react-scripts start',
+      build: 'react-scripts build',
+      test: 'react-scripts test --env=jsdom',
+      eject: 'react-scripts eject',
+    },
+    browserslist: ['>0.2%', 'not dead'],
+  }
+  const indexCssContent = `@import '@kdcloudjs/kdesign/dist/kdesign.css';\n${style || ''}`
+  const indexJsContent = `import React from 'react';
+  import { createRoot } from 'react-dom/client';
+  import './index.css';
+  import Demo from './demo';
+  
+  createRoot(document.getElementById('container')).render(<Demo />);
+  `
+  const demoJsContent = code.replace('ReactDOM.render(<Demo />, mountNode)', `export default Demo`)
+  const html = `
+    <!DOCTYPE html>
+      <html lang="en">
+        <head>
+          <meta charset="utf-8">
+          <meta name="viewport" content="width=device-width">
+          <meta name="theme-color" content="#000000">
+        </head>
+        <body>
+          <div id="container" style="padding: 24px" />
+          <script>const mountNode = document.getElementById('container');</script>
+        </body>
+      </html>
+    `
+  const codesanboxPrefillConfig = {
+    files: {
+      'package.json': { content: codesandboxPackage },
+      'index.css': { content: indexCssContent },
+      [`index.tsx`]: { content: indexJsContent },
+      [`demo.tsx`]: { content: demoJsContent },
+      'index.html': {
+        content: html,
+      },
+    },
+  }
 
   function codeExpand() {
     setExpand(!expand)
@@ -185,11 +248,11 @@ function LiveDemo(props: Props) {
   )
 
   useEffect(() => {
-    if (code) {
-      setLiveCode(handleCode(code))
-      setEditCode(code)
+    if (jsCode) {
+      setLiveCode(handleCode(jsCode))
+      setEditCode(jsCode)
     }
-  }, [code, handleCode, lang])
+  }, [jsCode, handleCode, lang])
 
   useEffect(() => {
     if (iframe) {
@@ -253,6 +316,24 @@ function LiveDemo(props: Props) {
               ) : null}
               <LiveError style={errorCodeStyle as any} />
               <div className="code-expand">
+                <form
+                  action="https://codesandbox.io/api/v1/sandboxes/define"
+                  method="POST"
+                  target="_blank"
+                  ref={codeSandboxIconRef}
+                  onClick={() => {
+                    codeSandboxIconRef.current?.submit()
+                  }}
+                >
+                  <input type="hidden" name="parameters" value={compress(JSON.stringify(codesanboxPrefillConfig))} />
+                  <Tooltip tip="跳转到typescript代码">
+                    <span>
+                      <svg width="14" height="14" viewBox="0 0 1024 1024" fill="currentColor">
+                        <path d="M755 140.3l0.5-0.3h0.3L512 0 268.3 140h-0.3l0.8 0.4L68.6 256v512L512 1024l443.4-256V256L755 140.3z m-30 506.4v171.2L548 920.1V534.7L883.4 341v215.7l-158.4 90z m-584.4-90.6V340.8L476 534.4v385.7L300 818.5V646.7l-159.4-90.6zM511.7 280l171.1-98.3 166.3 96-336.9 194.5-337-194.6 165.7-95.7L511.7 280z" />
+                      </svg>
+                    </span>
+                  </Tooltip>
+                </form>
                 <Icon type="code" onClick={() => codeExpand()} />
                 <Icon
                   type="copy-code"

@@ -7,9 +7,10 @@ order: 7
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { Collapse, Switch, Icon } from '@kdcloudjs/kdesign'
+import type { IconPositionType } from '@kdcloudjs/kdesign'
 
-function Demo() {
-  const [expandIconPosition, setExpandIconPosition] = React.useState('left')
+const Demo: React.FC = () => {
+  const [expandIconPosition, setExpandIconPosition] = React.useState<IconPositionType>('left')
   const collapseRef = React.useRef()
   const handleOnChange = React.useCallback((value) => {
     const expandIconPosition = value ? 'right' : 'left'

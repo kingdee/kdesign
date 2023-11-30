@@ -10,7 +10,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { InputNumber } from '@kdcloudjs/kdesign'
 
-function Demo() {
+const Demo: React.FC = () => {
   const inputStyle = { marginBottom: '8px', marginRight: '8px', width: '230px' }
   return (
     <div  style={{ width: '500px' }}>

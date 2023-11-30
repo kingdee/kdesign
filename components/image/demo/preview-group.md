@@ -11,7 +11,7 @@ import ReactDOM from 'react-dom'
 import { Image } from '@kdcloudjs/kdesign'
 
 const { PreviewGroup } = Image
-function Demo() {
+const Demo: React.FC = () => {
   return (
     <PreviewGroup>
       <Image width={142} src="https://kui.kingdee.com/assets/image/img01.jpg" />

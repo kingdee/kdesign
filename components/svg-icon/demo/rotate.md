@@ -8,7 +8,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { Heart, View } from '@kdcloudjs/kdesign-icons'
 
-function Demo() {
+const Demo: React.FC = () => {
   return (
     <div style={{ fontSize: '24px' }}>
       <Heart rotate={90} />

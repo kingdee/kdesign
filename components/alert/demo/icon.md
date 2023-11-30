@@ -10,7 +10,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { Alert } from '@kdcloudjs/kdesign'
 
-function Demo() {
+const Demo: React.FC = () => {
   function zip(...arrs) {
     return arrs.reduce((prevArr, nextArr, index) => {
       const ret = []

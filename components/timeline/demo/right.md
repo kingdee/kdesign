@@ -10,7 +10,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { Timeline } from '@kdcloudjs/kdesign'
 
-function Demo() {
+const Demo: React.FC = () => {
   return (
     <Timeline mode="right">
       <Timeline.Item>创建服务站点 2021-11-01</Timeline.Item>

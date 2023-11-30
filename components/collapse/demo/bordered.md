@@ -7,7 +7,7 @@ order: 2
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { Collapse } from '@kdcloudjs/kdesign'
-function Demo() {
+const Demo: React.FC = () => {
   const collapseRef = React.useRef()
   React.useEffect(() => {
     if (collapseRef.current)

@@ -13,8 +13,9 @@ title: 完全控制的上传列表
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { Upload, Button, Icon } from '@kdcloudjs/kdesign'
+import type { UploadFile } from '@kdcloudjs/kdesign'
 
-function Demo() {
+const Demo: React.FC = () => {
   const initFiles = [
     {
       uid: '-1',
@@ -24,7 +25,7 @@ function Demo() {
       url: 'http://www.baidu.com/xxx.png',
     },
   ]
-  const [fileList, setFileList] = React.useState(initFiles)
+  const [fileList, setFileList] = React.useState<Array<UploadFile>>(initFiles)
   const handleChange = (info) => {
     let fileList = [...info.fileList]
 

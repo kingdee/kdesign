@@ -10,7 +10,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { DatePicker, RangePicker } from '@kdcloudjs/kdesign'
 
-function Demo() {
+const Demo: React.FC = () => {
   const demoStyle = { margin: '10px 0' }
   return (
     <div  style={{ width: '150px' }}>

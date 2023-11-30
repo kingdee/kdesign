@@ -81,7 +81,7 @@ const data = [
   },
 ]
 
-function Demo() {
+const Demo: React.FC = () => {
   const style = {
     width: '100%',
   }

@@ -8,7 +8,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { Tag, Icon } from '@kdcloudjs/kdesign'
 
-function Demo() {
+const Demo: React.FC = () => {
   const demoTagStyle = { marginRight: '8px' }
   const demoIconStyle = { marginLeft: '8px' }
 

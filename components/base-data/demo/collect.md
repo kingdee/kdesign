@@ -8,7 +8,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { BaseData } from '@kdcloudjs/kdesign'
 
-function Demo() {
+const Demo: React.FC = () => {
   const [collectArr, setCollectArr] = React.useState([])
   const [historyList, setHistoryList] = React.useState([])
   const [value, setValue] = React.useState([])

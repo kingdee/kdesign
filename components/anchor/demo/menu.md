@@ -10,7 +10,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { Anchor } from '@kdcloudjs/kdesign'
 
-function Demo() {
+const Demo: React.FC = () => {
   return (
     <Anchor getCurrentAnchor={() => '#使用场景'} affix={false} offsetTop={70} style={{ width: 460 }} type="menu">
       <Anchor.Link href="#使用场景" title="使用场景" />

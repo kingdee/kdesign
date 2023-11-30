@@ -10,12 +10,12 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { Transfer, Button } from '@kdcloudjs/kdesign'
 
-function Demo() {
+const Demo: React.FC = () => {
   const mockData = []
   const oriTargetKeys = []
 
   const [targetKeys, setTargetKeys] = React.useState(oriTargetKeys)
-  const [selectedKeys, setSelectedKeys] = React.useState([])
+  const [selectedKeys, setSelectedKeys] = React.useState<Array<TransferItem>>([])
   const handleChange = (nextTargetKeys) => {
     setTargetKeys(nextTargetKeys)
   }

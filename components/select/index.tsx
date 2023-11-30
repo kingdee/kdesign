@@ -9,5 +9,5 @@ interface CompoundedComponent
 
 const Select = InternalSelect as CompoundedComponent
 Select.Option = Option
-
+export * from './interface'
 export default Select

@@ -10,7 +10,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { Clipboard, Message, Input, TextArea, ColorPicker, DatePicker } from '@kdcloudjs/kdesign'
 
-function Demo() {
+const Demo: React.FC = () => {
   const demoItemStyle = { display: 'flex', justifyContent: 'space-between', marginBottom: '5px' }
   const demoTextStyle = { lineHeight: '28px' }
 

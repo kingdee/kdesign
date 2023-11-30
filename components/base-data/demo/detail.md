@@ -8,7 +8,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { BaseData, Modal, Input, Icon, Tree, Table, SplitPanel, Button, Pagination, Search, Spin, Checkbox, Tabs } from '@kdcloudjs/kdesign'
 
-function Demo() {
+const Demo: React.FC = () => {
   const modalRef = React.useRef()
 
   const [value, setValue] = React.useState([{ value: '1', label: '周韵冲', number: 54406, cure: 4793, code: 'rybm2021088001', department: '研发中心产品设计' },])

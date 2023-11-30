@@ -10,7 +10,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { Space, Button } from '@kdcloudjs/kdesign'
 
-function Demo() {
+const Demo: React.FC = () => {
   return (
     <Space size={[8, 16]} wrap style={{ width: '400px' }}>
       {new Array(20).fill(null).map((_, index) => (

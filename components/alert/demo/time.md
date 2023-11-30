@@ -10,8 +10,8 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { Alert, InputNumber, Button } from '@kdcloudjs/kdesign'
 
-function Demo() {
-  const [delayTime, setDelayTime] = React.useState(0)
+const Demo: React.FC = () => {
+  const [delayTime, setDelayTime] = React.useState<number>(0)
   const ref = React.useRef(null)
   const map = {
     success: '成功提示',

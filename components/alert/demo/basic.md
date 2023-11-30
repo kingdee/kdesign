@@ -10,7 +10,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { Alert } from '@kdcloudjs/kdesign'
 
-function Demo() {
+const Demo:React.FC = () => {
   const map = {
     success: '成功提示',
     warning: '警告提示',

@@ -21,7 +21,7 @@ const commonList = [
   { id: 10, name: '西安', province: '陕西省', country: '中国' },
 ]
 
-function Demo() {
+const Demo: React.FC = () => {
   return (
     <div>
       <CityPicker

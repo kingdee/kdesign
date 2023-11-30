@@ -7,7 +7,7 @@ order: 0
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { Menu } from '@kdcloudjs/kdesign'
-function Demo() {
+const Demo: React.FC = () => {
   const handleClickItem = (obj) => {
     console.log(obj)
   }

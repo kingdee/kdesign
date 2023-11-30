@@ -10,18 +10,18 @@ title: 侧边布局
 import React, { useState } from 'react'
 import { Layout, Menu, Icon } from '@kdcloudjs/kdesign'
 
-function Demo() {
+const Demo: React.FC = () => {
   const { Header, Content, Footer, Sider } = Layout
   const { SubMenu } = Menu
 
-  const [collapsed, setCollapsed] = useState(true)
+  const [collapsed, setCollapsed] = useState<boolean>(true)
 
-  const onCollapse = (collapsed) => {
+  const onCollapse = (collapsed: boolean) => {
     console.log(collapsed)
     setCollapsed(collapsed)
   }
 
-  const [mcollapsed, setMCollapsed] = useState(true)
+  const [mcollapsed, setMCollapsed] = useState<boolean>(true)
 
   const handleMouseEnter = () => {
     console.log('handleMouseEnter')

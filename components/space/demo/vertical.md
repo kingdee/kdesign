@@ -10,7 +10,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { Space, Card } from '@kdcloudjs/kdesign'
 
-function Demo() {
+const Demo: React.FC = () => {
   return (
     <Space direction="vertical" style={{ width: '400px' }}>
       <Card title="Card" style={{ width: 300 }}>

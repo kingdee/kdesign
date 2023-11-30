@@ -10,12 +10,12 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { ColorPicker, Icon } from '@kdcloudjs/kdesign'
 
-function Demo() {
+const Demo: React.FC = () => {
   const homeIcon = (rgbColor) => {
     return <Icon type="notice" style={{ color: rgbColor, fontSize: '20px', marginTop: '-4px' }} />
   }
 
-  const onChange = (inputValue) => {
+  const onChange = (inputValue: string) => {
     console.log('color', inputValue)
   }
 

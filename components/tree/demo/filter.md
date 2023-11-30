@@ -7,12 +7,13 @@ title: 节点过滤
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { Tree, Input } from '@kdcloudjs/kdesign'
+import type { TreeNodeData } from '@kdcloudjs/kdesign'
 
-function Demo() {
-  const [expandedKeys, setExpandedKeys] = React.useState([])
-  const [selectedKeys, setSelectedKeys] = React.useState(['1-1'])
-  const [value, setValue] = React.useState('')
-  const data = [
+const Demo: React.FC = () => {
+  const [expandedKeys, setExpandedKeys] = React.useState<Array<string>>([])
+  const [selectedKeys, setSelectedKeys] = React.useState<Array<string>>(['1-1'])
+  const [value, setValue] = React.useState<string>('')
+  const data: TreeNodeData[] = [
     {
       key: '0',
       title: '0',

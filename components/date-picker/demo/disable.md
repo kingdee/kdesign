@@ -10,7 +10,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { DatePicker } from '@kdcloudjs/kdesign'
 
-function Demo() {
+const Demo: React.FC = () => {
   const demoStyle = { margin: '10px 0' }
   const disabledDate = (date) => {
     return date && date < new Date('2020-12-28')

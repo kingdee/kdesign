@@ -8,9 +8,9 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { Tabs } from '@kdcloudjs/kdesign'
 
-function Demo() {
+const Demo: React.FC = () => {
   const carouselRef = React.useRef()
-  const [curKey, setCurKey] = React.useState(1)
+  const [curKey, setCurKey] = React.useState<number>(1)
   const data = [
     { id: 1, name: 'TabPane1', content: 'TabPane1 Content' },
     { id: 2, name: 'TabPane2', content: 'TabPane2 Content' },

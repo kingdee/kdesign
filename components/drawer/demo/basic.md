@@ -9,10 +9,11 @@ order: 0
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { Drawer, Button, Radio } from '@kdcloudjs/kdesign'
+import type { PlacementType } from '@kdcloudjs/kdesign'
 
-function Demo() {
-  const [type, setType] = React.useState('right')
-  const [visible, setVisible] = React.useState(false)
+const Demo: React.FC = () => {
+  const [type, setType] = React.useState<PlacementType>('right')
+  const [visible, setVisible] = React.useState<boolean>(false)
   const onChange = React.useCallback((e) => {
     setType(e.target.value)
   }, [])

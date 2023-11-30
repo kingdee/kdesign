@@ -9,7 +9,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { Table } from '@kdcloudjs/kdesign'
 
-function Demo() {
+const Demo: React.FC = () => {
   const longText = '色彩是设计的表现手法之一。在商业设计中，色彩是十分重要的视觉元素，它决定了视觉效果，能激发情感，影响消费者的心情和行为。色彩作为一种视觉语言能快速抓住人们的眼球，并映入人们的脑海。色彩在视觉传达中有着不可忽视的作用。除此之外，色彩还传达着一定的情感。不同的色彩对人的心理有不同的影响，因此为了达到预期的效果，应该有策略地去选择和使用每一种色彩。'
 
   const dataSource = [

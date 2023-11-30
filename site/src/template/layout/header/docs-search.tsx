@@ -3,6 +3,8 @@ import algoliasearch, { SearchIndex } from 'algoliasearch'
 import debounce from 'lodash/debounce'
 import { Input, Icon } from 'kdesign'
 
+const isIE = (window as any)?.ActiveXObject || 'ActiveXObject' in window
+
 function DocsSearch({
   appId,
   indexName,
@@ -90,6 +92,7 @@ function DocsSearch({
           value={searchVal}
           onChange={onChange}
           placeholder="输入搜索内容"
+          className={isIE && 'ie-input'}
         />
       </div>
       {searchVal && (!fetch || resList.length) > 0 ? (

@@ -23,6 +23,7 @@ export type Utils = {
 
 export type Demo = {
   code: string
+  jsCode: string
   content: Array<any>
   meta: DemoMeta
   lang: Language
@@ -95,6 +96,7 @@ function renderDemo(demos: Record<string, Demo>, utils: Utils) {
           meta: { title, filename, iframe },
           content,
           code: es6Code,
+          jsCode,
           lang,
           src,
           style: styleCode,
@@ -110,6 +112,7 @@ function renderDemo(demos: Record<string, Demo>, utils: Utils) {
           <div key={filename} className="demo">
             <LiveDemo
               code={code}
+              jsCode={jsCode}
               content={content}
               id={id}
               utils={utils}

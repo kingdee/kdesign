@@ -9,33 +9,25 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { Checkbox, Input,Button } from '@kdcloudjs/kdesign'
 
-class Demo extends React.Component {
-  constructor() {
-    super()
-    this.state = { value: [] }
-    this.onChange = this.onChange.bind(this)
-    this.onClick = this.onClick.bind(this)
-  }
+const Demo: React.FC = () => {
 
-  onChange(value, e) {
+  const [value, setValue] = React.useState([])
+
+  const onChange = (value, e) => {
     console.log('checkboxgroup:', value, e)
   }
 
-  onClick() {
+  const onClick = () => {
      console.log('checkboxgroup checked:', [1, 2])
-     this.setState({
-      value: [1,2],
-    })
+     setValue([1,2])
   }
 
-  render() {
-    const { value } = this.state
-    return (
-      <div>
-        <Button type="primary" onClick={this.onClick}>点击选择Option A&B</Button>
+  return (
+    <div>
+        <Button type="primary" onClick={onClick}>点击选择Option A&B</Button>
         <br />
         <br />
-        <Checkbox.Group onChange={this.onChange} value={value} checkboxType={'default'}>
+        <Checkbox.Group onChange={onChange} value={value} checkboxType={'default'}>
           <div>
           <Checkbox value={1}>
             Option A
@@ -53,8 +45,7 @@ class Demo extends React.Component {
           </div>
         </Checkbox.Group>
       </div>
-    )
-  }
+  )
 }
 
 ReactDOM.render(<Demo />, mountNode)

@@ -9,9 +9,10 @@ title: 异步加载
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { Tree } from '@kdcloudjs/kdesign'
+import type { TreeNodeData } from '@kdcloudjs/kdesign'
 
-function Demo() {
-  const data = [
+const Demo: React.FC = () => {
+  const data: TreeNodeData[] = [
     {
       key: '0',
       title: '0',
@@ -28,7 +29,7 @@ function Demo() {
   ]
 
   const [treeData, setTreeData] = React.useState(data)
-  const [expandedKeys, setExpandedKeys] = React.useState([])
+  const [expandedKeys, setExpandedKeys] = React.useState<Array<string>>([])
 
   const onExpand = (expandedKeys) => {
     console.log('onExpand', expandedKeys)

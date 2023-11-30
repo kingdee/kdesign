@@ -10,8 +10,8 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { Steps, Step } from '@kdcloudjs/kdesign'
 
-function Demo() {
-  const [current, setCurrent] = React.useState(0)
+const Demo: React.FC = () => {
+  const [current, setCurrent] = React.useState<number>(0)
   return (
     <>
       <Steps style={{ width: 800 }} current={current} onChange={setCurrent}>

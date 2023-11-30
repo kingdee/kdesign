@@ -12,7 +12,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { Upload, Icon } from '@kdcloudjs/kdesign'
 
-function Demo() {
+const Demo: React.FC = () => {
   function getBase64(img, callback) {
     const reader = new FileReader()
     reader.addEventListener('load', () => callback(reader.result))
@@ -31,8 +31,8 @@ function Demo() {
     return isJpgOrPng && isLt2M
   }
 
-  const [loading, setLoading] = React.useState(false)
-  const [imageUrl, setImageUrl] = React.useState('')
+  const [loading, setLoading] = React.useState<boolean>(false)
+  const [imageUrl, setImageUrl] = React.useState<string>('')
 
   const handleChange = (info) => {
     if (info.file.status === 'uploading') {

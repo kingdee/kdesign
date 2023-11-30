@@ -9,10 +9,11 @@ order: 2
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { Button, Radio } from '@kdcloudjs/kdesign'
+import type { ButtonSize } from '@kdcloudjs/kdesign'
 
-function Demo() {
+const Demo: React.FC = () => {
   const demoButtonStyle = { margin: '0px 8px 8px 0' }
-  const [size, setSize] = React.useState('middle')
+  const [size, setSize] = React.useState<ButtonSize>('middle')
   const overlay1 = [
     { value: '1', label: '发布' },
     { value: '2', label: '生成凭证' },

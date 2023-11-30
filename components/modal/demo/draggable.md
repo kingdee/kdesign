@@ -7,7 +7,7 @@ order: 4
 
 ```jsx
 import { Modal } from '@kdcloudjs/kdesign'
-;() => {
+const Demo: React.FC = () => {
   const bodyStyle = {
     display: 'flex',
     justifyContent: 'center',
@@ -55,4 +55,6 @@ import { Modal } from '@kdcloudjs/kdesign'
     </>
   )
 }
+
+ReactDOM.render(<Demo />, mountNode)
 ```

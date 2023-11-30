@@ -13,7 +13,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { Table, Button, Input } from '@kdcloudjs/kdesign'
 
-function Demo() {
+const Demo: React.FC = () => {
   const [ filters, setFilters ] = React.useState([{code:'order',filter:'AP-202009-00001'}])
 
   const dataSource = [

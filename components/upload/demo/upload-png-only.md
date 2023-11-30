@@ -9,10 +9,12 @@ title: 只上传 png 图片
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { Upload, Button, Icon } from '@kdcloudjs/kdesign'
+import type { UploadFile } from '@kdcloudjs/kdesign'
+import type { UploadProps } from '@kdcloudjs/kdesign'
 
-function Demo() {
-  const [fileList, updateFileList] = React.useState([])
-  const props = {
+const Demo: React.FC = () => {
+  const [fileList, updateFileList] = React.useState<Array<UploadFile>>([])
+  const props: UploadProps = {
     fileList,
     action: 'https://www.mocky.io/v2/5cc8019d300000980a055e76',
     beforeUpload: (file) => {

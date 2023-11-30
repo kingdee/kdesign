@@ -9,8 +9,9 @@ title: 文件上传
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { Upload, Button, Icon, Space } from '@kdcloudjs/kdesign'
+import type { UploadProps } from '@kdcloudjs/kdesign'
 
-function Demo() {
+const Demo: React.FC = () => {
   const action = () => {
     return Promise.resolve('https://www.mocky.io/v2/5cc8019d300000980a055e76')
   }
@@ -22,11 +23,10 @@ function Demo() {
       <Space>
         <span>{file.name}</span>
         <span style={{color:'red'}}>{file.status === 'error' && '上传失败'}</span>
-        
       </Space>
     )
   }
-  const props = {
+  const props: UploadProps = {
     name: 'file',
     action,
     method: 'put', //默认为post

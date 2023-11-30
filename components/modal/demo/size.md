@@ -11,10 +11,10 @@ import ReactDOM from 'react-dom'
 import _ from 'lodash'
 import { Input, Modal } from '@kdcloudjs/kdesign'
 
-function Demo() {
-  const [width, setWidth] = React.useState(300)
-  const [height, setHeight] = React.useState(500)
-  const [visible, setVisible] = React.useState(true)
+const Demo: React.FC = () => {
+  const [width, setWidth] = React.useState<number>(300)
+  const [height, setHeight] = React.useState<number>(500)
+  const [visible, setVisible] = React.useState<boolean>(true)
   const bodyStyle = {
     display: 'flex',
     justifyContent: 'center',

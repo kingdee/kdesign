@@ -4,9 +4,10 @@ order: 0
 ---
 
 ```jsx
+import React from 'react'
 import { Avatar } from '@kdcloudjs/kdesign'
 
-function Demo() {
+const Demo: React.FC = () => {
   return <Avatar src="https://kui.kingdee.com/assets/image/avatar_m.png" />
 }
 

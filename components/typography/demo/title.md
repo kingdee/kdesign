@@ -8,9 +8,10 @@ order: 1
 ```jsx
 import React from 'react'
 import ReactDOM from 'react-dom'
+import { Typography } from '@kdcloudjs/kdesign'
 
-function Demo() {
-  import { Typography } from '@kdcloudjs/kdesign'
+const Demo: React.FC = () => {
+
   const { Title } = Typography
   return (
     <>

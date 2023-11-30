@@ -10,7 +10,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { Rate, Icon } from '@kdcloudjs/kdesign'
 
-function Demo() {
+const Demo: React.FC = () => {
   const _icon = ['A', 'B', 'C', 'D', 'E']
   return (
     <div  style={{ width: '150px' }}>

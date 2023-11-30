@@ -10,7 +10,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { Empty } from '@kdcloudjs/kdesign'
 
-function Demo() {
+const Demo: React.FC = () => {
   return (
     <div style={{ display: 'flex' }}>
       <Empty image="http://ikd.kingdee.com/ikd2/images/common/empty-content.png" />

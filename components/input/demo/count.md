@@ -10,8 +10,8 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { TextArea } from '@kdcloudjs/kdesign'
 
-function Demo() {
-  const [value, setValue] = React.useState('')
+const Demo: React.FC = () => {
+  const [value, setValue] = React.useState<string>('')
   return (
     <div style={{ width: '300px' }}>
       <TextArea count allowClear borderType="bordered" maxLength={20}/>

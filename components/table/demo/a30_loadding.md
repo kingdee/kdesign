@@ -11,7 +11,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { Table, Button } from '@kdcloudjs/kdesign'
 
-function Demo() {
+const Demo: React.FC = () => {
     const [ isLoading, setIsLoadding ] = React.useState(false)
     const [dataSource,setDataSource] = React.useState([])
 

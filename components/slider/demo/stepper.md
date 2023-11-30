@@ -11,8 +11,8 @@ import ReactDOM from 'react-dom'
 import { Slider, Stepper } from '@kdcloudjs/kdesign'
 
 
-function Demo() {
-  const [val, setVal] = React.useState(5)
+const Demo: React.FC = () => {
+  const [val, setVal] = React.useState<number>(5)
   const handleChange = (e) => {
     setVal(+e.target.value)
   }
