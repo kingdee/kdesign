@@ -1,4 +1,5 @@
 const path = require('path')
+const TransformDefaultParamsPlugin = require('./transformDefaultParamsPlugin')
 // 严格区分commonJS文件和ES6文件
 // https://babel.docschina.org/docs/en/options#sourcetype
 // https://github.com/webpack/webpack/issues/4039#issuecomment-419284940
@@ -79,6 +80,7 @@ module.exports = {
         type: 'javascript/auto',
       },
     ]
+    config.plugins = [...config.plugins, new TransformDefaultParamsPlugin()]
     config.devtool = process.env.NODE_ENV !== 'development' ? 'none' : 'cheap-module-eval-source-map'
     return config
   },
