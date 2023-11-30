@@ -9,12 +9,15 @@ order: 5
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { Drawer, Button, Input } from '@kdcloudjs/kdesign'
+import type { PlacementType } from '@kdcloudjs/kdesign'
 
-function Demo() {
-  const [visible, setVisible] = React.useState(false)
-  const [placement, setPlacement] = React.useState('right')
-  const [width, setWidth] = React.useState(300)
-  const [height, setHeight] = React.useState(300)
+
+const Demo: React.FC = () => {
+  
+  const [visible, setVisible] = React.useState<boolean>(false)
+  const [placement, setPlacement] = React.useState<PlacementType>('right')
+  const [width, setWidth] = React.useState<number>(300)
+  const [height, setHeight] = React.useState<number>(300)
   return (
     <>
       <Input

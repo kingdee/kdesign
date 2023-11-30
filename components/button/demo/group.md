@@ -12,17 +12,18 @@ order: 7
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { Button } from '@kdcloudjs/kdesign'
+import type { OverlayType } from '@kdcloudjs/kdesign'
 
-function Demo() {
+const Demo: React.FC = () => {
   const demoButtonStyle = { margin: '0px 8px 8px 0' }
 
-  const overlay1 = [
+  const overlay1: OverlayType = [
     { value: '1', label: '发布' },
     { value: '2', label: '生成凭证' },
     { value: '3', label: '打印' },
   ]
 
-  const overlay2 = [
+  const overlay2: OverlayType = [
     { value: '1', label: '暂存' },
     { value: '2', label: '撤销' },
     { value: '3', label: '废弃' },

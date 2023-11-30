@@ -8,7 +8,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { Switch } from '@kdcloudjs/kdesign'
 
-function Demo() {
+const Demo: React.FC = () => {
   return (
     <>
       <br />

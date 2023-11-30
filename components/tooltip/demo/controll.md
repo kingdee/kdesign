@@ -10,8 +10,8 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { Tooltip, Switch, Input } from '@kdcloudjs/kdesign'
 
-function Demo() {
-  const [visible, setVisible] = React.useState(false)
+const Demo: React.FC = () => {
+  const [visible, setVisible] = React.useState<boolean>(false)
   return (
   <>
     <Tooltip tip="一行最多显示20个字符，超过的字符可折行显示，建议最多不要超过40个字符" visible={visible} trigger="click">

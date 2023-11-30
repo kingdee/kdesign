@@ -7,6 +7,7 @@ order: 1
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { CityPicker } from '@kdcloudjs/kdesign'
+import type { City, CityList } from '@kdcloudjs/kdesign'
 
 const domestic = [
   { id: 1, name: 'New York', province: 'New York', country: '美国' },
@@ -21,9 +22,9 @@ const domestic = [
   { id: 10, name: '开罗', province: '开罗', country: '埃及' },
 ]
 
-function Demo() {
-  const [domesticList, setDomesticList] = React.useState(domestic)
-  const [loading, setLoading] = React.useState(false)
+const Demo: React.FC = () => {
+  const [domesticList, setDomesticList] = React.useState<CityList>(domestic)
+  const [loading, setLoading] = React.useState<boolean>(false)
 
   const findCurList = (data, str) => {
     const regex = new RegExp(str, 'i')

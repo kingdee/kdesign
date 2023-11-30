@@ -10,9 +10,9 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { InputNumber, Input, Button, Alert } from '@kdcloudjs/kdesign'
 
-function Demo() {
-  const [delayTime, setDelayTime] = React.useState(0)
-  const [banner, setBanner] = React.useState(false)
+const Demo: React.FC = () => {
+  const [delayTime, setDelayTime] = React.useState<number>(0)
+  const [banner, setBanner] = React.useState<boolean>(false)
   const ref = React.createRef()
   const inputRef = React.createRef()
   const map = {
@@ -24,7 +24,7 @@ function Demo() {
   const getMessage = (type) => {
     return `这是${map[type]}类型的反馈浮层`
   }
-  const [msg, setMsg] = React.useState(getMessage('success'))
+  const [msg, setMsg] = React.useState<string>(getMessage('success'))
   const demoButtonStyle = { margin: '0px 8px 8px 0' }
   const inputStyle = { marginBottom: 8, marginRight: 8, width: 230 }
   const handleTimeClick = () => {

@@ -10,9 +10,9 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { Menu } from '@kdcloudjs/kdesign'
 
-function Demo() {
-  const [openKeys, setOpenKeys] = React.useState(['sub1']);
-  const [selectKey, setSelectKey] = React.useState('2');
+const Demo: React.FC = () => {
+  const [openKeys, setOpenKeys] = React.useState<Array<string>>(['sub1']);
+  const [selectKey, setSelectKey] = React.useState<string>('2');
 
   const handleClickItem = (obj) => {
     console.log(obj)

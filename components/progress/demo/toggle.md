@@ -10,61 +10,51 @@ import { Progress, Button } from '@kdcloudjs/kdesign'
 
 const demoStyle = { marginBottom: '8px' }
 
-class Demo extends React.Component {
-  constructor() {
-    super()
-    this.state = { percent: 30 }
-    this.plus = this.plus.bind(this)
-    this.minus = this.minus.bind(this)
-    this.pendding = this.pendding.bind(this)
+const Demo: React.FC = () => {
+  const [percent, setPercent] = React.useState<number>(30)
+  
+  const plus = () => {
+    if (percent === 100) return
+    setPercent(percent + 10)
   }
-
-  plus() {
-    if (this.state.percent === 100) return
-    this.setState({
-      percent: this.state.percent + 10,
-    })
+  
+  const minus = () => {
+    if (percent === 0) return
+    setPercent(percent - 10)
   }
-
-  minus() {
-    if (this.state.percent === 0) return
-    this.setState({
-      percent: this.state.percent - 10,
-    })
-  }
-
-  pendding(p) {
+  const pendding = (p: number) => {
     console.log('current percent =>', p)
   }
-
-  render() {
-    const loadingDom = (
+  const loadingDom = (
       <>
         <span style={{ float: 'left', textAlign: 'left' }}>正在加载中...</span>
-        <span style={{ float: 'right', textAlign: 'right' }}>{this.state.percent}%</span>
+        <span style={{ float: 'right', textAlign: 'right' }}>{percent}%</span>
       </>
-    )
-    return (
-      <div style={{ width: '200px', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+  )
+
+  return (
+    <div style={{ width: '200px', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
         <Progress
           style={demoStyle}
-          onProcess={this.pendding}
-          percent={this.state.percent}
+          onProcess={pendding}
+          percent={percent}
           textMap={[loadingDom]}
           infoPosition="bottom"
         />
-        <Progress style={demoStyle} type="circle" percent={this.state.percent} />
+        <Progress style={demoStyle} type="circle" percent={percent} />
         <br />
-        <Button style={demoStyle} type="primary" onClick={this.plus}>
+        <Button style={demoStyle} type="primary" onClick={plus}>
           plus
         </Button>
         <br />
-        <Button type="primary" onClick={this.minus}>
+        <Button type="primary" onClick={minus}>
           minus
         </Button>
       </div>
-    )
-  }
+  )
 }
+
+
+
 ReactDOM.render(<Demo />, mountNode)
 ```

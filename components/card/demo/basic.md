@@ -10,7 +10,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { Card } from '@kdcloudjs/kdesign'
 
-function Demo() {
+const Demo: React.FC = () => {
   return (
     <>
       <Card title="标题文本" style={{ width: 300 }} >

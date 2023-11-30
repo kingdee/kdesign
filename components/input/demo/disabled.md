@@ -8,7 +8,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { Input } from '@kdcloudjs/kdesign'
 
-function Demo() {
+const Demo: React.FC = () => {
   const inputStyle = { marginBottom: 8, marginRight: 8, width: 230 }
   return (
     <div  style={{ width: '300px' }}>

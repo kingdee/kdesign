@@ -8,7 +8,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { Clipboard, Message } from '@kdcloudjs/kdesign'
 
-function Demo() {
+const Demo: React.FC = () => {
   const demoItemStyle = { display: 'flex', justifyContent: 'space-between' }
   const demoTextStyle = { lineHeight: '28px' }
 

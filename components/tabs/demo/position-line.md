@@ -8,51 +8,40 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { Tabs, Button } from '@kdcloudjs/kdesign'
 
-class Demo extends React.Component {
-  constructor() {
-    super()
-    this.state = {
-      position: 'top',
-    }
-    this.setPosition = this.setPosition.bind(this)
-  }
+const Demo: React.FC = () => {
+  const [position, SetPosition] = React.useState('top')
 
-  setPosition(position) {
-    this.setState({
-      position,
-    })
+  const setPosition = (position) => {
+    setPosition(position)
   }
-
-  render() {
-    const style = { marginRight: '10px' }
-    const boxStyle =
-      this.state.position === 'left' || this.state.position === 'right'
+  const style = { marginRight: '10px' }
+  const boxStyle =
+      position === 'left' || position === 'right'
         ? { width: '120px', height: '300px' }
         : { width: '500px' }
-    return (
-      <>
+  return (
+    <>
         <div style={{ marginBottom: '20px', width: '350px'  }}>
-          <Button type="primary" style={style} onClick={() => this.setPosition('top')}>
+          <Button type="primary" style={style} onClick={() => setPosition('top')}>
             top
           </Button>
           <Button
             type="primary"
             onClick={() => {
-              this.setPosition('bottom')
+              setPosition('bottom')
             }}>
             bottom
           </Button>
-          <div>position = {this.state.position}</div>
+          <div>position = {position}</div>
         </div>
         <div style={boxStyle}>
-          <Tabs position={this.state.position} defaultActiveKey="TabPane1">
+          <Tabs position={position} defaultActiveKey="TabPane1">
             <Tabs.TabPane key="TabPane1" tab="TabPane1" />
             <Tabs.TabPane key="TabPane2" tab="TabPane2" />
           </Tabs>
         </div>
       </>
-    )
-  }
+  )
 }
 
 ReactDOM.render(<Demo />, mountNode)

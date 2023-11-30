@@ -10,8 +10,8 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { Timeline, Radio } from '@kdcloudjs/kdesign'
 
-function Demo() {
-  const [mode, setMode] = React.useState('left')
+const Demo: React.FC = () => {
+  const [mode, setMode] = React.useState<string>('left')
 
   const onChange = (e) => {
     setMode(e.target.value)

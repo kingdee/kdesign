@@ -10,7 +10,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { Row, Col } from '@kdcloudjs/kdesign'
 
-function Demo() {
+const Demo: React.FC = () => {
   const hStyle = { margin: '32px 0 18px' }
   const colStyle = { background: 'rgba(85, 130, 243, 1)', padding: '8px 0', textAlign: 'center', color: '#fff' }
   return (

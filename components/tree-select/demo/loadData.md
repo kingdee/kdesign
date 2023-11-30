@@ -26,13 +26,13 @@ const data = [
   },
 ]
 
-function Demo() {
+const Demo: React.FC = () => {
   const style = {
     width: '100%',
   }
 
   const [treeData, setTreeData] = React.useState(data)
-  const [expandedKeys, setExpandedKeys] = React.useState([])
+  const [expandedKeys, setExpandedKeys] = React.useState<Array<string>>([])
 
   const onExpand = (expandedKeys) => {
     setExpandedKeys(expandedKeys)

@@ -10,8 +10,8 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { Menu, Switch } from '@kdcloudjs/kdesign'
 
-function Demo() {
-  const [isDark, setIsDark] = React.useState(true)
+const Demo: React.FC = () => {
+  const [isDark, setIsDark] = React.useState<boolean>(true)
 
   const btnStyle = {
     marginBottom: '10px',

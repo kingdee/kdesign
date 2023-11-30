@@ -8,10 +8,11 @@ title: 智能搜索
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { Search } from '@kdcloudjs/kdesign'
+import type { nlpSearchResultType } from '@kdcloudjs/kdesign'
 
-function Demo() {
-  const [nlpSearchLoading, setNlpSearchLoading] = React.useState(true)
-  const [nlpSearchResult, setNlpSearchResult] = React.useState({})
+const Demo: React.FC = () => {
+  const [nlpSearchLoading, setNlpSearchLoading] = React.useState<boolean>(true)
+  const [nlpSearchResult, setNlpSearchResult] = React.useState<nlpSearchResultType>({})
   const onNlpSearch = (val) => {
     setNlpSearchLoading(true)
     setTimeout(() => {

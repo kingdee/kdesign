@@ -10,7 +10,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { Dropdown, Icon } from '@kdcloudjs/kdesign'
 
-function Demo() {
+const Demo: React.FC = () => {
   const menu = (
     <Dropdown.Menu>
       <Dropdown.Item>

@@ -8,7 +8,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import Icon from '@kdcloudjs/kdesign'
 
-function Demo() {
+const Demo: React.FC = () => {
   return (
     <>
       <Icon type="loadding" />

@@ -10,9 +10,9 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { Popconfirm, Button } from '@kdcloudjs/kdesign'
 
-function Demo() {
-  const [visible, setVisible] = React.useState(false)
-  const [confirmLoading, setConfirmLoading] = React.useState(false)
+const Demo: React.FC = () => {
+  const [visible, setVisible] = React.useState<boolean>(false)
+  const [confirmLoading, setConfirmLoading] = React.useState<boolean>(false)
 
   const showPopconfirm = () => {
     setVisible(true)

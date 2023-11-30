@@ -10,10 +10,10 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { Dropdown, Icon, Switch, Input } from '@kdcloudjs/kdesign'
 
-function Demo() {
-  const [visible, setVisible] = React.useState(false)
+const Demo: React.FC = () => {
+  const [visible, setVisible] = React.useState<boolean>(false)
 
-  const changeVisible = (flag) => {
+  const changeVisible = (flag: boolean) => {
     setVisible(flag)
   }
 

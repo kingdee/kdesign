@@ -56,7 +56,7 @@ const operations = [
   />,
 ]
 
-function Demo() {
+const Demo: React.FC = () => {
   return (
     <Image
       width={142}

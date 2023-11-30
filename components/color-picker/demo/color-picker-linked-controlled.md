@@ -10,8 +10,8 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { ColorPicker, Button } from '@kdcloudjs/kdesign'
 
-function Demo() {
-  const [color, setColor] = React.useState('#ff0000')
+const Demo: React.FC = () => {
+  const [color, setColor] = React.useState<string>('#ff0000')
   const handleClick = () => {
     setColor('blue')
   }

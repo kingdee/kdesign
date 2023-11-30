@@ -8,102 +8,71 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { Tabs, Button, Icon } from '@kdcloudjs/kdesign'
 
-class Demo extends React.Component {
-  constructor() {
-    super()
-    this.state = {
-      panes: [
+const Demo: React.FC = () => {
+  const [panes, setPanes] = React.useState([
         { name: 'TabPane1', value: '1' },
         { name: 'TabPane2', value: '2' },
         { name: 'TabPane3', value: '3' },
         { name: 'TabPane4', value: '4' },
-      ],
-      activeKey: 1,
-      newTabIndex: 0,
-    }
-    this.add = this.add.bind(this)
-    this.remove = this.remove.bind(this)
-    this.backHome = this.backHome.bind(this)
-    this.setActive = this.setActive.bind(this)
-    this.closeTrigger = this.closeTrigger.bind(this)
-    this.closeOther = this.closeOther.bind(this)
+      ])
+  const [activeKey, setActiveKey] = React.useState<number>(1)
+  const [newTabIndex, setNewTabIndex] = React.useState<number>(0)
+  
+  const backHome = () => {
+    setActiveKey((panes[0] && panes[0].value) || 0)
   }
-
-  backHome() {
-    this.setState({
-      activeKey: (this.state.panes[0] && this.state.panes[0].value) || 0,
-    })
-  }
-
-  add() {
-    const { panes, newTabIndex } = this.state
+  const add = () => {
     const activeKey = `newTab${newTabIndex + 1}`
     const newPanes = [...panes]
     newPanes.push({
       name: `new tab${newTabIndex}`,
       value: activeKey,
     })
-    this.setState({
-      panes: newPanes,
-      activeKey,
-      newTabIndex: newTabIndex + 1,
-    })
+    setPanes(newPanes)
+    setActiveKey(activeKey)
+    setNewTabIndex(newTabIndex + 1)
   }
-
-  remove(target) {
-    const newPanes = this.state.panes.filter((pane) => {
+  const remove = (target) => {
+    const newPanes = panes.filter((pane) => {
       return String(pane.value) !== String(target)
     })
-    this.setState({
-      panes: newPanes,
-      activeKey: (newPanes[0] && newPanes[0].value) || 0,
-    })
+    setPanes(newPanes)
+    setActiveKey((newPanes[0] && newPanes[0].value) || 0)
   }
-
-  setActive(key) {
-    this.setState({
-      activeKey: key,
-    })
+  const setActive = (key) => {
+    setActiveKey(key)
   }
-
-  closeOther(key) {
-    const newPane = this.state.panes.find((pane) => {
+  const closeOther = (key) => {
+    const newPane = panes.find((pane) => {
       return String(pane.value) === String(key)
     })
-    this.setState({
-      panes: [newPane],
-      activeKey: (newPane && newPane.value) || 0,
-    })
+    setPanes([newPane])
+    setActiveKey((newPane && newPane.value) || 0)
   }
-
-  closeTrigger(key) {
+  const closeTrigger = (key) => {
     console.log('click key ==>', key)
-    const newPanes = this.state.panes.filter((pane) => {
+    const newPanes = panes.filter((pane) => {
       return String(pane.value) !== String(key)
     })
-    this.setState({
-      panes: newPanes,
-      activeKey: (newPanes[0] && newPanes[0].value) || 0,
-    })
+    setPanes(newPanes)
+    setActiveKey((newPanes[0] && newPanes[0].value) || 0)
   }
-
-  render() {
-    const removeBtn = (
-      <Button type="text" onClick={this.remove}>
+  const removeBtn = (
+      <Button type="text" onClick={remove}>
         <Icon type="close" />
       </Button>
     )
-    return (
-      <>
+  return (
+    <>
         <div style={{ width: '500px' }}>
-         <Button type="primary" onClick={this.add}>
+         <Button type="primary" onClick={add}>
           新建页签
         </Button>
-          <Tabs type="dynamic" showScrollArrow activeKey={this.state.activeKey} onChange={this.setActive}>
+          <Tabs type="dynamic" showScrollArrow activeKey={activeKey} onChange={setActive}>
             <Tabs.TabPane specialPane="left">
-              <Icon type="workbench" onClick={this.backHome} style={{ color: '#999999' }} />
+              <Icon type="workbench" onClick={backHome} style={{ color: '#999999' }} />
             </Tabs.TabPane>
-            {this.state.panes.map((pane) => {
+            {panes.map((pane) => {
               return (
                 <Tabs.TabPane key={pane.value} tab={pane.name} operations={[removeBtn]}>
                   {pane.name}
@@ -116,15 +85,14 @@ class Demo extends React.Component {
               <Icon type="setting" className="tabs-right-operations-icon" />
             </Tabs.TabPane>
             <Tabs.TabPane specialPane="contextMenu">
-              <div onClick={this.closeTrigger}>关闭当前</div>
-              <div onClick={this.closeOther}>关闭其他</div>
+              <div onClick={closeTrigger}>关闭当前</div>
+              <div onClick={closeOther}>关闭其他</div>
             </Tabs.TabPane>
           </Tabs>
         </div>
       </>
-    )
-  }
-}
+  )
+} 
 
 ReactDOM.render(<Demo />, mountNode)
 ```

@@ -10,7 +10,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { Slider } from '@kdcloudjs/kdesign'
 
-function Demo() {
+const Demo: React.FC = () => {
   const tmpMarks = {
     0: '0',
     10: '10',

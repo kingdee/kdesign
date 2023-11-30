@@ -10,7 +10,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { Button, Message } from '@kdcloudjs/kdesign'
 
-function Demo() {
+const Demo: React.FC = () => {
   const update = () => {
     Message.warning({
       content: 'this is a warning',

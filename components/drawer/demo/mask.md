@@ -10,10 +10,10 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { Drawer, Button } from '@kdcloudjs/kdesign'
 
-function Demo() {
-  const [visible, setVisible] = React.useState(false)
-  const [mask, setMask] = React.useState(true)
-  const [maskClosable, setMaskClosable] = React.useState(true)
+const Demo: React.FC = () => {
+  const [visible, setVisible] = React.useState<boolean>(false)
+  const [mask, setMask] = React.useState<boolean>(true)
+  const [maskClosable, setMaskClosable] = React.useState<boolean>(true)
   return (
     <>
       <Button

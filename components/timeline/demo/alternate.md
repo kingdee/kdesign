@@ -10,7 +10,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { Timeline, Icon } from '@kdcloudjs/kdesign'
 
-function Demo() {
+const Demo: React.FC = () => {
   return (
     <Timeline mode="alternate">
       <Timeline.Item>节点内容一 2021-10-01</Timeline.Item>

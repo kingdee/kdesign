@@ -7,6 +7,8 @@ order: 0
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { CityPicker } from '@kdcloudjs/kdesign'
+import type { City, CityList } from '@kdcloudjs/kdesign'
+
 
 const domestic = [
   { id: 1, name: '北京', province: '北京市', country: '中国' },
@@ -42,12 +44,12 @@ const foreign = [
   { id: 30, name: '开罗', prvince: '开罗', country: '埃及' },
 ]
 
-function Demo() {
+const Demo: React.FC = () => {
   const [commonList, setCommonList] = React.useState([])
-  const [domesticList, setDomesticList] = React.useState(domestic)
-  const [foreignList, setForeignList] = React.useState(foreign)
-  const [loading, setLoading] = React.useState(false)
-  const [value, setValue] = React.useState()
+  const [domesticList, setDomesticList] = React.useState<CityList>(domestic)
+  const [foreignList, setForeignList] = React.useState<CityList>(foreign)
+  const [loading, setLoading] = React.useState<boolean>(false)
+  const [value, setValue] = React.useState<City>()
 
   const ref = React.useRef()
 

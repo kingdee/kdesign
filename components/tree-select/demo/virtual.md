@@ -23,7 +23,7 @@ const dataFactory = (leafLength = 1000, level = 0, maxLevel = 3, preKey = 0) => 
   return treeData
 }
 
-function Demo() {
+const Demo: React.FC = () => {
   const style = {
     width: '100%',
   }

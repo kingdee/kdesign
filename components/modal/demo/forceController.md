@@ -10,20 +10,20 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { Button, Modal } from '@kdcloudjs/kdesign'
 
-function Demo() {
-  const [visible, setVisible] = React.useState(false)
-  const clickStatus = React.useRef(false)
-  const handleClick = (bool) => {
+const Demo: React.FC = () => {
+  const [visible, setVisible] = React.useState<boolean>(false)
+  const clickStatus = React.useRef<boolean>(false)
+  const handleClick = (bool: boolean) => {
     setVisible(bool)
   }
-  const [time, setTime] = React.useState(5000)
+  const [time, setTime] = React.useState<number>(5000)
   const bodyStyle = {
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
   }
-  const [info, setInfo] = React.useState('延时关闭弹窗')
-  const [startTimeout, setStartTimeout] = React.useState(false)
+  const [info, setInfo] = React.useState<string>('延时关闭弹窗')
+  const [startTimeout, setStartTimeout] = React.useState<boolean>(false)
   const delayTask = React.useCallback(() => {
     if (time === 0) {
       setInfo('延时关闭弹窗')

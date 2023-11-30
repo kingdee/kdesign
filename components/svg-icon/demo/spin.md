@@ -8,7 +8,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import {Processing,Load,Loading } from '@kdcloudjs/kdesign-icons'
 
-function Demo() {
+const Demo: React.FC = () => {
   return (
     <div style={{fontSize:'24px'}}>
       <Processing spin />

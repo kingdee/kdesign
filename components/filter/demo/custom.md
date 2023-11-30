@@ -10,7 +10,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { Filter, RangePicker } from '@kdcloudjs/kdesign'
 
-function Demo() {
+const Demo: React.FC = () => {
   const defaultValue = {
     organization: ['organ2', 'organ3'],
     date: ['nearlyThreeMonths'],
@@ -18,7 +18,7 @@ function Demo() {
 
   const [value, setValue] = React.useState(defaultValue)
 
-  const [rangeValue, setRangeValue] = React.useState('')
+  const [rangeValue, setRangeValue] = React.useState<string>('')
   const handleCustomerChange = (dates, datestrings) => {
     setRangeValue(dates)
     value.date = [datestrings.join('至')]

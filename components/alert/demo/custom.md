@@ -10,9 +10,9 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { Alert, Icon } from '@kdcloudjs/kdesign'
 
-function Demo() {
-  const [msgIdx, setMsgIdx] = React.useState(0)
-  const [msg, setMsg] = React.useState('')
+const Demo: React.FC = () => {
+  const [msgIdx, setMsgIdx] = React.useState<number>(0)
+  const [msg, setMsg] = React.useState<string>('')
   const messages = ['这是第一条信息', '这是第二条信息', '这是第三条信息'].map(
     (msg) => `${msg}, 可以自定义设置显示的信息标识图标、关闭图标、关闭图标旁边区域的位置元素`,
   )

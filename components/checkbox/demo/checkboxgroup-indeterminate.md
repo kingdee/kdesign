@@ -10,24 +10,16 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { Checkbox, Input } from '@kdcloudjs/kdesign'
 
-class Demo extends React.Component {
-  constructor() {
-    super()
-    this.state = { value: [1] }
-    this.onChange = this.onChange.bind(this)
-    this.onChangeAll = this.onChangeAll.bind(this)
-    this.getChecked = this.getChecked.bind(this)
-    this.getIndeterminate = this.getIndeterminate.bind(this)
-  }
+const Demo = () => {
 
-  onChange(value, e) {
+  const [value, setValue] = React.useState<Array<number>>([1])
+
+  const onChange = (value, e) => {
     console.log('checkboxgroup checked', value, e)
-    this.setState({
-      value: value,
-    })
+    setValue(value)
   }
 
-  onChangeAll(e) {
+  const onChangeAll = (e) => {
     console.log('onChangeAll checked', e.target.checked)
     let newValue
     if (e.target.checked) {
@@ -35,28 +27,18 @@ class Demo extends React.Component {
     } else {
       newValue = []
     }
-    this.onChange(newValue)
+    onChange(newValue)
   }
+  const checked = value.length === 4
+  const indeterminate = value.length > 0 && value.length < 4
 
-  getChecked(value) {
-    return value.length === 4
-  }
-
-  getIndeterminate(value) {
-    return value.length > 0 && value.length < 4
-  }
-
-  render() {
-    const { value } = this.state
-    const checked = this.getChecked(value)
-    const indeterminate = this.getIndeterminate(value)
-    return (
-      <div style={{ width: 300 }}>
-        <Checkbox checked={checked} indeterminate={indeterminate} onChange={this.onChangeAll}>
+  return (
+    <div style={{ width: 300 }}>
+        <Checkbox checked={checked} indeterminate={indeterminate} onChange={onChangeAll}>
           Select ALL
         </Checkbox>
         <br />
-        <Checkbox.Group onChange={this.onChange} value={value} checkboxType={'default'}>
+        <Checkbox.Group onChange={onChange} value={value} checkboxType={'default'}>
           <Checkbox value={1}>
             Option A
           </Checkbox>
@@ -72,9 +54,10 @@ class Demo extends React.Component {
           </Checkbox>
         </Checkbox.Group>
       </div>
-    )
-  }
+  )
 }
+
+
 
 ReactDOM.render(<Demo />, mountNode)
 ```

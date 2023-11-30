@@ -11,7 +11,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { Anchor } from '@kdcloudjs/kdesign'
 
-function Demo() {
+const Demo: React.FC = () => {
   return (
     <Anchor type="advanced">
       <Anchor.Link href="#使用场景" title="使用场景" />

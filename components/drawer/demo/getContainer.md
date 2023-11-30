@@ -10,8 +10,8 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { Drawer, Button } from '@kdcloudjs/kdesign'
 
-function Demo() {
-  const [visible, setVisible] = React.useState(false)
+const Demo: React.FC = () => {
+  const [visible, setVisible] = React.useState<boolean>(false)
   return (
     <div
       style={{

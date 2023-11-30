@@ -10,7 +10,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { Button, Modal, Icon } from '@kdcloudjs/kdesign'
 
-function Demo() {
+const Demo: React.FC = () => {
   const bodyStyle = {
     display: 'flex',
     justifyContent: 'center',

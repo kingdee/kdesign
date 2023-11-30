@@ -9,9 +9,10 @@ title: 三种大小
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { Search, Radio } from '@kdcloudjs/kdesign'
+import type { SearchSizeType } from '@kdcloudjs/kdesign'
 
-function Demo() {
-  const [size, setSize] = React.useState('middle')
+const Demo: React.FC = () => {
+  const [size, setSize] = React.useState<SearchSizeType | 'middle'>('middle')
   const handleSizeChange = (e) => {
     setSize(e.target.value)
   }

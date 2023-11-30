@@ -10,9 +10,9 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { InputNumber } from '@kdcloudjs/kdesign'
 
-const Demo = () => {
+const Demo: React.FC = () => {
   const inputStyle = { marginBottom: 8, marginRight: 8, width: 230 }
-  const [val, setVal] = React.useState('')
+  const [val, setVal] = React.useState<string>('')
   return (
     <div  style={{ width: '300px' }}>
     <InputNumber

@@ -9,9 +9,10 @@ title: 间距大小
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { Space, Button, Radio, Slider } from '@kdcloudjs/kdesign'
+import type { Size } from '@kdcloudjs/kdesign'
 
-function Demo() {
-  const [size, setSize] = React.useState('small');
+const Demo: React.FC = () => {
+  const [size, setSize] = React.useState<Size | 'small'>('small');
 
   const mapSize = {
     'small': 8,

@@ -10,7 +10,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { Space, Button, Upload, Popconfirm, Icon } from '@kdcloudjs/kdesign'
 
-function Demo() {
+const Demo: React.FC = () => {
   return (
     <Space style={{ width: 440 }}>
       <>Kingdee</>

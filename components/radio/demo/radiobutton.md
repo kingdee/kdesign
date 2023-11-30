@@ -10,7 +10,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { Radio } from '@kdcloudjs/kdesign'
 
-function Demo() {
+const Demo: React.FC = () => {
   function onChange(e) {
     console.log(`radio checked: ${e.target.value}`)
   }

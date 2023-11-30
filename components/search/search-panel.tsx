@@ -24,7 +24,7 @@ interface ItypeProps {
   code?: string | number
 }
 
-interface resultProps {
+export interface resultProps {
   title?: string
   typeName?: string
   subTitle?: string

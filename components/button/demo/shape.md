@@ -8,9 +8,9 @@ order: 1
 ```jsx
 import React from 'react'
 import ReactDOM from 'react-dom'
-import Button from '@kdcloudjs/kdesign'
+import { Button } from '@kdcloudjs/kdesign'
 
-function Demo() {
+const Demo: React.FC = () => {
   const demoButtonStyle = { margin: '0px 8px 8px 0' }
   return (
     <div style={{ marginTop: 16, width: '400px' }}>

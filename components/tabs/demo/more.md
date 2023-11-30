@@ -11,7 +11,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { Tabs } from '@kdcloudjs/kdesign'
 
-function Demo() {
+const Demo: React.FC = () => {
   const data = Array(20)
     .fill(0)
     .map((v, i) => {

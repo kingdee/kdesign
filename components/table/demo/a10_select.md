@@ -15,7 +15,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { Radio,Table } from '@kdcloudjs/kdesign'
 
-function Demo() {
+const Demo: React.FC = () => {
   const [ selected, setSelected ] = React.useState(['2'])
   const [ selectedType, setSelectedType ] = React.useState('checkbox')
 

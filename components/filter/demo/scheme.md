@@ -10,7 +10,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { Filter, Dropdown, Select, DatePicker, RangePicker, Message } from '@kdcloudjs/kdesign'
 
-function Demo() {
+const Demo: React.FC = () => {
   const conditions = [
     {
       key: 'organization',

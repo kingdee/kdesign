@@ -8,7 +8,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { Rate, Icon } from '@kdcloudjs/kdesign'
 
-function Demo() {
+const Demo: React.FC = () => {
   const defaultValue = 3
   // const [value, setValue] = useState(3)
   const _icon = [

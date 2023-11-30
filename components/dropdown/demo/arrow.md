@@ -9,7 +9,7 @@ title: 箭头
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { Dropdown, Button } from '@kdcloudjs/kdesign'
-function Demo() {
+const Demo: React.FC = () => {
   const menu = (
     <Dropdown.Menu>
       <Dropdown.Item>

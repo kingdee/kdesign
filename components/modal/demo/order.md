@@ -9,9 +9,10 @@ order: 11
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { Button, Modal } from '@kdcloudjs/kdesign'
+import type { ModalType } from '@kdcloudjs/kdesign'
 
-function Demo() {
-  const [order, setOrder] = React.useState('normal')
+const Demo: React.FC = () => {
+  const [order, setOrder] = React.useState<ModalType>('normal')
   const bodyStyle = {
     display: 'flex',
     justifyContent: 'center',

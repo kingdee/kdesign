@@ -7,8 +7,8 @@ order: 9
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { Menu, Icon } from '@kdcloudjs/kdesign'
-function Demo() {
-  const [collapsed, setCollapsed] = React.useState(false)
+const Demo: React.FC = () => {
+  const [collapsed, setCollapsed] = React.useState<boolean>(false)
   const handleClickItem = (obj) => {
     console.log(obj)
   }

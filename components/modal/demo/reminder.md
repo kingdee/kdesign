@@ -10,10 +10,10 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { Modal, Icon, Button, Typography } from '@kdcloudjs/kdesign'
 
-function Demo() {
+const Demo: React.FC = () => {
   const { Title, Paragraph, Text } = Typography
 
-  const [visible, setVisible] = React.useState(false)
+  const [visible, setVisible] = React.useState<boolean>(false)
 
   const modalRef = React.useRef()
 

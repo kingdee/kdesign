@@ -9,11 +9,12 @@ order: 3
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { Alert, InputNumber, Button } from '@kdcloudjs/kdesign'
+import type {BannerOffsetType} from '@kdcloudjs/kdesign'
 import { debounce } from 'lodash'
 
-function Demo() {
-  const [bannerOffset, setBannerOffset] = React.useState([0, 0])
-  const [banner, setBanner] = React.useState(false)
+const Demo: React.FC = () => {
+  const [bannerOffset, setBannerOffset] = React.useState<BannerOffsetType>([0, 0])
+  const [banner, setBanner] = React.useState<boolean>(false)
   const map = {
     success: '成功提示',
     warning: '警告提示',

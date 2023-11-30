@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 import Header from './header'
+import cssVars from 'css-vars-ponyfill'
 
 if (typeof window !== 'undefined') {
   require('@src/static/style')
@@ -50,6 +51,7 @@ class Layout extends Component {
         document.styleSheets[0].insertRule('body::-webkit-scrollbar-thumb { display:block; }')
       }
     }
+    cssVars()
   }
 
   render() {

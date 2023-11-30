@@ -14,7 +14,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { Search } from '@kdcloudjs/kdesign'
 
-function Demo() {
+const Demo: React.FC = () => {
   const handleSelect = (value, option) => {
     console.log('select', value)
     console.log('select', option)

@@ -9,6 +9,7 @@ order: 2
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { CityPicker } from '@kdcloudjs/kdesign'
+import type { City, CityList } from '@kdcloudjs/kdesign'
 
 const domestic = [
   { id: 1, name: 'New York', province: 'New York', country: '美国', highlightText: ['ne', 'rk'] },
@@ -23,9 +24,9 @@ const domestic = [
   { id: 10, name: '开罗', province: '开罗', country: '埃及' },
 ]
 
-function Demo() {
-  const [loading, setLoading] = React.useState(false)
-  const [value, setValue] = React.useState()
+const Demo: React.FC = () => {
+  const [loading, setLoading] = React.useState<boolean>(false)
+  const [value, setValue] = React.useState<City>()
 
   const handleSearch = () => {
     setLoading(true)
@@ -33,7 +34,7 @@ function Demo() {
       setLoading(false)
     }, 1000)
   }
-  const handleChange = (value) => {
+  const handleChange = (value: City) => {
     console.log('onChange', value)
     setValue(value)
   }

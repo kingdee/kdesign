@@ -10,7 +10,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { RangePicker } from '@kdcloudjs/kdesign'
 
-function Demo() {
+const Demo: React.FC = () => {
   //内置基础配置
   const baseLocale = {
     placeholder: '请选择日期',

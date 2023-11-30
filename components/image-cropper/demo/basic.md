@@ -9,10 +9,10 @@ import { useState } from 'react'
 
 const URL = window.URL || window.webkitURL
 
-function Demo() {
-  const [visible, setVisible] = useState(false)
-  const [src, setSrc] = useState('')
-  const [imageUrl, setImageUrl] = React.useState('')
+const Demo: React.FC = () => {
+  const [visible, setVisible] = useState<boolean>(false)
+  const [src, setSrc] = useState<string>('')
+  const [imageUrl, setImageUrl] = React.useState<string>('')
 
 
   const handleClose = () => {

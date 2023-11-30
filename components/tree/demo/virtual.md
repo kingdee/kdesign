@@ -7,10 +7,11 @@ title: 大数据启用虚模式
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { Tree } from '@kdcloudjs/kdesign'
+import type { TreeNodeData } from '@kdcloudjs/kdesign'
 
-function Demo() {
+const Demo: React.FC = () => {
   const dataFactory = (leafLength = 1000, level = 0, maxLevel = 3, preKey = 0) => {
-    const treeData = []
+    const treeData: TreeNodeData[] = []
     for (let i = 0; i < leafLength; i++) {
       const key = preKey ? `${preKey}-${i}` : `${i}`
       let _level = level
@@ -23,10 +24,10 @@ function Demo() {
     }
     return treeData
   }
-  const [expandedKeys, setExpandedKeys] = React.useState(['0-1', '0', '1'])
-  const [checkedKeys, setCheckedKeys] = React.useState(['1-1'])
-  const [selectedKeys, setSelectedKeys] = React.useState(['0'])
-  const [treeData, setTreeData] = React.useState(dataFactory(200, 0, 2))
+  const [expandedKeys, setExpandedKeys] = React.useState<Array<string>>(['0-1', '0', '1'])
+  const [checkedKeys, setCheckedKeys] = React.useState<Array<string>>(['1-1'])
+  const [selectedKeys, setSelectedKeys] = React.useState<Array<string>>(['0'])
+  const [treeData, setTreeData] = React.useState<Array<TreeNodeData>>(dataFactory(200, 0, 2))
   const onSelect = (selectedKeys, info) => {
     setSelectedKeys(selectedKeys)
     console.log('onSelect', selectedKeys)

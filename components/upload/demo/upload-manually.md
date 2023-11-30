@@ -10,12 +10,13 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { Upload, Button, Icon, Alert } from '@kdcloudjs/kdesign'
 import axios from 'axios'
+import type { UploadFile } from '@kdcloudjs/kdesign'
 
-function Demo() {
-  const [fileList, setFileList] = React.useState([])
-  const [uploading, setUploading] = React.useState(false)
-  const [msg, setMsg] = React.useState('')
-  const [type, setType] = React.useState('')
+const Demo: React.FC = () => {
+  const [fileList, setFileList] = React.useState<Array<UploadFile>>([])
+  const [uploading, setUploading] = React.useState<boolean>(false)
+  const [msg, setMsg] = React.useState<string>('')
+  const [type, setType] = React.useState<string>('')
 
   const handleUpload = () => {
     const formData = new FormData()

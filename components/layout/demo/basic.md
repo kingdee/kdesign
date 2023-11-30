@@ -10,7 +10,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { Layout } from '@kdcloudjs/kdesign'
 
-function Demo () {
+const Demo: React.FC = () => {
   const { Header, Footer, Sider, Content } = Layout
   const layoutStyle = { marginTop: 48 }
   const headerStyle = { color: '#fff', background: 'rgba(85, 130, 243, .7)' }

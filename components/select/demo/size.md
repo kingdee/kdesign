@@ -9,10 +9,11 @@ title: 三种大小
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { Select, Radio } from '@kdcloudjs/kdesign'
+import type { SelectSize } from '@kdcloudjs/kdesign'
 
-function Demo() {
+const Demo: React.FC = () => {
   const { Option } = Select
-  const [size, setSize] = React.useState('middle')
+  const [size, setSize] = React.useState<SelectSize | 'middle'>('middle')
   const handleSizeChange = (e) => {
     setSize(e.target.value)
   }

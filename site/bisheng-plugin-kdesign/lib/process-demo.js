@@ -12,6 +12,8 @@ const postcss = require('postcss')
 
 const pxtoremPlugin = require('postcss-pxtorem')
 
+const transformTsxToJsx = require('./transformTsxtoJsx')
+
 const PROD_RM_DEBUG = false
 nunjucks.configure({
   autoescape: true,
@@ -34,13 +36,15 @@ function getCodeIndex(contentChildren) {
 
 function getSourceCodeObject(contentChildren, codeIndex) {
   if (codeIndex > -1) {
+    const code = getCode(contentChildren[codeIndex])
+    const jsCode = transformTsxToJsx(code)
     return {
       isES6: true,
-      code: getCode(contentChildren[codeIndex]),
+      code,
+      jsCode,
       lang: JsonML.getAttributes(contentChildren[codeIndex]).lang,
     }
   }
-
   return {
     isTS: true,
   }
@@ -78,6 +82,7 @@ module.exports = function (_ref) {
   markdownData.content = contentChildren.slice(0, introEnd)
   const sourceCodeObject = getSourceCodeObject(contentChildren, codeIndex)
   markdownData.code = sourceCodeObject.code
+  markdownData.jsCode = sourceCodeObject.jsCode
   markdownData.lang = sourceCodeObject.lang
   const styleNode = getStyleNode(contentChildren)
 

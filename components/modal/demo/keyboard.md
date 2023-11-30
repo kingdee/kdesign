@@ -10,14 +10,14 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { Button, Modal } from '@kdcloudjs/kdesign'
 
-function Demo() {
-  const [visible, setVisible] = React.useState(false)
+const Demo: React.FC = () => {
+  const [visible, setVisible] = React.useState<boolean>(false)
   const bodyStyle = {
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
   }
-  const handleClick = (bool) => {
+  const handleClick = (bool: boolean) => {
     setVisible(bool)
   }
   return (

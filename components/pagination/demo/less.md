@@ -10,7 +10,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { Pagination } from '@kdcloudjs/kdesign'
 
-function Demo() {
+const Demo: React.FC = () => {
   return (
     <div style={{ width: '300px' }}>
       <Pagination pageType="less" defaultCurrent={1} total={50} />

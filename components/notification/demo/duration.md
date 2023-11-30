@@ -9,7 +9,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { Button, Notification } from '@kdcloudjs/kdesign'
 
-function Demo() {
+const Demo: React.FC = () => {
   const notDisappear = () => {
     Notification.info({
       content: 'it will not disappear without clicking closed button',

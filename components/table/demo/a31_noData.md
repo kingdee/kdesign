@@ -8,7 +8,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { Table } from '@kdcloudjs/kdesign'
 
-function Demo() {
+const Demo: React.FC = () => {
   const columns = [
       { code: 'No', name: '序号', width: 60, align: 'center' },
       { code: 'order', name: '单据号', width: 200 },

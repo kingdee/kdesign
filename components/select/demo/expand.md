@@ -14,35 +14,21 @@ let index = 0
 const style = {
   width: 230,
 }
-class Demo extends React.Component {
-  constructor() {
-    super()
-    this.state = {
-      items: ['apple', 'orange', 'grape'],
-      name: '',
-    }
-    this.handleChange = this.handleChange.bind(this)
-    this.handleAddItem = this.handleAddItem.bind(this)
+
+const Demo: React.FC = () => {
+  const [items, setItems] = React.useState<Array<string>>(['apple', 'orange', 'grape'])
+  const [name, setName] = React.useState<string>('')
+
+  const handleChange = (e) => {
+    setName(e.target.value)
+  }
+  const handleAddItem = () => {
+    setItems([...items,name || `New item ${index++}`])
+    setName('')
   }
 
-  handleChange(e) {
-    this.setState({
-      name: e.target.value,
-    })
-  }
-
-  handleAddItem() {
-    const { name, items } = this.state
-    this.setState({
-      items: [...items, name || `New item ${index++}`],
-      name: '',
-    })
-  }
-
-  render() {
-    const { items } = this.state
-    return (
-      <>
+  return (
+    <>
         <Select
           placeholder="请输入名称"
           style={style}
@@ -51,10 +37,10 @@ class Demo extends React.Component {
               {menu}
               <div style={{ margin: '4px 0', borderTop: '1px solid #e5e5e5' }} />
               <div style={{ display: 'flex', flexWrap: 'nowrap', padding: 8 }}>
-                <Input style={{ flex: 'auto' }} borderType="bordered" onChange={this.handleChange} />
+                <Input style={{ flex: 'auto' }} borderType="bordered" onChange={handleChange} />
                 <a
                   style={{ flex: 'none', padding: '8px', display: 'block', cursor: 'pointer' }}
-                  onClick={this.handleAddItem}>
+                  onClick={handleAddItem}>
                   Add item
                 </a>
               </div>
@@ -69,8 +55,7 @@ class Demo extends React.Component {
           })}
         </Select>
       </>
-    )
-  }
+  )
 }
 
 ReactDOM.render(<Demo />, mountNode)

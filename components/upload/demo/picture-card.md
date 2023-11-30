@@ -8,10 +8,10 @@ title: 照片墙
 ```jsx
 import React from 'react'
 import ReactDOM from 'react-dom'
-
 import { Upload, Icon } from '@kdcloudjs/kdesign'
+import type { UploadFile } from '@kdcloudjs/kdesign'
 
-function Demo() {
+const Demo: React.FC = () => {
   const initFiles = [
     {
       uid: '-1',
@@ -49,7 +49,7 @@ function Demo() {
     },
   ]
 
-  const [fileList, setFileList] = React.useState(initFiles)
+  const [fileList, setFileList] = React.useState<Array<UploadFile>>(initFiles)
 
   const handleChange = ({ fileList }) => setFileList(fileList)
 

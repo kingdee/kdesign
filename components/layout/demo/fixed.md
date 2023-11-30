@@ -11,7 +11,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { Layout } from '@kdcloudjs/kdesign'
 
-function Demo() {
+const Demo: React.FC = () => {
   const { Header, Content, Footer } = Layout
 
   return (

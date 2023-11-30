@@ -9,8 +9,8 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { Radio } from '@kdcloudjs/kdesign'
 
-function Demo() {
-  const [v, setV] = React.useState()
+const Demo: React.FC = () => {
+  const [v, setV] = React.useState<string>()
   const handleChange = (e, v) => {
     console.log(e, v)
     setV(v)

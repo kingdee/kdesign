@@ -10,7 +10,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { Table } from '@kdcloudjs/kdesign'
 
-function Demo() {
+const Demo: React.FC = () => {
   // 此处配置的单据号列宽度100，优先级高于column配置的200
   const [columnSize, setColumnSize] = React.useState({ 'order': 100 })
 

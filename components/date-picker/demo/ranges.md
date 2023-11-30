@@ -9,7 +9,7 @@ import ReactDOM from 'react-dom'
 import { RangePicker, Icon } from '@kdcloudjs/kdesign'
 import { startOfWeek, endOfWeek, startOfMonth, endOfMonth, startOfToday, endOfToday, startOfQuarter, endOfQuarter, startOfYear, endOfYear } from 'date-fns'
 
-function Demo() {
+const Demo: React.FC = () => {
   const now = new Date()
   const ranges = {
     今天: [startOfToday(),endOfToday()],

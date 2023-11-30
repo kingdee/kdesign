@@ -10,7 +10,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { Button } from '@kdcloudjs/kdesign'
 
-function Demo() {
+const Demo: React.FC = () => {
   const demoButtonStyle = { margin: '0px 8px 8px 0' }
   const overlay1 = [
     { value: '1', label: '发布' },

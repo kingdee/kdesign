@@ -22,55 +22,40 @@ const optionsWithDisabled = [
   { label: 'Orange', value: 'Orange', disabled: true },
 ]
 
-class Demo extends React.Component {
-  constructor() {
-    super()
-    this.state = {
-      value1: ['Apple'],
-      value2: ['Apple'],
-      value3: ['Apple', 'Orange'],
-    }
-  }
+const Demo: React.FC = () => {
+  const [value1, setValue1] = React.useState<Array<string>>(['Apple'])
+  const [value2, setValue2] = React.useState<Array<string>>(['Apple'])
+  const [value3, setValue3] = React.useState<Array<string>>(['Apple', 'Orange'])
 
-  onChange1(list, e) {
+  const onChange1 = (list, e) => {
     console.log('checkboxGroup1', list, e)
-    this.setState({
-      value1: list,
-    })
+    setValue1(list)
   }
 
-  onChange2(list, e) {
+  const onChange2 = (list, e) => {
     console.log('checkboxGroup2', list)
-    this.setState({
-      value2: list,
-    })
+    setValue2(list)
   }
 
-  onChange3(list, e) {
+  const onChange3 = (list, e) => {
     console.log('checkboxGroup3', list)
-    this.setState({
-      value3: list,
-    })
+    setValue3(list)
   }
-
-  render() {
-    const { value1, value2, value3 } = this.state
-    return (
-      <div  style={{ width: '300px' }}>
-        <Checkbox.Group options={plainOptions} onChange={(list,e) => this.onChange1(list, e)} value={value1} />
+  return (
+    <div  style={{ width: '300px' }}>
+        <Checkbox.Group options={plainOptions} onChange={(list,e) => onChange1(list, e)} value={value1} />
         <br />
         <Checkbox.Group
           options={options}
           checkboxType="square"
-          onChange={(list, e) => this.onChange2(list, e)}
+          onChange={(list, e) => onChange2(list, e)}
           value={value2}
         />
         <br />
-        <Checkbox.Group options={optionsWithDisabled} onChange={(list, e) => this.onChange3(list, e)} value={value3} />
+        <Checkbox.Group options={optionsWithDisabled} onChange={(list, e) => onChange3(list, e)} value={value3} />
         <br />
       </div>
-    )
-  }
+  )
 }
 
 ReactDOM.render(<Demo />, mountNode)

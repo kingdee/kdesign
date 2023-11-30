@@ -8,7 +8,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { InspectionPassed, ShoppingBag, Search} from '@kdcloudjs/kdesign-icons'
 
-function Demo() {
+const Demo: React.FC = () => {
   return (
     <div>
       <ShoppingBag size="20" />

@@ -5,10 +5,9 @@ order: 80
 属性[columnDrag](#columnDrag)配置时可以开启拖动表头来调整列的位置，目前支持受控的方式设置新的列顺序，否则顺序不会改变。
 
 ```jsx
-() => {
-  import { Table } from '@kdcloudjs/kdesign'
-  import { useState } from 'react'
-
+import { Table } from '@kdcloudjs/kdesign'
+import { useState } from 'react'
+const Demo: React.FC = () => {
   const dataSource = [
     {id: "1", "No":1,"order":"AP-202009-00001","from":"陕西环宇科技","to":"深圳环球科技","amount":"26,800.00","balance":"5,200.00"},
     {id: "2", "No":2,"order":"AP-202009-00001","from":"陕西环宇科技","to":"深圳环球科技","amount":"236,800.00","balance":"1,500.00"},
@@ -45,4 +44,6 @@ order: 80
  
   return <Table dataSource={dataSource} columns={columns} columnDrag={{ onColumnDragStopped: handleColumnDragStopped }} />
 }
+
+ReactDOM.render(<Demo />, mountNode)
 ```

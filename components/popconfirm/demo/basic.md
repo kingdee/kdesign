@@ -10,7 +10,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { Popconfirm, Message } from '@kdcloudjs/kdesign'
 
-function Demo() {
+const Demo: React.FC = () => {
   function confirm(e) {
     console.log(e)
     Message.success({

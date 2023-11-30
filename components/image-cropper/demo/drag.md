@@ -8,7 +8,7 @@ title: 拖拽对象配置
 ```jsx
 import { ImageCropper } from '@kdcloudjs/kdesign'
 
-function Demo() {
+const Demo: React.FC = () => {
 
   return (
     <div style={{ textAlign: 'center' }}>

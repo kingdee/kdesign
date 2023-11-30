@@ -8,51 +8,39 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { Switch, Button } from '@kdcloudjs/kdesign'
 
-class Demo extends React.Component {
-  constructor() {
-    super()
-    this.state = {
-      checked: true,
-      loading: false,
-    }
-    this.toggle = this.toggle.bind(this)
-    this.toggleToLoading = this.toggleToLoading.bind(this)
+const Demo: React.FC = () => {
+
+  const [checked,setChecked] = React.useState<boolean>(true)
+  const [loading,setLoading] = React.useState<boolean>(false)
+
+  const toggle = () => {
+    setChecked(!checked)
+  }
+  const toggleToLoading = () => {
+    setLoading(!loading)
   }
 
-  toggle() {
-    this.setState({
-      checked: !this.state.checked,
-    })
-  }
-
-  toggleToLoading() {
-    this.setState({
-      loading: !this.state.loading,
-    })
-  }
-
-  onChange(checked) {
+  const onChange = (checked) => {
     console.log(`switch to ${checked}`)
   }
 
-  render() {
-    return (
-      <>
+  return (
+    <>
         <br />
-        <Switch checked={this.state.checked} defaultChecked onChange={this.onChange} />
+        <Switch checked={checked} defaultChecked onChange={onChange} />
         <br />
-        <Button type="primary" onClick={this.toggle}>
+        <Button type="primary" onClick={toggle}>
           Toggle
         </Button>
         <br />
-        <Switch loading={this.state.loading} checked={this.state.checked} defaultChecked onChange={this.onChange} />
+        <Switch loading={loading} checked={checked} defaultChecked onChange={onChange} />
         <br />
-        <Button type="primary" onClick={this.toggleToLoading}>
+        <Button type="primary" onClick={toggleToLoading}>
           Toggle to loading
         </Button>
       </>
-    )
-  }
+  )
+
 }
 
 ReactDOM.render(<Demo />, mountNode)

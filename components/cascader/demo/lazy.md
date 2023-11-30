@@ -9,8 +9,9 @@ title: 动态加载选项
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { Cascader } from '@kdcloudjs/kdesign'
+import type { CascaderOptionType } from '@kdcloudjs/kdesign'
 
-function Demo() {
+const Demo: React.FC = () => {
   const optionLists = [
     {
       value: 'guangdong',
@@ -25,7 +26,7 @@ function Demo() {
   ]
   
   const LazyOptions = () => {
-    const [options, setOptions] = React.useState(optionLists)
+    const [options, setOptions] = React.useState<CascaderOptionType>(optionLists)
   
     const onChange = (value, selectedOptions) => {
       console.log(value, selectedOptions)

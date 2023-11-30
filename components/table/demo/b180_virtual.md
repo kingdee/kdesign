@@ -15,7 +15,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { Table } from '@kdcloudjs/kdesign'
 
-function Demo() {
+const Demo: React.FC = () => {
   const data = React.useMemo(() => (
     Array.from(Array(100000)).map((item, index) => (
       {

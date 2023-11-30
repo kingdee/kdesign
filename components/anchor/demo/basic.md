@@ -10,8 +10,8 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { Anchor, Switch } from '@kdcloudjs/kdesign'
 
-function Demo() {
-  const [affix, setAffix] = React.useState(false)
+const Demo: React.FC = () => {
+  const [affix, setAffix] = React.useState<boolean>(false)
 
   function toggleAffix(checked) {
     setAffix(checked)

@@ -8,7 +8,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { Steps, Step, Icon } from '@kdcloudjs/kdesign'
 
-function Demo() {
+const Demo: React.FC = () => {
   const icons = {
     process: <Icon type="loadding" spin />,
     wait: <Icon type="wating" />,
