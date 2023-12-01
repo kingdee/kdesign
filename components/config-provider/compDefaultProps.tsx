@@ -179,6 +179,7 @@ const compDefaultProps = {
     okButtonProps: {},
     showline: true,
     overroll: false,
+    resizable: false,
   },
   Menu: {
     mode: 'vertical',
