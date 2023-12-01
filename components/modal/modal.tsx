@@ -20,6 +20,7 @@ import Draggable from 'react-draggable'
 import type { DraggableBounds, DraggableEventHandler, DraggableEvent, DraggableData } from 'react-draggable'
 import { getLangMsg } from '../locale/locale'
 import { useHideDocumentScrollBar } from '../_utils/hooks'
+
 type CSSSelector = string
 export const ConfirmModalTypes = ['confirm', 'normal']
 export const ModalTypes = tuple('confirm', 'warning', 'error', 'normal')
@@ -67,10 +68,47 @@ export interface IModalProps {
   showline?: boolean
   bounds?: DraggableBounds | string | false
   overroll?: boolean
+  resizable?: boolean
+  onResizeStart?: (event: MouseEvent) => void
+  onResize?: (event: MouseEvent) => void
+  onResizeStop?: (event: MouseEvent) => void
   onDragStart?: DraggableEventHandler
   onDrag?: DraggableEventHandler
   onDragStop?: DraggableEventHandler
 }
+enum DragDirection {
+  N = 'n',
+  E = 'e',
+  S = 's',
+  W = 'w',
+  NE = 'ne',
+  NW = 'nw',
+  SE = 'se',
+  SW = 'sw',
+}
+interface ResizePositon {
+  initialX: number
+  initialY: number
+  initialWidth: number
+  initialHeight: number
+  top: number
+  left: number
+  x: number
+  y: number
+  type: DragDirection | null
+}
+const initPosition: ResizePositon = {
+  initialX: 0,
+  initialY: 0,
+  initialWidth: 0,
+  initialHeight: 0,
+  top: 0,
+  left: 0,
+  x: 0,
+  y: 0,
+  type: null,
+}
+
 type ClickMouseEvent = React.MouseEvent<HTMLButtonElement | HTMLAnchorElement, MouseEvent>
 const InternalModal = (
   props: IModalProps,
@@ -117,10 +155,12 @@ const InternalModal = (
     onDragStop,
     bounds,
     overroll,
+    resizable,
     ...others
   } = modalProps
   const isForceController = visible !== undefined
   const [innerVisible, setInnerVisible] = useState(isForceController ? visible : true) // 需要根据visible来判断，不能一开始为true再去设置false
+
   const previousActiveElement = useRef<HTMLElement | null>(null)
   const innerRef = useRef<HTMLDivElement>(null)
   const wrapperRef = useRef<HTMLDivElement>(null)
@@ -137,6 +177,10 @@ const InternalModal = (
     }
     modalContainer = document.body
   }
+  const [position, setPosition] = useState(
+    modalContainer && !overroll ? { x: -(width! / 2), y: -(height! / 2) } : { x: 0, y: 0 },
+  )
+
   useHideDocumentScrollBar(isForceController ? !!visible : !!innerVisible, modalContainer === document.body, !!mask)
   const closeModal = useCallback(() => {
     setInnerVisible(false)
@@ -261,6 +305,134 @@ const InternalModal = (
       document.body.removeEventListener('keydown', escapeToCloseModal)
     }
   }, [keyboard, escapeToCloseModal, proxyCloseModal, onCancel])
+
+  let isResizing = false
+  const initPositionRef = useRef(initPosition)
+
+  const startResize = useCallback(
+    (event: MouseEvent) => {
+      const targetElement = event.target as HTMLElement
+      if (!targetElement.classList.contains(`${modalPrefixCls}-resise-handle`) || !containerRef.current) {
+        return
+      }
+      const { width: initialWidth, height: initialHeight, top, left } = containerRef.current.getBoundingClientRect()
+      initPositionRef.current = {
+        initialX: event.clientX,
+        initialY: event.clientY,
+        initialWidth,
+        initialHeight,
+        top,
+        left,
+        x: position.x,
+        y: position.y,
+        type: targetElement.dataset.type as DragDirection,
+      }
+      event.preventDefault()
+      isResizing = true
+      if (overroll && wrapperRef.current) {
+        wrapperRef.current.classList.add(`${modalPrefixCls}-wrapper-resizable`)
+        setPosition({
+          x: left,
+          y: top,
+        })
+        initPositionRef.current.x = left
+        initPositionRef.current.y = top
+      }
+      document.addEventListener('mousemove', resize)
+      document.addEventListener('mouseup', stopResize)
+    },
+    [position],
+  )
+
+  useEffect(() => {
+    if (containerRef.current && visible) {
+      containerRef.current.addEventListener('mousedown', startResize)
+    }
+    return () => {
+      if (containerRef.current) {
+        containerRef.current.removeEventListener('mousedown', startResize)
+      }
+    }
+  }, [containerRef, startResize, visible])
+
+  const resize = (event: MouseEvent) => {
+    if (!containerRef.current) return
+    if (!isResizing || !containerRef.current) return
+    const { initialX, initialY, initialHeight, initialWidth, y, x, type } = initPositionRef.current
+    const curNHeight = initialY - event.clientY
+    const curSHeight = -curNHeight
+    const curEWidth = event.clientX - initialX
+    const curWWidth = -curEWidth
+    switch (type) {
+      case DragDirection.N: {
+        containerRef.current.style.height = `${curNHeight + initialHeight}px`
+        setPosition((pre) => ({
+          y: y - curNHeight,
+          x: pre.x,
+        }))
+        break
+      }
+      case DragDirection.E: {
+        containerRef.current.style.width = `${curEWidth + initialWidth}px`
+        break
+      }
+      case DragDirection.S: {
+        containerRef.current.style.height = `${curSHeight + initialHeight}px`
+        break
+      }
+      case DragDirection.W: {
+        containerRef.current.style.width = `${curWWidth + initialWidth}px`
+        setPosition((pre) => ({
+          y: pre.y,
+          x: x - curWWidth,
+        }))
+        break
+      }
+      case DragDirection.NE: {
+        containerRef.current.style.height = `${curNHeight + initialHeight}px`
+        containerRef.current.style.width = `${curEWidth + initialWidth}px`
+        setPosition((pre) => ({
+          y: y - curNHeight,
+          x: pre.x,
+        }))
+        break
+      }
+      case DragDirection.NW: {
+        containerRef.current.style.height = `${curNHeight + initialHeight}px`
+        containerRef.current.style.width = `${curWWidth + initialWidth}px`
+        setPosition({
+          y: y - curNHeight,
+          x: x - curWWidth,
+        })
+        break
+      }
+      case DragDirection.SE: {
+        containerRef.current.style.height = `${curSHeight + initialHeight}px`
+        containerRef.current.style.width = `${curEWidth + initialWidth}px`
+        break
+      }
+      case DragDirection.SW: {
+        containerRef.current.style.width = `${curWWidth + initialWidth}px`
+        containerRef.current.style.height = `${curSHeight + initialHeight}px`
+        setPosition((pre) => ({
+          y: pre.y,
+          x: x - curWWidth,
+        }))
+        break
+      }
+      default: {
+        break
+      }
+    }
+  }
+
+  const stopResize = () => {
+    isResizing = false
+    initPositionRef.current = initPosition
+    document.removeEventListener('mousemove', resize)
+    document.removeEventListener('mouseup', stopResize)
+  }
+
   const handleMaskClick = useCallback(() => {
     if (maskClosable) {
       proxyCloseModal(onCancel)
@@ -295,6 +467,19 @@ const InternalModal = (
       tabIndex={-1}
       onKeyDown={enterToCloseModal}
     >
+      {resizable && (
+        <>
+          <div data-type="n" className={`${modalPrefixCls}-resise-handle ${modalPrefixCls}-resise-n`}></div>
+          <div data-type="e" className={`${modalPrefixCls}-resise-handle ${modalPrefixCls}-resise-e`}></div>
+          <div data-type="s" className={`${modalPrefixCls}-resise-handle ${modalPrefixCls}-resise-s`}></div>
+          <div data-type="w" className={`${modalPrefixCls}-resise-handle ${modalPrefixCls}-resise-w`}></div>
+          <div data-type="ne" className={`${modalPrefixCls}-resise-handle ${modalPrefixCls}-resise-ne`}></div>
+          <div data-type="se" className={`${modalPrefixCls}-resise-handle ${modalPrefixCls}-resise-se`}></div>
+          <div data-type="sw" className={`${modalPrefixCls}-resise-handle ${modalPrefixCls}-resise-sw`}></div>
+          <div data-type="nw" className={`${modalPrefixCls}-resise-handle ${modalPrefixCls}-resise-nw`}></div>
+        </>
+      )}
+
       <div className={headerClass}>
         <div className={`${modalPrefixCls}-title-container`}>
           {titleIcon !== undefined
@@ -335,7 +520,11 @@ const InternalModal = (
   const handleDragStart = (e: DraggableEvent, data: DraggableData) => {
     onDragStart?.(e, data)
   }
-  const defaultPosition = modalContainer ? { x: -(width! / 2), y: -(height! / 2) } : { x: 0, y: 0 }
+
+  const handleDrag = (e: DraggableEvent, ui: DraggableData) => {
+    setPosition({ x: ui.x, y: ui.y })
+    onDrag?.(e, ui)
+  }
   const comp: ReactElement = (
     <div className={modalClasses} {...others}>
       {/* 增加clickOutside */}
@@ -356,15 +545,15 @@ const InternalModal = (
               modalContainer && ((isForceController ? visible : innerVisible) || !destroyOnClose),
           })}
           ref={wrapperRef}
-          onClick={handleWrapperClick}
+          onMouseDown={handleWrapperClick}
         >
           <div className={`${modalPrefixCls}-dialog`}>
             <Draggable
-              defaultPosition={{ x: 0, y: 0 }}
+              position={position}
               handle={`.${headerClass}`}
               disabled={!draggable}
               onStart={handleDragStart}
-              onDrag={onDrag}
+              onDrag={handleDrag}
               onStop={onDragStop}
               bounds={bounds}
               cancel={`.${modalPrefixCls}-title-container, .${modalPrefixCls}-close-icon`}
@@ -375,11 +564,11 @@ const InternalModal = (
         </div>
       ) : (
         <Draggable
-          defaultPosition={defaultPosition}
           handle={`.${headerClass}`}
           disabled={!draggable}
+          position={position}
           onStart={handleDragStart}
-          onDrag={onDrag}
+          onDrag={handleDrag}
           onStop={onDragStop}
           bounds={bounds}
           cancel={`.${modalPrefixCls}-title-container, .${modalPrefixCls}-close-icon`}
