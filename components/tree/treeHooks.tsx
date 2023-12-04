@@ -127,6 +127,7 @@ export const useExpand = (
     keysData,
     isInit,
     searchStatus,
+    filterValue,
   ])
 
   const [expandedKeys, setExpandedKeys] = React.useState(initialExpandedKeys)
