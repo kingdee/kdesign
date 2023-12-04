@@ -46,7 +46,7 @@ export interface TreeProps {
   scrollToKey?: string
   selectedKeys?: string[]
   notFoundContent?: ReactNode
-  loadData?: () => void
+  loadData?: <T>(data: T) => void
   onCheck?: (checkedKeys: string[], { checked, node, event, halfCheckedKeys }: any) => void
   onExpand?: (expandedKeys: string[], { expanded, node }: any) => void
   onSelect?: (keys: string[], { checked, node, event }: any) => void
