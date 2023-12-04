@@ -12,7 +12,7 @@ import { Pagination } from '@kdcloudjs/kdesign'
 
 function Demo() {
   return (
-    <div style={{ width: '300px' }}><Pagination showSizeChanger pageSizeOptions={['10', '20', '30', '40']} defaultCurrent={1} total={50} /></div>
+    <div style={{ width: '400px' }}><Pagination showSizeChanger pageSizeOptions={['10', '20', '30', '40']} defaultCurrent={1} total={50} /></div>
   )
 }
 

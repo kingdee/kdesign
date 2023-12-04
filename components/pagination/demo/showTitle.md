@@ -12,7 +12,7 @@ import { Pagination } from '@kdcloudjs/kdesign'
 
 function Demo() {
   return (
-    <div style={{ width: '300px' }}>
+    <div style={{ width: '400px' }}>
       <Pagination showTitle={true} pageType="nicety" defaultCurrent={1} total={50} />
       <br />
       <br />

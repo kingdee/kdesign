@@ -171,8 +171,8 @@ exports[`ImageCropper render no child without errors 1`] = `
           defaultClassNameDragging="react-draggable-dragging"
           defaultPosition={
             Object {
-              "x": -430,
-              "y": -310,
+              "x": 0,
+              "y": 0,
             }
           }
           disabled={false}
@@ -182,6 +182,12 @@ exports[`ImageCropper render no child without errors 1`] = `
           onMouseDown={[Function]}
           onStart={[Function]}
           onStop={[Function]}
+          position={
+            Object {
+              "x": -430,
+              "y": -310,
+            }
+          }
           scale={1}
         >
           <DraggableCore
@@ -693,8 +699,8 @@ exports[`ImageCropper render null or undefined ImageCropper without errors 1`] =
           defaultClassNameDragging="react-draggable-dragging"
           defaultPosition={
             Object {
-              "x": -430,
-              "y": -310,
+              "x": 0,
+              "y": 0,
             }
           }
           disabled={false}
@@ -704,6 +710,12 @@ exports[`ImageCropper render null or undefined ImageCropper without errors 1`] =
           onMouseDown={[Function]}
           onStart={[Function]}
           onStop={[Function]}
+          position={
+            Object {
+              "x": -430,
+              "y": -310,
+            }
+          }
           scale={1}
         >
           <DraggableCore
