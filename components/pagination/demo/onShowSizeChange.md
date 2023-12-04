@@ -12,7 +12,7 @@ import { Pagination } from '@kdcloudjs/kdesign'
 
 function Demo() {
   return (
-    <div style={{ width: '300px' }}>
+    <div style={{ width: '500px' }}>
        <Pagination pageType="nicety" onShowSizeChange={() => console.log('触发onShowSizeChange回调')} defaultCurrent={3} total={50} showSizeChanger />
     </div>
   )

@@ -832,8 +832,8 @@ exports[`Modal should getContainer use right 4`] = `
             defaultClassNameDragging="react-draggable-dragging"
             defaultPosition={
               Object {
-                "x": -230,
-                "y": -170,
+                "x": 0,
+                "y": 0,
               }
             }
             disabled={false}
@@ -843,6 +843,12 @@ exports[`Modal should getContainer use right 4`] = `
             onMouseDown={[Function]}
             onStart={[Function]}
             onStop={[Function]}
+            position={
+              Object {
+                "x": -230,
+                "y": -170,
+              }
+            }
             scale={1}
           >
             <DraggableCore
