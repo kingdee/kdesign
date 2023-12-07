@@ -71,6 +71,7 @@ module.exports = {
           },
         },
       }
+      config.plugins = [...config.plugins, new TransformDefaultParamsPlugin()]
     }
     config.module.rules = [
       ...editBabelConfig(config.module.rules),
@@ -80,7 +81,6 @@ module.exports = {
         type: 'javascript/auto',
       },
     ]
-    config.plugins = [...config.plugins, new TransformDefaultParamsPlugin()]
     config.devtool = process.env.NODE_ENV !== 'development' ? 'none' : 'cheap-module-eval-source-map'
     return config
   },
