@@ -196,7 +196,11 @@ const Pagination: React.FC<IPaginationProps> = (props) => {
 
   // 生成元素是连续数字的数组
   function genArray(start: number, end: number): Array<number> {
-    return Array.from(Array(end + 1).keys()).slice(start)
+    const result = []
+    for (let i = start; i <= end; i++) {
+      result.push(i)
+    }
+    return result
   }
 
   function dropdownVisibleChange(visible: boolean) {
@@ -337,31 +341,34 @@ const Pagination: React.FC<IPaginationProps> = (props) => {
   )
 
   const lessPages = genArray(1, totalPage)
+  let lessPagination: React.ReactElement | null = null
 
-  const lessPagination = (
-    <div className={classNames(prefixCls, 'less', { bordered, disabled }, className)} style={style}>
-      {Total}
-      <ul className={`${prefixCls}-pages`}>
-        <li {...itemAttr('pages-item', paginationLangMsg.prevPage)}>
-          <button onClick={handlePrev} disabled={page === 1 || disabled}>
-            {innerIcon.prev}
-          </button>
-        </li>
-        {lessPages.map((item, index) => (
-          <li key={index} {...itemAttr('pages-item', String(item), item === page)}>
-            <button onClick={() => changePage(item)} disabled={disabled}>
-              {item}
+  if (pageType === 'less') {
+    lessPagination = (
+      <div className={classNames(prefixCls, 'less', { bordered, disabled }, className)} style={style}>
+        {Total}
+        <ul className={`${prefixCls}-pages`}>
+          <li {...itemAttr('pages-item', paginationLangMsg.prevPage)}>
+            <button onClick={handlePrev} disabled={page === 1 || disabled}>
+              {innerIcon.prev}
             </button>
           </li>
-        ))}
-        <li {...itemAttr('pages-item', paginationLangMsg.nextPage)}>
-          <button onClick={handleNext} disabled={page === totalPage || disabled}>
-            {innerIcon.next}
-          </button>
-        </li>
-      </ul>
-    </div>
-  )
+          {lessPages.map((item, index) => (
+            <li key={index} {...itemAttr('pages-item', String(item), item === page)}>
+              <button onClick={() => changePage(item)} disabled={disabled}>
+                {item}
+              </button>
+            </li>
+          ))}
+          <li {...itemAttr('pages-item', paginationLangMsg.nextPage)}>
+            <button onClick={handleNext} disabled={page === totalPage || disabled}>
+              {innerIcon.next}
+            </button>
+          </li>
+        </ul>
+      </div>
+    )
+  }
 
   const nicetyPages: Array<number | string> = lessPages
 
@@ -462,7 +469,7 @@ const Pagination: React.FC<IPaginationProps> = (props) => {
     </div>
   )
 
-  const mapPagination: { [key: string]: React.ReactElement } = {
+  const mapPagination: { [key: string]: React.ReactElement | null } = {
     basic: normalPagination,
     bill: normalPagination,
     simple: simplePagination,
