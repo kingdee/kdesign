@@ -16,6 +16,8 @@ if (
 /* @remove-on-es-build-end */
 export { default as Alert } from './alert'
 
+export { default as Breadcrumb } from './breadcrumb'
+
 export { default as Button } from './button'
 
 export { default as Card } from './card'
@@ -133,5 +135,3 @@ export { default as Clipboard } from './clipboard'
 export { default as QRCode } from './qr-code'
 
 export { default as Divider } from './divider'
-
-export { default as Breadcrumb } from './breadcrumb'

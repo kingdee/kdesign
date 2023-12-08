@@ -13,7 +13,7 @@ import { Divider } from '@kdcloudjs/kdesign'
 const Demo: React.FC = () => {
   // 改下面的代码
   return (
-    <div>
+    <div style={{ display: 'flex', alignItems: 'center' }}>
       <span>KDesign</span>
       <Divider type="vertical" style={{ margin: '0 10px' }} />
       <span>KDesign</span>

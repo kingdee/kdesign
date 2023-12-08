@@ -7,11 +7,11 @@
 
   width: 900px;
   padding: @divider-spacing-padding-horizontal;
-  border-block-start: 1px solid @color-border-strong;
+  border-top: 1px solid @color-border-strong;
 
   &-vertical {
     display: inline-block;
-    border-inline-start: 1px solid @color-border-strong;
+    border-left: 1px solid @color-border-strong;
     width: 0;
     height: 1em;
   }
@@ -39,14 +39,16 @@
         content: '';
         width: 74px;
         margin-right: 8px;
-        border-block-start: 1px solid @color-border-strong;
+        border-top-width: 1px;
+        border-top-color: @color-border-strong;
       }
 
       &::after {
         content: '';
         width: calc(100% - 74px);
         margin-left: 8px;
-        border-block-start: 1px solid @color-border-strong;
+        border-top-width: 1px;
+        border-top-color: @color-border-strong ;
       }
     }
   }

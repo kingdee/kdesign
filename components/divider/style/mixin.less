@@ -6,14 +6,14 @@
 }
 
 .borderStyle(@border-style) {
-  border-block-start-style: @border-style;
-  border-inline-start-style: @border-style;
+  border-top-style: @border-style;
+  border-left-style: @border-style;
 
   .@{divider-prefix-cls}-inner-text {
 
     &::before,
     &::after {
-      border-block-start-style: @border-style !important
+      border-block-start-style: @border-style
     }
   }
 }
