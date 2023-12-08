@@ -101,6 +101,12 @@ const compDefaultProps = {
     minuteStep: 1,
     secondStep: 1,
   },
+  Divider: {
+    orientation: 'left',
+    orientationMargin: '74px',
+    type: 'horizontal',
+    borderStyle: 'solid',
+  },
   Drawer: {
     closable: true,
     destroyOnClose: false,

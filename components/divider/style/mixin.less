@@ -1,0 +1,19 @@
+@import './token.less';
+
+.divider() {
+  color: @divider-color-text;
+  font-size: @divider-font-size;
+}
+
+.borderStyle(@border-style) {
+  border-block-start-style: @border-style;
+  border-inline-start-style: @border-style;
+
+  .@{divider-prefix-cls}-inner-text {
+
+    &::before,
+    &::after {
+      border-block-start-style: @border-style !important
+    }
+  }
+}

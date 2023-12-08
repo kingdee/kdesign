@@ -37,19 +37,19 @@ subtitle: 颜色选择器
 
 ## Design Token
 
-| 分类    | 组件 token                                                 | 全局 token              | 默认值             |
-| ------- | ---------------------------------------------------------- | ----------------------- | ------------------ |
-| color   | --kd-c-color-picker-panel-option-color-background-selected | --kd-g-color-theme-3    | rgb(227, 238, 255) |
-| font    | --kd-c-color-picker-input-font-size                        | --kd-g-font-size-middle | 14px               |
-|         | --kd-c-color-picker-panel-select-font-size                 | --kd-g-font-size-middle | 14px               |
-|         | --kd-c-color-picker-panel-alpha-font-size                  | --kd-g-font-size-middle | 14px               |
-| sizing  | --kd-c-color-picker-input-sizing-width                     | -                       | 230px              |
-|         | --kd-c-color-picker-input-sizing-height                    | -                       | 28px               |
-|         | --kd-c-color-picker-input-suffix-sizing-width              | -                       | 20px               |
-|         | --kd-c-color-picker-input-suffix-sizing-height             | -                       | 20px               |
-|         | --kd-c-color-picker-panel-sizing-width                     | -                       | 304px              |
-|         | --kd-c-color-picker-panel-select-sizing-width              | -                       | 212px              |
-|         | --kd-c-color-picker-panel-select-sizing-height             | -                       | 28px               |
-|         | --kd-c-color-picker-panel-preset-sizing-width              | -                       | 16px               |
-|         | --kd-c-color-picker-panel-preset-sizing-height             | -                       | 16px               |
-| z-index | --kd-c-color-picker-panel-z-index                          | --kd-g-z-index-popper   | 1050               |
+| 分类 | 组件token | 全局token | 默认值 |
+| --- | --- | --- | --- |
+| color | --kd-c-color-picker-panel-option-color-background-selected | --kd-g-color-theme-3 | rgb(227, 238, 255) |
+| font | --kd-c-color-picker-input-font-size | --kd-g-font-size-middle | 14px |
+|  | --kd-c-color-picker-panel-select-font-size | --kd-g-font-size-middle | 14px |
+|  | --kd-c-color-picker-panel-alpha-font-size | --kd-g-font-size-middle | 14px |
+| sizing | --kd-c-color-picker-input-sizing-width | - | 230px |
+|  | --kd-c-color-picker-input-sizing-height | - | 28px |
+|  | --kd-c-color-picker-input-suffix-sizing-width | - | 20px |
+|  | --kd-c-color-picker-input-suffix-sizing-height | - | 20px |
+|  | --kd-c-color-picker-panel-sizing-width | - | 304px |
+|  | --kd-c-color-picker-panel-select-sizing-width | - | 212px |
+|  | --kd-c-color-picker-panel-select-sizing-height | - | 28px |
+|  | --kd-c-color-picker-panel-preset-sizing-width | - | 16px |
+|  | --kd-c-color-picker-panel-preset-sizing-height | - | 16px |
+| z-index | --kd-c-color-picker-panel-z-index | --kd-g-z-index-popper | 1050 |
