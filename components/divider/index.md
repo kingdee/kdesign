@@ -9,19 +9,20 @@ subtitle: 分割线
 
 ## 使用场景
 
-• 当用户需要对内容进行划分时
+当用户需要对内容进行划分时
 
 ## API
 
 | 属性 | 说明 | 类型 | 默认值 | 可选值 | 版本 |
 | --- | --- | --- | --- | --- | --- |
-| borderStyle | 分割线样式 | string | `solid` | `solid` \| `dashed` \| `dotted` | 2.0.0 |
-| children | 嵌套的标题内容 | ReactNode | - | - | 2.0.0 |
-| className | 分割线样式类名 | string | - | - | 2.0.0 |
-| orientation | 分割线标题的位置 | string | `left` | `left` \| `center` \| `right` | 2.0.0 |
-| orientationMargin | 标题和最近 left/right 边框之间的距离，去除了分割线，同时 orientation 必须为 left 或 right。如果传入 string 类型的数字且不带单位，默认单位是 px | string \| number | - | - | 2.0.0 |
-| style | 分割线样式对象 | CSSProperties | - | - | 2.0.0 |
-| type | 水平还是垂直类型 | string | `horizontal` | `horizontal` \| `vertical` | 2.0.0 |
+| borderStyle | 分割线样式 | string | `solid` | `solid` \| `dashed` \| `dotted` | 1.7.47 |
+| children | 嵌套的标题内容 | ReactNode | - | - | 1.7.47 |
+| className | 分割线样式类名 | string | - | - | 1.7.47 |
+| orientation | 分割线标题的位置 | string | `left` | `left` \| `center` \| `right` | 1.7.47 |
+| orientationMargin | 标题和最近 left/right 边框之间的距离，去除了分割线，同时 orientation 必须为 left 或 right。如果传入 string 类型的数字且不带单位，默认单位是 px | string \| number | - | - | 1.7.47 |
+| style | 分割线样式对象 | CSSProperties | - | - | 1.7.47 |
+| type | 水平还是垂直类型 | string | `horizontal` | `horizontal` \| `vertical` | 1.7.47 |
+
 
 ## Design Token
 
