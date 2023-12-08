@@ -1,0 +1,77 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Divider 2. render test renders correctly 1`] = `
+<div
+  class="kd-divider kd-divider-solid"
+/>
+`;
+
+exports[`Divider 2. render test renders correctly 2`] = `
+<div
+  class="kd-divider kd-divider-solid"
+  style="width:100px"
+/>
+`;
+
+exports[`Divider 2. render test renders correctly 3`] = `
+<div
+  class="kd-divider kd-divider-with-text kd-divider-with-text-left kd-divider-solid kd-divider-margin-left"
+>
+  <div
+    class="kd-divider-inner-text"
+    style="margin-left:12px"
+  >
+    Divider
+  </div>
+</div>
+`;
+
+exports[`Divider 2. render test renders correctly 4`] = `
+<div
+  class="kd-divider kd-divider-solid"
+/>
+`;
+
+exports[`Divider 2. render test renders correctly 5`] = `
+<div
+  class="kd-divider kd-divider-solid kd-divider-vertical"
+/>
+`;
+
+exports[`Divider 2. render test renders correctly 6`] = `
+<div
+  class="kd-divider kd-divider-solid"
+/>
+`;
+
+exports[`Divider 2. render test renders correctly 7`] = `
+<div
+  class="kd-divider kd-divider-solid"
+/>
+`;
+
+exports[`Divider 2. render test renders correctly 8`] = `
+<div
+  class="kd-divider kd-divider-solid"
+/>
+`;
+
+exports[`Divider 2. render test renders correctly 9`] = `
+<div
+  class="kd-divider kd-divider-solid"
+/>
+`;
+
+exports[`Divider 2. render test renders correctly 10`] = `
+<div
+  class="kd-divider kd-divider-dashed"
+/>
+`;
+
+exports[`Divider 2. render test renders correctly 11`] = `
+<div
+  class="kd-divider kd-divider-dotted"
+/>
+`;
+
+exports[`Divider 4. render null or undefined without errors render null or undefined without errors 1`] = `<Divider />`;
