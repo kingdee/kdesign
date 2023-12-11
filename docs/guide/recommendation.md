@@ -3,7 +3,7 @@ order: 9
 title: 社区精选组件
 ---
 
-`KDesign of React`是基于 Kdesign 设计规范实现的[高质量 React UI 组件库](/components/overview/index.md)。我们推荐使用以下社区已有的优秀实现，与 Kdesign of React 形成互补。
+`KDesign of React`是基于 Kdesign 设计规范实现的[高质量 React UI 组件库](/components/overview)。我们推荐使用以下社区已有的优秀实现，与 Kdesign of React 形成互补。
 
 | 类型 | 推荐组件 |
 | --- | --- |
