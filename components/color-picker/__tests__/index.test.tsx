@@ -306,7 +306,7 @@ describe('ColorPicker', () => {
     expect(wrapper.find('.kd-color-picker-input').at(0).props().value).toBe('blue')
   })
   it('should change value when use onChange event', async () => {
-    let changeValue = 'blue'
+    const changeValue = 'blue'
     const handleChangeValue = jest.fn(async (colorValue) => {
       expect(colorValue).toEqual('#a1ecff')
       await sleep(1000)
