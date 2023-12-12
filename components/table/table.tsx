@@ -24,6 +24,7 @@ import useＭergeCellHover from './feature/mergeCellHover'
 import devWarning from '../_utils/devwarning'
 import useFooterDataSource from './feature/useFooterDataSource'
 import usecolGroupExtendable from './feature/colGroupExtendable'
+import useRowDrag from './feature/useRowDrag'
 import getApi from './api'
 
 const Table = forwardRef<unknown, TableProps>((props: TableProps, ref) => {
@@ -60,6 +61,7 @@ const Table = forwardRef<unknown, TableProps>((props: TableProps, ref) => {
     scrollbarWidth,
     scrollLoad,
     columnGroupExtend = {},
+    rowDrag,
   } = props
 
   const { getPrefixCls, prefixCls, locale } = useContext(ConfigContext)
@@ -112,6 +114,7 @@ const Table = forwardRef<unknown, TableProps>((props: TableProps, ref) => {
   useRangeSelection(pipeline, rangeSelection)
   useＭergeCellHover(pipeline)
   useFooterDataSource(pipeline, footerDataSource)
+  useRowDrag(pipeline, rowDrag, estimatedRowHeight)
 
   /* -------------------------------------------------------------------------- */
   /* after useTablePipeline, merge pipeline.getProps result                     */
