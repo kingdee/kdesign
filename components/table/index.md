@@ -62,6 +62,7 @@ return <Table dataSource={dataSource} columns={columns} />
 | rangeSelection | 范围选中功能配置 | [rangeSelection](#rangeSelection) | - | - | 1.0.0 |
 | components | 表格内部组件替换 |  [组件替换](#组件替换) | - | - | 1.0.0 |
 | getRowProps | 更新每一行的props | (record: any, rowIndex: number) => {}  | - | - | 1.0.0 |
+| rowDrag | 行拖拽功能配置 | [rowDrag](#rowDrag)  | - | - | 1.0.0 |
 <br/>
 
 
@@ -293,4 +294,30 @@ interface TableRangeSelection { /** 范围选中回调函数 \ \ \ \ \ \ \ \ \ \
 
 ```ts
 interface Components { /** 表格加载时的加载图标 \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \*/ LoadingIcon?: React.ComponentType; /** 数据为空时，表格的展示内容。 \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \*/ EmptyContent?: React.ComponentType; }
+```
+
+### rowDrag
+属性`rowDrag`为`{}`或设置`TableRowDrag`时可以开启表格拖拽功能
+```ts
+interface TableRowDrag {
+
+  /** 拖拽开始事件 */
+  onDragStart?:(event:RowDragEvent) => void,
+
+  /** 拖拽移动事件 */
+  onDragMove?:(event:RowDragEvent) => void,
+
+  /** 拖拽结束事件 */
+  onDragEnd?:(event:RowDragEvent) => void,
+
+  /** 判断一行是否要禁用拖拽 */
+  isDisabled?:(row: any, rowIndex: number) => boolean,
+
+  /** 拖拽列定义 */
+  rowDragColumn?: ArtColumn,
+
+  /** 行高 */
+  rowHeight?: number
+
+}
 ```
