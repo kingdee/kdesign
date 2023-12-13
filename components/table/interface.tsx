@@ -9,7 +9,7 @@ import {
   ContextMenuFeatureOptions,
   RangeSelectionFeatureOptions,
   colGroupExtendOption,
-  RowDragFeatureOptions
+  RowDragFeatureOptions,
 } from '@kdcloudjs/table/es/table/pipeline/features'
 
 type TablePropsOfComponents = Pick<BaseTableProps, 'components'> & {
