@@ -57,7 +57,7 @@ exports[`Transfer render no child without errors 1`] = `
                   className="kd-checkbox kd-checkbox-no-child kd-checkbox-default"
                 >
                   <span
-                    className="kd-checkbox-default-no-child kd-checkbox-default-wrapper"
+                    className="kd-checkbox-default-wrapper kd-checkbox-default-wrapper-size"
                   >
                     <input
                       checked={false}
@@ -236,7 +236,7 @@ exports[`Transfer render no child without errors 1`] = `
                   className="kd-checkbox kd-checkbox-no-child kd-checkbox-default"
                 >
                   <span
-                    className="kd-checkbox-default-no-child kd-checkbox-default-wrapper"
+                    className="kd-checkbox-default-wrapper kd-checkbox-default-wrapper-size"
                   >
                     <input
                       checked={false}
@@ -304,7 +304,7 @@ exports[`Transfer renders correctly 1`] = `
             class="kd-checkbox kd-checkbox-no-child kd-checkbox-default checked"
           >
             <span
-              class="kd-checkbox-default-no-child kd-checkbox-default-wrapper kd-checkbox-default-checked"
+              class="kd-checkbox-default-wrapper kd-checkbox-default-wrapper-size kd-checkbox-default-checked"
             >
               <span
                 class="kd-checkbox-default-inner"
@@ -346,7 +346,7 @@ exports[`Transfer renders correctly 1`] = `
             class="kd-checkbox kd-checkbox-no-child kd-checkbox-default checked"
           >
             <span
-              class="kd-checkbox-default-no-child kd-checkbox-default-wrapper kd-checkbox-default-checked"
+              class="kd-checkbox-default-wrapper kd-checkbox-default-wrapper-size kd-checkbox-default-checked"
             >
               <span
                 class="kd-checkbox-default-inner"
@@ -373,7 +373,7 @@ exports[`Transfer renders correctly 1`] = `
             class="kd-checkbox kd-checkbox-no-child kd-checkbox-default kd-checkbox-default-disabled"
           >
             <span
-              class="kd-checkbox-default-no-child kd-checkbox-default-wrapper kd-checkbox-default-disabled"
+              class="kd-checkbox-default-wrapper kd-checkbox-default-wrapper-size kd-checkbox-default-disabled"
             >
               <input
                 class="kd-checkbox-input"
@@ -438,7 +438,7 @@ exports[`Transfer renders correctly 1`] = `
             class="kd-checkbox kd-checkbox-no-child kd-checkbox-default"
           >
             <span
-              class="kd-checkbox-default-no-child kd-checkbox-default-wrapper"
+              class="kd-checkbox-default-wrapper kd-checkbox-default-wrapper-size"
             >
               <input
                 class="kd-checkbox-input"
@@ -472,7 +472,7 @@ exports[`Transfer renders correctly 1`] = `
             class="kd-checkbox kd-checkbox-no-child kd-checkbox-default"
           >
             <span
-              class="kd-checkbox-default-no-child kd-checkbox-default-wrapper"
+              class="kd-checkbox-default-wrapper kd-checkbox-default-wrapper-size"
             >
               <input
                 class="kd-checkbox-input"
@@ -510,7 +510,7 @@ exports[`Transfer should show sorted targetKey 1`] = `
             class="kd-checkbox kd-checkbox-no-child kd-checkbox-default"
           >
             <span
-              class="kd-checkbox-default-no-child kd-checkbox-default-wrapper"
+              class="kd-checkbox-default-wrapper kd-checkbox-default-wrapper-size"
             >
               <input
                 class="kd-checkbox-input"
@@ -545,7 +545,7 @@ exports[`Transfer should show sorted targetKey 1`] = `
             class="kd-checkbox kd-checkbox-no-child kd-checkbox-default"
           >
             <span
-              class="kd-checkbox-default-no-child kd-checkbox-default-wrapper"
+              class="kd-checkbox-default-wrapper kd-checkbox-default-wrapper-size"
             >
               <input
                 class="kd-checkbox-input"
@@ -612,7 +612,7 @@ exports[`Transfer should show sorted targetKey 1`] = `
             class="kd-checkbox kd-checkbox-no-child kd-checkbox-default"
           >
             <span
-              class="kd-checkbox-default-no-child kd-checkbox-default-wrapper"
+              class="kd-checkbox-default-wrapper kd-checkbox-default-wrapper-size"
             >
               <input
                 class="kd-checkbox-input"
@@ -647,7 +647,7 @@ exports[`Transfer should show sorted targetKey 1`] = `
             class="kd-checkbox kd-checkbox-no-child kd-checkbox-default"
           >
             <span
-              class="kd-checkbox-default-no-child kd-checkbox-default-wrapper"
+              class="kd-checkbox-default-wrapper kd-checkbox-default-wrapper-size"
             >
               <input
                 class="kd-checkbox-input"
@@ -669,7 +669,7 @@ exports[`Transfer should show sorted targetKey 1`] = `
             class="kd-checkbox kd-checkbox-no-child kd-checkbox-default"
           >
             <span
-              class="kd-checkbox-default-no-child kd-checkbox-default-wrapper"
+              class="kd-checkbox-default-wrapper kd-checkbox-default-wrapper-size"
             >
               <input
                 class="kd-checkbox-input"
@@ -762,7 +762,7 @@ exports[`Transfer should support render value and label in item 1`] = `
                   className="kd-checkbox kd-checkbox-no-child kd-checkbox-default"
                 >
                   <span
-                    className="kd-checkbox-default-no-child kd-checkbox-default-wrapper"
+                    className="kd-checkbox-default-wrapper kd-checkbox-default-wrapper-size"
                   >
                     <input
                       checked={false}
@@ -873,7 +873,7 @@ exports[`Transfer should support render value and label in item 1`] = `
                       className="kd-checkbox kd-checkbox-no-child kd-checkbox-default"
                     >
                       <span
-                        className="kd-checkbox-default-no-child kd-checkbox-default-wrapper"
+                        className="kd-checkbox-default-wrapper kd-checkbox-default-wrapper-size"
                       >
                         <input
                           checked={false}
@@ -1032,7 +1032,7 @@ exports[`Transfer should support render value and label in item 1`] = `
                   className="kd-checkbox kd-checkbox-no-child kd-checkbox-default"
                 >
                   <span
-                    className="kd-checkbox-default-no-child kd-checkbox-default-wrapper"
+                    className="kd-checkbox-default-wrapper kd-checkbox-default-wrapper-size"
                   >
                     <input
                       checked={false}
