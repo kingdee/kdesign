@@ -577,7 +577,7 @@ const InternalSelect: React.ForwardRefRenderFunction<ISelectProps<SelectValue>> 
       background: 'none',
     }
     const indeterminate = mulOptions.length > 0 && mulOptions.length < filledOptions.length
-    const checked = mulOptions.length === filledOptions.length
+    const checked = mulOptions.length > 0 && mulOptions.length === filledOptions.length
     return (
       <>
         {
