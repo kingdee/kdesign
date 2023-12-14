@@ -114,9 +114,8 @@ const InternalCheckbox: React.ForwardRefRenderFunction<unknown, CheckboxProps> =
   })
 
   const checkedWrapperClassName = classNames({
-    [`${checkboxPrefixCls}-${mergedCheckboxType}-no-child`]: !children,
     [`${checkboxPrefixCls}-${mergedCheckboxType}-wrapper`]: true,
-    [`${checkboxPrefixCls}-${mergedCheckboxType}-wrapper-size`]: !!children,
+    [`${checkboxPrefixCls}-${mergedCheckboxType}-wrapper-size`]: true,
     [`${checkboxPrefixCls}-${mergedCheckboxType}-margin`]: !!children,
     [`${checkboxPrefixCls}-${mergedCheckboxType}-checked`]: selected,
     [`${checkboxPrefixCls}-${mergedCheckboxType}-indeterminate`]: getIndeterminate(),
