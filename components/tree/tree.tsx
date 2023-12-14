@@ -243,8 +243,8 @@ const InternalTree = React.forwardRef((props: TreeProps, ref: any): React.Functi
 
   const handleNodeLoad = useCallback(
     (loadedKeys: Set<string>, loadingKeys: Set<string>, data: any) => {
-      const { key } = data
-      if (!loadData || loadedKeys.has(key) || loadingKeys.has(key)) {
+      const { key, isLeaf } = data
+      if (!loadData || loadedKeys.has(key) || loadingKeys.has(key) || isLeaf) {
         return
       }
       setLoadingKeys((prevLoadingKeys) => new Set([...prevLoadingKeys, key]))
