@@ -246,6 +246,8 @@ SortHeaderCellProps {
 ### treeMode
 树形数据展示功能
 
+- 启用功能之前，必须已经设置了 `primaryKey`。
+
 | 属性 | 说明 | 类型 | 默认值 | 可选值 | 版本 |
 | --- | --- | --- | --- | --- | --- |
 | defaultOpenKeys | (非受控用法) 默认展开的 keys  | string[] | `-` | `-` | 1.0.0 |
