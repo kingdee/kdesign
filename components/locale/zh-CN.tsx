@@ -78,6 +78,11 @@ const locale = {
   'Table.confirmFilter': '确定',
   'Select.selectAll': '全选',
   'Select.seleted': '已选{size}项',
+  'Signature.clickToSign': '点击签名',
+  'Signature.pleaseWriteHere': '请在此处横向书写签名',
+  'Signature.okText': '确定',
+  'Signature.cancelText': '取消',
+  'signature.handwrittenSignature': '手写签名',
 }
 
 export default locale

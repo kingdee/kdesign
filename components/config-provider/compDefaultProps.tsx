@@ -482,6 +482,13 @@ const compDefaultProps = {
     errorLevel: 'H',
     color: '#000000',
   },
+  Signature: {
+    penColor: 'black',
+    backgroundColor: 'white',
+    containerWidth: 610,
+    containerHeight: 500,
+    canFullScreen: true,
+  },
 }
 
 export default compDefaultProps
