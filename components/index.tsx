@@ -135,3 +135,5 @@ export { default as Clipboard } from './clipboard'
 export { default as QRCode } from './qr-code'
 
 export { default as Divider } from './divider'
+
+export { default as Signature } from './signature'
