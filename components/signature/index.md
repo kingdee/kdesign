@@ -5,9 +5,15 @@ title: Signature
 subtitle: 手写签名
 ---
 
+手写签名是一种用户可通过鼠标/触控设备完成签名的组件
+
 ## 使用场景
 
-这是一个使用场景的描述文字
+**在以下情况下使用手写签名组件**  
+需要手写签署名字时。
+
+**在以下情况下请勿使用手写签名**  
+需要输入姓名时，请改用[输入框](https://react.kingdee.design/components/input)。
 
 ## API
 
@@ -28,8 +34,8 @@ subtitle: 手写签名
 | modal | 是否在裁切框的下方显示半透明的黑色遮罩 | boolean | true | - | 1.7.43 |
 | onClose | 关闭弹窗回调 | () => void | - | - | 1.7.43 |
 | title | 标题 | ReactNode | - | - | 1.7.43 |
-| preview | 预览参数，为false时禁用 | boolean | true | - | 1.7.43 |
-| canFullScreen | 弹窗能否全屏,默认为true | boolean | true | - | 1.7.43 |
+| preview | 预览参数，为 false 时禁用 | boolean | true | - | 1.7.43 |
+| canFullScreen | 弹窗能否全屏,默认为 true | boolean | true | - | 1.7.43 |
 
 ## Design Token
 
