@@ -269,6 +269,12 @@ const InternalSelect: React.ForwardRefRenderFunction<ISelectProps<SelectValue>> 
     return childrenList
   }, [searchValue, realChildren, filterOption, optionFilterProp])
 
+  // 下拉列表框样式
+  const dropDownCls = classNames(dropdownClassName, {
+    [`${selectPrefixCls}-dropdown`]: true,
+    [`${selectPrefixCls}-dropdown-no-data`]: filledOptions.length === 0,
+  })
+
   const getOptionLabel = useCallback(
     (obj) => {
       const text =
@@ -591,7 +597,7 @@ const InternalSelect: React.ForwardRefRenderFunction<ISelectProps<SelectValue>> 
             {/* 拓展菜单 */}
             <div>{dropdownRender ? dropdownRender(dropRender(eleOptionList, heightStyle)) : null}</div>
             {/* 多选模式-----底部 */}
-            {isMultiple && realChildren.length > 0 ? (
+            {isMultiple && filledOptions.length > 0 ? (
               <div className={multipleFooterCls}>
                 <Checkbox
                   style={checkboxStyle}
