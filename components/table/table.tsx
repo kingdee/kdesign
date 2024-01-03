@@ -122,15 +122,22 @@ const Table = forwardRef<unknown, TableProps>((props: TableProps, ref) => {
   if (typeof getRowProps === 'function') {
     pipeline.appendRowPropsGetter(getRowProps)
   } else {
-    devWarning(true, 'table', `parameter 'getRowProps' should be a function but here it is ${getRowProps}`)
+    devWarning(
+      getRowProps !== undefined,
+      'table',
+      `parameter 'getRowProps' should be a function but here it is ${getRowProps}`
+    )
   }
 
   if (typeof getTableProps === 'function') {
     const tableProps: React.HTMLAttributes<HTMLTableElement> = getTableProps()
     pipeline.addTableProps(tableProps)
   } else {
-    devWarning(true, 'table', `parameter 'getTableProps' should be a function but here it is ${getTableProps}`)
-  }
+    devWarning(
+      getTableProps !== undefined,
+      'table',
+      `parameter 'getTableProps' should be a function but here it is ${getTableProps}`,
+    )
 
   return (
     <BaseTable
