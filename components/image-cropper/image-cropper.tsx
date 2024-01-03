@@ -76,7 +76,7 @@ const InternalImageCropper = (
 
   const handleOkClick = async () => {
     const imgFile = await cropperRef!.current!.getImage()
-    imgFile ? onCropSuccess?.(imgFile) : onCropFailed?.(imgFile)
+    imgFile ? onCropSuccess?.(imgFile) : onCropFailed?.()
   }
 
   const handleRotate = () => {
