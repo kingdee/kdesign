@@ -329,19 +329,25 @@ const InternalSelect: React.ForwardRefRenderFunction<CityPickerProps> = (props: 
       if (!data) return null
       if (isDomestic(type)) {
         if (isCommon) {
-          const curVal = data?.province ? data?.province : data?.country
+          const curVal = data?.province ? data?.province : data?.country || ''
           return `${flag && curVal ? symbol : ''}${curVal}`
         }
         if (data?.type) {
-          const curVal = data.type === 'domestic' ? data?.province || data?.country : data?.country
+          const curVal =
+            (data.type === 'domestic'
+              ? data?.province || data?.country
+              : [data?.province, data?.country].filter(Boolean).join(symbol)) || ''
           return `${flag && curVal ? symbol : ''}${curVal}`
         }
-        const curVal = tabsValue === 'domestic' ? data?.province || data?.country : data?.country
+        const curVal =
+          tabsValue === 'domestic'
+            ? data?.province || data?.country || ''
+            : [data?.province, data?.country].filter(Boolean).join(symbol)
         return `${flag && curVal ? symbol : ''}${curVal}`
       } else {
-        return `${flag && (data?.province || data?.country) ? symbol : ''}${data?.province}${
-          data?.country && data?.province ? symbol : ''
-        }${data?.country}`
+        return `${flag && (data?.province || data?.country) ? symbol : ''}${[data?.province, data?.country]
+          .filter(Boolean)
+          .join(symbol)}`
       }
     },
     [type, tabsValue],
