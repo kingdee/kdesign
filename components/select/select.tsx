@@ -611,7 +611,7 @@ const InternalSelect: React.ForwardRefRenderFunction<ISelectProps<SelectValue>> 
                   {locale.getLangMsg('Select', 'seleted', {
                     size: (
                       <span className={`${selectPrefixCls}-multiple-footer-hadSelected-number`}>
-                        {selectedVal.length}
+                        {selectedVal?.length}
                       </span>
                     ),
                   })}
@@ -824,7 +824,7 @@ const InternalSelect: React.ForwardRefRenderFunction<ISelectProps<SelectValue>> 
     // backspace
     const { selectedVal, selectMulOpts } = multipleRef.current
     // isMultiple
-    if (which === KeyCode.BACKSPACE && !searchValue && isMultiple && selectedVal.length && selectMulOpts.length) {
+    if (which === KeyCode.BACKSPACE && !searchValue && isMultiple && selectedVal?.length && selectMulOpts.length) {
       selectedVal.splice(-1, 1)
       selectMulOpts.splice(-1, 1)
       setMulOptions([...selectMulOpts])
