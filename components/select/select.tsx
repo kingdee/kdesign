@@ -599,7 +599,7 @@ const InternalSelect: React.ForwardRefRenderFunction<ISelectProps<SelectValue>> 
                   全选
                 </Checkbox>
                 <span className={`${selectPrefixCls}-multiple-footer-hadSelected`}>
-                  已选<span>{selectedVal.length}</span>项
+                  已选<span>{selectedVal?.length}</span>项
                 </span>
               </div>
             ) : null}
@@ -809,7 +809,7 @@ const InternalSelect: React.ForwardRefRenderFunction<ISelectProps<SelectValue>> 
     // backspace
     const { selectedVal, selectMulOpts } = multipleRef.current
     // isMultiple
-    if (which === KeyCode.BACKSPACE && !searchValue && isMultiple && selectedVal.length && selectMulOpts.length) {
+    if (which === KeyCode.BACKSPACE && !searchValue && isMultiple && selectedVal?.length && selectMulOpts.length) {
       selectedVal.splice(-1, 1)
       selectMulOpts.splice(-1, 1)
       setMulOptions([...selectMulOpts])
