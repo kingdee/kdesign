@@ -101,11 +101,6 @@ const InternalSelect: React.ForwardRefRenderFunction<ISelectProps<SelectValue>> 
     [`${selectPrefixCls}-selector`]: true,
   })
 
-  // 下拉列表框样式
-  const dropDownCls = classNames(dropdownClassName, {
-    [`${selectPrefixCls}-dropdown`]: true,
-  })
-
   // 下拉子项列表样式
   const dropContentCls = classNames({
     [`${selectPrefixCls}-dropdown-scroll`]:

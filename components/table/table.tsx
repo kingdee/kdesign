@@ -125,7 +125,7 @@ const Table = forwardRef<unknown, TableProps>((props: TableProps, ref) => {
     devWarning(
       getRowProps !== undefined,
       'table',
-      `parameter 'getRowProps' should be a function but here it is ${getRowProps}`
+      `parameter 'getRowProps' should be a function but here it is ${getRowProps}`,
     )
   }
 
@@ -138,6 +138,7 @@ const Table = forwardRef<unknown, TableProps>((props: TableProps, ref) => {
       'table',
       `parameter 'getTableProps' should be a function but here it is ${getTableProps}`,
     )
+  }
 
   return (
     <BaseTable
