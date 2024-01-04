@@ -78,7 +78,7 @@
     "@babel/runtime-corejs3": "^7.11.2",
     "@babel/standalone": "^7.14.3",
     "@kdcloudjs/kdesign-icons": "^1.0.0",
-    "@kdcloudjs/table": "1.2.0-canary.10",
+    "@kdcloudjs/table": "1.2.0-canary.12",
     "@popperjs/core": "^2.5.4",
     "@types/js-cookie": "^3.0.3",
     "async-validator": "^3.5.1",
