@@ -443,6 +443,7 @@ export function getAllCheckedKeys(
     halfCheckedKeysSet.delete(key)
     childKeys.forEach((v) => {
       allKeys.add(v)
+      halfCheckedKeysSet.delete(v)
     })
   } else {
     halfCheckedKeysSet.delete(key)
