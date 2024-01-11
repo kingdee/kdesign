@@ -6,14 +6,11 @@ import { IBreadcrumbProps, IBreadcrumbItem, IItemsWidth } from './interface'
 import BreadcrumbItem from './breadcrumbItem'
 import Icon from '../icon'
 import Tooltip from '../tooltip'
+import { cloneDeep } from 'lodash'
 
 const Breadcrumb = (props: IBreadcrumbProps): FunctionComponentElement<IBreadcrumbProps> => {
-  // prefixCls 是默认提供的类名前缀，默认值是'kd';
-  // compDefaultProps存放了所有组件全局化配置的默认值，用户可以通过ConfigProvider这个组件区去做修改；
   const { getPrefixCls, prefixCls, compDefaultProps: userDefaultProps } = useContext(ConfigContext)
-  // 这里将用户传入的 props 和 Breadcrumb 组件的全局化默认配置 userDefaultProps 做了合并处理，得到最终 Breadcrumb 组件渲染的prop
   const breadcrumbProps = getCompProps('Breadcrumb', userDefaultProps, props)
-  // 解构获取需要的操作的属性值 customPrefixcls最终组件的默认类名前缀，如果用户不通过ConfigProvider全局化配置传入，则默认为‘kd’，否则为用户传入值
   const {
     className,
     prefixCls: customPrefixcls,
@@ -29,9 +26,8 @@ const Breadcrumb = (props: IBreadcrumbProps): FunctionComponentElement<IBreadcru
   const [itemsArray, setItemsArray] = React.useState<any>()
   const [breadcrumbWidth, setBreadcrumbWidth] = React.useState<number>()
   const [openEllipsis, setOpenEllipsis] = React.useState<boolean>(false)
-  // 获取组件的基类样式前缀，此时breadcrumbPrefixCls的值为 kd-breadcrumb ，后续的Breadcrumb组件的样式名都以此开头，使用中划线连接
+
   const breadcrumbPrefixCls = getPrefixCls!(prefixCls, 'breadcrumb', customPrefixcls)
-  // 混合用户传入的类名 与 组件内部定义的样式名
   const breadcrumbClass = classNames(breadcrumbPrefixCls, className)
   const breadcrumbPopperClass = classNames(`${breadcrumbPrefixCls}-popper`)
   const breadcrumbMorePanelClass = classNames(`${breadcrumbPrefixCls}-more-panel`)
@@ -44,7 +40,7 @@ const Breadcrumb = (props: IBreadcrumbProps): FunctionComponentElement<IBreadcru
       [`${breadcrumbPrefixCls}-item-${colorModel || 'emphasize'}-model`]: !isLast,
     })
   }
-  const minItem = 3 // 加上more只显示3个元素的时候，末尾元素开启省略号
+  const MIN_ITEM = 3 // 加上more只显示3个元素的时候，末尾元素开启省略号
   const isLastItem = (index: number, items: IBreadcrumbItem[]) => {
     return index === items?.length - 1
   }
@@ -63,7 +59,7 @@ const Breadcrumb = (props: IBreadcrumbProps): FunctionComponentElement<IBreadcru
           {items.map((item, index) => {
             return (
               <BreadcrumbItem
-                key={index}
+                key={`breadcrumb--more-item-${index}`}
                 index={index}
                 item={{ ...item, className: getBreadcrumbItemClass(item, false) }}
                 separator={getSeparator(index, items)}
@@ -116,10 +112,10 @@ const Breadcrumb = (props: IBreadcrumbProps): FunctionComponentElement<IBreadcru
         },
         { width: 0, index: 0 },
       )
-      if (removeItem.index > 0 && removeItem.index < itemsConfig.length - 1) {
-        const newItemsConfig = JSON.parse(JSON.stringify(itemsConfig))
+      if (removeItem.index > 0 && removeItem.index < items.length - 1) {
+        const newItemsConfig = cloneDeep(items)
         newItemsConfig.splice(1, removeItem.index, {
-          title: getMoreIconContent(JSON.parse(JSON.stringify(itemsConfig)).splice(1, removeItem.index)),
+          title: getMoreIconContent(cloneDeep(items).splice(1, removeItem.index)),
         })
         setItemsConfig(newItemsConfig)
       }
@@ -132,7 +128,7 @@ const Breadcrumb = (props: IBreadcrumbProps): FunctionComponentElement<IBreadcru
     const isMore = itemsConfig?.some((item: any) => {
       return item?.title?.props?.children.type.displayName === 'Tooltip'
     })
-    setOpenEllipsis(isMore && itemsConfig.length === minItem)
+    setOpenEllipsis(isMore && itemsConfig.length === MIN_ITEM)
   }, [itemsConfig])
 
   useEffect(() => {
@@ -146,7 +142,9 @@ const Breadcrumb = (props: IBreadcrumbProps): FunctionComponentElement<IBreadcru
       const breadcrumbWidth = itemsArray.reduce((acc, cur) => acc + cur.width, 0)
       setItemsArray(itemsArray)
       setBreadcrumbWidth(breadcrumbWidth)
-      getItemsConfig(itemsArray, breadcrumbWidth)
+      if (itemsArray && breadcrumbWidth) {
+        getItemsConfig(itemsArray, breadcrumbWidth)
+      }
     }
   }, [])
 
@@ -156,6 +154,11 @@ const Breadcrumb = (props: IBreadcrumbProps): FunctionComponentElement<IBreadcru
         getItemsConfig(itemsArray, breadcrumbWidth)
       })
     }
+
+    return () =>
+      window.removeEventListener('resize', () => {
+        getItemsConfig(itemsArray, breadcrumbWidth as any)
+      })
   }, [itemsArray, breadcrumbWidth])
 
   return (
@@ -165,7 +168,7 @@ const Breadcrumb = (props: IBreadcrumbProps): FunctionComponentElement<IBreadcru
           itemsConfig.map((item: IBreadcrumbItem, index: number) => {
             return (
               <BreadcrumbItem
-                key={index}
+                key={`breadcrumb-item-${index}`}
                 item={{
                   ...item,
                   className: getBreadcrumbItemClass(item, isLastItem(index, itemsConfig)),
