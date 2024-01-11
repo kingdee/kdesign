@@ -6,6 +6,7 @@ const transformComponentArr = [
   'avatar',
   'badge',
   'base-data',
+  'breadcrumb',
   'button',
   'card',
   'carousel',
