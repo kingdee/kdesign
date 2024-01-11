@@ -1,0 +1,213 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Breadcrumb 2. render test renders correctly 1`] = `
+Array [
+  <div
+    class="kd-breadcrumb"
+  >
+    <div
+      class="kd-breadcrumb-item kd-breadcrumb-item-link kd-breadcrumb-item-emphasize-model"
+    >
+      <div
+        class="kd-breadcrumb-item-text"
+        style="max-width:unset;overflow:inherit"
+        title="KDesign"
+      >
+        KDesign
+      </div>
+      <span
+        class="kd-breadcrumb-item-separator"
+      >
+        /
+      </span>
+    </div>
+    <div
+      class="kd-breadcrumb-item kd-breadcrumb-item-link kd-breadcrumb-item-emphasize-model"
+    >
+      <div
+        class="kd-breadcrumb-item-text"
+        style="max-width:unset;overflow:inherit"
+        title="KDesign React"
+      >
+        KDesign React
+      </div>
+      <span
+        class="kd-breadcrumb-item-separator"
+      >
+        /
+      </span>
+    </div>
+    <div
+      class="kd-breadcrumb-item kd-breadcrumb-item-emphasize-model-current"
+    >
+      <div
+        class="kd-breadcrumb-item-text"
+        style="max-width:unset;overflow:inherit"
+        title="Breadcrumb"
+      >
+        Breadcrumb
+      </div>
+    </div>
+  </div>,
+  <div
+    class="kd-breadcrumb-hide-icon"
+  >
+    <i
+      class="kdicon kdicon-more"
+    />
+    <span
+      class="kd-breadcrumb-item-separator"
+    >
+      /
+    </span>
+  </div>,
+]
+`;
+
+exports[`Breadcrumb 2. render test renders correctly 2`] = `
+Array [
+  <div
+    class="kd-breadcrumb"
+  >
+    <div
+      class="kd-breadcrumb-item kd-breadcrumb-item-link kd-breadcrumb-item-emphasize-model"
+    >
+      <div
+        class="kd-breadcrumb-item-text"
+        style="max-width:unset;overflow:inherit"
+        title="KDesign"
+      >
+        KDesign
+      </div>
+      <span
+        class="kd-breadcrumb-item-separator"
+      >
+        /
+      </span>
+    </div>
+    <div
+      class="kd-breadcrumb-item kd-breadcrumb-item-link kd-breadcrumb-item-emphasize-model"
+    >
+      <div
+        class="kd-breadcrumb-item-text"
+        style="max-width:unset;overflow:inherit"
+        title="KDesign React"
+      >
+        KDesign React
+      </div>
+      <span
+        class="kd-breadcrumb-item-separator"
+      >
+        /
+      </span>
+    </div>
+    <div
+      class="kd-breadcrumb-item kd-breadcrumb-item-emphasize-model-current"
+    >
+      <div
+        class="kd-breadcrumb-item-text"
+        style="max-width:unset;overflow:inherit"
+        title="Breadcrumb"
+      >
+        Breadcrumb
+      </div>
+    </div>
+  </div>,
+  <div
+    class="kd-breadcrumb-hide-icon"
+  >
+    <i
+      class="kdicon kdicon-more"
+    />
+    <span
+      class="kd-breadcrumb-item-separator"
+    >
+      /
+    </span>
+  </div>,
+]
+`;
+
+exports[`Breadcrumb 2. render test renders correctly 3`] = `
+Array [
+  <div
+    class="kd-breadcrumb"
+  >
+    <div
+      class="kd-breadcrumb-item kd-breadcrumb-item-link kd-breadcrumb-item-weaken-model"
+    >
+      <div
+        class="kd-breadcrumb-item-text"
+        style="max-width:unset;overflow:inherit"
+        title="KDesign"
+      >
+        KDesign
+      </div>
+      <span
+        class="kd-breadcrumb-item-separator"
+      >
+        /
+      </span>
+    </div>
+    <div
+      class="kd-breadcrumb-item kd-breadcrumb-item-link kd-breadcrumb-item-weaken-model"
+    >
+      <div
+        class="kd-breadcrumb-item-text"
+        style="max-width:unset;overflow:inherit"
+        title="KDesign React"
+      >
+        KDesign React
+      </div>
+      <span
+        class="kd-breadcrumb-item-separator"
+      >
+        /
+      </span>
+    </div>
+    <div
+      class="kd-breadcrumb-item kd-breadcrumb-item-weaken-model-current"
+    >
+      <div
+        class="kd-breadcrumb-item-text"
+        style="max-width:unset;overflow:inherit"
+        title="Breadcrumb"
+      >
+        Breadcrumb
+      </div>
+    </div>
+  </div>,
+  <div
+    class="kd-breadcrumb-hide-icon"
+  >
+    <i
+      class="kdicon kdicon-more"
+    />
+    <span
+      class="kd-breadcrumb-item-separator"
+    >
+      /
+    </span>
+  </div>,
+]
+`;
+
+exports[`Breadcrumb 4. render null or undefined without errors render null or undefined without errors 1`] = `
+<Breadcrumb
+  items={
+    Array [
+      Object {
+        "href": "https://kingdee.design/",
+        "title": "KDesign",
+      },
+      Object {
+        "href": "https://react.kingdee.design/",
+        "title": "KDesign React",
+      },
+      Object {
+        "title": "Breadcrumb",
+      },
+    ]
+  }
+/>
+`;

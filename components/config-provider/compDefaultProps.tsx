@@ -15,6 +15,10 @@ const compDefaultProps = {
     banner: false,
     bannerOffset: [0, 0],
   },
+  Breadcrumb: {
+    colorModel: 'emphasize',
+    separator: '/',
+  },
   Button: {
     type: 'second',
     iconPlace: 'left',

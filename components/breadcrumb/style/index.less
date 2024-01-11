@@ -1,0 +1,71 @@
+@import '../../style/themes/index';
+@import './mixin.less';
+@breadcrumb-prefix-cls: ~'@{kd-prefix}-breadcrumb';
+
+.@{breadcrumb-prefix-cls},
+.@{breadcrumb-prefix-cls}-more-panel {
+  .breadcrumb;
+
+  display: flex;
+  height: 22px;
+
+  &-hide-icon {
+    position: absolute;
+    z-index: -999999;
+    top: -999999px;
+    visibility: hidden;
+  }
+
+  &-item {
+    display: flex;
+    cursor: text;
+
+    &-separator {
+      padding: 0 @breadcrumb-separator-spacing-padding-horizontal;
+      color: @breadcrumb-separator-color-text;
+    }
+
+    &-link {
+      &:hover {
+        color: #3987ed;
+        cursor: pointer;
+      }
+    }
+
+    &-emphasize-model {
+      color: @breadcrumb-color-text;
+    }
+
+    &-emphasize-model-current {
+      color: @breadcrumb-active-color-text;
+    }
+
+    &-weaken-model {
+      color: @breadcrumb-active-color-text;
+    }
+
+    &-weaken-model-current {
+      color: @breadcrumb-color-text;
+    }
+
+    &-text {
+      white-space: nowrap;
+
+      &:last-child {
+        text-overflow: ellipsis;
+      }
+    }
+
+    &-icon {
+      margin-right: 4px;
+    }
+  }
+
+  .kd-dropdown-trigger {
+    margin-left: 4px;
+  }
+}
+
+.@{breadcrumb-prefix-cls}-popper {
+  max-width: none !important;
+}
