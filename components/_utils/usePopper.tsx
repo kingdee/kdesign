@@ -128,7 +128,7 @@ const getBorderWidth: (el: Element) => { top: number; left: number } = (el: HTML
   if (el.offsetParent) {
     const parentBorder = getBorderWidth(el.offsetParent)
     border.top += parentBorder.top + parseInt(getComputedStyle(el.offsetParent, null).borderTopWidth.slice(0, -2))
-    border.left += parentBorder.left + parseInt(getComputedStyle(el.offsetParent, null).borderTopWidth.slice(0, -2))
+    border.left += parentBorder.left + parseInt(getComputedStyle(el.offsetParent, null).borderLeftWidth.slice(0, -2))
   }
   return border
 }
