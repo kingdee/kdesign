@@ -8,9 +8,9 @@ order: 6
 ```jsx
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { Breadcrumb, Icon } from '@kdcloudjs/kdesign'
+import { Breadcrumb } from '@kdcloudjs/kdesign'
 
-function Demo() {
+const Demo: React.FC = () => {
   // 改下面的代码
   const config = [
     {

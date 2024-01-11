@@ -23,7 +23,6 @@ subtitle: 分割线
 | style | 分割线样式对象 | CSSProperties | - | - | 1.7.47 |
 | type | 水平还是垂直类型 | string | `horizontal` | `horizontal` \| `vertical` | 1.7.47 |
 
-
 ## Design Token
 
 | 分类 | 组件token | 全局token | 默认值 |

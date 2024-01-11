@@ -25,23 +25,23 @@ subtitle: 面包屑
 
 | 属性 | 说明 | 类型 | 默认值 | 可选值 | 版本 |
 | --- | --- | --- | --- | --- | --- |
-| className | 面包屑样式类名 | string | - | - | 2.0.0 |
-| colorModel | 面包屑的模式 | string | `emphasize` | `emphasize` \| `weaken` | 2.0.0 |
-| items | 面包屑节点配置数组 | [BreadcrumbItem](/components/breadcrumb#BreadcrumbItem)[] | - | - | 2.0.0 |
-| onItemClick | 面包屑节点点击事件 | (item: [BreadcrumbItem](/components/breadcrumb#BreadcrumbItem), index: number) => void | - | - | 2.0.0 |
-| separator | 分隔符自定义 | ReactNode | `/` | - | 2.0.0 |
-| style | 面包屑样式对象 | CSSProperties | - | - | 2.0.0 |
+| className | 面包屑样式类名 | string | - | - | 1.7.47 |
+| colorModel | 面包屑的模式 | string | `emphasize` | `emphasize` \| `weaken` | 1.7.47 |
+| items | 面包屑节点配置数组 | [BreadcrumbItem](/components/breadcrumb#BreadcrumbItem)[] | - | - | 1.7.47 |
+| onItemClick | 面包屑节点点击事件 | (item: [BreadcrumbItem](/components/breadcrumb#BreadcrumbItem), index: number) => void | - | - | 1.7.47 |
+| separator | 分隔符自定义 | ReactNode | `/` | - | 1.7.47 |
+| style | 面包屑样式对象 | CSSProperties | - | - | 1.7.47 |
 
 ### BreadcrumbItem
 
 | 属性 | 说明 | 类型 | 默认值 | 可选值 | 版本 |
 | --- | --- | --- | --- | --- | --- |
-| className | 面包屑节点样式类名 | string | - | - | 2.0.0 |
-| dropdownProps | 面包屑节点下拉框配置 | [DropDownProps](/components/dropdown/#API) | - | - | 2.0.0 |
-| href | 面包屑节点跳转链接，不能和 `path` 共用 | string | - | - | 2.0.0 |
-| icon | 面包屑节点图标 | ReactNode | - | - | 2.0.0 |
-| path | 面包屑节点拼接路径，不能和 `href` 共用 | string | - | - | 2.0.0 |
-| title | 面包屑节点文本 | ReactNode | - | - | 2.0.0 |
+| className | 面包屑节点样式类名 | string | - | - | 1.7.47 |
+| dropdownProps | 面包屑节点下拉框配置 | [DropDownProps](/components/dropdown/#API) | - | - | 1.7.47 |
+| href | 面包屑节点跳转链接，不能和 `path` 共用 | string | - | - | 1.7.47 |
+| icon | 面包屑节点图标 | ReactNode | - | - | 1.7.47 |
+| path | 面包屑节点拼接路径，不能和 `href` 共用 | string | - | - | 1.7.47 |
+| title | 面包屑节点文本 | ReactNode | - | - | 1.7.47 |
 
 ## Design Token
 
