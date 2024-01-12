@@ -4,6 +4,499 @@ title: 更新日志
 hiddenAnchor: true
 ---
 
+## [1.7.46](https://github.com/kdcloudone/kdesign/compare/v1.7.45...v1.7.46)
+`2024-01-12`
+* city-picker
+  * 修复国内版回填的提示内容显示问题 fix [#708](https://github.com/kdcloudone/kdesign/issues/708)
+* select
+  * 调整全选逻辑 fix [#687](https://github.com/kdcloudone/kdesign/issues/687)
+* tree
+  * 修复勾选时onCheck函数返回了错误的halfCheckedKeys fix [#710](https://github.com/kdcloudone/kdesign/issues/710)
+  * 新增api expandOnFilterNode支持过滤时是否显示过滤节点的下级 fix [#707](https://github.com/kdcloudone/kdesign/issues/707)
+* filter
+  * 新增api expandOnFilterNode支持过滤时是否显示过滤节点的下级 fix [#707](https://github.com/kdcloudone/kdesign/issues/707)
+* 修复下拉面板未对齐问题 fix [#712](https://github.com/kdcloudone/kdesign/issues/712)
+
+## [1.7.45](https://github.com/kdcloudone/kdesign/compare/v1.7.44...v1.7.45)
+`2024-01-04`
+* city-picker
+  * 修复国内版搜索国外城市不显示上级区划 fix [#700](https://github.com/kdcloudone/kdesign/issues/700)
+* filter
+  * 修复demo中Option的报错
+* form
+  * 修复必选图标由于字体设置导致的样式不一致问题
+* image
+  * 修复api文档书写错误 fix [#688](https://github.com/kdcloudone/kdesign/issues/688)
+* image-cropper
+  * 修复api文档书写错误 fix [#688](https://github.com/kdcloudone/kdesign/issues/688)
+* select
+  * 多选搜索时下面面板未空时不显示全选按钮 fix [#698](https://github.com/kdcloudone/kdesign/issues/698)
+  * 修复从单选切换为多选时页面报错的问题 fix [#701](https://github.com/kdcloudone/kdesign/issues/701)
+* table
+  * 更新table版本修复react18严格模式报错及全选与拖拽标题共用是报错问题 fix [#641](https://github.com/kdcloudone/kdesign/issues/641), [#695](https://github.com/kdcloudone/kdesign/issues/695)
+  * 修复表格默认加载输出异常警告日志
+  * 修复格式导致的报错
+* 添加埋点功能
+
+## [1.7.44](https://github.com/kdcloudone/kdesign/compare/v1.7.43...v1.7.44)
+`2023-12-14`
+* checkbox
+  * 修复传入的children为空时样式显示问题 fix [#672](https://github.com/kdcloudone/kdesign/issues/672)
+* select
+  * 修复多选搜索没有结果时会把全选勾上 fix [#668](https://github.com/kdcloudone/kdesign/issues/668)
+* tree
+  * 修复expandOnClickNode为true时，点击叶子节点会触发loadData事件的问题 fix [#679](https://github.com/kdcloudone/kdesign/issues/679)
+
+## [1.7.43](https://github.com/kdcloudone/kdesign/compare/v1.7.42...v1.7.43)
+`2023-12-13`
+* 提升开发环境构建速度 [#676](https://github.com/kdcloudone/kdesign/issues/676)
+* 官网新增社区精选组件 [#675](https://github.com/kdcloudone/kdesign/issues/675)
+* 社区精选组件链接跳转not Found (https://github.com/kdcloudone/kdesign/issues/680)
+
+## [1.7.42](https://github.com/kdcloudone/kdesign/compare/v1.7.41...v1.7.42)
+`2023-12-07`
+* pagination
+  * 修复total过大时导致页面卡顿问题 fix [#666](https://github.com/kdcloudone/kdesign/issues/666)
+* tree
+  * 修复在类组件中使用时,搜索结果未展开的问题 fix [#667](https://github.com/kdcloudone/kdesign/issues/667)
+  * 修复loadData函数ts类型校验报错问题 fix [#651](https://github.com/kdcloudone/kdesign/issues/651)
+
+## [1.7.41](https://github.com/kdcloudone/kdesign/compare/v1.7.40...v1.7.41)
+`2023-12-04`
+* input
+  * 添加textarea限制字数后超出提示 fix [#650](https://github.com/kdcloudone/kdesign/issues/650)
+* notification
+  * 修复success回调重复触发问题 fix [#649](https://github.com/kdcloudone/kdesign/issues/649)
+* modal
+  * 新增支持弹窗拖拽调整大小功能 fix [#158](https://github.com/kdcloudone/kdesign/issues/158)
+* 更新单测快照
+* demo添加typescript支持 fix [#282](https://github.com/kdcloudone/kdesign/issues/282)
+* kdesign官网无法在ie11上显示 [#662](https://github.com/kdcloudone/kdesign/issues/662)
+
+## [1.7.40](https://github.com/kdcloudone/kdesign/compare/v1.7.39...v1.7.40)
+`2023-11-27`
+* alert
+  * 修复点击关闭按钮依旧占位的问题 fix [#652](https://github.com/kdcloudone/kdesign/issues/652)
+* modal
+  * 修复弹窗超出视口高度时无法滚动的问题 fix [#226](https://github.com/kdcloudone/kdesign/issues/226) fix [#581](https://github.com/kdcloudone/kdesign/issues/581)
+* tree
+  * 修复树组件搜索不生效问题 fix [#644](https://github.com/kdcloudone/kdesign/issues/644)
+* date-picker
+  * 新增自定义单元格API fix [#266](https://github.com/kdcloudone/kdesign/issues/266)
+* 添加剪切板组件预览图
+* 修复demo中多余的name属性
+* 新增二维码组件 [#626](https://github.com/kdcloudone/kdesign/issues/626)
+
+## [1.7.39](https://github.com/kdcloudone/kdesign/compare/v1.7.37...v1.7.39)
+`2023-10-27`
+* cascader
+  * 修复多选选中项很多时,滚动内容清空按钮不垂直居中问题 fix [#332](https://github.com/kdcloudone/kdesign/issues/332)
+* input
+  * 修复配置digitLength和decimalLength时的交互问题 fix [#630](https://github.com/kdcloudone/kdesign/issues/630)
+* input-number
+  * 修复配置digitLength和decimalLength时的交互问题 fix [#630](https://github.com/kdcloudone/kdesign/issues/630)
+* select
+  * 修复单选设置placeholder不生效问题 fix [#631](https://github.com/kdcloudone/kdesign/issues/631)
+* tree
+  * 修复单选设置placeholder不生效问题 fix [#631](https://github.com/kdcloudone/kdesign/issues/631)
+* tree-select
+  * 修复单选设置placeholder不生效问题 fix [#631](https://github.com/kdcloudone/kdesign/issues/631)
+* readme文件新增官网链接
+
+## [1.7.37](https://github.com/kdcloudone/kdesign/compare/v1.7.35...v1.7.37)
+`2023-10-19`
+* city-picker
+  * 修复空值输入搜索内容时显示清空按钮问题 fix [#623](https://github.com/kdcloudone/kdesign/issues/623)
+* message
+  * 修复设置content为reactNode时图标和关闭按钮不出现的问题 fix [#293](https://github.com/kdcloudone/kdesign/issues/293)
+* select
+  * 去除单选的backspace快捷键功能 fix [#632](https://github.com/kdcloudone/kdesign/issues/632)
+  * 修复在表单中无法重置树选择下拉面板选中项问题 fix [#588](https://github.com/kdcloudone/kdesign/issues/588)
+  * 新增错误状态  fix [#627](https://github.com/kdcloudone/kdesign/issues/627)
+  * 新增错误状态  fix [#628](https://github.com/kdcloudone/kdesign/issues/628)
+* space
+  * 去除单选的backspace快捷键功能 fix [#632](https://github.com/kdcloudone/kdesign/issues/632)
+* tree
+  * 修复在表单中无法重置树选择下拉面板选中项问题 fix [#588](https://github.com/kdcloudone/kdesign/issues/588)
+  * 修复树组件设置节点过滤后无法展开收起节点问题 fix [#509](https://github.com/kdcloudone/kdesign/issues/509)
+  * 新增错误状态  fix [#628](https://github.com/kdcloudone/kdesign/issues/628)
+  * 新增连接线 fix [#214](https://github.com/kdcloudone/kdesign/issues/214)
+* tree-select
+  * 修复在表单中无法重置树选择下拉面板选中项问题 fix [#588](https://github.com/kdcloudone/kdesign/issues/588)
+  * 新增错误状态  fix [#628](https://github.com/kdcloudone/kdesign/issues/628)
+* clipboard
+  * 新增剪贴板组件 fix [#584](https://github.com/kdcloudone/kdesign/issues/584)
+
+## [1.7.35](https://github.com/kdcloudone/kdesign/compare/v1.7.34...v1.7.35)
+`2023-10-19`
+* dropdown
+  * 修复传入dropdownRender属性导致页面卡死问题 fix [#573](https://github.com/kdcloudone/kdesign/issues/573)
+* select
+  * 修复传入dropdownRender属性导致页面卡死问题 fix [#573](https://github.com/kdcloudone/kdesign/issues/573)
+  * 修复select下拉面板浮层位置变动为bottomRight后导致面板无法关闭问题 fix [#622](https://github.com/kdcloudone/kdesign/issues/622)
+  * 新增选择器国际化功能 fix [#592](https://github.com/kdcloudone/kdesign/issues/592)
+* color-picker
+  * 修改输入框和下拉框的样式
+* 修改开发环境的地址
+* 新增visible和onVisibleChange API close (https://github.com/kdcloudone/kdesign/issues/580)
+
+## [1.7.34](https://github.com/kdcloudone/kdesign/compare/v1.7.33...v1.7.34)
+`2023-10-11`
+* date-picker
+  * 表单校验问题 fix [#619](https://github.com/kdcloudone/kdesign/issues/619)
+  * 修复safari组件异常问题 fix [#609](https://github.com/kdcloudone/kdesign/issues/609)
+* upload
+  * ie兼容性问题处理 fix [#620](https://github.com/kdcloudone/kdesign/issues/620)
+
+## [1.7.33](https://github.com/kdcloudone/kdesign/compare/v1.7.32...v1.7.33)
+`2023-10-07`
+* select
+  * 修复下拉面板出现多余滚动条问题 fix [#595](https://github.com/kdcloudone/kdesign/issues/595)
+
+## [1.7.32](https://github.com/kdcloudone/kdesign/compare/v1.7.31...v1.7.32)
+`2023-09-27`
+* select
+  * 样式 BUG
+
+## [1.7.31](https://github.com/kdcloudone/kdesign/compare/v1.7.30...v1.7.31)
+`2023-09-27`
+* select
+  * 修复多选选择器页面上不显示问题 fix [#615](https://github.com/kdcloudone/kdesign/issues/615)
+* table
+  * 新增国际化配置
+  * 修改table版本到最新版
+
+## [1.7.30](https://github.com/kdcloudone/kdesign/compare/v1.7.29...v1.7.30)
+`2023-09-27`
+* city-picker
+  * 更新快捷键规范 fix [#610](https://github.com/kdcloudone/kdesign/issues/610)
+  * 更新清除按钮视觉规范 fix [#608](https://github.com/kdcloudone/kdesign/issues/608)
+  * 修复禁用状态下不显示空提示 fix [#603](https://github.com/kdcloudone/kdesign/issues/603)
+* grid
+  * 修复边距问题
+* select
+  * 修复在ie11多选打开下拉面板页面卡死问题 fix [#612](https://github.com/kdcloudone/kdesign/issues/612)
+
+## [1.7.29](https://github.com/kdcloudone/kdesign/compare/v1.7.28...v1.7.29)
+`2023-09-25`
+* grid
+  * 修复单测报错
+  * 修复ie11下间距失效的问题 fix [#604](https://github.com/kdcloudone/kdesign/issues/604)
+* select
+  * 修复在ie浏览器上出现多余滚动条问题 fix [#598](https://github.com/kdcloudone/kdesign/issues/598)
+
+## [1.7.28](https://github.com/kdcloudone/kdesign/compare/v1.7.27...v1.7.28)
+`2023-09-21`
+* city-picker
+  *  修复在ie浏览器出现滚动条问题 fix [#593](https://github.com/kdcloudone/kdesign/issues/593)
+  * 修复选中项后回填值显示异常问题 fix [#596](https://github.com/kdcloudone/kdesign/issues/596)
+  * 新增支持受控时传入value为城市数据 fix [#594](https://github.com/kdcloudone/kdesign/issues/594)
+* config-provider
+  * 修复新建组件脚本生成 config-provider 默认参数的 BUG fix: [#586](https://github.com/kdcloudone/kdesign/issues/586)
+* grid
+  * 修复ie11竖向间距消失的问题
+* select
+  * 修复在ie浏览器中使用选择器组件浏览器直接崩溃问题 fix [#579](https://github.com/kdcloudone/kdesign/issues/579)
+* 修复编译全局less变量后的显示问题
+
+## [1.7.27](https://github.com/kdcloudone/kdesign/compare/v1.7.26...v1.7.27)
+`2023-09-15`
+* city-picker
+  * 修复国内版常用面板无省份数据时显示国家名 fix [#576](https://github.com/kdcloudone/kdesign/issues/576)
+  * 修复下拉面板不关闭问题 fix [#575](https://github.com/kdcloudone/kdesign/issues/575)
+  * 新增快捷键功能 fix [#582](https://github.com/kdcloudone/kdesign/issues/582)
+* 添加开发新组件说明文档
+* 国际化专项token开放第二批组件
+
+## [1.7.26](https://github.com/kdcloudone/kdesign/compare/v1.7.25...v1.7.26)
+`2023-09-08`
+* cascader
+  * 修复清空时显示问题 fix [#528](https://github.com/kdcloudone/kdesign/issues/528)
+  * 修复disabled问题 fix [#397](https://github.com/kdcloudone/kdesign/issues/397),fix [#398](https://github.com/kdcloudone/kdesign/issues/398)
+  * 修复focus相关api及样式问题 fix [#338](https://github.com/kdcloudone/kdesign/issues/338), fix [#395](https://github.com/kdcloudone/kdesign/issues/395)
+  * 修复hover样式问题 fix [#396](https://github.com/kdcloudone/kdesign/issues/396)
+* city-picker
+  * 更新下拉面板视觉规范 fix [#565](https://github.com/kdcloudone/kdesign/issues/565)
+  * 修复国际版当数据无province时，下拉项无分隔符问题 fix [#567](https://github.com/kdcloudone/kdesign/issues/567)
+  * 修复受控时将value设置为空字符串,城市选项没清空问题 fix [#569](https://github.com/kdcloudone/kdesign/issues/569)
+  * 修复ie浏览器下容器宽度过长问题 fix [#568](https://github.com/kdcloudone/kdesign/issues/568)
+* collapse
+  * 添加header描述性语句api
+  * 修复边框显示问题 fix [#564](https://github.com/kdcloudone/kdesign/issues/564)
+* select
+  * 新增tag标签的title属性 fix [#570](https://github.com/kdcloudone/kdesign/issues/570)
+* tag
+  * 新增tag标签的title属性 fix [#570](https://github.com/kdcloudone/kdesign/issues/570)
+* tree
+  * 新增tag标签的title属性 fix [#570](https://github.com/kdcloudone/kdesign/issues/570)
+* tree-select
+  * 新增tag标签的title属性 fix [#570](https://github.com/kdcloudone/kdesign/issues/570)
+* form
+  * 新增extra属性 fix [#223](https://github.com/kdcloudone/kdesign/issues/223)
+
+## [1.7.25](https://github.com/kdcloudone/kdesign/compare/v1.7.24...v1.7.25)
+`2023-08-31`
+* city-picker
+  * 新增城市选择Token fix [#555](https://github.com/kdcloudone/kdesign/issues/555)
+  * 修复切换页签导致常用面板显示异常问题 fix [#558](https://github.com/kdcloudone/kdesign/issues/558)
+  * 修复搜索后关闭下拉面板时会闪烁到常用面板问题 fix [#560](https://github.com/kdcloudone/kdesign/issues/560)
+  * 修复下拉面板省略号显示问题 fix [#553](https://github.com/kdcloudone/kdesign/issues/553)
+  * 修复选中项出现多余逗号问题 fix [#554](https://github.com/kdcloudone/kdesign/issues/554)
+  * 修复页签文字超出问题 fix [#562](https://github.com/kdcloudone/kdesign/issues/562)
+  * 新增国际化配置 fix [#557](https://github.com/kdcloudone/kdesign/issues/557)
+* form
+  * 修复传入format后中间位置输入内容后光标自动回到末尾的问题 fix [#508](https://github.com/kdcloudone/kdesign/issues/508)
+* input
+  * 修复传入format后中间位置输入内容后光标自动回到末尾的问题 fix [#508](https://github.com/kdcloudone/kdesign/issues/508)
+  * 修复输入值超出范围时失焦不触发onChange事件 fix [#464](https://github.com/kdcloudone/kdesign/issues/464)
+* input-number
+  * 修复传入format后中间位置输入内容后光标自动回到末尾的问题 fix [#508](https://github.com/kdcloudone/kdesign/issues/508)
+  * 修复输入值超出范围时失焦不触发onChange事件 fix [#464](https://github.com/kdcloudone/kdesign/issues/464)
+* radio
+  * 修复radio在表格中选中发生位置偏移的问题
+* select
+  * 修复快捷键展开收起下拉面板不触发onVisibleChange回调问题 fix [#546](https://github.com/kdcloudone/kdesign/issues/546)
+
+## [1.7.24](https://github.com/kdcloudone/kdesign/compare/v1.7.23...v1.7.24)
+`2023-08-25`
+* city-picker
+  * 修复国内版页签切换到国际/中国港澳台时下拉面板显示问题 fix [#539](https://github.com/kdcloudone/kdesign/issues/539)
+  * 修复下拉面板动效与选择器不一致问题 fix [#548](https://github.com/kdcloudone/kdesign/issues/548)
+  * 修复下拉面板最后一行显示不全 fix [#549](https://github.com/kdcloudone/kdesign/issues/549)
+  * 新增切换页签时的回调 fix [#536](https://github.com/kdcloudone/kdesign/issues/536)
+* input
+  * 更新input ref导致的报错
+  * 新增键盘事件回调 fix [#529](https://github.com/kdcloudone/kdesign/issues/529)
+* select
+  * 修复下拉面板样式与视觉稿差异 fix [#543](https://github.com/kdcloudone/kdesign/issues/543)
+  * 修复showSearch为false时focus后直接enter键报错问题 fix [#547](https://github.com/kdcloudone/kdesign/issues/547)
+* search
+  * 修复showSearch为false时focus后直接enter键报错问题 fix [#547](https://github.com/kdcloudone/kdesign/issues/547)
+* table
+  * 更新版本
+* radio
+  * fix: 修复没有文本的时候radio消失的问题 fix [#544](https://github.com/kdcloudone/kdesign/issues/544)
+* input-number
+  * 新增键盘事件回调 fix [#529](https://github.com/kdcloudone/kdesign/issues/529)
+* 修复由于ref返回值变化导致报错 fix [#538](https://github.com/kdcloudone/kdesign/issues/538)
+
+## [1.7.23](https://github.com/kdcloudone/kdesign/compare/v1.7.22...v1.7.23)
+`2023-08-18`
+* checkbox
+  * 国际化token开放 取消checkbox的label的display属性修改
+
+## [1.7.22](https://github.com/kdcloudone/kdesign/compare/v1.7.21...v1.7.22)
+`2023-08-18`
+* base-data
+  * 修复demo中历史记录会重复的问题 fix [#361](https://github.com/kdcloudone/kdesign/issues/361)
+* checkbox
+  * checbox.Group ConfigProver 配置不生效 [#418](https://github.com/kdcloudone/kdesign/issues/418)
+* collapse
+  * 修复边框问题 fix [#433](https://github.com/kdcloudone/kdesign/issues/433)
+* dropdown
+  * 子元素为空的时候，报错 [#421](https://github.com/kdcloudone/kdesign/issues/421)
+* input
+  * 修复文档描述与实际效果不符 fix [#420](https://github.com/kdcloudone/kdesign/issues/420)
+  * 修复defaultValue不生效问题 fix [#407](https://github.com/kdcloudone/kdesign/issues/407)
+  * 新增focus/blur实例方法 fix [#523](https://github.com/kdcloudone/kdesign/issues/523)
+* input-number
+  * 修复文档描述与实际效果不符 fix [#420](https://github.com/kdcloudone/kdesign/issues/420)
+  * 修复defaultValue不生效问题 fix [#407](https://github.com/kdcloudone/kdesign/issues/407)
+* menu
+  * 修复二级菜单渲染问题 fix [#344](https://github.com/kdcloudone/kdesign/issues/344)
+  * 修复defaultOpenKeys问题 fix [#353](https://github.com/kdcloudone/kdesign/issues/353)
+* button
+  * 修复button点击不失焦,按enter多次弹出modal问题 fix [#414](https://github.com/kdcloudone/kdesign/issues/414)
+* modal
+  * 修复button点击不失焦,按enter多次弹出modal问题 fix [#414](https://github.com/kdcloudone/kdesign/issues/414)
+* timeline
+  * 修复设置reverse后的视觉偏差 fix [#409](https://github.com/kdcloudone/kdesign/issues/409)
+* tooltip
+  * : Tooltip文字提示 没有子元素的时候报错 [#406](https://github.com/kdcloudone/kdesign/issues/406)
+* tree
+  * 修复虚拟滚动节点过长无滚动条问题 fix [#530](https://github.com/kdcloudone/kdesign/issues/530)
+  * 修复虚拟滚动列表高度未撑满整个树组件 fix [#526](https://github.com/kdcloudone/kdesign/issues/526)
+* select
+  * 新增focus,blur实例方法 fix [#429](https://github.com/kdcloudone/kdesign/issues/429)
+* 更新单测
+* 添加页面的title显示 fix [#394](https://github.com/kdcloudone/kdesign/issues/394)
+
+## [1.7.21](https://github.com/kdcloudone/kdesign/compare/v1.7.20...v1.7.21)
+`2023-08-11`
+* select
+  * 修复传入的value在option中不存在时的显示问题 fix [#503](https://github.com/kdcloudone/kdesign/issues/503)
+  * 修复传入的value值在treeData不存在时的显示问题 fix [#504](https://github.com/kdcloudone/kdesign/issues/504)
+* tree
+  * 修复传入的value值在treeData不存在时的显示问题 fix [#504](https://github.com/kdcloudone/kdesign/issues/504)
+  * 优化树控件虚拟滚动 fix [#520](https://github.com/kdcloudone/kdesign/issues/520)
+* tree-select
+  * 修复传入的value值在treeData不存在时的显示问题 fix [#504](https://github.com/kdcloudone/kdesign/issues/504)
+
+## [1.7.20](https://github.com/kdcloudone/kdesign/compare/v1.7.19...v1.7.20)
+`2023-08-04`
+* checkbox
+  * 修复按住shift时无法点击问题 fix [#500](https://github.com/kdcloudone/kdesign/issues/500)
+* city-picker
+  * 更新城市选择组件交互与视觉 fix [#516](https://github.com/kdcloudone/kdesign/issues/516)
+* 修复生成token脚本,兼容无默认值情况
+* 修改移动端顶部搜索按钮点击会触发隔壁的登录按钮问题 fix [#444](https://github.com/kdcloudone/kdesign/issues/444)
+* 修复右侧导航显示错误
+
+## [1.7.19](https://github.com/kdcloudone/kdesign/compare/v1.7.18...v1.7.19)
+`2023-07-28`
+* carousel
+  * 修复效果为fade时,点击的元素与获取的信息不匹配的问题 [#497](https://github.com/kdcloudone/kdesign/issues/497)
+* cascader
+  * 修复受控问题 fix [#403](https://github.com/kdcloudone/kdesign/issues/403)
+* collapse
+  * 修复单测报错
+  * single test modifications
+* upload
+  * 修复删除文件状态错误问题 fix [#507](https://github.com/kdcloudone/kdesign/issues/507)
+  * 支持返回实例 fix [#451](https://github.com/kdcloudone/kdesign/issues/451)
+* grid
+  * single test modifications
+* icon
+  * single test modifications
+* layout
+  * single test modifications
+* space
+  * single test modifications
+* spin
+  * 加载单测补充
+  * single test modifications
+* stepper
+  * single test modifications
+* dropdown
+  * 新增动效配置 fix [#457](https://github.com/kdcloudone/kdesign/issues/457)
+
+## [1.7.18](https://github.com/kdcloudone/kdesign/compare/v1.7.17...v1.7.18)
+`2023-07-17`
+* cascader
+  * 修复边距及样式问题 fix [#472](https://github.com/kdcloudone/kdesign/issues/472)
+  * 修复样式问题
+* dropdown
+  * 修复input元素聚集时触发问题 fix [#489](https://github.com/kdcloudone/kdesign/issues/489)
+* input
+  * 修复input元素聚集时触发问题 fix [#489](https://github.com/kdcloudone/kdesign/issues/489)
+  * 点击fixNode聚集问题 fix [#476](https://github.com/kdcloudone/kdesign/issues/476)
+* select
+  * 调整下拉面板上下间距 fix [#479](https://github.com/kdcloudone/kdesign/issues/479)
+  * 调整选择器鼠标上下键切换选项样式 fix [#477](https://github.com/kdcloudone/kdesign/issues/477)  fix [#478](https://github.com/kdcloudone/kdesign/issues/478) fix [#480](https://github.com/kdcloudone/kdesign/issues/480)
+  * 调整展开下拉面板后下拉箭头的颜色 fix [#483](https://github.com/kdcloudone/kdesign/issues/483)
+  * 修复单选不带搜索选中选项后,再次点击选择器,输入框文字置灰问题 fix [#484](https://github.com/kdcloudone/kdesign/issues/484)
+  * 修复单选选择某一项后选择框聚焦问题 fix [#485](https://github.com/kdcloudone/kdesign/issues/485)
+  * 修复点击清空按钮下拉面板自动打开问题 fix [#486](https://github.com/kdcloudone/kdesign/issues/486)
+  * 修复下拉面板自适应问题 fix [#482](https://github.com/kdcloudone/kdesign/issues/482)
+  * 修复选择器悬浮手势问题 fix [#481](https://github.com/kdcloudone/kdesign/issues/481)
+
+## [1.7.17](https://github.com/kdcloudone/kdesign/compare/v1.7.16...v1.7.17)
+`2023-07-07`
+* card
+  * 修复onClick事件不执行的问题 fix [#462](https://github.com/kdcloudone/kdesign/issues/462)
+* carousel
+  * 修复异步请求的数据在初始化时不能正确渲染的问题 fix [#461](https://github.com/kdcloudone/kdesign/issues/461)
+* color-picker
+  * 修改面板下边距和关闭所有配置产生的bug, closes [#470](https://github.com/kdcloudone/kdesign/issues/470) [#471](https://github.com/kdcloudone/kdesign/issues/471)
+* dropdown
+  * 修复input为触发元素时位置问题 fix [#468](https://github.com/kdcloudone/kdesign/issues/468)
+* input
+  * 修复input为触发元素时位置问题 fix [#468](https://github.com/kdcloudone/kdesign/issues/468)
+  * 修复方案查询不能设置自定义组件为Input的问题
+* filter
+  * 修复方案查询不能设置自定义组件为Input的问题
+
+## [1.7.16](https://github.com/kdcloudone/kdesign/compare/v1.7.15...v1.7.16)
+`2023-06-30`
+* card
+  * 为组件添加ref [#422](https://github.com/kdcloudone/kdesign/issues/422)
+* color-picker
+  * 新增国际化单测
+  * 修复下拉面板中select框可输入的问题 [#453](https://github.com/kdcloudone/kdesign/issues/453)
+* select
+  * 修复下拉面板中select框可输入的问题 [#453](https://github.com/kdcloudone/kdesign/issues/453)
+  * 修复单选时选择先前的值onChange也会触发的问题 fix [#450](https://github.com/kdcloudone/kdesign/issues/450)
+  * 修复当多选选择器没有数据时全选按钮没办法取消勾选问题 fix [#454](https://github.com/kdcloudone/kdesign/issues/454)
+  * 修复配置showSearch属性时鼠标手势问题 fix [#455](https://github.com/kdcloudone/kdesign/issues/455)
+  * 修复鼠标手势问题
+  * 修复树选择器的class名存在重复的问题 fix [#445](https://github.com/kdcloudone/kdesign/issues/445)
+  * 新增api onlyExpandOnClickIcon 支持点击整行展开树节点 fix [#459](https://github.com/kdcloudone/kdesign/issues/459)
+* form
+  * 修复清空子组件异常问题 fix [#449](https://github.com/kdcloudone/kdesign/issues/449)
+* input
+  * 修复传入的值为数字时报错 fix [#430](https://github.com/kdcloudone/kdesign/issues/430)
+* input-number
+  * 修复传入的值为数字时报错 fix [#430](https://github.com/kdcloudone/kdesign/issues/430)
+* notification
+  * 修复问题，完善单测
+* pagination
+  * 调整数字与文字间距 fix: [#456](https://github.com/kdcloudone/kdesign/issues/456)
+* search
+  * 修复配置showSearch属性时鼠标手势问题 fix [#455](https://github.com/kdcloudone/kdesign/issues/455)
+* transfer
+  * 新增国际化单测
+* tree
+  * 修复树选择器的class名存在重复的问题 fix [#445](https://github.com/kdcloudone/kdesign/issues/445)
+  * 新增api onlyExpandOnClickIcon 支持点击整行展开树节点 fix [#459](https://github.com/kdcloudone/kdesign/issues/459)
+* tree-select
+  * 修复树选择器的class名存在重复的问题 fix [#445](https://github.com/kdcloudone/kdesign/issues/445)
+  * 新增api onlyExpandOnClickIcon 支持点击整行展开树节点 fix [#459](https://github.com/kdcloudone/kdesign/issues/459)
+* upload
+  * 修复onPreview问题 fix [#408](https://github.com/kdcloudone/kdesign/issues/408)
+* button
+  * 新增Button.Dropdown的loading api fix [#431](https://github.com/kdcloudone/kdesign/issues/431)
+* dropdown
+  * 新增Button.Dropdown的loading api fix [#431](https://github.com/kdcloudone/kdesign/issues/431)
+* icon
+  * 新增api onlyExpandOnClickIcon 支持点击整行展开树节点 fix [#459](https://github.com/kdcloudone/kdesign/issues/459)
+
+## [1.7.15](https://github.com/kdcloudone/kdesign/compare/v1.7.14...v1.7.15)
+`2023-06-16`
+* card
+  * 更新card单测
+* carousel
+  * 更新carousel单测
+  * 修改api文档排版 [#424](https://github.com/kdcloudone/kdesign/issues/424)
+* city-picker
+  * 修复弹出面板无法关闭问题 fix [#441](https://github.com/kdcloudone/kdesign/issues/441)
+* color-picker
+  * 更新color-picker单测
+* form
+  * 修复组件取值问题 fix [#440](https://github.com/kdcloudone/kdesign/issues/440)
+* input
+  * 更新数值输入框单测
+  * 修复边距问题
+  * 修复style属性缺失 fix [#437](https://github.com/kdcloudone/kdesign/issues/437)
+* input-number
+  * 更新数值输入框单测
+* modal
+  * 更新modal组件单测
+  * 修复拖动modal时内部的下拉框不自动关闭问题 fix [#442](https://github.com/kdcloudone/kdesign/issues/442)
+* search
+  * 更新搜索组件单测
+* select
+  * 更新select单测
+  * 更新树选择器单测
+* transfer
+  * 更新transfer单测
+* tree
+  * 更新树选择器单测
+  * 更新树组件单测
+* tree-select
+  * 更新树选择器单测
+* 更新页面文档版本号
+
+## [1.7.14](https://github.com/kdcloudone/kdesign/compare/v1.7.13...v1.7.14)
+`2023-06-09`
+* search
+  * 本地启动项目，docs-search 匹配结果url主站为 react.kingdee.design,不是localhost fixes:kdcloudone[#359](https://github.com/kdcloudone/kdesign/issues/359)
+* empty
+  * 修复imageStyle不生效的问题 fix [#393](https://github.com/kdcloudone/kdesign/issues/393)
+* image
+  * 修复imageStyle不生效的问题 fix [#393](https://github.com/kdcloudone/kdesign/issues/393)
+* select
+  * 新增select快捷键 fix [#405](https://github.com/kdcloudone/kdesign/issues/405)
+
 ## [1.7.13](https://github.com/kdcloudone/kdesign/compare/v1.7.12...v1.7.13)
 `2023-06-02`
 * anchor
