@@ -93,7 +93,12 @@ export function findfilterChildrenKeys(node: any, allFilterKeys: Set<any>) {
   return nodes
 }
 
-export const getAllFilterKeys = (data: any[], filterTreeNode: FunctionConstructor, keysData: KeysDataType): any => {
+export const getAllFilterKeys = (
+  data: any[],
+  filterTreeNode: FunctionConstructor,
+  keysData: KeysDataType,
+  expandOnFilterNode: boolean,
+): any => {
   const allFilterKeys: Set<any> = new Set()
   const filterExpandKeys: Set<any> = new Set()
   const filterKeys = data.filter((item: any) => filterTreeNode?.(item))
@@ -101,10 +106,15 @@ export const getAllFilterKeys = (data: any[], filterTreeNode: FunctionConstructo
     findfilterChildrenKeys(item, allFilterKeys)
   })
   filterKeys.forEach((item) => {
+    let firstIteration = true
     let node = { ...item }
     while (node) {
       allFilterKeys.add(node.key)
-      filterExpandKeys.add(node.key)
+      // expandOnFilterNode为true时，不将filterKeys中的节点添加到filterExpandKeys中
+      if (!expandOnFilterNode || !firstIteration) {
+        filterExpandKeys.add(node.key)
+      }
+      firstIteration = false
       node = keysData?.[node?.parentKey] || null
     }
   })
@@ -117,11 +127,12 @@ export const getFilterData = (
   isSearching: boolean,
   posData = {},
   keysData = {},
+  expandOnFilterNode: boolean,
 ) => {
   let filterData = data
   let allFilterKeys: any = null
   if (isSearching) {
-    allFilterKeys = getAllFilterKeys(filterData, filterTreeNode, keysData).allFilterKeys
+    allFilterKeys = getAllFilterKeys(filterData, filterTreeNode, keysData, expandOnFilterNode).allFilterKeys
     filterData = filterData.filter((item) => allFilterKeys.includes(item.key))
   }
   const newData: any[] = []
@@ -576,6 +587,7 @@ export const getInitExpandedKeys = (
   keysData: KeysDataType,
   isInit: boolean,
   searchStatus: SearchStatus,
+  expandOnFilterNode: boolean,
 ) => {
   let keys: string[] = expandedKeys?.concat(expandScrollkeys) || defaultExpandedKeys?.concat(expandScrollkeys) || []
   if (isInit) {
@@ -599,7 +611,7 @@ export const getInitExpandedKeys = (
   }
 
   if (isSearching && searchStatus === 'SEARCH_START') {
-    keys = [...getAllFilterKeys(data, filterTreeNode, keysData).filterExpandKeys]
+    keys = [...getAllFilterKeys(data, filterTreeNode, keysData, expandOnFilterNode).filterExpandKeys]
   }
   return keys
 }
