@@ -373,12 +373,27 @@ const InternalSelect: React.ForwardRefRenderFunction<ISelectProps<SelectValue>> 
     onSelect && onSelect(key) // 下拉项被选中时调用，参数为选中项value或key
   }
 
+  const removeIntersection = (selectedItems: any[], filteredItems: any[]) => {
+    const filteredValues = new Set(filteredItems.map((item) => item.value || item.props?.value))
+    const filteredSelectedItems = []
+    const filteredSelectedValues = []
+
+    for (const item of selectedItems) {
+      if (!filteredValues.has(item.value)) {
+        filteredSelectedItems.push(item)
+        filteredSelectedValues.push(item.value)
+      }
+    }
+
+    return [filteredSelectedValues, filteredSelectedItems]
+  }
+
   // 多选模式下选中所有 与清除所有 (可以优化)
-  const handleSelectAll = () => {
+  const handleSelectAll = (checked: boolean) => {
     const { selectedVal, selectMulOpts } = multipleRef.current
     let newSelectedVal = [...selectedVal]
     let newSelectMulOpts = [...selectMulOpts]
-    if (filledOptions?.length !== newSelectedVal.length) {
+    if (!checked) {
       filledOptions.map((child: any) => {
         const { value } = child.props || child
         if (!newSelectedVal.includes(value)) {
@@ -393,12 +408,11 @@ const InternalSelect: React.ForwardRefRenderFunction<ISelectProps<SelectValue>> 
         setSearchValue('')
       }
     } else {
-      newSelectedVal = []
-      newSelectMulOpts = []
+      ;[newSelectedVal, newSelectMulOpts] = removeIntersection(newSelectMulOpts, filledOptions)
       if (typeof value === 'undefined') {
-        multipleRef.current.selectedVal = []
-        multipleRef.current.selectMulOpts = []
-        setMulOptions([])
+        multipleRef.current.selectedVal = newSelectedVal
+        multipleRef.current.selectMulOpts = newSelectMulOpts
+        setMulOptions([...newSelectMulOpts])
       }
     }
     onChange && onChange(labelInValue ? newSelectMulOpts : newSelectedVal, newSelectMulOpts)
@@ -540,6 +554,20 @@ const InternalSelect: React.ForwardRefRenderFunction<ISelectProps<SelectValue>> 
     }
   }, [isShowSearch, autoFocus, disabled])
   const optionsListRef: any = React.useRef(null)
+
+  const getCheckedState = (selectedItems: any[], filteredItems: any[]) => {
+    const valuesSet = new Set(selectedItems.map((item: any) => item.value))
+    let number = 0
+    for (const item of filteredItems) {
+      if (valuesSet.has(item.value || item.props?.value)) {
+        number += 1
+      }
+    }
+    const checked = number > 0 && number === filteredItems.length
+    const indeterminate = number > 0 && number < filteredItems.length
+    return { checked, indeterminate }
+  }
+
   // 渲染下拉列表框
   const renderContent = () => {
     const { dropdownRender, listHeight } = selectProps
@@ -580,8 +608,8 @@ const InternalSelect: React.ForwardRefRenderFunction<ISelectProps<SelectValue>> 
       height: '30px',
       background: 'none',
     }
-    const indeterminate = mulOptions.length > 0 && mulOptions.length < filledOptions.length
-    const checked = mulOptions.length > 0 && mulOptions.length === filledOptions.length
+
+    const { checked, indeterminate } = getCheckedState(mulOptions, filledOptions)
     return (
       <>
         {
@@ -598,7 +626,7 @@ const InternalSelect: React.ForwardRefRenderFunction<ISelectProps<SelectValue>> 
                   style={checkboxStyle}
                   checked={checked}
                   indeterminate={indeterminate}
-                  onChange={handleSelectAll}
+                  onChange={() => handleSelectAll(checked)}
                 >
                   {selectLangMsg?.selectAll}
                 </Checkbox>
