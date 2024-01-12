@@ -93,6 +93,7 @@ export const useExpand = (
   keysData: KeysDataType,
   searchStatus: SearchStatus,
   filterValue: string,
+  expandOnFilterNode: boolean,
 ) => {
   let expandScrollkeys: string[] = []
   if (scrollKey) {
@@ -113,6 +114,7 @@ export const useExpand = (
       keysData,
       isInit,
       searchStatus,
+      expandOnFilterNode,
     )
   }, [
     flattenAllData,
@@ -128,6 +130,7 @@ export const useExpand = (
     isInit,
     searchStatus,
     filterValue,
+    expandOnFilterNode,
   ])
 
   const [expandedKeys, setExpandedKeys] = React.useState(initialExpandedKeys)

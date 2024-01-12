@@ -29,6 +29,7 @@ subtitle: 树控件
 | draggable | 设置节点可拖拽 | boolean | `false` | `true` `false` | 1.0.0 |
 | expandedKeys | （受控）展开指定的树节点 | string[] | - | - | 1.0.0 |
 | expandOnClickNode | 是否在点击节点的时候展开或者收缩节点， 默认值为 true，如果为 false，则只有点箭头图标的时候才会展开或者收缩节点 | boolean | `true` | `true` `false` | 1.5.5 |
+| expandOnFilterNode | 过滤时是否显示过滤节点的下级 | boolean | `false` | `true` `false` | 1.7.46 |
 | filterTreeNode | 对树节点进行筛选时执行的方法，返回 true 表示这个节点可以显示，返回 false 则表示这个节点会被隐藏 | function(node) | - | - | 1.5.3 |
 | filterValue | 节点过滤关键字 | string | - | - | 1.5.3 |
 | height | 设置虚拟滚动容器高度 | number | - | - | 1.0.0 |

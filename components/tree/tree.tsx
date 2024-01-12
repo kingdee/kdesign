@@ -64,6 +64,7 @@ export interface TreeProps {
   showIcon?: boolean
   style?: React.CSSProperties
   className?: string
+  expandOnFilterNode?: boolean
 }
 
 export type TreeNodeData = {
@@ -142,6 +143,7 @@ const InternalTree = React.forwardRef((props: TreeProps, ref: any): React.Functi
     loadData,
     notFoundContent,
     showLine,
+    expandOnFilterNode,
     ...others
   } = TreeProps
 
@@ -197,6 +199,7 @@ const InternalTree = React.forwardRef((props: TreeProps, ref: any): React.Functi
     keysData,
     searchStatus,
     filterValue,
+    expandOnFilterNode,
   )
   const { spreadAttrData, posData } = React.useMemo(() => {
     return getSpreadAttrData(flattenAllData, expandedKeys)
@@ -213,8 +216,8 @@ const InternalTree = React.forwardRef((props: TreeProps, ref: any): React.Functi
   )
 
   const filterData = React.useMemo(() => {
-    return getFilterData(spreadAttrData, filterTreeNode, isSearching, posData, keysData)
-  }, [spreadAttrData, isSearching, posData, keysData, filterValue])
+    return getFilterData(spreadAttrData, filterTreeNode, isSearching, posData, keysData, expandOnFilterNode)
+  }, [spreadAttrData, isSearching, posData, keysData, filterValue, expandOnFilterNode])
 
   useEffect(() => {
     if (typeof scrollKey === 'undefined') {

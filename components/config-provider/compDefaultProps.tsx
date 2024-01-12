@@ -330,6 +330,7 @@ const compDefaultProps = {
     },
     estimatedItemSize: 32,
     expandOnClickNode: true,
+    expandOnFilterNode: false,
   },
   TreeNode: {},
   ToolTip: {
