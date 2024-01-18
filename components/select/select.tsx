@@ -332,7 +332,7 @@ const InternalSelect: React.ForwardRefRenderFunction<ISelectProps<SelectValue>> 
           onDeselect && onDeselect(key) // 下拉项取消选中时调用，参数为选中项的value,多选模式下生效
         }
       } else {
-        props.visible === undefined && setOptionShow(false)
+        handleVisibleChange(false)
         initValue !== key &&
           onChange &&
           onChange(labelInValue ? { value: key, label } : key, { ...optionsObj, value: key, label })
@@ -344,7 +344,7 @@ const InternalSelect: React.ForwardRefRenderFunction<ISelectProps<SelectValue>> 
       setSingleVal(getOptionLabel(obj) || key)
       multipleRef.current.selectedVal = key
       setInitValue(key)
-      props.visible === undefined && setOptionShow(false)
+      handleVisibleChange(false)
       initValue !== key &&
         onChange &&
         onChange(labelInValue ? { value: key, label } : key, { ...optionsObj, value: key, label })
@@ -419,15 +419,12 @@ const InternalSelect: React.ForwardRefRenderFunction<ISelectProps<SelectValue>> 
   }
 
   // 输入框变化搜索内容
-  const handleSearchChange = useCallback(
-    (event: React.ChangeEvent<HTMLInputElement>) => {
-      const val = event.currentTarget.value
-      setOptionShow(true)
-      setSearchValue(val)
-      onSearch?.(val)
-    },
-    [onSearch],
-  )
+  const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const val = event.currentTarget.value
+    handleVisibleChange(true)
+    setSearchValue(val)
+    onSearch?.(val)
+  }
 
   // 清除搜索内容
   const handleClear = useCallback(() => {
