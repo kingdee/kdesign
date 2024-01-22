@@ -1,0 +1,99 @@
+@import '../../style/themes/index';
+@import '../../style/mixins/index';
+@import './token.less';
+
+@popper-prefix-cls: ~'@{kd-prefix}-popper';
+
+.@{popper-prefix-cls} {
+  opacity: 1;
+  z-index: @z-index-popper;
+  visibility: visible;
+
+  &.hidden {
+    opacity: 0;
+    visibility: hidden;
+    transition: all calc(@transition-duration - 0.1s);
+    pointer-events: none;
+  }
+
+  &-content {
+    .arrow {
+      visibility: hidden;
+
+      &::before {
+        visibility: visible;
+        position: absolute;
+        border-style: solid;
+        border-width: var(--arrowSize);
+        content: '';
+        transform: rotate(45deg);
+      }
+    }
+  }
+
+  &[data-popper-placement^='top'] .arrow {
+    bottom: var(--arrowSize);
+
+    &::before {
+      border-top-color: transparent;
+      border-left-color: transparent;
+    }
+  }
+
+  &[data-popper-placement^='bottom'] .arrow {
+    top: calc(-1 * var(--arrowSize));
+
+    &::before {
+      border-bottom-color: transparent;
+      border-right-color: transparent;
+    }
+  }
+
+  &[data-popper-placement^='left'] .arrow {
+    right: var(--arrowSize);
+
+    &::before {
+      border-left-color: transparent;
+      border-bottom-color: transparent;
+    }
+  }
+
+  &[data-popper-placement^='right'] .arrow {
+    left: calc(-1 * var(--arrowSize));
+
+    &::before {
+      border-top-color: transparent;
+      border-right-color: transparent;
+    }
+  }
+}
+
+.popper-motion(@className, @keyframeName, @duration: calc(@transition-duration - 0.1s)) {
+  .@{className} {
+    animation-duration: @duration;
+
+    &-in {
+      animation-name: ~'@{keyframeName}In';
+      animation-timing-function: @ease-out;
+    }
+
+    &-out {
+      animation-name: ~'@{keyframeName}Out';
+      animation-timing-function: @ease-in;
+    }
+  }
+}
+
+.popper-motion(~'@{popper-prefix-cls}-top', kdZoomBottom);
+.popper-motion(~'@{popper-prefix-cls}-left', kdZoomRight);
+.popper-motion(~'@{popper-prefix-cls}-right', kdZoomLeft);
+.popper-motion(~'@{popper-prefix-cls}-bottom', kdZoomTop);
+.popper-motion(~'@{popper-prefix-cls}-top-start', kdZoomLeftBottom);
+.popper-motion(~'@{popper-prefix-cls}-rightBottom', kdZoomLeftBottom);
+.popper-motion(~'@{popper-prefix-cls}-top-end', kdZoomRightBottom);
+.popper-motion(~'@{popper-prefix-cls}-left-end', kdZoomRightBottom);
+.popper-motion(~'@{popper-prefix-cls}-left-start', kdZoomTopRight);
+.popper-motion(~'@{popper-prefix-cls}-bottom-end', kdZoomTopRight);
+.popper-motion(~'@{popper-prefix-cls}-right-start', kdZoomTopLeft);
+.popper-motion(~'@{popper-prefix-cls}-bottom-start', kdZoomTopLeft);
+
