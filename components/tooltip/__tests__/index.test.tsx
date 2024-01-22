@@ -3,6 +3,7 @@ import { mount } from 'enzyme'
 import Tooltip from '../index'
 import Input from '../../input'
 import ConfigProvider from '../../config-provider'
+import { popperPlacementMap } from '../../popper'
 
 // import mountTest from '../../../tests/shared/mountTest'
 const wrapperRef = React.createRef() as any
@@ -14,7 +15,7 @@ describe('Tooltip', () => {
   // 2. render test
   it('render Test', () => {
     const wrapper = mount(
-      <Tooltip tip="tips text">
+      <Tooltip tip={<span>text</span>}>
         <span>text</span>
       </Tooltip>,
     )
@@ -54,7 +55,7 @@ describe('Tooltip', () => {
           </Tooltip>
         </div>,
       )
-      expect(wrapper.find('.kd-tooltip')).toHaveClassName('arrow')
+      expect(wrapper.find('.kd-tooltip').find('[data-popper-arrow]')).toHaveClassName('arrow')
     })
 
     it('disabled is useful', () => {
@@ -101,27 +102,13 @@ describe('Tooltip', () => {
     })
 
     it('placement is useful', () => {
-      const placementArray = [
-        'top',
-        'left',
-        'right',
-        'bottom',
-        'topLeft',
-        'topRight',
-        'bottomLeft',
-        'bottomRight',
-        'leftTop',
-        'leftBottom',
-        'rightTop',
-        'rightBottom',
-      ]
-      placementArray.forEach((p: any) => {
+      Object.entries(popperPlacementMap).forEach(([key, value]: any) => {
         const wrapper = mount(
-          <Tooltip tip="text" defaultVisible placement={p}>
+          <Tooltip tip="text" defaultVisible placement={key}>
             <span>text</span>
           </Tooltip>,
         )
-        expect(wrapper.find('.kd-tooltip')).toHaveClassName(p)
+        expect(wrapper.find('.kd-tooltip')).toHaveClassName(`kd-popper-${value}`)
       })
     })
 
@@ -207,7 +194,7 @@ describe('Tooltip', () => {
         ,
       </ConfigProvider>,
     )
-    expect(wrapper.find('.kd-tooltip')).toHaveClassName('bottom')
+    expect(wrapper.find('.kd-tooltip')).toHaveClassName('kd-popper-bottom')
   })
 
   // 10. ref test
