@@ -185,7 +185,7 @@ export const Popper = forwardRef<unknown, PopperProps>((props, ref) => {
   // const referenceRef: any = referenceInnerRef
   const container = getPopupContainer?.(getRealDom(referenceRef, referenceElement) || document.body) || document.body
 
-  console.log('referenceElement', container, children, referenceElement)
+  // console.log('referenceElement', container, children, referenceElement)
 
   const [visibleInner, setVisibleInner] = useState(typeof visible === 'undefined' ? defaultVisible : visible)
   const [exist, setExist] = useState<boolean>(visibleInner)
@@ -207,7 +207,9 @@ export const Popper = forwardRef<unknown, PopperProps>((props, ref) => {
         if (nextOpen) {
           onTrigger?.(triggerType as TriggerType)
         }
-        setVisibleInner(nextOpen)
+        if (typeof visible === 'undefined') {
+          setVisibleInner(nextOpen)
+        }
         onVisibleChange?.(nextOpen)
       }
     } else {
@@ -232,6 +234,16 @@ export const Popper = forwardRef<unknown, PopperProps>((props, ref) => {
   const onClick = (e: Event) => {
     onTriggerInner(!visibleInner, 'click', 0)
     referenceElement?.props?.onClick?.(e)
+  }
+
+  const onFocus = (e: Event) => {
+    onTriggerInner(true, 'focus', 0)
+    referenceElement?.props?.onFocus?.(e)
+  }
+
+  const onBlur = (e: Event) => {
+    onTriggerInner(false, 'focus', 0)
+    referenceElement?.props?.onBlur?.(e)
   }
 
   const onContextMenu = (e: any) => {
@@ -308,6 +320,9 @@ export const Popper = forwardRef<unknown, PopperProps>((props, ref) => {
 
     if (trigger === 'click') {
       triggerNode?.addEventListener('click', onClick)
+    } else if (trigger === 'focus') {
+      triggerNode?.addEventListener('focus', onFocus)
+      triggerNode?.addEventListener('blur', onBlur)
     } else if (trigger === 'contextMenu') {
       triggerNode?.addEventListener('contextmenu', onContextMenu)
     } else {
@@ -317,6 +332,8 @@ export const Popper = forwardRef<unknown, PopperProps>((props, ref) => {
 
     return () => {
       triggerNode?.removeEventListener('click', onClick)
+      triggerNode?.removeEventListener('focus', onClick)
+      triggerNode?.removeEventListener('blur', onClick)
       triggerNode?.removeEventListener('contextmenu', onContextMenu)
       triggerNode?.removeEventListener('mouseover', onMouseOver)
       triggerNode?.removeEventListener('mouseleave', onMouseLeave)
@@ -366,16 +383,17 @@ export const Popper = forwardRef<unknown, PopperProps>((props, ref) => {
     if (visibleInner) {
       if (!exist) {
         setExist(true)
-      }
-      setActive(true)
-      setTimeout(() => setActive(false), 1000)
-      if (popperInstance.current) {
-        popperInstance.current?.setOptions((options: any) => ({
-          ...options,
-          ...popperOptionsInner,
-        }))
+      } else {
+        setActive(true)
+        setTimeout(() => setActive(false), 1000)
+        if (popperInstance.current) {
+          popperInstance.current?.setOptions((options: any) => ({
+            ...options,
+            ...popperOptionsInner,
+          }))
 
-        popperInstance.current?.forceUpdate()
+          popperInstance.current?.forceUpdate()
+        }
       }
     }
   }, [visibleInner, placementInner])
