@@ -181,6 +181,7 @@ const InternalAnchor = (props: AnchorProps, ref: unknown): React.FunctionCompone
   const normalRef = React.useRef<HTMLDivElement>(null)
   const anchorRef = (ref as any) || normalRef
   const linksWidthRef = React.useRef<number[]>([])
+  const animating = React.useRef<boolean>(false)
 
   const wrapperClass = classNames(className, {
     [`${anchorPrefixCls}-wrapper`]: true,
@@ -307,8 +308,12 @@ const InternalAnchor = (props: AnchorProps, ref: unknown): React.FunctionCompone
     const eleOffsetTop = getOffsetTop(targetElement, container)
     let y = scrollTop + eleOffsetTop
     y -= targetOffset !== undefined ? targetOffset : offsetTop || 0
+    animating.current = true
     scrollTo(y, {
       getContainer: getScrollContainer,
+      callback() {
+        animating.current = false
+      },
     })
   }
 
@@ -333,6 +338,9 @@ const InternalAnchor = (props: AnchorProps, ref: unknown): React.FunctionCompone
       if (top > offsetTop) {
         setFixedTop(false)
       }
+    }
+    if (animating.current) {
+      return
     }
     const currentActiveLink = getAnchor(targetOffset !== undefined ? targetOffset : offsetTop || 0, bounds)
     currentActiveLink && setCurrentActiveLink(currentActiveLink)
