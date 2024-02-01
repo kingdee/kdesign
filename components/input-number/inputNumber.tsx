@@ -81,12 +81,14 @@ const InternalInputNumber = (props: InputNumberProps, ref: unknown): FunctionCom
   const initVal = value === undefined ? defaultValue : value
   const [inputValue, setInputValue] = useState(serialization(initVal !== undefined ? initVal + '' : ''))
   const [forceUpdate, setForceUpdate] = useState(1)
+  const [compositionValue, setCompositionValue] = useState('')
   const inputStatus = useRef({ isHandleChange: false, inputFocused: false })
   const inputPrefixCls = getPrefixCls!(prefixCls, 'inputNumber', inputNumberProps.prefixCls)
   const thisInputNumberRef = useRef<HTMLElement>()
   const inputNumberRef = (ref as any) || thisInputNumberRef
   const stepMouseDownDelayTimer = useRef<any>(null)
   const stepMouseDownIntervalTimer = useRef<any>(null)
+  const refIszComposition = useRef(false)
 
   const isScopeValid = (value: string) => {
     if (value === '') return true
@@ -142,15 +144,20 @@ const InternalInputNumber = (props: InputNumberProps, ref: unknown): FunctionCom
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     inputStatus.current.isHandleChange = true
-    const legalNumber = verifiValue(event.target.value)
-    updateSelectionRangePosition(event)
-    if (legalNumber === false) {
-      setForceUpdate(forceUpdate + 1)
-      return false
+    const newValue = event.target.value
+    if (!refIszComposition.current) {
+      compositionValue && setCompositionValue('')
+      const legalNumber = verifiValue(newValue)
+      if (legalNumber === false) {
+        setForceUpdate(forceUpdate + 1)
+        return false
+      }
+      value === undefined && setInputValue(legalNumber)
+      onChange && onChange(handleEventAttachValue(event, numberMode ? Number(legalNumber) : legalNumber))
+      updateSelectionRangePosition(event)
+    } else {
+      setCompositionValue(newValue)
     }
-
-    value === undefined && setInputValue(legalNumber)
-    onChange && onChange(handleEventAttachValue(event, numberMode ? Number(legalNumber) : legalNumber))
   }
 
   const handleFocus = (event: React.FocusEvent<HTMLInputElement>) => {
@@ -343,11 +350,22 @@ const InternalInputNumber = (props: InputNumberProps, ref: unknown): FunctionCom
     forceUpdate,
   })
 
+  const handleComposition = (e: any) => {
+    refIszComposition.current = e.type !== 'compositionend'
+    if (!refIszComposition.current) {
+      setCompositionValue('')
+      handleChange(e)
+    }
+  }
+
   return (
     <Input
       {...others}
+      onCompositionStart={handleComposition}
+      onCompositionUpdate={handleComposition}
+      onCompositionEnd={handleComposition}
       ref={inputNumberRef}
-      value={displayedInputValue}
+      value={compositionValue || displayedInputValue}
       prefix={prefix}
       suffix={suffix}
       onChange={handleChange}
