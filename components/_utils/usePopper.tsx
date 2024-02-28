@@ -391,7 +391,20 @@ function usePopper(locatorElement: React.ReactElement, popperElement: React.Reac
       setArrowPos(arrowPos)
       setNextPlacement(currentPlacement)
     }
-  }, [locatorRef, popperRef, container, trigger, mousePos, autoPlacement, gap, arrowOffset, arrowSize, arrowWidth])
+  }, [
+    locatorRef,
+    popperRef,
+    container,
+    trigger,
+    mousePos,
+    autoPlacement,
+    gap,
+    arrowOffset,
+    arrowSize,
+    arrowWidth,
+    align?.left,
+    align?.top,
+  ])
 
   useEffect(() => {
     if (canAlign) {
