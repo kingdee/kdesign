@@ -374,7 +374,7 @@ const InternalUpload: ForwardRefRenderFunction<unknown, UploadProps> = (props, r
                 itemRender(
                   <Item {...{ file, prefixCls, listType, handleReUpload, handleRemove, disabled, onPreview }} />,
                   file,
-                  setFileList,
+                  fileList,
                 )
               ) : (
                 <Item
