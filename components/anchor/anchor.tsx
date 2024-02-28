@@ -360,7 +360,7 @@ const InternalAnchor = (props: AnchorProps, ref: unknown): React.FunctionCompone
   useEffect(() => {
     getScrollContainer().addEventListener('scroll', handleScroll)
     handleScroll()
-    return () => getScrollContainer().removeEventListener('scroll', handleScroll)
+    return () => getScrollContainer()?.removeEventListener('scroll', handleScroll)
   }, [handleScroll, getScrollContainer])
 
   useEffect(() => {
