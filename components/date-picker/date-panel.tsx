@@ -103,6 +103,8 @@ function Panel(props: MergedPickerPanelProps) {
 
   const { prefixCls, viewDate, setViewDate, panelPosition, locale, innerPicker, setInnerPicker } = context
   const isInnerPicker = innerPicker !== undefined
+  const isInnerYear = innerPicker === 'year'
+  const isInnerMonth = innerPicker === 'month'
   const isPositionLeft = panelPosition === 'left'
   const isPositionRight = panelPosition === 'right'
   const isPositionUnset = typeof panelPosition === 'undefined'
@@ -132,16 +134,22 @@ function Panel(props: MergedPickerPanelProps) {
   }
 
   const renderMonthPanel = () => {
+    if (isInnerYear) {
+      return renderYearPanel()
+    }
     return <Month {...props} />
   }
 
   const renderQuarterPanel = () => {
+    if (isInnerYear) {
+      return renderYearPanel()
+    }
     return <Quarter {...props} />
   }
 
   const renderDatePanel = () => {
     if (isInnerPicker) {
-      if (innerPicker === 'year') {
+      if (isInnerYear) {
         return renderYearPanel()
       } else {
         return renderMonthPanel()
@@ -190,24 +198,27 @@ function Panel(props: MergedPickerPanelProps) {
     }
   }
 
-  const renderMonthHeader = () => {
-    const year = getYear(viewDate)
-    const headerCls = classnames(`${prefixCls}-header`, `${prefixCls}-header-month`)
-    return {
-      children: <>{year + locale.year}</>,
-      className: headerCls,
-    }
-  }
-
   const onHeaderYearClick = () => {
-    if (picker === 'date') {
-      setInnerPicker('year')
-    }
+    setInnerPicker('year')
   }
 
   const onHeaderMonthClick = () => {
-    if (picker === 'date') {
-      setInnerPicker('month')
+    setInnerPicker('month')
+  }
+
+  const renderMonthHeader = () => {
+    const year = getYear(viewDate)
+    const headerCls = classnames(
+      `${prefixCls}-header`,
+      `${prefixCls}-header-month`,
+      `${prefixCls}-header-text-inner-hover`,
+      {
+        [`${prefixCls}-header-text-inner-active`]: isInnerYear,
+      },
+    )
+    return {
+      children: <span onClick={onHeaderYearClick}>{year + locale.year}</span>,
+      className: headerCls,
     }
   }
 
@@ -219,18 +230,16 @@ function Panel(props: MergedPickerPanelProps) {
       children: (
         <>
           <span
-            className={classnames(`${prefixCls}-header-text-inner`, {
-              [`${prefixCls}-header-text-inner-active`]: innerPicker === 'year',
-              [`${prefixCls}-header-text-inner-hover`]: picker === 'date',
+            className={classnames(`${prefixCls}-header-text-inner`, `${prefixCls}-header-text-inner-hover`, {
+              [`${prefixCls}-header-text-inner-active`]: isInnerYear,
             })}
             onClick={onHeaderYearClick}
           >
             {year + locale.year}
           </span>
           <span
-            className={classnames(`${prefixCls}-header-text-inner`, {
-              [`${prefixCls}-header-text-inner-active`]: innerPicker === 'month',
-              [`${prefixCls}-header-text-inner-hover`]: picker === 'date',
+            className={classnames(`${prefixCls}-header-text-inner`, `${prefixCls}-header-text-inner-hover`, {
+              [`${prefixCls}-header-text-inner-active`]: isInnerMonth,
             })}
             onClick={onHeaderMonthClick}
           >
@@ -244,7 +253,7 @@ function Panel(props: MergedPickerPanelProps) {
 
   const onSuperPrev = () => {
     let date
-    if (picker === 'year' || innerPicker === 'year') {
+    if (picker === 'year' || isInnerYear) {
       const { yearItemNumber = DEFAULT_YEAR_ITEM_NUMBER } = props
       date = addYears(viewDate, 0 - yearItemNumber)
     } else {
@@ -255,7 +264,7 @@ function Panel(props: MergedPickerPanelProps) {
 
   const onSuperNext = () => {
     let date
-    if (picker === 'year' || innerPicker === 'year') {
+    if (picker === 'year' || isInnerYear) {
       const { yearItemNumber = DEFAULT_YEAR_ITEM_NUMBER } = props
       let _viewDate = viewDate
       if (panelPosition) {
@@ -301,8 +310,8 @@ function Panel(props: MergedPickerPanelProps) {
       panel = renderMonthPanel()
       headerObj = renderMonthHeader()
       headerProps = {
-        onSuperPrev: isPositionRight ? undefined : onSuperPrev,
-        onSuperNext: isPositionLeft ? undefined : onSuperNext,
+        onSuperPrev: !isPositionRight || innerPicker ? onSuperPrev : undefined,
+        onSuperNext: !isPositionLeft || innerPicker ? onSuperNext : undefined,
       }
       break
     }
@@ -310,8 +319,8 @@ function Panel(props: MergedPickerPanelProps) {
       panel = renderQuarterPanel()
       headerObj = renderMonthHeader()
       headerProps = {
-        onSuperPrev: isPositionRight ? undefined : onSuperPrev,
-        onSuperNext: isPositionLeft ? undefined : onSuperNext,
+        onSuperPrev: !isPositionRight || innerPicker ? onSuperPrev : undefined,
+        onSuperNext: !isPositionLeft || innerPicker ? onSuperNext : undefined,
       }
       break
     }
@@ -319,12 +328,10 @@ function Panel(props: MergedPickerPanelProps) {
     case 'date': {
       headerObj = renderDateHeader()
       headerProps = {
-        onPrev: (isPositionLeft && !isInnerPicker) || innerPicker === 'month' || isPositionUnset ? onPrev : undefined,
-        onNext: (isPositionRight && !isInnerPicker) || innerPicker === 'month' || isPositionUnset ? onNext : undefined,
-        onSuperPrev:
-          (isPositionLeft && !isInnerPicker) || innerPicker === 'year' || isPositionUnset ? onSuperPrev : undefined,
-        onSuperNext:
-          (isPositionRight && !isInnerPicker) || innerPicker === 'year' || isPositionUnset ? onSuperNext : undefined,
+        onPrev: (isPositionLeft && !isInnerPicker) || isInnerMonth || isPositionUnset ? onPrev : undefined,
+        onNext: (isPositionRight && !isInnerPicker) || isInnerMonth || isPositionUnset ? onNext : undefined,
+        onSuperPrev: (isPositionLeft && !isInnerPicker) || isInnerYear || isPositionUnset ? onSuperPrev : undefined,
+        onSuperNext: (isPositionRight && !isInnerPicker) || isInnerYear || isPositionUnset ? onSuperNext : undefined,
       }
       panel = renderDatePanel()
       break
@@ -334,10 +341,10 @@ function Panel(props: MergedPickerPanelProps) {
       panel = renderDatePanel()
       headerObj = renderDateHeader()
       headerProps = {
-        onPrev: isPositionRight ? undefined : onPrev,
-        onNext: isPositionLeft ? undefined : onNext,
-        onSuperPrev: isPositionRight ? undefined : onSuperPrev,
-        onSuperNext: isPositionLeft ? undefined : onSuperNext,
+        onPrev: (isPositionLeft && !isInnerPicker) || isInnerMonth || isPositionUnset ? onPrev : undefined,
+        onNext: (isPositionRight && !isInnerPicker) || isInnerMonth || isPositionUnset ? onNext : undefined,
+        onSuperPrev: (isPositionLeft && !isInnerPicker) || isInnerYear || isPositionUnset ? onSuperPrev : undefined,
+        onSuperNext: (isPositionRight && !isInnerPicker) || isInnerYear || isPositionUnset ? onSuperNext : undefined,
       }
       break
     }
