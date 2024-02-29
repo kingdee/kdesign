@@ -85,7 +85,7 @@
     "axios": "^0.21.1",
     "big.js": "^6.0.2",
     "classnames": "^2.2.6",
-    "color": "^4.2.3",
+    "color-ie": "^4.2.5",
     "copy-to-clipboard": "^3.3.1",
     "cropperjs": "^1.5.12",
     "css-vars-ponyfill": "^2.4.8",

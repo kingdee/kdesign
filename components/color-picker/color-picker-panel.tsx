@@ -16,7 +16,7 @@ import {
 import { defaultSystemColor } from './constant/defaultColor'
 import { validateColor } from './utils/validateColor'
 import { toLowerCase } from './utils/convertLetters'
-import Color from 'color'
+import Color from 'color-ie'
 import { ChromePicker } from 'react-color'
 import devWarning from '../_utils/devwarning'
 import { useOnClickOutside } from '../_utils/hooks'

@@ -16,7 +16,7 @@ import {
 } from './utils/colorFormat'
 import { toLowerCase } from './utils/convertLetters'
 import { defaultSystemColor } from './constant/defaultColor'
-import Color from 'color'
+import Color from 'color-ie'
 import { getCompProps } from '../_utils'
 import usePopper from '../_utils/usePopper'
 import { systemPresetColor } from './constant/systemPresetColor'

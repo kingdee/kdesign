@@ -1,4 +1,4 @@
-import Color from 'color'
+import Color from 'color-ie'
 import { validateColor } from './validateColor'
 import { toLowerCase } from './convertLetters'
 
