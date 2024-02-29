@@ -2,7 +2,7 @@ import React, { CSSProperties, FunctionComponentElement, useContext } from 'reac
 import classNames from 'classnames'
 import ConfigContext from '../config-provider/ConfigContext'
 import { getCompProps } from '../_utils'
-import { QRCodeCanvas, QRCodeSVG } from 'qrcode.react'
+import { QRCodeCanvas, QRCodeSVG } from 'qrcode.react-ie'
 import Spin from '../spin'
 import Button from '../button'
 import Icon from '../icon'
