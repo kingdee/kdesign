@@ -7,6 +7,7 @@ exports[`QRCode 2. render test renders correctly 1`] = `
 >
   <canvas
     height="86"
+    role="img"
     style="height:86px;width:86px"
     width="86"
   />
@@ -20,6 +21,7 @@ exports[`QRCode 2. render test renders correctly 2`] = `
 >
   <svg
     height="86"
+    role="img"
     viewBox="0 0 33 33"
     width="86"
   >
@@ -44,6 +46,7 @@ exports[`QRCode 2. render test renders correctly 3`] = `
 >
   <canvas
     height="86"
+    role="img"
     style="height:86px;width:86px"
     width="86"
   />
@@ -66,6 +69,7 @@ exports[`QRCode 2. render test renders correctly 4`] = `
   </div>
   <canvas
     height="86"
+    role="img"
     style="height:86px;width:86px"
     width="86"
   />
@@ -103,6 +107,7 @@ exports[`QRCode 2. render test renders correctly 5`] = `
   </div>
   <canvas
     height="86"
+    role="img"
     style="height:86px;width:86px"
     width="86"
   />
@@ -116,6 +121,7 @@ exports[`QRCode 2. render test renders correctly 6`] = `
 >
   <canvas
     height="86"
+    role="img"
     style="height:86px;width:86px"
     width="86"
   />
@@ -129,6 +135,7 @@ exports[`QRCode 2. render test renders correctly 7`] = `
 >
   <canvas
     height="86"
+    role="img"
     style="height:86px;width:86px"
     width="86"
   />
@@ -142,6 +149,7 @@ exports[`QRCode 2. render test renders correctly 8`] = `
 >
   <canvas
     height="86"
+    role="img"
     style="height:86px;width:86px"
     width="86"
   />
@@ -155,6 +163,7 @@ exports[`QRCode 2. render test renders correctly 9`] = `
 >
   <canvas
     height="86"
+    role="img"
     style="height:86px;width:86px"
     width="86"
   />
