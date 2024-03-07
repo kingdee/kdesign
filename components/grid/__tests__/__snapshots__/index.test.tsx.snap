@@ -55,7 +55,7 @@ exports[`Grid 4. render null or undefined without errors render null or undefine
         "alignItems": "flex-start",
         "justifyContent": "flex-start",
         "margin": "0 -6px",
-        "row-gap": "0px",
+        "rowGap": "0px",
       }
     }
   >

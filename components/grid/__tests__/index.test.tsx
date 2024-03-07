@@ -99,14 +99,14 @@ describe('Grid', () => {
 
     it('when typeof gutter is array', () => {
       const wrapper = mount(<Row gutter={[8, 20]} />)
-      expect(wrapper.find('div').first()).toHaveStyle({ 'row-gap': '20px' })
+      expect(wrapper.find('div').first()).toHaveStyle({ rowGap: '20px' })
     })
 
     it('when typeof gutter is object array', () => {
       const wrapper1 = mount(<Row gutter={[12, { xs: 8, sm: 16, md: 24, lg: 32, xl: 40 }]} />)
       const wrapper2 = mount(<Row gutter={[{ xs: 8, sm: 16, md: 24, lg: 32, xl: 40 }, 12]} />)
-      expect(wrapper1.find('div').first()).toHaveStyle({ 'row-gap': '24px', margin: '0 -6px' })
-      expect(wrapper2.find('div').first()).toHaveStyle({ 'row-gap': '12px', margin: '0 -12px' })
+      expect(wrapper1.find('div').first()).toHaveStyle({ rowGap: '24px', margin: '0 -6px' })
+      expect(wrapper2.find('div').first()).toHaveStyle({ rowGap: '12px', margin: '0 -12px' })
     })
 
     it('when wrap is false', () => {
@@ -227,7 +227,7 @@ describe('Grid', () => {
       )
 
       // when window.innerWidth is 1024
-      expect(wrapper.find('div').first()).toHaveStyle({ 'row-gap': '24px', margin: '0 -12px' })
+      expect(wrapper.find('div').first()).toHaveStyle({ rowGap: '24px', margin: '0 -12px' })
       expect(wrapper.find('.kd-col').at(0)).toHaveStyle({ flex: '0 0 33.33333333333333%' })
       expect(wrapper.find('.kd-col').at(1)).toHaveStyle({
         flex: '0 0 33.33333333333333%',
@@ -237,14 +237,14 @@ describe('Grid', () => {
       // when window.innerWidth is 599
       window.resizeTo(599, 1000)
       wrapper.update()
-      expect(wrapper.find('div').first()).toHaveStyle({ 'row-gap': '8px', margin: '0 -4px' })
+      expect(wrapper.find('div').first()).toHaveStyle({ rowGap: '8px', margin: '0 -4px' })
       expect(wrapper.find('.kd-col').at(0)).toHaveStyle({ flex: '0 0 100%' })
       expect(wrapper.find('.kd-col').at(1)).toHaveStyle({ flex: '0 0 100%' })
 
       // when window.innerWidth is 600
       window.resizeTo(600, 1000)
       wrapper.update()
-      expect(wrapper.find('div').first()).toHaveStyle({ 'row-gap': '16px', margin: '0 -8px' })
+      expect(wrapper.find('div').first()).toHaveStyle({ rowGap: '16px', margin: '0 -8px' })
       expect(wrapper.find('.kd-col').at(0)).toHaveStyle({ flex: '0 0 50%' })
       expect(wrapper.find('.kd-col').at(1)).toHaveStyle({
         flex: '0 0 50%',
@@ -254,7 +254,7 @@ describe('Grid', () => {
       // when window.innerWidth is 1280
       window.resizeTo(1280, 1000)
       wrapper.update()
-      expect(wrapper.find('div').first()).toHaveStyle({ 'row-gap': '32px', margin: '0 -16px' })
+      expect(wrapper.find('div').first()).toHaveStyle({ rowGap: '32px', margin: '0 -16px' })
       expect(wrapper.find('.kd-col').at(0)).toHaveStyle({ flex: '0 0 25%' })
       expect(wrapper.find('.kd-col').at(1)).toHaveStyle({
         flex: '0 0 25%',
@@ -264,7 +264,7 @@ describe('Grid', () => {
       // when window.innerWidth is 1921
       window.resizeTo(1921, 1000)
       wrapper.update()
-      expect(wrapper.find('div').first()).toHaveStyle({ 'row-gap': '40px', margin: '0 -20px' })
+      expect(wrapper.find('div').first()).toHaveStyle({ rowGap: '40px', margin: '0 -20px' })
       expect(wrapper.find('.kd-col').at(0)).toHaveStyle({ flex: '0 0 16.666666666666664%' })
       expect(wrapper.find('.kd-col').at(1)).toHaveStyle({
         flex: '0 0 16.666666666666664%',
