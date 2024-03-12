@@ -31,9 +31,9 @@ const Demo = () => {
           setDataUrlType(e.target.value)
         }}
         defaultValue={dataUrlType}>
-        <Radio value={'png'}>小</Radio>
-        <Radio value={'jpeg'}>中</Radio>
-        <Radio value={'svg'}>大</Radio>
+        <Radio value={'png'}>png</Radio>
+        <Radio value={'jpeg'}>jpeg</Radio>
+        <Radio value={'svg'}>svg</Radio>
       </Radio.Group>
       <Signature getSignatureData={getSignatureData} dataUrlType={dataUrlType} onClear={handleClear}></Signature>
     </div>

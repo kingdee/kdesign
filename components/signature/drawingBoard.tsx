@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef, forwardRef, useImperativeHandle, RefObject } from 'react'
 import Icon from '../icon'
-import SignaturePad from 'signature_pad'
+import SignaturePad from './utils/signature_pad'
 import { Cancellation } from '@kdcloudjs/kdesign-icons'
 import classNames from 'classnames'
 
