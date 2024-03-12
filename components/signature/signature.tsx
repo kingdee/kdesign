@@ -1,6 +1,6 @@
 import React, { FunctionComponentElement, useContext, useState, useRef, useEffect, RefObject } from 'react'
 import classNames from 'classnames'
-import SignaturePad from 'signature_pad'
+import SignaturePad from './utils/signature_pad'
 import Modal from '../modal'
 import Icon from '../icon'
 import Image from '../image'
@@ -129,14 +129,14 @@ const Signature = (props: ISignatureProps): FunctionComponentElement<ISignatureP
     if (modalBodyRef.current) {
       const canvas = modalBodyRef.current.getCanvasRef()
 
-      signaturePadRef.current = new SignaturePad(canvas, {
+      signaturePadRef.current = new SignaturePad(canvas as HTMLCanvasElement, {
         penColor: penColor,
       })
-      signaturePadRef.current.addEventListener('beginStroke', () => {
+      signaturePadRef.current!.addEventListener('beginStroke', () => {
         setIsEmpty(false)
         onStart && onStart()
       })
-      signaturePadRef.current.addEventListener('endStroke', () => {
+      signaturePadRef.current!.addEventListener('endStroke', () => {
         modalBodyRef.current.saveSignatureToHistory()
         onEnd && onEnd()
       })
