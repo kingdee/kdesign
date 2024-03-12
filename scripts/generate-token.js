@@ -35,6 +35,7 @@ const transformComponentArr = [
   'rate',
   'search',
   'select',
+  'signature',
   'slider',
   'spin',
   'split-panel',

@@ -1,0 +1,21 @@
+@import '../../style/themes/token.less';
+
+@signature-custom-prefix: ~'--@{kd-prefix}-c-signature';
+
+// color
+@signature-color-text: var(~'@{signature-custom-prefix}-color-text', @signature-text-color);
+@signature-bg-color: var(~'@{signature-custom-prefix}-bg-color', @signature-entry-bg-color);
+@signature-border-color: var(~'@{signature-custom-prefix}-border-color-hover', @color-theme-hover);
+@signature-border-color-hover: var(~'@{signature-custom-prefix}-border-color-hover', @color-theme-hover);
+@signature-bg-color-hover: var(~'@{signature-custom-prefix}-bg-color-hover', @color-theme-1);
+@signature-drawing-board-bg-color:var(~'@{signature-custom-prefix}-drawing-board-bg-color', @signature-drawing-board-background-color);
+@signature-board-tip-color: var(~'@{signature-custom-prefix}-board-tip-color', @signature-drawing-board-tip-color);
+// font
+@signature-font-size: var(~'@{signature-custom-prefix}-font-size', 12px);
+
+// motion
+@signature-transition-duration: var(~'@{signature-custom-prefix}-motion-duration', @duration-promptly);
+
+// radius
+@signature-border-radius: var(~'@{signature-custom-prefix}-border-radius', @radius-border);
+
