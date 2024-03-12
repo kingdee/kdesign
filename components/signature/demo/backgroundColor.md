@@ -14,7 +14,7 @@ const Demo = () => {
   const [penColor,setPenColor] = React.useState('black')
 
   const handleClear = () => {
-    console.log('clear了吗')
+    console.log('clear')
   }
   return (
     <div style={{ width: '230px', height: '72px' }}>
