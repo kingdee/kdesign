@@ -39,16 +39,15 @@ const Filter: React.FC<IFilterProps> = (props) => {
   // className前缀
   const prefixCls = getPrefixCls!(pkgPrefixCls, 'filter', customPrefixcls)
 
-  const { current: defaultValue } = React.useRef(props.value || props.defaultValue || {})
+  const { current: defaultValue } = React.useRef(
+    typeof props.value === 'undefined' ? props.defaultValue || {} : props.value || {},
+  )
   const [value, setValue] = React.useState(defaultValue)
   React.useEffect(() => {
     props.value && setValue(props.value)
   }, [props.value])
 
   const [tab, setTab] = React.useState(defaultTabKey)
-
-  const conditionValue =
-    Object.keys(value).length < 1 || (Object.keys(value).length === 1 && value.scheme) ? defaultValue : value
 
   const onConditionChange = (nextValue: TFilterValue, condition?: ICondition, option?: TOption) => {
     props.value === undefined && setValue(nextValue)
@@ -58,7 +57,7 @@ const Filter: React.FC<IFilterProps> = (props) => {
   const onConditionRemove = (key: string, e: React.MouseEvent) => {
     e.preventDefault()
     if (key) {
-      const nextValue = Object.assign({}, conditionValue)
+      const nextValue = Object.assign({}, value)
       delete nextValue[key]
       onConditionChange(nextValue)
     }
@@ -153,7 +152,7 @@ const Filter: React.FC<IFilterProps> = (props) => {
             FilterLangMsg,
             onConditionChange,
             onConditionRemove,
-            value: conditionValue,
+            value,
           }}
         />
         <SchemeFilter
