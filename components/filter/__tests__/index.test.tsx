@@ -91,6 +91,45 @@ const conditions = [
   },
 ]
 
+const conditions1 = [
+  {
+    key: 'organization',
+    label: '组织',
+    multiple: true,
+    options: [
+      { value: 'organ1', label: '环球日化深圳销售部' },
+      { value: 'organ2', label: '用户体验部' },
+      { value: 'organ3', label: '前端开发项目部' },
+      { value: 'organ4', label: '环球集团广州销售部' },
+    ],
+  },
+  {
+    key: 'project',
+    label: '项目组',
+    multiple: true,
+    options: [
+      { value: 'project2', label: '数据智能项目组' },
+      { value: 'project3', label: 'IKD' },
+      { value: 'project4', label: '统一平台' },
+      { value: 'project5', label: 'KDesign-前端组件库' },
+      { value: 'project6', label: '流程服务项目组' },
+      { value: 'project7', label: '云架构项目组' },
+      { value: 'project8', label: '轻分析项目组' },
+    ],
+  },
+  {
+    key: 'date',
+    label: '日期',
+    options: [
+      { value: 'today', label: '今天' },
+      { value: 'thisWeek', label: '本周' },
+      { value: 'thisMonth', label: '本月' },
+      { value: 'nearlyThreeMonths', label: '近三个月' },
+      { value: 'nearlyYear', label: '近一年' },
+    ],
+  },
+]
+
 const searchProps = {
   tags: [
     { value: 'label', tag: '名称' },
@@ -322,10 +361,19 @@ describe('Filter', () => {
   })
 
   it('set default value', () => {
-    const wrapper = mount(<Filter conditions={conditions} defaultValue={defaultValue} />)
+    const wrapper = mount(<Filter conditions={conditions1} defaultValue={defaultValue} />)
     expect(wrapper.find('.kd-filter-header-condition-item-text')).toHaveLength(2)
     expect(wrapper.find('.kd-filter-header-condition-item-text').at(0)).toHaveText('组织：用户体验部,前端开发项目部')
     expect(wrapper.find('.kd-filter-header-condition-item-text').at(1)).toHaveText('日期：近三个月')
+    wrapper.find('.kd-filter-body-condition').at(0).find('.kd-filter-body-condition-option').at(0).simulate('click')
+    wrapper.find('.kd-filter-body-condition').at(1).find('.kd-filter-body-condition-option').at(0).simulate('click')
+    wrapper.find('.kd-filter-body-condition').at(2).find('.kd-filter-body-condition-option').at(0).simulate('click')
+    expect(wrapper.find('.kd-filter-header-condition-item-text')).toHaveLength(0)
+  })
+
+  it('set value null', () => {
+    const wrapper = mount(<Filter conditions={conditions1} value={null as any} defaultValue={defaultValue} />)
+    expect(wrapper.find('.kd-filter-header-condition-item-text')).toHaveLength(0)
   })
 
   it('control the value', () => {
