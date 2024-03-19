@@ -613,7 +613,7 @@ export const getInitExpandedKeys = (
   if (isSearching && searchStatus === 'SEARCH_START') {
     keys = [...getAllFilterKeys(data, filterTreeNode, keysData, expandOnFilterNode).filterExpandKeys]
   }
-  return keys
+  return Array.from(new Set([...keys]))
 }
 
 export const getExpandedKeys = (expandedKeys: string[], expandScrollkeys: string[] = []) => {
