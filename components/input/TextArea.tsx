@@ -91,8 +91,7 @@ const InternalTextarea = (props: textAreaProps, ref: unknown): FunctionComponent
   useResizeObserver(textareaRef.current, resizeTextarea)
 
   const handleChange = (e: React.FocusEvent<HTMLInputElement, Element>) => {
-    if (value === undefined) return
-    setValue(e.target.value)
+    propsValue === undefined && setValue(e.target.value)
     onChange && onChange(e)
   }
 
@@ -143,12 +142,6 @@ const InternalTextarea = (props: textAreaProps, ref: unknown): FunctionComponent
       setNumberMarkError(false)
     }
   }, [value])
-
-  useEffect(() => {
-    if (propsValue !== undefined) {
-      setValue(propsValue)
-    }
-  }, [propsValue, setValue])
 
   useEffect(() => {
     if (focused && !showNumberMark) {

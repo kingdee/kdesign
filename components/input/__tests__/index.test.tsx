@@ -188,6 +188,21 @@ describe('Input', () => {
 
   // 10. api test
   describe('api test', () => {
+    it('value & null and undefined', () => {
+      const value: any = 'value'
+      const wrapperValue = mount(<Input value={value} />)
+      expect(wrapperValue.find('input').props().value).toBe('value')
+      wrapperValue.find('input').simulate('change', { target: { value: '12' } })
+      expect(wrapperValue.find('input').props().value).toBe('value')
+      wrapperValue.setProps({ value: null })
+      expect(wrapperValue.find('input').props().value).toBe('')
+      wrapperValue.find('input').simulate('change', { target: { value: '12' } })
+      expect(wrapperValue.find('input').props().value).toBe('')
+      wrapperValue.setProps({ value: undefined })
+      wrapperValue.find('input').simulate('change', { target: { value: '12' } })
+      expect(wrapperValue.find('input').props().value).toBe('12')
+    })
+
     it('value & defaultValue', () => {
       const wrapperDefault = mount(<Input defaultValue={'defaultValue'} />)
       expect(wrapperDefault.find('input').props().value).toBe('defaultValue')
