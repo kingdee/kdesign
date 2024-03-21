@@ -169,6 +169,21 @@ describe('TextArea', () => {
 
   // 10. api test
   describe('api test', () => {
+    it('value & null and undefined', () => {
+      const value: any = 'value'
+      const wrapperValue = mount(<TextArea value={value} />)
+      expect(wrapperValue.find('textarea').props().value).toBe('value')
+      wrapperValue.find('textarea').simulate('change', { target: { value: '12' } })
+      expect(wrapperValue.find('textarea').props().value).toBe('value')
+      wrapperValue.setProps({ value: null })
+      expect(wrapperValue.find('textarea').props().value).toBe('')
+      wrapperValue.find('textarea').simulate('change', { target: { value: '12' } })
+      expect(wrapperValue.find('textarea').props().value).toBe('')
+      wrapperValue.setProps({ value: undefined })
+      wrapperValue.find('textarea').simulate('change', { target: { value: '12' } })
+      expect(wrapperValue.find('textarea').props().value).toBe('12')
+    })
+
     it('value & defaultValue', () => {
       const wrapperDefault = mount(<TextArea defaultValue={'defaultValue'} />)
       expect(wrapperDefault.find('textarea').props().value).toBe('defaultValue')
