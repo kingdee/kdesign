@@ -30,7 +30,7 @@ export type TriggerType = typeof Triggers[number]
 
 export type RenderFunction = () => React.ReactNode
 
-export interface PopperProps {
+export type PopperProps = {
   gap?: number
   arrow?: boolean
   visible?: boolean
@@ -127,7 +127,7 @@ const getRealDom = (locatorRef: any, locatorElement: any) => {
     Upload: 'input',
   }
   if (locatorRef.current.tagName) return locatorRef.current
-  const name = REF_NAME_OBJ[locatorElement?.type?.displayName]
+  const name = REF_NAME_OBJ?.[locatorElement?.type?.displayName]
   return locatorRef?.current[name]
 }
 
@@ -172,14 +172,16 @@ export const Popper = forwardRef<unknown, PopperProps>((props, ref) => {
 
   const popperPrefixCls = getPrefixCls!(pkgPrefixCls, 'popper')
   const referencePrefixCls = `${popperPrefixCls}-reference`
-  const childrenInner = React.isValidElement(children) && !isFragment(children) ? children : <span>{children}</span>
-  const referenceElement: any = Children.only(childrenInner) as ReactElement
+  const child: any = typeof children === 'function' ? children() : children
+  const childrenInner = React.isValidElement(child) && !isFragment(child) ? child : <span>{child}</span>
+  const referenceElement: ReactElement = Children.only(childrenInner) as ReactElement
   const popperElement = typeof tip === 'function' ? tip() : tip
 
   const popperRefInner = useRef<any>(null)
   const popperRef: any = ref || popperRefInner
   const popperInstance = useRef<Instance | null>(null)
-  const referenceRef = useRef<any>(null)
+  const referenceRefInner = useRef<any>(null)
+  const referenceRef = referenceElement?.props?.ref || referenceRefInner
   const container = getPopupContainer?.(getRealDom(referenceRef, referenceElement) || document.body) || document.body
 
   const [visibleInner, setVisibleInner] = useState(typeof visible === 'undefined' ? defaultVisible : visible)
@@ -240,7 +242,7 @@ export const Popper = forwardRef<unknown, PopperProps>((props, ref) => {
     referenceElement?.props?.onBlur?.(e)
   }
 
-  const onContextMenu = (e: any) => {
+  const onContextMenu = (e: MouseEvent) => {
     e.preventDefault()
     let clientWidth = 0
     let clientHeight = 0
@@ -274,6 +276,11 @@ export const Popper = forwardRef<unknown, PopperProps>((props, ref) => {
   const onMouseLeave = (e: Event) => {
     onTriggerInner(false, 'hover', mouseLeaveDelay)
     referenceElement?.props?.onMouseLeave?.(e)
+  }
+
+  const onPopperAnimationEnd = (e: React.AnimationEvent | React.TransitionEvent) => {
+    onAnimationEnd?.(e as React.AnimationEvent)
+    onTransitionEnd?.(e as React.TransitionEvent)
   }
 
   useEffect(() => {
@@ -379,8 +386,11 @@ export const Popper = forwardRef<unknown, PopperProps>((props, ref) => {
       enabled: true,
       phase: 'afterWrite',
       fn: (d) => {
+        const { placement: p } = d?.state
         console.log('onUpdate', d)
-        setPlacementInner(d?.state.placement)
+        if (p !== placementInner) {
+          setPlacementInner(p)
+        }
       },
     },
   ]
@@ -397,7 +407,7 @@ export const Popper = forwardRef<unknown, PopperProps>((props, ref) => {
         setExist(true)
       } else {
         if (popperInstance.current) {
-          popperInstance.current?.setOptions((options: any) => ({
+          popperInstance.current?.setOptions((options) => ({
             ...options,
             ...popperOptionsInner,
           }))
@@ -456,8 +466,8 @@ export const Popper = forwardRef<unknown, PopperProps>((props, ref) => {
     style: { ...popperStyle, ...style },
     onMouseOver: trigger === 'hover' ? () => onTriggerInner(true, 'hover', mouseEnterDelay) : undefined,
     onMouseLeave: trigger === 'hover' ? () => onTriggerInner(false, 'hover', mouseLeaveDelay) : undefined,
-    onAnimationEnd: (e: React.AnimationEvent) => onAnimationEnd?.(e),
-    onTransitionEnd: (e: React.TransitionEvent) => onTransitionEnd?.(e),
+    onAnimationEnd: onPopperAnimationEnd,
+    onTransitionEnd: onPopperAnimationEnd,
   }
 
   const referenceProps = {
