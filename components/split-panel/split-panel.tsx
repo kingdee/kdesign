@@ -6,6 +6,7 @@ import { getCompProps } from '../_utils'
 import { SplitPanelMode, FoldDirection } from './interface'
 import { tuple } from '../_utils/type'
 import devWarning from '../_utils/devwarning'
+import ResizeObserver from 'resize-observer-polyfill'
 
 export const SplitPanelModes = tuple('horizontal', 'vertical')
 
@@ -138,6 +139,21 @@ const SplitPanel: React.FC<SplitPanelProps> = (props) => {
 
   useEffect(() => {
     initPanel()
+    const element = outerWrapper.current
+    if (!element) {
+      devWarning(!element && element !== null, 'useResizeMeasure', 'useResizeMeasure指定的元素不存在')
+      return
+    }
+    const resizeObserver = new ResizeObserver((entries) => {
+      const entry = entries[0]
+      if (entry.contentRect) {
+        initPanel()
+      }
+    })
+    resizeObserver.observe(element as Element)
+    return () => {
+      resizeObserver.disconnect()
+    }
   }, [initPanel])
 
   const handleMove = useCallback(
