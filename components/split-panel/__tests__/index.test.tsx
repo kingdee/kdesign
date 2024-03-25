@@ -145,17 +145,17 @@ describe('SplitPanel', () => {
       const event = new MouseEvent('mousemove')
       Object.defineProperties(event, {
         pageX: {
-          value: 50,
+          value: 44,
         },
         pageY: {
-          value: 50,
+          value: 44,
         },
       })
       document.dispatchEvent(event)
     })
     expect(onMoving).toHaveBeenCalledTimes(1)
     wrapper.update()
-    expect(wrapper.find('.kd-split-panel').first().prop('style')).toHaveProperty('right', '75%')
+    expect(wrapper.find('.kd-split-panel').first().prop('style')).toHaveProperty('right', '78%')
     act(() => {
       const event = new MouseEvent('mouseup')
       document.dispatchEvent(event)
