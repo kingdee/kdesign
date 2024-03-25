@@ -1,6 +1,5 @@
 @import '../../style/themes/index';
 @import '../../style/mixins/index';
-// @import './token.less';
 
 @popper-prefix-cls: ~'@{kd-prefix}-popper';
 
@@ -12,27 +11,25 @@
   &.hidden {
     opacity: 0;
     visibility: hidden;
-    transition: all calc(@transition-duration - 0.1s);
     pointer-events: none;
   }
 
-  &-content {
-    .arrow {
-      visibility: hidden;
+  .arrow {
+    visibility: hidden;
 
-      &::before {
-        visibility: visible;
-        position: absolute;
-        border-style: solid;
-        border-width: var(--arrowSize);
-        content: '';
-        transform: rotate(45deg);
-      }
+    &::before {
+      visibility: visible;
+      position: absolute;
+      border-style: solid;
+      border-color: transparent;
+      border-width: var(--arrowSize);
+      content: '';
+      transform: rotate(45deg);
     }
   }
 
   &[data-popper-placement^='top'] .arrow {
-    bottom: var(--arrowSize);
+    bottom: calc(0.9 * var(--arrowSize));
 
     &::before {
       left: calc(-1 * var(--arrowSize));
@@ -42,7 +39,7 @@
   }
 
   &[data-popper-placement^='bottom'] .arrow {
-    top: calc(-1 * var(--arrowSize));
+    top: calc(-0.9 * var(--arrowSize));
 
     &::before {
       left: calc(-1 * var(--arrowSize));
@@ -52,7 +49,7 @@
   }
 
   &[data-popper-placement^='left'] .arrow {
-    right: var(--arrowSize);
+    right: calc(0.9 * var(--arrowSize));
 
     &::before {
       top: calc(-1 * var(--arrowSize));
@@ -62,7 +59,7 @@
   }
 
   &[data-popper-placement^='right'] .arrow {
-    left: calc(-1 * var(--arrowSize));
+    left: calc(-0.9 * var(--arrowSize));
 
     &::before {
       top: calc(-1 * var(--arrowSize));
@@ -93,11 +90,12 @@
 .popper-motion(~'@{popper-prefix-cls}-right', kdZoomLeft);
 .popper-motion(~'@{popper-prefix-cls}-bottom', kdZoomTop);
 .popper-motion(~'@{popper-prefix-cls}-top-start', kdZoomLeftBottom);
-.popper-motion(~'@{popper-prefix-cls}-rightBottom', kdZoomLeftBottom);
+.popper-motion(~'@{popper-prefix-cls}-right-end', kdZoomLeftBottom);
 .popper-motion(~'@{popper-prefix-cls}-top-end', kdZoomRightBottom);
 .popper-motion(~'@{popper-prefix-cls}-left-end', kdZoomRightBottom);
 .popper-motion(~'@{popper-prefix-cls}-left-start', kdZoomTopRight);
 .popper-motion(~'@{popper-prefix-cls}-bottom-end', kdZoomTopRight);
 .popper-motion(~'@{popper-prefix-cls}-right-start', kdZoomTopLeft);
 .popper-motion(~'@{popper-prefix-cls}-bottom-start', kdZoomTopLeft);
+
 
