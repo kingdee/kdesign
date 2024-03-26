@@ -18,6 +18,8 @@ declare module '@kdcloudjs/kdesign-icons'
 
 declare module 'lz-string'
 
+declare module 'color-ie'
+
 declare interface Window {
   IFRAME_CODES: any
 }
