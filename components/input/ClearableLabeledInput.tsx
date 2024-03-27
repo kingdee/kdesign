@@ -56,20 +56,20 @@ const ClearableInput: React.FC<ClearableInputProps> = (props) => {
   const fixRef = useRef(null)
   const [isMouseEnter, setIsMouseEnter] = useState<boolean>(false)
 
-  const mouseEnterHandle: React.MouseEventHandler<HTMLDivElement> = () => {
+  const mouseEnterHandle: React.MouseEventHandler = () => {
     setIsMouseEnter(true)
   }
 
-  const mouseLeaveHandle: React.MouseEventHandler<HTMLDivElement> = () => {
+  const mouseLeaveHandle: React.MouseEventHandler = () => {
     setIsMouseEnter(false)
   }
 
-  const mouseDownHandle: React.MouseEventHandler<HTMLDivElement> = (e) => {
+  const mouseDownHandle: React.MouseEventHandler = (e) => {
     e.stopPropagation()
     e.preventDefault()
   }
 
-  const clickHandle: React.MouseEventHandler<HTMLSpanElement> = (e) => {
+  const clickHandle: React.MouseEventHandler = (e) => {
     e.stopPropagation()
     ;(fixRef.current as any as HTMLElement)?.querySelector('input')?.focus()
   }
@@ -79,14 +79,14 @@ const ClearableInput: React.FC<ClearableInputProps> = (props) => {
       return null
     }
     const needClear = !disabled && value && isMouseEnter
-    const clearIconclasses = classNames({
+    const clearIconCls = classNames({
       [`${prefixCls}-textarea-clear-icon`]: inputType === ClearableInputType[1],
       [`${prefixCls}-clear-icon`]: inputType === ClearableInputType[0],
       [`${prefixCls}-clear-icon-hidden`]: !needClear,
       [`${prefixCls}-clear-icon-rightSpace`]: suffix,
     })
     return (
-      <span onMouseDown={mouseDownHandle} onClick={handleReset} className={clearIconclasses}>
+      <span onMouseDown={mouseDownHandle} onClick={handleReset} className={clearIconCls}>
         {typeof allowClear === 'boolean' ? <Icon type="close-solid" /> : allowClear}
       </span>
     )
