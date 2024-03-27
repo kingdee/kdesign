@@ -90,17 +90,17 @@ const InternalTextarea = (props: textAreaProps, ref: unknown): FunctionComponent
 
   useResizeObserver(textareaRef.current, resizeTextarea)
 
-  const handleChange = (e: React.FocusEvent<HTMLInputElement, Element>) => {
+  const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     propsValue === undefined && setValue(e.target.value)
     onChange && onChange(e)
   }
 
-  const handleFocus = (e: React.FocusEvent<HTMLInputElement, Element>) => {
+  const handleFocus = (e: React.FocusEvent<HTMLTextAreaElement, Element>) => {
     setFocused(true)
     onFocus && onFocus(e)
   }
 
-  const handleBlur = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+  const handleBlur = (e: React.FocusEvent<HTMLTextAreaElement, Element>) => {
     setFocused(false)
     onBlur && onBlur(e)
   }
