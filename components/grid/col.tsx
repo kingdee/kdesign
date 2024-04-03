@@ -51,12 +51,27 @@ const Col: React.FC<ColProps> = (props) => {
   const mergedWinWidth = rowGroup!.winWidth
   const gap = rowGroup!.gap
 
-  // 浏览器名称
-  const isSogouOrIE = testBrowserType(/^sogou/i, 0) || /Trident|MSIE/.test(navigator.userAgent)
+  // 判断当前浏览器是否支持row-gap，如果不支持则使用margin负值模拟
+  const notSupportRowGap = function () {
+    // 判断是否是搜狗浏览器
+    if (testBrowserType(/^sogou/i, 0)) return true
+
+    // 判断是否是IE浏览器
+    if (/Trident|MSIE/.test(navigator.userAgent)) return true
+
+    // 判断是否是chrome浏览器，chrome浏览器版本号小于69
+    if (/Chrome/.test(navigator.userAgent) && !/Chromium/.test(navigator.userAgent)) {
+      const version = navigator.userAgent.split('Chrome/')[1].split('.')
+      if (version[0] && parseInt(version[0]) <= 69) return true
+    }
+
+    return false
+  }
+
   const colGapStyle: Record<string, any> = {
     padding: `0 ${gap.h / 2}px`,
   }
-  if (isSogouOrIE && gap.v) colGapStyle.marginBottom = gap.v
+  if (notSupportRowGap() && gap.v) colGapStyle.marginBottom = gap.v
 
   // className前缀
   const prefixCls = getPrefixCls!(pkgPrefixCls, 'col', customPrefixcls)
