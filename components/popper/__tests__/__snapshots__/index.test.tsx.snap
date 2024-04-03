@@ -1,0 +1,403 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Popper API test getTriggerElement is useful 1`] = `
+<div>
+  <button>
+    test
+  </button>
+  <Popper
+    defaultVisible={true}
+    getPopupContainer={[Function]}
+    getTriggerElement={[Function]}
+    tip="tips text"
+  >
+    <span
+      className="kd-test-trigger kd-popper-reference"
+    >
+      text
+    </span>
+    <Portal
+      containerInfo={
+        <div>
+          <button>
+            test
+          </button>
+          <span
+            class="kd-test-trigger kd-popper-reference"
+          >
+            text
+          </span>
+          <div
+            class="kd-popper"
+          >
+            <div
+              class="kd-popper-top kd-popper-top-in"
+            >
+              tips text
+            </div>
+          </div>
+        </div>
+      }
+    >
+      <div
+        className="kd-popper"
+        style={Object {}}
+      >
+        <div
+          className="kd-popper-top kd-popper-top-in"
+          onAnimationEnd={[Function]}
+          onMouseLeave={[Function]}
+          onMouseOver={[Function]}
+          onTransitionEnd={[Function]}
+          style={Object {}}
+        >
+          tips text
+        </div>
+      </div>
+    </Portal>
+  </Popper>
+</div>
+`;
+
+exports[`Popper ref  is useful  1`] = `
+<Popper
+  defaultVisible={true}
+  tip="tip text"
+  trigger="click"
+>
+  <div
+    className="kd-test kd-popper-reference"
+  >
+    text
+  </div>
+  <Portal
+    containerInfo={
+      <body>
+        <div
+          class="kd-popper"
+          data-popper-escaped=""
+          data-popper-placement="top"
+          data-popper-reference-hidden=""
+          style="position: fixed; left: 0px; top: 0px; margin: 0px; bottom: 0px; transform: translate(0px, -9px);"
+        >
+          <div
+            class="kd-popper-top kd-popper-top-in"
+          >
+            test
+            <div
+              class="arrow"
+              data-popper-arrow=""
+              style="position: absolute; left: 0px; transform: translate(0px, 0px);"
+            />
+          </div>
+        </div>
+        <div
+          class="kd-popper"
+          data-popper-escaped=""
+          data-popper-placement="top"
+          data-popper-reference-hidden=""
+          style="position: fixed; left: 0px; top: 0px; margin: 0px; bottom: 0px; transform: translate(0px, -4px);"
+        >
+          <div
+            class="kd-popper-top kd-popper-top-in test"
+            style="color: red;"
+          >
+            text
+          </div>
+        </div>
+        <div
+          class="kd-popper"
+          data-popper-escaped=""
+          data-popper-placement="top"
+          data-popper-reference-hidden=""
+          style="position: fixed; left: 0px; top: 0px; margin: 0px; bottom: 0px; transform: translate(0px, -4px);"
+        >
+          <div
+            class="kd-popper-top kd-popper-top-in my-popper"
+          >
+            text
+          </div>
+        </div>
+        <div
+          class="kd-popper"
+          data-popper-escaped=""
+          data-popper-placement="left"
+          data-popper-reference-hidden=""
+          style="position: fixed; left: 0px; top: 0px; margin: 0px; right: 0px; transform: translate(-4px, 0px);"
+        >
+          <div
+            class="kd-popper-left kd-popper-left-in my-popper"
+          >
+            text
+          </div>
+        </div>
+        <div
+          class="kd-popper"
+          data-popper-escaped=""
+          data-popper-placement="right"
+          data-popper-reference-hidden=""
+          style="position: fixed; left: 0px; top: 0px; margin: 0px; transform: translate(4px, 0px);"
+        >
+          <div
+            class="kd-popper-right kd-popper-right-in my-popper"
+          >
+            text
+          </div>
+        </div>
+        <div
+          class="kd-popper"
+          data-popper-escaped=""
+          data-popper-placement="bottom"
+          data-popper-reference-hidden=""
+          style="position: fixed; left: 0px; top: 0px; margin: 0px; transform: translate(0px, 4px);"
+        >
+          <div
+            class="kd-popper-bottom kd-popper-bottom-in my-popper"
+          >
+            text
+          </div>
+        </div>
+        <div
+          class="kd-popper"
+          data-popper-escaped=""
+          data-popper-placement="top-start"
+          data-popper-reference-hidden=""
+          style="position: fixed; left: 0px; top: 0px; margin: 0px; bottom: 0px; transform: translate(0px, -4px);"
+        >
+          <div
+            class="kd-popper-top-start kd-popper-top-start-in my-popper"
+          >
+            text
+          </div>
+        </div>
+        <div
+          class="kd-popper"
+          data-popper-escaped=""
+          data-popper-placement="top-end"
+          data-popper-reference-hidden=""
+          style="position: fixed; left: 0px; top: 0px; margin: 0px; right: 0px; bottom: 0px; transform: translate(0px, -4px);"
+        >
+          <div
+            class="kd-popper-top-end kd-popper-top-end-in my-popper"
+          >
+            text
+          </div>
+        </div>
+        <div
+          class="kd-popper"
+          data-popper-escaped=""
+          data-popper-placement="bottom-start"
+          data-popper-reference-hidden=""
+          style="position: fixed; left: 0px; top: 0px; margin: 0px; transform: translate(0px, 4px);"
+        >
+          <div
+            class="kd-popper-bottom-start kd-popper-bottom-start-in my-popper"
+          >
+            text
+          </div>
+        </div>
+        <div
+          class="kd-popper"
+          data-popper-escaped=""
+          data-popper-placement="bottom-end"
+          data-popper-reference-hidden=""
+          style="position: fixed; left: 0px; top: 0px; margin: 0px; right: 0px; transform: translate(0px, 4px);"
+        >
+          <div
+            class="kd-popper-bottom-end kd-popper-bottom-end-in my-popper"
+          >
+            text
+          </div>
+        </div>
+        <div
+          class="kd-popper"
+          data-popper-escaped=""
+          data-popper-placement="left-start"
+          data-popper-reference-hidden=""
+          style="position: fixed; left: 0px; top: 0px; margin: 0px; right: 0px; transform: translate(-4px, 0px);"
+        >
+          <div
+            class="kd-popper-left-start kd-popper-left-start-in my-popper"
+          >
+            text
+          </div>
+        </div>
+        <div
+          class="kd-popper"
+          data-popper-escaped=""
+          data-popper-placement="left-end"
+          data-popper-reference-hidden=""
+          style="position: fixed; left: 0px; top: 0px; margin: 0px; right: 0px; bottom: 0px; transform: translate(-4px, 0px);"
+        >
+          <div
+            class="kd-popper-left-end kd-popper-left-end-in my-popper"
+          >
+            text
+          </div>
+        </div>
+        <div
+          class="kd-popper"
+          data-popper-escaped=""
+          data-popper-placement="right-start"
+          data-popper-reference-hidden=""
+          style="position: fixed; left: 0px; top: 0px; margin: 0px; transform: translate(4px, 0px);"
+        >
+          <div
+            class="kd-popper-right-start kd-popper-right-start-in my-popper"
+          >
+            text
+          </div>
+        </div>
+        <div
+          class="kd-popper"
+          data-popper-escaped=""
+          data-popper-placement="right-end"
+          data-popper-reference-hidden=""
+          style="position: fixed; left: 0px; top: 0px; margin: 0px; bottom: 0px; transform: translate(4px, 0px);"
+        >
+          <div
+            class="kd-popper-right-end kd-popper-right-end-in my-popper"
+          >
+            text
+          </div>
+        </div>
+        <div
+          class="kd-popper"
+          data-popper-escaped=""
+          data-popper-placement="top"
+          data-popper-reference-hidden=""
+          style="position: fixed; left: 0px; top: 0px; margin: 0px; bottom: 0px; transform: translate(0px, -4px);"
+        >
+          <div
+            class="kd-popper-top kd-popper-top-in"
+          >
+            tip text
+          </div>
+        </div>
+        <div
+          class="kd-popper hidden"
+          data-popper-escaped=""
+          data-popper-placement="top"
+          data-popper-reference-hidden=""
+          style="position: fixed; left: 0px; top: 0px; margin: 0px; bottom: 0px; transform: translate(0px, -4px);"
+        >
+          <div
+            class="kd-popper-top kd-popper-top-out"
+          >
+            tip text
+          </div>
+        </div>
+      </body>
+    }
+  >
+    <div
+      className="kd-popper"
+      style={Object {}}
+    >
+      <div
+        className="kd-popper-top kd-popper-top-in"
+        onAnimationEnd={[Function]}
+        onTransitionEnd={[Function]}
+        style={Object {}}
+      >
+        tip text
+      </div>
+    </div>
+  </Portal>
+</Popper>
+`;
+
+exports[`Popper render Test 1`] = `
+<Popper
+  tip={
+    <span>
+      text
+    </span>
+  }
+>
+  <span
+    className="kd-popper-reference"
+  >
+    text
+  </span>
+</Popper>
+`;
+
+exports[`Popper render null or undefined without errors 1`] = `
+<Popper>
+  <span
+    className="kd-popper-reference"
+  />
+</Popper>
+`;
+
+exports[`Popper special case 测试ref返回值不为dom元素 1`] = `
+<Popper
+  tip="tips text"
+>
+  <Input
+    borderType="bordered"
+    className="kd-popper-reference"
+    prefix="KDesign"
+    suffix="Kdesign"
+  >
+    <ClearableInput
+      borderType="bordered"
+      className="kd-popper-reference"
+      element={
+        <input
+          className="kd-input kd-input-size-middle"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          onKeyUp={[Function]}
+          prefix="KDesign"
+          type="text"
+          value=""
+        />
+      }
+      focused={false}
+      handleReset={[Function]}
+      inputCount={null}
+      inputType="input"
+      prefix="KDesign"
+      prefixCls="kd-input"
+      size="middle"
+      suffix="Kdesign"
+      type="text"
+      value=""
+    >
+      <span
+        className="kd-input-wrapper kd-input-wrapper-size-middle kd-popper-reference"
+        onClick={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+      >
+        <span
+          className="kd-input-prefix"
+          onMouseDown={[Function]}
+        >
+          KDesign
+        </span>
+        <input
+          className="kd-input kd-input-size-middle"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          onKeyUp={[Function]}
+          prefix="KDesign"
+          style={null}
+          type="text"
+          value=""
+        />
+        <span
+          className="kd-input-suffix"
+          onMouseDown={[Function]}
+        >
+          Kdesign
+        </span>
+      </span>
+    </ClearableInput>
+  </Input>
+</Popper>
+`;
