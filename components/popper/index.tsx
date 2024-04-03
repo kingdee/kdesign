@@ -1,4 +1,14 @@
-import React, { useEffect, useRef, useState, ReactElement, Children, forwardRef } from 'react'
+import React, {
+  useEffect,
+  useRef,
+  useState,
+  ReactElement,
+  Children,
+  forwardRef,
+  useContext,
+  isValidElement,
+  useImperativeHandle,
+} from 'react'
 import { createPopper, Instance, Modifier, Placement } from '@popperjs/core'
 import { tuple } from '../_utils/type'
 import classnames from 'classnames'
@@ -6,6 +16,8 @@ import debounce from 'lodash/debounce'
 import ReactDOM from 'react-dom'
 import { isFragment } from '../_utils/reactNode'
 import { ConfigContext } from '../config-provider'
+import { useMergedState } from '../_utils/hooks'
+import useId from '../_utils/useId'
 
 export const Placements = tuple(
   'top',
@@ -62,6 +74,12 @@ export type PopperProps = {
 
 const useEnhancedEffect = typeof window !== 'undefined' ? React.useLayoutEffect : React.useEffect
 
+export interface TriggerContextProps {
+  registerSubPopup: (id: string, node: any) => void
+}
+
+const TriggerContext = React.createContext<TriggerContextProps | null>(null)
+
 const generateGetBoundingClientRect = (x = 0, y = 0, width = 0, height = 0) => {
   return () => ({
     width,
@@ -76,6 +94,8 @@ const generateGetBoundingClientRect = (x = 0, y = 0, width = 0, height = 0) => {
 const virtualElement = {
   getBoundingClientRect: generateGetBoundingClientRect(),
 }
+
+const triggerTypeArray = ['hover', 'focus', 'click', 'contextMenu']
 
 export const popperPlacementMap = {
   top: 'top',
@@ -118,25 +138,24 @@ const getFallbackPlacements: (key: Placement) => Placement[] = (key: Placement) 
   ] as Placement[]
 }
 
-const getRealDom = (locatorRef: any, locatorElement: any) => {
+const getRealDom = (locatorRef: any, locatorElement: any = undefined) => {
   if (!locatorRef.current) return locatorRef.current
-  const REF_NAME_OBJ: any = {
-    Input: 'input',
-    InputNumber: 'input',
-    Select: 'select',
-    Upload: 'input',
-  }
   if (locatorRef.current.tagName) return locatorRef.current
-  const name = REF_NAME_OBJ?.[locatorElement?.type?.displayName]
-  return locatorRef?.current[name]
+  if (locatorElement) {
+    const REF_NAME_OBJ: any = {
+      Input: 'input',
+      InputNumber: 'input',
+      Select: 'select',
+      Upload: 'input',
+    }
+    const name = REF_NAME_OBJ?.[locatorElement?.type?.displayName]
+    return locatorRef?.current[name]
+  }
+  return locatorElement
 }
 
-const isTarget = (domRef: any, e: Event, locatorElement: any) => {
-  if (domRef && domRef?.current) {
-    const dom = getRealDom(domRef, locatorElement)
-    return dom ? dom === e.target || dom?.contains?.(e.target) : false
-  }
-  return false
+const getElement = (element: any) => {
+  return typeof element === 'function' ? element() : element
 }
 
 export const Popper = forwardRef<unknown, PopperProps>((props, ref) => {
@@ -152,7 +171,7 @@ export const Popper = forwardRef<unknown, PopperProps>((props, ref) => {
     popperClassName,
     tip,
     disabled = false,
-    trigger = 'click',
+    trigger = 'hover',
     placement = 'top',
     visible,
     arrowSize = 4.25,
@@ -164,7 +183,7 @@ export const Popper = forwardRef<unknown, PopperProps>((props, ref) => {
     autoPlacement = true,
     clickToClose = true,
     getTriggerElement = (locatorNode) => locatorNode,
-    getPopupContainer,
+    getPopupContainer = () => document.body,
     onTransitionEnd,
     onAnimationEnd,
     children,
@@ -172,19 +191,38 @@ export const Popper = forwardRef<unknown, PopperProps>((props, ref) => {
 
   const popperPrefixCls = getPrefixCls!(pkgPrefixCls, 'popper')
   const referencePrefixCls = `${popperPrefixCls}-reference`
-  const child: any = typeof children === 'function' ? children() : children
-  const childrenInner = React.isValidElement(child) && !isFragment(child) ? child : <span>{child}</span>
-  const referenceElement: ReactElement = Children.only(childrenInner) as ReactElement
-  const popperElement = typeof tip === 'function' ? tip() : tip
+  const child: any = getElement(children)
+  const childrenInner = isValidElement(child) && !isFragment(child) ? child : <span>{child}</span>
+  const popperElement = getElement(tip)
+  const referenceElement: any = Children.only(childrenInner) as ReactElement
 
+  const id = useId()
+  const parentContext = useContext(TriggerContext)
+  const subPopupRefs = useRef<Record<string, any>>({})
+  const context = React.useMemo<TriggerContextProps>(() => {
+    return {
+      registerSubPopup: (id, subPopupEle) => {
+        subPopupRefs.current[id] = subPopupEle
+
+        parentContext?.registerSubPopup(id, subPopupEle)
+      },
+    }
+  }, [parentContext])
+
+  const popperRefDom = useRef<any>(null)
   const popperRefInner = useRef<any>(null)
   const popperRef: any = ref || popperRefInner
+
   const popperInstance = useRef<Instance | null>(null)
   const referenceRefInner = useRef<any>(null)
-  const referenceRef = referenceElement?.props?.ref || referenceRefInner
-  const container = getPopupContainer?.(getRealDom(referenceRef, referenceElement) || document.body) || document.body
 
-  const [visibleInner, setVisibleInner] = useState(typeof visible === 'undefined' ? defaultVisible : visible)
+  const referenceRef = referenceElement?.ref || referenceRefInner
+  const container = getPopupContainer(getRealDom(referenceRef, referenceElement) || document.body) || document.body
+
+  const [visibleInner, setVisibleInner] = useMergedState<boolean>(false, {
+    value: visible,
+    defaultValue: defaultVisible,
+  })
   const [exist, setExist] = useState<boolean>(visibleInner)
   const [placementInner, setPlacementInner] = useState<Placement>(getRealPlacement(placement))
 
@@ -195,32 +233,65 @@ export const Popper = forwardRef<unknown, PopperProps>((props, ref) => {
       delayRef.current = null
     }
   }
-  const triggerOpen = (nextOpen: boolean, triggerType: TriggerType | string = '', delay = 0.1) => {
-    console.log('triggerOpen', nextOpen, delay)
-    clearDelay()
-    if (delay === 0) {
-      if (visibleInner !== nextOpen) {
-        if (nextOpen) {
-          onTrigger?.(triggerType as TriggerType)
-        }
-        if (typeof visible === 'undefined') {
-          setVisibleInner(nextOpen)
-        }
-        onVisibleChange?.(nextOpen)
+  const changeVisible = (nextOpen: boolean, triggerType = '') => {
+    if (visibleInner !== nextOpen) {
+      if (nextOpen && triggerTypeArray.includes(triggerType)) {
+        onTrigger?.(triggerType as TriggerType)
       }
-    } else {
-      if (visibleInner !== nextOpen) {
-        delayRef.current = setTimeout(() => {
-          if (nextOpen) {
-            onTrigger?.(triggerType as TriggerType)
-          }
-          if (typeof visible === 'undefined') {
-            setVisibleInner(nextOpen)
-          }
-          onVisibleChange?.(nextOpen)
-        }, delay * 1000)
+      if (typeof visible === 'undefined') {
+        setVisibleInner(nextOpen)
+      }
+      onVisibleChange?.(nextOpen)
+    }
+    if (!nextOpen && Object.keys(subPopupRefs.current || {}).length) {
+      console.log('triggerOpenSub', subPopupRefs.current)
+      Object.values(subPopupRefs.current).forEach((d: any) => {
+        if (typeof d?.triggerOpen === 'function' && d?.visible) {
+          d?.triggerOpen(false)
+        }
+      })
+    }
+  }
+  const triggerOpen = (nextOpen: boolean, triggerType = '', delay = 0) => {
+    clearDelay()
+    if (!disabled) {
+      if (delay === 0) {
+        changeVisible(nextOpen, triggerType)
+      } else {
+        if (visibleInner !== nextOpen) {
+          delayRef.current = setTimeout(() => {
+            changeVisible(nextOpen, triggerType)
+          }, delay * 1000)
+        }
       }
     }
+  }
+
+  const isSubPopper = (event: MouseEvent) => {
+    if (!event || !event?.target) {
+      return false
+    }
+
+    // let targetElement: HTMLElement = event.target as HTMLElement
+    // const POP_ATTR_NAME = 'data-popper-placement'
+    // while (targetElement && targetElement !== document.documentElement) {
+    //   if (targetElement?.getAttribute(POP_ATTR_NAME) && targetElement?.className.includes(popperPrefixCls)) {
+    //     return true
+    //   }
+    //   targetElement = targetElement?.parentNode as HTMLElement
+    // }
+
+    const target: HTMLElement = event.target as HTMLElement
+    if (subPopupRefs.current) {
+      for (const key in subPopupRefs.current) {
+        const { dom } = subPopupRefs.current[key]
+        if (dom && (dom?.contains(target) || dom === target)) {
+          return true
+        }
+      }
+    }
+
+    return false
   }
 
   const onTriggerInner = (nextOpen: boolean, triggerType: TriggerType, delay: undefined | number = undefined) => {
@@ -228,17 +299,18 @@ export const Popper = forwardRef<unknown, PopperProps>((props, ref) => {
   }
 
   const onClick = (e: Event) => {
-    onTriggerInner(!visibleInner, 'click', 0)
+    e.stopPropagation()
+    onTriggerInner(!visibleInner, 'click')
     referenceElement?.props?.onClick?.(e)
   }
 
   const onFocus = (e: Event) => {
-    onTriggerInner(true, 'focus', 0)
+    onTriggerInner(true, 'focus')
     referenceElement?.props?.onFocus?.(e)
   }
 
   const onBlur = (e: Event) => {
-    onTriggerInner(false, 'focus', 0)
+    onTriggerInner(false, 'focus')
     referenceElement?.props?.onBlur?.(e)
   }
 
@@ -264,7 +336,7 @@ export const Popper = forwardRef<unknown, PopperProps>((props, ref) => {
       clientWidth,
       clientHeight,
     )
-    onTriggerInner(!visibleInner, 'contextMenu', 0)
+    onTriggerInner(!visibleInner, 'contextMenu')
     referenceElement?.props?.onContextMenu?.(e)
   }
 
@@ -283,11 +355,26 @@ export const Popper = forwardRef<unknown, PopperProps>((props, ref) => {
     onTransitionEnd?.(e as React.TransitionEvent)
   }
 
-  useEffect(() => {
-    if (typeof visible !== 'undefined') {
-      setVisibleInner(visible)
+  const isTrigger = (triggerValue: TriggerType) => {
+    return trigger === triggerValue || (Array.isArray(trigger) && trigger.includes(triggerValue))
+  }
+
+  const triggerEventHandle = (triggerNode: any, type = 'addEventListener') => {
+    if (isTrigger('click')) {
+      triggerNode?.[type]('click', onClick)
     }
-  }, [visible])
+    if (isTrigger('focus')) {
+      triggerNode?.[type]('focus', onFocus)
+      triggerNode?.[type]('blur', onBlur)
+    }
+    if (isTrigger('contextMenu')) {
+      triggerNode?.[type]('contextmenu', onContextMenu)
+    }
+    if (isTrigger('hover')) {
+      triggerNode?.[type]('mouseover', onMouseOver)
+      triggerNode?.[type]('mouseleave', onMouseLeave)
+    }
+  }
 
   useEffect(() => {
     setPlacementInner(getRealPlacement(placement))
@@ -296,9 +383,9 @@ export const Popper = forwardRef<unknown, PopperProps>((props, ref) => {
   useEffect(() => {
     const scrollHandle = debounce((e: Event) => {
       if (visibleInner) {
-        const isPopper = e.target === popperRef.current || popperRef.current?.contains?.(e.target)
+        const isPopper = e.target === popperRefDom.current || popperRefDom.current?.contains?.(e.target)
         if (scrollHidden && !isPopper) {
-          triggerOpen(false)
+          triggerOpen(false, 'scroll')
         }
       }
     }, 10)
@@ -310,15 +397,21 @@ export const Popper = forwardRef<unknown, PopperProps>((props, ref) => {
     return () => {
       document.removeEventListener('scroll', scrollHandle, true)
     }
-  }, [visibleInner, scrollHidden, popperRef])
+  }, [visibleInner, scrollHidden, popperRefDom])
 
   useEffect(() => {
-    const clickHandle = debounce((e: Event) => {
+    const clickHandle = debounce((e: MouseEvent) => {
       if (visibleInner) {
-        const isPopper = isTarget(popperRef, e, referenceElement)
-        const isReference = trigger === 'contextMenu' ? isPopper : isPopper || isTarget(popperRef, e, referenceElement)
-        if (clickToClose && !isReference) {
-          triggerOpen(false, '', 0)
+        const isPopper = popperRefDom.current
+          ? popperRefDom.current === e.target || popperRefDom.current.contains?.(e.target)
+          : false
+
+        const domReference = getRealDom(referenceRef, referenceElement)
+        const isReference = domReference ? domReference === e.target || domReference?.contains?.(e.target) : false
+        const isTarget = trigger === 'contextMenu' ? isPopper : isPopper || isReference
+        console.log('clickOutside', children, e.target, isPopper, isReference, subPopupRefs.current)
+        if (clickToClose && !isTarget && !isSubPopper(e)) {
+          triggerOpen(false, 'clickOutside', 0)
         }
       }
     }, 10)
@@ -330,33 +423,26 @@ export const Popper = forwardRef<unknown, PopperProps>((props, ref) => {
     return () => {
       document.removeEventListener('click', clickHandle, true)
     }
-  }, [visibleInner, clickToClose, referenceRef, popperRef])
+  }, [visibleInner, clickToClose, referenceRef, popperRefDom])
 
   useEffect(() => {
     const realDom = getRealDom(referenceRef, referenceElement)
     const triggerNode = getTriggerElement(realDom)
 
-    if (trigger === 'click') {
-      triggerNode?.addEventListener('click', onClick)
-    } else if (trigger === 'focus') {
-      triggerNode?.addEventListener('focus', onFocus)
-      triggerNode?.addEventListener('blur', onBlur)
-    } else if (trigger === 'contextMenu') {
-      triggerNode?.addEventListener('contextmenu', onContextMenu)
-    } else {
-      triggerNode?.addEventListener('mouseover', onMouseOver)
-      triggerNode?.addEventListener('mouseleave', onMouseLeave)
-    }
+    triggerEventHandle(triggerNode)
 
     return () => {
-      triggerNode?.removeEventListener('click', onClick)
-      triggerNode?.removeEventListener('focus', onClick)
-      triggerNode?.removeEventListener('blur', onClick)
-      triggerNode?.removeEventListener('contextmenu', onContextMenu)
-      triggerNode?.removeEventListener('mouseover', onMouseOver)
-      triggerNode?.removeEventListener('mouseleave', onMouseLeave)
+      triggerEventHandle(triggerNode, 'removeEventListener')
     }
-  }, [getTriggerElement, visibleInner, referenceElement, referenceRef])
+  }, [getTriggerElement, visibleInner, referenceElement, referenceRef, trigger])
+
+  useImperativeHandle(popperRef, () => {
+    return {
+      dom: popperRefDom.current,
+      triggerOpen,
+      visible: visibleInner,
+    }
+  })
 
   const popperModifiers: Partial<Modifier<any, any>>[] = [
     {
@@ -369,7 +455,6 @@ export const Popper = forwardRef<unknown, PopperProps>((props, ref) => {
       name: 'preventOverflow',
       enabled: autoPlacement,
       options: {
-        altBoundary: disabled,
         mainAxis: true,
       },
     },
@@ -377,7 +462,6 @@ export const Popper = forwardRef<unknown, PopperProps>((props, ref) => {
       name: 'flip',
       enabled: autoPlacement,
       options: {
-        altBoundary: disabled,
         fallbackPlacements: autoPlacement ? getFallbackPlacements(placementInner as any) : undefined,
       },
     },
@@ -387,7 +471,6 @@ export const Popper = forwardRef<unknown, PopperProps>((props, ref) => {
       phase: 'afterWrite',
       fn: (d) => {
         const { placement: p } = d?.state
-        console.log('onUpdate', d)
         if (p !== placementInner) {
           setPlacementInner(p)
         }
@@ -411,15 +494,17 @@ export const Popper = forwardRef<unknown, PopperProps>((props, ref) => {
             ...options,
             ...popperOptionsInner,
           }))
-
           popperInstance.current?.forceUpdate()
         }
+        setTimeout(() => {
+          parentContext?.registerSubPopup(id, popperRef.current)
+        }, 10)
       }
     }
-  }, [visibleInner, placementInner])
+  }, [visibleInner, placementInner, arrow])
 
   useEnhancedEffect(() => {
-    if (!exist || disabled) {
+    if (!exist) {
       return undefined
     }
 
@@ -428,15 +513,18 @@ export const Popper = forwardRef<unknown, PopperProps>((props, ref) => {
     if (current) {
       popperInstance.current = createPopper(
         trigger === 'contextMenu' ? virtualElement : current?.closest(`.${referencePrefixCls}`) || current,
-        popperRef.current,
+        popperRefDom.current,
         popperOptionsInner,
       )
+      setTimeout(() => {
+        parentContext?.registerSubPopup(id, popperRef.current)
+      }, 10)
     }
 
     return () => {
       popperInstance.current?.destroy()
     }
-  }, [exist, disabled])
+  }, [exist])
 
   if (children === null || typeof children === 'undefined') {
     return null
@@ -447,7 +535,7 @@ export const Popper = forwardRef<unknown, PopperProps>((props, ref) => {
   }
 
   const popperContainerProps = {
-    ref: popperRef,
+    ref: popperRefDom,
     style: { ...(arrow ? arrowStyle : {}) },
     className: classnames(popperPrefixCls, { hidden: !visibleInner }),
   }
@@ -481,12 +569,14 @@ export const Popper = forwardRef<unknown, PopperProps>((props, ref) => {
       {exist &&
         container &&
         ReactDOM.createPortal(
-          <div {...popperContainerProps}>
-            <div {...popperProps}>
-              {popperElement}
-              {arrow && <div className="arrow" data-popper-arrow="" />}
+          <TriggerContext.Provider value={context}>
+            <div {...popperContainerProps}>
+              <div {...popperProps}>
+                {popperElement}
+                {arrow && <div className="arrow" data-popper-arrow="" />}
+              </div>
             </div>
-          </div>,
+          </TriggerContext.Provider>,
           container,
         )}
     </>

@@ -20,7 +20,7 @@ exports[`Tooltip render Test 1`] = `
     trigger="hover"
   >
     <span
-      className="kd-popper-reference-content"
+      className="kd-popper-reference"
     >
       text
     </span>
