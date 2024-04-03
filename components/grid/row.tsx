@@ -60,8 +60,22 @@ const Row: React.FC<RowProps> = (props) => {
     prefixCls: customPrefixcls,
   } = getCompProps('Row', userDefaultProps, props)
 
-  // 浏览器名称
-  const isSogouOrIe = testBrowserType(/^sogou/i, 0) || /Trident|MSIE/.test(navigator.userAgent)
+  // 判断当前浏览器是否支持row-gap，如果不支持则使用margin负值模拟
+  const notSupportRowGap = function () {
+    // 判断是否是搜狗浏览器
+    if (testBrowserType(/^sogou/i, 0)) return true
+
+    // 判断是否是IE浏览器
+    if (/Trident|MSIE/.test(navigator.userAgent)) return true
+
+    // 判断是否是chrome浏览器，chrome浏览器版本号小于69
+    if (/Chrome/.test(navigator.userAgent) && !/Chromium/.test(navigator.userAgent)) {
+      const version = navigator.userAgent.split('Chrome/')[1].split('.')
+      if (version[0] && parseInt(version[0]) <= 69) return true
+    }
+
+    return false
+  }
 
   // className前缀
   const prefixCls = getPrefixCls!(pkgPrefixCls, 'row', customPrefixcls)
@@ -93,7 +107,7 @@ const Row: React.FC<RowProps> = (props) => {
     rowGap: `${gap.v}px`,
     margin: `0 ${(-1 * gap.h) / 2}px`,
   }
-  if (gap.v && isSogouOrIe) rowStyle.marginBottom = `${-1 * gap.v}px`
+  if (gap.v && notSupportRowGap()) rowStyle.marginBottom = `${-1 * gap.v}px`
 
   const toalign: Record<string, string> = {
     top: 'flex-start',
