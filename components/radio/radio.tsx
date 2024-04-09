@@ -91,6 +91,7 @@ const InternalRadio: React.ForwardRefRenderFunction<HTMLElement, IRadioProps> = 
     // eslint-disable-next-line
     <label className={classString} style={style} ref={mergedRef as any}>
       <input
+        {...restProps}
         type="radio"
         className={`${radioPrefixCls}-input`}
         checked={isChecked}
@@ -98,7 +99,6 @@ const InternalRadio: React.ForwardRefRenderFunction<HTMLElement, IRadioProps> = 
         value={value}
         name={context?.name}
         disabled={mergedDisabled}
-        {...restProps}
       />
       {children !== undefined ? <span className={`${radioPrefixCls}-text`}>{children}</span> : null}
     </label>
