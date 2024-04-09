@@ -557,4 +557,25 @@ describe('RangePicker', () => {
       expect(wrapper.find(selector).at(index).prop('style')).toEqual({ background: 'red' })
     })
   })
+
+  // 18. null with popup
+  it('null with popup', async () => {
+    const ref: any = React.createRef()
+    const onChange = jest.fn()
+    const wrapper = mount(
+      <div ref={ref}>
+        <RangePicker
+          value={[new Date(START_DAY), null]}
+          defaultOpen
+          onChange={onChange}
+          getPopupContainer={() => ref.current}
+        />
+      </div>,
+    )
+
+    wrapper.find('input').at(0).simulate('focus')
+    wrapper.find('.kd-date-picker-calendar-text').at(0).simulate('click')
+    wrapper.find('.kd-date-picker-calendar-text').at(1).simulate('click')
+    expect(onChange).toHaveBeenCalledTimes(1)
+  })
 })
