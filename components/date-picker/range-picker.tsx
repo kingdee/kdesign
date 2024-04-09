@@ -373,15 +373,7 @@ const InternalRangePicker = (
   const onTextChange = (newText: string, index: 0 | 1) => {
     let inputTempDate
     if (newText === '') {
-      if (index === 0 && selectedValue && selectedValue.length === 2) {
-        inputTempDate = selectedValue[1]
-      } else if (index === 1 && selectedValue && selectedValue.length === 2) {
-        inputTempDate = selectedValue[0]
-      }
-      if (inputTempDate) {
-        triggerChange(updateValues(selectedValue, inputTempDate, index), index)
-        setViewDate(inputTempDate, index)
-      }
+      triggerChange(updateValues(selectedValue, null, index), index)
     } else if (newText && newText.length === _format.length) {
       inputTempDate = parseDate(newText, _format)
 
@@ -531,12 +523,15 @@ const InternalRangePicker = (
     const canTrigger = values === null || (canStartValueTrigger && canEndValueTrigger)
 
     if (canTrigger) {
-      setInnerValue(values)
+      if (typeof value === 'undefined') {
+        setInnerValue(values)
+      }
       if (onChange && (!isEqual(getValue(dateValue, 0)!, startValue) || !isEqual(getValue(dateValue, 1)!, endValue))) {
         onChange(values, [startStr, endStr])
       }
     }
 
+    const curValue = getValue(values, sourceIndex)
     let nextOpenIndex: 0 | 1 | null = null
     if (sourceIndex === 0 && !mergedDisabled[1]) {
       nextOpenIndex = 1
@@ -548,19 +543,13 @@ const InternalRangePicker = (
       nextOpenIndex !== null &&
       nextOpenIndex !== mergedActivePickerIndex &&
       (!openRecordsRef.current[nextOpenIndex] || !getValue(values, nextOpenIndex)) &&
-      getValue(values, sourceIndex)
+      curValue
     ) {
       triggerOpenAndFocus(nextOpenIndex)
-    } else {
+    } else if (curValue) {
       triggerOpen(false, sourceIndex)
     }
   }
-
-  // useOnClickOutside([popperRef, inputDivRef], () => {
-  //   setViewDate(null, 0)
-  //   setViewDate(null, 1)
-  //   setHoverRangedValue([null, null])
-  // })
 
   const onSelect = (date: DateType, type: ISelectType) => {
     const values = updateValues(selectedValue, date, mergedActivePickerIndex)
@@ -607,13 +596,6 @@ const InternalRangePicker = (
   useEffect(() => {
     if (!mergedOpen) {
       setSelectedValue(dateValue)
-
-      if (!startValueTexts.length || startValueTexts[0] === '') {
-        triggerStartTextChange('')
-      }
-      if (!endValueTexts.length || endValueTexts[0] === '') {
-        triggerEndTextChange('')
-      }
       setViewDate(null, 0)
       setViewDate(null, 1)
       setHoverRangedValue([null, null])
