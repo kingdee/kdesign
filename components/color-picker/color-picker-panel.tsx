@@ -90,7 +90,7 @@ const ColorPickerPanel: FC<IColorPickerPanelProps> = (props) => {
       setColTypeArr(formatArr)
     }
     setClickedColorIndex(index)
-    onChange && onChange(formatValue, colTypeArr)
+    onChange && onChange(formatValue, formatArr)
   }
 
   const handleTypeChange = (selectValue: string, option: any) => {
