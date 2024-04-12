@@ -35,4 +35,7 @@ module.exports = {
   transformIgnorePatterns,
   snapshotSerializers: ['enzyme-to-json/serializer'],
   testURL: 'http://localhost',
+  compilerOptions: {
+    types: ['react', 'react-dom'], // 或在"lib"数组中包含"dom"
+  },
 }

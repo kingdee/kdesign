@@ -59,6 +59,16 @@ exports[`Popper API test getTriggerElement is useful 1`] = `
 </div>
 `;
 
+exports[`Popper calls onVisibleChange when visibility is toggled 1`] = `
+<div>
+  <button
+    class="kd-popper-reference"
+  >
+    Content
+  </button>
+</div>
+`;
+
 exports[`Popper ref  is useful  1`] = `
 <Popper
   defaultVisible={true}
@@ -400,4 +410,14 @@ exports[`Popper special case 测试ref返回值不为dom元素 1`] = `
     </ClearableInput>
   </Input>
 </Popper>
+`;
+
+exports[`Popper test visible calls onVisibleChange when visibility is toggled 1`] = `
+<div>
+  <button
+    class="kd-popper-reference"
+  >
+    Content
+  </button>
+</div>
 `;
