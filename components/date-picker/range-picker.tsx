@@ -598,6 +598,8 @@ const InternalRangePicker = (
       setSelectedValue(dateValue)
       setViewDate(null, 0)
       setViewDate(null, 1)
+      resetStartText()
+      resetEndText()
       setHoverRangedValue([null, null])
     } else {
       setInnerPicker(undefined)
