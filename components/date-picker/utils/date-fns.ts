@@ -329,12 +329,14 @@ export const setYearOrMonthOfDate = (date1: DateType, date2: DateType, type = 'y
   const d1 = new Date(date1 || 0)
   const d2 = new Date(date2 || 0)
 
-  if (type === 'year') {
+  if (type === 'year' && d1.getFullYear() !== d2.getFullYear()) {
     d1.setFullYear(d2.getFullYear())
+    d1.setDate(1)
   }
 
-  if (type === 'month') {
+  if (type === 'month' && d1.getMonth() !== d2.getMonth()) {
     d1.setMonth(d2.getMonth())
+    d1.setDate(1)
   }
 
   return d1
