@@ -308,6 +308,9 @@ const InternalDatePicker = (
       if (valueText !== text) {
         resetText()
       }
+      if (hoverValue) {
+        onLeave()
+      }
     } else {
       setInnerPicker(undefined)
     }
