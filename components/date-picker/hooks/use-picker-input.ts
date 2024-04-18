@@ -38,9 +38,6 @@ export default function usePickerInput({
       triggerOpen(true)
     },
     onKeyDown: (e) => {
-      setTyping(true)
-      triggerOpen(true)
-
       switch (e.which) {
         case KeyCode.ENTER: {
           if (!open) {
@@ -56,7 +53,7 @@ export default function usePickerInput({
         case KeyCode.TAB: {
           if (typing && open && !e.shiftKey) {
             setTyping(false)
-            e.preventDefault()
+            // e.preventDefault()
           }
           return
         }
