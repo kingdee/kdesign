@@ -163,6 +163,8 @@ const getRealDom = (locatorRef: any, locatorElement: any) => {
   return locatorRef?.current[name]
 }
 
+const DEFAULT_PLACEMENT = 'top'
+
 function usePopper(locatorElement: React.ReactElement, popperElement: React.ReactElement, props: PopperProps) {
   const {
     prefixCls,
@@ -175,7 +177,7 @@ function usePopper(locatorElement: React.ReactElement, popperElement: React.Reac
     arrowSize = 4.25,
     disabled = false,
     trigger = 'click',
-    placement = 'top',
+    placement = DEFAULT_PLACEMENT,
     gap: defaultGap = 4,
     scrollHidden = false,
     mouseEnterDelay = 0.1,
@@ -252,7 +254,15 @@ function usePopper(locatorElement: React.ReactElement, popperElement: React.Reac
   const [evType, setEvType] = useState<string>('')
   const [align, setAlign] = useState<Align | undefined>()
 
-  const [nextPlacement, setNextPlacement] = useState<string>(placement)
+  const [nextPlacement, setNextPlacement] = useState<string>(
+    Placements.includes(placement) ? placement : DEFAULT_PLACEMENT,
+  )
+
+  useEffect(() => {
+    if (nextPlacement !== placement && Placements.includes(placement)) {
+      setNextPlacement(placement)
+    }
+  }, [placement])
 
   const alignPopper = useCallback(() => {
     const realDom = getRealDom(locatorRef, locatorElement)
@@ -404,6 +414,7 @@ function usePopper(locatorElement: React.ReactElement, popperElement: React.Reac
     arrowWidth,
     align?.left,
     align?.top,
+    nextPlacement,
   ])
 
   useEffect(() => {
@@ -550,15 +561,9 @@ function usePopper(locatorElement: React.ReactElement, popperElement: React.Reac
       window.addEventListener('resize', alignPopper)
       document.addEventListener('scroll', scrollAlign, true)
 
-      locatorNode?.addEventListener('DOMSubtreeModified', alignPopper)
-      exist && popperNode?.addEventListener('DOMSubtreeModified', alignPopper)
-
       return () => {
         window.removeEventListener('resize', alignPopper)
         document.removeEventListener('scroll', scrollAlign, true)
-
-        locatorNode?.removeEventListener('DOMSubtreeModified', alignPopper)
-        exist && popperNode?.removeEventListener('DOMSubtreeModified', alignPopper)
       }
     }
   }, [alignPopper, exist, onVisibleChange, popperNode, props.visible, scrollHidden, locatorNode, visible, popperRef])
