@@ -374,7 +374,7 @@ const InternalRangePicker = (
     let inputTempDate
     if (newText === '') {
       triggerChange(updateValues(selectedValue, null, index), index)
-    } else if (newText && newText.length === _format.length) {
+    } else if (newText && newText.length >= _format.length) {
       inputTempDate = parseDate(newText, _format)
 
       const disabledFunc = index === 0 ? disabledStartDate : disabledEndDate

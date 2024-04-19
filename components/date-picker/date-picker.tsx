@@ -251,7 +251,7 @@ const InternalDatePicker = (
       if (newText === '') {
         triggerChange(null)
         setViewDate(null)
-      } else if (newText && newText.length === _format.length) {
+      } else if (newText && newText.length >= _format.length) {
         const inputTempDate = parseDate(newText, _format)
         if (inputTempDate && (!disabledDate || !disabledDate(inputTempDate))) {
           if (picker !== 'year') {
