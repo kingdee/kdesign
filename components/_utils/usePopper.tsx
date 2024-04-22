@@ -260,6 +260,11 @@ function usePopper(locatorElement: React.ReactElement, popperElement: React.Reac
       const { width: popperWidth, height: popperHeight } = popperRef.current.getBoundingClientRect()
       const { top, bottom, left, right, height, width } = realDom.getBoundingClientRect()
 
+      if (height === 0 && width === 0) {
+        hidePopper()
+        return
+      }
+
       const { top: containerTop, left: containerLeft } = getOffsetPos(container)
       const { top: locatorTop, left: locatorLeft } = getOffsetPos(realDom)
       const { top: translateTop, left: translateLeft } = getTranslatePos(realDom)

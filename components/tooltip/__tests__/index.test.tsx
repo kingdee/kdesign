@@ -140,10 +140,10 @@ describe('Tooltip', () => {
       })
       const wrapper = mount(
         <Tooltip tip="tip text" onVisibleChange={onVisibleChange}>
-          <span>text</span>
+          <span className="clickMe">text</span>
         </Tooltip>,
       )
-      wrapper.setProps({ visible: true })
+      wrapper.find('.clickMe').simulate('click')
     })
     // it('click trigger tooltip', async () => {
     //   const content = 'tips text'
