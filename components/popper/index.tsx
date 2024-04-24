@@ -171,7 +171,7 @@ export const Popper = forwardRef<unknown, PopperProps>((props, ref) => {
     popperClassName,
     tip,
     disabled = false,
-    trigger = 'hover',
+    trigger = 'click',
     placement = 'top',
     visible,
     arrowSize = 4.25,
