@@ -41,13 +41,13 @@ exports[`Tooltip special case 测试ref返回值不为dom元素 1`] = `
   >
     <Input
       borderType="bordered"
-      className="kd-popper-reference-content"
+      className="kd-popper-reference"
       prefix="KDesign"
       suffix="Kdesign"
     >
       <ClearableInput
         borderType="bordered"
-        className="kd-popper-reference-content"
+        className="kd-popper-reference"
         element={
           <input
             className="kd-input kd-input-size-middle"
@@ -72,7 +72,7 @@ exports[`Tooltip special case 测试ref返回值不为dom元素 1`] = `
         value=""
       >
         <span
-          className="kd-input-wrapper kd-input-wrapper-size-middle kd-popper-reference-content"
+          className="kd-input-wrapper kd-input-wrapper-size-middle kd-popper-reference"
           onClick={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}

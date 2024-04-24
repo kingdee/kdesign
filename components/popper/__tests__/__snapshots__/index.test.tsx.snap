@@ -399,13 +399,3 @@ exports[`Popper special case 测试ref返回值不为dom元素 1`] = `
   </Input>
 </Popper>
 `;
-
-exports[`Popper test visible calls onVisibleChange when visibility is toggled 1`] = `
-<div>
-  <button
-    class="kd-popper-reference"
-  >
-    Content
-  </button>
-</div>
-`;
