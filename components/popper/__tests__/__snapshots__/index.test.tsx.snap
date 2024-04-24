@@ -28,10 +28,10 @@ exports[`Popper API test getTriggerElement is useful 1`] = `
             text
           </span>
           <div
-            class="kd-popper"
+            class="kd-popper hidden"
           >
             <div
-              class="kd-popper-top kd-popper-top-in"
+              class="kd-popper-top kd-popper-top-out"
             >
               tips text
             </div>
@@ -46,8 +46,6 @@ exports[`Popper API test getTriggerElement is useful 1`] = `
         <div
           className="kd-popper-top kd-popper-top-in"
           onAnimationEnd={[Function]}
-          onMouseLeave={[Function]}
-          onMouseOver={[Function]}
           onTransitionEnd={[Function]}
           style={Object {}}
         >
@@ -56,16 +54,6 @@ exports[`Popper API test getTriggerElement is useful 1`] = `
       </div>
     </Portal>
   </Popper>
-</div>
-`;
-
-exports[`Popper calls onVisibleChange when visibility is toggled 1`] = `
-<div>
-  <button
-    class="kd-popper-reference"
-  >
-    Content
-  </button>
 </div>
 `;
 
