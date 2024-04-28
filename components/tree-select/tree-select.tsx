@@ -232,7 +232,7 @@ const InternalTreeSelect: React.ForwardRefRenderFunction<ITreeSelectProps<TreeSe
     }
     onClear?.('')
     setSearchValue('')
-    onChange?.(undefined, undefined)
+    isMultiple ? onChange?.('', '') : onChange?.(undefined, undefined)
   }
 
   // 多选模式下清除某一项
