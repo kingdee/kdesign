@@ -9,7 +9,7 @@ import { sleep } from '../../../tests/utils'
 import { format, startOfYear } from 'date-fns'
 
 const START_DAY = '2000-10-01 00:00:00'
-const END_DAY = '2000-10-31 01:00:00'
+const END_DAY = '2000-10-31 12:00:00'
 const TEST_DAY: any = [new Date(START_DAY), new Date(END_DAY)]
 
 const SIZE_LIST = ['large', 'middle', 'small']
@@ -271,7 +271,7 @@ describe('RangePicker', () => {
     wrapper2.find('.kd-date-picker-ok-btn').at(0).simulate('click')
     expect(onChange).toHaveBeenCalled()
     expect(s).toBe('2000-10-02 00:00:00')
-    expect(e).toBe('2000-10-03 01:00:00')
+    expect(e).toBe('2000-10-03 12:00:00')
   })
 
   // 9. event
@@ -577,5 +577,14 @@ describe('RangePicker', () => {
     wrapper.find('.kd-date-picker-calendar-text').at(0).simulate('click')
     wrapper.find('.kd-date-picker-calendar-text').at(1).simulate('click')
     expect(onChange).toHaveBeenCalledTimes(1)
+  })
+
+  // 19. value error
+  it('value error', async () => {
+    const errorValue: any = [new Date('2020-02-01'), new Date('2020-01-01')]
+
+    const wrapperDefault = mount(<RangePicker value={errorValue} open />)
+    expect(wrapperDefault.find('input').at(0).props().value).toBe(moment(errorValue[0]).format('YYYY-MM-DD'))
+    expect(wrapperDefault.find('input').at(1).props().value).toBe(moment(errorValue[1]).format('YYYY-MM-DD'))
   })
 })
