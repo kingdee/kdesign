@@ -3,7 +3,7 @@ import classNames from 'classnames'
 
 import TimeColumn from './time-column'
 import { DateType, DisabledTimes, PanelSharedProps, PickerMode, TimeUnit } from '../../interface'
-import { formatDate, newDate, setTime as utilSetTime } from '../../utils/date-fns'
+import { formatDate, newDate, setTime as utilSetTime, isValid } from '../../utils/date-fns'
 import Context from '../../context'
 import useStateMemo from '../../hooks/use-state-memo'
 import { leftPad } from '../../utils'
@@ -55,6 +55,8 @@ function TimePanel(props: TimePanelProps) {
     minutes = [],
     seconds = [],
     disabledTimePanel,
+    rangeValue,
+    panelPosition,
   } = context
 
   const {
@@ -113,8 +115,24 @@ function TimePanel(props: TimePanelProps) {
   // const minute = value ? getMinutes(value) : -1
   // const second = value ? getSeconds(value) : -1
 
+  const getDefaultDate = () => {
+    if (panelPosition) {
+      if (rangeValue && rangeValue[0] && isValid(rangeValue[0])) {
+        return rangeValue[0]
+      }
+      if (rangeValue && rangeValue[1] && isValid(rangeValue[1])) {
+        return rangeValue[1]
+      }
+    } else if (value && isValid(value)) {
+      return value
+    }
+
+    return newDate()!
+  }
+
   const setTime = (isPM: boolean | undefined, newHour: number, newMinute: number, newSecond: number) => {
-    let date = value || newDate()!
+    let date = getDefaultDate() as Date
+
     let _hour = newHour > -1 ? newHour : rawHours.find((n) => !n.disabled)?.value
     let _minute = newMinute > -1 ? newMinute : minutes.find((n) => !n.disabled)?.value
     let _second = newSecond > -1 ? newSecond : seconds.find((n) => !n.disabled)?.value

@@ -8,7 +8,7 @@ import locale from '../locale/zh_CN'
 import { sleep } from '../../../tests/utils'
 
 const START_DAY = '2000-10-01 00:00:00'
-const END_DAY = '2000-10-31 01:00:00'
+const END_DAY = '2000-10-31 12:00:00'
 const TEST_DAY: any = [new Date(START_DAY), new Date(END_DAY)]
 
 const SIZE_LIST = ['large', 'middle', 'small']
@@ -270,7 +270,7 @@ describe('RangePicker', () => {
     wrapper2.find('.kd-date-picker-ok-btn').at(0).simulate('click')
     expect(onChange).toHaveBeenCalled()
     expect(s).toBe('2000-10-02 00:00:00')
-    expect(e).toBe('2000-10-03 01:00:00')
+    expect(e).toBe('2000-10-03 12:00:00')
   })
 
   // 9. event
