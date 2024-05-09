@@ -158,16 +158,6 @@ function reorderValues(values: RangeValue): RangeValue {
   return values
 }
 
-// 范围时间顺序错误时报错
-function isErrorValues(values: RangeValue): boolean {
-  if (values && values[0] && values[1] && isAfter(values[0] as DateType, values[1] as DateType)) {
-    console.error('开始日期在结束日期之后')
-    return true
-  }
-
-  return false
-}
-
 // 是否可以切换选择器
 function canValueTrigger(
   value: EventValue,
@@ -297,16 +287,6 @@ const InternalRangePicker = (
   const [dateValue, setInnerValue] = useMergedState<RangeValue>(null, {
     value,
     defaultValue,
-    postState: (values) => {
-      if (picker === 'time' || (picker === 'date' && showTime)) {
-        return order ? reorderValues(values) : values
-      } else {
-        if (isErrorValues(values)) {
-          return [values![0], null]
-        }
-        return values
-      }
-    },
   })
 
   // 选中的数据
@@ -481,6 +461,21 @@ const InternalRangePicker = (
     }, 0)
   }
 
+  const triggerChangeInner = (values: RangeValue) => {
+    if (typeof value === 'undefined') {
+      setInnerValue(values)
+    }
+    if (
+      onChange &&
+      (!isEqual(getValue(dateValue, 0)!, getValue(values, 0)) || !isEqual(getValue(dateValue, 1)!, getValue(values, 1)))
+    ) {
+      onChange(values, [
+        values && values[0] ? formatDate(values[0], _format) : '',
+        values && values[1] ? formatDate(values[1], _format) : '',
+      ])
+    }
+  }
+
   const triggerChange = (newValue: RangeValue, sourceIndex: 0 | 1) => {
     let values = newValue
     let startValue = getValue(values, 0)
@@ -490,6 +485,7 @@ const InternalRangePicker = (
       if (
         (picker === 'week' && !isSameWeek(startValue, endValue)) ||
         (picker === 'quarter' && !isSameQuarter(startValue, endValue)) ||
+        (picker === 'time' && !isEqual(startValue, endValue)) ||
         (picker !== 'week' && picker !== 'quarter' && picker !== 'time' && !isSameDay(startValue, endValue))
       ) {
         if (sourceIndex === 0) {
@@ -503,8 +499,6 @@ const InternalRangePicker = (
         openRecordsRef.current = {
           [sourceIndex]: true,
         }
-      } else if (picker === 'time' && order === true) {
-        values = reorderValues(values)
       }
     }
 
@@ -523,11 +517,10 @@ const InternalRangePicker = (
     const canTrigger = values === null || (canStartValueTrigger && canEndValueTrigger)
 
     if (canTrigger) {
-      if (typeof value === 'undefined') {
-        setInnerValue(values)
-      }
-      if (onChange && (!isEqual(getValue(dateValue, 0)!, startValue) || !isEqual(getValue(dateValue, 1)!, endValue))) {
-        onChange(values, [startStr, endStr])
+      if (order) {
+        triggerChangeInner(reorderValues(values))
+      } else {
+        triggerChangeInner(values)
       }
     }
 
