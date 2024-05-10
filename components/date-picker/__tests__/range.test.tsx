@@ -579,12 +579,25 @@ describe('RangePicker', () => {
     expect(onChange).toHaveBeenCalledTimes(1)
   })
 
-  // 19. value error
-  it('value error', async () => {
+  // 19. start after end
+  it('start after end', async () => {
     const errorValue: any = [new Date('2020-02-01'), new Date('2020-01-01')]
 
-    const wrapperDefault = mount(<RangePicker value={errorValue} open />)
-    expect(wrapperDefault.find('input').at(0).props().value).toBe(moment(errorValue[0]).format('YYYY-MM-DD'))
-    expect(wrapperDefault.find('input').at(1).props().value).toBe(moment(errorValue[1]).format('YYYY-MM-DD'))
+    const wrapper = mount(<RangePicker value={errorValue} open />)
+    expect(wrapper.find('input').at(0).props().value).toBe(moment(errorValue[0]).format('YYYY-MM-DD'))
+    expect(wrapper.find('input').at(1).props().value).toBe(moment(errorValue[1]).format('YYYY-MM-DD'))
+  })
+
+  // 20. value error
+  it('value error', async () => {
+    expect(() => {
+      const wrapper = mount(<RangePicker value={[null, new Date('2020-21-17')]} open />)
+      wrapper.unmount()
+    }).not.toThrow()
+
+    const wrapper = mount(<RangePicker value={[null, new Date('2020-21-17')]} open />)
+    expect(wrapper.find('input').at(0).props().value).toBe('')
+    expect(wrapper.find('input').at(1).props().value).toBe('')
+    expect(wrapper.find('.kd-date-picker-calendar-text').at(0).text()).not.toBe('NaN')
   })
 })

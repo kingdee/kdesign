@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { RangeValue, PickerMode, DateType } from '../interface'
 import { getValue, updateValues, getClosingViewDate } from '../utils'
-import { newDate, isSameYear, isSameMonth } from '../utils/date-fns'
+import { newDate, isSameYear, isSameMonth, isValid } from '../utils/date-fns'
 // import { getClosingViewDate, isSameYear, isSameMonth, isSameDecade } from '../utils/dateUtil'
 
 function getStartEndDistance(startDate: DateType, endDate: DateType, picker: PickerMode): 'same' | 'closing' | 'far' {
@@ -51,6 +51,13 @@ function getRangeViewDate(values: RangeValue, index: 0 | 1, picker: PickerMode):
   return startDate
 }
 
+function checkViewDate(value: any) {
+  if (value && !isValid(value)) {
+    return false
+  }
+  return value
+}
+
 export default function useRangeViewDates({
   values,
   picker,
@@ -73,7 +80,13 @@ export default function useRangeViewDates({
     if (defaultViewDates[index]) {
       return defaultViewDates[index]!
     }
-    return getValue(viewDates, index) || getRangeViewDate(values, index, picker) || startDate || endDate || newDate()!
+    return (
+      checkViewDate(getValue(viewDates, index)) ||
+      checkViewDate(getRangeViewDate(values, index, picker)) ||
+      checkViewDate(startDate) ||
+      checkViewDate(endDate) ||
+      newDate()!
+    )
   }
 
   function setViewDate(viewDate: DateType | null, index: 0 | 1) {

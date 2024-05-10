@@ -22,7 +22,6 @@ import {
   newDate,
   parseDate,
   setTime,
-  isDate,
 } from './utils/date-fns'
 import useTextValueMapping from './hooks/use-text-value-mapping'
 import { BorderType, InputSiteType } from '../input/input'
@@ -205,7 +204,10 @@ const InternalDatePicker = (
     defaultValue,
   })
 
-  const [selectedValue, setSelectedValue] = React.useState<DateType | null>(dateValue)
+  const [selectedValue, setSelectedValue] = useMergedState(null, {
+    value: dateValue,
+    postState: (v) => (v && !isValid(v) ? null : v),
+  })
 
   let hours: TimeUnit[]
   let minutes: TimeUnit[]
@@ -236,7 +238,7 @@ const InternalDatePicker = (
   const [viewDate, setInnerViewDate] = useState<DateType>(defaultPickerValue || dateValue || new Date())
 
   const setViewDate = (date: any) => {
-    setInnerViewDate(isDate(date) ? date : new Date())
+    setInnerViewDate(isValid(date) ? date : new Date())
   }
 
   useEffect(() => {
@@ -323,10 +325,6 @@ const InternalDatePicker = (
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [picker])
-
-  useEffect(() => {
-    setSelectedValue(dateValue)
-  }, [dateValue])
 
   useOnClickOutside([popperRef, inputDivRef], () => {
     setViewDate(selectedValue || newDate()!)
