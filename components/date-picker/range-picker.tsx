@@ -301,8 +301,11 @@ const InternalRangePicker = (
 
       // Fill disabled unit
       for (let i = 0; i < 2; i++) {
-        if (mergedDisabled[i] && !getValue(postValues, i) && !getValue(allowEmpty, i)) {
+        const v = getValue(postValues, i)
+        if (mergedDisabled[i] && !v && !getValue(allowEmpty, i)) {
           postValues = updateValues(postValues, newDate(), i)
+        } else if (v && !isValid(v)) {
+          postValues = updateValues(postValues, null, i)
         }
       }
       return postValues
