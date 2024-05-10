@@ -10,12 +10,12 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { Signature } from '@kdcloudjs/kdesign'
 
-const Demo = () => {
-  const getSignatureData = (dataUrl) => {
+const Demo: React.FC = () => {
+  const getSignatureData = (dataUrl: string) => {
     console.log('dataUrl===>', dataUrl)
   }
   const handleClear = () => {
-    console.log('clear了吗')
+    console.log('执行清空')
   }
   const undo = () => {
     console.log('undo')

@@ -86,7 +86,13 @@ function compile(modules) {
     )
     .pipe(gulp.dest(modules === false ? esDir : libDir))
   let error = 0
-  const source = ['components/**/*.tsx', 'components/**/*.ts', 'typings/**/*.d.ts', '!components/**/__tests__/**']
+  const source = [
+    'components/**/*.tsx',
+    'components/**/*.ts',
+    'components/**/*.js',
+    'typings/**/*.d.ts',
+    '!components/**/__tests__/**',
+  ]
   // allow jsx file in components/xxx/
   if (tsConfig.compilerOptions && tsConfig.compilerOptions.allowJs) {
     source.unshift('components/**/*.jsx')

@@ -10,22 +10,17 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { Signature } from '@kdcloudjs/kdesign'
 
-const Demo = () => {
-  const getPng = (data) => {
+const Demo: React.FC = () => {
+  const getPng = (data: string) => {
     console.log('getPng===>', data)
   }
   const handleClear = () => {
-    console.log('clear了吗')
+    console.log('执行清空')
   }
-  const getSVG = (svgString) => {
-    console.log(svgString)
-  }
+
   return (
     <div style={{ width: '230px', height: '72px' }}>
-      <Signature
-        getSignatureData={getPng}
-        onClear={handleClear}
-        ></Signature>
+      <Signature getSignatureData={getPng} onClear={handleClear}></Signature>
     </div>
   )
 }

@@ -10,11 +10,11 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { Signature, Radio } from '@kdcloudjs/kdesign'
 
-const Demo = () => {
-  const [penColor,setPenColor] = React.useState('black')
+const Demo: React.FC = () => {
+  const [penColor,setPenColor] = React.useState<string>('black')
 
   const handleClear = () => {
-    console.log('clear了吗')
+    console.log('执行清空')
   }
   return (
     <div style={{ width: '250px', height: '72px' }}>

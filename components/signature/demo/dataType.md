@@ -10,13 +10,13 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { Signature, Radio } from '@kdcloudjs/kdesign'
 
-const Demo = () => {
-  const [dataUrlType,setDataUrlType] = React.useState('png')
-  const getSignatureData = (dataUrl) => {
+const Demo: React.FC = () => {
+  const [dataUrlType,setDataUrlType] = React.useState<string>('png')
+  const getSignatureData = (dataUrl:string) => {
     console.log('dataUrl===>',dataUrlType, dataUrl)
   }
   const handleClear = () => {
-    console.log('clear了吗')
+    console.log('执行清空')
   }
   const undo = () => {
     console.log('undo')

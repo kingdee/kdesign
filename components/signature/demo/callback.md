@@ -9,9 +9,9 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { Signature } from '@kdcloudjs/kdesign'
 
-const Demo = () => {
+const Demo: React.FC = () => {
   const handleClear = () => {
-    console.log('clear了吗')
+    console.log('执行清空')
   }
   const handleOnStart = () => {
     console.log('开始书写')
