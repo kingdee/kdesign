@@ -9,8 +9,8 @@ import ReactDOM from 'react-dom'
 import { Signature, Switch } from '@kdcloudjs/kdesign'
 
 const Demo: React.FC = () => {
-  const [disabled,setDisabled] = React.useState(true)
-  const onChange = (checked) => {
+  const [disabled,setDisabled] = React.useState<boolean>(true)
+  const onChange = (checked:boolean) => {
     setDisabled(!checked)
   }
   return (

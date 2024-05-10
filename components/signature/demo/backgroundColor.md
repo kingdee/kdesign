@@ -10,8 +10,8 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { Signature, Radio } from '@kdcloudjs/kdesign'
 
-const Demo = () => {
-  const [penColor,setPenColor] = React.useState('black')
+const Demo: React.FC = () => {
+  const [penColor,setPenColor] = React.useState<string>('black')
 
   const handleClear = () => {
     console.log('clear')

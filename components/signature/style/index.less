@@ -25,7 +25,7 @@
 }
 .@{signature-prefix-cls}.@{signature-prefix-cls}-disabled {
   cursor: not-allowed;
-  border:1px solid #cccccc ;
+  border: 1px solid #cccccc;
   background: @signature-bg-color;
   color: @signature-color-text;
 }
@@ -38,6 +38,8 @@
   background: @signature-drawing-board-bg-color;
   position: relative;
   &-operation {
+    display: flex;
+    align-items: center;
     position: absolute;
     top: 9px;
     right: 9px;
