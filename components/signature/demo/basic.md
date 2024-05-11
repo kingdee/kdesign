@@ -3,8 +3,6 @@ title: 基本使用
 order: 0
 ---
 
-这是基本使用方法的描述性文字
-
 ```jsx
 import React from 'react'
 import ReactDOM from 'react-dom'

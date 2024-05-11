@@ -82,7 +82,7 @@ const DrawingBoard = forwardRef<unknown, DrawingBoardProps>((props, ref) => {
           enabled: !isEmpty,
         })}
       >
-        {undo && (
+        {undo ? (
           <span onClick={() => handleUndo()}>
             <svg width="1em" height="1em" viewBox="0 0 32 32">
               <g id="1016.撤销" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
@@ -96,8 +96,8 @@ const DrawingBoard = forwardRef<unknown, DrawingBoardProps>((props, ref) => {
               </g>
             </svg>
           </span>
-        )}
-        {redo && (
+        ) : null}
+        {redo ? (
           <span onClick={() => handleRedo()}>
             <svg width="1em" height="1em" viewBox="0 0 32 32">
               <g id="1016.撤销" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
@@ -111,10 +111,10 @@ const DrawingBoard = forwardRef<unknown, DrawingBoardProps>((props, ref) => {
               </g>
             </svg>
           </span>
-        )}
-        {onClear && (
+        ) : null}
+        {onClear ? (
           <Icon type="delete" className={`${prefixCls}-drawing-board-clear`} onClick={() => handleOnClear()} />
-        )}
+        ) : null}
       </div>
       <span className={`${prefixCls}-drawing-board-tip`}>{isEmpty ? signatureLangMsg?.pleaseWriteHere : ''}</span>
       <canvas ref={canvasRef}></canvas>
