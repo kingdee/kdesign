@@ -1,7 +1,7 @@
 import React from 'react'
 import './index.less'
 import KindeeLogo from './../../../static/image/kingdee.svg'
-import KuiWechat from './../../../static/image/kui_wechat.jpg'
+import KuiWechat from './../../../static/image/kui_wechat.svg'
 
 const Footer = (props: any) => {
   const { isTransparent } = props
