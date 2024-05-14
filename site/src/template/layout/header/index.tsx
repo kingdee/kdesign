@@ -118,7 +118,7 @@ const Header = (props: NavProps) => {
       <>
         <div className="header-logo">
           <Link className="header-link" to="/">
-            <img src={logo} style={{ height: 28 }}></img>
+            <img src={logo} style={{ height: 30 }}></img>
           </Link>
         </div>
       </>
