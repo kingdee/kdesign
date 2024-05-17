@@ -4,6 +4,7 @@ import { tuple } from '../_utils/type'
 import { getCompProps } from '../_utils'
 import { ConfigContext } from '../config-provider'
 import usePopper, { PopperProps } from '../_utils/usePopper'
+import { scrollToDirectory } from '../_utils/domUtil'
 import Input from '../input'
 import Icon from '../icon'
 import Empty from '../empty'
@@ -79,6 +80,27 @@ export interface CascaderProps extends PopperProps {
   displayRender?: (label: string[], currentOptions?: CascaderOptionType[]) => React.ReactNode
 }
 
+const CascaderMenuSubmenu = (props: any) => {
+  const { optionProps, label, children, selected, isMultiple } = props
+  const ref = useRef(null)
+  const isFirst = useRef<boolean>(!isMultiple)
+
+  useEffect(() => {
+    if (typeof selected === 'boolean' && isFirst.current && ref.current) {
+      isFirst.current = false
+      if (selected && !isMultiple) {
+        scrollToDirectory(ref)
+      }
+    }
+  }, [selected])
+
+  return (
+    <li ref={ref} {...optionProps} title={label as string}>
+      {children}
+    </li>
+  )
+}
+
 const Cascader = React.forwardRef<unknown, CascaderProps>((props, ref) => {
   const { getPrefixCls, prefixCls: pkgPrefixCls, compDefaultProps: userDefaultProps } = React.useContext(ConfigContext)
 
@@ -124,10 +146,15 @@ const Cascader = React.forwardRef<unknown, CascaderProps>((props, ref) => {
   const suffixRef = useRef<HTMLSpanElement>(null)
   const wrapperRef = useRef<HTMLDivElement>()
 
-  const [visible, setVisible] = useState(!!props.popperVisible || !!props.popupVisible || defaultPopupVisible)
+  const [visible, setVisible] = useState(false)
   React.useEffect(() => {
     setVisible(!!props.popperVisible || !!props.popupVisible)
   }, [props.popperVisible, props.popupVisible])
+  React.useEffect(() => {
+    if (!!props.popperVisible || !!props.popupVisible || defaultPopupVisible) {
+      setVisible(true)
+    }
+  }, [])
 
   const [menus, setMenus] = useState<CascaderOptionType[][]>([options])
   const [currentOptions, setCurrentOptions] = useState<CascaderOptionType[]>([])
@@ -464,11 +491,12 @@ const Cascader = React.forwardRef<unknown, CascaderProps>((props, ref) => {
     props.onChange && props.onChange(selectedValue as CascaderValueType, selectedOptions)
   }
 
-  const onVisibleChange = (visible: boolean) => {
-    setVisible(visible)
-    onPopupVisibleChange && onPopupVisibleChange(visible)
-    onPopperVisibleChange && onPopperVisibleChange(visible)
-    visible && setSelectedOptions(currentOptions.slice(0))
+  const onVisibleChange = (v: boolean) => {
+    setVisible(v)
+
+    onPopupVisibleChange && onPopupVisibleChange(v)
+    onPopperVisibleChange && onPopperVisibleChange(v)
+    v && setSelectedOptions(currentOptions.slice(0))
   }
 
   const cascaderMenus = (
@@ -489,6 +517,7 @@ const Cascader = React.forwardRef<unknown, CascaderProps>((props, ref) => {
                 const expendEvent =
                   expandTrigger === 'click' || !(children && children.length) ? 'onClick' : 'onMouseEnter'
                 const selected = selectedOptions[index] && selectedOptions[index][fieldNames.value] === value
+
                 const optionProps: Record<string, unknown> = {
                   role: 'menuitem',
                   className: classNames(`${prefixCls}-menu-item`, {
@@ -513,8 +542,17 @@ const Cascader = React.forwardRef<unknown, CascaderProps>((props, ref) => {
                     )}
                   </>
                 )
+
                 return (
-                  <li key={value} {...optionProps} title={label as string}>
+                  <CascaderMenuSubmenu
+                    key={value}
+                    {...{
+                      isMultiple,
+                      optionProps,
+                      label,
+                      selected,
+                    }}
+                  >
                     {isMultiple ? (
                       <>
                         <Checkbox
@@ -529,7 +567,7 @@ const Cascader = React.forwardRef<unknown, CascaderProps>((props, ref) => {
                     ) : (
                       node
                     )}
-                  </li>
+                  </CascaderMenuSubmenu>
                 )
               })}
           </ul>
