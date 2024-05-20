@@ -224,7 +224,7 @@ function Panel(props: MergedPickerPanelProps) {
 
   const renderDateHeader = () => {
     const year = getYear(viewDate)
-    const month = getMonth(viewDate) + 1
+    const month = getMonth(viewDate)
     const headerCls = classnames(`${prefixCls}-header`, `${prefixCls}-header-date`)
     return {
       children: (
@@ -243,7 +243,7 @@ function Panel(props: MergedPickerPanelProps) {
             })}
             onClick={onHeaderMonthClick}
           >
-            {month + locale.month}
+            {locale.monthTitle[month]}
           </span>
         </>
       ),

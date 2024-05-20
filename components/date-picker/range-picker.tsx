@@ -57,7 +57,7 @@ import {
 import useTextValueMapping from './hooks/use-text-value-mapping'
 import useRangeViewDates from './hooks/use-range-view-dates'
 import useRangeDisabled from './hooks/use-range-disabled'
-import { IInnerPicker, PickerBaseProps, PickerDateProps, PickerTimeProps } from './date-picker'
+import { IInnerPicker, mergeDateLocale, PickerBaseProps, PickerDateProps, PickerTimeProps } from './date-picker'
 import getExtraFooter from './utils/get-extra-footer'
 import getRanges from './utils/get-ranges'
 import classNames from 'classnames'
@@ -250,8 +250,7 @@ const InternalRangePicker = (
 
   const needConfirmButton: boolean = (picker === 'date' && !!showTime) || picker === 'time'
 
-  const datePickerLang: InnerLocale = Object.assign(
-    {},
+  const datePickerLang: InnerLocale = mergeDateLocale(
     globalLocale.getCompLangMsg({ componentName: 'DatePicker' }),
     locale || {},
   )

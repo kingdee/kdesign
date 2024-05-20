@@ -1,5 +1,21 @@
 import { BorderType, InputSiteType } from '../input/input'
 
+export type WeekTitleType = [string, string, string, string, string, string, string]
+export type MonthTitleType = [
+  string,
+  string,
+  string,
+  string,
+  string,
+  string,
+  string,
+  string,
+  string,
+  string,
+  string,
+  string,
+]
+
 export interface Locale {
   // locale: string
   'DatePicker.placeholder': string
@@ -13,7 +29,8 @@ export interface Locale {
   'DatePicker.today': string
   'DatePicker.year': string
   'DatePicker.month': string
-  'DatePicker.weekTitle': [string, string, string, string, string, string, string]
+  'DatePicker.weekTitle': WeekTitleType
+  'DatePicker.monthTitle': MonthTitleType
   'DatePicker.rangePlaceholder': [string, string]
   'DatePicker.rangeYearPlaceholder': [string, string]
   'DatePicker.rangeMonthPlaceholder': [string, string]
@@ -35,7 +52,8 @@ export interface InnerLocale {
   today: string
   year: string
   month: string
-  weekTitle: [string, string, string, string, string, string, string]
+  weekTitle: WeekTitleType
+  monthTitle: MonthTitleType
   rangePlaceholder: [string, string]
   rangeYearPlaceholder: [string, string]
   rangeMonthPlaceholder: [string, string]
