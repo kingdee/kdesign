@@ -1,7 +1,7 @@
 import React, { FunctionComponentElement, useContext, useEffect, useState } from 'react'
 import classnames from 'classnames'
 
-import { DateType, InnerLocale, PickerMode, TimeUnit } from './interface'
+import { DateType, InnerLocale, MonthTitleType, PickerMode, TimeUnit, WeekTitleType } from './interface'
 import ConfigContext from '../config-provider/ConfigContext'
 import { useMergedState, useOnClickOutside } from '../_utils/hooks'
 import { getCompProps } from '../_utils'
@@ -108,6 +108,26 @@ interface MergedPickerProps extends OmitType {
 
 export type IInnerPicker = undefined | 'year' | 'month'
 
+const MONTH_DEFAULT_SUFFIX = '月'
+
+export const mergeDateLocale = (globalLocale: InnerLocale, locale = {}) => {
+  const mergeLocale: InnerLocale = Object.assign({}, globalLocale, locale)
+  mergeLocale.weekTitle = Array.from(
+    { length: 7 },
+    (_, index) => mergeLocale.weekTitle[index] || globalLocale.weekTitle[index],
+  ) as WeekTitleType
+  mergeLocale.monthTitle = Array.from(
+    { length: 12 },
+    (_, index) => mergeLocale.monthTitle[index] || globalLocale.monthTitle[index],
+  ) as MonthTitleType
+  if (mergeLocale?.month && mergeLocale.month !== MONTH_DEFAULT_SUFFIX) {
+    mergeLocale.monthTitle = mergeLocale.monthTitle.map((d) =>
+      d.toString().replace(MONTH_DEFAULT_SUFFIX, mergeLocale.month),
+    ) as MonthTitleType
+  }
+  return mergeLocale
+}
+
 const InternalDatePicker = (
   props: Partial<PickerProps>,
   ref: unknown,
@@ -193,8 +213,7 @@ const InternalDatePicker = (
 
   const needConfirmButton: boolean = (picker === 'date' && !!showTime) || picker === 'time'
 
-  const datePickerLang: InnerLocale = Object.assign(
-    {},
+  const datePickerLang: InnerLocale = mergeDateLocale(
     globalLocale.getCompLangMsg({ componentName: 'DatePicker' }),
     locale || {},
   )

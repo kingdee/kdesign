@@ -152,7 +152,7 @@ function Month(props: MonthProps) {
             },
             getRangeCls(month),
           )
-          const originNode = <span className={getMonthClassNames(m)}>{`${m + 1}${locale.month}`}</span>
+          const originNode = <span className={getMonthClassNames(m)}>{`${locale.monthTitle[m]}`}</span>
           return (
             <div className={monthItemCls} key={j} {..._props}>
               {typeof cellRender === 'function'
