@@ -102,8 +102,8 @@ subtitle: 选择器
 |  | --kd-c-select-color-text-disabled | --kd-g-color-disabled | #b2b2b2 |
 |  | --kd-c-select-arrow-icon-color-text-disabled | - | #b2b2b2 |
 |  | --kd-c-select-single-color-text | --kd-g-color-text-primary | #212121 |
-|  | --kd-c-select-icon-clear-color-text | - | #d9d9d9 |
-|  | --kd-c-select-icon-clear-color-text-hover | - | #999 |
+|  | --kd-c-select-icon-clear-color-text | - | #666 |
+|  | --kd-c-select-icon-clear-color-text-hover | --kd-g-color-theme | #5582f3 |
 |  | --kd-c-select-color-error | --kd-g-color-error | #fb2323 |
 | font | --kd-c-select-dropdown-font-size | - | 12px |
 |  | --kd-c-select-font-size-large | - | 16px |
