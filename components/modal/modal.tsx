@@ -188,6 +188,7 @@ const InternalModal = (
   const proxyCloseModal: CloseModalFCType = useCallback(
     (onDoingAction, event) => {
       onDoingAction && onDoingAction(event)
+
       if (isForceController) {
         return
       }
@@ -198,7 +199,9 @@ const InternalModal = (
   const escapeToCloseModal = useCallback(
     (evt: KeyboardEvent) => {
       // In Internet Explorer 9 and Firefox 36 and earlier, the Esc key returns "Esc" instead of "Escape"
-      if (['Escape', 'Esc'].includes(evt.key)) {
+      const isModalVisible = destroyOnClose || (isForceController ? visible : innerVisible)
+      if (['Escape', 'Esc'].includes(evt.key) && isModalVisible) {
+        evt.preventDefault()
         proxyCloseModal(onCancel)
       }
     },
