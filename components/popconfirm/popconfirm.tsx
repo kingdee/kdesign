@@ -61,7 +61,7 @@ const Popconfirm: React.FC<PopconfirmProps> = (props) => {
 
   const confirmTitle = typeof title === 'function' ? title() : title
 
-  const confirmMsg = typeof title === 'function' ? message() : message
+  const confirmMsg = typeof message === 'function' ? message() : message
 
   const handleCancel = (e: React.MouseEvent<HTMLButtonElement>) => {
     props.visible === undefined && setVisible(false)
