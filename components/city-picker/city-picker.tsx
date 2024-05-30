@@ -497,7 +497,6 @@ const InternalSelect: React.ForwardRefRenderFunction<CityPickerProps> = (props: 
           className={selectionCls}
           tabIndex={disabled ? -1 : 0}
           onFocus={() => searchRef.current?.focus()}
-          onBlur={() => searchRef.current?.blur()}
           onKeyDown={onInternalKeyDown}
         >
           {renderSingle()}
