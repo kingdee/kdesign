@@ -400,7 +400,7 @@ const InternalTreeSelect: React.ForwardRefRenderFunction<ITreeSelectProps<TreeSe
     }
     return (
       <>
-        <div className={singleCls} ref={selectionRef} title={label}>
+        <div className={singleCls} ref={selectionRef} title={typeof label === 'string' ? label : ''}>
           <span className={`${selectPrefixCls}-selection-search`}>
             <input
               ref={searchRef}
@@ -459,7 +459,7 @@ const InternalTreeSelect: React.ForwardRefRenderFunction<ITreeSelectProps<TreeSe
                         disabled={disabled}
                         onClose={(e) => handleRemove(e, key)}
                         data-tag={key}
-                        title={label}
+                        title={typeof label === 'string' ? label : ''}
                       >
                         {label}
                       </Tag>
