@@ -207,7 +207,7 @@ const InternalTreeSelect: React.ForwardRefRenderFunction<ITreeSelectProps<TreeSe
   const handleSearchChange = useCallback(
     (event: React.ChangeEvent<HTMLInputElement>) => {
       const val = event.currentTarget.value
-      setOptionShow(true)
+      handleVisibleChange(true)
       setSearchValue(val)
       onSearch?.(val)
     },
@@ -254,7 +254,7 @@ const InternalTreeSelect: React.ForwardRefRenderFunction<ITreeSelectProps<TreeSe
     onSelect?.(keys, state)
     !isMultiple && onChange?.(keys[0], [TreeMap.get(keys[0])])
     if (!isMultiple) {
-      setOptionShow(false)
+      handleVisibleChange(false)
     }
   }
 
@@ -360,6 +360,10 @@ const InternalTreeSelect: React.ForwardRefRenderFunction<ITreeSelectProps<TreeSe
   useEffect(() => {
     setSelectedKeys(initValue)
   }, [initValue])
+
+  useEffect(() => {
+    setOptionShow(props.visible)
+  }, [props.visible])
 
   // 渲染下拉列表框
   const renderContent = () => {
@@ -538,9 +542,9 @@ const InternalTreeSelect: React.ForwardRefRenderFunction<ITreeSelectProps<TreeSe
   }
 
   const popperProps = {
+    placement: 'bottomLeft',
     ...treeSelectProps,
     prefixCls: `${selectPrefixCls}-panel`,
-    placement: 'bottomLeft',
     popperStyle: catchStyle(),
     defaultVisible: optionShow,
     visible: optionShow,
