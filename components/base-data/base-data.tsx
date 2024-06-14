@@ -59,7 +59,7 @@ const InternalBaseData: React.ForwardRefRenderFunction<IAdvancedSelectorProps> =
 
   const innerRef = useRef<HTMLElement>()
   const advancedSelectorRef = (ref as any) || innerRef
-  const inputRef = useRef<HTMLInputElement>()
+  const inputRef = useRef<any>()
 
   const searchInfo = useRef<ISearchInfoProps>({
     previousInputValue: '',
@@ -116,7 +116,7 @@ const InternalBaseData: React.ForwardRefRenderFunction<IAdvancedSelectorProps> =
     const posList = setValIndxPosition()
     const preValueArr = getStrToArr(searchInfo.current.previousEditValue, delimiter)
     const valueArr = getStrToArr(inputValue, delimiter)
-    const selectionStart = inputRef.current?.selectionStart || 0
+    const selectionStart = inputRef.current?.input?.selectionStart || 0
     const index = findSelectionIndex(selectionStart, posList)
     searchInfo.current.searchIndex = index
     // 新增一个
@@ -148,8 +148,9 @@ const InternalBaseData: React.ForwardRefRenderFunction<IAdvancedSelectorProps> =
 
   // 当选中项文字超出输入框时，显示共多少项
   useLayoutEffect(() => {
-    if (!inputRef.current) return
-    if (inputRef.current.scrollWidth - inputRef.current.offsetWidth > 0) {
+    const inputDom = inputRef.current?.input
+    if (!inputDom) return
+    if (inputDom.scrollWidth - inputDom.offsetWidth > 0) {
       setShowTotal(true)
     } else {
       setShowTotal(false)
@@ -176,8 +177,9 @@ const InternalBaseData: React.ForwardRefRenderFunction<IAdvancedSelectorProps> =
     setOptionShow(true)
     const textValue = e.target.value
     let val = textValue
-    if (isMultiple && inputRef.current && textValue && textValue.length > inputValue.length) {
-      const selectionStart = inputRef.current.selectionStart || 0 // selectionStart: 光标前面有几个字符
+    const inputDom = inputRef.current?.input
+    if (isMultiple && inputDom && textValue && textValue.length > inputValue.length) {
+      const selectionStart = inputDom.selectionStart || 0 // selectionStart: 光标前面有几个字符
       searchInfo.current.selectionStart = selectionStart
 
       const isInHead = selectionStart === 1 && textValue[1] !== delimiter && textValue.length !== 1 // 在首部添加
@@ -186,9 +188,9 @@ const InternalBaseData: React.ForwardRefRenderFunction<IAdvancedSelectorProps> =
         textValue[selectionStart - 2] === delimiter &&
         textValue[selectionStart] !== delimiter
       if (isInHead || isInMid) {
-        inputRef.current.value = val =
+        inputDom.value = val =
           textValue.substring(0, selectionStart) + delimiter + textValue.substring(selectionStart, textValue.length)
-        setCursorPosition(inputRef.current, selectionStart)
+        setCursorPosition(inputDom, selectionStart)
       }
     }
     setInputValue(val)
@@ -211,7 +213,7 @@ const InternalBaseData: React.ForwardRefRenderFunction<IAdvancedSelectorProps> =
         return queryStr
       }
 
-      const selectionStart = inputRef.current.selectionStart || 0
+      const selectionStart = inputRef.current?.input?.selectionStart || 0
       const startIndex = queryStr.slice(0, selectionStart).lastIndexOf(delimiter) + 1 // 光标前面最近分隔符index
       let endIndex = queryStr.slice(selectionStart).indexOf(delimiter)
       endIndex = endIndex === -1 ? queryStr.length : selectionStart + endIndex // 光标后面最近分隔符index
@@ -248,11 +250,12 @@ const InternalBaseData: React.ForwardRefRenderFunction<IAdvancedSelectorProps> =
 
   const showInputTotal = () => {
     if (disabled) return
-    if (inputRef.current) {
-      const scrollToWidth = inputRef.current.scrollWidth - inputRef.current.offsetWidth
-      inputRef.current.scrollLeft = scrollToWidth
+    const inputDom = inputRef.current?.input
+    if (inputDom) {
+      const scrollToWidth = inputDom.scrollWidth - inputDom.offsetWidth
+      inputDom.scrollLeft = scrollToWidth
       setTimeout(() => {
-        setCursorPosition(inputRef.current, inputValue.length + 1)
+        setCursorPosition(inputDom, inputValue.length + 1)
       }, 0)
     }
   }
@@ -285,11 +288,9 @@ const InternalBaseData: React.ForwardRefRenderFunction<IAdvancedSelectorProps> =
 
   // 双击选中当前项
   const handleDoubleClick = () => {
-    const { start, end } = findDbClickSelectedPos(
-      inputRef.current?.selectionStart || 0,
-      inputRef.current?.selectionEnd || 0,
-    )
-    handleSeletedText(inputRef.current, start, end)
+    const inputDom = inputRef.current?.input
+    const { start, end } = findDbClickSelectedPos(inputDom?.selectionStart || 0, inputDom?.selectionEnd || 0)
+    handleSeletedText(inputDom, start, end)
   }
 
   const findDbClickSelectedPos = (selectionStart: number, selectionEnd: number) => {
