@@ -55,7 +55,7 @@ const Demo: React.FC = () => {
         }}
       />
       <Modal
-        body={'可以设置提示弹窗的宽高, 只能输入数字类型'}
+        body={'可以设置弹出框的宽高, 只能输入数字类型'}
         onCancel={() => {
           handleClick(false)
         }}

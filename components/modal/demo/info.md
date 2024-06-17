@@ -33,7 +33,7 @@ const Demo: React.FC = () => {
               event.preventDefault()
               Modal[type]({
                 title: map[type],
-                body: `这是${map[type]}类型的提示弹窗`,
+                body: `这是${map[type]}类型的弹出框`,
                 bodyStyle,
                 getContainer: () => false,
               })

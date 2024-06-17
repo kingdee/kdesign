@@ -1,9 +1,9 @@
 ---
-title: 提示弹窗键盘操作退出
+title: 弹出框键盘操作退出
 order: 7
 ---
 
-提示弹窗可以配置按键盘上的 ESC 退出
+弹出框可以配置按键盘上的 ESC 退出
 
 ```jsx
 import React from 'react'
@@ -29,7 +29,7 @@ const Demo: React.FC = () => {
         {'点击显示弹窗'}
       </Button>
       <Modal
-        body={'按ESC关闭提示弹窗'}
+        body={'按ESC关闭弹出框'}
         bodyStyle={bodyStyle}
         onCancel={() => {
           handleClick(false)
