@@ -1,7 +1,7 @@
 ---
 category: Components
 order: 4
-type: 数据展示
+type: 展示
 title: Carousel
 subtitle: 走马灯
 ---

@@ -1,6 +1,6 @@
 ---
 category: Components
-type: 数据展示
+type: 展示
 order: 2
 title: Card
 subtitle: 卡片

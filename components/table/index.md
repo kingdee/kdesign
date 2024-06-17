@@ -1,6 +1,6 @@
 ---
 category: Components
-type: 数据展示
+type: 展示
 order: 11
 title: Table
 subtitle: 表格
@@ -288,14 +288,14 @@ interface columnSize { [key: string]: number } interface ChangedColumnSize { cod
 
 属性`rangeSelection`为`{}`或设置`TableRangeSelection`时表体内部可范围选中表格
 ```ts
-interface TableRangeSelection { /** 范围选中回调函数 \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \*/ rangeSelectedChange?(params: any): void; /** 是否阻止 keydown 的默认行为 \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \*/ preventkDefaultOfKeyDownEvent?: boolean; }
+interface TableRangeSelection { /** 范围选中回调函数 \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \*/ rangeSelectedChange?(params: any): void; /** 是否阻止 keydown 的默认行为 \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \*/ preventkDefaultOfKeyDownEvent?: boolean; }
 ```
 
 ### 组件替换
 属性`components`可替换表格内部的一些子组件，如：加载动画图标、数据为空的展现效果。
 
 ```ts
-interface Components { /** 表格加载时的加载图标 \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \*/ LoadingIcon?: React.ComponentType; /** 数据为空时，表格的展示内容。 \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \*/ EmptyContent?: React.ComponentType; }
+interface Components { /** 表格加载时的加载图标 \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \*/ LoadingIcon?: React.ComponentType; /** 数据为空时，表格的展示内容。 \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \*/ EmptyContent?: React.ComponentType; }
 ```
 
 ### rowDrag
@@ -303,23 +303,17 @@ interface Components { /** 表格加载时的加载图标 \ \ \ \ \ \ \ \ \ \ \ 
 ```ts
 interface TableRowDrag {
 
-  /** 拖拽开始事件 */
-  onDragStart?:(event:RowDragEvent) => void,
+/\*_ 拖拽开始事件 _/ onDragStart?:(event:RowDragEvent) => void,
 
-  /** 拖拽移动事件 */
-  onDragMove?:(event:RowDragEvent) => void,
+/\*_ 拖拽移动事件 _/ onDragMove?:(event:RowDragEvent) => void,
 
-  /** 拖拽结束事件 */
-  onDragEnd?:(event:RowDragEvent) => void,
+/\*_ 拖拽结束事件 _/ onDragEnd?:(event:RowDragEvent) => void,
 
-  /** 判断一行是否要禁用拖拽 */
-  isDisabled?:(row: any, rowIndex: number) => boolean,
+/\*_ 判断一行是否要禁用拖拽 _/ isDisabled?:(row: any, rowIndex: number) => boolean,
 
-  /** 拖拽列定义 */
-  rowDragColumn?: ArtColumn,
+/\*_ 拖拽列定义 _/ rowDragColumn?: ArtColumn,
 
-  /** 行高 */
-  rowHeight?: number
+/\*_ 行高 _/ rowHeight?: number
 
 }
 ```
