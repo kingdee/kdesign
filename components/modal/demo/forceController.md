@@ -1,9 +1,9 @@
 ---
-title: 强控制提示弹窗
+title: 强控制弹出框
 order: 6
 ---
 
-提示弹窗可以强制控制提示弹窗关闭显示
+强制控制弹出框关闭显示
 
 ```jsx
 import React from 'react'

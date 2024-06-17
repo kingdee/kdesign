@@ -3,7 +3,7 @@ title: 自定义元素
 order: 3
 ---
 
-提示弹窗可以使用自定义元素: 自定义标题、标题前的 icon、关闭的 icon、底部按钮
+弹出框可以使用自定义元素: 自定义标题、标题前的 icon、关闭的 icon、底部按钮
 
 ```jsx
 import React from 'react'
@@ -47,7 +47,7 @@ const Demo: React.FC = () => {
     },
   }
   const createBody = (type) => {
-    return `这是${map[type].content}的提示弹窗`
+    return `这是${map[type].content}的弹出框`
   }
   const [visible, setVisible] = React.useState(false)
   const [type, setType] = React.useState('body')
