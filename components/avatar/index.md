@@ -1,6 +1,6 @@
 ---
 category: Components
-type: 数据展示
+type: 展示
 subtitle: 头像
 title: Avatar
 order: 0
