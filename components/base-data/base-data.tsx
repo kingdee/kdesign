@@ -83,14 +83,30 @@ const InternalBaseData: React.ForwardRefRenderFunction<IAdvancedSelectorProps> =
   }, [seletedOptions])
 
   // 记录每个选项的开始与结束下标
-  const setValIndxPosition = useCallback(() => {
-    const arr: IIndxPosListProps[] = []
-    inputValue.split(delimiter).reduce((pre, next) => {
-      arr.push({ start: pre, end: pre + next.length })
-      return pre + next.length + 1
-    }, 0)
-    return arr
-  }, [delimiter, inputValue])
+  const setValIndxPosition = useCallback(
+    (str = '') => {
+      const arr: IIndxPosListProps[] = []
+      ;(str || inputValue)
+        .split(delimiter)
+        .filter((item: string) => !!item)
+        .reduce((pre: number, next: string) => {
+          arr.push({ start: pre, end: pre + next.length })
+          return pre + next.length + 1
+        }, 0)
+      return arr
+    },
+    [delimiter, inputValue],
+  )
+
+  const initInputValue = (searchInfo.current.editOptions || [])
+    .filter((item) => !!item)
+    .reduce(
+      (pre: string, next: any, index, arr) =>
+        `${pre}${next[optionLabelProp]}${index !== arr.length - 1 ? delimiter : ''}`,
+      '',
+    )
+
+  const initIndexPos = setValIndxPosition(initInputValue)
 
   useEffect(() => {
     const list = setValIndxPosition()
@@ -122,7 +138,6 @@ const InternalBaseData: React.ForwardRefRenderFunction<IAdvancedSelectorProps> =
     // 新增一个
     const list = [...(searchInfo.current.editOptions || [])]
     if (valueArr.length - preValueArr.length === 1) {
-      searchInfo.current.deleteEndIndx = index
       list.splice(index, 0, null)
     }
     if (valueArr.length < preValueArr.length) {
@@ -136,6 +151,15 @@ const InternalBaseData: React.ForwardRefRenderFunction<IAdvancedSelectorProps> =
       const deleteEndIndx = isMultiple ? val.length - inputValue.length + selectionStart : 0
       const { start, end } = findDeleteInterval(selectionStart, deleteEndIndx, indxPosList)
       list?.splice(start, end - start + 1)
+    }
+    // 判断每次单个按del键时删除了分隔符后下一次触发
+    if (searchInfo.current.deleteEndIndx > 0 && selectionStart !== searchInfo.current.deleteEndIndx) {
+      const { start, end } = findDeleteInterval(selectionStart, searchInfo.current.deleteEndIndx, initIndexPos)
+      // 单个删除时找到合理的下标触发
+      if (start !== null && end !== null && start <= end) {
+        list?.splice(start, end - start + 1)
+        searchInfo.current.deleteEndIndx = 0
+      }
     }
     searchInfo.current.editOptions = list
     searchInfo.current.previousEditValue = inputValue
@@ -173,13 +197,25 @@ const InternalBaseData: React.ForwardRefRenderFunction<IAdvancedSelectorProps> =
     setValueBySeleted()
   }, [setValueBySeleted])
 
+  const findDeletedChar = (prev: string, current: string) => {
+    if (prev.length > current.length) {
+      for (let i = 0; i < prev.length; i++) {
+        if (prev[i] !== current[i]) {
+          return prev[i]
+        }
+      }
+      return prev[prev.length - 1]
+    }
+    return null
+  }
+
   const changeInputText = (e: React.ChangeEvent<HTMLInputElement>) => {
     setOptionShow(true)
     const textValue = e.target.value
     let val = textValue
     const inputDom = inputRef.current?.input
+    const selectionStart = inputDom.selectionStart || 0 // selectionStart: 光标前面有几个字符
     if (isMultiple && inputDom && textValue && textValue.length > inputValue.length) {
-      const selectionStart = inputDom.selectionStart || 0 // selectionStart: 光标前面有几个字符
       searchInfo.current.selectionStart = selectionStart
 
       const isInHead = selectionStart === 1 && textValue[1] !== delimiter && textValue.length !== 1 // 在首部添加
@@ -192,6 +228,10 @@ const InternalBaseData: React.ForwardRefRenderFunction<IAdvancedSelectorProps> =
           textValue.substring(0, selectionStart) + delimiter + textValue.substring(selectionStart, textValue.length)
         setCursorPosition(inputDom, selectionStart)
       }
+    }
+    // 单个删除时 当删除的字符为分隔符delimiter 记录位置
+    if (findDeletedChar(searchInfo.current.previousEditValue || '', textValue) === delimiter) {
+      searchInfo.current.deleteEndIndx = selectionStart
     }
     setInputValue(val)
     handleChange(val)
