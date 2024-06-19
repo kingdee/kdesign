@@ -59,6 +59,6 @@ export interface ISearchInfoProps {
   previousEditValue?: string
   searchIndex?: number
   selectionStart?: number
-  deleteEndIndx?: number
+  deleteEndIndx: number
   editOptions?: any[]
 }
