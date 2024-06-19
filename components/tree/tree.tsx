@@ -231,7 +231,7 @@ const InternalTree = React.forwardRef((props: TreeProps, ref: any): React.Functi
       }
     }
     if (virtual) {
-      virtualListRef.current?.scrollTo({ index: scrollIndex })
+      requestAnimationFrame(() => virtualListRef.current?.scrollTo({ index: scrollIndex }))
     } else {
       const wrapperDom = scrollRef.current
       const node = wrapperDom ? wrapperDom?.children[0]?.children[scrollIndex] : null
