@@ -12,9 +12,6 @@ exports[`Empty renders correctly 1`] = `
     width="168px"
     xmlns="http://www.w3.org/2000/svg"
   >
-    <title>
-      编组
-    </title>
     <defs>
       <linearGradient
         id="kd-empty-default-linearGradient3"
@@ -135,9 +132,6 @@ exports[`Empty renders correctly 2`] = `
     width="168px"
     xmlns="http://www.w3.org/2000/svg"
   >
-    <title>
-      编组
-    </title>
     <defs>
       <linearGradient
         id="kd-empty-default-linearGradient4"
@@ -275,9 +269,6 @@ exports[`Empty renders correctly 4`] = `
     width="168px"
     xmlns="http://www.w3.org/2000/svg"
   >
-    <title>
-      编组
-    </title>
     <defs>
       <linearGradient
         id="kd-empty-default-linearGradient5"
