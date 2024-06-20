@@ -16,9 +16,8 @@ function IllustrationEmptyImg(props: any) {
       xmlns="http://www.w3.org/2000/svg"
       style={props.style}
     >
-      <title>切片</title>
       <defs>
-        <rect id="path-1" x="0" y="0" width="200" height="114"></rect>
+        <rect id="illus-path-1" x="0" y="0" width="200" height="114"></rect>
         <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id={linearGradientId}>
           <stop stopColor="#F2F5FA" offset="0%"></stop>
           <stop stopColor="#F2F5FA" stopOpacity="0" offset="100%"></stop>
@@ -29,37 +28,37 @@ function IllustrationEmptyImg(props: any) {
         </linearGradient>
         <path
           d="M1.65924929,1.58062569 C1.8889022,0.50289476 2.95093586,-0.185073735 4.03136787,0.0440050452 C5.11179988,0.273083825 5.8014926,1.33246241 5.57183969,2.41019333 L5.56004989,2.46216547 L5.56004989,2.46216547 L3.39146206,11.2716446 C3.19461671,12.195414 2.28430214,12.7851013 1.35821756,12.588748 C0.432132984,12.3923948 -0.15903221,11.484356 0.037813143,10.5605866 L1.63752649,1.70000685 C1.64352938,1.66026552 1.65076142,1.62045814 1.65924929,1.58062569 Z"
-          id="path-5"
+          id="illus-path-5"
         ></path>
         <path
           d="M3.2335764,0.0440050452 C4.31400841,0.273083825 5.00370113,1.33246241 4.77404822,2.41019333 L4.76225843,2.46216547 L4.76225843,2.46216547 L3.61607194,7.1179134 L-1.62409768e-13,6.35121513 L0.839735026,1.70000685 C0.845737915,1.66026552 0.85296995,1.62045814 0.861457819,1.58062569 C1.09111073,0.50289476 2.1531444,-0.185073735 3.2335764,0.0440050452 Z"
-          id="path-7"
+          id="illus-path-7"
         ></path>
         <path
           d="M2.51813448,5.99787613 C1.45120227,6.28304504 0.354528358,5.65146297 0.0686447348,4.5871981 C-0.217238888,3.52293322 0.415926091,2.42900099 1.4828583,2.14383208 C1.51736247,2.13460983 1.55189774,2.12634636 1.5864357,2.11902531 L10.3881284,0.0586912483 C11.3026418,-0.185739249 12.242648,0.355616807 12.4876911,1.26784384 C12.7327342,2.18007088 12.1900213,3.11772708 11.275508,3.36215757 L2.6346324,5.96298498 C2.59640862,5.97569192 2.55756782,5.98733641 2.51813448,5.99787613 Z"
-          id="path-9"
+          id="illus-path-9"
         ></path>
         <path
           d="M0.111983294,4.13319059 C-0.255581364,2.76485004 0.311368053,1.42441577 1.37830026,1.13924685 C1.41781627,1.12868504 1.4574639,1.11971891 1.49719789,1.11231428 L6.44654147,-4.05009359e-14 L7.35298648,4.65178191 L2.83125349,6.05655516 C2.79139485,6.07073359 2.75075844,6.08338397 2.70936963,6.09444634 C1.64243743,6.37961526 0.479547952,5.50153115 0.111983294,4.13319059 Z"
-          id="path-11"
+          id="illus-path-11"
         ></path>
         <path
           d="M3.3628604,1.13914634 C3.3628604,1.13914634 4.96984445,2.41461745 4.75200088,3.35235885 C4.55443848,4.20156223 3.43408308,4.09719685 3.43408308,4.09719685 C3.43408308,4.09719685 2.56748085,3.91583671 1.68763621,3.46779149 C1.11105463,3.17397378 -0.0683547472,2.77864676 0.00310653282,2.44389212 C0.0961612881,2.00739016 1.23596274,2.60787786 1.48589827,2.39998012 C1.99233088,1.9785915 0.298853633,0.845566643 0.123123307,0.514858095 C-0.22022488,-0.131564658 1.44664825,-0.40550891 3.3628604,1.13914634"
-          id="path-13"
+          id="illus-path-13"
         ></path>
         <path
           d="M5.71428571,1.87887927e-12 L5.14285714,14.82 L4.85714286,30.78 L0.857142857,30.78 L0.571428571,14.82 L0,1.87887927e-12 L5.71428571,1.87887927e-12 Z"
-          id="path-15"
+          id="illus-path-15"
         ></path>
       </defs>
       <g id="空组件" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
         <g id="空组件标注" transform="translate(-65.000000, -512.000000)">
           <g id="编组" transform="translate(65.000000, 512.000000)">
-            <mask id="mask-2" fill="white">
-              <use xlinkHref="#path-1"></use>
+            <mask id="illus-mask-2" fill="white">
+              <use xlinkHref="#illus-path-1"></use>
             </mask>
-            <use id="矩形" fill="#FFFFFF" xlinkHref="#path-1"></use>
-            <g mask="url(#mask-2)" id="背景/云">
+            <use id="矩形" fill="#FFFFFF" xlinkHref="#illus-path-1"></use>
+            <g mask="url(#illus-mask-2)" id="背景/云">
               <g transform="translate(11.428571, 37.050000)">
                 <g
                   transform="translate(34.285714, 34.200000) scale(-1, 1) translate(-34.285714, -34.200000) "
@@ -70,12 +69,12 @@ function IllustrationEmptyImg(props: any) {
                 </g>
               </g>
             </g>
-            <g mask="url(#mask-2)" id="背景/云">
+            <g mask="url(#illus-mask-2)" id="背景/云">
               <g transform="translate(142.857143, 51.300000)" fill={`url(#${linearGradientId}-1)`} id="形状结合">
                 <path d="M17.1428571,8.55 C24.2401777,8.55 30.1286667,13.7256234 31.2399627,20.508509 C32.186033,20.1471098 33.2128549,19.95 34.2857143,19.95 C39.0195836,19.95 42.8571429,23.7875593 42.8571429,28.5214286 L42.8571429,37.05 L31.4281429,37.049 L31.4285714,37.05 L2.85714286,37.05 L2.85714286,22.8357143 C2.85714286,14.9459321 9.253075,8.55 17.1428571,8.55 Z"></path>
               </g>
             </g>
-            <g mask="url(#mask-2)" id="加密网页">
+            <g mask="url(#illus-mask-2)" id="加密网页">
               <g transform="translate(42.857143, 0.000000)" id="编组-3">
                 <rect id="矩形" x="0" y="0" width="114.285714" height="114"></rect>
                 <g id="编组-2" transform="translate(7.142857, 17.812500)">
@@ -105,7 +104,7 @@ function IllustrationEmptyImg(props: any) {
                 </g>
               </g>
             </g>
-            <g mask="url(#mask-2)" id="锁">
+            <g mask="url(#illus-mask-2)" id="锁">
               <g transform="translate(88.571429, 47.025000)" id="编组">
                 <path
                   d="M41.2497143,5.878125 L41.25,15.675 L51.0707143,15.674125 L51.0714286,50.9290179 C51.0714286,54.183553 48.4331066,56.821875 45.1785714,56.821875 L13.75,56.821875 C12.665155,56.821875 11.7857143,55.9424343 11.7857143,54.8575893 L11.7857143,7.84241071 C11.7857143,6.75756567 12.665155,5.878125 13.75,5.878125 L41.2497143,5.878125 Z"
@@ -128,7 +127,7 @@ function IllustrationEmptyImg(props: any) {
                 ></path>
               </g>
             </g>
-            <g id="男-打电话" mask="url(#mask-2)">
+            <g id="男-打电话" mask="url(#illus-mask-2)">
               <g
                 transform="translate(148.571429, 68.400000) scale(-1, 1) translate(-148.571429, -68.400000) translate(102.857143, 22.800000)"
                 id="编组-6"
@@ -136,28 +135,28 @@ function IllustrationEmptyImg(props: any) {
                 <g id="编组-9" transform="translate(34.745657, 17.604294)">
                   <g id="路径-3" transform="translate(0.000000, 11.579706)">
                     <g id="路径-6" transform="translate(2.397200, 0.000000)">
-                      <mask id="mask-6" fill="white">
-                        <use xlinkHref="#path-5"></use>
+                      <mask id="illus-mask-6" fill="white">
+                        <use xlinkHref="#illus-path-5"></use>
                       </mask>
-                      <use id="路径" fill="#FFCDC0" xlinkHref="#path-5"></use>
+                      <use id="路径" fill="#FFCDC0" xlinkHref="#illus-path-5"></use>
                       <polygon
                         id="矩形"
                         fill="#FFB3AB"
-                        mask="url(#mask-6)"
+                        mask="url(#illus-mask-6)"
                         transform="translate(3.044116, 6.156000) rotate(24.000000) translate(-3.044116, -6.156000) "
                         points="-0.381975864 5.01871224 6.47233097 5.01234242 6.4702077 7.29328776 -0.384099135 7.29965758"
                       ></polygon>
                     </g>
                     <g id="路径-5" transform="translate(3.194992, 0.000000)">
-                      <mask id="mask-8" fill="white">
-                        <use xlinkHref="#path-7"></use>
+                      <mask id="illus-mask-8" fill="white">
+                        <use xlinkHref="#illus-path-7"></use>
                       </mask>
-                      <use id="路径" fill="#276FF5" xlinkHref="#path-7"></use>
+                      <use id="路径" fill="#276FF5" xlinkHref="#illus-path-7"></use>
                       <polygon
                         id="矩形"
                         fill="#000000"
                         opacity="0.200000003"
-                        mask="url(#mask-8)"
+                        mask="url(#illus-mask-8)"
                         transform="translate(2.862514, 5.850982) rotate(-353.000000) translate(-2.862514, -5.850982) "
                         points="2.00626687 3.00113507 3.72048894 3.00061667 3.71876092 8.70082884 2.00453886 8.70134724"
                       ></polygon>
@@ -193,33 +192,33 @@ function IllustrationEmptyImg(props: any) {
                     ry="1.71018549"
                   ></ellipse>
                   <g id="路径-7" transform="translate(12.896734, 8.925065)">
-                    <mask id="mask-10" fill="white">
-                      <use xlinkHref="#path-9"></use>
+                    <mask id="illus-mask-10" fill="white">
+                      <use xlinkHref="#illus-path-9"></use>
                     </mask>
-                    <use id="路径" fill="#FFCDC0" xlinkHref="#path-9"></use>
+                    <use id="路径" fill="#FFCDC0" xlinkHref="#illus-path-9"></use>
                     <polygon
                       id="路径-8"
                       fill="#FFB3AB"
-                      mask="url(#mask-10)"
+                      mask="url(#illus-mask-10)"
                       points="7.25886778 0.118140667 6.11601063 0.688140667 9.68743921 2.68314067"
                     ></polygon>
                     <polygon
                       id="路径-9"
                       fill="#FFB3AB"
-                      mask="url(#mask-10)"
+                      mask="url(#illus-mask-10)"
                       points="6.25886778 1.25814067 7.97315349 5.10564067 5.83029635 5.53314067"
                     ></polygon>
                   </g>
                   <g id="路径-4" transform="translate(12.705499, 9.968495)">
-                    <mask id="mask-12" fill="white">
-                      <use xlinkHref="#path-11"></use>
+                    <mask id="illus-mask-12" fill="white">
+                      <use xlinkHref="#illus-path-11"></use>
                     </mask>
-                    <use id="路径" fill="#276FF5" xlinkHref="#path-11"></use>
+                    <use id="路径" fill="#276FF5" xlinkHref="#illus-path-11"></use>
                     <polygon
                       id="矩形"
                       fill="#000000"
                       opacity="0.200000003"
-                      mask="url(#mask-12)"
+                      mask="url(#illus-mask-12)"
                       transform="translate(3.142857, 5.985000) rotate(-10.000000) translate(-3.142857, -5.985000) "
                       points="1.43196427 2.24210468 4.85057411 2.31733532 4.85375001 9.72789532 1.71112979 9.72655167"
                     ></polygon>
@@ -246,14 +245,14 @@ function IllustrationEmptyImg(props: any) {
                     fill="#FFCDC0"
                   ></path>
                   <g id="左手-2" transform="translate(11.952397, 1.350861)">
-                    <mask id="mask-14" fill="white">
-                      <use xlinkHref="#path-13"></use>
+                    <mask id="illus-mask-14" fill="white">
+                      <use xlinkHref="#illus-path-13"></use>
                     </mask>
-                    <use id="左手" fill="#FFCDC0" xlinkHref="#path-13"></use>
+                    <use id="左手" fill="#FFCDC0" xlinkHref="#illus-path-13"></use>
                     <polygon
                       id="矩形"
                       fill="#FFB3AB"
-                      mask="url(#mask-14)"
+                      mask="url(#illus-mask-14)"
                       transform="translate(0.955615, 3.466523) rotate(-10.000000) translate(-0.955615, -3.466523) "
                       points="1.03330198 1.85971337 2.29312065 2.08185339 2.9259469 4.5743354 -1.01471788 5.0733326"
                     ></polygon>
@@ -286,16 +285,16 @@ function IllustrationEmptyImg(props: any) {
                     transform="translate(8.045637, 46.231304) rotate(2.000000) translate(-8.045637, -46.231304) translate(5.188494, 30.841304)"
                   >
                     <g id="编组-7备份" transform="translate(0.000000, 0.000000)">
-                      <mask id="mask-16" fill="white">
-                        <use xlinkHref="#path-15"></use>
+                      <mask id="illus-mask-16" fill="white">
+                        <use xlinkHref="#illus-path-15"></use>
                       </mask>
-                      <use id="形状结合" fill="#2C3E68" xlinkHref="#path-15"></use>
+                      <use id="形状结合" fill="#2C3E68" xlinkHref="#illus-path-15"></use>
                       <path
                         d="M5.59120105,3.66623878 C5.21024867,3.57123878 4.63882009,3.28623878 3.87691533,2.81123878 C4.25786771,4.52123878 4.64172525,7.84894439 5.02848794,12.7943556 L5.59120105,3.66623878 Z"
                         id="路径-8"
                         fill="#000000"
                         opacity="0.200000003"
-                        mask="url(#mask-16)"
+                        mask="url(#illus-mask-16)"
                       ></path>
                     </g>
                   </g>
