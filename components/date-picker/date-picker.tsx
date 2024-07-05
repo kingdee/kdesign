@@ -110,6 +110,14 @@ export type IInnerPicker = undefined | 'year' | 'month'
 
 const MONTH_DEFAULT_SUFFIX = '月'
 
+export type DisabledDataProps = (
+  date: DateType,
+  info?: {
+    panelType?: 'month' | 'quarter' | 'year'
+    range?: 'start' | 'end'
+  },
+) => boolean
+
 export const mergeDateLocale = (globalLocale: InnerLocale, locale = {}) => {
   const mergeLocale: InnerLocale = Object.assign({}, globalLocale, locale)
   mergeLocale.weekTitle = Array.from(

@@ -600,4 +600,30 @@ describe('date-picker', () => {
     expect(wrapper.find('input').at(0).props().value).toBe('')
     expect(wrapper.find('.kd-date-picker-calendar-text').at(0).text()).not.toBe('NaN')
   })
+
+  // 20. disabledData select
+  it('disabledData select', () => {
+    const disabledDate = (date: any, info: any) => {
+      const disDate = new Date('2020-12-28')
+      if (info && info?.panelType === 'year') {
+        return date && date.getFullYear() < disDate.getFullYear()
+      }
+      if (info && info?.panelType === 'month') {
+        return date && date.getMonth() < disDate.getMonth()
+      }
+      return date && date < disDate
+    }
+    const wrapper = mount(<DatePicker open disabledDate={disabledDate} defaultValue={new Date('2021-01-29')} />)
+
+    // year
+    wrapper.find('.kd-date-picker-header-text-inner').at(0).simulate('click')
+    const item = wrapper.find('.kd-date-picker-year-item').at(9)
+    expect(item.props().className).toEqual('kd-date-picker-year-item')
+    wrapper.find('.kd-date-picker-year-text').at(9).simulate('click')
+    // month
+    wrapper.find('.kd-date-picker-header-text-inner').at(1).simulate('click')
+    wrapper.find('.kd-date-picker-month-text').at(11).simulate('click')
+    wrapper.find('.kd-date-picker-calendar-text').at(30).simulate('click')
+    expect(wrapper.find('input').props().value).toBe('2020-12-29')
+  })
 })

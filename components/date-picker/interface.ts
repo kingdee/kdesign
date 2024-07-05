@@ -1,4 +1,5 @@
 import { BorderType, InputSiteType } from '../input/input'
+import { DisabledDataProps } from './date-picker'
 
 export type WeekTitleType = [string, string, string, string, string, string, string]
 export type MonthTitleType = [
@@ -108,7 +109,7 @@ export interface PanelSharedProps {
   value?: NullableDateType
   defaultPickerValue?: DateType
   locale: InnerLocale
-  disabledDate?: (date: DateType) => boolean
+  disabledDate?: DisabledDataProps
 
   prevIcon?: React.ReactNode
   nextIcon?: React.ReactNode
