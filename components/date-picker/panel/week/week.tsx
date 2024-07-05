@@ -17,13 +17,14 @@ import {
 import { DateType, PickerMode, RangeValue, TimeUnit } from '../../interface'
 import { getHours, getMinutes, getSeconds, isBefore, isSameDay, isSameWeek } from 'date-fns'
 import useRangeCls from '../../hooks/use-range-cls'
+import { DisabledDataProps } from '../../date-picker'
 
 export interface WeekProps {
   day: DateType
   picker: PickerMode
   showWeekNumber?: boolean
   showTime?: boolean
-  disabledDate?: (date: DateType) => boolean
+  disabledDate?: DisabledDataProps
 }
 
 const formatWeekNumber = (date: DateType) => {

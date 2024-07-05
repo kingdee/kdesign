@@ -633,7 +633,9 @@ const InternalRangePicker = (
         selectedValue &&
         selectedValue[mergedActivePickerIndex] &&
         disabledDate &&
-        disabledDate(selectedValue![mergedActivePickerIndex]!)
+        disabledDate(selectedValue![mergedActivePickerIndex]!, {
+          range: mergedActivePickerIndex === 0 ? 'start' : 'end',
+        })
       ),
     locale: datePickerLang,
     // rangeList,

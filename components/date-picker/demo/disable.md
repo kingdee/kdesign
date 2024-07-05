@@ -12,8 +12,15 @@ import { DatePicker } from '@kdcloudjs/kdesign'
 
 const Demo: React.FC = () => {
   const demoStyle = { margin: '10px 0' }
-  const disabledDate = (date) => {
-    return date && date < new Date('2020-12-28')
+  const disabledDate = (date, info) => {
+    const disDate = new Date('2020-12-28')
+    if (info && 'year' === info.panelType) {
+      return date && date.getFullYear() < disDate.getFullYear()
+    }
+    if (info && 'month' === info.panelType) {
+      return date && date.getMonth() < disDate.getMonth()
+    }
+    return date && date < disDate
   }
   const disabledDate1 = (date) => {
     return date && date < new Date('2020-10-25')
@@ -21,10 +28,10 @@ const Demo: React.FC = () => {
   return (
     <div  style={{ width: '150px' }}>
       <div style={demoStyle}>
-        <DatePicker disabledDate={disabledDate} defaultValue={new Date('2020-12-25')} />
+        <DatePicker disabledDate={disabledDate} defaultValue={new Date('2021-01-29')} />
       </div>
       <div style={demoStyle}>
-        <DatePicker disabledDate={disabledDate} picker="week" defaultValue={new Date('2020-12-25')} />
+        <DatePicker disabledDate={disabledDate1} picker="week" defaultValue={new Date('2020-12-25')} />
       </div>
       <div style={demoStyle}>
         <DatePicker disabledDate={disabledDate1} picker="month" defaultValue={new Date('2020-8-26')} />
