@@ -2,7 +2,7 @@
 感谢你的宝贵时间，我们很高兴您有兴趣为 KDesign 做出贡献。此篇文档旨在帮助 开发者 在新组件开发上提供帮助
 
 ## 克隆仓库
-1. 通过 [https://github.com/kdcloudone/kdesign](https://github.com/kdcloudone/kdesign) 访问我们的仓库，然后 Fork 此仓库到你的 Repositories。
+1. 通过 [https://github.com/kingdee/kdesign](https://github.com/kingdee/kdesign) 访问我们的仓库，然后 Fork 此仓库到你的 Repositories。
 2. 进入你的 Repositories 里面，找到 Fork 的 KDesign 项目，使用 `git clone` 指令克隆项目到你本地。
 
 ## 新组件开发

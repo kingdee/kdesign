@@ -16,11 +16,11 @@
   ],
   "homepage": "https://react.kingdee.design/",
   "bugs": {
-    "url": "https://github.com/kdcloudone/kdesign/issues"
+    "url": "https://github.com/kingdee/kdesign/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:kdcloudone/kdesign.git"
+    "url": "git@github.com:kingdee/kdesign.git"
   },
   "contributors": [
     "kdesign"

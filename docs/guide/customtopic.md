@@ -113,7 +113,7 @@ kdesign 的样式使用了 [Less](http://lesscss.org/) 作为开发语言，并�
 @btn-transition-fn: cubic-bezier(0.075, 0.82, 0.165, 1);
 ```
 
-我们定义的所有样式变量你可以在 [这里](https://github.com/kdcloudone/kdesign/blob/master/components/style/themes/default.less) 找到
+我们定义的所有样式变量你可以在 [这里](https://github.com/kingdee/kdesign/blob/master/components/style/themes/default.less) 找到
 ## 定制方式
 原理上是使用 less 提供的 [modifyVars](http://lesscss.org/usage/#using-less-in-the-browser-modify-variables) 的方式进行覆盖变量。下面将针对不同的场景提供一些常用的定制方式。
 

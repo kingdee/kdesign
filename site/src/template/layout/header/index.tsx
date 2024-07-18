@@ -93,7 +93,7 @@ const Header = (props: NavProps) => {
               <DocsSearch appId={appIdQS} indexName={indexNameQS} apiKey={apiKeyQS} transformData={transformData} />
               <div className="header-version">v {kdesignVersion}</div>
               <a
-                href="https://github.com/kdcloudone/kdesign"
+                href="https://github.com/kingdee/kdesign"
                 rel="noreferrer"
                 className="header-github-link"
                 target="_blank"
