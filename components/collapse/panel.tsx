@@ -111,6 +111,7 @@ const Panel = React.forwardRef<unknown, PanelProps>((props, ref) => {
   }
 
   const renderMiddle = () => {
+    if (typeof assist === undefined) return null
     const className = classNames({
       [`${panelPrefixCls}-middle`]: true,
       [`${panelPrefixCls}-disabled`]: disabled,
