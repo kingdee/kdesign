@@ -4,9 +4,10 @@ const locale = {
   locale: 'zh-CN',
   ...DatePicker,
   'global.selectholder': '请选择',
-  'global.placeholder': '请输入...',
+  'global.placeholder': '请输入需要搜索的内容',
   'global.cancel': '取消',
   'global.confirm': '确定',
+  'global.emptyText': '暂无数据',
   'Button.text': '按钮',
   'Progress.circleLoadingDesc': '正在加载中',
   'Progress.loading': '正在加载中...',
@@ -78,6 +79,7 @@ const locale = {
   'Table.confirmFilter': '确定',
   'Select.selectAll': '全选',
   'Select.seleted': '已选{size}项',
+  'Select.total': '共{total}项',
   'Signature.clickToSign': '点击签名',
   'Signature.pleaseWriteHere': '请在此处横向书写签名',
   'Signature.okText': '确定',
@@ -91,7 +93,7 @@ const locale = {
   'Upload.uploading': '文件上传中ing',
   'Upload.fail': '上传失败',
   'Upload.delete': '删除',
-  'Notification.title': '系统提示11',
+  'Notification.title': '系统提示',
 }
 
 export default locale
