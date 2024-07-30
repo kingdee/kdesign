@@ -10,20 +10,16 @@ const InternalBaseData: React.ForwardRefRenderFunction<IAdvancedSelectorProps> =
   props: IAdvancedSelectorProps,
   ref: unknown,
 ): React.FunctionComponentElement<any> => {
-  const {
-    getPrefixCls,
-    prefixCls,
-    compDefaultProps: userDefaultProps,
-    locale: { getLangMsg },
-  } = useContext(ConfigContext)
+  const { getPrefixCls, prefixCls, compDefaultProps: userDefaultProps, locale } = useContext(ConfigContext)
   const advancedSelectortProps = getCompProps('BaseData', userDefaultProps, props)
+  const baseDataLangMsg = locale.getCompLangMsg({ componentName: 'BaseData' })
   const {
     prefixCls: customPrefixcls,
     className,
     mode,
     disabled,
     delimiter = '，',
-    placeholder = getLangMsg('global', 'selectholder'),
+    placeholder = locale.getLangMsg('global', 'selectholder'),
     showDetailIcon,
     showFrequent,
     showCollectIcon,
@@ -435,6 +431,7 @@ const InternalBaseData: React.ForwardRefRenderFunction<IAdvancedSelectorProps> =
   const isShowDetailBtn = showDetailIcon && !isMultiple && !isFocused
 
   const renderAdvancedSelector = () => {
+    const totalText = locale.getLangMsg('BaseData', 'total', { total: seletedOptions.length })
     return (
       <div className={advancedSelectorCls} ref={advancedSelectorRef} style={style}>
         <Input
@@ -450,7 +447,7 @@ const InternalBaseData: React.ForwardRefRenderFunction<IAdvancedSelectorProps> =
         />
         {showTotal && !isFocused && isMultiple && (
           <span className={`${advancedSelectorfixCls}-total`} onClick={showInputTotal}>
-            {`共${seletedOptions.length}项`}
+            {totalText}
           </span>
         )}
         {isShowDetailBtn && !disabled && (
@@ -657,10 +654,10 @@ const InternalBaseData: React.ForwardRefRenderFunction<IAdvancedSelectorProps> =
     }
     return (
       <Tabs defaultActiveKey="history">
-        <Tabs.TabPane key="history" tab="历史记录">
+        <Tabs.TabPane key="history" tab={baseDataLangMsg.history}>
           {renderDropdownContent(historyList, columns)}
         </Tabs.TabPane>
-        <Tabs.TabPane key="collect" tab="我的收藏">
+        <Tabs.TabPane key="collect" tab={baseDataLangMsg.favorites}>
           {renderDropdownContent(collectList, columns)}
         </Tabs.TabPane>
       </Tabs>
