@@ -96,6 +96,7 @@ const locale = {
   'Upload.delete': '删除',
   'Notification.title': '系统提示',
   'TreeSelect.total': '共{total}项',
+  'ImageCropper.okText': '确认裁剪',
 }
 
 export default locale
