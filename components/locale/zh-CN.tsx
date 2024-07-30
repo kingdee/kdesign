@@ -87,6 +87,10 @@ const locale = {
   'BaseData.history': '历史记录',
   'BaseData.favorites': '我的收藏',
   'Image.close': '关闭',
+  'Upload.reUpload': '重新上传',
+  'Upload.uploading': '文件上传中ing',
+  'Upload.fail': '上传失败',
+  'Upload.delete': '删除',
 }
 
 export default locale
