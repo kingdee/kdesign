@@ -128,7 +128,11 @@ const InternalCarousel = (props: CarouselProps, ref: unknown): FunctionComponent
     const element = carouselRef.current
     const handler = reSize
     if (!element) {
-      devWarning(!element && element !== null, 'useResizeMeasure', 'useResizeMeasure指定的元素不存在')
+      devWarning(
+        !element && element !== null,
+        'useResizeMeasure',
+        'Specified element for useResizeMeasure does not exist',
+      )
       return
     }
     const measure = (entries: any[]) => {

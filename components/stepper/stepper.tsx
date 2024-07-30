@@ -39,7 +39,7 @@ const InternalStepper = (props: StepperProps, ref: unknown): FunctionComponentEl
   } = inputNumberProps
   const inputPrefixCls = getPrefixCls!(prefixCls, 'inputNumber', customPrefixcls)
 
-  devWarning(typeof step !== 'number', 'stepper', `step必须为一个数值`)
+  devWarning(typeof step !== 'number', 'stepper', `step must be a number`)
 
   const thisInputNumberRef = useRef<any>()
   const stepperrref = useRef<any>()
