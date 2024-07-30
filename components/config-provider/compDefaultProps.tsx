@@ -464,7 +464,6 @@ const compDefaultProps = {
     defaultOpen: false,
     showArrow: true,
     placeholder: '',
-    description: '城市',
     showDescription: true,
     optionHighlightProps: 'highlightText',
     allowClear: true,

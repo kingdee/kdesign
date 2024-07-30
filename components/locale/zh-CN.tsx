@@ -45,6 +45,7 @@ const locale = {
   'CityPicker.commonEmptyText': '无常用城市',
   'CityPicker.tabsDomestic': '国内',
   'CityPicker.tabsInternation': '国际/中国港澳台',
+  'CityPicker.title': '城市',
   'ColorPicker.followFunctionalColor': '跟随功能色',
   'Search.placeholder': '请输入需要搜索的内容',
   'Search.desc': ['空格代表"或"，回车代表"且"'],
