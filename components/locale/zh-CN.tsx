@@ -83,6 +83,7 @@ const locale = {
   'Signature.okText': '确定',
   'Signature.cancelText': '取消',
   'Signature.handwrittenSignature': '手写签名',
+  'Cascader.total': '共{total}项',
 }
 
 export default locale

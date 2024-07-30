@@ -102,7 +102,12 @@ const CascaderMenuSubmenu = (props: any) => {
 }
 
 const Cascader = React.forwardRef<unknown, CascaderProps>((props, ref) => {
-  const { getPrefixCls, prefixCls: pkgPrefixCls, compDefaultProps: userDefaultProps } = React.useContext(ConfigContext)
+  const {
+    getPrefixCls,
+    prefixCls: pkgPrefixCls,
+    compDefaultProps: userDefaultProps,
+    locale,
+  } = React.useContext(ConfigContext)
 
   // 属性需要合并一遍用户定义的默认属性
   const allProps = getCompProps('Cascader', userDefaultProps, props)
@@ -118,7 +123,7 @@ const Cascader = React.forwardRef<unknown, CascaderProps>((props, ref) => {
     clearIcon,
     className,
     fieldNames,
-    placeholder,
+    placeholder = locale.getLangMsg('global', 'selectholder'),
     defaultValue,
     maxTagPlaceholder,
     displayRender,
@@ -350,6 +355,7 @@ const Cascader = React.forwardRef<unknown, CascaderProps>((props, ref) => {
       [`${prefixCls}-tag-describe`]: true,
     })
     const TagStyle = { margin: '2px 8px 2px 0', maxWidth: '100%' }
+    const totalText = locale.getLangMsg('Cascader', 'total', { total: currentOptions.length })
     return (
       <div className={multipleCls} ref={mergeRef as any} style={style} {...otherProps} tabIndex={-1}>
         <div className={`${prefixCls}-multiple-wrapper`} ref={wrapperRef as any}>
@@ -377,7 +383,7 @@ const Cascader = React.forwardRef<unknown, CascaderProps>((props, ref) => {
                   handleMaxTagHolder()
                 ) : (
                   <span className={itemCls}>
-                    <span className={`${prefixCls}-tag-describe-content`}>共{currentOptions.length}项</span>
+                    <span className={`${prefixCls}-tag-describe-content`}>{totalText}</span>
                   </span>
                 )
               ) : null}
