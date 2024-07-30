@@ -49,7 +49,6 @@ const defaultClosable = true
 const defaultShowIcon = false
 const defaultSuffixCls = 'notice'
 const defaultType = 'primary'
-const defaultTitle = '系统提示' // 'notice'
 const notificationElements: any = {}
 let notificationKey = 1
 
@@ -63,7 +62,7 @@ const getNotificationProps = (args: ArgsProps) => {
     type = defaultType,
     onClose,
     closable = defaultClosable,
-    title = defaultTitle,
+    title,
     footer,
     content,
     icon,
