@@ -4,7 +4,7 @@ const locale = {
   locale: 'zh-CN',
   ...DatePicker,
   'global.selectholder': '请选择',
-  'global.placeholder': '请输入需要搜索的内容11',
+  'global.placeholder': '请输入需要搜索的内容',
   'global.cancel': '取消',
   'global.confirm': '确定',
   'global.emptyText': '暂无数据',
