@@ -86,6 +86,7 @@ const locale = {
   'BaseData.total': '共{total}项',
   'BaseData.history': '历史记录',
   'BaseData.favorites': '我的收藏',
+  'Image.close': '关闭',
 }
 
 export default locale
