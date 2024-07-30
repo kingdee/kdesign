@@ -442,7 +442,6 @@ const compDefaultProps = {
     mode: 'single',
     defaultOpen: false,
     showArrow: true,
-    placeholder: '请输入需要搜索的内容',
     optionLabelProp: 'title',
     treeNodeFilterProp: 'title',
     treeExpandOnClickNode: true,
