@@ -4,7 +4,7 @@ const locale = {
   locale: 'zh-CN',
   ...DatePicker,
   'global.selectholder': '请选择',
-  'global.placeholder': '请输入需要搜索的内容',
+  'global.placeholder': '请输入需要搜索的内容11',
   'global.cancel': '取消',
   'global.confirm': '确定',
   'global.emptyText': '暂无数据',
@@ -94,6 +94,7 @@ const locale = {
   'Upload.fail': '上传失败',
   'Upload.delete': '删除',
   'Notification.title': '系统提示',
+  'TreeSelect.total': '共{total}项',
 }
 
 export default locale
