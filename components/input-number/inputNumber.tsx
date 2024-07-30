@@ -232,7 +232,7 @@ const InternalInputNumber = (props: InputNumberProps, ref: unknown): FunctionCom
   const handleStepChang = (type: StepBtnType) => {
     const step = stepOption.step === undefined ? 1 : parseFloat(stepOption.step)
     if (typeof step !== 'number') {
-      devWarning(true, 'inputNumber', `stepOption.step必须为一个数值`)
+      devWarning(true, 'inputNumber', `stepOption.step must be a number`)
       return false
     }
     const startingNumber = parseFloat(inputNumberRef.current?.input?.value) || 0
