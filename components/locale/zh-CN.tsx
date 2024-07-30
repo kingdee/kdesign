@@ -91,6 +91,7 @@ const locale = {
   'Upload.uploading': '文件上传中ing',
   'Upload.fail': '上传失败',
   'Upload.delete': '删除',
+  'Notification.title': '系统提示11',
 }
 
 export default locale
