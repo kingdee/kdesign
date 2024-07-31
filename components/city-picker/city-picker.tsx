@@ -46,7 +46,7 @@ const InternalSelect: React.ForwardRefRenderFunction<CityPickerProps> = (props: 
     clearIcon,
     loading,
     showDescription,
-    description,
+    description = cityPickerLangMsg.title,
     optionHighlightProps,
     popperStyle = {},
     commonList = [],
