@@ -97,7 +97,7 @@ const Signature = (props: ISignatureProps): FunctionComponentElement<ISignatureP
   }
 
   const handleModalOk = () => {
-    let type = typeMapping[dataUrlType as DataUrlType] || ''
+    const type = typeMapping[dataUrlType as DataUrlType] || ''
     if (type === 'image/jpeg') setJpegBgColor()
     const result = signaturePadRef.current?.toDataURL(type)
     result && setDataUrl(result)
