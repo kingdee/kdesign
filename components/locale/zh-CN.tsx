@@ -49,6 +49,8 @@ const locale = {
   'Search.desc': ['空格代表"或"，回车代表"且"'],
   'Search.nplDesc': '智能搜索',
   'Search.emptyTip': '暂无数据',
+  'Search.viewMoreResult': '查看更多"{inputValue}"的结果',
+  'Search.range': '范围',
   'Search.or': '或',
   'Filter.filterCondition': '筛选条件',
   'Filter.commonCondition': '常用条件',

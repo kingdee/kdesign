@@ -38,12 +38,10 @@ const InternalSearchPanel: React.ForwardRefRenderFunction<ISearchPanelProps> = (
   const searchPanelRef = (ref as any) || thisSearchPanelRef
   const tooltipRef = useRef<HTMLDivElement>(null)
 
-  const {
-    locale: { getLangMsg },
-  } = useContext(ConfigContext)
+  const { locale } = useContext(ConfigContext)
 
   const { prefixCls, className, style, placeholder, suffix, panelSearch = {} } = props
-
+  const searchLanMsg = locale.getCompLangMsg({ componentName: 'Search' })
   const {
     panelTypes,
     panelResult = [],
@@ -121,7 +119,7 @@ const InternalSearchPanel: React.ForwardRefRenderFunction<ISearchPanelProps> = (
     const rightContent = right || ''
     return `${leftContent}${rightContent}`
   }, [])
-
+  const getMoreInputValue = locale.getLangMsg('Search', 'viewMoreResult', { inputValue: inputValue })
   return (
     <>
       <div ref={searchPanelRef} className={searchPanelCls} style={style}>
@@ -148,7 +146,7 @@ const InternalSearchPanel: React.ForwardRefRenderFunction<ISearchPanelProps> = (
             </Tooltip>
           </div>
           <Input
-            placeholder={placeholder || getLangMsg('Search', 'placeholder')}
+            placeholder={placeholder || locale.getLangMsg('Search', 'placeholder')}
             borderType="none"
             allowClear
             suffix={suffix}
@@ -207,10 +205,10 @@ const InternalSearchPanel: React.ForwardRefRenderFunction<ISearchPanelProps> = (
               {typeof displayImg === 'string' ? <Image src={displayImg} preview={false} /> : displayImg}
             </div>
             <div className={`${prefixCls}-panel-dropDown-summary-title`}>
-              {result.id === 'search' ? `查看更多"${inputValue}"的搜索结果` : result.title}
+              {result.id === 'search' ? getMoreInputValue : result.title}
             </div>
             {result.id === 'search' ? (
-              <div className={`${prefixCls}-panel-dropDown-summary-list`}>{`范围: ${type.label}`}</div>
+              <div className={`${prefixCls}-panel-dropDown-summary-list`}>{`${searchLanMsg.range}: ${type.label}`}</div>
             ) : (
               Object.keys(displayList).map((item: keyof typeof result, index) => (
                 <div key={index} className={`${prefixCls}-panel-dropDown-summary-list`}>
