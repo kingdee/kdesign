@@ -54,7 +54,12 @@ export interface QRCodeProps extends QRProps {
 }
 
 const QRCode = (props: QRCodeProps): FunctionComponentElement<QRCodeProps> => {
-  const { getPrefixCls, prefixCls, compDefaultProps: userDefaultProps } = useContext(ConfigContext)
+  const {
+    getPrefixCls,
+    prefixCls,
+    compDefaultProps: userDefaultProps,
+    locale: { getCompLangMsg },
+  } = useContext(ConfigContext)
   const qrCodeProps = getCompProps('QRCode', userDefaultProps, props)
 
   const {
@@ -78,6 +83,7 @@ const QRCode = (props: QRCodeProps): FunctionComponentElement<QRCodeProps> => {
     [`${qrCodePrefixCls}-borderless`]: !bordered,
   })
 
+  const qrCodeLangMsg = getCompLangMsg({ componentName: 'QRCode' })
   const gap = 8
   const containerSize = size + gap * 2 + 2
 
@@ -114,10 +120,10 @@ const QRCode = (props: QRCodeProps): FunctionComponentElement<QRCodeProps> => {
           {status === 'loading' && <Spin />}
           {status === 'expired' && (
             <>
-              <p className={`${qrCodePrefixCls}-expired`}>二维码过期</p>
+              <p className={`${qrCodePrefixCls}-expired`}>{qrCodeLangMsg.qrCodeExpired}</p>
               {onRefresh && (
                 <Button icon={<Icon type="refresh" />} type="text" onClick={onRefresh} size="middle">
-                  点击刷新
+                  {qrCodeLangMsg.clickRefresh}
                 </Button>
               )}
             </>

@@ -83,6 +83,8 @@ const locale = {
   'Signature.okText': '确定',
   'Signature.cancelText': '取消',
   'Signature.handwrittenSignature': '手写签名',
+  'QRCode.qrCodeExpired': '二维码过期',
+  'QRCode.clickRefresh': '点击刷新',
 }
 
 export default locale
