@@ -3,7 +3,7 @@ category: Components
 type: 反馈
 order: 1
 title: Modal
-subtitle: 提示弹窗
+subtitle: 弹出框
 ---
 
 弹出框是一种无需离开页面，提供展示或操作的组件。

@@ -4,6 +4,7 @@ import { tuple } from '../_utils/type'
 import { getCompProps } from '../_utils'
 import { ConfigContext } from '../config-provider'
 import usePopper, { PopperProps } from '../_utils/usePopper'
+import { scrollToDirectory } from '../_utils/domUtil'
 import Input from '../input'
 import Icon from '../icon'
 import Empty from '../empty'
@@ -79,8 +80,34 @@ export interface CascaderProps extends PopperProps {
   displayRender?: (label: string[], currentOptions?: CascaderOptionType[]) => React.ReactNode
 }
 
+const CascaderMenuSubmenu = (props: any) => {
+  const { optionProps, label, children, selected, isMultiple } = props
+  const ref = useRef(null)
+  const isFirst = useRef<boolean>(!isMultiple)
+
+  useEffect(() => {
+    if (typeof selected === 'boolean' && isFirst.current && ref.current) {
+      isFirst.current = false
+      if (selected && !isMultiple) {
+        scrollToDirectory(ref)
+      }
+    }
+  }, [selected])
+
+  return (
+    <li ref={ref} {...optionProps} title={label as string}>
+      {children}
+    </li>
+  )
+}
+
 const Cascader = React.forwardRef<unknown, CascaderProps>((props, ref) => {
-  const { getPrefixCls, prefixCls: pkgPrefixCls, compDefaultProps: userDefaultProps } = React.useContext(ConfigContext)
+  const {
+    getPrefixCls,
+    prefixCls: pkgPrefixCls,
+    compDefaultProps: userDefaultProps,
+    locale,
+  } = React.useContext(ConfigContext)
 
   // 属性需要合并一遍用户定义的默认属性
   const allProps = getCompProps('Cascader', userDefaultProps, props)
@@ -96,7 +123,7 @@ const Cascader = React.forwardRef<unknown, CascaderProps>((props, ref) => {
     clearIcon,
     className,
     fieldNames,
-    placeholder,
+    placeholder = locale.getLangMsg('global', 'selectholder'),
     defaultValue,
     maxTagPlaceholder,
     displayRender,
@@ -124,10 +151,15 @@ const Cascader = React.forwardRef<unknown, CascaderProps>((props, ref) => {
   const suffixRef = useRef<HTMLSpanElement>(null)
   const wrapperRef = useRef<HTMLDivElement>()
 
-  const [visible, setVisible] = useState(!!props.popperVisible || !!props.popupVisible || defaultPopupVisible)
+  const [visible, setVisible] = useState(false)
   React.useEffect(() => {
     setVisible(!!props.popperVisible || !!props.popupVisible)
   }, [props.popperVisible, props.popupVisible])
+  React.useEffect(() => {
+    if (!!props.popperVisible || !!props.popupVisible || defaultPopupVisible) {
+      setVisible(true)
+    }
+  }, [])
 
   const [menus, setMenus] = useState<CascaderOptionType[][]>([options])
   const [currentOptions, setCurrentOptions] = useState<CascaderOptionType[]>([])
@@ -279,11 +311,11 @@ const Cascader = React.forwardRef<unknown, CascaderProps>((props, ref) => {
     })
     return (
       <>
-        {iconShow && (
+        {iconShow ? (
           <span onClick={handleClear} className={clearIconCls}>
             {<Icon type="close-solid" /> || clearIcon}
           </span>
-        )}
+        ) : null}
         <span className={arrowIconCls}>{suffixIcon || <Icon type="arrow-down" />}</span>
       </>
     )
@@ -323,15 +355,16 @@ const Cascader = React.forwardRef<unknown, CascaderProps>((props, ref) => {
       [`${prefixCls}-tag-describe`]: true,
     })
     const TagStyle = { margin: '2px 8px 2px 0', maxWidth: '100%' }
+    const totalText = locale.getLangMsg('Cascader', 'total', { total: currentOptions.length })
     return (
       <div className={multipleCls} ref={mergeRef as any} style={style} {...otherProps} tabIndex={-1}>
         <div className={`${prefixCls}-multiple-wrapper`} ref={wrapperRef as any}>
-          {Array.isArray(currentOptions) && (
+          {Array.isArray(currentOptions) ? (
             <>
               {currentOptions.map((option: CascaderOptionType[], index: number) => {
                 return (
                   <span key={JSON.stringify(values[index])} className={classNames(`${prefixCls}-selection-tag`)}>
-                    {(!maxTagCount || index <= maxTagCount - 1) && (
+                    {!maxTagCount || index <= maxTagCount - 1 ? (
                       <Tag
                         type="edit"
                         disabled={disabled}
@@ -341,7 +374,7 @@ const Cascader = React.forwardRef<unknown, CascaderProps>((props, ref) => {
                       >
                         {displayRender(labels[index], option)}
                       </Tag>
-                    )}
+                    ) : null}
                   </span>
                 )
               })}
@@ -350,13 +383,13 @@ const Cascader = React.forwardRef<unknown, CascaderProps>((props, ref) => {
                   handleMaxTagHolder()
                 ) : (
                   <span className={itemCls}>
-                    <span className={`${prefixCls}-tag-describe-content`}>共{currentOptions.length}项</span>
+                    <span className={`${prefixCls}-tag-describe-content`}>{totalText}</span>
                   </span>
                 )
               ) : null}
             </>
-          )}
-          <span className={`${prefixCls}-placeholder`}>{!currentOptions.length && placeholder}</span>
+          ) : null}
+          <span className={`${prefixCls}-placeholder`}>{!currentOptions.length ? placeholder : null}</span>
         </div>
         <span ref={suffixRef} className={`${prefixCls}-suffix`}>
           {renderSuffix()}
@@ -400,7 +433,9 @@ const Cascader = React.forwardRef<unknown, CascaderProps>((props, ref) => {
               <span className={`${prefixCls}-picker-label`}>
                 {labels?.length ? displayRender(labels, currentOptions) : ''}
               </span>
-              {allowClear && <Icon type="close-solid" className={`${prefixCls}-picker-close`} onClick={handleClear} />}
+              {allowClear ? (
+                <Icon type="close-solid" className={`${prefixCls}-picker-close`} onClick={handleClear} />
+              ) : null}
             </div>
           </>
         )}
@@ -464,76 +499,89 @@ const Cascader = React.forwardRef<unknown, CascaderProps>((props, ref) => {
     props.onChange && props.onChange(selectedValue as CascaderValueType, selectedOptions)
   }
 
-  const onVisibleChange = (visible: boolean) => {
-    setVisible(visible)
-    onPopupVisibleChange && onPopupVisibleChange(visible)
-    onPopperVisibleChange && onPopperVisibleChange(visible)
-    visible && setSelectedOptions(currentOptions.slice(0))
+  const onVisibleChange = (v: boolean) => {
+    setVisible(v)
+
+    onPopupVisibleChange && onPopupVisibleChange(v)
+    onPopperVisibleChange && onPopperVisibleChange(v)
+    v && setSelectedOptions(currentOptions.slice(0))
   }
 
   const cascaderMenus = (
     <>
       {options?.length ? (
-        menus?.length &&
-        menus.map((opts: Array<CascaderOptionType>, index: number) => (
-          <ul key={index} className={`${prefixCls}-menu`}>
-            {opts?.length &&
-              opts.map((opt: CascaderOptionType) => {
-                const {
-                  isLeaf,
-                  loading,
-                  [fieldNames.value]: value,
-                  [fieldNames.label]: label,
-                  [fieldNames.children]: children,
-                } = opt
-                const expendEvent =
-                  expandTrigger === 'click' || !(children && children.length) ? 'onClick' : 'onMouseEnter'
-                const selected = selectedOptions[index] && selectedOptions[index][fieldNames.value] === value
-                const optionProps: Record<string, unknown> = {
-                  role: 'menuitem',
-                  className: classNames(`${prefixCls}-menu-item`, {
-                    disabled: opt.disabled,
-                    last: !children?.length && isLeaf !== false,
-                    selected,
-                  }),
-                }
-                if (!opt.disabled) {
-                  optionProps[expendEvent] = isMultiple
-                    ? onMultipleExpend.bind(null, index, opt, children)
-                    : onExpend.bind(null, index, opt, children)
-                }
+        menus?.length ? (
+          menus.map((opts: Array<CascaderOptionType>, index: number) => (
+            <ul key={index} className={`${prefixCls}-menu`}>
+              {opts?.length
+                ? opts.map((opt: CascaderOptionType) => {
+                    const {
+                      isLeaf,
+                      loading,
+                      [fieldNames.value]: value,
+                      [fieldNames.label]: label,
+                      [fieldNames.children]: children,
+                    } = opt
+                    const expendEvent =
+                      expandTrigger === 'click' || !(children && children.length) ? 'onClick' : 'onMouseEnter'
+                    const selected = selectedOptions[index] && selectedOptions[index][fieldNames.value] === value
 
-                const node = (
-                  <>
-                    <span className={`${prefixCls}-menu-item-label`}>{label}</span>
-                    {loading ? (
-                      <Icon type="loadding-circle" spin />
-                    ) : (
-                      (children?.length || isLeaf === false) && (props.expandIcon || <Icon type="arrow-right" />)
-                    )}
-                  </>
-                )
-                return (
-                  <li key={value} {...optionProps} title={label as string}>
-                    {isMultiple ? (
+                    const optionProps: Record<string, unknown> = {
+                      role: 'menuitem',
+                      className: classNames(`${prefixCls}-menu-item`, {
+                        disabled: opt.disabled,
+                        last: !children?.length && isLeaf !== false,
+                        selected,
+                      }),
+                    }
+                    if (!opt.disabled) {
+                      optionProps[expendEvent] = isMultiple
+                        ? onMultipleExpend.bind(null, index, opt, children)
+                        : onExpend.bind(null, index, opt, children)
+                    }
+
+                    const node = (
                       <>
-                        <Checkbox
-                          checked={getChecked(checkedKeys, value)}
-                          indeterminate={getHalfChecked(halfCheckedKeys, value)}
-                          disabled={opt.disabled}
-                          onChange={(e) => onMultipleChecked(opt, e.target.checked)}
-                          className={`${prefixCls}-checkbox`}
-                        />
-                        {node}
+                        <span className={`${prefixCls}-menu-item-label`}>{label}</span>
+                        {loading ? (
+                          <Icon type="loadding-circle" spin />
+                        ) : children?.length || isLeaf === false ? (
+                          props.expandIcon || <Icon type="arrow-right" />
+                        ) : null}
                       </>
-                    ) : (
-                      node
-                    )}
-                  </li>
-                )
-              })}
-          </ul>
-        ))
+                    )
+
+                    return (
+                      <CascaderMenuSubmenu
+                        key={value}
+                        {...{
+                          isMultiple,
+                          optionProps,
+                          label,
+                          selected,
+                        }}
+                      >
+                        {isMultiple ? (
+                          <>
+                            <Checkbox
+                              checked={getChecked(checkedKeys, value)}
+                              indeterminate={getHalfChecked(halfCheckedKeys, value)}
+                              disabled={opt.disabled}
+                              onChange={(e) => onMultipleChecked(opt, e.target.checked)}
+                              className={`${prefixCls}-checkbox`}
+                            />
+                            {node}
+                          </>
+                        ) : (
+                          node
+                        )}
+                      </CascaderMenuSubmenu>
+                    )
+                  })
+                : null}
+            </ul>
+          ))
+        ) : null
       ) : (
         <Empty description={notFoundContent} />
       )}

@@ -2,7 +2,7 @@
 category: Components
 subtitle: 图片
 order: 6
-type: 数据展示
+type: 展示
 title: Image
 ---
 

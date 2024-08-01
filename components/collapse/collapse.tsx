@@ -87,7 +87,7 @@ const InternalCollapse = React.forwardRef<unknown, CollapseProps>((props, ref) =
   const renderPanel = () => {
     return React.Children.map(children, (item: any) => {
       if (item?.type?.displayName !== 'Panel') {
-        devwarning(true, 'Collapse', 'children必须为Collapse.Panel')
+        devwarning(true, 'Collapse', 'children must be Collapse.Panel')
         return item
       }
 

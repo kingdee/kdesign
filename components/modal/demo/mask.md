@@ -1,9 +1,9 @@
 ---
-title: 提示弹窗遮罩
+title: 弹出框遮罩
 order: 8
 ---
 
-提示弹窗可以配置有没有遮罩
+弹出框可以配置有没有遮罩
 
 ```jsx
 import React from 'react'
@@ -47,7 +47,7 @@ const Demo: React.FC = () => {
         {'点击显示遮罩弹窗, 点击遮罩可以关闭'}
       </Button>
       <Modal
-        body={'提示弹窗'}
+        body={'弹出框'}
         bodyStyle={bodyStyle}
         onCancel={() => {
           handleClick(false)

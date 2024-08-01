@@ -10,20 +10,16 @@ const InternalBaseData: React.ForwardRefRenderFunction<IAdvancedSelectorProps> =
   props: IAdvancedSelectorProps,
   ref: unknown,
 ): React.FunctionComponentElement<any> => {
-  const {
-    getPrefixCls,
-    prefixCls,
-    compDefaultProps: userDefaultProps,
-    locale: { getLangMsg },
-  } = useContext(ConfigContext)
+  const { getPrefixCls, prefixCls, compDefaultProps: userDefaultProps, locale } = useContext(ConfigContext)
   const advancedSelectortProps = getCompProps('BaseData', userDefaultProps, props)
+  const baseDataLangMsg = locale.getCompLangMsg({ componentName: 'BaseData' })
   const {
     prefixCls: customPrefixcls,
     className,
     mode,
     disabled,
     delimiter = '，',
-    placeholder = getLangMsg('global', 'selectholder'),
+    placeholder = locale.getLangMsg('global', 'selectholder'),
     showDetailIcon,
     showFrequent,
     showCollectIcon,
@@ -59,7 +55,7 @@ const InternalBaseData: React.ForwardRefRenderFunction<IAdvancedSelectorProps> =
 
   const innerRef = useRef<HTMLElement>()
   const advancedSelectorRef = (ref as any) || innerRef
-  const inputRef = useRef<HTMLInputElement>()
+  const inputRef = useRef<any>()
 
   const searchInfo = useRef<ISearchInfoProps>({
     previousInputValue: '',
@@ -83,14 +79,30 @@ const InternalBaseData: React.ForwardRefRenderFunction<IAdvancedSelectorProps> =
   }, [seletedOptions])
 
   // 记录每个选项的开始与结束下标
-  const setValIndxPosition = useCallback(() => {
-    const arr: IIndxPosListProps[] = []
-    inputValue.split(delimiter).reduce((pre, next) => {
-      arr.push({ start: pre, end: pre + next.length })
-      return pre + next.length + 1
-    }, 0)
-    return arr
-  }, [delimiter, inputValue])
+  const setValIndxPosition = useCallback(
+    (str = '') => {
+      const arr: IIndxPosListProps[] = []
+      ;(str || inputValue)
+        .split(delimiter)
+        .filter((item: string) => !!item)
+        .reduce((pre: number, next: string) => {
+          arr.push({ start: pre, end: pre + next.length })
+          return pre + next.length + 1
+        }, 0)
+      return arr
+    },
+    [delimiter, inputValue],
+  )
+
+  const initInputValue = (searchInfo.current.editOptions || [])
+    .filter((item) => !!item)
+    .reduce(
+      (pre: string, next: any, index, arr) =>
+        `${pre}${next[optionLabelProp]}${index !== arr.length - 1 ? delimiter : ''}`,
+      '',
+    )
+
+  const initIndexPos = setValIndxPosition(initInputValue)
 
   useEffect(() => {
     const list = setValIndxPosition()
@@ -116,13 +128,12 @@ const InternalBaseData: React.ForwardRefRenderFunction<IAdvancedSelectorProps> =
     const posList = setValIndxPosition()
     const preValueArr = getStrToArr(searchInfo.current.previousEditValue, delimiter)
     const valueArr = getStrToArr(inputValue, delimiter)
-    const selectionStart = inputRef.current?.selectionStart || 0
+    const selectionStart = inputRef.current?.input?.selectionStart || 0
     const index = findSelectionIndex(selectionStart, posList)
     searchInfo.current.searchIndex = index
     // 新增一个
     const list = [...(searchInfo.current.editOptions || [])]
     if (valueArr.length - preValueArr.length === 1) {
-      searchInfo.current.deleteEndIndx = index
       list.splice(index, 0, null)
     }
     if (valueArr.length < preValueArr.length) {
@@ -137,6 +148,15 @@ const InternalBaseData: React.ForwardRefRenderFunction<IAdvancedSelectorProps> =
       const { start, end } = findDeleteInterval(selectionStart, deleteEndIndx, indxPosList)
       list?.splice(start, end - start + 1)
     }
+    // 判断每次单个按del键时删除了分隔符后下一次触发
+    if (searchInfo.current.deleteEndIndx > 0 && selectionStart !== searchInfo.current.deleteEndIndx) {
+      const { start, end } = findDeleteInterval(selectionStart, searchInfo.current.deleteEndIndx, initIndexPos)
+      // 单个删除时找到合理的下标触发
+      if (start !== null && end !== null && start <= end) {
+        list?.splice(start, end - start + 1)
+        searchInfo.current.deleteEndIndx = 0
+      }
+    }
     searchInfo.current.editOptions = list
     searchInfo.current.previousEditValue = inputValue
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -148,8 +168,9 @@ const InternalBaseData: React.ForwardRefRenderFunction<IAdvancedSelectorProps> =
 
   // 当选中项文字超出输入框时，显示共多少项
   useLayoutEffect(() => {
-    if (!inputRef.current) return
-    if (inputRef.current.scrollWidth - inputRef.current.offsetWidth > 0) {
+    const inputDom = inputRef.current?.input
+    if (!inputDom) return
+    if (inputDom.scrollWidth - inputDom.offsetWidth > 0) {
       setShowTotal(true)
     } else {
       setShowTotal(false)
@@ -172,12 +193,25 @@ const InternalBaseData: React.ForwardRefRenderFunction<IAdvancedSelectorProps> =
     setValueBySeleted()
   }, [setValueBySeleted])
 
+  const findDeletedChar = (prev: string, current: string) => {
+    if (prev.length > current.length) {
+      for (let i = 0; i < prev.length; i++) {
+        if (prev[i] !== current[i]) {
+          return prev[i]
+        }
+      }
+      return prev[prev.length - 1]
+    }
+    return null
+  }
+
   const changeInputText = (e: React.ChangeEvent<HTMLInputElement>) => {
     setOptionShow(true)
     const textValue = e.target.value
     let val = textValue
-    if (isMultiple && inputRef.current && textValue && textValue.length > inputValue.length) {
-      const selectionStart = inputRef.current.selectionStart || 0 // selectionStart: 光标前面有几个字符
+    const inputDom = inputRef.current?.input
+    const selectionStart = inputDom.selectionStart || 0 // selectionStart: 光标前面有几个字符
+    if (isMultiple && inputDom && textValue && textValue.length > inputValue.length) {
       searchInfo.current.selectionStart = selectionStart
 
       const isInHead = selectionStart === 1 && textValue[1] !== delimiter && textValue.length !== 1 // 在首部添加
@@ -186,10 +220,14 @@ const InternalBaseData: React.ForwardRefRenderFunction<IAdvancedSelectorProps> =
         textValue[selectionStart - 2] === delimiter &&
         textValue[selectionStart] !== delimiter
       if (isInHead || isInMid) {
-        inputRef.current.value = val =
+        inputDom.value = val =
           textValue.substring(0, selectionStart) + delimiter + textValue.substring(selectionStart, textValue.length)
-        setCursorPosition(inputRef.current, selectionStart)
+        setCursorPosition(inputDom, selectionStart)
       }
+    }
+    // 单个删除时 当删除的字符为分隔符delimiter 记录位置
+    if (findDeletedChar(searchInfo.current.previousEditValue || '', textValue) === delimiter) {
+      searchInfo.current.deleteEndIndx = selectionStart
     }
     setInputValue(val)
     handleChange(val)
@@ -211,7 +249,7 @@ const InternalBaseData: React.ForwardRefRenderFunction<IAdvancedSelectorProps> =
         return queryStr
       }
 
-      const selectionStart = inputRef.current.selectionStart || 0
+      const selectionStart = inputRef.current?.input?.selectionStart || 0
       const startIndex = queryStr.slice(0, selectionStart).lastIndexOf(delimiter) + 1 // 光标前面最近分隔符index
       let endIndex = queryStr.slice(selectionStart).indexOf(delimiter)
       endIndex = endIndex === -1 ? queryStr.length : selectionStart + endIndex // 光标后面最近分隔符index
@@ -248,11 +286,12 @@ const InternalBaseData: React.ForwardRefRenderFunction<IAdvancedSelectorProps> =
 
   const showInputTotal = () => {
     if (disabled) return
-    if (inputRef.current) {
-      const scrollToWidth = inputRef.current.scrollWidth - inputRef.current.offsetWidth
-      inputRef.current.scrollLeft = scrollToWidth
+    const inputDom = inputRef.current?.input
+    if (inputDom) {
+      const scrollToWidth = inputDom.scrollWidth - inputDom.offsetWidth
+      inputDom.scrollLeft = scrollToWidth
       setTimeout(() => {
-        setCursorPosition(inputRef.current, inputValue.length + 1)
+        setCursorPosition(inputDom, inputValue.length + 1)
       }, 0)
     }
   }
@@ -285,11 +324,9 @@ const InternalBaseData: React.ForwardRefRenderFunction<IAdvancedSelectorProps> =
 
   // 双击选中当前项
   const handleDoubleClick = () => {
-    const { start, end } = findDbClickSelectedPos(
-      inputRef.current?.selectionStart || 0,
-      inputRef.current?.selectionEnd || 0,
-    )
-    handleSeletedText(inputRef.current, start, end)
+    const inputDom = inputRef.current?.input
+    const { start, end } = findDbClickSelectedPos(inputDom?.selectionStart || 0, inputDom?.selectionEnd || 0)
+    handleSeletedText(inputDom, start, end)
   }
 
   const findDbClickSelectedPos = (selectionStart: number, selectionEnd: number) => {
@@ -394,6 +431,7 @@ const InternalBaseData: React.ForwardRefRenderFunction<IAdvancedSelectorProps> =
   const isShowDetailBtn = showDetailIcon && !isMultiple && !isFocused
 
   const renderAdvancedSelector = () => {
+    const totalText = locale.getLangMsg('BaseData', 'total', { total: seletedOptions.length })
     return (
       <div className={advancedSelectorCls} ref={advancedSelectorRef} style={style}>
         <Input
@@ -409,7 +447,7 @@ const InternalBaseData: React.ForwardRefRenderFunction<IAdvancedSelectorProps> =
         />
         {showTotal && !isFocused && isMultiple && (
           <span className={`${advancedSelectorfixCls}-total`} onClick={showInputTotal}>
-            {`共${seletedOptions.length}项`}
+            {totalText}
           </span>
         )}
         {isShowDetailBtn && !disabled && (
@@ -616,10 +654,10 @@ const InternalBaseData: React.ForwardRefRenderFunction<IAdvancedSelectorProps> =
     }
     return (
       <Tabs defaultActiveKey="history">
-        <Tabs.TabPane key="history" tab="历史记录">
+        <Tabs.TabPane key="history" tab={baseDataLangMsg.history}>
           {renderDropdownContent(historyList, columns)}
         </Tabs.TabPane>
-        <Tabs.TabPane key="collect" tab="我的收藏">
+        <Tabs.TabPane key="collect" tab={baseDataLangMsg.favorites}>
           {renderDropdownContent(collectList, columns)}
         </Tabs.TabPane>
       </Tabs>

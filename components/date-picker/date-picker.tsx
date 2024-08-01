@@ -1,7 +1,7 @@
 import React, { FunctionComponentElement, useContext, useEffect, useState } from 'react'
 import classnames from 'classnames'
 
-import { DateType, InnerLocale, PickerMode, TimeUnit } from './interface'
+import { DateType, InnerLocale, MonthTitleType, PickerMode, TimeUnit, WeekTitleType } from './interface'
 import ConfigContext from '../config-provider/ConfigContext'
 import { useMergedState, useOnClickOutside } from '../_utils/hooks'
 import { getCompProps } from '../_utils'
@@ -22,7 +22,6 @@ import {
   newDate,
   parseDate,
   setTime,
-  isDate,
 } from './utils/date-fns'
 import useTextValueMapping from './hooks/use-text-value-mapping'
 import { BorderType, InputSiteType } from '../input/input'
@@ -109,6 +108,34 @@ interface MergedPickerProps extends OmitType {
 
 export type IInnerPicker = undefined | 'year' | 'month'
 
+const MONTH_DEFAULT_SUFFIX = '月'
+
+export type DisabledDataProps = (
+  date: DateType,
+  info?: {
+    panelType?: 'month' | 'quarter' | 'year'
+    range?: 'start' | 'end'
+  },
+) => boolean
+
+export const mergeDateLocale = (globalLocale: InnerLocale, locale = {}) => {
+  const mergeLocale: InnerLocale = Object.assign({}, globalLocale, locale)
+  mergeLocale.weekTitle = Array.from(
+    { length: 7 },
+    (_, index) => mergeLocale.weekTitle[index] || globalLocale.weekTitle[index],
+  ) as WeekTitleType
+  mergeLocale.monthTitle = Array.from(
+    { length: 12 },
+    (_, index) => mergeLocale.monthTitle[index] || globalLocale.monthTitle[index],
+  ) as MonthTitleType
+  if (mergeLocale?.month && mergeLocale.month !== MONTH_DEFAULT_SUFFIX) {
+    mergeLocale.monthTitle = mergeLocale.monthTitle.map((d) =>
+      d.toString().replace(MONTH_DEFAULT_SUFFIX, mergeLocale.month),
+    ) as MonthTitleType
+  }
+  return mergeLocale
+}
+
 const InternalDatePicker = (
   props: Partial<PickerProps>,
   ref: unknown,
@@ -194,8 +221,7 @@ const InternalDatePicker = (
 
   const needConfirmButton: boolean = (picker === 'date' && !!showTime) || picker === 'time'
 
-  const datePickerLang: InnerLocale = Object.assign(
-    {},
+  const datePickerLang: InnerLocale = mergeDateLocale(
     globalLocale.getCompLangMsg({ componentName: 'DatePicker' }),
     locale || {},
   )
@@ -205,7 +231,10 @@ const InternalDatePicker = (
     defaultValue,
   })
 
-  const [selectedValue, setSelectedValue] = React.useState<DateType | null>(dateValue)
+  const [selectedValue, setSelectedValue] = useMergedState(null, {
+    value: dateValue,
+    postState: (v) => (v && !isValid(v) ? null : v),
+  })
 
   let hours: TimeUnit[]
   let minutes: TimeUnit[]
@@ -236,7 +265,7 @@ const InternalDatePicker = (
   const [viewDate, setInnerViewDate] = useState<DateType>(defaultPickerValue || dateValue || new Date())
 
   const setViewDate = (date: any) => {
-    setInnerViewDate(isDate(date) ? date : new Date())
+    setInnerViewDate(isValid(date) ? date : new Date())
   }
 
   useEffect(() => {
@@ -323,10 +352,6 @@ const InternalDatePicker = (
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [picker])
-
-  useEffect(() => {
-    setSelectedValue(dateValue)
-  }, [dateValue])
 
   useOnClickOutside([popperRef, inputDivRef], () => {
     setViewDate(selectedValue || newDate()!)

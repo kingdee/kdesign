@@ -23,6 +23,7 @@ import { addMonths, addYears, getMonth, getYear, getYearsPeriod, DEFAULT_YEAR_IT
 import { getClosingViewDate, getTimeProps } from './utils'
 import isBoolean from 'lodash/isBoolean'
 import DateTime from './panel/date-time/date-time'
+import { DisabledDataProps } from './date-picker'
 
 export interface PickerPanelSharedProps {
   prefixCls?: string
@@ -51,7 +52,7 @@ export interface PickerPanelSharedProps {
   showWeeksTitle?: boolean
 
   // Date
-  disabledDate?: (date: DateType) => boolean
+  disabledDate?: DisabledDataProps
 
   // Render
   dateRender?: DateRender
@@ -224,7 +225,7 @@ function Panel(props: MergedPickerPanelProps) {
 
   const renderDateHeader = () => {
     const year = getYear(viewDate)
-    const month = getMonth(viewDate) + 1
+    const month = getMonth(viewDate)
     const headerCls = classnames(`${prefixCls}-header`, `${prefixCls}-header-date`)
     return {
       children: (
@@ -243,7 +244,7 @@ function Panel(props: MergedPickerPanelProps) {
             })}
             onClick={onHeaderMonthClick}
           >
-            {month + locale.month}
+            {locale.monthTitle[month]}
           </span>
         </>
       ),

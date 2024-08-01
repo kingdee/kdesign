@@ -42,7 +42,7 @@ const InternalTreeSelect: React.ForwardRefRenderFunction<ITreeSelectProps<TreeSe
   props: any,
   ref: unknown,
 ) => {
-  const { getPrefixCls, prefixCls, compDefaultProps: userDefaultProps } = useContext(ConfigContext)
+  const { getPrefixCls, prefixCls, compDefaultProps: userDefaultProps, locale } = useContext(ConfigContext)
   const treeSelectProps = getCompProps('TreeSelect', userDefaultProps, props)
   const {
     size,
@@ -65,7 +65,7 @@ const InternalTreeSelect: React.ForwardRefRenderFunction<ITreeSelectProps<TreeSe
     onChange,
     onSearch,
     defaultValue,
-    placeholder,
+    placeholder = locale.getLangMsg('global', 'placeholder'),
     dropdownStyle,
     style,
     clearIcon,
@@ -207,7 +207,7 @@ const InternalTreeSelect: React.ForwardRefRenderFunction<ITreeSelectProps<TreeSe
   const handleSearchChange = useCallback(
     (event: React.ChangeEvent<HTMLInputElement>) => {
       const val = event.currentTarget.value
-      setOptionShow(true)
+      handleVisibleChange(true)
       setSearchValue(val)
       onSearch?.(val)
     },
@@ -232,7 +232,7 @@ const InternalTreeSelect: React.ForwardRefRenderFunction<ITreeSelectProps<TreeSe
     }
     onClear?.('')
     setSearchValue('')
-    onChange?.(undefined, undefined)
+    isMultiple ? onChange?.('', '') : onChange?.(undefined, undefined)
   }
 
   // 多选模式下清除某一项
@@ -254,7 +254,7 @@ const InternalTreeSelect: React.ForwardRefRenderFunction<ITreeSelectProps<TreeSe
     onSelect?.(keys, state)
     !isMultiple && onChange?.(keys[0], [TreeMap.get(keys[0])])
     if (!isMultiple) {
-      setOptionShow(false)
+      handleVisibleChange(false)
     }
   }
 
@@ -347,7 +347,7 @@ const InternalTreeSelect: React.ForwardRefRenderFunction<ITreeSelectProps<TreeSe
       [`${selectPrefixCls}-dropdown-empty`]: true,
     })
     const { notFoundContent } = treeSelectProps
-    const emptyContent = notFoundContent || '暂无数据'
+    const emptyContent = notFoundContent || locale.getLangMsg('global', 'emptyText')
     return <div className={emptyListCls}>{emptyContent}</div>
   }
 
@@ -360,6 +360,10 @@ const InternalTreeSelect: React.ForwardRefRenderFunction<ITreeSelectProps<TreeSe
   useEffect(() => {
     setSelectedKeys(initValue)
   }, [initValue])
+
+  useEffect(() => {
+    setOptionShow(props.visible)
+  }, [props.visible])
 
   // 渲染下拉列表框
   const renderContent = () => {
@@ -400,7 +404,7 @@ const InternalTreeSelect: React.ForwardRefRenderFunction<ITreeSelectProps<TreeSe
     }
     return (
       <>
-        <div className={singleCls} ref={selectionRef} title={label}>
+        <div className={singleCls} ref={selectionRef} title={typeof label === 'string' ? label : ''}>
           <span className={`${selectPrefixCls}-selection-search`}>
             <input
               ref={searchRef}
@@ -434,6 +438,7 @@ const InternalTreeSelect: React.ForwardRefRenderFunction<ITreeSelectProps<TreeSe
       [`${selectPrefixCls}-selection-item-${size}`]: size,
     })
     const TagStyle = { margin: '2px 8px 2px 0', maxWidth: '100%' }
+    const totalText = locale.getLangMsg('TreeSelect', 'total', { total: selectTreeNodes.length })
     return (
       <div className={multipleCls} ref={selectionRef}>
         {Array.isArray(selectTreeNodes) && (
@@ -459,7 +464,7 @@ const InternalTreeSelect: React.ForwardRefRenderFunction<ITreeSelectProps<TreeSe
                         disabled={disabled}
                         onClose={(e) => handleRemove(e, key)}
                         data-tag={key}
-                        title={label}
+                        title={typeof label === 'string' ? label : ''}
                       >
                         {label}
                       </Tag>
@@ -473,7 +478,7 @@ const InternalTreeSelect: React.ForwardRefRenderFunction<ITreeSelectProps<TreeSe
                 handleMaxTagHolder()
               ) : (
                 <span className={itemCls}>
-                  <span className={`${selectPrefixCls}-selection-item-content`}>共{selectTreeNodes.length}项</span>
+                  <span className={`${selectPrefixCls}-selection-item-content`}>{totalText}</span>
                 </span>
               )
             ) : null}
@@ -538,9 +543,9 @@ const InternalTreeSelect: React.ForwardRefRenderFunction<ITreeSelectProps<TreeSe
   }
 
   const popperProps = {
+    placement: 'bottomLeft',
     ...treeSelectProps,
     prefixCls: `${selectPrefixCls}-panel`,
-    placement: 'bottomLeft',
     popperStyle: catchStyle(),
     defaultVisible: optionShow,
     visible: optionShow,

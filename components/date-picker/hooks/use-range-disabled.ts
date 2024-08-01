@@ -2,6 +2,7 @@ import * as React from 'react'
 import { RangeValue, PickerMode, DateType } from '../interface'
 import { getValue } from '../utils'
 import { getWeek, getQuarter, getMonth, getYear, isSameDay, isAfter } from '../utils/date-fns'
+import { DisabledDataProps } from '../date-picker'
 
 export default function useRangeDisabled(
   {
@@ -12,7 +13,7 @@ export default function useRangeDisabled(
   }: {
     picker: PickerMode
     selectedValue: RangeValue
-    disabledDate?: (date: DateType) => boolean
+    disabledDate?: DisabledDataProps
     disabled: [boolean, boolean]
   },
   disabledStart: boolean,
@@ -40,8 +41,8 @@ export default function useRangeDisabled(
   }
 
   const disabledStartDate = React.useCallback(
-    (date: DateType) => {
-      if (disabledDate && disabledDate(date)) {
+    (date: DateType, info = undefined) => {
+      if (disabledDate && disabledDate(date, info)) {
         return true
       }
 
@@ -69,8 +70,8 @@ export default function useRangeDisabled(
   )
 
   const disabledEndDate = React.useCallback(
-    (date: DateType) => {
-      if (disabledDate && disabledDate(date)) {
+    (date: DateType, info = undefined) => {
+      if (disabledDate && disabledDate(date, info)) {
         return true
       }
 

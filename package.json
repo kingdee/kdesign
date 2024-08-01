@@ -1,6 +1,6 @@
 {
   "name": "@kdcloudjs/kdesign",
-  "version": "1.7.48-usePopper.2",
+  "version": "1.7.71",
   "description": "KDesign 金蝶前端react 组件库",
   "title": "kdesign",
   "keywords": [
@@ -16,11 +16,11 @@
   ],
   "homepage": "https://react.kingdee.design/",
   "bugs": {
-    "url": "https://github.com/kdcloudone/kdesign/issues"
+    "url": "https://github.com/kingdee/kdesign/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:kdcloudone/kdesign.git"
+    "url": "git@github.com:kingdee/kdesign.git"
   },
   "contributors": [
     "kdesign"
@@ -78,7 +78,7 @@
     "@babel/runtime": "^7.10.4",
     "@babel/runtime-corejs3": "^7.11.2",
     "@babel/standalone": "^7.14.3",
-    "@kdcloudjs/kdesign-icons": "^1.0.0",
+    "@kdcloudjs/kdesign-icons": "^1.0.5",
     "@kdcloudjs/table": "1.2.0-canary.16",
     "@popperjs/core": "^2.11.8",
     "@types/js-cookie": "^3.0.3",
@@ -91,6 +91,7 @@
     "cropperjs": "^1.5.12",
     "css-vars-ponyfill": "^2.4.8",
     "date-fns": "2.28.0",
+    "dom-scroll-into-view": "^2.0.1",
     "js-cookie": "^3.0.1",
     "lodash": "^4.17.20",
     "qrcode.react-ie": "^3.1.3",

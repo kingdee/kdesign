@@ -18,6 +18,8 @@ declare module '@kdcloudjs/kdesign-icons'
 
 declare module 'lz-string'
 
+declare module 'dom-scroll-into-view'
+
 declare interface Window {
   IFRAME_CODES: any
 }

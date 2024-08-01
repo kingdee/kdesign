@@ -23,7 +23,7 @@ subtitle: 日期选择器
 | clearIcon         | 自定义的清除图标                 | `ReactNode`                      |                     |  | 1.0.0  |
 | defaultOpen       | 默认弹层展开                   | `boolean`                        | false               |  | 1.0.0  |
 | disabled          | 禁用                       | `boolean`                        | false               |  | 1.0.0  |
-| disabledDate      | 不可选择的日期                  | `(currentDate: Date) => boolean` |                     |  | 1.0.0  |
+| disabledDate      | 不可选择的日期                  | `(date: DateType, info?: { panelType?: 'month' | 'quarter' | 'year' ;range?: 'start' | 'end' }) => boolean` |                     |  | 1.7.68  |
 | dropdownClassName | 日历面板 className           | `string`                         |                     |  | 1.0.0  |
 | format            | 展示的日期格式                  | `string`                         |                     |  | 1.0.0  |
 | inputReadOnly     | 输入框只读                    | `boolean`                        | false               |  | 1.0.0  |

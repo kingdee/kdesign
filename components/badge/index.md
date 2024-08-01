@@ -1,6 +1,6 @@
 ---
 category: Components
-type: 数据展示
+type: 展示
 title: Badge
 subtitle: 徽标数
 order: 1

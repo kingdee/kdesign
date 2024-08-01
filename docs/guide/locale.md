@@ -21,7 +21,7 @@ return (
 
 ## 增加语言包
 
-如果你找不到你需要的语言包，欢迎你在以下中文语言包的基础上创建一个新的语言包，并给我们发一个 Pull Request
+如果你找不到你需要的语言包，欢迎你在以下中文语言包的基础上创建一个新的语言包，并给我们发一个 Pull Request。最新语言包替换文件请看这里 [zh-CN.tsx](https://github.com/kingdee/kdesign/blob/main/components/locale/zh-CN.tsx)
 
 ```js
 const locale = {

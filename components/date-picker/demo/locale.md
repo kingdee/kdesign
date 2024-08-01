@@ -10,7 +10,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { RangePicker } from '@kdcloudjs/kdesign'
 
-const Demo: React.FC = () => {
+const Demo = () => {
   //内置基础配置
   const baseLocale = {
     placeholder: '请选择日期',
@@ -25,6 +25,7 @@ const Demo: React.FC = () => {
     month: '月',
     year: '年',
     weekTitle: ['日', '一', '二', '三', '四', '五', '六'],
+    monthTitle: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月'],
     rangePlaceholder: ['开始日期', '结束日期'],
     rangeYearPlaceholder: ['开始年份', '结束年份'],
     rangeMonthPlaceholder: ['开始月份', '结束月份'],
@@ -37,6 +38,18 @@ const Demo: React.FC = () => {
     <div>
       <div className="demo-range-picker">
         <RangePicker locale={baseLocale} />
+      </div>
+      <div className="demo-range-picker">
+        <div className="demo-range-picker">
+          <RangePicker
+            locale={{
+              monthTitle: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+              weekTitle: ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'],
+              year: ''
+            }}
+            placeholder={['Begin Date','End Date']}
+          />
+        </div>
       </div>
       <div className="demo-range-picker">
         <div className="demo-range-picker">

@@ -1,0 +1,95 @@
+@import '../../style/themes/index';
+@import './mixin.less';
+@signature-prefix-cls: ~'@{kd-prefix}-signature';
+@signature-board-prefix-cls: ~'@{kd-prefix}-signature-drawing-board';
+
+.@{signature-prefix-cls} {
+  box-sizing: border-box;
+  border: 1px dashed #e5e5e5;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: @signature-bg-color;
+  color: @signature-color-text;
+  font-size: @signature-font-size;
+  cursor: pointer;
+  border-radius: @signature-border-radius;
+  transition: border-color @signature-transition-duration, background-color @signature-transition-duration;
+  &:hover {
+    border-color: @signature-border-color-hover;
+    background-color: @signature-bg-color-hover;
+  }
+}
+.@{signature-prefix-cls}.@{signature-prefix-cls}-disabled {
+  cursor: not-allowed;
+  border: 1px solid @color-border-disabled;
+  background: @signature-bg-color;
+  color: @signature-color-text;
+}
+
+.@{signature-board-prefix-cls} {
+  width: 100%;
+  height: 100%;
+  border: 1px solid #e5e5e5;
+  box-sizing: border-box;
+  background: @signature-drawing-board-bg-color;
+  position: relative;
+  &-operation {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    top: 9px;
+    right: 9px;
+    color: #b2b2b2;
+    z-index: 9999;
+    & > * {
+      cursor: pointer;
+    }
+    & > *:not(:last-child) {
+      margin-right: 13px;
+    }
+    span:nth-of-type(2) {
+      transform: scaleX(-1) !important;
+    }
+  }
+  &-operation.enabled {
+    color: #666666;
+  }
+  &-tip {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: @signature-board-tip-color;
+    font-size: 12px;
+    user-select: none;
+  }
+}
+.@{signature-prefix-cls}-modal {
+  .kd-modal-header {
+    position: relative;
+  }
+  &-footer {
+    .kd-btn:not(:last-child) {
+      margin-right: 12px;
+    }
+  }
+  .kd-modal-expand-icon {
+    position: absolute;
+    right: 43.5px;
+    font-size: 14px;
+    cursor: pointer;
+  }
+}
+.@{signature-prefix-cls}-modal.@{signature-prefix-cls}-modal-fullscreen {
+  .kd-modal-container-box {
+    width: 90vw !important;
+    height: 90vh !important;
+    top: 5vh;
+    left: 5vw;
+    transform: none !important;
+  }
+}

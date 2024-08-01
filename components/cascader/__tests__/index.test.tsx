@@ -85,6 +85,405 @@ const options = [
   },
 ]
 
+const optionsMoreDate = [
+  {
+    value: 'guangdong',
+    label: 'Guangdong',
+    children: [
+      {
+        value: 'guangzhou',
+        label: 'Guangzhou',
+        children: [
+          {
+            value: 'tianhe',
+            label: 'Tian He',
+          },
+          {
+            value: 'yuexiu',
+            label: 'Yue Xiu',
+          },
+        ],
+      },
+      {
+        value: 'shenzhen',
+        label: 'Shenzhen',
+        children: [
+          {
+            value: 'futian',
+            label: 'Fu Tian',
+          },
+          {
+            value: 'nanshan',
+            label: 'Nan Shan',
+          },
+        ],
+      },
+    ],
+  },
+  {
+    value: 'jiangxi',
+    label: 'Jiangxi',
+    children: [
+      {
+        value: 'nanchang',
+        label: 'Nanchang',
+        children: [
+          {
+            value: 'donghu',
+            label: 'Dong Hu',
+          },
+          {
+            value: 'qingshanhu',
+            label: 'Qing Shan Hu',
+          },
+        ],
+      },
+      {
+        value: 'ganzhou',
+        label: 'Ganzhou',
+        children: [
+          {
+            value: 'zhanggong',
+            label: 'Zhang Gong',
+          },
+          {
+            value: 'ningdu',
+            label: 'Ning Du',
+          },
+        ],
+      },
+    ],
+  },
+  {
+    value: 'guangdong1',
+    label: 'Guangdong1',
+    children: [
+      {
+        value: 'guangzhou1',
+        label: 'Guangzhou1',
+        children: [
+          {
+            value: 'tianhe1',
+            label: 'Tian He1',
+          },
+        ],
+      },
+      {
+        value: 'shenzhen1',
+        label: 'Shenzhen1',
+        children: [
+          {
+            value: 'futian1',
+            label: 'Fu Tian1',
+          },
+          {
+            value: 'nanshan1',
+            label: 'Nan Shan1',
+          },
+        ],
+      },
+    ],
+  },
+  {
+    value: 'guangdong2',
+    label: 'Guangdong2',
+    children: [
+      {
+        value: 'guangzhou2',
+        label: 'Guangzhou2',
+        children: [
+          {
+            value: 'tianhe2',
+            label: 'Tian He2',
+          },
+        ],
+      },
+      {
+        value: 'shenzhen2',
+        label: 'Shenzhen2',
+        children: [
+          {
+            value: 'futian2',
+            label: 'Fu Tian2',
+          },
+          {
+            value: 'nanshan2',
+            label: 'Nan Shan2',
+          },
+        ],
+      },
+    ],
+  },
+  {
+    value: 'guangdong3',
+    label: 'Guangdong3',
+    children: [
+      {
+        value: 'guangzhou3',
+        label: 'Guangzhou3',
+        children: [
+          {
+            value: 'tianhe3',
+            label: 'Tian He3',
+          },
+        ],
+      },
+      {
+        value: 'shenzhen3',
+        label: 'Shenzhen3',
+        children: [
+          {
+            value: 'futian3',
+            label: 'Fu Tian3',
+          },
+          {
+            value: 'nanshan3',
+            label: 'Nan Shan3',
+          },
+        ],
+      },
+    ],
+  },
+  {
+    value: 'guangdong4',
+    label: 'Guangdong4',
+    children: [
+      {
+        value: 'guangzhou4',
+        label: 'Guangzhou4',
+        children: [
+          {
+            value: 'tianhe4',
+            label: 'Tian He4',
+          },
+        ],
+      },
+      {
+        value: 'shenzhen4',
+        label: 'Shenzhen4',
+        children: [
+          {
+            value: 'futian4',
+            label: 'Fu Tian4',
+          },
+          {
+            value: 'nanshan4',
+            label: 'Nan Shan4',
+          },
+        ],
+      },
+    ],
+  },
+  {
+    value: 'guangdong5',
+    label: 'Guangdong5',
+    children: [
+      {
+        value: 'guangzhou5',
+        label: 'Guangzhou5',
+        children: [
+          {
+            value: 'tianhe5',
+            label: 'Tian He5',
+          },
+        ],
+      },
+      {
+        value: 'shenzhen5',
+        label: 'Shenzhen5',
+        children: [
+          {
+            value: 'futian5',
+            label: 'Fu Tian5',
+          },
+          {
+            value: 'nanshan5',
+            label: 'Nan Shan5',
+          },
+        ],
+      },
+    ],
+  },
+  {
+    value: 'guangdong6',
+    label: 'Guangdong6',
+    children: [
+      {
+        value: 'guangzhou6',
+        label: 'Guangzhou6',
+        children: [
+          {
+            value: 'tianhe6',
+            label: 'Tian He6',
+          },
+        ],
+      },
+      {
+        value: 'guang1zhou6',
+        label: 'Guang1zhou6',
+        children: [
+          {
+            value: 'ti1anhe6',
+            label: 'Ti1an He6',
+          },
+        ],
+      },
+      {
+        value: 'guang2zhou6',
+        label: 'Guang2zhou6',
+        children: [
+          {
+            value: 'ti2anhe6',
+            label: 'Ti2an He6',
+          },
+        ],
+      },
+      {
+        value: 'guang3zhou6',
+        label: 'Guang3zhou6',
+        children: [
+          {
+            value: 'ti3anhe6',
+            label: 'Ti3an He6',
+          },
+        ],
+      },
+      {
+        value: 'guang4zhou6',
+        label: 'Guang4zhou6',
+        children: [
+          {
+            value: 'ti4anhe6',
+            label: 'Ti4an He6',
+          },
+        ],
+      },
+      {
+        value: 'guang5zhou6',
+        label: 'Guang5zhou6',
+        children: [
+          {
+            value: 'ti5anhe6',
+            label: 'Ti5an He6',
+          },
+        ],
+      },
+      {
+        value: 'guang6zhou6',
+        label: 'Guang6zhou6',
+        children: [
+          {
+            value: 'ti6anhe6',
+            label: 'Ti6an He6',
+          },
+        ],
+      },
+      {
+        value: 'shenzhen6',
+        label: 'Shenzhen6',
+        children: [
+          {
+            value: 'futian6',
+            label: 'Fu Tian6',
+          },
+          {
+            value: 'fut2ian6',
+            label: 'Fu2 Tian6',
+          },
+          {
+            value: 'fu1tian6',
+            label: 'Fu1 Tian6',
+          },
+          {
+            value: 'fut3ian6',
+            label: 'Fu 3Tian6',
+          },
+          {
+            value: 'fut4ian6',
+            label: 'Fu T4an6',
+          },
+          {
+            value: 'futi5an6',
+            label: 'Fu T5ian6',
+          },
+          {
+            value: 'fut6ian6',
+            label: 'Fu6 Tian6',
+          },
+          {
+            value: 'fut7ian6',
+            label: 'Fu7 Tian6',
+          },
+          {
+            value: 'nanshan6',
+            label: 'Nan Shan6',
+          },
+        ],
+      },
+    ],
+  },
+  {
+    value: 'guangdong7',
+    label: 'Guangdong7',
+    children: [
+      {
+        value: 'guangzhou7',
+        label: 'Guangzhou7',
+        children: [
+          {
+            value: 'tianhe7',
+            label: 'Tian He7',
+          },
+        ],
+      },
+      {
+        value: 'shenzhen7',
+        label: 'Shenzhen7',
+        children: [
+          {
+            value: 'futian7',
+            label: 'Fu Tian7',
+          },
+          {
+            value: 'nanshan7',
+            label: 'Nan Shan7',
+          },
+        ],
+      },
+    ],
+  },
+  {
+    value: 'guangdong8',
+    label: 'Guangdong8',
+    children: [
+      {
+        value: 'guangzhou8',
+        label: 'Guangzhou8',
+        children: [
+          {
+            value: 'tianhe8',
+            label: 'Tian He8',
+          },
+        ],
+      },
+      {
+        value: 'shenzhen8',
+        label: 'Shenzhen8',
+        children: [
+          {
+            value: 'futian8',
+            label: 'Fu Tian8',
+          },
+          {
+            value: 'nanshan8',
+            label: 'Nan Shan8',
+          },
+        ],
+      },
+    ],
+  },
+]
+
 const wrapperRef = React.createRef() as any
 
 describe('Cascader', () => {
@@ -481,6 +880,29 @@ describe('Cascader', () => {
       wrapper.find('.kd-cascader-picker').simulate('mouseup')
       await sleep(100)
       expect(ref.current.querySelectorAll('.kd-cascader-menus').length).toEqual(0)
+    })
+
+    it('can visible when more data', async () => {
+      const wrapper = mount(
+        <Cascader
+          options={optionsMoreDate}
+          defaultValue={['guangdong6', 'shenzhen6', 'futian6']}
+          defaultPopupVisible
+        />,
+      )
+      const isVisible = (elem: any) => {
+        const rect = elem.getBoundingClientRect()
+        return (
+          rect.top >= 0 &&
+          rect.left >= 0 &&
+          rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+          rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+        )
+      }
+
+      const item = wrapper.find('.kd-cascader-menu-item-label').at(7)
+      expect(item.text()).toEqual('Guangdong6')
+      expect(isVisible(item.getDOMNode())).toBe(true)
     })
   })
 })

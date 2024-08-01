@@ -1,6 +1,6 @@
 ---
 category: Components
-type: 数据展示
+type: 表单
 order: 1
 title: ImageCropper
 subtitle: 图片裁剪

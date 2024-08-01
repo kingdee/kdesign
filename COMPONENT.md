@@ -2,7 +2,7 @@
 感谢你的宝贵时间，我们很高兴您有兴趣为 KDesign 做出贡献。此篇文档旨在帮助 开发者 在新组件开发上提供帮助
 
 ## 克隆仓库
-1. 通过 [https://github.com/kdcloudone/kdesign](https://github.com/kdcloudone/kdesign) 访问我们的仓库，然后 Fork 此仓库到你的 Repositories。
+1. 通过 [https://github.com/kingdee/kdesign](https://github.com/kingdee/kdesign) 访问我们的仓库，然后 Fork 此仓库到你的 Repositories。
 2. 进入你的 Repositories 里面，找到 Fork 的 KDesign 项目，使用 `git clone` 指令克隆项目到你本地。
 
 ## 新组件开发
@@ -176,7 +176,7 @@ KDesign 组件库采用的测试框架是 `jest-enzyme`, [文档地址](https://
 ### 4. 组件demo说明
 模板的 `index.md` 是组件的文档说明。下面是对文档字段的一些说明
 - type: 组件的归类
-  - 目前组件分为基础、布局、导航、表单、数据展示、反馈、筛选7个类别。模板默认归类到 `基础`,大家根据要求进行调整。
+  - 目前组件分为基础、布局、导航、表单、展示、反馈、筛选7个类别。模板默认归类到 `基础`,大家根据要求进行调整。
 - order: 组件在归类列表中的排列顺序
   - 目前此字段已经废弃，排列顺序会自动按照组件英文名首字母进行排序
 - title: 组件的英文名

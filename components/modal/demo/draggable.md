@@ -3,7 +3,7 @@ title: 可拖拽
 order: 4
 ---
 
-提示弹窗可以设置是否拖拽
+弹出框可以设置是否拖拽
 
 ```jsx
 import { Modal } from '@kdcloudjs/kdesign'
