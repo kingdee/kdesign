@@ -112,9 +112,7 @@ const DrawingBoard = forwardRef<unknown, DrawingBoardProps>((props, ref) => {
             </svg>
           </span>
         ) : null}
-        {onClear ? (
-          <Icon type="delete" className={`${prefixCls}-drawing-board-clear`} onClick={() => handleOnClear()} />
-        ) : null}
+        {<Icon type="delete" className={`${prefixCls}-drawing-board-clear`} onClick={() => handleOnClear()} />}
       </div>
       <span className={`${prefixCls}-drawing-board-tip`}>{isEmpty ? signatureLangMsg?.pleaseWriteHere : ''}</span>
       <canvas ref={canvasRef}></canvas>
