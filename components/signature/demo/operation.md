@@ -1,9 +1,9 @@
 ---
-title: 撤销、恢复和清除
+title: 撤销、恢复
 order: 1
 ---
 
-撤销、恢复和清除工具可根据需要进行配置。
+撤销、恢复功能可根据需要进行配置。
 
 ```jsx
 import React from 'react'
