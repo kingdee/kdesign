@@ -56,6 +56,7 @@ title: Image
 | --- | --- | --- | --- | --- |
 | operations | 图像描述 | string | - | 1.0.0 |
 | previewType | 预览框类型 | `default` \| `upload` | `default` | 1.0.0 |
+| items | 预览数组 | string[] | - | 1.8.1 |
 
 ## Design Token
 
