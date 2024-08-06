@@ -8,17 +8,22 @@ export interface PreviewGroupProps {
   previewType?: PreviewType
   style?: React.CSSProperties
   operations?: Array<React.ReactNode>
+  items?: Array<string>
 }
 
-const PreviewGroup: React.FC<PreviewGroupProps> = ({ children, className, style, previewType, operations }) => {
+const PreviewGroup: React.FC<PreviewGroupProps> = ({ children, className, style, previewType, operations, items }) => {
+  const hasItems = Array.isArray(items) && items.length > 0
+
   const images: Array<ImageProps> = React.useMemo(
     () =>
-      Array.isArray(children)
+      hasItems
+        ? (items?.map((item: string) => ({ src: item })) as Array<ImageProps>)
+        : Array.isArray(children)
         ? (children as Array<React.ReactElement>)
             .filter((image: React.ReactElement) => image.props.src)
             .map((image: React.ReactElement) => image.props)
         : [children !== undefined ? (children as React.ReactElement).props : {}],
-    [children],
+    [children, items, hasItems],
   )
 
   // eslint-disable-next-line react-hooks/rules-of-hooks
@@ -44,9 +49,14 @@ const PreviewGroup: React.FC<PreviewGroupProps> = ({ children, className, style,
     setTransformOrigin(`${transformOriginX}px ${transformOriginY}px`)
   }
 
-  const onPreview = (index: number) => {
-    setCurrent(index)
-    calcTransformOrigin(refs[index].current)
+  const onPreview = (index: number, src: string) => {
+    if (hasItems) {
+      const curIndex = images.findIndex((item: ImageProps) => item.src === src) || 0
+      setCurrent(curIndex)
+    } else {
+      setCurrent(index)
+      calcTransformOrigin(refs[index].current)
+    }
     exit ? setVisible(true) : setExit(true)
   }
 
@@ -76,12 +86,12 @@ const PreviewGroup: React.FC<PreviewGroupProps> = ({ children, className, style,
   return (
     <>
       {images.length > 1
-        ? (children as Array<React.ReactElement>).map((image: React.ReactElement, index: number) =>
+        ? React.Children.map(children, (image: React.ReactElement, index: number) =>
             React.cloneElement(image, {
               key: image.key || index,
               preview: false,
               ref: refs[index],
-              onClick: onPreview.bind(null, index),
+              onClick: onPreview.bind(null, index, image?.props?.src),
             }),
           )
         : children}
