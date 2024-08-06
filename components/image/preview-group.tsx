@@ -91,7 +91,7 @@ const PreviewGroup: React.FC<PreviewGroupProps> = ({ children, className, style,
               key: image.key || index,
               preview: false,
               ref: refs[index],
-              onClick: onPreview.bind(null, index, image?.props?.src),
+              onClick: image?.props?.preview !== false ? onPreview.bind(null, index, image?.props?.src) : undefined,
             }),
           )
         : children}
