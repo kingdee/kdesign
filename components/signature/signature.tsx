@@ -222,19 +222,23 @@ const Signature = (props: ISignatureProps): FunctionComponentElement<ISignatureP
 
   return (
     <>
-      {dataUrl ? (
-        <Image
-          preview={preview}
-          src={dataUrl}
-          title="删除"
-          operations={!disabled ? [<Icon type="delete" key="delete" onClick={() => handleDelete()} />] : undefined}
-        />
-      ) : (
-        <div className={signatureClass} ref={triggerRef} onClick={handleOnClick} style={style}>
-          <Icon type="edit" />
-          <span>{signatureLangMsg?.clickToSign}</span>
-        </div>
-      )}
+      <div className={signatureClass} ref={triggerRef} style={style}>
+        {dataUrl ? (
+          <Image
+            className={`${signaturePrefixCls}-image`}
+            preview={preview}
+            src={dataUrl}
+            title="删除"
+            operations={!disabled ? [<Icon type="delete" key="delete" onClick={() => handleDelete()} />] : undefined}
+          />
+        ) : (
+          <div className={`${signaturePrefixCls}-empty`} onClick={handleOnClick}>
+            <Icon type="edit" />
+            <span>{signatureLangMsg?.clickToSign}</span>
+          </div>
+        )}
+      </div>
+
       <Modal
         width={containerWidth}
         height={containerHeight}
