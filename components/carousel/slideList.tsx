@@ -15,7 +15,7 @@ export const SlideList = React.forwardRef((props: SlideListProps, ref: unknown) 
   const slideListPrefixCls = `${parentPrefixCls}-list-slide`
   const listPrefixCls = `${parentPrefixCls}-list`
   const renderItems = () => {
-    const _items = items.slice(-1).concat(items, items.slice(0, 1)) // 首位分别添加一项
+    const _items = items.length > 1 ? items.slice(-1).concat(items, items.slice(0, 1)) : items // 首位分别添加一项
     return _items.map((item, index) => {
       return (
         <li

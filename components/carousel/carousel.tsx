@@ -61,6 +61,19 @@ const InternalCarousel = (props: CarouselProps, ref: unknown): FunctionComponent
   const listRef = React.useRef<HTMLElement>()
   const autoplayRef = React.useRef<any>()
 
+  const processChildren = (children: any) => {
+    const childCount = React.Children.count(children)
+    if (childCount === 0) {
+      return []
+    } else if (childCount === 1) {
+      return [children]
+    } else {
+      return React.Children.toArray(children)
+    }
+  }
+
+  const tempChild = processChildren(children)
+
   const isScrollxEffect = React.useMemo(() => {
     return effect === 'scrollx'
   }, [effect])
@@ -87,7 +100,8 @@ const InternalCarousel = (props: CarouselProps, ref: unknown): FunctionComponent
   )
 
   const setScrollXEffectStyle = React.useCallback(() => {
-    if (!listRef.current) return
+    let tempChild = processChildren(children)
+    if (!listRef.current || tempChild.length <= 1) return
     listRef.current.style.cssText = needAnimation
       ? `transform: translateX(${posX}px); transition:all 0.3s ${easing}`
       : `transform: translateX(${posX}px); transition:none`
@@ -95,12 +109,13 @@ const InternalCarousel = (props: CarouselProps, ref: unknown): FunctionComponent
 
   const jumpTo = React.useCallback(
     (index: number, needAnimation: boolean) => {
+      const tempChild = processChildren(children)
       if (isFadeEffect) {
-        if (index === -1 || index === children.length) index = 0
+        if (index === -1 || index === tempChild.length) index = 0
         beforeChange && beforeChange(currentIndex, index)
         setCurrentIndex(index)
         setNeedAnimation(needAnimation)
-      } else if (index >= -1 && index <= children.length) {
+      } else if (index >= -1 && index <= tempChild.length) {
         beforeChange && beforeChange(currentIndex, index)
         setCurrentIndex(index)
         setNeedAnimation(needAnimation)
@@ -185,8 +200,9 @@ const InternalCarousel = (props: CarouselProps, ref: unknown): FunctionComponent
   )
 
   const handleTransitionEnd = React.useCallback(() => {
-    if (!autoplay || !children?.length) return
-    const childrenL = children.length
+    const tempChild = processChildren(children)
+    if (!autoplay || !tempChild?.length) return
+    const childrenL = tempChild.length
     let newCurrentIndex = currentIndex
     if (isScrollxEffect) {
       if (currentIndex === -1) {
@@ -214,11 +230,12 @@ const InternalCarousel = (props: CarouselProps, ref: unknown): FunctionComponent
   })
 
   const renderDisplayList = () => {
+    const tempChild = processChildren(children)
     let content
     if (isFadeEffect) {
       content = (
         <FadeList
-          items={children}
+          items={tempChild}
           parentPrefixCls={carouselPrefixCls}
           needAnimation={needAnimation}
           currentIndex={currentIndex}
@@ -228,18 +245,19 @@ const InternalCarousel = (props: CarouselProps, ref: unknown): FunctionComponent
       )
     } else if (isNoneEffect) {
       content = (
-        <DisplayList items={children} parentPrefixCls={carouselPrefixCls} currentIndex={currentIndex} ref={listRef} />
+        <DisplayList items={tempChild} parentPrefixCls={carouselPrefixCls} currentIndex={currentIndex} ref={listRef} />
       )
     } else {
       content = (
-        <SlideList items={children} parentPrefixCls={carouselPrefixCls} currentIndex={currentIndex} ref={listRef} />
+        <SlideList items={tempChild} parentPrefixCls={carouselPrefixCls} currentIndex={currentIndex} ref={listRef} />
       )
     }
     return content
   }
 
   const renderJumpNode = () => {
-    if (children?.length && jumpNode) {
+    const tempChild = processChildren(children)
+    if (tempChild?.length && jumpNode) {
       const jumpClassPrefix = `${carouselPrefixCls}-jump`
       const leftClick = (e: React.MouseEvent) => {
         e.stopPropagation()
@@ -249,7 +267,7 @@ const InternalCarousel = (props: CarouselProps, ref: unknown): FunctionComponent
       }
       const rightClick = (e: React.MouseEvent) => {
         e.stopPropagation()
-        if (currentIndex !== children.length - 1) {
+        if (currentIndex !== tempChild.length - 1) {
           next()
         }
       }
@@ -290,7 +308,7 @@ const InternalCarousel = (props: CarouselProps, ref: unknown): FunctionComponent
       const rightNode = (
         <div
           className={classNames(jumpClassPrefix, `${jumpClassPrefix}-right`, {
-            [`${jumpClassPrefix}-disabled`]: currentIndex >= children.length - 1,
+            [`${jumpClassPrefix}-disabled`]: currentIndex >= tempChild.length - 1,
           })}
         >
           {Array.isArray(jumpNode) && jumpNode.length > 1 && isValidElement(jumpNode[1]) ? (
@@ -320,10 +338,10 @@ const InternalCarousel = (props: CarouselProps, ref: unknown): FunctionComponent
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
-      {children?.length ? renderDisplayList() : null}
-      {children?.length && showDot() ? (
+      {tempChild?.length ? renderDisplayList() : null}
+      {tempChild?.length && showDot() ? (
         <Slidebar
-          number={children.length}
+          number={tempChild.length}
           currentIndex={currentIndex}
           dotsClassName={dots}
           parentPrefixCls={carouselPrefixCls}

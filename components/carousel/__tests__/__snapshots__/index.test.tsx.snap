@@ -18,73 +18,37 @@ exports[`Carousel render null or undefined without errors 1`] = `
     onMouseEnter={[Function]}
     onMouseLeave={[Function]}
     onTransitionEnd={[Function]}
-  >
-    <ForwardRef
-      currentIndex={0}
-      items={
-        Array [
-          null,
-          undefined,
-        ]
-      }
-      parentPrefixCls="kd-carousel"
-    >
-      <ul
-        className="kd-carousel-list kd-carousel-list-slide"
-      >
-        <li
-          className="kd-carousel-list-item"
-          key="0"
-        />
-        <li
-          className="kd-carousel-list-item kd-carousel-list-item-active"
-          key="1"
-        />
-        <li
-          className="kd-carousel-list-item"
-          key="2"
-        />
-        <li
-          className="kd-carousel-list-item"
-          key="3"
-        />
-      </ul>
-    </ForwardRef>
-    <Component
-      currentIndex={0}
-      dotPosition="bottom"
-      dotsClassName={true}
-      number={2}
-      onClick={[Function]}
-      parentPrefixCls="kd-carousel"
-    >
-      <ul
-        className="kd-carousel-slidebar kd-carousel-slidebar-bottom"
-      >
-        <li
-          className="kd-carousel-slidebar-dot kd-carousel-slidebar-dot-active"
-          key="0"
-        >
-          <button
-            onClick={[Function]}
-          />
-        </li>
-        <li
-          className="kd-carousel-slidebar-dot"
-          key="1"
-        >
-          <button
-            onClick={[Function]}
-          />
-        </li>
-      </ul>
-    </Component>
-  </div>
+  />
 </Carousel>
 `;
 
 exports[`Carousel renders correctly 1`] = `
 <div
   class="kd-carousel-root"
-/>
+>
+  <ul
+    class="kd-carousel-list kd-carousel-list-slide"
+  >
+    <li
+      class="kd-carousel-list-item"
+    >
+      <div
+        style="background-color:blue;height:160px;width:100px;display:flex;justify-content:center;align-items:center;color:#fff"
+      >
+        <h3>
+          1
+        </h3>
+      </div>
+    </li>
+  </ul>
+  <ul
+    class="kd-carousel-slidebar kd-carousel-slidebar-bottom"
+  >
+    <li
+      class="kd-carousel-slidebar-dot kd-carousel-slidebar-dot-active"
+    >
+      <button />
+    </li>
+  </ul>
+</div>
 `;
