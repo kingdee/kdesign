@@ -5,12 +5,16 @@ Array [
   <div
     class="kd-signature"
   >
-    <i
-      class="kdicon kdicon-edit"
-    />
-    <span>
-      点击签名
-    </span>
+    <div
+      class="kd-signature-empty"
+    >
+      <i
+        class="kdicon kdicon-edit"
+      />
+      <span>
+        点击签名
+      </span>
+    </div>
   </div>,
   <div
     class="kd-modal kd-signature-modal kd-modal-container kd-modal-container-hidden"
@@ -113,7 +117,11 @@ Array [
         >
           <div
             class="kd-signature-drawing-board-operation"
-          />
+          >
+            <i
+              class="kdicon kd-signature-drawing-board-clear kdicon-delete"
+            />
+          </div>
           <span
             class="kd-signature-drawing-board-tip"
           >
@@ -161,22 +169,26 @@ exports[`Signature render no child without errors 1`] = `
 >
   <div
     className="kd-signature"
-    onClick={[Function]}
   >
-    <Icon
-      type="edit"
+    <div
+      className="kd-signature-empty"
+      onClick={[Function]}
     >
-      <i
-        className="kdicon kdicon-edit"
-        onClick={[Function]}
-        onMouseEnter={[Function]}
-        onMouseLeave={[Function]}
-        style={Object {}}
-      />
-    </Icon>
-    <span>
-      点击签名
-    </span>
+      <Icon
+        type="edit"
+      >
+        <i
+          className="kdicon kdicon-edit"
+          onClick={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+          style={Object {}}
+        />
+      </Icon>
+      <span>
+        点击签名
+      </span>
+    </div>
   </div>
   <Modal
     body={
@@ -442,7 +454,21 @@ exports[`Signature render no child without errors 1`] = `
                 >
                   <div
                     className="kd-signature-drawing-board-operation"
-                  />
+                  >
+                    <Icon
+                      className="kd-signature-drawing-board-clear"
+                      onClick={[Function]}
+                      type="delete"
+                    >
+                      <i
+                        className="kdicon kd-signature-drawing-board-clear kdicon-delete"
+                        onClick={[Function]}
+                        onMouseEnter={[Function]}
+                        onMouseLeave={[Function]}
+                        style={Object {}}
+                      />
+                    </Icon>
+                  </div>
                   <span
                     className="kd-signature-drawing-board-tip"
                   >
@@ -508,22 +534,26 @@ exports[`Signature render null or undefined Signature without errors 1`] = `
 <Signature>
   <div
     className="kd-signature"
-    onClick={[Function]}
   >
-    <Icon
-      type="edit"
+    <div
+      className="kd-signature-empty"
+      onClick={[Function]}
     >
-      <i
-        className="kdicon kdicon-edit"
-        onClick={[Function]}
-        onMouseEnter={[Function]}
-        onMouseLeave={[Function]}
-        style={Object {}}
-      />
-    </Icon>
-    <span>
-      点击签名
-    </span>
+      <Icon
+        type="edit"
+      >
+        <i
+          className="kdicon kdicon-edit"
+          onClick={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+          style={Object {}}
+        />
+      </Icon>
+      <span>
+        点击签名
+      </span>
+    </div>
   </div>
   <Modal
     body={
@@ -711,7 +741,11 @@ exports[`Signature render null or undefined Signature without errors 1`] = `
                 >
                   <div
                     class="kd-signature-drawing-board-operation"
-                  />
+                  >
+                    <i
+                      class="kdicon kd-signature-drawing-board-clear kdicon-delete"
+                    />
+                  </div>
                   <span
                     class="kd-signature-drawing-board-tip"
                   >
@@ -936,7 +970,21 @@ exports[`Signature render null or undefined Signature without errors 1`] = `
                   >
                     <div
                       className="kd-signature-drawing-board-operation"
-                    />
+                    >
+                      <Icon
+                        className="kd-signature-drawing-board-clear"
+                        onClick={[Function]}
+                        type="delete"
+                      >
+                        <i
+                          className="kdicon kd-signature-drawing-board-clear kdicon-delete"
+                          onClick={[Function]}
+                          onMouseEnter={[Function]}
+                          onMouseLeave={[Function]}
+                          style={Object {}}
+                        />
+                      </Icon>
+                    </div>
                     <span
                       className="kd-signature-drawing-board-tip"
                     >
@@ -1004,12 +1052,16 @@ exports[`Signature should getContainer use right 1`] = `
   <div
     class="kd-signature"
   >
-    <i
-      class="kdicon kdicon-edit"
-    />
-    <span>
-      点击签名
-    </span>
+    <div
+      class="kd-signature-empty"
+    >
+      <i
+        class="kdicon kdicon-edit"
+      />
+      <span>
+        点击签名
+      </span>
+    </div>
   </div>
   <div
     class="kd-modal kd-signature-modal kd-modal-container kd-modal-container-hidden"
@@ -1112,7 +1164,11 @@ exports[`Signature should getContainer use right 1`] = `
         >
           <div
             class="kd-signature-drawing-board-operation"
-          />
+          >
+            <i
+              class="kdicon kd-signature-drawing-board-clear kdicon-delete"
+            />
+          </div>
           <span
             class="kd-signature-drawing-board-tip"
           >
@@ -1159,12 +1215,16 @@ exports[`Signature should getContainer use right 2`] = `
   <div
     class="kd-signature"
   >
-    <i
-      class="kdicon kdicon-edit"
-    />
-    <span>
-      点击签名
-    </span>
+    <div
+      class="kd-signature-empty"
+    >
+      <i
+        class="kdicon kdicon-edit"
+      />
+      <span>
+        点击签名
+      </span>
+    </div>
   </div>
   <div
     class="kd-modal kd-signature-modal kd-modal-container kd-modal-container-hidden"
@@ -1267,7 +1327,11 @@ exports[`Signature should getContainer use right 2`] = `
         >
           <div
             class="kd-signature-drawing-board-operation"
-          />
+          >
+            <i
+              class="kdicon kd-signature-drawing-board-clear kdicon-delete"
+            />
+          </div>
           <span
             class="kd-signature-drawing-board-tip"
           >
@@ -1316,12 +1380,16 @@ exports[`Signature should getContainer use right 3`] = `
   <div
     class="kd-signature"
   >
-    <i
-      class="kdicon kdicon-edit"
-    />
-    <span>
-      点击签名
-    </span>
+    <div
+      class="kd-signature-empty"
+    >
+      <i
+        class="kdicon kdicon-edit"
+      />
+      <span>
+        点击签名
+      </span>
+    </div>
   </div>
   <div
     class="kd-modal kd-signature-modal kd-modal-container kd-modal-container-hidden"
@@ -1424,7 +1492,11 @@ exports[`Signature should getContainer use right 3`] = `
         >
           <div
             class="kd-signature-drawing-board-operation"
-          />
+          >
+            <i
+              class="kdicon kd-signature-drawing-board-clear kdicon-delete"
+            />
+          </div>
           <span
             class="kd-signature-drawing-board-tip"
           >
@@ -1476,22 +1548,26 @@ exports[`Signature should getContainer use right 4`] = `
     >
       <div
         className="kd-signature"
-        onClick={[Function]}
       >
-        <Icon
-          type="edit"
+        <div
+          className="kd-signature-empty"
+          onClick={[Function]}
         >
-          <i
-            className="kdicon kdicon-edit"
-            onClick={[Function]}
-            onMouseEnter={[Function]}
-            onMouseLeave={[Function]}
-            style={Object {}}
-          />
-        </Icon>
-        <span>
-          点击签名
-        </span>
+          <Icon
+            type="edit"
+          >
+            <i
+              className="kdicon kdicon-edit"
+              onClick={[Function]}
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
+              style={Object {}}
+            />
+          </Icon>
+          <span>
+            点击签名
+          </span>
+        </div>
       </div>
       <Modal
         body={
@@ -1680,7 +1756,11 @@ exports[`Signature should getContainer use right 4`] = `
                     >
                       <div
                         class="kd-signature-drawing-board-operation"
-                      />
+                      >
+                        <i
+                          class="kdicon kd-signature-drawing-board-clear kdicon-delete"
+                        />
+                      </div>
                       <span
                         class="kd-signature-drawing-board-tip"
                       >
@@ -1822,7 +1902,11 @@ exports[`Signature should getContainer use right 4`] = `
                     >
                       <div
                         class="kd-signature-drawing-board-operation"
-                      />
+                      >
+                        <i
+                          class="kdicon kd-signature-drawing-board-clear kdicon-delete"
+                        />
+                      </div>
                       <span
                         class="kd-signature-drawing-board-tip"
                       >
@@ -1965,7 +2049,11 @@ exports[`Signature should getContainer use right 4`] = `
                     >
                       <div
                         class="kd-signature-drawing-board-operation"
-                      />
+                      >
+                        <i
+                          class="kdicon kd-signature-drawing-board-clear kdicon-delete"
+                        />
+                      </div>
                       <span
                         class="kd-signature-drawing-board-tip"
                       >
@@ -2107,7 +2195,11 @@ exports[`Signature should getContainer use right 4`] = `
                     >
                       <div
                         class="kd-signature-drawing-board-operation"
-                      />
+                      >
+                        <i
+                          class="kdicon kd-signature-drawing-board-clear kdicon-delete"
+                        />
+                      </div>
                       <span
                         class="kd-signature-drawing-board-tip"
                       >
@@ -2332,7 +2424,21 @@ exports[`Signature should getContainer use right 4`] = `
                       >
                         <div
                           className="kd-signature-drawing-board-operation"
-                        />
+                        >
+                          <Icon
+                            className="kd-signature-drawing-board-clear"
+                            onClick={[Function]}
+                            type="delete"
+                          >
+                            <i
+                              className="kdicon kd-signature-drawing-board-clear kdicon-delete"
+                              onClick={[Function]}
+                              onMouseEnter={[Function]}
+                              onMouseLeave={[Function]}
+                              style={Object {}}
+                            />
+                          </Icon>
+                        </div>
                         <span
                           className="kd-signature-drawing-board-tip"
                         >
