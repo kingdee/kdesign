@@ -108,6 +108,8 @@ interface MergedPickerProps extends OmitType {
 
 export type IInnerPicker = undefined | 'year' | 'month'
 
+const MONTH_DEFAULT_SUFFIX = '月'
+
 export type DisabledDataProps = (
   date: DateType,
   info?: {
@@ -126,9 +128,9 @@ export const mergeDateLocale = (globalLocale: InnerLocale, locale = {}) => {
     { length: 12 },
     (_, index) => mergeLocale.monthTitle[index] || globalLocale.monthTitle[index],
   ) as MonthTitleType
-  if (mergeLocale?.month && mergeLocale.month !== globalLocale.month) {
+  if (mergeLocale?.month && mergeLocale.month !== MONTH_DEFAULT_SUFFIX) {
     mergeLocale.monthTitle = mergeLocale.monthTitle.map((d) =>
-      d.toString().replace(globalLocale.month, mergeLocale.month),
+      d.toString().replace(MONTH_DEFAULT_SUFFIX, mergeLocale.month),
     ) as MonthTitleType
   }
   return mergeLocale
