@@ -20,7 +20,7 @@ subtitle: 折叠面板
 | --- | --- | --- | --- | --- | --- |
 | accordion | 是否手风琴模式 | boolean | false | true \| false | 1.0.0 |
 | activeKey | 当前激活 tab 面板的 key | string[] \| string \| number[] \| number | - | - | 1.0.0 |
-| bordered | 是否边框风格折叠面板是否边框风格折叠面板 | boolean | false | true \| false | 1.0.0 |
+| bordered | 是否边框风格折叠面板 | boolean | false | true \| false | 1.0.0 |
 | defaultActiveKey | 初始化选中面板的 key | string[] \| string \| number[] \| number | - | - | 1.0.0 |
 | expandIcon | 自定义切换图标 | (panelProps) => ReactNode | - | - | 1.0.0 |
 | expandIconPosition | 设置切换图标位置 | string | `left` | `left` \| `right` | 1.0.0 |
