@@ -62,6 +62,7 @@ export type PopperProps = {
   placement?: PlacementType
   tip?: any
   trigger?: TriggerType | Array<TriggerType>
+  strategy?: 'fixed' | 'absolute'
   clickToClose?: boolean
   onTrigger?: (trigger: TriggerType) => void
   onVisibleChange?: (visible: boolean) => void
@@ -173,6 +174,7 @@ export const Popper = forwardRef<unknown, PopperProps>((props, ref) => {
     disabled = false,
     trigger = 'click',
     placement = 'top',
+    strategy = 'absolute',
     visible,
     arrowSize = 4.25,
     gap: defaultGap = 4,
@@ -481,7 +483,7 @@ export const Popper = forwardRef<unknown, PopperProps>((props, ref) => {
   const popperOptionsInner: any = {
     placement: placementInner,
     modifiers: popperModifiers,
-    strategy: 'fixed',
+    strategy,
   }
 
   useEnhancedEffect(() => {
