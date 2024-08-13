@@ -257,7 +257,7 @@
       }
 
       &-transparent {
-        flex: 0 0 60px;
+        flex: 0 1 60px;
         height: 28px;
         margin-left: 8px;
         text-align: center;
@@ -271,6 +271,24 @@
       grid-column-gap: 8px;
       grid-row-gap: 8px;
       margin-top: 12px;
+
+      &-ie11 {
+        display: flex;
+        flex-wrap: wrap;
+
+        li {
+          margin-right: 8px;
+          margin-top: 8px;
+
+          &:nth-child(12n) {
+            margin-right: 0;
+          }
+
+          &:nth-child(-n+12) {
+            margin-top: 0;
+          }
+        }
+      }
 
       &-unset-color {
         margin-top: 0;

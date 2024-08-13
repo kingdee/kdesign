@@ -20,6 +20,7 @@ import Color from 'color'
 import { ChromePicker } from 'react-color'
 import devWarning from '../_utils/devwarning'
 import { useOnClickOutside } from '../_utils/hooks'
+import { isIE } from '../_utils/ieUtil'
 
 const ColorPickerPanel: FC<IColorPickerPanelProps> = (props) => {
   const {
@@ -74,6 +75,7 @@ const ColorPickerPanel: FC<IColorPickerPanelProps> = (props) => {
   const transparentCls = classNames(`${colorPickerPrefixCls}-panel-container-transparent`)
   const colorDivContainerCls = classNames(`${colorPickerPrefixCls}-panel-colorDivContainer`, {
     [`${colorPickerPrefixCls}-panel-colorDivContainer-unset-color`]: presetColor?.length === 0,
+    [`${colorPickerPrefixCls}-panel-colorDivContainer-ie11`]: isIE,
   })
 
   const colorLiClick = (index: number, colorValue: string) => {
