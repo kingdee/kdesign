@@ -146,9 +146,9 @@ const InternalSelect: React.ForwardRefRenderFunction<ISelectProps<SelectValue>> 
             })
             if (obj) {
               if (options && options.length) {
-                arr.push({ value: obj?.value, label: obj?.label || obj?.value })
+                arr.push({ value: obj?.value, label: getOptionLabel(obj) || obj?.label || obj?.value })
               } else {
-                arr.push({ value: obj.props?.value, label: obj.props?.children })
+                arr.push({ value: obj.props?.value, label: getOptionLabel(obj) || obj.props?.children })
               }
             } else {
               arr.push({ value: item, label: item })
