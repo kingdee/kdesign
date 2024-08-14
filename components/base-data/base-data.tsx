@@ -170,7 +170,7 @@ const InternalBaseData: React.ForwardRefRenderFunction<IAdvancedSelectorProps> =
   useLayoutEffect(() => {
     const inputDom = inputRef.current?.input
     if (!inputDom) return
-    if (inputDom.scrollWidth - inputDom.offsetWidth > 0) {
+    if (inputDom.scrollWidth - inputDom.offsetWidth > 0 && inputValue) {
       setShowTotal(true)
     } else {
       setShowTotal(false)
