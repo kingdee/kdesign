@@ -24,6 +24,10 @@
     position: relative;
     z-index: @modal-z-index-dialog;
 
+    &-ie {
+      position: absolute;
+    }
+
     &-show {
       animation: kdModalEffect calc(@transition-duration - 0.1s) @ease both;
     }
