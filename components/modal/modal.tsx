@@ -20,6 +20,7 @@ import Draggable from 'react-draggable'
 import type { DraggableBounds, DraggableEventHandler, DraggableEvent, DraggableData } from 'react-draggable'
 import { getLangMsg } from '../locale/locale'
 import { useHideDocumentScrollBar } from '../_utils/hooks'
+import { isIE } from '../_utils/ieUtil'
 
 type CSSSelector = string
 export const ConfirmModalTypes = ['confirm', 'normal']
@@ -451,6 +452,7 @@ const InternalModal = (
   const isHidden = !destroyOnClose && !(isForceController ? visible : innerVisible)
   const modalClasses = classNames(modalPrefixCls, className, {
     [`${modalPrefixCls}-container`]: true,
+    [`${modalPrefixCls}-container-ie`]: isIE,
     [`${modalPrefixCls}-container-hidden`]: isHidden,
     [`${modalPrefixCls}-container-show`]: !isHidden,
   })
