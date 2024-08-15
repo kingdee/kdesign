@@ -246,7 +246,6 @@ export const Popper = forwardRef<unknown, PopperProps>((props, ref) => {
       onVisibleChange?.(nextOpen)
     }
     if (!nextOpen && Object.keys(subPopupRefs.current || {}).length) {
-      console.log('triggerOpenSub', subPopupRefs.current)
       Object.values(subPopupRefs.current).forEach((d: any) => {
         if (typeof d?.triggerOpen === 'function' && d?.visible) {
           d?.triggerOpen(false)
@@ -301,7 +300,6 @@ export const Popper = forwardRef<unknown, PopperProps>((props, ref) => {
   }
 
   const onClick = (e: Event) => {
-    e.stopPropagation()
     onTriggerInner(!visibleInner, 'click')
     referenceElement?.props?.onClick?.(e)
   }
@@ -411,7 +409,7 @@ export const Popper = forwardRef<unknown, PopperProps>((props, ref) => {
         const domReference = getRealDom(referenceRef, referenceElement)
         const isReference = domReference ? domReference === e.target || domReference?.contains?.(e.target) : false
         const isTarget = trigger === 'contextMenu' ? isPopper : isPopper || isReference
-        console.log('clickOutside', children, e.target, isPopper, isReference, subPopupRefs.current)
+
         if (clickToClose && !isTarget && !isSubPopper(e)) {
           triggerOpen(false, 'clickOutside', 0)
         }
