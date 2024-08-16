@@ -100,7 +100,7 @@ const InternalCarousel = (props: CarouselProps, ref: unknown): FunctionComponent
   )
 
   const setScrollXEffectStyle = React.useCallback(() => {
-    let tempChild = processChildren(children)
+    const tempChild = processChildren(children)
     if (!listRef.current || tempChild.length <= 1) return
     listRef.current.style.cssText = needAnimation
       ? `transform: translateX(${posX}px); transition:all 0.3s ${easing}`
