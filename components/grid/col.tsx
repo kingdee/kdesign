@@ -59,10 +59,10 @@ const Col: React.FC<ColProps> = (props) => {
     // 判断是否是IE浏览器
     if (/Trident|MSIE/.test(navigator.userAgent)) return true
 
-    // 判断是否是chrome浏览器，chrome浏览器版本号小于69
+    // 判断是否是chrome浏览器，chrome浏览器版本号小于83(统信浏览器)
     if (/Chrome/.test(navigator.userAgent) && !/Chromium/.test(navigator.userAgent)) {
       const version = navigator.userAgent.split('Chrome/')[1].split('.')
-      if (version[0] && parseInt(version[0]) <= 69) return true
+      if (version[0] && parseInt(version[0]) <= 83) return true
     }
 
     return false
