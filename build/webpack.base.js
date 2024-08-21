@@ -6,7 +6,20 @@ const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin')
 const WebpackBar = require('webpackbar')
 const CleanUpStatsPlugin = require('./plugins/CleanUpStatsPlugin')
 
-const pkg = require('../package.json')
+
+function incrementVersion(version) {
+  let [mainVersion, preRelease] = version.split('-')
+
+  if (!preRelease) return version
+
+  let [identifier, preVersion] = preRelease.split('.')
+
+  preVersion = (parseInt(preVersion, 10) + 1).toString()
+
+  return `${mainVersion}-${identifier}.${preVersion}`
+}
+
+const pkg = incrementVersion(require('../package.json'))
 const bannerText = `
   ${pkg.name} v${pkg.version}
 
