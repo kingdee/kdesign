@@ -19,9 +19,9 @@ function incrementVersion(version) {
   return `${mainVersion}-${identifier}.${preVersion}`
 }
 
-const pkg = incrementVersion(require('../package.json'))
+const pkg = require('../package.json')
 const bannerText = `
-  ${pkg.name} v${pkg.version}
+  ${pkg.name} v${incrementVersion(pkg.version)}
 
   Copyright 2020-present, Kingdee, Inc.
   All rights reserved.
