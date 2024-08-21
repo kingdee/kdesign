@@ -7,7 +7,6 @@ exports[`Select render no child without errors 1`] = `
   >
     <span
       className="kd-select-selector"
-      onBlur={[Function]}
       onFocus={[Function]}
       onKeyDown={[Function]}
       tabIndex={0}
