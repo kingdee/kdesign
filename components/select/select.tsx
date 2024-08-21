@@ -899,7 +899,6 @@ const InternalSelect: React.ForwardRefRenderFunction<ISelectProps<SelectValue>> 
           className={selectionCls}
           tabIndex={disabled ? -1 : 0}
           onFocus={() => searchRef.current?.focus()}
-          onBlur={() => searchRef.current?.blur()}
           onKeyDown={onInternalKeyDown}
         >
           {/* 单选模式Input  多选输入框 */}
