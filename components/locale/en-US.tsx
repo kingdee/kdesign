@@ -87,7 +87,7 @@ const locale = {
   'Filter.and': 'And',
   'Filter.settings': 'Settings',
   'Filter.schemeNamePlaceholder': 'Please enter scheme name',
-  'Form.requiredMessage': 'Please enter your',
+  'Form.requiredMessage': 'Please enter your ',
   'Table.contain': 'Contain',
   'Table.notContain': 'Do not contain',
   'Table.equal': 'Equal',
