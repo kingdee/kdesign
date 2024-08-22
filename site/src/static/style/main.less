@@ -182,10 +182,12 @@
           z-index: 90;
 
           .toc {
-            position: sticky;
-            top: 64px;
+            position: fixed;
+            top: 90px;
             line-height: 24px;
             font-size: 14px;
+            max-height: calc(100vh - 125px);
+            overflow-y: auto;
 
             li {
               list-style: none;
