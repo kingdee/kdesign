@@ -282,7 +282,7 @@ const TreeNode = React.forwardRef<unknown, TreeNodeProps>((props) => {
             {checkable ? (
               <Checkbox
                 onChange={handleOnchange}
-                checked={checked}
+                checked={!disabled && checked}
                 indeterminate={!disabled && indeterminate}
                 disabled={disabled}
                 onClick={(e: React.MouseEvent) => e.stopPropagation()}
