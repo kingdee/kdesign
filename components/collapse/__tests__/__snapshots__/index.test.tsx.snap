@@ -8,7 +8,7 @@ exports[`collapse 2. render test renders accordion  1`] = `
     class="kd-collapse-panel"
   >
     <span
-      class="kd-collapse-panel-top"
+      class="kd-collapse-panel-top kd-collapse-panel-no-assist"
     >
       <span
         class="kd-collapse-panel-left"
@@ -26,12 +26,6 @@ exports[`collapse 2. render test renders accordion  1`] = `
           This is the header
         </span>
       </span>
-      <span
-        class="kd-collapse-panel-middle"
-      />
-      <span
-        class="kd-collapse-panel-right"
-      />
     </span>
     <div
       class="kd-collapse-panel-children-hide"
@@ -47,7 +41,7 @@ exports[`collapse 2. render test renders accordion  1`] = `
     class="kd-collapse-panel"
   >
     <span
-      class="kd-collapse-panel-top"
+      class="kd-collapse-panel-top kd-collapse-panel-no-assist"
     >
       <span
         class="kd-collapse-panel-left"
@@ -65,12 +59,6 @@ exports[`collapse 2. render test renders accordion  1`] = `
           This is the header
         </span>
       </span>
-      <span
-        class="kd-collapse-panel-middle"
-      />
-      <span
-        class="kd-collapse-panel-right"
-      />
     </span>
     <div
       class="kd-collapse-panel-children-hide"
@@ -93,7 +81,7 @@ exports[`collapse 2. render test renders correctly 1`] = `
     class="kd-collapse-panel"
   >
     <span
-      class="kd-collapse-panel-top"
+      class="kd-collapse-panel-top kd-collapse-panel-no-assist"
     >
       <span
         class="kd-collapse-panel-left"
@@ -111,12 +99,6 @@ exports[`collapse 2. render test renders correctly 1`] = `
           This is the header
         </span>
       </span>
-      <span
-        class="kd-collapse-panel-middle"
-      />
-      <span
-        class="kd-collapse-panel-right"
-      />
     </span>
     <div
       class="kd-collapse-panel-children-hide"
@@ -132,7 +114,7 @@ exports[`collapse 2. render test renders correctly 1`] = `
     class="kd-collapse-panel"
   >
     <span
-      class="kd-collapse-panel-top"
+      class="kd-collapse-panel-top kd-collapse-panel-no-assist"
     >
       <span
         class="kd-collapse-panel-left"
@@ -150,12 +132,6 @@ exports[`collapse 2. render test renders correctly 1`] = `
           This is the header
         </span>
       </span>
-      <span
-        class="kd-collapse-panel-middle"
-      />
-      <span
-        class="kd-collapse-panel-right"
-      />
     </span>
     <div
       class="kd-collapse-panel-children-hide"

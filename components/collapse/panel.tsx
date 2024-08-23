@@ -98,6 +98,7 @@ const Panel = React.forwardRef<unknown, PanelProps>((props, ref) => {
   }
 
   const renderRight = () => {
+    if (typeof extra === 'undefined' && expandIconPosition !== 'right') return
     const className = classNames({
       [`${panelPrefixCls}-right`]: true,
       [`${panelPrefixCls}-disabled`]: disabled,
@@ -111,6 +112,7 @@ const Panel = React.forwardRef<unknown, PanelProps>((props, ref) => {
   }
 
   const renderMiddle = () => {
+    if (typeof assist === 'undefined') return
     const className = classNames({
       [`${panelPrefixCls}-middle`]: true,
       [`${panelPrefixCls}-disabled`]: disabled,
@@ -138,6 +140,7 @@ const Panel = React.forwardRef<unknown, PanelProps>((props, ref) => {
     [`${panelPrefixCls}-top`]: true,
     [`${panelPrefixCls}-disabled`]: disabled,
     [`${panelPrefixCls}-top-border`]: bordered && expand,
+    [`${panelPrefixCls}-no-assist`]: !assist,
   })
   const childrenClassName = classNames({
     [`${panelPrefixCls}-children`]: expand,
