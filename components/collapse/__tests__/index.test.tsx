@@ -97,6 +97,9 @@ describe('collapse', () => {
       expect(wrapper.find('[data-test="data-Collapse"]')).toExist()
       expect(wrapper.find('.kd-collapse')).toHaveStyle('padding', 0)
       expect(wrapper.find('.my-className.kd-collapse')).toExist()
+      // 未设置assist extra 无middle right容器
+      expect(wrapper.find('.my-className.kd-collapse .kd-collapse-panel-middle')).not.toExist()
+      expect(wrapper.find('.my-className.kd-collapse .kd-collapse-panel-right')).not.toExist()
     })
 
     it('test icon position types', () => {
@@ -114,6 +117,12 @@ describe('collapse', () => {
           </Collapse>,
         )
         expect(wrapper.find(`.kd-collapse-panel-${type} .kd-collapse-panel-icon`)).toExist()
+        if (type === 'left') {
+          expect(wrapper.find(`.kd-collapse-panel-right`)).not.toExist()
+        } else {
+          expect(wrapper.find(`.kd-collapse-panel-right`)).toExist()
+          expect(wrapper.find(`.kd-collapse-panel-middle`)).not.toExist()
+        }
       })
     })
 
