@@ -269,7 +269,7 @@ const InternalInputNumber = (props: InputNumberProps, ref: unknown): FunctionCom
     inputStatus.current.inputFocused = false
     const { min, max, onBlur } = inputNumberProps
     let _inputValue = inputValue
-    if (_inputValue === '-') {
+    if (_inputValue === '-' || _inputValue === '.') {
       _inputValue = ''
     }
     const bigValue = new Big(Number(_inputValue))
