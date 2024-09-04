@@ -531,7 +531,7 @@ export const getDataCheckededState = (
 }
 
 export const getDataCheckededStateStrictly = (checkedKeys: string[]) => {
-  const _checkedKeys = [...checkedKeys]
+  const _checkedKeys = [...(checkedKeys || [])]
   return { checkedKeys: Array.from(new Set(_checkedKeys)), halfCheckedKeys: [] }
 }
 
