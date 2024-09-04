@@ -237,8 +237,14 @@ const InternalTree = React.forwardRef((props: TreeProps, ref: any): React.Functi
       const node = wrapperDom ? wrapperDom?.children[0]?.children[scrollIndex] : null
       if (node && wrapperDom) {
         const containerHeight = wrapperDom.clientHeight
+        const containerTop = wrapperDom.scrollTop
+        const containerBottom = containerTop + containerHeight
         const targetHeight = node.clientHeight
-        const scrollPosition = node.offsetTop + targetHeight - containerHeight
+        const targetTop = node.offsetTop
+        const targetBottom = targetTop + targetHeight
+        const isInView = targetTop >= containerTop && targetBottom <= containerBottom
+        if (isInView) return
+        const scrollPosition = targetTop + targetHeight - containerHeight
         wrapperDom.scrollTop = scrollPosition
       }
     }
