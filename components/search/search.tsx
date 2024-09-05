@@ -32,6 +32,9 @@ const InternalSearch: React.ForwardRefRenderFunction<ISearchProps, IQuickSearchP
     children,
     type,
     placeholder,
+    value,
+    defaultValue,
+    allowClear,
     onSearch,
     onFocus,
     onBlur,
@@ -134,8 +137,11 @@ const InternalSearch: React.ForwardRefRenderFunction<ISearchProps, IQuickSearchP
   }
 
   return (
-    <div className={searchCls} style={style}>
+    <div className={searchCls} style={style} {...restProps}>
       <Input
+        value={value}
+        defaultValue={defaultValue}
+        allowClear={allowClear}
         ref={searchRef}
         size={size}
         disabled={disabled}
