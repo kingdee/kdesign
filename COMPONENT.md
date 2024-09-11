@@ -85,7 +85,7 @@ export default Button
 + const buttonLangMsg = locale.getCompLangMsg({ componentName: 'Button' })
 ```
 
-进行国际化前你需要现在 `components/locale/zh-CN.tsx` 文件内定义 Button 组件，比如定义 Button.text 然后你就可以使用 `buttonLangMsg.text` 进行赋值操作
+进行国际化前你需要先在 `components/locale/zh-CN.tsx` 文件内定义 Button 组件，比如定义 Button.text 然后你就可以使用 `buttonLangMsg.text` 进行赋值操作
 
 ### 2. 样式文件说明
 KDesign 使用less作为css预处理器，创建模板内的 style 文件夹存放的就是所有的样式文件。
@@ -197,7 +197,7 @@ KDesign 的demo采用实时编译，用户可以直接在编辑器中编辑代�
 - order: demo的排序规则
   - 文档在页面中的呈现顺序按照order正序排列
 - jsx代码示例是固定的模板，大家不需要对模板的主体结构进行修改 只需要修改Demo组件中的代码即可。
-- 对于需要使用其他npm包来演示代码的，KDesign也提供了 `lodash`、`date-fns`、 `axios`来进行演示，具体使用办法如下:
+- 对于需要使用其他npm包来演示代码的，KDesign也提供了 `lodash`、`date-fns`、 `fetch`来进行演示，具体使用办法如下:
 
 ```diff
 + import _ from 'lodash'

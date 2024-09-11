@@ -13,7 +13,7 @@ const Login = () => {
   }
 
   const loginMethods = async (token?: string, autoLogin?: boolean) => {
-    const res = await request.get('/currentUser', {
+    const res = await request('/currentUser', {
       headers: { Authorization: 'Bearer ' + token },
     })
     const { data } = res
@@ -26,7 +26,7 @@ const Login = () => {
     }
   }
   const logoutMethods = () => {
-    request.get('/loginOut')
+    request('/loginOut')
     delInfo()
     window.location.reload()
   }
