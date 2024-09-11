@@ -6,7 +6,6 @@ import * as kdesign from 'kdesign'
 import { Icon, Message, Tooltip } from 'kdesign'
 import lodash from 'lodash'
 import copy from 'copy-to-clipboard'
-import axios from 'axios'
 import LZString from 'lz-string'
 import { Language } from 'prism-react-renderer'
 
@@ -51,7 +50,6 @@ const errorCodeStyle = {
 const allScope: Record<string, any> = {
   ReactDOM,
   React,
-  axios,
   copy,
   react: { ...React },
   '@kdcloudjs/kdesign': { ...kdesign },
@@ -137,7 +135,7 @@ function LiveDemo(props: Props) {
   import { createRoot } from 'react-dom/client';
   import './index.css';
   import Demo from './demo';
-  
+
   createRoot(document.getElementById('container')).render(<Demo />);
   `
   const demoJsContent = code.replace('ReactDOM.render(<Demo />, mountNode)', `export default Demo`)
