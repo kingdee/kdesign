@@ -299,19 +299,16 @@ export const Popper = forwardRef<unknown, PopperProps>((props, ref) => {
     triggerOpen(nextOpen, triggerType, delay)
   }
 
-  const onClick = (e: Event) => {
+  const onClick = () => {
     onTriggerInner(!visibleInner, 'click')
-    referenceElement?.props?.onClick?.(e)
   }
 
-  const onFocus = (e: Event) => {
+  const onFocus = () => {
     onTriggerInner(true, 'focus')
-    referenceElement?.props?.onFocus?.(e)
   }
 
-  const onBlur = (e: Event) => {
+  const onBlur = () => {
     onTriggerInner(false, 'focus')
-    referenceElement?.props?.onBlur?.(e)
   }
 
   const onContextMenu = (e: MouseEvent) => {
@@ -337,17 +334,14 @@ export const Popper = forwardRef<unknown, PopperProps>((props, ref) => {
       clientHeight,
     )
     onTriggerInner(!visibleInner, 'contextMenu')
-    referenceElement?.props?.onContextMenu?.(e)
   }
 
-  const onMouseOver = (e: Event) => {
+  const onMouseOver = () => {
     onTriggerInner(true, 'hover', mouseEnterDelay)
-    referenceElement?.props?.onMouseOver?.(e)
   }
 
-  const onMouseLeave = (e: Event) => {
+  const onMouseLeave = () => {
     onTriggerInner(false, 'hover', mouseLeaveDelay)
-    referenceElement?.props?.onMouseLeave?.(e)
   }
 
   const onPopperAnimationEnd = (e: React.AnimationEvent | React.TransitionEvent) => {
