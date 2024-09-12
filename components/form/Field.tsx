@@ -77,6 +77,7 @@ const Field: React.FC<FormItemProps> = (props) => {
     getDefaultValue,
     local,
     disabled: formDisabled,
+    wrapperWidth: wrapperWidthContext,
   } = fieldContext
   const { registerField, dispatch, setDefaultValues, deleteField } = getInternalHooks(INTERNAL_HOOK_KEY)!
 
@@ -299,7 +300,7 @@ const Field: React.FC<FormItemProps> = (props) => {
         textAlign={labelAlign}
         requiredMark={mergedRequired}
       />
-      <FieldWrapper width={wrapperWidth} validateMessage={validateMessage} extra={extra}>
+      <FieldWrapper width={wrapperWidth ?? wrapperWidthContext} validateMessage={validateMessage} extra={extra}>
         {childrenArray.map((child: React.ReactElement, index) => {
           const keys = mergeProps(
             {
