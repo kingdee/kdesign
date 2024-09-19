@@ -589,7 +589,8 @@ export const getInitExpandedKeys = (
   searchStatus: SearchStatus,
   expandOnFilterNode: boolean,
 ) => {
-  let keys: string[] = expandedKeys?.concat(expandScrollkeys) || defaultExpandedKeys?.concat(expandScrollkeys) || []
+  let keys: string[] =
+    expandedKeys?.concat(expandScrollkeys) || defaultExpandedKeys?.concat(expandScrollkeys) || expandScrollkeys
   if (isInit) {
     if (defaultExpandAll) {
       keys = getAllNodeKeys(data)
