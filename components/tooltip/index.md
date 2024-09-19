@@ -43,6 +43,9 @@ subtitle: 文字提示
 | trigger | 触发行为，有 `hover` \| `focus` \| `click` \| `contextMenu` 四个行为可选，可使用数组设置多个触发行为 | string \| string\[] | `hover` | 1.0.0 |
 | visible | 手动控制浮层显隐 | boolean | false | 1.0.0 |
 | onVisibleChange | 显示隐藏的回调 | (visible) => void | - | 1.0.0 |
+| autoPlacement | 溢出边界时改变placement，默认镜向翻动 | boolean | true | 1.8.10 |
+| autoPlacementList | 溢出边界时，placement备选展示位置 [参考popper](https://popper.js.org/docs/v2/modifiers/flip/) | placement\[] | - | 1.8.10 |
+| customerModifiers | 自定义修饰符 [参考popper](https://popper.js.org/docs/v2/modifiers/) | (modifiers: Partial<Modifier<any, any>>\[]) => Partial<Modifier<any, any>>\[] | - | 1.8.10 |
 
 ## Design Token
 
