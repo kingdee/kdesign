@@ -330,6 +330,7 @@ const InternalTreeSelect: React.ForwardRefRenderFunction<ITreeSelectProps<TreeSe
       onSelect: handleSelect,
       onExpand: handleExpand,
       height: listHeight,
+      scrollToKey: Array.isArray(initValue) ? initValue[0] : initValue,
     }
 
     if (isMultiple) {
