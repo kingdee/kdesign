@@ -55,6 +55,7 @@ export type PopperProps = {
   mouseLeaveDelay?: number
   defaultVisible?: boolean
   autoPlacement?: boolean
+  autoPlacementList?: Placement[]
   className?: string
   style?: React.CSSProperties
   popperClassName?: string
@@ -71,6 +72,7 @@ export type PopperProps = {
   onTransitionEnd?: (e: React.TransitionEvent) => void
   onAnimationEnd?: (e: React.AnimationEvent) => void
   children?: React.ReactNode
+  customerModifiers?: (modifiers: Partial<Modifier<any, any>>[]) => Partial<Modifier<any, any>>[]
 }
 
 const useEnhancedEffect = typeof window !== 'undefined' ? React.useLayoutEffect : React.useEffect
@@ -113,30 +115,16 @@ export const popperPlacementMap = {
   rightBottom: 'right-end',
 }
 
-const placementFlip: any = {
-  bottom: 'top',
-  top: 'bottom',
-  right: 'left',
-  left: 'right',
-}
-
 const getRealPlacement = (key: PlacementType) => {
   return popperPlacementMap[key] ? (popperPlacementMap[key] as Placement) : 'top'
 }
 
-const getFallbackPlacements: (key: Placement) => Placement[] = (key: Placement) => {
-  const prefix = key.split('-')[0]
-  const suffix = [''] // , '-start', '-end']
-
-  return [
-    ...[...Object.keys(placementFlip).filter((r) => [prefix, placementFlip[prefix]].includes(r))]
-      .map((d) => suffix.map((o) => d + o))
-      .flat()
-      .filter((f) => f !== key),
-    // ...[...Object.keys(placementFlip).filter((r) => ![prefix, placementFlip[prefix]].includes(r))]
-    //   .map((d) => suffix.map((o) => d + o))
-    //   .flat(),
-  ] as Placement[]
+const getFallbackPlacementList: (arr: string[]) => Placement[] = (arr) => {
+  return arr
+    .map((d) => {
+      return popperPlacementMap[d as PlacementType] ? popperPlacementMap[d as PlacementType] : ''
+    })
+    .filter((d) => d) as Placement[]
 }
 
 const getRealDom = (locatorRef: any, locatorElement: any = undefined) => {
@@ -183,12 +171,14 @@ export const Popper = forwardRef<unknown, PopperProps>((props, ref) => {
     mouseLeaveDelay = 0.1,
     defaultVisible = false,
     autoPlacement = true,
+    autoPlacementList,
     clickToClose = true,
     getTriggerElement = (locatorNode) => locatorNode,
     getPopupContainer = () => document.body,
     onTransitionEnd,
     onAnimationEnd,
     children,
+    customerModifiers,
   } = props
 
   const popperPrefixCls = getPrefixCls!(pkgPrefixCls, 'popper')
@@ -438,7 +428,7 @@ export const Popper = forwardRef<unknown, PopperProps>((props, ref) => {
     }
   })
 
-  const popperModifiers: Partial<Modifier<any, any>>[] = [
+  const defaultModifiers: Partial<Modifier<any, any>>[] = [
     {
       name: 'offset',
       options: {
@@ -456,7 +446,7 @@ export const Popper = forwardRef<unknown, PopperProps>((props, ref) => {
       name: 'flip',
       enabled: autoPlacement,
       options: {
-        fallbackPlacements: autoPlacement ? getFallbackPlacements(placementInner as any) : undefined,
+        fallbackPlacements: Array.isArray(autoPlacementList) ? getFallbackPlacementList(autoPlacementList) : undefined,
       },
     },
     {
@@ -471,6 +461,9 @@ export const Popper = forwardRef<unknown, PopperProps>((props, ref) => {
       },
     },
   ]
+
+  const popperModifiers =
+    typeof customerModifiers === 'function' ? customerModifiers(defaultModifiers) : defaultModifiers
 
   const popperOptionsInner: any = {
     placement: placementInner,
