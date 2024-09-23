@@ -2,7 +2,7 @@
 category: Components
 type: 基础
 order: 0
-title: SVG Icon
+title: SVGIcon
 subtitle: 图标
 ---
 
@@ -15,7 +15,7 @@ subtitle: 图标
 ```bash
 yarn add @kdcloudjs/kdesign-icons
 ```
-查找或者copy 图标代码，请访问https://kingdee.design/resource/iconpage 
+查找或者copy 图标代码，请访问https://kingdee.design/resource/iconpage
 <img src="https://kui.kingdee.com/assets/image/iconpage_demo.png" alt="图片描述" width="200" height="auto">
 
 ## API
