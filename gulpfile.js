@@ -27,6 +27,7 @@ function babelify(js, modules) {
   const babelConfig = cloneDeep(babelBaseConfig)
   babelConfig.presets[0] = ['@babel/preset-env', {}] // bisheng官网使用@babel/plugin, 组件库使用@babel/runtime
   babelConfig.plugins[0] = ['@babel/plugin-transform-runtime', { corejs: 3 }]
+  babelConfig.comments = false
   if (modules === false) {
     babelConfig.presets[0] = ['@babel/preset-env', { modules: false }]
   }
