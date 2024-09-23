@@ -52,6 +52,7 @@ const transformComponentArr = [
   'upload',
   'tree-select',
   'divider',
+  'geo-zone-picker',
 ]
 const tokenBrandPrefix = 'kd'
 const tokenGloablPrefix = `--${tokenBrandPrefix}-g`
