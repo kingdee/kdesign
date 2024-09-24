@@ -165,7 +165,8 @@ export const Popper = forwardRef<unknown, PopperProps>((props, ref) => {
     strategy = 'absolute',
     visible,
     arrowSize = 4.25,
-    gap: defaultGap = 4,
+    arrowOffset = 12,
+    gap: defaultGap = 8,
     scrollHidden = false,
     mouseEnterDelay = 0.1,
     mouseLeaveDelay = 0.1,
@@ -188,6 +189,28 @@ export const Popper = forwardRef<unknown, PopperProps>((props, ref) => {
   const popperElement = getElement(tip)
   const referenceElement: any = Children.only(childrenInner) as ReactElement
 
+  const arrowOffsetInner = arrowSize + arrowOffset
+  const getArrowOffset = (popperSize: number, referenceSize: number, arr: string[]) => {
+    const boundary = arrowOffsetInner * 2
+    let offset: any
+
+    if (referenceSize < boundary || popperSize < boundary) {
+      const o = Math.min(referenceSize, popperSize) / 2
+      if (arr[1] === 'start') {
+        offset = o
+      } else {
+        offset = Math.max(popperSize - o, 0)
+      }
+    } else {
+      if (arr[1] === 'start') {
+        offset = arrowOffsetInner
+      } else {
+        offset = popperSize - arrowOffsetInner
+      }
+    }
+
+    return offset
+  }
   const id = useId()
   const parentContext = useContext(TriggerContext)
   const subPopupRefs = useRef<Record<string, any>>({})
@@ -437,7 +460,7 @@ export const Popper = forwardRef<unknown, PopperProps>((props, ref) => {
     },
     {
       name: 'preventOverflow',
-      enabled: autoPlacement,
+      enabled: autoPlacement && !placementInner.includes('-'),
       options: {
         mainAxis: true,
       },
@@ -447,6 +470,49 @@ export const Popper = forwardRef<unknown, PopperProps>((props, ref) => {
       enabled: autoPlacement,
       options: {
         fallbackPlacements: Array.isArray(autoPlacementList) ? getFallbackPlacementList(autoPlacementList) : undefined,
+      },
+    },
+    {
+      name: 'applyArrowOffset',
+      enabled: true,
+      phase: 'write',
+      fn(data: any) {
+        const {
+          elements: { arrow },
+          placement,
+          rects: { popper, reference },
+        } = data.state
+        if (arrow) {
+          const arr = placement.split('-')
+          let offset: any
+          if (arr.length === 2) {
+            switch (arr[0]) {
+              case 'bottom':
+                offset = getArrowOffset(popper.width, reference.width, arr)
+                if (offset) {
+                  arrow.style.transform = `translate(${offset}px, 0px)`
+                }
+                break
+              case 'left':
+                offset = getArrowOffset(popper.height, reference.height, arr)
+                if (offset) {
+                  arrow.style.transform = `translate(0px, ${offset}px)`
+                }
+                break
+              case 'right':
+                offset = getArrowOffset(popper.height, reference.height, arr)
+                if (offset) {
+                  arrow.style.transform = `translate(0px, ${offset}px)`
+                }
+                break
+              default:
+                offset = getArrowOffset(popper.width, reference.width, arr)
+                if (offset) {
+                  arrow.style.transform = `translate(${offset}px, 0px)`
+                }
+            }
+          }
+        }
       },
     },
     {
