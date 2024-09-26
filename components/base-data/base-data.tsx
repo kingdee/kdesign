@@ -5,6 +5,7 @@ import { getCompProps } from '../_utils'
 import { IAdvancedSelectorProps, IIndxPosListProps, IColumnsProps, ISearchInfoProps, IOptionsProps } from './interface'
 import { Input, Icon, Tabs, Empty, Spin, Checkbox } from '../index'
 import usePopper from '../_utils/usePopper'
+import ResizeObserver from '../_utils/resizeObserver'
 
 const InternalBaseData: React.ForwardRefRenderFunction<IAdvancedSelectorProps> = (
   props: IAdvancedSelectorProps,
@@ -166,8 +167,8 @@ const InternalBaseData: React.ForwardRefRenderFunction<IAdvancedSelectorProps> =
     return str.split(delimiter).filter((item) => item)
   }
 
-  // 当选中项文字超出输入框时，显示共多少项
-  useLayoutEffect(() => {
+  const handleShowTotal = useCallback(() => {
+    if (!isMultiple) return
     const inputDom = inputRef.current?.input
     if (!inputDom) return
     if (inputDom.scrollWidth - inputDom.offsetWidth > 0 && inputValue) {
@@ -175,7 +176,12 @@ const InternalBaseData: React.ForwardRefRenderFunction<IAdvancedSelectorProps> =
     } else {
       setShowTotal(false)
     }
-  }, [inputRef, inputValue])
+  }, [inputValue, isMultiple])
+
+  // 当选中项文字超出输入框时，显示共多少项
+  useLayoutEffect(() => {
+    handleShowTotal()
+  }, [handleShowTotal])
 
   // 通过选中项显示input文字， optionLabelProp为回填到选择框的属性
   const setValueBySeleted = useCallback(() => {
@@ -434,17 +440,19 @@ const InternalBaseData: React.ForwardRefRenderFunction<IAdvancedSelectorProps> =
     const totalText = locale.getLangMsg('BaseData', 'total', { total: seletedOptions.length })
     return (
       <div className={advancedSelectorCls} ref={advancedSelectorRef} style={style}>
-        <Input
-          ref={inputRef}
-          borderType="none"
-          disabled={disabled}
-          onChange={changeInputText}
-          placeholder={placeholder}
-          value={inputValue}
-          onDoubleClick={handleDoubleClick}
-          onFocus={handleFocus}
-          onBlur={handleBlur}
-        />
+        <ResizeObserver onResize={handleShowTotal}>
+          <Input
+            ref={inputRef}
+            borderType="none"
+            disabled={disabled}
+            onChange={changeInputText}
+            placeholder={placeholder}
+            value={inputValue}
+            onDoubleClick={handleDoubleClick}
+            onFocus={handleFocus}
+            onBlur={handleBlur}
+          />
+        </ResizeObserver>
         {showTotal && !isFocused && isMultiple && (
           <span className={`${advancedSelectorfixCls}-total`} onClick={showInputTotal}>
             {totalText}
