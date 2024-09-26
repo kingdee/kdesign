@@ -409,21 +409,25 @@ export const Popper = forwardRef<unknown, PopperProps>((props, ref) => {
   }, [visibleInner, scrollHidden, popperRefDom])
 
   useEffect(() => {
-    const clickHandle = debounce((e: MouseEvent) => {
-      if (visibleInner) {
-        const isPopper = popperRefDom.current
-          ? popperRefDom.current === e.target || popperRefDom.current.contains?.(e.target)
-          : false
+    const clickHandle = debounce(
+      (e: MouseEvent) => {
+        if (visibleInner) {
+          const isPopper = popperRefDom.current
+            ? popperRefDom.current === e.target || popperRefDom.current.contains?.(e.target)
+            : false
 
-        const domReference = getRealDom(referenceRef, referenceElement)
-        const isReference = domReference ? domReference === e.target || domReference?.contains?.(e.target) : false
-        const isTarget = trigger === 'contextMenu' ? isPopper : isPopper || isReference
+          const domReference = getRealDom(referenceRef, referenceElement)
+          const isReference = domReference ? domReference === e.target || domReference?.contains?.(e.target) : false
+          const isTarget = trigger === 'contextMenu' ? isPopper : isPopper || isReference
 
-        if (clickToClose && !isTarget && !isSubPopper(e)) {
-          triggerOpen(false, 'clickOutside', 0)
+          if (clickToClose && !isTarget && !isSubPopper(e)) {
+            triggerOpen(false, 'clickOutside', 0)
+          }
         }
-      }
-    }, 10)
+      },
+      10,
+      { leading: true },
+    )
 
     if (visibleInner) {
       document.addEventListener('click', clickHandle, true)
