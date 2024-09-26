@@ -76,7 +76,7 @@ exports[`Popper ref  is useful  1`] = `
           data-popper-escaped=""
           data-popper-placement="top"
           data-popper-reference-hidden=""
-          style="position: absolute; left: 0px; top: 0px; margin: 0px; bottom: 0px; transform: translate(0px, -9px);"
+          style="position: absolute; left: 0px; top: 0px; margin: 0px; bottom: 0px; transform: translate(0px, -13px);"
         >
           <div
             class="kd-popper-top kd-popper-top-in"
@@ -94,7 +94,7 @@ exports[`Popper ref  is useful  1`] = `
           data-popper-escaped=""
           data-popper-placement="top"
           data-popper-reference-hidden=""
-          style="position: absolute; left: 0px; top: 0px; margin: 0px; bottom: 0px; transform: translate(0px, -4px);"
+          style="position: absolute; left: 0px; top: 0px; margin: 0px; bottom: 0px; transform: translate(0px, -8px);"
         >
           <div
             class="kd-popper-top kd-popper-top-in test"
@@ -108,7 +108,7 @@ exports[`Popper ref  is useful  1`] = `
           data-popper-escaped=""
           data-popper-placement="top"
           data-popper-reference-hidden=""
-          style="position: absolute; left: 0px; top: 0px; margin: 0px; bottom: 0px; transform: translate(0px, -4px);"
+          style="position: absolute; left: 0px; top: 0px; margin: 0px; bottom: 0px; transform: translate(0px, -8px);"
         >
           <div
             class="kd-popper-top kd-popper-top-in my-popper"
@@ -121,7 +121,7 @@ exports[`Popper ref  is useful  1`] = `
           data-popper-escaped=""
           data-popper-placement="left"
           data-popper-reference-hidden=""
-          style="position: absolute; left: 0px; top: 0px; margin: 0px; right: 0px; transform: translate(-4px, 0px);"
+          style="position: absolute; left: 0px; top: 0px; margin: 0px; right: 0px; transform: translate(-8px, 0px);"
         >
           <div
             class="kd-popper-left kd-popper-left-in my-popper"
@@ -134,7 +134,7 @@ exports[`Popper ref  is useful  1`] = `
           data-popper-escaped=""
           data-popper-placement="right"
           data-popper-reference-hidden=""
-          style="position: absolute; left: 0px; top: 0px; margin: 0px; transform: translate(4px, 0px);"
+          style="position: absolute; left: 0px; top: 0px; margin: 0px; transform: translate(8px, 0px);"
         >
           <div
             class="kd-popper-right kd-popper-right-in my-popper"
@@ -147,7 +147,7 @@ exports[`Popper ref  is useful  1`] = `
           data-popper-escaped=""
           data-popper-placement="bottom"
           data-popper-reference-hidden=""
-          style="position: absolute; left: 0px; top: 0px; margin: 0px; transform: translate(0px, 4px);"
+          style="position: absolute; left: 0px; top: 0px; margin: 0px; transform: translate(0px, 8px);"
         >
           <div
             class="kd-popper-bottom kd-popper-bottom-in my-popper"
@@ -160,7 +160,7 @@ exports[`Popper ref  is useful  1`] = `
           data-popper-escaped=""
           data-popper-placement="top-start"
           data-popper-reference-hidden=""
-          style="position: absolute; left: 0px; top: 0px; margin: 0px; bottom: 0px; transform: translate(0px, -4px);"
+          style="position: absolute; left: 0px; top: 0px; margin: 0px; bottom: 0px; transform: translate(0px, -8px);"
         >
           <div
             class="kd-popper-top-start kd-popper-top-start-in my-popper"
@@ -173,7 +173,7 @@ exports[`Popper ref  is useful  1`] = `
           data-popper-escaped=""
           data-popper-placement="top-end"
           data-popper-reference-hidden=""
-          style="position: absolute; left: 0px; top: 0px; margin: 0px; right: 0px; bottom: 0px; transform: translate(0px, -4px);"
+          style="position: absolute; left: 0px; top: 0px; margin: 0px; right: 0px; bottom: 0px; transform: translate(0px, -8px);"
         >
           <div
             class="kd-popper-top-end kd-popper-top-end-in my-popper"
@@ -186,7 +186,7 @@ exports[`Popper ref  is useful  1`] = `
           data-popper-escaped=""
           data-popper-placement="bottom-start"
           data-popper-reference-hidden=""
-          style="position: absolute; left: 0px; top: 0px; margin: 0px; transform: translate(0px, 4px);"
+          style="position: absolute; left: 0px; top: 0px; margin: 0px; transform: translate(0px, 8px);"
         >
           <div
             class="kd-popper-bottom-start kd-popper-bottom-start-in my-popper"
@@ -199,7 +199,7 @@ exports[`Popper ref  is useful  1`] = `
           data-popper-escaped=""
           data-popper-placement="bottom-end"
           data-popper-reference-hidden=""
-          style="position: absolute; left: 0px; top: 0px; margin: 0px; right: 0px; transform: translate(0px, 4px);"
+          style="position: absolute; left: 0px; top: 0px; margin: 0px; right: 0px; transform: translate(0px, 8px);"
         >
           <div
             class="kd-popper-bottom-end kd-popper-bottom-end-in my-popper"
@@ -212,7 +212,7 @@ exports[`Popper ref  is useful  1`] = `
           data-popper-escaped=""
           data-popper-placement="left-start"
           data-popper-reference-hidden=""
-          style="position: absolute; left: 0px; top: 0px; margin: 0px; right: 0px; transform: translate(-4px, 0px);"
+          style="position: absolute; left: 0px; top: 0px; margin: 0px; right: 0px; transform: translate(-8px, 0px);"
         >
           <div
             class="kd-popper-left-start kd-popper-left-start-in my-popper"
@@ -225,7 +225,7 @@ exports[`Popper ref  is useful  1`] = `
           data-popper-escaped=""
           data-popper-placement="left-end"
           data-popper-reference-hidden=""
-          style="position: absolute; left: 0px; top: 0px; margin: 0px; right: 0px; bottom: 0px; transform: translate(-4px, 0px);"
+          style="position: absolute; left: 0px; top: 0px; margin: 0px; right: 0px; bottom: 0px; transform: translate(-8px, 0px);"
         >
           <div
             class="kd-popper-left-end kd-popper-left-end-in my-popper"
@@ -238,7 +238,7 @@ exports[`Popper ref  is useful  1`] = `
           data-popper-escaped=""
           data-popper-placement="right-start"
           data-popper-reference-hidden=""
-          style="position: absolute; left: 0px; top: 0px; margin: 0px; transform: translate(4px, 0px);"
+          style="position: absolute; left: 0px; top: 0px; margin: 0px; transform: translate(8px, 0px);"
         >
           <div
             class="kd-popper-right-start kd-popper-right-start-in my-popper"
@@ -251,7 +251,7 @@ exports[`Popper ref  is useful  1`] = `
           data-popper-escaped=""
           data-popper-placement="right-end"
           data-popper-reference-hidden=""
-          style="position: absolute; left: 0px; top: 0px; margin: 0px; bottom: 0px; transform: translate(4px, 0px);"
+          style="position: absolute; left: 0px; top: 0px; margin: 0px; bottom: 0px; transform: translate(8px, 0px);"
         >
           <div
             class="kd-popper-right-end kd-popper-right-end-in my-popper"
@@ -264,7 +264,7 @@ exports[`Popper ref  is useful  1`] = `
           data-popper-escaped=""
           data-popper-placement="top"
           data-popper-reference-hidden=""
-          style="position: absolute; left: 0px; top: 0px; margin: 0px; bottom: 0px; transform: translate(0px, -4px);"
+          style="position: absolute; left: 0px; top: 0px; margin: 0px; bottom: 0px; transform: translate(0px, -8px);"
         >
           <div
             class="kd-popper-top kd-popper-top-in"
@@ -277,7 +277,7 @@ exports[`Popper ref  is useful  1`] = `
           data-popper-escaped=""
           data-popper-placement="top"
           data-popper-reference-hidden=""
-          style="position: absolute; left: 0px; top: 0px; margin: 0px; bottom: 0px; transform: translate(0px, -4px);"
+          style="position: absolute; left: 0px; top: 0px; margin: 0px; bottom: 0px; transform: translate(0px, -8px);"
         >
           <div
             class="kd-popper-top kd-popper-top-out"
