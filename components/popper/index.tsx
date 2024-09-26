@@ -40,6 +40,8 @@ export const Triggers = tuple('hover', 'focus', 'click', 'contextMenu')
 
 export type TriggerType = typeof Triggers[number]
 
+export type Reason = TriggerType | 'scroll' | 'clickOutside' | 'parentHidden' | 'unknown'
+
 export type RenderFunction = () => React.ReactNode
 
 export type PopperProps = {
@@ -66,7 +68,7 @@ export type PopperProps = {
   strategy?: 'fixed' | 'absolute'
   clickToClose?: boolean
   onTrigger?: (trigger: TriggerType) => void
-  onVisibleChange?: (visible: boolean) => void
+  onVisibleChange?: (visible: boolean, reason?: Reason) => void
   getTriggerElement?: (locatorNode: HTMLElement) => HTMLElement
   getPopupContainer?: (locatorNode: HTMLElement) => HTMLElement
   onTransitionEnd?: (e: React.TransitionEvent) => void
@@ -248,7 +250,7 @@ export const Popper = forwardRef<unknown, PopperProps>((props, ref) => {
       delayRef.current = null
     }
   }
-  const changeVisible = (nextOpen: boolean, triggerType = '') => {
+  const changeVisible = (nextOpen: boolean, triggerType: Reason = 'unknown') => {
     if (visibleInner !== nextOpen) {
       if (nextOpen && triggerTypeArray.includes(triggerType)) {
         onTrigger?.(triggerType as TriggerType)
@@ -256,17 +258,17 @@ export const Popper = forwardRef<unknown, PopperProps>((props, ref) => {
       if (typeof visible === 'undefined') {
         setVisibleInner(nextOpen)
       }
-      onVisibleChange?.(nextOpen)
+      onVisibleChange?.(nextOpen, triggerType)
     }
     if (!nextOpen && Object.keys(subPopupRefs.current || {}).length) {
       Object.values(subPopupRefs.current).forEach((d: any) => {
         if (typeof d?.triggerOpen === 'function' && d?.visible) {
-          d?.triggerOpen(false)
+          d?.triggerOpen(false, 'parentHidden')
         }
       })
     }
   }
-  const triggerOpen = (nextOpen: boolean, triggerType = '', delay = 0) => {
+  const triggerOpen = (nextOpen: boolean, triggerType: Reason = 'unknown', delay = 0) => {
     clearDelay()
     if (!disabled) {
       if (delay === 0) {
@@ -510,6 +512,7 @@ export const Popper = forwardRef<unknown, PopperProps>((props, ref) => {
                 if (offset) {
                   arrow.style.transform = `translate(${offset}px, 0px)`
                 }
+                break
             }
           }
         }
