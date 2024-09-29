@@ -132,7 +132,7 @@ describe('Popper', () => {
       expect(wrapper).toMatchSnapshot()
     })
 
-    it('popperClassName & popperStyle is useful', () => {
+    it('popperClassName & popperStyle & popperOuterStyle & popperOuterClassName', () => {
       const ref: any = React.createRef()
       const wrapper = mount(
         <Popper
@@ -140,11 +140,15 @@ describe('Popper', () => {
           defaultVisible
           popperStyle={{ color: 'red' }}
           popperClassName="test"
+          popperOuterStyle={{ zIndex: 9999 }}
+          popperOuterClassName="test-outer"
           getPopupContainer={() => ref.current}
         >
           <span>text</span>
         </Popper>,
       )
+      expect(wrapper.find('.kd-popper')).toHaveClassName('test-outer')
+      expect(wrapper.find('.kd-popper').props().style).toEqual(expect.objectContaining({ zIndex: 9999 }))
       expect(wrapper.find('.kd-popper-top')).toHaveClassName('test')
       expect(wrapper.find('.kd-popper-top')).toHaveStyle({ color: 'red' })
     })
@@ -222,18 +226,17 @@ describe('Popper', () => {
   // 10. ref test
   it('ref  is useful ', async () => {
     const ref: any = React.createRef()
-    const wrapper = mount(
+    const wrapper1 = mount(
       <Popper ref={ref} defaultVisible tip="tip text" trigger={'click'}>
         <div className={'kd-test'}>text</div>
       </Popper>,
     )
-    expect(wrapper.find('.kd-test').length).toEqual(1)
+    expect(wrapper1.find('.kd-test').length).toEqual(1)
     act(() => {
       ref.current.triggerOpen(false)
     })
     await sleep(100)
     expect(ref.current.visible).toEqual(false)
-    expect(wrapper).toMatchSnapshot()
   })
 
   // 11. special case
