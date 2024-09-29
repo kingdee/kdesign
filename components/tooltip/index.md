@@ -37,7 +37,9 @@ subtitle: 文字提示
 | mouseEnterDelay | 延时显示浮层秒数 | number | 0.1 | 1.0.0 |
 | mouseLeaveDelay | 延时隐藏浮层秒数 | number | 0.1 | 1.0.0 |
 | popperClassName | 浮层类名 | string | - | 1.0.0 |
-| popperStyle | 浮层样式 | object | - | 1.0.0 |
+| popperStyle | 浮层样式 | object | - | 1.8.13 |
+| popperOuterClassName | 浮层最外层类名 | string | - | 1.8.13 |
+| popperOuterStyle | 浮层最外层样式 | object | - | 1.0.0 |
 | placement | 浮层位置，可选 `top` `left` `right` `bottom` `topLeft` `topRight` `bottomLeft` `bottomRight` `leftTop` `leftBottom` `rightTop` `rightBottom` | string | `top` | 1.0.0 |
 | scrollHidden | 滚动时浮层是否可关闭 | boolean | false | 1.0.0 |
 | trigger | 触发行为，有 `hover` \| `focus` \| `click` \| `contextMenu` 四个行为可选，可使用数组设置多个触发行为 | string \| string\[] | `hover` | 1.0.0 |

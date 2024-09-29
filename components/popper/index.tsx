@@ -62,6 +62,8 @@ export type PopperProps = {
   style?: React.CSSProperties
   popperClassName?: string
   popperStyle?: React.CSSProperties
+  popperOuterClassName?: string
+  popperOuterStyle?: React.CSSProperties
   placement?: PlacementType
   tip?: any
   trigger?: TriggerType | Array<TriggerType>
@@ -160,6 +162,8 @@ export const Popper = forwardRef<unknown, PopperProps>((props, ref) => {
     onVisibleChange,
     className,
     popperClassName,
+    popperOuterClassName,
+    popperOuterStyle,
     tip,
     disabled = false,
     trigger = 'click',
@@ -596,8 +600,8 @@ export const Popper = forwardRef<unknown, PopperProps>((props, ref) => {
 
   const popperContainerProps = {
     ref: popperRefDom,
-    style: { ...(arrow ? arrowStyle : {}) },
-    className: classnames(popperPrefixCls, { hidden: !visibleInner }),
+    style: { ...(arrow ? arrowStyle : {}), ...popperOuterStyle },
+    className: classnames(popperPrefixCls, { hidden: !visibleInner }, popperOuterClassName),
   }
 
   const popperProps = {
