@@ -306,6 +306,7 @@ const InternalTree = React.forwardRef((props: TreeProps, ref: any): React.Functi
         setCheckedKeys(checkState.checkedKeys)
         setHalfCheckedKeys(checkState.halfCheckedKeys)
       }
+      setScrollKey(undefined)
       onCheck &&
         onCheck(checkState.checkedKeys, { event, node, checked: value, halfCheckedKeys: checkState.halfCheckedKeys })
     },
