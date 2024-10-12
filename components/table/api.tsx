@@ -144,6 +144,12 @@ export default function getApi(pipelineRef: React.MutableRefObject<TablePipeline
     return pipeline.ref?.current.rowHeightManager.cache
   }
 
+  function getFeatureApi(featureName:string){
+    const pipeline = pipelineRef.current
+    return pipeline.getFeatureApi(featureName)
+
+  }
+
   return {
     getColumns,
     getDataSource,
@@ -152,5 +158,6 @@ export default function getApi(pipelineRef: React.MutableRefObject<TablePipeline
     ensureRowIndexVisible,
     ensureColumnVisible,
     getHeightCache,
+    getFeatureApi,
   } as TableApi
 }
