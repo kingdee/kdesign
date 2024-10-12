@@ -31,6 +31,7 @@ export type TableApi = {
   getHeightCache: () => number[]
   ensureRowIndexVisible: (rowIndex: number, position?: string | undefined) => void
   ensureColumnVisible: (code: string) => void
+  getFeatureApi:(featureName:string) => any
 }
 
 export type TableInstance = {
