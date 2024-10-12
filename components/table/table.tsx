@@ -114,7 +114,7 @@ const Table = forwardRef<unknown, TableProps>((props: TableProps, ref) => {
   useRangeSelection(pipeline, rangeSelection)
   useＭergeCellHover(pipeline)
   useFooterDataSource(pipeline, footerDataSource)
-  useRowDrag(pipeline, rowDrag, estimatedRowHeight)
+  useRowDrag(pipeline, rowDrag)
 
   /* -------------------------------------------------------------------------- */
   /* after useTablePipeline, merge pipeline.getProps result                     */
