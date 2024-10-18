@@ -441,9 +441,9 @@ const InternalSelect: React.ForwardRefRenderFunction<CityPickerProps> = (props: 
   }
 
   useEffect(() => {
-    initActiveIndex(searchValue ? undefined : -1)
-  }, [searchValue, tabsValue, curkeyboardList])
-
+    const index = curkeyboardList.findIndex((item: City) => item.id === initValue)
+    initActiveIndex(index >= 0 ? index : undefined)
+  }, [curkeyboardList, initValue])
   const onInternalKeyDown: React.KeyboardEventHandler<HTMLSpanElement> = (e) => {
     const { which } = e
     // open
