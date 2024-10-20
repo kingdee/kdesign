@@ -1,18 +1,18 @@
 export const colorTypes = [
   {
     type: 'HEX',
-    value: '#b2b2b2',
+    value: '#FFFFFF00',
   },
   {
     type: 'HSB',
-    value: 'hsb(0, 0%, 70%)',
+    value: 'HSBA(0, 0%, 100%, 0)',
   },
   {
     type: 'RGB',
-    value: 'rgb(178, 178, 178)',
+    value: 'RGBA(255, 255, 255, 0)',
   },
   {
     type: 'HSL',
-    value: 'hsl(0, 0%, 70%)',
+    value: 'HSLA(0, 0%, 100%, 0)',
   },
 ]

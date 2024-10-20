@@ -1,6 +1,6 @@
 import Color from 'color'
 import { validateColor } from './validateColor'
-import { toLowerCase } from './convertLetters'
+import { toLowerCase, toUpCase } from './convertLetters'
 
 type IOutType = 'HEX' | 'HSB' | 'HSL' | 'RGB' | 'all'
 
@@ -9,18 +9,18 @@ export const colorFormat = (colorStr: string, alpha = 1, outType: IOutType = 'al
   const toHex = () => {
     if (/^#([0-9a-fA-F]{8})$/.test(colorStr)) {
       if (formatHex) {
-        return toLowerCase(alpha === 1 ? ColorTools.hex() : ColorTools.hexa())
+        return toUpCase(alpha === 1 ? ColorTools.hex() : ColorTools.hexa())
       } else {
         return colorStr
       }
     } else {
-      return toLowerCase(alpha === 1 ? ColorTools.hex() : ColorTools.hexa())
+      return toUpCase(alpha === 1 ? ColorTools.hex() : ColorTools.hexa())
     }
   }
-  const HEX = toHex()
-  const HSB = colorToStr(ColorTools.hsv())
-  const RGB = ColorTools.rgb().string()
-  const HSL = colorToStr(ColorTools.hsl())
+  const HEX = toUpCase(toHex())
+  const HSB = toUpCase(colorToStr(ColorTools.hsv()))
+  const RGB = toUpCase(ColorTools.rgb().string())
+  const HSL = toUpCase(colorToStr(ColorTools.hsl()))
 
   if (outType === 'HEX') return HEX
   if (outType === 'HSB') return HSB
@@ -49,9 +49,8 @@ export const colorFormat = (colorStr: string, alpha = 1, outType: IOutType = 'al
 }
 
 export const getColorObj = (colorStr: string) => {
-  const colorArray = colorStr.split(',')
+  const colorArray = toLowerCase(colorStr).split(',')
   const type = validateColor(colorStr)
-
   if (type === 'HSB' || type === 'HSBA') {
     const s = removePercentage(colorArray[1])
     if (type === 'HSB') {
@@ -108,7 +107,7 @@ const removePercentage = (parameter: string): number => {
     : +parameter
 }
 
-const colorToStr = (obj: any): string => {
+export const colorToStr = (obj: any): string => {
   const arr = obj.color
   if (obj.valpha === 1) {
     return `${obj.model === 'hsv' ? 'hsb' : 'hsl'}(${strFixed(arr[0])}, ${strFixed(arr[1])}%, ${strFixed(arr[2])}%)`
@@ -154,5 +153,5 @@ export const presetColorToHEX = (colorArr: string[] | undefined): string[] => {
   const hexColorArr = colorArr.map((color: string) => {
     return colorFormat(color, 1, 'HEX')
   })
-  return hexColorArr
+  return hexColorArr as string[]
 }

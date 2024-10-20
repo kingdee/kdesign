@@ -67,9 +67,12 @@ const compDefaultProps = {
     functionalColorName: '#themeColor',
     switchName: { name: '', internationalName: 'followFunctionalColor' },
     placeholder: '#',
+    showClear: true,
     showColorTransfer: true,
     showPresetColor: true,
     showColorPickerBox: { showBox: false, showHue: false, showOpacity: false },
+    format: 'HEX',
+    panelFormatConfig: { show: ['HEX', 'HSB', 'RGB', 'HSL'], default: 'HEX' },
   },
   Checkbox: {
     defaultChecked: false,

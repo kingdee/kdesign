@@ -1,3 +1,15 @@
+export function toUpCase(str: string): string {
+  let result = ''
+  for (let i = 0; i < str.length; i++) {
+    const charCode = str.charCodeAt(i)
+    if (charCode >= 97 && charCode <= 122) {
+      result += String.fromCharCode(charCode - 32)
+    } else {
+      result += str[i]
+    }
+  }
+  return result
+}
 export function toLowerCase(str: string): string {
   let result = ''
   for (let i = 0; i < str.length; i++) {
