@@ -1,20 +1,12 @@
 import React, { FC, useContext, useState, useRef, useEffect } from 'react'
 import classNames from 'classnames'
 import { ConfigContext } from '../config-provider'
-import { Input, Icon } from '../index'
+import { Input } from '../index'
 import { validateColor } from './utils/validateColor'
 import { colorTypes } from './constant/colorTypes'
-import { IColorTypesObj, IColorPickerProps } from './interface'
+import { IColorTypesObj, IColorPickerProps, ColorTypes } from './interface'
 import ColorPickerPanel from './color-picker-panel'
-import {
-  colorFormat,
-  strFixed,
-  getColorObj,
-  valOfCorrespondingType,
-  highlightPresetColorIndex,
-  presetColorToHEX,
-} from './utils/colorFormat'
-import { toLowerCase } from './utils/convertLetters'
+import { colorFormat, strFixed, getColorObj, highlightPresetColorIndex, presetColorToHEX } from './utils/colorFormat'
 import { defaultSystemColor } from './constant/defaultColor'
 import Color from 'color'
 import { getCompProps } from '../_utils'
@@ -31,26 +23,31 @@ const ColorPicker: FC<Partial<IColorPickerProps>> = (props) => {
     functionalColor,
     functionalColorName,
     switchName,
+    showClear,
     showSwitch,
     showColorTransfer,
     showPresetColor,
     showColorPickerBox,
+    format,
+    panelFormatConfig,
     borderType,
     presetColor,
+    historicalColor,
     placeholder,
     defaultValue,
     defaultOpen,
     visible,
     suffixIcon,
+    prefixIcon,
     onChange,
     onVisibleChange,
   } = colorPickerProps
   const [inputColorValue, setInputColorValue] = useState<string>(defaultValue || '')
   const [correctColorValue, setCorrectColorValue] = useState<string>(defaultValue || defaultSystemColor)
-  const [currentColorType, setCurrentColorType] = useState<IColorTypesObj['type']>('HEX')
+  const [currentColorType, setCurrentColorType] = useState<IColorTypesObj['type']>(panelFormatConfig.default)
   const [colTypeArr, setColTypeArr] = useState<Array<IColorTypesObj>>(colorTypes as IColorTypesObj[])
   const [showPanel, setShowPanel] = useState<boolean>(typeof visible === 'undefined' ? !!defaultOpen : !!visible)
-  const [alpha, setAlpha] = useState<number>(1)
+  const [alpha, setAlpha] = useState<number>(0)
   const [alphaNoVerifyVal, setAlphaNoVerifyVal] = useState<string>(alpha * 100 + '%')
   const [isFollow, setIsFollow] = useState<boolean>(false)
   const [clickedColorIndex, setClickedColorIndex] = useState<number>()
@@ -79,26 +76,32 @@ const ColorPicker: FC<Partial<IColorPickerProps>> = (props) => {
       setAlpha(alpha)
       setAlphaNoVerifyVal(alphaStr)
     }
+    const getAlphaStr = (color: string) => {
+      return (strFixed(Color(getColorObj(color)).alpha(), 2) * 100).toFixed() + '%'
+    }
     if (inputValType) {
       const formatArr = colorFormat(inpValue, strFixed(Color(getColorObj(inpValue)).alpha(), 2)) as IColorTypesObj[]
       setState(
         formatArr,
-        formatArr[valOfCorrespondingType(currentColorType) as number].value,
+        colorFormat(inpValue, 1, currentColorType as Exclude<typeof ColorTypes[number], 'themeColor'>, true) as string,
         Color(getColorObj(inpValue)).alpha(),
-        (strFixed(Color(getColorObj(inpValue)).alpha(), 2) * 100).toFixed() + '%',
+        getAlphaStr(inpValue),
       )
       setClickedColorIndex(
         highlightPresetColorIndex(formatArr[0].value, presetColorToHEX(presetColor || systemPresetColor)),
       )
+    } else if (inpValue) {
+      const formatArr = colorFormat(correctColorValue) as IColorTypesObj[]
+      setState(formatArr, correctColorValue, alpha, alphaNoVerifyVal)
     } else {
       const formatArr = colorFormat(defaultSystemColor) as IColorTypesObj[]
-      setState(formatArr, defaultSystemColor, 1, '100%')
+      setState(formatArr, defaultSystemColor, 0, '0%')
     }
   }
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setClickedColorIndex(-1)
-    const inpValue = toLowerCase(e.target.value)
+    const inpValue = e.target.value
     if (value === undefined) {
       setIconColor(inpValue)
       setInputColorValue(inpValue)
@@ -146,12 +149,14 @@ const ColorPicker: FC<Partial<IColorPickerProps>> = (props) => {
       [`${colorPickerPrefixCls}-icon-down`]: !showPanel,
     })
 
+    const noneLineCls = `${colorPickerPrefixCls}-icon-no-color-line`
+
     return (
       <div
         className={afterIconContainerCls}
         style={{ backgroundColor: `${colTypeArr[2].value || defaultSystemColor}` }}
       >
-        {showColorPickerPanel && <Icon type="arrow-down"></Icon>}
+        {!value && !defaultValue && !inputColorValue && <div className={noneLineCls} />}
       </div>
     )
   }
@@ -166,16 +171,26 @@ const ColorPicker: FC<Partial<IColorPickerProps>> = (props) => {
         onChange={handleChange}
         style={style}
         onClick={handleClick}
+        prefix={
+          <div onClick={handleClick} className={`${colorPickerPrefixCls}-icon-container`}>
+            {(prefixIcon && prefixIcon(colTypeArr[2].value)) || afterIcon()}
+          </div>
+        }
+        suffix={
+          suffixIcon && (
+            <div onClick={handleClick} className={`${colorPickerPrefixCls}-icon-container`}>
+              {suffixIcon(colTypeArr[2].value)}
+            </div>
+          )
+        }
       ></Input>
-      <div onClick={handleClick} className={`${colorPickerPrefixCls}-icon-container`}>
-        {(suffixIcon && suffixIcon(colTypeArr[2].value)) || afterIcon()}
-      </div>
     </div>
   )
 
   const panel = (
     <ColorPickerPanel
       // API
+      showClear={showClear}
       showSwitch={showSwitch}
       showColorTransfer={showColorTransfer}
       showPresetColor={showPresetColor}
@@ -183,7 +198,10 @@ const ColorPicker: FC<Partial<IColorPickerProps>> = (props) => {
       functionalColor={functionalColor}
       functionalColorName={functionalColorName}
       switchName={switchName}
+      format={format}
+      panelFormatConfig={panelFormatConfig}
       presetColor={presetColor}
+      historicalColor={historicalColor}
       value={value}
       visible={visible}
       showPanel={showPanel}
