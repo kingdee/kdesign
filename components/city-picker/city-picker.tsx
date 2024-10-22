@@ -449,7 +449,6 @@ const InternalSelect: React.ForwardRefRenderFunction<CityPickerProps> = (props: 
     // open
     if (which === KeyCode.ENTER || which === KeyCode.UP || which === KeyCode.DOWN) {
       e.preventDefault()
-      setOptionShow(true)
     }
     // up、down、enter、esc
     if (optionShow) {
