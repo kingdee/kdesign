@@ -38,20 +38,10 @@ const InternalOption: React.ForwardRefRenderFunction<unknown, ICityPickerOptionP
   const handleOnMouseEnter = () => {
     onChangeActiveIndex && onChangeActiveIndex(index)
   }
-  const handleOnMouseLeave = () => {
-    onChangeActiveIndex && onChangeActiveIndex(-1)
-  }
 
   return (
     <>
-      <div
-        ref={optionRef}
-        className={optionCls}
-        title={name}
-        onClick={handleClick}
-        onMouseEnter={handleOnMouseEnter}
-        onMouseLeave={handleOnMouseLeave}
-      >
+      <div ref={optionRef} className={optionCls} title={name} onClick={handleClick} onMouseEnter={handleOnMouseEnter}>
         {typeof itemRender === 'function' ? (
           itemRender(city)
         ) : (
