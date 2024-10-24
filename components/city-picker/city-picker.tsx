@@ -5,7 +5,8 @@ import ConfigContext from '../config-provider/ConfigContext'
 import { getCompProps } from '../_utils'
 import { Icon, Tabs, Spin } from '../index'
 import { CityPickerProps, CityList, Type, City } from './interface'
-import usePopper from '../_utils/usePopper'
+import Popper from '../popper'
+
 import Option from './option'
 import escapeRegExp from 'lodash/escapeRegExp'
 import KeyCode from '../_utils/KeyCode'
@@ -135,15 +136,6 @@ const InternalSelect: React.ForwardRefRenderFunction<CityPickerProps> = (props: 
     },
     [onBlur],
   )
-
-  useEffect(() => {
-    selectionRef.current.addEventListener('mouseup', (e: MouseEvent) => {
-      const isCloseBtn = (e?.target as Element)?.className.indexOf('kd-tag-close-icon') > -1
-      if (isCloseBtn) {
-        e.stopPropagation()
-      }
-    })
-  }, [])
 
   // 输入框变化搜索内容
   const handleSearchChange = useCallback(
@@ -405,13 +397,7 @@ const InternalSelect: React.ForwardRefRenderFunction<CityPickerProps> = (props: 
   }, [optionShow])
 
   useEffect(() => {
-    const fn = (e: MouseEvent) => {
-      e.stopPropagation()
-    }
-    clearRef.current?.addEventListener('mouseup', fn)
-    return () => {
-      clearRef.current?.removeEventListener('mouseup', fn)
-    }
+    clearRef.current?.addEventListener('click', handleReset)
   }, [initValue])
 
   // keyboard
@@ -513,16 +499,12 @@ const InternalSelect: React.ForwardRefRenderFunction<CityPickerProps> = (props: 
         maxWidth: 600,
         ...dropdownStyle,
         width: dropdownStyle?.width || 'auto',
-        zIndex: 1050,
         ...popperStyle,
       }
     }
   }
 
   const handleVisibleChange = (visible: boolean) => {
-    if (!visible) {
-      initActiveIndex(-1)
-    }
     if (visible !== optionShow) {
       props.visible === undefined && setOptionShow(visible)
       onVisibleChange && onVisibleChange(visible)
@@ -537,14 +519,17 @@ const InternalSelect: React.ForwardRefRenderFunction<CityPickerProps> = (props: 
     defaultVisible: optionShow,
     visible: optionShow,
     onVisibleChange: handleVisibleChange,
-    clickToClose: !searchValue,
     onTransitionEnd: () => {
       if (optionShow === false) {
         handleClear()
       }
     },
   }
-  return usePopper(renderCityPicker(), renderContent(), popperProps)
+  return (
+    <Popper tip={renderContent()} {...popperProps}>
+      {renderCityPicker()}
+    </Popper>
+  )
 }
 
 const Select = React.forwardRef<unknown, CityPickerProps>(InternalSelect)
