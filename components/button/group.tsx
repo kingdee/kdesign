@@ -3,10 +3,10 @@ import classNames from 'classnames'
 import ConfigContext from '../config-provider/ConfigContext'
 import { getCompProps } from '../_utils'
 import { Button, Icon } from '../index'
-import usePopper, { PopperProps } from '../_utils/usePopper'
 import { toArray } from '../_utils/react-children'
 import { tuple } from '../_utils/type'
 import { ButtonType, ButtonSize } from './button'
+import Popper, { PopperProps } from '../popper'
 
 export const ButtonGroupTypes = tuple('basic', 'similar')
 export type ButtonGroupType = typeof ButtonGroupTypes[number]
@@ -150,7 +150,11 @@ const InternalButtonGroup = (props: ButtonGroupProps, ref: unknown): FunctionCom
     getTriggerElement: (locatorNode: HTMLElement) => (isBsicType ? locatorNode : triggerRef.current),
   }
 
-  return usePopper(renderTriggerButton(), renderContent(), popperProps)
+  return (
+    <Popper tip={renderContent()} {...popperProps}>
+      {renderTriggerButton()}
+    </Popper>
+  )
 }
 
 const ButtonGroup = React.forwardRef<HTMLDivElement, ButtonGroupProps>(InternalButtonGroup)
