@@ -53,6 +53,7 @@ subtitle: 树控件
 | setTreeNodeStyle | 渲染树节点触发 | (node) => Map<string, string> | - | - | 1.0.0 |
 | setTreeNodeClassName | 渲染树节点触发 | (node) => String | - | - | 1.0.0 |
 | estimatedItemSize | 树节点高度 | number | 28 | - | 1.0.0 |
+| renderExtra | 渲染树节点额外内容 | (props: node) => ReactNode | - | - | 1.8.16 |
 
 ### TreeNode props
 

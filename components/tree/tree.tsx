@@ -65,6 +65,7 @@ export interface TreeProps {
   style?: React.CSSProperties
   className?: string
   expandOnFilterNode?: boolean
+  renderExtra?: (node: any) => ReactNode
 }
 
 export type TreeNodeData = {
@@ -144,6 +145,7 @@ const InternalTree = React.forwardRef((props: TreeProps, ref: any): React.Functi
     notFoundContent,
     showLine,
     expandOnFilterNode,
+    renderExtra,
     ...others
   } = TreeProps
 
@@ -504,7 +506,9 @@ const InternalTree = React.forwardRef((props: TreeProps, ref: any): React.Functi
     item.loading = loadingKeys.has(item.key) && !loadedKeys.has(item.key)
     item.loadData = loadData
     item.isActiveLine = showLine && isSelectedNodeChildrenKey(item.pathParentKeys)
-    return <TreeNode {...item} key={item.key} ref={treeNodeRef} activeLevel={seletedKeyLevel} />
+    return (
+      <TreeNode {...item} key={item.key} renderExtra={renderExtra} ref={treeNodeRef} activeLevel={seletedKeyLevel} />
+    )
   }
 
   return (

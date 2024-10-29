@@ -34,6 +34,7 @@ export interface TreeNodeProps {
   isLeaf?: boolean
   expandOnClickNode?: boolean
   onlyExpandOnClickIcon?: boolean
+  renderExtra?: (node: any) => React.ReactNode
   onCheck?: (
     key: string,
     value: boolean,
@@ -96,6 +97,7 @@ const TreeNode = React.forwardRef<unknown, TreeNodeProps>((props) => {
     onDragEnd,
     onDrop,
     onSelect,
+    renderExtra,
     ...others
   } = TreeNodeProps
   const nodeData = React.useMemo(() => {
@@ -304,6 +306,7 @@ const TreeNode = React.forwardRef<unknown, TreeNodeProps>((props) => {
                 {title}
               </span>
             )}
+            {renderExtra?.(nodeData)}
             {showDragLine && dropPosition === 1 && (
               <span className={classNames(`${treeNodePrefixCls}-drag-line-bottom`)}></span>
             )}
