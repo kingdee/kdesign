@@ -156,6 +156,9 @@ describe('Button', () => {
 
     mount(<Button ref={ref} type="text"></Button>)
     expect(ref.current instanceof HTMLSpanElement).toBe(true)
+
+    mount(<Button.Dropdown ref={ref as any}>更多</Button.Dropdown>)
+    expect(ref.current instanceof HTMLDivElement).toBe(true)
   })
 
   it('text attributes should not use with shape or loading', () => {

@@ -30,10 +30,7 @@ export interface ButtonGroupProps extends PopperProps {
   loading?: boolean
 }
 
-const InternalButtonGroup = (
-  props: ButtonGroupProps,
-  ref: React.LegacyRef<HTMLDivElement> | undefined,
-): FunctionComponentElement<ButtonGroupProps> => {
+const InternalButtonGroup = (props: ButtonGroupProps, ref: unknown): FunctionComponentElement<ButtonGroupProps> => {
   const { getPrefixCls, prefixCls, compDefaultProps: userDefaultProps } = useContext(ConfigContext)
 
   const buttonGoupProps = getCompProps('ButtonGroup', userDefaultProps, props)
@@ -56,7 +53,7 @@ const InternalButtonGroup = (
 
   const [optionShow, setOptionShow] = useState<boolean>(false) // 下拉列表是否展示
 
-  const refBtnGroup = React.useRef<HTMLDivElement>(null) || ref
+  const refBtnGroup = (ref as any) || React.createRef<HTMLElement>()
 
   const triggerRef = React.useRef<HTMLDivElement>(null)
 
