@@ -126,7 +126,7 @@ const Breadcrumb = (props: IBreadcrumbProps): FunctionComponentElement<IBreadcru
 
   useEffect(() => {
     const isMore = itemsConfig?.some((item: any) => {
-      return item?.title?.props?.children.type.displayName === 'Tooltip'
+      return item?.title?.props?.children?.type?.displayName === 'Tooltip'
     })
     setOpenEllipsis(isMore && itemsConfig.length === MIN_ITEM)
   }, [itemsConfig])
