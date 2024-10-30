@@ -8,6 +8,29 @@
   position: relative;
   width: @color-picker-input-sizing-width;
 
+  &-pure {
+    width: 28px;
+
+    .@{kd-prefix}-input-wrapper.@{color-picker-prefix-cls}-input {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+
+      .@{kd-prefix}-input-prefix {
+        margin-right: 0;
+      }
+
+      .@{kd-prefix}-input-suffix {
+        margin-left: 0;
+      }
+
+      .@{kd-prefix}-input {
+        display: none;
+      }
+    }
+  }
+
   .@{color-picker-prefix-cls}-input {
     width: @color-picker-input-sizing-width;
     height: @color-picker-input-sizing-height;
@@ -30,20 +53,6 @@
       line-height: 18px;
       text-align: center;
       color: @bg;
-
-      &-up {
-        .kdicon-arrow-down {
-          transform: rotate(180deg);
-          transition: transform @transition-duration-quickly ease-in-out;
-        }
-      }
-
-      &-down {
-        .kdicon-arrow-down {
-          transform: rotate(0deg);
-          transition: transform @transition-duration-quickly ease-in-out;
-        }
-      }
 
       &-no-color-line {
         width: @color-picker-input-prefix-line-sizing-width;
@@ -422,8 +431,8 @@
         li {
           position: relative;
           box-sizing: border-box;
-          width: @color-picker-panel-preset-sizing-width;
-          height: @color-picker-panel-preset-sizing-height;
+          width: @color-picker-panel-historical-sizing-width;
+          height: @color-picker-panel-historical-sizing-height;
           border: 1px solid rgba(0, 0, 0, 0.05);
           border-radius: 2px;
           list-style: none;
@@ -435,8 +444,8 @@
             box-sizing: inherit;
             top: -3px;
             left: -3px;
-            width: calc(@color-picker-panel-preset-sizing-width + 4px);
-            height: calc(@color-picker-panel-preset-sizing-height + 4px);
+            width: calc(@color-picker-panel-historical-sizing-width + 4px);
+            height: calc(@color-picker-panel-historical-sizing-height + 4px);
             border: 1px solid rgba(178, 178, 176, 1);
             border-radius: 4px;
 

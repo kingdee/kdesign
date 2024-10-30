@@ -10,7 +10,6 @@ import {
   valOfCorrespondingType,
   strFixed,
   getColorObj,
-  highlightPresetColorIndex,
   presetColorToHEX,
   colorToStr,
 } from './utils/colorFormat'
@@ -26,11 +25,14 @@ import { isIE } from '../_utils/ieUtil'
 const ColorPickerPanel: FC<IColorPickerPanelProps> = (props) => {
   const {
     setCorrectColorValue,
+    setInputCorrectColorValue,
     setInputColorValue,
     setAlpha,
     setAlphaNoVerifyVal,
     setIsFollow,
-    setClickedColorIndex,
+    setClickedPresetColorIndex,
+    setClickedHistoricalColorIndex,
+    setClickColorIndex,
     setShowPanel,
     setColTypeArr,
     setCurrentColorType,
@@ -38,9 +40,11 @@ const ColorPickerPanel: FC<IColorPickerPanelProps> = (props) => {
     onVisibleChange,
     alpha,
     alphaNoVerifyVal,
-    clickedColorIndex,
+    clickedPresetColorIndex,
+    clickedHistoricalColorIndex,
     colTypeArr,
     correctColorValue,
+    inputCorrectColorValue,
     currentColorType,
     functionalColor,
     functionalColorName,
@@ -57,6 +61,7 @@ const ColorPickerPanel: FC<IColorPickerPanelProps> = (props) => {
     showPresetColor,
     showColorPickerBox,
     showColorPickerPanel,
+    showAlphaInput,
     value,
     visible,
     showPanel,
@@ -104,45 +109,6 @@ const ColorPickerPanel: FC<IColorPickerPanelProps> = (props) => {
   const historicalColorBoxTitleCls = classNames(`${colorPickerPrefixCls}-panel-historical-color-box-title`)
   const historicalColorBoxContainerCls = classNames(`${colorPickerPrefixCls}-panel-historical-color-box-container`)
 
-  const handleClearClick = () => {
-    const formatArr = colorFormat(defaultSystemColor) as IColorTypesObj[]
-    setPanelState(formatArr, defaultSystemColor, '', 0, '0%')
-  }
-
-  const colorLiClick = (index: number, colorValue: string) => {
-    const formatArr = colorFormat(colorValue, alpha) as IColorTypesObj[]
-    const formatCorrectValue = removeTransparency(colorValue)
-    const formatInputValue = toUpCase(formatArr[valOfCorrespondingType(format) as number].value)
-    setIsFollow(false)
-    if (isFollow) {
-      setAlpha(1)
-      setAlphaNoVerifyVal(100 + '%')
-    }
-    if (value === undefined) {
-      setInputColorValue(formatInputValue)
-      setCorrectColorValue(formatCorrectValue)
-      setColTypeArr(formatArr)
-    }
-    setClickedColorIndex(index)
-    onChange && onChange(formatInputValue, formatArr)
-  }
-
-  const handleTypeChange = (selectValue: IColorTypesObj['type']) => {
-    setCurrentColorType(selectValue)
-    if (value === undefined) {
-      const colorStr = colTypeArr.find((item) => item.type === selectValue)?.value!
-      setCorrectColorValue(
-        colorFormat(colorStr, 1, selectValue as Exclude<typeof ColorTypes[number], 'themeColor'>, true) as string,
-      )
-      setInputColorValue(colTypeArr.find((item) => item.type === format)?.value!)
-    }
-    onChange && onChange(colTypeArr.find((item) => item.type === format)?.value!, colTypeArr)
-  }
-
-  const removeTransparency = (color: string) => {
-    return colorFormat(color, 1, currentColorType as Exclude<typeof ColorTypes[number], 'themeColor'>, true) as string
-  }
-
   const setPanelState = (
     formatArr: Array<IColorTypesObj>,
     correctColorValue: string,
@@ -152,9 +118,64 @@ const ColorPickerPanel: FC<IColorPickerPanelProps> = (props) => {
   ) => {
     setColTypeArr(formatArr)
     setCorrectColorValue(correctColorValue)
+    setInputCorrectColorValue(inputColorValue)
     setInputColorValue(inputColorValue)
     alpha && setAlpha(alpha)
     alphaStr && setAlphaNoVerifyVal(alphaStr)
+  }
+
+  const handleClearClick = () => {
+    const formatArr = colorFormat(defaultSystemColor, 0) as IColorTypesObj[]
+    setPanelState(formatArr, defaultSystemColor, '', 0, '0%')
+    setClickColorIndex(-1)
+    onChange?.('', formatArr)
+  }
+
+  const presetColorClick = (index: number, colorValue: string) => {
+    const colorLiAlpha = strFixed(Color(getColorObj(colorValue)).alpha(), 2)
+    const formatArr = colorFormat(colorValue, colorLiAlpha) as IColorTypesObj[]
+    const formatCorrectValue = removeTransparency(colorValue)
+    const formatInputValue = toUpCase(formatArr[valOfCorrespondingType(format) as number].value)
+    setIsFollow(false)
+    setAlpha(isFollow ? 1 : colorLiAlpha)
+    setAlphaNoVerifyVal(isFollow ? 100 + '%' : colorLiAlpha * 100 + '%')
+    if (value === undefined) {
+      setInputColorValue(formatInputValue)
+      setCorrectColorValue(formatCorrectValue)
+      setColTypeArr(formatArr)
+    }
+    setClickedPresetColorIndex(index)
+    onChange?.(formatInputValue, formatArr)
+  }
+  const historicalColorClick = (index: number, colorValue: string) => {
+    const colorLiAlpha = strFixed(Color(getColorObj(colorValue)).alpha(), 2)
+    const formatArr = colorFormat(colorValue, colorLiAlpha) as IColorTypesObj[]
+    const formatCorrectValue = removeTransparency(colorValue)
+    const formatInputValue = toUpCase(formatArr[valOfCorrespondingType(format) as number].value)
+    setIsFollow(false)
+    setAlpha(isFollow ? 1 : colorLiAlpha)
+    setAlphaNoVerifyVal(isFollow ? 100 + '%' : colorLiAlpha * 100 + '%')
+    if (value === undefined) {
+      setInputColorValue(formatInputValue)
+      setCorrectColorValue(formatCorrectValue)
+      setColTypeArr(formatArr)
+    }
+    setClickedHistoricalColorIndex(index)
+    onChange?.(formatInputValue, formatArr)
+  }
+
+  const handleTypeChange = (selectValue: IColorTypesObj['type']) => {
+    setCurrentColorType(selectValue)
+    const colorStr = colTypeArr.find((item) => item.type === selectValue)?.value!
+    setCorrectColorValue(
+      colorFormat(colorStr, 1, selectValue as Exclude<typeof ColorTypes[number], 'themeColor'>, true) as string,
+    )
+    setInputColorValue(colTypeArr.find((item) => item.type === format)?.value!)
+    onChange?.(colTypeArr.find((item) => item.type === format)?.value!, colTypeArr)
+  }
+
+  const removeTransparency = (color: string) => {
+    return colorFormat(color, 1, currentColorType as Exclude<typeof ColorTypes[number], 'themeColor'>, true) as string
   }
 
   const handleAlphaChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -162,16 +183,13 @@ const ColorPickerPanel: FC<IColorPickerPanelProps> = (props) => {
     const regDot = /^(0(\.\d+)?|1(\.0+)?)$/
     const val = e.target.value
 
-    if (value !== undefined) return
-
-    setAlphaNoVerifyVal(val)
-
     const getColorFormat = (alpha: number) => {
       const formatArr = colorFormat(correctColorValue, alpha, 'all', true) as IColorTypesObj[]
       const outValue = formatArr[valOfCorrespondingType(format) as number].value
       const innerInput = removeTransparency(outValue)
       return { formatArr, outValue, innerInput }
     }
+
     let alphaValue: number
     if (regPercentage.test(val)) {
       alphaValue = +val.replace('%', '') / 100
@@ -181,11 +199,13 @@ const ColorPickerPanel: FC<IColorPickerPanelProps> = (props) => {
       alphaValue = 1
     }
     const { formatArr, outValue, innerInput } = getColorFormat(alphaValue)
-    setPanelState(formatArr, innerInput as string, outValue, alphaValue)
-    setClickedColorIndex(
-      highlightPresetColorIndex(formatArr[0].value, presetColorToHEX(presetColor || systemPresetColor)),
-    )
-    onChange && onChange(outValue as string, formatArr as IColorTypesObj[])
+
+    if (value === undefined) {
+      setAlphaNoVerifyVal(val)
+      setPanelState(formatArr, innerInput as string, outValue, alphaValue)
+      setClickColorIndex(formatArr[0].value)
+    }
+    onChange?.(outValue as string, formatArr as IColorTypesObj[])
   }
 
   const handleAlphaBlur = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -207,20 +227,30 @@ const ColorPickerPanel: FC<IColorPickerPanelProps> = (props) => {
 
   const handleHEXInputBlur = (e: React.ChangeEvent<HTMLInputElement>) => {
     const val = e.target.value
+    const correctColor = colTypeArr.find((item) => item.type === format)?.value as string
     if (validateColor(val)) {
-      const formatArr = colorFormat(val, alpha, 'all', true) as IColorTypesObj[]
+      const formatArr = colorFormat(val, inputCorrectColorValue ? alpha : 1, 'all', true) as IColorTypesObj[]
       const outValue = formatArr[valOfCorrespondingType(format) as number].value
       if (value === undefined) {
         const innerInput = removeTransparency(val)
-        setPanelState(formatArr, innerInput as string, outValue)
-      }
-      onChange && onChange(outValue, formatArr)
-    } else {
-      if (value === undefined) {
-        const correctColor = colTypeArr.find((item) => item.type === format)?.value as string
+        if (!inputCorrectColorValue) {
+          setPanelState(formatArr, innerInput as string, outValue, 1, '100%')
+        } else {
+          setPanelState(formatArr, innerInput as string, outValue)
+        }
+      } else if (onChange === undefined) {
         setPanelState(colTypeArr, removeTransparency(correctColor), correctColor)
       }
-      onChange && onChange(colTypeArr.find((item) => item.type === format)?.value!, colTypeArr)
+      onChange?.(outValue, formatArr)
+    } else {
+      if (!inputCorrectColorValue) {
+        const formatArr = colorFormat(correctColor, 1, 'all', true) as IColorTypesObj[]
+        setPanelState(formatArr, removeTransparency(correctColor), correctColor, 1, '100%')
+        onChange?.(formatArr.find((item) => item.type === format)?.value!, formatArr)
+      } else {
+        setPanelState(colTypeArr, removeTransparency(correctColor), correctColor)
+        onChange?.(colTypeArr.find((item) => item.type === format)?.value!, colTypeArr)
+      }
     }
   }
 
@@ -229,12 +259,24 @@ const ColorPickerPanel: FC<IColorPickerPanelProps> = (props) => {
   }
 
   const handleInputGroupItemBlur = () => {
-    const formatArr = colorFormat(correctColorValue, alpha, 'all', true) as IColorTypesObj[]
+    const formatArr = colorFormat(
+      correctColorValue,
+      inputCorrectColorValue ? alpha : 1,
+      'all',
+      true,
+    ) as IColorTypesObj[]
     const outValue = formatArr[valOfCorrespondingType(format) as number].value
     if (value === undefined) {
-      setPanelState(formatArr, correctColorValue as string, outValue)
+      if (inputCorrectColorValue) {
+        setPanelState(formatArr, correctColorValue as string, outValue)
+      } else {
+        setPanelState(formatArr, correctColorValue as string, outValue, 1, '100%')
+      }
+    } else if (onChange === undefined) {
+      const correctColor = colTypeArr.find((item) => item.type === format)?.value as string
+      setPanelState(colTypeArr, removeTransparency(correctColor), correctColor)
     }
-    onChange && onChange(outValue, formatArr)
+    onChange?.(outValue, formatArr)
   }
 
   const handleInputGroupItemChange = (e: React.ChangeEvent<HTMLInputElement>, color: string, i: number) => {
@@ -250,7 +292,7 @@ const ColorPickerPanel: FC<IColorPickerPanelProps> = (props) => {
     const getColorAttr = () => {
       const selectedComponents = (colorComponents as any)[currentColorType]
       if (!selectedComponents) {
-        return // 如果 currentColorType 不是预期的类型，返回 undefined 或处理错误
+        return
       }
       return selectedComponents.reduce((acc: any, component: string, index: number) => {
         acc[component] = i === index ? number : colorArr[index]
@@ -264,7 +306,6 @@ const ColorPickerPanel: FC<IColorPickerPanelProps> = (props) => {
       }
       return colorToStr(colorObj)
     }
-
     setCorrectColorValue(getColorValue())
   }
 
@@ -284,52 +325,67 @@ const ColorPickerPanel: FC<IColorPickerPanelProps> = (props) => {
             formatArr = colorFormat(functionalColor, alpha) as IColorTypesObj[]
             setPanelState(
               formatArr,
-              formatArr[valOfCorrespondingType(currentColorType) as number].value,
+              removeTransparency(formatArr[valOfCorrespondingType(currentColorType) as number].value),
               functionalColorName,
               strFixed(Color(getColorObj(functionalColor)).alpha(), 2),
               strFixed(Color(getColorObj(functionalColor)).alpha(), 2) * 100 + '%',
             )
-            setClickedColorIndex(
-              highlightPresetColorIndex(formatArr[0].value, presetColorToHEX(presetColor || systemPresetColor)),
-            )
+            setClickColorIndex(formatArr[0].value)
           } else {
+            // formatArr = colorFormat(correctColorValue, alpha, 'all', true) as IColorTypesObj[]
+            // setPanelState(
+            //   formatArr,
+            //   correctColorValue,
+            //   formatArr[valOfCorrespondingType(format) as number].value,
+            //   alpha,
+            //   alpha * 100 + '%',
+            // )
             formatArr = colorFormat(defaultSystemColor, 1, 'all', true) as IColorTypesObj[]
             setPanelState(formatArr, defaultSystemColor, '', 1, 100 + '%')
-            setClickedColorIndex(-1)
+            setClickColorIndex(formatArr[0].value)
           }
         }
       }
       devWarning(!inputValType, 'color-picker', "'themeColor' must be hexadecimal, RGB, HSB, HSL or English color name")
     }
     if (switchValue) {
-      onChange && onChange(functionalColorName, formatArr as IColorTypesObj[])
+      onChange?.(functionalColorName, formatArr as IColorTypesObj[])
     } else {
-      onChange && onChange(defaultSystemColor, formatArr as IColorTypesObj[])
+      onChange?.(defaultSystemColor, formatArr as IColorTypesObj[])
     }
   }
 
   const handleChromeChange = (color: any) => {
-    const formatArr = colorFormat(color.hex, color.rgb.a) as IColorTypesObj[]
+    const formatArr = colorFormat(color.hex, inputCorrectColorValue ? color.rgb.a : 1) as IColorTypesObj[]
     const colorObj = formatArr[valOfCorrespondingType(currentColorType) as number]
+    console.log('colorObj', formatArr, colorObj)
+
     if (value === undefined) {
       setIsFollow(false)
-      setPanelState(formatArr, colorObj.value, colorObj.value, color.rgb.a, (color.rgb.a * 100).toFixed() + '%')
-      setClickedColorIndex(
-        highlightPresetColorIndex(formatArr[0].value, presetColorToHEX(presetColor || systemPresetColor)),
+      setPanelState(
+        formatArr,
+        removeTransparency(colorObj.value),
+        colorObj.value,
+        inputCorrectColorValue ? color.rgb.a : 1,
+        inputCorrectColorValue ? (color.rgb.a * 100).toFixed() + '%' : '100%',
       )
+      setClickColorIndex(formatArr[0].value)
     }
-    onChange && onChange(colorObj.value, formatArr)
+    onChange?.(colorObj.value, formatArr)
   }
 
   const checkUserPresetColor = (colorArr: string[] | undefined): boolean => {
     if (!colorArr) return false
     const isTrueFormat = colorArr.every((hexColor) => {
-      return ['HEX', 'HSB', 'RGB', 'HSL', 'colorName'].indexOf(validateColor(hexColor)) !== -1
+      return (
+        ['HEX', 'HEXA', 'HSB', 'HSBA', 'RGB', 'RGBA', 'HSL', 'HSLA', 'colorName'].indexOf(validateColor(hexColor)) !==
+        -1
+      )
     })
     devWarning(
       !isTrueFormat,
       'color-picker',
-      "'presetColor' must be an array of hexadecimal, RGB, HSB, HSL or English color name string type",
+      "'presetColor' must be an array of hexadecimal, HEXA, RGB, RGBA, HSB, HSBA, HSL, HSLA or English color name string type",
     )
     return isTrueFormat
   }
@@ -342,26 +398,24 @@ const ColorPickerPanel: FC<IColorPickerPanelProps> = (props) => {
   })
 
   useEffect(() => {
+    if (!panelFormatConfig) return
     if (!Array.isArray(panelFormatConfig.show) || panelFormatConfig.show.length === 0) {
-      setInnerFormatConfig({ ...panelFormatConfig, show: baseFormat })
-      if (baseFormat.indexOf(panelFormatConfig.default) === -1) {
-        setInnerFormatConfig({ ...panelFormatConfig, default: 'HEX' })
-        devWarning(
-          true,
-          'color-picker',
-          "'default' property of 'panelFormatConfig' must be one of HEX, RGB, HSB, or HSL",
-        )
-      }
-    } else if (panelFormatConfig.show.every((item) => baseFormat.indexOf(item) !== -1)) {
+      devWarning(
+        true,
+        'color-picker',
+        "'show' property of 'panelFormatConfig' must be one or more of HEX, RGB, HSB, or HSL",
+      )
+    }
+    if (baseFormat.indexOf(panelFormatConfig?.default) === -1) {
+      setInnerFormatConfig({ ...panelFormatConfig, default: 'HEX' })
+      devWarning(true, 'color-picker', "'default' property of 'panelFormatConfig' must be one of HEX, RGB, HSB, or HSL")
+    }
+    if (panelFormatConfig.show.every((item) => baseFormat.indexOf(item) !== -1)) {
       const newShow = baseFormat.filter((ele) => panelFormatConfig.show.indexOf(ele) !== -1)
-      setInnerFormatConfig({
-        ...panelFormatConfig,
-        show: newShow,
-      })
       if (newShow.indexOf(panelFormatConfig.default) === -1) {
-        setInnerFormatConfig({ ...panelFormatConfig, default: newShow[0] })
         devWarning(true, 'color-picker', "'default' property of 'panelFormatConfig' must be one of 'show'")
       }
+    } else {
       devWarning(
         true,
         'color-picker',
@@ -389,11 +443,7 @@ const ColorPickerPanel: FC<IColorPickerPanelProps> = (props) => {
               <Switch checked={isFollow} onChange={handleSwitchChange} />
             </div>
           )}
-          <ChromePicker
-            className={panelChromePickerCls}
-            color={colTypeArr[2].value}
-            onChange={handleChromeChange}
-          ></ChromePicker>
+          <ChromePicker className={panelChromePickerCls} color={colTypeArr[2].value} onChange={handleChromeChange} />
           {showColorTransfer && (
             <div className={panelContainerCls}>
               <div className={panelselectCls} ref={panelSelectRef}>
@@ -428,6 +478,7 @@ const ColorPickerPanel: FC<IColorPickerPanelProps> = (props) => {
                   onChange={handleHEXInputChange}
                   onBlur={handleHEXInputBlur}
                   borderType="bordered"
+                  disabled={isFollow}
                 />
               ) : (
                 <div className={panelInputGroupCls}>
@@ -444,18 +495,21 @@ const ColorPickerPanel: FC<IColorPickerPanelProps> = (props) => {
                         handleInputGroupItemChange(e, correctColorValue, i)
                       }}
                       borderType="bordered"
+                      disabled={isFollow}
                     />
                   ))}
                 </div>
               )}
-              <Input
-                className={transparentCls}
-                onChange={handleAlphaChange}
-                onBlur={handleAlphaBlur}
-                borderType="bordered"
-                value={alphaNoVerifyVal}
-                disabled={isFollow}
-              />
+              {showAlphaInput && (
+                <Input
+                  className={transparentCls}
+                  onChange={handleAlphaChange}
+                  onBlur={handleAlphaBlur}
+                  borderType="bordered"
+                  value={alphaNoVerifyVal}
+                  disabled={isFollow}
+                />
+              )}
             </div>
           )}
           {historicalColor && historicalColor?.length > 0 && (
@@ -469,38 +523,43 @@ const ColorPickerPanel: FC<IColorPickerPanelProps> = (props) => {
                         key={i}
                         style={{ backgroundColor: `${colorValue}` }}
                         onClick={() => {
-                          colorLiClick(i, colorValue)
+                          historicalColorClick(i, colorValue)
                         }}
                       >
-                        <div className={classNames('square', { 'square-click': clickedColorIndex === i })}></div>
+                        <div
+                          className={classNames('square', { 'square-click': clickedHistoricalColorIndex === i })}
+                        ></div>
                       </li>
                     )
                   })}
               </div>
             </div>
           )}
-          {showPresetColor && ((presetColor && presetColor?.length > 0) || systemPresetColor.length > 0) && (
-            <div className={colorBoxCls}>
-              {historicalColor && historicalColor?.length > 0 && <div className={colorBoxTitleCls}>推荐色</div>}
-              <div className={colorBoxContainerCls}>
-                {((checkUserPresetColor(presetColor) && presetColorToHEX(presetColor)) || systemPresetColor).map(
-                  (colorValue: string, i) => {
-                    return (
-                      <li
-                        key={i}
-                        style={{ backgroundColor: `${colorValue}` }}
-                        onClick={() => {
-                          colorLiClick(i, colorValue)
-                        }}
-                      >
-                        <div className={classNames('square', { 'square-click': clickedColorIndex === i })}></div>
-                      </li>
-                    )
-                  },
-                )}
+          {showPresetColor &&
+            ((presetColor && presetColor?.length > 0) || (!presetColor && systemPresetColor.length > 0)) && (
+              <div className={colorBoxCls}>
+                {historicalColor && historicalColor?.length > 0 && <div className={colorBoxTitleCls}>推荐色</div>}
+                <div className={colorBoxContainerCls}>
+                  {((checkUserPresetColor(presetColor) && presetColorToHEX(presetColor)) || systemPresetColor).map(
+                    (colorValue: string, i) => {
+                      return (
+                        <li
+                          key={i}
+                          style={{ backgroundColor: `${colorValue}` }}
+                          onClick={() => {
+                            presetColorClick(i, colorValue)
+                          }}
+                        >
+                          <div
+                            className={classNames('square', { 'square-click': clickedPresetColorIndex === i })}
+                          ></div>
+                        </li>
+                      )
+                    },
+                  )}
+                </div>
               </div>
-            </div>
-          )}
+            )}
         </div>
       )}
     </>

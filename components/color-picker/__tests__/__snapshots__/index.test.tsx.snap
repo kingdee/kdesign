@@ -4,24 +4,33 @@ exports[`ColorPicker renders correctly 1`] = `
 <div
   class="kd-color-picker-container"
 >
-  <input
-    class="kd-input kd-input-size-middle kd-input-underline kd-color-picker-input"
-    placeholder="#"
-    type="text"
-    value=""
-  />
-  <div
-    class="kd-color-picker-icon-container"
+  <span
+    class="kd-input-wrapper kd-input-wrapper-size-middle kd-input-wrapper-underline kd-color-picker-input"
   >
-    <div
-      class="kd-color-picker-icon kd-color-picker-icon-underline kd-color-picker-icon-down"
-      style="background-color:rgb(178, 178, 178)"
+    <span
+      class="kd-input-prefix"
     >
-      <i
-        class="kdicon kdicon-arrow-down"
-      />
-    </div>
-  </div>
+      <div
+        class="kd-color-picker-icon-container"
+      >
+        <div
+          class="kd-color-picker-icon kd-color-picker-icon-underline"
+          style="background-color:RGBA(255, 255, 255, 0)"
+        >
+          <div
+            class="kd-color-picker-icon-no-color-line"
+          />
+        </div>
+      </div>
+    </span>
+    <input
+      class="kd-input kd-input-size-middle kd-input-underline"
+      placeholder="#"
+      prefix="[object Object]"
+      type="text"
+      value=""
+    />
+  </span>
 </div>
 `;
 
@@ -29,24 +38,33 @@ exports[`ColorPicker renders correctly 2`] = `
 <div
   class="kd-color-picker-container"
 >
-  <input
-    class="kd-input kd-input-size-middle kd-color-picker-input"
-    placeholder="#"
-    type="text"
-    value=""
-  />
-  <div
-    class="kd-color-picker-icon-container"
+  <span
+    class="kd-input-wrapper kd-input-wrapper-size-middle kd-color-picker-input"
   >
-    <div
-      class="kd-color-picker-icon kd-color-picker-icon-bordered kd-color-picker-icon-down"
-      style="background-color:rgb(178, 178, 178)"
+    <span
+      class="kd-input-prefix"
     >
-      <i
-        class="kdicon kdicon-arrow-down"
-      />
-    </div>
-  </div>
+      <div
+        class="kd-color-picker-icon-container"
+      >
+        <div
+          class="kd-color-picker-icon kd-color-picker-icon-bordered"
+          style="background-color:RGBA(255, 255, 255, 0)"
+        >
+          <div
+            class="kd-color-picker-icon-no-color-line"
+          />
+        </div>
+      </div>
+    </span>
+    <input
+      class="kd-input kd-input-size-middle"
+      placeholder="#"
+      prefix="[object Object]"
+      type="text"
+      value=""
+    />
+  </span>
 </div>
 `;
 
@@ -58,9 +76,29 @@ exports[`ColorPicker renders correctly with no child 1`] = `
     <Input
       borderType="bordered"
       className="kd-color-picker-input"
+      onBlur={[Function]}
       onChange={[Function]}
       onClick={[Function]}
       placeholder="#"
+      prefix={
+        <div
+          className="kd-color-picker-icon-container"
+          onClick={[Function]}
+        >
+          <div
+            className="kd-color-picker-icon kd-color-picker-icon-bordered"
+            style={
+              Object {
+                "backgroundColor": "RGBA(255, 255, 255, 0)",
+              }
+            }
+          >
+            <div
+              className="kd-color-picker-icon-no-color-line"
+            />
+          </div>
+        </div>
+      }
       value=""
     >
       <ClearableInput
@@ -68,13 +106,32 @@ exports[`ColorPicker renders correctly with no child 1`] = `
         className="kd-color-picker-input"
         element={
           <input
-            className="kd-input kd-input-size-middle kd-color-picker-input"
+            className="kd-input kd-input-size-middle"
             onBlur={[Function]}
             onChange={[Function]}
             onClick={[Function]}
             onFocus={[Function]}
             onKeyUp={[Function]}
             placeholder="#"
+            prefix={
+              <div
+                className="kd-color-picker-icon-container"
+                onClick={[Function]}
+              >
+                <div
+                  className="kd-color-picker-icon kd-color-picker-icon-bordered"
+                  style={
+                    Object {
+                      "backgroundColor": "RGBA(255, 255, 255, 0)",
+                    }
+                  }
+                >
+                  <div
+                    className="kd-color-picker-icon-no-color-line"
+                  />
+                </div>
+              </div>
+            }
             type="text"
             value=""
           />
@@ -83,52 +140,96 @@ exports[`ColorPicker renders correctly with no child 1`] = `
         handleReset={[Function]}
         inputCount={null}
         inputType="input"
+        onBlur={[Function]}
         onChange={[Function]}
         onClick={[Function]}
         placeholder="#"
+        prefix={
+          <div
+            className="kd-color-picker-icon-container"
+            onClick={[Function]}
+          >
+            <div
+              className="kd-color-picker-icon kd-color-picker-icon-bordered"
+              style={
+                Object {
+                  "backgroundColor": "RGBA(255, 255, 255, 0)",
+                }
+              }
+            >
+              <div
+                className="kd-color-picker-icon-no-color-line"
+              />
+            </div>
+          </div>
+        }
         prefixCls="kd-input"
         size="middle"
         type="text"
         value=""
       >
-        <input
-          className="kd-input kd-input-size-middle kd-color-picker-input"
-          onBlur={[Function]}
-          onChange={[Function]}
+        <span
+          className="kd-input-wrapper kd-input-wrapper-size-middle kd-color-picker-input"
           onClick={[Function]}
-          onFocus={[Function]}
-          onKeyUp={[Function]}
-          placeholder="#"
-          type="text"
-          value=""
-        />
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+        >
+          <span
+            className="kd-input-prefix"
+            onMouseDown={[Function]}
+          >
+            <div
+              className="kd-color-picker-icon-container"
+              onClick={[Function]}
+            >
+              <div
+                className="kd-color-picker-icon kd-color-picker-icon-bordered"
+                style={
+                  Object {
+                    "backgroundColor": "RGBA(255, 255, 255, 0)",
+                  }
+                }
+              >
+                <div
+                  className="kd-color-picker-icon-no-color-line"
+                />
+              </div>
+            </div>
+          </span>
+          <input
+            className="kd-input kd-input-size-middle"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onClick={[Function]}
+            onFocus={[Function]}
+            onKeyUp={[Function]}
+            placeholder="#"
+            prefix={
+              <div
+                className="kd-color-picker-icon-container"
+                onClick={[Function]}
+              >
+                <div
+                  className="kd-color-picker-icon kd-color-picker-icon-bordered"
+                  style={
+                    Object {
+                      "backgroundColor": "RGBA(255, 255, 255, 0)",
+                    }
+                  }
+                >
+                  <div
+                    className="kd-color-picker-icon-no-color-line"
+                  />
+                </div>
+              </div>
+            }
+            style={null}
+            type="text"
+            value=""
+          />
+        </span>
       </ClearableInput>
     </Input>
-    <div
-      className="kd-color-picker-icon-container"
-      onClick={[Function]}
-    >
-      <div
-        className="kd-color-picker-icon kd-color-picker-icon-bordered kd-color-picker-icon-down"
-        style={
-          Object {
-            "backgroundColor": "rgb(178, 178, 178)",
-          }
-        }
-      >
-        <Icon
-          type="arrow-down"
-        >
-          <i
-            className="kdicon kdicon-arrow-down"
-            onClick={[Function]}
-            onMouseEnter={[Function]}
-            onMouseLeave={[Function]}
-            style={Object {}}
-          />
-        </Icon>
-      </div>
-    </div>
   </div>
 </ColorPicker>
 `;
@@ -141,9 +242,29 @@ exports[`ColorPicker renders correctly with null or undefined 1`] = `
     <Input
       borderType="bordered"
       className="kd-color-picker-input"
+      onBlur={[Function]}
       onChange={[Function]}
       onClick={[Function]}
       placeholder="#"
+      prefix={
+        <div
+          className="kd-color-picker-icon-container"
+          onClick={[Function]}
+        >
+          <div
+            className="kd-color-picker-icon kd-color-picker-icon-bordered"
+            style={
+              Object {
+                "backgroundColor": "RGBA(255, 255, 255, 0)",
+              }
+            }
+          >
+            <div
+              className="kd-color-picker-icon-no-color-line"
+            />
+          </div>
+        </div>
+      }
       value=""
     >
       <ClearableInput
@@ -151,13 +272,32 @@ exports[`ColorPicker renders correctly with null or undefined 1`] = `
         className="kd-color-picker-input"
         element={
           <input
-            className="kd-input kd-input-size-middle kd-color-picker-input"
+            className="kd-input kd-input-size-middle"
             onBlur={[Function]}
             onChange={[Function]}
             onClick={[Function]}
             onFocus={[Function]}
             onKeyUp={[Function]}
             placeholder="#"
+            prefix={
+              <div
+                className="kd-color-picker-icon-container"
+                onClick={[Function]}
+              >
+                <div
+                  className="kd-color-picker-icon kd-color-picker-icon-bordered"
+                  style={
+                    Object {
+                      "backgroundColor": "RGBA(255, 255, 255, 0)",
+                    }
+                  }
+                >
+                  <div
+                    className="kd-color-picker-icon-no-color-line"
+                  />
+                </div>
+              </div>
+            }
             type="text"
             value=""
           />
@@ -166,52 +306,96 @@ exports[`ColorPicker renders correctly with null or undefined 1`] = `
         handleReset={[Function]}
         inputCount={null}
         inputType="input"
+        onBlur={[Function]}
         onChange={[Function]}
         onClick={[Function]}
         placeholder="#"
+        prefix={
+          <div
+            className="kd-color-picker-icon-container"
+            onClick={[Function]}
+          >
+            <div
+              className="kd-color-picker-icon kd-color-picker-icon-bordered"
+              style={
+                Object {
+                  "backgroundColor": "RGBA(255, 255, 255, 0)",
+                }
+              }
+            >
+              <div
+                className="kd-color-picker-icon-no-color-line"
+              />
+            </div>
+          </div>
+        }
         prefixCls="kd-input"
         size="middle"
         type="text"
         value=""
       >
-        <input
-          className="kd-input kd-input-size-middle kd-color-picker-input"
-          onBlur={[Function]}
-          onChange={[Function]}
+        <span
+          className="kd-input-wrapper kd-input-wrapper-size-middle kd-color-picker-input"
           onClick={[Function]}
-          onFocus={[Function]}
-          onKeyUp={[Function]}
-          placeholder="#"
-          type="text"
-          value=""
-        />
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+        >
+          <span
+            className="kd-input-prefix"
+            onMouseDown={[Function]}
+          >
+            <div
+              className="kd-color-picker-icon-container"
+              onClick={[Function]}
+            >
+              <div
+                className="kd-color-picker-icon kd-color-picker-icon-bordered"
+                style={
+                  Object {
+                    "backgroundColor": "RGBA(255, 255, 255, 0)",
+                  }
+                }
+              >
+                <div
+                  className="kd-color-picker-icon-no-color-line"
+                />
+              </div>
+            </div>
+          </span>
+          <input
+            className="kd-input kd-input-size-middle"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onClick={[Function]}
+            onFocus={[Function]}
+            onKeyUp={[Function]}
+            placeholder="#"
+            prefix={
+              <div
+                className="kd-color-picker-icon-container"
+                onClick={[Function]}
+              >
+                <div
+                  className="kd-color-picker-icon kd-color-picker-icon-bordered"
+                  style={
+                    Object {
+                      "backgroundColor": "RGBA(255, 255, 255, 0)",
+                    }
+                  }
+                >
+                  <div
+                    className="kd-color-picker-icon-no-color-line"
+                  />
+                </div>
+              </div>
+            }
+            style={null}
+            type="text"
+            value=""
+          />
+        </span>
       </ClearableInput>
     </Input>
-    <div
-      className="kd-color-picker-icon-container"
-      onClick={[Function]}
-    >
-      <div
-        className="kd-color-picker-icon kd-color-picker-icon-bordered kd-color-picker-icon-down"
-        style={
-          Object {
-            "backgroundColor": "rgb(178, 178, 178)",
-          }
-        }
-      >
-        <Icon
-          type="arrow-down"
-        >
-          <i
-            className="kdicon kdicon-arrow-down"
-            onClick={[Function]}
-            onMouseEnter={[Function]}
-            onMouseLeave={[Function]}
-            style={Object {}}
-          />
-        </Icon>
-      </div>
-    </div>
   </div>
 </ColorPicker>
 `;

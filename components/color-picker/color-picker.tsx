@@ -1,4 +1,4 @@
-import React, { FC, useContext, useState, useRef, useEffect } from 'react'
+import React, { FC, useContext, useState, useRef, useEffect, useCallback } from 'react'
 import classNames from 'classnames'
 import { ConfigContext } from '../config-provider'
 import { Input } from '../index'
@@ -20,9 +20,11 @@ const ColorPicker: FC<Partial<IColorPickerProps>> = (props) => {
     value,
     className,
     style,
+    pure,
     functionalColor,
     functionalColorName,
     switchName,
+    showAlphaInput,
     showClear,
     showSwitch,
     showColorTransfer,
@@ -43,6 +45,7 @@ const ColorPicker: FC<Partial<IColorPickerProps>> = (props) => {
     onVisibleChange,
   } = colorPickerProps
   const [inputColorValue, setInputColorValue] = useState<string>(defaultValue || '')
+  const [inputCorrectColorValue, setInputCorrectColorValue] = useState<string>('')
   const [correctColorValue, setCorrectColorValue] = useState<string>(defaultValue || defaultSystemColor)
   const [currentColorType, setCurrentColorType] = useState<IColorTypesObj['type']>(panelFormatConfig.default)
   const [colTypeArr, setColTypeArr] = useState<Array<IColorTypesObj>>(colorTypes as IColorTypesObj[])
@@ -50,21 +53,36 @@ const ColorPicker: FC<Partial<IColorPickerProps>> = (props) => {
   const [alpha, setAlpha] = useState<number>(0)
   const [alphaNoVerifyVal, setAlphaNoVerifyVal] = useState<string>(alpha * 100 + '%')
   const [isFollow, setIsFollow] = useState<boolean>(false)
-  const [clickedColorIndex, setClickedColorIndex] = useState<number>()
+  const [clickedPresetColorIndex, setClickedPresetColorIndex] = useState<number>()
+  const [clickedHistoricalColorIndex, setClickedHistoricalColorIndex] = useState<number>()
 
   const colorPickerPrefixCls = getPrefixCls!(prefixCls, 'color-picker')
   const popUpLayer = getPrefixCls!(prefixCls, 'color-picker-pop')
-  const containerCls = classNames(`${colorPickerPrefixCls}-container`)
+  const containerCls = classNames(`${colorPickerPrefixCls}-container`, {
+    [`${colorPickerPrefixCls}-container-pure`]: pure,
+  })
   const inputCls = classNames(`${colorPickerPrefixCls}-input`, className)
   const inputRef = useRef<HTMLInputElement>(null)
   const showColorPickerPanel =
     showColorTransfer ||
-    (typeof showPresetColor === 'boolean' && showPresetColor && presetColor?.length) ||
+    (typeof showPresetColor === 'boolean' && showPresetColor && (presetColor?.length || systemPresetColor.length)) ||
     typeof showPresetColor === 'undefined' ||
+    showClear ||
+    historicalColor?.length ||
     (functionalColor?.length && showSwitch) ||
     showColorPickerBox?.showBox ||
     showColorPickerBox?.showHue ||
     showColorPickerBox?.showOpacity
+
+  const setClickColorIndex = (value: string | number) => {
+    if (typeof value === 'number') {
+      setClickedPresetColorIndex(value)
+      setClickedHistoricalColorIndex(value)
+    } else {
+      setClickedPresetColorIndex(highlightPresetColorIndex(value, presetColorToHEX(presetColor || systemPresetColor)))
+      setClickedHistoricalColorIndex(highlightPresetColorIndex(value, presetColorToHEX(historicalColor)))
+    }
+  }
 
   const setIconColor = (value: string) => {
     value === functionalColorName ? setIsFollow(true) : setIsFollow(false)
@@ -87,28 +105,27 @@ const ColorPicker: FC<Partial<IColorPickerProps>> = (props) => {
         Color(getColorObj(inpValue)).alpha(),
         getAlphaStr(inpValue),
       )
-      setClickedColorIndex(
-        highlightPresetColorIndex(formatArr[0].value, presetColorToHEX(presetColor || systemPresetColor)),
-      )
+      setClickColorIndex(formatArr[0].value)
     } else if (inpValue) {
-      const formatArr = colorFormat(correctColorValue) as IColorTypesObj[]
+      const formatArr = colorFormat(correctColorValue, alpha) as IColorTypesObj[]
       setState(formatArr, correctColorValue, alpha, alphaNoVerifyVal)
     } else {
-      const formatArr = colorFormat(defaultSystemColor) as IColorTypesObj[]
+      const formatArr = colorFormat(defaultSystemColor, 0) as IColorTypesObj[]
       setState(formatArr, defaultSystemColor, 0, '0%')
     }
   }
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setClickedColorIndex(-1)
+    setClickColorIndex(-1)
     const inpValue = e.target.value
+    if (!inpValue) setInputCorrectColorValue('')
     if (value === undefined) {
       setIconColor(inpValue)
-      setInputColorValue(inpValue)
     }
+    setInputColorValue(inpValue)
     const callback = (val: string, alpha: number) => {
       const formatArr = colorFormat(val, alpha) as IColorTypesObj[]
-      onChange && onChange(inpValue, formatArr)
+      onChange?.(inpValue, formatArr)
     }
     if (validateColor(inpValue)) {
       callback(inpValue, alpha)
@@ -116,6 +133,22 @@ const ColorPicker: FC<Partial<IColorPickerProps>> = (props) => {
       callback(defaultSystemColor, alpha)
     }
     functionalColor && showSwitch && setIsFollow(false)
+  }
+
+  const handleBlur = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const inpValue = e.target.value
+    const formatArr = colorFormat(correctColorValue, alpha) as IColorTypesObj[]
+    const getCurrentOutputColor = () => {
+      if (inputCorrectColorValue) {
+        return formatArr.find((item) => item.type === format)!.value
+      }
+      return ''
+    }
+    if (value === undefined) {
+      setIconColor(inpValue)
+      setInputColorValue(getCurrentOutputColor())
+    }
+    onChange?.(getCurrentOutputColor(), formatArr)
   }
 
   const handleClick = () => {
@@ -126,13 +159,19 @@ const ColorPicker: FC<Partial<IColorPickerProps>> = (props) => {
   }
 
   useEffect(() => {
+    if (validateColor(value ?? inputColorValue)) {
+      setInputCorrectColorValue(value ?? inputColorValue)
+    }
+  }, [inputColorValue, value])
+
+  useEffect(() => {
     if (typeof visible !== 'undefined') {
       setShowPanel(visible)
     }
   }, [visible])
 
   useEffect(() => {
-    if (value) {
+    if (value !== undefined) {
       setIconColor(value)
     } else {
       if (defaultValue) {
@@ -141,45 +180,43 @@ const ColorPicker: FC<Partial<IColorPickerProps>> = (props) => {
     }
   }, [value, defaultValue])
 
-  const afterIcon = () => {
+  const beforeIcon = useCallback(() => {
     const afterIconContainerCls = classNames(`${colorPickerPrefixCls}-icon`, {
       [`${colorPickerPrefixCls}-icon-underline`]: borderType === 'underline',
       [`${colorPickerPrefixCls}-icon-bordered`]: borderType === 'bordered',
-      [`${colorPickerPrefixCls}-icon-up`]: showPanel,
-      [`${colorPickerPrefixCls}-icon-down`]: !showPanel,
     })
 
     const noneLineCls = `${colorPickerPrefixCls}-icon-no-color-line`
-
     return (
       <div
         className={afterIconContainerCls}
         style={{ backgroundColor: `${colTypeArr[2].value || defaultSystemColor}` }}
       >
-        {!value && !defaultValue && !inputColorValue && <div className={noneLineCls} />}
+        {!validateColor(value) && !inputCorrectColorValue && <div className={noneLineCls} />}
       </div>
     )
-  }
+  }, [borderType, colTypeArr, colorPickerPrefixCls, inputCorrectColorValue, value])
 
   const colorInputEle = (
     <div className={containerCls} ref={inputRef}>
       <Input
-        borderType={borderType}
+        borderType={pure ? 'bordered' : borderType}
         placeholder={placeholder}
         value={value ?? inputColorValue}
         className={inputCls}
         onChange={handleChange}
+        onBlur={handleBlur}
         style={style}
         onClick={handleClick}
         prefix={
           <div onClick={handleClick} className={`${colorPickerPrefixCls}-icon-container`}>
-            {(prefixIcon && prefixIcon(colTypeArr[2].value)) || afterIcon()}
+            {prefixIcon ? prefixIcon(colTypeArr[2].value, beforeIcon()) : beforeIcon()}
           </div>
         }
         suffix={
           suffixIcon && (
             <div onClick={handleClick} className={`${colorPickerPrefixCls}-icon-container`}>
-              {suffixIcon(colTypeArr[2].value)}
+              {suffixIcon(colTypeArr[2].value, beforeIcon())}
             </div>
           )
         }
@@ -190,6 +227,7 @@ const ColorPicker: FC<Partial<IColorPickerProps>> = (props) => {
   const panel = (
     <ColorPickerPanel
       // API
+      showAlphaInput={showAlphaInput}
       showClear={showClear}
       showSwitch={showSwitch}
       showColorTransfer={showColorTransfer}
@@ -207,24 +245,29 @@ const ColorPicker: FC<Partial<IColorPickerProps>> = (props) => {
       showPanel={showPanel}
       onVisibleChange={onVisibleChange}
       // private
+      setInputCorrectColorValue={setInputCorrectColorValue}
       setInputColorValue={setInputColorValue}
       setCorrectColorValue={setCorrectColorValue}
-      correctColorValue={correctColorValue}
-      clickedColorIndex={clickedColorIndex}
-      setClickedColorIndex={setClickedColorIndex}
-      onChange={onChange}
-      alpha={alpha}
+      setClickedPresetColorIndex={setClickedPresetColorIndex}
+      setClickedHistoricalColorIndex={setClickedHistoricalColorIndex}
+      setClickColorIndex={setClickColorIndex}
       setAlpha={setAlpha}
-      alphaNoVerifyVal={alphaNoVerifyVal}
       setAlphaNoVerifyVal={setAlphaNoVerifyVal}
-      isFollow={isFollow}
       setIsFollow={setIsFollow}
       setShowPanel={setShowPanel}
+      setColTypeArr={setColTypeArr}
+      setCurrentColorType={setCurrentColorType}
+      correctColorValue={correctColorValue}
+      inputCorrectColorValue={inputCorrectColorValue}
+      clickedPresetColorIndex={clickedPresetColorIndex}
+      clickedHistoricalColorIndex={clickedHistoricalColorIndex}
+      onChange={onChange}
+      alpha={alpha}
+      alphaNoVerifyVal={alphaNoVerifyVal}
+      isFollow={isFollow}
       inputRef={inputRef}
       colTypeArr={colTypeArr}
-      setColTypeArr={setColTypeArr}
       currentColorType={currentColorType}
-      setCurrentColorType={setCurrentColorType}
       showColorPickerPanel={showColorPickerPanel}
     />
   )

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { ReactNode } from 'react'
 import { mount, render } from 'enzyme'
 import ColorPicker from '../index'
 import ColorPickerPanel from '../color-picker-panel'
@@ -19,9 +19,7 @@ describe('ColorPicker', () => {
   // 2.render test
   it('renders correctly', () => {
     BorderTypes.forEach((type) => {
-      const wrapper = render(
-        <ColorPicker borderType={type} defaultOpen={false} placeholder="#" showSwitch={false}></ColorPicker>,
-      )
+      const wrapper = render(<ColorPicker borderType={type} defaultOpen={false} placeholder="#" showSwitch={false} />)
       expect(wrapper).toMatchSnapshot()
     })
   })
@@ -51,7 +49,28 @@ describe('ColorPicker', () => {
     mount(<ColorPicker {...props} />)
     expect(mockWarn).toHaveBeenCalledTimes(1)
     expect(mockWarn.mock.calls[0][0]).toMatch(
-      "Warning: [kdesign]-color-picker: 'presetColor' must be an array of hexadecimal, RGB, HSB, HSL or English color name string type",
+      "Warning: [kdesign]-color-picker: 'presetColor' must be an array of hexadecimal, HEXA, RGB, RGBA, HSB, HSBA, HSL, HSLA or English color name string type",
+    )
+  })
+  it('should warns when set first wrong of "panelFormatConfig" of prop', () => {
+    const mockWarn = jest.fn()
+    jest.spyOn(console, 'warn').mockImplementation(mockWarn)
+    const config: any = {
+      show: ['HEX', 'RGB', 'HSB'],
+      default: 'test',
+    }
+    const props = {
+      defaultOpen: true,
+      panelFormatConfig: config,
+    }
+
+    mount(<ColorPicker {...props} />)
+    expect(mockWarn).toHaveBeenCalledTimes(2)
+    expect(mockWarn.mock.calls[0][0]).toMatch(
+      "Warning: [kdesign]-color-picker: 'default' property of 'panelFormatConfig' must be one of HEX, RGB, HSB, or HSL",
+    )
+    expect(mockWarn.mock.calls[1][0]).toMatch(
+      "Warning: [kdesign]-color-picker: 'default' property of 'panelFormatConfig' must be one of 'show'",
     )
   })
   // #endregion
@@ -85,10 +104,16 @@ describe('ColorPicker', () => {
 
     // borderType
     expect(
-      underlineWrapper.find('.kd-color-picker-container .kd-color-picker-input').at(2).hasClass('kd-input-underline'),
+      underlineWrapper
+        .find('.kd-color-picker-container .kd-color-picker-input')
+        .at(2)
+        .hasClass('kd-input-wrapper-underline'),
     ).toBeTruthy()
     expect(
-      borderedWrapper.find('.kd-color-picker-container .kd-color-picker-input').at(2).hasClass('kd-input-underline'),
+      borderedWrapper
+        .find('.kd-color-picker-container .kd-color-picker-input')
+        .at(2)
+        .hasClass('kd-input-wrapper-underline'),
     ).toBeFalsy()
 
     // className
@@ -110,23 +135,74 @@ describe('ColorPicker', () => {
     expect(borderedWrapper.find('.kd-color-picker-input').at(0).prop('placeholder')).toEqual('请输入色值')
 
     // style
-    expect(underlineWrapper.find('.kd-input-underline').prop('style')).toBeFalsy()
+    expect(underlineWrapper.find('.kd-input-wrapper-underline').prop('style')).toBeFalsy()
     underlineWrapper.setProps({ style: { height: '40px' } })
     underlineWrapper.update()
-    expect(underlineWrapper.find('.kd-input-underline').prop('style')).toEqual({ height: '40px' })
-    expect(underlineWrapper.find('.kd-input-underline')).toHaveStyle('height', '40px')
+    expect(underlineWrapper.find('.kd-input-wrapper-underline').prop('style')).toEqual({ height: '40px' })
+    expect(underlineWrapper.find('.kd-input-wrapper-underline')).toHaveStyle('height', '40px')
+
+    // default prefixIcon
+    expect(underlineWrapper.find('.kd-input-prefix').find('.kd-color-picker-icon')).toHaveClassName(
+      'kd-color-picker-icon-underline',
+    )
+    expect(
+      underlineWrapper
+        .find('.kd-input-prefix')
+        .find('.kd-color-picker-icon')
+        .find('.kd-color-picker-icon-no-color-line'),
+    ).toExist()
+    expect(borderedWrapper.find('.kd-input-prefix').find('.kd-color-picker-icon')).toHaveClassName(
+      'kd-color-picker-icon-bordered',
+    )
+    expect(
+      borderedWrapper
+        .find('.kd-input-prefix')
+        .find('.kd-color-picker-icon')
+        .find('.kd-color-picker-icon-no-color-line'),
+    ).toExist()
 
     // default suffixIcon
-    expect(underlineWrapper.find('.kd-color-picker-icon')).toHaveClassName('kd-color-picker-icon-down')
-    underlineWrapper.find('.kd-color-picker-input').at(0).simulate('click')
-    expect(underlineWrapper.find('.kd-color-picker-icon')).toHaveClassName('kd-color-picker-icon-up')
-    underlineWrapper.find('.kd-color-picker-icon-container').simulate('click')
-    expect(underlineWrapper.find('.kd-color-picker-icon')).toHaveClassName('kd-color-picker-icon-down')
-    expect(borderedWrapper.find('.kd-color-picker-icon')).toHaveClassName('kd-color-picker-icon-down')
-    borderedWrapper.find('.kd-color-picker-input').at(0).simulate('click')
-    expect(borderedWrapper.find('.kd-color-picker-icon')).toHaveClassName('kd-color-picker-icon-up')
-    borderedWrapper.find('.kd-color-picker-icon-container').simulate('click')
-    expect(borderedWrapper.find('.kd-color-picker-icon')).toHaveClassName('kd-color-picker-icon-down')
+    underlineWrapper.setProps({ prefixIcon: () => null, suffixIcon: (_: string, dom: ReactNode) => dom })
+    borderedWrapper.setProps({ prefixIcon: () => null, suffixIcon: (_: string, dom: ReactNode) => dom })
+    underlineWrapper.update()
+    borderedWrapper.update()
+    expect(underlineWrapper.find('.kd-input-suffix').find('.kd-color-picker-icon')).toHaveClassName(
+      'kd-color-picker-icon-underline',
+    )
+    expect(
+      underlineWrapper
+        .find('.kd-input-suffix')
+        .find('.kd-color-picker-icon')
+        .find('.kd-color-picker-icon-no-color-line'),
+    ).toExist()
+    expect(borderedWrapper.find('.kd-input-suffix').find('.kd-color-picker-icon')).toHaveClassName(
+      'kd-color-picker-icon-bordered',
+    )
+    expect(
+      borderedWrapper
+        .find('.kd-input-suffix')
+        .find('.kd-color-picker-icon')
+        .find('.kd-color-picker-icon-no-color-line'),
+    ).toExist()
+
+    // custom prefixIcon
+    const prefix = (rgbColor: string) => {
+      return (
+        <div className="prefix-icon" style={{ color: rgbColor }}>
+          点击
+        </div>
+      )
+    }
+    const customPrefixWrapper = mount(<ColorPicker prefixIcon={prefix} />)
+    expect(customPrefixWrapper.find('.kd-input-prefix').find('.prefix-icon')).toBeTruthy()
+    expect(customPrefixWrapper.find('.kd-input-prefix').find('.prefix-icon')).toHaveStyle(
+      'color',
+      'RGBA(255, 255, 255, 0)',
+    )
+    customPrefixWrapper.setProps({ value: 'red' })
+    customPrefixWrapper.update()
+    expect(customPrefixWrapper.find('.kd-input-prefix').find('.prefix-icon')).toHaveStyle('color', 'RGB(255, 0, 0)')
+    expect(customPrefixWrapper.find('.kd-input-prefix').find('.prefix-icon').text()).toEqual('点击')
 
     // custom suffixIcon
     const suffix = (rgbColor: string) => {
@@ -136,19 +212,36 @@ describe('ColorPicker', () => {
         </div>
       )
     }
-    const customSuffixWrapper = mount(<ColorPicker suffixIcon={suffix} />)
-    expect(customSuffixWrapper.find('.suffix-icon')).toBeTruthy()
-    expect(customSuffixWrapper.find('.suffix-icon')).toHaveStyle('color', 'rgb(178, 178, 178)')
+    const customSuffixWrapper = mount(<ColorPicker prefixIcon={() => null} suffixIcon={suffix} />)
+    expect(customSuffixWrapper.find('.kd-input-suffix').find('.suffix-icon')).toBeTruthy()
+    expect(customSuffixWrapper.find('.kd-input-suffix').find('.suffix-icon')).toHaveStyle(
+      'color',
+      'RGBA(255, 255, 255, 0)',
+    )
     customSuffixWrapper.setProps({ value: 'red' })
     customSuffixWrapper.update()
-    expect(customSuffixWrapper.find('.suffix-icon')).toHaveStyle('color', 'rgb(255, 0, 0)')
-    expect(customSuffixWrapper.find('.suffix-icon').text()).toEqual('点击')
+    expect(customSuffixWrapper.find('.kd-input-suffix').find('.suffix-icon')).toHaveStyle('color', 'RGB(255, 0, 0)')
+    expect(customSuffixWrapper.find('.kd-input-suffix').find('.suffix-icon').text()).toEqual('点击')
 
     // defaultValue
-    const underlineDefValueWrapper = mount(<ColorPicker borderType="underline" defaultValue="#fff"></ColorPicker>)
-    const borderedDefValueWrapper = mount(<ColorPicker defaultValue="#666"></ColorPicker>)
+    const underlineDefValueWrapper = mount(
+      <ColorPicker borderType="underline" defaultValue="#fff" defaultOpen={true} />,
+    )
+    const borderedDefValueWrapper = mount(<ColorPicker defaultValue="#666" defaultOpen={true} />)
     expect(underlineDefValueWrapper.find('.kd-input-underline').prop('value')).toEqual('#fff')
+    expect(underlineDefValueWrapper.find('.kd-color-picker-panel-container-input').at(0).prop('value')).toEqual(
+      '#FFFFFF',
+    )
+    expect(underlineDefValueWrapper.find('.kd-color-picker-panel-container-transparent').at(0).prop('value')).toEqual(
+      '100%',
+    )
     expect(borderedDefValueWrapper.find('.kd-color-picker-input').at(0).prop('value')).toEqual('#666')
+    expect(borderedDefValueWrapper.find('.kd-color-picker-panel-container-input').at(0).prop('value')).toEqual(
+      '#666666',
+    )
+    expect(borderedDefValueWrapper.find('.kd-color-picker-panel-container-transparent').at(0).prop('value')).toEqual(
+      '100%',
+    )
 
     // value
     underlineDefValueWrapper.setProps({ value: 'red' })
@@ -156,8 +249,19 @@ describe('ColorPicker', () => {
     underlineDefValueWrapper.update()
     borderedDefValueWrapper.update()
     expect(underlineDefValueWrapper.find('.kd-input-underline').prop('value')).toEqual('red')
+    expect(underlineDefValueWrapper.find('.kd-color-picker-panel-container-input').at(0).prop('value')).toEqual(
+      '#FF0000',
+    )
+    expect(underlineDefValueWrapper.find('.kd-color-picker-panel-container-transparent').at(0).prop('value')).toEqual(
+      '100%',
+    )
     expect(borderedDefValueWrapper.find('.kd-color-picker-input').at(0).prop('value')).toEqual('blue')
-
+    expect(borderedDefValueWrapper.find('.kd-color-picker-panel-container-input').at(0).prop('value')).toEqual(
+      '#0000FF',
+    )
+    expect(borderedDefValueWrapper.find('.kd-color-picker-panel-container-transparent').at(0).prop('value')).toEqual(
+      '100%',
+    )
     // defaultOpen
     let colorValue = ''
     const onChange = jest.fn((color) => {
@@ -165,12 +269,14 @@ describe('ColorPicker', () => {
     })
     const defaultOpenWrapper = mount(<ColorPicker defaultOpen={true} onChange={onChange}></ColorPicker>)
     expect(defaultOpenWrapper.exists('.kd-color-picker-pop')).toBeTruthy()
-    expect(defaultOpenWrapper.find('.kd-select-selection-item').text()).toEqual('#b2b2b2')
-    expect(defaultOpenWrapper.find('.kd-color-picker-panel-container-transparent').at(0).prop('value')).toEqual('100%')
+    expect(defaultOpenWrapper.find('.kd-select-selection-item').text()).toEqual('HEX')
+    expect(defaultOpenWrapper.find('.kd-color-picker-panel-container-input').at(0).prop('value')).toEqual('#FFFFFF')
+    expect(defaultOpenWrapper.find('.kd-color-picker-panel-container-transparent').at(0).prop('value')).toEqual('0%')
     defaultOpenWrapper.setProps({ defaultValue: 'blue' })
     defaultOpenWrapper.update()
     expect(borderedDefValueWrapper.find('.kd-color-picker-input').at(0).prop('value')).toEqual('blue')
-    expect(defaultOpenWrapper.find('.kd-select-selection-item').text()).toEqual('#0000ff')
+    expect(defaultOpenWrapper.find('.kd-select-selection-item').text()).toEqual('HEX')
+    expect(defaultOpenWrapper.find('.kd-color-picker-panel-container-input').at(0).prop('value')).toEqual('#0000FF')
     expect(defaultOpenWrapper.find('.kd-color-picker-panel-container-transparent').at(0).prop('value')).toEqual('100%')
 
     // functionalColor、functionalColorName、switchName、showSwitch
@@ -188,7 +294,8 @@ describe('ColorPicker', () => {
     expect(onChange).toHaveBeenCalled()
     expect(colorValue).toEqual('#themeColor')
     expect(defaultOpenWrapper.find('.kd-switch').hasClass('kd-switch-checked')).toBeTruthy()
-    expect(defaultOpenWrapper.find('.kd-select-selection-item').text()).toEqual('#333333')
+    expect(defaultOpenWrapper.find('.kd-select-selection-item').text()).toEqual('HEX')
+    expect(defaultOpenWrapper.find('.kd-color-picker-panel-container-input').at(0).prop('value')).toEqual('#333333')
     expect(defaultOpenWrapper.find('.kd-color-picker-input').at(0).prop('value')).toEqual('#themeColor')
     expect(defaultOpenWrapper.find('.kd-color-picker-panel-container-transparent').at(0).prop('value')).toEqual('100%')
     expect(
@@ -207,20 +314,36 @@ describe('ColorPicker', () => {
     expect(defaultOpenWrapper.find('.kd-color-picker-panel-switch').find('span').at(0).text()).toEqual('酷玩风格')
 
     // presetColor、showPresetColor
-    expect(defaultOpenWrapper.find('.kd-color-picker-panel-colorDivContainer').children('li').length).toEqual(36)
+    expect(defaultOpenWrapper.find('.kd-color-picker-panel-color-box-container').children('li').length).toEqual(36)
     const colorArr = ['blue', '#0000ff', 'rgb(0,0,255)', 'hsl(240,100%,50%)', 'hsb(240,100%,100%)']
     defaultOpenWrapper.setProps({ presetColor: colorArr })
     defaultOpenWrapper.update()
-    expect(defaultOpenWrapper.find('.kd-color-picker-panel-colorDivContainer').children('li').length).toEqual(5)
+    expect(defaultOpenWrapper.find('.kd-color-picker-panel-color-box-title')).not.toExist()
+    expect(defaultOpenWrapper.find('.kd-color-picker-panel-color-box-container').children('li').length).toEqual(5)
     defaultOpenWrapper.setProps({ showPresetColor: false })
     defaultOpenWrapper.update()
-    expect(defaultOpenWrapper.exists('.kd-color-picker-panel-colorDivContainer')).toBeFalsy()
+    expect(defaultOpenWrapper.find('.kd-color-picker-panel-color-box-title')).not.toExist()
+    expect(defaultOpenWrapper.exists('.kd-color-picker-panel-color-box-container')).toBeFalsy()
     defaultOpenWrapper.setProps({ showPresetColor: true })
     defaultOpenWrapper.update()
-    expect(defaultOpenWrapper.exists('.kd-color-picker-panel-colorDivContainer')).toBeTruthy()
+    expect(defaultOpenWrapper.find('.kd-color-picker-panel-color-box-title')).not.toExist()
+    expect(defaultOpenWrapper.exists('.kd-color-picker-panel-color-box-container')).toBeTruthy()
     defaultOpenWrapper.setProps({ presetColor: [] })
     defaultOpenWrapper.update()
-    expect(defaultOpenWrapper.exists('.kd-color-picker-panel-colorDivContainer-unset-color')).toBeTruthy()
+    expect(defaultOpenWrapper.exists('.kd-color-picker-panel-color-box-container')).toBeFalsy()
+
+    // historicalColor
+    defaultOpenWrapper.setProps({ historicalColor: colorArr, presetColor: colorArr })
+    defaultOpenWrapper.update()
+    expect(defaultOpenWrapper.find('.kd-color-picker-panel-color-box-title')).toExist()
+    expect(defaultOpenWrapper.find('.kd-color-picker-panel-historical-color-box-title')).toExist()
+    expect(
+      defaultOpenWrapper.find('.kd-color-picker-panel-historical-color-box-container').children('li').length,
+    ).toEqual(5)
+    defaultOpenWrapper.setProps({ historicalColor: [] })
+    defaultOpenWrapper.update()
+    expect(defaultOpenWrapper.find('.kd-color-picker-panel-historical-color-box')).not.toExist()
+    expect(defaultOpenWrapper.find('.kd-color-picker-panel-color-box-title')).not.toExist()
 
     // showColorTransfer
     defaultOpenWrapper.setProps({ showColorTransfer: false })
@@ -245,6 +368,73 @@ describe('ColorPicker', () => {
         '.kd-color-picker-panel-chrome-no-box.kd-color-picker-panel-chrome-no-hue.kd-color-picker-panel-chrome-no-opacity',
       ),
     ).toBeFalsy()
+
+    // showAlpha
+    expect(defaultOpenWrapper.find('.kd-color-picker-panel-container-transparent')).toExist()
+    defaultOpenWrapper.setProps({ showAlphaInput: false })
+    defaultOpenWrapper.update()
+    expect(defaultOpenWrapper.exists('.kd-color-picker-panel-container-transparent')).toBeFalsy()
+
+    // format
+    const formatWrapper = mount(<ColorPicker defaultOpen={true} />)
+    formatWrapper.find('.kd-color-picker-panel-color-box-container').find('li').at(0).simulate('click')
+    expect(
+      (formatWrapper.find('.kd-color-picker-input').find('.kd-input').getDOMNode() as HTMLInputElement).value,
+    ).toEqual('#A1ECFF')
+    formatWrapper.setProps({ format: 'RGB' })
+    formatWrapper.update()
+    formatWrapper.find('.kd-color-picker-panel-color-box-container').find('li').at(0).simulate('click')
+    expect(
+      (formatWrapper.find('.kd-color-picker-input').find('.kd-input').getDOMNode() as HTMLInputElement).value,
+    ).toEqual('RGB(161, 236, 255)')
+    formatWrapper.setProps({ format: 'HSB' })
+    formatWrapper.update()
+    formatWrapper.find('.kd-color-picker-panel-color-box-container').find('li').at(0).simulate('click')
+    expect(
+      (formatWrapper.find('.kd-color-picker-input').find('.kd-input').getDOMNode() as HTMLInputElement).value,
+    ).toEqual('HSB(192, 37%, 100%)')
+    formatWrapper.setProps({ format: 'HSL' })
+    formatWrapper.update()
+    formatWrapper.find('.kd-color-picker-panel-color-box-container').find('li').at(0).simulate('click')
+    expect(
+      (formatWrapper.find('.kd-color-picker-input').find('.kd-input').getDOMNode() as HTMLInputElement).value,
+    ).toEqual('HSL(192, 100%, 82%)')
+
+    // panelFormatConfig
+    const panelFormatConfigWrapper = mount(
+      <ColorPicker defaultOpen={true} panelFormatConfig={{ show: ['HEX', 'HSB', 'RGB', 'HSL'], default: 'RGB' }} />,
+    )
+    expect((panelFormatConfigWrapper.find('.kd-select-bordered').getDOMNode() as HTMLInputElement).title).toEqual('RGB')
+
+    // showClear
+    const showClearWrapper = mount(<ColorPicker defaultValue="#EEEEEE" defaultOpen={true} />)
+    expect(showClearWrapper.find('.kd-color-picker-panel-clear')).toExist()
+    expect(
+      (showClearWrapper.find('.kd-color-picker-input').find('.kd-input').getDOMNode() as HTMLInputElement).value,
+    ).toEqual('#EEEEEE')
+    expect(
+      (
+        showClearWrapper
+          .find('.kd-color-picker-panel-container-input')
+          .find('.kd-input')
+          .getDOMNode() as HTMLInputElement
+      ).value,
+    ).toEqual('#EEEEEE')
+    showClearWrapper.find('.kd-color-picker-panel-clear-box').simulate('click')
+    expect(
+      (showClearWrapper.find('.kd-color-picker-input').find('.kd-input').getDOMNode() as HTMLInputElement).value,
+    ).toEqual('')
+    expect(
+      (
+        showClearWrapper
+          .find('.kd-color-picker-panel-container-input')
+          .find('.kd-input')
+          .getDOMNode() as HTMLInputElement
+      ).value,
+    ).toEqual('#FFFFFF')
+    showClearWrapper.setProps({ showClear: false })
+    showClearWrapper.update()
+    expect(showClearWrapper.find('.kd-color-picker-panel-clear')).not.toExist()
 
     // getPopupContainer
     const wrapperRef = React.createRef() as any
@@ -293,29 +483,45 @@ describe('ColorPicker', () => {
   // #region controlled & uncontrolled
   // value
   it('should display value when both value and defaultValue exist', () => {
-    const wrapper = mount(<ColorPicker value="red" defaultValue="blue" />)
+    const wrapper = mount(<ColorPicker value="red" defaultValue="blue" defaultOpen />)
     expect(wrapper.find('.kd-color-picker-input').at(0).props().value).toBe('red')
+    expect(
+      (wrapper.find('.kd-color-picker-panel-container-input').find('.kd-input').getDOMNode() as HTMLInputElement).value,
+    ).toEqual('#FF0000')
   })
   it('should display defaultValue when only defaultValue exists', () => {
-    const wrapper = mount(<ColorPicker defaultValue="blue" />)
+    const wrapper = mount(<ColorPicker defaultValue="blue" defaultOpen />)
     expect(wrapper.find('.kd-color-picker-input').at(0).props().value).toBe('blue')
+    expect(
+      (wrapper.find('.kd-color-picker-panel-container-input').find('.kd-input').getDOMNode() as HTMLInputElement).value,
+    ).toEqual('#0000FF')
   })
   it('should not change value when selected in the component', () => {
     const wrapper = mount(<ColorPicker defaultOpen value="blue" />)
-    wrapper.find('.kd-color-picker-panel-colorDivContainer').childAt(0).simulate('click')
+    wrapper.find('.kd-color-picker-panel-color-box-container').childAt(0).simulate('click')
     expect(wrapper.find('.kd-color-picker-input').at(0).props().value).toBe('blue')
+    expect(
+      (wrapper.find('.kd-color-picker-panel-container-input').find('.kd-input').getDOMNode() as HTMLInputElement).value,
+    ).toEqual('#0000FF')
   })
   it('should change value when use onChange event', async () => {
     const changeValue = 'blue'
     const handleChangeValue = jest.fn(async (colorValue) => {
-      expect(colorValue).toEqual('#a1ecff')
+      expect(colorValue).toEqual('#A1ECFF')
       await sleep(1000)
-      expect(wrapper.find('.kd-color-picker-input').first().props().value).toEqual('#a1ecff')
+      expect(wrapper.find('.kd-color-picker-input').first().props().value).toEqual('#A1ECFF')
+      expect(
+        (wrapper.find('.kd-color-picker-panel-container-input').find('.kd-input').getDOMNode() as HTMLInputElement)
+          .value,
+      ).toEqual('#A1ECFF')
     })
     const wrapper = mount(<ColorPicker defaultOpen value={changeValue} onChange={handleChangeValue} />)
     expect(wrapper.find('.kd-color-picker-input').first().props().value).toEqual('blue')
+    expect(
+      (wrapper.find('.kd-color-picker-panel-container-input').find('.kd-input').getDOMNode() as HTMLInputElement).value,
+    ).toEqual('#0000FF')
     act(() => {
-      wrapper.find('.kd-color-picker-panel-colorDivContainer').childAt(0).simulate('click')
+      wrapper.find('.kd-color-picker-panel-color-box-container').childAt(0).simulate('click')
     })
   })
   // visible
@@ -345,30 +551,31 @@ describe('ColorPicker', () => {
   // #endregion
 
   // #region 8.component interaction(event)
-  const testCommonState = (wrapper: any, colorValue: string, opacity: string) => {
+  const testCommonState = (format: string, wrapper: any, colorValue: string, noAlphaValue: string, opacity: string) => {
     expect(wrapper.find('.kd-color-picker-input').at(0).prop('value')).toEqual(colorValue)
-    expect(wrapper.find('.kd-select-wrapper').props().title).toEqual(colorValue)
-    expect(wrapper.find('.kd-select-selection-item').text()).toEqual(colorValue)
+    expect(wrapper.find('.kd-select-wrapper').props().title).toEqual(format)
+    expect(wrapper.find('.kd-select-selection-item').text()).toEqual(format)
+    expect(wrapper.find('.kd-color-picker-panel-container-input').at(0).prop('value')).toEqual(noAlphaValue)
     expect(wrapper.find('.kd-color-picker-panel-container-transparent').at(0).prop('value')).toEqual(opacity)
     expect(wrapper.find('.kd-select').hasClass('kd-select-visible')).toBeFalsy()
   }
 
   it('should display the correct color values and corrent opacity when setting different alpha values', () => {
     const wrapper = mount(<ColorPicker {...defaultColorPickerProps} defaultOpen={true}></ColorPicker>)
-    expect(wrapper.find('.kd-color-picker-panel-container-transparent').at(0).prop('value')).toEqual('100%')
+    expect(wrapper.find('.kd-color-picker-panel-container-transparent').at(0).prop('value')).toEqual('0%')
     wrapper
       .find('.kd-color-picker-panel-container-transparent')
       .at(0)
       .simulate('change', { target: { value: '10%' } })
     expect(wrapper.find('.kd-color-picker-panel-container-transparent').at(0).prop('value')).toEqual('10%')
-    testCommonState(wrapper, '#b2b2b21a', '10%')
+    testCommonState('HEX', wrapper, '#FFFFFF1A', '#FFFFFF', '10%')
     wrapper.unmount()
   })
 
   it('should display the correct color values and corrent opacity when clicking on different preset colors', () => {
     const wrapper = mount(<ColorPicker {...defaultColorPickerProps} defaultOpen={true}></ColorPicker>)
-    wrapper.find('.kd-color-picker-panel-colorDivContainer').children('li').at(0).simulate('click')
-    testCommonState(wrapper, '#a1ecff', '100%')
+    wrapper.find('.kd-color-picker-panel-color-box-container').children('li').at(0).simulate('click')
+    testCommonState('HEX', wrapper, '#A1ECFF', '#A1ECFF', '100%')
     wrapper.unmount()
   })
 
@@ -381,7 +588,7 @@ describe('ColorPicker', () => {
     const wrapper = mount(<ColorPicker defaultOpen={true}></ColorPicker>)
     expect(wrapper.find('.kd-color-picker-panel')).toExist()
     expect(wrapper.find('.kdicon-arrow-down')).toExist()
-    wrapper.setProps({ showColorTransfer: false, showPresetColor: false })
+    wrapper.setProps({ showColorTransfer: false, showPresetColor: false, showClear: false })
     wrapper.update()
     expect(wrapper.find('.kd-color-picker-panel')).not.toExist()
     expect(wrapper.find('.kdicon-arrow-down')).not.toExist()
@@ -420,6 +627,7 @@ describe('ColorPicker', () => {
           placeholder: '??',
           showColorTransfer: true,
           showPresetColor: true,
+          showClear: false,
           showColorPickerBox: { showBox: false, showHue: false, showOpacity: false },
         },
       },
@@ -435,8 +643,8 @@ describe('ColorPicker', () => {
     expect(wrapper.find('.kd-color-picker-input').at(0).prop('placeholder')).toEqual('??')
     expect(wrapper.find('.kd-color-picker-panel-container-input')).toExist()
     expect(wrapper.find('.kd-color-picker-panel-container-transparent')).toExist()
-    expect(wrapper.find('.kd-color-picker-panel-container-transparent')).toExist()
-    expect(wrapper.find('.kd-color-picker-panel-colorDivContainer')).toExist()
+    expect(wrapper.find('.kd-color-picker-panel-color-box-container')).toExist()
+    expect(wrapper.find('.kd-color-picker-panel-clear')).not.toExist()
     expect(
       wrapper.find(
         '.kd-color-picker-panel-chrome-no-box.kd-color-picker-panel-chrome-no-hue.kd-color-picker-panel-chrome-no-opacity',
