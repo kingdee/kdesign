@@ -17,11 +17,11 @@ const Demo: React.FC = () => {
 
   return (
     <>
-      <ColorPicker onChange={onChange} functionalColor={'rgb(55, 92, 202)'} showSwitch={true} />
+      <ColorPicker onChange={onChange} functionalColor={'RGB(55, 92, 202)'} showSwitch={true} />
       <br />
       <ColorPicker
         onChange={onChange}
-        functionalColor={'rgb(55, 92, 202)'}
+        functionalColor={'RGB(55, 92, 202)'}
         showSwitch={true}
         functionalColorName="#lightColor"
         switchName={{ name: '跟随明亮色' }}

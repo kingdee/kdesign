@@ -1,9 +1,9 @@
 ---
-title: 设置默认值
-order: 8
+title: 纯色块
+order: 11
 ---
 
-可配置属性 defaultValue 设置颜色面板的默认值
+我们提供纯色块模式，配置属性 pure 即可开启，纯色块模式下 borderType 属性失效
 
 ```jsx
 import React from 'react'
@@ -15,7 +15,7 @@ const Demo: React.FC = () => {
     console.log('color', inputValue)
   }
 
-  return <ColorPicker onChange={onChange} defaultValue="#FF0000" />
+  return <ColorPicker onChange={onChange} pure />
 }
 
 ReactDOM.render(<Demo />, mountNode)

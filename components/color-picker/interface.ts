@@ -1,3 +1,4 @@
+import { ReactNode } from 'react'
 import { tuple } from '../_utils/type'
 import { PopperProps } from '../_utils/usePopper'
 
@@ -29,12 +30,22 @@ export interface IColorPickerProps extends PopperProps {
   functionalColor: string
   // 外部输入框的颜色格式配置
   format: Exclude<typeof ColorTypes[number], 'themeColor'>
+  // 历史颜色
+  historicalColor: string[]
   // 颜色面板的颜色格式配置
   panelFormatConfig: IInnerFormat
+  // 占位字符
+  placeholder: string
+  // 用户自定义的预设颜色
+  presetColor: string[]
+  // 纯色块模式
+  pure: boolean
   // 选择输入框样式
   style: React.CSSProperties
   // 功能色开关的名称
   switchName: { name: string; internationalName?: string }
+  // 是否显示透明度输入框
+  showAlphaInput: boolean
   // 是否显示无颜色填充按钮
   showClear: boolean
   // 是否跟随功能色,定义了功能色才能控制显示跟随主题色开关
@@ -45,12 +56,6 @@ export interface IColorPickerProps extends PopperProps {
   showPresetColor: boolean
   // 是否显示外层输入框色块的箭头
   showArrow: boolean
-  // 占位字符
-  placeholder: string
-  // 用户自定义的预设颜色
-  presetColor: string[]
-  // 历史颜色
-  historicalColor: string[]
   // 是否展示拾色容器
   showColorPickerBox: { showBox: boolean; showHue: boolean; showOpacity: boolean }
   // 面板显隐受控配置
@@ -58,9 +63,9 @@ export interface IColorPickerProps extends PopperProps {
   // 设置颜色选择器的值，可以是十六进制颜色值，RGB颜色值，HSL颜色值，或者颜色名称
   value: string
   // 输入框右侧的图标
-  suffixIcon: (rgbColor: string) => React.ReactNode
+  suffixIcon: (rgbColor: string, dom: ReactNode) => React.ReactNode
   // 输入框左侧的图标
-  prefixIcon: (rgbColor: string) => React.ReactNode
+  prefixIcon: (rgbColor: string, dom: ReactNode) => React.ReactNode
   // 当颜色选择器的值发生变化时触发的回调函数
   onChange: (inputValue: string, formatColorArr: Array<IColorTypesObj>) => void
   // 面板显隐回调
@@ -70,10 +75,12 @@ export interface IColorPickerProps extends PopperProps {
 export interface IColorPickerPanelProps {
   alpha: number
   alphaNoVerifyVal: string
-  clickedColorIndex?: number
+  clickedPresetColorIndex?: number
+  clickedHistoricalColorIndex?: number
   colTypeArr: Array<IColorTypesObj>
   correctColorValue: string
   currentColorType: IColorTypesObj['type']
+  inputCorrectColorValue: string
   functionalColor?: string
   functionalColorName: string
   switchName: { name: string; internationalName?: string }
@@ -83,6 +90,7 @@ export interface IColorPickerPanelProps {
   format: Exclude<typeof ColorTypes[number], 'themeColor'>
   presetColor?: string[]
   historicalColor?: string[]
+  showAlphaInput?: boolean
   showSwitch?: boolean
   showClear?: boolean
   showColorTransfer?: boolean
@@ -94,11 +102,14 @@ export interface IColorPickerPanelProps {
   showPanel: boolean
   setCurrentColorType: (currentColorType: IColorTypesObj['type']) => void
   setColTypeArr: (colTypeArr: Array<IColorTypesObj>) => void
-  setClickedColorIndex: (clickedColorIndex: number) => void
+  setClickedPresetColorIndex: (clickedColorIndex: number) => void
+  setClickedHistoricalColorIndex: (clickedColorIndex: number) => void
+  setClickColorIndex: (value: number | string) => void
   setIsFollow: (isFollow: boolean) => void
   setAlphaNoVerifyVal: (NoVerifyVal: string) => void
   setAlpha: (alpha: number) => void
   setCorrectColorValue: (colorValue: string) => void
+  setInputCorrectColorValue: (colorValue: string) => void
   setInputColorValue: (colorValue: string) => void
   setShowPanel: (showPanel: boolean) => void
   onChange?: (inputValue: string, formatColorArr: Array<IColorTypesObj>) => void

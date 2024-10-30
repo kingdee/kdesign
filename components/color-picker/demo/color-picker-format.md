@@ -1,9 +1,9 @@
 ---
-title: 设置默认值
-order: 8
+title: 输出颜色格式可配置
+order: 13
 ---
 
-可配置属性 defaultValue 设置颜色面板的默认值
+可以通过 format 属性对输出的颜色格式进行限制
 
 ```jsx
 import React from 'react'
@@ -15,7 +15,13 @@ const Demo: React.FC = () => {
     console.log('color', inputValue)
   }
 
-  return <ColorPicker onChange={onChange} defaultValue="#FF0000" />
+  return (
+    <>
+      <ColorPicker onChange={onChange} format="HEX" />
+      <br />
+      <ColorPicker onChange={onChange} format="RGB" />
+    </>
+  )
 }
 
 ReactDOM.render(<Demo />, mountNode)

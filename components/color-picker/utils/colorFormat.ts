@@ -151,7 +151,7 @@ export const highlightPresetColorIndex = (color: string, colorArr: string[]): nu
 export const presetColorToHEX = (colorArr: string[] | undefined): string[] => {
   if (!colorArr) return []
   const hexColorArr = colorArr.map((color: string) => {
-    return colorFormat(color, 1, 'HEX')
+    return colorFormat(color, Color(getColorObj(color)).alpha(), 'HEX')
   })
   return hexColorArr as string[]
 }

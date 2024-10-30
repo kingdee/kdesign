@@ -11,7 +11,7 @@ import ReactDOM from 'react-dom'
 import { ColorPicker, Button } from '@kdcloudjs/kdesign'
 
 const Demo: React.FC = () => {
-  const [color, setColor] = React.useState<string>('#ff0000')
+  const [color, setColor] = React.useState<string>('#FF0000')
   const handleClick = () => {
     setColor('blue')
   }
@@ -21,7 +21,7 @@ const Demo: React.FC = () => {
       <Button style={{ marginBottom: '20px' }} onClick={handleClick}>
         改变颜色
       </Button>
-      <ColorPicker value={color} showSwitch functionalColor="#0000ff" showColorPickerBox />
+      <ColorPicker value={color} showSwitch functionalColor="#0000FF" showColorPickerBox />
     </>
   )
 }

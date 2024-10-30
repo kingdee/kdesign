@@ -2,6 +2,7 @@ import { toLowerCase } from './convertLetters'
 
 // 输入框颜色类型校验
 export function validateColor(color: string): string {
+  if (!color) return ''
   const lowerColor = toLowerCase(color)
   const hexReg = /^#([0-9a-fA-F]{3}|[0-9a-fA-F]{6})$/
   const hexaReg = /^#([0-9a-fA-F]{8})$/

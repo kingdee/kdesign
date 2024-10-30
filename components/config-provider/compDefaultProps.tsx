@@ -67,6 +67,8 @@ const compDefaultProps = {
     functionalColorName: '#themeColor',
     switchName: { name: '', internationalName: 'followFunctionalColor' },
     placeholder: '#',
+    pure: false,
+    showAlphaInput: true,
     showClear: true,
     showColorTransfer: true,
     showPresetColor: true,

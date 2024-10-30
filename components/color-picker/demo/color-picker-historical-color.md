@@ -1,9 +1,9 @@
 ---
-title: 系统预设颜色
-order: 6
+title: 面板最近使用颜色可配置
+order: 15
 ---
 
-可配置属性 presetColor 自定义预设颜色，并通过 showPresetColor 属性控制预设颜色容器的显隐
+可以通过 historicalColor 属性在颜色面板中进行最近使用颜色的配置，最近颜色支持透明度
 
 ```jsx
 import React from 'react'
@@ -11,7 +11,11 @@ import ReactDOM from 'react-dom'
 import { ColorPicker } from '@kdcloudjs/kdesign'
 
 const Demo: React.FC = () => {
-  const colorArr = [
+  const onChange = (inputValue: string) => {
+    console.log('color', inputValue)
+  }
+
+  const historicalColor = [
     'blue',
     '#0000FF',
     '#0000FFEE',
@@ -22,11 +26,8 @@ const Demo: React.FC = () => {
     'HSB(240,100%,100%)',
     'HSBA(240,100%,100%,0.5)',
   ]
-  const onChange = (inputValue: string) => {
-    console.log('color', inputValue)
-  }
 
-  return <ColorPicker onChange={onChange} showPresetColor={true} presetColor={colorArr} />
+  return <ColorPicker onChange={onChange} format="HEX" historicalColor={historicalColor} />
 }
 
 ReactDOM.render(<Demo />, mountNode)
