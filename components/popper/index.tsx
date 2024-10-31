@@ -319,7 +319,9 @@ export const Popper = forwardRef<unknown, PopperProps>((props, ref) => {
   }
 
   const onClick = () => {
-    onTriggerInner(!visibleInner, 'click')
+    if (clickToClose || !visibleInner) {
+      onTriggerInner(!visibleInner, 'click')
+    }
   }
 
   const onFocus = () => {
@@ -422,13 +424,12 @@ export const Popper = forwardRef<unknown, PopperProps>((props, ref) => {
 
           const domReference = getRealDom(referenceRef, referenceElement)
           const isReference = domReference ? domReference === e.target || domReference?.contains?.(e.target) : false
-          const isTarget = trigger === 'contextMenu' ? isPopper : isPopper || isReference
-
+          const isTarget = isPopper || isReference
           if (!isTarget && !isSubPopper(e)) {
             triggerOpen(false, 'clickOutside', 0)
           }
 
-          if (clickToClose && isPopper) {
+          if (clickToClose && isReference && trigger !== 'focus') {
             triggerOpen(false, 'clickToClose', 0)
           }
         }
