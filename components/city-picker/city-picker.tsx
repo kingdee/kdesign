@@ -518,6 +518,7 @@ const InternalSelect: React.ForwardRefRenderFunction<CityPickerProps> = (props: 
     defaultVisible: optionShow,
     visible: optionShow,
     onVisibleChange: handleVisibleChange,
+    clickToClose: !searchValue,
     onTransitionEnd: () => {
       if (optionShow === false) {
         handleClear()
