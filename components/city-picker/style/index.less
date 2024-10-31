@@ -4,6 +4,7 @@
 
 @city-picker-prefix-cls: ~'@{kd-prefix}-city-picker';
 @tabs-prefix-cls: ~'@{kd-prefix}-tabs';
+@popper-prefix-cls: ~'@{kd-prefix}-popper';
 
 .@{city-picker-prefix-cls} {
   position: relative;
@@ -156,6 +157,15 @@
     outline: none;
     box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.2);
 
+    &.@{popper-prefix-cls}-bottom-start {
+      &-in {
+        animation-name: kdSlideUpIn;
+      }
+
+      &-out {
+        animation-name: kdSlideUpOut;
+      }
+    }
     // 调整tabs样式
     .@{tabs-prefix-cls}-tab-list {
       width: 100%;
