@@ -40,7 +40,7 @@ export const Triggers = tuple('hover', 'focus', 'click', 'contextMenu')
 
 export type TriggerType = typeof Triggers[number]
 
-export type Reason = TriggerType | 'scroll' | 'clickOutside' | 'parentHidden' | 'unknown'
+export type Reason = TriggerType | 'scroll' | 'clickOutside' | 'clickToClose' | 'parentHidden' | 'unknown'
 
 export type RenderFunction = () => React.ReactNode
 
@@ -424,8 +424,12 @@ export const Popper = forwardRef<unknown, PopperProps>((props, ref) => {
           const isReference = domReference ? domReference === e.target || domReference?.contains?.(e.target) : false
           const isTarget = trigger === 'contextMenu' ? isPopper : isPopper || isReference
 
-          if (clickToClose && !isTarget && !isSubPopper(e)) {
+          if (!isTarget && !isSubPopper(e)) {
             triggerOpen(false, 'clickOutside', 0)
+          }
+
+          if (clickToClose && isPopper) {
+            triggerOpen(false, 'clickToClose', 0)
           }
         }
       },
