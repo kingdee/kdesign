@@ -28,38 +28,6 @@ Array [
       tabindex="-1"
     >
       <div
-        class="kd-modal-resise-handle kd-modal-resise-n"
-        data-type="n"
-      />
-      <div
-        class="kd-modal-resise-handle kd-modal-resise-e"
-        data-type="e"
-      />
-      <div
-        class="kd-modal-resise-handle kd-modal-resise-s"
-        data-type="s"
-      />
-      <div
-        class="kd-modal-resise-handle kd-modal-resise-w"
-        data-type="w"
-      />
-      <div
-        class="kd-modal-resise-handle kd-modal-resise-ne"
-        data-type="ne"
-      />
-      <div
-        class="kd-modal-resise-handle kd-modal-resise-se"
-        data-type="se"
-      />
-      <div
-        class="kd-modal-resise-handle kd-modal-resise-sw"
-        data-type="sw"
-      />
-      <div
-        class="kd-modal-resise-handle kd-modal-resise-nw"
-        data-type="nw"
-      />
-      <div
         class="kd-modal-header"
       >
         <div
@@ -194,6 +162,7 @@ exports[`Signature render no child without errors 1`] = `
     body={
       <ForwardRef
         isEmpty={true}
+        onClear={[Function]}
         prefixCls="kd-signature"
         setDataUrl={[Function]}
         setIsEmpty={[Function]}
@@ -233,7 +202,6 @@ exports[`Signature render no child without errors 1`] = `
     height={500}
     onCancel={[Function]}
     onOk={[Function]}
-    resizable={true}
     title="手写签名"
     titleIcon={
       <React.Fragment>
@@ -338,38 +306,6 @@ exports[`Signature render no child without errors 1`] = `
             transform={null}
           >
             <div
-              className="kd-modal-resise-handle kd-modal-resise-n"
-              data-type="n"
-            />
-            <div
-              className="kd-modal-resise-handle kd-modal-resise-e"
-              data-type="e"
-            />
-            <div
-              className="kd-modal-resise-handle kd-modal-resise-s"
-              data-type="s"
-            />
-            <div
-              className="kd-modal-resise-handle kd-modal-resise-w"
-              data-type="w"
-            />
-            <div
-              className="kd-modal-resise-handle kd-modal-resise-ne"
-              data-type="ne"
-            />
-            <div
-              className="kd-modal-resise-handle kd-modal-resise-se"
-              data-type="se"
-            />
-            <div
-              className="kd-modal-resise-handle kd-modal-resise-sw"
-              data-type="sw"
-            />
-            <div
-              className="kd-modal-resise-handle kd-modal-resise-nw"
-              data-type="nw"
-            />
-            <div
               className="kd-modal-header"
             >
               <div
@@ -434,6 +370,7 @@ exports[`Signature render no child without errors 1`] = `
             >
               <ForwardRef
                 isEmpty={true}
+                onClear={[Function]}
                 prefixCls="kd-signature"
                 setDataUrl={[Function]}
                 setIsEmpty={[Function]}
@@ -559,6 +496,7 @@ exports[`Signature render null or undefined Signature without errors 1`] = `
     body={
       <ForwardRef
         isEmpty={true}
+        onClear={[Function]}
         prefixCls="kd-signature"
         setDataUrl={[Function]}
         setIsEmpty={[Function]}
@@ -597,7 +535,6 @@ exports[`Signature render null or undefined Signature without errors 1`] = `
     height={500}
     onCancel={[Function]}
     onOk={[Function]}
-    resizable={true}
     title="手写签名"
     titleIcon={
       <React.Fragment>
@@ -651,38 +588,6 @@ exports[`Signature render null or undefined Signature without errors 1`] = `
               style="width: 610px; height: 500px; transform: translate(-305px,-250px);"
               tabindex="-1"
             >
-              <div
-                class="kd-modal-resise-handle kd-modal-resise-n"
-                data-type="n"
-              />
-              <div
-                class="kd-modal-resise-handle kd-modal-resise-e"
-                data-type="e"
-              />
-              <div
-                class="kd-modal-resise-handle kd-modal-resise-s"
-                data-type="s"
-              />
-              <div
-                class="kd-modal-resise-handle kd-modal-resise-w"
-                data-type="w"
-              />
-              <div
-                class="kd-modal-resise-handle kd-modal-resise-ne"
-                data-type="ne"
-              />
-              <div
-                class="kd-modal-resise-handle kd-modal-resise-se"
-                data-type="se"
-              />
-              <div
-                class="kd-modal-resise-handle kd-modal-resise-sw"
-                data-type="sw"
-              />
-              <div
-                class="kd-modal-resise-handle kd-modal-resise-nw"
-                data-type="nw"
-              />
               <div
                 class="kd-modal-header"
               >
@@ -854,38 +759,6 @@ exports[`Signature render null or undefined Signature without errors 1`] = `
               transform={null}
             >
               <div
-                className="kd-modal-resise-handle kd-modal-resise-n"
-                data-type="n"
-              />
-              <div
-                className="kd-modal-resise-handle kd-modal-resise-e"
-                data-type="e"
-              />
-              <div
-                className="kd-modal-resise-handle kd-modal-resise-s"
-                data-type="s"
-              />
-              <div
-                className="kd-modal-resise-handle kd-modal-resise-w"
-                data-type="w"
-              />
-              <div
-                className="kd-modal-resise-handle kd-modal-resise-ne"
-                data-type="ne"
-              />
-              <div
-                className="kd-modal-resise-handle kd-modal-resise-se"
-                data-type="se"
-              />
-              <div
-                className="kd-modal-resise-handle kd-modal-resise-sw"
-                data-type="sw"
-              />
-              <div
-                className="kd-modal-resise-handle kd-modal-resise-nw"
-                data-type="nw"
-              />
-              <div
                 className="kd-modal-header"
               >
                 <div
@@ -950,6 +823,7 @@ exports[`Signature render null or undefined Signature without errors 1`] = `
               >
                 <ForwardRef
                   isEmpty={true}
+                  onClear={[Function]}
                   prefixCls="kd-signature"
                   setDataUrl={[Function]}
                   setIsEmpty={[Function]}
@@ -1074,38 +948,6 @@ exports[`Signature should getContainer use right 1`] = `
       style="width:610px;height:500px;transform:translate(0px,0px)"
       tabindex="-1"
     >
-      <div
-        class="kd-modal-resise-handle kd-modal-resise-n"
-        data-type="n"
-      />
-      <div
-        class="kd-modal-resise-handle kd-modal-resise-e"
-        data-type="e"
-      />
-      <div
-        class="kd-modal-resise-handle kd-modal-resise-s"
-        data-type="s"
-      />
-      <div
-        class="kd-modal-resise-handle kd-modal-resise-w"
-        data-type="w"
-      />
-      <div
-        class="kd-modal-resise-handle kd-modal-resise-ne"
-        data-type="ne"
-      />
-      <div
-        class="kd-modal-resise-handle kd-modal-resise-se"
-        data-type="se"
-      />
-      <div
-        class="kd-modal-resise-handle kd-modal-resise-sw"
-        data-type="sw"
-      />
-      <div
-        class="kd-modal-resise-handle kd-modal-resise-nw"
-        data-type="nw"
-      />
       <div
         class="kd-modal-header"
       >
@@ -1237,38 +1079,6 @@ exports[`Signature should getContainer use right 2`] = `
       style="width:610px;height:500px;transform:translate(0px,0px)"
       tabindex="-1"
     >
-      <div
-        class="kd-modal-resise-handle kd-modal-resise-n"
-        data-type="n"
-      />
-      <div
-        class="kd-modal-resise-handle kd-modal-resise-e"
-        data-type="e"
-      />
-      <div
-        class="kd-modal-resise-handle kd-modal-resise-s"
-        data-type="s"
-      />
-      <div
-        class="kd-modal-resise-handle kd-modal-resise-w"
-        data-type="w"
-      />
-      <div
-        class="kd-modal-resise-handle kd-modal-resise-ne"
-        data-type="ne"
-      />
-      <div
-        class="kd-modal-resise-handle kd-modal-resise-se"
-        data-type="se"
-      />
-      <div
-        class="kd-modal-resise-handle kd-modal-resise-sw"
-        data-type="sw"
-      />
-      <div
-        class="kd-modal-resise-handle kd-modal-resise-nw"
-        data-type="nw"
-      />
       <div
         class="kd-modal-header"
       >
@@ -1402,38 +1212,6 @@ exports[`Signature should getContainer use right 3`] = `
       style="width:610px;height:500px;transform:translate(0px,0px)"
       tabindex="-1"
     >
-      <div
-        class="kd-modal-resise-handle kd-modal-resise-n"
-        data-type="n"
-      />
-      <div
-        class="kd-modal-resise-handle kd-modal-resise-e"
-        data-type="e"
-      />
-      <div
-        class="kd-modal-resise-handle kd-modal-resise-s"
-        data-type="s"
-      />
-      <div
-        class="kd-modal-resise-handle kd-modal-resise-w"
-        data-type="w"
-      />
-      <div
-        class="kd-modal-resise-handle kd-modal-resise-ne"
-        data-type="ne"
-      />
-      <div
-        class="kd-modal-resise-handle kd-modal-resise-se"
-        data-type="se"
-      />
-      <div
-        class="kd-modal-resise-handle kd-modal-resise-sw"
-        data-type="sw"
-      />
-      <div
-        class="kd-modal-resise-handle kd-modal-resise-nw"
-        data-type="nw"
-      />
       <div
         class="kd-modal-header"
       >
@@ -1573,6 +1351,7 @@ exports[`Signature should getContainer use right 4`] = `
         body={
           <ForwardRef
             isEmpty={true}
+            onClear={[Function]}
             prefixCls="kd-signature"
             setDataUrl={[Function]}
             setIsEmpty={[Function]}
@@ -1612,7 +1391,6 @@ exports[`Signature should getContainer use right 4`] = `
         height={500}
         onCancel={[Function]}
         onOk={[Function]}
-        resizable={true}
         title="手写签名"
         titleIcon={
           <React.Fragment>
@@ -1666,38 +1444,6 @@ exports[`Signature should getContainer use right 4`] = `
                   style="width: 610px; height: 500px; transform: translate(-305px,-250px);"
                   tabindex="-1"
                 >
-                  <div
-                    class="kd-modal-resise-handle kd-modal-resise-n"
-                    data-type="n"
-                  />
-                  <div
-                    class="kd-modal-resise-handle kd-modal-resise-e"
-                    data-type="e"
-                  />
-                  <div
-                    class="kd-modal-resise-handle kd-modal-resise-s"
-                    data-type="s"
-                  />
-                  <div
-                    class="kd-modal-resise-handle kd-modal-resise-w"
-                    data-type="w"
-                  />
-                  <div
-                    class="kd-modal-resise-handle kd-modal-resise-ne"
-                    data-type="ne"
-                  />
-                  <div
-                    class="kd-modal-resise-handle kd-modal-resise-se"
-                    data-type="se"
-                  />
-                  <div
-                    class="kd-modal-resise-handle kd-modal-resise-sw"
-                    data-type="sw"
-                  />
-                  <div
-                    class="kd-modal-resise-handle kd-modal-resise-nw"
-                    data-type="nw"
-                  />
                   <div
                     class="kd-modal-header"
                   >
@@ -1812,38 +1558,6 @@ exports[`Signature should getContainer use right 4`] = `
                   style="width: 610px; height: 500px; transform: translate(-305px,-250px);"
                   tabindex="-1"
                 >
-                  <div
-                    class="kd-modal-resise-handle kd-modal-resise-n"
-                    data-type="n"
-                  />
-                  <div
-                    class="kd-modal-resise-handle kd-modal-resise-e"
-                    data-type="e"
-                  />
-                  <div
-                    class="kd-modal-resise-handle kd-modal-resise-s"
-                    data-type="s"
-                  />
-                  <div
-                    class="kd-modal-resise-handle kd-modal-resise-w"
-                    data-type="w"
-                  />
-                  <div
-                    class="kd-modal-resise-handle kd-modal-resise-ne"
-                    data-type="ne"
-                  />
-                  <div
-                    class="kd-modal-resise-handle kd-modal-resise-se"
-                    data-type="se"
-                  />
-                  <div
-                    class="kd-modal-resise-handle kd-modal-resise-sw"
-                    data-type="sw"
-                  />
-                  <div
-                    class="kd-modal-resise-handle kd-modal-resise-nw"
-                    data-type="nw"
-                  />
                   <div
                     class="kd-modal-header"
                   >
@@ -1960,38 +1674,6 @@ exports[`Signature should getContainer use right 4`] = `
                   tabindex="-1"
                 >
                   <div
-                    class="kd-modal-resise-handle kd-modal-resise-n"
-                    data-type="n"
-                  />
-                  <div
-                    class="kd-modal-resise-handle kd-modal-resise-e"
-                    data-type="e"
-                  />
-                  <div
-                    class="kd-modal-resise-handle kd-modal-resise-s"
-                    data-type="s"
-                  />
-                  <div
-                    class="kd-modal-resise-handle kd-modal-resise-w"
-                    data-type="w"
-                  />
-                  <div
-                    class="kd-modal-resise-handle kd-modal-resise-ne"
-                    data-type="ne"
-                  />
-                  <div
-                    class="kd-modal-resise-handle kd-modal-resise-se"
-                    data-type="se"
-                  />
-                  <div
-                    class="kd-modal-resise-handle kd-modal-resise-sw"
-                    data-type="sw"
-                  />
-                  <div
-                    class="kd-modal-resise-handle kd-modal-resise-nw"
-                    data-type="nw"
-                  />
-                  <div
                     class="kd-modal-header"
                   >
                     <div
@@ -2105,38 +1787,6 @@ exports[`Signature should getContainer use right 4`] = `
                   style="width: 610px; height: 500px; transform: translate(-305px,-250px);"
                   tabindex="-1"
                 >
-                  <div
-                    class="kd-modal-resise-handle kd-modal-resise-n"
-                    data-type="n"
-                  />
-                  <div
-                    class="kd-modal-resise-handle kd-modal-resise-e"
-                    data-type="e"
-                  />
-                  <div
-                    class="kd-modal-resise-handle kd-modal-resise-s"
-                    data-type="s"
-                  />
-                  <div
-                    class="kd-modal-resise-handle kd-modal-resise-w"
-                    data-type="w"
-                  />
-                  <div
-                    class="kd-modal-resise-handle kd-modal-resise-ne"
-                    data-type="ne"
-                  />
-                  <div
-                    class="kd-modal-resise-handle kd-modal-resise-se"
-                    data-type="se"
-                  />
-                  <div
-                    class="kd-modal-resise-handle kd-modal-resise-sw"
-                    data-type="sw"
-                  />
-                  <div
-                    class="kd-modal-resise-handle kd-modal-resise-nw"
-                    data-type="nw"
-                  />
                   <div
                     class="kd-modal-header"
                   >
@@ -2308,38 +1958,6 @@ exports[`Signature should getContainer use right 4`] = `
                   transform={null}
                 >
                   <div
-                    className="kd-modal-resise-handle kd-modal-resise-n"
-                    data-type="n"
-                  />
-                  <div
-                    className="kd-modal-resise-handle kd-modal-resise-e"
-                    data-type="e"
-                  />
-                  <div
-                    className="kd-modal-resise-handle kd-modal-resise-s"
-                    data-type="s"
-                  />
-                  <div
-                    className="kd-modal-resise-handle kd-modal-resise-w"
-                    data-type="w"
-                  />
-                  <div
-                    className="kd-modal-resise-handle kd-modal-resise-ne"
-                    data-type="ne"
-                  />
-                  <div
-                    className="kd-modal-resise-handle kd-modal-resise-se"
-                    data-type="se"
-                  />
-                  <div
-                    className="kd-modal-resise-handle kd-modal-resise-sw"
-                    data-type="sw"
-                  />
-                  <div
-                    className="kd-modal-resise-handle kd-modal-resise-nw"
-                    data-type="nw"
-                  />
-                  <div
                     className="kd-modal-header"
                   >
                     <div
@@ -2404,6 +2022,7 @@ exports[`Signature should getContainer use right 4`] = `
                   >
                     <ForwardRef
                       isEmpty={true}
+                      onClear={[Function]}
                       prefixCls="kd-signature"
                       setDataUrl={[Function]}
                       setIsEmpty={[Function]}

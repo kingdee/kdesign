@@ -33,6 +33,7 @@ export interface ISignatureProps {
   title?: React.ReactNode
   preview?: boolean
   canFullScreen?: boolean
+  resizable?: boolean
   getContainer?: HTMLElement | (() => HTMLElement | CSSSelector | null | false) | null | false
   undo?: () => void
   redo?: () => void
@@ -63,6 +64,7 @@ const Signature = (props: ISignatureProps): FunctionComponentElement<ISignatureP
     backgroundColor,
     dataUrlType = 'png',
     title,
+    resizable,
     onClose,
     disabled,
     preview,
@@ -78,6 +80,7 @@ const Signature = (props: ISignatureProps): FunctionComponentElement<ISignatureP
   const [dataUrl, setDataUrl] = useState<string>('')
   const [isEmpty, setIsEmpty] = useState<boolean>(true)
   const [isFullScreen, setIsFullScreen] = useState<boolean>(false)
+  const isFirstSignatureRef = useRef(true)
   const modalRef = useRef()
   const modalBodyRef = useRef() as any
   const triggerRef = useRef() as RefObject<HTMLDivElement>
@@ -117,12 +120,41 @@ const Signature = (props: ISignatureProps): FunctionComponentElement<ISignatureP
     setIsFullScreen(true)
     type === 'open' ? setIsFullScreen(true) : setIsFullScreen(false)
   }
-  useResizeObserver(modalRef.current!, (rect) => {
+
+  const handleResize = (rect: { width: number; height: number }) => {
     const { width, height } = rect
     const canvas = modalBodyRef.current.getCanvasRef()
-    canvas.width = width - 40
-    canvas.height = height - 142
-  })
+    const originalWidth = canvas.width
+    const originalHeight = canvas.height
+    const newWidth = width - 40
+    const newHeight = height - 142
+    canvas.width = newWidth
+    canvas.height = newHeight
+    if (isFirstSignatureRef.current) return
+
+    const tempData = signaturePadRef.current?.toData()
+    const scaleX = newWidth / originalWidth
+    const scaleY = newHeight / originalHeight
+
+    if (tempData && tempData.length > 0) {
+      const scaledData = tempData.map((group) => ({
+        ...group,
+        points: group.points.map((point: { x: number; y: number }) => ({
+          ...point,
+          x: point.x * scaleX,
+          y: point.y * scaleY,
+        })),
+      }))
+      signaturePadRef.current?.fromData(scaledData)
+    }
+  }
+
+  useResizeObserver(modalRef.current!, handleResize)
+
+  const handleClear = () => {
+    onClear?.()
+    isFirstSignatureRef.current = true
+  }
 
   useEffect(() => {
     if (modalBodyRef.current) {
@@ -136,6 +168,7 @@ const Signature = (props: ISignatureProps): FunctionComponentElement<ISignatureP
         onStart && onStart()
       })
       signaturePadRef.current!.addEventListener('endStroke', () => {
+        isFirstSignatureRef.current = false
         modalBodyRef.current.saveSignatureToHistory()
         onEnd && onEnd()
       })
@@ -152,8 +185,10 @@ const Signature = (props: ISignatureProps): FunctionComponentElement<ISignatureP
       modalBodyRef.current.saveSignatureToHistory()
     } else {
       signaturePadRef.current?.off()
+      signaturePadRef.current?.clear()
       modalBodyRef.current.setSignatureHistory([])
       modalBodyRef.current.setCurrentHistoryIndex(-1)
+      isFirstSignatureRef.current = true
     }
   }, [modalVisible])
 
@@ -167,7 +202,7 @@ const Signature = (props: ISignatureProps): FunctionComponentElement<ISignatureP
     undo,
     redo,
     isEmpty,
-    onClear,
+    onClear: handleClear,
     setDataUrl,
     setIsEmpty,
     signaturePad: () => signaturePadRef.current,
@@ -247,7 +282,7 @@ const Signature = (props: ISignatureProps): FunctionComponentElement<ISignatureP
         visible={modalVisible}
         onOk={handleModalOk}
         onCancel={handleModalCancel}
-        resizable
+        resizable={resizable}
         title={title || signatureLangMsg?.handwrittenSignature}
         titleIcon={canFullScreen && titleIcon}
         body={<DrawingBoard {...DrawingBoardProps} ref={modalBodyRef} />}

@@ -30,6 +30,7 @@ subtitle: 手写签名
 | preview | 预览参数，为 false 时禁用 | boolean | true | - | 1.7.60 |
 | title | 标题 | ReactNode | - | - | 1.7.60 |
 | getSignatureData | 获取签名的 base64 格式数据 | (dataUrl) => void | - | - | 1.7.60 |
+| resizable | 是否可以拖拽调整弹出框大小 | boolean | false | - | 1.8.16 |
 | onClose | 关闭弹窗回调 | () => void | - | - | 1.7.60 |
 | onClear | 清除 | () => void | - | - | 1.7.60 |
 | onEnd | 结束书写 | () => void | - | - | 1.7.60 |
