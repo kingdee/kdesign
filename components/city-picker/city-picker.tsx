@@ -454,6 +454,8 @@ const InternalSelect: React.ForwardRefRenderFunction<CityPickerProps> = (props: 
           break
         }
         case KeyCode.ESC:
+          e.stopPropagation()
+          e.nativeEvent.stopImmediatePropagation()
           handleVisibleChange(false)
           break
         default:
