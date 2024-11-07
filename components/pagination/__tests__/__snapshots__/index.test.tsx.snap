@@ -417,7 +417,7 @@ exports[`Pagination 2.render test renders correctly 6`] = `
     <button
       class="kd-pagination-jumper-button"
     >
-      GO
+      确定
     </button>
   </div>
 </div>

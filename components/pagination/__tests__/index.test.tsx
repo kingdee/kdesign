@@ -81,13 +81,20 @@ describe('Pagination', () => {
             current: 3,
           },
         },
+        localeConfig: {
+          locale: 'zh-CN',
+          localeData: {
+            'Pagination.confirm': 'GO',
+          },
+        },
       }
       const wrapper = mount(
         <ConfigProvider value={paginationConfig}>
-          <Pagination />
+          <Pagination pageType="nicety" total={50} />
         </ConfigProvider>,
       )
-      expect(wrapper.find(`.kd-pagination-current-input`).at(0).prop('value')).toEqual(3)
+      expect(wrapper.find(`.kd-pagination-pages-item.active`).at(0).text()).toEqual('3')
+      expect(wrapper.find(`.kd-pagination-jumper-button`).at(0).text()).toEqual('GO')
     })
   })
   // 9.API test

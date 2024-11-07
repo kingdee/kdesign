@@ -40,6 +40,7 @@ const locale = {
   'Pagination.order': 'Page {order}',
   'Pagination.forward': 'Forward 5 pages',
   'Pagination.backward': 'Backward 5 pages',
+  'Pagination.confirm': 'GO',
   'Transfer.selectAll': 'Select all',
   'Transfer.searchPlaceholder': ['Please enter search content', 'Please enter search content'],
   'Transfer.leftTitle': 'Available list',

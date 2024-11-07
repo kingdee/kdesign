@@ -24,6 +24,7 @@ const locale = {
   'Pagination.order': '第 {order} 页',
   'Pagination.forward': '向前 5 页',
   'Pagination.backward': '向后 5 页',
+  'Pagination.confirm': '确定',
   'Transfer.selectAll': '全选',
   'Transfer.searchPlaceholder': ['请输入需要搜索的内容', '请输入需要搜索的内容'],
   'Transfer.leftTitle': '可选列表',
