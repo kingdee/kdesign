@@ -147,6 +147,8 @@ const InternalModal = (
     prefixCls: customPrefixcls,
     title,
     titleIcon,
+    titleClassName,
+    titleStyle,
     type,
     visible,
     width,
@@ -456,7 +458,7 @@ const InternalModal = (
     [`${modalPrefixCls}-container-hidden`]: isHidden,
     [`${modalPrefixCls}-container-show`]: !isHidden,
   })
-  const headerClass = `${modalPrefixCls}-header`
+  const headerClass = classNames(`${modalPrefixCls}-header`, titleClassName)
   const container = (
     <div
       className={classNames({
@@ -485,7 +487,7 @@ const InternalModal = (
         </>
       )}
 
-      <div className={headerClass}>
+      <div className={headerClass} style={titleStyle}>
         <div className={`${modalPrefixCls}-title-container`}>
           {titleIcon !== undefined
             ? titleIcon

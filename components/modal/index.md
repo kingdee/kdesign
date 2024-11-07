@@ -54,7 +54,9 @@ subtitle: 弹出框
 | overroll | 弹窗超出视口时是否可以滚动 | boolean | false | - | 1.7.40 |
 | showline | 是否显示分割线 | boolean | true | - | 1.0.0 |
 | title | 标题 | ReactNode | - | - | 1.0.0 |
+| titleClassName | 标题类名 | string | - | - | 1.8.19 |
 | titleIcon | 标题前面的显示 icon | ReactNode | - | - | 1.0.0 |
+| titleStyle | 标题样式 | CSSProperties | - | - | 1.8.19 |
 | visible | 对话框是否可见, 传入后由该值强控制弹窗显示 | boolean | - | - | 1.0.0 |
 | width | 宽度 | number | 460 | - | 1.0.0 |
 
