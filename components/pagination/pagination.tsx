@@ -433,7 +433,7 @@ const Pagination: React.FC<IPaginationProps> = (props) => {
             value={inputPage === undefined ? '' : inputPage}
           />
           <button className={`${prefixCls}-jumper-button`} disabled={disabled} onClick={handleConfirmCurrentPage}>
-            GO
+            {paginationLangMsg.confirm}
           </button>
         </div>
       )}
