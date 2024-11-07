@@ -65,3 +65,4 @@ subtitle: 分页
 |  | --kd-c-pagination-sizing-border-width | - | 1px |
 | spacing | --kd-c-pagination-button-spacing | - | 4px |
 |  | --kd-c-pagination-dropdown-item-spacing-padding-horizontal | - | 24px |
+|  | --kd-c-pagination-jumper-spacing-padding-horizontal | - | 4px |
