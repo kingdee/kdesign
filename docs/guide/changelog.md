@@ -4,6 +4,73 @@ title: 更新日志
 hiddenAnchor: true
 ---
 
+## [1.8.19](https://github.com/kingdee/kdesign/compare/v1.8.18...v1.8.19)
+`2024-11-07`
+* pagination
+  * 添加跳转按钮的国际化功能 fix [#932](https://github.com/kingdee/kdesign/issues/932)
+* modal
+  * 添加控制header样式的api fix [#933](https://github.com/kingdee/kdesign/issues/933)
+
+## [1.8.18](https://github.com/kingdee/kdesign/compare/v1.8.17...v1.8.18)
+`2024-11-01`
+* city-picker
+  * 修复keydown事件冒泡问题 fix [#928](https://github.com/kingdee/kdesign/issues/928)
+
+## [1.8.17](https://github.com/kingdee/kdesign/compare/v1.8.16...v1.8.17)
+`2024-11-01`
+* popper
+  * 修复clickToClose fix [#921](https://github.com/kingdee/kdesign/issues/921)
+
+## [1.8.16](https://github.com/kingdee/kdesign/compare/v1.8.15...v1.8.16)
+`2024-10-31`
+* breadcrumb
+  * 修复title参数无法传入ReactNode问题 fix [#917](https://github.com/kingdee/kdesign/issues/917)
+* button
+  * 修复集合按钮无法获取实例问题 fix [#909](https://github.com/kingdee/kdesign/issues/909)
+  * 优化集合按钮下拉面板逻辑 fix [#918](https://github.com/kingdee/kdesign/issues/918)
+* city-picker
+  * 调整下拉面板动效 fix [#920](https://github.com/kingdee/kdesign/issues/920)
+  * 调整下拉面板关闭逻辑 fix [#925](https://github.com/kingdee/kdesign/issues/925)
+* popper
+  * 修复arrow样式问题 fix [#923](https://github.com/kingdee/kdesign/issues/923)
+  * 修复clickToClose fix [#921](https://github.com/kingdee/kdesign/issues/921)
+* signature
+  * 修复弹出框大小变化时签名消失问题  fix [#834](https://github.com/kingdee/kdesign/issues/834)
+* color-picker
+  * 新版颜色组件开发
+  * 新增新版颜色组件及单测
+* tree
+  * 新增api renderExtra支持渲染树节点额外内容 fix [#914](https://github.com/kingdee/kdesign/issues/914)
+
+## [1.8.15](https://github.com/kingdee/kdesign/compare/v1.8.14...v1.8.15)
+`2024-10-24`
+* city-picker
+  * 调整当鼠标移出下拉面板选项后焦点项保留 fix [#912](https://github.com/kingdee/kdesign/issues/912)
+  * 调整下拉项默认选中逻辑 fix [#910](https://github.com/kingdee/kdesign/issues/910)
+  * 去除键盘上下键以及enter展开下拉面板  fix [#913](https://github.com/kingdee/kdesign/issues/913)
+  * 修复下拉面板位置错乱问题 fix [#911](https://github.com/kingdee/kdesign/issues/911)
+
+## [1.8.14](https://github.com/kingdee/kdesign/compare/v1.8.13...v1.8.14)
+`2024-10-14`
+* tree
+  * 修复多选设置scrollToKey时会导致选中节点后会滚动到scrollToKey对应的树节点 fix [#906](https://github.com/kingdee/kdesign/issues/906)
+
+## [1.8.13](https://github.com/kingdee/kdesign/compare/v1.8.12...v1.8.13)
+`2024-09-30`
+* popper
+  * 新增浮层外部class及style设置 fix [#903](https://github.com/kingdee/kdesign/issues/903)
+* 添加新组件缩略图 fix [#897](https://github.com/kingdee/kdesign/issues/897)
+* 修复打包后的文件依然有注释的问题 fix [#884](https://github.com/kingdee/kdesign/issues/884)
+
+## [1.8.12](https://github.com/kingdee/kdesign/compare/v1.8.11...v1.8.12)
+`2024-09-27`
+* base-data
+  * 增加监听组件长度变化 fix [#819](https://github.com/kingdee/kdesign/issues/819)
+* popper
+  * 修复箭头错位问题 fix [#898](https://github.com/kingdee/kdesign/issues/898)
+  * 修复元素点击触发时机  fix [#900](https://github.com/kingdee/kdesign/issues/900)
+  * 新增visible触发返回
+
 ## [1.8.11](https://github.com/kingdee/kdesign/compare/v1.8.10...v1.8.11)
 `2024-09-20`
 * form
@@ -364,14 +431,26 @@ hiddenAnchor: true
 * divider
   * 新增分割线组件 closed [#635](https://github.com/kingdee/kdesign/issues/635)
 
-## [1.7.46](https://github.com/kingdee/kdesign/compare/v1.7.44...v1.7.46)
+## [1.7.46](https://github.com/kingdee/kdesign/compare/v1.7.45...v1.7.46)
 `2024-01-12`
 * city-picker
   * 修复国内版回填的提示内容显示问题 fix [#708](https://github.com/kingdee/kdesign/issues/708)
+* select
+  * 调整全选逻辑 fix [#687](https://github.com/kingdee/kdesign/issues/687)
+* tree
+  * 修复勾选时onCheck函数返回了错误的halfCheckedKeys fix [#710](https://github.com/kingdee/kdesign/issues/710)
+  * 新增api expandOnFilterNode支持过滤时是否显示过滤节点的下级 fix [#707](https://github.com/kingdee/kdesign/issues/707)
+* popper
+  * 修复下拉面板未对齐问题 fix [#712](https://github.com/kingdee/kdesign/issues/712)
+* filter
+  * 新增api expandOnFilterNode支持过滤时是否显示过滤节点的下级 fix [#707](https://github.com/kingdee/kdesign/issues/707)
+
+## [1.7.45](https://github.com/kingdee/kdesign/compare/v1.7.44...v1.7.45)
+`2024-01-04`
+* city-picker
   * 修复国内版搜索国外城市不显示上级区划 fix [#700](https://github.com/kingdee/kdesign/issues/700)
 * filter
   * 修复demo中Option的报错
-  * 新增api expandOnFilterNode支持过滤时是否显示过滤节点的下级 fix [#707](https://github.com/kingdee/kdesign/issues/707)
 * form
   * 修复必选图标由于字体设置导致的样式不一致问题
 * image
@@ -379,18 +458,12 @@ hiddenAnchor: true
 * image-cropper
   * 修复api文档书写错误 fix [#688](https://github.com/kingdee/kdesign/issues/688)
 * select
-  * 调整全选逻辑 fix [#687](https://github.com/kingdee/kdesign/issues/687)
   * 多选搜索时下面面板未空时不显示全选按钮 fix [#698](https://github.com/kingdee/kdesign/issues/698)
   * 修复从单选切换为多选时页面报错的问题 fix [#701](https://github.com/kingdee/kdesign/issues/701)
 * table
   * 更新table版本修复react18严格模式报错及全选与拖拽标题共用是报错问题 fix [#641](https://github.com/kingdee/kdesign/issues/641), [#695](https://github.com/kingdee/kdesign/issues/695)
   * 修复表格默认加载输出异常警告日志
   * 修复格式导致的报错
-* tree
-  * 修复勾选时onCheck函数返回了错误的halfCheckedKeys fix [#710](https://github.com/kingdee/kdesign/issues/710)
-  * 新增api expandOnFilterNode支持过滤时是否显示过滤节点的下级 fix [#707](https://github.com/kingdee/kdesign/issues/707)
-* popper
-  * 修复下拉面板未对齐问题 fix [#712](https://github.com/kingdee/kdesign/issues/712)
 * 添加埋点功能
 
 ## [1.7.44](https://github.com/kingdee/kdesign/compare/v1.7.43...v1.7.44)
