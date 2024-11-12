@@ -3,7 +3,6 @@ import { mount } from 'enzyme'
 import moment from 'moment'
 import MockDate from 'mockdate'
 import { RangePicker } from '../index'
-import { Locale } from '../interface'
 import locale from '../locale/zh_CN'
 import { sleep } from '../../../tests/utils'
 import { format, startOfYear } from 'date-fns'
@@ -114,10 +113,11 @@ describe('RangePicker', () => {
 
   // 4. placeholder
   it('placeholder', () => {
+    const localeTemp: any = locale
     TYPE_LIST.forEach(({ picker, placeholder }) => {
       const wrapper = mount(<RangePicker {...defaultProps} picker={picker as any} />)
-      expect(wrapper.find('input').at(0).props().placeholder).toEqual(locale[placeholder as keyof Locale][0])
-      expect(wrapper.find('input').at(1).props().placeholder).toEqual(locale[placeholder as keyof Locale][1])
+      expect(wrapper.find('input').at(0).props().placeholder).toEqual(localeTemp[placeholder][0])
+      expect(wrapper.find('input').at(1).props().placeholder).toEqual(localeTemp[placeholder][1])
       wrapper.setProps({ placeholder: ['start', 'end'] })
       wrapper.update()
       expect(wrapper.find('input').at(0).props().placeholder).toEqual('start')
