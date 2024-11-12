@@ -120,7 +120,7 @@ describe('date-picker', () => {
   it('placeholder', () => {
     TYPE_LIST.forEach(({ picker, placeholder }) => {
       const wrapper = mount(<DatePicker {...defaultProps} picker={picker as any} />)
-      expect(wrapper.find('input').props().placeholder).toBe(locale[placeholder as keyof Locale])
+      expect(wrapper.find('input').props().placeholder).toBe((locale as any)[placeholder as keyof Locale])
       wrapper.setProps({ placeholder: 'placeholder' })
       wrapper.update()
       expect(wrapper.find('input').props().placeholder).toBe('placeholder')
