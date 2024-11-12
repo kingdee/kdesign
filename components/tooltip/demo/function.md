@@ -8,13 +8,28 @@ order: 0
 ```jsx
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { Tooltip } from '@kdcloudjs/kdesign'
+import { Tooltip, Button } from '@kdcloudjs/kdesign'
 
 const Demo: React.FC = () => {
+  const [test, setTest] = React.useState(0)
+  const onClick = () => {
+    const t = test + 1
+    console.log('test', t)
+    setTest(t)
+  }
+  const onVisibleChange = (visible, t) => {
+    console.log('onVisibleChange', visible, t, test)
+  }
+
   return (
-    <Tooltip tip="一行最多显示20个字符，超过的字符可折行显示，建议最多不要超过40个字符" 
-      onVisibleChange={(visible) => console.log(typeof visible, visible)}
-      >
+    <Tooltip
+      tip={
+        <div>
+          <Button onClick={onClick}>test</Button>
+        </div>
+      }
+      trigger="click"
+      onVisibleChange={onVisibleChange}>
       <span>Mouse over will show Tooltip</span>
     </Tooltip>
   )
