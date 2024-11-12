@@ -38,6 +38,7 @@ export interface Locale {
   'DatePicker.rangeWeekPlaceholder': [string, string]
   'DatePicker.rangeQuarterPlaceholder': [string, string]
   'DatePicker.rangeTimePlaceholder': [string, string]
+  'DatePicker.monthBeforeYear': boolean
 }
 
 export interface InnerLocale {
@@ -61,6 +62,7 @@ export interface InnerLocale {
   rangeWeekPlaceholder: [string, string]
   rangeQuarterPlaceholder: [string, string]
   rangeTimePlaceholder: [string, string]
+  monthBeforeYear: boolean
 }
 
 export type InnerLocaleKey = keyof InnerLocale
