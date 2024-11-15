@@ -5,18 +5,20 @@ import { getCompProps } from '../_utils'
 import { Button, Icon } from '../index'
 import { toArray } from '../_utils/react-children'
 import { tuple } from '../_utils/type'
-import { ButtonType, ButtonSize } from './button'
+import { ButtonSize } from './button'
 import Popper, { PopperProps } from '../popper'
 
 export const ButtonGroupTypes = tuple('basic', 'similar')
 export type ButtonGroupType = typeof ButtonGroupTypes[number]
+export const GroupButtonTypes = tuple('primary ', 'second')
+export type GroupButtonType = typeof GroupButtonTypes[number]
 export interface OverlayType {
   value?: string
   label?: React.ReactNode
 }
 
 export interface ButtonGroupProps extends PopperProps {
-  buttonType?: ButtonType
+  buttonType?: GroupButtonType
   children?: ReactNode
   className?: string
   disabled?: boolean
