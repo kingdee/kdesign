@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="244px" height="141px" viewBox="0 0 244 141" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>嵌入式对话框架</title>
+    <g id="页面-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="可视化组件缩略图" transform="translate(-99, -299)">
+            <g id="嵌入式对话框架" transform="translate(100, 300)">
+                <rect id="矩形" stroke="#D9D9D9" fill="#F6F8FB" x="0" y="0" width="242" height="139" rx="4"></rect>
+                <g id="编组" transform="translate(48, 65)">
+                    <rect id="矩形" fill="#276FF5" opacity="0.8" x="0" y="0" width="40" height="8" rx="2"></rect>
+                    <rect id="矩形备份" fill="#276FF5" opacity="0.8" x="53" y="0" width="40" height="8" rx="2"></rect>
+                    <rect id="矩形" fill="#D4D9E3" transform="translate(46.5, 4) rotate(-345) translate(-46.5, -4)" x="46" y="-3.97903932e-13" width="1" height="8"></rect>
+                    <rect id="矩形备份-3" fill="#D4D9E3" transform="translate(99.5, 4) rotate(-345) translate(-99.5, -4)" x="99" y="-3.97903932e-13" width="1" height="8"></rect>
+                    <rect id="矩形备份-2" fill="#CED5E3" opacity="0.8" x="106" y="0" width="40" height="8" rx="2"></rect>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
