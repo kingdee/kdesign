@@ -6,7 +6,6 @@ import * as kdesign from 'kdesign'
 import { Icon, Message } from 'kdesign'
 import lodash from 'lodash'
 import copy from 'copy-to-clipboard'
-import axios from 'axios'
 import { Language } from 'prism-react-renderer'
 
 import { Utils } from './article'
@@ -49,7 +48,6 @@ const errorCodeStyle = {
 const allScope: Record<string, any> = {
   ReactDOM,
   React,
-  axios,
   copy,
   react: { ...React },
   '@kdcloudjs/kdesign': { ...kdesign },

@@ -1,5 +1,3 @@
-import axios from 'axios'
-
 // 开发环境
 const DEV_ENVIRONMENT_ADDRESS = 'http://172.20.166.92:7002/api'
 // 生产环境
@@ -15,8 +13,24 @@ if (process.env.NODE_ENV === 'production') {
   displayIlluAddress = tempAddress + '/static/illustration/develop'
 }
 
-const request = axios.create({
-  baseURL: tempAddress,
+const createFetchInstance = (baseURL: string, defaultOptions: any = {}) => {
+  return (endpoint: string, options: any = {}) => {
+    const combinedOptions = {
+      ...defaultOptions,
+      ...options,
+      headers: {
+        ...defaultOptions.headers,
+        ...options.headers,
+      },
+    }
+
+    return fetch(`${baseURL}${endpoint}`, combinedOptions)
+      .then((response) => response.json())
+      .catch((error) => console.error('Error:', error))
+  }
+}
+
+const request = createFetchInstance(tempAddress, {
   headers: { 'Content-type': 'application/x-www-form-urlencoded' },
 })
 

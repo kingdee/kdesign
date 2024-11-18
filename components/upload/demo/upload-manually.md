@@ -9,7 +9,6 @@ title: 手动上传
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { Upload, Button, Icon, Alert } from '@kdcloudjs/kdesign'
-import axios from 'axios'
 
 function Demo() {
   const [fileList, setFileList] = React.useState([])
@@ -26,11 +25,11 @@ function Demo() {
     setUploading(true)
 
     // You can use any AJAX library you like
-    axios({
-      url: 'https://www.mocky.io/v2/5cc8019d300000980a055e76',
-      method: 'post',
-      data: formData,
+    fetch('https://www.mocky.io/v2/5cc8019d300000980a055e76',{
+      method: 'POST',
+      body: formData,
     })
+      .then((res) => res.json())
       .then(() => {
         setFileList([])
         setUploading(false)
