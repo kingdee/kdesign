@@ -24,7 +24,7 @@ export interface DropDownProps extends PopperProps {
   style?: Record<string, unknown>
   children?: React.ReactNode
   onItemClick?: (key: string) => void
-  menu: React.ReactElement | Array<MenuItem>
+  menu?: React.ReactElement | Array<MenuItem>
   menuAnimation?: boolean
 }
 

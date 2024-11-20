@@ -65,6 +65,7 @@ export { default as Message } from './message'
 export { default as Notification } from './notification'
 
 export { default as Pagination } from './pagination'
+export type { IPaginationProps } from './pagination'
 
 export { default as Progress } from './progress'
 

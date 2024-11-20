@@ -23,27 +23,27 @@ export interface IIcons {
 }
 
 export interface IPaginationProps {
-  total?: number
-  current?: number
-  pageSize?: number
-  prefixCls?: string
-  className?: string
-  disabled?: boolean
   bordered?: boolean
-  pageType?: pageType
-  showTitle?: boolean
-  showTotal?: boolean | totalType
+  className?: string
+  current?: number
   defaultCurrent?: number
   defaultPageSize?: number
-  showSizeChanger?: boolean
-  hideOnSinglePage?: boolean
-  style?: React.CSSProperties
+  disabled?: boolean
   dropdownProps?: DropDownProps
-  pageSizeOptions?: Array<string>
-  onChange?: (page: number, pageSize?: number) => void
-  showQuickJumper?: boolean | { goButton?: React.ReactNode }
-  onShowSizeChange?: (current: number, size: number) => void
+  hideOnSinglePage?: boolean
   icons?: Partial<IIcons>
+  pageSize?: number
+  pageSizeOptions?: Array<string | number>
+  prefixCls?: string
+  pageType?: pageType
+  showQuickJumper?: boolean | { goButton?: React.ReactNode }
+  showSizeChanger?: boolean
+  showTitle?: boolean
+  showTotal?: boolean | totalType
+  style?: React.CSSProperties
+  total?: number
+  onChange?: (page: number, pageSize?: number) => void
+  onShowSizeChange?: (current: number, size: number) => void
 }
 
 const Pagination: React.FC<IPaginationProps> = (props) => {
