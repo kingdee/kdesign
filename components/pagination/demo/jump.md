@@ -9,15 +9,16 @@ title: 快速跳转
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { Pagination } from '@kdcloudjs/kdesign'
+import type { IPaginationProps } from '@kdcloudjs/kdesign'
 
 const Demo: React.FC = () => {
-  function onChange(pageNumber) {
+  const handleChange: IPaginationProps['onChange'] = (pageNumber) => {
     console.log('Page: ', pageNumber)
   }
 
   return (
     <div style={{ width: '400px' }}>
-      <Pagination showQuickJumper defaultCurrent={2} total={500} onChange={onChange} />
+      <Pagination showQuickJumper defaultCurrent={2} total={500} onChange={handleChange} />
     </div>
   )
 }

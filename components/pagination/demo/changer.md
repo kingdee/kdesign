@@ -9,15 +9,16 @@ title: 设置条目数
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { Pagination } from '@kdcloudjs/kdesign'
+import type { IPaginationProps } from '@kdcloudjs/kdesign'
 
 const Demo: React.FC = () => {
-  function onShowSizeChange(current, pageSize) {
+  const handleChange:IPaginationProps['onShowSizeChange'] = (current, pageSize) => {
     console.log(current, pageSize)
   }
 
   return (
     <div style={{ width: '400px' }}>
-      <Pagination showSizeChanger onShowSizeChange={onShowSizeChange} defaultCurrent={3} total={500} />
+      <Pagination showSizeChanger onShowSizeChange={handleChange} defaultCurrent={3} total={500} />
     </div>
   )
 }
