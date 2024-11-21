@@ -9,17 +9,19 @@ order: 0
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { Divider } from '@kdcloudjs/kdesign'
+import type { IDividerProps } from '@kdcloudjs/kdesign'
 
 const Demo: React.FC = () => {
+  const style: IDividerProps['style'] = { margin: '10px 0', width: '720px' }
   // 改下面的代码
   return (
     <div>
       <p>KDesign of React 是金蝶生态设计系统，将设计赋能给产品、设计、开发各个环节，以保障金蝶系产品的统一体验。</p>
-      <Divider style={{ margin: '10px 0', width: '720px' }} />
+      <Divider style={style} />
       <p>KDesign of React 是金蝶生态设计系统，将设计赋能给产品、设计、开发各个环节，以保障金蝶系产品的统一体验。</p>
-      <Divider style={{ margin: '10px 0', width: '720px' }} />
+      <Divider style={style} />
       <p>KDesign of React 是金蝶生态设计系统，将设计赋能给产品、设计、开发各个环节，以保障金蝶系产品的统一体验。</p>
-      <Divider style={{ margin: '10px 0', width: '720px' }} />
+      <Divider style={style} />
     </div>
   )
 }
