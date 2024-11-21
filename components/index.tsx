@@ -19,6 +19,8 @@ export type { IAlertProps } from './alert'
 
 export { default as Breadcrumb } from './breadcrumb'
 
+export type { IBreadcrumbProps } from './breadcrumb'
+
 export { default as Button } from './button'
 
 export { default as Card } from './card'

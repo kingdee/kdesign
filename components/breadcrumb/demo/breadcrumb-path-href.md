@@ -8,11 +8,12 @@ order: 5
 ```jsx
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { Breadcrumb, Icon } from '@kdcloudjs/kdesign'
+import { Breadcrumb } from '@kdcloudjs/kdesign'
+import type { IBreadcrumbProps } from '@kdcloudjs/kdesign'
 
 const Demo: React.FC = () => {
   // 改下面的代码
-  const config1 = [
+  const config1: IBreadcrumbProps['items'] = [
     {
       title: 'KDesign',
       href: 'https://kingdee.design/',
@@ -25,7 +26,7 @@ const Demo: React.FC = () => {
       title: 'Breadcrumb',
     },
   ]
-  const config2 = [
+  const config2: IBreadcrumbProps['items'] = [
     {
       title: 'KDesign',
       path: '/KUI',

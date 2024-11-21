@@ -10,7 +10,7 @@ export interface IBreadcrumbProps {
   className?: string // 类名
   colorModel?: ColorModelType // 颜色模式，默认是 'emphasize'
   prefixCls?: string // 样式前缀
-  items: Array<IBreadcrumbItem> // 面包屑导航的各项，支持传入 ReactNode 类型
+  items?: Array<IBreadcrumbItem> // 面包屑导航的各项，支持传入 ReactNode 类型
   separator?: ReactNode // 分隔符，默认是 '/'
   children?: ReactNode // 子元素
   onItemClick?: (item: IBreadcrumbItem, index: number) => void // 点击面包屑导航的回调函数
