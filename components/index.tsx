@@ -139,6 +139,8 @@ export { default as ColorPicker } from './color-picker'
 
 export { default as Clipboard } from './clipboard'
 
+export type { IDividerProps } from './divider'
+
 export { default as QRCode } from './qr-code'
 
 export { default as Divider } from './divider'
