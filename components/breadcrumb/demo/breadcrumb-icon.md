@@ -9,10 +9,11 @@ order: 2
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { Breadcrumb, Icon } from '@kdcloudjs/kdesign'
+import type { IBreadcrumbProps } from '@kdcloudjs/kdesign'
 
 const Demo: React.FC = () => {
   // 改下面的代码
-  const config = [
+  const config: IBreadcrumbProps['items'] = [
     {
       title: 'KDesign',
       icon: <Icon type="workbench" />,

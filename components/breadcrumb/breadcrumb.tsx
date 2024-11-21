@@ -8,6 +8,8 @@ import Icon from '../icon'
 import Tooltip from '../tooltip'
 import { cloneDeep } from 'lodash'
 
+export type { IBreadcrumbProps } from './interface'
+
 const Breadcrumb = (props: IBreadcrumbProps): FunctionComponentElement<IBreadcrumbProps> => {
   const { getPrefixCls, prefixCls, compDefaultProps: userDefaultProps } = useContext(ConfigContext)
   const breadcrumbProps = getCompProps('Breadcrumb', userDefaultProps, props)
@@ -23,8 +25,8 @@ const Breadcrumb = (props: IBreadcrumbProps): FunctionComponentElement<IBreadcru
   const breadcrumbRef = useRef<HTMLDivElement>(null)
   const breadcrumbHideIconRef = useRef<HTMLDivElement>(null)
   const [itemsConfig, setItemsConfig] = React.useState<IBreadcrumbItem[]>(items)
-  const [itemsArray, setItemsArray] = React.useState<any>()
-  const [breadcrumbWidth, setBreadcrumbWidth] = React.useState<number>()
+  const [itemsArray, setItemsArray] = React.useState<IItemsWidth[]>([])
+  const [breadcrumbWidth, setBreadcrumbWidth] = React.useState<number>(0)
   const [openEllipsis, setOpenEllipsis] = React.useState<boolean>(false)
 
   const breadcrumbPrefixCls = getPrefixCls!(prefixCls, 'breadcrumb', customPrefixcls)
@@ -125,15 +127,18 @@ const Breadcrumb = (props: IBreadcrumbProps): FunctionComponentElement<IBreadcru
   }
 
   useEffect(() => {
-    const isMore = itemsConfig?.some((item: any) => {
-      return item?.title?.props?.children?.type?.displayName === 'Tooltip'
+    const isMore = itemsConfig?.some((item: IBreadcrumbItem) => {
+      if (React.isValidElement(item?.title)) {
+        return item?.title?.props?.children?.type?.displayName === 'Tooltip'
+      }
+      return false
     })
     setOpenEllipsis(isMore && itemsConfig.length === MIN_ITEM)
   }, [itemsConfig])
 
   useEffect(() => {
     if (breadcrumbRef?.current) {
-      const itemsArray = Array.from(breadcrumbRef.current.children, (item: any, index: number) => {
+      const itemsArray = Array.from(breadcrumbRef.current.children, (item: HTMLElement, index: number) => {
         return {
           width: item.offsetWidth,
           index: index,
@@ -157,7 +162,7 @@ const Breadcrumb = (props: IBreadcrumbProps): FunctionComponentElement<IBreadcru
 
     return () =>
       window.removeEventListener('resize', () => {
-        getItemsConfig(itemsArray, breadcrumbWidth as any)
+        getItemsConfig(itemsArray, breadcrumbWidth)
       })
   }, [itemsArray, breadcrumbWidth])
 
