@@ -17,15 +17,15 @@ type MenuItem = {
 }
 
 export interface DropDownProps extends PopperProps {
-  defaultKey?: string
-  selectedKey?: string
-  selectable?: boolean
   className?: string
   style?: Record<string, unknown>
   children?: React.ReactNode
-  onItemClick?: (key: string) => void
+  defaultKey?: string
   menu?: React.ReactElement | Array<MenuItem>
   menuAnimation?: boolean
+  selectable?: boolean
+  selectedKey?: string
+  onItemClick?: (key: string) => void
 }
 
 const findItem: (element: any) => any = (element) => {
@@ -37,10 +37,9 @@ const findItem: (element: any) => any = (element) => {
   }
 }
 
-const Dropdown = React.forwardRef<unknown, DropDownProps>((props, ref) => {
+const Dropdown = React.forwardRef<HTMLDivElement, DropDownProps>((props, ref) => {
   const { getPrefixCls, prefixCls: pkgPrefixCls, compDefaultProps: userDefaultProps } = React.useContext(ConfigContext)
 
-  // 属性需要合并一遍用户定义的默认属性
   const allProps = getCompProps('Dropdown', userDefaultProps, props)
 
   const {
@@ -185,7 +184,7 @@ const Dropdown = React.forwardRef<unknown, DropDownProps>((props, ref) => {
 
 Dropdown.displayName = 'Dropdown'
 
-interface DropdownType extends React.ForwardRefExoticComponent<DropDownProps & React.RefAttributes<HTMLElement>> {
+interface DropdownType extends React.ForwardRefExoticComponent<DropDownProps & React.RefAttributes<HTMLDivElement>> {
   Menu: typeof Menu
   Item: typeof Item
 }

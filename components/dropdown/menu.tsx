@@ -3,7 +3,7 @@ import { ConfigContext } from '../config-provider'
 import { getCompProps } from '../_utils'
 import classNames from 'classnames'
 
-export interface MenuProps {
+export interface DropdownMenuProps {
   selectedKey?: string
   className?: string
   selectable?: boolean
@@ -12,7 +12,7 @@ export interface MenuProps {
   onClick?: (key: string) => void
 }
 
-export interface ItemProps {
+export interface DropdownItemProps {
   key?: string | number
   danger?: boolean
   divided?: boolean
@@ -23,10 +23,9 @@ export interface ItemProps {
   style?: React.CSSProperties
 }
 
-const Menu = React.forwardRef<unknown, MenuProps>((props, ref) => {
+const Menu = React.forwardRef<unknown, DropdownMenuProps>((props, ref) => {
   const { getPrefixCls, prefixCls: pkgPrefixCls, compDefaultProps: userDefaultProps } = React.useContext(ConfigContext)
 
-  // 属性需要合并一遍用户定义的默认属性
   const {
     prefixCls: customPrefixcls,
     children,
@@ -36,7 +35,6 @@ const Menu = React.forwardRef<unknown, MenuProps>((props, ref) => {
     ...restProps
   } = getCompProps('DropdownMenu', userDefaultProps, props)
 
-  // className前缀
   const prefixCls = getPrefixCls!(pkgPrefixCls, 'dropdown-menu', customPrefixcls)
 
   const cloneItem = (item: React.ReactElement, index?: number) => {
@@ -55,10 +53,9 @@ const Menu = React.forwardRef<unknown, MenuProps>((props, ref) => {
   )
 })
 
-const Item: React.FC<ItemProps> = (props) => {
+const Item: React.FC<DropdownItemProps> = (props) => {
   const { getPrefixCls, prefixCls: pkgPrefixCls, compDefaultProps: userDefaultProps } = React.useContext(ConfigContext)
 
-  // 属性需要合并一遍用户定义的默认属性
   const {
     prefixCls: customPrefixcls,
     danger,
