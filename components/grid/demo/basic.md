@@ -9,9 +9,10 @@ title: 基础栅格
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { Row, Col } from '@kdcloudjs/kdesign'
+import type { IColProps } from '@kdcloudjs/kdesign'
 
 const Demo: React.FC = () => {
-  const colStyle = (n) => {
+  const colStyle = (n:number):IColProps['style'] => {
     return {
       margin: '8px 0',
       padding: '16px 0',

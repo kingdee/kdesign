@@ -1,4 +1,4 @@
-import React, { createContext } from 'react'
+import React, { createContext, CSSProperties } from 'react'
 import classNames from 'classnames'
 import { getCompProps } from '../_utils'
 import { ConfigContext } from '../config-provider'
@@ -29,7 +29,10 @@ export interface GridContext {
   gap: { v: number; h: number }
   winWidth: number
 }
-
+type Gap = {
+  h: number
+  v: number
+}
 function getGap(gutter: gutterObject, width: number) {
   const { xs, sm, md, lg, xl } = gutter
   let gap = 0
@@ -84,7 +87,7 @@ const Row: React.FC<RowProps> = (props) => {
   const updateWidth = throttle(() => setWinWidth(window.innerWidth), 500)
   window.addEventListener('resize', updateWidth)
 
-  const gap: any = { h: 0, v: 0 }
+  const gap: Gap = { h: 0, v: 0 }
 
   if (gutter.constructor === Number) gap.h = gutter as number
   if (gutter.constructor === Object) {
@@ -103,7 +106,7 @@ const Row: React.FC<RowProps> = (props) => {
     }
   }
 
-  const rowStyle: Record<string, any> = {
+  const rowStyle: CSSProperties = {
     rowGap: `${gap.v}px`,
     margin: `0 ${(-1 * gap.h) / 2}px`,
   }

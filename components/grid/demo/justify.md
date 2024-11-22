@@ -9,11 +9,12 @@ title: 水平对齐
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { Row, Col } from '@kdcloudjs/kdesign'
+import type { IRowProps, IColProps } from '@kdcloudjs/kdesign'
 
 const Demo: React.FC = () => {
-  const hStyle = { margin: '32px 0 16px' }
-  const rowStle = { backgroundColor: 'rgba(128, 128, 128, 0.08)' }
-  const colStyle = (n) => {
+  const hStyle: React.CSSProperties = { margin: '32px 0 16px' }
+  const rowStle: IRowProps['style'] = { backgroundColor: 'rgba(128, 128, 128, 0.08)' }
+  const colStyle = (n: number): IColProps['style'] => {
     return {
       margin: '8px 0',
       padding: '16px 0',
