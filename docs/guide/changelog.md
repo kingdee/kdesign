@@ -4,6 +4,14 @@ title: 更新日志
 hiddenAnchor: true
 ---
 
+## [1.8.20](https://github.com/kingdee/kdesign/compare/v1.8.19...v1.8.20)
+`2024-11-22`
+* popper
+  * 修复onVisibleChange问题 fix [#937](https://github.com/kingdee/kdesign/issues/937)
+* date-picker
+  * 更新年月快捷选择交互 fix [#931](https://github.com/kingdee/kdesign/issues/931)
+* 修复安装依赖后yarn test报错问题 [#935](https://github.com/kingdee/kdesign/issues/935)
+
 ## [1.8.19](https://github.com/kingdee/kdesign/compare/v1.8.18...v1.8.19)
 `2024-11-07`
 * pagination
