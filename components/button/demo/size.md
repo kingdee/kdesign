@@ -9,12 +9,12 @@ order: 2
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { Button, Radio } from '@kdcloudjs/kdesign'
-import type { ButtonSize } from '@kdcloudjs/kdesign'
+import type { IButtonProps,IButtonGroupProps } from '@kdcloudjs/kdesign'
 
 const Demo: React.FC = () => {
-  const demoButtonStyle = { margin: '0px 8px 8px 0' }
-  const [size, setSize] = React.useState<ButtonSize>('middle')
-  const overlay1 = [
+  const demoButtonStyle:IButtonProps['style'] = { margin: '0px 8px 8px 0' }
+  const [size, setSize] = React.useState<IButtonProps['size']>('middle')
+  const overlay1: IButtonGroupProps['overlay'] = [
     { value: '1', label: '发布' },
     { value: '2', label: '生成凭证' },
     { value: '3', label: '打印' },
@@ -24,7 +24,7 @@ const Demo: React.FC = () => {
       <Radio.Group
         style={{ marginBottom: 32 }}
         onChange={(e) => {
-          setSize(e.target.value)
+          setSize(e.target.value as IButtonProps['size'])
         }}
         defaultValue={size}>
         <Radio value={'small'}>小</Radio>

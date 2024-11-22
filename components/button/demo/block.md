@@ -9,9 +9,10 @@ order: 6
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { Button } from '@kdcloudjs/kdesign'
+import type { IButtonProps } from '@kdcloudjs/kdesign'
 
 const Demo: React.FC = () => {
-  const demoButtonStyle = { margin: '0px 8px 8px 0' }
+  const demoButtonStyle:IButtonProps['style'] = { margin: '0px 8px 8px 0' }
   return (
     <div>
       <Button type="primary" style={demoButtonStyle} block>
