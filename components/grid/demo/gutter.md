@@ -9,10 +9,16 @@ title: 区块间隔
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { Row, Col } from '@kdcloudjs/kdesign'
+import type { IColProps } from '@kdcloudjs/kdesign'
 
 const Demo: React.FC = () => {
-  const hStyle = { margin: '32px 0 18px' }
-  const colStyle = { background: 'rgba(85, 130, 243, 1)', padding: '8px 0', textAlign: 'center', color: '#fff' }
+  const hStyle: React.CSSProperties = { margin: '32px 0 18px' }
+  const colStyle: IColProps['style'] = {
+    background: 'rgba(85, 130, 243, 1)',
+    padding: '8px 0',
+    textAlign: 'center',
+    color: '#fff',
+  }
   return (
     <div style={{ margin: '0 12px' }}>
       <h3 style={hStyle}>水平间隔</h3>

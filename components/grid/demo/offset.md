@@ -9,12 +9,13 @@ title: 偏移
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { Row, Col } from '@kdcloudjs/kdesign'
+import type { IRowProps, IColProps } from '@kdcloudjs/kdesign'
 
 const Demo: React.FC = () => {
-  const rowStyle = {
+  const rowStyle: IRowProps['style'] = {
     margin: '16px 0',
   }
-  const colStyle = (n) => {
+  const colStyle = (n: number): IColProps['style'] => {
     return {
       padding: '16px 0',
       color: '#fff',

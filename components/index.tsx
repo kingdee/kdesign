@@ -46,6 +46,7 @@ export { default as Filter } from './filter'
 export { default as Form } from './form'
 
 export { Row, Col } from './grid'
+export type { RowProps as IRowProps, ColProps as IColProps } from './grid'
 
 export { default as Input, TextArea } from './input'
 

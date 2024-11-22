@@ -9,10 +9,11 @@ title: 排序
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { Row, Col } from '@kdcloudjs/kdesign'
+import type { IRowProps, IColProps } from '@kdcloudjs/kdesign'
 
 const Demo: React.FC = () => {
-  const hStyle = { margin: '32px 0 16px' }
-  const colStyle = (n) => {
+  const hStyle: React.CSSProperties = { margin: '32px 0 16px' }
+  const colStyle = (n:number): IColProps['style'] => {
     return {
       margin: '8px 0',
       padding: '16px 0',
