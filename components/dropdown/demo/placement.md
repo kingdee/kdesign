@@ -5,13 +5,14 @@ title: 弹出位置
 
 通过 `placement` 属性设置，支持 12 个弹出位置。
 
-```jsx
+```tsx
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { Dropdown, Button } from '@kdcloudjs/kdesign'
+import type { IDropdownProps } from '@kdcloudjs/kdesign'
 
 const Demo: React.FC = () => {
-  const menu = (
+  const menu: IDropdownProps['menu'] = (
     <Dropdown.Menu>
       <Dropdown.Item>
         <a target="_blank" rel="noopener noreferrer" href="https://www.kingdee.com/">
@@ -30,7 +31,7 @@ const Demo: React.FC = () => {
       </Dropdown.Item>
       <Dropdown.Item>
         <a target="_blank" rel="noopener noreferrer" href="https://www.jdy.com/">
-        jdy
+          jdy
         </a>
       </Dropdown.Item>
     </Dropdown.Menu>
