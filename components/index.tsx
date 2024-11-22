@@ -146,6 +146,7 @@ export { default as Stepper } from './stepper'
 export { default as BaseData } from './base-data'
 
 export { default as Link } from './link'
+export type { ILinkProps } from './link'
 
 export { default as TreeSelect } from './tree-select'
 
