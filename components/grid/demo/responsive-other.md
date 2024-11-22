@@ -9,9 +9,10 @@ title: 其他属性的响应式
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { Row, Col } from '@kdcloudjs/kdesign'
+import type { IColProps } from '@kdcloudjs/kdesign'
 
 const Demo: React.FC = () => {
-  const colStyle = (n) => {
+  const colStyle = (n:number):IColProps['style'] => {
     return {
       padding: '16px 0',
       color: '#fff',

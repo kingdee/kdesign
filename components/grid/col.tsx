@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, CSSProperties } from 'react'
 import classNames from 'classnames'
 import { getCompProps } from '../_utils'
 import { ConfigContext } from '../config-provider'
@@ -68,7 +68,7 @@ const Col: React.FC<ColProps> = (props) => {
     return false
   }
 
-  const colGapStyle: Record<string, any> = {
+  const colGapStyle: CSSProperties = {
     padding: `0 ${gap.h / 2}px`,
   }
   if (notSupportRowGap() && gap.v) colGapStyle.marginBottom = gap.v

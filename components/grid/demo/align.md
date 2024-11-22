@@ -9,11 +9,12 @@ title: 垂直对齐
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { Row, Col } from '@kdcloudjs/kdesign'
+import type { IRowProps, IColProps } from '@kdcloudjs/kdesign'
 
 const Demo: React.FC = () => {
-  const hStyle = { margin: '32px 0 16px' }
-  const rowStle = { backgroundColor: 'rgba(128, 128, 128, 0.08)' }
-  const colStyle = (h, n) => {
+  const hStyle: React.CSSProperties = { margin: '32px 0 16px' }
+  const rowStle: IRowProps['style'] = { backgroundColor: 'rgba(128, 128, 128, 0.08)' }
+  const colStyle = (h: number, n: number): IColProps['style'] => {
     return {
       height: h ? h + 'px' : undefined,
       margin: '8px 0',
@@ -24,7 +25,7 @@ const Demo: React.FC = () => {
       backgroundColor: n ? 'rgba(85, 130, 243, 1)' : 'rgba(85, 130, 243, .7)',
     }
   }
-  const DemoBox = ({ h, n, children }) => <p style={colStyle(h, n)}>{children}</p>
+  const DemoBox: React.ReactNode = ({ h, n, children }) => <p style={colStyle(h, n)}>{children}</p>
 
   return (
     <div style={{ margin: '0 20px' }}>
