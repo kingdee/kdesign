@@ -9,15 +9,16 @@ order: 1
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { Button } from '@kdcloudjs/kdesign'
+import type { IButtonProps } from '@kdcloudjs/kdesign'
 
 const Demo: React.FC = () => {
-  const demoButtonStyle = { margin: '0px 8px 8px 0' }
+  const demoButtonStyle: IButtonProps['style'] = { margin: '0px 8px 8px 0' }
   return (
     <div style={{ marginTop: 16, width: '400px' }}>
       <Button type="primary" style={demoButtonStyle}>
         默认
       </Button>
-       <Button type="primary" shape="none" style={demoButtonStyle}>
+      <Button type="primary" shape="none" style={demoButtonStyle}>
         直角
       </Button>
       <Button type="primary" shape="round" style={demoButtonStyle}>

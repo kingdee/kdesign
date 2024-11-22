@@ -22,6 +22,7 @@ export { default as Breadcrumb } from './breadcrumb'
 export type { IBreadcrumbProps } from './breadcrumb'
 
 export { default as Button } from './button'
+export type { IButtonProps, ButtonGroupProps as IButtonGroupProps } from './button'
 
 export { default as Card } from './card'
 

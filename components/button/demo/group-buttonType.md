@@ -9,17 +9,18 @@ order: 8
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { Button } from '@kdcloudjs/kdesign'
+import type { IButtonGroupProps } from '@kdcloudjs/kdesign'
 
 function Demo() {
-  const demoButtonStyle = { margin: '0px 8px 8px 0' }
+  const demoButtonStyle: IButtonGroupProps['style'] = { margin: '0px 8px 8px 0' }
 
-  const overlay1 = [
+  const overlay1: IButtonGroupProps['overlay'] = [
     { value: '1', label: '发布' },
     { value: '2', label: '生成凭证' },
     { value: '3', label: '打印' },
   ]
 
-  const overlay2 = [
+  const overlay2: IButtonGroupProps['overlay'] = [
     { value: '1', label: '暂存' },
     { value: '2', label: '撤销' },
     { value: '3', label: '废弃' },
@@ -27,7 +28,11 @@ function Demo() {
 
   return (
     <div>
-       <Button.Dropdown buttonType="primary" overlay={overlay1} style={demoButtonStyle} onItemClick={() => console.log('onItemClick')}>
+      <Button.Dropdown
+        buttonType="primary"
+        overlay={overlay1}
+        style={demoButtonStyle}
+        onItemClick={() => console.log('onItemClick')}>
         更多
       </Button.Dropdown>
       <Button.Dropdown
