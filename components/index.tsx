@@ -33,6 +33,7 @@ export { default as Carousel } from './carousel'
 export { default as Cascader } from './cascader'
 
 export { default as Dropdown } from './dropdown'
+export type { DropDownProps as IDropDownProps, MenuProps as IMenuProps, ItemProps as IItemProps } from './dropdown'
 
 export { default as DatePicker, RangePicker } from './date-picker'
 
