@@ -19,6 +19,7 @@ const locale = {
   'DatePicker.rangeWeekPlaceholder': ['Start week', 'End week'],
   'DatePicker.rangeQuarterPlaceholder': ['Start quarter', 'End quarter'],
   'DatePicker.rangeTimePlaceholder': ['Start time', 'End time'],
+  'DatePicker.monthBeforeYear': true,
   'global.selectholder': 'Please select',
   'global.placeholder': 'Please enter search content',
   'global.cancel': 'Cancel',
