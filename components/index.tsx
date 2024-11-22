@@ -19,6 +19,7 @@ export { default as Alert } from './alert'
 export { default as Breadcrumb } from './breadcrumb'
 
 export { default as Button } from './button'
+export type { IButtonProps, ButtonGroupProps as IButtonGroupProps } from './button'
 
 export { default as Card } from './card'
 

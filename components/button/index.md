@@ -14,38 +14,38 @@ subtitle: 按钮
 
 ## API
 
-| 属性 | 说明 | 类型 | 默认值 | 可选值 | 版本 |
-| --- | --- | --- | --- | --- | --- |
-| block | 开启该属性按钮将撑满父元素 | boolean | `false` | `true` `false` | 1.0.0 |
-| bordered | 是否带边框 | boolean | `true` | `true` `false` | 1.0.0 |
-| disabled | 按钮禁用状态 | boolean | `false` | `true` `false` | 1.0.0 |
-| ghost | 幽灵属性，使按钮背景透明 | boolean | `false` | `true` `false` | 1.0.0 |
-| loading | 按钮加载状态（加载中的按钮将不能触发点击事件） | boolean | `false` | `true` `false` | 1.0.0 |
-| shape | 按钮形状 | string | `''` | `''` `circle` `round` `none` | 1.0.0 |
-| size | 按钮尺寸 | string | `middle` | `small` `middle` `large` | 1.0.0 |
-| type | 按钮类型 | string | `second` | `second` `primary` `ghost` `text` | 1.0.0 |
-| onClick | 点击按钮时的回调 | (event) => void | `-` | `-` | 1.0.0 |
-| htmlType | 设置 button 原生的 type 值 | string | `-` | `submit` `button` `reset` | 1.0.0 |
+| 属性     | 说明                                           | 类型                              | 默认值   | 版本  |
+| -------- | ---------------------------------------------- | --------------------------------- | -------- | ----- | ----- |
+| block    | 开启该属性按钮将撑满父元素                  | `true` `false`                    | `false`  | 1.0.0 |
+| bordered | 是否带边框                               | `true` `false`                    | `true`   | 1.0.0 |
+| disabled | 按钮禁用状态                             | `true` `false`                    | `false`  |       | 1.0.0 |
+| ghost    | 幽灵属性，使按钮背景透明                   | `true` `false`                    | `false`  | 1.0.0 |
+| htmlType | 设置 button 原生的 type 值               | `submit` `button` `reset`         | `-`      | 1.0.0 |
+| loading  | 按钮加载状态（加载中的按钮将不能触发点击事件） | `true` `false`                    | `false`  | 1.0.0 |
+| shape    | 按钮形状                                 | `circle` `round` `none`           | `''`     | 1.0.0 |
+| size     | 按钮尺寸                                 | `small` `middle` `large`          | `middle` | 1.0.0 |
+| type     | 按钮类型                                 | `second` `primary` `ghost` `text` | `second` | 1.0.0 |
+| onClick  | 点击按钮时的回调                          | (event) => void                   | `-`      | 1.0.0 |
 
 更多属性请参考 [Tooltip](/components/tooltip/#API)。
 
 ### Button.Dropdown
 
-| 属性 | 说明 | 类型 | 默认值 | 可选值 | 版本 |
-| --- | --- | --- | --- | --- | --- |
-| buttonType | 按钮类型 | string | `primary` | `primary` `second` | 1.2.0 |
-| disabled | 按钮禁用状态 | boolean | `false` | `true` `false` | 1.2.0 |
-| loading | 按钮加载状态（加载中的按钮将不能触发点击事件） | boolean | `false` | `true` `false` | 1.7.16 |
-| size | 按钮尺寸 | string | `middle` | `small` `middle` `large` | 1.2.0 |
-| icon | 自定义图标 | [ReactNode, ReactNode] | - | - | 1.2.0 |
-| type | 按钮类型 | string | `basic` | `similar` | 1.2.0 |
-| overlay | 数据化配置选项内容 | { label, value }[] | `-` | `-` | 1.2.0 |
-| onItemClick | 下拉菜单点击事件 | ({value, label}) => void | `-` | `-` | 1.2.0 |
-| onClick | 点击按钮时的回调 | (event) => void | `-` | `-` | 1.2.0 |
+| 属性        | 说明                                           | 类型                     | 默认值    | 版本   |
+| ----------- | ---------------------------------------------- | ------------------------ | --------- | ------ |
+| buttonType  | 按钮类型                                       | `primary` `second`       | `primary` | 1.2.0  |
+| disabled    | 按钮禁用状态                                   | `true` `false`           | `false`   | 1.2.0  |
+| loading     | 按钮加载状态（加载中的按钮将不能触发点击事件） | `true` `false`           | `false`   | 1.7.16 |
+| size        | 按钮尺寸                                       | `small` `middle` `large` | `middle`  | 1.2.0  |
+| icon        | 自定义图标                                     | [ReactNode, ReactNode]   | -         | 1.2.0  |
+| type        | 按钮类型                                       | `basic` `similar`        | `basic`   | 1.2.0  |
+| overlay     | 数据化配置选项内容                             | { label, value }[]       | `-`       | 1.2.0  |
+| onItemClick | 下拉菜单点击事件                               | ({value, label}) => void | `-`       | 1.2.0  |
+| onClick     | 点击按钮时的回调                               | (event) => void          | `-`       | 1.2.0  |
 
 ## Design Token
 
-| 分类 | 组件token | 全局token | 默认值 |
+| 分类 | 组件 token | 全局 token | 默认值 |
 | --- | --- | --- | --- |
 | color | --kd-c-button-primary-color-background | --kd-g-color-theme | #5582f3 |
 |  | --kd-c-button-primary-color-border | --kd-g-color-theme | #5582f3 |
