@@ -9,6 +9,7 @@ order: 3
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { ColorPicker, Button } from '@kdcloudjs/kdesign'
+import type { IColorPickerProps } from '@kdcloudjs/kdesign'
 
 const Demo: React.FC = () => {
   const [visible, setVisible] = React.useState<boolean>(false)
@@ -17,17 +18,16 @@ const Demo: React.FC = () => {
     setVisible(!visible)
   }
 
+  const handleVisibleChange:IColorPickerProps['handleVisibleChange'] = (vis) => {
+    console.log(vis)
+  }
+
   return (
     <>
       <Button style={{ marginBottom: '20px' }} onClick={handleClick}>
         切换面板
       </Button>
-      <ColorPicker
-        visible={visible}
-        onVisibleChange={(vis) => {
-          console.log(vis)
-        }}
-      />
+      <ColorPicker visible={visible} onVisibleChange={handleVisibleChange} />
     </>
   )
 }

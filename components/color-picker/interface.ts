@@ -15,7 +15,7 @@ export interface IInnerFormat {
   show: Exclude<typeof ColorTypes[number], 'themeColor'>[]
   default: Exclude<typeof ColorTypes[number], 'themeColor'>
 }
-export interface IColorPickerProps extends PopperProps {
+interface IInnerColorPickerProps {
   // 输入框类型
   borderType: BorderType
   // 选择器输入框类名
@@ -71,6 +71,7 @@ export interface IColorPickerProps extends PopperProps {
   // 面板显隐回调
   onVisibleChange: (visible: boolean) => void
 }
+export interface IColorPickerProps extends PopperProps, Partial<IInnerColorPickerProps> {}
 
 export interface IColorPickerPanelProps {
   alpha: number
