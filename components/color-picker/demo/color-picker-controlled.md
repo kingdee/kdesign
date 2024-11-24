@@ -9,11 +9,12 @@ order: 10
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { ColorPicker, Button } from '@kdcloudjs/kdesign'
+import type { IColorPickerProps } from '@kdcloudjs/kdesign'
 
 const Demo: React.FC = () => {
   const [color, setColor] = React.useState<string>('#FF0000')
 
-  const onChange = (inputValue: string) => {
+  const onChange: IColorPickerProps['onChange'] = (inputValue: string) => {
     console.log('inputValue', inputValue)
     setColor(inputValue)
   }

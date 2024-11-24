@@ -9,9 +9,10 @@ order: 4
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { ColorPicker, Icon } from '@kdcloudjs/kdesign'
+import type { IColorPickerProps } from '@kdcloudjs/kdesign'
 
 const Demo: React.FC = () => {
-  const homeIcon = (rgbColor) => {
+  const homeIcon: IColorPickerProps['prefixIcon'] = (rgbColor) => {
     return (
       <>
         <Icon type="font-background-solid" style={{ fontSize: '18px', marginTop: '-4px', height: '18px' }} />
@@ -28,7 +29,7 @@ const Demo: React.FC = () => {
     )
   }
 
-  const onChange = (inputValue: string) => {
+  const onChange: IColorPickerProps['onChange'] = (inputValue: string) => {
     console.log('color', inputValue)
   }
 

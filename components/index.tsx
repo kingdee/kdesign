@@ -137,6 +137,8 @@ export { default as TreeSelect } from './tree-select'
 
 export { default as ColorPicker } from './color-picker'
 
+export type { IColorPickerProps } from './color-picker'
+
 export { default as Clipboard } from './clipboard'
 
 export type { IDividerProps } from './divider'

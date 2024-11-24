@@ -17,7 +17,7 @@ import { defaultSystemColor } from './constant/defaultColor'
 import { validateColor } from './utils/validateColor'
 import { toUpCase } from './utils/convertLetters'
 import Color from 'color'
-import { ChromePicker } from 'react-color'
+import { ChromePicker, ColorResult } from 'react-color'
 import devWarning from '../_utils/devwarning'
 import { useOnClickOutside } from '../_utils/hooks'
 import { isIE } from '../_utils/ieUtil'
@@ -288,13 +288,13 @@ const ColorPickerPanel: FC<IColorPickerPanelProps> = (props) => {
       HSL: ['h', 's', 'l'],
       RGB: ['r', 'g', 'b'],
     }
-    const methodName = (colorComponents as any)[currentColorType].join('')
+    const methodName = colorComponents[currentColorType as 'HSB' | 'HSL' | 'RGB'].join('')
     const getColorAttr = () => {
-      const selectedComponents = (colorComponents as any)[currentColorType]
+      const selectedComponents = colorComponents[currentColorType as 'HSB' | 'HSL' | 'RGB']
       if (!selectedComponents) {
         return
       }
-      return selectedComponents.reduce((acc: any, component: string, index: number) => {
+      return selectedComponents.reduce((acc: { [key: string]: number | string }, component: string, index: number) => {
         acc[component] = i === index ? number : colorArr[index]
         return acc
       }, {})
@@ -355,7 +355,7 @@ const ColorPickerPanel: FC<IColorPickerPanelProps> = (props) => {
     }
   }
 
-  const handleChromeChange = (color: any) => {
+  const handleChromeChange = (color: ColorResult) => {
     const formatArr = colorFormat(color.hex, inputCorrectColorValue ? color.rgb.a : 1) as IColorTypesObj[]
     const colorObj = formatArr[valOfCorrespondingType(currentColorType) as number]
     console.log('colorObj', formatArr, colorObj)
@@ -367,7 +367,7 @@ const ColorPickerPanel: FC<IColorPickerPanelProps> = (props) => {
         removeTransparency(colorObj.value),
         colorObj.value,
         inputCorrectColorValue ? color.rgb.a : 1,
-        inputCorrectColorValue ? (color.rgb.a * 100).toFixed() + '%' : '100%',
+        inputCorrectColorValue ? (color.rgb.a! * 100).toFixed() + '%' : '100%',
       )
       setClickColorIndex(formatArr[0].value)
     }
@@ -482,7 +482,7 @@ const ColorPickerPanel: FC<IColorPickerPanelProps> = (props) => {
                 />
               ) : (
                 <div className={panelInputGroupCls}>
-                  {new Array(3).fill(undefined).map((_: any, i: number) => (
+                  {new Array(3).fill(undefined).map((_: undefined, i: number) => (
                     <Input
                       key={i}
                       className={gePanelInputGroupItemCls(i)}

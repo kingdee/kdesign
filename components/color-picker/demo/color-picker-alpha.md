@@ -9,9 +9,10 @@ order: 12
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { ColorPicker } from '@kdcloudjs/kdesign'
+import type { IColorPickerProps } from '@kdcloudjs/kdesign'
 
 const Demo: React.FC = () => {
-  const onChange = (inputValue: string) => {
+  const onChange: IColorPickerProps['onChange'] = (inputValue: string) => {
     console.log('color', inputValue)
   }
 

@@ -9,9 +9,10 @@ order: 6
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { ColorPicker } from '@kdcloudjs/kdesign'
+import type { IColorPickerProps } from '@kdcloudjs/kdesign'
 
 const Demo: React.FC = () => {
-  const colorArr = [
+  const colorArr: IColorPickerProps['presetColor'] = [
     'blue',
     '#0000FF',
     '#0000FFEE',
@@ -22,7 +23,7 @@ const Demo: React.FC = () => {
     'HSB(240,100%,100%)',
     'HSBA(240,100%,100%,0.5)',
   ]
-  const onChange = (inputValue: string) => {
+  const onChange: IColorPickerProps['onChange'] = (inputValue: string) => {
     console.log('color', inputValue)
   }
 

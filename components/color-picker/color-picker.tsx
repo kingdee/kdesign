@@ -13,7 +13,9 @@ import { getCompProps } from '../_utils'
 import usePopper from '../_utils/usePopper'
 import { systemPresetColor } from './constant/systemPresetColor'
 
-const ColorPicker: FC<Partial<IColorPickerProps>> = (props) => {
+export type { IColorPickerProps } from './interface'
+
+const ColorPicker: FC<IColorPickerProps> = (props) => {
   const { getPrefixCls, prefixCls, compDefaultProps: userDefaultProps } = useContext(ConfigContext)
   const colorPickerProps = getCompProps('ColorPicker', userDefaultProps, props)
   const {
