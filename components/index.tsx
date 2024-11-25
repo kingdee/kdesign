@@ -52,6 +52,7 @@ export { default as Form } from './form'
 export { Row, Col } from './grid'
 
 export { default as Input, TextArea } from './input'
+export type { InputProps as IInputProps, TextAreaProps as ITextAreaProps } from './input'
 
 export { default as InputNumber } from './input-number'
 
