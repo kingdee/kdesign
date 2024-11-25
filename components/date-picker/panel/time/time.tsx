@@ -21,18 +21,12 @@ export interface SharedTimeProps extends DisabledTimes {
   secondStep?: number
   hideDisabledOptions?: boolean
   defaultValue?: DateType
-  // mergedActivePickerIndex?: 0 | 1
 }
 
 export interface TimePanelProps extends PanelSharedProps, SharedTimeProps {
   format?: string
   picker?: PickerMode
 }
-
-// export interface TimePanelProps extends SharedTimeProps {
-//   format?: string
-//   // active?: boolean
-// }
 
 function shouldUnitsUpdate(prevUnits: TimeUnit[], nextUnits: TimeUnit[]) {
   if (prevUnits.length !== nextUnits.length) return true
@@ -62,24 +56,12 @@ function TimePanel(props: TimePanelProps) {
   const {
     picker,
     format = 'HH:mm:ss',
-    // active,
-    // operationRef,
     showHour,
     showMinute,
     showSecond,
     use12Hours = false,
-
-    // hourStep,
-    // minuteStep,
-    // secondStep,
     hideDisabledOptions,
-    // mergedActivePickerIndex,
-    // disabledHours,
-    // disabledMinutes,
-    // disabledSeconds,
   } = props
-
-  // console.log(rawHours)
 
   if (disabledTimePanel) {
     originHour = -1
@@ -87,34 +69,16 @@ function TimePanel(props: TimePanelProps) {
     second = -1
   }
 
-  // const bodyOperationRef = React.useRef<BodyOperationRef>()
-
-  // ======================= Keyboard =======================
-  // const [activeColumnIndex, setActiveColumnIndex] = React.useState(-1)
-
-  // debugger
   const value = dateValue
-  // if (mergedActivePickerIndex === 0) {
-  //   value = rangeValue![0]
-  // } else if (mergedActivePickerIndex === 1) {
-  //   value = rangeValue![1]
-  // }
 
   const columns: {
     node: React.ReactElement
-    // value: number
-    // units: TimeUnit[]
-    // onSelect: (diff: number) => void
   }[] = []
 
   const columnPrefixCls = `${prefixCls}-time`
 
   let isPM: boolean | undefined
-  // const originHour = value ? getHours(value) : -1
   let hour = originHour
-  // const minute = value ? getMinutes(value) : -1
-  // const second = value ? getSeconds(value) : -1
-
   const getDefaultDate = () => {
     if (panelPosition) {
       if (rangeValue && rangeValue[0] && isValid(rangeValue[0])) {
@@ -147,7 +111,6 @@ function TimePanel(props: TimePanelProps) {
       _second = -1
     }
 
-    // 所有时或分或秒 disabled 时，返回空（date-time）
     if (_hour > -1 && _minute > -1 && _second > -1) {
       date = utilSetTime(date, {
         hour: !use12Hours || !isPM ? _hour : _hour + 12,
@@ -159,8 +122,6 @@ function TimePanel(props: TimePanelProps) {
 
     return null
   }
-
-  // const rawHours = generateUnits(0, 23, hourStep, disabledHours && disabledHours())
 
   const memorizedRawHours = useStateMemo(() => rawHours, rawHours, shouldUnitsUpdate)
 
@@ -199,10 +160,6 @@ function TimePanel(props: TimePanelProps) {
         }
       })
   }, [use12Hours, memorizedRawHours, isPM])
-
-  // const minutes = generateUnits(0, 59, minuteStep, disabledMinutes && disabledMinutes(originHour))
-
-  // const seconds = generateUnits(0, 59, secondStep, disabledSeconds && disabledSeconds(originHour, minute))
 
   function addColumnNode(
     condition: boolean | undefined,
@@ -268,24 +225,14 @@ function TimePanel(props: TimePanelProps) {
   )
 
   return (
-    <div
-      className={classNames(`${prefixCls}-time`, {
-        // [`${panelPrefixCls}-active`]: active,
-      })}
-    >
+    <div className={classNames(`${prefixCls}-time`)}>
       {picker !== 'time' ? (
         <Header className={`${prefixCls}-time-header`}>
           {!disabledTimePanel && value ? formatDate(value, format) : null}
         </Header>
       ) : null}
 
-      <div
-        className={classNames(`${prefixCls}-content`, {
-          // [`${panelPrefixCls}-active`]: active,
-        })}
-      >
-        {columns.map(({ node }) => node)}
-      </div>
+      <div className={classNames(`${prefixCls}-content`)}>{columns.map(({ node }) => node)}</div>
     </div>
   )
 }

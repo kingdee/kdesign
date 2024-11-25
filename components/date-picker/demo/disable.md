@@ -5,19 +5,20 @@ order: 3
 
 日期选择器的日期禁用，可通过 `disabledDate` 控制，需要注意的是， `disabledDate` 只能禁用日期，禁用时间需要使用 `disabledHours`、`disabledMinutes`、`disabledSeconds`
 
-```jsx
+```tsx
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { DatePicker } from '@kdcloudjs/kdesign'
+import type { IDatePickerProps } from '@kdcloudjs/kdesign'
 
 const Demo: React.FC = () => {
   const demoStyle = { margin: '10px 0' }
-  const disabledDate = (date, info) => {
+  const disabledDate: IDatePickerProps['disabledDate'] = (date, info) => {
     const disDate = new Date('2020-12-28')
-    if (info && 'year' === info.panelType) {
+    if (info && info.panelType === 'year') {
       return date && date.getFullYear() < disDate.getFullYear()
     }
-    if (info && 'month' === info.panelType) {
+    if (info && info.panelType === 'month') {
       return date && date.getMonth() < disDate.getMonth()
     }
     return date && date < disDate
@@ -26,7 +27,7 @@ const Demo: React.FC = () => {
     return date && date < new Date('2020-10-25')
   }
   return (
-    <div  style={{ width: '150px' }}>
+    <div style={{ width: '150px' }}>
       <div style={demoStyle}>
         <DatePicker disabledDate={disabledDate} defaultValue={new Date('2021-01-29')} />
       </div>

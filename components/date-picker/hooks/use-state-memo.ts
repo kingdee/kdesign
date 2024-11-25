@@ -5,7 +5,7 @@ interface Cache<Value, Condition> {
   value?: Value
 }
 
-export default function useStateMemo<Value, Condition = any[]>(
+export default function useStateMemo<Value, Condition>(
   getValue: () => Value,
   condition: Condition,
   shouldUpdate: (prev: Condition, next: Condition) => boolean,

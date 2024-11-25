@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import classnames from 'classnames'
 
-import Context from '../../context'
+import Context, { SingleContextProps } from '../../context'
 
 import {
   getYearsPeriod,
@@ -44,7 +44,7 @@ function Year(props: YearProps) {
     cellRender,
     range,
   } = context
-  const disabledInfo: any = { panelType: 'year', range }
+  const disabledInfo: { panelType: 'year'; range?: SingleContextProps['range'] } = { panelType: 'year', range }
   const { yearItemNumber, disabledDate, picker = 'date' } = props
 
   let _dateValue: RangeValue | DateType
@@ -112,12 +112,10 @@ function Year(props: YearProps) {
         onSelect(date, 'mouse')
       }
     } else {
-      //
       let _viewDate = viewDate
       if (panelPosition) {
         _viewDate = getClosingViewDate(viewDate, picker, -1)
       }
-      // date = addYears(_viewDate, 1)
 
       onSelect(setYearOrMonthOfDate(_viewDate, date), 'inner')
       setInnerPicker(undefined)
