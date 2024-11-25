@@ -9,15 +9,16 @@ order: 4
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { QRCode } from '@kdcloudjs/kdesign'
+import type { IQRCodeProps } from '@kdcloudjs/kdesign'
 
 function Demo() {
-  const style = { marginRight: 50 }
-  const value = "https://www.kingdee.design/"
+  const style:IQRCodeProps['style'] = { marginRight: 50 }
+  const value:IQRCodeProps['value'] = 'https://www.kingdee.design/'
   return (
-    <div style={{ display:"flex" }}>
+    <div style={{ display: 'flex' }}>
       <QRCode value={value} style={style} />
-      <QRCode value={value} color="#2486EE" style={style}/>
-      <QRCode value={value} color="#06C8C7" style={style}/>
+      <QRCode value={value} color="#2486EE" style={style} />
+      <QRCode value={value} color="#06C8C7" style={style} />
     </div>
   )
 }
