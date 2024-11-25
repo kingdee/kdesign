@@ -5,16 +5,17 @@ order: 9
 
 count 属性可以控制是否展示计数, 默认为展示
 
-```jsx
+```tsx
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { TextArea } from '@kdcloudjs/kdesign'
+import type { ITextAreaProps } from '@kdcloudjs/kdesign'
 
 const Demo: React.FC = () => {
-  const [value, setValue] = React.useState<string>('')
+  const [value, setValue] = React.useState<ITextAreaProps['value']>('')
   return (
     <div style={{ width: '300px' }}>
-      <TextArea count allowClear borderType="bordered" maxLength={20}/>
+      <TextArea count allowClear borderType="bordered" maxLength={20} />
       <br />
       <br />
       <TextArea

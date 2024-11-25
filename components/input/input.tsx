@@ -1,4 +1,13 @@
-import React, { FunctionComponentElement, useContext, useState, useRef, useEffect, useImperativeHandle } from 'react'
+import React, {
+  FunctionComponentElement,
+  useContext,
+  useState,
+  useRef,
+  useEffect,
+  useImperativeHandle,
+  InputHTMLAttributes,
+  ChangeEvent,
+} from 'react'
 import classNames from 'classnames'
 import ConfigContext from '../config-provider/ConfigContext'
 import { getCompProps } from '../_utils'
@@ -12,16 +21,18 @@ export type InputSiteType = typeof InputSiteTypes[number]
 export const BorderTypes = tuple('none', 'underline', 'bordered')
 export type BorderType = typeof BorderTypes[number]
 
-export function fixControlledValue<T>(value: T) {
+export function fixControlledValue(value: ValueType): InputHTMLAttributes<HTMLInputElement>['value'] {
   if (typeof value === 'undefined' || value === null) {
     return ''
   }
-  return value
+  return value as InputHTMLAttributes<HTMLInputElement>['value']
 }
 
-export interface InputProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size' | 'prefix' | 'type'> {
+export type ValueType = InputHTMLAttributes<HTMLInputElement>['value'] | bigint | null | undefined
+
+export interface InputProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 'size' | 'prefix' | 'type' | 'value'> {
   type?: string
-  size?: InputSiteType // 尺寸
+  size?: InputSiteType
   defaultValue?: string
   disabled?: boolean
   allowClear?: boolean | React.ReactNode
@@ -32,8 +43,8 @@ export interface InputProps extends Omit<React.InputHTMLAttributes<HTMLInputElem
   suffix?: React.ReactNode
   placeholder?: string
   borderType?: BorderType
-  onPressEnter?: (_: string, event: React.KeyboardEvent) => void
-  value?: any
+  onPressEnter?: (_: string, event: React.KeyboardEvent<HTMLInputElement>) => void
+  value?: ValueType
   readonly?: 'readonly'
   count?: boolean
   status?: 'error'
@@ -60,6 +71,11 @@ const InternalInput = (props: InputProps, ref: unknown): FunctionComponentElemen
     maxLength,
     count,
     status,
+    allowClear,
+    prefix,
+    suffix,
+    addonAfter,
+    addonBefore,
     ...others
   } = inputProps
   devWarning(InputSiteTypes.indexOf(size) === -1, 'input', `cannot found input size '${size}'`)
@@ -71,8 +87,8 @@ const InternalInput = (props: InputProps, ref: unknown): FunctionComponentElemen
   const [focused, setFocused] = useState(false)
   const [showNumberMark, setShowNumberMark] = useState(true)
   const inputRef: any = useRef<HTMLElement>()
-  const inputPrefixCls = getPrefixCls!(prefixCls, 'input', customPrefixcls) // 按钮样式前缀
-  const { addonBefore, addonAfter } = others
+  const inputPrefixCls = getPrefixCls!(prefixCls, 'input', customPrefixcls)
+
   const inputClasses = classNames(
     inputPrefixCls,
     {
@@ -108,26 +124,19 @@ const InternalInput = (props: InputProps, ref: unknown): FunctionComponentElemen
       inputRef.current.focus()
       event.target = inputRef.current
     }
-    onChange && onChange(event)
+    onChange && onChange(event as ChangeEvent<HTMLInputElement>)
   }
 
-  const handleKeyUp = (event: React.KeyboardEvent) => {
+  const handleKeyUp = (event: React.KeyboardEvent<HTMLInputElement>) => {
     if (onPressEnter && event.key === 'Enter') {
       const newValue = placeholderTobeValue && !value && !defaultValue ? inputProps.placeholder : value || defaultValue
-      onPressEnter && onPressEnter(newValue || '', event)
+      onPressEnter && onPressEnter(`${newValue}` || '', event)
     }
     inputProps.onKeyUp && inputProps.onKeyUp(event)
   }
 
-  const inputDomProps = { ...others }
-  delete inputDomProps.allowClear
-  delete inputDomProps.suffix
-  delete inputDomProps.addonAfter
-  delete inputDomProps.addonBefore
-  delete inputDomProps.className
-
   const renderCount = () => {
-    let enteredLength = value ? value.length : 0
+    let enteredLength = value ? (value as string).length : 0
     if (maxLength !== undefined && enteredLength >= maxLength) {
       enteredLength = maxLength
     }
@@ -151,7 +160,7 @@ const InternalInput = (props: InputProps, ref: unknown): FunctionComponentElemen
         className={inputClasses}
         value={fixControlledValue(value)}
         maxLength={maxLength}
-        {...inputDomProps}
+        {...others}
         onFocus={handleFocus}
         onBlur={handleBlur}
         onChange={handleChange}
@@ -189,6 +198,11 @@ const InternalInput = (props: InputProps, ref: unknown): FunctionComponentElemen
   return (
     <ClearableInput
       {...inputProps}
+      allowClear={allowClear}
+      prefix={prefix}
+      suffix={suffix}
+      addonAfter={addonAfter}
+      addonBefore={addonBefore}
       handleReset={handleReset}
       value={value}
       inputType="input"
