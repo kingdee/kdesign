@@ -56,7 +56,7 @@ function InputDate(props: InputDateProps, ref: React.RefObject<HTMLDivElement>) 
     disabledDate,
     onFocus,
     onBlur,
-    // onChange,
+
     onMouseDown,
     onMouseUp,
     onMouseEnter,
@@ -145,7 +145,6 @@ function InputDate(props: InputDateProps, ref: React.RefObject<HTMLDivElement>) 
     open: open,
     value: text,
     triggerOpen,
-    // forwardKeyDown,
     isClickOutside: (target) => !elementsContains([panelDivRef.current, ref.current], target as HTMLElement),
     onSubmit: () => {
       if (selectedValue && disabledDate && disabledDate(selectedValue)) {
@@ -175,7 +174,6 @@ function InputDate(props: InputDateProps, ref: React.RefObject<HTMLDivElement>) 
     <div
       ref={ref}
       className={classnames(prefixCls, className, borderClass, {
-        // [`${prefixCls}-${size}`]: size,
         [`${prefixCls}-disabled`]: disabled,
         [`${prefixCls}-focused`]: focused,
         [`${prefixCls}-${size}`]: size,
@@ -196,12 +194,8 @@ function InputDate(props: InputDateProps, ref: React.RefObject<HTMLDivElement>) 
         })}
       >
         <input
-          // className={classnames({
-          //   [`${prefixCls}-input-${size}`]: size,
-          // })}
           id={id}
           ref={inputRef}
-          // tabIndex={tabIndex}
           disabled={disabled}
           readOnly={readOnly || typeof format === 'function' || !typing}
           value={hoverValue || text}

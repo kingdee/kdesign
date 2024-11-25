@@ -82,7 +82,7 @@ function InputDate(props: InputRangeProps, ref: React.RefObject<HTMLDivElement>)
 
     onFocus,
     onBlur,
-    // onChange,
+
     onMouseDown,
     onMouseUp,
     onMouseEnter,

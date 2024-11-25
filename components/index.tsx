@@ -40,6 +40,7 @@ export { default as Cascader } from './cascader'
 export { default as Dropdown } from './dropdown'
 
 export { default as DatePicker, RangePicker } from './date-picker'
+export type { PickerProps as IDatePickerProps, RangePickerProps as IRangePickerProps } from './date-picker'
 
 export { default as Drawer } from './drawer'
 
