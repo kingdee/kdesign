@@ -13,16 +13,16 @@ subtitle: 二维码
 
 | 属性 | 说明 | 类型 | 默认值 | 可选值 |
 | --- | --- | --- | --- | --- | --- |
-| value | 扫描后的文本 | string | - |  |
-| type | 渲染类型 | string | `canvas` | `canvas` `svg` |
-| icon | 二维码中图片的地址 | string | - |  |
-| size | 二维码大小 | number | 86 |  |
-| iconSize | 二维码中图片的大小 | number | 30 |  |
-| color | 二维码颜色 | string | #000 |  |
 | bgColor | 二维码背景颜色 | string | transparent |  |
 | bordered | 是否有边框 | boolean | true | `true` `false` |  |
+| color | 二维码颜色 | string | #000 |  |
 | errorLevel | 二维码纠错等级 | string | `L` | `L` `M` `Q` `M` |
+| icon | 二维码中图片的地址 | string | - |  |
+| iconSize | 二维码中图片的大小 | number | 30 |  |
+| size | 二维码大小 | number | 86 |  |
 | status | 二维码状态 | string | `active` | `active` `expired` `loading` |
+| type | 渲染类型 | string | `canvas` | `canvas` `svg` |
+| value | 扫描后的文本 | string | - |  |
 | onRefresh | 点击"点击刷新"的回调 | () => void | - |  |
 
 
