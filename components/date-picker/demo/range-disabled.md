@@ -5,18 +5,19 @@ order: 6
 
 日期范围选择器的日期禁用，可通过 `disabledDate` 控制，需要注意的是， `disabledDate` 只能禁用日期，禁用时间需要使用 `disabledHours`、`disabledMinutes`、`disabledSeconds`
 
-```jsx
+```tsx
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { RangePicker } from '@kdcloudjs/kdesign'
+import type { IRangePickerProps } from '@kdcloudjs/kdesign'
 
 const Demo: React.FC = () => {
-  const disabledDate = (date) => {
+  const disabledDate: IRangePickerProps['disabledDate'] = (date) => {
     return date && date < new Date('2021-01-28')
   }
 
   return (
-    <div  style={{ width: '250px' }}>
+    <div style={{ width: '250px' }}>
       <div>
         <RangePicker disabledDate={disabledDate} defaultValue={[new Date('2021-1-25'), null]} />
       </div>

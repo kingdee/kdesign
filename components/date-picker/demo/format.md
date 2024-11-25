@@ -5,20 +5,27 @@ order: 12
 
 可使用`format`属性进行输出格式化，配置参考 [date-fns.js](https://date-fns.org/)
 
-```jsx
+```tsx
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { RangePicker } from '@kdcloudjs/kdesign'
+import type { IRangePickerProps } from '@kdcloudjs/kdesign'
 
 const Demo: React.FC = () => {
+  const format: IRangePickerProps['format'] = 'YYYY_MM_DD'
   return (
     <div>
       <div className="demo-range-picker">
-        <RangePicker format={"YYYY_MM_DD"} />
+        <RangePicker format={format} />
       </div>
       <div className="demo-range-picker">
         <div className="demo-range-picker">
-          <RangePicker locale={{month: '期'}} format={"YYYY年MM期"} placeholder={['开始期数','结束期数']} picker="month"/>
+          <RangePicker
+            locale={{ month: '期' }}
+            format={'YYYY年MM期'}
+            placeholder={['开始期数', '结束期数']}
+            picker="month"
+          />
         </div>
       </div>
     </div>
@@ -27,7 +34,6 @@ const Demo: React.FC = () => {
 
 ReactDOM.render(<Demo />, mountNode)
 ```
-
 
 ```css
 .demo-range-picker {

@@ -69,22 +69,9 @@ function Calendar(props: CalendarProps) {
       i++
       currentWeekStart = addWeeks(currentWeekStart, 1)
 
-      // 最少保证面板包含有六周，保证左右面板及切换面板时周数一致
       if (i >= DATE_ROW_COUNT) {
         break
       }
-
-      // const isNonFixedAndOutOfMonth = !isWeekInMonth(currentWeekStart)
-      // if (panelPosition) {
-      //   // range 模式时，最少保证面板包含有六周，保证左右面板周数一致
-      //   if (i >= DATE_ROW_COUNT) {
-      //     break
-      //   }
-      // } else {
-      //   if (isNonFixedAndOutOfMonth) {
-      //     break
-      //   }
-      // }
     }
 
     return weeks
@@ -92,10 +79,7 @@ function Calendar(props: CalendarProps) {
 
   const calendarCls = classnames(`${prefixCls}-calendar`)
   const calendarWarpperCls = classnames(`${prefixCls}-calendar-warpper`)
-  // let _showWeeksTitle
-  // if (picker === 'date' || picker === 'week') {
-  //   _showWeeksTitle = showWeeksTitle
-  // }
+
   return (
     <div className={calendarCls}>
       {showWeeksTitle ? renderWeeksTitle() : null}

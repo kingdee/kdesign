@@ -18,7 +18,6 @@ export type MonthTitleType = [
 ]
 
 export interface Locale {
-  // locale: string
   'DatePicker.placeholder': string
   'DatePicker.yearPlaceholder': string
   'DatePicker.quarterPlaceholder': string
@@ -115,11 +114,6 @@ export interface PanelSharedProps {
   nextIcon?: React.ReactNode
   superPrevIcon?: React.ReactNode
   superNextIcon?: React.ReactNode
-
-  // 面板操作（焦点操作、键盘操作）next version
-  // operationRef: React.MutableRefObject<PanelRefProps>
-
-  // onPanelChange: (mode: PanelMode | null, viewValue: DateType) => void
 }
 
 export type DateRender = (currentDate: DateType, today: DateType) => React.ReactNode

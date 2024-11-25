@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import classnames from 'classnames'
 
-import Context from '../../context'
+import Context, { SingleContextProps } from '../../context'
 import {
   getQuarter,
   getStartOfQuarter,
@@ -37,7 +37,7 @@ function Quarter(props: QuarterProps) {
     cellRender,
     range,
   } = context
-  const disabledInfo: any = { panelType: 'quarter', range }
+  const disabledInfo: { panelType: 'quarter'; range?: SingleContextProps['range'] } = { panelType: 'quarter', range }
   const { disabledDate } = props
 
   let _dateValue: RangeValue | DateType

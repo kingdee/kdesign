@@ -5,15 +5,19 @@ order: 9
 
 时间选择器时间禁用 `disabledHours`、`disabledMinutes`、`disabledSeconds`
 
-```jsx
+```tsx
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { DatePicker } from '@kdcloudjs/kdesign'
+import type { IDatePickerProps } from '@kdcloudjs/kdesign'
 
 const Demo: React.FC = () => {
+  const disableHours: IDatePickerProps['disabledHours'] = () => [
+    0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21,
+  ]
 
   return (
-    <div  style={{ width: '150px' }}>
+    <div style={{ width: '150px' }}>
       <div>
         <DatePicker picker="time" />
       </div>
@@ -21,10 +25,7 @@ const Demo: React.FC = () => {
         <DatePicker picker="time" disabledHours={() => [0, 1, 2, 3]} />
       </div>
       <div>
-        <DatePicker
-          picker="time"
-          disabledHours={() => [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21]}
-        />
+        <DatePicker picker="time" disabledHours={disableHours} />
       </div>
       <div>
         <DatePicker
