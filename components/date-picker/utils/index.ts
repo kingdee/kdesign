@@ -48,7 +48,6 @@ export function getClosingViewDate(
   }
 }
 
-// ===================== Format =====================
 export function getDefaultFormat(
   format: DateFormat | undefined,
   picker: PickerMode | undefined,
@@ -285,7 +284,6 @@ export function scrollTo(element: HTMLElement, to: number, duration: number) {
     cancelAnimationFrame(scrollIds.get(element)!)
   }
 
-  // jump to target if duration zero
   if (duration <= 0) {
     scrollIds.set(
       element,

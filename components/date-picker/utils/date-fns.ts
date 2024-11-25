@@ -49,14 +49,8 @@ import parseISO from 'date-fns/parseISO'
 import { DateFormat, DateType } from '../interface'
 
 export const DEFAULT_YEAR_ITEM_NUMBER = 12
-
-// ** Date Constructors **
-
 function parseWeek(text: string) {
-  // parse Wo
-  // 只处理 yyyy-wo 格式
   const matchText = text.match(/[-\d]+/g)
-  // 存在后缀
   if (!matchText || matchText![0] !== text) {
     return null
   }
@@ -94,13 +88,6 @@ export function isNullEqual<T>(value1: T, value2: T): boolean | undefined {
   return undefined
 }
 
-/**
- * @description 接受一个参数（若没有，返回当前），返回一个Date
- *
- * @export
- * @param {DateType} value
- * @returns
- */
 export function newDate<DateType extends Date | string | number>(value?: DateType) {
   const d = value
     ? typeof value === 'string' || value instanceof String
@@ -131,28 +118,19 @@ export function parseDate(value: string, dateFormat: DateFormat): Date | null {
   return isValid(parsedDate) && strictParsingValueMatch ? parsedDate : null
 }
 
-// ** Date "Reflection" **
-
 export { isDate }
 
 export function isValid(date: DateType) {
-  // 1000 年以后为有效值
   return isValidDate(date) && isAfter(date, new Date('1/1/1000'))
 }
-
-// ** Date Formatting **
 
 export function formatDate(date: DateType, _format: DateFormat, _locale?: string) {
   if (!isValid(date)) {
     return null
   }
-  // if (typeof _format === 'function') {
-  //   return _format(date)
-  // }
+
   return format(date, localeParse(_format))
 }
-
-// ** Date Setters **
 
 export function setTime(date: DateType, { hour = 0, minute = 0, second = 0 }) {
   return setHours(setMinutes(setSeconds(date, second), minute), hour)
@@ -160,15 +138,11 @@ export function setTime(date: DateType, { hour = 0, minute = 0, second = 0 }) {
 
 export { setMinutes, setHours, setMonth, setQuarter, setYear }
 
-// ** Date Getters **
-
 export { getSeconds, getMinutes, getHours, getMonth, getQuarter, getYear, getDay, getDate, getTime }
 
 export function getWeek(date: DateType) {
   return dfgetWeek(date)
 }
-
-// *** Start of ***
 
 export function getStartOfDay(date: DateType) {
   return startOfDay(date)
@@ -176,7 +150,6 @@ export function getStartOfDay(date: DateType) {
 
 export function getStartOfWeek(date: DateType) {
   return startOfWeek(date)
-  // return startOfWeek(date)
 }
 
 export function getStartOfMonth(date: DateType) {
@@ -191,23 +164,13 @@ export function getStartOfQuarter(date: DateType) {
   return startOfQuarter(date)
 }
 
-// *** End of ***
-
 export function getEndOfWeek(date: DateType) {
   return endOfWeek(date)
 }
 
-// ** Date Math **
-
-// *** Addition ***
-
 export { addMinutes, addDays, addWeeks, addMonths, addYears, addHours }
 
-// *** Subtraction ***
-
 export { subMinutes, subHours, subDays, subWeeks, subMonths, subYears }
-
-// ** Date Comparison **
 
 export { isBefore, isAfter }
 
@@ -267,7 +230,7 @@ export function isEqual(date1: DateType | null, date2: DateType | null) {
   }
 }
 
-export function getFormattedWeekdayInLocale(date: DateType, formatFunc: (a: any) => void, locale: string) {
+export function getFormattedWeekdayInLocale(date: DateType, formatFunc: (a: string | null) => void, locale: string) {
   return formatFunc(formatDate(date, 'EEEE', locale))
 }
 
@@ -291,14 +254,6 @@ export function getQuarterShortInLocale(quarter: number, locale: string) {
   return formatDate(setQuarter(newDate() as Date, quarter), 'QQQ', locale)
 }
 
-/**
- * @description 根据传入时间，展示年份数自动生成年份范围
- *
- * @export
- * @param {DateType} date
- * @param { number} yearItemNumber
- * @returns
- */
 export function getYearsPeriod(date: DateType, yearItemNumber: number) {
   const endPeriod = Math.ceil(getYear(date) / yearItemNumber) * yearItemNumber
   const startPeriod = endPeriod - (yearItemNumber - 1)

@@ -34,11 +34,7 @@ function DatetimePanel(props: DatetimePanelProps) {
   const disabledTimes = disabledTimePanel ? disabledTimePanel(value || null) : {}
 
   return (
-    <div
-      className={classNames(`${prefixCls}-datetime-panel`, {
-        // [`${panelPrefixCls}-active`]: activePanel,
-      })}
-    >
+    <div className={classNames(`${prefixCls}-datetime-panel`)}>
       <div className={classNames(`${prefixCls}-date`)}>
         {dateHeader}
         <Calendar {...props} />

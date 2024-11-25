@@ -30,8 +30,6 @@ function Popper(props: PopperProps, ref: React.RefObject<HTMLDivElement>) {
     isShowTime,
     picker,
   } = props
-  // ref
-  // const panelDivRef = React.useRef<HTMLDivElement>(null)
   const [arrowRef, setArrowRef] = useState(null)
   const onSetArrowRef = useCallback((ref) => {
     setArrowRef(ref)
@@ -40,7 +38,7 @@ function Popper(props: PopperProps, ref: React.RefObject<HTMLDivElement>) {
   useOnClickOutside([ref, inputDivRef], () => {
     onClickOutside && onClickOutside()
   })
-  // console.log(arrowLeft)
+
   const { styles, attributes } = usePopper(inputDivRef.current, ref.current, {
     placement: 'bottom-start',
     modifiers: [

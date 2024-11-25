@@ -8,7 +8,6 @@ export default function usePickerInput({
   value,
   isClickOutside,
   triggerOpen,
-  // forwardKeyDown,
   blurToCancel,
   onSubmit,
   onCancel,
@@ -20,7 +19,6 @@ export default function usePickerInput({
   value: string
   isClickOutside: (clickElement: EventTarget | null) => boolean
   triggerOpen: (open: boolean) => void
-  // forwardKeyDown: (e: React.KeyboardEvent<HTMLInputElement>) => boolean
   blurToCancel?: boolean
   onSubmit: () => void | boolean
   onCancel: () => void
@@ -53,7 +51,6 @@ export default function usePickerInput({
         case KeyCode.TAB: {
           if (typing && open && !e.shiftKey) {
             setTyping(false)
-            // e.preventDefault()
           }
           return
         }
@@ -81,7 +78,6 @@ export default function usePickerInput({
 
     onBlur: (e) => {
       if (preventBlurRef.current || !isClickOutside(document.activeElement)) {
-        // preventBlurRef.current = false
         return
       }
       if (blurToCancel) {
@@ -101,7 +97,6 @@ export default function usePickerInput({
     },
   }
 
-  // check if value changed
   useEffect(() => {
     valueChangedRef.current = false
   }, [open])

@@ -32,11 +32,7 @@ export interface PickerPanelSharedProps {
   mode?: PanelMode
   tabIndex?: number
   yearItemNumber?: number
-
-  // Locale
   locale: InnerLocale
-
-  // Value
   value?: DateType | null
   defaultValue?: DateType
   pickerValue?: DateType
@@ -50,22 +46,15 @@ export interface PickerPanelSharedProps {
   useWeekdaysShort?: boolean
   showWeekNumber?: boolean
   showWeeksTitle?: boolean
-
-  // Date
   disabledDate?: DisabledDataProps
-
-  // Render
   dateRender?: DateRender
   monthCellRender?: CellRender
   renderExtraFooter?: (mode: PanelMode) => React.ReactNode
-
-  // Event
   onSelect?: (value: DateType) => void
   onChange?: (value: DateType) => void
   onPanelChange?: OnPanelChange
   onMouseDown?: React.MouseEventHandler<HTMLDivElement>
   onOk?: (date: DateType) => void
-
   components?: Components
 }
 
@@ -77,8 +66,6 @@ export interface PickerPanelDateProps extends PickerPanelSharedProps {
   picker?: 'date'
   showToday?: boolean
   showNow?: boolean
-
-  // Time
   showTime?: boolean | SharedTimeProps
   disabledTimePanel?: DisabledTime
 }
@@ -326,7 +313,6 @@ function Panel(props: MergedPickerPanelProps) {
       }
       break
     }
-    // 时间面板，4个箭头的显隐，在时间范围时需要判断是否在快捷选择面板下
     case 'date': {
       headerObj = renderDateHeader()
       headerProps = {

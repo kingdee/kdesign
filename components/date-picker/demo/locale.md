@@ -5,14 +5,14 @@ order: 11
 
 可使用`locale`属性进行国际化配置，仅作用于单个组件。
 
-```jsx
+```tsx
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { RangePicker } from '@kdcloudjs/kdesign'
+import type { IRangePickerProps } from '@kdcloudjs/kdesign'
 
 const Demo = () => {
-  //内置基础配置
-  const baseLocale = {
+  const baseLocale: IRangePickerProps['locale'] = {
     placeholder: '请选择日期',
     yearPlaceholder: '请选择年份',
     quarterPlaceholder: '请选择季度',

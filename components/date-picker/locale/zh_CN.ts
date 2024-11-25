@@ -1,7 +1,6 @@
 import { Locale } from '../interface'
 
 const locale: Locale = {
-  // locale: 'zh_CN',
   'DatePicker.placeholder': '请选择日期',
   'DatePicker.yearPlaceholder': '请选择年份',
   'DatePicker.quarterPlaceholder': '请选择季度',
