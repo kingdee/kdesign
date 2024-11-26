@@ -9,18 +9,19 @@ title: 高级功能
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { Transfer, Button } from '@kdcloudjs/kdesign'
+import type { ITransferProps } from '@kdcloudjs/kdesign'
 
 const Demo: React.FC = () => {
-  const mockData = []
-  const oriTargetKeys = []
+  const mockData: ITransferProps['dataSource'] = []
+  const oriTargetKeys: ITransferProps['targetKeys'] = []
 
-  const [targetKeys, setTargetKeys] = React.useState(oriTargetKeys)
-  const [selectedKeys, setSelectedKeys] = React.useState<Array<TransferItem>>([])
-  const handleChange = (nextTargetKeys) => {
+  const [targetKeys, setTargetKeys] = React.useState<ITransferProps['targetKeys']>(oriTargetKeys)
+  const [selectedKeys, setSelectedKeys] = React.useState<ITransferProps['selectedKeys']>([])
+  const handleChange: ITransferProps['onChange'] = (nextTargetKeys) => {
     setTargetKeys(nextTargetKeys)
   }
 
-  const handleSelectChange = (sourceSelectedKeys, targetSelectedKeys) => {
+  const handleSelectChange: ITransferProps['onSelectChange'] = (sourceSelectedKeys, targetSelectedKeys) => {
     setSelectedKeys([...sourceSelectedKeys, ...targetSelectedKeys])
   }
 
@@ -29,7 +30,7 @@ const Demo: React.FC = () => {
     height: '400px',
   }
 
-  const noDataContent = ({ direction }) => {
+  const noDataContent: ITransferProps['noDataContent'] = ({ direction }) => {
     if (direction === 'left') {
       return <div>Source is empty~</div>
     } else {
