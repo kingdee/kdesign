@@ -9,9 +9,10 @@ title: 带搜索框
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { Transfer } from '@kdcloudjs/kdesign'
+import type { ITransferProps, ITransferRef } from '@kdcloudjs/kdesign'
 
 const Demo: React.FC = () => {
-  const mockData = []
+  const mockData: ITransferProps['dataSource'] = []
   for (let i = 1; i < 20; i++) {
     mockData.push({
       key: i.toString(),
@@ -22,17 +23,21 @@ const Demo: React.FC = () => {
   }
   const oriTargetKeys = mockData.filter((item) => +item.key % 3 >= 1).map((item) => item.key)
 
-  const [targetKeys, setTargetKeys] = React.useState(oriTargetKeys)
-  const [selectedKeys, setSelectedKeys] = React.useState<Array<TransferItem>>([])
-  const handleChange = (nextTargetKeys) => {
+  const [targetKeys, setTargetKeys] = React.useState<ITransferProps['targetKeys']>(oriTargetKeys)
+  const [selectedKeys, setSelectedKeys] = React.useState<ITransferProps['selectedKeys']>([])
+  const transerDom = React.useRef<ITransferRef>(null)
+  React.useEffect(() => {
+    transerDom.current?.clearSearch()
+  }, [])
+  const handleChange: ITransferProps['onChange'] = (nextTargetKeys) => {
     setTargetKeys(nextTargetKeys)
   }
 
-  const handleSelectChange = (sourceSelectedKeys, targetSelectedKeys) => {
+  const handleSelectChange: ITransferProps['onSelectChange'] = (sourceSelectedKeys, targetSelectedKeys) => {
     setSelectedKeys([...sourceSelectedKeys, ...targetSelectedKeys])
   }
 
-  const filterOption = (inputValue, option) => {
+  const filterOption: ITransferProps['filterOption'] = (inputValue, option) => {
     return option.title.includes(inputValue)
   }
 

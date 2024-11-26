@@ -94,6 +94,7 @@ export { default as Tooltip } from './tooltip'
 export { default as Tabs } from './tabs'
 
 export { default as Transfer } from './transfer'
+export type { TransferProps as ITransferProps, ITransferRef } from './transfer'
 
 export { default as Tree } from './tree'
 

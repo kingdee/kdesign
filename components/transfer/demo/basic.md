@@ -11,36 +11,32 @@ title: 基本用法
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { Transfer } from '@kdcloudjs/kdesign'
-import type { TransferItem } from '@kdcloudjs/kdesign'
+import type { ITransferProps } from '@kdcloudjs/kdesign'
 
-
-const Demo: React.FC = () => {
-  const mockData = []
+const Demo = () => {
+  const mockData: ITransferProps['dataSource'] = []
   for (let i = 1; i < 20; i++) {
     mockData.push({
       key: i.toString(),
       title: `选项${i}`,
       description: `选项描述${i}`,
-      disabled: i % 6 === 0,
+      disabled: i % 6 === 0
     })
   }
-  const oriTargetKeys = mockData.filter((item) => +item.key % 3 >= 1).map((item) => item.key)
-
-  const [targetKeys, setTargetKeys] = React.useState<Array<TransferItem>>(oriTargetKeys)
-  const [selectedKeys, setSelectedKeys] = React.useState<Array<TransferItem>>([])
-  const handleChange = (nextTargetKeys, direction, moveKeys) => {
+  const oriTargetKeys: ITransferProps['targetKeys'] = mockData.filter((item) => + item.key % 3 >= 1).map((item) => item.key)
+  const [targetKeys, setTargetKeys] = React.useState(oriTargetKeys)
+  const [selectedKeys, setSelectedKeys] = React.useState<ITransferProps['selectedKeys']>([])
+  const handleChange: ITransferProps['onChange'] = (nextTargetKeys, direction, moveKeys) => {
     setTargetKeys(nextTargetKeys)
     console.log('targetKeys: ', nextTargetKeys)
     console.log('direction: ', direction)
     console.log('moveKeys: ', moveKeys)
   }
-
-  const handleSelectChange = (sourceSelectedKeys, targetSelectedKeys) => {
+  const handleSelectChange: ITransferProps['onSelectChange'] = (sourceSelectedKeys, targetSelectedKeys) => {
     setSelectedKeys([...sourceSelectedKeys, ...targetSelectedKeys])
     console.log('sourceSelectedKeys: ', sourceSelectedKeys)
     console.log('targetSelectedKeys: ', targetSelectedKeys)
   }
-
   return (
     <Transfer
       dataSource={mockData}
@@ -49,7 +45,9 @@ const Demo: React.FC = () => {
       onChange={handleChange}
       onSelectChange={handleSelectChange}
       render={(item) => item.title}
-      style={{ marginBottom: 16 }}
+      style={{
+        marginBottom: 16
+      }}
     />
   )
 }

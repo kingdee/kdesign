@@ -1,6 +1,6 @@
 import Transfer from './transfer'
 
-export { TransferProps } from './transfer'
+export { TransferProps, ITransferRef } from './transfer'
 
 export { TransferListProps } from './list'
 

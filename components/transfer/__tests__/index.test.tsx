@@ -1,6 +1,6 @@
 import React from 'react'
-import { render, mount } from 'enzyme'
-import Transfer, { TransferItem, TransferRenderParam } from '../index'
+import { render, mount, ReactWrapper } from 'enzyme'
+import Transfer, { TransferItem, TransferRenderParam, ITransferRef } from '../index'
 import Operation from '../operation'
 import ConfigProvider from '../../config-provider/index'
 import Button from '../../button'
@@ -10,7 +10,7 @@ import TransferList from '../list'
 import mountTest from '../../../tests/shared/mountTest'
 import { act } from 'react-dom/test-utils'
 
-const headerText = (wrapper: any, index = 0) => {
+const headerText = (wrapper: ReactWrapper, index = 0) => {
   const text = wrapper
     .find(TransferList)
     .at(index)
@@ -164,7 +164,7 @@ describe('Transfer', () => {
   // 5.displayName
   it('should have displayName static property', () => {
     const wrapper = mount(<Transfer dataSource={[]}></Transfer>)
-    expect((wrapper.type() as any).displayName).toBe('Transfer')
+    expect((wrapper.type() as React.ComponentType).displayName).toBe('Transfer')
   })
 
   // #region 6.API
@@ -449,7 +449,7 @@ describe('Transfer', () => {
   // 7.methods
   // clearSearch
   it('should clear keywords at correct position when using "clearSearch" method', () => {
-    const ref = React.createRef()
+    const ref = React.createRef<ITransferRef>()
     const wrapper = mount(<Transfer ref={ref} showSearch={true} {...listCommonProps} />)
     // clear left
     wrapper
@@ -458,7 +458,7 @@ describe('Transfer', () => {
       .simulate('change', { target: { value: '123' } })
     expect(wrapper.find('.kd-input').at(0).prop('value')).toEqual('123')
     act(() => {
-      ;(ref.current as any).clearSearch('left')
+      ref.current?.clearSearch('left')
     })
     wrapper.update()
     expect(wrapper.find('.kd-input').at(0).prop('value')).toEqual('')
@@ -469,7 +469,7 @@ describe('Transfer', () => {
       .simulate('change', { target: { value: '123' } })
     expect(wrapper.find('.kd-input').at(1).prop('value')).toEqual('123')
     act(() => {
-      ;(ref.current as any).clearSearch('right')
+      ref.current?.clearSearch('right')
     })
     wrapper.update()
     expect(wrapper.find('.kd-input').at(1).prop('value')).toEqual('')
@@ -485,7 +485,7 @@ describe('Transfer', () => {
     expect(wrapper.find('.kd-input').at(0).prop('value')).toEqual('123')
     expect(wrapper.find('.kd-input').at(1).prop('value')).toEqual('456')
     act(() => {
-      ;(ref.current as any).clearSearch()
+      ref.current?.clearSearch()
     })
     wrapper.update()
     expect(wrapper.find('.kd-input').at(0).prop('value')).toEqual('')

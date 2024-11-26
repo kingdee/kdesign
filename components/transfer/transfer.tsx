@@ -1,6 +1,6 @@
 import React, { useContext, useState, useImperativeHandle, useRef } from 'react'
 import classNames from 'classnames'
-import List, { TransferListProps } from './list'
+import List, { TransferListProps, ListRef } from './list'
 import Operation from './operation'
 import ConfigContext from '../config-provider/ConfigContext'
 import { getCompProps } from '../_utils'
@@ -13,7 +13,7 @@ export interface TransferProps {
   prefixCls?: string // css prefix前缀
   className?: string
   disabled?: boolean // 是否禁用
-  dataSource: TransferItem[] // 源数据
+  dataSource?: TransferItem[] // 源数据
   targetKeys?: string[] // 右穿梭框的数据
   selectedKeys?: string[] // 选择的数据
   render?: TransferRender // 穿梭框行渲染函数
@@ -37,7 +37,11 @@ export interface TransferProps {
   footer?: (props: TransferListProps) => React.ReactNode // 是否采用自定义渲染底部
 }
 
-const InternalTransfer = (props: TransferProps, ref: any) => {
+export interface ITransferRef {
+  clearSearch: (position?: 'left' | 'right') => void
+}
+
+const InternalTransfer = (props: TransferProps, ref: React.Ref<ITransferRef>) => {
   const { getPrefixCls, prefixCls, compDefaultProps: userDefaultProps, locale } = useContext(ConfigContext)
   const transferProps = getCompProps('Transfer', userDefaultProps, props) // 获取穿梭框props
   const {
@@ -84,8 +88,8 @@ const InternalTransfer = (props: TransferProps, ref: any) => {
   const [targetSelectedKeys, setTargetSelectedKeys] = useState(
     selectedKeys.filter((key: string) => targetKeys.indexOf(key) > -1),
   )
-  const leftListRef = useRef(null)
-  const rightListRef = useRef(null)
+  const leftListRef = useRef<ListRef>(null)
+  const rightListRef = useRef<ListRef>(null)
   const leftActive = targetSelectedKeys.length > 0
   const rightActive = sourceSelectedKeys.length > 0
   const mergedPagination = !children && pagination
@@ -102,11 +106,11 @@ const InternalTransfer = (props: TransferProps, ref: any) => {
 
   const clearSearch = (position: string | undefined) => {
     if (position === 'left' || position === undefined) {
-      ;(leftListRef?.current as any)?.onClear()
+      leftListRef?.current?.onClear()
     }
 
     if (position === 'right' || position === undefined) {
-      ;(rightListRef?.current as any)?.onClear()
+      rightListRef?.current?.onClear()
     }
   }
 
@@ -335,7 +339,7 @@ const InternalTransfer = (props: TransferProps, ref: any) => {
   )
 }
 
-const Transfer = React.forwardRef<unknown, TransferProps>(InternalTransfer)
+const Transfer = React.forwardRef<ITransferRef, TransferProps>(InternalTransfer)
 Transfer.displayName = 'Transfer'
 
 export default Transfer

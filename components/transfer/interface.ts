@@ -9,7 +9,7 @@ export type RenderResult = React.ReactElement | RenderResultObject | string | nu
 
 export interface TransferItem {
   key: string
-  title?: string
+  title: string
   description?: string
   disabled?: boolean
   [name: string]: any

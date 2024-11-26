@@ -46,7 +46,11 @@ export interface TransferListProps {
   pagination?: PaginationType
 }
 
-const ITransferList = (props: TransferListProps, ref: any) => {
+export interface ListRef {
+  onClear: () => void
+}
+
+const ITransferList = (props: TransferListProps, ref: React.Ref<ListRef>) => {
   const {
     prefixCls,
     dataSource,
@@ -281,7 +285,7 @@ const ITransferList = (props: TransferListProps, ref: any) => {
   )
 }
 
-const TransferList = React.forwardRef<unknown, TransferListProps>(ITransferList)
+const TransferList = React.forwardRef<ListRef, TransferListProps>(ITransferList)
 
 TransferList.defaultProps = {
   dataSource: [],
