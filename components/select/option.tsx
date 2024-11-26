@@ -57,11 +57,13 @@ const InternalOption: React.ForwardRefRenderFunction<unknown, ISelectOptionProps
   })
   const handleClick = (e: React.MouseEvent<HTMLDivElement>) => {
     e.preventDefault()
+    let newVal = isSelected
     if (optionProps.disabled || value === undefined) return
     if (isMultiple) {
-      setSelected(!isSelected)
+      newVal = !isSelected
+      setSelected(newVal)
     }
-    onChangeSelect && onChangeSelect(value, children, isSelected)
+    onChangeSelect && onChangeSelect(value, children, newVal)
   }
   const handleOnMouseEnter = () => {
     onChangeActiveIndex && onChangeActiveIndex(index)
