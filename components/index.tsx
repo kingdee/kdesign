@@ -100,6 +100,7 @@ export { default as Steps, Step } from './steps'
 export type { StepsProps as IStepsProps, StepProps as IStepProps } from './steps'
 
 export { default as Space } from './space'
+export type { ISpaceProps } from './space'
 
 export { default as SplitPanel } from './split-panel'
 
