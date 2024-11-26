@@ -101,6 +101,7 @@ export { default as Spin } from './spin'
 export { default as Timeline } from './timeline'
 
 export { default as Tooltip } from './tooltip'
+export type { TooltipProps as ITooltipProps } from './tooltip'
 
 export { default as Tabs } from './tabs'
 
