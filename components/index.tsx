@@ -138,6 +138,7 @@ export { default as CityPicker } from './city-picker'
 export { default as Anchor } from './anchor'
 
 export { default as Avatar } from './avatar'
+export type { IAvatarProps } from './avatar'
 
 export { default as Slider } from './slider'
 

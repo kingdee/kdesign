@@ -1,4 +1,4 @@
-import React, { FunctionComponentElement, useContext } from 'react'
+import React, { FunctionComponentElement, useContext, RefObject, createRef } from 'react'
 import classNames from 'classnames'
 import ConfigContext from '../config-provider/ConfigContext'
 import { tuple } from '../_utils/type'
@@ -29,7 +29,7 @@ export interface AvatarProps {
   onError?: () => boolean
 }
 
-const InternalAvatar = (props: AvatarProps, ref: unknown): FunctionComponentElement<any> => {
+const InternalAvatar = (props: AvatarProps, ref: unknown): FunctionComponentElement<AvatarProps> => {
   const { getPrefixCls, prefixCls, compDefaultProps: userDefaultProps } = useContext(ConfigContext)
   const avatarProps = getCompProps('Avatar', userDefaultProps, props)
 
@@ -62,7 +62,7 @@ const InternalAvatar = (props: AvatarProps, ref: unknown): FunctionComponentElem
   const [mounted, setMounted] = React.useState(false)
 
   // ref
-  const avatarRef = (ref as any) || React.createRef<HTMLElement>()
+  const avatarRef: RefObject<HTMLElement> = (ref as RefObject<HTMLElement>) || createRef<HTMLElement>()
   const avatarChildrenRef = React.useRef<HTMLElement>()
 
   // class
