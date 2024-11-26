@@ -66,16 +66,20 @@ const Space: React.FC<SpaceProps> = (props) => {
     [`${prefixCls}-wrap`]: wrap,
   })
 
-  const renderItems: (children: React.ReactElement) => React.ReactNode[] = (children) => {
-    return React.Children.map(children, (child: any) => {
-      if (child?.type) {
+  const renderItems: (children: React.ReactNode) => React.ReactNode[] = (children) => {
+    const result: React.ReactNode[] = []
+    React.Children.forEach(children, (child) => {
+      if (React.isValidElement(child)) {
         if (typeof child.type === 'symbol') {
-          return renderItems(child.props.children)
+          result.push(...renderItems(child.props.children))
+        } else {
+          result.push(child)
         }
-        return child
+      } else if (child) {
+        result.push(<span>{child}</span>)
       }
-      if (child) return <span>{child}</span>
     })
+    return result
   }
 
   const Items = renderItems(children)
