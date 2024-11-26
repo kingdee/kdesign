@@ -5,7 +5,7 @@ import Modal from '../modal'
 import Icon from '../icon'
 import Image from '../image'
 import Button from '../button'
-import DrawingBoard from './drawingBoard'
+import DrawingBoard, { SignatureHistoryItem } from './drawingBoard'
 import ConfigContext from '../config-provider/ConfigContext'
 import { getCompProps } from '../_utils'
 import { useResizeObserver } from '../_utils/hooks'
@@ -42,6 +42,15 @@ export interface ISignatureProps {
   onEnd?: () => void
   getSignatureData?: (dataUrl: string) => void
   onClose?: () => void
+}
+
+interface IModalBodyRef {
+  getCanvasRef: () => HTMLCanvasElement
+  getCanvasWrapperRef: () => HTMLDivElement
+  saveSignatureToHistory: () => void
+  signatureHistory: SignatureHistoryItem[]
+  setSignatureHistory: (item: SignatureHistoryItem[]) => void
+  setCurrentHistoryIndex: (index: number) => void
 }
 
 const Signature = (props: ISignatureProps): FunctionComponentElement<ISignatureProps> => {
@@ -82,7 +91,7 @@ const Signature = (props: ISignatureProps): FunctionComponentElement<ISignatureP
   const [isFullScreen, setIsFullScreen] = useState<boolean>(false)
   const isFirstSignatureRef = useRef(true)
   const modalRef = useRef()
-  const modalBodyRef = useRef() as any
+  const modalBodyRef = useRef<IModalBodyRef>()
   const triggerRef = useRef() as RefObject<HTMLDivElement>
   const signaturePadRef = useRef<SignaturePad | null>()
 
@@ -92,17 +101,17 @@ const Signature = (props: ISignatureProps): FunctionComponentElement<ISignatureP
   }
 
   const setJpegBgColor = () => {
-    const canvas = modalBodyRef.current.getCanvasRef()
-    const ctx = canvas.getContext('2d')
-    ctx.globalCompositeOperation = 'destination-over'
-    ctx.fillStyle = backgroundColor
-    ctx.fillRect(0, 0, canvas.width, canvas.height)
+    const canvas = modalBodyRef?.current?.getCanvasRef()
+    const ctx = canvas?.getContext('2d')
+    ctx!.globalCompositeOperation = 'destination-over'
+    ctx!.fillStyle = backgroundColor
+    ctx!.fillRect(0, 0, canvas!.width, canvas!.height)
   }
 
   const handleModalOk = () => {
     const type = typeMapping[dataUrlType as DataUrlType] || ''
     if (type === 'image/jpeg') setJpegBgColor()
-    const result = signaturePadRef.current?.toDataURL(type)
+    const result = signaturePadRef?.current?.toDataURL(type)
     result && setDataUrl(result)
     getSignatureData && getSignatureData(result)
     signaturePadRef.current?.clear()
@@ -123,13 +132,13 @@ const Signature = (props: ISignatureProps): FunctionComponentElement<ISignatureP
 
   const handleResize = (rect: { width: number; height: number }) => {
     const { width, height } = rect
-    const canvas = modalBodyRef.current.getCanvasRef()
-    const originalWidth = canvas.width
-    const originalHeight = canvas.height
+    const canvas = modalBodyRef?.current?.getCanvasRef()
+    const originalWidth = canvas!.width
+    const originalHeight = canvas!.height
     const newWidth = width - 40
     const newHeight = height - 142
-    canvas.width = newWidth
-    canvas.height = newHeight
+    canvas!.width = newWidth
+    canvas!.height = newHeight
     if (isFirstSignatureRef.current) return
 
     const tempData = signaturePadRef.current?.toData()
@@ -169,7 +178,7 @@ const Signature = (props: ISignatureProps): FunctionComponentElement<ISignatureP
       })
       signaturePadRef.current!.addEventListener('endStroke', () => {
         isFirstSignatureRef.current = false
-        modalBodyRef.current.saveSignatureToHistory()
+        modalBodyRef?.current?.saveSignatureToHistory()
         onEnd && onEnd()
       })
     }
@@ -182,12 +191,12 @@ const Signature = (props: ISignatureProps): FunctionComponentElement<ISignatureP
   useEffect(() => {
     if (modalVisible) {
       signaturePadRef.current?.on()
-      modalBodyRef.current.saveSignatureToHistory()
+      modalBodyRef?.current?.saveSignatureToHistory()
     } else {
       signaturePadRef.current?.off()
       signaturePadRef.current?.clear()
-      modalBodyRef.current.setSignatureHistory([])
-      modalBodyRef.current.setCurrentHistoryIndex(-1)
+      modalBodyRef?.current?.setSignatureHistory([])
+      modalBodyRef?.current?.setCurrentHistoryIndex(-1)
       isFirstSignatureRef.current = true
     }
   }, [modalVisible])

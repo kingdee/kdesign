@@ -9,18 +9,19 @@ order: 1
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { Signature } from '@kdcloudjs/kdesign'
+import type { ISignatureProps } from '@kdcloudjs/kdesign'
 
 const Demo: React.FC = () => {
-  const getSignatureData = (dataUrl: string) => {
+  const getSignatureData: ISignatureProps['getSignatureData'] = (dataUrl: string) => {
     console.log('dataUrl===>', dataUrl)
   }
-  const handleClear = () => {
+  const handleClear: ISignatureProps['onClear'] = () => {
     console.log('执行清空')
   }
-  const undo = () => {
+  const undo: ISignatureProps['undo'] = () => {
     console.log('undo')
   }
-  const redo = () => {
+  const redo: ISignatureProps['redo'] = () => {
     console.log('redo')
   }
   return (
