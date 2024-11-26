@@ -863,7 +863,11 @@ const InternalSelect: React.ForwardRefRenderFunction<ISelectProps<SelectValue>> 
         if (!item) return
         const key = item.props?.value || item.value
         const label = item.props?.children || item.label
-        handleOption(key, label, true)
+        let flag = true
+        if (isMultiple) {
+          flag = !mulOptions?.some((item: any) => item.value === key)
+        }
+        handleOption(key, label, flag)
         // search
         if (searchValue) {
           setActiveIndex(
