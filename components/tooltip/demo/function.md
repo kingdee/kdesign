@@ -5,10 +5,11 @@ order: 0
 
 显示隐藏的回调, 打开控制台查看。
 
-```jsx
+```tsx
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { Tooltip, Button } from '@kdcloudjs/kdesign'
+import type { ITooltipProps } from '@kdcloudjs/kdesign'
 
 const Demo: React.FC = () => {
   const [test, setTest] = React.useState(0)
@@ -17,7 +18,7 @@ const Demo: React.FC = () => {
     console.log('test', t)
     setTest(t)
   }
-  const onVisibleChange = (visible, t) => {
+  const onVisibleChange: ITooltipProps['onVisibleChange'] = (visible, t) => {
     console.log('onVisibleChange', visible, t, test)
   }
 
