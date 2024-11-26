@@ -95,6 +95,7 @@ export { default as Rate } from './rate'
 export { default as Select } from './select'
 
 export { default as Switch } from './switch'
+export type { ISwitchProps } from './switch'
 
 export { default as Steps, Step } from './steps'
 export type { StepsProps as IStepsProps, StepProps as IStepProps } from './steps'
