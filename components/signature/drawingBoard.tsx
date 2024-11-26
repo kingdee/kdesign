@@ -1,11 +1,11 @@
-import React, { useState, useEffect, useRef, forwardRef, useImperativeHandle, RefObject } from 'react'
+import React, { useState, useEffect, useRef, forwardRef, useImperativeHandle, RefObject, useContext } from 'react'
 import Icon from '../icon'
 import SignaturePad from './utils/signature_pad'
+import ConfigContext from '../config-provider/ConfigContext'
 import classNames from 'classnames'
 
 export interface DrawingBoardProps {
   prefixCls: string
-  signatureLangMsg: any
   isEmpty: boolean
   setDataUrl: (dataUrl: string) => void
   setIsEmpty: (value: boolean) => void
@@ -15,11 +15,13 @@ export interface DrawingBoardProps {
   onClear?: () => void
 }
 
-interface SignatureHistoryItem {
+export interface SignatureHistoryItem {
   data: string
 }
 const DrawingBoard = forwardRef<unknown, DrawingBoardProps>((props, ref) => {
-  const { prefixCls, isEmpty, setIsEmpty, onClear, signaturePad, undo, redo, signatureLangMsg } = props
+  const { locale } = useContext(ConfigContext)
+  const signatureLangMsg = locale.getCompLangMsg({ componentName: 'Signature' })
+  const { prefixCls, isEmpty, setIsEmpty, onClear, signaturePad, undo, redo } = props
   const [currentHistoryIndex, setCurrentHistoryIndex] = useState<number>(-1)
   const [signatureHistory, setSignatureHistory] = useState<SignatureHistoryItem[]>([])
   const canvasRef = useRef() as RefObject<HTMLCanvasElement>

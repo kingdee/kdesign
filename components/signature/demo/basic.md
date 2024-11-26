@@ -7,12 +7,13 @@ order: 0
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { Signature } from '@kdcloudjs/kdesign'
+import type { ISignatureProps } from '@kdcloudjs/kdesign'
 
 const Demo: React.FC = () => {
-  const getPng = (data: string) => {
+  const getPng: ISignatureProps['getSignatureData'] = (data: string) => {
     console.log('getPng===>', data)
   }
-  const handleClear = () => {
+  const handleClear: ISignatureProps['onClear'] = () => {
     console.log('执行清空')
   }
 

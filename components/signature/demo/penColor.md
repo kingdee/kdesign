@@ -9,11 +9,12 @@ order: 4
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { Signature, Radio } from '@kdcloudjs/kdesign'
+import type { ISignatureProps } from '@kdcloudjs/kdesign'
 
 const Demo: React.FC = () => {
-  const [penColor,setPenColor] = React.useState<string>('black')
+  const [penColor ,setPenColor] = React.useState<string>('black')
 
-  const handleClear = () => {
+  const handleClear: ISignatureProps['onClear'] = () => {
     console.log('执行清空')
   }
   return (
