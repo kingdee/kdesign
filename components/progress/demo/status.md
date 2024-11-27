@@ -9,28 +9,18 @@ order: 3
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { Progress } from '@kdcloudjs/kdesign'
+import type { IProgressProps } from '@kdcloudjs/kdesign'
 
 const Demo: React.FC = () => {
   const demoStyle = { marginLeft: '10px', verticalAlign: 'top' }
+  const strokeColor: IProgressProps['strokeColor'] = {
+    '0%': '#108ee9',
+    '100%': '#87d068',
+  }
   return (
     <>
-      <Progress
-        percent={60}
-        strokeColor={{
-          '0%': '#108ee9',
-          '100%': '#87d068',
-        }}
-      />
-      <Progress
-        type="circle"
-        percent={60}
-        style={demoStyle}
-        showInfo={false}
-        strokeColor={{
-          '0%': '#108ee9',
-          '100%': '#87d068',
-        }}
-      />
+      <Progress percent={60} strokeColor={strokeColor} />
+      <Progress type="circle" percent={60} style={demoStyle} showInfo={false} strokeColor={strokeColor} />
     </>
   )
 }

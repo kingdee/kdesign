@@ -33,7 +33,7 @@ const Circle: FC<CircleProps> = (props) => {
     return +percent.replace('%', '')
   }
 
-  const toArray = (symArray: any) => {
+  const toArray = (symArray: CircleProps['strokeColor']) => {
     return Array.isArray(symArray) ? symArray : [symArray]
   }
 

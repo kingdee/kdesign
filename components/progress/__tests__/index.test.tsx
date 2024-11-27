@@ -43,14 +43,14 @@ describe('Progress', () => {
   // 5.displayName
   it('should have displayName static property', () => {
     const wrapper = mount(<Progress></Progress>)
-    expect((wrapper.type() as any).displayName).toBe('Progress')
+    expect((wrapper.type() as React.ComponentType).displayName).toBe('Progress')
   })
 
   // 6. warn test
   it('warns if type is wrong', () => {
     const mockWarn = jest.fn()
     jest.spyOn(console, 'warn').mockImplementation(mockWarn)
-    const type = 'Wrong Type' as any as ProgressType
+    const type = 'Wrong Type' as ProgressType
     render(<Progress type={type} />)
     expect(mockWarn).toHaveBeenCalledTimes(1)
     expect(mockWarn.mock.calls[0][0]).toMatch("Warning: [kdesign]-progress: cannot found progress type 'Wrong Type'")

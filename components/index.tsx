@@ -70,6 +70,7 @@ export { default as Pagination } from './pagination'
 export type { IPaginationProps } from './pagination'
 
 export { default as Progress } from './progress'
+export type { ProgressProps as IProgressProps } from './progress'
 
 export { default as Popconfirm } from './popconfirm'
 

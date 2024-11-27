@@ -12,6 +12,6 @@ describe('Progress Line', () => {
 
   it('should have displayName static property', () => {
     const wrapper = mount(<Line />)
-    expect((wrapper.type() as any).displayName).toBe('Line')
+    expect((wrapper.type() as React.ComponentType).displayName).toBe('Line')
   })
 })
