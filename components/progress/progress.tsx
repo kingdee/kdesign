@@ -33,7 +33,7 @@ export interface ProgressProps {
   successIcon?: React.ReactNode
   failureIcon?: React.ReactNode
   format?: (percent: number) => React.ReactNode
-  onProcess?: <T>(p: T) => T
+  onProcess?: <T>(p: T) => void
   onFailedClick?: (percent: number, successPercent: number) => boolean
 }
 

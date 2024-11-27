@@ -10,8 +10,14 @@ export function validProgress(progress: number | undefined) {
   return progress
 }
 
-export const sortGradient = (gradients: StringGradients) => {
-  let tempArr: any[] = []
+type GradientStop = {
+  key: number
+  value: string
+}
+
+export const sortGradient = (gradients: StringGradients): string => {
+  let tempArr: GradientStop[] = []
+
   Object.keys(gradients).forEach((key) => {
     const formattedKey = parseFloat(key.replace(/%/g, ''))
     if (!isNaN(formattedKey)) {
@@ -21,7 +27,9 @@ export const sortGradient = (gradients: StringGradients) => {
       })
     }
   })
+
   tempArr = tempArr.sort((a, b) => a.key - b.key)
+
   return tempArr.map(({ key, value }) => `${value} ${key}%`).join(', ')
 }
 
