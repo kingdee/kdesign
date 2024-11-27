@@ -117,12 +117,8 @@ describe('ColorPicker', () => {
     ).toBeFalsy()
 
     // className
-    expect(
-      underlineWrapper.find('.kd-color-picker-container .kd-color-picker-input').at(2).hasClass('my-color-picker'),
-    ).toBeTruthy()
-    expect(
-      borderedWrapper.find('.kd-color-picker-container .kd-color-picker-input').at(2).hasClass('my-color-picker'),
-    ).toBeTruthy()
+    expect(underlineWrapper.find('.kd-color-picker-container').hasClass('my-color-picker')).toBeTruthy()
+    expect(borderedWrapper.find('.kd-color-picker-container').hasClass('my-color-picker')).toBeTruthy()
 
     // placeholder
     expect(underlineWrapper.find('.kd-input-underline').prop('placeholder')).toEqual('#')
@@ -138,8 +134,8 @@ describe('ColorPicker', () => {
     expect(underlineWrapper.find('.kd-input-wrapper-underline').prop('style')).toBeFalsy()
     underlineWrapper.setProps({ style: { height: '40px' } })
     underlineWrapper.update()
-    expect(underlineWrapper.find('.kd-input-wrapper-underline').prop('style')).toEqual({ height: '40px' })
-    expect(underlineWrapper.find('.kd-input-wrapper-underline')).toHaveStyle('height', '40px')
+    expect(underlineWrapper.find('.kd-color-picker-container').prop('style')).toEqual({ height: '40px' })
+    expect(underlineWrapper.find('.kd-color-picker-container')).toHaveStyle('height', '40px')
 
     // default prefixIcon
     expect(underlineWrapper.find('.kd-input-prefix').find('.kd-color-picker-icon')).toHaveClassName(
@@ -344,6 +340,11 @@ describe('ColorPicker', () => {
     defaultOpenWrapper.update()
     expect(defaultOpenWrapper.find('.kd-color-picker-panel-historical-color-box')).not.toExist()
     expect(defaultOpenWrapper.find('.kd-color-picker-panel-color-box-title')).not.toExist()
+
+    // popperClassName
+    defaultOpenWrapper.setProps({ popperClassName: 'color-picker-test' })
+    defaultOpenWrapper.update()
+    expect(defaultOpenWrapper.find('.color-picker-test')).toExist()
 
     // showColorTransfer
     defaultOpenWrapper.setProps({ showColorTransfer: false })
