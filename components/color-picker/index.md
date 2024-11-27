@@ -25,6 +25,7 @@ subtitle: 颜色选择器
 | historicalColor | 用户自定义的最近使用颜色，数组中支持十六进制、RGB 、HSB 、HSL 或者颜色英文名称，同时支持透明度，如:\['blue', '#0000FF', '#0000FFEE', 'RGB(0,0,255)', 'RGBA(0,0,200,0.5)', 'HSL(240,100%,50%)', 'HSLA(240,100%,50%,0.5)', 'HSB(240,100%,100%)', 'HSBA(240,100%,100%,0.5)'\] | string[] | - | 1.8.16 |
 | panelFormatConfig | 配置颜色面板下拉颜色格式选项，**注意：default 的值必须是 show 中存在的值** | {show:('HEX' \| 'RGB' \| 'HSB' \| 'HSL')[], default:'HEX' \| 'RGB' \| 'HSB' \| 'HSL'} | { show: \['HEX', 'HSB', 'RGB', 'HSL'\], default: 'HEX' } | 1.8.16 |
 | placeholder | 输入框内容为空时的输入提示 | string | # | 1.7.0 |
+| popperClassName | 颜色选择面板的类名 | string | # | 1.8.21 |
 | presetColor | 用户自定义的预设颜色，数组中支持十六进制、RGB 、HSB 、HSL 或者颜色英文名称，同时支持透明度，如:\['blue', '#0000FF', '#0000FFEE', 'RGB(0,0,255)', 'RGBA(0,0,200,0.5)', 'HSL(240,100%,50%)', 'HSLA(240,100%,50%,0.5)', 'HSB(240,100%,100%)', 'HSBA(240,100%,100%,0.5)'\] | string[] | - | 1.8.16 |
 | pure | 纯色块模式 | boolean | false | 1.8.16 |
 | switchName | 设置功能色开关的名称，**注意：如自定义的名称需支持国际化需要提供 internationalName** | { name: string; internationalName?: string } | { name: '跟随主题色'; internationalName:'followFunctionalColor' } | 1.7.0 |
