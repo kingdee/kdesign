@@ -15,6 +15,7 @@ if (
 }
 /* @remove-on-es-build-end */
 export { default as Alert } from './alert'
+export type { IAlertProps } from './alert'
 
 export { default as Breadcrumb } from './breadcrumb'
 

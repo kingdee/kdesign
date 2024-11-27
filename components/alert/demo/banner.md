@@ -9,22 +9,24 @@ order: 4
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { InputNumber, Input, Button, Alert } from '@kdcloudjs/kdesign'
+import type { IAlertProps } from '@kdcloudjs/kdesign'
 
 const Demo: React.FC = () => {
-  const [delayTime, setDelayTime] = React.useState<number>(0)
-  const [banner, setBanner] = React.useState<boolean>(false)
-  const ref = React.createRef()
-  const inputRef = React.createRef()
+  const [delayTime, setDelayTime] = React.useState<IAlertProps['delayOffTime']>(0)
+  const [banner, setBanner] = React.useState<IAlertProps['banner']>(false)
+  const ref = React.createRef<HTMLInputElement>()
+  const inputRef = React.createRef<HTMLInputElement>()
   const map = {
     success: '成功提示',
     warning: '警告提示',
     error: '错误提示',
     info: '信息通知',
   }
-  const getMessage = (type) => {
+  type Itype = Exclude<IAlertProps['type'], undefined>
+  const getMessage = (type: Itype) => {
     return `这是${map[type]}类型的反馈浮层`
   }
-  const [msg, setMsg] = React.useState<string>(getMessage('success'))
+  const [msg, setMsg] = React.useState<IAlertProps['message']>(getMessage('success'))
   const demoButtonStyle = { margin: '0px 8px 8px 0' }
   const inputStyle = { marginBottom: 8, marginRight: 8, width: 230 }
   const handleTimeClick = () => {
@@ -34,7 +36,7 @@ const Demo: React.FC = () => {
     inputRef.current &&
       setMsg((msg) => {
         console.log(msg)
-        return inputRef.current.value || ''
+        return inputRef.current?.value || ''
       })
   }
   const handleClick = () => {

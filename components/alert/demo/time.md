@@ -9,17 +9,19 @@ order: 2
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { Alert, InputNumber, Button } from '@kdcloudjs/kdesign'
+import type { IAlertProps } from '@kdcloudjs/kdesign'
 
 const Demo: React.FC = () => {
-  const [delayTime, setDelayTime] = React.useState<number>(0)
-  const ref = React.useRef(null)
+  type Itype = Exclude<IAlertProps['type'], undefined>
+  const [delayTime, setDelayTime] = React.useState<IAlertProps['delayOffTime']>(0)
+  const ref = React.useRef<HTMLInputElement>(null)
   const map = {
     success: '成功提示',
     warning: '警告提示',
     error: '错误提示',
     info: '信息通知',
   }
-  const getMessage = (type) => {
+  const getMessage = (type: Itype) => {
     return `这是${map[type]}类型的反馈浮层`
   }
   const demoButtonStyle = { margin: '0px 8px 8px 0' }
@@ -39,7 +41,7 @@ const Demo: React.FC = () => {
       <Button type="primary" style={demoButtonStyle} onClick={handleTimeClick}>
         设置反馈浮层消息持续时间
       </Button>
-      {Object.keys(map).map((type) => {
+      {Object.keys(map).map((type: Itype) => {
         return <Alert key={type} message={getMessage(type)} type={type} delayOffTime={delayTime} />
       })}
     </>
