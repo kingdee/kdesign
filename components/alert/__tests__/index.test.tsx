@@ -25,7 +25,7 @@ describe('Alert', () => {
   it('warns if type is wrong', () => {
     const mockWarn = jest.fn()
     jest.spyOn(console, 'warn').mockImplementation(mockWarn)
-    const type = 'who am I' as any as AlertType
+    const type = 'who am I' as AlertType
     render(<Alert type={type} delayOffTime={0} />)
     expect(mockWarn).toHaveBeenCalledTimes(1)
     expect(mockWarn.mock.calls[0][0]).toMatch("Warning: [kdesign]-alert: cannot found alert type 'who am I'")
@@ -46,7 +46,7 @@ describe('Alert', () => {
   // 5. displayName
   it('should have displayName static property', () => {
     const wrapper = mount(<Alert type={'success'} delayOffTime={0}></Alert>)
-    expect((wrapper.type() as any).displayName).toBe('Alert')
+    expect((wrapper.type() as React.ComponentType).displayName).toBe('Alert')
   })
 
   // 6.API Test

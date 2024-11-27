@@ -9,19 +9,20 @@ order: 3
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { Alert, InputNumber, Button } from '@kdcloudjs/kdesign'
-import type {BannerOffsetType} from '@kdcloudjs/kdesign'
+import type { IAlertProps } from '@kdcloudjs/kdesign'
 import { debounce } from 'lodash'
 
 const Demo: React.FC = () => {
-  const [bannerOffset, setBannerOffset] = React.useState<BannerOffsetType>([0, 0])
-  const [banner, setBanner] = React.useState<boolean>(false)
+  type Itype = Exclude<IAlertProps['type'], undefined>
+  const [bannerOffset, setBannerOffset] = React.useState<Exclude<IAlertProps['bannerOffset'], undefined>>([0, 0])
+  const [banner, setBanner] = React.useState<IAlertProps['banner']>(false)
   const map = {
     success: '成功提示',
     warning: '警告提示',
     error: '错误提示',
     info: '信息通知',
   }
-  const getMessage = (type) => {
+  const getMessage = (type: Itype) => {
     return `这是${map[type]}类型的反馈浮层`
   }
   const demoButtonStyle = { margin: '0px 8px 8px 0' }

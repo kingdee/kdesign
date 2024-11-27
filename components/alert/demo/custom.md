@@ -9,46 +9,50 @@ order: 5
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { Alert, Icon } from '@kdcloudjs/kdesign'
+import type { IAlertProps } from '@kdcloudjs/kdesign'
 
 const Demo: React.FC = () => {
   const [msgIdx, setMsgIdx] = React.useState<number>(0)
-  const [msg, setMsg] = React.useState<string>('')
-  const messages = ['这是第一条信息', '这是第二条信息', '这是第三条信息'].map(
+  const [msg, setMsg] = React.useState<IAlertProps['message']>('')
+  const messages: Array<IAlertProps['message']> = ['这是第一条信息', '这是第二条信息', '这是第三条信息'].map(
     (msg) => `${msg}, 可以自定义设置显示的信息标识图标、关闭图标、关闭图标旁边区域的位置元素`,
   )
-  const icon = (
+  const icon: IAlertProps['icon'] = (
     <div
       style={{
         display: 'flex',
-      }}>
+      }}
+    >
       {' '}
       <Icon type={'right'} />{' '}
     </div>
   )
-  const closeNode = (
+  const closeNode: IAlertProps['closeNode'] = (
     <div
       onClick={() => setMsgIdx(-1)}
       style={{
         marginRight: 10,
         cursor: 'pointer',
-      }}>
+      }}
+    >
       <Icon type={'close-solid'} />
     </div>
   )
-  const handleMessage = (direction) => {
+  const handleMessage = (direction: number) => {
     setMsgIdx((idx) => {
       const newIdx = idx + direction
       return newIdx >= 0 ? (newIdx < messages.length ? newIdx : idx) : idx
     })
   }
-  const extra = (
+  const extra: IAlertProps['extra'] = (
     <div>
       <span
         style={{
           marginRight: 10,
           cursor: 'pointer',
         }}
-        onClick={() => setMsg(messages[msgIdx])}>
+        onClick={() => setMsg(messages[msgIdx])}
+      >
         查看
       </span>
       <span
@@ -56,7 +60,8 @@ const Demo: React.FC = () => {
           marginRight: 10,
           cursor: 'pointer',
         }}
-        onClick={() => setMsgIdx(-1)}>
+        onClick={() => setMsgIdx(-1)}
+      >
         忽略全部
       </span>
       <span
@@ -64,7 +69,8 @@ const Demo: React.FC = () => {
         style={{
           marginRight: 5,
           cursor: 'pointer',
-        }}>
+        }}
+      >
         <Icon type={'arrow-left'} />
       </span>
       <span>{`${msgIdx + 1}/${messages.length}`}</span>
@@ -73,7 +79,8 @@ const Demo: React.FC = () => {
         style={{
           marginRight: 5,
           cursor: 'pointer',
-        }}>
+        }}
+      >
         <Icon type={'arrow-right'} />
       </span>
     </div>
