@@ -7,12 +7,11 @@ order: 2
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { Carousel, Radio } from '@kdcloudjs/kdesign'
-import type { DotPositionType } from '@kdcloudjs/kdesign'
-
+import type { ICarouselProps } from '@kdcloudjs/kdesign'
 
 const Demo: React.FC = () => {
   const carouselRef = React.useRef()
-  const [dotPosition, setDotPosition] = React.useState<DotPositionType>('bottom')
+  const [dotPosition, setDotPosition] = React.useState<ICarouselProps['dotPosition']>('bottom')
   React.useEffect(() => {
     if (!carouselRef.current) return
     carouselRef.current.getRef().parentNode.style.display = 'flex'
@@ -26,10 +25,10 @@ const Demo: React.FC = () => {
     alignItems: 'center',
     color: '#212121',
   }
-  const beforeChange = (from, to) => {
+  const beforeChange: ICarouselProps['beforeChange'] = (from, to) => {
     console.log('beforeChange', { from, to })
   }
-  const afterChange = (index) => {
+  const afterChange: ICarouselProps['afterChange'] = (index) => {
     console.log('afterChange', index)
   }
   const onChange = (event) => {
@@ -45,11 +44,7 @@ const Demo: React.FC = () => {
       </Radio.Group>
 
       <br />
-      <Carousel
-        dotPosition={dotPosition}
-        ref={carouselRef}
-        afterChange={afterChange}
-        beforeChange={beforeChange}>
+      <Carousel dotPosition={dotPosition} ref={carouselRef} afterChange={afterChange} beforeChange={beforeChange}>
         <div style={itemStyle}>
           <h3>1</h3>
         </div>

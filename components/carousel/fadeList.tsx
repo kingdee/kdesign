@@ -1,7 +1,7 @@
 import React from 'react'
 import classNames from 'classnames'
 
-type ItemType = {
+export type ItemType = {
   key: string
   item: React.ReactNode
 }
@@ -12,9 +12,9 @@ interface FadeListProps {
   currentIndex: number
   itemWidth: number
 }
-export const FadeList = React.forwardRef((props: FadeListProps, ref: any) => {
+export const FadeList = React.forwardRef((props: FadeListProps, ref: React.RefObject<HTMLUListElement>) => {
   const { items, parentPrefixCls, needAnimation, currentIndex, itemWidth } = props
-  const itemRef = React.useRef<HTMLElement>(null)
+  const itemRef = React.useRef<HTMLLIElement>(null)
   const fadeListPrefixCls = `${parentPrefixCls}-list-fade`
   const listPrefixCls = `${parentPrefixCls}-list`
 
@@ -30,7 +30,7 @@ export const FadeList = React.forwardRef((props: FadeListProps, ref: any) => {
         <li
           className={classNames(`${listPrefixCls}-item`, opacityClassName, animationClassName)}
           key={index}
-          ref={itemRef as any}
+          ref={itemRef}
           style={{ left: `${posx}px` }}
         >
           {item}
@@ -39,7 +39,7 @@ export const FadeList = React.forwardRef((props: FadeListProps, ref: any) => {
     })
   }
   return (
-    <ul className={`${listPrefixCls} ${fadeListPrefixCls}`} ref={ref as any}>
+    <ul className={`${listPrefixCls} ${fadeListPrefixCls}`} ref={ref}>
       {renderItems()}
     </ul>
   )

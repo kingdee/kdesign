@@ -10,7 +10,7 @@ export interface SlideListProps {
   items: ItemType[]
   currentIndex: number
 }
-export const SlideList = React.forwardRef((props: SlideListProps, ref: unknown) => {
+export const SlideList = React.forwardRef((props: SlideListProps, ref: React.RefObject<HTMLUListElement>) => {
   const { items, parentPrefixCls, currentIndex } = props
   const slideListPrefixCls = `${parentPrefixCls}-list-slide`
   const listPrefixCls = `${parentPrefixCls}-list`
@@ -30,7 +30,7 @@ export const SlideList = React.forwardRef((props: SlideListProps, ref: unknown) 
     })
   }
   return (
-    <ul className={`${listPrefixCls} ${slideListPrefixCls}`} ref={ref as any}>
+    <ul className={`${listPrefixCls} ${slideListPrefixCls}`} ref={ref}>
       {renderItems()}
     </ul>
   )

@@ -7,12 +7,11 @@ order: 3
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { Carousel } from '@kdcloudjs/kdesign'
-import type { DotPositionType } from '@kdcloudjs/kdesign'
-
+import type { ICarouselProps } from '@kdcloudjs/kdesign'
 
 const Demo: React.FC = () => {
   const carouselRef = React.useRef()
-  const [dotPosition, setDotPosition] = React.useState<DotPositionType>('bottom')
+  const [dotPosition] = React.useState<ICarouselProps['dotPosition']>('bottom')
   React.useEffect(() => {
     if (!carouselRef.current) return
     carouselRef.current.getRef().parentNode.style.display = 'flex'
@@ -26,7 +25,10 @@ const Demo: React.FC = () => {
     alignItems: 'center',
     color: '#212121',
   }
-  const dots = { dotsClassName: `kd-carousel-slidebar-dot`, activeDotsClassName: `kd-carousel-slidebar-dot-active` }
+  const dots: ICarouselProps['dots'] = {
+    dotsClassName: `kd-carousel-slidebar-dot`,
+    activeDotsClassName: `kd-carousel-slidebar-dot-active`,
+  }
   return (
     <div style={{ display: 'flex', flexDirection: 'column', flex: '1' }}>
       <p>隐藏面板指示点</p>
