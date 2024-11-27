@@ -5,6 +5,13 @@ export interface NotificationProps extends NoticeProps {
   placement: string
 }
 
+export interface INotificationRef {
+  add: (props: NotificationProps) => void
+  remove: (key?: React.Key) => void
+  placement: string
+  notices: NotificationProps[]
+}
+
 let seed = 0
 const now = Date.now()
 
@@ -14,7 +21,7 @@ function getUuid() {
   return `msg_${now}_${id}`
 }
 
-const Notification = React.forwardRef<unknown, NotificationProps>((props, ref) => {
+const Notification = React.forwardRef<INotificationRef, NotificationProps>((props, ref) => {
   const { placement } = props
   const [notices, setNotices] = useState<NotificationProps[]>([])
 
@@ -47,7 +54,7 @@ const Notification = React.forwardRef<unknown, NotificationProps>((props, ref) =
   }
 
   const remove = (key: React.Key) => {
-    setNotices((preNotices) => preNotices.filter((notice: any) => notice.key !== key))
+    setNotices((preNotices) => preNotices.filter((notice: NotificationProps) => notice.key !== key))
   }
 
   const onClose = (notice: NotificationProps) => {
