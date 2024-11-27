@@ -39,10 +39,12 @@ const ColorPicker: FC<Partial<IColorPickerProps>> = (props) => {
     defaultValue,
     defaultOpen,
     visible,
+    popperClassName,
     suffixIcon,
     prefixIcon,
     onChange,
     onVisibleChange,
+    ...otherProps
   } = colorPickerProps
   const [inputColorValue, setInputColorValue] = useState<string>(defaultValue || '')
   const [inputCorrectColorValue, setInputCorrectColorValue] = useState<string>('')
@@ -57,11 +59,11 @@ const ColorPicker: FC<Partial<IColorPickerProps>> = (props) => {
   const [clickedHistoricalColorIndex, setClickedHistoricalColorIndex] = useState<number>()
 
   const colorPickerPrefixCls = getPrefixCls!(prefixCls, 'color-picker')
-  const popUpLayer = getPrefixCls!(prefixCls, 'color-picker-pop')
-  const containerCls = classNames(`${colorPickerPrefixCls}-container`, {
+  const popUpLayer = classNames(getPrefixCls!(prefixCls, 'color-picker-pop'), popperClassName)
+  const containerCls = classNames(`${colorPickerPrefixCls}-container`, className, {
     [`${colorPickerPrefixCls}-container-pure`]: pure,
   })
-  const inputCls = classNames(`${colorPickerPrefixCls}-input`, className)
+  const inputCls = classNames(`${colorPickerPrefixCls}-input`)
   const inputRef = useRef<HTMLInputElement>(null)
   const showColorPickerPanel =
     showColorTransfer ||
@@ -198,7 +200,7 @@ const ColorPicker: FC<Partial<IColorPickerProps>> = (props) => {
   }, [borderType, colTypeArr, colorPickerPrefixCls, inputCorrectColorValue, value])
 
   const colorInputEle = (
-    <div className={containerCls} ref={inputRef}>
+    <div className={containerCls} ref={inputRef} style={style}>
       <Input
         borderType={pure ? 'bordered' : borderType}
         placeholder={placeholder}
@@ -206,7 +208,6 @@ const ColorPicker: FC<Partial<IColorPickerProps>> = (props) => {
         className={inputCls}
         onChange={handleChange}
         onBlur={handleBlur}
-        style={style}
         onClick={handleClick}
         prefix={
           <div onClick={handleClick} className={`${colorPickerPrefixCls}-icon-container`}>
@@ -273,7 +274,7 @@ const ColorPicker: FC<Partial<IColorPickerProps>> = (props) => {
   )
 
   const popperProps = {
-    ...colorPickerProps,
+    ...otherProps,
     popperClassName: popUpLayer,
     placement: 'bottomLeft',
     defaultVisible: showPanel,

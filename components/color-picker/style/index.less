@@ -7,6 +7,7 @@
 .@{color-picker-prefix-cls}-container {
   position: relative;
   width: @color-picker-input-sizing-width;
+  height: @color-picker-input-sizing-height;
 
   &-pure {
     width: 28px;
@@ -32,8 +33,8 @@
   }
 
   .@{color-picker-prefix-cls}-input {
-    width: @color-picker-input-sizing-width;
-    height: @color-picker-input-sizing-height;
+    height: 100%;
+    width: 100%;
     padding: 0 8px;
     border-bottom: 1px solid rgba(217, 217, 217, 1);
     font-size: @color-picker-input-font-size;
