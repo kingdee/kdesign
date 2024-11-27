@@ -33,6 +33,8 @@ export { default as ConfigProvider } from './config-provider'
 
 export { default as Carousel } from './carousel'
 
+export type { CarouselProps as ICarouselProps } from './carousel'
+
 export { default as Cascader } from './cascader'
 
 export { default as Dropdown } from './dropdown'

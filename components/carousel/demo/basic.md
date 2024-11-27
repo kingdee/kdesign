@@ -7,11 +7,10 @@ order: 0
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { Carousel } from '@kdcloudjs/kdesign'
-import type { DotPositionType } from '@kdcloudjs/kdesign'
+import type { ICarouselProps } from '@kdcloudjs/kdesign'
 
 const Demo: React.FC = () => {
   const carouselRef = React.useRef()
-  const [dotPosition, setDotPosition] = React.useState<DotPositionType>('bottom')
   React.useEffect(() => {
     if (!carouselRef.current) return
     carouselRef.current.getRef().parentNode.style.display = 'flex'
@@ -25,8 +24,9 @@ const Demo: React.FC = () => {
     alignItems: 'center',
     color: '#212121',
   }
+  const style: ICarouselProps['style'] = { display: 'flex', flexDirection: 'column', flex: '1' }
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', flex: '1' }}>
+    <div style={style}>
       <Carousel ref={carouselRef}>
         <div style={itemStyle}>
           <h3>1</h3>

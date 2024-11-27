@@ -1,6 +1,6 @@
 import React from 'react'
 import { mount, render } from 'enzyme'
-import Carousel from '../index'
+import Carousel, { CarouselProps } from '../index'
 import ConfigProvider from '../../config-provider/index'
 import { act } from 'react-dom/test-utils'
 
@@ -14,7 +14,7 @@ const itemStyle = {
   color: '#fff',
 }
 
-const props = {
+const props: CarouselProps = {
   autoplay: false,
   dotPosition: 'bottom',
   dots: false,
@@ -65,7 +65,7 @@ describe('Carousel', () => {
     const mockWarn = jest.fn()
     jest.spyOn(console, 'warn').mockImplementation(mockWarn)
     const props = {
-      dotPosition: '123',
+      dotPosition: '123' as CarouselProps['dotPosition'],
     }
     mount(<Carousel {...props} />)
     expect(mockWarn).toHaveBeenCalledTimes(1)
@@ -75,7 +75,7 @@ describe('Carousel', () => {
     const mockWarn = jest.fn()
     jest.spyOn(console, 'warn').mockImplementation(mockWarn)
     const props = {
-      effect: 'wave',
+      effect: 'wave' as CarouselProps['effect'],
     }
     mount(<Carousel {...props} />)
     expect(mockWarn).toHaveBeenCalledTimes(1)

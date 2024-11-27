@@ -7,6 +7,7 @@ order: 5
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { Carousel } from '@kdcloudjs/kdesign'
+import type { ICarouselProps } from '@kdcloudjs/kdesign'
 
 const Demo: React.FC = () => {
   const carouselRef = React.useRef()
@@ -25,30 +26,43 @@ const Demo: React.FC = () => {
     color: '#212121',
   }
 
+  const node: ICarouselProps['jumpNode'] = [
+    <div key="1" class="jump-demo">
+      上一页
+    </div>,
+    <div key="2" class="jump-demo">
+      下一页
+    </div>,
+  ]
+
   return (
     <div style={{ display: 'flex', flexDirection: 'column', flex: '1' }}>
       <p>默认切换按钮</p>
       <br />
       <Carousel ref={carouselRef} dots={false} jumpNode>
-        {Array(4).fill(0).map((_,i)=>{
-          return (
-            <div style={itemStyle} key={i}>
-              <h3>{i + 1}</h3>
-            </div>
-          )
-        })}
+        {Array(4)
+          .fill(0)
+          .map((_, i) => {
+            return (
+              <div style={itemStyle} key={i}>
+                <h3>{i + 1}</h3>
+              </div>
+            )
+          })}
       </Carousel>
       <br />
       <p>自定义切换按钮</p>
       <br />
-      <Carousel jumpNode={[<div class="jump-demo">上一页</div>,<div class="jump-demo">下一页</div>]}>
-        {Array(4).fill(0).map((_, i)=>{
-          return (
-            <div style={itemStyle} key={i}>
-              <h3>{i + 1}</h3>
-            </div>
-          )
-        })}
+      <Carousel jumpNode={node}>
+        {Array(4)
+          .fill(0)
+          .map((_, i) => {
+            return (
+              <div style={itemStyle} key={i}>
+                <h3>{i + 1}</h3>
+              </div>
+            )
+          })}
       </Carousel>
     </div>
   )

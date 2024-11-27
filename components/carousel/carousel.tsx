@@ -6,7 +6,7 @@ import ResizeObserver from 'resize-observer-polyfill'
 import devWarning from '../_utils/devwarning'
 import { tuple } from '../_utils/type'
 import isBoolean from 'lodash/isBoolean'
-import { FadeList } from './fadeList'
+import { FadeList, ItemType } from './fadeList'
 import { SlideList } from './slideList'
 import { DisplayList } from './displayList'
 import { Slidebar } from './slidebar'
@@ -20,10 +20,10 @@ export interface CarouselProps {
   autoplay?: boolean
   jumpNode?: boolean | React.ReactNode[]
   children?: React.ReactNode
-  dotPosition?: string
+  dotPosition?: DotPositionType
   dots?: boolean | { dotsClassName: string; activeDotsClassName: string }
   easing?: string
-  effect?: string
+  effect?: EffectType
   intervalTime?: number // 间隔时间， 单位 ms
   className?: string
   style?: CSSProperties
@@ -31,7 +31,29 @@ export interface CarouselProps {
   beforeChange?: (form: number, to: number) => void
 }
 
-const InternalCarousel = (props: CarouselProps, ref: unknown): FunctionComponentElement<CarouselProps> => {
+type RectType = {
+  bottom: number
+  height: number
+  left: number
+  right: number
+  top: number
+  width: number
+  x: number
+  y: number
+  hide: boolean
+}
+
+export interface ICarouselImperativeRef {
+  next: () => void
+  prev: () => void
+  jumpTo: (index: number, needAnimation: boolean) => void
+  getRef: () => HTMLDivElement | null
+}
+
+const InternalCarousel = (
+  props: CarouselProps,
+  ref: React.RefObject<ICarouselImperativeRef>,
+): FunctionComponentElement<CarouselProps> => {
   const { getPrefixCls, prefixCls, compDefaultProps: userDefaultProps } = useContext(ConfigContext)
   const carouselProps = getCompProps('Carousel', userDefaultProps, props)
   const {
@@ -57,18 +79,18 @@ const InternalCarousel = (props: CarouselProps, ref: unknown): FunctionComponent
   const [itemWidth, setItemWidth] = React.useState(0)
   const [needAnimation, setNeedAnimation] = React.useState(false)
   const [currentIndex, setCurrentIndex] = React.useState(0)
-  const carouselRef = React.useRef<HTMLElement>()
-  const listRef = React.useRef<HTMLElement>()
-  const autoplayRef = React.useRef<any>()
+  const carouselRef = React.useRef<HTMLDivElement>(null)
+  const listRef = React.useRef<HTMLUListElement>(null)
+  const autoplayRef = React.useRef<NodeJS.Timeout>()
 
-  const processChildren = (children: any) => {
+  const processChildren = (children: ItemType): ItemType[] => {
     const childCount = React.Children.count(children)
     if (childCount === 0) {
       return []
     } else if (childCount === 1) {
       return [children]
     } else {
-      return React.Children.toArray(children)
+      return React.Children.toArray(children) as ItemType[]
     }
   }
 
@@ -91,7 +113,7 @@ const InternalCarousel = (props: CarouselProps, ref: unknown): FunctionComponent
   }, [currentIndex, itemWidth])
 
   const reSize = React.useCallback(
-    (rect: any) => {
+    (rect: RectType) => {
       if (itemWidth !== rect.width && !rect.hide) {
         setItemWidth(rect.width)
       }
@@ -150,7 +172,7 @@ const InternalCarousel = (props: CarouselProps, ref: unknown): FunctionComponent
       )
       return
     }
-    const measure = (entries: any[]) => {
+    const measure = (entries: ResizeObserverEntry[]) => {
       if (!entries[0] || !entries[0].contentRect) {
         return
       }
@@ -183,7 +205,7 @@ const InternalCarousel = (props: CarouselProps, ref: unknown): FunctionComponent
     return isBoolean(dots) ? dots : true
   }
 
-  useImperativeHandle(ref as any, () => ({
+  useImperativeHandle(ref, () => ({
     next: next,
     prev: prev,
     jumpTo: jumpTo,
@@ -273,7 +295,7 @@ const InternalCarousel = (props: CarouselProps, ref: unknown): FunctionComponent
       }
 
       const mergeNode = (node: React.ReactElement, type: 'left' | 'right') => {
-        const onClick = (evt: any) => {
+        const onClick = (evt: React.MouseEvent) => {
           const { onClick: chClick } = node.props
 
           if (type === 'left') {
@@ -332,7 +354,7 @@ const InternalCarousel = (props: CarouselProps, ref: unknown): FunctionComponent
   return (
     <div
       className={rootClassName}
-      ref={carouselRef as any}
+      ref={carouselRef}
       onTransitionEnd={() => handleTransitionEnd()}
       style={style}
       onMouseEnter={handleMouseEnter}
