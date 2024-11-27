@@ -12,7 +12,7 @@ export interface NoticeProps {
   content: React.ReactNode
   closable: boolean
   duration: number
-  onClose?: (key?: any) => void
+  onClose?: (key?: React.Key) => void
   type?: NotificationType
   suffixCls: string
   key: React.Key
@@ -35,9 +35,9 @@ const Notice: FC<NoticeProps> = (props) => {
     key,
   } = noticeProps
   const noticePrefixCls = getPrefixCls!(prefixCls, suffixCls, customPrefixcls)
-  let timer: any = null
+  let timer: ReturnType<typeof setTimeout> | null = null
   let isTransition = false
-  const noticeRef = useRef<any>()
+  const noticeRef = useRef<HTMLDivElement>(null)
 
   const noticeClasses = classNames(noticePrefixCls, className, {
     [`${noticePrefixCls}-${type}`]: type,

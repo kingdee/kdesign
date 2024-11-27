@@ -1,12 +1,10 @@
 import React from 'react'
-
 import { NotificationProps } from '../notification-base/notification'
 import NotificationApi from '../notification-base'
 import Content from './content'
 import { NotificationType } from '../notification-base/notice'
 
 export type ConfigContent = React.ReactNode | string
-
 export type JointContent = ConfigContent | ArgsProps
 
 export interface ContentProps {
@@ -31,16 +29,16 @@ const defaultClosable = false
 const defaultOffset = '40px'
 const defaultSuffixCls = 'message'
 const defaultPlacement = 'message'
-const defaultType = 'info'
+const defaultType: NotificationType = 'info'
 
 let messageKey = 1
 const messageElement: HTMLElement | null = null
 
-function isArgsProps(content: any): content is ArgsProps {
+function isArgsProps(content: unknown): content is ArgsProps {
   return Object.prototype.toString.call(content) === '[object Object]' && !!(content as ArgsProps).content
 }
 
-const getNotificationProps = (args: ArgsProps) => {
+const getNotificationProps = (args: ArgsProps): Partial<NotificationProps> => {
   const {
     duration = defaultDuration,
     key,
@@ -54,16 +52,20 @@ const getNotificationProps = (args: ArgsProps) => {
     closeNode,
   } = args
 
-  // const placeStyle = getPlacementStyle(placement)
-
-  // const element = renderView(args)
-
   const contentClose = () => {
-    onClose && onClose(key)
+    if (onClose) onClose(key)
     NotificationApi.destroy(key)
   }
 
-  const contentProps = { type, icon, closeNode, content, closable, suffixCls: defaultSuffixCls, contentClose }
+  const contentProps: ContentProps = {
+    type,
+    icon,
+    closeNode,
+    content,
+    closable,
+    suffixCls: defaultSuffixCls,
+    contentClose,
+  }
 
   return {
     duration,
@@ -79,10 +81,10 @@ const getNotificationProps = (args: ArgsProps) => {
   }
 }
 
-const getNotificationHTMLElement = () => {
+const getNotificationHTMLElement = (): HTMLElement => {
   const prefixCls = 'kd'
   const suffix = `${prefixCls}-message`
-  let htmlElement: HTMLElement = document.querySelector(`#${suffix}`) as HTMLElement
+  let htmlElement = document.querySelector(`#${suffix}`) as HTMLElement
   if (!htmlElement) {
     htmlElement = document.createElement('div')
     htmlElement.id = suffix
@@ -90,23 +92,22 @@ const getNotificationHTMLElement = () => {
     htmlElement.style.top = defaultOffset
     document.body.appendChild(htmlElement)
   }
-
   return htmlElement
 }
 
 const notice = (args: ArgsProps) => {
   const key = args.key || messageKey++
   const props = getNotificationProps({ ...args, key })
-  let el: HTMLElement
-  if (messageElement) {
-    el = messageElement
-  } else {
-    el = getNotificationHTMLElement()
-  }
+  const el = messageElement || getNotificationHTMLElement()
   NotificationApi.add(props, el)
 }
 
-const Message: any = {
+type MessageTypeFn = (content: JointContent, duration?: number, onClose?: () => void) => void
+
+const Message: Record<string, MessageTypeFn> & {
+  open: (args: ArgsProps) => void
+  destroy: (key?: React.Key) => void
+} = {
   open: notice,
   destroy: (key?: React.Key) => {
     NotificationApi.destroy(key)
