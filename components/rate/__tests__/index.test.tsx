@@ -161,7 +161,7 @@ describe('Rate', () => {
       const wrapper = mount(
         <Rate
           allowHalf={false}
-          icon={(index) => {
+          icon={(index: number) => {
             return _icon[index - 1]
           }}
         ></Rate>,

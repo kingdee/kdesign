@@ -91,6 +91,7 @@ export { default as Popconfirm } from './popconfirm'
 export { default as Radio } from './radio'
 
 export { default as Rate } from './rate'
+export type { IRateProps } from './rate'
 
 export { default as Select } from './select'
 
