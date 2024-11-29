@@ -4,6 +4,25 @@ title: 更新日志
 hiddenAnchor: true
 ---
 
+## [1.8.21](https://github.com/kingdee/kdesign/compare/v1.8.20...v1.8.21)
+`2024-11-29`
+* color-picker
+  * 将rotate样式属性改为兼容性更高的transform:rotate()方法 fix [#967](https://github.com/kingdee/kdesign/issues/967)
+  * 新增 popperClassName api，同时将原有的className和style属性放至input外层容器中 fix [#942](https://github.com/kingdee/kdesign/issues/942) fix [#968](https://github.com/kingdee/kdesign/issues/968)
+* form
+  * 将rotate样式属性改为兼容性更高的transform:rotate()方法 fix [#967](https://github.com/kingdee/kdesign/issues/967)
+* date-picker
+  * 更新en-us添加monthBeforeYear
+* select
+  * 修复onDeselect回调事件触发时机错误问题 fix [#949](https://github.com/kingdee/kdesign/issues/949)
+* tree
+  * 修复设置树节点样式与类名不生效问题 fix [#930](https://github.com/kingdee/kdesign/issues/930)
+* input
+  * 新增 popperClassName api，同时将原有的className和style属性放至input外层容器中 fix [#942](https://github.com/kingdee/kdesign/issues/942) fix [#968](https://github.com/kingdee/kdesign/issues/968)
+* popper
+  * 新增 popperClassName api，同时将原有的className和style属性放至input外层容器中 fix [#942](https://github.com/kingdee/kdesign/issues/942) fix [#968](https://github.com/kingdee/kdesign/issues/968)
+* 更新总览页面分割线缩略图 fix [#979](https://github.com/kingdee/kdesign/issues/979)
+
 ## [1.8.20](https://github.com/kingdee/kdesign/compare/v1.8.19...v1.8.20)
 `2024-11-22`
 * popper
