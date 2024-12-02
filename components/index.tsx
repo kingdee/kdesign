@@ -26,6 +26,7 @@ export { default as Button } from './button'
 export { default as Card } from './card'
 
 export { default as Collapse } from './collapse'
+export type { CollapseProps as ICollapseProps, CollapsePanelProps as ICollapsePanelProps } from './collapse'
 
 export { default as Checkbox } from './checkbox'
 
