@@ -3,12 +3,14 @@ title: 初始激活
 order: 4
 ---
 
-```jsx
+```tsx
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { Collapse } from '@kdcloudjs/kdesign'
+import type { ICollapsePanelProps } from '@kdcloudjs/kdesign'
 
 const Demo: React.FC = () => {
+  const header1: ICollapsePanelProps['header'] = 'This is the header1'
   const collapseRef = React.useRef()
   React.useEffect(() => {
     if (collapseRef.current)
@@ -16,7 +18,7 @@ const Demo: React.FC = () => {
   }, [collapseRef.current])
   return (
     <Collapse defaultActiveKey={['panel_1', 'panel_2']} ref={collapseRef}>
-      <Collapse.Panel header="This is the header1" panelKey="panel_1">
+      <Collapse.Panel header={header1} panelKey="panel_1">
         折叠面板内容1
       </Collapse.Panel>
       <Collapse.Panel header="This is the header2" panelKey="panel_2">
