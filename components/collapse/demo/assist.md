@@ -3,12 +3,14 @@ title: 辅助信息可配置
 order: 6
 ---
 
-```jsx
+```tsx
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { Collapse } from '@kdcloudjs/kdesign'
+import type { IPanelProps } from '@kdcloudjs/kdesign'
 
 const Demo: React.FC = () => {
+  const header: IPanelProps['header'] = '我的行程'
   const collapseRef = React.useRef()
   React.useEffect(() => {
     if (collapseRef.current)
@@ -20,7 +22,7 @@ const Demo: React.FC = () => {
   return (
     <Collapse ref={collapseRef}>
       <Collapse.Panel
-        header="我的行程"
+        header={header}
         panelKey="panel_1"
         assist={
           <div style={{ cursor: 'pointer', display: 'flex' }}>

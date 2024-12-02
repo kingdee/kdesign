@@ -3,12 +3,14 @@ title: 自定义面板右上角内容
 order: 5
 ---
 
-```jsx
+```tsx
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { Collapse, Icon } from '@kdcloudjs/kdesign'
+import type { ICollapseProps } from '@kdcloudjs/kdesign'
 
 const Demo: React.FC = () => {
+  const defaultActiveKey: ICollapseProps['defaultActiveKey'] = ['panel_1']
   const collapseRef = React.useRef()
   React.useEffect(() => {
     if (collapseRef.current)
@@ -28,7 +30,7 @@ const Demo: React.FC = () => {
     'marginLeft': '24px',
   }
   return (
-    <Collapse ref={collapseRef}>
+    <Collapse ref={collapseRef} defaultActiveKey={defaultActiveKey}>
       <Collapse.Panel
         header="为右上角按钮添加样式"
         panelKey="panel_1"
