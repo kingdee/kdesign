@@ -31,7 +31,7 @@ interface BasicPropsWithTagName extends BasicProps {
 }
 
 function generator({ suffixCls, tagName, displayName }: GeneratorProps) {
-  return (BasicComponent: any) => {
+  return (BasicComponent: React.ComponentType<BasicPropsWithTagName>) => {
     const Adapter: React.FC<BasicProps> = (props) => {
       const {
         getPrefixCls,
