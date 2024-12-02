@@ -70,6 +70,7 @@ export { default as Icon } from './icon'
 export { default as Image } from './image'
 
 export { default as Layout } from './layout'
+export type { LayoutProps as ILayoutProps } from './layout'
 
 export { default as Modal } from './modal'
 
