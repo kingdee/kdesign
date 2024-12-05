@@ -490,6 +490,7 @@ const compDefaultProps = {
     containerHeight: 500,
     canFullScreen: true,
   },
+  Watermark: {},
 }
 
 export default compDefaultProps
