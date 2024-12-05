@@ -10,7 +10,8 @@
     "no-invalid-double-slash-comments": null,
     "no-descending-specificity": null,
     "declaration-empty-line-before": null,
-    "color-hex-length": null
+    "color-hex-length": null,
+    "font-family-no-missing-generic-family-keyword": null
   },
   "ignoreFiles": ["kdicon.css"]
 }

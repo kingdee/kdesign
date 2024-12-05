@@ -140,9 +140,7 @@ const compDefaultProps = {
     labelAlign: 'left',
     size: 'middle',
   },
-  Icon: {
-    prefix: 'kdicon',
-  },
+  Icon: {},
   Input: {
     type: 'text',
     size: 'middle',
