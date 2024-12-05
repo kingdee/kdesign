@@ -65,8 +65,8 @@ describe('Icon', () => {
     })
 
     it('when prefix is kd', () => {
-      const wrapper = mount(<Icon type="add" prefix="kd" />)
-      expect(wrapper.find('i').first()).toHaveClassName('kd-add')
+      const wrapper = mount(<Icon type="add" prefix="custom" />)
+      expect(wrapper.find('i').first()).toHaveClassName('custom')
     })
 
     it('when rotate is 90', () => {
@@ -98,18 +98,14 @@ describe('Icon', () => {
   describe('8.config provider', () => {
     it('should config use config provider', () => {
       const Config = {
-        compDefaultProps: {
-          Icon: {
-            prefix: 'kingdeeicon',
-          },
-        },
+        prefixCls: 'kingdee',
       }
       const wrapper = mount(
         <ConfigProvider value={Config}>
           <Icon type="add" />
         </ConfigProvider>,
       )
-      expect(wrapper.find('.kingdeeicon-add')).toExist()
+      expect(wrapper.find('.kingdeeicon')).toExist()
     })
   })
 
