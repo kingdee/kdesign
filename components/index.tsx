@@ -87,7 +87,7 @@ export { default as Steps, Step } from './steps'
 export type { StepsProps as IStepsProps, StepProps as IStepProps } from './steps'
 
 export { default as Space } from './space'
-export type { ISpaceProps } from './space'
+export type { SpaceProps as ISpaceProps } from './space'
 
 export { default as SplitPanel } from './split-panel'
 
@@ -122,7 +122,7 @@ export { default as CityPicker } from './city-picker'
 export { default as Anchor } from './anchor'
 
 export { default as Avatar } from './avatar'
-export type { IAvatarProps } from './avatar'
+export type { AvatarProps as IAvatarProps } from './avatar'
 
 export { default as Slider } from './slider'
 
@@ -142,7 +142,7 @@ export { default as ColorPicker } from './color-picker'
 export { default as Clipboard } from './clipboard'
 
 export { default as QRCode } from './qr-code'
-export type { IQRCodeProps } from './qr-code'
+export type { QRCodeProps as IQRCodeProps } from './qr-code'
 
 export { default as Divider } from './divider'
 

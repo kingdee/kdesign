@@ -32,7 +32,7 @@ interface ImageSettings {
 }
 
 export interface QRProps {
-  value: string
+  value?: string
   type?: QRCodeType
   size?: number
   style?: CSSProperties
