@@ -22,6 +22,7 @@ export { default as Breadcrumb } from './breadcrumb'
 export type { IBreadcrumbProps } from './breadcrumb'
 
 export { default as Button } from './button'
+export type { IButtonProps, ButtonGroupProps as IButtonGroupProps } from './button'
 
 export { default as Card } from './card'
 
@@ -50,6 +51,7 @@ export { default as Filter } from './filter'
 export { default as Form } from './form'
 
 export { Row, Col } from './grid'
+export type { RowProps as IRowProps, ColProps as IColProps } from './grid'
 
 export { default as Input, TextArea } from './input'
 
@@ -60,6 +62,7 @@ export { default as Icon } from './icon'
 export { default as Image } from './image'
 
 export { default as Layout } from './layout'
+export type { LayoutProps as ILayoutProps } from './layout'
 
 export { default as Modal } from './modal'
 
@@ -81,14 +84,18 @@ export { default as Popconfirm } from './popconfirm'
 export { default as Radio } from './radio'
 
 export { default as Rate } from './rate'
+export type { IRateProps } from './rate'
 
 export { default as Select } from './select'
 
 export { default as Switch } from './switch'
+export type { ISwitchProps } from './switch'
 
 export { default as Steps, Step } from './steps'
+export type { StepsProps as IStepsProps, StepProps as IStepProps } from './steps'
 
 export { default as Space } from './space'
+export type { SpaceProps as ISpaceProps } from './space'
 
 export { default as SplitPanel } from './split-panel'
 
@@ -124,6 +131,7 @@ export { default as CityPicker } from './city-picker'
 export { default as Anchor } from './anchor'
 
 export { default as Avatar } from './avatar'
+export type { AvatarProps as IAvatarProps } from './avatar'
 
 export { default as Slider } from './slider'
 
@@ -134,6 +142,7 @@ export { default as Stepper } from './stepper'
 export { default as BaseData } from './base-data'
 
 export { default as Link } from './link'
+export type { ILinkProps } from './link'
 
 export { default as TreeSelect } from './tree-select'
 
@@ -146,6 +155,7 @@ export { default as Clipboard } from './clipboard'
 export type { IDividerProps } from './divider'
 
 export { default as QRCode } from './qr-code'
+export type { QRCodeProps as IQRCodeProps } from './qr-code'
 
 export { default as Divider } from './divider'
 

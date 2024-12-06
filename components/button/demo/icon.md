@@ -9,20 +9,23 @@ order: 9
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { Button, Icon } from '@kdcloudjs/kdesign'
+import type { IButtonGroupProps } from '@kdcloudjs/kdesign'
 
 function Demo() {
-  const demoButtonStyle = { margin: '0px 8px 8px 0' }
+  const demoButtonStyle: IButtonGroupProps['style'] = { margin: '0px 8px 8px 0' }
 
-  const overlay1 = [
+  const overlay1: IButtonGroupProps['overlay'] = [
     { value: '1', label: '发布' },
     { value: '2', label: '生成凭证' },
     { value: '3', label: '打印' },
   ]
 
-
   return (
     <div>
-       <Button.Dropdown icon={[<Icon type="arrow-up" key="arrow-up" />, <Icon type="arrow-down" key="arrow-down" />]} overlay={overlay1} style={demoButtonStyle} >
+      <Button.Dropdown
+        icon={[<Icon type="arrow-up" key="arrow-up" />, <Icon type="arrow-down" key="arrow-down" />]}
+        overlay={overlay1}
+        style={demoButtonStyle}>
         更多
       </Button.Dropdown>
     </div>

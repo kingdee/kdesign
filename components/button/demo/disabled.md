@@ -8,11 +8,12 @@ order: 3
 ```jsx
 import React from 'react'
 import ReactDOM from 'react-dom'
+import type { IButtonGroupProps,IButtonProps } from '@kdcloudjs/kdesign'
 import { Button } from '@kdcloudjs/kdesign'
 
 const Demo: React.FC = () => {
-  const demoButtonStyle = { margin: '0px 8px 8px 0' }
-  const overlay1 = [
+  const demoButtonStyle:IButtonProps['style'] = { margin: '0px 8px 8px 0' }
+  const overlay1:IButtonGroupProps['overlay']  = [
     { value: '1', label: '发布' },
     { value: '2', label: '生成凭证' },
     { value: '3', label: '打印' },

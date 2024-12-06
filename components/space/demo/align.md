@@ -9,16 +9,16 @@ title: 垂直对齐
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { Space, Button, Radio, Card } from '@kdcloudjs/kdesign'
-import type { Align } from '@kdcloudjs/kdesign'
+import type { ISpaceProps } from '@kdcloudjs/kdesign'
 
 const Demo: React.FC = () => {
-  const blockStyle = {
+  const blockStyle:ISpaceProps['style'] = {
     marginTop: 10,
     padding: 20,
     background: 'rgba(0, 0, 0, .04)',
   }
 
-  const [align, setAlign] = React.useState<Align | 'start'>('start')
+  const [align, setAlign] = React.useState<ISpaceProps['align'] | 'start'>('start')
 
   return (
     <>

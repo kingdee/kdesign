@@ -17,16 +17,16 @@ subtitle: 链接
 
 ## API
 
-| 属性 | 说明 | 类型 | 默认值 | 可选值 | 版本 |
+| 属性 | 说明 | 类型 | 默认值 |  版本 |
 | --- | --- | --- | --- | --- | --- |
-| disabled | 链接禁用状态 | boolean | `false` | `true` `false` | 1.0.0 |
-| href | 点击跳转的地址 | string | - | - | 1.0.0 |
-| onClick | 点击链接时的回调 | (event) => void | `-` | `-` | 1.0.0 |
-| prefix | 带有前缀图标的 link | string / ReactNode | `-` | `-` | 1.0.0 |
-| underscore | 下划线 | boolean | `false` | `true` `false` | 1.0.0 |
-| size | 链接尺寸 | string | `middle` | `small` `middle` `large` | 1.0.0 |
-| suffix | 带有后缀图标的 link | string / ReactNode | `-` | `-` | 1.0.0 |
-| target | 相当于 a 链接的 target 属性，href 存在时生效 | string | `-` | `-` | 1.0.0 |
+| disabled | 链接禁用状态 |  `true` `false` | `false` | 1.0.0 |
+| href | 点击跳转的地址 | string | - |  1.0.0 |
+| prefix | 带有前缀图标的 link | string / ReactNode | `-` |  1.0.0 |
+| underscore | 下划线 | `true` `false`  | `false` | 1.0.0 |
+| size | 链接尺寸 | `small` `middle` `large` | `middle`  | 1.0.0 |
+| suffix | 带有后缀图标的 link | string / ReactNode | `-` |  1.0.0 |
+| target | 相当于 a 链接的 target 属性，href 存在时生效 | string | `-` |  1.0.0 |
+| onClick | 点击链接时的回调 | (event) => void | `-` |  1.0.0 |
 
 ## Design Token
 

@@ -7,9 +7,10 @@ order: 3
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { Steps, Step, Icon } from '@kdcloudjs/kdesign'
+import type { IStepsProps } from '@kdcloudjs/kdesign'
 
 const Demo: React.FC = () => {
-  const icons = {
+  const icons: IStepsProps['icons'] = {
     process: <Icon type="loadding" spin />,
     wait: <Icon type="wating" />,
     error: <Icon type="close-bold" />,

@@ -41,7 +41,7 @@ const InternalLink = (props: ILinkProps, ref: unknown): FunctionComponentElement
   } = linkProps
 
   // ref
-  const linkRef = (ref as any) || React.createRef<HTMLElement>()
+  const linkRef = (ref as React.RefObject<HTMLDivElement>) || React.createRef<HTMLElement>()
 
   const linkPrefixCls = getPrefixCls!(prefixCls, 'link', customPrefixcls) // 按钮样式前缀
 

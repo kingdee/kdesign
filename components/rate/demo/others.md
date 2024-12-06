@@ -9,17 +9,16 @@ title: 其他字符
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { Rate, Icon } from '@kdcloudjs/kdesign'
+import { IRateProps } from '@kdcloudjs/kdesign'
 
 const Demo: React.FC = () => {
   const _icon = ['A', 'B', 'C', 'D', 'E']
+  const iconList: IRateProps['icon'] = (index: number) => {
+    return _icon[index - 1]
+  }
   return (
-    <div  style={{ width: '150px' }}>
-      <Rate
-        icon={(index) => {
-          return _icon[index - 1]
-        }}
-        size={'large'}
-      />
+    <div style={{ width: '150px' }}>
+      <Rate icon={iconList} size={'large'} />
       <br />
       <Rate icon={'赞'} defaultValue={3} size={'large'} />
       <br />

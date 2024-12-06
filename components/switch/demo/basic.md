@@ -7,9 +7,10 @@ title: 基本
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { Switch } from '@kdcloudjs/kdesign'
+import type { ISwitchProps } from '@kdcloudjs/kdesign'
 
 const Demo: React.FC = () => {
-  function onChange(checked) {
+  function onChange(checked: boolean): ISwitchProps['onChange'] {
     console.log(`switch to ${checked}`)
   }
 

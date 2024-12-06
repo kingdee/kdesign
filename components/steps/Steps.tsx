@@ -17,6 +17,7 @@ export interface StepsProps {
   labelPlacement?: LabelPlacement
   onChange?: (current: number) => void
   canClickCurrentStep?: boolean
+  children?: React.ReactNode
 }
 
 const Steps: React.FC<StepsProps> = (props) => {

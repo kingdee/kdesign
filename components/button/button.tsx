@@ -86,12 +86,13 @@ const InternalButton = (props: IButtonProps, ref: unknown): FunctionComponentEle
 
     onClick && onClick(e)
   }
-  const onAnimationEnd = (e: any) => {
+  const onAnimationEnd = (e: AnimationEvent) => {
     if (e.animationName === 'waveEffect') {
       return
     }
-    e.target.setAttribute('click-animating-wave', 'false')
-    removeEventListener('animationend', onAnimationEnd)
+    const target = e.target as HTMLElement
+    target.setAttribute('click-animating-wave', 'false')
+    buttonRef.current.removeEventListener('animationend', onAnimationEnd)
   }
 
   // ref

@@ -9,9 +9,10 @@ order: 2
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { Steps, Step } from '@kdcloudjs/kdesign'
+import type { IStepsProps } from '@kdcloudjs/kdesign'
 
 const Demo: React.FC = () => {
-  const [current, setCurrent] = React.useState<number>(0)
+   const [current, setCurrent] = React.useState<IStepsProps['current']>(0)
   return (
     <>
       <Steps style={{ width: 800 }} current={current} onChange={setCurrent}>

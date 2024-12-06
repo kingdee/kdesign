@@ -9,8 +9,8 @@ export type size = typeof SizeTypes[number]
 
 export interface RateProps {
   allowHalf?: boolean
-  icon?: React.ReactNode | ((props: any) => React.ReactNode)
-  activeIcon?: React.ReactNode | ((props: any) => React.ReactNode)
+  icon?: React.ReactNode | ((props: unknown) => React.ReactNode)
+  activeIcon?: React.ReactNode | ((props: unknown) => React.ReactNode)
   count?: number
   defaultValue?: number
   value?: number
@@ -53,8 +53,8 @@ const Rate: React.FC<RateProps> = (props) => {
   devWarning(SizeTypes.indexOf(size) === -1, 'Rate', `cannot found SizeType '${size}'`)
   // className前缀
   const prefixCls = getPrefixCls!(pkgPrefixCls, 'rate', customPrefixcls)
-  const [selectedValue, setSelectedValue] = React.useState(defaultValue) // 当前选中的值，包含一位小数
-  const [activeNumber, setActiveNumber] = React.useState(0) // 鼠标悬停icon位置对应的值
+  const [selectedValue, setSelectedValue] = React.useState<number>(defaultValue) // 当前选中的值，包含一位小数
+  const [activeNumber, setActiveNumber] = React.useState<number>(0) // 鼠标悬停icon位置对应的值
 
   React.useEffect(() => {
     if (value !== undefined && value !== selectedValue) {
@@ -100,8 +100,8 @@ const Rate: React.FC<RateProps> = (props) => {
    * @param index
    */
   const getIcon = (
-    icon: React.ReactNode | ((props: any) => React.ReactNode),
-    activeIcon: React.ReactNode | ((props: any) => React.ReactNode),
+    icon: React.ReactNode | ((props: unknown) => React.ReactNode),
+    activeIcon: React.ReactNode | ((props: unknown) => React.ReactNode),
     index: number,
     isActive: boolean,
   ): React.ReactNode => {
@@ -202,7 +202,7 @@ const Rate: React.FC<RateProps> = (props) => {
    */
   const getRateIconView = (): React.ReactNode => {
     const half = 0.5
-    const rateIconsView = []
+    const rateIconsView: React.ReactNode[] = []
     for (let i = 1; i <= count; i++) {
       const isMouseOnSecondIcon: boolean = getSecondIconStatus(activeNumber, i, onlyActiveCurrent)
       const isMouseOnFirstIcon: boolean = getFirstIconStatus(activeNumber, i, onlyActiveCurrent, isMouseOnSecondIcon)

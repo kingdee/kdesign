@@ -10,13 +10,14 @@ import Popper, { PopperProps } from '../popper'
 
 export const ButtonGroupTypes = tuple('basic', 'similar')
 export type ButtonGroupType = typeof ButtonGroupTypes[number]
+export type GroupButtonType = Exclude<ButtonType, 'ghost' | 'text'>
 export interface OverlayType {
   value?: string
   label?: React.ReactNode
 }
 
 export interface ButtonGroupProps extends PopperProps {
-  buttonType?: ButtonType
+  buttonType?: GroupButtonType
   children?: ReactNode
   className?: string
   disabled?: boolean
@@ -53,7 +54,7 @@ const InternalButtonGroup = (props: ButtonGroupProps, ref: unknown): FunctionCom
 
   const [optionShow, setOptionShow] = useState<boolean>(false) // 下拉列表是否展示
 
-  const refBtnGroup = (ref as any) || React.createRef<HTMLElement>()
+  const refBtnGroup = (ref as React.RefObject<HTMLDivElement>) || React.createRef<HTMLElement>()
 
   const triggerRef = React.useRef<HTMLDivElement>(null)
 
