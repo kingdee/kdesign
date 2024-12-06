@@ -5,13 +5,14 @@ title: 位置
 
 有12个位置可供选择。
 
-```jsx
+```tsx
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { Tooltip, Button } from '@kdcloudjs/kdesign'
+import type { ITooltipProps } from '@kdcloudjs/kdesign'
 
 const Demo: React.FC = () => {
-  const text = <span>一行最多显示20个字符，超过的字符可折行显示，建议最多不要超过40个字符</span>
+  const text: ITooltipProps['tip'] = <span>一行最多显示20个字符，超过的字符可折行显示，建议最多不要超过40个字符</span>
   const buttonWidth = 70
   const buttonStyle = {
     width: 70,

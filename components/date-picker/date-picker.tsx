@@ -56,13 +56,9 @@ export interface PickerSharedProps extends React.AriaAttributes {
   defaultOpen?: boolean
   inputReadOnly?: boolean
   id?: string
-  borderType: BorderType
-  size: InputSiteType
-
-  // Value
+  borderType?: BorderType
+  size?: InputSiteType
   format?: string
-
-  // Render
   suffixIcon?: React.ReactNode
   clearIcon?: React.ReactNode
   prevIcon?: React.ReactNode
@@ -71,8 +67,6 @@ export interface PickerSharedProps extends React.AriaAttributes {
   superNextIcon?: React.ReactNode
   getPopupContainer?: (node: HTMLElement) => HTMLElement
   panelRender?: (originPanel: React.ReactNode) => React.ReactNode
-
-  // Events
   onChange?: (value: DateType | null, dateString: string) => void
   onOpenChange?: (open: boolean) => void
   onFocus?: React.FocusEventHandler<HTMLInputElement>
@@ -307,9 +301,6 @@ const InternalDatePicker = (
       if (onOpenChange) {
         onOpenChange(newOpen)
       }
-      // if (!newOpen && operationRef.current && operationRef.current.onClose) {
-      //   operationRef.current.onClose()
-      // }
     },
   })
 

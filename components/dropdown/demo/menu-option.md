@@ -3,15 +3,16 @@ order: 7
 title: 配置菜单
 ---
 
-menu可以是一个对象数组
+menu 可以是一个对象数组
 
-```jsx
+```tsx
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { Dropdown, Icon } from '@kdcloudjs/kdesign'
+import type { IDropdownProps } from '@kdcloudjs/kdesign'
 
 const Demo: React.FC = () => {
-  const menu = [
+  const menu: IDropdownProps['menu'] = [
     {
       key: 1,
       label: '菜单1',
@@ -38,13 +39,17 @@ const Demo: React.FC = () => {
     },
   ]
 
-  const handleItemClick = (key) => {
+  const handleItemClick: IDropdownProps['onClick'] = (key) => {
     console.log(key)
   }
 
   return (
     <Dropdown menu={menu} onItemClick={handleItemClick}>
-      <a href="true" className="kd-dropdown-link" style={{ width: '100px', display: 'block' }} onClick={(e) => e.preventDefault()}>
+      <a
+        href="true"
+        className="kd-dropdown-link"
+        style={{ width: '100px', display: 'block' }}
+        onClick={(e) => e.preventDefault()}>
         Hover me <Icon type="arrow-down" />
       </a>
     </Dropdown>

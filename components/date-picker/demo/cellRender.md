@@ -3,14 +3,17 @@ title: 自定义单元格的内容
 order: 14
 ---
 
-```jsx
+```tsx
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { DatePicker, RangePicker, Icon } from '@kdcloudjs/kdesign'
-import { format, isWeekend } from 'date-fns'
+import { DatePicker, RangePicker } from '@kdcloudjs/kdesign'
+import type { IDatePickerProps, IRangePickerProps } from '@kdcloudjs/kdesign'
+import { isWeekend } from 'date-fns'
 
 function Demo() {
-  const TEST_DAY = new Date('2023-01-02 00:00:00')
+  const TEST_DAY: IDatePickerProps['defaultValue'] = new Date('2023-01-02 00:00:00')
+  const TEST_RANGE_DAY: IRangePickerProps['defaultValue'] = [TEST_DAY, TEST_DAY]
+
   const cellRender = (current, { originNode, panelType, subType, range, date }) => {
     let flag = false
     if (panelType === 'date') {
@@ -19,9 +22,7 @@ function Demo() {
       flag = subType === 'hour' && current < 2 && range === 'start'
     }
 
-    return flag
-      ? React.cloneElement(originNode, { className: `${originNode.props.className} flag` })
-      : originNode
+    return flag ? React.cloneElement(originNode, { className: `${originNode.props.className} flag` }) : originNode
   }
 
   return (
@@ -30,7 +31,7 @@ function Demo() {
         <DatePicker defaultValue={TEST_DAY} cellRender={cellRender} />
       </div>
       <div className="demo-range-picker">
-        <RangePicker defaultValue={[TEST_DAY, TEST_DAY]} picker="time" cellRender={cellRender} />
+        <RangePicker defaultValue={TEST_RANGE_DAY} picker="time" cellRender={cellRender} />
       </div>
     </div>
   )

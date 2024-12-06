@@ -2,7 +2,6 @@
 @import '../../style/mixins/index';
 @import './mixin.less';
 
-
 @datePicker-prefix-cls: ~'@{kd-prefix}-date-picker';
 @datePicker-prefix-cls-panel: ~'@{datePicker-prefix-cls}-panel';
 
@@ -489,9 +488,6 @@
             }
           }
 
-          // .@{datePicker-prefix-cls}-calendar-weeknumber{
-          //   color: #fff;
-          // }
           .@{datePicker-prefix-cls}-calendar-week-text {
             background: transparent !important;
             color: #fff !important;
@@ -785,9 +781,7 @@
 
     .@{datePicker-prefix-cls}-btns {
       margin-bottom: 0;
-      // padding: 4px 12px;
       overflow: hidden;
-      // line-height: 34px;
       text-align: left;
       list-style: none;
 
@@ -818,7 +812,7 @@
   display: flex;
   background: @date-container-color-background;
 
-  &-date{
+  &-date {
     display: flex;
   }
 
@@ -834,7 +828,7 @@
       height: @date-panel-header-height;
       line-height: @date-panel-header-height;
       font-size: @date-container-font-size;
-      border-bottom: .5px solid @date-container-color-border;
+      border-bottom: 0.5px solid @date-container-color-border;
       cursor: pointer;
     }
   }

@@ -100,9 +100,9 @@ export default function calculateNodeHeight(
   let height = parseFloat(new Big(hiddenTextarea.scrollHeight).valueOf())
 
   if (boxSizing === 'border-box') {
-    height = parseFloat(new Big(height).plus(borderSize).valueOf()) // height += borderSize
+    height = parseFloat(new Big(height).plus(borderSize).valueOf())
   } else if (boxSizing === 'content-box') {
-    height = parseFloat(new Big(height).minus(paddingSize).valueOf()) // height -= paddingSize
+    height = parseFloat(new Big(height).minus(paddingSize).valueOf())
   }
 
   if (minRows !== null || maxRows !== null) {
@@ -111,16 +111,16 @@ export default function calculateNodeHeight(
     if (minRows !== null) {
       minHeight = parseFloat(bigSingleRowHeight.times(minRows).valueOf())
       if (boxSizing === 'border-box') {
-        minHeight = parseFloat(new Big(minHeight).plus(paddingSize).plus(borderSize).valueOf()) // minHeight + paddingSize + borderSize
+        minHeight = parseFloat(new Big(minHeight).plus(paddingSize).plus(borderSize).valueOf())
       }
-      height = new Big(minHeight).gt(height) ? minHeight : height // Math.max(minHeight, height)
+      height = new Big(minHeight).gt(height) ? minHeight : height
     }
     if (maxRows !== null) {
       maxHeight = parseFloat(bigSingleRowHeight.times(maxRows).valueOf())
       if (boxSizing === 'border-box') {
-        maxHeight = parseFloat(new Big(maxHeight).plus(paddingSize).plus(borderSize).valueOf()) // maxHeight + paddingSize + borderSize
+        maxHeight = parseFloat(new Big(maxHeight).plus(paddingSize).plus(borderSize).valueOf())
       }
-      height = new Big(maxHeight).lt(height) ? maxHeight : height //  Math.min(maxHeight, height)
+      height = new Big(maxHeight).lt(height) ? maxHeight : height
     }
   }
   const overflowY = new Big(height).lt(maxHeight) ? 'hidden' : ''

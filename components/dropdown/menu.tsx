@@ -26,7 +26,6 @@ export interface ItemProps {
 const Menu = React.forwardRef<unknown, MenuProps>((props, ref) => {
   const { getPrefixCls, prefixCls: pkgPrefixCls, compDefaultProps: userDefaultProps } = React.useContext(ConfigContext)
 
-  // 属性需要合并一遍用户定义的默认属性
   const {
     prefixCls: customPrefixcls,
     children,
@@ -36,7 +35,6 @@ const Menu = React.forwardRef<unknown, MenuProps>((props, ref) => {
     ...restProps
   } = getCompProps('DropdownMenu', userDefaultProps, props)
 
-  // className前缀
   const prefixCls = getPrefixCls!(pkgPrefixCls, 'dropdown-menu', customPrefixcls)
 
   const cloneItem = (item: React.ReactElement, index?: number) => {
@@ -58,7 +56,6 @@ const Menu = React.forwardRef<unknown, MenuProps>((props, ref) => {
 const Item: React.FC<ItemProps> = (props) => {
   const { getPrefixCls, prefixCls: pkgPrefixCls, compDefaultProps: userDefaultProps } = React.useContext(ConfigContext)
 
-  // 属性需要合并一遍用户定义的默认属性
   const {
     prefixCls: customPrefixcls,
     danger,

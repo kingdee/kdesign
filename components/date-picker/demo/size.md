@@ -5,15 +5,17 @@ order: 1
 
 日期选择器三种大小：small、middle、large
 
-```jsx
+```tsx
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { DatePicker, RangePicker } from '@kdcloudjs/kdesign'
+import type { IRangePickerProps } from '@kdcloudjs/kdesign'
 
 const Demo: React.FC = () => {
   const demoStyle = { margin: '10px 0' }
+  const small: IRangePickerProps['size'] = 'small'
   return (
-    <div  style={{ width: '150px' }}>
+    <div style={{ width: '150px' }}>
       <div style={demoStyle}>
         <DatePicker size="small" />
       </div>
@@ -27,7 +29,7 @@ const Demo: React.FC = () => {
         <DatePicker size="large" />
       </div>
       <div style={demoStyle}>
-        <RangePicker size="small" />
+        <RangePicker size={small} />
       </div>
       <div style={demoStyle}>
         <RangePicker />

@@ -211,7 +211,6 @@ textarea {
         color: rgba(0, 0, 0, 0.85);
         font-size: 14px;
         font-variant: tabular-nums;
-        // line-height: 1.5715;
         list-style: none;
         font-feature-settings: 'tnum';
         position: relative;
@@ -308,7 +307,9 @@ textarea {
     color: @input-placeholder-color-inner;
   }
 
-  &-error:not(.@{input-prefix-cls}-disabled):not(.@{input-prefix-cls}-wrapper-disabled):not(.@{input-prefix-cls}-group-addon-disabled) {
+  &-error:not(.@{input-prefix-cls}-disabled):not(.@{input-prefix-cls}-wrapper-disabled):not(
+      .@{input-prefix-cls}-group-addon-disabled
+    ) {
     border-color: @input-error-color;
   }
 }

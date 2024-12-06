@@ -12,7 +12,7 @@ import {
   getStartOfMonth,
   setYearOrMonthOfDate,
 } from '../../utils/date-fns'
-import Context from '../../context'
+import Context, { SingleContextProps } from '../../context'
 import { DateType, RangeValue } from '../../interface'
 import useRangeCls from '../../hooks/use-range-cls'
 import { DisabledDataProps } from '../../date-picker'
@@ -47,7 +47,10 @@ function Month(props: MonthProps) {
     cellRender,
     range,
   } = context
-  const disabledInfo: any = { panelType: 'month', range }
+  const disabledInfo: { panelType: 'month'; range?: SingleContextProps['range'] } = {
+    panelType: 'month',
+    range,
+  }
   const { disabledDate } = props
 
   let _dateValue: RangeValue | DateType

@@ -63,8 +63,6 @@ import getRanges from './utils/get-ranges'
 import classNames from 'classnames'
 import usePopper from '../_utils/usePopper'
 
-// type RangePickerProps = RangeDateProps | RangeMonthProps | RangeWeekProps | RangeQuarterProps | RangeYearProps
-
 export type RangeType = 'start' | 'end'
 
 export interface RangeInfo {
@@ -138,7 +136,6 @@ export interface RangePickerTimeProps extends RangePickerSharedProps, OmitPicker
 
 export type RangePickerProps = RangePickerBaseProps | RangePickerDateProps | RangePickerTimeProps
 
-// TMP type to fit for ts 3.9.2
 type OmitType = Omit<RangePickerBaseProps, 'picker'> &
   Omit<RangePickerDateProps, 'picker'> &
   Omit<RangePickerTimeProps, 'picker'>
@@ -149,7 +146,6 @@ interface MergedRangePickerProps extends OmitType {
 
 export type RangeArray = { key: string; newValue: RangeValue }[]
 
-// 范围时间顺序错误时重新排序
 function reorderValues(values: RangeValue): RangeValue {
   if (values && values[0] && values[1] && isAfter(values[0] as DateType, values[1] as DateType)) {
     return [values[1], values[0]]
@@ -158,7 +154,6 @@ function reorderValues(values: RangeValue): RangeValue {
   return values
 }
 
-// 是否可以切换选择器
 function canValueTrigger(
   value: EventValue,
   index: number,
@@ -237,7 +232,6 @@ const InternalRangePicker = (
     disabledSeconds,
     disabledDate,
     onOpenChange,
-    // onPanelChange,
     onChange,
     onCalendarChange,
     onFocus,
@@ -254,7 +248,7 @@ const InternalRangePicker = (
     globalLocale.getCompLangMsg({ componentName: 'DatePicker' }),
     locale || {},
   )
-  // ref
+
   const panelDivRef = useRef<HTMLDivElement>(null)
   const defaultRef = useRef<HTMLInputElement>(null)
   const inputDivRef = (ref as any) || defaultRef
@@ -278,17 +272,13 @@ const InternalRangePicker = (
 
   const _format = getDefaultFormat(format, picker, showTime, use12Hours)
 
-  // Active picker
-  const [mergedActivePickerIndex, setMergedActivePickerIndex] = useMergedState<0 | 1>(0, {
-    // value: activePickerIndex,
-  })
-  // 原始数据
+  const [mergedActivePickerIndex, setMergedActivePickerIndex] = useMergedState<0 | 1>(0, {})
+
   const [dateValue, setInnerValue] = useMergedState<RangeValue>(null, {
     value,
     defaultValue,
   })
 
-  // 选中的数据
   const [selectedValue, setSelectedValue] = useMergedState<RangeValue>(null, {
     defaultValue: dateValue,
     postState: (values) => {
@@ -298,7 +288,6 @@ const InternalRangePicker = (
         return postValues
       }
 
-      // Fill disabled unit
       for (let i = 0; i < 2; i++) {
         const v = getValue(postValues, i)
         if (mergedDisabled[i] && !v && !getValue(allowEmpty, i)) {
@@ -340,14 +329,12 @@ const InternalRangePicker = (
     }
   }
 
-  // 面板展示日期
   const [getViewDate, setViewDate] = useRangeViewDates({
     values: dateValue,
     picker,
     defaultDates: defaultPickerValue,
   })
 
-  // text
   const startValueTexts = useValueTexts(getValue(selectedValue, 0), { format: _format })
 
   const endValueTexts = useValueTexts(getValue(selectedValue, 1), { format: _format })
@@ -372,7 +359,6 @@ const InternalRangePicker = (
     }
   }
 
-  // input 展示
   const [startText, triggerStartTextChange, resetStartText] = useTextValueMapping({
     valueText: startValueTexts,
     onTextChange: (newText) => onTextChange(newText, 0),
@@ -428,7 +414,7 @@ const InternalRangePicker = (
     openRecordsRef.current[0],
   )
 
-  const triggerRef = useRef<any>()
+  const triggerRef = useRef<NodeJS.Timeout | string | number | undefined>()
   const triggerOpen = (newOpen: boolean, index: 0 | 1) => {
     if (newOpen) {
       clearTimeout(triggerRef.current)
@@ -437,7 +423,6 @@ const InternalRangePicker = (
       setMergedActivePickerIndex(index)
       triggerInnerOpen(newOpen)
 
-      // Open to reset view date
       if (!mergedOpen) {
         setViewDate(null, index)
       }
@@ -454,7 +439,6 @@ const InternalRangePicker = (
 
   const triggerOpenAndFocus = (index: 0 | 1) => {
     triggerOpen(true, index)
-    // Use setTimeout to make sure panel DOM exists
     setTimeout(() => {
       const inputRef = [startInputRef, endInputRef][index]
       if (inputRef.current) {
@@ -602,7 +586,6 @@ const InternalRangePicker = (
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [mergedOpen, startValueTexts, endValueTexts])
 
-  // Sync innerValue with control mode
   useEffect(() => {
     setSelectedValue(dateValue)
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -638,10 +621,8 @@ const InternalRangePicker = (
         })
       ),
     locale: datePickerLang,
-    // rangeList,
     onOk: () => {
       if (getValue(selectedValue, mergedActivePickerIndex)) {
-        // triggerChangeOld(selectedValue);
         triggerChange(selectedValue, mergedActivePickerIndex)
         if (onOk) {
           onOk(selectedValue)
@@ -649,8 +630,6 @@ const InternalRangePicker = (
       }
     },
   })
-
-  // 渲染日期选择表盘
   const renderPanels = () => {
     let panels: ReactNode
     const viewDate = getViewDate(mergedActivePickerIndex)
@@ -742,14 +721,11 @@ const InternalRangePicker = (
     return panels
   }
 
-  // 箭头偏移(不展示箭头也需要计算)
   let arrowLeft = 0
   if (mergedActivePickerIndex && startInputDivRef.current && separatorRef.current) {
-    // Arrow offset
     arrowLeft = startInputDivRef.current.offsetWidth + separatorRef.current.offsetWidth - 10
   }
 
-  // input active Bar 宽度 偏移
   let activeBarLeft = -10
   let activeBarWidth = 0
 

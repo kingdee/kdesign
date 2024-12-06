@@ -5,20 +5,21 @@ order: 5
 
 日期范围选择五种风格：日期范围选择、周范围选择、月份范围选择、季度范围选择、年份范围选择
 
-```jsx
+```tsx
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { RangePicker } from '@kdcloudjs/kdesign'
+import type { IRangePickerProps } from '@kdcloudjs/kdesign'
 
 const Demo: React.FC = () => {
-  const demoStyle = { margin: '10px 0' }
+  const week: IRangePickerProps['picker'] = 'week'
   return (
-    <div  style={{ width: '250px' }}>
+    <div style={{ width: '250px' }}>
       <div>
         <RangePicker />
       </div>
       <div>
-        <RangePicker picker="week" />
+        <RangePicker picker={week} />
       </div>
       <div>
         <RangePicker picker="month" />

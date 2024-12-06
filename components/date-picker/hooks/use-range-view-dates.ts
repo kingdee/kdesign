@@ -2,7 +2,6 @@ import * as React from 'react'
 import { RangeValue, PickerMode, DateType } from '../interface'
 import { getValue, updateValues, getClosingViewDate } from '../utils'
 import { newDate, isSameYear, isSameMonth, isValid } from '../utils/date-fns'
-// import { getClosingViewDate, isSameYear, isSameMonth, isSameDecade } from '../utils/dateUtil'
 
 function getStartEndDistance(startDate: DateType, endDate: DateType, picker: PickerMode): 'same' | 'closing' | 'far' {
   const startNext = getClosingViewDate(startDate, picker, 1)
@@ -18,8 +17,6 @@ function getStartEndDistance(startDate: DateType, endDate: DateType, picker: Pic
   }
 
   switch (picker) {
-    // case 'year':
-    //   return getDistance((start, end) => isSameDecade(start, end))
     case 'quarter':
     case 'month':
       return getDistance((start, end) => isSameYear(start, end))
@@ -51,7 +48,7 @@ function getRangeViewDate(values: RangeValue, index: 0 | 1, picker: PickerMode):
   return startDate
 }
 
-function checkViewDate(value: any) {
+function checkViewDate(value: DateType | null) {
   if (value && !isValid(value)) {
     return false
   }
@@ -92,13 +89,8 @@ export default function useRangeViewDates({
   function setViewDate(viewDate: DateType | null, index: 0 | 1) {
     if (viewDate) {
       let newViewDates = updateValues(viewDates, viewDate, index)
-      // Set view date will clean up default one
-      setDefaultViewDates(
-        // Should always be an array
-        updateValues(defaultViewDates, null, index) || [null, null],
-      )
+      setDefaultViewDates(updateValues(defaultViewDates, null, index) || [null, null])
 
-      // Reset another one when not have value
       const anotherIndex = (index + 1) % 2
       if (!getValue(values, anotherIndex)) {
         newViewDates = updateValues(newViewDates, viewDate, anotherIndex)
@@ -106,7 +98,6 @@ export default function useRangeViewDates({
 
       setInternalViewDates(newViewDates)
     } else if (startDate || endDate) {
-      // Reset all when has values when `viewDate` is `null` which means from open trigger
       setInternalViewDates(null)
     }
   }
