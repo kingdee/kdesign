@@ -4,6 +4,11 @@ title: 更新日志
 hiddenAnchor: true
 ---
 
+## [1.8.22](https://github.com/kingdee/kdesign/compare/v1.8.21...v1.8.22)
+`2024-12-06`
+* icon
+  * 添加修改样式前缀功能 fix [#987](https://github.com/kingdee/kdesign/issues/987)
+
 ## [1.8.21](https://github.com/kingdee/kdesign/compare/v1.8.20...v1.8.21)
 `2024-11-29`
 * color-picker
