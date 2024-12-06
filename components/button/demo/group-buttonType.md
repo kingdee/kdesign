@@ -25,14 +25,19 @@ function Demo() {
     { value: '2', label: '撤销' },
     { value: '3', label: '废弃' },
   ]
-
+  const handleItemClick: IButtonGroupProps['onItemClick'] = () => {
+    console.log('onItemClick')
+  }
+  const handleClick: IButtonGroupProps['onClick'] = () => {
+    console.log('onClick')
+  }
   return (
     <div>
       <Button.Dropdown
         buttonType="primary"
         overlay={overlay1}
         style={demoButtonStyle}
-        onItemClick={() => console.log('onItemClick')}>
+        onItemClick={handleItemClick}>
         更多
       </Button.Dropdown>
       <Button.Dropdown
@@ -40,8 +45,8 @@ function Demo() {
         style={demoButtonStyle}
         overlay={overlay2}
         type="similar"
-        onClick={() => console.log('onClick')}
-        onItemClick={() => console.log('onItemClick')}>
+        onClick={handleClick}
+        onItemClick={handleItemClick}>
         提交
       </Button.Dropdown>
     </div>
