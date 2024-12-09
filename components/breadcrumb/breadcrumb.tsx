@@ -1,4 +1,4 @@
-import React, { FunctionComponentElement, useContext, useEffect, useRef } from 'react'
+import React, { FunctionComponentElement, useCallback, useContext, useEffect, useRef } from 'react'
 import classNames from 'classnames'
 import ConfigContext from '../config-provider/ConfigContext'
 import { getCompProps } from '../_utils'
@@ -24,7 +24,7 @@ const Breadcrumb = (props: IBreadcrumbProps): FunctionComponentElement<IBreadcru
   const breadcrumbHideIconRef = useRef<HTMLDivElement>(null)
   const [itemsConfig, setItemsConfig] = React.useState<IBreadcrumbItem[]>(items)
   const [itemsArray, setItemsArray] = React.useState<any>()
-  const [breadcrumbWidth, setBreadcrumbWidth] = React.useState<number>()
+  const [breadcrumbWidth, setBreadcrumbWidth] = React.useState<number>(0)
   const [openEllipsis, setOpenEllipsis] = React.useState<boolean>(false)
 
   const breadcrumbPrefixCls = getPrefixCls!(prefixCls, 'breadcrumb', customPrefixcls)
@@ -33,56 +33,51 @@ const Breadcrumb = (props: IBreadcrumbProps): FunctionComponentElement<IBreadcru
   const breadcrumbMorePanelClass = classNames(`${breadcrumbPrefixCls}-more-panel`)
   const breadcrumbSeparatorClass = classNames(`${breadcrumbPrefixCls}-item-separator`)
   const breadcrumbHideIconClass = classNames(`${breadcrumbPrefixCls}-hide-icon`)
-  const getBreadcrumbItemClass = (item: IBreadcrumbItem, isLast: boolean) => {
-    return classNames(item.className, `${breadcrumbPrefixCls}-item`, {
-      [`${breadcrumbPrefixCls}-item-link`]: item?.path || item?.href,
-      [`${breadcrumbPrefixCls}-item-${colorModel || 'emphasize'}-model-current`]: isLast,
-      [`${breadcrumbPrefixCls}-item-${colorModel || 'emphasize'}-model`]: !isLast,
-    })
-  }
+
   const MIN_ITEM = 3 // 加上more只显示3个元素的时候，末尾元素开启省略号
+
   const isLastItem = (index: number, items: IBreadcrumbItem[]) => {
     return index === items?.length - 1
   }
-  const getSeparator = (index: number, items: IBreadcrumbItem[]) => {
-    if (isLastItem(index, items)) {
-      return null
-    } else {
-      return <span className={breadcrumbSeparatorClass}>{separator}</span>
-    }
-  }
 
-  const getMoreIconContent = (items: IBreadcrumbItem[]) => {
-    const MoreItems = () => {
+  const getMoreIconContent = useCallback(
+    (items: IBreadcrumbItem[]) => {
+      const MoreItems = () => {
+        return (
+          <div className={breadcrumbMorePanelClass}>
+            {items.map((item, index) => {
+              return (
+                <BreadcrumbItem
+                  key={`breadcrumb--more-item-${index}`}
+                  index={index}
+                  item={item}
+                  colorModel={colorModel}
+                  separator={separator}
+                  onItemClick={onItemClick}
+                  isLast={isLastItem(index, items)}
+                  isTooltip={true}
+                />
+              )
+            })}
+          </div>
+        )
+      }
       return (
-        <div className={breadcrumbMorePanelClass}>
-          {items.map((item, index) => {
-            return (
-              <BreadcrumbItem
-                key={`breadcrumb--more-item-${index}`}
-                index={index}
-                item={{ ...item, className: getBreadcrumbItemClass(item, false) }}
-                separator={getSeparator(index, items)}
-              />
-            )
-          })}
-        </div>
+        <>
+          <Tooltip
+            popperClassName={breadcrumbPopperClass}
+            arrow={false}
+            tip={<MoreItems />}
+            trigger="hover"
+            placement="bottomLeft"
+          >
+            <Icon type="more" />
+          </Tooltip>
+        </>
       )
-    }
-    return (
-      <>
-        <Tooltip
-          popperClassName={breadcrumbPopperClass}
-          arrow={false}
-          tip={<MoreItems />}
-          trigger="hover"
-          placement="bottomLeft"
-        >
-          <Icon type="more" />
-        </Tooltip>
-      </>
-    )
-  }
+    },
+    [breadcrumbMorePanelClass, breadcrumbPopperClass, colorModel, onItemClick, separator],
+  )
 
   const getElementWidth = (ref: React.RefObject<HTMLDivElement>) => {
     if (ref.current) {
@@ -92,37 +87,40 @@ const Breadcrumb = (props: IBreadcrumbProps): FunctionComponentElement<IBreadcru
     }
   }
 
-  const getItemsConfig = (widthArr: IItemsWidth[], breadcrumbWidth: number) => {
-    const difference = getElementWidth(breadcrumbRef) - breadcrumbWidth!
-    if (difference < 0) {
-      const number = -difference
-      const removeItem = widthArr?.reduce(
-        (acc, cur, ind) => {
-          if (ind > 0 && ind < widthArr.length - 1) {
-            if (acc.width < number + getElementWidth(breadcrumbHideIconRef)) {
-              acc.width += cur.width
-              acc.index = ind
-              return acc
+  const getItemsConfig = useCallback(
+    (widthArr: IItemsWidth[], breadcrumbWidth: number) => {
+      const difference = getElementWidth(breadcrumbRef) - breadcrumbWidth!
+      if (difference < 0) {
+        const number = -difference
+        const removeItem = widthArr?.reduce(
+          (acc, cur, ind) => {
+            if (ind > 0 && ind < widthArr.length - 1) {
+              if (acc.width < number + getElementWidth(breadcrumbHideIconRef)) {
+                acc.width += cur.width
+                acc.index = ind
+                return acc
+              } else {
+                return acc
+              }
             } else {
               return acc
             }
-          } else {
-            return acc
-          }
-        },
-        { width: 0, index: 0 },
-      )
-      if (removeItem.index > 0 && removeItem.index < items.length - 1) {
-        const newItemsConfig = cloneDeep(items)
-        newItemsConfig.splice(1, removeItem.index, {
-          title: getMoreIconContent(cloneDeep(items).splice(1, removeItem.index)),
-        })
-        setItemsConfig(newItemsConfig)
+          },
+          { width: 0, index: 0 },
+        )
+        if (removeItem.index > 0 && removeItem.index < items.length - 1) {
+          const newItemsConfig = cloneDeep(items)
+          newItemsConfig.splice(1, removeItem.index, {
+            title: getMoreIconContent(cloneDeep(items).splice(1, removeItem.index)),
+          })
+          setItemsConfig(newItemsConfig)
+        }
+      } else {
+        setItemsConfig(items)
       }
-    } else {
-      setItemsConfig(items)
-    }
-  }
+    },
+    [getMoreIconContent, items],
+  )
 
   useEffect(() => {
     const isMore = itemsConfig?.some((item: any) => {
@@ -146,20 +144,17 @@ const Breadcrumb = (props: IBreadcrumbProps): FunctionComponentElement<IBreadcru
         getItemsConfig(itemsArray, breadcrumbWidth)
       }
     }
-  }, [])
+  }, [getItemsConfig])
 
   useEffect(() => {
-    if (itemsArray && breadcrumbWidth) {
-      window.addEventListener('resize', () => {
-        getItemsConfig(itemsArray, breadcrumbWidth)
-      })
+    const fn = () => {
+      getItemsConfig(itemsArray, breadcrumbWidth)
     }
-
-    return () =>
-      window.removeEventListener('resize', () => {
-        getItemsConfig(itemsArray, breadcrumbWidth as any)
-      })
-  }, [itemsArray, breadcrumbWidth])
+    if (itemsArray && breadcrumbWidth) {
+      window.addEventListener('resize', fn)
+    }
+    return () => window.removeEventListener('resize', fn)
+  }, [itemsArray, breadcrumbWidth, getItemsConfig])
 
   return (
     <>
@@ -169,13 +164,12 @@ const Breadcrumb = (props: IBreadcrumbProps): FunctionComponentElement<IBreadcru
             return (
               <BreadcrumbItem
                 key={`breadcrumb-item-${index}`}
-                item={{
-                  ...item,
-                  className: getBreadcrumbItemClass(item, isLastItem(index, itemsConfig)),
-                }}
+                item={item}
                 onItemClick={onItemClick}
                 index={index}
-                separator={getSeparator(index, itemsConfig)}
+                separator={separator}
+                colorModel={colorModel}
+                isLast={isLastItem(index, itemsConfig)}
                 openEllipsis={isLastItem(index, itemsConfig) ? openEllipsis : false}
               />
             )
