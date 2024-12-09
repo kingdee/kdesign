@@ -2,7 +2,6 @@
 @import './token.less';
 @input-prefix-cls: ~'@{kd-prefix}-input';
 
-// 输入框默认样式Mixins
 .input(@prefix) {
   @disabled-prefix-cls: ~'@{prefix}-disabled';
   @error-prefix-cls: ~'@{input-prefix-cls}-error';
@@ -17,7 +16,7 @@
   font-variant: tabular-nums;
   list-style: none;
   background-image: none;
-  font-feature-settings: "tnum";
+  font-feature-settings: 'tnum';
 
   &::-webkit-input-placeholder {
     color: @input-placeholder-color-inner !important;
@@ -82,7 +81,6 @@
     font-size: 16px;
   }
 }
-
 
 .border-less() {
   border: none !important;

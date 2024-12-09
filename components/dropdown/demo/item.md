@@ -5,13 +5,14 @@ title: 菜单项
 
 通过 `Item` 添加 `divided`（分隔线） 和 `disabled`（禁用）菜单项
 
-```jsx
+```tsx
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { Dropdown, Icon } from '@kdcloudjs/kdesign'
+import type { IDropdownProps } from '@kdcloudjs/kdesign'
 
 const Demo: React.FC = () => {
-  const menu = (
+  const menu: IDropdownProps['menu'] = (
     <Dropdown.Menu>
       <Dropdown.Item>
         <a target="_blank" rel="noopener noreferrer" href="https://www.kingdee.com/">
@@ -37,7 +38,11 @@ const Demo: React.FC = () => {
   )
   return (
     <Dropdown menu={menu}>
-      <a href="true" className="kd-dropdown-link" style={{ width: '100px', display: 'block' }} onClick={(e) => e.preventDefault()}>
+      <a
+        href="true"
+        className="kd-dropdown-link"
+        style={{ width: '100px', display: 'block' }}
+        onClick={(e) => e.preventDefault()}>
         Hover me <Icon type="arrow-down" />
       </a>
     </Dropdown>

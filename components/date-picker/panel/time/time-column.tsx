@@ -16,7 +16,6 @@ export interface TimeUnitColumnProps {
   prefixCls?: string
   units?: Unit[]
   value?: number
-  // active?: boolean
   selectValue?: DateType
   hideDisabledOptions?: boolean
   onSelect?: (value: number) => void
@@ -55,13 +54,7 @@ function TimeUnitColumn(props: TimeUnitColumnProps) {
   }, [open])
 
   return (
-    <ul
-      className={classNames(`${prefixCls}-column`, {
-        // [`${prefixCls}-column-active`]: active,
-      })}
-      ref={ulRef}
-      style={{ position: 'relative' }}
-    >
+    <ul className={classNames(`${prefixCls}-column`)} ref={ulRef} style={{ position: 'relative' }}>
       {units!.map((unit) => {
         if (hideDisabledOptions && unit.disabled) {
           return null

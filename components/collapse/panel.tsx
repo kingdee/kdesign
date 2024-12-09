@@ -8,10 +8,10 @@ import { IconPositionType, PanelKeyType } from './collapse'
 export interface PanelProps {
   disabled?: boolean
   header?: React.ReactNode | ((props: PanelProps) => React.ReactNode)
-  expandIcon?: React.ReactNode | ((props: PanelProps) => React.ReactNode) // 自定义切换图标
-  bordered?: boolean // 是否边框风格折叠面板
-  expandIconPosition?: IconPositionType // 设置切换图标位置
-  onChange?: (key: PanelKeyType) => void // 切换面板时的回调
+  expandIcon?: React.ReactNode | ((props: PanelProps) => React.ReactNode)
+  bordered?: boolean
+  expandIconPosition?: IconPositionType
+  onChange?: (key: PanelKeyType) => void
   extra?: React.ReactNode | ((props: PanelProps) => React.ReactNode)
   assist?: React.ReactNode | ((props: PanelProps) => React.ReactNode)
   expand?: boolean
@@ -42,12 +42,12 @@ const Panel = React.forwardRef<unknown, PanelProps>((props, ref) => {
     ...others
   } = getCompProps('CollapsePanel', userDefaultProps, props)
 
-  const panelPrefixCls = getPrefixCls!(prefixCls, 'collapse-panel', customPrefixcls) // 样式前缀
+  const panelPrefixCls = getPrefixCls!(prefixCls, 'collapse-panel', customPrefixcls)
 
-  const childrenRef = useRef<HTMLElement>()
-  const setHeightTimerRef = useRef<any>(null)
-  const setAutoHeightTimerRef = useRef<any>(null)
-  const [expandAnimation, setExpandAnimation] = useState<any>(null)
+  const childrenRef = useRef<HTMLDivElement | null>(null)
+  const setHeightTimerRef = useRef<NodeJS.Timeout | null>(null)
+  const setAutoHeightTimerRef = useRef<NodeJS.Timeout | null>(null)
+  const [expandAnimation, setExpandAnimation] = useState<boolean | null>(null)
   const [expand, setExpand] = useState<boolean>(false)
 
   useEffect(() => {
@@ -172,12 +172,12 @@ const Panel = React.forwardRef<unknown, PanelProps>((props, ref) => {
     }, 0)
   }
 
-  const expandWidthoutAnimation = (element: HTMLElement) => {
+  const expandWithoutAnimation = (element: HTMLElement) => {
     element.style.height = 'auto'
     element.style.opacity = '1'
   }
 
-  const panelPrefixClsRef = (ref as any) || React.createRef<HTMLElement>()
+  const panelPrefixClsRef = (ref as React.RefObject<HTMLDivElement>) || React.createRef<HTMLElement>()
 
   React.useLayoutEffect(() => {
     if (!childrenRef.current) return
@@ -185,7 +185,7 @@ const Panel = React.forwardRef<unknown, PanelProps>((props, ref) => {
       expand ? runExpandAnimation(childrenRef.current) : runCollapseAnimation(childrenRef.current)
       setExpandAnimation(false)
     } else if (!expandAnimation) {
-      expand ? expandWidthoutAnimation(childrenRef.current) : runCollapseAnimation(childrenRef.current)
+      expand ? expandWithoutAnimation(childrenRef.current) : runCollapseAnimation(childrenRef.current)
     }
   }, [childrenRef.current, expandAnimation, expand])
 
@@ -196,7 +196,7 @@ const Panel = React.forwardRef<unknown, PanelProps>((props, ref) => {
         {renderMiddle()}
         {renderRight()}
       </span>
-      <div className={childrenClassName} ref={childrenRef as any}>
+      <div className={childrenClassName} ref={childrenRef}>
         <div className={childrenBorderedClassName}>{children}</div>
       </div>
     </div>

@@ -3,23 +3,23 @@ import classNames from 'classnames'
 import ConfigContext from '../config-provider/ConfigContext'
 import { getCompProps } from '../_utils'
 import ClearableInput from './ClearableLabeledInput'
-import { InputSiteType, BorderType, BorderTypes, fixControlledValue } from './input'
+import { InputSiteType, BorderType, BorderTypes, fixControlledValue, ValueType } from './input'
 import calculateNodeHeight from './calculateNodeHeight'
 import { useResizeObserver, useMergedState } from '../_utils/hooks'
 import devWarning from '../_utils/devwarning'
 
-export interface textAreaProps extends React.TextareaHTMLAttributes<HTMLInputElement> {
-  allowClear?: boolean | React.ReactNode // 是否可以点击清除图标删除内容
-  borderType?: BorderType // none/underline/bordered
-  defaultValue?: string // 输入框默认内容
-  count?: boolean // 计数开关
-  countPosition?: string // 计数开关位置 inner/outter
-  value?: any // 输入框内容
-  canResize?: boolean // 是否可调整大小
-  disabled?: boolean // 是否锁定
-  maxLength?: number // 输入的最多字数
-  placeholder?: string // 提示语
-  style?: Record<string, unknown> // 内联样式
+export interface TextAreaProps extends Omit<React.TextareaHTMLAttributes<HTMLInputElement>, 'value'> {
+  allowClear?: boolean | React.ReactNode
+  borderType?: BorderType
+  defaultValue?: string
+  count?: boolean
+  countPosition?: string
+  value?: ValueType
+  canResize?: boolean
+  disabled?: boolean
+  maxLength?: number
+  placeholder?: string
+  style?: Record<string, unknown>
   size?: InputSiteType
   autoSize?: AutoSizeType | boolean
   status?: 'error'
@@ -30,11 +30,11 @@ export interface AutoSizeType {
   maxRows?: number
 }
 
-const InternalTextarea = (props: textAreaProps, ref: unknown): FunctionComponentElement<textAreaProps> => {
+const InternalTextarea = (props: TextAreaProps, ref: unknown): FunctionComponentElement<TextAreaProps> => {
   const thisTextareaRef = useRef<HTMLElement>()
   const textareaRef = (ref as any) || thisTextareaRef
   const { getPrefixCls, prefixCls, compDefaultProps: userDefaultProps } = useContext(ConfigContext)
-  const textAreaProps = getCompProps('TextArea', userDefaultProps, props) // 按钮属性需要合并一遍用户定义的默认属性
+  const textAreaProps = getCompProps('TextArea', userDefaultProps, props)
   const [textareaStyles, setTextareaStyles] = useState({})
   const {
     value: propsValue,
@@ -56,9 +56,13 @@ const InternalTextarea = (props: textAreaProps, ref: unknown): FunctionComponent
     style,
     size,
     status,
+    prefix,
+    suffix,
+    addonAfter,
+    addonBefore,
     ...others
   } = textAreaProps
-  const textAreaPrefixCls = getPrefixCls!(prefixCls, 'input', customPrefixcls) // TextArea样式前缀
+  const textAreaPrefixCls = getPrefixCls!(prefixCls, 'input', customPrefixcls)
   devWarning(BorderTypes.indexOf(borderType) === -1, 'textarea', `cannot found textarea borderType '${borderType}'`)
 
   const [value, setValue] = useMergedState('', {
@@ -201,6 +205,11 @@ const InternalTextarea = (props: textAreaProps, ref: unknown): FunctionComponent
   return (
     <ClearableInput
       {...textAreaProps}
+      allowClear={allowClear}
+      prefix={prefix}
+      suffix={suffix}
+      addonAfter={addonAfter}
+      addonBefore={addonBefore}
       handleReset={handleReset}
       value={value}
       inputType="text"
@@ -210,6 +219,6 @@ const InternalTextarea = (props: textAreaProps, ref: unknown): FunctionComponent
     />
   )
 }
-const TextArea = React.forwardRef<unknown, textAreaProps>(InternalTextarea)
+const TextArea = React.forwardRef<unknown, TextAreaProps>(InternalTextarea)
 TextArea.displayName = 'TextArea'
 export default TextArea

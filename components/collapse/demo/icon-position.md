@@ -3,13 +3,14 @@ title: 设置切换图标位置
 order: 7
 ---
 
-```jsx
+```tsx
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { Collapse, Switch, Icon } from '@kdcloudjs/kdesign'
-import type { IconPositionType } from '@kdcloudjs/kdesign'
+import type { IconPositionType, ICollapseProps } from '@kdcloudjs/kdesign'
 
 const Demo: React.FC = () => {
+  const bordered: ICollapseProps['bordered'] = true
   const [expandIconPosition, setExpandIconPosition] = React.useState<IconPositionType>('left')
   const collapseRef = React.useRef()
   const handleOnChange = React.useCallback((value) => {
@@ -27,7 +28,7 @@ const Demo: React.FC = () => {
       <br />
       <Switch onChange={handleOnChange} style={{ width: '30px' }} />
       <br />
-      <Collapse expandIconPosition={expandIconPosition} ref={collapseRef} bordered>
+      <Collapse expandIconPosition={expandIconPosition} ref={collapseRef} bordered={bordered}>
         <Collapse.Panel
           header="This is the header1"
           panelKey="panel_1"

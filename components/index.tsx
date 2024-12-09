@@ -26,6 +26,7 @@ export { default as Button } from './button'
 export { default as Card } from './card'
 
 export { default as Collapse } from './collapse'
+export type { CollapseProps as ICollapseProps, PanelProps as IPanelProps } from './collapse'
 
 export { default as Checkbox } from './checkbox'
 
@@ -38,8 +39,10 @@ export type { CarouselProps as ICarouselProps } from './carousel'
 export { default as Cascader } from './cascader'
 
 export { default as Dropdown } from './dropdown'
+export type { DropDownProps as IDropDownProps, MenuProps as IMenuProps, ItemProps as IItemProps } from './dropdown'
 
 export { default as DatePicker, RangePicker } from './date-picker'
+export type { PickerProps as IDatePickerProps, RangePickerProps as IRangePickerProps } from './date-picker'
 
 export { default as Drawer } from './drawer'
 
@@ -52,6 +55,7 @@ export { default as Form } from './form'
 export { Row, Col } from './grid'
 
 export { default as Input, TextArea } from './input'
+export type { InputProps as IInputProps, TextAreaProps as ITextAreaProps } from './input'
 
 export { default as InputNumber } from './input-number'
 
@@ -97,6 +101,7 @@ export { default as Spin } from './spin'
 export { default as Timeline } from './timeline'
 
 export { default as Tooltip } from './tooltip'
+export type { TooltipProps as ITooltipProps } from './tooltip'
 
 export { default as Tabs } from './tabs'
 

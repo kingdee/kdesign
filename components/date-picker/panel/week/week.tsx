@@ -84,7 +84,7 @@ function Week(props: WeekProps) {
   const getToday = (date: DateType) => {
     if (hasFindToday) return false
     hasFindToday = isSameDay(date, newDate() as DateType)
-    // 如果 today 被选中则返回 false
+
     if (hasFindToday) {
       if (Array.isArray(_dateValue)) {
         return !((_dateValue[0] && isSameDay(_dateValue[0], date)) || (_dateValue[1] && isSameDay(_dateValue[1], date)))
@@ -103,7 +103,6 @@ function Week(props: WeekProps) {
   const getWeekSelected = (date: DateType) => {
     if (hasFindSelected) return false
     if (Array.isArray(_dateValue)) {
-      // 如果是 endSelected 需要判断选中的周最后一天是否为本月
       return (
         (_dateValue[0] && isSameWeek(_dateValue[0], date)) ||
         (_dateValue[1] && isSameWeek(_dateValue[1], date) && isSameMonth(getEndOfWeek(_dateValue[1]), viewDate))
@@ -153,7 +152,6 @@ function Week(props: WeekProps) {
 
   const getEffectTime = (date: DateType) => {
     if (showTime && !disabledTimePanel) {
-      // debugger
       const dateHour = getHours(date)
       const dateMinute = getMinutes(date)
       const dateSecond = getSeconds(date)

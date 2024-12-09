@@ -2,15 +2,15 @@ import React, { CSSProperties, useRef, useState } from 'react'
 import { Icon } from '../index'
 import classNames from 'classnames'
 import { tuple } from '../_utils/type'
-import { InputSiteType, BorderType } from './input'
+import { InputSiteType, BorderType, ValueType } from './input'
 const ClearableInputType = tuple('input', 'text')
-export function hasPrefixSuffix(props: ClearableInputProps) {
+export function hasPrefixSuffix(props: Pick<ClearableInputProps, 'prefix' | 'suffix' | 'allowClear' | 'inputCount'>) {
   return !!(props.prefix || props.suffix || props.allowClear || !!props.inputCount)
 }
 interface ClearableInputProps {
   prefixCls: string
   inputType: typeof ClearableInputType[number]
-  value?: any
+  value?: ValueType
   allowClear?: boolean | React.ReactNode
   element: React.ReactElement
   handleReset?: (event: React.MouseEvent<HTMLElement, MouseEvent>) => void
@@ -71,7 +71,7 @@ const ClearableInput: React.FC<ClearableInputProps> = (props) => {
 
   const clickHandle: React.MouseEventHandler = (e) => {
     e.stopPropagation()
-    ;(fixRef.current as any as HTMLElement)?.querySelector('input')?.focus()
+    ;(fixRef.current as unknown as HTMLElement)?.querySelector('input')?.focus()
   }
 
   const renderClearIcon = () => {

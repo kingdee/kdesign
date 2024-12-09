@@ -5,15 +5,18 @@ order: 0
 
 日期选择五种风格：日期选择、周选择、月份选择、季度选择、年份选择
 
-```jsx
+```tsx
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { DatePicker } from '@kdcloudjs/kdesign'
+import type { IDatePickerProps } from '@kdcloudjs/kdesign'
 
 const Demo: React.FC = () => {
   const demoStyle = { margin: '10px 0' }
+  const underline: IDatePickerProps['borderType'] = 'underline'
+
   return (
-    <div  style={{ width: '150px' }}>
+    <div style={{ width: '150px' }}>
       <div style={demoStyle}>
         <DatePicker />
       </div>
@@ -21,7 +24,7 @@ const Demo: React.FC = () => {
         <DatePicker picker="week" />
       </div>
       <div style={demoStyle}>
-        <DatePicker picker="month" borderType="underline" />
+        <DatePicker picker="month" borderType={underline} />
       </div>
       <div style={demoStyle}>
         <DatePicker picker="quarter" />

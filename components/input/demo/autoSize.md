@@ -5,18 +5,20 @@ order: 6
 
 autoSize 属性适用于 textarea 节点，并且只有高度会自动变化。另外 autoSize 可以设定为一个对象，指定最小行数和最大行数。
 
-```jsx
+```tsx
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { TextArea } from '@kdcloudjs/kdesign'
+import type { ITextAreaProps } from '@kdcloudjs/kdesign'
 
 const Demo: React.FC = () => {
+  const bordered: ITextAreaProps['borderType'] = 'bordered'
   return (
     <div style={{ width: '300px' }}>
-      <TextArea autoSize={true} borderType="bordered" countPosition="inner"/>
+      <TextArea autoSize={true} borderType="bordered" countPosition="inner" />
       <br />
       <br />
-      <TextArea autoSize={{ minRows: 2, maxRows: 6 }} borderType="bordered" />
+      <TextArea autoSize={{ minRows: 2, maxRows: 6 }} borderType={bordered} />
       <br />
     </div>
   )
