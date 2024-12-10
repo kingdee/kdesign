@@ -239,6 +239,18 @@ describe('ColorPicker', () => {
       '100%',
     )
 
+    // disabled
+    underlineDefValueWrapper.setProps({ disabled: true })
+    borderedDefValueWrapper.setProps({ disabled: true })
+    underlineDefValueWrapper.update()
+    borderedDefValueWrapper.update()
+    expect(underlineDefValueWrapper.find('.kd-input-wrapper-disabled')).toExist()
+    expect(borderedDefValueWrapper.find('.kd-input-wrapper-disabled')).toExist()
+    underlineDefValueWrapper.setProps({ disabled: false })
+    borderedDefValueWrapper.setProps({ disabled: false })
+    underlineDefValueWrapper.update()
+    borderedDefValueWrapper.update()
+
     // value
     underlineDefValueWrapper.setProps({ value: 'red' })
     borderedDefValueWrapper.setProps({ value: 'blue' })

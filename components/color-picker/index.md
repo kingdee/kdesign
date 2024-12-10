@@ -19,6 +19,7 @@ subtitle: 颜色选择器
 | className | color-picker 输入框类名 | string | - | 1.7.0 |
 | defaultOpen | 颜色面板展开配置 | boolean | false | 1.7.0 |
 | defaultValue | 设置输入框的默认值，可以是十六进制、RGB 、HSB 、HSL 或者颜色英文名称 | string | - | 1.7.0 |
+| disabled | 输入框禁用状态 | boolean | `false` | `true` `false` | 1.8.22 |
 | format | 限制颜色选择器的输出格式，必须是 HEX、RGB 、HSB 、HSL 中的一种 | `HEX` \| `RGB` \| `HSB` \| `HSL` | `HEX` | 1.8.16 |
 | functionalColor | 设置功能色色值，可以是十六进制、RGB 、HSB 、HSL 或者颜色英文名称 | string | - | 1.7.0 |
 | functionalColorName | 设置功能色的名称 | string | #themeColor | 1.7.0 |
@@ -44,8 +45,8 @@ subtitle: 颜色选择器
 
 ## ColorPickerInstance
 
-| 属性 | 说明       | 类型           | 版本 |
-| ---- | ---------- | -------------- | ---- |
+| 属性 | 说明       | 类型           | 版本   |
+| ---- | ---------- | -------------- | ------ |
 | dom  | 输入框容器 | HTMLDivElement | 1.8.22 |
 
 ## Design Token

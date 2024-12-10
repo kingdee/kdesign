@@ -30,6 +30,8 @@ export interface IColorPickerProps extends PopperProps {
   defaultValue: string
   // 颜色选择面板显隐配置
   defaultOpen: boolean
+  // 禁用状态
+  disabled: boolean
   // 功能色名称
   functionalColorName: string
   // 功能色色值
