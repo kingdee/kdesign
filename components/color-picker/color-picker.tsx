@@ -48,6 +48,7 @@ const InternalColorPicker = (props: Partial<IColorPickerProps>, ref: RefObject<I
     placeholder,
     defaultValue,
     defaultOpen,
+    disabled,
     visible,
     popperClassName,
     suffixIcon,
@@ -164,6 +165,7 @@ const InternalColorPicker = (props: Partial<IColorPickerProps>, ref: RefObject<I
   }
 
   const handleClick = () => {
+    if (disabled) return
     if (typeof visible === 'undefined') {
       setShowPanel(!showPanel)
     }
@@ -218,6 +220,7 @@ const InternalColorPicker = (props: Partial<IColorPickerProps>, ref: RefObject<I
       <Input
         borderType={pure ? 'bordered' : borderType}
         placeholder={placeholder}
+        disabled={disabled}
         value={value ?? inputColorValue}
         className={inputCls}
         onChange={handleChange}
