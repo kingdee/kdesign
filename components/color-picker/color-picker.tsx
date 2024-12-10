@@ -4,7 +4,7 @@ import { ConfigContext } from '../config-provider'
 import { Input } from '../index'
 import { validateColor } from './utils/validateColor'
 import { colorTypes } from './constant/colorTypes'
-import { IColorTypesObj, IColorPickerProps, ColorTypes } from './interface'
+import { IColorTypesObj, IColorPickerProps } from './interface'
 import ColorPickerPanel from './color-picker-panel'
 import { colorFormat, strFixed, getColorObj, highlightPresetColorIndex, presetColorToHEX } from './utils/colorFormat'
 import { defaultSystemColor } from './constant/defaultColor'
@@ -12,6 +12,7 @@ import Color from 'color'
 import { getCompProps } from '../_utils'
 import usePopper from '../_utils/usePopper'
 import { systemPresetColor } from './constant/systemPresetColor'
+import { ICurrentColorType, removeTransparency } from './utils/removeTransparency'
 
 const ColorPicker: FC<Partial<IColorPickerProps>> = (props) => {
   const { getPrefixCls, prefixCls, compDefaultProps: userDefaultProps } = useContext(ConfigContext)
@@ -103,7 +104,7 @@ const ColorPicker: FC<Partial<IColorPickerProps>> = (props) => {
       const formatArr = colorFormat(inpValue, strFixed(Color(getColorObj(inpValue)).alpha(), 2)) as IColorTypesObj[]
       setState(
         formatArr,
-        colorFormat(inpValue, 1, currentColorType as Exclude<typeof ColorTypes[number], 'themeColor'>, true) as string,
+        colorFormat(inpValue, 1, currentColorType as ICurrentColorType, true) as string,
         Color(getColorObj(inpValue)).alpha(),
         getAlphaStr(inpValue),
       )
@@ -188,16 +189,18 @@ const ColorPicker: FC<Partial<IColorPickerProps>> = (props) => {
       [`${colorPickerPrefixCls}-icon-bordered`]: borderType === 'bordered',
     })
 
+    const getBgc = () => {
+      return inputCorrectColorValue
+        ? colTypeArr[2].value
+        : removeTransparency(colTypeArr[2].value, currentColorType as ICurrentColorType)
+    }
     const noneLineCls = `${colorPickerPrefixCls}-icon-no-color-line`
     return (
-      <div
-        className={afterIconContainerCls}
-        style={{ backgroundColor: `${colTypeArr[2].value || defaultSystemColor}` }}
-      >
+      <div className={afterIconContainerCls} style={{ backgroundColor: getBgc() || defaultSystemColor }}>
         {!validateColor(value) && !inputCorrectColorValue && <div className={noneLineCls} />}
       </div>
     )
-  }, [borderType, colTypeArr, colorPickerPrefixCls, inputCorrectColorValue, value])
+  }, [borderType, colTypeArr, colorPickerPrefixCls, currentColorType, inputCorrectColorValue, value])
 
   const colorInputEle = (
     <div className={containerCls} ref={inputRef} style={style}>

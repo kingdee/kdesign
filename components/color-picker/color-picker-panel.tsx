@@ -21,6 +21,7 @@ import { ChromePicker } from 'react-color'
 import devWarning from '../_utils/devwarning'
 import { useOnClickOutside } from '../_utils/hooks'
 import { isIE } from '../_utils/ieUtil'
+import { ICurrentColorType, removeTransparency } from './utils/removeTransparency'
 
 const ColorPickerPanel: FC<IColorPickerPanelProps> = (props) => {
   const {
@@ -134,7 +135,7 @@ const ColorPickerPanel: FC<IColorPickerPanelProps> = (props) => {
   const presetColorClick = (index: number, colorValue: string) => {
     const colorLiAlpha = strFixed(Color(getColorObj(colorValue)).alpha(), 2)
     const formatArr = colorFormat(colorValue, colorLiAlpha) as IColorTypesObj[]
-    const formatCorrectValue = removeTransparency(colorValue)
+    const formatCorrectValue = removeTransparency(colorValue, currentColorType as ICurrentColorType)
     const formatInputValue = toUpCase(formatArr[valOfCorrespondingType(format) as number].value)
     setIsFollow(false)
     setAlpha(isFollow ? 1 : colorLiAlpha)
@@ -150,7 +151,7 @@ const ColorPickerPanel: FC<IColorPickerPanelProps> = (props) => {
   const historicalColorClick = (index: number, colorValue: string) => {
     const colorLiAlpha = strFixed(Color(getColorObj(colorValue)).alpha(), 2)
     const formatArr = colorFormat(colorValue, colorLiAlpha) as IColorTypesObj[]
-    const formatCorrectValue = removeTransparency(colorValue)
+    const formatCorrectValue = removeTransparency(colorValue, currentColorType as ICurrentColorType)
     const formatInputValue = toUpCase(formatArr[valOfCorrespondingType(format) as number].value)
     setIsFollow(false)
     setAlpha(isFollow ? 1 : colorLiAlpha)
@@ -174,10 +175,6 @@ const ColorPickerPanel: FC<IColorPickerPanelProps> = (props) => {
     onChange?.(colTypeArr.find((item) => item.type === format)?.value!, colTypeArr)
   }
 
-  const removeTransparency = (color: string) => {
-    return colorFormat(color, 1, currentColorType as Exclude<typeof ColorTypes[number], 'themeColor'>, true) as string
-  }
-
   const handleAlphaChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const regPercentage = /^(0|[1-9][0-9]?|100)%$/
     const regDot = /^(0(\.\d+)?|1(\.0+)?)$/
@@ -186,7 +183,7 @@ const ColorPickerPanel: FC<IColorPickerPanelProps> = (props) => {
     const getColorFormat = (alpha: number) => {
       const formatArr = colorFormat(correctColorValue, alpha, 'all', true) as IColorTypesObj[]
       const outValue = formatArr[valOfCorrespondingType(format) as number].value
-      const innerInput = removeTransparency(outValue)
+      const innerInput = removeTransparency(outValue, currentColorType as ICurrentColorType)
       return { formatArr, outValue, innerInput }
     }
 
@@ -232,23 +229,29 @@ const ColorPickerPanel: FC<IColorPickerPanelProps> = (props) => {
       const formatArr = colorFormat(val, inputCorrectColorValue ? alpha : 1, 'all', true) as IColorTypesObj[]
       const outValue = formatArr[valOfCorrespondingType(format) as number].value
       if (value === undefined) {
-        const innerInput = removeTransparency(val)
+        const innerInput = removeTransparency(val, currentColorType as ICurrentColorType)
         if (!inputCorrectColorValue) {
           setPanelState(formatArr, innerInput as string, outValue, 1, '100%')
         } else {
           setPanelState(formatArr, innerInput as string, outValue)
         }
       } else if (onChange === undefined) {
-        setPanelState(colTypeArr, removeTransparency(correctColor), correctColor)
+        setPanelState(colTypeArr, removeTransparency(correctColor, currentColorType as ICurrentColorType), correctColor)
       }
       onChange?.(outValue, formatArr)
     } else {
       if (!inputCorrectColorValue) {
         const formatArr = colorFormat(correctColor, 1, 'all', true) as IColorTypesObj[]
-        setPanelState(formatArr, removeTransparency(correctColor), correctColor, 1, '100%')
+        setPanelState(
+          formatArr,
+          removeTransparency(correctColor, currentColorType as ICurrentColorType),
+          correctColor,
+          1,
+          '100%',
+        )
         onChange?.(formatArr.find((item) => item.type === format)?.value!, formatArr)
       } else {
-        setPanelState(colTypeArr, removeTransparency(correctColor), correctColor)
+        setPanelState(colTypeArr, removeTransparency(correctColor, currentColorType as ICurrentColorType), correctColor)
         onChange?.(colTypeArr.find((item) => item.type === format)?.value!, colTypeArr)
       }
     }
@@ -274,7 +277,7 @@ const ColorPickerPanel: FC<IColorPickerPanelProps> = (props) => {
       }
     } else if (onChange === undefined) {
       const correctColor = colTypeArr.find((item) => item.type === format)?.value as string
-      setPanelState(colTypeArr, removeTransparency(correctColor), correctColor)
+      setPanelState(colTypeArr, removeTransparency(correctColor, currentColorType as ICurrentColorType), correctColor)
     }
     onChange?.(outValue, formatArr)
   }
@@ -325,7 +328,10 @@ const ColorPickerPanel: FC<IColorPickerPanelProps> = (props) => {
             formatArr = colorFormat(functionalColor, alpha) as IColorTypesObj[]
             setPanelState(
               formatArr,
-              removeTransparency(formatArr[valOfCorrespondingType(currentColorType) as number].value),
+              removeTransparency(
+                formatArr[valOfCorrespondingType(currentColorType) as number].value,
+                currentColorType as ICurrentColorType,
+              ),
               functionalColorName,
               strFixed(Color(getColorObj(functionalColor)).alpha(), 2),
               strFixed(Color(getColorObj(functionalColor)).alpha(), 2) * 100 + '%',
@@ -364,7 +370,7 @@ const ColorPickerPanel: FC<IColorPickerPanelProps> = (props) => {
       setIsFollow(false)
       setPanelState(
         formatArr,
-        removeTransparency(colorObj.value),
+        removeTransparency(colorObj.value, currentColorType as ICurrentColorType),
         colorObj.value,
         inputCorrectColorValue ? color.rgb.a : 1,
         inputCorrectColorValue ? (color.rgb.a * 100).toFixed() + '%' : '100%',
