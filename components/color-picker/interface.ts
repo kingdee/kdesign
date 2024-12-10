@@ -9,6 +9,10 @@ export interface IColorTypesObj {
   value: string
 }
 
+export interface IColorPickerInputRef {
+  dom: HTMLDivElement | null
+}
+
 export const BorderTypes = tuple('underline', 'bordered')
 export type BorderType = typeof BorderTypes[number]
 export interface IInnerFormat {
@@ -20,6 +24,8 @@ export interface IColorPickerProps extends PopperProps {
   borderType: BorderType
   // 选择器输入框类名
   className: string
+  // childern
+  children: ReactNode
   // 设置颜色选择器的默认值，可以是十六进制颜色值，RGB颜色值，HSL颜色值，或者颜色名称
   defaultValue: string
   // 颜色选择面板显隐配置

@@ -17,6 +17,7 @@ export const colorFormat = (colorStr: string, alpha = 1, outType: IOutType = 'al
       return toUpCase(alpha === 1 ? ColorTools.hex() : ColorTools.hexa())
     }
   }
+
   const HEX = toUpCase(toHex())
   const HSB = toUpCase(colorToStr(ColorTools.hsv()))
   const RGB = toUpCase(ColorTools.rgb().string())

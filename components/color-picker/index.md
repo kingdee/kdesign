@@ -42,6 +42,12 @@ subtitle: 颜色选择器
 | onChange | 输入框颜色值发生变化时触发的回调函数 | (inputValue: string, colorObj:{type: `HEX` \| `HSB` \| `RGB` \| `HSL`, value: string}) => void | - | 1.7.0 |
 | onVisibleChange | 面板显隐的回调 | (visible: boolean) => void | - | 1.7.35 |
 
+## ColorPickerInstance
+
+| 属性 | 说明       | 类型           | 版本 |
+| ---- | ---------- | -------------- | ---- |
+| dom  | 输入框容器 | HTMLDivElement | 1.8.22 |
+
 ## Design Token
 
 | 分类    | 组件 token                                                 | 全局 token              | 默认值             |
