@@ -38,7 +38,9 @@ const InternalIcon: React.ForwardRefRenderFunction<HTMLElement, IIconProps> = (p
   const iconRef = (ref as any) || innerRef
 
   const iconPrefix = getPrefixCls!(prefixCls, 'icon', customPrefixcls)
-  const iconPrefixCls = iconPrefix.replace(/-/g, '')
+  const lastDashIndex = iconPrefix.lastIndexOf('-')
+  const iconPrefixCls =
+    lastDashIndex > -1 ? iconPrefix.slice(0, lastDashIndex) + iconPrefix.slice(lastDashIndex + 1) : iconPrefix
   // 兼容之前的类名写法 将kd-icon改为kdicon
   const iconClass = classNames(iconPrefixCls, className, {
     [`${iconPrefixCls}-${type}`]: type,
