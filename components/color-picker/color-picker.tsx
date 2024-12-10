@@ -1,10 +1,19 @@
-import React, { FC, useContext, useState, useRef, useEffect, useCallback } from 'react'
+import React, {
+  useContext,
+  useState,
+  useRef,
+  useEffect,
+  useCallback,
+  forwardRef,
+  useImperativeHandle,
+  RefObject,
+} from 'react'
 import classNames from 'classnames'
 import { ConfigContext } from '../config-provider'
 import { Input } from '../index'
 import { validateColor } from './utils/validateColor'
 import { colorTypes } from './constant/colorTypes'
-import { IColorTypesObj, IColorPickerProps } from './interface'
+import { IColorTypesObj, IColorPickerProps, IColorPickerInputRef } from './interface'
 import ColorPickerPanel from './color-picker-panel'
 import { colorFormat, strFixed, getColorObj, highlightPresetColorIndex, presetColorToHEX } from './utils/colorFormat'
 import { defaultSystemColor } from './constant/defaultColor'
@@ -14,7 +23,7 @@ import usePopper from '../_utils/usePopper'
 import { systemPresetColor } from './constant/systemPresetColor'
 import { ICurrentColorType, removeTransparency } from './utils/removeTransparency'
 
-const ColorPicker: FC<Partial<IColorPickerProps>> = (props) => {
+const InternalColorPicker = (props: Partial<IColorPickerProps>, ref: RefObject<IColorPickerInputRef>) => {
   const { getPrefixCls, prefixCls, compDefaultProps: userDefaultProps } = useContext(ConfigContext)
   const colorPickerProps = getCompProps('ColorPicker', userDefaultProps, props)
   const {
@@ -183,6 +192,8 @@ const ColorPicker: FC<Partial<IColorPickerProps>> = (props) => {
     }
   }, [value, defaultValue])
 
+  useImperativeHandle(ref, () => ({ dom: inputRef.current }))
+
   const beforeIcon = useCallback(() => {
     const afterIconContainerCls = classNames(`${colorPickerPrefixCls}-icon`, {
       [`${colorPickerPrefixCls}-icon-underline`]: borderType === 'underline',
@@ -288,6 +299,8 @@ const ColorPicker: FC<Partial<IColorPickerProps>> = (props) => {
 
   return usePopper(colorInputEle, panel, popperProps)
 }
+
+const ColorPicker = forwardRef<IColorPickerInputRef, Partial<IColorPickerProps>>(InternalColorPicker)
 
 ColorPicker.displayName = 'ColorPicker'
 

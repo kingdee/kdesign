@@ -3,7 +3,7 @@ import { mount, render } from 'enzyme'
 import ColorPicker from '../index'
 import ColorPickerPanel from '../color-picker-panel'
 import ConfigProvider from '../../config-provider/index'
-import { BorderTypes, IColorPickerProps } from '../interface'
+import { BorderTypes, IColorPickerInputRef, IColorPickerProps } from '../interface'
 import mountTest from '../../../tests/shared/mountTest'
 import { act } from 'react-dom/test-utils'
 import { sleep } from '../../../tests/utils'
@@ -676,11 +676,10 @@ describe('ColorPicker', () => {
     expect(wrapper.find('.kd-color-picker-panel-switch').children().at(0).text()).toEqual('followFunctionalColor')
   })
 
-  //! ref api暂未开发，antd、TDesign未提供
   // 11.ref test
-  // it('should get correct dom from ref of props', () => {
-  //   const ref = React.createRef()
-  //   mount(<ColorPicker ref={ref}></ColorPicker>)
-  //   expect(ref.current instanceof HTMLInputElement).toBe(true)
-  // })
+  it('should get correct dom from ref of props', () => {
+    const ref = React.createRef<IColorPickerInputRef>()
+    mount(<ColorPicker ref={ref}></ColorPicker>)
+    expect(ref?.current?.dom instanceof HTMLDivElement).toBe(true)
+  })
 })
