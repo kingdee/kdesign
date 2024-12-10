@@ -77,7 +77,7 @@ subtitle: 输入框
 |  | --kd-c-input-color-border-disabled | --kd-g-color-border-strong | #d9d9d9 |
 |  | --kd-c-input-underline-color-border-disabled | --kd-g-color-border-weak | #e5e5e5 |
 |  | --kd-c-input-color-disabled | --kd-g-color-disabled | #b2b2b2 |
-|  | --kd-c-input-affix-color-text | - | #666 |
+|  | --kd-c-input-affix-color-text | - | #999 |
 |  | --kd-c-input-color-error | --kd-g-color-error | #fb2323 |
 | font | --kd-c-input-font-size-small | --kd-g-font-size-small | 12px |
 |  | --kd-c-input-font-size-middle | --kd-g-font-size-middle | 14px |
