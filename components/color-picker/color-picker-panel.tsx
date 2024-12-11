@@ -22,6 +22,7 @@ import devWarning from '../_utils/devwarning'
 import { useOnClickOutside } from '../_utils/hooks'
 import { isIE } from '../_utils/ieUtil'
 import { ICurrentColorType, removeTransparency } from './utils/removeTransparency'
+import debounce from 'lodash/debounce'
 
 const ColorPickerPanel: FC<IColorPickerPanelProps> = (props) => {
   const {
@@ -63,6 +64,7 @@ const ColorPickerPanel: FC<IColorPickerPanelProps> = (props) => {
     showColorPickerBox,
     showColorPickerPanel,
     showAlphaInput,
+    scrollHidden,
     value,
     visible,
     showPanel,
@@ -400,6 +402,23 @@ const ColorPickerPanel: FC<IColorPickerPanelProps> = (props) => {
     }
     showPanel && onVisibleChange && onVisibleChange(false)
   })
+
+  useEffect(() => {
+    if (showPanel) {
+      const scrollAlign = debounce((e: Event) => {
+        const isPopperScroll = e.target === panelClsRef.current || panelClsRef?.current?.contains(e.target as Node)
+        if (scrollHidden && !isPopperScroll) {
+          visible === undefined && setShowPanel(!showPanel)
+          onVisibleChange && onVisibleChange(false)
+        }
+      }, 10)
+      document.addEventListener('scroll', scrollAlign, true)
+
+      return () => {
+        document.removeEventListener('scroll', scrollAlign, true)
+      }
+    }
+  }, [showPanel])
 
   useEffect(() => {
     if (!panelFormatConfig) return

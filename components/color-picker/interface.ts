@@ -108,6 +108,7 @@ export interface IColorPickerPanelProps {
   value: string
   visible: boolean
   showPanel: boolean
+  scrollHidden: boolean
   setCurrentColorType: (currentColorType: IColorTypesObj['type']) => void
   setColTypeArr: (colTypeArr: Array<IColorTypesObj>) => void
   setClickedPresetColorIndex: (clickedColorIndex: number) => void

@@ -50,6 +50,7 @@ const InternalColorPicker = (props: Partial<IColorPickerProps>, ref: RefObject<I
     defaultOpen,
     disabled,
     visible,
+    scrollHidden,
     popperClassName,
     suffixIcon,
     prefixIcon,
@@ -258,6 +259,7 @@ const InternalColorPicker = (props: Partial<IColorPickerProps>, ref: RefObject<I
       panelFormatConfig={panelFormatConfig}
       presetColor={presetColor}
       historicalColor={historicalColor}
+      scrollHidden={scrollHidden}
       value={value}
       visible={visible}
       showPanel={showPanel}
