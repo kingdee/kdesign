@@ -169,12 +169,14 @@ const ColorPickerPanel: FC<IColorPickerPanelProps> = (props) => {
 
   const handleTypeChange = (selectValue: IColorTypesObj['type']) => {
     setCurrentColorType(selectValue)
-    const colorStr = colTypeArr.find((item) => item.type === selectValue)?.value!
-    setCorrectColorValue(
-      colorFormat(colorStr, 1, selectValue as Exclude<typeof ColorTypes[number], 'themeColor'>, true) as string,
-    )
-    setInputColorValue(colTypeArr.find((item) => item.type === format)?.value!)
-    onChange?.(colTypeArr.find((item) => item.type === format)?.value!, colTypeArr)
+    if (inputCorrectColorValue) {
+      const colorStr = colTypeArr.find((item) => item.type === selectValue)?.value!
+      setCorrectColorValue(
+        colorFormat(colorStr, 1, selectValue as Exclude<typeof ColorTypes[number], 'themeColor'>, true) as string,
+      )
+      setInputColorValue(colTypeArr.find((item) => item.type === format)?.value!)
+      onChange?.(colTypeArr.find((item) => item.type === format)?.value!, colTypeArr)
+    }
   }
 
   const handleAlphaChange = (e: React.ChangeEvent<HTMLInputElement>) => {
