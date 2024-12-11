@@ -37,6 +37,7 @@ subtitle: 颜色选择器
 | showPresetColor | 是否展示预设颜色 | boolean | true | 1.7.0 |
 | showColorPickerBox | 是否展示拾色容器 | { showBox?: boolean; showHue?: boolean; showOpacity?: boolean } | { showBox: false, showHue: false, showOpacity: false } | 1.7.0 |
 | suffixIcon | color-picker 输入框右侧图标(其中 rgbColor 为 RGB 格式的字符串，可以同步颜色选择面板的透明度) | (rgbColor: string) => React.ReactNode | - | 1.7.0 |
+| scrollHidden | 滚动时浮层是否可关闭 | boolean | false | 1.8.22 |
 | prefixIcon | color-picker 输入框左侧图标(其中 rgbColor 为 RGB 格式的字符串，可以同步颜色选择面板的透明度) | (rgbColor: string) => React.ReactNode | - | 1.8.16 |
 | value | 设置输入框的值，可以是十六进制、RGB 、HSB 、HSL 或者颜色英文名称 | string | - | 1.7.0 |
 | visible | 手动控制面板显隐 | boolean | - | 1.7.35 |
