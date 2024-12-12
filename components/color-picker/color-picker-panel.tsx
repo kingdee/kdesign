@@ -255,7 +255,7 @@ const ColorPickerPanel: FC<IColorPickerPanelProps> = (props) => {
         setPanelState(
           formatArr,
           removeTransparency(correctColor, currentColorType as ICurrentColorType),
-          correctColor,
+          removeTransparency(correctColor, format as ICurrentColorType),
           1,
           '100%',
         )
