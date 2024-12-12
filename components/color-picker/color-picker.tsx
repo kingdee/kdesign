@@ -202,11 +202,8 @@ const InternalColorPicker = (props: Partial<IColorPickerProps>, ref: RefObject<I
       [`${colorPickerPrefixCls}-icon-underline`]: borderType === 'underline',
       [`${colorPickerPrefixCls}-icon-bordered`]: borderType === 'bordered',
     })
-
     const getBgc = () => {
-      return inputCorrectColorValue
-        ? colTypeArr[2].value
-        : removeTransparency(colTypeArr[2].value, currentColorType as ICurrentColorType)
+      return inputCorrectColorValue ? colTypeArr[2].value : removeTransparency(colTypeArr[2].value, 'RGB')
     }
     const noneLineCls = `${colorPickerPrefixCls}-icon-no-color-line`
     return (
@@ -214,7 +211,7 @@ const InternalColorPicker = (props: Partial<IColorPickerProps>, ref: RefObject<I
         {!validateColor(value) && !inputCorrectColorValue && <div className={noneLineCls} />}
       </div>
     )
-  }, [borderType, colTypeArr, colorPickerPrefixCls, currentColorType, inputCorrectColorValue, value])
+  }, [borderType, colTypeArr, colorPickerPrefixCls, inputCorrectColorValue, value])
 
   const colorInputEle = (
     <div className={containerCls} ref={inputRef} style={style}>
