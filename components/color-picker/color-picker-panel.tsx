@@ -129,7 +129,13 @@ const ColorPickerPanel: FC<IColorPickerPanelProps> = (props) => {
 
   const handleClearClick = () => {
     const formatArr = colorFormat(defaultSystemColor, 0) as IColorTypesObj[]
-    setPanelState(formatArr, defaultSystemColor, '', 0, '0%')
+    const defaultColor = colorFormat(
+      defaultSystemColor,
+      1,
+      currentColorType as Exclude<typeof ColorTypes[number], 'themeColor'>,
+      true,
+    ) as string
+    setPanelState(formatArr, defaultColor, '', 0, '0%')
     setClickColorIndex(-1)
     onChange?.('', formatArr)
   }
@@ -169,11 +175,11 @@ const ColorPickerPanel: FC<IColorPickerPanelProps> = (props) => {
 
   const handleTypeChange = (selectValue: IColorTypesObj['type']) => {
     setCurrentColorType(selectValue)
+    const colorStr = colTypeArr.find((item) => item.type === selectValue)?.value!
+    setCorrectColorValue(
+      colorFormat(colorStr, 1, selectValue as Exclude<typeof ColorTypes[number], 'themeColor'>, true) as string,
+    )
     if (inputCorrectColorValue) {
-      const colorStr = colTypeArr.find((item) => item.type === selectValue)?.value!
-      setCorrectColorValue(
-        colorFormat(colorStr, 1, selectValue as Exclude<typeof ColorTypes[number], 'themeColor'>, true) as string,
-      )
       setInputColorValue(colTypeArr.find((item) => item.type === format)?.value!)
       onChange?.(colTypeArr.find((item) => item.type === format)?.value!, colTypeArr)
     }
