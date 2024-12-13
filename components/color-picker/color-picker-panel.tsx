@@ -373,7 +373,7 @@ const ColorPickerPanel: FC<IColorPickerPanelProps> = (props) => {
 
   const handleChromeChange = (color: any) => {
     const formatArr = colorFormat(color.hex, inputCorrectColorValue ? color.rgb.a : 1) as IColorTypesObj[]
-    const colorObj = formatArr[valOfCorrespondingType(currentColorType) as number]
+    const colorObj = formatArr[valOfCorrespondingType(format) as number]
     if (value === undefined) {
       setIsFollow(false)
       setPanelState(
