@@ -6,6 +6,23 @@ import { Placements, Triggers } from '../../_utils/usePopper'
 import { Menu, Item } from '../menu'
 import Input from '../../input'
 import mountTest from '../../../tests/shared/mountTest'
+import { render, waitFor } from '@testing-library/react'
+
+window.MutationObserver = require('mutation-observer')
+Object.defineProperty(window, 'getSelection', {
+  writable: true,
+  value: jest.fn(() => ({
+    removeAllRanges: jest.fn(),
+    addRange: jest.fn(),
+  })),
+})
+Object.defineProperty(document, 'getSelection', {
+  writable: true,
+  value: jest.fn(() => ({
+    removeAllRanges: jest.fn(),
+    addRange: jest.fn(),
+  })),
+})
 
 const menu = (
   <Menu>
@@ -123,7 +140,7 @@ describe('Dropdown', () => {
           <span onClick={onClick} />
         </Dropdown>,
       )
-      wrapper.find('.kd-dropdown-trigger').simulate('click')
+      wrapper.find('.kd-popper-reference').simulate('click')
       expect(onClick).toHaveBeenCalled()
     })
 
@@ -182,8 +199,7 @@ describe('Dropdown', () => {
           </Dropdown>
         </div>,
       )
-      expect(wrapper.find('.kd-dropdown')).toHaveClassName('arrow')
-      expect(wrapper.find('.kd-dropdown')).toHaveStyle('--arrowSize', '4.25px')
+      expect(wrapper.find('.arrow').length).toBeTruthy()
     })
 
     it('should menu item disabled', () => {
@@ -414,35 +430,40 @@ describe('Dropdown', () => {
         </Dropdown>
       </ConfigProvider>,
     )
-    expect(wrapper.find('.kd-dropdown')).toHaveClassName('arrow')
+    expect(wrapper.find('.arrow').length).toBeTruthy()
   })
   // 10. ref test
   it('ref test', () => {
-    const ref = React.createRef()
+    const ref: any = React.createRef()
     mount(
-      <Dropdown menu={menu} ref={ref as any}>
+      <Dropdown menu={menu} ref={ref as any} visible>
         <span>one</span>
       </Dropdown>,
     )
-    expect(ref.current instanceof HTMLSpanElement).toBe(true)
+    expect(ref.current.dom instanceof HTMLDivElement).toBe(true)
   })
   // 11. special case
   describe('special case', () => {
-    it('input as child', () => {
-      let visible = null
+    it('input as child', async () => {
+      let visible: any = null
       const onVisibleChange = jest.fn((v) => {
         visible = v
       })
+      const onFocus = jest.fn()
+      const ref: any = React.createRef()
 
-      const wapper = mount(
-        <Dropdown menu={menu} trigger={'focus'} onVisibleChange={onVisibleChange}>
-          <Input />
+      render(
+        <Dropdown menu={menu} trigger="focus" onVisibleChange={onVisibleChange}>
+          <Input onFocus={onFocus} ref={ref} />
         </Dropdown>,
       )
-      wapper.find('input').simulate('focus')
-      expect(onVisibleChange).toHaveBeenCalled()
-      wapper.find('input').simulate('blur')
-      expect(visible).toEqual(false)
+
+      ref.current.focus()
+
+      await waitFor(() => {
+        expect(onVisibleChange).toHaveBeenCalled()
+        expect(visible).toEqual(true)
+      })
     })
   })
 })

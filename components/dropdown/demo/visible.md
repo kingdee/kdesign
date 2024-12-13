@@ -31,7 +31,7 @@ const Demo: React.FC = () => {
           }}
         />
       </div>
-      <Dropdown menu={menu} visible={visible}>
+      <Dropdown menu={menu} visible={visible} onVisibleChange={(v) => setVisible(v)} trigger={"focus"}>
         <Input borderType="bordered" prefix="KDesign" suffix="Kdesign" />
       </Dropdown>
     </>

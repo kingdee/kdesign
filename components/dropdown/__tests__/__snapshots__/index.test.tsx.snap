@@ -4,12 +4,28 @@ exports[`Dropdown API Test menu is Array 1`] = `
 <Dropdown
   menu={Array []}
 >
-  <button
-    className="kd-dropdown-trigger"
-    type="button"
+  <Popper
+    arrow={false}
+    onVisibleChange={[Function]}
+    placement="bottomLeft"
+    prefixCls="kd-dropdown"
+    tip={
+      <ul
+        className="kd-dropdown-menu"
+        onClick={[Function]}
+        role="menu"
+      />
+    }
+    trigger="hover"
+    visible={false}
   >
-    button
-  </button>
+    <button
+      className="kd-popper-reference"
+      type="button"
+    >
+      button
+    </button>
+  </Popper>
 </Dropdown>
 `;
 
@@ -52,9 +68,57 @@ exports[`Dropdown renders correctly 1`] = `
     </DropdownMenu>
   }
 >
-  <span
-    className="kd-dropdown-trigger"
-  />
+  <Popper
+    arrow={false}
+    onVisibleChange={[Function]}
+    placement="bottomLeft"
+    prefixCls="kd-dropdown"
+    tip={
+      <DropdownMenu
+        onClick={[Function]}
+        selectedKey=""
+      >
+        <DropdownMenuItem>
+          <a
+            href="https://www.kingdee.com/"
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            菜单1
+          </a>
+        </DropdownMenuItem>
+        <DropdownMenuItem>
+          <a
+            href="https://www.kdcloud.com/"
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            菜单2
+          </a>
+        </DropdownMenuItem>
+        <DropdownMenuItem>
+          <a
+            href="https://www.yunzhijia.com/"
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            菜单3
+          </a>
+        </DropdownMenuItem>
+        <DropdownMenuItem
+          danger={true}
+        >
+          a danger item
+        </DropdownMenuItem>
+      </DropdownMenu>
+    }
+    trigger="hover"
+    visible={false}
+  >
+    <span
+      className="kd-popper-reference"
+    />
+  </Popper>
 </Dropdown>
 `;
 
@@ -98,9 +162,57 @@ exports[`Dropdown renders correctly 2`] = `
   }
   placement="top"
 >
-  <span
-    className="kd-dropdown-trigger"
-  />
+  <Popper
+    arrow={false}
+    onVisibleChange={[Function]}
+    placement="top"
+    prefixCls="kd-dropdown"
+    tip={
+      <DropdownMenu
+        onClick={[Function]}
+        selectedKey=""
+      >
+        <DropdownMenuItem>
+          <a
+            href="https://www.kingdee.com/"
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            菜单1
+          </a>
+        </DropdownMenuItem>
+        <DropdownMenuItem>
+          <a
+            href="https://www.kdcloud.com/"
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            菜单2
+          </a>
+        </DropdownMenuItem>
+        <DropdownMenuItem>
+          <a
+            href="https://www.yunzhijia.com/"
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            菜单3
+          </a>
+        </DropdownMenuItem>
+        <DropdownMenuItem
+          danger={true}
+        >
+          a danger item
+        </DropdownMenuItem>
+      </DropdownMenu>
+    }
+    trigger="hover"
+    visible={false}
+  >
+    <span
+      className="kd-popper-reference"
+    />
+  </Popper>
 </Dropdown>
 `;
 
@@ -144,9 +256,57 @@ exports[`Dropdown renders correctly 3`] = `
   }
   placement="left"
 >
-  <span
-    className="kd-dropdown-trigger"
-  />
+  <Popper
+    arrow={false}
+    onVisibleChange={[Function]}
+    placement="left"
+    prefixCls="kd-dropdown"
+    tip={
+      <DropdownMenu
+        onClick={[Function]}
+        selectedKey=""
+      >
+        <DropdownMenuItem>
+          <a
+            href="https://www.kingdee.com/"
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            菜单1
+          </a>
+        </DropdownMenuItem>
+        <DropdownMenuItem>
+          <a
+            href="https://www.kdcloud.com/"
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            菜单2
+          </a>
+        </DropdownMenuItem>
+        <DropdownMenuItem>
+          <a
+            href="https://www.yunzhijia.com/"
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            菜单3
+          </a>
+        </DropdownMenuItem>
+        <DropdownMenuItem
+          danger={true}
+        >
+          a danger item
+        </DropdownMenuItem>
+      </DropdownMenu>
+    }
+    trigger="hover"
+    visible={false}
+  >
+    <span
+      className="kd-popper-reference"
+    />
+  </Popper>
 </Dropdown>
 `;
 
@@ -190,9 +350,57 @@ exports[`Dropdown renders correctly 4`] = `
   }
   placement="right"
 >
-  <span
-    className="kd-dropdown-trigger"
-  />
+  <Popper
+    arrow={false}
+    onVisibleChange={[Function]}
+    placement="right"
+    prefixCls="kd-dropdown"
+    tip={
+      <DropdownMenu
+        onClick={[Function]}
+        selectedKey=""
+      >
+        <DropdownMenuItem>
+          <a
+            href="https://www.kingdee.com/"
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            菜单1
+          </a>
+        </DropdownMenuItem>
+        <DropdownMenuItem>
+          <a
+            href="https://www.kdcloud.com/"
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            菜单2
+          </a>
+        </DropdownMenuItem>
+        <DropdownMenuItem>
+          <a
+            href="https://www.yunzhijia.com/"
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            菜单3
+          </a>
+        </DropdownMenuItem>
+        <DropdownMenuItem
+          danger={true}
+        >
+          a danger item
+        </DropdownMenuItem>
+      </DropdownMenu>
+    }
+    trigger="hover"
+    visible={false}
+  >
+    <span
+      className="kd-popper-reference"
+    />
+  </Popper>
 </Dropdown>
 `;
 
@@ -236,9 +444,57 @@ exports[`Dropdown renders correctly 5`] = `
   }
   placement="bottom"
 >
-  <span
-    className="kd-dropdown-trigger"
-  />
+  <Popper
+    arrow={false}
+    onVisibleChange={[Function]}
+    placement="bottom"
+    prefixCls="kd-dropdown"
+    tip={
+      <DropdownMenu
+        onClick={[Function]}
+        selectedKey=""
+      >
+        <DropdownMenuItem>
+          <a
+            href="https://www.kingdee.com/"
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            菜单1
+          </a>
+        </DropdownMenuItem>
+        <DropdownMenuItem>
+          <a
+            href="https://www.kdcloud.com/"
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            菜单2
+          </a>
+        </DropdownMenuItem>
+        <DropdownMenuItem>
+          <a
+            href="https://www.yunzhijia.com/"
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            菜单3
+          </a>
+        </DropdownMenuItem>
+        <DropdownMenuItem
+          danger={true}
+        >
+          a danger item
+        </DropdownMenuItem>
+      </DropdownMenu>
+    }
+    trigger="hover"
+    visible={false}
+  >
+    <span
+      className="kd-popper-reference"
+    />
+  </Popper>
 </Dropdown>
 `;
 
@@ -282,9 +538,57 @@ exports[`Dropdown renders correctly 6`] = `
   }
   placement="topLeft"
 >
-  <span
-    className="kd-dropdown-trigger"
-  />
+  <Popper
+    arrow={false}
+    onVisibleChange={[Function]}
+    placement="topLeft"
+    prefixCls="kd-dropdown"
+    tip={
+      <DropdownMenu
+        onClick={[Function]}
+        selectedKey=""
+      >
+        <DropdownMenuItem>
+          <a
+            href="https://www.kingdee.com/"
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            菜单1
+          </a>
+        </DropdownMenuItem>
+        <DropdownMenuItem>
+          <a
+            href="https://www.kdcloud.com/"
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            菜单2
+          </a>
+        </DropdownMenuItem>
+        <DropdownMenuItem>
+          <a
+            href="https://www.yunzhijia.com/"
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            菜单3
+          </a>
+        </DropdownMenuItem>
+        <DropdownMenuItem
+          danger={true}
+        >
+          a danger item
+        </DropdownMenuItem>
+      </DropdownMenu>
+    }
+    trigger="hover"
+    visible={false}
+  >
+    <span
+      className="kd-popper-reference"
+    />
+  </Popper>
 </Dropdown>
 `;
 
@@ -328,9 +632,57 @@ exports[`Dropdown renders correctly 7`] = `
   }
   placement="topRight"
 >
-  <span
-    className="kd-dropdown-trigger"
-  />
+  <Popper
+    arrow={false}
+    onVisibleChange={[Function]}
+    placement="topRight"
+    prefixCls="kd-dropdown"
+    tip={
+      <DropdownMenu
+        onClick={[Function]}
+        selectedKey=""
+      >
+        <DropdownMenuItem>
+          <a
+            href="https://www.kingdee.com/"
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            菜单1
+          </a>
+        </DropdownMenuItem>
+        <DropdownMenuItem>
+          <a
+            href="https://www.kdcloud.com/"
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            菜单2
+          </a>
+        </DropdownMenuItem>
+        <DropdownMenuItem>
+          <a
+            href="https://www.yunzhijia.com/"
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            菜单3
+          </a>
+        </DropdownMenuItem>
+        <DropdownMenuItem
+          danger={true}
+        >
+          a danger item
+        </DropdownMenuItem>
+      </DropdownMenu>
+    }
+    trigger="hover"
+    visible={false}
+  >
+    <span
+      className="kd-popper-reference"
+    />
+  </Popper>
 </Dropdown>
 `;
 
@@ -374,9 +726,57 @@ exports[`Dropdown renders correctly 8`] = `
   }
   placement="bottomLeft"
 >
-  <span
-    className="kd-dropdown-trigger"
-  />
+  <Popper
+    arrow={false}
+    onVisibleChange={[Function]}
+    placement="bottomLeft"
+    prefixCls="kd-dropdown"
+    tip={
+      <DropdownMenu
+        onClick={[Function]}
+        selectedKey=""
+      >
+        <DropdownMenuItem>
+          <a
+            href="https://www.kingdee.com/"
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            菜单1
+          </a>
+        </DropdownMenuItem>
+        <DropdownMenuItem>
+          <a
+            href="https://www.kdcloud.com/"
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            菜单2
+          </a>
+        </DropdownMenuItem>
+        <DropdownMenuItem>
+          <a
+            href="https://www.yunzhijia.com/"
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            菜单3
+          </a>
+        </DropdownMenuItem>
+        <DropdownMenuItem
+          danger={true}
+        >
+          a danger item
+        </DropdownMenuItem>
+      </DropdownMenu>
+    }
+    trigger="hover"
+    visible={false}
+  >
+    <span
+      className="kd-popper-reference"
+    />
+  </Popper>
 </Dropdown>
 `;
 
@@ -420,9 +820,57 @@ exports[`Dropdown renders correctly 9`] = `
   }
   placement="bottomRight"
 >
-  <span
-    className="kd-dropdown-trigger"
-  />
+  <Popper
+    arrow={false}
+    onVisibleChange={[Function]}
+    placement="bottomRight"
+    prefixCls="kd-dropdown"
+    tip={
+      <DropdownMenu
+        onClick={[Function]}
+        selectedKey=""
+      >
+        <DropdownMenuItem>
+          <a
+            href="https://www.kingdee.com/"
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            菜单1
+          </a>
+        </DropdownMenuItem>
+        <DropdownMenuItem>
+          <a
+            href="https://www.kdcloud.com/"
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            菜单2
+          </a>
+        </DropdownMenuItem>
+        <DropdownMenuItem>
+          <a
+            href="https://www.yunzhijia.com/"
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            菜单3
+          </a>
+        </DropdownMenuItem>
+        <DropdownMenuItem
+          danger={true}
+        >
+          a danger item
+        </DropdownMenuItem>
+      </DropdownMenu>
+    }
+    trigger="hover"
+    visible={false}
+  >
+    <span
+      className="kd-popper-reference"
+    />
+  </Popper>
 </Dropdown>
 `;
 
@@ -466,9 +914,57 @@ exports[`Dropdown renders correctly 10`] = `
   }
   placement="leftTop"
 >
-  <span
-    className="kd-dropdown-trigger"
-  />
+  <Popper
+    arrow={false}
+    onVisibleChange={[Function]}
+    placement="leftTop"
+    prefixCls="kd-dropdown"
+    tip={
+      <DropdownMenu
+        onClick={[Function]}
+        selectedKey=""
+      >
+        <DropdownMenuItem>
+          <a
+            href="https://www.kingdee.com/"
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            菜单1
+          </a>
+        </DropdownMenuItem>
+        <DropdownMenuItem>
+          <a
+            href="https://www.kdcloud.com/"
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            菜单2
+          </a>
+        </DropdownMenuItem>
+        <DropdownMenuItem>
+          <a
+            href="https://www.yunzhijia.com/"
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            菜单3
+          </a>
+        </DropdownMenuItem>
+        <DropdownMenuItem
+          danger={true}
+        >
+          a danger item
+        </DropdownMenuItem>
+      </DropdownMenu>
+    }
+    trigger="hover"
+    visible={false}
+  >
+    <span
+      className="kd-popper-reference"
+    />
+  </Popper>
 </Dropdown>
 `;
 
@@ -512,9 +1008,57 @@ exports[`Dropdown renders correctly 11`] = `
   }
   placement="leftBottom"
 >
-  <span
-    className="kd-dropdown-trigger"
-  />
+  <Popper
+    arrow={false}
+    onVisibleChange={[Function]}
+    placement="leftBottom"
+    prefixCls="kd-dropdown"
+    tip={
+      <DropdownMenu
+        onClick={[Function]}
+        selectedKey=""
+      >
+        <DropdownMenuItem>
+          <a
+            href="https://www.kingdee.com/"
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            菜单1
+          </a>
+        </DropdownMenuItem>
+        <DropdownMenuItem>
+          <a
+            href="https://www.kdcloud.com/"
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            菜单2
+          </a>
+        </DropdownMenuItem>
+        <DropdownMenuItem>
+          <a
+            href="https://www.yunzhijia.com/"
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            菜单3
+          </a>
+        </DropdownMenuItem>
+        <DropdownMenuItem
+          danger={true}
+        >
+          a danger item
+        </DropdownMenuItem>
+      </DropdownMenu>
+    }
+    trigger="hover"
+    visible={false}
+  >
+    <span
+      className="kd-popper-reference"
+    />
+  </Popper>
 </Dropdown>
 `;
 
@@ -558,9 +1102,57 @@ exports[`Dropdown renders correctly 12`] = `
   }
   placement="rightTop"
 >
-  <span
-    className="kd-dropdown-trigger"
-  />
+  <Popper
+    arrow={false}
+    onVisibleChange={[Function]}
+    placement="rightTop"
+    prefixCls="kd-dropdown"
+    tip={
+      <DropdownMenu
+        onClick={[Function]}
+        selectedKey=""
+      >
+        <DropdownMenuItem>
+          <a
+            href="https://www.kingdee.com/"
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            菜单1
+          </a>
+        </DropdownMenuItem>
+        <DropdownMenuItem>
+          <a
+            href="https://www.kdcloud.com/"
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            菜单2
+          </a>
+        </DropdownMenuItem>
+        <DropdownMenuItem>
+          <a
+            href="https://www.yunzhijia.com/"
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            菜单3
+          </a>
+        </DropdownMenuItem>
+        <DropdownMenuItem
+          danger={true}
+        >
+          a danger item
+        </DropdownMenuItem>
+      </DropdownMenu>
+    }
+    trigger="hover"
+    visible={false}
+  >
+    <span
+      className="kd-popper-reference"
+    />
+  </Popper>
 </Dropdown>
 `;
 
@@ -604,9 +1196,57 @@ exports[`Dropdown renders correctly 13`] = `
   }
   placement="rightBottom"
 >
-  <span
-    className="kd-dropdown-trigger"
-  />
+  <Popper
+    arrow={false}
+    onVisibleChange={[Function]}
+    placement="rightBottom"
+    prefixCls="kd-dropdown"
+    tip={
+      <DropdownMenu
+        onClick={[Function]}
+        selectedKey=""
+      >
+        <DropdownMenuItem>
+          <a
+            href="https://www.kingdee.com/"
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            菜单1
+          </a>
+        </DropdownMenuItem>
+        <DropdownMenuItem>
+          <a
+            href="https://www.kdcloud.com/"
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            菜单2
+          </a>
+        </DropdownMenuItem>
+        <DropdownMenuItem>
+          <a
+            href="https://www.yunzhijia.com/"
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            菜单3
+          </a>
+        </DropdownMenuItem>
+        <DropdownMenuItem
+          danger={true}
+        >
+          a danger item
+        </DropdownMenuItem>
+      </DropdownMenu>
+    }
+    trigger="hover"
+    visible={false}
+  >
+    <span
+      className="kd-popper-reference"
+    />
+  </Popper>
 </Dropdown>
 `;
 
@@ -654,9 +1294,61 @@ exports[`Dropdown renders correctly 14`] = `
     ]
   }
 >
-  <span
-    className="kd-dropdown-trigger"
-  />
+  <Popper
+    arrow={false}
+    onVisibleChange={[Function]}
+    placement="bottomLeft"
+    prefixCls="kd-dropdown"
+    tip={
+      <DropdownMenu
+        onClick={[Function]}
+        selectedKey=""
+      >
+        <DropdownMenuItem>
+          <a
+            href="https://www.kingdee.com/"
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            菜单1
+          </a>
+        </DropdownMenuItem>
+        <DropdownMenuItem>
+          <a
+            href="https://www.kdcloud.com/"
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            菜单2
+          </a>
+        </DropdownMenuItem>
+        <DropdownMenuItem>
+          <a
+            href="https://www.yunzhijia.com/"
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            菜单3
+          </a>
+        </DropdownMenuItem>
+        <DropdownMenuItem
+          danger={true}
+        >
+          a danger item
+        </DropdownMenuItem>
+      </DropdownMenu>
+    }
+    trigger={
+      Array [
+        "hover",
+      ]
+    }
+    visible={false}
+  >
+    <span
+      className="kd-popper-reference"
+    />
+  </Popper>
 </Dropdown>
 `;
 
@@ -704,9 +1396,61 @@ exports[`Dropdown renders correctly 15`] = `
     ]
   }
 >
-  <span
-    className="kd-dropdown-trigger"
-  />
+  <Popper
+    arrow={false}
+    onVisibleChange={[Function]}
+    placement="bottomLeft"
+    prefixCls="kd-dropdown"
+    tip={
+      <DropdownMenu
+        onClick={[Function]}
+        selectedKey=""
+      >
+        <DropdownMenuItem>
+          <a
+            href="https://www.kingdee.com/"
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            菜单1
+          </a>
+        </DropdownMenuItem>
+        <DropdownMenuItem>
+          <a
+            href="https://www.kdcloud.com/"
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            菜单2
+          </a>
+        </DropdownMenuItem>
+        <DropdownMenuItem>
+          <a
+            href="https://www.yunzhijia.com/"
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            菜单3
+          </a>
+        </DropdownMenuItem>
+        <DropdownMenuItem
+          danger={true}
+        >
+          a danger item
+        </DropdownMenuItem>
+      </DropdownMenu>
+    }
+    trigger={
+      Array [
+        "focus",
+      ]
+    }
+    visible={false}
+  >
+    <span
+      className="kd-popper-reference"
+    />
+  </Popper>
 </Dropdown>
 `;
 
@@ -754,9 +1498,61 @@ exports[`Dropdown renders correctly 16`] = `
     ]
   }
 >
-  <span
-    className="kd-dropdown-trigger"
-  />
+  <Popper
+    arrow={false}
+    onVisibleChange={[Function]}
+    placement="bottomLeft"
+    prefixCls="kd-dropdown"
+    tip={
+      <DropdownMenu
+        onClick={[Function]}
+        selectedKey=""
+      >
+        <DropdownMenuItem>
+          <a
+            href="https://www.kingdee.com/"
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            菜单1
+          </a>
+        </DropdownMenuItem>
+        <DropdownMenuItem>
+          <a
+            href="https://www.kdcloud.com/"
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            菜单2
+          </a>
+        </DropdownMenuItem>
+        <DropdownMenuItem>
+          <a
+            href="https://www.yunzhijia.com/"
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            菜单3
+          </a>
+        </DropdownMenuItem>
+        <DropdownMenuItem
+          danger={true}
+        >
+          a danger item
+        </DropdownMenuItem>
+      </DropdownMenu>
+    }
+    trigger={
+      Array [
+        "click",
+      ]
+    }
+    visible={false}
+  >
+    <span
+      className="kd-popper-reference"
+    />
+  </Popper>
 </Dropdown>
 `;
 
@@ -804,8 +1600,60 @@ exports[`Dropdown renders correctly 17`] = `
     ]
   }
 >
-  <span
-    className="kd-dropdown-trigger"
-  />
+  <Popper
+    arrow={false}
+    onVisibleChange={[Function]}
+    placement="bottomLeft"
+    prefixCls="kd-dropdown"
+    tip={
+      <DropdownMenu
+        onClick={[Function]}
+        selectedKey=""
+      >
+        <DropdownMenuItem>
+          <a
+            href="https://www.kingdee.com/"
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            菜单1
+          </a>
+        </DropdownMenuItem>
+        <DropdownMenuItem>
+          <a
+            href="https://www.kdcloud.com/"
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            菜单2
+          </a>
+        </DropdownMenuItem>
+        <DropdownMenuItem>
+          <a
+            href="https://www.yunzhijia.com/"
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            菜单3
+          </a>
+        </DropdownMenuItem>
+        <DropdownMenuItem
+          danger={true}
+        >
+          a danger item
+        </DropdownMenuItem>
+      </DropdownMenu>
+    }
+    trigger={
+      Array [
+        "contextMenu",
+      ]
+    }
+    visible={false}
+  >
+    <span
+      className="kd-popper-reference"
+    />
+  </Popper>
 </Dropdown>
 `;

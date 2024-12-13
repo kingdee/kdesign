@@ -40,7 +40,14 @@ export const Triggers = tuple('hover', 'focus', 'click', 'contextMenu')
 
 export type TriggerType = typeof Triggers[number]
 
-export type Reason = TriggerType | 'scroll' | 'clickOutside' | 'clickToClose' | 'parentHidden' | 'unknown'
+export type Reason =
+  | TriggerType
+  | 'scroll'
+  | 'clickOutside'
+  | 'clickToClose'
+  | 'parentHidden'
+  | 'unknown'
+  | 'clickDropdownItem'
 
 export type RenderFunction = () => React.ReactNode
 
@@ -655,7 +662,7 @@ export const Popper = forwardRef<SubPopup | null, PopperProps>((props, ref) => {
 
   const referenceProps = {
     ref: referenceRef,
-    className: classnames(referenceElement?.props?.className, referencePrefixCls),
+    className: classnames(referencePrefixCls, referenceElement?.props?.className),
   }
 
   return (

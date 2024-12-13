@@ -3,36 +3,21 @@
 @import './token.less';
 
 @dropdown-prefix-cls: ~'@{kd-prefix}-dropdown';
-@dropdown-trigger-prefix-cls: ~'@{dropdown-prefix-cls}-trigger';
 
 @dropdown-line-height: 18px;
 
-.@{dropdown-trigger-prefix-cls} {
-  outline: none;
-
-  &-container {
-    display: inline-block;
-  }
-}
-
 .@{dropdown-prefix-cls} {
   .reset-component;
-  opacity: 1;
-  visibility: visible;
   z-index: @z-index-popper;
   background-color: @dropdown-color-background;
   border-radius: @radius-border;
   min-width: @dropdown-menu-min-width;
   max-width: @dropdown-menu-max-width;
-  box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.2);
+  filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.2));
 
-  &.hidden {
-    opacity: 0;
-    visibility: hidden;
+  .arrow::before {
+    border-color: @dropdown-color-background;
   }
-
-  // 箭头样式
-  .popperArrow(@dropdown-color-background, @dropdown-item-horizontal-gap, @dropdown-box-shadow-blur);
 
   &-menu {
     max-height: @dropdown-menu-max-height;

@@ -3,8 +3,8 @@ import classNames from 'classnames'
 import ConfigContext from '../config-provider/ConfigContext'
 import { getCompProps } from '../_utils'
 import { Menu, Item } from './menu'
-import usePopper, { PopperProps } from '../_utils/usePopper'
-import { isFragment } from '../_utils/reactNode'
+import Popper, { PopperProps } from '../popper'
+import { useMergedState } from '../_utils/hooks'
 
 type MenuItem = {
   key?: string
@@ -44,7 +44,6 @@ const Dropdown = React.forwardRef<HTMLDivElement, DropDownProps>((props, ref) =>
 
   const {
     menu,
-    disabled,
     children,
     selectable,
     onItemClick,
@@ -54,52 +53,21 @@ const Dropdown = React.forwardRef<HTMLDivElement, DropDownProps>((props, ref) =>
     prefixCls: customPrefixcls,
     menuAnimation,
     popperStyle,
+    ...other
   } = allProps
 
   const prefixCls = getPrefixCls!(pkgPrefixCls, 'dropdown', customPrefixcls)
   const innerAnimation = typeof menuAnimation === 'boolean' ? menuAnimation : trigger !== 'contextMenu'
-  const [visible, setVisible] = React.useState(!!props.visible || defaultVisible)
-  React.useEffect(() => {
-    setVisible(!!props.visible)
-  }, [props.visible])
+  const [visible, setVisible] = useMergedState(false, {
+    value: props?.visible,
+    defaultValue: defaultVisible,
+  })
 
-  const handleVisibleChange = (visible: boolean) => {
+  const onVisibleChangeInner: PopperProps['onVisibleChange'] = (visible: boolean, reason) => {
     props.visible === undefined && setVisible(visible)
-    onVisibleChange && onVisibleChange(visible)
+    onVisibleChange && onVisibleChange(visible, reason)
   }
 
-  const child =
-    children && children?.type?.displayName === 'Input' ? (
-      <span className={classNames(`${prefixCls}-trigger`, `${prefixCls}-trigger-container`)} ref={ref as any}>
-        {trigger === 'focus'
-          ? React.cloneElement(React.Children.only(children), {
-              onFocus: (e: React.FocusEvent<HTMLInputElement, Element>) => {
-                children.props.onFocus && children.props.onFocus(e)
-                handleVisibleChange(true)
-              },
-              onBlur: (e: React.FocusEvent<HTMLInputElement, Element>) => {
-                children.props.onBlur && children.props.onBlur(e)
-                handleVisibleChange(false)
-              },
-            })
-          : children}
-      </span>
-    ) : (
-      React.cloneElement(React.isValidElement(children) && !isFragment(children) ? children : <span>{children}</span>, {
-        ref:
-          React.isValidElement(children) && !isFragment(children) && (children as any).ref
-            ? (children as any).ref
-            : ref,
-        className: classNames(
-          `${prefixCls}-trigger`,
-          React.isValidElement(children) &&
-            !isFragment(children) &&
-            children.props &&
-            (children.props as any).className,
-          { disabled },
-        ),
-      })
-    )
   const isMenu = menu.type === Menu
 
   const [selectedKey, setSelectedKey] = React.useState(
@@ -124,7 +92,7 @@ const Dropdown = React.forwardRef<HTMLDivElement, DropDownProps>((props, ref) =>
         onItemClick(key)
       }
       menuSelectable && setSelectedKey(key)
-      props.visible === undefined && setVisible(false)
+      onVisibleChangeInner(false, 'clickDropdownItem')
     }
   }
   const cloneObj = React.cloneElement(menu, {
@@ -172,14 +140,17 @@ const Dropdown = React.forwardRef<HTMLDivElement, DropDownProps>((props, ref) =>
   )
 
   const popperProps = {
-    ...allProps,
+    ...other,
+    ref,
     visible,
     prefixCls,
+    trigger,
     popperStyle: innerAnimation ? popperStyle : { animation: 'none', ...popperStyle },
-    onVisibleChange: handleVisibleChange,
+    onVisibleChange: onVisibleChangeInner,
+    tip: menuElement,
   }
 
-  return usePopper(child, menuElement, popperProps)
+  return <Popper {...popperProps}>{children}</Popper>
 })
 
 Dropdown.displayName = 'Dropdown'
