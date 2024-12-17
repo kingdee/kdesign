@@ -152,8 +152,8 @@ const ColorPickerPanel: FC<IColorPickerPanelProps> = (props) => {
       setInputColorValue(formatInputValue)
       setCorrectColorValue(formatCorrectValue)
       setColTypeArr(formatArr)
+      setClickedPresetColorIndex(index)
     }
-    setClickedPresetColorIndex(index)
     onChange?.(formatInputValue, formatArr)
   }
   const historicalColorClick = (index: number, colorValue: string) => {
@@ -168,8 +168,8 @@ const ColorPickerPanel: FC<IColorPickerPanelProps> = (props) => {
       setInputColorValue(formatInputValue)
       setCorrectColorValue(formatCorrectValue)
       setColTypeArr(formatArr)
+      setClickedHistoricalColorIndex(index)
     }
-    setClickedHistoricalColorIndex(index)
     onChange?.(formatInputValue, formatArr)
   }
 
@@ -185,7 +185,7 @@ const ColorPickerPanel: FC<IColorPickerPanelProps> = (props) => {
     }
   }
 
-  const handleAlphaChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleAlphaBlur = (e: React.ChangeEvent<HTMLInputElement>) => {
     const regPercentage = /^(0|[1-9][0-9]?|100)%$/
     const regDot = /^(0(\.\d+)?|1(\.0+)?)$/
     const val = e.target.value
@@ -206,19 +206,6 @@ const ColorPickerPanel: FC<IColorPickerPanelProps> = (props) => {
       alphaValue = 1
     }
     const { formatArr, outValue, innerInput } = getColorFormat(alphaValue)
-
-    if (value === undefined) {
-      setAlphaNoVerifyVal(val)
-      setPanelState(formatArr, innerInput as string, outValue, alphaValue)
-      setClickColorIndex(formatArr[0].value)
-    }
-    onChange?.(outValue as string, formatArr as IColorTypesObj[])
-  }
-
-  const handleAlphaBlur = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const regPercentage = /^(0|[1-9][0-9]?|100)%$/
-    const regDot = /^(0(\.\d+)?|1(\.0+)?)$/
-    const val = e.target.value
     if (regPercentage.test(val)) {
       setAlphaNoVerifyVal(val)
     } else if (regDot.test(val)) {
@@ -226,6 +213,19 @@ const ColorPickerPanel: FC<IColorPickerPanelProps> = (props) => {
     } else {
       setAlphaNoVerifyVal('100%')
     }
+    if (value === undefined) {
+      setPanelState(formatArr, innerInput as string, outValue, alphaValue)
+      setClickColorIndex(formatArr[0].value)
+    }
+
+    onChange?.(outValue as string, formatArr as IColorTypesObj[])
+  }
+
+  const handleAlphaChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (value !== undefined && onChange === undefined) {
+      return
+    }
+    setAlphaNoVerifyVal(e.target.value)
   }
 
   const handleHEXInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
