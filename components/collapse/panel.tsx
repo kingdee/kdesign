@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { memo, useEffect, useRef, useState } from 'react'
 import classNames from 'classnames'
 import ConfigContext from '../config-provider/ConfigContext'
 import { getCompProps } from '../_utils'
@@ -21,7 +21,7 @@ export interface PanelProps {
   style?: React.CSSProperties
   className?: string
 }
-const Panel = React.forwardRef<unknown, PanelProps>((props, ref) => {
+const InnerPanel = React.forwardRef<unknown, PanelProps>((props, ref) => {
   const { getPrefixCls, prefixCls, compDefaultProps: userDefaultProps } = React.useContext(ConfigContext)
   const {
     disabled,
@@ -30,7 +30,7 @@ const Panel = React.forwardRef<unknown, PanelProps>((props, ref) => {
     header,
     onChange,
     panelKey,
-    innerKey,
+    isExpand,
     bordered,
     expandIcon,
     expandIconPosition,
@@ -51,12 +51,11 @@ const Panel = React.forwardRef<unknown, PanelProps>((props, ref) => {
   const [expand, setExpand] = useState<boolean>(false)
 
   useEffect(() => {
-    const newValue = innerKey.includes(panelKey)
-    if (newValue !== expand) {
-      setExpand(newValue)
-      setExpandAnimation(true)
-    }
-  }, [innerKey])
+    setExpand((expand) => {
+      if (isExpand !== expand) return isExpand
+    })
+    setExpandAnimation(true)
+  }, [isExpand])
 
   const handleClick = () => {
     if (disabled) return
@@ -187,7 +186,7 @@ const Panel = React.forwardRef<unknown, PanelProps>((props, ref) => {
     } else if (!expandAnimation) {
       expand ? expandWidthoutAnimation(childrenRef.current) : runCollapseAnimation(childrenRef.current)
     }
-  }, [childrenRef.current, expandAnimation, expand])
+  }, [expandAnimation, expand])
 
   return (
     <div className={rootClassName} style={style} ref={panelPrefixClsRef} {...others}>
@@ -202,6 +201,6 @@ const Panel = React.forwardRef<unknown, PanelProps>((props, ref) => {
     </div>
   )
 })
-
+const Panel = memo(InnerPanel)
 Panel.displayName = 'Panel'
 export default Panel

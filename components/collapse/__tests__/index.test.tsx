@@ -1,5 +1,5 @@
 import React from 'react'
-import { mount, render } from 'enzyme'
+import { mount, render, shallow } from 'enzyme'
 import mountTest from '../../../tests/shared/mountTest'
 import Collapse from '../index'
 import Icon from '../../icon'
@@ -306,7 +306,7 @@ describe('collapse', () => {
     })
 
     it('should render with correct panelKey', () => {
-      const wrapper = mount(
+      const wrapper = shallow(
         <Collapse {...collapseProps}>
           <Collapse.Panel header="header" panelKey="1" />
         </Collapse>,
