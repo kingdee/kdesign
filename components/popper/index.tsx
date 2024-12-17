@@ -236,6 +236,7 @@ export const Popper = forwardRef<unknown, PopperProps>((props, ref) => {
 
   const popperInstance = useRef<Instance | null>(null)
   const referenceRefInner = useRef<any>(null)
+  const onVisibleChangeRef = useRef<PopperProps['onVisibleChange']>(onVisibleChange)
 
   const referenceRef = referenceElement?.ref || referenceRefInner
   const container = getPopupContainer(getRealDom(referenceRef, referenceElement) || document.body) || document.body
@@ -262,7 +263,7 @@ export const Popper = forwardRef<unknown, PopperProps>((props, ref) => {
       if (typeof visible === 'undefined') {
         setVisibleInner(nextOpen)
       }
-      onVisibleChange?.(nextOpen, triggerType)
+      onVisibleChangeRef.current?.(nextOpen, triggerType)
     }
     if (!nextOpen && Object.keys(subPopupRefs.current || {}).length) {
       Object.values(subPopupRefs.current).forEach((d: any) => {
@@ -390,6 +391,10 @@ export const Popper = forwardRef<unknown, PopperProps>((props, ref) => {
       triggerNode?.[type]('mouseleave', onMouseLeave)
     }
   }
+
+  useEffect(() => {
+    onVisibleChangeRef.current = onVisibleChange
+  }, [onVisibleChange])
 
   useEffect(() => {
     setPlacementInner(getRealPlacement(placement))

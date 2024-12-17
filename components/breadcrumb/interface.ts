@@ -21,6 +21,9 @@ export interface IBreadcrumbItems {
   index: number
   separator?: ReactNode
   openEllipsis?: boolean
+  colorModel?: ColorModelType // 颜色模式，默认是 'emphasize'
+  isLast?: boolean
+  isTooltip?: boolean
   onItemClick?: (item: IBreadcrumbItem, index: number) => void // 点击面包屑导航的回调函数
 }
 

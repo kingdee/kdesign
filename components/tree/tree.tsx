@@ -132,8 +132,8 @@ const InternalTree = React.forwardRef((props: TreeProps, ref: any): React.Functi
     onDrop,
     onSelect,
     selectedKeys: selectedKeysProps,
-    setTreeNodeStyle = () => ({}),
-    setTreeNodeClassName = () => '',
+    setTreeNodeStyle,
+    setTreeNodeClassName,
     estimatedItemSize: innerEstimatedItemSize,
     style,
     className,
@@ -495,8 +495,8 @@ const InternalTree = React.forwardRef((props: TreeProps, ref: any): React.Functi
     item.switcherIcon = item.switcherIcon || switcherIcon
     item.estimatedItemSize = estimatedItemSize
     item.draggable = draggable
-    item.className = setTreeNodeClassName(Object.assign({}, item))
-    item.style = setTreeNodeStyle(Object.assign({}, item))
+    item.className = setTreeNodeClassName?.(Object.assign({}, item)) || item?.className
+    item.style = setTreeNodeStyle?.(Object.assign({}, item)) || item?.style
     item.getDragNode = getDragNode
     item.setDragNode = setDragNode
     item.dragOver = dragOverNodeKey === item.key && dropPosition === 0

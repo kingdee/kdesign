@@ -1,17 +1,28 @@
-import React, { useContext, FC } from 'react'
+import React, { useContext, FC, memo } from 'react'
 import { IBreadcrumbItems } from './interface'
 import Dropdown from '../dropdown'
 import Icon from '../icon'
 import devWarning from '../_utils/devwarning'
 import ConfigContext from '../config-provider/ConfigContext'
+import classNames from 'classnames'
 
 const BreadcrumbItem: FC<IBreadcrumbItems> = (props) => {
   const { getPrefixCls, prefixCls } = useContext(ConfigContext)
-  const { item, index, separator, openEllipsis, onItemClick } = props
-  const { title, className, dropdownProps, href, path, icon } = item
+  const { item, index, separator, openEllipsis, isLast, isTooltip, colorModel, onItemClick } = props
+  const { title, dropdownProps, href, path, icon, className } = item
   const breadcrumbPrefixCls = getPrefixCls!(prefixCls, 'breadcrumb')
+  const breadcrumbSeparatorClass = classNames(`${breadcrumbPrefixCls}-item-separator`)
   const itemTextCls = `${breadcrumbPrefixCls}-item-text`
   const itemIconCls = `${breadcrumbPrefixCls}-item-icon`
+
+  const getBreadcrumbItemClass = () => {
+    return classNames(className, `${breadcrumbPrefixCls}-item`, {
+      [`${breadcrumbPrefixCls}-item-link`]: path || href,
+      [`${breadcrumbPrefixCls}-item-${colorModel || 'emphasize'}-model-current`]: isTooltip ? false : isLast,
+      [`${breadcrumbPrefixCls}-item-${colorModel || 'emphasize'}-model`]: isTooltip ? true : !isLast,
+    })
+  }
+
   const handleItemClick = () => {
     if (href && !path) {
       window.open(href, '_self')
@@ -22,9 +33,17 @@ const BreadcrumbItem: FC<IBreadcrumbItems> = (props) => {
     }
     onItemClick && onItemClick(item, index)
   }
+
+  const getSeparator = () => {
+    if (isLast) {
+      return null
+    } else {
+      return <span className={breadcrumbSeparatorClass}>{separator}</span>
+    }
+  }
   return (
     <>
-      <div className={className} onClick={handleItemClick}>
+      <div className={getBreadcrumbItemClass()} onClick={handleItemClick}>
         {icon && <div className={itemIconCls}>{icon}</div>}
         <div
           className={itemTextCls}
@@ -38,9 +57,9 @@ const BreadcrumbItem: FC<IBreadcrumbItems> = (props) => {
             <Icon type="arrow-down" />
           </Dropdown>
         )}
-        {separator}
+        {getSeparator()}
       </div>
     </>
   )
 }
-export default BreadcrumbItem
+export default memo(BreadcrumbItem)

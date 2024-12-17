@@ -7,6 +7,7 @@
 .@{color-picker-prefix-cls}-container {
   position: relative;
   width: @color-picker-input-sizing-width;
+  height: @color-picker-input-sizing-height;
 
   &-pure {
     width: 28px;
@@ -32,10 +33,9 @@
   }
 
   .@{color-picker-prefix-cls}-input {
-    width: @color-picker-input-sizing-width;
-    height: @color-picker-input-sizing-height;
+    height: 100%;
+    width: 100%;
     padding: 0 8px;
-    border-bottom: 1px solid rgba(217, 217, 217, 1);
     font-size: @color-picker-input-font-size;
   }
 
@@ -58,7 +58,7 @@
         width: @color-picker-input-prefix-line-sizing-width;
         height: @color-picker-input-prefix-line-sizing-height;
         background-color: #ff2e3d;
-        rotate: 45deg;
+        transform: rotate(45deg);
       }
     }
   }
@@ -69,15 +69,27 @@
   width: @color-picker-panel-sizing-width;
 
   &.topLeft.hidden,
+  &.topRight.hidden {
+    animation-name: kdSlideDownOut;
+  }
+
+  &.topLeft,
+  &.topRight {
+    animation-name: kdSlideDownIn;
+  }
+
   &.bottomLeft.hidden,
-  &.topRight.hidden,
   &.bottomRight.hidden {
-    opacity: 0;
-    visibility: hidden;
-    transition: all calc(@transition-duration - 0.1s) @ease;
+    animation-name: kdSlideUpOut;
+  }
+
+  &.bottomLeft,
+  &.bottomRight {
+    animation-name: kdSlideUpIn;
   }
 
   .@{color-picker-prefix-cls}-panel {
+    position: relative;
     box-sizing: border-box;
     width: @color-picker-panel-sizing-width;
     padding: 4px 12px 16px;
@@ -117,7 +129,7 @@
           width: 1px;
           height: 22.6px;
           background-color: #ff2e3d;
-          rotate: 45deg;
+          transform: rotate(45deg);
         }
 
         .active {

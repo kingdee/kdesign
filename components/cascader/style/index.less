@@ -5,6 +5,7 @@
 @cascader-picker-prefix-cls: ~'@{kd-prefix}-cascader-picker';
 @cascader-menus-prefix-cls: ~'@{kd-prefix}-cascader-menus';
 @cascader-menu-prefix-cls: ~'@{kd-prefix}-cascader-menu';
+@icon-prefix-cls: ~'@{kd-prefix}icon';
 
 .@{cascader-picker-prefix-cls} {
   position: relative;
@@ -18,7 +19,7 @@
       border-color: @color-border-strong;
 
       .@{kd-prefix}-input-suffix,
-      i[class*='kdicon'] {
+      i[class*='@{icon-prefix-cls}'] {
         color: @cascader-disabled-color;
       }
     }
@@ -47,13 +48,13 @@
     }
 
     &.expand {
-      i[class*='kdicon'] {
+      i[class*='@{icon-prefix-cls}'] {
         transform: rotate(180deg);
       }
     }
 
     .@{kd-prefix}-input-suffix,
-    i[class*='kdicon'] {
+    i[class*='@{icon-prefix-cls}'] {
       transition: all 0.2s;
     }
   }

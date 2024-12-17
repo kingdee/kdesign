@@ -4,6 +4,53 @@ title: 更新日志
 hiddenAnchor: true
 ---
 
+## [1.8.23](https://github.com/kingdee/kdesign/compare/v1.8.22...v1.8.23)
+`2024-12-11`
+* input
+  * 更新框类型禁用态字体颜色 fix [#995](https://github.com/kingdee/kdesign/issues/995)
+* icon
+  * fix: 添加修改样式前缀功能 fix [#987](https://github.com/kingdee/kdesign/issues/987)
+* color-picker
+  * 添加屏幕滚动时颜色面板是否收起的配置功能 fix [#997](https://github.com/kingdee/kdesign/issues/997)
+  * 添加disabled属性 fix [#983](https://github.com/kingdee/kdesign/issues/983)
+  * 外部输入框为空时，类型选择下拉框改变类型选项不回填外部输入框 fix [#992](https://github.com/kingdee/kdesign/issues/992)
+  * 外部输入框无值时图标的背景色从透明色改为白色 fix [#984](https://github.com/kingdee/kdesign/issues/984)
+  * 新增ref属性、修改removeTransparency方法 fix [#986](https://github.com/kingdee/kdesign/issues/986)
+  * 修复弹出面板 z-index 不生效的问题 fix [#985](https://github.com/kingdee/kdesign/issues/985)
+  * 优化颜色面板弹出的动画效果 fix [#994](https://github.com/kingdee/kdesign/issues/994)
+
+## [1.8.22](https://github.com/kingdee/kdesign/compare/v1.8.21...v1.8.22)
+`2024-12-06`
+* icon
+  * 添加修改样式前缀功能 fix [#987](https://github.com/kingdee/kdesign/issues/987)
+
+## [1.8.21](https://github.com/kingdee/kdesign/compare/v1.8.20...v1.8.21)
+`2024-11-29`
+* color-picker
+  * 将rotate样式属性改为兼容性更高的transform:rotate()方法 fix [#967](https://github.com/kingdee/kdesign/issues/967)
+  * 新增 popperClassName api，同时将原有的className和style属性放至input外层容器中 fix [#942](https://github.com/kingdee/kdesign/issues/942) fix [#968](https://github.com/kingdee/kdesign/issues/968)
+* form
+  * 将rotate样式属性改为兼容性更高的transform:rotate()方法 fix [#967](https://github.com/kingdee/kdesign/issues/967)
+* date-picker
+  * 更新en-us添加monthBeforeYear
+* select
+  * 修复onDeselect回调事件触发时机错误问题 fix [#949](https://github.com/kingdee/kdesign/issues/949)
+* tree
+  * 修复设置树节点样式与类名不生效问题 fix [#930](https://github.com/kingdee/kdesign/issues/930)
+* input
+  * 新增 popperClassName api，同时将原有的className和style属性放至input外层容器中 fix [#942](https://github.com/kingdee/kdesign/issues/942) fix [#968](https://github.com/kingdee/kdesign/issues/968)
+* popper
+  * 新增 popperClassName api，同时将原有的className和style属性放至input外层容器中 fix [#942](https://github.com/kingdee/kdesign/issues/942) fix [#968](https://github.com/kingdee/kdesign/issues/968)
+* 更新总览页面分割线缩略图 fix [#979](https://github.com/kingdee/kdesign/issues/979)
+
+## [1.8.20](https://github.com/kingdee/kdesign/compare/v1.8.19...v1.8.20)
+`2024-11-22`
+* popper
+  * 修复onVisibleChange问题 fix [#937](https://github.com/kingdee/kdesign/issues/937)
+* date-picker
+  * 更新年月快捷选择交互 fix [#931](https://github.com/kingdee/kdesign/issues/931)
+* 修复安装依赖后yarn test报错问题 [#935](https://github.com/kingdee/kdesign/issues/935)
+
 ## [1.8.19](https://github.com/kingdee/kdesign/compare/v1.8.18...v1.8.19)
 `2024-11-07`
 * pagination

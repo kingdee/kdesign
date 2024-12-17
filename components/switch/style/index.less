@@ -2,6 +2,7 @@
 @import './mixin.less';
 
 @switch-prefix-cls: ~'@{kd-prefix}-switch';
+@icon-prefix-cls: ~'@{kd-prefix}icon';
 
 
 .@{switch-prefix-cls} {
@@ -22,7 +23,7 @@
     transform: translateY(-50%);
     z-index: 10;
 
-    .kdicon-loadding-circle {
+    .@{icon-prefix-cls}-loadding-circle {
       animation: loadingcircle 1s infinite;
       animation-timing-function: cubic-bezier(0.42, 0.00, 0.58, 1.00);
       font-size: @switch-small-font-size;

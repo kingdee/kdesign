@@ -1,6 +1,6 @@
 {
   "name": "@kdcloudjs/kdesign",
-  "version": "1.8.19",
+  "version": "1.8.23",
   "description": "KDesign 金蝶前端react 组件库",
   "title": "kdesign",
   "keywords": [
@@ -260,7 +260,8 @@
   },
   "resolutions": {
     "@types/babel__traverse": "7.17.1",
-    "@types/node": "17.0.41"
+    "@types/node": "17.0.41",
+    "cheerio": "1.0.0-rc.12"
   },
   "license": "Apache-2.0"
 }

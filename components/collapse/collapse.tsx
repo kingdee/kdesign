@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import ConfigContext from '../config-provider/ConfigContext'
 import { getCompProps } from '../_utils'
 import classNames from 'classnames'
@@ -39,68 +39,78 @@ const InternalCollapse = React.forwardRef<unknown, CollapseProps>((props, ref) =
   const CollapsePrefixCls = getPrefixCls!(prefixCls, 'collapse', customPrefixcls) // 样式前缀
 
   const [innerKey, setInnerKey] = useState<PanelKeyType[]>([])
-  const convertActiveKey = (newKey: keyType) => {
-    let ret: PanelKeyType[] = []
-    if (Array.isArray(newKey)) {
-      ret = newKey
-    } else if (typeof newKey === 'string' || typeof newKey === 'number') {
-      ret = [newKey]
-    }
-    if (accordion && ret.length) {
-      ret = [ret[0]]
-    }
-    return ret
-  }
+
+  const innerKeyRef = useRef<PanelKeyType[]>(innerKey)
+
+  const convertActiveKey = useCallback(
+    (newKey: keyType) => {
+      let ret: PanelKeyType[] = []
+      if (Array.isArray(newKey)) {
+        ret = newKey
+      } else if (typeof newKey === 'string' || typeof newKey === 'number') {
+        ret = [newKey]
+      }
+      if (accordion && ret.length) {
+        ret = [ret[0]]
+      }
+      return ret
+    },
+    [accordion],
+  )
   useEffect(() => {
     if (typeof activeKey !== 'undefined') {
       setInnerKey(convertActiveKey(activeKey))
+    } else if (typeof defaultActiveKey !== 'undefined') {
+      setInnerKey(convertActiveKey(defaultActiveKey))
     }
-  }, [activeKey])
+  }, [activeKey, convertActiveKey, defaultActiveKey])
+
   useEffect(() => {
-    if (typeof activeKey !== 'undefined' || typeof defaultActiveKey !== 'undefined') {
-      setInnerKey(convertActiveKey(typeof activeKey !== 'undefined' ? activeKey : defaultActiveKey))
-    }
-  }, [])
+    innerKeyRef.current = innerKey
+  }, [innerKey])
 
-  const onPanelChange = (key: PanelKeyType) => {
-    let newKey: PanelKeyType[] = []
-    if (accordion) {
-      if (innerKey.includes(key)) {
-        newKey = []
+  const onPanelChange = useCallback(
+    (key: PanelKeyType) => {
+      let newKey: PanelKeyType[] = []
+      if (accordion) {
+        if (innerKeyRef.current.includes(key)) {
+          newKey = []
+        } else {
+          newKey = [key]
+        }
       } else {
-        newKey = [key]
+        if (innerKeyRef.current.includes(key)) {
+          newKey = innerKeyRef.current.filter((d) => d !== key)
+        } else {
+          newKey = [...innerKeyRef.current, key]
+        }
       }
-    } else {
-      if (innerKey.includes(key)) {
-        newKey = innerKey.filter((d) => d !== key)
-      } else {
-        newKey = [...innerKey, key]
+
+      if (typeof activeKey === 'undefined') {
+        setInnerKey(newKey)
       }
-    }
+      onChange && onChange(newKey)
+    },
+    [accordion, activeKey, onChange],
+  )
 
-    if (typeof activeKey === 'undefined') {
-      setInnerKey(newKey)
-    }
-    onChange && onChange(newKey)
-  }
-
-  const renderPanel = () => {
+  const renderPanel = useMemo(() => {
     return React.Children.map(children, (item: any) => {
       if (item?.type?.displayName !== 'Panel') {
         devwarning(true, 'Collapse', 'children must be Collapse.Panel')
         return item
       }
-
+      const isExpand = innerKey.includes(item?.props?.panelKey)
       return React.cloneElement(item, {
         expandIcon,
         expandIconPosition,
         onChange: onPanelChange,
         bordered,
-        innerKey,
+        isExpand,
         ...item.props,
       })
     })
-  }
+  }, [bordered, children, expandIcon, expandIconPosition, innerKey, onPanelChange])
 
   const rootClassName = classNames(className, {
     [`${CollapsePrefixCls}`]: true,
@@ -110,7 +120,7 @@ const InternalCollapse = React.forwardRef<unknown, CollapseProps>((props, ref) =
 
   return (
     <div className={rootClassName} style={style} ref={collapseRef}>
-      {renderPanel()}
+      {renderPanel}
     </div>
   )
 })
