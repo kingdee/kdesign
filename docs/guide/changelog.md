@@ -4,6 +4,31 @@ title: 更新日志
 hiddenAnchor: true
 ---
 
+## [1.8.27](https://github.com/kingdee/kdesign/compare/v1.8.26...v1.8.27)
+`2024-12-17`
+* color-picker
+  * 修复下拉面板透明度选择时光标会自动跳到最后的问题 fix [#1014](https://github.com/kingdee/kdesign/issues/1014)
+
+## [1.8.26](https://github.com/kingdee/kdesign/compare/v1.8.25...v1.8.26)
+`2024-12-13`
+* color-picker
+  * 修复点击拾色器选择颜色时format不生效的问题 fix [#1012](https://github.com/kingdee/kdesign/issues/1012)
+* form
+  * 修复点击拾色器选择颜色时format不生效的问题 fix [#1012](https://github.com/kingdee/kdesign/issues/1012)
+
+## [1.8.25](https://github.com/kingdee/kdesign/compare/v1.8.24...v1.8.25)
+`2024-12-13`
+* color-picker
+  * 修复颜色组件在视口右边界时面板无法收起的问题 fix [#1005](https://github.com/kingdee/kdesign/issues/1005)
+
+## [1.8.24](https://github.com/kingdee/kdesign/compare/v1.8.23...v1.8.24)
+`2024-12-13`
+* color-picker
+  * 修复 HSB 格式下选择选择颜色再清除，色块颜色未变回初始值的问题 fix [#1000](https://github.com/kingdee/kdesign/issues/1000)
+  * 修复外部输入框为空，在内部输入框HEX模式下输入错误颜色格式再失焦后，外部输入框颜色值透明度未变成100%而是0%的问题 fix [#1001](https://github.com/kingdee/kdesign/issues/1001)
+  * 修复颜色类型下拉框首次切换HSL，内部输入框值还是 RGB 格式的问题 fix [#999](https://github.com/kingdee/kdesign/issues/999)
+  * 修复组件缩放至80%大小时，颜色类型选择框内部会出现滚动条的问题 fix [#1002](https://github.com/kingdee/kdesign/issues/1002)
+
 ## [1.8.23](https://github.com/kingdee/kdesign/compare/v1.8.22...v1.8.23)
 `2024-12-11`
 * input
