@@ -579,7 +579,7 @@ describe('ColorPicker', () => {
     wrapper
       .find('.kd-color-picker-panel-container-transparent')
       .at(0)
-      .simulate('change', { target: { value: '10%' } })
+      .simulate('blur', { target: { value: '10%' } })
     expect(wrapper.find('.kd-color-picker-panel-container-transparent').at(0).prop('value')).toEqual('10%')
     testCommonState('HEX', wrapper, '#FFFFFF1A', '#FFFFFF', '10%')
     wrapper.unmount()
