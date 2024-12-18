@@ -11,15 +11,17 @@ import ReactDOM from 'react-dom'
 import { Pagination } from '@kdcloudjs/kdesign'
 
 const Demo: React.FC = () => {
+  const fifty = 50
+  const twohundred = 200
   return (
     <div style={{ width: '550px' }}>
-      <Pagination pageType="nicety" defaultCurrent={1} total={50} />
+      <Pagination pageType="nicety" defaultCurrent={1} total={fifty} />
       <br />
       <br />
-      <Pagination pageType="nicety" defaultCurrent={2} total={200} showQuickJumper={false} />
+      <Pagination pageType="nicety" defaultCurrent={2} total={twohundred} showQuickJumper={false} />
       <br />
       <br />
-      <Pagination pageType="nicety" defaultCurrent={3} total={50} showSizeChanger />
+      <Pagination pageType="nicety" defaultCurrent={3} total={fifty} showSizeChanger />
     </div>
   )
 }
