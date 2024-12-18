@@ -49,15 +49,15 @@ export interface TransferListProps {
 const ITransferList = (props: TransferListProps, ref: any) => {
   const {
     prefixCls,
-    dataSource,
+    dataSource = [],
     filterOption,
     handleFilter,
     handleClear,
     render = defaultRender,
-    titleText,
+    titleText = '',
     checkedKeys,
     disabled,
-    showSearch,
+    showSearch = false,
     style,
     renderList,
     onItemSelectAll,
@@ -282,11 +282,5 @@ const ITransferList = (props: TransferListProps, ref: any) => {
 }
 
 const TransferList = React.forwardRef<unknown, TransferListProps>(ITransferList)
-
-TransferList.defaultProps = {
-  dataSource: [],
-  titleText: '',
-  showSearch: false,
-}
 
 export default TransferList

@@ -21,7 +21,7 @@ subtitle: 按钮
 | disabled | 按钮禁用状态 | boolean | `false` | `true` `false` | 1.0.0 |
 | ghost | 幽灵属性，使按钮背景透明 | boolean | `false` | `true` `false` | 1.0.0 |
 | loading | 按钮加载状态（加载中的按钮将不能触发点击事件） | boolean | `false` | `true` `false` | 1.0.0 |
-| shape | 按钮形状 | string | `''` | `''` `circle` `round` `none` | 1.0.0 |
+| shape | 按钮形状 | string | `-` | `-` `circle` `round` `none` | 1.0.0 |
 | size | 按钮尺寸 | string | `middle` | `small` `middle` `large` | 1.0.0 |
 | type | 按钮类型 | string | `second` | `second` `primary` `ghost` `text` | 1.0.0 |
 | onClick | 点击按钮时的回调 | (event) => void | `-` | `-` | 1.0.0 |

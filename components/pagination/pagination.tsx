@@ -7,6 +7,7 @@ import Icon from '../icon'
 import Dropdown, { DropDownProps } from '../dropdown'
 import devWarning from '../_utils/devwarning'
 import { tuple } from '../_utils/type'
+import { useEffect, useMemo, useRef } from 'react'
 export const PageTypes = tuple('basic', 'bill', 'simple', 'less', 'nicety')
 export const TotalTypes = tuple('page', 'row', 'all')
 export type pageType = typeof PageTypes[number]
@@ -46,6 +47,7 @@ export interface IPaginationProps {
   icons?: Partial<IIcons>
 }
 
+const popperStyle = { minWidth: 64 }
 const Pagination: React.FC<IPaginationProps> = (props) => {
   const {
     getPrefixCls,
@@ -110,33 +112,59 @@ const Pagination: React.FC<IPaginationProps> = (props) => {
   const [isOpen, setIsOpen] = React.useState(false)
 
   // icons
-  const innerIcon: IIcons = Object.assign(
-    {
-      first: <Icon type="first" />,
-      last: <Icon type="last" />,
-      prev: <Icon type="arrow-left" />,
-      next: <Icon type="arrow-right" />,
-      down: <Icon type="arrow-down" />,
-      jumpPrev: <Icon type="double-arrow-left" />,
-      jumpNext: <Icon type="double-arrow-right" />,
-    },
-    icons || {},
+  const innerIcon: IIcons = React.useMemo(
+    () =>
+      Object.assign(
+        {
+          first: <Icon type="first" />,
+          last: <Icon type="last" />,
+          prev: <Icon type="arrow-left" />,
+          next: <Icon type="arrow-right" />,
+          down: <Icon type="arrow-down" />,
+          jumpPrev: <Icon type="double-arrow-left" />,
+          jumpNext: <Icon type="double-arrow-right" />,
+        },
+        icons || {},
+      ),
+    [icons],
   )
 
+  const performanceRef = useRef({
+    page: Math.max(initPage, 1),
+  })
+
+  useEffect(() => {
+    performanceRef.current.page = page
+  }, [page])
+  // 翻页
+  const changePage = React.useCallback(
+    (page: number, pageSize?: number) => {
+      current === undefined && setPage(page)
+      onChange && onChange(page, pageSize || size)
+    },
+    [onChange, current, size],
+  )
   // 切换pageSize
-  const handleChangeSize = (key: string) => {
-    const currentSize = Number(key)
-    if (currentSize !== size) {
-      if (pageSize === undefined) setSize(currentSize)
+  const handleChangeSize = React.useCallback(
+    (key: string) => {
+      const currentSize = Number(key)
+      if (currentSize !== size) {
+        if (pageSize === undefined) setSize(currentSize)
 
-      const currentPage = Math.min(Math.ceil(total / Number(currentSize)), page)
-      changePage(currentPage, currentSize)
+        const currentPage = Math.min(Math.ceil(total / Number(currentSize)), performanceRef.current.page)
+        changePage(currentPage, currentSize)
 
-      onShowSizeChange && onShowSizeChange(currentPage, currentSize)
-    }
-    setIsOpen(false)
-  }
+        onShowSizeChange && onShowSizeChange(currentPage, currentSize)
+      }
+      setIsOpen(false)
+    },
+    [pageSize, total, size, changePage, onShowSizeChange],
+  )
 
+  const getPopupContainer = React.useCallback(
+    (triggerNode: HTMLElement) => triggerNode?.parentElement as HTMLElement,
+    [],
+  )
   // 输入页码
   const handleChangeCurrentPage = (e: React.ChangeEvent<HTMLInputElement>) => setInputPage(e.target.value)
 
@@ -159,12 +187,6 @@ const Pagination: React.FC<IPaginationProps> = (props) => {
 
       setInputPage(undefined)
     }
-  }
-
-  // 翻页
-  const changePage = (page: number, pageSize?: number) => {
-    current === undefined && setPage(page)
-    onChange && onChange(page, pageSize || size)
   }
 
   // 翻到上一页
@@ -203,21 +225,27 @@ const Pagination: React.FC<IPaginationProps> = (props) => {
     return result
   }
 
-  function dropdownVisibleChange(visible: boolean) {
-    setIsOpen(visible)
-    if (dropdownProps && typeof dropdownProps.onVisibleChange === 'function') {
-      dropdownProps.onVisibleChange(visible)
-    }
-  }
+  const dropdownVisibleChange = React.useCallback(
+    (visible: boolean) => {
+      setIsOpen(visible)
+      if (dropdownProps && typeof dropdownProps.onVisibleChange === 'function') {
+        dropdownProps.onVisibleChange(visible)
+      }
+    },
+    [dropdownProps],
+  )
 
-  const sizeOptions = (
-    <Dropdown.Menu>
-      {pageSizeOptions.map((size: number) => (
-        <Dropdown.Item key={size}>
-          {pageType === 'nicety' ? size : locale.getLangMsg('Pagination', 'perPage', { size })}
-        </Dropdown.Item>
-      ))}
-    </Dropdown.Menu>
+  const sizeOptions = React.useMemo(
+    () => (
+      <Dropdown.Menu>
+        {pageSizeOptions.map((size: number) => (
+          <Dropdown.Item key={size}>
+            {pageType === 'nicety' ? size : locale.getLangMsg('Pagination', 'perPage', { size })}
+          </Dropdown.Item>
+        ))}
+      </Dropdown.Menu>
+    ),
+    [pageSizeOptions, pageType, locale],
   )
 
   const mapShowTotal: Record<string, string> = {
@@ -231,7 +259,45 @@ const Pagination: React.FC<IPaginationProps> = (props) => {
   }
   const showTotal = props.showTotal ? (props.showTotal === true ? 'page' : props.showTotal) : mapShowTotal[pageType]
   const Total = showTotal && <span className={`${prefixCls}-total`}>{mapTotalText[showTotal]}</span>
-
+  const memorizedBillDropdown = useMemo(
+    () => (
+      <Dropdown
+        selectable
+        selectedKey={size}
+        menu={sizeOptions}
+        trigger="click"
+        placement="bottomRight"
+        disabled={disabled}
+        prefix={`${prefixCls}-dropdown`}
+        popperStyle={popperStyle}
+        onItemClick={handleChangeSize}
+        getPopupContainer={(triggerNode) => triggerNode?.parentElement as HTMLElement}
+        {...dropdownProps}
+        onVisibleChange={dropdownVisibleChange}
+      >
+        <button
+          className={classNames(`${prefixCls}-selector-size`, `${prefixCls}-options-dropdown`, {
+            [`${prefixCls}-options-dropdown-open`]: isOpen,
+          })}
+        >
+          <span>{locale.getLangMsg('Pagination', 'perPage', { size })}</span>
+          {innerIcon.down}
+        </button>
+      </Dropdown>
+    ),
+    [
+      disabled,
+      dropdownProps,
+      dropdownVisibleChange,
+      handleChangeSize,
+      innerIcon.down,
+      isOpen,
+      locale,
+      prefixCls,
+      size,
+      sizeOptions,
+    ],
+  )
   const normalPagination = (
     <div className={classNames(prefixCls, className)} style={style}>
       {Total}
@@ -274,33 +340,7 @@ const Pagination: React.FC<IPaginationProps> = (props) => {
           </button>
         </li>
       </ul>
-      {showSizeSelector && (
-        <div className={`${prefixCls}-selector`}>
-          <Dropdown
-            selectable
-            selectedKey={size}
-            menu={sizeOptions}
-            trigger="click"
-            placement="bottomRight"
-            disabled={disabled}
-            prefix={`${prefixCls}-dropdown`}
-            popperStyle={{ minWidth: 64 }}
-            onItemClick={handleChangeSize}
-            getPopupContainer={(triggerNode) => triggerNode?.parentElement as HTMLElement}
-            {...dropdownProps}
-            onVisibleChange={dropdownVisibleChange}
-          >
-            <button
-              className={classNames(`${prefixCls}-selector-size`, `${prefixCls}-options-dropdown`, {
-                [`${prefixCls}-options-dropdown-open`]: isOpen,
-              })}
-            >
-              <span>{locale.getLangMsg('Pagination', 'perPage', { size })}</span>
-              {innerIcon.down}
-            </button>
-          </Dropdown>
-        </div>
-      )}
+      {showSizeSelector && <div className={`${prefixCls}-selector`}>{memorizedBillDropdown}</div>}
     </div>
   )
 
@@ -387,6 +427,65 @@ const Pagination: React.FC<IPaginationProps> = (props) => {
     page >= 5 && nicetyPages.unshift(1, '<<')
   }
 
+  const memorizedNicetyDropdown = useMemo(
+    () => (
+      <Dropdown
+        selectable
+        trigger="click"
+        selectedKey={size}
+        menu={sizeOptions}
+        disabled={disabled}
+        popperStyle={popperStyle}
+        onItemClick={handleChangeSize}
+        getPopupContainer={getPopupContainer}
+        {...dropdownProps}
+        onVisibleChange={dropdownVisibleChange}
+      >
+        <button
+          className={classNames(`${prefixCls}-options-size`, `${prefixCls}-options-dropdown`, {
+            [`${prefixCls}-options-dropdown-open`]: isOpen,
+          })}
+        >
+          {size}
+          {innerIcon.down}
+        </button>
+      </Dropdown>
+    ),
+    [
+      disabled,
+      dropdownProps,
+      dropdownVisibleChange,
+      getPopupContainer,
+      handleChangeSize,
+      innerIcon.down,
+      isOpen,
+      prefixCls,
+      size,
+      sizeOptions,
+    ],
+  )
+
+  const memoizedLangMsg = useMemo(() => {
+    return locale.getLangMsg('Pagination', 'perPage', { size: memorizedNicetyDropdown })
+  }, [locale, memorizedNicetyDropdown])
+
+  const confirmButton = (
+    <div className={`${prefixCls}-jumper`}>
+      <input
+        type="text"
+        disabled={disabled}
+        onKeyUp={handleKeyUp}
+        onBlur={handleConfirmCurrentPage}
+        onChange={handleChangeCurrentPage}
+        className={`${prefixCls}-jumper-input`}
+        value={inputPage === undefined ? '' : inputPage}
+      />
+      <button className={`${prefixCls}-jumper-button`} disabled={disabled} onClick={handleConfirmCurrentPage}>
+        {paginationLangMsg.confirm}
+      </button>
+    </div>
+  )
+
   const nicetyPagination = (
     <div className={classNames(prefixCls, 'nicety', { bordered, disabled }, className)} style={style}>
       {Total}
@@ -421,51 +520,8 @@ const Pagination: React.FC<IPaginationProps> = (props) => {
           </button>
         </li>
       </ul>
-      {showJumper && (
-        <div className={`${prefixCls}-jumper`}>
-          <input
-            type="text"
-            disabled={disabled}
-            onKeyUp={handleKeyUp}
-            onBlur={handleConfirmCurrentPage}
-            onChange={handleChangeCurrentPage}
-            className={`${prefixCls}-jumper-input`}
-            value={inputPage === undefined ? '' : inputPage}
-          />
-          <button className={`${prefixCls}-jumper-button`} disabled={disabled} onClick={handleConfirmCurrentPage}>
-            {paginationLangMsg.confirm}
-          </button>
-        </div>
-      )}
-      {showSizeSelector && (
-        <div className={`${prefixCls}-options`}>
-          {locale.getLangMsg('Pagination', 'perPage', {
-            size: (
-              <Dropdown
-                selectable
-                trigger="click"
-                selectedKey={size}
-                menu={sizeOptions}
-                disabled={disabled}
-                popperStyle={{ minWidth: 64 }}
-                onItemClick={handleChangeSize}
-                getPopupContainer={(triggerNode) => triggerNode?.parentElement as HTMLElement}
-                {...dropdownProps}
-                onVisibleChange={dropdownVisibleChange}
-              >
-                <button
-                  className={classNames(`${prefixCls}-options-size`, `${prefixCls}-options-dropdown`, {
-                    [`${prefixCls}-options-dropdown-open`]: isOpen,
-                  })}
-                >
-                  {size}
-                  {innerIcon.down}
-                </button>
-              </Dropdown>
-            ),
-          })}
-        </div>
-      )}
+      {showJumper && confirmButton}
+      {showSizeSelector && <div className={`${prefixCls}-options`}>{memoizedLangMsg}</div>}
     </div>
   )
 

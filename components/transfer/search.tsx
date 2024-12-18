@@ -11,9 +11,14 @@ export interface TransferSearchProps {
   disabled?: boolean
 }
 
-const transferSearch: React.FC<TransferSearchProps> = (props: TransferSearchProps) => {
-  const { prefixCls, placeholder, onChange, handleClear, value, disabled } = props
-
+const transferSearch: React.FC<TransferSearchProps> = ({
+  prefixCls,
+  placeholder = '',
+  onChange,
+  handleClear,
+  value,
+  disabled,
+}: TransferSearchProps) => {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (onChange) {
       onChange(e)
@@ -53,10 +58,6 @@ const transferSearch: React.FC<TransferSearchProps> = (props: TransferSearchProp
       />
     </>
   )
-}
-
-transferSearch.defaultProps = {
-  placeholder: '',
 }
 
 export default transferSearch
