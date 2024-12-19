@@ -30,6 +30,10 @@ const Demo: React.FC = () => {
     console.log(value)
   }
 
+  const handleHoverChange = (value) => {
+    console.log('1231231', value)
+  }
+
   return (
     <div style={{ width: '150px' }}>
       <Rate
@@ -37,6 +41,7 @@ const Demo: React.FC = () => {
         defaultValue={defaultValue}
         allowHalf={false}
         style={{ fontSize: 18 }}
+        onHoverChange={handleHoverChange}
         activeIcon={(index) => {
           return _activeIcon[index - 1]
         }}
@@ -48,7 +53,8 @@ const Demo: React.FC = () => {
         onChange={handleChange}
         onlyActiveCurrent
         defaultValue={defaultValue}
-        allowHalf={false}
+        allowHalf={true}
+        onHoverChange={handleHoverChange}
         style={{ fontSize: 18 }}
         activeIcon={(index) => {
           return _activeIcon[index - 1]
