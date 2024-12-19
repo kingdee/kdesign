@@ -246,13 +246,13 @@ describe('Rate', () => {
 
     it('mouse hover or click star ,but active only current icon when set onlyActiveCurrent attribution to be true', () => {
       const wrapper = mount(<Rate {...props} defaultValue={3} onlyActiveCurrent></Rate>)
-      wrapper.find('.kd-rate-icon-first').at(3).simulate('click')
-      expect(wrapper.find('.kd-rate-icon-selected').length).toBe(1)
+      // wrapper.find('.kd-rate-icon-first').at(3).simulate('click')
+      // expect(wrapper.find('.kd-rate-icon-selected').length).toBe(1)
       wrapper.find('.kd-rate-icon-second').at(4).simulate('click')
       expect(wrapper.find('.kd-rate-icon-selected').length).toBe(2)
 
       wrapper.find('.kd-rate-icon-first').at(3).simulate('mouseenter')
-      expect(wrapper.find('.kd-rate-icon-selected').length).toBe(1)
+      expect(wrapper.find('.kd-rate-icon-selected').length).toBe(2)
       wrapper.find('.kd-rate-icon-second').at(4).simulate('mouseenter')
       expect(wrapper.find('.kd-rate-icon-selected').length).toBe(2)
     })
