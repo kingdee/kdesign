@@ -9,7 +9,7 @@ order: 2
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { CityPicker } from '@kdcloudjs/kdesign'
-import type { City, CityList } from '@kdcloudjs/kdesign'
+import type { ICityPickerProps } from '@kdcloudjs/kdesign'
 
 const domestic = [
   { id: 1, name: 'New York', province: 'New York', country: '美国', highlightText: ['ne', 'rk'] },
@@ -25,16 +25,16 @@ const domestic = [
 ]
 
 const Demo: React.FC = () => {
-  const [loading, setLoading] = React.useState<boolean>(false)
-  const [value, setValue] = React.useState<City>()
+  const [loading, setLoading] = React.useState<ICityPickerProps['loading']>(false)
+  const [value, setValue] = React.useState<ICityPickerProps['value']>()
 
-  const handleSearch = () => {
+  const handleSearch: ICityPickerProps['onSearch'] = () => {
     setLoading(true)
     setTimeout(() => {
       setLoading(false)
     }, 1000)
   }
-  const handleChange = (value: City) => {
+  const handleChange: ICityPickerProps['onChange'] = (value: ICityPickerProps['value']) => {
     console.log('onChange', value)
     setValue(value)
   }

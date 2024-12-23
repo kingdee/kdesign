@@ -1,5 +1,6 @@
 import * as React from 'react'
 import { tuple } from '../_utils/type'
+import type { PopperProps } from '../_utils/usePopper'
 
 export type City = {
   id?: string | number
@@ -20,7 +21,7 @@ export type Type = 'domestic' | 'foreign'
 
 export type CityList = Array<City>
 
-export interface CityPickerProps {
+export interface CityPickerProps extends PopperProps {
   prefixCls?: string // 样式前缀
   size?: Size // 尺寸
   borderType?: BorderType // 边框类型

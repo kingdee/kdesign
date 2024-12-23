@@ -7,7 +7,7 @@ order: 0
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { CityPicker } from '@kdcloudjs/kdesign'
-import type { City, CityList } from '@kdcloudjs/kdesign'
+import type { CityPickerProps } from '@kdcloudjs/kdesign'
 
 
 const domestic = [
@@ -45,11 +45,11 @@ const foreign = [
 ]
 
 const Demo: React.FC = () => {
-  const [commonList, setCommonList] = React.useState([])
-  const [domesticList, setDomesticList] = React.useState<CityList>(domestic)
-  const [foreignList, setForeignList] = React.useState<CityList>(foreign)
+  const [commonList, setCommonList] = React.useState<CityPickerProps['commonList']>([])
+  const [domesticList, setDomesticList] = React.useState<CityPickerProps['domesticList']>(domestic)
+  const [foreignList, setForeignList] = React.useState<CityPickerProps['foreignList']>(foreign)
   const [loading, setLoading] = React.useState<boolean>(false)
-  const [value, setValue] = React.useState<City>()
+  const [value, setValue] = React.useState<CityPickerProps['value']>()
 
   const ref = React.useRef()
 
@@ -60,7 +60,7 @@ const Demo: React.FC = () => {
     })
   }
 
-  const handleSearch = (value) => {
+  const handleSearch: CityPickerProps['onSearch'] = (value) => {
     setLoading(true)
     if (ref.current) {
       clearTimeout(ref.current)
@@ -71,7 +71,7 @@ const Demo: React.FC = () => {
       setLoading(false)
     }, 1000)
   }
-  const handleChange = (value, city) => {
+  const handleChange: CityPickerProps['onChange'] = (value, city) => {
     console.log('onChange', value)
     setValue(value)
     if (value && !commonList.find((item) => item.id === value)) {

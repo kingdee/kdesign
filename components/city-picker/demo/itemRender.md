@@ -7,6 +7,7 @@ order: 5
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { CityPicker } from '@kdcloudjs/kdesign'
+import type { ICityPickerProps } from '@kdcloudjs/kdesign'
 
 const commonList = [
   { id: 1, name: '北京', province: '北京市', country: '中国' },
@@ -22,13 +23,10 @@ const commonList = [
 ]
 
 const Demo: React.FC = () => {
+  const itemRender: ICityPickerProps['itemRender'] = (city) => `${city.name}-${city.province}-${city.country}`
   return (
     <div>
-      <CityPicker
-        style={{ width: 230 }}
-        commonList={commonList}
-        itemRender={(city) => `${city.name}-${city.province}-${city.country}`}
-      />
+      <CityPicker style={{ width: 230 }} commonList={commonList} itemRender={itemRender} />
     </div>
   )
 }

@@ -9,17 +9,19 @@ order: 3
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { CityPicker } from '@kdcloudjs/kdesign'
+import type { ICityPickerProps } from '@kdcloudjs/kdesign'
 
 const Demo: React.FC = () => {
   const style = {
     width: 230,
   }
-
+  const bordered: ICityPickerProps['borderType'] = 'bordered'
+  const none: ICityPickerProps['borderType'] = 'none'
   return (
     <>
       <CityPicker style={style} placeholder="默认边框" />
-      <CityPicker style={style} borderType="bordered" placeholder="有边框" />
-      <CityPicker style={style} borderType="none" placeholder="无边框" />
+      <CityPicker style={style} borderType={bordered} placeholder="有边框" />
+      <CityPicker style={style} borderType={none} placeholder="无边框" />
     </>
   )
 }

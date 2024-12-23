@@ -9,8 +9,9 @@ order: 4
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { CityPicker } from '@kdcloudjs/kdesign'
+import type { ICityPickerProps } from '@kdcloudjs/kdesign'
 
-const domestic = [
+const domestic: ICityPickerProps['domesticList'] = [
   { id: 1, name: '北京', province: '北京市', country: '中国' },
   { id: 2, name: '上海', province: '上海市', country: '中国' },
   { id: 3, name: '广州', province: '广东省', country: '中国' },

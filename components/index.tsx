@@ -136,6 +136,7 @@ export { default as Badge } from './badge'
 export { default as ImageCropper } from './image-cropper'
 
 export { default as CityPicker } from './city-picker'
+export type { CityPickerProps as ICityPickerProps } from './city-picker'
 
 export { default as Anchor } from './anchor'
 
