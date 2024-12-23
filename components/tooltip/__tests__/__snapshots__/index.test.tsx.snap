@@ -55,7 +55,6 @@ exports[`Tooltip special case 测试ref返回值不为dom元素 1`] = `
             onChange={[Function]}
             onFocus={[Function]}
             onKeyUp={[Function]}
-            prefix="KDesign"
             type="text"
             value=""
           />
@@ -89,7 +88,6 @@ exports[`Tooltip special case 测试ref返回值不为dom元素 1`] = `
             onChange={[Function]}
             onFocus={[Function]}
             onKeyUp={[Function]}
-            prefix="KDesign"
             style={null}
             type="text"
             value=""

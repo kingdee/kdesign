@@ -19,16 +19,31 @@ export interface IIconProps extends React.HTMLAttributes<HTMLElement> {
 }
 
 const InternalIcon: React.ForwardRefRenderFunction<HTMLElement, IIconProps> = (props: IIconProps, ref: unknown) => {
-  const { compDefaultProps: userDefaultProps } = useContext(ConfigContext)
+  const { getPrefixCls, compDefaultProps: userDefaultProps, prefixCls } = useContext(ConfigContext)
   const iconProps = getCompProps('Icon', userDefaultProps, props)
-  const { type, spin, style, prefix, className, rotate, onClick, onMouseEnter, onMouseLeave, ...others } = iconProps
+  const {
+    type,
+    spin,
+    style,
+    prefix: customPrefixcls,
+    className,
+    rotate,
+    onClick,
+    onMouseEnter,
+    onMouseLeave,
+    ...others
+  } = iconProps
 
   const innerRef = React.useRef<HTMLElement>()
   const iconRef = (ref as any) || innerRef
 
-  const iconPrefix = prefix || iconProps.iconPrefix
-  const iconClass = classNames(iconPrefix, className, {
-    [`${iconPrefix}-${type}`]: type,
+  const iconPrefix = getPrefixCls!(prefixCls, 'icon', customPrefixcls)
+  const lastDashIndex = iconPrefix.lastIndexOf('-')
+  const iconPrefixCls =
+    lastDashIndex > -1 ? iconPrefix.slice(0, lastDashIndex) + iconPrefix.slice(lastDashIndex + 1) : iconPrefix
+  // 兼容之前的类名写法 将kd-icon改为kdicon
+  const iconClass = classNames(iconPrefixCls, className, {
+    [`${iconPrefixCls}-${type}`]: type,
     [`icon-spin`]: spin,
   })
 

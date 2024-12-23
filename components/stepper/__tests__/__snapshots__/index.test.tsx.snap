@@ -17,7 +17,6 @@ exports[`Stepper 2. render test renders correctly 1`] = `
   </span>
   <input
     class="kd-input kd-input-size-middle"
-    prefix="[object Object]"
     stepperrref="[object Object]"
     type="text"
     value=""
@@ -88,7 +87,6 @@ exports[`Stepper 2. render test renders correctly 3`] = `
   </span>
   <input
     class="kd-input kd-input-size-middle"
-    prefix="[object Object]"
     stepperrref="[object Object]"
     type="text"
     value=""

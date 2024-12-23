@@ -19,12 +19,14 @@ subtitle: 颜色选择器
 | className | color-picker 输入框类名 | string | - | 1.7.0 |
 | defaultOpen | 颜色面板展开配置 | boolean | false | 1.7.0 |
 | defaultValue | 设置输入框的默认值，可以是十六进制、RGB 、HSB 、HSL 或者颜色英文名称 | string | - | 1.7.0 |
+| disabled | 输入框禁用状态 | boolean | `false` | `true` `false` | 1.8.22 |
 | format | 限制颜色选择器的输出格式，必须是 HEX、RGB 、HSB 、HSL 中的一种 | `HEX` \| `RGB` \| `HSB` \| `HSL` | `HEX` | 1.8.16 |
 | functionalColor | 设置功能色色值，可以是十六进制、RGB 、HSB 、HSL 或者颜色英文名称 | string | - | 1.7.0 |
 | functionalColorName | 设置功能色的名称 | string | #themeColor | 1.7.0 |
 | historicalColor | 用户自定义的最近使用颜色，数组中支持十六进制、RGB 、HSB 、HSL 或者颜色英文名称，同时支持透明度，如:\['blue', '#0000FF', '#0000FFEE', 'RGB(0,0,255)', 'RGBA(0,0,200,0.5)', 'HSL(240,100%,50%)', 'HSLA(240,100%,50%,0.5)', 'HSB(240,100%,100%)', 'HSBA(240,100%,100%,0.5)'\] | string[] | - | 1.8.16 |
 | panelFormatConfig | 配置颜色面板下拉颜色格式选项，**注意：default 的值必须是 show 中存在的值** | {show:('HEX' \| 'RGB' \| 'HSB' \| 'HSL')[], default:'HEX' \| 'RGB' \| 'HSB' \| 'HSL'} | { show: \['HEX', 'HSB', 'RGB', 'HSL'\], default: 'HEX' } | 1.8.16 |
 | placeholder | 输入框内容为空时的输入提示 | string | # | 1.7.0 |
+| popperClassName | 颜色选择面板的类名 | string | # | 1.8.21 |
 | presetColor | 用户自定义的预设颜色，数组中支持十六进制、RGB 、HSB 、HSL 或者颜色英文名称，同时支持透明度，如:\['blue', '#0000FF', '#0000FFEE', 'RGB(0,0,255)', 'RGBA(0,0,200,0.5)', 'HSL(240,100%,50%)', 'HSLA(240,100%,50%,0.5)', 'HSB(240,100%,100%)', 'HSBA(240,100%,100%,0.5)'\] | string[] | - | 1.8.16 |
 | pure | 纯色块模式 | boolean | false | 1.8.16 |
 | switchName | 设置功能色开关的名称，**注意：如自定义的名称需支持国际化需要提供 internationalName** | { name: string; internationalName?: string } | { name: '跟随主题色'; internationalName:'followFunctionalColor' } | 1.7.0 |
@@ -35,11 +37,18 @@ subtitle: 颜色选择器
 | showPresetColor | 是否展示预设颜色 | boolean | true | 1.7.0 |
 | showColorPickerBox | 是否展示拾色容器 | { showBox?: boolean; showHue?: boolean; showOpacity?: boolean } | { showBox: false, showHue: false, showOpacity: false } | 1.7.0 |
 | suffixIcon | color-picker 输入框右侧图标(其中 rgbColor 为 RGB 格式的字符串，可以同步颜色选择面板的透明度) | (rgbColor: string) => React.ReactNode | - | 1.7.0 |
+| scrollHidden | 滚动时浮层是否可关闭 | boolean | false | 1.8.22 |
 | prefixIcon | color-picker 输入框左侧图标(其中 rgbColor 为 RGB 格式的字符串，可以同步颜色选择面板的透明度) | (rgbColor: string) => React.ReactNode | - | 1.8.16 |
 | value | 设置输入框的值，可以是十六进制、RGB 、HSB 、HSL 或者颜色英文名称 | string | - | 1.7.0 |
 | visible | 手动控制面板显隐 | boolean | - | 1.7.35 |
 | onChange | 输入框颜色值发生变化时触发的回调函数 | (inputValue: string, colorObj:{type: `HEX` \| `HSB` \| `RGB` \| `HSL`, value: string}) => void | - | 1.7.0 |
 | onVisibleChange | 面板显隐的回调 | (visible: boolean) => void | - | 1.7.35 |
+
+## ColorPickerInstance
+
+| 属性 | 说明       | 类型           | 版本   |
+| ---- | ---------- | -------------- | ------ |
+| dom  | 输入框容器 | HTMLDivElement | 1.8.22 |
 
 ## Design Token
 

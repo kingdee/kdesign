@@ -53,8 +53,8 @@ const Rate: React.FC<RateProps> = (props) => {
   devWarning(SizeTypes.indexOf(size) === -1, 'Rate', `cannot found SizeType '${size}'`)
   // className前缀
   const prefixCls = getPrefixCls!(pkgPrefixCls, 'rate', customPrefixcls)
-  const [selectedValue, setSelectedValue] = React.useState<number>(defaultValue) // 当前选中的值，包含一位小数
-  const [activeNumber, setActiveNumber] = React.useState<number>(0) // 鼠标悬停icon位置对应的值
+  const [selectedValue, setSelectedValue] = React.useState(defaultValue) // 当前选中的值，包含一位小数
+  const [activeNumber, setActiveNumber] = React.useState([0]) // 鼠标悬停icon位置对应的值
 
   React.useEffect(() => {
     if (value !== undefined && value !== selectedValue) {
@@ -69,21 +69,23 @@ const Rate: React.FC<RateProps> = (props) => {
   const handleClick = React.useCallback(
     (value: number) => {
       setSelectedValue(value)
+      onlyActiveCurrent && setActiveNumber([value])
       onChange && onChange(value)
     },
-    [onChange],
+    [onChange, onlyActiveCurrent],
   )
 
   const handleMouseEnter = React.useCallback(
     (value: number) => {
-      setActiveNumber(value)
+      const tempValue = onlyActiveCurrent ? (selectedValue === value ? [value] : [selectedValue, value]) : [value]
+      setActiveNumber(tempValue)
       onHoverChange && onHoverChange(value)
     },
-    [onHoverChange],
+    [onHoverChange, onlyActiveCurrent, selectedValue],
   )
 
   const handleMouseLeave = () => {
-    setActiveNumber(0)
+    setActiveNumber([0])
   }
 
   const handleFocus = React.useCallback(() => {
@@ -122,17 +124,22 @@ const Rate: React.FC<RateProps> = (props) => {
    * @param isSecondIconActive
    */
   const getFirstIconStatus = (
-    value: number,
+    value: number[],
     index: number,
     onlyActiveCurrent: boolean,
     secondIconStatus: boolean,
   ): boolean => {
+    const tempValue = typeof value === 'number' ? [value] : value
+    if (onlyActiveCurrent) {
+      return tempValue.indexOf(index) !== -1
+    }
+    const realValue = tempValue[0]
     const half = 0.5
-    const isInteger = Number.isInteger(value)
-    value = transferValue(value, index)
-    const isActiveAllLeft: boolean = value >= index || value === index - half
-    const isActiveCurrent: boolean = value === index
-    const isActiveFirst: boolean = value === index - half
+    const isInteger = Number.isInteger(realValue)
+    const tValue = transferValue(realValue, index)
+    const isActiveAllLeft: boolean = tValue >= index || tValue === index - half
+    const isActiveCurrent: boolean = tValue === index
+    const isActiveFirst: boolean = tValue === index - half
     let mark
     if (secondIconStatus) {
       // 第二个图标被激活则第一个也必须激活
@@ -164,14 +171,20 @@ const Rate: React.FC<RateProps> = (props) => {
    * @param index
    * @param onlyActiveCurrent
    */
-  const getSecondIconStatus = (value: number, index: number, onlyActiveCurrent: boolean): boolean => {
-    if (!onlyActiveCurrent) {
-      // 激活所有左侧图标
-      return value >= index
-    } else {
-      return value === index // 只激活当前点击图标
-    }
-  }
+  const getSecondIconStatus = React.useCallback(
+    (value: number[] | number, index: number, onlyActiveCurrent: boolean): boolean => {
+      const tempValue = typeof value === 'number' ? [value] : value
+      if (!onlyActiveCurrent) {
+        // 激活所有左侧图标
+        return tempValue[0] >= index
+      } else {
+        // 当onlyActiveCurrent为true时，悬浮到其他icon时，当前激活icon保持激活状态
+        const indexArr = activeNumber[0] === 0 && activeNumber.length === 1 ? tempValue : activeNumber
+        return indexArr.indexOf(index) !== -1
+      }
+    },
+    [activeNumber],
+  )
 
   /**
    * 返回图标的样式
@@ -186,9 +199,12 @@ const Rate: React.FC<RateProps> = (props) => {
    * @param selectActive 当前图标是否被选中
    * @param mouseActive 当前图标是否触发鼠标hover效果
    */
-  const isSelected = (selectActive: boolean, mouseActive: boolean): boolean => {
-    return activeNumber !== 0 ? mouseActive : selectActive
-  }
+  const isSelected = React.useCallback(
+    (selectActive: boolean, mouseActive: boolean): boolean => {
+      return activeNumber[0] !== 0 ? mouseActive : selectActive
+    },
+    [activeNumber],
+  )
 
   const getIconClassName = (name: string, isActive: boolean) => {
     return classnames({

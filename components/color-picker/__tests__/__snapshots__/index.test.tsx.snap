@@ -15,7 +15,7 @@ exports[`ColorPicker renders correctly 1`] = `
       >
         <div
           class="kd-color-picker-icon kd-color-picker-icon-underline"
-          style="background-color:RGBA(255, 255, 255, 0)"
+          style="background-color:RGB(255, 255, 255)"
         >
           <div
             class="kd-color-picker-icon-no-color-line"
@@ -26,7 +26,6 @@ exports[`ColorPicker renders correctly 1`] = `
     <input
       class="kd-input kd-input-size-middle kd-input-underline"
       placeholder="#"
-      prefix="[object Object]"
       type="text"
       value=""
     />
@@ -49,7 +48,7 @@ exports[`ColorPicker renders correctly 2`] = `
       >
         <div
           class="kd-color-picker-icon kd-color-picker-icon-bordered"
-          style="background-color:RGBA(255, 255, 255, 0)"
+          style="background-color:RGB(255, 255, 255)"
         >
           <div
             class="kd-color-picker-icon-no-color-line"
@@ -60,7 +59,6 @@ exports[`ColorPicker renders correctly 2`] = `
     <input
       class="kd-input kd-input-size-middle"
       placeholder="#"
-      prefix="[object Object]"
       type="text"
       value=""
     />
@@ -89,7 +87,7 @@ exports[`ColorPicker renders correctly with no child 1`] = `
             className="kd-color-picker-icon kd-color-picker-icon-bordered"
             style={
               Object {
-                "backgroundColor": "RGBA(255, 255, 255, 0)",
+                "backgroundColor": "RGB(255, 255, 255)",
               }
             }
           >
@@ -113,25 +111,6 @@ exports[`ColorPicker renders correctly with no child 1`] = `
             onFocus={[Function]}
             onKeyUp={[Function]}
             placeholder="#"
-            prefix={
-              <div
-                className="kd-color-picker-icon-container"
-                onClick={[Function]}
-              >
-                <div
-                  className="kd-color-picker-icon kd-color-picker-icon-bordered"
-                  style={
-                    Object {
-                      "backgroundColor": "RGBA(255, 255, 255, 0)",
-                    }
-                  }
-                >
-                  <div
-                    className="kd-color-picker-icon-no-color-line"
-                  />
-                </div>
-              </div>
-            }
             type="text"
             value=""
           />
@@ -153,7 +132,7 @@ exports[`ColorPicker renders correctly with no child 1`] = `
               className="kd-color-picker-icon kd-color-picker-icon-bordered"
               style={
                 Object {
-                  "backgroundColor": "RGBA(255, 255, 255, 0)",
+                  "backgroundColor": "RGB(255, 255, 255)",
                 }
               }
             >
@@ -186,7 +165,7 @@ exports[`ColorPicker renders correctly with no child 1`] = `
                 className="kd-color-picker-icon kd-color-picker-icon-bordered"
                 style={
                   Object {
-                    "backgroundColor": "RGBA(255, 255, 255, 0)",
+                    "backgroundColor": "RGB(255, 255, 255)",
                   }
                 }
               >
@@ -204,25 +183,6 @@ exports[`ColorPicker renders correctly with no child 1`] = `
             onFocus={[Function]}
             onKeyUp={[Function]}
             placeholder="#"
-            prefix={
-              <div
-                className="kd-color-picker-icon-container"
-                onClick={[Function]}
-              >
-                <div
-                  className="kd-color-picker-icon kd-color-picker-icon-bordered"
-                  style={
-                    Object {
-                      "backgroundColor": "RGBA(255, 255, 255, 0)",
-                    }
-                  }
-                >
-                  <div
-                    className="kd-color-picker-icon-no-color-line"
-                  />
-                </div>
-              </div>
-            }
             style={null}
             type="text"
             value=""
@@ -255,7 +215,7 @@ exports[`ColorPicker renders correctly with null or undefined 1`] = `
             className="kd-color-picker-icon kd-color-picker-icon-bordered"
             style={
               Object {
-                "backgroundColor": "RGBA(255, 255, 255, 0)",
+                "backgroundColor": "RGB(255, 255, 255)",
               }
             }
           >
@@ -279,25 +239,6 @@ exports[`ColorPicker renders correctly with null or undefined 1`] = `
             onFocus={[Function]}
             onKeyUp={[Function]}
             placeholder="#"
-            prefix={
-              <div
-                className="kd-color-picker-icon-container"
-                onClick={[Function]}
-              >
-                <div
-                  className="kd-color-picker-icon kd-color-picker-icon-bordered"
-                  style={
-                    Object {
-                      "backgroundColor": "RGBA(255, 255, 255, 0)",
-                    }
-                  }
-                >
-                  <div
-                    className="kd-color-picker-icon-no-color-line"
-                  />
-                </div>
-              </div>
-            }
             type="text"
             value=""
           />
@@ -319,7 +260,7 @@ exports[`ColorPicker renders correctly with null or undefined 1`] = `
               className="kd-color-picker-icon kd-color-picker-icon-bordered"
               style={
                 Object {
-                  "backgroundColor": "RGBA(255, 255, 255, 0)",
+                  "backgroundColor": "RGB(255, 255, 255)",
                 }
               }
             >
@@ -352,7 +293,7 @@ exports[`ColorPicker renders correctly with null or undefined 1`] = `
                 className="kd-color-picker-icon kd-color-picker-icon-bordered"
                 style={
                   Object {
-                    "backgroundColor": "RGBA(255, 255, 255, 0)",
+                    "backgroundColor": "RGB(255, 255, 255)",
                   }
                 }
               >
@@ -370,25 +311,6 @@ exports[`ColorPicker renders correctly with null or undefined 1`] = `
             onFocus={[Function]}
             onKeyUp={[Function]}
             placeholder="#"
-            prefix={
-              <div
-                className="kd-color-picker-icon-container"
-                onClick={[Function]}
-              >
-                <div
-                  className="kd-color-picker-icon kd-color-picker-icon-bordered"
-                  style={
-                    Object {
-                      "backgroundColor": "RGBA(255, 255, 255, 0)",
-                    }
-                  }
-                >
-                  <div
-                    className="kd-color-picker-icon-no-color-line"
-                  />
-                </div>
-              </div>
-            }
             style={null}
             type="text"
             value=""

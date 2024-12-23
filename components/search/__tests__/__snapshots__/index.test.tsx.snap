@@ -29,7 +29,6 @@ exports[`Search render null or undefined without errors 1`] = `
             onFocus={[Function]}
             onKeyUp={[Function]}
             placeholder="请输入需要搜索的内容"
-            prefix={null}
             type="text"
             value=""
           />
@@ -58,7 +57,6 @@ exports[`Search render null or undefined without errors 1`] = `
           onFocus={[Function]}
           onKeyUp={[Function]}
           placeholder="请输入需要搜索的内容"
-          prefix={null}
           type="text"
           value=""
         />

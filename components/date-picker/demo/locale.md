@@ -32,6 +32,7 @@ const Demo = () => {
     rangeWeekPlaceholder: ['开始周', '结束周'],
     rangeQuarterPlaceholder: ['开始季度', '结束季度'],
     rangeTimePlaceholder: ['开始时间', '结束时间'],
+    monthBeforeYear: false,
   }
 
   return (
@@ -45,15 +46,15 @@ const Demo = () => {
             locale={{
               monthTitle: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
               weekTitle: ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'],
-              year: ''
+              year: '',
             }}
-            placeholder={['Begin Date','End Date']}
+            placeholder={['Begin Date', 'End Date']}
           />
         </div>
       </div>
       <div className="demo-range-picker">
         <div className="demo-range-picker">
-          <RangePicker locale={{month: '期'}} placeholder={['开始期数','结束期数']} picker="month"/>
+          <RangePicker locale={{ month: '期' }} placeholder={['开始期数', '结束期数']} picker="month" />
         </div>
       </div>
     </div>

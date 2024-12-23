@@ -54,7 +54,11 @@ const Demo: React.FC = () => {
     }
     return icons; // React.ReactNode
   };
-   
+
+  const handleHoverChange = (value) => {
+    console.log('1231231', value)
+  }
+
   return (
     <div style={{ width: '150px' }}>
       <Rate
@@ -62,14 +66,20 @@ const Demo: React.FC = () => {
         defaultValue={defaultValue}
         allowHalf={false}
         style={{ fontSize: 18 }}
-        activeIcon={(index:number) => renderActiveIcon(_activeIcon, index)}
-        icon={(index:number) => renderIcon(_icon, index)}></Rate>
+        onHoverChange={handleHoverChange}
+        activeIcon={(index) => {
+          return _activeIcon[index - 1]
+        }}
+        icon={(index) => {
+          return _icon[index - 1]
+        }}></Rate>
       <br />
       <Rate
         onChange={handleChange}
         onlyActiveCurrent
         defaultValue={defaultValue}
-        allowHalf={false}
+        allowHalf={true}
+        onHoverChange={handleHoverChange}
         style={{ fontSize: 18 }}
         activeIcon={(index:number) => renderActiveIcon(_activeIcon, index)}
         icon={(index:number) => renderIcon(_icon, index)}></Rate>

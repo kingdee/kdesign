@@ -130,6 +130,12 @@
     &-selected {
       .node-selected();
     }
+
+    .@{kd-prefix}-checkbox-default-disabled {
+      .@{kd-prefix}-checkbox-default-indeterminate::before {
+        background-color: @tree-node-disabled-color;
+      }
+    }
   }
   &-title {
     white-space: nowrap;

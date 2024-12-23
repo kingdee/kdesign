@@ -20,6 +20,7 @@ const locale: Locale = {
   'DatePicker.rangeWeekPlaceholder': ['开始周', '结束周'],
   'DatePicker.rangeQuarterPlaceholder': ['开始季度', '结束季度'],
   'DatePicker.rangeTimePlaceholder': ['开始时间', '结束时间'],
+  'DatePicker.monthBeforeYear': false,
 }
 
 export default locale

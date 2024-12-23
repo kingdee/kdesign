@@ -200,13 +200,11 @@ function Panel(props: MergedPickerPanelProps) {
       `${prefixCls}-header`,
       `${prefixCls}-header-month`,
       `${prefixCls}-header-text-inner-hover`,
-      {
-        [`${prefixCls}-header-text-inner-active`]: isInnerYear,
-      },
     )
+    const yearOnly = renderYearHeader()
     return {
-      children: <span onClick={onHeaderYearClick}>{year + locale.year}</span>,
-      className: headerCls,
+      children: isInnerYear ? yearOnly.children : <span onClick={onHeaderYearClick}>{year + locale.year}</span>,
+      className: isInnerYear ? yearOnly.className : headerCls,
     }
   }
 
@@ -214,28 +212,31 @@ function Panel(props: MergedPickerPanelProps) {
     const year = getYear(viewDate)
     const month = getMonth(viewDate)
     const headerCls = classnames(`${prefixCls}-header`, `${prefixCls}-header-date`)
+    const yearOnly = renderYearHeader()
+    const yearText = isInnerYear ? (
+      yearOnly.children
+    ) : (
+      <span
+        className={classnames(`${prefixCls}-header-text-inner`, `${prefixCls}-header-text-inner-hover`)}
+        onClick={onHeaderYearClick}
+      >
+        {year + locale.year}
+      </span>
+    )
+    const monthText =
+      isInnerMonth || isInnerYear ? null : (
+        <span
+          className={classnames(`${prefixCls}-header-text-inner`, `${prefixCls}-header-text-inner-hover`, {
+            [`${prefixCls}-header-text-inner-active`]: isInnerMonth,
+          })}
+          onClick={onHeaderMonthClick}
+        >
+          {locale.monthTitle[month]}
+        </span>
+      )
     return {
-      children: (
-        <>
-          <span
-            className={classnames(`${prefixCls}-header-text-inner`, `${prefixCls}-header-text-inner-hover`, {
-              [`${prefixCls}-header-text-inner-active`]: isInnerYear,
-            })}
-            onClick={onHeaderYearClick}
-          >
-            {year + locale.year}
-          </span>
-          <span
-            className={classnames(`${prefixCls}-header-text-inner`, `${prefixCls}-header-text-inner-hover`, {
-              [`${prefixCls}-header-text-inner-active`]: isInnerMonth,
-            })}
-            onClick={onHeaderMonthClick}
-          >
-            {locale.monthTitle[month]}
-          </span>
-        </>
-      ),
-      className: headerCls,
+      children: locale?.monthBeforeYear ? [monthText, yearText] : [yearText, monthText],
+      className: isInnerYear ? yearOnly.className : headerCls,
     }
   }
 
@@ -315,10 +316,16 @@ function Panel(props: MergedPickerPanelProps) {
     case 'date': {
       headerObj = renderDateHeader()
       headerProps = {
-        onPrev: (isPositionLeft && !isInnerPicker) || isInnerMonth || isPositionUnset ? onPrev : undefined,
-        onNext: (isPositionRight && !isInnerPicker) || isInnerMonth || isPositionUnset ? onNext : undefined,
-        onSuperPrev: (isPositionLeft && !isInnerPicker) || isInnerYear || isPositionUnset ? onSuperPrev : undefined,
-        onSuperNext: (isPositionRight && !isInnerPicker) || isInnerYear || isPositionUnset ? onSuperNext : undefined,
+        onPrev: !isInnerPicker && (isPositionLeft || isPositionUnset) ? onPrev : undefined,
+        onNext: !isInnerPicker && (isPositionRight || isPositionUnset) ? onNext : undefined,
+        onSuperPrev:
+          (isPositionLeft && !isInnerPicker) || isInnerYear || isInnerMonth || isPositionUnset
+            ? onSuperPrev
+            : undefined,
+        onSuperNext:
+          (isPositionRight && !isInnerPicker) || isInnerYear || isInnerMonth || isPositionUnset
+            ? onSuperNext
+            : undefined,
       }
       panel = renderDatePanel()
       break
@@ -328,10 +335,16 @@ function Panel(props: MergedPickerPanelProps) {
       panel = renderDatePanel()
       headerObj = renderDateHeader()
       headerProps = {
-        onPrev: (isPositionLeft && !isInnerPicker) || isInnerMonth || isPositionUnset ? onPrev : undefined,
-        onNext: (isPositionRight && !isInnerPicker) || isInnerMonth || isPositionUnset ? onNext : undefined,
-        onSuperPrev: (isPositionLeft && !isInnerPicker) || isInnerYear || isPositionUnset ? onSuperPrev : undefined,
-        onSuperNext: (isPositionRight && !isInnerPicker) || isInnerYear || isPositionUnset ? onSuperNext : undefined,
+        onPrev: !isInnerPicker && (isPositionLeft || isPositionUnset) ? onPrev : undefined,
+        onNext: !isInnerPicker && (isPositionRight || isPositionUnset) ? onNext : undefined,
+        onSuperPrev:
+          (isPositionLeft && !isInnerPicker) || isInnerYear || isInnerMonth || isPositionUnset
+            ? onSuperPrev
+            : undefined,
+        onSuperNext:
+          (isPositionRight && !isInnerPicker) || isInnerYear || isInnerMonth || isPositionUnset
+            ? onSuperNext
+            : undefined,
       }
       break
     }

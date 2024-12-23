@@ -402,8 +402,11 @@ describe('Select', () => {
     expect(selectValue.toString()).toBe('apple')
     expect(defaultOpenMultiple.find('.kd-tag-ellipsis')).toHaveText('apple')
     expect(defaultselectProps.onSelect).toHaveBeenCalled()
-    defaultOpenMultiple.find('.kd-select-item').at(1).simulate('click')
+    defaultOpenMultiple.find('.kd-select-item').at(2).simulate('click')
+    expect(defaultselectProps.onDeselect).not.toHaveBeenCalled()
+    defaultOpenMultiple.find('.kd-select-item').at(2).simulate('click')
     expect(defaultselectProps.onDeselect).toHaveBeenCalled()
+    defaultOpenMultiple.find('.kd-select-item').at(1).simulate('click')
 
     // labelInValue
     defaultOpenSingle.setProps({ labelInValue: true })

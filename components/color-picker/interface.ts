@@ -9,6 +9,10 @@ export interface IColorTypesObj {
   value: string
 }
 
+export interface IColorPickerInputRef {
+  dom: HTMLDivElement | null
+}
+
 export const BorderTypes = tuple('underline', 'bordered')
 export type BorderType = typeof BorderTypes[number]
 export interface IInnerFormat {
@@ -20,10 +24,14 @@ interface IInnerColorPickerProps {
   borderType: BorderType
   // 选择器输入框类名
   className: string
+  // childern
+  children: ReactNode
   // 设置颜色选择器的默认值，可以是十六进制颜色值，RGB颜色值，HSL颜色值，或者颜色名称
   defaultValue: string
   // 颜色选择面板显隐配置
   defaultOpen: boolean
+  // 禁用状态
+  disabled: boolean
   // 功能色名称
   functionalColorName: string
   // 功能色色值
@@ -101,6 +109,7 @@ export interface IColorPickerPanelProps {
   value: string
   visible: boolean
   showPanel: boolean
+  scrollHidden: boolean
   setCurrentColorType: (currentColorType: IColorTypesObj['type']) => void
   setColTypeArr: (colTypeArr: Array<IColorTypesObj>) => void
   setClickedPresetColorIndex: (clickedColorIndex: number) => void
