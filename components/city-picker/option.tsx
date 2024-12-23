@@ -3,8 +3,12 @@ import classNames from 'classnames'
 import ConfigContext from '../config-provider/ConfigContext'
 import { City, ICityPickerOptionProps } from './interface'
 
-const InternalOption: React.ForwardRefRenderFunction<unknown, ICityPickerOptionProps> = (props, ref: unknown) => {
-  const optionRef = useRef<HTMLDivElement>(null) || (ref as any)
+const InternalOption: React.ForwardRefRenderFunction<unknown, ICityPickerOptionProps> = (
+  props,
+  ref: React.RefObject<HTMLDivElement>,
+) => {
+  const innerRef = useRef<HTMLDivElement>()
+  const optionRef = ref || innerRef
   const {
     children,
     value,

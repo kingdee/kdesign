@@ -19,7 +19,7 @@ const getCityId = (data: City | string | number) => {
   return data
 }
 
-const InternalSelect: React.ForwardRefRenderFunction<CityPickerProps> = (props: any, ref: unknown) => {
+const InternalSelect = (props: CityPickerProps, ref: React.RefObject<HTMLDivElement>) => {
   const { getPrefixCls, prefixCls, compDefaultProps: userDefaultProps, locale } = useContext(ConfigContext)
   const selectProps = getCompProps('CityPicker', userDefaultProps, props)
   const cityPickerLangMsg = locale.getCompLangMsg({ componentName: 'CityPicker' })
@@ -65,16 +65,16 @@ const InternalSelect: React.ForwardRefRenderFunction<CityPickerProps> = (props: 
     { id: 'foreign', name: cityPickerLangMsg?.tabsInternation },
   ]
   const innerRef = useRef<HTMLElement>()
-  const selectRef = (ref as any) || innerRef
-  const searchRef = useRef<any>(null) // 搜索框ref
-  const selectionRef = useRef<any>(null)
+  const selectRef = ref || innerRef
+  const searchRef = useRef<HTMLInputElement>(null) // 搜索框ref
+  const selectionRef = useRef<HTMLDivElement>(null)
   const clearRef = useRef<HTMLSpanElement>(null)
   const optionsListRef = useRef<HTMLDivElement>(null)
 
   const [optionShow, setOptionShow] = useState<boolean>(
     typeof props.visible === 'undefined' ? !!defaultOpen : !!props.visible,
   )
-  const [searchValue, setSearchValue] = useState<any>('')
+  const [searchValue, setSearchValue] = useState('')
   const [focusd, setFocusd] = useState(false)
   const [afterChangeFocus, setAfterChangeFocus] = useState(false)
   const [seletedCity, setSeletedCity] = useState<City | null>(null)
@@ -157,7 +157,7 @@ const InternalSelect: React.ForwardRefRenderFunction<CityPickerProps> = (props: 
   }, [searchRef])
 
   // 清空选择器内容
-  const handleReset = (e: any) => {
+  const handleReset = (e: MouseEvent | React.MouseEvent<HTMLElement>) => {
     e.stopPropagation()
     onClear && onClear('')
     setInitValue('')

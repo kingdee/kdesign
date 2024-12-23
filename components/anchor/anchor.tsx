@@ -9,6 +9,7 @@ import { Icon } from '../index'
 import usePopper from '../_utils/usePopper'
 import { toArray } from '../_utils/react-children'
 import { useResizeObserver } from '../_utils/hooks'
+import type { PopperProps } from '../_utils/usePopper'
 
 const sharpMatcherRegx = /#(\S+)$/
 
@@ -19,7 +20,7 @@ export type AnchorType = typeof AnchorTypes[number]
 
 interface ScrollToOptions {
   getContainer?: () => HTMLElement | Window | Document
-  callback?: () => any
+  callback?: () => void
   duration?: number
 }
 
@@ -56,8 +57,8 @@ function getOffsetTop(element: HTMLElement, container: AnchorContainer): number 
   return rect.top
 }
 
-function isWindow(obj: any) {
-  return obj !== null && obj !== undefined && obj === obj.window
+function isWindow(obj: HTMLElement | Window | Document | null) {
+  return obj !== null && obj !== undefined && obj === (obj as Window).window
 }
 
 function getScroll(target: HTMLElement | Window | Document | null, top: boolean): number {
@@ -114,25 +115,29 @@ function scrollTo(y: number, options: ScrollToOptions = {}) {
   window.requestAnimationFrame(frameFunc)
 }
 
-export interface AnchorProps {
+export interface AnchorProps extends PopperProps {
   prefixCls?: string
   className?: string
   style?: React.CSSProperties
   children?: React.ReactNode
   type?: AnchorType
   offsetTop?: number
+  targetOffset?: number
   bounds?: number
   affix?: boolean
   lockedIcon?: boolean | React.ReactNode
   icon?: React.ReactNode
   dropdownStyle?: React.CSSProperties
   visible?: boolean
-  getContainer?: () => AnchorContainer
+  getContainer?: () => AnchorContainer | null
   getCurrentAnchor?: () => string
-  onClick?: (e: React.MouseEvent<HTMLElement>, link: { title: React.ReactNode; href: string }) => void
+  onClick?: (e: React.MouseEvent<HTMLElement>, link: { title: React.ReactNode; href?: string }) => void
   onChange?: (currentActiveLink: string) => void
 }
-const InternalAnchor = (props: AnchorProps, ref: unknown): React.FunctionComponentElement<AnchorProps> => {
+const InternalAnchor = (
+  props: AnchorProps,
+  ref: React.RefObject<HTMLElement>,
+): React.FunctionComponentElement<AnchorProps> => {
   const { getPrefixCls, prefixCls, compDefaultProps: userDefaultProps } = useContext(ConfigContext)
   const anchorProps = getCompProps('Anchor', userDefaultProps, props)
   const {
@@ -179,7 +184,7 @@ const InternalAnchor = (props: AnchorProps, ref: unknown): React.FunctionCompone
   const iconRef = React.useRef<HTMLElement>(null)
   const menuWrapRef = React.createRef<HTMLDivElement>()
   const normalRef = React.useRef<HTMLDivElement>(null)
-  const anchorRef = (ref as any) || normalRef
+  const anchorRef = (ref as React.RefObject<HTMLDivElement>) || normalRef
   const linksWidthRef = React.useRef<number[]>([])
   const animating = React.useRef<boolean>(false)
 
@@ -209,7 +214,7 @@ const InternalAnchor = (props: AnchorProps, ref: unknown): React.FunctionCompone
     const inkNode = inkRef.current
     const linkNode = anchorNode?.getElementsByClassName(`${anchorPrefixCls}-link-title-active`)[0]
     if (linkNode && inkNode) {
-      inkNode.style.top = `${(linkNode as any).offsetTop + 1}px`
+      inkNode.style.top = `${(linkNode as HTMLSpanElement).offsetTop + 1}px`
     }
   }, [anchorPrefixCls, anchorRef, isAdcanced])
 
@@ -220,7 +225,7 @@ const InternalAnchor = (props: AnchorProps, ref: unknown): React.FunctionCompone
       mounting.current = false
       if (linkContentRef.current) {
         const nodelist = linkContentRef.current?.children
-        const linksWidth = Array.from(nodelist).map((item: any) => item.getBoundingClientRect().width)
+        const linksWidth = Array.from(nodelist).map((item: HTMLElement) => item.getBoundingClientRect().width)
         linksWidthRef.current = linksWidth
       }
       return
@@ -231,7 +236,7 @@ const InternalAnchor = (props: AnchorProps, ref: unknown): React.FunctionCompone
   useResizeObserver(anchorRef.current, () => {
     const nodelist = linkContentRef.current?.children
     if (!nodelist) return
-    const linksWidth = Array.from(nodelist).map((item: any) => item.getBoundingClientRect().width)
+    const linksWidth = Array.from(nodelist).map((item: HTMLElement) => item.getBoundingClientRect().width)
     linksWidthRef.current = linksWidth
   })
 
@@ -382,7 +387,7 @@ const InternalAnchor = (props: AnchorProps, ref: unknown): React.FunctionCompone
     prefixCls: anchorPrefixCls,
     defaultVisible: optionShow,
     visible: optionShow,
-    gap: -(((ref as any) || iconRef).current?.offsetHeight || 0),
+    gap: -((ref || iconRef).current?.offsetHeight || 0),
     onVisibleChange: handleVisibleChange,
   }
 
@@ -395,14 +400,14 @@ const InternalAnchor = (props: AnchorProps, ref: unknown): React.FunctionCompone
     }
   }
 
-  const addChildrenProps = (linksChildren: any) => {
-    return toArray(linksChildren).map((item: any, indx: number) => {
+  const addChildrenProps = (linksChildren: React.ReactNode) => {
+    return toArray(linksChildren).map((item: React.ReactElement, indx: number) => {
       if (!item) return item
       return React.cloneElement(item, { isFirstLevel: true, key: indx })
     })
   }
 
-  const anchorBookmarksContent = (ref: any) => (
+  const anchorBookmarksContent = (ref: React.RefObject<HTMLDivElement>) => (
     <div ref={ref} className={wrapperClass} style={style}>
       <div
         className={anchorPrefixCls}
@@ -508,7 +513,7 @@ const InternalAnchor = (props: AnchorProps, ref: unknown): React.FunctionCompone
   }
 
   const anchorAdvancedContent = usePopper(
-    <span className={`${anchorPrefixCls}-advanced-arrows`} ref={isAdcanced ? (ref as any) || iconRef : null}>
+    <span className={`${anchorPrefixCls}-advanced-arrows`} ref={isAdcanced ? ref || iconRef : null}>
       {icon || <Icon type="location-solid" />}
     </span>,
     renderAnchorAdvanced(),

@@ -7,7 +7,7 @@ order: 1
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { CityPicker } from '@kdcloudjs/kdesign'
-import type { City, CityList } from '@kdcloudjs/kdesign'
+import type { ICityPickerProps } from '@kdcloudjs/kdesign'
 
 const domestic = [
   { id: 1, name: 'New York', province: 'New York', country: '美国' },
@@ -23,7 +23,7 @@ const domestic = [
 ]
 
 const Demo: React.FC = () => {
-  const [domesticList, setDomesticList] = React.useState<CityList>(domestic)
+  const [domesticList, setDomesticList] = React.useState<ICityPickerProps['domesticList']>(domestic)
   const [loading, setLoading] = React.useState<boolean>(false)
 
   const findCurList = (data, str) => {
@@ -33,7 +33,7 @@ const Demo: React.FC = () => {
     })
   }
 
-  const handleSearch = (value) => {
+  const handleSearch: ICityPickerProps['onSearch'] = (value) => {
     setLoading(true)
     setTimeout(() => {
       setDomesticList(findCurList(domestic, value))

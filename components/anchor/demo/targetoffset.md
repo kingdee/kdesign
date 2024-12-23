@@ -3,17 +3,18 @@ title: 锚点滚动触发偏移量
 order: 5
 ---
 
-锚点滚动触发偏移量, 不设置时，默认与offsetTop相同
+锚点滚动触发偏移量, 不设置时，默认与 offsetTop 相同
 
 ```jsx
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { Anchor, Row, Col } from '@kdcloudjs/kdesign'
+import type { IAnchorProps } from '@kdcloudjs/kdesign'
 
 function Demo() {
-  const topRef = React.useRef(null);
-  const warpRef = React.useRef(null);
-  const [targetOffset, setTargetOffset] = React.useState();
+  const topRef = React.useRef<HTMLDivElement>(null);
+  const warpRef = React.useRef<HTMLDivElement>(null);
+  const [targetOffset, setTargetOffset] = React.useState<IAnchorProps['targetOffset']>();
   React.useEffect(() => {
   setTargetOffset(topRef.current ? topRef.current.clientHeight : undefined);
   }, [])

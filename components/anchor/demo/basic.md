@@ -9,11 +9,12 @@ order: 0
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { Anchor, Switch } from '@kdcloudjs/kdesign'
+import type { IAnchorProps } from '@kdcloudjs/kdesign'
 
 const Demo: React.FC = () => {
-  const [affix, setAffix] = React.useState<boolean>(false)
+  const [affix, setAffix] = React.useState<IAnchorProps['affix']>(false)
 
-  function toggleAffix(checked) {
+  const toggleAffix = (checked) => {
     setAffix(checked)
   }
 

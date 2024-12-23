@@ -10,10 +10,12 @@ order: 2
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { Anchor } from '@kdcloudjs/kdesign'
+import type { IAnchorProps } from '@kdcloudjs/kdesign'
 
 const Demo: React.FC = () => {
+  const myType: IAnchorProps['type'] = 'advanced'
   return (
-    <Anchor type="advanced">
+    <Anchor type={myType}>
       <Anchor.Link href="#使用场景" title="使用场景" />
       <Anchor.Link href="#components-anchor-demo-basic" title="纵向锚点" />
       <Anchor.Link href="#components-anchor-demo-menu" title="横向锚点" />
