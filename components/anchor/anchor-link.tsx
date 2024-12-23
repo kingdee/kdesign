@@ -6,7 +6,7 @@ import { usePrevious } from '../_utils/hooks'
 
 export interface AnchorLinkProps {
   prefixCls?: string
-  href: string
+  href?: string
   target?: string
   title: React.ReactNode
   children?: React.ReactNode
@@ -14,7 +14,7 @@ export interface AnchorLinkProps {
   isFirstLevel?: boolean
 }
 
-const AnchorLink = (props: AnchorLinkProps): React.FunctionComponentElement<any> => {
+const AnchorLink = (props: AnchorLinkProps) => {
   const { prefixCls: customPrefixcls, href, title, children, className, isFirstLevel } = props
   const { getPrefixCls, prefixCls } = useContext(ConfigContext)
   const anchorLinkPrefixCls = getPrefixCls!(prefixCls, 'anchor', customPrefixcls) // 锚点样式前缀
@@ -25,18 +25,18 @@ const AnchorLink = (props: AnchorLinkProps): React.FunctionComponentElement<any>
   const mounting = useRef(true)
   useEffect(() => {
     if (mounting.current) {
-      registerLink(href)
+      href && registerLink?.(href)
       mounting.current = false
       return
     }
     if (prevHref !== href) {
-      registerLink(href)
+      href && registerLink?.(href)
     }
   }, [href, registerLink, prevHref])
 
   const handleClick = (e: React.MouseEvent<HTMLElement>) => {
     onClick?.(e, { title, href })
-    scrollTo(href)
+    href && scrollTo?.(href)
   }
 
   const renderAnchorLink = () => {

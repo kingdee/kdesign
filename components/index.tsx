@@ -139,6 +139,7 @@ export { default as CityPicker } from './city-picker'
 export type { CityPickerProps as ICityPickerProps } from './city-picker'
 
 export { default as Anchor } from './anchor'
+export type { AnchorLinkProps as IAnchorLinkProps, AnchorProps as IAnchorProps } from './anchor'
 
 export { default as Avatar } from './avatar'
 export type { AvatarProps as IAvatarProps } from './avatar'
