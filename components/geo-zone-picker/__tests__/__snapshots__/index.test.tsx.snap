@@ -1,0 +1,175 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`GeoZonePicker 2. render test renders correctly 1`] = `
+<div
+  class="kd-geo-zone-picker"
+>
+  <div
+    class="kd-geo-zone-picker-country"
+  >
+    <div
+      class="kd-geo-zone-picker-country-input"
+    >
+      <div
+        class="kd-geo-zone-picker-country-input-text"
+      />
+    </div>
+    <span
+      class="kd-geo-zone-picker-country-arrow"
+    >
+      <i
+        class="kdicon kdicon-arrow-down"
+      />
+    </span>
+  </div>
+  <div
+    class="kd-geo-zone-picker-region"
+  >
+    <div
+      class="kd-geo-zone-picker-region-input"
+    >
+      <div
+        class="kd-geo-zone-picker-region-input-text"
+      />
+    </div>
+    <span
+      class="kd-geo-zone-picker-region-arrow"
+    >
+      <i
+        class="kdicon kdicon-arrow-down"
+      />
+    </span>
+  </div>
+</div>
+`;
+
+exports[`GeoZonePicker 2. render test renders correctly 2`] = `
+<div
+  class="kd-geo-zone-picker kd-geo-zone-picker-bordered"
+>
+  <div
+    class="kd-geo-zone-picker-country"
+  >
+    <div
+      class="kd-geo-zone-picker-country-input"
+    >
+      <div
+        class="kd-geo-zone-picker-country-input-text"
+      />
+    </div>
+    <span
+      class="kd-geo-zone-picker-country-arrow"
+    >
+      <i
+        class="kdicon kdicon-arrow-down"
+      />
+    </span>
+  </div>
+  <div
+    class="kd-geo-zone-picker-region"
+  >
+    <div
+      class="kd-geo-zone-picker-region-input"
+    >
+      <div
+        class="kd-geo-zone-picker-region-input-text"
+      />
+    </div>
+    <span
+      class="kd-geo-zone-picker-region-arrow"
+    >
+      <i
+        class="kdicon kdicon-arrow-down"
+      />
+    </span>
+  </div>
+</div>
+`;
+
+exports[`GeoZonePicker 2. render test renders correctly 3`] = `
+<div
+  class="kd-geo-zone-picker"
+>
+  <div
+    class="kd-geo-zone-picker-country"
+  >
+    <div
+      class="kd-geo-zone-picker-country-input"
+    >
+      <div
+        class="kd-geo-zone-picker-country-input-text"
+      />
+    </div>
+    <span
+      class="kd-geo-zone-picker-country-arrow"
+    >
+      <i
+        class="kdicon kdicon-arrow-down"
+      />
+    </span>
+  </div>
+  <div
+    class="kd-geo-zone-picker-region"
+  >
+    <div
+      class="kd-geo-zone-picker-region-input"
+    >
+      <div
+        class="kd-geo-zone-picker-region-input-text"
+      />
+    </div>
+    <span
+      class="kd-geo-zone-picker-region-arrow"
+    >
+      <i
+        class="kdicon kdicon-arrow-down"
+      />
+    </span>
+  </div>
+</div>
+`;
+
+exports[`GeoZonePicker 2. render test renders correctly 4`] = `
+<div
+  class="kd-geo-zone-picker kd-geo-zone-picker-disabled"
+>
+  <div
+    class="kd-geo-zone-picker-country"
+  >
+    <div
+      class="kd-geo-zone-picker-country-input"
+    >
+      <div
+        class="kd-geo-zone-picker-country-input-text"
+      />
+    </div>
+    <span
+      class="kd-geo-zone-picker-country-arrow"
+    >
+      <i
+        class="kdicon kdicon-arrow-down"
+      />
+    </span>
+  </div>
+  <div
+    class="kd-geo-zone-picker-region"
+  >
+    <div
+      class="kd-geo-zone-picker-region-input"
+    >
+      <div
+        class="kd-geo-zone-picker-region-input-text"
+      />
+    </div>
+    <span
+      class="kd-geo-zone-picker-region-arrow"
+    >
+      <i
+        class="kdicon kdicon-arrow-down"
+      />
+    </span>
+  </div>
+</div>
+`;
+
+exports[`GeoZonePicker 3. render null or undefined without errors render null or undefined without errors 1`] = `<GeoZonePicker />`;
