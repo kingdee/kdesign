@@ -328,13 +328,15 @@ export const Popper = forwardRef<SubPopup | null, PopperProps>((props, ref) => {
     return false
   }
 
-  const onTriggerInner = (nextOpen: boolean, triggerType: TriggerType, delay: undefined | number = undefined) => {
+  const onTriggerInner = (nextOpen: boolean, triggerType: Reason, delay: undefined | number = undefined) => {
     triggerOpen(nextOpen, triggerType, delay)
   }
 
   const onClick = () => {
-    if (clickToClose || !visibleInner) {
-      onTriggerInner(!visibleInner, 'click')
+    if (!visibleInner) {
+      onTriggerInner(true, 'click')
+    } else if (clickToClose) {
+      onTriggerInner(false, 'clickToClose')
     }
   }
 
@@ -452,7 +454,7 @@ export const Popper = forwardRef<SubPopup | null, PopperProps>((props, ref) => {
             triggerOpen(false, 'clickOutside', 0)
           }
 
-          if (clickToClose && isReference && trigger !== 'focus') {
+          if (clickToClose && isReference && trigger !== 'focus' && trigger !== 'click') {
             triggerOpen(false, 'clickToClose', 0)
           }
         }
