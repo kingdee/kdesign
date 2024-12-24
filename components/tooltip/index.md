@@ -48,10 +48,31 @@ subtitle: 文字提示
 | clickToClose | 点击浮层是否可关闭 | boolean | true | 1.0.0 |
 | trigger | 触发行为，有 `hover` \| `focus` \| `click` \| `contextMenu` 四个行为可选，可使用数组设置多个触发行为 | string \| string\[] | `hover` | 1.0.0 |
 | visible | 手动控制浮层显隐 | boolean | false | 1.0.0 |
-| onVisibleChange | 显示隐藏的回调 | (visible) => void | - | 1.0.0 |
+| onVisibleChange | 显示隐藏的回调 | (visible, reason:IReason) => void | - | 1.8.29 |
 | autoPlacement | 溢出边界时改变 placement，默认镜向翻动 | boolean | true | 1.8.10 |
-| autoPlacementList | 溢出边界时，placement 备选展示位置 [参考 popper](https://popper.js.org/docs/v2/modifiers/flip/) | placement\[] | - | 1.8.10 |
+| autoPlacementList | 溢出边界时，placement 备选展示位置参考 placement | placement\[] | - | 1.8.10 |
 | customerModifiers | 自定义修饰符 [参考 popper](https://popper.js.org/docs/v2/modifiers/) | (modifiers: Partial<Modifier<any, any>>\[]) => Partial<Modifier<any, any>>\[] | - | 1.8.10 |
+
+# Tooltip.onVisibleChange.IReason
+
+其它组件:（如 `Dropdown` / `Select` / `DatePicker` / `ColorPicker` / `CityPicker` / `Cascader`）使用时也会触发 IReason，下列简称`其它组件`
+
+| 参数             | 说明                                                     | 版本   |
+| ---------------- | -------------------------------------------------------- | ------ |
+| click            | 点击，仅在 placement 为 click 时出现                     | 1.8.29 |
+| hover            | 悬停，仅在 placement 为 hover 时出现                     | 1.8.29 |
+| focus            | 聚集，仅在 placement 为 focus 时出现                     | 1.8.29 |
+| contextMenu      | 点击右键，仅在 placement 为 contextMenu 时出现           | 1.8.29 |
+| clickToClose     | 再次次点击触发元素关闭，仅在 clickToClose 为 true 时出现 | 1.8.29 |
+| clickOutside     | 点击外部关闭                                             | 1.8.29 |
+| parentHidden     | 嵌套 tooltip 中，父级关闭                                | 1.8.29 |
+| scroll           | 滚动导致的关闭，仅在 scrollHidden 为 true 时出现         | 1.8.29 |
+| selectPopperItem | `其它组件` 选中弹窗选项触发关闭                          | 1.8.29 |
+| pressEnter       | `其它组件` 回车选中后触发关闭                            | 1.8.29 |
+| escEnter         | `其它组件` 点击 ESC 触发关闭                             | 1.8.29 |
+| delEnter         | `其它组件` 点击回退删除触发关闭                          | 1.8.29 |
+| otherEnter       | `其它组件` 点击其它键时触发关闭                          | 1.8.29 |
+| unknown          | 受控或其它情况值的改变                                   | 1.8.29 |
 
 ## Design Token
 
