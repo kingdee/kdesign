@@ -9,7 +9,7 @@ import React, {
   useImperativeHandle,
   MutableRefObject,
 } from 'react'
-import { createPopper, Instance, Modifier, OptionsGeneric, Placement } from '@popperjs/core'
+import { createPopper, Instance, Modifier, OptionsGeneric, Placement, VirtualElement } from '@popperjs/core'
 import { tuple } from '../_utils/type'
 import classnames from 'classnames'
 import debounce from 'lodash/debounce'
@@ -61,8 +61,9 @@ export type PopperProps = {
   mouseLeaveDelay?: number
   defaultVisible?: boolean
   autoPlacement?: boolean
+  autoPlacementList?: PlacementType[]
   backgroundTransparent?: boolean
-  autoPlacementList?: Placement[]
+
   className?: string
   style?: React.CSSProperties
   popperClassName?: string
@@ -128,7 +129,7 @@ const getRealPlacement = (key: PlacementType) => {
   return popperPlacementMap[key] ? (popperPlacementMap[key] as Placement) : 'top'
 }
 
-const getFallbackPlacementList: (arr: string[]) => Placement[] = (arr) => {
+const getFallbackPlacementList: (arr: PlacementType[]) => Placement[] = (arr) => {
   return arr
     .map((d) => {
       return popperPlacementMap[d as PlacementType] ? popperPlacementMap[d as PlacementType] : ''
@@ -607,7 +608,9 @@ export const Popper = forwardRef<SubPopup | null, PopperProps>((props, ref) => {
 
     if (current) {
       popperInstance.current = createPopper(
-        trigger === 'contextMenu' ? virtualElement : current?.closest(`.${referencePrefixCls}`) || current,
+        trigger === 'contextMenu'
+          ? (virtualElement as VirtualElement)
+          : current?.closest(`.${referencePrefixCls}`) || current,
         popperRefDom.current as HTMLElement,
         popperOptionsInner,
       )
