@@ -21,7 +21,6 @@
       visibility: visible;
       position: absolute;
       border-style: solid;
-      border-color: transparent;
       border-width: var(--arrowSize);
       content: '';
       transform: rotate(45deg);
@@ -29,7 +28,11 @@
   }
 
   &[data-popper-placement^='top'] .arrow {
-    bottom: calc(1.05 * var(--arrowSize));
+    bottom: calc(1.07 * var(--arrowSize));
+
+    &.transparent {
+      bottom: calc(0.96 * var(--arrowSize));
+    }
 
     &::before {
       left: calc(-1 * var(--arrowSize));
@@ -39,7 +42,11 @@
   }
 
   &[data-popper-placement^='bottom'] .arrow {
-    top: calc(-0.85 * var(--arrowSize));
+    top: calc(-0.75 * var(--arrowSize));
+
+    &.transparent {
+      top: calc(-0.85 * var(--arrowSize));
+    }
 
     &::before {
       left: calc(-1 * var(--arrowSize));
@@ -49,7 +56,11 @@
   }
 
   &[data-popper-placement^='left'] .arrow {
-    right: calc(1.05 * var(--arrowSize));
+    right: calc(1.07 * var(--arrowSize));
+
+    &.transparent {
+      right: calc(0.9 * var(--arrowSize));
+    }
 
     &::before {
       top: calc(-1 * var(--arrowSize));
@@ -59,7 +70,11 @@
   }
 
   &[data-popper-placement^='right'] .arrow {
-    left: calc(-0.85 * var(--arrowSize));
+    left: calc(-0.75 * var(--arrowSize));
+
+    &.transparent {
+      left: calc(-0.85 * var(--arrowSize));
+    }
 
     &::before {
       top: calc(-1 * var(--arrowSize));
