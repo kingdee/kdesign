@@ -61,6 +61,7 @@ export type PopperProps = {
   mouseLeaveDelay?: number
   defaultVisible?: boolean
   autoPlacement?: boolean
+  backgroundTransparent?: boolean
   autoPlacementList?: Placement[]
   className?: string
   style?: React.CSSProperties
@@ -196,6 +197,7 @@ export const Popper = forwardRef<SubPopup | null, PopperProps>((props, ref) => {
     mouseLeaveDelay = 0.1,
     defaultVisible = false,
     autoPlacement = true,
+    backgroundTransparent = false,
     autoPlacementList,
     clickToClose = true,
     getTriggerElement = (locatorNode) => locatorNode,
@@ -668,7 +670,9 @@ export const Popper = forwardRef<SubPopup | null, PopperProps>((props, ref) => {
             <div {...popperContainerProps}>
               <div {...popperProps}>
                 {popperElement}
-                {arrow && <div className="arrow" data-popper-arrow="" />}
+                {arrow && (
+                  <div className={classnames('arrow', { transparent: backgroundTransparent })} data-popper-arrow="" />
+                )}
               </div>
             </div>
           </TriggerContext.Provider>,
