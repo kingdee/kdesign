@@ -10,6 +10,7 @@ import React, {
   MutableRefObject,
 } from 'react'
 import { createPopper, Instance, Modifier, OptionsGeneric, Placement, VirtualElement } from '@popperjs/core'
+import ResizeObserver from 'resize-observer-polyfill'
 import { tuple } from '../_utils/type'
 import classnames from 'classnames'
 import debounce from 'lodash/debounce'
@@ -40,7 +41,18 @@ export const Triggers = tuple('hover', 'focus', 'click', 'contextMenu')
 
 export type TriggerType = typeof Triggers[number]
 
-export type Reason = TriggerType | 'scroll' | 'clickOutside' | 'clickToClose' | 'parentHidden' | 'unknown'
+export type Reason =
+  | TriggerType
+  | 'scroll'
+  | 'clickOutside'
+  | 'clickToClose'
+  | 'parentHidden'
+  | 'unknown'
+  | 'selectPopperItem'
+  | 'pressEnter'
+  | 'escEnter'
+  | 'delEnter'
+  | 'otherEnter'
 
 export type RenderFunction = () => React.ReactNode
 
@@ -332,13 +344,17 @@ export const Popper = forwardRef<SubPopup | null, PopperProps>((props, ref) => {
     triggerOpen(nextOpen, triggerType, delay)
   }
 
-  const onClick = () => {
-    if (!visibleInner) {
-      onTriggerInner(true, 'click')
-    } else if (clickToClose) {
-      onTriggerInner(false, 'clickToClose')
-    }
-  }
+  const onClick = debounce(
+    () => {
+      if (!visibleInner) {
+        onTriggerInner(true, 'click')
+      } else if (clickToClose) {
+        onTriggerInner(false, 'clickToClose')
+      }
+    },
+    10,
+    { leading: true },
+  )
 
   const onFocus = () => {
     onTriggerInner(true, 'focus')
@@ -408,6 +424,14 @@ export const Popper = forwardRef<SubPopup | null, PopperProps>((props, ref) => {
       triggerNode?.[type]('mouseover', onMouseOver)
       triggerNode?.[type]('mouseleave', onMouseLeave)
     }
+  }
+
+  const registerSubPopup = () => {
+    setTimeout(() => {
+      if (popperRef?.current) {
+        parentContext?.registerSubPopup(id, popperRef?.current)
+      }
+    }, 10)
   }
 
   useEffect(() => {
@@ -590,16 +614,41 @@ export const Popper = forwardRef<SubPopup | null, PopperProps>((props, ref) => {
           }))
           popperInstance.current?.forceUpdate()
         }
-        setTimeout(() => {
-          if (popperRef) {
-            if (popperRef?.current) {
-              parentContext?.registerSubPopup(id, popperRef?.current)
-            }
-          }
-        }, 10)
+        registerSubPopup()
       }
     }
   }, [visibleInner, placementInner, arrow])
+
+  useEffect(() => {
+    if (!popperRefDom.current) return
+
+    const lastSize = {
+      width: popperRefDom.current.offsetWidth,
+      height: popperRefDom.current.offsetHeight,
+    }
+
+    const dimensionToObserve =
+      placementInner.startsWith('top') || placementInner.startsWith('bottom') ? 'height' : 'width'
+
+    const resizeObserver = new ResizeObserver((entries) => {
+      entries.forEach((entry) => {
+        const { width, height } = entry.contentRect
+        if (dimensionToObserve === 'height' && height !== lastSize.height) {
+          lastSize.height = height
+          popperInstance.current?.update()
+        } else if (dimensionToObserve === 'width' && width !== lastSize.width) {
+          lastSize.width = width
+          popperInstance.current?.update()
+        }
+      })
+    })
+
+    resizeObserver.observe(popperRefDom.current)
+
+    return () => {
+      resizeObserver?.disconnect()
+    }
+  }, [exist, placementInner])
 
   useEnhancedEffect(() => {
     if (!exist) {
@@ -616,11 +665,7 @@ export const Popper = forwardRef<SubPopup | null, PopperProps>((props, ref) => {
         popperRefDom.current as HTMLElement,
         popperOptionsInner,
       )
-      setTimeout(() => {
-        if (popperRef?.current) {
-          parentContext?.registerSubPopup(id, popperRef?.current)
-        }
-      }, 10)
+      registerSubPopup()
     }
 
     return () => {
@@ -662,7 +707,7 @@ export const Popper = forwardRef<SubPopup | null, PopperProps>((props, ref) => {
 
   const referenceProps = {
     ref: referenceRef,
-    className: classnames(referenceElement?.props?.className, referencePrefixCls),
+    className: classnames(referencePrefixCls, referenceElement?.props?.className),
   }
 
   return (

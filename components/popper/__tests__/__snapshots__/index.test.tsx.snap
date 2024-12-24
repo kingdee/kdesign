@@ -12,7 +12,7 @@ exports[`Popper API test getTriggerElement is useful 1`] = `
     tip="tips text"
   >
     <span
-      className="kd-test-trigger kd-popper-reference"
+      className="kd-popper-reference kd-test-trigger"
     >
       text
     </span>
@@ -23,7 +23,7 @@ exports[`Popper API test getTriggerElement is useful 1`] = `
             test
           </button>
           <span
-            class="kd-test-trigger kd-popper-reference"
+            class="kd-popper-reference kd-test-trigger"
           >
             text
           </span>
