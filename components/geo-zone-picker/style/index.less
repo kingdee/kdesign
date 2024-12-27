@@ -1,0 +1,367 @@
+@import '../../style/themes/index';
+@import './mixin.less';
+@geo-zone-picker-prefix-cls: ~'@{kd-prefix}-geo-zone-picker';
+
+.@{geo-zone-picker-prefix-cls} {
+  display: flex;
+  width: 230px;
+  height: @geo-zone-picker-sizing-height;
+  border-bottom: 1px solid #949494;
+  box-sizing: border-box;
+  &:hover {
+    border-color: @geo-zone-picker-color-border-hover;
+  }
+  &-active {
+    border-color: @geo-zone-picker-color-border-active;
+  }
+  .@{geo-zone-picker-prefix-cls}-country-input {
+    &:hover {
+      border-bottom: 1px solid @geo-zone-picker-color-border-hover;
+    }
+    &-active {
+      border-bottom: 1px solid @geo-zone-picker-color-border-active;
+    }
+  }
+  .@{geo-zone-picker-prefix-cls}-region-input {
+    &:hover {
+      border-bottom: 1px solid @geo-zone-picker-color-border-hover;
+    }
+    &-active {
+      border-bottom: 1px solid @geo-zone-picker-color-border-active;
+    }
+  }
+}
+
+.@{geo-zone-picker-prefix-cls}-country {
+  display: flex;
+  color: @geo-zone-picker-color-text;
+  min-width: 68px;
+  max-width: 33.3%;
+  height: calc(@geo-zone-picker-sizing-height - 1px);
+  box-sizing: border-box;
+  overflow: hidden;
+  &-input {
+    width: calc(100% - 30px);
+    height: 100%;
+    padding: 8px 0;
+    box-sizing: border-box;
+  }
+  &-input-text {
+    width: 100%;
+    font-size: @geo-zone-picker-font-size;
+    line-height: @geo-zone-picker-input-line-height;
+    height: 16px;
+    .ellipsis;
+    cursor: pointer;
+  }
+  &-arrow {
+    box-sizing: border-box;
+    width: 30px;
+    font-size: 14px;
+    line-height: calc(@geo-zone-picker-sizing-height - 1px);
+    height: calc(@geo-zone-picker-sizing-height - 1px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 8px;
+    transform: rotate(0deg);
+    transition: transform calc(@transition-duration - 0.1s) @ease;
+    cursor: pointer;
+    &-up {
+      transform: rotate(180deg);
+      transition: transform calc(@transition-duration - 0.1s) @ease;
+    }
+  }
+  .@{geo-zone-picker-prefix-cls}-clear-icon {
+    box-sizing: border-box;
+    width: 30px;
+    font-size: 14px;
+    line-height: calc(@geo-zone-picker-sizing-height - 1px);
+    height: calc(@geo-zone-picker-sizing-height - 1px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 8px;
+    cursor: pointer;
+  }
+}
+
+.@{geo-zone-picker-prefix-cls}-country-panel {
+  background: @geo-zone-picker-dropdown-color-background;
+  box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+  z-index: @geo-zone-picker-z-index;
+  &-search {
+    padding: 0 8px;
+    padding-top: 8px;
+  }
+  .@{geo-zone-picker-prefix-cls}-country {
+    &-list {
+      padding: 8px 0;
+      &-item {
+        height: 32px;
+        padding: 0 12px;
+        font-size: @geo-zone-picker-font-size;
+        line-height: 32px;
+        color: #111111;
+        cursor: pointer;
+        .ellipsis;
+      }
+      &-item:hover {
+        background: @geo-zone-picker-country-item-color-bg-hover;
+      }
+      &-item-active {
+        background: @geo-zone-picker-country-item-color-bg-active;
+      }
+      &-empty {
+        font-size: 14px;
+        color: #b2b2b2;
+        text-align: center;
+        padding: 7px 0 4px 0;
+      }
+    }
+  }
+
+  &-highlight-text {
+    color: @geo-zone-picker-highlight-color-text;
+  }
+}
+
+.@{geo-zone-picker-prefix-cls}-region {
+  display: flex;
+  flex: 2;
+  height: calc(@geo-zone-picker-sizing-height - 1px);
+  color: @geo-zone-picker-color-text;
+  overflow: hidden;
+  box-sizing: border-box;
+  &-input {
+    width: calc(100% - 30px);
+    height: 100%;
+    flex: 1;
+    padding: 8px 0;
+    box-sizing: border-box;
+    &-placeholder {
+      line-height: 16px;
+      height: 16px;
+      font-size: @geo-zone-picker-font-size;
+      color: #b2b2b2;
+    }
+  }
+  &-input-text {
+    font-size: @geo-zone-picker-font-size;
+    line-height: @geo-zone-picker-input-line-height;
+    height: 16px;
+    cursor: pointer;
+    .ellipsis;
+  }
+
+  &-arrow {
+    width: 30px;
+    font-size: 14px;
+    line-height: calc(@geo-zone-picker-sizing-height - 1px);
+    height: calc(@geo-zone-picker-sizing-height - 1px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: rotate(0deg);
+    transition: transform calc(@transition-duration - 0.1s) @ease;
+    &-up {
+      transform: rotate(180deg);
+      transition: transform calc(@transition-duration - 0.1s) @ease;
+    }
+  }
+  .@{geo-zone-picker-prefix-cls}-clear-icon {
+    width: 30px;
+    font-size: 14px;
+    display: flex;
+    line-height: calc(@geo-zone-picker-sizing-height - 1px);
+    height: calc(@geo-zone-picker-sizing-height - 1px);
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+}
+
+.@{geo-zone-picker-prefix-cls}-region-panel {
+  width: 464px;
+  min-height: 112px;
+  max-height: 312px;
+  overflow-y: auto;
+  background: @geo-zone-picker-dropdown-color-background;
+  box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.2);
+  &-tabs {
+    height: 32px;
+    box-sizing: border-box;
+    overflow: hidden;
+    padding: 0 16px;
+    position: sticky;
+    top: 0;
+    background: #ffffff;
+    .kd-tab-pane-type-line{
+      padding: 0 33px;
+    }
+  }
+  &-province-container {
+    margin: 8px;
+  }
+  &-province {
+    &-group {
+      color: #b2b2b2;
+      font-size: 12px;
+      margin: 3px 8px;
+      height: 18px;
+      line-height: 18px;
+    }
+    &-list {
+      display: flex;
+      flex-wrap: wrap;
+    }
+    &-item {
+      width: 112px;
+      height: 32px;
+      padding: 8px;
+      box-sizing: border-box;
+      color: #111111;
+      font-size: 12px;
+      line-height: 18px;
+      cursor: pointer;
+      .ellipsis;
+    }
+    &-item-active {
+      background: #edf6ff;
+    }
+    &-item:hover {
+      background: #f5f5f5;
+    }
+  }
+  &-city {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 8px;
+    &-item {
+      width: 112px;
+      height: 32px;
+      padding: 8px;
+      box-sizing: border-box;
+      color: #111111;
+      font-size: 12px;
+      line-height: 18px;
+      .ellipsis;
+      cursor: pointer;
+    }
+    &-item-active {
+      background: #edf6ff;
+    }
+    &-item:hover {
+      background: #f5f5f5;
+    }
+  }
+  &-district {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 8px;
+    &-item {
+      width: 112px;
+      height: 32px;
+      padding: 8px;
+      box-sizing: border-box;
+      color: #111111;
+      font-size: 12px;
+      line-height: 18px;
+      border-radius: 2px;
+      cursor: pointer;
+      .ellipsis;
+    }
+    &-item-active {
+      background: #edf6ff;
+    }
+    &-item:hover {
+      background: #f5f5f5;
+    }
+  }
+}
+
+.@{geo-zone-picker-prefix-cls}-bordered {
+  border: none;
+  & > .@{geo-zone-picker-prefix-cls}-country {
+    border: 1px solid #d9d9d9;
+    border-radius: 2px 0 0 2px;
+  }
+  .@{geo-zone-picker-prefix-cls}-country-input {
+    padding-left: 8px;
+    &:hover {
+      border: none;
+    }
+    &-active {
+      border: none;
+    }
+  }
+  & > .@{geo-zone-picker-prefix-cls}-country-hovered {
+    border-color: @geo-zone-picker-color-border-hover;
+  }
+  & > .@{geo-zone-picker-prefix-cls}-country-border-right-active {
+    border-right-color: @geo-zone-picker-color-border-active;
+  }
+  & > .@{geo-zone-picker-prefix-cls}-region {
+    border: 1px solid #d9d9d9;
+    border-left: none;
+    border-radius: 0 2px 2px 0;
+  }
+  .@{geo-zone-picker-prefix-cls}-region-input {
+    padding-left: 8px;
+    &:hover {
+      border: none;
+    }
+    &-active {
+      border: none;
+    }
+  }
+  .@{geo-zone-picker-prefix-cls}-region-hovered {
+    border-color: @geo-zone-picker-color-border-hover;
+  }
+}
+.@{geo-zone-picker-prefix-cls}-disabled {
+  border-color: @geo-zone-picker-color-border-disabled;
+  &:hover {
+    border-color: @geo-zone-picker-color-border-disabled;
+  }
+  .@{geo-zone-picker-prefix-cls}-country {
+    cursor: not-allowed;
+    &-input {
+      &:hover {
+        border: none;
+      }
+      &-text {
+        cursor: not-allowed;
+      }
+    }
+
+    &-arrow {
+      color: @geo-zone-picker-color-border-disabled;
+      cursor: not-allowed;
+    }
+  }
+  .@{geo-zone-picker-prefix-cls}-region {
+    cursor: not-allowed;
+    &-input {
+      &:hover {
+        border: none;
+      }
+      &-text {
+        cursor: not-allowed;
+      }
+    }
+
+    &-arrow {
+      color: @geo-zone-picker-color-border-disabled;
+      cursor: not-allowed;
+    }
+  }
+}
+
+.@{geo-zone-picker-prefix-cls}-country-dropdown {
+  z-index: @geo-zone-picker-z-index;
+}
+.@{geo-zone-picker-prefix-cls}-region-dropdown {
+  z-index: @geo-zone-picker-z-index;
+}
