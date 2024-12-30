@@ -1060,7 +1060,6 @@ exports[`Steps 4.render null or undefined without errors render null or undefine
 <Steps>
   <div
     className="kd-steps kd-steps-horizontal kd-steps-bottomLable"
-    style={Object {}}
   />
 </Steps>
 `;
