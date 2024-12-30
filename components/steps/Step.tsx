@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { memo } from 'react'
 import classNames from 'classnames'
 
 import { Status, Icons } from './interface'
@@ -15,13 +15,13 @@ export interface StepProps {
   onClick?: React.MouseEventHandler<HTMLElement>
   onStepClick?: (index: number) => void
   className?: string
-  current?: number
+  finished?: boolean
 }
 
 function isString(str: any): str is string {
   return typeof str === 'string'
 }
-const Step: React.FC<StepProps> = (props) => {
+const Step: React.FC<StepProps> = memo((props) => {
   const {
     stepNumber = 1,
     stepIndex = 0,
@@ -32,7 +32,7 @@ const Step: React.FC<StepProps> = (props) => {
     description,
     icon,
     icons,
-    current = 0,
+    finished,
     onClick,
     style,
     onStepClick,
@@ -67,7 +67,7 @@ const Step: React.FC<StepProps> = (props) => {
   }
 
   const iconContainerClassName = classNames(`${prefixCls}-item-iconContainer`, {
-    [`${prefixCls}-item-iconContainer-finish`]: current > stepIndex,
+    [`${prefixCls}-item-iconContainer-finish`]: finished,
   })
 
   return (
@@ -89,7 +89,7 @@ const Step: React.FC<StepProps> = (props) => {
       </div>
     </div>
   )
-}
+})
 
 Step.displayName = 'Step'
 export default Step

@@ -1,9 +1,8 @@
-import React, { useContext, cloneElement, ReactElement } from 'react'
+import React, { useContext, cloneElement, ReactElement, useEffect, useRef, useCallback, useMemo } from 'react'
 import classNames from 'classnames'
 import ConfigContext from '../config-provider/ConfigContext'
 import { getCompProps } from '../_utils'
 import devWarning from '../_utils/devwarning'
-import { toArray } from '../_utils/react-children'
 import { Icon } from '../index'
 import { Directions, Direction, Statuses, Status, LabelPlacements, LabelPlacement, Icons } from './interface'
 export interface StepsProps {
@@ -30,7 +29,7 @@ const Steps: React.FC<StepsProps> = (props) => {
     labelPlacement,
     prefixCls: customPrefixcls,
     className,
-    style = {},
+    style,
     onChange,
     children,
     icons,
@@ -44,7 +43,7 @@ const Steps: React.FC<StepsProps> = (props) => {
     'steps',
     `cannot found steps labelPlacement '${labelPlacement}'`,
   )
-  const stepsPrefixCls = getPrefixCls!(prefixCls, 'steps', customPrefixcls) // 按钮样式前缀
+  const stepsPrefixCls = getPrefixCls!(prefixCls, 'steps', customPrefixcls)
 
   const stepsClassName = classNames(stepsPrefixCls, `${stepsPrefixCls}-${direction}`, className, {
     [`${stepsPrefixCls}-leftLable`]: labelPlacement === 'left',
@@ -53,47 +52,59 @@ const Steps: React.FC<StepsProps> = (props) => {
     [`${stepsPrefixCls}-topLable`]: labelPlacement === 'top',
   })
 
-  const onStepClick = (next: number) => {
-    if (canClickCurrentStep || (onChange && current !== next)) {
-      onChange(next)
+  const innerCurrentRef = useRef<number>(current)
+  useEffect(() => {
+    if (typeof current !== 'undefined') {
+      innerCurrentRef.current = current
     }
-  }
+  }, [current])
 
-  const getIcons = () => {
-    const actualIcons: Icons = {}
-    actualIcons.finish = (icons && icons.finish) || <Icon type="right-bold" className={`${stepsPrefixCls}-iconSize`} />
-    actualIcons.error = (icons && icons.error) || <Icon type="exclamatory" className={`${stepsPrefixCls}-iconSize`} />
-    return actualIcons
-  }
+  const onStepClick = useCallback(
+    (next: number) => {
+      if (canClickCurrentStep || (onChange && innerCurrentRef.current !== next)) {
+        onChange(next)
+      }
+    },
+    [canClickCurrentStep, onChange],
+  )
 
-  const stepIcons = getIcons()
+  const stepIcons = useMemo(() => {
+    return {
+      finish: (icons && icons.finish) || <Icon type="right-bold" className={`${stepsPrefixCls}-iconSize`} />,
+      error: (icons && icons.error) || <Icon type="exclamatory" className={`${stepsPrefixCls}-iconSize`} />,
+    }
+  }, [icons, stepsPrefixCls])
+
+  const renderStep = useMemo(() => {
+    return React.Children.map(children, (child: ReactElement, index: number) => {
+      if (!child) return null
+      const stepNumber = initial + index
+      const childProps = {
+        stepNumber: `${stepNumber + 1}`,
+        stepIndex: stepNumber,
+        key: stepNumber,
+        prefixCls: stepsPrefixCls,
+        icons: stepIcons,
+        onStepClick: onChange && onStepClick,
+        finished: current > stepNumber,
+        ...child.props,
+      }
+      if (!child.props.status) {
+        if (stepNumber === current) {
+          childProps.status = status
+        } else if (stepNumber < current) {
+          childProps.status = 'finish'
+        } else {
+          childProps.status = 'wait'
+        }
+      }
+      return cloneElement(child, childProps)
+    })
+  }, [children, current, initial, onChange, onStepClick, status, stepIcons, stepsPrefixCls])
 
   return (
     <div className={stepsClassName} style={style} {...others}>
-      {toArray(children).map((child: ReactElement, index: number) => {
-        if (!child) return null
-        const stepNumber = initial + index
-        const childProps = {
-          stepNumber: `${stepNumber + 1}`,
-          stepIndex: stepNumber,
-          key: stepNumber,
-          prefixCls: stepsPrefixCls,
-          icons: stepIcons,
-          onStepClick: onChange && onStepClick,
-          current,
-          ...child.props,
-        }
-        if (!child.props.status) {
-          if (stepNumber === current) {
-            childProps.status = status
-          } else if (stepNumber < current) {
-            childProps.status = 'finish'
-          } else {
-            childProps.status = 'wait'
-          }
-        }
-        return cloneElement(child, childProps)
-      })}
+      {renderStep}
     </div>
   )
 }
