@@ -226,7 +226,12 @@ const InternalColorPicker = (props: Partial<IColorPickerProps>, ref: RefObject<I
         onBlur={handleBlur}
         onClick={handleClick}
         prefix={
-          <div onClick={handleClick} className={`${colorPickerPrefixCls}-icon-container`}>
+          <div
+            onClick={handleClick}
+            className={classNames(`${colorPickerPrefixCls}-icon-container`, {
+              [`${colorPickerPrefixCls}-icon-container-disabled`]: disabled,
+            })}
+          >
             {prefixIcon ? prefixIcon(colTypeArr[2].value, beforeIcon()) : beforeIcon()}
           </div>
         }
