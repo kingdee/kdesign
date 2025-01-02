@@ -103,6 +103,9 @@ const locale = {
   'Notification.title': '系统提示',
   'TreeSelect.total': '共{total}项',
   'ImageCropper.okText': '确认裁剪',
+  'GeoZonePicker.Province': '省',
+  'GeoZonePicker.City': '市',
+  'GeoZonePicker.County': '县/区',
 }
 
 export default locale
