@@ -48,31 +48,54 @@ subtitle: 文字提示
 | clickToClose | 点击浮层是否可关闭 | boolean | true | 1.0.0 |
 | trigger | 触发行为，有 `hover` \| `focus` \| `click` \| `contextMenu` 四个行为可选，可使用数组设置多个触发行为 | string \| string\[] | `hover` | 1.0.0 |
 | visible | 手动控制浮层显隐 | boolean | false | 1.0.0 |
-| onVisibleChange | 显示隐藏的回调 | (visible, reason:IReason) => void | - | 1.8.29 |
+| onVisibleChange | 显示隐藏的回调 | (visible, reason:IReason, payload:IPayload) => void | - | 1.8.29 |
 | autoPlacement | 溢出边界时改变 placement，默认镜向翻动 | boolean | true | 1.8.10 |
 | autoPlacementList | 溢出边界时，placement 备选展示位置参考 placement | placement\[] | - | 1.8.10 |
 | customerModifiers | 自定义修饰符 [参考 popper](https://popper.js.org/docs/v2/modifiers/) | (modifiers: Partial<Modifier<any, any>>\[]) => Partial<Modifier<any, any>>\[] | - | 1.8.10 |
 
-# Tooltip.onVisibleChange.IReason
 
-其它组件:（如 `Dropdown` / `Select` / `DatePicker` / `ColorPicker` / `CityPicker` / `Cascader`）使用时也会触发 IReason，下列简称`其它组件`
+
+# Ref
+- 1.7.59 后对Tooltip进行了全面升级，ref也进行了升级，升级前需注意对DOM元素获取的变化
+
+| 参数 | 说明 | 类型 | 版本 |
+| --- | --- | --- | --- |
+| dom | 弹窗DOM | HTMLElement \| null | 1.7.59 |
+| triggerOpen | 内部弹窗开关方法 | (nextOpen: boolean, reason?: IReason, delay?: number, payload?: IPayload) => void | 1.8.29 |
+| visible | 内部visible | boolean | 1.7.59 |
+| subPopupRefs | 嵌套弹窗 Ref 集合 | - | 1.8.29 |
+
+
+# onVisibleChange.IReason
+
+- 其它组件:（如 `Dropdown` / `Select` / `DatePicker` / `ColorPicker` / `CityPicker` / `Cascader`）使用时也会触发 IReason，下列简称`其它组件`
 
 | 参数             | 说明                                                     | 版本   |
 | ---------------- | -------------------------------------------------------- | ------ |
-| click            | 点击，仅在 placement 为 click 时出现                     | 1.8.29 |
-| hover            | 悬停，仅在 placement 为 hover 时出现                     | 1.8.29 |
-| focus            | 聚集，仅在 placement 为 focus 时出现                     | 1.8.29 |
-| contextMenu      | 点击右键，仅在 placement 为 contextMenu 时出现           | 1.8.29 |
-| clickToClose     | 再次次点击触发元素关闭，仅在 clickToClose 为 true 时出现 | 1.8.29 |
-| clickOutside     | 点击外部关闭                                             | 1.8.29 |
-| parentHidden     | 嵌套 tooltip 中，父级关闭                                | 1.8.29 |
-| scroll           | 滚动导致的关闭，仅在 scrollHidden 为 true 时出现         | 1.8.29 |
-| selectPopperItem | `其它组件` 选中弹窗选项触发关闭                          | 1.8.29 |
-| pressEnter       | `其它组件` 回车选中后触发关闭                            | 1.8.29 |
-| escEnter         | `其它组件` 点击 ESC 触发关闭                             | 1.8.29 |
-| delEnter         | `其它组件` 点击回退删除触发关闭                          | 1.8.29 |
-| otherEnter       | `其它组件` 点击其它键时触发关闭                          | 1.8.29 |
-| unknown          | 受控或其它情况值的改变                                   | 1.8.29 |
+| click            | 点击，仅在 placement 为 click 时出现                     | 1.8.28 |
+| hover            | 悬停，仅在 placement 为 hover 时出现                     | 1.8.28 |
+| focus            | 聚集，仅在 placement 为 focus 时出现                     | 1.8.28 |
+| contextMenu      | 点击右键，仅在 placement 为 contextMenu 时出现           | 1.8.28 |
+| clickToClose     | 再次次点击触发元素关闭，仅在 clickToClose 为 true 时出现 | 1.8.28 |
+| clickOutside     | 点击外部关闭                                             | 1.8.28 |
+| parentHidden     | 嵌套 tooltip 中，父级关闭                                | 1.8.28 |
+| scroll           | 滚动导致的关闭，仅在 scrollHidden 为 true 时出现         | 1.8.28 |
+| selectPopperItem | `其它组件` 选中弹窗选项触发关闭                          | 1.8.28 |
+| keyEnter         | `其它组件` 点击回车或其它按键时触发关闭，payload中传入键名   | 1.8.29 |
+| unknown          | 受控或其它情况值的改变                                   | 1.8.28 |
+
+# onVisibleChange.IPayload
+- payload 在触发条件为 clickOutside、otherEnter 时会传值
+- 内部 clickOutside 触发条件： isPopper（弹窗本身）、isReference（触发元素） 、isSubPopper（嵌套弹窗） 均为false
+
+| 参数 | 说明 | 版本 |
+| --- | --- | --- |
+| event | 事件 event | 1.8.29 |
+| popperDom | 弹窗DOM，clickOutside时传值 | 1.8.29 |
+| referenceDom | 触发元素DOM，clickOutside时传值 | 1.8.29 |
+| subPopupRefs | 嵌套弹窗ref集合，clickOutside时传值 | 1.8.29 |
+| enterKey | 触发键名，otherEnter时传值 | 1.8.29 |
+
 
 ## Design Token
 
