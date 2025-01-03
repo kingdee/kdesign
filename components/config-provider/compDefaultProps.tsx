@@ -489,6 +489,11 @@ const compDefaultProps = {
     containerHeight: 500,
     canFullScreen: true,
   },
+  GeoZonePicker: {
+    showSearch: true,
+    level: 3,
+    bordered: false,
+  },
 }
 
 export default compDefaultProps

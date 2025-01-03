@@ -171,3 +171,6 @@ export { default as Divider } from './divider'
 export { default as Signature } from './signature'
 
 export type { ISignatureProps } from './signature'
+
+export { default as GeoZonePicker } from './geo-zone-picker'
+export type { IGeoZonePickerProps } from './geo-zone-picker'

@@ -19,7 +19,7 @@ import { colorFormat, strFixed, getColorObj, highlightPresetColorIndex, presetCo
 import { defaultSystemColor } from './constant/defaultColor'
 import Color from 'color'
 import { getCompProps } from '../_utils'
-import usePopper from '../_utils/usePopper'
+import Popper from '../popper'
 import { systemPresetColor } from './constant/systemPresetColor'
 import { ICurrentColorType, removeTransparency } from './utils/removeTransparency'
 
@@ -226,7 +226,12 @@ const InternalColorPicker = (props: Partial<IColorPickerProps>, ref: RefObject<I
         onBlur={handleBlur}
         onClick={handleClick}
         prefix={
-          <div onClick={handleClick} className={`${colorPickerPrefixCls}-icon-container`}>
+          <div
+            onClick={handleClick}
+            className={classNames(`${colorPickerPrefixCls}-icon-container`, {
+              [`${colorPickerPrefixCls}-icon-container-disabled`]: disabled,
+            })}
+          >
             {prefixIcon ? prefixIcon(colTypeArr[2].value, beforeIcon()) : beforeIcon()}
           </div>
         }
@@ -300,7 +305,11 @@ const InternalColorPicker = (props: Partial<IColorPickerProps>, ref: RefObject<I
     clickToClose: false,
   }
 
-  return usePopper(colorInputEle, panel, popperProps)
+  return (
+    <Popper tip={panel} {...popperProps}>
+      {colorInputEle}
+    </Popper>
+  )
 }
 
 const ColorPicker = forwardRef<IColorPickerInputRef, Partial<IColorPickerProps>>(InternalColorPicker)

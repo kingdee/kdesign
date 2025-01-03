@@ -120,6 +120,9 @@ const locale = {
   'Notification.title': 'System Notification',
   'TreeSelect.total': 'Total {total} items',
   'ImageCropper.okText': 'Confirm Crop',
+  'GeoZonePicker.Province': 'Province',
+  'GeoZonePicker.City': 'City',
+  'GeoZonePicker.County': 'County',
 }
 
 export default locale
