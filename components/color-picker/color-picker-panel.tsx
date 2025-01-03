@@ -408,9 +408,12 @@ const ColorPickerPanel: FC<IColorPickerPanelProps> = (props) => {
     if (typeof visible === 'undefined') {
       setShowPanel(false)
     }
-    showPanel && onVisibleChange && onVisibleChange(false)
   })
-
+  useEffect(() => {
+    if (onVisibleChange) {
+      onVisibleChange(visible)
+    }
+  }, [visible])
   useEffect(() => {
     if (showPanel) {
       const scrollAlign = debounce((e: Event) => {
