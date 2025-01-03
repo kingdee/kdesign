@@ -1,6 +1,6 @@
 import { ReactNode } from 'react'
 import { tuple } from '../_utils/type'
-import { PopperProps } from '../_utils/usePopper'
+import { PopperProps } from '../popper'
 
 export const ColorTypes = tuple('HEX', 'HSB', 'RGB', 'HSL', 'themeColor')
 export type ColorType = typeof ColorTypes[number]
@@ -19,7 +19,7 @@ export interface IInnerFormat {
   show: Exclude<typeof ColorTypes[number], 'themeColor'>[]
   default: Exclude<typeof ColorTypes[number], 'themeColor'>
 }
-interface IInnerColorPickerProps {
+export interface IColorPickerProps extends PopperProps {
   // 输入框类型
   borderType: BorderType
   // 选择器输入框类名
@@ -79,7 +79,6 @@ interface IInnerColorPickerProps {
   // 面板显隐回调
   onVisibleChange: (visible: boolean) => void
 }
-export interface IColorPickerProps extends PopperProps, Partial<IInnerColorPickerProps> {}
 
 export interface IColorPickerPanelProps {
   alpha: number
