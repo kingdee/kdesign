@@ -18,8 +18,8 @@ const Demo: React.FC = () => {
     console.log('test', t)
     setTest(t)
   }
-  const onVisibleChange: ITooltipProps['onVisibleChange'] = (visible, t) => {
-    console.log('onVisibleChange', visible, t, test)
+  const onVisibleChange: ITooltipProps['onVisibleChange'] = (visible, reason, payload) => {
+    console.log('onVisibleChange', visible, reason, payload, test)
   }
 
   return (
