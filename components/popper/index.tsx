@@ -41,7 +41,7 @@ export const Triggers = tuple('hover', 'focus', 'click', 'contextMenu')
 
 export type TriggerType = typeof Triggers[number]
 
-export type Reason =
+export type IReason =
   | TriggerType
   | 'scroll'
   | 'clickOutside'
@@ -88,7 +88,7 @@ export type PopperProps = {
   strategy?: 'fixed' | 'absolute'
   clickToClose?: boolean
   onTrigger?: (trigger: TriggerType) => void
-  onVisibleChange?: (visible: boolean, reason?: Reason) => void
+  onVisibleChange?: (visible: boolean, reason?: IReason, payload?: IPayload) => void
   getTriggerElement?: (locatorNode: HTMLElement) => HTMLElement
   getPopupContainer?: (locatorNode: HTMLElement) => HTMLElement
   onTransitionEnd?: (e: React.TransitionEvent) => void
@@ -179,8 +179,16 @@ const getElement = (element: RenderType) => {
 
 export type SubPopup = {
   dom: HTMLElement | null
-  triggerOpen: (v: boolean, reason?: Reason) => void
+  triggerOpen: (nextOpen: boolean, triggerType?: IReason, delay?: number, payload?: IPayload) => void
   visible: boolean
+  subPopupRefs: React.MutableRefObject<Record<string, SubPopup>>
+}
+
+export type IPayload = {
+  popperDom?: HTMLElement | false
+  referenceDom?: HTMLElement | false
+  event?: MouseEvent
+  subPopupRefs?: SubPopup['subPopupRefs']
 }
 
 export const Popper = forwardRef<SubPopup | null, PopperProps>((props, ref) => {
@@ -289,7 +297,7 @@ export const Popper = forwardRef<SubPopup | null, PopperProps>((props, ref) => {
       delayRef.current = null
     }
   }
-  const changeVisible = (nextOpen: boolean, triggerType: Reason = 'unknown') => {
+  const changeVisible = (nextOpen: boolean, triggerType: IReason = 'unknown', payload: IPayload) => {
     if (visibleInner !== nextOpen) {
       if (nextOpen && triggerTypeArray.includes(triggerType)) {
         onTrigger?.(triggerType as TriggerType)
@@ -297,25 +305,30 @@ export const Popper = forwardRef<SubPopup | null, PopperProps>((props, ref) => {
       if (typeof visible === 'undefined') {
         setVisibleInner(nextOpen)
       }
-      onVisibleChangeRef.current?.(nextOpen, triggerType)
+      onVisibleChangeRef.current?.(nextOpen, triggerType, payload)
     }
     if (!nextOpen && Object.keys(subPopupRefs.current || {}).length) {
       Object.values(subPopupRefs.current).forEach((d: SubPopup) => {
         if (typeof d?.triggerOpen === 'function' && d?.visible) {
-          d?.triggerOpen(false, 'parentHidden')
+          d?.triggerOpen(false, 'parentHidden', 0)
         }
       })
     }
   }
-  const triggerOpen = (nextOpen: boolean, triggerType: Reason = 'unknown', delay = 0) => {
+  const triggerOpen: SubPopup['triggerOpen'] = (
+    nextOpen: boolean,
+    triggerType = 'unknown',
+    delay = 0,
+    payload = {},
+  ) => {
     clearDelay()
     if (!disabled) {
       if (delay === 0) {
-        changeVisible(nextOpen, triggerType)
+        changeVisible(nextOpen, triggerType, payload)
       } else {
         if (visibleInner !== nextOpen) {
           delayRef.current = setTimeout(() => {
-            changeVisible(nextOpen, triggerType)
+            changeVisible(nextOpen, triggerType, payload)
           }, delay * 1000)
         }
       }
@@ -340,7 +353,7 @@ export const Popper = forwardRef<SubPopup | null, PopperProps>((props, ref) => {
     return false
   }
 
-  const onTriggerInner = (nextOpen: boolean, triggerType: Reason, delay: undefined | number = undefined) => {
+  const onTriggerInner = (nextOpen: boolean, triggerType: IReason, delay: undefined | number = undefined) => {
     triggerOpen(nextOpen, triggerType, delay)
   }
 
@@ -475,7 +488,12 @@ export const Popper = forwardRef<SubPopup | null, PopperProps>((props, ref) => {
             : false
           const isTarget = isPopper || isReference
           if (!isTarget && !isSubPopper(e)) {
-            triggerOpen(false, 'clickOutside', 0)
+            triggerOpen(false, 'clickOutside', 0, {
+              popperDom: popperRefDom.current || false,
+              referenceDom: domReference || false,
+              event: e,
+              subPopupRefs,
+            })
           }
 
           if (clickToClose && isReference && trigger !== 'focus' && trigger !== 'click') {
@@ -512,6 +530,7 @@ export const Popper = forwardRef<SubPopup | null, PopperProps>((props, ref) => {
       dom: popperRefDom.current,
       triggerOpen,
       visible: visibleInner,
+      subPopupRefs,
     }
   })
 
