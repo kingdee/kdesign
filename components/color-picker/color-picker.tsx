@@ -143,7 +143,7 @@ const InternalColorPicker = (props: Partial<IColorPickerProps>, ref: RefObject<I
       onChange?.(inpValue, formatArr)
     }
     if (validateColor(inpValue)) {
-      callback(inpValue, alpha)
+      callback(inpValue, Color(getColorObj(inpValue)).alpha())
     } else {
       callback(defaultSystemColor, alpha)
     }
