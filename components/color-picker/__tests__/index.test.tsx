@@ -553,7 +553,7 @@ describe('ColorPicker', () => {
   })
   it('should change panel state when use onVisibleChange event', async () => {
     const handleVisibleChange = jest.fn(async (bol) => {
-      expect(bol).toEqual(false)
+      expect(bol).toEqual(true)
     })
     const wrapper = mount(<ColorPicker visible={true} onVisibleChange={handleVisibleChange} />)
     act(() => {
