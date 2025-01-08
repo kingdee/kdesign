@@ -177,6 +177,8 @@ const InternalColorPicker = (props: Partial<IColorPickerProps>, ref: RefObject<I
   useEffect(() => {
     if (validateColor(value ?? inputColorValue)) {
       setInputCorrectColorValue(value ?? inputColorValue)
+    } else {
+      setInputCorrectColorValue('')
     }
   }, [inputColorValue, value])
 
