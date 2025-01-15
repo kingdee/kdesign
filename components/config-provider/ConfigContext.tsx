@@ -24,6 +24,7 @@ export interface IContextConfigProps {
   prefixCls?: string
   localeConfig?: LocaleConfigType
   locale: IntlUniversal
+  direction: 'ltr' | 'rtl'
 }
 const ConfigContext = createContext<IContextConfigProps>(defaultConfig)
 export default ConfigContext
