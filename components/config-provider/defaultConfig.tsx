@@ -1,4 +1,6 @@
 import { getLangMsg, getCompLangMsg } from '../locale'
+import type { DirectionType } from './ConfigContext'
+
 const defaultConfig = {
   getPrefixCls: (configPrefixCls?: string, suffixCls?: string, customizePrefixCls?: string) => {
     // 获取样式前缀方法
@@ -9,6 +11,6 @@ const defaultConfig = {
   },
   prefixCls: 'kd', // 样式前缀
   locale: { getLangMsg, getCompLangMsg },
-  direction: 'ltr' as 'ltr' | 'rtl',
+  direction: 'ltr' as DirectionType,
 }
 export default defaultConfig

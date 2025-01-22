@@ -300,7 +300,14 @@ function LiveDemo(props: Props) {
               language={lang}
             >
               {!iframe ? (
-                <div className="demo-component">
+                <div
+                  className="demo-component"
+                  style={
+                    /import { (\w{3,},\s)*Pagination(,\s\w{3,})* } from '@kdcloudjs\/kdesign'/g.test(code)
+                      ? { overflowX: 'visible' }
+                      : { overflowX: 'auto' }
+                  }
+                >
                   <LivePreview
                     style={
                       /import { (\w{3,},\s)*(Row|Col|Layout|Filter)(,\s\w{3,})* } from '@kdcloudjs\/kdesign'/g.test(
