@@ -617,3 +617,102 @@
     }
   }
 }
+
+.@{pagination-prefix-cls}-rtl {
+  direction: rtl;
+  .@{pagination-prefix-cls}-total {
+    margin-left: 12px;
+    margin-right: 0;
+  }
+  .@{pagination-prefix-cls}-current {
+    margin-right: 0;
+    margin-left: 12px;
+  }
+  .@{pagination-action-prefix-cls} {
+    .@{pagination-action-prefix-cls}-item {
+      &.bordered {
+        margin-left: calc(2 * @pagination-button-spacing);
+        margin-right: 0;
+        &:last-child {
+          margin-left: 0;
+        }
+      }
+    }
+  }
+  .@{pagination-selector-prefix-cls} {
+    margin-right: 20px;
+    margin-left: 0;
+    .@{pagination-selector-prefix-cls}-size {
+      i {
+        margin-left: 0;
+        margin-right: 4px;
+      }
+    }
+  }
+  &.simple {
+    .@{pagination-prefix-cls}-action {
+      &-item {
+        .@{pagination-prefix-cls}-current {
+          margin-right: 0;
+          margin-left: 2px;
+        }
+        .@{pagination-prefix-cls}-total {
+          margin-left: 0;
+          margin-right: 2px;
+        }
+      }
+    }
+  }
+  &.less {
+    .@{pagination-pages-prefix-cls} {
+      &-item {
+        margin-left: @pagination-button-spacing;
+        margin-right: 0;
+        &:last-child {
+          margin-left: 0;
+        }
+      }
+    }
+  }
+  &.nicety {
+    .@{pagination-pages-prefix-cls} {
+      &-item {
+        margin-left: @pagination-button-spacing;
+        margin-right: 0;
+        &:last-child {
+          margin-left: 0;
+        }
+      }
+    }
+    .@{pagination-jumper-prefix-cls} {
+      margin-right: @pagination-button-spacing;
+      margin-left: 0;
+      .@{pagination-jumper-prefix-cls}-button {
+        margin-right: @pagination-button-spacing;
+        margin-left: 0;
+      }
+    }
+    .@{pagination-options-prefix-cls} {
+      margin-right: 22px;
+      margin-left: 0;
+      .@{pagination-options-prefix-cls}-size {
+        margin-right: 0;
+        margin-left: 8px;
+        padding: 0 4px 0 24px;
+        i {
+          left: 5px;
+          right: auto;
+        }
+      }
+      .@{kd-prefix}-dropdown {
+        &-menu {
+          &-item {
+            & > span {
+              text-align: right;
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -52,6 +52,7 @@ const Pagination: React.FC<IPaginationProps> = (props) => {
     prefixCls: pkgPrefixCls,
     compDefaultProps: userDefaultProps,
     locale,
+    direction,
   } = React.useContext(ConfigContext)
   const paginationLangMsg = locale.getCompLangMsg({ componentName: 'Pagination' })
   // 属性需要合并一遍用户定义的默认属性
@@ -80,7 +81,7 @@ const Pagination: React.FC<IPaginationProps> = (props) => {
   devWarning(PageTypes.indexOf(pageType) === -1, 'Pagination', `cannot found pageType '${pageType}'`)
   // className前缀
   const prefixCls = getPrefixCls!(pkgPrefixCls, 'pagination', customPrefixcls)
-
+  const rtlCls = direction === 'rtl' ? `${prefixCls}-rtl` : null
   // 每页显示的记录条数
   const [size, setSize] = React.useState(pageSize || defaultPageSize)
   React.useEffect(() => {
@@ -112,13 +113,13 @@ const Pagination: React.FC<IPaginationProps> = (props) => {
   // icons
   const innerIcon: IIcons = Object.assign(
     {
-      first: <Icon type="first" />,
-      last: <Icon type="last" />,
-      prev: <Icon type="arrow-left" />,
-      next: <Icon type="arrow-right" />,
+      first: <Icon type={`${direction === 'rtl' ? 'last' : 'first'}`} />,
+      last: <Icon type={`${direction === 'rtl' ? 'first' : 'last'}`} />,
+      prev: <Icon type={`arrow-${direction === 'rtl' ? 'right' : 'left'}`} />,
+      next: <Icon type={`arrow-${direction === 'rtl' ? 'left' : 'right'}`} />,
       down: <Icon type="arrow-down" />,
-      jumpPrev: <Icon type="double-arrow-left" />,
-      jumpNext: <Icon type="double-arrow-right" />,
+      jumpPrev: <Icon type={`double-arrow-${direction === 'rtl' ? 'right' : 'left'}`} />,
+      jumpNext: <Icon type={`double-arrow-${direction === 'rtl' ? 'left' : 'right'}`} />,
     },
     icons || {},
   )
@@ -233,7 +234,7 @@ const Pagination: React.FC<IPaginationProps> = (props) => {
   const Total = showTotal && <span className={`${prefixCls}-total`}>{mapTotalText[showTotal]}</span>
 
   const normalPagination = (
-    <div className={classNames(prefixCls, className)} style={style}>
+    <div className={classNames(prefixCls, rtlCls, className)} style={style}>
       {Total}
       {showJumper && (
         <span className={`${prefixCls}-current`}>
@@ -281,7 +282,7 @@ const Pagination: React.FC<IPaginationProps> = (props) => {
             selectedKey={size}
             menu={sizeOptions}
             trigger="click"
-            placement="bottomRight"
+            placement={direction === 'rtl' ? 'bottomRight' : 'bottomLeft'}
             disabled={disabled}
             prefix={`${prefixCls}-dropdown`}
             popperStyle={{ minWidth: 64 }}
@@ -305,7 +306,7 @@ const Pagination: React.FC<IPaginationProps> = (props) => {
   )
 
   const simplePagination = (
-    <div className={classNames(prefixCls, 'simple', className)} style={style}>
+    <div className={classNames(prefixCls, rtlCls, 'simple', className)} style={style}>
       {Total}
       <ul className={classNames(`${prefixCls}-action`, { bordered, disabled })}>
         <li {...itemAttr('action-item', paginationLangMsg.prevPage)}>
@@ -345,7 +346,7 @@ const Pagination: React.FC<IPaginationProps> = (props) => {
 
   if (pageType === 'less') {
     lessPagination = (
-      <div className={classNames(prefixCls, 'less', { bordered, disabled }, className)} style={style}>
+      <div className={classNames(prefixCls, rtlCls, 'less', { bordered, disabled }, className)} style={style}>
         {Total}
         <ul className={`${prefixCls}-pages`}>
           <li {...itemAttr('pages-item', paginationLangMsg.prevPage)}>
@@ -388,7 +389,7 @@ const Pagination: React.FC<IPaginationProps> = (props) => {
   }
 
   const nicetyPagination = (
-    <div className={classNames(prefixCls, 'nicety', { bordered, disabled }, className)} style={style}>
+    <div className={classNames(prefixCls, rtlCls, 'nicety', { bordered, disabled }, className)} style={style}>
       {Total}
       <ul className={`${prefixCls}-pages`}>
         <li {...itemAttr('pages-item', paginationLangMsg.prevPage)}>
@@ -450,6 +451,7 @@ const Pagination: React.FC<IPaginationProps> = (props) => {
                 popperStyle={{ minWidth: 64 }}
                 onItemClick={handleChangeSize}
                 getPopupContainer={(triggerNode) => triggerNode?.parentElement as HTMLElement}
+                placement={direction === 'rtl' ? 'bottomRight' : 'bottomLeft'}
                 {...dropdownProps}
                 onVisibleChange={dropdownVisibleChange}
               >
