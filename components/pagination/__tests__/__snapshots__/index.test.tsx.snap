@@ -2,7 +2,7 @@
 
 exports[`Pagination 2.render test renders correctly 1`] = `
 <div
-  class="kd-pagination"
+  class="kd-pagination kd-pagination-rtl"
 >
   <span
     class="kd-pagination-total"
@@ -35,7 +35,7 @@ exports[`Pagination 2.render test renders correctly 1`] = `
         disabled=""
       >
         <i
-          class="kdicon kdicon-first"
+          class="kdicon kdicon-last"
         />
       </button>
     </li>
@@ -47,7 +47,7 @@ exports[`Pagination 2.render test renders correctly 1`] = `
         disabled=""
       >
         <i
-          class="kdicon kdicon-arrow-left"
+          class="kdicon kdicon-arrow-right"
         />
       </button>
     </li>
@@ -57,7 +57,7 @@ exports[`Pagination 2.render test renders correctly 1`] = `
     >
       <button>
         <i
-          class="kdicon kdicon-arrow-right"
+          class="kdicon kdicon-arrow-left"
         />
       </button>
     </li>
@@ -67,7 +67,7 @@ exports[`Pagination 2.render test renders correctly 1`] = `
     >
       <button>
         <i
-          class="kdicon kdicon-last"
+          class="kdicon kdicon-first"
         />
       </button>
     </li>
@@ -77,7 +77,7 @@ exports[`Pagination 2.render test renders correctly 1`] = `
 
 exports[`Pagination 2.render test renders correctly 2`] = `
 <div
-  class="kd-pagination"
+  class="kd-pagination kd-pagination-rtl"
 >
   <span
     class="kd-pagination-total"
@@ -110,7 +110,7 @@ exports[`Pagination 2.render test renders correctly 2`] = `
         disabled=""
       >
         <i
-          class="kdicon kdicon-first"
+          class="kdicon kdicon-last"
         />
       </button>
     </li>
@@ -122,7 +122,7 @@ exports[`Pagination 2.render test renders correctly 2`] = `
         disabled=""
       >
         <i
-          class="kdicon kdicon-arrow-left"
+          class="kdicon kdicon-arrow-right"
         />
       </button>
     </li>
@@ -132,7 +132,7 @@ exports[`Pagination 2.render test renders correctly 2`] = `
     >
       <button>
         <i
-          class="kdicon kdicon-arrow-right"
+          class="kdicon kdicon-arrow-left"
         />
       </button>
     </li>
@@ -142,7 +142,7 @@ exports[`Pagination 2.render test renders correctly 2`] = `
     >
       <button>
         <i
-          class="kdicon kdicon-last"
+          class="kdicon kdicon-first"
         />
       </button>
     </li>
@@ -152,7 +152,7 @@ exports[`Pagination 2.render test renders correctly 2`] = `
 
 exports[`Pagination 2.render test renders correctly 3`] = `
 <div
-  class="kd-pagination"
+  class="kd-pagination kd-pagination-rtl"
 >
   <ul
     class="kd-pagination-action"
@@ -165,7 +165,7 @@ exports[`Pagination 2.render test renders correctly 3`] = `
         disabled=""
       >
         <i
-          class="kdicon kdicon-first"
+          class="kdicon kdicon-last"
         />
       </button>
     </li>
@@ -177,7 +177,7 @@ exports[`Pagination 2.render test renders correctly 3`] = `
         disabled=""
       >
         <i
-          class="kdicon kdicon-arrow-left"
+          class="kdicon kdicon-arrow-right"
         />
       </button>
     </li>
@@ -187,7 +187,7 @@ exports[`Pagination 2.render test renders correctly 3`] = `
     >
       <button>
         <i
-          class="kdicon kdicon-arrow-right"
+          class="kdicon kdicon-arrow-left"
         />
       </button>
     </li>
@@ -197,7 +197,7 @@ exports[`Pagination 2.render test renders correctly 3`] = `
     >
       <button>
         <i
-          class="kdicon kdicon-last"
+          class="kdicon kdicon-first"
         />
       </button>
     </li>
@@ -207,7 +207,7 @@ exports[`Pagination 2.render test renders correctly 3`] = `
 
 exports[`Pagination 2.render test renders correctly 4`] = `
 <div
-  class="kd-pagination simple"
+  class="kd-pagination kd-pagination-rtl simple"
 >
   <ul
     class="kd-pagination-action"
@@ -220,7 +220,7 @@ exports[`Pagination 2.render test renders correctly 4`] = `
         disabled=""
       >
         <i
-          class="kdicon kdicon-arrow-left"
+          class="kdicon kdicon-arrow-right"
         />
       </button>
     </li>
@@ -250,7 +250,7 @@ exports[`Pagination 2.render test renders correctly 4`] = `
     >
       <button>
         <i
-          class="kdicon kdicon-arrow-right"
+          class="kdicon kdicon-arrow-left"
         />
       </button>
     </li>
@@ -260,7 +260,7 @@ exports[`Pagination 2.render test renders correctly 4`] = `
 
 exports[`Pagination 2.render test renders correctly 5`] = `
 <div
-  class="kd-pagination less"
+  class="kd-pagination kd-pagination-rtl less"
 >
   <ul
     class="kd-pagination-pages"
@@ -273,7 +273,7 @@ exports[`Pagination 2.render test renders correctly 5`] = `
         disabled=""
       >
         <i
-          class="kdicon kdicon-arrow-left"
+          class="kdicon kdicon-arrow-right"
         />
       </button>
     </li>
@@ -323,7 +323,7 @@ exports[`Pagination 2.render test renders correctly 5`] = `
     >
       <button>
         <i
-          class="kdicon kdicon-arrow-right"
+          class="kdicon kdicon-arrow-left"
         />
       </button>
     </li>
@@ -333,7 +333,7 @@ exports[`Pagination 2.render test renders correctly 5`] = `
 
 exports[`Pagination 2.render test renders correctly 6`] = `
 <div
-  class="kd-pagination nicety"
+  class="kd-pagination kd-pagination-rtl nicety"
 >
   <span
     class="kd-pagination-total"
@@ -351,7 +351,7 @@ exports[`Pagination 2.render test renders correctly 6`] = `
         disabled=""
       >
         <i
-          class="kdicon kdicon-arrow-left"
+          class="kdicon kdicon-arrow-right"
         />
       </button>
     </li>
@@ -401,7 +401,7 @@ exports[`Pagination 2.render test renders correctly 6`] = `
     >
       <button>
         <i
-          class="kdicon kdicon-arrow-right"
+          class="kdicon kdicon-arrow-left"
         />
       </button>
     </li>
@@ -429,7 +429,7 @@ exports[`Pagination 3.render no child without errors render no child without err
   total={50}
 >
   <div
-    className="kd-pagination"
+    className="kd-pagination kd-pagination-rtl"
   >
     <span
       className="kd-pagination-total"
@@ -471,10 +471,10 @@ exports[`Pagination 3.render no child without errors render no child without err
           onClick={[Function]}
         >
           <Icon
-            type="first"
+            type="last"
           >
             <i
-              className="kdicon kdicon-first"
+              className="kdicon kdicon-last"
               onClick={[Function]}
               onMouseEnter={[Function]}
               onMouseLeave={[Function]}
@@ -492,10 +492,10 @@ exports[`Pagination 3.render no child without errors render no child without err
           onClick={[Function]}
         >
           <Icon
-            type="arrow-left"
+            type="arrow-right"
           >
             <i
-              className="kdicon kdicon-arrow-left"
+              className="kdicon kdicon-arrow-right"
               onClick={[Function]}
               onMouseEnter={[Function]}
               onMouseLeave={[Function]}
@@ -512,10 +512,10 @@ exports[`Pagination 3.render no child without errors render no child without err
           onClick={[Function]}
         >
           <Icon
-            type="arrow-right"
+            type="arrow-left"
           >
             <i
-              className="kdicon kdicon-arrow-right"
+              className="kdicon kdicon-arrow-left"
               onClick={[Function]}
               onMouseEnter={[Function]}
               onMouseLeave={[Function]}
@@ -532,10 +532,10 @@ exports[`Pagination 3.render no child without errors render no child without err
           onClick={[Function]}
         >
           <Icon
-            type="last"
+            type="first"
           >
             <i
-              className="kdicon kdicon-last"
+              className="kdicon kdicon-first"
               onClick={[Function]}
               onMouseEnter={[Function]}
               onMouseLeave={[Function]}
@@ -555,7 +555,7 @@ exports[`Pagination 4. render null or undefined without errors render null or un
   total={50}
 >
   <div
-    className="kd-pagination"
+    className="kd-pagination kd-pagination-rtl"
   >
     <span
       className="kd-pagination-total"
@@ -597,10 +597,10 @@ exports[`Pagination 4. render null or undefined without errors render null or un
           onClick={[Function]}
         >
           <Icon
-            type="first"
+            type="last"
           >
             <i
-              className="kdicon kdicon-first"
+              className="kdicon kdicon-last"
               onClick={[Function]}
               onMouseEnter={[Function]}
               onMouseLeave={[Function]}
@@ -618,10 +618,10 @@ exports[`Pagination 4. render null or undefined without errors render null or un
           onClick={[Function]}
         >
           <Icon
-            type="arrow-left"
+            type="arrow-right"
           >
             <i
-              className="kdicon kdicon-arrow-left"
+              className="kdicon kdicon-arrow-right"
               onClick={[Function]}
               onMouseEnter={[Function]}
               onMouseLeave={[Function]}
@@ -638,10 +638,10 @@ exports[`Pagination 4. render null or undefined without errors render null or un
           onClick={[Function]}
         >
           <Icon
-            type="arrow-right"
+            type="arrow-left"
           >
             <i
-              className="kdicon kdicon-arrow-right"
+              className="kdicon kdicon-arrow-left"
               onClick={[Function]}
               onMouseEnter={[Function]}
               onMouseLeave={[Function]}
@@ -658,10 +658,10 @@ exports[`Pagination 4. render null or undefined without errors render null or un
           onClick={[Function]}
         >
           <Icon
-            type="last"
+            type="first"
           >
             <i
-              className="kdicon kdicon-last"
+              className="kdicon kdicon-first"
               onClick={[Function]}
               onMouseEnter={[Function]}
               onMouseLeave={[Function]}

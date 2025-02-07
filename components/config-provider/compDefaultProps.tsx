@@ -338,9 +338,9 @@ const compDefaultProps = {
     disabled: false,
     draggable: false,
     virtual: true,
-    switcherIcon: function () {
-      return <Icon type="arrow-right-solid" />
-    },
+    // switcherIcon: function () {
+    //   return <Icon type="arrow-right-solid" />
+    // },
     estimatedItemSize: 32,
     expandOnClickNode: true,
     expandOnFilterNode: false,

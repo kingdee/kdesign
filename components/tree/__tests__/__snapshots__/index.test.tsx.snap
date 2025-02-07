@@ -2,7 +2,7 @@
 
 exports[`Tree renders correctly 1`] = `
 <div
-  class="kd-tree"
+  class="kd-tree-rtl kd-tree"
 >
   <div
     class="kd-tree-root"
@@ -22,7 +22,7 @@ exports[`Tree renders correctly 1`] = `
 
 exports[`Tree renders correctly 2`] = `
 <div
-  class="kd-tree"
+  class="kd-tree-rtl kd-tree"
 >
   <div
     class="kd-tree-root"
@@ -42,13 +42,13 @@ exports[`Tree renders correctly 2`] = `
 
 exports[`Tree renders correctly 3`] = `
 <div
-  class="kd-tree"
+  class="kd-tree-rtl kd-tree"
 >
   <div
     class="kd-tree-root"
   >
     <div
-      class="kd-tree-node-item kd-tree-node-item-hover kd-tree-node-item-0"
+      class="kd-tree-node-rtl kd-tree-node-item kd-tree-node-item-hover kd-tree-node-item-0"
       style="height:32px"
     >
       <div
@@ -59,7 +59,7 @@ exports[`Tree renders correctly 3`] = `
           class="kd-tree-node-icon kd-tree-node-animation-collapse"
         >
           <i
-            class="kdicon kdicon-arrow-right-solid"
+            class="kdicon kdicon-arrow-left-solid"
           />
         </span>
         <div
@@ -90,7 +90,7 @@ exports[`Tree renders correctly 3`] = `
       </div>
     </div>
     <div
-      class="kd-tree-node-item kd-tree-node-item-hover kd-tree-node-item-1"
+      class="kd-tree-node-rtl kd-tree-node-item kd-tree-node-item-hover kd-tree-node-item-1"
       style="height:32px"
     >
       <div
@@ -101,7 +101,7 @@ exports[`Tree renders correctly 3`] = `
           class="kd-tree-node-icon kd-tree-node-animation-collapse"
         >
           <i
-            class="kdicon kdicon-arrow-right-solid"
+            class="kdicon kdicon-arrow-left-solid"
           />
         </span>
         <div
@@ -132,7 +132,7 @@ exports[`Tree renders correctly 3`] = `
       </div>
     </div>
     <div
-      class="kd-tree-node-item kd-tree-node-item-hover kd-tree-node-item-2"
+      class="kd-tree-node-rtl kd-tree-node-item kd-tree-node-item-hover kd-tree-node-item-2"
       style="height:32px"
     >
       <div
@@ -170,7 +170,7 @@ exports[`Tree renders correctly 3`] = `
       </div>
     </div>
     <div
-      class="kd-tree-node-item kd-tree-node-item-hover kd-tree-node-item-3"
+      class="kd-tree-node-rtl kd-tree-node-item kd-tree-node-item-hover kd-tree-node-item-3"
       style="height:32px"
     >
       <div
