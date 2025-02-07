@@ -226,3 +226,17 @@
     border-top: @modal-border-width solid @modal-border-color;
   }
 }
+
+.@{modal-prefix-cls}-rtl {
+  direction: rtl;
+  .@{modal-prefix-cls}-container-box {
+    .@{modal-prefix-cls}-footer {
+      .@{modal-prefix-cls}-cancel-node {
+        .@{modal-prefix-cls}-margin-btn {
+          margin-left: @modal-footer-button-spacing;
+          margin-right: 0;
+        }
+      }
+    }
+  }
+}

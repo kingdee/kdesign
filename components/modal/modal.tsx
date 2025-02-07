@@ -115,7 +115,7 @@ const InternalModal = (
   props: IModalProps,
   ref: React.RefObject<HTMLDivElement>,
 ): ReactElement | React.ReactPortal | null => {
-  const { getPrefixCls, prefixCls, compDefaultProps: userDefaultProps } = useContext(ConfigContext)
+  const { getPrefixCls, prefixCls, compDefaultProps: userDefaultProps, direction } = useContext(ConfigContext)
   const modalProps: IModalProps = getCompProps('Modal', userDefaultProps, props) // 属性需要合并一遍用户定义的默认属性
   const {
     body,
@@ -169,6 +169,7 @@ const InternalModal = (
   const wrapperRef = useRef<HTMLDivElement>(null)
   const containerRef = ref || innerRef
   const modalPrefixCls = getPrefixCls!(prefixCls, 'modal', customPrefixcls)
+  const rtlCls = direction === 'rtl' ? `${modalPrefixCls}-rtl` : null
   devWarning(ModalTypes.indexOf(type!) === -1, 'modal', `cannot found modal type '${type}'`)
   let modalContainer: Element | CSSSelector | undefined | null | false =
     typeof getContainer === 'function' ? getContainer() : getContainer
@@ -452,7 +453,7 @@ const InternalModal = (
   }
 
   const isHidden = !destroyOnClose && !(isForceController ? visible : innerVisible)
-  const modalClasses = classNames(modalPrefixCls, className, {
+  const modalClasses = classNames(modalPrefixCls, rtlCls, className, {
     [`${modalPrefixCls}-container`]: true,
     [`${modalPrefixCls}-container-ie`]: isIE,
     [`${modalPrefixCls}-container-hidden`]: isHidden,

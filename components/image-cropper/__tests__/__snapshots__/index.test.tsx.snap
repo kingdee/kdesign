@@ -51,7 +51,7 @@ exports[`ImageCropper render no child without errors 1`] = `
       containerInfo={
         <body>
           <div
-            class="kd-modal kd-image-cropper-modal-container kd-modal-container kd-modal-container-show"
+            class="kd-modal kd-modal-rtl kd-image-cropper-modal-container kd-modal-container kd-modal-container-show"
           >
             <div
               class="kd-modal-mask"
@@ -155,7 +155,7 @@ exports[`ImageCropper render no child without errors 1`] = `
       }
     >
       <div
-        className="kd-modal kd-image-cropper-modal-container kd-modal-container kd-modal-container-show"
+        className="kd-modal kd-modal-rtl kd-image-cropper-modal-container kd-modal-container kd-modal-container-show"
       >
         <div
           className="kd-modal-mask"
@@ -478,7 +478,7 @@ exports[`ImageCropper render null or undefined ImageCropper without errors 1`] =
       containerInfo={
         <body>
           <div
-            class="kd-modal kd-image-cropper-modal-container kd-modal-container kd-modal-container-show"
+            class="kd-modal kd-modal-rtl kd-image-cropper-modal-container kd-modal-container kd-modal-container-show"
           >
             <div
               class="kd-modal-mask"
@@ -579,7 +579,7 @@ exports[`ImageCropper render null or undefined ImageCropper without errors 1`] =
             </div>
           </div>
           <div
-            class="kd-modal kd-image-cropper-modal-container kd-modal-container kd-modal-container-show"
+            class="kd-modal kd-modal-rtl kd-image-cropper-modal-container kd-modal-container kd-modal-container-show"
           >
             <div
               class="kd-modal-mask"
@@ -683,7 +683,7 @@ exports[`ImageCropper render null or undefined ImageCropper without errors 1`] =
       }
     >
       <div
-        className="kd-modal kd-image-cropper-modal-container kd-modal-container kd-modal-container-show"
+        className="kd-modal kd-modal-rtl kd-image-cropper-modal-container kd-modal-container kd-modal-container-show"
       >
         <div
           className="kd-modal-mask"
@@ -957,7 +957,7 @@ exports[`ImageCropper render null or undefined ImageCropper without errors 1`] =
 
 exports[`ImageCropper renders correctly 1`] = `
 <div
-  class="kd-modal kd-image-cropper-modal-container kd-modal-container kd-modal-container-show"
+  class="kd-modal kd-modal-rtl kd-image-cropper-modal-container kd-modal-container kd-modal-container-show"
 >
   <div
     class="kd-modal-mask"

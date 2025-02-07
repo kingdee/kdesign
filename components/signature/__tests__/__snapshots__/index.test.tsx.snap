@@ -17,7 +17,7 @@ Array [
     </div>
   </div>,
   <div
-    class="kd-modal kd-signature-modal kd-modal-container kd-modal-container-hidden"
+    class="kd-modal kd-modal-rtl kd-signature-modal kd-modal-container kd-modal-container-hidden"
   >
     <div
       class="kd-modal-mask"
@@ -242,7 +242,7 @@ exports[`Signature render no child without errors 1`] = `
     width={610}
   >
     <div
-      className="kd-modal kd-signature-modal kd-modal-container kd-modal-container-hidden"
+      className="kd-modal kd-modal-rtl kd-signature-modal kd-modal-container kd-modal-container-hidden"
     >
       <div
         className="kd-modal-mask"
@@ -578,7 +578,7 @@ exports[`Signature render null or undefined Signature without errors 1`] = `
       containerInfo={
         <body>
           <div
-            class="kd-modal kd-signature-modal kd-modal-container kd-modal-container-hidden"
+            class="kd-modal kd-modal-rtl kd-signature-modal kd-modal-container kd-modal-container-hidden"
           >
             <div
               class="kd-modal-mask"
@@ -695,7 +695,7 @@ exports[`Signature render null or undefined Signature without errors 1`] = `
       }
     >
       <div
-        className="kd-modal kd-signature-modal kd-modal-container kd-modal-container-hidden"
+        className="kd-modal kd-modal-rtl kd-signature-modal kd-modal-container kd-modal-container-hidden"
       >
         <div
           className="kd-modal-mask"
@@ -938,7 +938,7 @@ exports[`Signature should getContainer use right 1`] = `
     </div>
   </div>
   <div
-    class="kd-modal kd-signature-modal kd-modal-container kd-modal-container-hidden"
+    class="kd-modal kd-modal-rtl kd-signature-modal kd-modal-container kd-modal-container-hidden"
   >
     <div
       class="kd-modal-mask"
@@ -1069,7 +1069,7 @@ exports[`Signature should getContainer use right 2`] = `
     </div>
   </div>
   <div
-    class="kd-modal kd-signature-modal kd-modal-container kd-modal-container-hidden"
+    class="kd-modal kd-modal-rtl kd-signature-modal kd-modal-container kd-modal-container-hidden"
   >
     <div
       class="kd-modal-mask"
@@ -1202,7 +1202,7 @@ exports[`Signature should getContainer use right 3`] = `
     </div>
   </div>
   <div
-    class="kd-modal kd-signature-modal kd-modal-container kd-modal-container-hidden"
+    class="kd-modal kd-modal-rtl kd-signature-modal kd-modal-container kd-modal-container-hidden"
   >
     <div
       class="kd-modal-mask"
@@ -1434,7 +1434,7 @@ exports[`Signature should getContainer use right 4`] = `
           containerInfo={
             <body>
               <div
-                class="kd-modal kd-signature-modal kd-modal-container kd-modal-container-hidden"
+                class="kd-modal kd-modal-rtl kd-signature-modal kd-modal-container kd-modal-container-hidden"
               >
                 <div
                   class="kd-modal-mask"
@@ -1548,7 +1548,7 @@ exports[`Signature should getContainer use right 4`] = `
                 </div>
               </div>
               <div
-                class="kd-modal kd-signature-modal kd-modal-container kd-modal-container-hidden"
+                class="kd-modal kd-modal-rtl kd-signature-modal kd-modal-container kd-modal-container-hidden"
               >
                 <div
                   class="kd-modal-mask"
@@ -1662,7 +1662,7 @@ exports[`Signature should getContainer use right 4`] = `
                 </div>
               </div>
               <div
-                class="kd-modal kd-signature-modal kd-modal-container kd-modal-container-hidden"
+                class="kd-modal kd-modal-rtl kd-signature-modal kd-modal-container kd-modal-container-hidden"
                 data-test="test"
               >
                 <div
@@ -1777,7 +1777,7 @@ exports[`Signature should getContainer use right 4`] = `
                 </div>
               </div>
               <div
-                class="kd-modal kd-signature-modal kd-modal-container kd-modal-container-hidden"
+                class="kd-modal kd-modal-rtl kd-signature-modal kd-modal-container kd-modal-container-hidden"
               >
                 <div
                   class="kd-modal-mask"
@@ -1894,7 +1894,7 @@ exports[`Signature should getContainer use right 4`] = `
           }
         >
           <div
-            className="kd-modal kd-signature-modal kd-modal-container kd-modal-container-hidden"
+            className="kd-modal kd-modal-rtl kd-signature-modal kd-modal-container kd-modal-container-hidden"
           >
             <div
               className="kd-modal-mask"
