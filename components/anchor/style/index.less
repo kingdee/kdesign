@@ -198,3 +198,18 @@
     transition: all calc(@anchor-transition-duration - 0.1s) cubic-bezier(0.4, 0, 0.6, 1);
   }
 }
+
+.@{anchor-prefix-cls}-rtl {
+  direction: rtl;
+  .@{anchor-prefix-cls} {
+    padding-right: @anchor-link-left;
+    padding-left: 0;
+    &-line {
+      right: @anchor-link-left;
+      left: auto;
+    }
+    &-link {
+      text-align: right;
+    }
+  }
+}
