@@ -313,3 +313,58 @@ textarea {
     border-color: @input-error-color;
   }
 }
+
+.@{input-prefix-cls}-rtl {
+  direction: rtl;
+  &.@{input-prefix-cls}-group {
+    .@{input-prefix-cls}-group-addon {
+      &:first-child {
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+        border-top-right-radius: @input-border-radius-inner;
+        border-bottom-right-radius: @input-border-radius-inner;
+        border-left: none;
+        border-right: 1px solid @input-border-color-disabled-inner;
+      }
+      &:last-child {
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+        border-top-left-radius: @input-border-radius-inner;
+        border-bottom-left-radius: @input-border-radius-inner;
+        border-right: none;
+        border-left: 1px solid @input-border-color-disabled-inner;
+      }
+    }
+  }
+  &.@{input-prefix-cls}-wrapper {
+    .@{input-prefix-cls}-prefix {
+      margin-right: 0;
+      margin-left: calc(@input-small-padding-vertical-inner * 2);
+    }
+    .@{input-prefix-cls}-suffix {
+      margin-left: 0;
+      margin-right: calc(@input-small-padding-vertical-inner * 2);
+    }
+    .@{input-prefix-cls}-clear-icon-rightSpace {
+      margin-left: 4px;
+      margin-right: 0;
+    }
+  }
+  .@{input-prefix-cls}-textarea-mark {
+    right: auto;
+    left: 2px;
+    &-inner {
+      top: auto;
+      left: 8px;
+      right: auto;
+    }
+  }
+  .@{input-prefix-cls}-textarea-clear-icon {
+    left: 8px;
+    right: auto;
+  }
+  &.@{input-prefix-cls}-allowClear-spacing {
+    padding-right: @input-small-padding-horizontal-inner;
+    padding-left: 20px;
+  }
+}

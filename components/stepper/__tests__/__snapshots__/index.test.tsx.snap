@@ -2,7 +2,7 @@
 
 exports[`Stepper 2. render test renders correctly 1`] = `
 <span
-  class="kd-input-wrapper kd-input-wrapper-size-middle kd-inputNumber kd-inputNumber-stepper"
+  class="kd-input-rtl kd-input-wrapper kd-input-wrapper-size-middle kd-inputNumber kd-inputNumber-stepper"
 >
   <span
     class="kd-input-prefix"
@@ -16,7 +16,7 @@ exports[`Stepper 2. render test renders correctly 1`] = `
     </span>
   </span>
   <input
-    class="kd-input kd-input-size-middle"
+    class="kd-input kd-input-rtl kd-input-size-middle"
     stepperrref="[object Object]"
     type="text"
     value=""
@@ -37,10 +37,10 @@ exports[`Stepper 2. render test renders correctly 1`] = `
 
 exports[`Stepper 2. render test renders correctly 2`] = `
 <span
-  class="kd-input-wrapper kd-input-wrapper-size-middle kd-inputNumber kd-inputNumber-stepper"
+  class="kd-input-rtl kd-input-wrapper kd-input-wrapper-size-middle kd-inputNumber kd-inputNumber-stepper"
 >
   <input
-    class="kd-input kd-input-size-middle"
+    class="kd-input kd-input-rtl kd-input-size-middle"
     stepperrref="[object Object]"
     type="text"
     value=""
@@ -72,7 +72,7 @@ exports[`Stepper 2. render test renders correctly 2`] = `
 
 exports[`Stepper 2. render test renders correctly 3`] = `
 <span
-  class="kd-input-wrapper kd-input-wrapper-size-middle kd-inputNumber kd-inputNumber-stepper"
+  class="kd-input-rtl kd-input-wrapper kd-input-wrapper-size-middle kd-inputNumber kd-inputNumber-stepper"
 >
   <span
     class="kd-input-prefix"
@@ -86,7 +86,7 @@ exports[`Stepper 2. render test renders correctly 3`] = `
     </span>
   </span>
   <input
-    class="kd-input kd-input-size-middle"
+    class="kd-input kd-input-rtl kd-input-size-middle"
     stepperrref="[object Object]"
     type="text"
     value=""

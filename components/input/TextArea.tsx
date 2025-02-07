@@ -33,7 +33,7 @@ export interface AutoSizeType {
 const InternalTextarea = (props: TextAreaProps, ref: unknown): FunctionComponentElement<TextAreaProps> => {
   const thisTextareaRef = useRef<HTMLElement>()
   const textareaRef = (ref as any) || thisTextareaRef
-  const { getPrefixCls, prefixCls, compDefaultProps: userDefaultProps } = useContext(ConfigContext)
+  const { getPrefixCls, prefixCls, compDefaultProps: userDefaultProps, direction } = useContext(ConfigContext)
   const textAreaProps = getCompProps('TextArea', userDefaultProps, props)
   const [textareaStyles, setTextareaStyles] = useState({})
   const {
@@ -63,6 +63,7 @@ const InternalTextarea = (props: TextAreaProps, ref: unknown): FunctionComponent
     ...others
   } = textAreaProps
   const textAreaPrefixCls = getPrefixCls!(prefixCls, 'input', customPrefixcls)
+  const rtlCls = direction === 'rtl' ? `${textAreaPrefixCls}-rtl` : null
   devWarning(BorderTypes.indexOf(borderType) === -1, 'textarea', `cannot found textarea borderType '${borderType}'`)
 
   const [value, setValue] = useMergedState('', {
@@ -172,6 +173,7 @@ const InternalTextarea = (props: TextAreaProps, ref: unknown): FunctionComponent
         style={Object.assign({}, textareaStyles, hadCount || !!allowClear ? otherStyles : style)}
         className={classNames(
           `${prefixCls}-textarea`,
+          rtlCls,
           {
             [`${prefixCls}-size-${size}`]: size,
             [`${prefixCls}-borderless`]: borderType === 'none',
@@ -193,7 +195,10 @@ const InternalTextarea = (props: TextAreaProps, ref: unknown): FunctionComponent
       />
     )
     return hadCount ? (
-      <span style={wrapperStyle} className={`${prefixCls}-countWrapper ${className && !allowClear ? className : ''}`}>
+      <span
+        style={wrapperStyle}
+        className={classNames(rtlCls, `${prefixCls}-countWrapper ${className && !allowClear ? className : ''}`)}
+      >
         {textarea}
         {renderNumberMark()}
       </span>
@@ -216,6 +221,7 @@ const InternalTextarea = (props: TextAreaProps, ref: unknown): FunctionComponent
       prefixCls={textAreaPrefixCls}
       element={renderTextArea(textAreaPrefixCls)}
       numberMark={renderNumberMark()}
+      direction={direction}
     />
   )
 }

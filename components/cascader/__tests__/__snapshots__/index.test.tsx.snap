@@ -25,9 +25,10 @@ exports[`Cascader render null or undefined without errors 1`] = `
         <ClearableInput
           borderType="underline"
           className="kd-cascader-picker-input"
+          direction="rtl"
           element={
             <input
-              className="kd-input kd-input-size-middle kd-input-underline"
+              className="kd-input kd-input-rtl kd-input-size-middle kd-input-underline"
               onBlur={[Function]}
               onChange={[Function]}
               onFocus={[Function]}
@@ -56,13 +57,13 @@ exports[`Cascader render null or undefined without errors 1`] = `
           value={Array []}
         >
           <span
-            className="kd-input-wrapper kd-input-wrapper-size-middle kd-input-wrapper-underline kd-cascader-picker-input"
+            className="kd-input-rtl kd-input-wrapper kd-input-wrapper-size-middle kd-input-wrapper-underline kd-cascader-picker-input"
             onClick={[Function]}
             onMouseEnter={[Function]}
             onMouseLeave={[Function]}
           >
             <input
-              className="kd-input kd-input-size-middle kd-input-underline"
+              className="kd-input kd-input-rtl kd-input-size-middle kd-input-underline"
               onBlur={[Function]}
               onChange={[Function]}
               onFocus={[Function]}
@@ -110,10 +111,10 @@ exports[`Cascader renders correctly 1`] = `
     class="kd-cascader-single-wrapper"
   >
     <span
-      class="kd-input-wrapper kd-input-wrapper-size-middle kd-input-wrapper-underline kd-cascader-picker-input"
+      class="kd-input-rtl kd-input-wrapper kd-input-wrapper-size-middle kd-input-wrapper-underline kd-cascader-picker-input"
     >
       <input
-        class="kd-input kd-input-size-middle kd-input-underline"
+        class="kd-input kd-input-rtl kd-input-size-middle kd-input-underline"
         placeholder="Please select"
         readonly=""
         type="text"
@@ -143,10 +144,10 @@ exports[`Cascader renders correctly 2`] = `
     class="kd-cascader-single-wrapper"
   >
     <span
-      class="kd-input-wrapper kd-input-wrapper-size-middle kd-input-wrapper-underline kd-cascader-picker-input"
+      class="kd-input-rtl kd-input-wrapper kd-input-wrapper-size-middle kd-input-wrapper-underline kd-cascader-picker-input"
     >
       <input
-        class="kd-input kd-input-size-middle kd-input-underline"
+        class="kd-input kd-input-rtl kd-input-size-middle kd-input-underline"
         placeholder="Please select"
         readonly=""
         type="text"
@@ -176,10 +177,10 @@ exports[`Cascader renders correctly 3`] = `
     class="kd-cascader-single-wrapper"
   >
     <span
-      class="kd-input-wrapper kd-input-wrapper-size-middle kd-cascader-picker-input"
+      class="kd-input-rtl kd-input-wrapper kd-input-wrapper-size-middle kd-cascader-picker-input"
     >
       <input
-        class="kd-input kd-input-size-middle"
+        class="kd-input kd-input-rtl kd-input-size-middle"
         placeholder="Please select"
         readonly=""
         type="text"

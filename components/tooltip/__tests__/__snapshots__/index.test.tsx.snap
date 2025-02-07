@@ -48,9 +48,10 @@ exports[`Tooltip special case 测试ref返回值不为dom元素 1`] = `
       <ClearableInput
         borderType="bordered"
         className="kd-popper-reference"
+        direction="rtl"
         element={
           <input
-            className="kd-input kd-input-size-middle"
+            className="kd-input kd-input-rtl kd-input-size-middle"
             onBlur={[Function]}
             onChange={[Function]}
             onFocus={[Function]}
@@ -71,7 +72,7 @@ exports[`Tooltip special case 测试ref返回值不为dom元素 1`] = `
         value=""
       >
         <span
-          className="kd-input-wrapper kd-input-wrapper-size-middle kd-popper-reference"
+          className="kd-input-rtl kd-input-wrapper kd-input-wrapper-size-middle kd-popper-reference"
           onClick={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
@@ -83,7 +84,7 @@ exports[`Tooltip special case 测试ref返回值不为dom元素 1`] = `
             KDesign
           </span>
           <input
-            className="kd-input kd-input-size-middle"
+            className="kd-input kd-input-rtl kd-input-size-middle"
             onBlur={[Function]}
             onChange={[Function]}
             onFocus={[Function]}

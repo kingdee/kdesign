@@ -19,10 +19,11 @@ exports[`Search render null or undefined without errors 1`] = `
     >
       <ClearableInput
         borderType="none"
+        direction="rtl"
         disabled={false}
         element={
           <input
-            className="kd-input kd-input-size-middle kd-input-borderless"
+            className="kd-input kd-input-rtl kd-input-size-middle kd-input-borderless"
             disabled={false}
             onBlur={[Function]}
             onChange={[Function]}
@@ -50,7 +51,7 @@ exports[`Search render null or undefined without errors 1`] = `
         value=""
       >
         <input
-          className="kd-input kd-input-size-middle kd-input-borderless"
+          className="kd-input kd-input-rtl kd-input-size-middle kd-input-borderless"
           disabled={false}
           onBlur={[Function]}
           onChange={[Function]}
@@ -71,7 +72,7 @@ exports[`Search renders correctly 1`] = `
   class="kd-search kd-search-size-large"
 >
   <input
-    class="kd-input kd-input-size-large kd-input-borderless"
+    class="kd-input kd-input-rtl kd-input-size-large kd-input-borderless"
     placeholder="请输入需要搜索的内容"
     type="text"
     value=""
@@ -84,7 +85,7 @@ exports[`Search renders correctly 2`] = `
   class="kd-search kd-search-size-middle"
 >
   <input
-    class="kd-input kd-input-size-middle kd-input-borderless"
+    class="kd-input kd-input-rtl kd-input-size-middle kd-input-borderless"
     placeholder="请输入需要搜索的内容"
     type="text"
     value=""
@@ -97,7 +98,7 @@ exports[`Search renders correctly 3`] = `
   class="kd-search kd-search-size-small"
 >
   <input
-    class="kd-input kd-input-size-small kd-input-borderless"
+    class="kd-input kd-input-rtl kd-input-size-small kd-input-borderless"
     placeholder="请输入需要搜索的内容"
     type="text"
     value=""
@@ -110,7 +111,7 @@ exports[`Search renders correctly 4`] = `
   class="kd-search kd-search-size-middle kd-search-borderless"
 >
   <input
-    class="kd-input kd-input-size-middle kd-input-borderless"
+    class="kd-input kd-input-rtl kd-input-size-middle kd-input-borderless"
     placeholder="请输入需要搜索的内容"
     type="text"
     value=""
@@ -123,7 +124,7 @@ exports[`Search renders correctly 5`] = `
   class="kd-search kd-search-size-middle"
 >
   <input
-    class="kd-input kd-input-size-middle kd-input-borderless"
+    class="kd-input kd-input-rtl kd-input-size-middle kd-input-borderless"
     placeholder="请输入需要搜索的内容"
     type="text"
     value=""
@@ -136,7 +137,7 @@ exports[`Search renders correctly 6`] = `
   class="kd-search kd-search-size-middle kd-search-border"
 >
   <input
-    class="kd-input kd-input-size-middle kd-input-borderless"
+    class="kd-input kd-input-rtl kd-input-size-middle kd-input-borderless"
     placeholder="请输入需要搜索的内容"
     type="text"
     value=""
@@ -149,7 +150,7 @@ exports[`Search renders correctly 7`] = `
   class="kd-search kd-search-size-middle"
 >
   <input
-    class="kd-input kd-input-size-middle kd-input-borderless"
+    class="kd-input kd-input-rtl kd-input-size-middle kd-input-borderless"
     placeholder="请输入需要搜索的内容"
     type="text"
     value=""
