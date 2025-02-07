@@ -32,7 +32,7 @@ export interface ITagProps {
 
 // remove this line and code Tag component here
 const InteranalTag = (props: ITagProps, ref: unknown): FunctionComponentElement<any> => {
-  const { getPrefixCls, prefixCls, compDefaultProps: userDefaultProps } = useContext(ConfigContext)
+  const { getPrefixCls, prefixCls, compDefaultProps: userDefaultProps, direction } = useContext(ConfigContext)
   const tagProps = getCompProps('Tag', userDefaultProps, props)
   const {
     className,
@@ -56,7 +56,7 @@ const InteranalTag = (props: ITagProps, ref: unknown): FunctionComponentElement<
   devWarning(TagSizes.indexOf(size) === -1, 'tag', `cannot found tag size '${size}'`)
 
   const tagPrefixCls = getPrefixCls!(prefixCls, 'tag', customPrefixcls)
-
+  const rtlCls = direction === 'rtl' ? `${tagPrefixCls}-rtl` : null
   const handleClick = (e: React.MouseEvent<HTMLSpanElement, MouseEvent>) => {
     if (!clickable) return
     onClick && onClick(e)
@@ -88,7 +88,7 @@ const InteranalTag = (props: ITagProps, ref: unknown): FunctionComponentElement<
   // 预设的颜色值
   const isPresetColor = ['process', 'success', 'warning', 'error', 'end', 'expired'].indexOf(color) > -1
 
-  const tagClasses = classNames(tagPrefixCls, className, {
+  const tagClasses = classNames(tagPrefixCls, rtlCls, className, {
     [`${tagPrefixCls}-shape-${type}`]: type,
     [`${tagPrefixCls}-${color}`]: isPresetColor,
     [`${tagPrefixCls}-has-color`]: !isPresetColor && color && type === 'attribute',
