@@ -133,7 +133,7 @@ export interface AnchorProps {
   onChange?: (currentActiveLink: string) => void
 }
 const InternalAnchor = (props: AnchorProps, ref: unknown): React.FunctionComponentElement<AnchorProps> => {
-  const { getPrefixCls, prefixCls, compDefaultProps: userDefaultProps } = useContext(ConfigContext)
+  const { getPrefixCls, prefixCls, compDefaultProps: userDefaultProps, direction } = useContext(ConfigContext)
   const anchorProps = getCompProps('Anchor', userDefaultProps, props)
   const {
     prefixCls: customPrefixcls,
@@ -156,7 +156,7 @@ const InternalAnchor = (props: AnchorProps, ref: unknown): React.FunctionCompone
   } = anchorProps
 
   const anchorPrefixCls = getPrefixCls!(prefixCls, 'anchor', customPrefixcls) // 锚点样式前缀
-
+  const rtlCls = direction === 'rtl' ? `${anchorPrefixCls}-rtl` : null
   devWarning(AnchorTypes.indexOf(type) === -1, 'anchor', `cannot found anchor type '${type}'`)
 
   const [activeLink, setActiveLink] = useState<string | null>(null)
@@ -183,7 +183,7 @@ const InternalAnchor = (props: AnchorProps, ref: unknown): React.FunctionCompone
   const linksWidthRef = React.useRef<number[]>([])
   const animating = React.useRef<boolean>(false)
 
-  const wrapperClass = classNames(className, {
+  const wrapperClass = classNames(className, rtlCls, {
     [`${anchorPrefixCls}-wrapper`]: true,
   })
 
@@ -431,7 +431,7 @@ const InternalAnchor = (props: AnchorProps, ref: unknown): React.FunctionCompone
     }
     return (
       <span className={leftClasses} onClick={handleLeft}>
-        <Icon type="arrow-left" />
+        <Icon type={`${direction === 'rtl' ? 'arrow-right' : 'arrow-left'}`} />
       </span>
     )
   }
@@ -461,13 +461,17 @@ const InternalAnchor = (props: AnchorProps, ref: unknown): React.FunctionCompone
     }
     return (
       <span className={rightClasses} onClick={handleRight}>
-        <Icon type="arrow-right" />
+        <Icon type={`${direction === 'rtl' ? 'arrow-left' : 'arrow-right'}`} />
       </span>
     )
   }
 
   const anchorMenuContent = (
-    <div ref={anchorRef} className={`${anchorPrefixCls}-menu-wrapper`} style={{ width: '100%', ...style }}>
+    <div
+      ref={anchorRef}
+      className={classNames(`${anchorPrefixCls}-menu-wrapper`, rtlCls)}
+      style={{ width: '100%', ...style }}
+    >
       <div
         className={anchorMenuClass}
         style={
