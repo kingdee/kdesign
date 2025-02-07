@@ -2,7 +2,7 @@
 
 exports[`Image renders correctly 1`] = `
 <div
-  class="kd-image error"
+  class="kd-image kd-image-rtl error"
   style="width:42px"
 >
   <img

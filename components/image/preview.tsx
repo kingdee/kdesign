@@ -44,6 +44,7 @@ const Preview: React.FC<PreviewProps> = (props) => {
     prefixCls: pkgPrefixCls,
     compDefaultProps: userDefaultProps,
     locale,
+    direction,
   } = React.useContext(ConfigContext)
 
   // 属性需要合并一遍用户定义的默认属性
@@ -66,7 +67,7 @@ const Preview: React.FC<PreviewProps> = (props) => {
 
   // className前缀
   const prefixCls = getPrefixCls!(pkgPrefixCls, 'image', customPrefixcls)
-
+  const rtlCls = direction === 'rtl' ? `${prefixCls}-rtl` : null
   const [show, setShow] = React.useState(visible)
   React.useEffect(() => {
     setShow(visible)
@@ -129,7 +130,7 @@ const Preview: React.FC<PreviewProps> = (props) => {
   }
 
   const peviewContainer = (
-    <div className={classNames(`${prefixCls}-preview`, props.className, { show })} style={{ ...props.style }}>
+    <div className={classNames(`${prefixCls}-preview`, rtlCls, props.className, { show })} style={{ ...props.style }}>
       <div className={`${prefixCls}-preview-mask`} onClick={onClose}></div>
       <Draggable defaultClassName={`${prefixCls}-preview-wrap`} position={{ x: 0, y: 0 }}>
         <div onClick={onClose}>
@@ -138,13 +139,21 @@ const Preview: React.FC<PreviewProps> = (props) => {
       </Draggable>
       <div className={`${prefixCls}-preview-action`}>
         {props.type !== 'upload' && length && (
-          <Icon type="arrow-left" className={classNames({ disabled: current <= 0 })} onClick={props.onPrevious} />
+          <Icon
+            type={direction === 'rtl' ? 'arrow-right' : 'arrow-left'}
+            className={classNames({ disabled: current <= 0 })}
+            onClick={props.onPrevious}
+          />
         )}
         <Icon type="shrink" className={classNames({ disabled: scale <= minScale })} onClick={handleZoomOut} />
         <Icon type="zoom" className={classNames({ disabled: scale >= maxScale })} onClick={handleZoomIn} />
         {props.type !== 'upload' && operations}
         {props.type !== 'upload' && length && (
-          <Icon type="arrow-right" className={classNames({ disabled: current >= length - 1 })} onClick={props.onNext} />
+          <Icon
+            type={direction === 'rtl' ? 'arrow-left' : 'arrow-right'}
+            className={classNames({ disabled: current >= length - 1 })}
+            onClick={props.onNext}
+          />
         )}
       </div>
       {props.type === 'upload' && length && (
