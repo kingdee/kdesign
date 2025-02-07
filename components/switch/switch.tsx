@@ -26,7 +26,7 @@ export interface ISwitchProps {
 }
 
 const Switch: FC<ISwitchProps> = (props) => {
-  const { getPrefixCls, prefixCls, compDefaultProps: userDefaultProps } = useContext(ConfigContext)
+  const { getPrefixCls, prefixCls, compDefaultProps: userDefaultProps, direction } = useContext(ConfigContext)
   const switchProps = getCompProps('Switch', userDefaultProps, props)
   const {
     size,
@@ -48,6 +48,7 @@ const Switch: FC<ISwitchProps> = (props) => {
     defaultValue: defaultChecked,
   })
   const switchPrefixCls = getPrefixCls!(prefixCls, 'switch', customPrefixcls)
+  const rtlCls = direction === 'rtl' ? `${switchPrefixCls}-rtl` : null
   const handleClick = (e: React.MouseEvent<HTMLDivElement | HTMLAnchorElement, MouseEvent>) => {
     const newV = triggerChange(!newChecked, e)
     onClick && onClick(newV, e)
@@ -65,7 +66,7 @@ const Switch: FC<ISwitchProps> = (props) => {
     return afterChangedChecked
   }
   // ref
-  const switchClasses = classNames(switchPrefixCls, className, {
+  const switchClasses = classNames(switchPrefixCls, rtlCls, className, {
     [`${switchPrefixCls}-size-${size}`]: size, // 尺寸样式
     [`${switchPrefixCls}-disabled`]: disabled || loading, // 禁用态样式
     [`${switchPrefixCls}-loading`]: loading, // 加载中样式

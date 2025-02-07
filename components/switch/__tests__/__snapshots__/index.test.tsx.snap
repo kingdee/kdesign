@@ -3,7 +3,7 @@
 exports[`Switch render no child without errors 1`] = `
 <Switch>
   <span
-    className="kd-switch kd-switch-size-small"
+    className="kd-switch kd-switch-rtl kd-switch-size-small"
     onClick={[Function]}
   >
     <div
@@ -16,7 +16,7 @@ exports[`Switch render no child without errors 1`] = `
 exports[`Switch render null or undefined without errors 1`] = `
 <Switch>
   <span
-    className="kd-switch kd-switch-size-small"
+    className="kd-switch kd-switch-rtl kd-switch-size-small"
     onClick={[Function]}
   >
     <div
@@ -28,7 +28,7 @@ exports[`Switch render null or undefined without errors 1`] = `
 
 exports[`Switch renders correctly 1`] = `
 <span
-  class="kd-switch kd-switch-size-small"
+  class="kd-switch kd-switch-rtl kd-switch-size-small"
 >
   <div
     class="kd-switch-inner"
@@ -38,7 +38,7 @@ exports[`Switch renders correctly 1`] = `
 
 exports[`Switch renders correctly 2`] = `
 <span
-  class="kd-switch kd-switch-size-large"
+  class="kd-switch kd-switch-rtl kd-switch-size-large"
 >
   <div
     class="kd-switch-inner"
@@ -48,7 +48,7 @@ exports[`Switch renders correctly 2`] = `
 
 exports[`Switch renders correctly 3`] = `
 <span
-  class="kd-switch kd-switch-size-small"
+  class="kd-switch kd-switch-rtl kd-switch-size-small"
 >
   <div
     class="kd-switch-inner"

@@ -4,7 +4,6 @@
 @switch-prefix-cls: ~'@{kd-prefix}-switch';
 @icon-prefix-cls: ~'@{kd-prefix}icon';
 
-
 .@{switch-prefix-cls} {
   .switch;
 
@@ -25,7 +24,7 @@
 
     .@{icon-prefix-cls}-loadding-circle {
       animation: loadingcircle 1s infinite;
-      animation-timing-function: cubic-bezier(0.42, 0.00, 0.58, 1.00);
+      animation-timing-function: cubic-bezier(0.42, 0, 0.58, 1);
       font-size: @switch-small-font-size;
       line-height: 1;
       vertical-align: baseline;
@@ -78,5 +77,13 @@
     .@{switch-prefix-cls}-inner {
       margin: @switch-inner-large-margin;
     }
+  }
+}
+
+.@{switch-prefix-cls}-rtl {
+  direction: rtl;
+  transform: rotateY(180deg);
+  .@{switch-prefix-cls}-inner {
+    transform: rotateY(180deg);
   }
 }
