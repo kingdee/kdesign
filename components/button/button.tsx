@@ -40,7 +40,7 @@ export interface IButtonProps {
   htmlType?: ButtonHTMLType
 }
 const InternalButton = (props: IButtonProps, ref: unknown): FunctionComponentElement<IButtonProps> => {
-  const { getPrefixCls, prefixCls, compDefaultProps: userDefaultProps } = useContext(ConfigContext)
+  const { getPrefixCls, prefixCls, compDefaultProps: userDefaultProps, direction } = useContext(ConfigContext)
   const buttonProps = getCompProps('Button', userDefaultProps, props) // 按钮属性需要合并一遍用户定义的默认属性
   const {
     type,
@@ -64,6 +64,7 @@ const InternalButton = (props: IButtonProps, ref: unknown): FunctionComponentEle
   devWarning(ButtonTypes.indexOf(type) === -1, 'button', `cannot found button type '${type}'`)
 
   const btnPrefixCls = getPrefixCls!(prefixCls, 'btn', customPrefixcls) // 按钮样式前缀
+  const rtlCls = direction === 'rtl' ? `${btnPrefixCls}-rtl` : null
   /**
    * 按钮click事件处理
    * @param {React.MouseEvent<HTMLButtonElement | HTMLAnchorElement, MouseEvent>} e 事件对象
@@ -105,7 +106,7 @@ const InternalButton = (props: IButtonProps, ref: unknown): FunctionComponentEle
     return child
   }
   const isTextBtn = type === 'text' // 判断按钮是否文本类型。这些类型下有部分样式不适用
-  const btnClasses = classNames(btnPrefixCls, className, {
+  const btnClasses = classNames(btnPrefixCls, rtlCls, className, {
     [`${btnPrefixCls}-${type}`]: type, // 类型样式
     [`${btnPrefixCls}-size-${size}`]: size, // 尺寸样式
     [`${btnPrefixCls}-shape-${shape}`]: shape && !isTextBtn, // 圆或椭圆形状样式

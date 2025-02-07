@@ -32,7 +32,7 @@ export interface ButtonGroupProps extends PopperProps {
 }
 
 const InternalButtonGroup = (props: ButtonGroupProps, ref: unknown): FunctionComponentElement<ButtonGroupProps> => {
-  const { getPrefixCls, prefixCls, compDefaultProps: userDefaultProps } = useContext(ConfigContext)
+  const { getPrefixCls, prefixCls, compDefaultProps: userDefaultProps, direction } = useContext(ConfigContext)
 
   const buttonGoupProps = getCompProps('ButtonGroup', userDefaultProps, props)
   const {
@@ -61,6 +61,7 @@ const InternalButtonGroup = (props: ButtonGroupProps, ref: unknown): FunctionCom
   const isBsicType = type === 'basic'
 
   const btnGroupPrefixCls = getPrefixCls!(prefixCls, 'btn-group', customPrefixcls)
+  const rtlCls = direction === 'rtl' ? `${btnGroupPrefixCls}-rtl` : null
   const btnGroupClasses = classNames(`${btnGroupPrefixCls}`, className, {
     [`${btnGroupPrefixCls}-${type}`]: type,
   })
@@ -140,11 +141,11 @@ const InternalButtonGroup = (props: ButtonGroupProps, ref: unknown): FunctionCom
   }
 
   const popperProps = {
-    placement: 'bottomLeft',
+    placement: direction === 'rtl' ? 'bottomRight' : 'bottomLeft',
     trigger: 'click',
     gap: 0,
     ...buttonGoupProps,
-    prefixCls: btnGroupPrefixCls,
+    prefixCls: classNames(btnGroupPrefixCls, rtlCls),
     defaultVisible: optionShow,
     visible: optionShow,
     onVisibleChange: handleVisibleChange,
