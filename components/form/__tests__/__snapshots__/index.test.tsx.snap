@@ -59,9 +59,10 @@ exports[`Form renders correctly 1`] = `
             >
               <ClearableInput
                 borderType="underline"
+                direction="rtl"
                 element={
                   <input
-                    className="kd-input kd-input-size-middle kd-input-underline"
+                    className="kd-input kd-input-rtl kd-input-size-middle kd-input-underline"
                     onBlur={[Function]}
                     onChange={[Function]}
                     onFocus={[Function]}
@@ -81,7 +82,7 @@ exports[`Form renders correctly 1`] = `
                 value=""
               >
                 <input
-                  className="kd-input kd-input-size-middle kd-input-underline"
+                  className="kd-input kd-input-rtl kd-input-size-middle kd-input-underline"
                   onBlur={[Function]}
                   onChange={[Function]}
                   onFocus={[Function]}
@@ -151,9 +152,10 @@ exports[`Form renders correctly 2`] = `
             >
               <ClearableInput
                 borderType="underline"
+                direction="rtl"
                 element={
                   <input
-                    className="kd-input kd-input-size-middle kd-input-underline"
+                    className="kd-input kd-input-rtl kd-input-size-middle kd-input-underline"
                     onBlur={[Function]}
                     onChange={[Function]}
                     onFocus={[Function]}
@@ -173,7 +175,7 @@ exports[`Form renders correctly 2`] = `
                 value=""
               >
                 <input
-                  className="kd-input kd-input-size-middle kd-input-underline"
+                  className="kd-input kd-input-rtl kd-input-size-middle kd-input-underline"
                   onBlur={[Function]}
                   onChange={[Function]}
                   onFocus={[Function]}
@@ -243,9 +245,10 @@ exports[`Form renders correctly 3`] = `
             >
               <ClearableInput
                 borderType="underline"
+                direction="rtl"
                 element={
                   <input
-                    className="kd-input kd-input-size-middle kd-input-underline"
+                    className="kd-input kd-input-rtl kd-input-size-middle kd-input-underline"
                     onBlur={[Function]}
                     onChange={[Function]}
                     onFocus={[Function]}
@@ -265,7 +268,7 @@ exports[`Form renders correctly 3`] = `
                 value=""
               >
                 <input
-                  className="kd-input kd-input-size-middle kd-input-underline"
+                  className="kd-input kd-input-rtl kd-input-size-middle kd-input-underline"
                   onBlur={[Function]}
                   onChange={[Function]}
                   onFocus={[Function]}
@@ -338,9 +341,10 @@ exports[`Form renders correctly 4`] = `
             >
               <ClearableInput
                 borderType="underline"
+                direction="rtl"
                 element={
                   <input
-                    className="kd-input kd-input-size-middle kd-input-underline"
+                    className="kd-input kd-input-rtl kd-input-size-middle kd-input-underline"
                     onBlur={[Function]}
                     onChange={[Function]}
                     onFocus={[Function]}
@@ -360,7 +364,7 @@ exports[`Form renders correctly 4`] = `
                 value=""
               >
                 <input
-                  className="kd-input kd-input-size-middle kd-input-underline"
+                  className="kd-input kd-input-rtl kd-input-size-middle kd-input-underline"
                   onBlur={[Function]}
                   onChange={[Function]}
                   onFocus={[Function]}
@@ -433,9 +437,10 @@ exports[`Form renders correctly 5`] = `
             >
               <ClearableInput
                 borderType="underline"
+                direction="rtl"
                 element={
                   <input
-                    className="kd-input kd-input-size-middle kd-input-underline"
+                    className="kd-input kd-input-rtl kd-input-size-middle kd-input-underline"
                     onBlur={[Function]}
                     onChange={[Function]}
                     onFocus={[Function]}
@@ -455,7 +460,7 @@ exports[`Form renders correctly 5`] = `
                 value=""
               >
                 <input
-                  className="kd-input kd-input-size-middle kd-input-underline"
+                  className="kd-input kd-input-rtl kd-input-size-middle kd-input-underline"
                   onBlur={[Function]}
                   onChange={[Function]}
                   onFocus={[Function]}
@@ -528,9 +533,10 @@ exports[`Form renders correctly 6`] = `
             >
               <ClearableInput
                 borderType="underline"
+                direction="rtl"
                 element={
                   <input
-                    className="kd-input kd-input-size-middle kd-input-underline"
+                    className="kd-input kd-input-rtl kd-input-size-middle kd-input-underline"
                     onBlur={[Function]}
                     onChange={[Function]}
                     onFocus={[Function]}
@@ -550,7 +556,7 @@ exports[`Form renders correctly 6`] = `
                 value=""
               >
                 <input
-                  className="kd-input kd-input-size-middle kd-input-underline"
+                  className="kd-input kd-input-rtl kd-input-size-middle kd-input-underline"
                   onBlur={[Function]}
                   onChange={[Function]}
                   onFocus={[Function]}
@@ -622,10 +628,11 @@ exports[`Form renders correctly 7`] = `
             >
               <ClearableInput
                 borderType="underline"
+                direction="rtl"
                 disabled={true}
                 element={
                   <input
-                    className="kd-input kd-input-size-middle kd-input-underline kd-input-disabled"
+                    className="kd-input kd-input-rtl kd-input-size-middle kd-input-underline kd-input-disabled"
                     disabled={true}
                     onBlur={[Function]}
                     onChange={[Function]}
@@ -646,7 +653,7 @@ exports[`Form renders correctly 7`] = `
                 value=""
               >
                 <input
-                  className="kd-input kd-input-size-middle kd-input-underline kd-input-disabled"
+                  className="kd-input kd-input-rtl kd-input-size-middle kd-input-underline kd-input-disabled"
                   disabled={true}
                   onBlur={[Function]}
                   onChange={[Function]}

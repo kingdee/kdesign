@@ -52,7 +52,7 @@ export interface InputProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 
 }
 
 const InternalInput = (props: InputProps, ref: unknown): FunctionComponentElement<InputProps> => {
-  const { getPrefixCls, prefixCls, compDefaultProps: userDefaultProps } = useContext(ConfigContext)
+  const { getPrefixCls, prefixCls, compDefaultProps: userDefaultProps, direction } = useContext(ConfigContext)
   const inputProps = getCompProps('Input', userDefaultProps, props)
   const {
     type,
@@ -88,9 +88,10 @@ const InternalInput = (props: InputProps, ref: unknown): FunctionComponentElemen
   const [showNumberMark, setShowNumberMark] = useState(true)
   const inputRef: any = useRef<HTMLElement>()
   const inputPrefixCls = getPrefixCls!(prefixCls, 'input', customPrefixcls)
-
+  const rtlCls = direction === 'rtl' ? `${inputPrefixCls}-rtl` : null
   const inputClasses = classNames(
     inputPrefixCls,
+    rtlCls,
     {
       [`${inputPrefixCls}-size-${size}`]: size,
       [`${inputPrefixCls}-borderless`]: borderType === 'none',
@@ -211,6 +212,7 @@ const InternalInput = (props: InputProps, ref: unknown): FunctionComponentElemen
       focused={focused}
       count={count}
       inputCount={renderCount()}
+      direction={direction}
     />
   )
 }

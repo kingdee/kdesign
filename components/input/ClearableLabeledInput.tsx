@@ -28,6 +28,7 @@ interface ClearableInputProps {
   numberMark?: React.ReactNode
   inputCount?: React.ReactNode
   status?: 'error'
+  direction?: 'ltr' | 'rtl'
 }
 const ClearableInput: React.FC<ClearableInputProps> = (props) => {
   const {
@@ -51,11 +52,12 @@ const ClearableInput: React.FC<ClearableInputProps> = (props) => {
     inputCount,
     count,
     status,
+    direction,
   } = props
 
   const fixRef = useRef(null)
   const [isMouseEnter, setIsMouseEnter] = useState<boolean>(false)
-
+  const rtlCls = direction === 'rtl' ? `${prefixCls}-rtl` : null
   const mouseEnterHandle: React.MouseEventHandler = () => {
     setIsMouseEnter(true)
   }
@@ -115,6 +117,7 @@ const ClearableInput: React.FC<ClearableInputProps> = (props) => {
       </span>
     ) : null
     const inputWrapperClasses = classNames(
+      rtlCls,
       {
         [`${prefixCls}-wrapper`]: true,
         [`${prefixCls}-wrapper-focused`]: focused && !disabled,
@@ -155,7 +158,7 @@ const ClearableInput: React.FC<ClearableInputProps> = (props) => {
     })
     const addonBeforeNode = addonBefore ? <span className={addonClassName}>{addonBefore}</span> : null
     const addonAfterNode = addonAfter ? <span className={addonClassName}>{addonAfter}</span> : null
-    const inputGroupClasses = classNames(className, {
+    const inputGroupClasses = classNames(className, rtlCls, {
       [`${prefixCls}-group`]: true,
       [`${prefixCls}-group-size-${size}`]: size,
     })
@@ -183,7 +186,7 @@ const ClearableInput: React.FC<ClearableInputProps> = (props) => {
         delete wrapperStyle[key as keyof typeof wrapperStyle]
       }
     }
-    const textAreaWrapperClasses = classNames(className, {
+    const textAreaWrapperClasses = classNames(className, rtlCls, {
       [`${prefixCls}-wrapper-textarea`]: true,
     })
     return (
