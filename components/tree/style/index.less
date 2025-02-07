@@ -200,3 +200,30 @@
     align-items: center;
   }
 }
+.@{tree-prefix-cls}-rtl {
+  direction: rtl;
+  .@{tree-prefix-cls}-root {
+    .@{tree-node-prefix-cls}-item {
+      .@{tree-node-prefix-cls}-root {
+        .@{tree-node-prefix-cls}-indent {
+          margin-right: 0;
+          margin-left: 6px;
+        }
+        .@{tree-node-prefix-cls}-title-wrap {
+          padding-right: 4px;
+          padding-left: 0;
+          .@{kd-prefix}-checkbox {
+            &-default-margin {
+              margin-right: 0;
+              margin-left: 4px;
+            }
+          }
+        }
+        .@{tree-node-prefix-cls}-animation-expand {
+          transform: rotate(-90deg);
+        }
+      }
+    }
+  }
+}
+

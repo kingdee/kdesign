@@ -98,7 +98,7 @@ export type PosDataType = {
 export type SearchStatus = 'NONE' | 'SEARCH_START' | 'SEARCH_DONE'
 
 const InternalTree = React.forwardRef((props: TreeProps, ref: any): React.FunctionComponentElement<TreeProps> => {
-  const { getPrefixCls, prefixCls, compDefaultProps: userDefaultProps } = useContext(ConfigContext)
+  const { getPrefixCls, prefixCls, compDefaultProps: userDefaultProps, direction } = useContext(ConfigContext)
 
   const TreeProps = getCompProps('Tree', userDefaultProps, props) // 按钮属性需要合并一遍用户定义的默认属性
   const {
@@ -150,7 +150,8 @@ const InternalTree = React.forwardRef((props: TreeProps, ref: any): React.Functi
   } = TreeProps
 
   const treePrefixCls = getPrefixCls!(prefixCls, 'tree', customPrefixcls) // 树样式前缀
-  const treeNodeClassName = classNames(className, {
+  const rtlCls = direction === 'rtl' ? `${treePrefixCls}-rtl` : null
+  const treeNodeClassName = classNames(className, rtlCls, {
     [`${treePrefixCls}`]: true,
     [`${treePrefixCls}-show-line`]: showLine,
   })

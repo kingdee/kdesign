@@ -55,7 +55,7 @@ export interface TreeNodeProps {
 }
 
 const TreeNode = React.forwardRef<unknown, TreeNodeProps>((props) => {
-  const { getPrefixCls, prefixCls, compDefaultProps: userDefaultProps } = useContext(ConfigContext)
+  const { getPrefixCls, prefixCls, compDefaultProps: userDefaultProps, direction } = useContext(ConfigContext)
 
   const TreeNodeProps = getCompProps('TreeNode', userDefaultProps, props) // 按钮属性需要合并一遍用户定义的默认属性
   const {
@@ -235,7 +235,7 @@ const TreeNode = React.forwardRef<unknown, TreeNodeProps>((props) => {
             expandOnClickNode ? (onlyExpandOnClickIcon ? handleExpandIconClick : undefined) : handleExpandIconClick
           }
         >
-          {renderIcon(switcherIcon || <Icon type="arrow-right-solid" />)}
+          {renderIcon(switcherIcon || <Icon type={`arrow-${direction === 'rtl' ? 'left' : 'right'}-solid`} />)}
         </span>
       )
     } else {
