@@ -38,7 +38,12 @@ const findItem: (element: any) => any = (element) => {
 }
 
 const Dropdown = React.forwardRef<HTMLDivElement, DropDownProps>((props, ref) => {
-  const { getPrefixCls, prefixCls: pkgPrefixCls, compDefaultProps: userDefaultProps } = React.useContext(ConfigContext)
+  const {
+    getPrefixCls,
+    prefixCls: pkgPrefixCls,
+    compDefaultProps: userDefaultProps,
+    direction,
+  } = React.useContext(ConfigContext)
 
   const allProps = getCompProps('Dropdown', userDefaultProps, props)
 
@@ -177,6 +182,7 @@ const Dropdown = React.forwardRef<HTMLDivElement, DropDownProps>((props, ref) =>
     prefixCls,
     popperStyle: innerAnimation ? popperStyle : { animation: 'none', ...popperStyle },
     onVisibleChange: handleVisibleChange,
+    placement: direction === 'rtl' ? 'bottomRight' : 'bottomLeft',
   }
 
   return usePopper(child, menuElement, popperProps)
