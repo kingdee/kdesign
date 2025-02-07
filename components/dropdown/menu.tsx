@@ -24,7 +24,12 @@ export interface DropdownItemProps {
 }
 
 const Menu = React.forwardRef<unknown, DropdownMenuProps>((props, ref) => {
-  const { getPrefixCls, prefixCls: pkgPrefixCls, compDefaultProps: userDefaultProps } = React.useContext(ConfigContext)
+  const {
+    getPrefixCls,
+    prefixCls: pkgPrefixCls,
+    compDefaultProps: userDefaultProps,
+    direction,
+  } = React.useContext(ConfigContext)
 
   const {
     prefixCls: customPrefixcls,
@@ -36,7 +41,7 @@ const Menu = React.forwardRef<unknown, DropdownMenuProps>((props, ref) => {
   } = getCompProps('DropdownMenu', userDefaultProps, props)
 
   const prefixCls = getPrefixCls!(pkgPrefixCls, 'dropdown-menu', customPrefixcls)
-
+  const rtlCls = direction === 'rtl' ? `${prefixCls}-rtl` : null
   const cloneItem = (item: React.ReactElement, index?: number) => {
     if (!React.isValidElement(item)) {
       return item
@@ -47,7 +52,7 @@ const Menu = React.forwardRef<unknown, DropdownMenuProps>((props, ref) => {
   }
 
   return (
-    <ul className={classNames(prefixCls, className)} role="menu" {...restProps} ref={ref}>
+    <ul className={classNames(prefixCls, rtlCls, className)} role="menu" {...restProps} ref={ref}>
       {React.Children.map(children, cloneItem)}
     </ul>
   )
