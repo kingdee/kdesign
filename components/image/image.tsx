@@ -50,7 +50,6 @@ const ImageInternal: React.ForwardRefRenderFunction<unknown, ImageProps> = (prop
 
   // className前缀
   const prefixCls = getPrefixCls!(pkgPrefixCls, 'image', customPrefixcls)
-
   const [exit, setExit] = React.useState(false)
   React.useEffect(() => {
     if (exit) setVisible(true)
