@@ -46,7 +46,7 @@ export interface CheckboxGroupProps {
   onChange?: React.MouseEventHandler<HTMLElement> // 点击事件
 }
 const CheckboxGroup = React.forwardRef<HTMLDivElement, CheckboxGroupProps>((props, ref) => {
-  const { getPrefixCls, prefixCls, compDefaultProps: userDefaultProps } = useContext(ConfigContext)
+  const { getPrefixCls, prefixCls, compDefaultProps: userDefaultProps, direction } = useContext(ConfigContext)
   const CheckboxProps = getCompProps('CheckboxGroup', userDefaultProps, props) // 多选组属性需要合并一遍用户定义的默认属性
   const {
     checkboxType,
@@ -80,7 +80,7 @@ const CheckboxGroup = React.forwardRef<HTMLDivElement, CheckboxGroupProps>((prop
   const isControlled = typeof value !== 'undefined'
 
   const checkboxGroupPrefixCls = getPrefixCls!(prefixCls, 'checkbox-group', customPrefixcls) // 按钮样式前缀
-
+  const rtlCls = direction === 'rtl' ? `${checkboxGroupPrefixCls}-rtl` : null
   devWarning(isArrayValueRepeat(groupValue), 'checkboxGroup', `variable value's value should be unique `)
 
   const getReduceItem = (targetValue: CheckboxValueType) => {
@@ -143,7 +143,7 @@ const CheckboxGroup = React.forwardRef<HTMLDivElement, CheckboxGroupProps>((prop
     })
   }
   return (
-    <ul className={classnames(checkboxGroupPrefixCls, className)} style={style} ref={ref as any} {...rest}>
+    <ul className={classnames(checkboxGroupPrefixCls, rtlCls, className)} style={style} ref={ref as any} {...rest}>
       <GroupContext.Provider value={context}>
         {options && options.length > 0 ? renderByOptions() : children}
       </GroupContext.Provider>
