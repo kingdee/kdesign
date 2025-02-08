@@ -19,11 +19,11 @@
   list-style: none;
   overflow: hidden;
 
-  &-expired{
+  &-expired {
     margin-bottom: @qrcode-spacing-margin-vertical;
   }
 
-  &-mask{
+  &-mask {
     position: absolute;
     z-index: 10;
     display: flex;
@@ -36,7 +36,11 @@
     background: @qrcode-color-background;
     text-align: center;
   }
-  &-borderless{
+  &-borderless {
     border: none;
   }
+}
+
+.@{qrcode-prefix-cls}-rtl {
+  direction: rtl;
 }

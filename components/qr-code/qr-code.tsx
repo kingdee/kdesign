@@ -59,6 +59,7 @@ const QRCode = (props: QRCodeProps): FunctionComponentElement<QRCodeProps> => {
     prefixCls,
     compDefaultProps: userDefaultProps,
     locale: { getCompLangMsg },
+    direction,
   } = useContext(ConfigContext)
   const qrCodeProps = getCompProps('QRCode', userDefaultProps, props)
 
@@ -79,7 +80,8 @@ const QRCode = (props: QRCodeProps): FunctionComponentElement<QRCodeProps> => {
 
   const { className, prefixCls: customPrefixcls } = qrCodeProps
   const qrCodePrefixCls = getPrefixCls!(prefixCls, 'qrcode', customPrefixcls)
-  const qrCodeClass = classNames(qrCodePrefixCls, className, {
+  const rtlCls = direction === 'rtl' ? `${qrCodePrefixCls}-rtl` : null
+  const qrCodeClass = classNames(qrCodePrefixCls, rtlCls, className, {
     [`${qrCodePrefixCls}-borderless`]: !bordered,
   })
 
