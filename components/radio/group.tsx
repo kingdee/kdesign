@@ -7,7 +7,7 @@ import Radio from './radio'
 import { RadioGroupContextProvider } from './context'
 
 const RadioGroup = React.forwardRef<HTMLDivElement, IRadioGroupProps>((props, ref) => {
-  const { getPrefixCls, prefixCls, compDefaultProps: userDefaultProps } = React.useContext(ConfigContext)
+  const { getPrefixCls, prefixCls, compDefaultProps: userDefaultProps, direction } = React.useContext(ConfigContext)
 
   const initValue = typeof props.value === 'undefined' ? props.defaultValue : props.value
   const [value, setValue] = React.useState(initValue)
@@ -42,6 +42,7 @@ const RadioGroup = React.forwardRef<HTMLDivElement, IRadioGroupProps>((props, re
       prefixCls: customPrefixcls,
     } = getCompProps('RadioGroup', userDefaultProps, props) // 属性需要合并一遍用户定义的默认属性
     const groupPrefixCls = getPrefixCls?.(prefixCls, `radio-group`, customPrefixcls) // 单选组样式前缀
+    const rtlCls = direction === 'rtl' ? `${groupPrefixCls}-rtl` : null
     const radioPrefixCls = getPrefixCls?.(prefixCls, `radio`, customPrefixcls) // 单选样式前缀
     let childrenToRender = children
     // 如果存在 options, 优先使用
@@ -79,7 +80,7 @@ const RadioGroup = React.forwardRef<HTMLDivElement, IRadioGroupProps>((props, re
     }
 
     return (
-      <div className={classNames(groupPrefixCls, className)} style={style} id={id} ref={ref}>
+      <div className={classNames(groupPrefixCls, rtlCls, className)} style={style} id={id} ref={ref}>
         {childrenToRender}
       </div>
     )

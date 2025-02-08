@@ -11,7 +11,8 @@ import devWarning from '../_utils/devwarning'
 
 const InternalRadio: React.ForwardRefRenderFunction<HTMLElement, IRadioProps> = (props, ref) => {
   const context = React.useContext(RadioGroupContext)
-  const { getPrefixCls, prefixCls, compDefaultProps: userDefaultProps } = React.useContext(ConfigContext)
+  const { getPrefixCls, prefixCls, compDefaultProps: userDefaultProps, direction } = React.useContext(ConfigContext)
+
   const innerRef = React.useRef<HTMLElement>()
   const mergedRef = ref || innerRef
 
@@ -40,6 +41,8 @@ const InternalRadio: React.ForwardRefRenderFunction<HTMLElement, IRadioProps> = 
 
   const getPrefix = (radioType: string) => `radio${radioType === 'square' ? `-${radioType}` : ''}`
   const radioPrefixCls = getPrefixCls?.(prefixCls, getPrefix(radioType), customPrefixcls) // 样式前缀
+  const rtlCls = direction === 'rtl' ? `${radioPrefixCls}-rtl` : null
+
   const [isChecked, setIsChecked] = React.useState(initValue)
 
   React.useEffect(() => {
@@ -63,6 +66,7 @@ const InternalRadio: React.ForwardRefRenderFunction<HTMLElement, IRadioProps> = 
   }
 
   const classString = classNames(
+    rtlCls,
     {
       [`${radioPrefixCls}`]: true,
       [`${radioPrefixCls}-disabled`]: disabled,

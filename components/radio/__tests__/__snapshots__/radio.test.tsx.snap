@@ -2,7 +2,7 @@
 
 exports[`Radio 2.render test should render correctly 1`] = `
 <label
-  class="myPrefix customized"
+  class="myPrefix-rtl myPrefix customized"
   style="color:red"
 >
   <input
@@ -20,7 +20,7 @@ exports[`Radio 2.render test should render correctly 1`] = `
 exports[`Radio 3.render no child without errors render no child without errors 1`] = `
 <Radio>
   <label
-    className="kd-radio"
+    className="kd-radio-rtl kd-radio"
   >
     <input
       checked={false}
@@ -35,7 +35,7 @@ exports[`Radio 3.render no child without errors render no child without errors 1
 exports[`Radio 4. render null or undefined without errors render null or undefined without errors 1`] = `
 <Radio>
   <label
-    className="kd-radio"
+    className="kd-radio-rtl kd-radio"
   >
     <input
       checked={false}
