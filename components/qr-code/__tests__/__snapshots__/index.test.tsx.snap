@@ -2,7 +2,7 @@
 
 exports[`QRCode 2. render test renders correctly 1`] = `
 <div
-  class="kd-qrcode"
+  class="kd-qrcode kd-qrcode-rtl"
   style="width:104px;height:104px"
 >
   <canvas
@@ -16,7 +16,7 @@ exports[`QRCode 2. render test renders correctly 1`] = `
 
 exports[`QRCode 2. render test renders correctly 2`] = `
 <div
-  class="kd-qrcode"
+  class="kd-qrcode kd-qrcode-rtl"
   style="width:104px;height:104px"
 >
   <svg
@@ -41,7 +41,7 @@ exports[`QRCode 2. render test renders correctly 2`] = `
 
 exports[`QRCode 2. render test renders correctly 3`] = `
 <div
-  class="kd-qrcode"
+  class="kd-qrcode kd-qrcode-rtl"
   style="width:104px;height:104px"
 >
   <canvas
@@ -55,7 +55,7 @@ exports[`QRCode 2. render test renders correctly 3`] = `
 
 exports[`QRCode 2. render test renders correctly 4`] = `
 <div
-  class="kd-qrcode"
+  class="kd-qrcode kd-qrcode-rtl"
   style="width:104px;height:104px"
 >
   <div
@@ -78,7 +78,7 @@ exports[`QRCode 2. render test renders correctly 4`] = `
 
 exports[`QRCode 2. render test renders correctly 5`] = `
 <div
-  class="kd-qrcode"
+  class="kd-qrcode kd-qrcode-rtl"
   style="width:104px;height:104px"
 >
   <div
@@ -116,7 +116,7 @@ exports[`QRCode 2. render test renders correctly 5`] = `
 
 exports[`QRCode 2. render test renders correctly 6`] = `
 <div
-  class="kd-qrcode"
+  class="kd-qrcode kd-qrcode-rtl"
   style="width:104px;height:104px"
 >
   <canvas
@@ -130,7 +130,7 @@ exports[`QRCode 2. render test renders correctly 6`] = `
 
 exports[`QRCode 2. render test renders correctly 7`] = `
 <div
-  class="kd-qrcode"
+  class="kd-qrcode kd-qrcode-rtl"
   style="width:104px;height:104px"
 >
   <canvas
@@ -144,7 +144,7 @@ exports[`QRCode 2. render test renders correctly 7`] = `
 
 exports[`QRCode 2. render test renders correctly 8`] = `
 <div
-  class="kd-qrcode"
+  class="kd-qrcode kd-qrcode-rtl"
   style="width:104px;height:104px"
 >
   <canvas
@@ -158,7 +158,7 @@ exports[`QRCode 2. render test renders correctly 8`] = `
 
 exports[`QRCode 2. render test renders correctly 9`] = `
 <div
-  class="kd-qrcode"
+  class="kd-qrcode kd-qrcode-rtl"
   style="width:104px;height:104px"
 >
   <canvas
