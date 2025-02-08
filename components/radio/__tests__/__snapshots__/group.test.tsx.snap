@@ -2,10 +2,10 @@
 
 exports[`Radio Group passes prefixCls down to radio 1`] = `
 <div
-  class="my-radio"
+  class="my-radio my-radio-rtl"
 >
   <label
-    class="my-radio"
+    class="my-radio-rtl my-radio"
   >
     <input
       class="my-radio-input"
@@ -19,7 +19,7 @@ exports[`Radio Group passes prefixCls down to radio 1`] = `
     </span>
   </label>
   <label
-    class="my-radio"
+    class="my-radio-rtl my-radio"
     style="font-size:12px"
   >
     <input
