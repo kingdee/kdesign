@@ -25,7 +25,7 @@ export interface CollapseProps {
 }
 
 const InternalCollapse = React.forwardRef<unknown, CollapseProps>((props, ref) => {
-  const { getPrefixCls, prefixCls, compDefaultProps: userDefaultProps } = React.useContext(ConfigContext)
+  const { getPrefixCls, prefixCls, compDefaultProps: userDefaultProps, direction } = React.useContext(ConfigContext)
   const {
     accordion,
     activeKey,
@@ -40,7 +40,7 @@ const InternalCollapse = React.forwardRef<unknown, CollapseProps>((props, ref) =
     prefixCls: customPrefixcls,
   } = getCompProps('Collapse', userDefaultProps, props)
   const CollapsePrefixCls = getPrefixCls!(prefixCls, 'collapse', customPrefixcls)
-
+  const rtlCls = direction === 'rtl' ? `${CollapsePrefixCls}-rtl` : null
   const [innerKey, setInnerKey] = useState<PanelKeyType[]>([])
   const convertActiveKey = (newKey: KeyType) => {
     let ret: PanelKeyType[] = []
@@ -105,7 +105,7 @@ const InternalCollapse = React.forwardRef<unknown, CollapseProps>((props, ref) =
     })
   }
 
-  const rootClassName = classNames(className, {
+  const rootClassName = classNames(className, rtlCls, {
     [`${CollapsePrefixCls}`]: true,
   })
 
