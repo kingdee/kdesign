@@ -2,7 +2,7 @@
 
 exports[`ColorPicker renders correctly 1`] = `
 <div
-  class="kd-color-picker-container"
+  class="kd-color-picker-container kd-color-picker-rtl"
 >
   <span
     class="kd-input-rtl kd-input-wrapper kd-input-wrapper-size-middle kd-input-wrapper-underline kd-color-picker-input"
@@ -35,7 +35,7 @@ exports[`ColorPicker renders correctly 1`] = `
 
 exports[`ColorPicker renders correctly 2`] = `
 <div
-  class="kd-color-picker-container"
+  class="kd-color-picker-container kd-color-picker-rtl"
 >
   <span
     class="kd-input-rtl kd-input-wrapper kd-input-wrapper-size-middle kd-color-picker-input"
@@ -69,7 +69,7 @@ exports[`ColorPicker renders correctly 2`] = `
 exports[`ColorPicker renders correctly with no child 1`] = `
 <ColorPicker>
   <div
-    className="kd-color-picker-container"
+    className="kd-color-picker-container kd-color-picker-rtl"
   >
     <Input
       borderType="bordered"
@@ -198,7 +198,7 @@ exports[`ColorPicker renders correctly with no child 1`] = `
 exports[`ColorPicker renders correctly with null or undefined 1`] = `
 <ColorPicker>
   <div
-    className="kd-color-picker-container"
+    className="kd-color-picker-container kd-color-picker-rtl"
   >
     <Input
       borderType="bordered"
