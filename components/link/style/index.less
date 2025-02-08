@@ -59,3 +59,17 @@
     margin-left: @link-suffix-horizontal;
   }
 }
+
+.@{link-prefix-cls}-rtl {
+  direction: rtl;
+  .@{link-prefix-cls} {
+    &-prefix {
+      margin-right: 0;
+      margin-left: @link-prefix-horizontal;
+    }
+    &-suffix {
+      margin-left: 0;
+      margin-right: @link-suffix-horizontal;
+    }
+  }
+} 

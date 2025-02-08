@@ -22,7 +22,7 @@ export interface ILinkProps {
 }
 
 const InternalLink = (props: ILinkProps, ref: unknown): FunctionComponentElement<ILinkProps> => {
-  const { getPrefixCls, prefixCls, compDefaultProps: userDefaultProps } = useContext(ConfigContext)
+  const { getPrefixCls, prefixCls, compDefaultProps: userDefaultProps, direction } = useContext(ConfigContext)
   const linkProps = getCompProps('Link', userDefaultProps, props)
   const {
     size,
@@ -44,8 +44,8 @@ const InternalLink = (props: ILinkProps, ref: unknown): FunctionComponentElement
   const linkRef = (ref as React.RefObject<HTMLDivElement>) || React.createRef<HTMLElement>()
 
   const linkPrefixCls = getPrefixCls!(prefixCls, 'link', customPrefixcls) // 按钮样式前缀
-
-  const wrapperClasses = classNames({
+  const rtlCls = direction === 'rtl' ? `${linkPrefixCls}-rtl` : null // 文字方向
+  const wrapperClasses = classNames(rtlCls, {
     [`${linkPrefixCls}`]: true,
     [`${linkPrefixCls}-size-${size}`]: size, // 尺寸样式
   })
