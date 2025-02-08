@@ -19,7 +19,7 @@ const InternalOption: React.ForwardRefRenderFunction<unknown, ICityPickerOptionP
     onChangeActiveIndex,
   } = props
   const { id, name } = city as City
-  const { getPrefixCls, prefixCls } = useContext(ConfigContext)
+  const { getPrefixCls, prefixCls, direction } = useContext(ConfigContext)
   const selectOptionPrefixCls = getPrefixCls!(prefixCls, 'city-picker-list-item')
 
   const isSelected = id !== undefined ? id === value : false
@@ -44,6 +44,11 @@ const InternalOption: React.ForwardRefRenderFunction<unknown, ICityPickerOptionP
       <div ref={optionRef} className={optionCls} title={name} onClick={handleClick} onMouseEnter={handleOnMouseEnter}>
         {typeof itemRender === 'function' ? (
           itemRender(city)
+        ) : direction === 'rtl' ? (
+          <>
+            <span className={`${selectOptionPrefixCls}-info`}>{renderCityInfo?.(city, true)}</span>
+            <span className={`${selectOptionPrefixCls}-content`}>{children}</span>
+          </>
         ) : (
           <>
             <span className={`${selectOptionPrefixCls}-content`}>{children}</span>

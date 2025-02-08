@@ -20,7 +20,7 @@ const getCityId = (data: City | string | number) => {
 }
 
 const InternalSelect: React.ForwardRefRenderFunction<CityPickerProps> = (props: any, ref: unknown) => {
-  const { getPrefixCls, prefixCls, compDefaultProps: userDefaultProps, locale } = useContext(ConfigContext)
+  const { getPrefixCls, prefixCls, compDefaultProps: userDefaultProps, locale, direction } = useContext(ConfigContext)
   const selectProps = getCompProps('CityPicker', userDefaultProps, props)
   const cityPickerLangMsg = locale.getCompLangMsg({ componentName: 'CityPicker' })
   const {
@@ -83,7 +83,8 @@ const InternalSelect: React.ForwardRefRenderFunction<CityPickerProps> = (props: 
   const isDomestic = (type: Type) => type === 'domestic'
 
   const selectPrefixCls = getPrefixCls!(prefixCls, 'city-picker', customPrefixcls)
-  const cityPickerCls = classNames(selectPrefixCls, className, {
+  const rtlCls = direction === 'rtl' ? `${selectPrefixCls}-rtl` : null
+  const cityPickerCls = classNames(selectPrefixCls, rtlCls, className, {
     [`${selectPrefixCls}-visible`]: optionShow,
   })
 
@@ -324,6 +325,9 @@ const InternalSelect: React.ForwardRefRenderFunction<CityPickerProps> = (props: 
       if (isDomestic(type)) {
         if (isCommon) {
           const curVal = data?.province ? data?.province : data?.country || ''
+          if (direction === 'rtl') {
+            return `${curVal}${flag && curVal ? symbol : ''}`
+          }
           return `${flag && curVal ? symbol : ''}${curVal}`
         }
         if (data?.type) {
@@ -331,14 +335,25 @@ const InternalSelect: React.ForwardRefRenderFunction<CityPickerProps> = (props: 
             (data.type === 'domestic'
               ? data?.province || data?.country
               : [data?.province, data?.country].filter(Boolean).join(symbol)) || ''
+          if (direction === 'rtl') {
+            return `${curVal}${flag && curVal ? symbol : ''}`
+          }
           return `${flag && curVal ? symbol : ''}${curVal}`
         }
         const curVal =
           tabsValue === 'domestic'
             ? data?.province || data?.country || ''
             : [data?.province, data?.country].filter(Boolean).join(symbol)
+        if (direction === 'rtl') {
+          return `${curVal}${flag && curVal ? symbol : ''}`
+        }
         return `${flag && curVal ? symbol : ''}${curVal}`
       } else {
+        if (direction === 'rtl') {
+          return `${[data?.province, data?.country].filter(Boolean).join(symbol)}${
+            flag && (data?.province || data?.country) ? symbol : ''
+          }`
+        }
         return `${flag && (data?.province || data?.country) ? symbol : ''}${[data?.province, data?.country]
           .filter(Boolean)
           .join(symbol)}`
@@ -514,8 +529,8 @@ const InternalSelect: React.ForwardRefRenderFunction<CityPickerProps> = (props: 
 
   const popperProps = {
     ...selectProps,
-    prefixCls: `${selectPrefixCls}-dropdown`,
-    placement: 'bottomLeft',
+    prefixCls: classNames(`${selectPrefixCls}-dropdown`, rtlCls),
+    placement: direction === 'rtl' ? 'bottomRight' : 'bottomLeft',
     popperStyle: catchStyle(),
     defaultVisible: optionShow,
     visible: optionShow,
