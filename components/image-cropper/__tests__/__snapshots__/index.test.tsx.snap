@@ -105,7 +105,7 @@ exports[`ImageCropper render no child without errors 1`] = `
                       class="kdicon kdicon-reduction"
                     />
                     <div
-                      class="kd-upload"
+                      class="kd-upload kd-upload-rtl"
                     >
                       <label
                         class="kd-upload-select"
@@ -326,7 +326,7 @@ exports[`ImageCropper render no child without errors 1`] = `
                         showUploadList={false}
                       >
                         <div
-                          className="kd-upload"
+                          className="kd-upload kd-upload-rtl"
                         >
                           <label
                             className="kd-upload-select"
@@ -532,7 +532,7 @@ exports[`ImageCropper render null or undefined ImageCropper without errors 1`] =
                       class="kdicon kdicon-reduction"
                     />
                     <div
-                      class="kd-upload"
+                      class="kd-upload kd-upload-rtl"
                     >
                       <label
                         class="kd-upload-select"
@@ -633,7 +633,7 @@ exports[`ImageCropper render null or undefined ImageCropper without errors 1`] =
                       class="kdicon kdicon-reduction"
                     />
                     <div
-                      class="kd-upload"
+                      class="kd-upload kd-upload-rtl"
                     >
                       <label
                         class="kd-upload-select"
@@ -854,7 +854,7 @@ exports[`ImageCropper render null or undefined ImageCropper without errors 1`] =
                         showUploadList={false}
                       >
                         <div
-                          className="kd-upload"
+                          className="kd-upload kd-upload-rtl"
                         >
                           <label
                             className="kd-upload-select"
@@ -1011,7 +1011,7 @@ exports[`ImageCropper renders correctly 1`] = `
             class="kdicon kdicon-reduction"
           />
           <div
-            class="kd-upload"
+            class="kd-upload kd-upload-rtl"
           >
             <label
               class="kd-upload-select"

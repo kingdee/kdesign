@@ -46,7 +46,7 @@
     opacity: 0;
     overflow: hidden;
 
-    input[type="file"] {
+    input[type='file'] {
       position: absolute;
       top: -20%;
       left: 0;
@@ -94,7 +94,8 @@
         font-size: @upload-font-size;
       }
 
-      &-name,&-icon {
+      &-name,
+      &-icon {
         cursor: pointer;
       }
 
@@ -235,6 +236,43 @@
       &-action > a {
         color: @upload-panel-button-color;
         font-size: @upload-picture-action-font-size;
+      }
+    }
+  }
+}
+
+.@{upload-prefix-cls}-rtl {
+  direction: rtl;
+  &.@{upload-prefix-cls} {
+    .@{upload-prefix-text-list-cls} {
+      &-item {
+        &-name {
+          margin: 0 @upload-text-list-item-name-padding-left 0 @upload-text-list-item-name-padding-right;
+        }
+        &-action {
+          left: 0;
+          right: auto;
+          transform: translateX(-5px);
+          a {
+            &:not(:first-child) {
+              margin-right: 20px;
+              margin-left: 0;
+            }
+          }
+        }
+      }
+    }
+    .@{upload-prefix-picture-list-cls} {
+      &-item {
+        margin: 0 0 28px 28px;
+        &-error {
+          a {
+            &:not(:first-child) {
+              margin-right: 10px;
+              margin-left: auto;
+            }
+          }
+        }
       }
     }
   }

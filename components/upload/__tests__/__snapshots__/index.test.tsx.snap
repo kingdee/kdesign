@@ -32,7 +32,7 @@ exports[`Upload render defaultFileList without error 1`] = `
   }
 >
   <div
-    className="kd-upload"
+    className="kd-upload kd-upload-rtl"
   >
     <ul
       className="kd-upload-text-list"
@@ -56,7 +56,7 @@ exports[`Upload render defaultFileList without error 1`] = `
         prefixCls="kd-upload"
       >
         <li
-          className="kd-upload-text-list-item"
+          className="kd-upload-text-list-item kd-upload-rtl"
         >
           <span
             className="kd-upload-text-list-item-icon"
@@ -120,7 +120,7 @@ exports[`Upload render defaultFileList without error 1`] = `
         prefixCls="kd-upload"
       >
         <li
-          className="kd-upload-text-list-item"
+          className="kd-upload-text-list-item kd-upload-rtl"
         >
           <span
             className="kd-upload-text-list-item-icon"
@@ -185,7 +185,7 @@ exports[`Upload render defaultFileList without error 1`] = `
         prefixCls="kd-upload"
       >
         <li
-          className="kd-upload-text-list-item error"
+          className="kd-upload-text-list-item kd-upload-rtl error"
         >
           <span
             className="kd-upload-text-list-item-icon"
@@ -246,7 +246,7 @@ exports[`Upload render defaultFileList without error 1`] = `
 exports[`Upload render no child without errors 1`] = `
 <Upload>
   <div
-    className="kd-upload"
+    className="kd-upload kd-upload-rtl"
   />
 </Upload>
 `;
@@ -254,14 +254,14 @@ exports[`Upload render no child without errors 1`] = `
 exports[`Upload render null or undefined without errors 1`] = `
 <Upload>
   <div
-    className="kd-upload"
+    className="kd-upload kd-upload-rtl"
   />
 </Upload>
 `;
 
 exports[`Upload renders correctly 1`] = `
 <div
-  class="kd-upload"
+  class="kd-upload kd-upload-rtl"
 >
   <label
     class="kd-upload-drag"
@@ -293,13 +293,13 @@ exports[`Upload renders correctly 1`] = `
 
 exports[`Upload renders correctly 2`] = `
 <div
-  class="kd-upload"
+  class="kd-upload kd-upload-rtl"
 />
 `;
 
 exports[`Upload renders correctly 3`] = `
 <div
-  class="kd-upload"
+  class="kd-upload kd-upload-rtl"
 >
   <ul
     class="kd-upload-picture-list"
