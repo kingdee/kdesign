@@ -47,7 +47,12 @@ function abort(file?: UploadFile) {
 }
 
 const InternalUpload: ForwardRefRenderFunction<unknown, UploadProps> = (props, ref) => {
-  const { getPrefixCls, prefixCls: pkgPrefixCls, compDefaultProps: userDefaultProps } = useContext(ConfigContext)
+  const {
+    getPrefixCls,
+    prefixCls: pkgPrefixCls,
+    compDefaultProps: userDefaultProps,
+    direction,
+  } = useContext(ConfigContext)
   const inputRef = useRef<HTMLInputElement>(null)
 
   const allProps = getCompProps('Upload', userDefaultProps, props) // 属性需要合并一遍用户定义的默认属性
@@ -271,7 +276,7 @@ const InternalUpload: ForwardRefRenderFunction<unknown, UploadProps> = (props, r
   }
 
   const prefixCls = getPrefixCls!(pkgPrefixCls, 'upload', customPrefixcls)
-
+  const rtlCls = direction === 'rtl' ? `${prefixCls}-rtl` : null
   const inputFileProps = {
     accept,
     onClick,
@@ -347,7 +352,7 @@ const InternalUpload: ForwardRefRenderFunction<unknown, UploadProps> = (props, r
   }))
 
   return (
-    <div className={classNames(prefixCls, { disabled }, className)} style={style}>
+    <div className={classNames(prefixCls, rtlCls, { disabled }, className)} style={style}>
       {listType === 'text' && hasChildren && (
         <label className={classNames({ [`${prefixCls}-${type}`]: true, hover })} {...dragEvents}>
           <span className={`${prefixCls}-handle`}>{children}</span>
