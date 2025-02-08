@@ -3,7 +3,7 @@
 exports[`Select render no child without errors 1`] = `
 <Select>
   <div
-    className="kd-select"
+    className="kd-select kd-select-rtl"
   >
     <span
       className="kd-select-selector"
@@ -58,7 +58,7 @@ exports[`Select render no child without errors 1`] = `
 
 exports[`Select renders correctly 1`] = `
 <div
-  class="kd-select"
+  class="kd-select kd-select-rtl"
 >
   <span
     class="kd-select-selector"
@@ -104,7 +104,7 @@ exports[`Select renders correctly 1`] = `
 
 exports[`Select renders correctly 2`] = `
 <div
-  class="kd-select"
+  class="kd-select kd-select-rtl"
 >
   <span
     class="kd-select-selector"
@@ -145,7 +145,7 @@ exports[`Select renders correctly 2`] = `
 
 exports[`Select renders correctly 3`] = `
 <div
-  class="kd-select"
+  class="kd-select kd-select-rtl"
 >
   <span
     class="kd-select-selector"
@@ -186,7 +186,7 @@ exports[`Select renders correctly 3`] = `
 
 exports[`Select renders correctly 4`] = `
 <div
-  class="kd-select"
+  class="kd-select kd-select-rtl"
 >
   <span
     class="kd-select-selector"
@@ -227,7 +227,7 @@ exports[`Select renders correctly 4`] = `
 
 exports[`Select renders correctly 5`] = `
 <div
-  class="kd-select"
+  class="kd-select kd-select-rtl"
 >
   <span
     class="kd-select-selector"
@@ -268,7 +268,7 @@ exports[`Select renders correctly 5`] = `
 
 exports[`Select renders correctly 6`] = `
 <div
-  class="kd-select"
+  class="kd-select kd-select-rtl"
 >
   <span
     class="kd-select-selector"
@@ -309,7 +309,7 @@ exports[`Select renders correctly 6`] = `
 
 exports[`Select renders correctly 7`] = `
 <div
-  class="kd-select"
+  class="kd-select kd-select-rtl"
 >
   <span
     class="kd-select-selector"
@@ -350,7 +350,7 @@ exports[`Select renders correctly 7`] = `
 
 exports[`Select renders correctly 8`] = `
 <div
-  class="kd-select"
+  class="kd-select kd-select-rtl"
 >
   <span
     class="kd-select-selector"

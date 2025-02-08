@@ -459,3 +459,90 @@
     }
   }
 }
+
+.@{select-prefix-cls}-rtl {
+  direction: rtl;
+  .@{select-prefix-cls}-selector {
+    .@{select-prefix-cls}-wrapper {
+      padding: 1px 0 1px 28px;
+      .@{select-prefix-cls}-suffix {
+        position: absolute;
+        right: auto;
+        left: 0;
+        margin-left: 0;
+        margin-right: 8px;
+      }
+      .@{select-prefix-cls}-placeholder {
+        right: 0;
+        left: 28px;
+      }
+      &.@{select-prefix-cls}-single {
+        .@{select-prefix-cls}-selection-search {
+          padding-left: auto;
+          position: absolute;
+          left: 28px;
+          right: 0;
+          height: 100%;
+          top: 0;
+          bottom: 0;
+        }
+      }
+    }
+    .@{select-prefix-cls}-multiple {
+      .@{select-prefix-cls}-selection-tag {
+        .@{kd-prefix}-tag {
+          margin: 2px 0 2px 8px;
+          &-closeWrapper {
+            margin-right: 4px;
+            margin-left: 0;
+          }
+        }
+      }
+    }
+    .@{select-prefix-cls}-bordered {
+      padding-left: auto !important;
+      padding-right: @select-bordered !important;
+      .@{select-prefix-cls}-suffix {
+        padding-left: 8px;
+      }
+
+      &.@{select-prefix-cls}-single {
+        .@{select-prefix-cls}-selection-search {
+          padding-right: @select-bordered;
+        }
+      }
+
+      .@{select-prefix-cls}-placeholder {
+        padding-right: @select-bordered;
+      }
+    }
+  }
+  .@{select-prefix-cls}-dropdown {
+    .@{select-prefix-cls}-multiple-footer {
+      &-hadSelected {
+        padding-right: 12px;
+        padding-left: 0;
+      }
+      .@{kd-prefix}-checkbox {
+        &-default-margin {
+          margin-right: 0;
+          margin-left: 4px;
+        }
+      }
+    }
+  }
+}
+
+.@{select-prefix-cls}-item-rtl {
+  direction: rtl;
+  &.@{select-prefix-cls}-item {
+    .@{select-prefix-cls}-item-option-content {
+      .@{kd-prefix}-checkbox {
+        &-default-margin {
+          margin-right: 0;
+          margin-left: 4px;
+        }
+      }
+    }
+  }
+}

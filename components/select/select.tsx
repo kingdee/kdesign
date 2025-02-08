@@ -23,7 +23,7 @@ import KeyCode from '../_utils/KeyCode'
 const INPUT_MIN_WIDTH = 4 // 输入框最小宽度
 
 const InternalSelect: React.ForwardRefRenderFunction<ISelectProps<SelectValue>> = (props: any, ref: unknown) => {
-  const { getPrefixCls, prefixCls, compDefaultProps: userDefaultProps, locale } = useContext(ConfigContext)
+  const { getPrefixCls, prefixCls, compDefaultProps: userDefaultProps, locale, direction } = useContext(ConfigContext)
   const selectProps = getCompProps('Select', userDefaultProps, props)
   const selectLangMsg = locale.getCompLangMsg({ componentName: 'Select' })
   const {
@@ -92,8 +92,9 @@ const InternalSelect: React.ForwardRefRenderFunction<ISelectProps<SelectValue>> 
   }, [isMultiple, showSearch])
 
   const selectPrefixCls = getPrefixCls!(prefixCls, 'select', customPrefixcls)
+  const rtlCls = direction === 'rtl' ? `${selectPrefixCls}-rtl` : null
   // 选择器样式
-  const selectCls = classNames(selectPrefixCls, className, {
+  const selectCls = classNames(selectPrefixCls, rtlCls, className, {
     [`${selectPrefixCls}-visible`]: optionShow,
   })
 
@@ -715,7 +716,7 @@ const InternalSelect: React.ForwardRefRenderFunction<ISelectProps<SelectValue>> 
       [`${selectPrefixCls}-selection-item`]: true,
       [`${selectPrefixCls}-selection-item-${size}`]: size,
     })
-    const TagStyle = { margin: '2px 8px 2px 0', maxWidth: '100%' }
+    const TagStyle = { margin: direction === 'rtl' ? '2px 0 2px 8px' : '2px 8px 2px 0', maxWidth: '100%' }
     const totalText = locale.getLangMsg('Select', 'total', { total: mulOptions.length })
     return (
       <div className={multipleCls} ref={selectionRef}>
@@ -938,7 +939,9 @@ const InternalSelect: React.ForwardRefRenderFunction<ISelectProps<SelectValue>> 
 
   const popperProps = {
     ...selectProps,
-    prefixCls: `${selectPrefixCls}-dropdown-panel${isMultiple ? ` ${selectPrefixCls}-multiple-dropdown-panel` : ''}`,
+    prefixCls: `${selectPrefixCls}-dropdown-panel${
+      isMultiple ? ` ${selectPrefixCls}-multiple-dropdown-panel` : ''
+    } ${rtlCls}`,
     placement: 'bottomLeft',
     popperStyle: catchStyle(),
     defaultVisible: optionShow,
