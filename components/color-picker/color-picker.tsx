@@ -25,7 +25,7 @@ import { ICurrentColorType, removeTransparency } from './utils/removeTransparenc
 
 export type { IColorPickerProps } from './interface'
 const InternalColorPicker = (props: Partial<IColorPickerProps>, ref: RefObject<IColorPickerInputRef>) => {
-  const { getPrefixCls, prefixCls, compDefaultProps: userDefaultProps } = useContext(ConfigContext)
+  const { getPrefixCls, prefixCls, compDefaultProps: userDefaultProps, direction } = useContext(ConfigContext)
   const colorPickerProps = getCompProps('ColorPicker', userDefaultProps, props)
   const {
     value,
@@ -72,8 +72,9 @@ const InternalColorPicker = (props: Partial<IColorPickerProps>, ref: RefObject<I
   const [clickedHistoricalColorIndex, setClickedHistoricalColorIndex] = useState<number>()
 
   const colorPickerPrefixCls = getPrefixCls!(prefixCls, 'color-picker')
-  const popUpLayer = classNames(getPrefixCls!(prefixCls, 'color-picker-pop'), popperClassName)
-  const containerCls = classNames(`${colorPickerPrefixCls}-container`, className, {
+  const rtlCls = direction === 'rtl' ? `${colorPickerPrefixCls}-rtl` : null
+  const popUpLayer = classNames(getPrefixCls!(prefixCls, 'color-picker-pop'), rtlCls, popperClassName)
+  const containerCls = classNames(`${colorPickerPrefixCls}-container`, rtlCls, className, {
     [`${colorPickerPrefixCls}-container-pure`]: pure,
   })
   const inputCls = classNames(`${colorPickerPrefixCls}-input`)
@@ -300,7 +301,7 @@ const InternalColorPicker = (props: Partial<IColorPickerProps>, ref: RefObject<I
   const popperProps = {
     ...otherProps,
     popperClassName: popUpLayer,
-    placement: 'bottomLeft',
+    placement: direction === 'rtl' ? 'bottomRight' : 'bottomLeft',
     defaultVisible: showPanel,
     visible: showPanel,
     onVisibleChange: null,
