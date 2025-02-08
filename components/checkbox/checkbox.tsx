@@ -27,7 +27,7 @@ export interface CheckboxProps {
 }
 
 const InternalCheckbox: React.ForwardRefRenderFunction<unknown, CheckboxProps> = (props, ref) => {
-  const { getPrefixCls, prefixCls, compDefaultProps: userDefaultProps } = useContext(ConfigContext)
+  const { getPrefixCls, prefixCls, compDefaultProps: userDefaultProps, direction } = useContext(ConfigContext)
   const CheckboxProps = getCompProps('Checkbox', userDefaultProps, props)
   const {
     checkboxType,
@@ -88,8 +88,8 @@ const InternalCheckbox: React.ForwardRefRenderFunction<unknown, CheckboxProps> =
   const getIndeterminate = (): boolean => {
     return selected ? false : indeterminate
   }
-
-  const getDefaultClassName = classNames(className, {
+  const rtlCls = direction === 'rtl' ? `${checkboxPrefixCls}-rtl` : null
+  const getDefaultClassName = classNames(className, rtlCls, {
     [`${checkboxPrefixCls}`]: true,
     [`${checkboxPrefixCls}-no-child`]: !children,
     [`${checkboxPrefixCls}-${mergedSize}`]: !!children,
@@ -98,7 +98,7 @@ const InternalCheckbox: React.ForwardRefRenderFunction<unknown, CheckboxProps> =
     checked: selected,
   })
 
-  const getSquareClassName = classNames(className, {
+  const getSquareClassName = classNames(className, rtlCls, {
     [`${checkboxPrefixCls}`]: true,
     [`${checkboxPrefixCls}-${mergedCheckboxType}`]: true,
     [`${checkboxPrefixCls}-${mergedSize}`]: !!children,
