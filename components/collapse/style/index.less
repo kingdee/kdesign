@@ -117,3 +117,29 @@
     }
   }
 }
+
+.@{collapse-prefix-cls}-rtl {
+  direction: rtl;
+  .@{collapse-prefix-cls}-panel {
+    &-top {
+      padding: 8px 28px 8px 50px;
+    }
+    &-icon {
+      margin-left: @collapse-icon-margin-right;
+      margin-right: 0;
+    }
+    &-animation-expand {
+      transform: rotate(180deg);
+    }
+    &-children > div {
+      text-align: right;
+    }
+    &-children-hide > div {
+      text-align: right;
+    }
+    &-middle {
+      margin-right: 22px;
+      margin-left: 0;
+    }
+  }
+}
