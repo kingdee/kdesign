@@ -36,8 +36,9 @@ const InternalOption: React.ForwardRefRenderFunction<unknown, ISelectOptionProps
     index,
   } = props
   const optionProps: ISelectOptionProps = { ...props }
-  const { getPrefixCls, prefixCls } = useContext(ConfigContext)
+  const { getPrefixCls, prefixCls, direction } = useContext(ConfigContext)
   const selectOptionPrefixCls = getPrefixCls!(prefixCls, 'select-item')
+  const rtlCls = direction === 'rtl' ? `${selectOptionPrefixCls}-rtl` : null
   useEffect(() => {
     if (isMultiple) {
       setSelected(values?.indexOf(value) > -1)
@@ -45,7 +46,7 @@ const InternalOption: React.ForwardRefRenderFunction<unknown, ISelectOptionProps
       setSelected(value !== undefined ? value === values : false)
     }
   })
-  const optionCls = classNames(selectOptionPrefixCls, className, {
+  const optionCls = classNames(selectOptionPrefixCls, rtlCls, className, {
     [`${selectOptionPrefixCls}-option`]: true,
     [`${selectOptionPrefixCls}-option-active`]: activeIndex === index,
     [`${selectOptionPrefixCls}-option-selected`]: isSelected,
