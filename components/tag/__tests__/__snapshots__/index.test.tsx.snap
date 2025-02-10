@@ -2,7 +2,7 @@
 
 exports[`Tag renders correctly 1`] = `
 <span
-  class="kd-tag kd-tag-rtl kd-tag-shape-status kd-tag-size-middle"
+  class="kd-tag kd-tag-shape-status kd-tag-size-middle"
 >
   <span
     class="kd-tag-ellipsis"
@@ -14,7 +14,7 @@ exports[`Tag renders correctly 1`] = `
 
 exports[`Tag renders correctly 2`] = `
 <span
-  class="kd-tag kd-tag-rtl kd-tag-shape-status kd-tag-size-middle"
+  class="kd-tag kd-tag-shape-status kd-tag-size-middle"
 >
   <span
     class="kd-tag-ellipsis"
@@ -26,7 +26,7 @@ exports[`Tag renders correctly 2`] = `
 
 exports[`Tag renders correctly 3`] = `
 <span
-  class="kd-tag kd-tag-rtl kd-tag-shape-attribute kd-tag-size-middle"
+  class="kd-tag kd-tag-shape-attribute kd-tag-size-middle"
 >
   <span
     class="kd-tag-ellipsis"
@@ -38,7 +38,7 @@ exports[`Tag renders correctly 3`] = `
 
 exports[`Tag renders correctly 4`] = `
 <span
-  class="kd-tag kd-tag-rtl kd-tag-shape-text kd-tag-size-middle"
+  class="kd-tag kd-tag-shape-text kd-tag-size-middle"
 >
   <span
     class="kd-tag-ellipsis"
@@ -50,7 +50,7 @@ exports[`Tag renders correctly 4`] = `
 
 exports[`Tag renders correctly 5`] = `
 <span
-  class="kd-tag kd-tag-rtl kd-tag-shape-edit kd-tag-size-middle"
+  class="kd-tag kd-tag-shape-edit kd-tag-size-middle"
 >
   <span
     class="kd-tag-ellipsis"
@@ -62,7 +62,7 @@ exports[`Tag renders correctly 5`] = `
 
 exports[`Tag renders correctly 6`] = `
 <span
-  class="kd-tag kd-tag-rtl kd-tag-shape-status kd-tag-process kd-tag-size-middle"
+  class="kd-tag kd-tag-shape-status kd-tag-process kd-tag-size-middle"
 >
   <span
     class="kd-tag-ellipsis"
@@ -74,7 +74,7 @@ exports[`Tag renders correctly 6`] = `
 
 exports[`Tag renders correctly 7`] = `
 <span
-  class="kd-tag kd-tag-rtl kd-tag-shape-status kd-tag-success kd-tag-size-middle"
+  class="kd-tag kd-tag-shape-status kd-tag-success kd-tag-size-middle"
 >
   <span
     class="kd-tag-ellipsis"
@@ -86,7 +86,7 @@ exports[`Tag renders correctly 7`] = `
 
 exports[`Tag renders correctly 8`] = `
 <span
-  class="kd-tag kd-tag-rtl kd-tag-shape-status kd-tag-warning kd-tag-size-middle"
+  class="kd-tag kd-tag-shape-status kd-tag-warning kd-tag-size-middle"
 >
   <span
     class="kd-tag-ellipsis"
@@ -98,7 +98,7 @@ exports[`Tag renders correctly 8`] = `
 
 exports[`Tag renders correctly 9`] = `
 <span
-  class="kd-tag kd-tag-rtl kd-tag-shape-status kd-tag-error kd-tag-size-middle"
+  class="kd-tag kd-tag-shape-status kd-tag-error kd-tag-size-middle"
 >
   <span
     class="kd-tag-ellipsis"
@@ -110,7 +110,7 @@ exports[`Tag renders correctly 9`] = `
 
 exports[`Tag renders correctly 10`] = `
 <span
-  class="kd-tag kd-tag-rtl kd-tag-shape-status kd-tag-end kd-tag-size-middle"
+  class="kd-tag kd-tag-shape-status kd-tag-end kd-tag-size-middle"
 >
   <span
     class="kd-tag-ellipsis"
@@ -122,7 +122,7 @@ exports[`Tag renders correctly 10`] = `
 
 exports[`Tag renders correctly 11`] = `
 <span
-  class="kd-tag kd-tag-rtl kd-tag-shape-status kd-tag-expired kd-tag-size-middle"
+  class="kd-tag kd-tag-shape-status kd-tag-expired kd-tag-size-middle"
 >
   <span
     class="kd-tag-ellipsis"
@@ -134,7 +134,7 @@ exports[`Tag renders correctly 11`] = `
 
 exports[`Tag renders correctly 12`] = `
 <span
-  class="kd-tag kd-tag-rtl kd-tag-shape-status kd-tag-size-small"
+  class="kd-tag kd-tag-shape-status kd-tag-size-small"
 >
   <span
     class="kd-tag-ellipsis"
@@ -146,7 +146,7 @@ exports[`Tag renders correctly 12`] = `
 
 exports[`Tag renders correctly 13`] = `
 <span
-  class="kd-tag kd-tag-rtl kd-tag-shape-status kd-tag-size-middle"
+  class="kd-tag kd-tag-shape-status kd-tag-size-middle"
 >
   <span
     class="kd-tag-ellipsis"
@@ -158,7 +158,7 @@ exports[`Tag renders correctly 13`] = `
 
 exports[`Tag renders correctly 14`] = `
 <span
-  class="kd-tag kd-tag-rtl kd-tag-shape-status kd-tag-size-large"
+  class="kd-tag kd-tag-shape-status kd-tag-size-large"
 >
   <span
     class="kd-tag-ellipsis"

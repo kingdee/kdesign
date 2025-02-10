@@ -3,7 +3,7 @@
 exports[`Checkbox render null or undefined without errors 1`] = `
 <Checkbox>
   <label
-    className="kd-checkbox-rtl kd-checkbox kd-checkbox-middle kd-checkbox-default"
+    className="kd-checkbox kd-checkbox-middle kd-checkbox-default"
   >
     <span
       className="kd-checkbox-default-wrapper kd-checkbox-default-wrapper-size kd-checkbox-default-margin"
@@ -26,7 +26,7 @@ exports[`Checkbox render null or undefined without errors 1`] = `
 exports[`Checkbox render null or undefined without errors 2`] = `
 <CheckboxGroup>
   <ul
-    className="kd-checkbox-group kd-checkbox-group-rtl"
+    className="kd-checkbox-group"
   />
 </CheckboxGroup>
 `;
@@ -39,7 +39,7 @@ exports[`Checkbox render test 1`] = `
   onChange={[MockFunction]}
 >
   <label
-    className="kd-checkbox-rtl kd-checkbox kd-checkbox-middle kd-checkbox-default"
+    className="kd-checkbox kd-checkbox-middle kd-checkbox-default"
   >
     <span
       className="kd-checkbox-default-wrapper kd-checkbox-default-wrapper-size kd-checkbox-default-margin"
@@ -64,7 +64,7 @@ exports[`Checkbox render test 1`] = `
 exports[`Checkbox render test 2`] = `
 <CheckboxGroup>
   <ul
-    className="kd-checkbox-group kd-checkbox-group-rtl"
+    className="kd-checkbox-group"
   >
     <Checkbox
       defaultChecked={false}
@@ -73,7 +73,7 @@ exports[`Checkbox render test 2`] = `
       onChange={[MockFunction]}
     >
       <label
-        className="kd-checkbox-rtl kd-checkbox kd-checkbox-middle kd-checkbox-default"
+        className="kd-checkbox kd-checkbox-middle kd-checkbox-default"
       >
         <span
           className="kd-checkbox-default-wrapper kd-checkbox-default-wrapper-size kd-checkbox-default-margin"

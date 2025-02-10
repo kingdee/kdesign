@@ -1673,7 +1673,7 @@ exports[`Filter renders correctly 4`] = `
               class="kd-filter-body-scheme-detail-operator"
             >
               <div
-                class="kd-select kd-select-rtl"
+                class="kd-select"
                 style="width:100%"
               >
                 <span
@@ -1717,7 +1717,7 @@ exports[`Filter renders correctly 4`] = `
               class="kd-filter-body-scheme-detail-value"
             >
               <div
-                class="kd-select kd-select-rtl"
+                class="kd-select"
                 style="width:100%"
               >
                 <span
@@ -2295,7 +2295,7 @@ exports[`Filter renders correctly 5`] = `
               class="kd-filter-body-scheme-detail-operator"
             >
               <div
-                class="kd-select kd-select-rtl"
+                class="kd-select"
                 style="width:100%"
               >
                 <span
@@ -2339,7 +2339,7 @@ exports[`Filter renders correctly 5`] = `
               class="kd-filter-body-scheme-detail-value"
             >
               <div
-                class="kd-select kd-select-rtl"
+                class="kd-select"
                 style="width:100%"
               >
                 <span

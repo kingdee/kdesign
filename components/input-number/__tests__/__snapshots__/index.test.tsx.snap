@@ -2,7 +2,7 @@
 
 exports[`InputNumber renders correctly 1`] = `
 <input
-  class="kd-input kd-input-rtl kd-input-size-middle kd-input-underline kd-inputNumber"
+  class="kd-input kd-input-size-middle kd-input-underline kd-inputNumber"
   type="text"
   value=""
 />
@@ -10,7 +10,7 @@ exports[`InputNumber renders correctly 1`] = `
 
 exports[`InputNumber renders correctly 2`] = `
 <input
-  class="kd-input kd-input-rtl kd-input-size-large kd-input-underline kd-inputNumber"
+  class="kd-input kd-input-size-large kd-input-underline kd-inputNumber"
   type="text"
   value=""
 />
@@ -18,7 +18,7 @@ exports[`InputNumber renders correctly 2`] = `
 
 exports[`InputNumber renders correctly 3`] = `
 <input
-  class="kd-input kd-input-rtl kd-input-size-middle kd-input-underline kd-inputNumber"
+  class="kd-input kd-input-size-middle kd-input-underline kd-inputNumber"
   type="text"
   value=""
 />
@@ -26,7 +26,7 @@ exports[`InputNumber renders correctly 3`] = `
 
 exports[`InputNumber renders correctly 4`] = `
 <input
-  class="kd-input kd-input-rtl kd-input-size-small kd-input-underline kd-inputNumber"
+  class="kd-input kd-input-size-small kd-input-underline kd-inputNumber"
   type="text"
   value=""
 />

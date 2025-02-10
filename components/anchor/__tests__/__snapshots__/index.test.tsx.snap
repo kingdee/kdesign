@@ -2,7 +2,7 @@
 
 exports[`Anchor 2.render test renders correctly 1`] = `
 <div
-  class="kd-anchor-rtl kd-anchor-wrapper"
+  class="kd-anchor-wrapper"
 >
   <div
     class="kd-anchor"
@@ -30,7 +30,7 @@ exports[`Anchor 2.render test renders correctly 1`] = `
 
 exports[`Anchor 2.render test renders correctly 2`] = `
 <div
-  class="kd-anchor-rtl kd-anchor-wrapper"
+  class="kd-anchor-wrapper"
 >
   <div
     class="kd-anchor"
@@ -58,7 +58,7 @@ exports[`Anchor 2.render test renders correctly 2`] = `
 
 exports[`Anchor 2.render test renders correctly 3`] = `
 <div
-  class="kd-anchor-menu-wrapper kd-anchor-rtl"
+  class="kd-anchor-menu-wrapper"
   style="width:100%"
 >
   <div
@@ -68,7 +68,7 @@ exports[`Anchor 2.render test renders correctly 3`] = `
       class="kd-anchor-menu-left-arrows kd-anchor-menu-left-arrows-disabled"
     >
       <i
-        class="kdicon kdicon-arrow-right"
+        class="kdicon kdicon-arrow-left"
       />
     </span>
     <div
@@ -95,7 +95,7 @@ exports[`Anchor 2.render test renders correctly 3`] = `
       class="kd-anchor-menu-right-arrows kd-anchor-menu-right-arrows-disabled"
     >
       <i
-        class="kdicon kdicon-arrow-left"
+        class="kdicon kdicon-arrow-right"
       />
     </span>
   </div>
@@ -115,7 +115,7 @@ exports[`Anchor 2.render test renders correctly 4`] = `
 exports[`Anchor 4.render null or undefined without errors render null or undefined buttons without errors 1`] = `
 <Anchor>
   <div
-    className="kd-anchor-rtl kd-anchor-wrapper"
+    className="kd-anchor-wrapper"
   >
     <div
       className="kd-anchor"

@@ -4,7 +4,7 @@ exports[`Input 4. render null or undefined without errors render null or undefin
 
 exports[`Input renders correctly 1`] = `
 <input
-  class="kd-input kd-input-rtl kd-input-size-middle kd-input-underline"
+  class="kd-input kd-input-size-middle kd-input-underline"
   type="text"
   value=""
 />
@@ -12,7 +12,7 @@ exports[`Input renders correctly 1`] = `
 
 exports[`Input renders correctly 2`] = `
 <input
-  class="kd-input kd-input-rtl kd-input-size-large kd-input-underline"
+  class="kd-input kd-input-size-large kd-input-underline"
   type="text"
   value=""
 />
@@ -20,7 +20,7 @@ exports[`Input renders correctly 2`] = `
 
 exports[`Input renders correctly 3`] = `
 <input
-  class="kd-input kd-input-rtl kd-input-size-middle kd-input-underline"
+  class="kd-input kd-input-size-middle kd-input-underline"
   type="text"
   value=""
 />
@@ -28,7 +28,7 @@ exports[`Input renders correctly 3`] = `
 
 exports[`Input renders correctly 4`] = `
 <input
-  class="kd-input kd-input-rtl kd-input-size-small kd-input-underline"
+  class="kd-input kd-input-size-small kd-input-underline"
   type="text"
   value=""
 />
@@ -36,7 +36,7 @@ exports[`Input renders correctly 4`] = `
 
 exports[`Input renders correctly 5`] = `
 <input
-  class="kd-input kd-input-rtl kd-input-size-middle kd-input-borderless"
+  class="kd-input kd-input-size-middle kd-input-borderless"
   type="text"
   value=""
 />
@@ -44,7 +44,7 @@ exports[`Input renders correctly 5`] = `
 
 exports[`Input renders correctly 6`] = `
 <input
-  class="kd-input kd-input-rtl kd-input-size-middle kd-input-underline"
+  class="kd-input kd-input-size-middle kd-input-underline"
   type="text"
   value=""
 />
@@ -52,7 +52,7 @@ exports[`Input renders correctly 6`] = `
 
 exports[`Input renders correctly 7`] = `
 <input
-  class="kd-input kd-input-rtl kd-input-size-middle"
+  class="kd-input kd-input-size-middle"
   type="text"
   value=""
 />

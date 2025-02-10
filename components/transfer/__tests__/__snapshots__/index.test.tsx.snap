@@ -54,7 +54,7 @@ exports[`Transfer render no child without errors 1`] = `
                 onChange={[Function]}
               >
                 <label
-                  className="kd-checkbox-rtl kd-checkbox kd-checkbox-no-child kd-checkbox-default"
+                  className="kd-checkbox kd-checkbox-no-child kd-checkbox-default"
                 >
                   <span
                     className="kd-checkbox-default-wrapper kd-checkbox-default-wrapper-size"
@@ -233,7 +233,7 @@ exports[`Transfer render no child without errors 1`] = `
                 onChange={[Function]}
               >
                 <label
-                  className="kd-checkbox-rtl kd-checkbox kd-checkbox-no-child kd-checkbox-default"
+                  className="kd-checkbox kd-checkbox-no-child kd-checkbox-default"
                 >
                   <span
                     className="kd-checkbox-default-wrapper kd-checkbox-default-wrapper-size"
@@ -301,7 +301,7 @@ exports[`Transfer renders correctly 1`] = `
           class="kd-transfer-list-header-select-all"
         >
           <label
-            class="kd-checkbox-rtl kd-checkbox kd-checkbox-no-child kd-checkbox-default checked"
+            class="kd-checkbox kd-checkbox-no-child kd-checkbox-default checked"
           >
             <span
               class="kd-checkbox-default-wrapper kd-checkbox-default-wrapper-size kd-checkbox-default-checked"
@@ -343,7 +343,7 @@ exports[`Transfer renders correctly 1`] = `
           class="kd-transfer-list-content-item kd-transfer-list-content-item-checked"
         >
           <label
-            class="kd-checkbox-rtl kd-checkbox kd-checkbox-no-child kd-checkbox-default checked"
+            class="kd-checkbox kd-checkbox-no-child kd-checkbox-default checked"
           >
             <span
               class="kd-checkbox-default-wrapper kd-checkbox-default-wrapper-size kd-checkbox-default-checked"
@@ -370,7 +370,7 @@ exports[`Transfer renders correctly 1`] = `
           class="kd-transfer-list-content-item kd-transfer-list-content-item-disabled"
         >
           <label
-            class="kd-checkbox-rtl kd-checkbox kd-checkbox-no-child kd-checkbox-default kd-checkbox-default-disabled"
+            class="kd-checkbox kd-checkbox-no-child kd-checkbox-default kd-checkbox-default-disabled"
           >
             <span
               class="kd-checkbox-default-wrapper kd-checkbox-default-wrapper-size kd-checkbox-default-disabled"
@@ -435,7 +435,7 @@ exports[`Transfer renders correctly 1`] = `
           class="kd-transfer-list-header-select-all"
         >
           <label
-            class="kd-checkbox-rtl kd-checkbox kd-checkbox-no-child kd-checkbox-default"
+            class="kd-checkbox kd-checkbox-no-child kd-checkbox-default"
           >
             <span
               class="kd-checkbox-default-wrapper kd-checkbox-default-wrapper-size"
@@ -469,7 +469,7 @@ exports[`Transfer renders correctly 1`] = `
           class="kd-transfer-list-content-item"
         >
           <label
-            class="kd-checkbox-rtl kd-checkbox kd-checkbox-no-child kd-checkbox-default"
+            class="kd-checkbox kd-checkbox-no-child kd-checkbox-default"
           >
             <span
               class="kd-checkbox-default-wrapper kd-checkbox-default-wrapper-size"
@@ -507,7 +507,7 @@ exports[`Transfer should show sorted targetKey 1`] = `
           class="kd-transfer-list-header-select-all"
         >
           <label
-            class="kd-checkbox-rtl kd-checkbox kd-checkbox-no-child kd-checkbox-default"
+            class="kd-checkbox kd-checkbox-no-child kd-checkbox-default"
           >
             <span
               class="kd-checkbox-default-wrapper kd-checkbox-default-wrapper-size"
@@ -542,7 +542,7 @@ exports[`Transfer should show sorted targetKey 1`] = `
           title="a"
         >
           <label
-            class="kd-checkbox-rtl kd-checkbox kd-checkbox-no-child kd-checkbox-default"
+            class="kd-checkbox kd-checkbox-no-child kd-checkbox-default"
           >
             <span
               class="kd-checkbox-default-wrapper kd-checkbox-default-wrapper-size"
@@ -609,7 +609,7 @@ exports[`Transfer should show sorted targetKey 1`] = `
           class="kd-transfer-list-header-select-all"
         >
           <label
-            class="kd-checkbox-rtl kd-checkbox kd-checkbox-no-child kd-checkbox-default"
+            class="kd-checkbox kd-checkbox-no-child kd-checkbox-default"
           >
             <span
               class="kd-checkbox-default-wrapper kd-checkbox-default-wrapper-size"
@@ -644,7 +644,7 @@ exports[`Transfer should show sorted targetKey 1`] = `
           title="c"
         >
           <label
-            class="kd-checkbox-rtl kd-checkbox kd-checkbox-no-child kd-checkbox-default"
+            class="kd-checkbox kd-checkbox-no-child kd-checkbox-default"
           >
             <span
               class="kd-checkbox-default-wrapper kd-checkbox-default-wrapper-size"
@@ -666,7 +666,7 @@ exports[`Transfer should show sorted targetKey 1`] = `
           title="b"
         >
           <label
-            class="kd-checkbox-rtl kd-checkbox kd-checkbox-no-child kd-checkbox-default"
+            class="kd-checkbox kd-checkbox-no-child kd-checkbox-default"
           >
             <span
               class="kd-checkbox-default-wrapper kd-checkbox-default-wrapper-size"
@@ -759,7 +759,7 @@ exports[`Transfer should support render value and label in item 1`] = `
                 onChange={[Function]}
               >
                 <label
-                  className="kd-checkbox-rtl kd-checkbox kd-checkbox-no-child kd-checkbox-default"
+                  className="kd-checkbox kd-checkbox-no-child kd-checkbox-default"
                 >
                   <span
                     className="kd-checkbox-default-wrapper kd-checkbox-default-wrapper-size"
@@ -870,7 +870,7 @@ exports[`Transfer should support render value and label in item 1`] = `
                     checked={false}
                   >
                     <label
-                      className="kd-checkbox-rtl kd-checkbox kd-checkbox-no-child kd-checkbox-default"
+                      className="kd-checkbox kd-checkbox-no-child kd-checkbox-default"
                     >
                       <span
                         className="kd-checkbox-default-wrapper kd-checkbox-default-wrapper-size"
@@ -1029,7 +1029,7 @@ exports[`Transfer should support render value and label in item 1`] = `
                 onChange={[Function]}
               >
                 <label
-                  className="kd-checkbox-rtl kd-checkbox kd-checkbox-no-child kd-checkbox-default"
+                  className="kd-checkbox kd-checkbox-no-child kd-checkbox-default"
                 >
                   <span
                     className="kd-checkbox-default-wrapper kd-checkbox-default-wrapper-size"

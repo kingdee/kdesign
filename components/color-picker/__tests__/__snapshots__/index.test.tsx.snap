@@ -2,10 +2,10 @@
 
 exports[`ColorPicker renders correctly 1`] = `
 <div
-  class="kd-color-picker-container kd-color-picker-rtl"
+  class="kd-color-picker-container"
 >
   <span
-    class="kd-input-rtl kd-input-wrapper kd-input-wrapper-size-middle kd-input-wrapper-underline kd-color-picker-input"
+    class="kd-input-wrapper kd-input-wrapper-size-middle kd-input-wrapper-underline kd-color-picker-input"
   >
     <span
       class="kd-input-prefix"
@@ -24,7 +24,7 @@ exports[`ColorPicker renders correctly 1`] = `
       </div>
     </span>
     <input
-      class="kd-input kd-input-rtl kd-input-size-middle kd-input-underline"
+      class="kd-input kd-input-size-middle kd-input-underline"
       placeholder="#"
       type="text"
       value=""
@@ -35,10 +35,10 @@ exports[`ColorPicker renders correctly 1`] = `
 
 exports[`ColorPicker renders correctly 2`] = `
 <div
-  class="kd-color-picker-container kd-color-picker-rtl"
+  class="kd-color-picker-container"
 >
   <span
-    class="kd-input-rtl kd-input-wrapper kd-input-wrapper-size-middle kd-color-picker-input"
+    class="kd-input-wrapper kd-input-wrapper-size-middle kd-color-picker-input"
   >
     <span
       class="kd-input-prefix"
@@ -57,7 +57,7 @@ exports[`ColorPicker renders correctly 2`] = `
       </div>
     </span>
     <input
-      class="kd-input kd-input-rtl kd-input-size-middle"
+      class="kd-input kd-input-size-middle"
       placeholder="#"
       type="text"
       value=""
@@ -69,7 +69,7 @@ exports[`ColorPicker renders correctly 2`] = `
 exports[`ColorPicker renders correctly with no child 1`] = `
 <ColorPicker>
   <div
-    className="kd-color-picker-container kd-color-picker-rtl"
+    className="kd-color-picker-container"
   >
     <Input
       borderType="bordered"
@@ -102,10 +102,10 @@ exports[`ColorPicker renders correctly with no child 1`] = `
       <ClearableInput
         borderType="bordered"
         className="kd-color-picker-input"
-        direction="rtl"
+        direction="ltr"
         element={
           <input
-            className="kd-input kd-input-rtl kd-input-size-middle"
+            className="kd-input kd-input-size-middle"
             onBlur={[Function]}
             onChange={[Function]}
             onClick={[Function]}
@@ -149,7 +149,7 @@ exports[`ColorPicker renders correctly with no child 1`] = `
         value=""
       >
         <span
-          className="kd-input-rtl kd-input-wrapper kd-input-wrapper-size-middle kd-color-picker-input"
+          className="kd-input-wrapper kd-input-wrapper-size-middle kd-color-picker-input"
           onClick={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
@@ -177,7 +177,7 @@ exports[`ColorPicker renders correctly with no child 1`] = `
             </div>
           </span>
           <input
-            className="kd-input kd-input-rtl kd-input-size-middle"
+            className="kd-input kd-input-size-middle"
             onBlur={[Function]}
             onChange={[Function]}
             onClick={[Function]}
@@ -198,7 +198,7 @@ exports[`ColorPicker renders correctly with no child 1`] = `
 exports[`ColorPicker renders correctly with null or undefined 1`] = `
 <ColorPicker>
   <div
-    className="kd-color-picker-container kd-color-picker-rtl"
+    className="kd-color-picker-container"
   >
     <Input
       borderType="bordered"
@@ -231,10 +231,10 @@ exports[`ColorPicker renders correctly with null or undefined 1`] = `
       <ClearableInput
         borderType="bordered"
         className="kd-color-picker-input"
-        direction="rtl"
+        direction="ltr"
         element={
           <input
-            className="kd-input kd-input-rtl kd-input-size-middle"
+            className="kd-input kd-input-size-middle"
             onBlur={[Function]}
             onChange={[Function]}
             onClick={[Function]}
@@ -278,7 +278,7 @@ exports[`ColorPicker renders correctly with null or undefined 1`] = `
         value=""
       >
         <span
-          className="kd-input-rtl kd-input-wrapper kd-input-wrapper-size-middle kd-color-picker-input"
+          className="kd-input-wrapper kd-input-wrapper-size-middle kd-color-picker-input"
           onClick={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
@@ -306,7 +306,7 @@ exports[`ColorPicker renders correctly with null or undefined 1`] = `
             </div>
           </span>
           <input
-            className="kd-input kd-input-rtl kd-input-size-middle"
+            className="kd-input kd-input-size-middle"
             onBlur={[Function]}
             onChange={[Function]}
             onClick={[Function]}

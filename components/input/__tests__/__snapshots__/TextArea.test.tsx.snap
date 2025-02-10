@@ -4,10 +4,10 @@ exports[`TextArea 4. render null or undefined without errors render null or unde
 
 exports[`TextArea renders correctly 1`] = `
 <span
-  class="kd-input-rtl kd-input-countWrapper "
+  class="kd-input-countWrapper "
 >
   <textarea
-    class="kd-input-textarea kd-input-rtl kd-input-size-middle kd-input-underline kd-input-no-resize"
+    class="kd-input-textarea kd-input-size-middle kd-input-underline kd-input-no-resize"
     maxlength="255"
   />
 </span>
@@ -15,10 +15,10 @@ exports[`TextArea renders correctly 1`] = `
 
 exports[`TextArea renders correctly 2`] = `
 <span
-  class="kd-input-rtl kd-input-countWrapper "
+  class="kd-input-countWrapper "
 >
   <textarea
-    class="kd-input-textarea kd-input-rtl kd-input-size-middle kd-input-underline kd-input-no-resize"
+    class="kd-input-textarea kd-input-size-middle kd-input-underline kd-input-no-resize"
     maxlength="255"
   />
 </span>
@@ -26,10 +26,10 @@ exports[`TextArea renders correctly 2`] = `
 
 exports[`TextArea renders correctly 3`] = `
 <span
-  class="kd-input-rtl kd-input-countWrapper "
+  class="kd-input-countWrapper "
 >
   <textarea
-    class="kd-input-textarea kd-input-rtl kd-input-size-large kd-input-underline kd-input-no-resize"
+    class="kd-input-textarea kd-input-size-large kd-input-underline kd-input-no-resize"
     maxlength="255"
   />
 </span>
@@ -37,10 +37,10 @@ exports[`TextArea renders correctly 3`] = `
 
 exports[`TextArea renders correctly 4`] = `
 <span
-  class="kd-input-rtl kd-input-countWrapper "
+  class="kd-input-countWrapper "
 >
   <textarea
-    class="kd-input-textarea kd-input-rtl kd-input-size-middle kd-input-underline kd-input-no-resize"
+    class="kd-input-textarea kd-input-size-middle kd-input-underline kd-input-no-resize"
     maxlength="255"
   />
 </span>
@@ -48,10 +48,10 @@ exports[`TextArea renders correctly 4`] = `
 
 exports[`TextArea renders correctly 5`] = `
 <span
-  class="kd-input-rtl kd-input-countWrapper "
+  class="kd-input-countWrapper "
 >
   <textarea
-    class="kd-input-textarea kd-input-rtl kd-input-size-small kd-input-underline kd-input-no-resize"
+    class="kd-input-textarea kd-input-size-small kd-input-underline kd-input-no-resize"
     maxlength="255"
   />
 </span>
@@ -59,10 +59,10 @@ exports[`TextArea renders correctly 5`] = `
 
 exports[`TextArea renders correctly 6`] = `
 <span
-  class="kd-input-rtl kd-input-countWrapper "
+  class="kd-input-countWrapper "
 >
   <textarea
-    class="kd-input-textarea kd-input-rtl kd-input-size-middle kd-input-borderless kd-input-no-resize"
+    class="kd-input-textarea kd-input-size-middle kd-input-borderless kd-input-no-resize"
     maxlength="255"
   />
 </span>
@@ -70,10 +70,10 @@ exports[`TextArea renders correctly 6`] = `
 
 exports[`TextArea renders correctly 7`] = `
 <span
-  class="kd-input-rtl kd-input-countWrapper "
+  class="kd-input-countWrapper "
 >
   <textarea
-    class="kd-input-textarea kd-input-rtl kd-input-size-middle kd-input-underline kd-input-no-resize"
+    class="kd-input-textarea kd-input-size-middle kd-input-underline kd-input-no-resize"
     maxlength="255"
   />
 </span>
@@ -81,10 +81,10 @@ exports[`TextArea renders correctly 7`] = `
 
 exports[`TextArea renders correctly 8`] = `
 <span
-  class="kd-input-rtl kd-input-countWrapper "
+  class="kd-input-countWrapper "
 >
   <textarea
-    class="kd-input-textarea kd-input-rtl kd-input-size-middle kd-input-no-resize"
+    class="kd-input-textarea kd-input-size-middle kd-input-no-resize"
     maxlength="255"
   />
 </span>
