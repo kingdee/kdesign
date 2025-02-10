@@ -30,7 +30,6 @@
           background-color: @steps-color-white;
         }
       }
-
     }
 
     &-clickable&-wait {
@@ -60,7 +59,7 @@
 
       &:hover {
         .@{steps-prefix-cls}-item-title {
-          color: @steps-color-completed
+          color: @steps-color-completed;
         }
       }
     }
@@ -85,7 +84,8 @@
         position: absolute;
         left: 50%;
         top: calc(50% - @steps-line-sizing-height / 2);
-        transition: width @steps-duration-promptly cubic-bezier(0.48, 0.04, 0.52, 0.96), background-color @steps-duration-promptly cubic-bezier(0.48, 0.04, 0.52, 0.96)
+        transition: width @steps-duration-promptly cubic-bezier(0.48, 0.04, 0.52, 0.96),
+          background-color @steps-duration-promptly cubic-bezier(0.48, 0.04, 0.52, 0.96);
       }
 
       &:last-child {
@@ -144,7 +144,8 @@
         border-color: @steps-color-hover;
       }
 
-      .@{steps-prefix-cls}-item-title, .@{steps-prefix-cls}-item-description {
+      .@{steps-prefix-cls}-item-title,
+      .@{steps-prefix-cls}-item-description {
         color: @steps-color-hover;
       }
     }
@@ -172,7 +173,6 @@
         }
       }
     }
-
 
     &-error {
       .@{steps-prefix-cls}-icon {
@@ -257,6 +257,60 @@
       &-content {
         text-align: left;
         margin-top: 1px;
+      }
+    }
+  }
+}
+
+.@{steps-prefix-cls}-rtl {
+  direction: rtl;
+  .@{steps-prefix-cls}-item:first-child {
+    .@{steps-prefix-cls}-item-iconContainer {
+      &::before {
+        display: none;
+      }
+    }
+  }
+  &.@{steps-prefix-cls}-horizontal {
+    &:first-child {
+      padding-right: 0;
+    }
+
+    &:last-child {
+      padding-right: 0;
+      padding-left: 0;
+    }
+    .@{steps-prefix-cls}-item {
+      .@{steps-prefix-cls}-item-container {
+        .@{steps-prefix-cls}-item-iconContainer {
+          &::after {
+            display: none;
+          }
+          &::before {
+            content: '';
+            width: ~'calc(100% + 35px)';
+            height: @steps-line-sizing-height;
+            border-bottom: 1px dashed @steps-color-wait;
+            border-left: 1px dashed @steps-color-wait;
+            position: absolute;
+            left: 50%;
+            top: calc(50% - @steps-line-sizing-height / 2);
+            transition: width @steps-duration-promptly cubic-bezier(0.48, 0.04, 0.52, 0.96),
+              background-color @steps-duration-promptly cubic-bezier(0.48, 0.04, 0.52, 0.96);
+            
+          }
+        }
+      }
+    }
+  }
+  &.@{steps-prefix-cls}-vertical {
+    .@{steps-prefix-cls}-item {
+      &-iconContainer {
+        margin-left: 4px;
+        margin-right: 0;
+      }
+      &-content {
+        text-align: right;
       }
     }
   }

@@ -21,7 +21,12 @@ export interface StepsProps {
 }
 
 const Steps: React.FC<StepsProps> = (props) => {
-  const { getPrefixCls, prefixCls, compDefaultProps: userDefaultProps } = useContext(ConfigContext)
+  const {
+    getPrefixCls,
+    prefixCls,
+    compDefaultProps: userDefaultProps,
+    direction: rtlDirection,
+  } = useContext(ConfigContext)
   const stepsProps = getCompProps('Steps', userDefaultProps, props)
   const {
     direction,
@@ -46,8 +51,8 @@ const Steps: React.FC<StepsProps> = (props) => {
     `cannot found steps labelPlacement '${labelPlacement}'`,
   )
   const stepsPrefixCls = getPrefixCls!(prefixCls, 'steps', customPrefixcls) // 按钮样式前缀
-
-  const stepsClassName = classNames(stepsPrefixCls, `${stepsPrefixCls}-${direction}`, className, {
+  const rtlCls = rtlDirection === 'rtl' ? `${stepsPrefixCls}-rtl` : null
+  const stepsClassName = classNames(stepsPrefixCls, rtlCls, `${stepsPrefixCls}-${direction}`, className, {
     [`${stepsPrefixCls}-leftLable`]: labelPlacement === 'left',
     [`${stepsPrefixCls}-rightLable`]: labelPlacement === 'right',
     [`${stepsPrefixCls}-bottomLable`]: labelPlacement === 'bottom',
