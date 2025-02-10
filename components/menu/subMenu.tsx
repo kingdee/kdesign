@@ -23,7 +23,12 @@ export interface MenuSubMenuProps extends React.HTMLAttributes<HTMLElement> {
 }
 
 const SubMenu: React.FC<MenuSubMenuProps> = (props) => {
-  const { getPrefixCls, prefixCls: pkgPrefixCls, compDefaultProps: userDefaultProps } = React.useContext(ConfigContext)
+  const {
+    getPrefixCls,
+    prefixCls: pkgPrefixCls,
+    compDefaultProps: userDefaultProps,
+    direction,
+  } = React.useContext(ConfigContext)
 
   // 属性需要合并一遍用户定义的默认属性
   const {
@@ -265,10 +270,10 @@ const SubMenu: React.FC<MenuSubMenuProps> = (props) => {
     onMouseEnter: handleOnMouseEnter,
     onClick: handleOnClickSubMenu,
   }
-
+  const isRtl = direction === 'rtl'
   const titleStyle = {
-    paddingRight: `${curPaddingRight}px`,
-    paddingLeft: `${curPaddingLeft}px`,
+    paddingRight: isRtl ? `${curPaddingLeft}px` : `${curPaddingRight}px`,
+    paddingLeft: isRtl ? `${curPaddingRight}px` : `${curPaddingLeft}px`,
   }
 
   // eslint-disable-next-line react-hooks/rules-of-hooks
@@ -339,7 +344,7 @@ const SubMenu: React.FC<MenuSubMenuProps> = (props) => {
     </div>,
     {
       arrow: false,
-      placement: 'rightTop',
+      placement: direction === 'rtl' ? 'leftTop' : 'rightTop',
       gap: 0,
       visible: isVertical && !disabled ? visible : false,
       disabled: isVertical ? undefined : true,
