@@ -44,7 +44,12 @@ const isFunction = (fn: any): boolean => {
 const openSubMenuSet = new Set<string>()
 
 const Menu: MenuType = (props) => {
-  const { getPrefixCls, prefixCls: pkgPrefixCls, compDefaultProps: userDefaultProps } = useContext(ConfigContext)
+  const {
+    getPrefixCls,
+    prefixCls: pkgPrefixCls,
+    compDefaultProps: userDefaultProps,
+    direction,
+  } = useContext(ConfigContext)
 
   const { selectedKey: userSelectedKey, openKeys: userOpenKeys } = props
   const {
@@ -65,7 +70,7 @@ const Menu: MenuType = (props) => {
   } = getCompProps('Menu', userDefaultProps, props)
 
   const prefixCls = getPrefixCls!(pkgPrefixCls, 'menu', customPrefixcls)
-
+  const rtlCls = direction === 'rtl' ? `${prefixCls}-rtl` : null
   devWarning(['inline', 'vertical', undefined].indexOf(mode!) === -1, 'menu', `cannot found menu mode '${mode}'`)
   devWarning(mode !== 'inline' && accordion !== undefined, 'menu', `'accordion' is valid only in mode='inline'`)
 
@@ -198,7 +203,7 @@ const Menu: MenuType = (props) => {
 
   return (
     <div
-      className={classNames(prefixCls, className, {
+      className={classNames(prefixCls, rtlCls, className, {
         [`${prefixCls}-inline`]: mode === 'inline',
         [`${prefixCls}-vertical`]: mode !== 'inline',
         [`${prefixCls}-collapsed`]: collapsed,

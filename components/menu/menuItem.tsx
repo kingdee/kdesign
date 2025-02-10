@@ -17,7 +17,12 @@ export interface MenuItemProps extends React.HTMLAttributes<HTMLElement> {
 export const MENU_ITEM_CONTAINER_NAME = 'menu-item-content-container'
 
 const InternalMenuItem: React.ForwardRefRenderFunction<unknown, MenuItemProps> = (props, ref) => {
-  const { getPrefixCls, prefixCls: pkgPrefixCls, compDefaultProps: userDefaultProps } = React.useContext(ConfigContext)
+  const {
+    getPrefixCls,
+    prefixCls: pkgPrefixCls,
+    compDefaultProps: userDefaultProps,
+    direction,
+  } = React.useContext(ConfigContext)
 
   // 属性需要合并一遍用户定义的默认属性
   const {
@@ -114,9 +119,11 @@ const InternalMenuItem: React.ForwardRefRenderFunction<unknown, MenuItemProps> =
     onMouseEnter: handleOnMouseEnter,
   }
 
+  const isRtl = direction === 'rtl'
+
   const titleStyle = {
-    paddingLeft: `${getPaddingLeft()}px`,
-    paddingRight: mode !== 'inline' && level > 1 ? `${DEFAUTL_PADDING}px` : 0,
+    paddingLeft: isRtl ? (mode !== 'inline' && level > 1 ? `${DEFAUTL_PADDING}px` : 0) : `${getPaddingLeft()}px`,
+    paddingRight: isRtl ? `${getPaddingLeft()}px` : mode !== 'inline' && level > 1 ? `${DEFAUTL_PADDING}px` : 0,
   }
 
   const renderTitle = (): React.ReactNode => {
