@@ -56,6 +56,7 @@ const Dropdown = React.forwardRef<HTMLDivElement, DropDownProps>((props, ref) =>
     defaultVisible,
     onVisibleChange,
     trigger,
+    placement,
     prefixCls: customPrefixcls,
     menuAnimation,
     popperStyle,
@@ -182,7 +183,7 @@ const Dropdown = React.forwardRef<HTMLDivElement, DropDownProps>((props, ref) =>
     prefixCls,
     popperStyle: innerAnimation ? popperStyle : { animation: 'none', ...popperStyle },
     onVisibleChange: handleVisibleChange,
-    placement: direction === 'rtl' ? 'bottomRight' : 'bottomLeft',
+    placement: placement || (direction === 'rtl' ? 'bottomRight' : 'bottomLeft'),
   }
 
   return usePopper(child, menuElement, popperProps)
