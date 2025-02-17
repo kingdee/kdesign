@@ -87,6 +87,9 @@
     .@{switch-prefix-cls}-loading-icon {
       right: 0;
       left: unset;
+      .@{icon-prefix-cls}-loadding-circle {
+        animation: rtlloadingcircle 2s infinite;
+      }
     }
   }
   &.@{switch-prefix-cls}::after {
@@ -100,6 +103,9 @@
       .@{switch-prefix-cls}-loading-icon {
         left: 1px;
         right: unset;
+        .@{icon-prefix-cls}-loadding-circle {
+          animation: rtlloadingcircle 2s infinite;
+        }
       }
     }
     &.@{switch-prefix-cls}-size-large {
