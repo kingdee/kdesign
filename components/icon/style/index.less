@@ -1,8 +1,7 @@
-
 @import '../../style/themes/index';
 @icon-prefix-cls: ~'@{kd-prefix}icon';
 
-[class^="@{icon-prefix-cls}"] {
+[class^='@{icon-prefix-cls}'] {
   display: inline-block;
   text-align: center;
   vertical-align: middle;
@@ -11,4 +10,11 @@
 .icon-spin::before,
 .icon-spin {
   animation: loadingcircle 2s infinite linear;
+}
+.kd-icon-rtl {
+  direction: rtl;
+  &.icon-spin,
+  &.icon-spin::before {
+    animation: rtlloadingcircle 2s infinite linear;
+  }
 }
