@@ -28,7 +28,12 @@ export interface RateProps {
 }
 
 const Rate: React.FC<RateProps> = (props) => {
-  const { getPrefixCls, prefixCls: pkgPrefixCls, compDefaultProps: userDefaultProps } = React.useContext(ConfigContext)
+  const {
+    getPrefixCls,
+    prefixCls: pkgPrefixCls,
+    compDefaultProps: userDefaultProps,
+    direction,
+  } = React.useContext(ConfigContext)
 
   const {
     prefixCls: customPrefixcls,
@@ -53,6 +58,7 @@ const Rate: React.FC<RateProps> = (props) => {
   devWarning(SizeTypes.indexOf(size) === -1, 'Rate', `cannot found SizeType '${size}'`)
   // className前缀
   const prefixCls = getPrefixCls!(pkgPrefixCls, 'rate', customPrefixcls)
+  const rtlCls = direction === 'rtl' ? `${prefixCls}-rtl` : null
   const [selectedValue, setSelectedValue] = React.useState(defaultValue) // 当前选中的值，包含一位小数
   const [activeNumber, setActiveNumber] = React.useState([0]) // 鼠标悬停icon位置对应的值
 
@@ -273,7 +279,7 @@ const Rate: React.FC<RateProps> = (props) => {
   //     )
   //   }
 
-  const getRateClassName = classnames(prefixCls, className, {
+  const getRateClassName = classnames(prefixCls, rtlCls, className, {
     [`${prefixCls}-size-${size}`]: size,
     [`${prefixCls}-disabled`]: disabled,
   })
