@@ -410,7 +410,7 @@ const compDefaultProps = {
     marks: [],
     max: 100,
     min: 0,
-    reverse: false,
+    // reverse: false,
     step: 1,
     tooltipPlacement: 'top',
     vertical: false,
