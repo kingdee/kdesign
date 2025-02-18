@@ -185,3 +185,22 @@
     }
   }
 }
+
+.@{transfer-prefix-cls}-rtl {
+  direction: rtl;
+  .@{kd-prefix}-checkbox {
+    background: transparent;
+    margin-left: 6px;
+    margin-right: 0;
+  }
+  .@{transfer-prefix-cls}-list {
+    &-content {
+      &-item {
+        justify-content: start;
+        &-text {
+          flex: none;
+        }
+      }
+    }
+  }
+}

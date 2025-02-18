@@ -27,7 +27,7 @@ const Demo: React.FC = () => {
   const [selectedKeys, setSelectedKeys] = React.useState<ITransferProps['selectedKeys']>([])
   const transerDom = React.useRef<ITransferRef>(null)
   React.useEffect(() => {
-    transerDom.current?.clearSearch()
+    // transerDom.current?.clearSearch()
   }, [])
   const handleChange: ITransferProps['onChange'] = (nextTargetKeys) => {
     setTargetKeys(nextTargetKeys)
