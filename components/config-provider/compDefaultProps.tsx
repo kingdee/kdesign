@@ -47,7 +47,7 @@ const compDefaultProps = {
     allowClear: true,
     expandTrigger: 'click',
     notFoundContent: 'No Data',
-    popupPlacement: 'bottomLeft',
+    // popupPlacement: 'bottomLeft',
     dropdownRender: (menus: React.ReactNode) => menus,
     displayRender: (labels: string[]) => labels.join('/'),
     fieldNames: { label: 'label', value: 'value', children: 'children' },
