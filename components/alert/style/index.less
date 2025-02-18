@@ -130,3 +130,15 @@
     transform: translateY(0);
   }
 }
+
+.@{alert-prefix-cls}-rtl {
+  direction: rtl;
+  .@{alert-prefix-cls}-icon {
+    margin-left: @alert-message-icon-margin-right;
+    margin-right: 0;
+  }
+  .@{alert-prefix-cls}-close-icon {
+    margin-right: @alert-close-icon-margin-left;
+    margin-left: 0;
+  }
+}

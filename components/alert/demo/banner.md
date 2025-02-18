@@ -36,7 +36,7 @@ const Demo: React.FC = () => {
     inputRef.current &&
       setMsg((msg) => {
         console.log(msg)
-        return inputRef.current?.value || ''
+        return inputRef.current.value || ''
       })
   }
   const handleClick = () => {
