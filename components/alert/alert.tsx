@@ -68,7 +68,7 @@ function createAlertContainer(
   allBannerAlertPortals.set(posKey, container)
 }
 const Alert: React.FC<IAlertProps> = (props: IAlertProps): ReactElement | React.ReactPortal => {
-  const { getPrefixCls, prefixCls, compDefaultProps: userDefaultProps } = useContext(ConfigContext)
+  const { getPrefixCls, prefixCls, compDefaultProps: userDefaultProps, direction } = useContext(ConfigContext)
   const alertProps: IAlertProps = getCompProps('Alert', userDefaultProps, props) // 属性需要合并一遍用户定义的默认属性
   const {
     type,
@@ -96,7 +96,7 @@ const Alert: React.FC<IAlertProps> = (props: IAlertProps): ReactElement | React.
   const forceUpdate = useState(0)[1]
   const previousMessage = usePrevious(message)
   const alertPrefixCls = getPrefixCls!(prefixCls, 'alert', customPrefixcls)
-
+  const rtlCls = direction === 'rtl' ? `${alertPrefixCls}-rtl` : null
   useEffect(() => {
     if (banner) {
       const previousPosKey = previousBannerOffset.join(',')
@@ -151,7 +151,7 @@ const Alert: React.FC<IAlertProps> = (props: IAlertProps): ReactElement | React.
     }
   }, [delayOffTime, message, previousMessage, timerRef, hideAlert])
 
-  const alertClasses = classNames(alertPrefixCls, className, {
+  const alertClasses = classNames(alertPrefixCls, rtlCls, className, {
     [`${alertPrefixCls}-closable`]: closable,
     [`${alertPrefixCls}-banner`]: banner,
     [`${alertPrefixCls}-leave`]: !visible || !message,
