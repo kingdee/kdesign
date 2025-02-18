@@ -42,7 +42,7 @@ export interface ITransferRef {
 }
 
 const InternalTransfer = (props: TransferProps, ref: React.Ref<ITransferRef>) => {
-  const { getPrefixCls, prefixCls, compDefaultProps: userDefaultProps, locale } = useContext(ConfigContext)
+  const { getPrefixCls, prefixCls, compDefaultProps: userDefaultProps, locale, direction } = useContext(ConfigContext)
   const transferProps = getCompProps('Transfer', userDefaultProps, props) // 获取穿梭框props
   const {
     prefixCls: customPrefixcls,
@@ -74,8 +74,10 @@ const InternalTransfer = (props: TransferProps, ref: React.Ref<ITransferRef>) =>
 
   const transferLang = locale.getCompLangMsg({ componentName: 'Transfer' })
   const transferPrefixCls = getPrefixCls!(prefixCls, 'transfer', customPrefixcls)
+  const rtlCls = direction === 'rtl' ? `${transferPrefixCls}-rtl` : null
   const cls = classNames(
     transferPrefixCls,
+    rtlCls,
     {
       [`${transferPrefixCls}-disabled`]: disabled,
       [`${transferPrefixCls}-customize-list`]: !!children,
@@ -297,6 +299,7 @@ const InternalTransfer = (props: TransferProps, ref: React.Ref<ITransferRef>) =>
         noDataContent={handleNoDataContent(noDataContent, 'left')}
         footer={footer}
         ref={leftListRef}
+        rtl={direction === 'rtl'}
       />
       <Operation
         className={`${transferPrefixCls}-operation`}
@@ -309,6 +312,7 @@ const InternalTransfer = (props: TransferProps, ref: React.Ref<ITransferRef>) =>
         style={operationStyle}
         disabled={disabled}
         oneWay={oneWay}
+        direction={direction}
       />
       <List
         prefixCls={`${transferPrefixCls}-list`}

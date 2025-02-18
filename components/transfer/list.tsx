@@ -44,6 +44,7 @@ export interface TransferListProps {
   showSelectAll?: boolean
   showRemove?: boolean
   pagination?: PaginationType
+  rtl?: boolean
 }
 
 export interface ListRef {
@@ -71,6 +72,7 @@ const ITransferList = (props: TransferListProps, ref: React.Ref<ListRef>) => {
     footer,
     showRemove,
     placeholder,
+    rtl,
   } = props
   const [filterValue, setFilterValue] = useState('')
   // 自定义底部渲染
@@ -203,7 +205,7 @@ const ITransferList = (props: TransferListProps, ref: React.Ref<ListRef>) => {
     if (showRemove) {
       return <>{`${totalCount}`}</>
     }
-    return <>{`(${selectedCount}/${totalCount})`}</>
+    return rtl ? <>{`(${totalCount}/${selectedCount})`}</> : <>{`(${selectedCount}/${totalCount})`}</>
   }
 
   const getCheckStatus = (filteredItems: TransferItem[]): string => {
