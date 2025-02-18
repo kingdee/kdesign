@@ -192,3 +192,16 @@
     transition: all calc(@transition-duration - 0.1s) @ease;
   }
 }
+
+.@{advancedSelector-prefix-cls}-rtl {
+  direction: rtl;
+  .@{kd-prefix}-input {
+    padding-left: 0;
+    padding-right: 9px;
+  }
+  .@{advancedSelector-prefix-cls}-suffix,
+  .@{advancedSelector-prefix-cls}-detail {
+    margin-left: 0;
+    margin-right: 5px;
+  }
+}

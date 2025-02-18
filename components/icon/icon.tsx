@@ -19,7 +19,7 @@ export interface IIconProps extends React.HTMLAttributes<HTMLElement> {
 }
 
 const InternalIcon: React.ForwardRefRenderFunction<HTMLElement, IIconProps> = (props: IIconProps, ref: unknown) => {
-  const { getPrefixCls, compDefaultProps: userDefaultProps, prefixCls } = useContext(ConfigContext)
+  const { getPrefixCls, compDefaultProps: userDefaultProps, prefixCls, direction } = useContext(ConfigContext)
   const iconProps = getCompProps('Icon', userDefaultProps, props)
   const {
     type,
@@ -38,11 +38,12 @@ const InternalIcon: React.ForwardRefRenderFunction<HTMLElement, IIconProps> = (p
   const iconRef = (ref as any) || innerRef
 
   const iconPrefix = getPrefixCls!(prefixCls, 'icon', customPrefixcls)
+  const rtlCls = direction === 'rtl' ? `${iconPrefix}-rtl` : null
   const lastDashIndex = iconPrefix.lastIndexOf('-')
   const iconPrefixCls =
     lastDashIndex > -1 ? iconPrefix.slice(0, lastDashIndex) + iconPrefix.slice(lastDashIndex + 1) : iconPrefix
   // 兼容之前的类名写法 将kd-icon改为kdicon
-  const iconClass = classNames(iconPrefixCls, className, {
+  const iconClass = classNames(iconPrefixCls, rtlCls, className, {
     [`${iconPrefixCls}-${type}`]: type,
     [`icon-spin`]: spin,
   })

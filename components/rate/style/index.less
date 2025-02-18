@@ -78,3 +78,27 @@
 .@{rate-prefix-cls}-disabled {
   pointer-events: none;
 }
+
+.@{rate-prefix-cls}-rtl {
+  direction: rtl;
+  .@{rate-prefix-cls}-item {
+    direction: rtl;
+    margin-right: 0;
+    margin-left: @rate-icon-margin;
+    .@{rate-icon-prefix-cls}-view {
+      .@{rate-icon-prefix-cls}-first {
+        left: auto;
+        right: 0;
+        .@{rate-icon-prefix-cls}-wrapper {
+          .@{kd-prefix}-image {
+            position: absolute;
+            left: 0;
+          }
+        }
+      }
+    }
+  }
+  .@{rate-prefix-cls}-item:last-child {
+    margin-left: 0;
+  }
+}

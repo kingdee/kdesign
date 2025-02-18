@@ -107,6 +107,7 @@ const Cascader = React.forwardRef<unknown, CascaderProps>((props, ref) => {
     prefixCls: pkgPrefixCls,
     compDefaultProps: userDefaultProps,
     locale,
+    direction,
   } = React.useContext(ConfigContext)
 
   // 属性需要合并一遍用户定义的默认属性
@@ -137,7 +138,7 @@ const Cascader = React.forwardRef<unknown, CascaderProps>((props, ref) => {
     onPopperVisibleChange,
     prefixCls: customPrefixcls,
     allowClear: customAllowClear,
-    popupPlacement,
+    popupPlacement = direction === 'rtl' ? 'bottomRight' : 'bottomLeft',
     maxTagCount,
     autoFocus,
     ...otherProps
@@ -145,7 +146,7 @@ const Cascader = React.forwardRef<unknown, CascaderProps>((props, ref) => {
 
   // className前缀
   const prefixCls = getPrefixCls!(pkgPrefixCls, 'cascader', customPrefixcls)
-
+  const rtlCls = direction === 'rtl' ? `${prefixCls}-rtl` : null
   const mergeRef = useRef<HTMLSpanElement>()
   const inputRef = useRef<HTMLSpanElement>()
   const suffixRef = useRef<HTMLSpanElement>(null)
@@ -313,7 +314,7 @@ const Cascader = React.forwardRef<unknown, CascaderProps>((props, ref) => {
       <>
         {iconShow ? (
           <span onClick={handleClear} className={clearIconCls}>
-            {<Icon type="close-solid" /> || clearIcon}
+            {clearIcon || <Icon type="close-solid" />}
           </span>
         ) : null}
         <span className={arrowIconCls}>{suffixIcon || <Icon type="arrow-down" />}</span>
@@ -343,7 +344,7 @@ const Cascader = React.forwardRef<unknown, CascaderProps>((props, ref) => {
   }
 
   const renderMultiple = () => {
-    const multipleCls = classNames({
+    const multipleCls = classNames(rtlCls, {
       [`${prefixCls}-expand`]: visible,
       [`${prefixCls}-disabled`]: disabled,
       [`${prefixCls}-multiple`]: true,
@@ -354,7 +355,7 @@ const Cascader = React.forwardRef<unknown, CascaderProps>((props, ref) => {
       [`${prefixCls}-selection-item`]: true,
       [`${prefixCls}-tag-describe`]: true,
     })
-    const TagStyle = { margin: '2px 8px 2px 0', maxWidth: '100%' }
+    const TagStyle = { margin: `${direction === 'rtl' ? '2px 0 2px 8px' : '2px 8px 2px 0'}`, maxWidth: '100%' }
     const totalText = locale.getLangMsg('Cascader', 'total', { total: currentOptions.length })
     return (
       <div className={multipleCls} ref={mergeRef as any} style={style} {...otherProps} tabIndex={-1}>
@@ -413,7 +414,7 @@ const Cascader = React.forwardRef<unknown, CascaderProps>((props, ref) => {
     const singleProps = {
       style,
       tabIndex: 0,
-      className: classNames(`${prefixCls}-picker`, className, {
+      className: classNames(`${prefixCls}-picker`, rtlCls, className, {
         [`${prefixCls}-single`]: true,
         [`${prefixCls}-expand`]: visible,
         allowClear,
@@ -546,7 +547,7 @@ const Cascader = React.forwardRef<unknown, CascaderProps>((props, ref) => {
                         {loading ? (
                           <Icon type="loadding-circle" spin />
                         ) : children?.length || isLeaf === false ? (
-                          props.expandIcon || <Icon type="arrow-right" />
+                          props.expandIcon || <Icon type={direction === 'rtl' ? 'arrow-left' : 'arrow-right'} />
                         ) : null}
                       </>
                     )
@@ -597,7 +598,7 @@ const Cascader = React.forwardRef<unknown, CascaderProps>((props, ref) => {
     onVisibleChange,
     trigger: expandTrigger,
     getPopupContainer,
-    prefixCls: `${prefixCls}-menus`,
+    prefixCls: `${prefixCls}-menus ${direction === 'rtl' ? rtlCls : null}`,
     placement: allProps.popperPlacement || popupPlacement,
     popperClassName: allProps.popperClassName || allProps.popupClassName,
     getTriggerElement: () => mergeRef.current,

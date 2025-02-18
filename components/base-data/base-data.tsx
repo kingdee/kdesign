@@ -11,7 +11,7 @@ const InternalBaseData: React.ForwardRefRenderFunction<IAdvancedSelectorProps> =
   props: IAdvancedSelectorProps,
   ref: unknown,
 ): React.FunctionComponentElement<any> => {
-  const { getPrefixCls, prefixCls, compDefaultProps: userDefaultProps, locale } = useContext(ConfigContext)
+  const { getPrefixCls, prefixCls, compDefaultProps: userDefaultProps, locale, direction } = useContext(ConfigContext)
   const advancedSelectortProps = getCompProps('BaseData', userDefaultProps, props)
   const baseDataLangMsg = locale.getCompLangMsg({ componentName: 'BaseData' })
   const {
@@ -68,8 +68,9 @@ const InternalBaseData: React.ForwardRefRenderFunction<IAdvancedSelectorProps> =
   })
 
   const advancedSelectorfixCls = getPrefixCls!(prefixCls, 'baseData', customPrefixcls)
+  const rtlCls = direction === 'rtl' ? `${advancedSelectorfixCls}-rtl` : null
   // class
-  const advancedSelectorCls = classNames(advancedSelectorfixCls, className, {
+  const advancedSelectorCls = classNames(advancedSelectorfixCls, rtlCls, className, {
     [`${advancedSelectorfixCls}-disabled`]: disabled,
   })
 
@@ -699,11 +700,11 @@ const InternalBaseData: React.ForwardRefRenderFunction<IAdvancedSelectorProps> =
 
   const popperProps = {
     popperStyle: catchStyle(),
-    placement: 'bottomLeft',
+    placement: direction === 'rtl' ? 'bottomRight' : 'bottomLeft',
     ...advancedSelectortProps,
     defaultVisible: optionShow,
     visible: optionShow,
-    prefixCls: `${advancedSelectorfixCls}-dropdown-wrapper`,
+    prefixCls: `${advancedSelectorfixCls}-dropdown-wrapper ${direction === 'rtl' ? rtlCls : null}`,
     onVisibleChange: handleVisibleChange,
   }
 

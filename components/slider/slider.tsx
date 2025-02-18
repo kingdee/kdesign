@@ -38,7 +38,8 @@ export interface ISliderProps {
 
 // remove this line and code Slider component here
 const InteranalSlider = (props: ISliderProps, ref: unknown): FunctionComponentElement<any> => {
-  const { getPrefixCls, prefixCls, compDefaultProps: userDefaultProps } = useContext(ConfigContext)
+  const { getPrefixCls, prefixCls, compDefaultProps: userDefaultProps, direction } = useContext(ConfigContext)
+  const rtl = direction === 'rtl'
   const sliderProps = getCompProps('Slider', userDefaultProps, props)
   const {
     className,
@@ -51,7 +52,7 @@ const InteranalSlider = (props: ISliderProps, ref: unknown): FunctionComponentEl
     min,
     max,
     vertical,
-    reverse,
+    reverse = rtl,
     step,
     tipFormatter,
     tooltipVisible,
@@ -67,13 +68,13 @@ const InteranalSlider = (props: ISliderProps, ref: unknown): FunctionComponentEl
   devWarning(className && className.indexOf('shit') > -1, 'slider', `slider className can't include '${className}'`)
 
   const sliderPrefixCls = getPrefixCls!(prefixCls, 'slider', customPrefixcls)
-
+  const rtlCls = direction === 'rtl' ? `${sliderPrefixCls}-rtl` : null
   // ref
   const thisSliderRef = useRef<HTMLElement>()
   const sliderRef = (ref as any) || thisSliderRef
   const handleRef = useRef<HTMLElement>()
 
-  const sliderClasses = classNames(sliderPrefixCls, className, {
+  const sliderClasses = classNames(sliderPrefixCls, rtlCls, className, {
     [`${sliderPrefixCls}-vertical`]: vertical,
     [`${sliderPrefixCls}-disabled`]: disabled,
     [`${sliderPrefixCls}-reverse`]: reverse,
