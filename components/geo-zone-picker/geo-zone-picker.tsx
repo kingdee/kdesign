@@ -33,7 +33,7 @@ export interface IGeoZonePickerProps {
 }
 
 const GeoZonePicker = (props: IGeoZonePickerProps): FunctionComponentElement<IGeoZonePickerProps> => {
-  const { getPrefixCls, prefixCls, compDefaultProps: userDefaultProps, locale } = useContext(ConfigContext)
+  const { getPrefixCls, prefixCls, compDefaultProps: userDefaultProps, locale, direction } = useContext(ConfigContext)
   const geoZonePickerProps = getCompProps('GeoZonePicker', userDefaultProps, props)
   const geoZonePickerLangMsg = locale.getCompLangMsg({ componentName: 'GeoZonePicker' })
   const {
@@ -56,6 +56,7 @@ const GeoZonePicker = (props: IGeoZonePickerProps): FunctionComponentElement<IGe
     ...others
   } = geoZonePickerProps
   const geoZonePickerPrefixCls = getPrefixCls!(prefixCls, 'geo-zone-picker', customPrefixcls)
+  const rtlCls = direction === 'rtl' ? `${geoZonePickerPrefixCls}-rtl` : null
   const langMsgs = locale.getCompLangMsg({ componentName: 'global' })
 
   const [currRegionData, setCurrRegionData] = useState<RegionValue | null>(null)
@@ -79,7 +80,7 @@ const GeoZonePicker = (props: IGeoZonePickerProps): FunctionComponentElement<IGe
   const regionPanelRef = useRef<HTMLDivElement | null>(null)
   const regionInputRef = useRef<HTMLDivElement | null>(null)
 
-  const geoZonePickerClass = classNames(geoZonePickerPrefixCls, className, {
+  const geoZonePickerClass = classNames(geoZonePickerPrefixCls, rtlCls, className, {
     [`${geoZonePickerPrefixCls}-active`]: showCountryPanel || showRegionPanel,
     [`${geoZonePickerPrefixCls}-bordered`]: bordered,
     [`${geoZonePickerPrefixCls}-disabled`]: disabled,
@@ -398,14 +399,14 @@ const GeoZonePicker = (props: IGeoZonePickerProps): FunctionComponentElement<IGe
     setShowCountryPanel(false)
   })
   const countryInputpopperProps: PopperProps = {
-    prefixCls: `${geoZonePickerPrefixCls}-country-dropdown`,
-    placement: 'bottomLeft',
+    prefixCls: `${geoZonePickerPrefixCls}-country-dropdown ${direction === 'rtl' ? rtlCls : null}`,
+    placement: direction === 'rtl' ? 'bottomRight' : 'bottomLeft',
     visible: showCountryPanel,
     popperStyle: { width: '230px', maxHeight: '240px' },
   }
   const regionInputpopperProps: PopperProps = {
-    prefixCls: `${geoZonePickerPrefixCls}-region-dropdown`,
-    placement: 'bottomLeft',
+    prefixCls: `${geoZonePickerPrefixCls}-region-dropdown ${direction === 'rtl' ? rtlCls : null}`,
+    placement: direction === 'rtl' ? 'bottomRight' : 'bottomLeft',
     visible: showRegionPanel,
   }
   return (
