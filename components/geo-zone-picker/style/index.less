@@ -197,7 +197,7 @@
     position: sticky;
     top: 0;
     background: #ffffff;
-    .kd-tab-pane-type-line{
+    .kd-tab-pane-type-line {
       padding: 0 33px;
     }
   }
@@ -364,4 +364,54 @@
 }
 .@{geo-zone-picker-prefix-cls}-region-dropdown {
   z-index: @geo-zone-picker-z-index;
+}
+
+.@{geo-zone-picker-prefix-cls}-rtl {
+  direction: rtl;
+  &.@{geo-zone-picker-prefix-cls}-bordered {
+    .@{geo-zone-picker-prefix-cls}-country {
+      border: 1px solid #d9d9d9;
+      border-radius: 0 2px 2px 0;
+    }
+    .@{geo-zone-picker-prefix-cls}-country-hovered {
+      border-color: @geo-zone-picker-color-border-hover;
+    }
+    .@{geo-zone-picker-prefix-cls}-country-input {
+      padding-right: 8px;
+      padding-left: 0;
+    }
+    .@{geo-zone-picker-prefix-cls}-country-border-right-active {
+      border: 1px solid #d9d9d9;
+    }
+    & > .@{geo-zone-picker-prefix-cls}-region {
+      border: 1px solid #d9d9d9;
+      border-right: none;
+      border-left: 1px solid #d9d9d9;
+      border-radius: 2px 0 0 2px;
+    }
+    .@{geo-zone-picker-prefix-cls}-region-input {
+      padding-right: 8px;
+      padding-left: 0;
+      &:hover {
+        border: none;
+      }
+      &-active {
+        border: none;
+      }
+    }
+    .@{geo-zone-picker-prefix-cls}-region-hovered {
+      border-color: @geo-zone-picker-color-border-hover;
+      border-right: 1px solid @geo-zone-picker-color-border-hover;
+    }
+  }
+  .@{geo-zone-picker-prefix-cls}-country {
+    &-input {
+      text-align: right;
+    }
+  }
+  .@{geo-zone-picker-prefix-cls}-region {
+    &-input {
+      text-align: right;
+    }
+  }
 }
