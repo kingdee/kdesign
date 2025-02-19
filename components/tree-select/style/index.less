@@ -400,3 +400,61 @@
     transition: all calc(@transition-duration - 0.1s) @ease;
   }
 }
+
+.@{tree-select-prefix-cls}-rtl {
+  direction: rtl;
+  .@{tree-select-prefix-cls}-wrapper {
+    padding: 1px 0 1px 28px;
+    &.@{tree-select-prefix-cls}-single {
+      .@{tree-select-prefix-cls}-selection {
+        &-search {
+          left: 28px;
+          right: 0;
+        }
+      }
+    }
+  }
+  .@{tree-select-prefix-cls}-placeholder {
+    left: 28px;
+    right: 0;
+    text-align: right;
+  }
+  .@{tree-select-prefix-cls}-suffix {
+    right: auto;
+    left: 0;
+    margin-left: 0;
+    margin-right: 8px;
+  }
+  .@{tree-select-prefix-cls}-selection-item {
+    margin: 2px 0 2px 8px;
+  }
+  .@{tree-select-prefix-cls}-bordered {
+    padding-right: @tree-select-bordered !important;
+    padding-left: 0;
+    .@{tree-select-prefix-cls}-suffix {
+      padding-left: 8px;
+      padding-right: 0;
+    }
+
+    &.@{tree-select-prefix-cls}-single {
+      .@{tree-select-prefix-cls}-selection-search {
+        padding-right: @tree-select-bordered;
+        padding-left: 0;
+      }
+    }
+
+    .@{tree-select-prefix-cls}-placeholder {
+      padding-left: 0;
+      padding-right: @tree-select-bordered;
+    }
+  }
+  .@{tree-select-prefix-cls}-multiple {
+    .@{tree-select-prefix-cls}-selection {
+      &-tag {
+        .@{kd-prefix}-tag {
+          margin: 2px 0 2px 8px;
+        }
+      }
+    }
+  }
+}

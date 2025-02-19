@@ -450,9 +450,9 @@ const compDefaultProps = {
     treeExpandOnClickNode: true,
     onlyExpandOnClickIcon: true,
     showSearch: true,
-    switcherIcon: function () {
-      return <Icon type="arrow-right-solid" />
-    },
+    // switcherIcon: function () {
+    //   return <Icon type="arrow-right-solid" />
+    // },
     expandOnClickNode: false,
     listHeight: 184,
     virtual: true,
