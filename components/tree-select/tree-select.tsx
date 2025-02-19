@@ -42,7 +42,7 @@ const InternalTreeSelect: React.ForwardRefRenderFunction<ITreeSelectProps<TreeSe
   props: any,
   ref: unknown,
 ) => {
-  const { getPrefixCls, prefixCls, compDefaultProps: userDefaultProps, locale } = useContext(ConfigContext)
+  const { getPrefixCls, prefixCls, compDefaultProps: userDefaultProps, locale, direction } = useContext(ConfigContext)
   const treeSelectProps = getCompProps('TreeSelect', userDefaultProps, props)
   const {
     size,
@@ -117,8 +117,9 @@ const InternalTreeSelect: React.ForwardRefRenderFunction<ITreeSelectProps<TreeSe
   const isSelected = useMemo(() => !!selectTreeNodes?.length, [selectTreeNodes])
 
   const selectPrefixCls = getPrefixCls!(prefixCls, 'tree-select', customPrefixcls)
+  const rtlCls = direction === 'rtl' ? `${selectPrefixCls}-rtl` : null
   // 选择器样式
-  const selectCls = classNames(selectPrefixCls, className, {
+  const selectCls = classNames(selectPrefixCls, rtlCls, className, {
     [`${selectPrefixCls}-visible`]: optionShow,
   })
 
@@ -438,7 +439,7 @@ const InternalTreeSelect: React.ForwardRefRenderFunction<ITreeSelectProps<TreeSe
       [`${selectPrefixCls}-selection-item`]: true,
       [`${selectPrefixCls}-selection-item-${size}`]: size,
     })
-    const TagStyle = { margin: '2px 8px 2px 0', maxWidth: '100%' }
+    const TagStyle = { margin: `${direction === 'rtl' ? '2px 0 2px 8px' : '2px 8px 2px 0'}`, maxWidth: '100%' }
     const totalText = locale.getLangMsg('TreeSelect', 'total', { total: selectTreeNodes.length })
     return (
       <div className={multipleCls} ref={selectionRef}>
