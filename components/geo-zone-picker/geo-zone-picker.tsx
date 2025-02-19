@@ -6,7 +6,7 @@ import Input from '../input'
 import Icon from '../icon'
 import Spin from '../spin'
 import { TabType, Country, RegionArray, RegionValue, Region } from './interface'
-import usePopper from '../_utils/usePopper'
+import Popper, { PopperProps } from '../popper'
 import { useOnClickOutside } from '../_utils/hooks'
 import RegionPickerPanel from './region-picker-panel'
 import escapeRegExp from 'lodash/escapeRegExp'
@@ -397,20 +397,25 @@ const GeoZonePicker = (props: IGeoZonePickerProps): FunctionComponentElement<IGe
   useOnClickOutside([countryInputRef, countryPanelRef], () => {
     setShowCountryPanel(false)
   })
-
+  const countryInputpopperProps: PopperProps = {
+    prefixCls: `${geoZonePickerPrefixCls}-country-dropdown`,
+    placement: 'bottomLeft',
+    visible: showCountryPanel,
+    popperStyle: { width: '230px', maxHeight: '240px' },
+  }
+  const regionInputpopperProps: PopperProps = {
+    prefixCls: `${geoZonePickerPrefixCls}-region-dropdown`,
+    placement: 'bottomLeft',
+    visible: showRegionPanel,
+  }
   return (
     <div className={geoZonePickerClass} {...others}>
-      {usePopper(countrySelectorInput, countrySelectorPanel(), {
-        prefixCls: `${geoZonePickerPrefixCls}-country-dropdown`,
-        placement: 'bottomLeft',
-        visible: showCountryPanel,
-        popperStyle: { width: '230px', maxHeight: '240px' },
-      })}
-      {usePopper(regionInput, regionPickerPanel, {
-        prefixCls: `${geoZonePickerPrefixCls}-region-dropdown`,
-        placement: 'bottomLeft',
-        visible: showRegionPanel,
-      })}
+      <Popper tip={countrySelectorPanel()} {...countryInputpopperProps}>
+        {countrySelectorInput}
+      </Popper>
+      <Popper tip={regionPickerPanel} {...regionInputpopperProps}>
+        {regionInput}
+      </Popper>
     </div>
   )
 }
