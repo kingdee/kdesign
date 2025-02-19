@@ -388,7 +388,11 @@ const InternalSelect: React.ForwardRefRenderFunction<CityPickerProps> = (props: 
                 </span>
               )}
             </span>
-            {!searchValue && <span className={`${selectPrefixCls}-content-info`}>{renderCityInfo(seletedCity)}</span>}
+            {!searchValue && (
+              <span className={`${selectPrefixCls}-content-info`} title={renderCityInfo(seletedCity) || undefined}>
+                {renderCityInfo(seletedCity)}
+              </span>
+            )}
           </div>
           <span className={`${selectPrefixCls}-placeholder`} style={hiddenStyle}>
             {!disabled ? placeholder : null}
