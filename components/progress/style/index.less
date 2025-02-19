@@ -152,8 +152,6 @@
     }
   }
 
-
-
   &-circle-box {
     position: relative;
 
@@ -162,7 +160,8 @@
     }
 
     .@{progress-prefix-cls}-circle-path {
-      transition: stroke-dasharray @transition-duration @progress-transition-fn, stroke-dashoffset @transition-duration @progress-transition-fn;
+      transition: stroke-dasharray @transition-duration @progress-transition-fn,
+        stroke-dashoffset @transition-duration @progress-transition-fn;
     }
 
     .@{progress-prefix-cls}-text {
@@ -200,7 +199,28 @@
   &-circle-box:not(.@{progress-prefix-cls}-circle-gradient) {
     .@{progress-prefix-cls}-circle-path {
       stroke: @progress-default-color;
-      transition: stroke-dasharray @transition-duration @progress-transition-fn, stroke-dashoffset @transition-duration @progress-transition-fn;
+      transition: stroke-dasharray @transition-duration @progress-transition-fn,
+        stroke-dashoffset @transition-duration @progress-transition-fn;
     }
+  }
+}
+
+.@{progress-prefix-cls}-rtl {
+  direction: rtl;
+  &.@{progress-prefix-cls}-show-info & .@{progress-prefix-cls}-position-bottom {
+    .@{progress-prefix-cls}-outer {
+      margin-left: calc(-1 * @progress-line-text-font-size * 2 - 8px);
+      margin-right: 0;
+      padding-right: 0;
+      padding-left: calc(@progress-line-text-font-size * 2 + 8px);
+    }
+  }
+  .@{progress-prefix-cls}-inner {
+    transform: rotateY(180deg);
+  }
+  .@{progress-prefix-cls}-text {
+    margin-right: @progress-line-text-margin-left;
+    margin-left: 0;
+    text-align: right;
   }
 }

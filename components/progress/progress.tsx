@@ -38,7 +38,7 @@ export interface ProgressProps {
 }
 
 const Progress: FC<ProgressProps> = (props) => {
-  const { getPrefixCls, prefixCls, compDefaultProps: userDefaultProps, locale } = useContext(ConfigContext)
+  const { getPrefixCls, prefixCls, compDefaultProps: userDefaultProps, locale, direction } = useContext(ConfigContext)
   const progressProps = getCompProps('Progress', userDefaultProps, props)
   const { type, className, prefixCls: customPrefixcls, showInfo, percent, onProcess } = progressProps
 
@@ -64,7 +64,8 @@ const Progress: FC<ProgressProps> = (props) => {
 
   const progressStatus = getProgressStatus(progressProps)
   const progressPrefixCls = getPrefixCls!(prefixCls, 'progress', customPrefixcls)
-  const progressClasses = classNames(progressPrefixCls, className, {
+  const rtlCls = direction === 'rtl' ? `${progressPrefixCls}-rtl` : null
+  const progressClasses = classNames(progressPrefixCls, rtlCls, className, {
     [`${progressPrefixCls}-type-${type}`]: type,
     [`${progressPrefixCls}-status-${progressStatus}`]: true,
     [`${progressPrefixCls}-show-info`]: showInfo,
@@ -83,12 +84,18 @@ const Progress: FC<ProgressProps> = (props) => {
     let text
     const textFormatter =
       format ||
-      ((percentNumber) => (
-        <>
-          <span className={`${prefixCls}-text-percent`}>{percentNumber}</span>
-          <span className={`${prefixCls}-text-unit`}>%</span>
-        </>
-      ))
+      ((percentNumber) =>
+        direction === 'rtl' && type === 'line' ? (
+          <>
+            <span className={`${prefixCls}-text-unit`}>%</span>
+            <span className={`${prefixCls}-text-percent`}>{percentNumber}</span>
+          </>
+        ) : (
+          <>
+            <span className={`${prefixCls}-text-percent`}>{percentNumber}</span>
+            <span className={`${prefixCls}-text-unit`}>%</span>
+          </>
+        ))
 
     const successNodeMap = {
       line: <Icon className={`${prefixCls}-icon`} type="right-solid" />,
