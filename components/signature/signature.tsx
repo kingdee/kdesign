@@ -54,7 +54,7 @@ interface IModalBodyRef {
 }
 
 const Signature = (props: ISignatureProps): FunctionComponentElement<ISignatureProps> => {
-  const { getPrefixCls, prefixCls, compDefaultProps: userDefaultProps, locale } = useContext(ConfigContext)
+  const { getPrefixCls, prefixCls, compDefaultProps: userDefaultProps, locale, direction } = useContext(ConfigContext)
   const signatureProps = getCompProps('Signature', userDefaultProps, props)
   const signatureLangMsg = locale.getCompLangMsg({ componentName: 'Signature' })
   const {
@@ -81,7 +81,8 @@ const Signature = (props: ISignatureProps): FunctionComponentElement<ISignatureP
     ...restProps
   } = signatureProps
   const signaturePrefixCls = getPrefixCls!(prefixCls, 'signature', customPrefixcls)
-  const signatureClass = classNames(signaturePrefixCls, className, {
+  const rtlCls = direction === 'rtl' ? `${signaturePrefixCls}-rtl` : null
+  const signatureClass = classNames(signaturePrefixCls, rtlCls, className, {
     [`${signaturePrefixCls}-disabled`]: disabled,
   })
 
@@ -217,7 +218,7 @@ const Signature = (props: ISignatureProps): FunctionComponentElement<ISignatureP
     signaturePad: () => signaturePadRef.current,
   }
 
-  const modalClasses = classNames({
+  const modalClasses = classNames(rtlCls, {
     [`${signaturePrefixCls}-modal`]: true,
     [`${signaturePrefixCls}-modal-fullscreen`]: isFullScreen,
   })
