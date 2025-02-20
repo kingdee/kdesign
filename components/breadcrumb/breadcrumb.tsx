@@ -11,7 +11,7 @@ import { cloneDeep } from 'lodash'
 export type { IBreadcrumbProps } from './interface'
 
 const Breadcrumb = (props: IBreadcrumbProps): FunctionComponentElement<IBreadcrumbProps> => {
-  const { getPrefixCls, prefixCls, compDefaultProps: userDefaultProps } = useContext(ConfigContext)
+  const { getPrefixCls, prefixCls, compDefaultProps: userDefaultProps, direction } = useContext(ConfigContext)
   const breadcrumbProps = getCompProps('Breadcrumb', userDefaultProps, props)
   const {
     className,
@@ -30,7 +30,8 @@ const Breadcrumb = (props: IBreadcrumbProps): FunctionComponentElement<IBreadcru
   const [openEllipsis, setOpenEllipsis] = React.useState<boolean>(false)
 
   const breadcrumbPrefixCls = getPrefixCls!(prefixCls, 'breadcrumb', customPrefixcls)
-  const breadcrumbClass = classNames(breadcrumbPrefixCls, className)
+  const rtlCls = direction === 'rtl' ? `${breadcrumbPrefixCls}-rtl` : null
+  const breadcrumbClass = classNames(breadcrumbPrefixCls, className, rtlCls)
   const breadcrumbPopperClass = classNames(`${breadcrumbPrefixCls}-popper`)
   const breadcrumbMorePanelClass = classNames(`${breadcrumbPrefixCls}-more-panel`)
   const breadcrumbSeparatorClass = classNames(`${breadcrumbPrefixCls}-item-separator`)
