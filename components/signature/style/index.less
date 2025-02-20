@@ -107,3 +107,33 @@
     transform: none !important;
   }
 }
+
+.@{signature-prefix-cls}-rtl {
+  direction: rtl;
+  &.@{signature-prefix-cls}-modal {
+    .@{signature-prefix-cls}-modal-footer {
+      .kd-btn:not(:last-child) {
+        margin-right: 0;
+        margin-left: 12px;
+      }
+    }
+    .kd-modal-expand-icon {
+      left: 43.5px;
+      right: auto;
+    }
+  }
+  .@{signature-board-prefix-cls} {
+    &-operation {
+      top: 9px;
+      left: 9px;
+      right: auto;
+      & > * {
+        cursor: pointer;
+      }
+      & > *:not(:last-child) {
+        margin-left: 13px;
+        margin-right: 0;
+      }
+    }
+  }
+}
