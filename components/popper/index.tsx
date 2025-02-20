@@ -192,7 +192,7 @@ export type IPayload = {
 }
 
 export const Popper = forwardRef<SubPopup | null, PopperProps>((props, ref) => {
-  const { getPrefixCls, prefixCls: pkgPrefixCls } = React.useContext(ConfigContext)
+  const { getPrefixCls, prefixCls: pkgPrefixCls, direction } = React.useContext(ConfigContext)
   const {
     prefixCls,
     onTrigger,
@@ -230,6 +230,7 @@ export const Popper = forwardRef<SubPopup | null, PopperProps>((props, ref) => {
   } = props
 
   const popperPrefixCls = getPrefixCls!(pkgPrefixCls, 'popper')
+  const rtlCls = direction === 'rtl' ? `${popperPrefixCls}-rtl` : null
   const referencePrefixCls = `${popperPrefixCls}-reference`
   const child: React.ReactElement = getElement(children as RenderType)
   const childrenInner = isValidElement(child) && !isFragment(child) ? child : <span>{child}</span>
@@ -703,7 +704,7 @@ export const Popper = forwardRef<SubPopup | null, PopperProps>((props, ref) => {
   const popperContainerProps = {
     ref: popperRefDom,
     style: { ...(arrow ? arrowStyle : {}), ...popperOuterStyle },
-    className: classnames(popperPrefixCls, { hidden: !visibleInner }, popperOuterClassName),
+    className: classnames(popperPrefixCls, rtlCls, { hidden: !visibleInner }, popperOuterClassName),
   }
 
   const popperProps = {
