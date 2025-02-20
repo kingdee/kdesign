@@ -102,7 +102,7 @@
     &:not(.@{badge-prefix-cls}-status) {
       vertical-align: middle;
     }
-  
+
     .@{badge-prefix-cls}-custom-component,
     .@{badge-prefix-cls}-count {
       position: relative;
@@ -122,5 +122,19 @@
   100% {
     transform: scale(2.4);
     opacity: 0;
+  }
+}
+
+.@{badge-prefix-cls}-rtl {
+  direction: rtl;
+  &.@{badge-prefix-cls} {
+    .@{badge-prefix-cls}-dot,
+    .@{badge-prefix-cls}-custom-component,
+    .@{badge-prefix-cls}-count {
+      position: absolute;
+      left: 0;
+      right: auto;
+      transform: translate(-50%, -50%);
+    }
   }
 }
