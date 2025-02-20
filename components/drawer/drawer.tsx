@@ -90,7 +90,7 @@ const documentBody = document.body
 // }
 
 const InternalDrawer = (props: IDrawerProps, ref: unknown): ReactElement | React.ReactPortal => {
-  const { getPrefixCls, prefixCls, compDefaultProps: userDefaultProps } = useContext(ConfigContext)
+  const { getPrefixCls, prefixCls, compDefaultProps: userDefaultProps, direction } = useContext(ConfigContext)
   const drawerProps: IDrawerProps = getCompProps('Drawer', userDefaultProps, props) // 属性需要合并一遍用户定义的默认属性
   const {
     className,
@@ -123,6 +123,7 @@ const InternalDrawer = (props: IDrawerProps, ref: unknown): ReactElement | React
     disableScroll,
   } = drawerProps
   const drawerPrefixCls = getPrefixCls!(prefixCls, 'drawer', customPrefixcls)
+  const rtlCls = direction === 'rtl' ? `${drawerPrefixCls}-rtl` : null
   const [showChildren, setShowChildren] = useState(false)
   const [currentWidth, setCurrentWidth] = useState(width)
   // const previousWidthRef = usePrevious(currentWidth)
@@ -247,7 +248,7 @@ const InternalDrawer = (props: IDrawerProps, ref: unknown): ReactElement | React
     }
   }, [contentRef, getHorizontalBoolAndPlacementName, height, setDraerTransform, visible, width])
 
-  const drawerClasses = classNames(drawerPrefixCls, className, {
+  const drawerClasses = classNames(drawerPrefixCls, rtlCls, className, {
     [`${drawerPrefixCls}-hide`]: !visible,
     [`${drawerPrefixCls}-active`]: visible,
     [`${drawerPrefixCls}-not-at-body`]: !isBody,
