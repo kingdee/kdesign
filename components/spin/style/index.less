@@ -161,3 +161,25 @@
     align-items: center;
   }
 }
+
+.@{spin-prefix-cls}-rtl {
+  direction: rtl;
+  &.@{spin-prefix-cls}-component {
+    .@{spin-prefix-cls}-dot-spin {
+      .@{spin-prefix-cls}-dot-item {
+        right: calc(-1 * @spin-component-spin-border);
+        left: calc(-1 * @spin-component-spin-border);
+        animation: rtlComponentRotate 1s linear infinite;
+
+        @keyframes rtlComponentRotate {
+          0% {
+            transform: rotate(315deg);
+          }
+          100% {
+            transform: rotate(-45deg);
+          }
+        }
+      }
+    }
+  }
+}

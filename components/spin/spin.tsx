@@ -19,7 +19,7 @@ export interface ISpinProps {
 
 // remove this line and code Spin component here
 const InteranalSpin = (props: ISpinProps, ref: unknown) => {
-  const { getPrefixCls, prefixCls, compDefaultProps: userDefaultProps } = useContext(ConfigContext)
+  const { getPrefixCls, prefixCls, compDefaultProps: userDefaultProps, direction } = useContext(ConfigContext)
   const spinProps = getCompProps('Spin', userDefaultProps, props)
   const {
     children,
@@ -36,8 +36,8 @@ const InteranalSpin = (props: ISpinProps, ref: unknown) => {
   devWarning(SpinTypes.indexOf(type) === -1, 'spin', `cannot found spin type '${type}'`)
 
   const spinPrefixCls = getPrefixCls!(prefixCls, 'spin', customPrefixcls)
-
-  const spinClasses = classNames(spinPrefixCls, className, {
+  const rtlCls = direction === 'rtl' ? `${spinPrefixCls}-rtl` : null
+  const spinClasses = classNames(spinPrefixCls, rtlCls, className, {
     [`${spinPrefixCls}-${type}`]: type,
     [`${spinPrefixCls}-indicator-container`]: true,
     [`${spinPrefixCls}-has-children`]: children,
