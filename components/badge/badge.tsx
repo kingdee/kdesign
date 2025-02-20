@@ -38,7 +38,7 @@ export interface BadgeProps extends RibbonProps {
 }
 
 const Badge = (props: BadgeProps): FunctionComponentElement<BadgeProps> => {
-  const { getPrefixCls, prefixCls, compDefaultProps: userDefaultProps } = useContext(ConfigContext)
+  const { getPrefixCls, prefixCls, compDefaultProps: userDefaultProps, direction } = useContext(ConfigContext)
   const badgeProps = getCompProps('Badge', userDefaultProps, props)
   const {
     prefixCls: customPrefixcls,
@@ -59,7 +59,7 @@ const Badge = (props: BadgeProps): FunctionComponentElement<BadgeProps> => {
   } = badgeProps
 
   const badgePrefixCls = getPrefixCls!(prefixCls, 'badge', customPrefixcls) // 徽标数样式前缀
-
+  const rtlCls = direction === 'rtl' ? `${badgePrefixCls}-rtl` : null
   // ================================ Misc ================================
 
   const numberedDisplayCount = count > overflowCount ? `${overflowCount}+` : count
@@ -90,7 +90,9 @@ const Badge = (props: BadgeProps): FunctionComponentElement<BadgeProps> => {
       return { ...style }
     }
     const offsetStyle: React.CSSProperties = { marginTop: offset[1] }
-    offsetStyle.right = -parseInt(offset[0] as string, 10)
+    direction === 'rtl'
+      ? (offsetStyle.left = -parseInt(offset[0] as string, 10))
+      : (offsetStyle.right = -parseInt(offset[0] as string, 10))
     return {
       ...offsetStyle,
       ...style,
@@ -101,6 +103,7 @@ const Badge = (props: BadgeProps): FunctionComponentElement<BadgeProps> => {
 
   const badgeClassName = classNames(
     badgePrefixCls,
+    rtlCls,
     {
       [`${badgePrefixCls}-status`]: hasStatus,
       [`${badgePrefixCls}-not-a-wrapper`]: !children,
