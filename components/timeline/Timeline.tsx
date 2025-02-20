@@ -23,7 +23,12 @@ interface TimelineType extends React.FC<TimelineProps> {
 }
 
 const Timeline: TimelineType = (props) => {
-  const { getPrefixCls, prefixCls: pkgPrefixCls, compDefaultProps: userDefaultProps } = React.useContext(ConfigContext)
+  const {
+    getPrefixCls,
+    prefixCls: pkgPrefixCls,
+    compDefaultProps: userDefaultProps,
+    direction,
+  } = React.useContext(ConfigContext)
   const {
     prefixCls: customizePrefixCls,
     pending = null,
@@ -38,6 +43,7 @@ const Timeline: TimelineType = (props) => {
     ...restProps
   } = getCompProps('Timeline', userDefaultProps, props)
   const prefixCls = getPrefixCls!(pkgPrefixCls, 'timeline', customizePrefixCls)
+  const rtlCls = direction === 'rtl' ? `${prefixCls}-rtl` : null
   const pendingNode = typeof pending === 'boolean' ? null : pending
 
   const pendingItem = pending ? (
@@ -64,6 +70,7 @@ const Timeline: TimelineType = (props) => {
 
   const classString = classNames(
     prefixCls,
+    rtlCls,
     {
       pending: !!pending,
       reverse: !!reverse,
