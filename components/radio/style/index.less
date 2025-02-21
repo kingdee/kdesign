@@ -63,13 +63,12 @@
     left: 0;
   }
 
-  &>span {
+  & > span {
     padding: 0 6px 0 @radio-padding-left;
   }
 
   // 悬停状态
   &:hover {
-
     color: @radio-color-theme;
     &::before {
       border-color: @radio-color-theme;
@@ -300,7 +299,7 @@
     cursor: pointer;
     opacity: 0;
 
-    &[disabled]{
+    &[disabled] {
       cursor: not-allowed;
     }
   }
@@ -338,7 +337,7 @@
       }
     }
 
-    &+.@{radio-button-prefix-cls} {
+    & + .@{radio-button-prefix-cls} {
       &::before {
         content: none;
       }
@@ -368,6 +367,32 @@
 
 .@{radio-prefix-cls}-rtl {
   direction: rtl;
+  &.@{radio-prefix-cls} {
+    text-align: right;
+    padding-right: @radio-circle-size;
+    padding-left: 0;
+    margin-left: @radio-margin-right;
+    margin-right: 0;
+    .@{radio-prefix-cls}-input {
+      right: 0;
+      left: auto;
+    }
+    .@{radio-prefix-cls}-checked {
+      &::after {
+        right: 2px;
+        left: auto;
+      }
+    }
+  }
+  &.@{radio-prefix-cls}::before {
+    right: 0;
+    left: auto;
+  }
+
+  &.@{radio-prefix-cls}::after {
+    right: 2px;
+    left: auto;
+  }
 }
 
 .@{radio-button-prefix-cls}-rtl {
@@ -384,11 +409,10 @@
     }
 
     &.@{radio-button-prefix-cls}:last-child {
-    border-radius: @radius-size 0 0 @radius-size;
+      border-radius: @radius-size 0 0 @radius-size;
+    }
   }
-  }
-  
-} 
+}
 
 .@{radio-square-prefix-cls}-rtl {
   direction: rtl;
@@ -398,16 +422,16 @@
     &.@{radio-square-prefix-cls}::after {
       left: calc(-1 * (@radio-square-height - 10px) / 2);
       right: auto;
-  }
+    }
     &.@{radio-square-prefix-cls}-checked {
-      &::after {
+      .@{radio-square-prefix-cls}-checked::after {
         left: calc(-1 * (@radio-square-height - 10px) / 2);
         right: auto;
       }
     }
   }
+}
 
- }
 .@{radio-group-prefix-cls}-rtl {
   direction: rtl;
 }
