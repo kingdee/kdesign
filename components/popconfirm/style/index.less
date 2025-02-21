@@ -18,42 +18,42 @@
   opacity: 1;
   z-index: @z-index-popper;
   visibility: visible;
-  
+
   &.hidden {
     opacity: 0;
     visibility: hidden;
   }
 
-  &[class*="top"] {
+  &[class*='top'] {
     .showdow(0, 6px);
   }
 
-  &[class*="bottom"] {
+  &[class*='bottom'] {
     .showdow(0, -6px);
   }
 
-  &[class*="left"] {
+  &[class*='left'] {
     .showdow(6px, 0);
   }
 
-  &[class*="right"] {
+  &[class*='right'] {
     .showdow(-6px, 0);
   }
-  
+
   // 箭头样式
   .popperArrow(@popconfirm-background-color, @popconfirm-horizontal-gap, @popconfirm-box-shadow-blur);
-  
+
   &-content {
     .reset-component;
     width: @popconfirm-width;
     padding: @popconfirm-vertical-gap @popconfirm-horizontal-gap;
   }
-  
+
   &-title {
     line-height: @popconfirm-title-line-height;
     color: @popconfirm-title-color;
     font-size: @popconfirm-title-font-size;
-    
+
     i {
       margin-right: @popconfirm-title-icon-margin-right;
       vertical-align: top;
@@ -62,7 +62,7 @@
       font-size: @popconfirm-icon-size;
     }
   }
-  
+
   &-message {
     color: @popconfirm-message-color;
     font-size: @popconfirm-message-font-size;
@@ -75,6 +75,25 @@
 
     button:not(:last-child) {
       margin-right: @popconfirm-button-spacing;
+    }
+  }
+}
+
+.@{popconfirm-prefix-cls}-rtl {
+  direction: rtl;
+
+  .@{popconfirm-prefix-cls}-interaction {
+    text-align: left;
+
+    button:not(:last-child) {
+      margin-left: @popconfirm-button-spacing;
+      margin-right: 0;
+    }
+  }
+  .@{popconfirm-prefix-cls}-title {
+    i {
+      margin-left: @popconfirm-title-icon-margin-right;
+      margin-right: 0;
     }
   }
 }

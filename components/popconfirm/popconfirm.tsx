@@ -27,6 +27,7 @@ const Popconfirm: React.FC<PopconfirmProps> = (props) => {
     prefixCls: pkgPrefixCls,
     compDefaultProps: userDefaultProps,
     locale,
+    direction,
   } = React.useContext(ConfigContext)
 
   // 属性需要合并一遍用户定义的默认属性
@@ -51,7 +52,7 @@ const Popconfirm: React.FC<PopconfirmProps> = (props) => {
 
   // className前缀
   const prefixCls = getPrefixCls!(pkgPrefixCls, 'popconfirm', customPrefixcls)
-
+  const rtlCls = direction === 'rtl' ? `${prefixCls}-rtl` : null
   const [visible, setVisible] = React.useState(!!props.visible || defaultVisible)
   React.useEffect(() => {
     setVisible(!!props.visible)
@@ -75,7 +76,7 @@ const Popconfirm: React.FC<PopconfirmProps> = (props) => {
   }
 
   const confirmPopper = (
-    <div className={`${prefixCls}-content`}>
+    <div className={`${prefixCls}-content ${rtlCls}`}>
       {confirmTitle && (
         <h3 className={`${prefixCls}-title`}>
           {'icon' in props ? icon === true ? <Icon type="warning-solid" /> : icon : null}
