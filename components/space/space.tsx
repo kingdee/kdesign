@@ -21,7 +21,12 @@ export interface SpaceProps {
 }
 
 const Space: React.FC<SpaceProps> = (props) => {
-  const { getPrefixCls, prefixCls: pkgPrefixCls, compDefaultProps: userDefaultProps } = React.useContext(ConfigContext)
+  const {
+    getPrefixCls,
+    prefixCls: pkgPrefixCls,
+    compDefaultProps: userDefaultProps,
+    direction: rtlDirection,
+  } = React.useContext(ConfigContext)
   // 属性需要合并一遍用户定义的默认属性
   const {
     style,
@@ -37,7 +42,7 @@ const Space: React.FC<SpaceProps> = (props) => {
 
   // className前缀
   const prefixCls = getPrefixCls!(pkgPrefixCls, 'space', customPrefixcls)
-
+  const rtlCls = rtlDirection === 'rtl' ? `${prefixCls}-rtl` : null
   const mapSize: Record<string, number> = {
     small: 8,
     middle: 16,
@@ -62,9 +67,16 @@ const Space: React.FC<SpaceProps> = (props) => {
     ...style,
   }
 
-  const spaceClass = classNames(prefixCls, className, `${prefixCls}-${direction}`, `${prefixCls}-align-${align}`, {
-    [`${prefixCls}-wrap`]: wrap,
-  })
+  const spaceClass = classNames(
+    prefixCls,
+    rtlCls,
+    className,
+    `${prefixCls}-${direction}`,
+    `${prefixCls}-align-${align}`,
+    {
+      [`${prefixCls}-wrap`]: wrap,
+    },
+  )
 
   const renderItems: (children: React.ReactNode) => React.ReactNode[] = (children) => {
     const result: React.ReactNode[] = []
