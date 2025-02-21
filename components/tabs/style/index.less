@@ -401,3 +401,24 @@
     font-size: 14px;
   }
 }
+
+.@{tabs-prefix-cls}-rtl {
+  direction: rtl;
+  .@{tabs-prefix-cls}-tab-wrap {
+    .@{tabs-prefix-cls}-tab-list {
+      left: auto;
+    }
+  }
+  .@{tabs-prefix-cls}-right-operations {
+    padding-left: 18px;
+    padding-right: 0;
+    &-item {
+      padding-right: 12px;
+      padding-left: 0;
+    }
+  }
+  .@{tabs-prefix-cls}-left-operations {
+    margin-left: 2px;
+    margin-right: 0;
+  }
+}

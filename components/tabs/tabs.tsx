@@ -54,7 +54,7 @@ function getDefaultActiveKey(props: ITabsProps) {
 }
 
 const Tabs: React.FC<ITabsProps> = (props) => {
-  const { getPrefixCls, prefixCls, compDefaultProps: userDefaultProps } = useContext(ConfigContext)
+  const { getPrefixCls, prefixCls, compDefaultProps: userDefaultProps, direction } = useContext(ConfigContext)
   const tabsProps = getCompProps('Tabs', userDefaultProps, props)
   const {
     type,
@@ -72,7 +72,7 @@ const Tabs: React.FC<ITabsProps> = (props) => {
   } = tabsProps
 
   const tabsPrefixCls = getPrefixCls!(prefixCls, 'tabs', customPrefixcls)
-
+  const rtlCls = direction === 'rtl' ? `${tabsPrefixCls}-rtl` : null
   let activeKey: any
   if (tabsProps.activeKey) {
     activeKey = tabsProps.activeKey
@@ -146,7 +146,7 @@ const Tabs: React.FC<ITabsProps> = (props) => {
     }
   }, [tabRef, left, width, type, ListWidth])
 
-  const tabsClasses = classNames(tabsPrefixCls, className, {
+  const tabsClasses = classNames(tabsPrefixCls, rtlCls, className, {
     [`${tabsPrefixCls}-${position}`]: position,
     [`${tabsPrefixCls}-noContainer`]: noContainer,
   })
@@ -215,7 +215,11 @@ const Tabs: React.FC<ITabsProps> = (props) => {
     }
     return (
       <div className={leftClasses}>
-        <ArrowButton direction="left" disabled={ListPostion === 0} onClick={handleLeft} />
+        <ArrowButton
+          direction={direction === 'rtl' ? 'right' : 'left'}
+          disabled={ListPostion === 0}
+          onClick={handleLeft}
+        />
       </div>
     )
   }
@@ -265,7 +269,11 @@ const Tabs: React.FC<ITabsProps> = (props) => {
     return (
       <div className={rightClasses}>
         {showScrollArrow ? (
-          <ArrowButton direction="right" disabled={ListWidth + ListPostion === boxWidth} onClick={handleRight} />
+          <ArrowButton
+            direction={direction === 'rtl' ? 'left' : 'right'}
+            disabled={ListWidth + ListPostion === boxWidth}
+            onClick={handleRight}
+          />
         ) : null}
         <Dropdown menu={menu} trigger={['click']} onItemClick={handleSelectItem}>
           <span className={`${tabsPrefixCls}-more-btn`}>
@@ -345,9 +353,18 @@ const Tabs: React.FC<ITabsProps> = (props) => {
     if (!disabled) childrenToRender = unDisabledTabs.concat(disabledTabs)
 
     const renderTabWrap = () => {
-      const listPositionStyle = {
-        left: `${ListPostion}px`,
-      }
+      const listPositionStyle =
+        direction === 'rtl'
+          ? boxWidth - ListWidth > 0
+            ? {
+                right: '1px',
+              }
+            : {
+                left: `${ListPostion}px`,
+              }
+          : {
+              left: `${ListPostion}px`,
+            }
 
       const renderWrap = (
         <div ref={tabListRef} className={`${tabsPrefixCls}-tab-list`} style={listPositionStyle}>
