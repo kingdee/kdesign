@@ -11,7 +11,8 @@
 .@{form-prefix-cls} {
   .reset-component;
 
-  &-horizontal, &-vertical {
+  &-horizontal,
+  &-vertical {
     .@{field-prefix-cls} {
       display: flex;
     }
@@ -32,7 +33,7 @@
 
 .@{field-prefix-cls} {
   align-items: center;
-  margin: 0 @form-field-spacing-margin-right @form-field-spacing-margin-bottom 0 ;
+  margin: 0 @form-field-spacing-margin-right @form-field-spacing-margin-bottom 0;
 
   &-vertical {
     align-items: flex-start;
@@ -73,7 +74,7 @@
     right: -9px;
     width: 5px;
     height: 5px;
-    font-family: SimSun,sans-serif;
+    font-family: SimSun, sans-serif;
     line-height: 1;
     color: @form-error-color;
   }
@@ -82,7 +83,8 @@
 .@{field-wrapper-cls} {
   position: relative;
 
-  &-message, &-extra {
+  &-message,
+  &-extra {
     position: absolute;
     left: -7px;
     right: 0;
@@ -103,6 +105,26 @@
 
     &-text {
       color: @form-extra-color;
+    }
+  }
+}
+
+.@{form-prefix-cls}-rtl {
+  direction: rtl;
+  text-align: right;
+  .@{field-prefix-cls} {
+    margin: 0 0 @form-field-spacing-margin-bottom @form-field-spacing-margin-right;
+  }
+  .@{field-label-cls} {
+    text-align: right;
+    margin-left: 30px;
+    margin-right: 0;
+    &-right {
+      text-align: right;
+    }
+    &-required-mark::after {
+      left: -9px;
+      right: auto;
     }
   }
 }
