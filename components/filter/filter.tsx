@@ -19,6 +19,7 @@ const Filter: React.FC<IFilterProps> = (props) => {
     prefixCls: pkgPrefixCls,
     compDefaultProps: userDefaultProps,
     locale,
+    direction,
   } = React.useContext(ConfigContext)
   const FilterLangMsg = locale.getCompLangMsg({ componentName: 'Filter' })
   // 属性需要合并一遍用户定义的默认属性
@@ -38,7 +39,7 @@ const Filter: React.FC<IFilterProps> = (props) => {
 
   // className前缀
   const prefixCls = getPrefixCls!(pkgPrefixCls, 'filter', customPrefixcls)
-
+  const rtlCls = direction === 'rtl' ? `${prefixCls}-rtl` : null
   const { current: defaultValue } = React.useRef(
     typeof props.value === 'undefined' ? props.defaultValue || {} : props.value || {},
   )
@@ -82,7 +83,7 @@ const Filter: React.FC<IFilterProps> = (props) => {
   ]
 
   return (
-    <div className={classNames(prefixCls, className)} style={style}>
+    <div className={classNames(prefixCls, rtlCls, className)} style={style}>
       <header className={`${prefixCls}-header`}>
         <h3 className={`${prefixCls}-header-title`}>{props.title}</h3>
         <div className={`${prefixCls}-header-condition`}>
@@ -165,6 +166,7 @@ const Filter: React.FC<IFilterProps> = (props) => {
             FilterLangMsg,
             onSchemeSearch,
             getSchemeSettingMenu,
+            direction: direction || 'ltr',
             value: value as { scheme: IScheme },
           }}
         />

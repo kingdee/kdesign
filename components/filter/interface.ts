@@ -1,6 +1,7 @@
 import React from 'react'
 import { Menu } from '../dropdown/menu'
 import { IQuickSearchProps } from '../search'
+import { DirectionType } from '../config-provider/ConfigContext'
 
 type TabKey = 'condition' | 'scheme'
 
@@ -78,6 +79,7 @@ export interface ISchemeProps {
   fields: IField[]
   prefixCls: string
   schemes: IScheme[]
+  direction: DirectionType
   value: { scheme: IScheme }
   FilterLangMsg: Record<string, any>
   onSchemeSave: (scheme: IScheme) => void
