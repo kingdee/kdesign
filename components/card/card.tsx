@@ -28,7 +28,12 @@ export interface CardProps {
 }
 
 const Card: React.FC<CardProps> = React.forwardRef<HTMLDivElement, CardProps>((props, ref) => {
-  const { getPrefixCls, prefixCls: pkgPrefixCls, compDefaultProps: userDefaultProps } = React.useContext(ConfigContext)
+  const {
+    getPrefixCls,
+    prefixCls: pkgPrefixCls,
+    compDefaultProps: userDefaultProps,
+    direction,
+  } = React.useContext(ConfigContext)
   // 属性需要合并一遍用户定义的默认属性
   const {
     tags,
@@ -50,8 +55,8 @@ const Card: React.FC<CardProps> = React.forwardRef<HTMLDivElement, CardProps>((p
 
   // className前缀
   const prefixCls = getPrefixCls!(pkgPrefixCls, 'card', customPrefixcls)
-
-  const cardClassName = classNames(prefixCls, { hoverable }, className)
+  const rtlCls = direction === 'rtl' ? `${prefixCls}-rtl` : null
+  const cardClassName = classNames(prefixCls, rtlCls, { hoverable }, className)
 
   return (
     <div ref={ref} className={cardClassName} style={style} {...others}>
