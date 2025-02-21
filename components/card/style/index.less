@@ -98,7 +98,6 @@
   }
 }
 
-
 .@{card-prefix-cls}-extra {
   position: absolute;
   top: 6px;
@@ -115,4 +114,36 @@
   position: absolute;
   top: 6px;
   right: 40px;
+}
+
+.@{card-prefix-cls}-rtl {
+  direction: rtl;
+  text-align: right;
+
+  .@{card-prefix-cls}-header {
+    padding: 0 @card-spacing-padding-horizontal 0 58px;
+  }
+
+  .@{kd-prefix}-checkbox {
+    left: @card-spacing-padding-horizontal;
+    right: auto;
+  }
+
+  .@{card-prefix-cls}-avatar {
+    .@{card-prefix-cls}-avatar-img {
+      margin-left: @card-spacing-padding-vertical;
+      margin-right: 0;
+    }
+  }
+  .@{card-prefix-cls}-extra {
+    left: 4px;
+    right: auto;
+  }
+  .@{card-prefix-cls}-actions {
+    text-align: left;
+    > a {
+      margin-right: 16px;
+      margin-left: 0;
+    }
+  }
 }
