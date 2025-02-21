@@ -31,6 +31,7 @@ const Form: React.ForwardRefRenderFunction<FormInstance, FormProps> = (props: Fo
     prefixCls,
     compDefaultProps: userDefaultProps,
     locale: globalLocale,
+    direction,
   } = useContext(ConfigContext)
   const formProps = getCompProps('Form', userDefaultProps, props)
 
@@ -55,7 +56,9 @@ const Form: React.ForwardRefRenderFunction<FormInstance, FormProps> = (props: Fo
   } = formProps
 
   const formPrefixCls = getPrefixCls!(prefixCls, 'form', customizePrefixCls)
+  const rtlCls = direction === 'rtl' ? `${formPrefixCls}-rtl` : null
   const formClassName = classnames(
+    rtlCls,
     {
       [`${formPrefixCls}`]: true,
       [`${formPrefixCls}-${layout}`]: true,
