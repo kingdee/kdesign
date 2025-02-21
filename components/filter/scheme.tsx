@@ -12,7 +12,8 @@ import Option from '../select/option'
 import { ISchemeProps, IScheme, IField } from './interface'
 
 const SchemeFilter: React.FC<ISchemeProps> = (props) => {
-  const { value, prefixCls, fields, FilterLangMsg, onSchemeSearch, onSchemeSave, getSchemeSettingMenu } = props
+  const { value, prefixCls, fields, FilterLangMsg, direction, onSchemeSearch, onSchemeSave, getSchemeSettingMenu } =
+    props
 
   const [schemes, setSchemes] = React.useState(props.schemes || [])
   React.useEffect(() => {
@@ -210,7 +211,14 @@ const SchemeFilter: React.FC<ISchemeProps> = (props) => {
           })}
           <li>
             <Button type="primary" ghost size="small" onClick={handleAddCondition}>
-              <Icon type="add" style={{ verticalAlign: 'top', marginRight: 5 }} />
+              <Icon
+                type="add"
+                style={
+                  direction === 'rtl'
+                    ? { verticalAlign: 'top', marginLeft: 5 }
+                    : { verticalAlign: 'top', marginRight: 5 }
+                }
+              />
               {FilterLangMsg.addCondition}
             </Button>
           </li>
@@ -227,7 +235,11 @@ const SchemeFilter: React.FC<ISchemeProps> = (props) => {
               value={scheme.name}
               onChange={handleChangeSchemeName}
             />
-            <Button type="ghost" style={{ marginLeft: 12 }} onClick={onSchemeSave.bind(null, scheme)}>
+            <Button
+              type="ghost"
+              style={direction === 'rtl' ? { marginRight: 12 } : { marginLeft: 12 }}
+              onClick={onSchemeSave.bind(null, scheme)}
+            >
               {FilterLangMsg.saveScheme}
             </Button>
           </div>
