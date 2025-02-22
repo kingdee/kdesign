@@ -22,7 +22,7 @@ const InternalTypography: React.ForwardRefRenderFunction<unknown, InternalTypogr
   props: InternalTypographyProps,
   ref: unknown,
 ) => {
-  const { getPrefixCls, prefixCls, compDefaultProps: userDefaultProps } = useContext(ConfigContext)
+  const { getPrefixCls, prefixCls, compDefaultProps: userDefaultProps, direction } = useContext(ConfigContext)
   const typographyProps = getCompProps('Typography', userDefaultProps, props)
   const {
     prefixCls: customPrefixcls,
@@ -33,7 +33,8 @@ const InternalTypography: React.ForwardRefRenderFunction<unknown, InternalTypogr
     ...restProps
   } = typographyProps
   const typographyPrefixCls = getPrefixCls!(prefixCls, 'typography', customPrefixcls) // 排版样式前缀
-  const typographyClasses = classNames(typographyPrefixCls, className, {
+  const rtlCls = direction === 'rtl' ? `${typographyPrefixCls}-rtl` : null
+  const typographyClasses = classNames(typographyPrefixCls, rtlCls, className, {
     // [`${typographyPrefixCls}-size-${size}`]: size,
     // [`${typographyPrefixCls}-borderless`]: borderType === 'none',
   })
