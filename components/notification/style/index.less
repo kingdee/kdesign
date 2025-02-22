@@ -4,11 +4,13 @@
 @notice-prefix-cls: ~'@{kd-prefix}-notice';
 @notice-box: ~'@{notice-prefix-cls}-box';
 
-.@{notice-box}-topRight, .@{notice-box}-topLeft, .@{notice-box}-bottomLeft, .@{notice-box}-bottomRight {
+.@{notice-box}-topRight,
+.@{notice-box}-topLeft,
+.@{notice-box}-bottomLeft,
+.@{notice-box}-bottomRight {
   position: fixed;
   z-index: @notice-z-index;
 }
-
 
 .@{notice-prefix-cls} {
   position: relative;
@@ -19,7 +21,7 @@
   box-shadow: 0 1px 6px 0 rgba(0, 0, 0, 0.15);
   border-radius: 2px;
   background-color: @notice-content-color-background;
-  animation: kdNoticeEffect @notice-motion-duration cubic-bezier(0,.4,.4,1) forwards;
+  animation: kdNoticeEffect @notice-motion-duration cubic-bezier(0, 0.4, 0.4, 1) forwards;
 
   &-content {
     width: 100%;
@@ -104,8 +106,6 @@
         }
       }
     }
-
-
   }
 
   &-primary {
@@ -124,26 +124,50 @@
   }
 
   &-leave {
-    animation: kdNoticeLeaveEffect @notice-motion-duration cubic-bezier(0,.4,.4,1) forwards;
+    animation: kdNoticeLeaveEffect @notice-motion-duration cubic-bezier(0, 0.4, 0.4, 1) forwards;
   }
 
   &-leave-after {
     padding: 0;
     margin: 0;
     opacity: 0;
-    transition: all @notice-motion-duration cubic-bezier(0,.4,.4,1);
+    transition: all @notice-motion-duration cubic-bezier(0, 0.4, 0.4, 1);
 
     &.@{notice-prefix-cls}-success,
     &.@{notice-prefix-cls}-warning,
     &.@{notice-prefix-cls}-error {
-      transition: all @notice-motion-duration cubic-bezier(0,.4,.4,1);
+      transition: all @notice-motion-duration cubic-bezier(0, 0.4, 0.4, 1);
       border: none;
     }
 
-    & div, & i {
-      transition: all @notice-motion-duration cubic-bezier(0,.4,.4,1);
+    & div,
+    & i {
+      transition: all @notice-motion-duration cubic-bezier(0, 0.4, 0.4, 1);
       height: 0;
       font-size: 0;
+    }
+  }
+}
+
+.@{notice-prefix-cls}-rtl {
+  direction: rtl;
+  .@{notice-prefix-cls}-content-title {
+    &-left {
+      margin-left: 20px;
+      margin-right: 0;
+      &-icon {
+        margin-right: 0;
+        margin-left: 5px;
+      }
+    }
+  }
+  &.@{notice-prefix-cls}-content {
+    .@{notice-prefix-cls}-content-footer {
+      padding: 0 20px 15px 20px;
+      > div {
+        margin-right: 0;
+        margin-left: 10px;
+      }
     }
   }
 }

@@ -20,7 +20,7 @@ export interface NoticeProps {
 }
 
 const Notice: FC<NoticeProps> = (props) => {
-  const { getPrefixCls, prefixCls, compDefaultProps: userDefaultProps } = useContext(ConfigContext)
+  const { getPrefixCls, prefixCls, compDefaultProps: userDefaultProps, direction } = useContext(ConfigContext)
   const noticeProps = getCompProps('Notice', userDefaultProps, props)
   const {
     prefixCls: customPrefixcls,
@@ -35,6 +35,7 @@ const Notice: FC<NoticeProps> = (props) => {
     key,
   } = noticeProps
   const noticePrefixCls = getPrefixCls!(prefixCls, suffixCls, customPrefixcls)
+  const rtlCls = direction === 'rtl' ? `${noticePrefixCls}-rtl` : null
   let timer: ReturnType<typeof setTimeout> | null = null
   let isTransition = false
   const noticeRef = useRef<HTMLDivElement>(null)
@@ -98,7 +99,7 @@ const Notice: FC<NoticeProps> = (props) => {
       onMouseLeave={startCloseTimer}
       ref={noticeRef}
     >
-      <div className={`${noticePrefixCls}-content`}>{content}</div>
+      <div className={`${noticePrefixCls}-content ${rtlCls}`}>{content}</div>
     </div>
   )
 }
