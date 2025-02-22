@@ -5,7 +5,7 @@ import { Icon } from '../../index'
 import usePickerInput from '../hooks/use-picker-input'
 import { InputCommonProps, OutInputCommonProps, RangeValue } from '../interface'
 import { getInputSize, getRangePlaceholder, elementsContains, getValue, updateValues } from '../utils'
-
+import { DirectionType } from '../../config-provider/ConfigContext'
 export interface InputRangeProps extends OutInputCommonProps, InputCommonProps {
   startInputRef: React.RefObject<HTMLInputElement>
   endInputRef: React.RefObject<HTMLInputElement>
@@ -26,6 +26,7 @@ export interface InputRangeProps extends OutInputCommonProps, InputCommonProps {
   endOpen: boolean
   separator?: React.ReactNode | string
   placeholder?: [string, string]
+  direction?: DirectionType
   resetStartText: () => void
   resetEndText: () => void
   setSelectedValue: (date: RangeValue) => void
@@ -100,13 +101,14 @@ function InputDate(props: InputRangeProps, ref: React.RefObject<HTMLDivElement>)
     setMergedActivePickerIndex,
     setHoverRangedValue,
     status,
+    direction,
   } = props
 
   const preventBlurRef = useRef<boolean>(false)
   const [isMouseEnter, setIsMouseEnter] = useState<boolean>(false)
 
   const placeholder = getRangePlaceholder(picker, locale, propsPlaceholder)
-
+  const rtlCls = direction === 'rtl' ? `${prefixCls}-rtl` : null
   const onInternalonClick = (e: React.MouseEvent<HTMLDivElement>) => {
     if (onClick) {
       onClick(e)
@@ -245,7 +247,7 @@ function InputDate(props: InputRangeProps, ref: React.RefObject<HTMLDivElement>)
   return (
     <div
       ref={ref}
-      className={classnames(prefixCls, `${prefixCls}-range`, className, borderClass, {
+      className={classnames(prefixCls, rtlCls, `${prefixCls}-range`, className, borderClass, {
         [`${prefixCls}-${size}`]: size,
         [`${prefixCls}-disabled`]: mergedDisabled[0] && mergedDisabled[1],
         [`${prefixCls}-focused`]: mergedActivePickerIndex === 0 ? startFocused : endFocused,

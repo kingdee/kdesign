@@ -186,10 +186,11 @@ const InternalRangePicker = (
     prefixCls,
     compDefaultProps: userDefaultProps,
     locale: globalLocale,
+    direction,
   } = useContext(ConfigContext)
   const datePickerProps = getCompProps('RangePicker', userDefaultProps, props)
   const datePickerPrefixCls = getPrefixCls!(prefixCls, 'date-picker', customPrefixcls)
-
+  const rtlCls = direction === 'rtl' ? `${datePickerPrefixCls}-rtl` : null
   const {
     allowClear,
     value,
@@ -645,6 +646,7 @@ const InternalRangePicker = (
             viewDate: viewDate,
             locale: datePickerLang,
             open: mergedOpen,
+            direction,
             onSelect,
             setViewDate,
             onDateMouseEnter: onDateMouseEnter,
@@ -668,6 +670,7 @@ const InternalRangePicker = (
             viewDate: nextViewDate,
             locale: datePickerLang,
             open: mergedOpen,
+            direction,
             onSelect,
             setViewDate,
             onDateMouseEnter: onDateMouseEnter,
@@ -737,7 +740,14 @@ const InternalRangePicker = (
       activeBarWidth = endInputDivRef.current.offsetWidth
     }
   }
-  const activeBarPositionStyle = { left: activeBarLeft }
+  const activeBarPositionStyle =
+    direction === 'rtl'
+      ? {
+          right: activeBarLeft + 10,
+        }
+      : {
+          left: activeBarLeft,
+        }
 
   const inputProps: InputRangeProps = {
     startInputRef,
@@ -790,6 +800,7 @@ const InternalRangePicker = (
     onFocus,
     onBlur,
     status,
+    direction,
   }
 
   const renderConfig = () => {
@@ -854,12 +865,12 @@ const InternalRangePicker = (
     </div>,
     {
       trigger: 'click',
-      prefixCls: `${datePickerPrefixCls}-panel`,
+      prefixCls: classNames(`${datePickerPrefixCls}-panel`, rtlCls),
       arrow: false,
       popperStyle: popupStyle,
       popperClassName: dropdownClassName,
       visible: mergedOpen,
-      placement: 'bottomLeft',
+      placement: direction === 'rtl' ? 'bottomRight' : 'bottomLeft',
       getPopupContainer,
     },
   )

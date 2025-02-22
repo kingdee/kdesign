@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { DateType, InnerLocale, RangeValue, TimeUnit } from './interface'
 import { CellRenderProp, IInnerPicker } from './date-picker'
-
+import { DirectionType } from '../config-provider/ConfigContext'
 export type ContextOperationRefProps = {
   onKeyDown?: (e: React.KeyboardEvent<HTMLElement>) => boolean
   onClose?: () => void
@@ -33,6 +33,7 @@ export interface SingleContextProps {
   setInnerPicker: (p: IInnerPicker) => void
   cellRender?: CellRenderProp
   range?: 'start' | 'end'
+  direction?: DirectionType
 }
 
 const Context = React.createContext<SingleContextProps>({} as SingleContextProps)

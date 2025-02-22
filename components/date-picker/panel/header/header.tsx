@@ -19,7 +19,7 @@ export interface HeaderProps {
 
 function Header(props: HeaderProps) {
   const context = useContext(Context)
-  const { prefixCls } = context
+  const { prefixCls, direction } = context
   const {
     className,
     children,
@@ -40,14 +40,14 @@ function Header(props: HeaderProps) {
     <div className={className}>
       {onSuperPrev ? (
         <span className={iconCls} onClick={onSuperPrev}>
-          {superPrevIcon || <Icon type="double-arrow-left" />}
+          {superPrevIcon || <Icon type={`double-arrow-${direction === 'rtl' ? 'right' : 'left'}`} />}
         </span>
       ) : (
         <span className={iconCls}></span>
       )}
       {onPrev ? (
         <span className={iconCls} onClick={onPrev}>
-          {prevIcon || <Icon type="arrow-left" />}
+          {prevIcon || <Icon type={`arrow-${direction === 'rtl' ? 'right' : 'left'}`} />}
         </span>
       ) : (
         <span className={iconCls}></span>
@@ -55,14 +55,14 @@ function Header(props: HeaderProps) {
       <span className={textCls}>{children}</span>
       {onNext ? (
         <span className={iconCls} onClick={onNext}>
-          {nextIcon || <Icon type="arrow-right" />}
+          {nextIcon || <Icon type={`arrow-${direction === 'rtl' ? 'left' : 'right'}`} />}
         </span>
       ) : (
         <span className={iconCls}></span>
       )}
       {onSuperNext ? (
         <span className={iconCls} onClick={onSuperNext}>
-          {superNextIcon || <Icon type="double-arrow-right" />}
+          {superNextIcon || <Icon type={`double-arrow-${direction === 'rtl' ? 'left' : 'right'}`} />}
         </span>
       ) : (
         <span className={iconCls}></span>

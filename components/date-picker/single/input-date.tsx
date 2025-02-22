@@ -6,7 +6,7 @@ import usePickerInput from '../hooks/use-picker-input'
 import { DateType, InputCommonProps, OutInputCommonProps } from '../interface'
 import { getInputSize, getPlaceholder, elementsContains } from '../utils'
 import { DisabledDataProps } from '../date-picker'
-
+import { DirectionType } from '../../config-provider/ConfigContext'
 export interface InputDateProps extends OutInputCommonProps, InputCommonProps {
   inputRef: React.RefObject<HTMLInputElement>
   text: string
@@ -15,6 +15,7 @@ export interface InputDateProps extends OutInputCommonProps, InputCommonProps {
   disabled?: boolean
   hoverValue?: string
   placeholder?: string
+  direction?: DirectionType
   disabledDate?: DisabledDataProps
   resetText: () => void
   setSelectedValue: (date: DateType | null) => void
@@ -52,7 +53,7 @@ function InputDate(props: InputDateProps, ref: React.RefObject<HTMLDivElement>) 
     prefixCls,
     locale,
     dataOrAriaProps,
-
+    direction,
     disabledDate,
     onFocus,
     onBlur,
@@ -76,6 +77,7 @@ function InputDate(props: InputDateProps, ref: React.RefObject<HTMLDivElement>) 
 
   const placeholder = getPlaceholder(picker, locale, propsPlaceholder)
 
+  const rtlCls = direction === 'rtl' ? `${prefixCls}-rtl` : null
   const getSuffixNode = () => {
     if (isMouseEnter && (hoverValue || text) && allowClear && !disabled) {
       return (
@@ -173,7 +175,7 @@ function InputDate(props: InputDateProps, ref: React.RefObject<HTMLDivElement>) 
   return (
     <div
       ref={ref}
-      className={classnames(prefixCls, className, borderClass, {
+      className={classnames(prefixCls, rtlCls, className, borderClass, {
         [`${prefixCls}-disabled`]: disabled,
         [`${prefixCls}-focused`]: focused,
         [`${prefixCls}-${size}`]: size,
