@@ -34,11 +34,11 @@
     font-size: @message-font-size;
     line-height: @messgae-line-height;
 
-    &-main{
+    &-main {
       display: flex;
     }
 
-    &-icon-wrapper{
+    &-icon-wrapper {
       font-size: @message-icon-font-size;
       margin-right: @message-icon-spacing-margin-right;
       align-self: flex-start;
@@ -51,7 +51,7 @@
       overflow: auto;
     }
 
-    &-close{
+    &-close {
       cursor: pointer;
       color: @message-close-color-text;
       font-size: @message-close-font-size;
@@ -99,7 +99,8 @@
       border: none;
     }
 
-    & div, & i {
+    & div,
+    & i {
       transition: all calc(@transition-duration - 0.2s) @ease-out;
       height: 0;
       font-size: 0;
@@ -107,3 +108,17 @@
   }
 }
 
+.@{msg-prefix-cls}-rtl {
+  direction: rtl;
+  &.@{msg-prefix-cls}-content {
+    .@{msg-prefix-cls}-content-close {
+      margin-left: 0;
+      margin-right: @message-close-spacing-margin-left;
+    }
+    .@{msg-prefix-cls}-content-icon-wrapper {
+        margin-right: 0;
+        margin-left: @message-icon-spacing-margin-right;
+        align-self: flex-end;
+      }
+  }
+}
