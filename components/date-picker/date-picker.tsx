@@ -141,11 +141,12 @@ const InternalDatePicker = (
     prefixCls,
     compDefaultProps: userDefaultProps,
     locale: globalLocale,
+    direction,
   } = useContext(ConfigContext)
   const datePickerProps: MergedPickerProps = getCompProps('DatePicker', userDefaultProps, props)
 
   const datePickerPrefixCls = getPrefixCls!(prefixCls, 'date-picker', customPrefixcls)
-
+  const rtlCls = direction === 'rtl' ? `${datePickerPrefixCls}-rtl` : null
   const {
     id,
     style,
@@ -470,6 +471,7 @@ const InternalDatePicker = (
           prefixCls: datePickerPrefixCls,
           dateValue: selectedValue,
           viewDate,
+          direction,
           open: openValue,
           locale: datePickerLang,
           onSelect: onContextSelect,
@@ -520,6 +522,7 @@ const InternalDatePicker = (
     prefixCls: datePickerPrefixCls,
     locale: datePickerLang,
     dataOrAriaProps: getDataOrAriaProps(datePickerProps),
+    direction,
 
     disabledDate,
     onFocus,
@@ -550,12 +553,12 @@ const InternalDatePicker = (
     </div>,
     {
       trigger: 'click',
-      prefixCls: `${datePickerPrefixCls}-panel`,
+      prefixCls: classnames(`${datePickerPrefixCls}-panel`, rtlCls),
       arrow: false,
       popperClassName: dropdownClassName,
       popperStyle: popupStyle,
       visible: openValue,
-      placement: 'bottomLeft',
+      placement: direction === 'rtl' ? 'bottomRight' : 'bottomLeft',
       getPopupContainer,
     },
   )

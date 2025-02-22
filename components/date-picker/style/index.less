@@ -833,3 +833,66 @@
     }
   }
 }
+
+.@{datePicker-prefix-cls}-rtl {
+  direction: rtl;
+  .@{datePicker-prefix-cls}-input {
+    .@{datePicker-prefix-cls}-suffix {
+      margin-right: @date-suffix-spacing-margin-left;
+      margin-left: 0;
+    }
+    .@{datePicker-prefix-cls}-clear {
+      left: 0;
+      right: auto;
+    }
+  }
+  &.@{datePicker-prefix-cls}-panel {
+    .@{datePicker-prefix-cls}-time {
+      .@{datePicker-prefix-cls}-content {
+        border-right: 1px solid #d9d9d9;
+        border-left: none;
+
+        .@{datePicker-prefix-cls}-time-column {
+          text-align: right;
+          &:not(:first-child) {
+            border-right: 1px solid #d9d9d9;
+            border-left: none;
+          }
+        }
+      }
+    }
+
+    .@{datePicker-prefix-cls}-footer {
+      text-align: left;
+      &-extra {
+        text-align: right;
+      }
+      .@{datePicker-prefix-cls}-btns {
+        text-align: right;
+        .@{datePicker-prefix-cls}-now {
+          text-align: right;
+        }
+
+        .@{datePicker-prefix-cls}-ok {
+          float: left;
+          margin-right: 8px;
+          margin-left: 0;
+        }
+      }
+    }
+  }
+  .@{datePicker-prefix-cls}-suffix {
+    margin-right: @date-suffix-spacing-margin-left;
+    margin-left: 0;
+  }
+  .@{datePicker-prefix-cls}-range-clear {
+    margin-right: @date-suffix-spacing-margin-left;
+    margin-left: 0;
+  }
+
+  .@{datePicker-prefix-cls}-container {
+    .@{datePicker-prefix-cls}-ranges {
+      text-align: right;
+    }
+  }
+}
