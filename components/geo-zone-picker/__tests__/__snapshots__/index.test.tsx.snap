@@ -5,7 +5,7 @@ exports[`GeoZonePicker 2. render test renders correctly 1`] = `
   class="kd-geo-zone-picker"
 >
   <div
-    class="kd-geo-zone-picker-country"
+    class="kd-popper-reference kd-geo-zone-picker-country"
   >
     <div
       class="kd-geo-zone-picker-country-input"
@@ -23,7 +23,7 @@ exports[`GeoZonePicker 2. render test renders correctly 1`] = `
     </span>
   </div>
   <div
-    class="kd-geo-zone-picker-region"
+    class="kd-popper-reference kd-geo-zone-picker-region"
   >
     <div
       class="kd-geo-zone-picker-region-input"
@@ -48,7 +48,7 @@ exports[`GeoZonePicker 2. render test renders correctly 2`] = `
   class="kd-geo-zone-picker kd-geo-zone-picker-bordered"
 >
   <div
-    class="kd-geo-zone-picker-country"
+    class="kd-popper-reference kd-geo-zone-picker-country"
   >
     <div
       class="kd-geo-zone-picker-country-input"
@@ -66,7 +66,7 @@ exports[`GeoZonePicker 2. render test renders correctly 2`] = `
     </span>
   </div>
   <div
-    class="kd-geo-zone-picker-region"
+    class="kd-popper-reference kd-geo-zone-picker-region"
   >
     <div
       class="kd-geo-zone-picker-region-input"
@@ -91,7 +91,7 @@ exports[`GeoZonePicker 2. render test renders correctly 3`] = `
   class="kd-geo-zone-picker"
 >
   <div
-    class="kd-geo-zone-picker-country"
+    class="kd-popper-reference kd-geo-zone-picker-country"
   >
     <div
       class="kd-geo-zone-picker-country-input"
@@ -109,7 +109,7 @@ exports[`GeoZonePicker 2. render test renders correctly 3`] = `
     </span>
   </div>
   <div
-    class="kd-geo-zone-picker-region"
+    class="kd-popper-reference kd-geo-zone-picker-region"
   >
     <div
       class="kd-geo-zone-picker-region-input"
@@ -134,7 +134,7 @@ exports[`GeoZonePicker 2. render test renders correctly 4`] = `
   class="kd-geo-zone-picker kd-geo-zone-picker-disabled"
 >
   <div
-    class="kd-geo-zone-picker-country"
+    class="kd-popper-reference kd-geo-zone-picker-country"
   >
     <div
       class="kd-geo-zone-picker-country-input"
@@ -152,7 +152,7 @@ exports[`GeoZonePicker 2. render test renders correctly 4`] = `
     </span>
   </div>
   <div
-    class="kd-geo-zone-picker-region"
+    class="kd-popper-reference kd-geo-zone-picker-region"
   >
     <div
       class="kd-geo-zone-picker-region-input"

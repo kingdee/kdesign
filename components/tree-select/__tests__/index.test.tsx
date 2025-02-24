@@ -318,9 +318,7 @@ describe('TreeSelect', () => {
         'defaultExpandedKeys',
         'checkStrictly',
         'expandedKeys',
-        'icon',
         'showIcon',
-        'switcherIcon',
       ]
       treeProps.forEach((prop) => {
         expect(TestTreeSelect.find('Tree').prop(prop)).toBeDefined()

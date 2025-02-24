@@ -31,6 +31,7 @@ exports[`Transfer render no child without errors 1`] = `
       onItemSelectAll={[Function]}
       placeholder="请输入需要搜索的内容"
       prefixCls="kd-transfer-list"
+      rtl={false}
       showSearch={false}
       style={Object {}}
       titleText="可选列表"
@@ -103,6 +104,7 @@ exports[`Transfer render no child without errors 1`] = `
     </ForwardRef(ITransferList)>
     <Operation
       className="kd-transfer-operation"
+      direction="ltr"
       leftActive={false}
       moveToLeft={[Function]}
       moveToRight={[Function]}
@@ -736,6 +738,7 @@ exports[`Transfer should support render value and label in item 1`] = `
       placeholder="请输入需要搜索的内容"
       prefixCls="kd-transfer-list"
       render={[Function]}
+      rtl={false}
       showSearch={false}
       style={Object {}}
       titleText="可选列表"
@@ -838,6 +841,7 @@ exports[`Transfer should support render value and label in item 1`] = `
             placeholder="请输入需要搜索的内容"
             prefixCls="kd-transfer-list"
             render={[Function]}
+            rtl={false}
             selectedKeys={Array []}
             showSearch={false}
             style={Object {}}
@@ -898,6 +902,7 @@ exports[`Transfer should support render value and label in item 1`] = `
     </ForwardRef(ITransferList)>
     <Operation
       className="kd-transfer-operation"
+      direction="ltr"
       leftActive={false}
       moveToLeft={[Function]}
       moveToRight={[Function]}
