@@ -50,6 +50,7 @@ const InternalButtonGroup = (props: ButtonGroupProps, ref: unknown): FunctionCom
     disabled,
     onVisibleChange,
     loading,
+    placement,
   } = buttonGoupProps
 
   const [optionShow, setOptionShow] = useState<boolean>(false) // 下拉列表是否展示
@@ -141,7 +142,7 @@ const InternalButtonGroup = (props: ButtonGroupProps, ref: unknown): FunctionCom
   }
 
   const popperProps = {
-    placement: direction === 'rtl' ? 'bottomRight' : 'bottomLeft',
+    placement: placement || (direction === 'rtl' ? 'bottomRight' : 'bottomLeft'),
     trigger: 'click',
     gap: 0,
     ...buttonGoupProps,
