@@ -72,7 +72,6 @@ const ITransferList = (props: TransferListProps, ref: React.Ref<ListRef>) => {
     footer,
     showRemove,
     placeholder,
-    rtl,
   } = props
   const [filterValue, setFilterValue] = useState('')
   // 自定义底部渲染
@@ -205,7 +204,7 @@ const ITransferList = (props: TransferListProps, ref: React.Ref<ListRef>) => {
     if (showRemove) {
       return <>{`${totalCount}`}</>
     }
-    return rtl ? <>{`(${totalCount}/${selectedCount})`}</> : <>{`(${selectedCount}/${totalCount})`}</>
+    return <>{`(${totalCount}/${selectedCount})`}</>
   }
 
   const getCheckStatus = (filteredItems: TransferItem[]): string => {
