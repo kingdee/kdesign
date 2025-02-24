@@ -381,19 +381,16 @@
       }
     }
     .@{city-picker-prefix-cls}-placeholder {
-      position: absolute;
       left: 24px;
       right: 0;
-      top: 0;
-      bottom: 0;
     }
 
     .@{city-picker-prefix-cls}-bordered {
       padding-right: @city-picker-bordered !important;
       padding-left: auto !important;
       .@{city-picker-prefix-cls}-suffix {
-        padding-right: 8px;
-        padding-left: auto;
+        padding-left: 8px;
+        padding-right: 0;
       }
 
       .@{city-picker-prefix-cls}-placeholder {
@@ -404,32 +401,22 @@
     .@{city-picker-prefix-cls}-suffix {
       left: 0;
       right: auto;
-      top: 0;
-      bottom: 0;
-      position: absolute;
-      display: flex;
       margin-right: 8px;
+      margin-left: 0;
     }
-
-    
-
     .@{city-picker-prefix-cls}-disabled {
       &.@{city-picker-prefix-cls}-bordered {
         padding-right: auto;
         padding-left: @city-picker-bordered;
       }
     }
-
     .@{city-picker-prefix-cls}-content {
       &-item {
-        right: 0;
-        left: 0;
         text-align: right;
       }
 
       &-info {
         text-align: left;
-        .over();
       }
     }
   }
