@@ -556,8 +556,12 @@
   direction: rtl;
   .@{color-picker-prefix-cls}-input {
     .@{kd-prefix}-input-prefix {
-      margin-right: auto;
+      margin-right: 0;
       margin-left: 3px;
+    }
+    .@{kd-prefix}-input {
+      direction: ltr;
+      text-align: right;
     }
   }
   &.@{color-picker-prefix-cls}-pop {
@@ -566,39 +570,27 @@
       &-clear {
         &-box {
           margin-left: 4px;
+          margin-right: 0;
         }
       }
       &-switch {
         span {
-          vertical-align: middle;
           margin-right: 9px;
+          margin-left: 0;
         }
       }
 
       &-container {
-        display: flex;
-        flex-wrap: nowrap;
-
         &-select {
           margin-left: 8px;
           margin-right: 0;
           .@{kd-prefix}-select-bordered {
-            border-radius: 2px;
-            width: @color-picker-panel-select-sizing-width;
-            height: @color-picker-panel-select-sizing-height;
-            min-height: 28px;
             padding: 0 28px 0 0;
           }
-
-          .active-option {
-            background-color: @color-picker-panel-option-color-background;
-          }
         }
-
         &-input {
-          height: 28px;
-          flex: 1 1 auto;
-          padding: 0 8px;
+          direction: ltr;
+          text-align: right;
         }
 
         &-input-group {

@@ -79,7 +79,7 @@ const ColorPickerPanel: FC<IColorPickerPanelProps> = (props) => {
 
   const { Option } = Select
 
-  const { getPrefixCls, prefixCls, locale } = useContext(ConfigContext)
+  const { getPrefixCls, prefixCls, locale, direction } = useContext(ConfigContext)
 
   const colorPickerPrefixCls = getPrefixCls!(prefixCls, 'color-picker')
   const panelCls = classNames(`${colorPickerPrefixCls}-panel`)
@@ -189,7 +189,7 @@ const ColorPickerPanel: FC<IColorPickerPanelProps> = (props) => {
     const regPercentage = /^(0|[1-9][0-9]?|100)%$/
     const regDot = /^(0(\.\d+)?|1(\.0+)?)$/
     const val = e.target.value
-
+    const rtlRegPercentage = /^%(0|[1-9][0-9]?|100)$/
     const getColorFormat = (alpha: number) => {
       const formatArr = colorFormat(correctColorValue, alpha, 'all', true) as IColorTypesObj[]
       const outValue = formatArr[valOfCorrespondingType(format) as number].value
@@ -198,20 +198,41 @@ const ColorPickerPanel: FC<IColorPickerPanelProps> = (props) => {
     }
 
     let alphaValue: number
-    if (regPercentage.test(val)) {
-      alphaValue = +val.replace('%', '') / 100
-    } else if (regDot.test(val)) {
-      alphaValue = +val
+    if (direction !== 'rtl') {
+      if (regPercentage.test(val)) {
+        alphaValue = +val.replace('%', '') / 100
+      } else if (regDot.test(val)) {
+        alphaValue = +val
+      } else {
+        alphaValue = 1
+      }
     } else {
-      alphaValue = 1
+      if (rtlRegPercentage.test(val)) {
+        alphaValue = +val.replace('%', '') / 100
+      } else if (regDot.test(val)) {
+        alphaValue = +val
+      } else {
+        alphaValue = 1
+      }
     }
+
     const { formatArr, outValue, innerInput } = getColorFormat(alphaValue)
-    if (regPercentage.test(val)) {
-      setAlphaNoVerifyVal(val)
-    } else if (regDot.test(val)) {
-      setAlphaNoVerifyVal(strFixed(+val * 100) + '%')
+    if (direction != 'rtl') {
+      if (regPercentage.test(val)) {
+        setAlphaNoVerifyVal(val)
+      } else if (regDot.test(val)) {
+        setAlphaNoVerifyVal(strFixed(+val * 100) + '%')
+      } else {
+        setAlphaNoVerifyVal('100%')
+      }
     } else {
-      setAlphaNoVerifyVal('100%')
+      if (rtlRegPercentage.test(val)) {
+        setAlphaNoVerifyVal(val)
+      } else if (regDot.test(val)) {
+        setAlphaNoVerifyVal(strFixed(+val * 100) + '%')
+      } else {
+        setAlphaNoVerifyVal('%100')
+      }
     }
     if (value === undefined) {
       setPanelState(formatArr, innerInput as string, outValue, alphaValue)
@@ -540,7 +561,7 @@ const ColorPickerPanel: FC<IColorPickerPanelProps> = (props) => {
                   onChange={handleAlphaChange}
                   onBlur={handleAlphaBlur}
                   borderType="bordered"
-                  value={alphaNoVerifyVal}
+                  value={direction === 'rtl' ? alphaNoVerifyVal.replace(/(\d+)%/, '%$1') : alphaNoVerifyVal}
                   disabled={isFollow}
                 />
               )}
