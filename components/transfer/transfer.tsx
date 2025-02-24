@@ -299,7 +299,6 @@ const InternalTransfer = (props: TransferProps, ref: React.Ref<ITransferRef>) =>
         noDataContent={handleNoDataContent(noDataContent, 'left')}
         footer={footer}
         ref={leftListRef}
-        rtl={direction === 'rtl'}
       />
       <Operation
         className={`${transferPrefixCls}-operation`}
