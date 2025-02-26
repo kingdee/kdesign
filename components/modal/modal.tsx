@@ -182,7 +182,9 @@ const InternalModal = (
     modalContainer = document.body
   }
   const [position, setPosition] = useState(
-    modalContainer && !overroll ? { x: -(width! / 2), y: -(height! / 2) } : { x: 0, y: 0 },
+    modalContainer && !overroll
+      ? { x: direction === 'rtl' ? width! / 2 : -(width! / 2), y: -(height! / 2) }
+      : { x: 0, y: 0 },
   )
 
   useHideDocumentScrollBar(isForceController ? !!visible : !!innerVisible, modalContainer === document.body, !!mask)
