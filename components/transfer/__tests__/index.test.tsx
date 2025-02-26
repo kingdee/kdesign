@@ -198,9 +198,9 @@ describe('Transfer', () => {
       'kd-transfer-list-content-item-disabled',
     )
     wrapper.find(TransferList).at(0).find('.kd-transfer-list-content-item').at(0).simulate('click')
-    expect(wrapper.find(TransferList).at(0).find('.kd-transfer-list-header-selected').text()).toEqual('(0/6)')
+    expect(wrapper.find(TransferList).at(0).find('.kd-transfer-list-header-selected').text()).toEqual('(6/0)')
     wrapper.find(TransferList).at(0).find('.kd-transfer-list-content-item').at(1).simulate('click')
-    expect(wrapper.find(TransferList).at(0).find('.kd-transfer-list-header-selected').text()).toEqual('(1/6)')
+    expect(wrapper.find(TransferList).at(0).find('.kd-transfer-list-header-selected').text()).toEqual('(6/1)')
   })
 
   // filterOption
@@ -398,9 +398,9 @@ describe('Transfer', () => {
       .last()
       .find('input')
       .simulate('change', { target: { value: 'content4' } })
-    expect(headerText(wrapper, 1)).toEqual('(0/1)')
+    expect(headerText(wrapper, 1)).toEqual('(1/0)')
     wrapper.find(TransferSearch).last().find('.kd-transfer-list-search-suffix').at(0).simulate('click')
-    expect(headerText(wrapper, 1)).toEqual('(0/2)')
+    expect(headerText(wrapper, 1)).toEqual('(2/0)')
     expect(onSearch).toHaveBeenCalledTimes(2)
   })
   // #endregion
