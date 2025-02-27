@@ -80,7 +80,7 @@ const ColorPickerPanel: FC<IColorPickerPanelProps> = (props) => {
   const { Option } = Select
 
   const { getPrefixCls, prefixCls, locale, direction } = useContext(ConfigContext)
-
+  const colorPickerLangMsg = locale.getCompLangMsg({ componentName: 'ColorPicker' })
   const colorPickerPrefixCls = getPrefixCls!(prefixCls, 'color-picker')
   const panelCls = classNames(`${colorPickerPrefixCls}-panel`)
   const panelChromePickerCls = classNames(`${colorPickerPrefixCls}-panel-chrome`, {
@@ -486,7 +486,7 @@ const ColorPickerPanel: FC<IColorPickerPanelProps> = (props) => {
           {showClear && (
             <div className={panelClearColor}>
               <span className={panelClearColorBox} onClick={handleClearClick} />
-              <span className={panelClearColorText}>无颜色填充</span>
+              <span className={panelClearColorText}>{colorPickerLangMsg?.noColor}</span>
             </div>
           )}
           {functionalColor && showSwitch && (
@@ -569,7 +569,7 @@ const ColorPickerPanel: FC<IColorPickerPanelProps> = (props) => {
           )}
           {historicalColor && historicalColor?.length > 0 && (
             <div className={historicalColorBoxCls}>
-              <div className={historicalColorBoxTitleCls}>最近使用颜色</div>
+              <div className={historicalColorBoxTitleCls}>{colorPickerLangMsg?.recentColor}</div>
               <div className={historicalColorBoxContainerCls}>
                 {checkUserPresetColor(historicalColor) &&
                   presetColorToHEX(historicalColor).map((colorValue: string, i) => {
@@ -593,7 +593,9 @@ const ColorPickerPanel: FC<IColorPickerPanelProps> = (props) => {
           {showPresetColor &&
             ((presetColor && presetColor?.length > 0) || (!presetColor && systemPresetColor.length > 0)) && (
               <div className={colorBoxCls}>
-                {historicalColor && historicalColor?.length > 0 && <div className={colorBoxTitleCls}>推荐色</div>}
+                {historicalColor && historicalColor?.length > 0 && (
+                  <div className={colorBoxTitleCls}>{colorPickerLangMsg?.recommendColor}</div>
+                )}
                 <div className={colorBoxContainerCls}>
                   {((checkUserPresetColor(presetColor) && presetColorToHEX(presetColor)) || systemPresetColor).map(
                     (colorValue: string, i) => {
