@@ -534,7 +534,7 @@ const InternalSelect: React.ForwardRefRenderFunction<CityPickerProps> = (props: 
   const popperProps = {
     ...selectProps,
     prefixCls: classNames(`${selectPrefixCls}-dropdown`, rtlCls),
-    placement: direction === 'rtl' ? 'bottomRight' : 'bottomLeft',
+    placement: 'bottomLeft',
     popperStyle: catchStyle(),
     defaultVisible: optionShow,
     visible: optionShow,
