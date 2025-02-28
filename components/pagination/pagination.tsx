@@ -282,7 +282,7 @@ const Pagination: React.FC<IPaginationProps> = (props) => {
             selectedKey={size}
             menu={sizeOptions}
             trigger="click"
-            placement={direction === 'rtl' ? 'bottomRight' : 'bottomLeft'}
+            placement="bottomLeft"
             disabled={disabled}
             prefix={`${prefixCls}-dropdown`}
             popperStyle={{ minWidth: 64 }}
