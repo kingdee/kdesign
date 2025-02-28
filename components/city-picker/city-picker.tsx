@@ -326,7 +326,7 @@ const InternalSelect: React.ForwardRefRenderFunction<CityPickerProps> = (props: 
         if (isCommon) {
           const curVal = data?.province ? data?.province : data?.country || ''
           if (direction === 'rtl') {
-            return `${curVal}${flag && curVal ? symbol : ''}`
+            return `${flag && curVal ? symbol : ''}${curVal}`
           }
           return `${flag && curVal ? symbol : ''}${curVal}`
         }
@@ -336,7 +336,7 @@ const InternalSelect: React.ForwardRefRenderFunction<CityPickerProps> = (props: 
               ? data?.province || data?.country
               : [data?.province, data?.country].filter(Boolean).join(symbol)) || ''
           if (direction === 'rtl') {
-            return `${curVal}${flag && curVal ? symbol : ''}`
+            return `${flag && curVal ? symbol : ''}${curVal}`
           }
           return `${flag && curVal ? symbol : ''}${curVal}`
         }
@@ -345,14 +345,14 @@ const InternalSelect: React.ForwardRefRenderFunction<CityPickerProps> = (props: 
             ? data?.province || data?.country || ''
             : [data?.province, data?.country].filter(Boolean).join(symbol)
         if (direction === 'rtl') {
-          return `${curVal}${flag && curVal ? symbol : ''}`
+          return `${flag && curVal ? symbol : ''}${curVal}`
         }
         return `${flag && curVal ? symbol : ''}${curVal}`
       } else {
         if (direction === 'rtl') {
-          return `${[data?.province, data?.country].filter(Boolean).join(symbol)}${
-            flag && (data?.province || data?.country) ? symbol : ''
-          }`
+          return `${flag && (data?.province || data?.country) ? symbol : ''}${[data?.province, data?.country]
+            .filter(Boolean)
+            .join(symbol)}`
         }
         return `${flag && (data?.province || data?.country) ? symbol : ''}${[data?.province, data?.country]
           .filter(Boolean)
