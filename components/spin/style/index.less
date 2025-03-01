@@ -164,6 +164,16 @@
 
 .@{spin-prefix-cls}-rtl {
   direction: rtl;
+  &.@{spin-prefix-cls}-container {
+    .@{spin-prefix-cls}-dot-spin {
+      transform: rotate(360deg);
+    }
+  }
+  &.@{spin-prefix-cls}-page {
+    .@{spin-prefix-cls}-dot-spin {
+      transform: rotate(360deg);
+    }
+  }
   &.@{spin-prefix-cls}-component {
     .@{spin-prefix-cls}-dot-spin {
       .@{spin-prefix-cls}-dot-item {
