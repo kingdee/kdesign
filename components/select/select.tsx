@@ -719,7 +719,7 @@ const InternalSelect: React.ForwardRefRenderFunction<ISelectProps<SelectValue>> 
     const TagStyle = { margin: direction === 'rtl' ? '2px 0 2px 8px' : '2px 8px 2px 0', maxWidth: '100%' }
     const totalText = locale.getLangMsg('Select', 'total', { total: mulOptions.length })
     return (
-      <div className={multipleCls} ref={selectionRef}>
+      <div className={multipleCls} ref={selectionRef} data-ignore-auto-rtl={direction === 'rtl'}>
         {Array.isArray(mulOptions) ? (
           <>
             {mulOptions.map((item: any, index: number) => {

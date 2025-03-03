@@ -367,7 +367,12 @@ const Tabs: React.FC<ITabsProps> = (props) => {
             }
 
       const renderWrap = (
-        <div ref={tabListRef} className={`${tabsPrefixCls}-tab-list`} style={listPositionStyle}>
+        <div
+          ref={tabListRef}
+          className={`${tabsPrefixCls}-tab-list`}
+          style={listPositionStyle}
+          data-ignore-auto-rtl={direction === 'rtl'}
+        >
           {childrenToRender}
           {renderActiveLine()}
         </div>
@@ -457,7 +462,7 @@ const Tabs: React.FC<ITabsProps> = (props) => {
         getTriggerKey,
       }}
     >
-      <div className={tabsClasses}>
+      <div className={tabsClasses} data-ignore-auto-rtl>
         {renderTabPane()}
         {renderContainer()}
       </div>

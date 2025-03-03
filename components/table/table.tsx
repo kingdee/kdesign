@@ -64,7 +64,7 @@ const Table = forwardRef<unknown, TableProps>((props: TableProps, ref) => {
     rowDrag,
   } = props
 
-  const { getPrefixCls, prefixCls, locale } = useContext(ConfigContext)
+  const { getPrefixCls, prefixCls, locale, direction } = useContext(ConfigContext)
 
   const tablePrefixCls = getPrefixCls!(prefixCls, customPrefixcls)
   const tableCls = classNames(tablePrefixCls, className)
@@ -75,6 +75,7 @@ const Table = forwardRef<unknown, TableProps>((props: TableProps, ref) => {
       Radio: components?.Radio || Radio,
     },
     localeText,
+    direction,
   })
     .primaryKey(primaryKey === undefined ? '' : primaryKey)
     .input({
@@ -160,6 +161,9 @@ const Table = forwardRef<unknown, TableProps>((props: TableProps, ref) => {
       stickyScrollHeight={stickyScrollHeight}
       scrollbarWidth={scrollbarWidth}
       scrollLoad={scrollLoad}
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
+      direction={direction}
     />
   )
 })
