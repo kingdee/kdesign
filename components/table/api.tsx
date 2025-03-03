@@ -81,7 +81,8 @@ export default function getApi(pipelineRef: React.MutableRefObject<TablePipeline
    * @param code 列标识
    * @returns
    */
-  function ensureColumnVisible(code: string) {
+  function ensureColumnVisible(code: string, direction = 'ltr') {
+    const isRtl = direction === 'rtl'
     const pipeline = pipelineRef.current
     const tableBodyContainer = pipeline.ref?.current.domHelper.tableBody
     const tableScroll = pipeline.ref?.current.domHelper.stickyScroll
@@ -118,7 +119,7 @@ export default function getApi(pipelineRef: React.MutableRefObject<TablePipeline
     const colRightPixel = colLeftPixel + column.width
 
     const viewportWidth = tableBodyContainer.clientWidth // 表体容器的宽度
-    const scrollPosition = tableScroll.scrollLeft // 滚动条滚动的距离
+    const scrollPosition = Math.abs(tableScroll.scrollLeft) // 滚动条滚动的距离
 
     const vScrollLeft = scrollPosition
     const vScrollRight = scrollPosition + viewportWidth
@@ -135,7 +136,7 @@ export default function getApi(pipelineRef: React.MutableRefObject<TablePipeline
 
     if (alignColToLeft || alignColToRight) {
       const newScrollPosition = alignColToLeft ? pxLeft : pxRight
-      tableScroll.scrollLeft = newScrollPosition
+      tableScroll.scrollLeft = isRtl ? -newScrollPosition : newScrollPosition
     }
   }
 
