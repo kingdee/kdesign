@@ -372,23 +372,42 @@
 .@{city-picker-prefix-cls}-rtl {
   direction: rtl;
   &.@{city-picker-prefix-cls} {
-    .@{city-picker-prefix-cls}-description {
-      text-align: right;
-    }
-    .@{city-picker-prefix-cls}-selector {
-      .@{city-picker-prefix-cls}-wrapper {
-        padding-right: 0;
-        padding-left: 24px;
-      }
-    }
     .@{city-picker-prefix-cls}-placeholder {
       left: 24px;
       right: 0;
     }
 
+    .@{city-picker-prefix-cls}-description {
+      text-align: right;
+    }
+    .@{city-picker-prefix-cls}-selector {
+      .@{city-picker-prefix-cls}-wrapper {
+        padding: @city-picker-wrapper-padding-rtl;
+      }
+      .@{city-picker-prefix-cls}-bordered {
+        &.@{city-picker-prefix-cls}-wrapper {
+          padding-left: 24px !important;
+          padding-right: 8px !important;
+        }
+        &:hover:not(.@{city-picker-prefix-cls}-disabled) {
+          border: 1px solid @city-picker-g-color-border-hover;
+        }
+  
+        .@{city-picker-prefix-cls}-suffix {
+          padding-right: 8px;
+        }
+  
+        .@{city-picker-prefix-cls}-placeholder {
+          padding-left: @city-picker-bordered;
+        }
+      }
+    }
+
     .@{city-picker-prefix-cls}-bordered {
-      padding-right: @city-picker-bordered !important;
-      padding-left: auto !important;
+      &.@{city-picker-prefix-cls}-wrapper {
+        padding-right: 0;
+        padding-left: 24px;
+      }
       .@{city-picker-prefix-cls}-suffix {
         padding-left: 8px;
         padding-right: 0;
@@ -407,7 +426,7 @@
     }
     .@{city-picker-prefix-cls}-disabled {
       &.@{city-picker-prefix-cls}-bordered {
-        padding-right: auto;
+        padding-right: 0;
         padding-left: @city-picker-bordered;
       }
     }
