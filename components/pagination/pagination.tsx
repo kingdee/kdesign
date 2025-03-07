@@ -451,7 +451,7 @@ const Pagination: React.FC<IPaginationProps> = (props) => {
                 popperStyle={{ minWidth: 64 }}
                 onItemClick={handleChangeSize}
                 getPopupContainer={(triggerNode) => triggerNode?.parentElement as HTMLElement}
-                placement={direction === 'rtl' ? 'bottomRight' : 'bottomLeft'}
+                placement="bottomLeft"
                 {...dropdownProps}
                 onVisibleChange={dropdownVisibleChange}
               >
