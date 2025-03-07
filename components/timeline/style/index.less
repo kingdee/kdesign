@@ -279,107 +279,107 @@
       left: auto;
     }
   }
-  &.alternate {
-    .@{timeline-item-prefix-cls} {
-      &-dot {
-        margin-left: -4px;
-        margin-right: calc(-1 * (@timeline-dot-size - 1px) / 2);
-        &.custom {
-          margin-left: 1px;
-          margin-right: 0;
-        }
-      }
-
-      &:nth-child(2n + 1) {
-        .@{timeline-item-prefix-cls}-content {
-          right: calc(50% - 4px);
-          width: calc(50% - 24px);
-          text-align: right;
-        }
-      }
-
-      &:nth-child(2n) {
-        .@{timeline-item-prefix-cls}-content {
-          width: calc(50% - 24px);
-          margin: 0;
-          text-align: left;
-        }
-      }
-    }
-  }
-  &.label {
-    &.left {
-      .@{timeline-item-prefix-cls} {
-        &-tail,
-        &-dot,
-        &-dot.custom {
-          right: calc((2 * @timeline-gap) + (@timeline-dot-size / 2) + 70px);
-          left: auto;
-        }
-        &-dot {
-          margin-left: calc(-1 * (@timeline-dot-size - 1px) / 2);
-          margin-right: calc(-1 * (@timeline-dot-size - 1px) / 2);
-          &.custom {
-            margin-left: 0;
-            margin-right: 1px;
-          }
-        }
-        .@{timeline-item-prefix-cls}-label {
-          text-align: left;
-        }
-        .@{timeline-item-prefix-cls}-content {
-          right: calc(@timeline-dot-size + 100px);
-          left: auto;
-          text-align: right;
-          margin-right: 0;
-          margin-left: 16px;
-        }
-      }
-    }
-    &.right {
-      .@{timeline-item-prefix-cls} {
-        &-tail,
-        &-dot,
-        &-dot.custom {
-          left: calc((2 * @timeline-gap) + (@timeline-dot-size / 2) + 70px);
-          right: auto;
-        }
-
-        &-dot {
-          margin-right: 0;
-          margin-left: calc(-1 * (@timeline-dot-size - 1px) / 2);
-          &.custom {
-            right: auto;
-            left: calc(-1 * (@timeline-dot-size - 1px) / 2);
-          }
-        }
-        .@{timeline-item-prefix-cls}-label {
-          position: absolute;
-          left: 0;
-          right: auto;
-          text-align: right;
-        }
-        .@{timeline-item-prefix-cls}-content {
-          right: auto;
-          left: calc(@timeline-dot-size + 100px);
-          text-align: left;
-          margin-right: 17px;
-          margin-left: 0;
-        }
-      }
-    }
+  &.@{timeline-prefix-cls} {
     &.alternate {
       .@{timeline-item-prefix-cls} {
+        &-dot {
+          margin-left: -4px;
+          margin-right: calc(-1 * (@timeline-dot-size - 1px) / 2);
+          &.custom {
+            margin-left: 1px;
+            margin-right: 0;
+          }
+        }
+
         &:nth-child(2n + 1) {
-          .@{timeline-item-prefix-cls}-label {
+          .@{timeline-item-prefix-cls}-content {
+            right: calc(50% - 4px);
+            text-align: right;
+          }
+        }
+
+        &:nth-child(2n) {
+          .@{timeline-item-prefix-cls}-content {
+            width: calc(50% - 24px);
+            margin: 0;
             text-align: left;
           }
         }
-        &:nth-child(2n) {
+      }
+    }
+    &.label {
+      &.left {
+        .@{timeline-item-prefix-cls} {
+          &-tail,
+          &-dot,
+          &-dot.custom {
+            right: calc((2 * @timeline-gap) + (@timeline-dot-size / 2));
+            left: auto;
+          }
+          &-dot {
+            margin-left: calc(-1 * (@timeline-dot-size - 1px) / 2);
+            margin-right: calc(-1 * (@timeline-dot-size - 1px) / 2);
+            &.custom {
+              margin-left: 0;
+              margin-right: 1px;
+            }
+          }
           .@{timeline-item-prefix-cls}-label {
-            right: calc(50% + (2 * (@timeline-dot-size - @timeline-width) + @timeline-gap) - @timeline-dot-size / 2);
+            text-align: left;
+          }
+          .@{timeline-item-prefix-cls}-content {
+            right: calc(@timeline-dot-size + 35px);
             left: auto;
             text-align: right;
+            margin-right: 0;
+            margin-left: 16px;
+          }
+        }
+      }
+      &.right {
+        .@{timeline-item-prefix-cls} {
+          &-tail,
+          &-dot,
+          &-dot.custom {
+            left: calc((2 * @timeline-gap) + (@timeline-dot-size / 2));
+            right: auto;
+          }
+
+          &-dot {
+            margin-right: 0;
+            margin-left: calc(-1 * (@timeline-dot-size - 1px) / 2);
+            &.custom {
+              right: auto;
+              left: calc(-1 * (@timeline-dot-size - 1px) / 2);
+            }
+          }
+          .@{timeline-item-prefix-cls}-label {
+            left: 0;
+            right: auto;
+            text-align: right;
+          }
+          .@{timeline-item-prefix-cls}-content {
+            right: auto;
+            left: calc(@timeline-dot-size + 35px);
+            text-align: left;
+            margin-right: 17px;
+            margin-left: 0;
+          }
+        }
+      }
+      &.alternate {
+        .@{timeline-item-prefix-cls} {
+          &:nth-child(2n + 1) {
+            .@{timeline-item-prefix-cls}-label {
+              text-align: left;
+            }
+          }
+          &:nth-child(2n) {
+            .@{timeline-item-prefix-cls}-label {
+              right: calc(50% + (2 * (@timeline-dot-size - @timeline-width) + @timeline-gap) - @timeline-dot-size / 2);
+              left: auto;
+              text-align: right;
+            }
           }
         }
       }

@@ -82,12 +82,14 @@ const Timeline: TimelineType = (props) => {
 
   const styleString = {
     ...style,
-    paddingLeft: hasLabelItem && mode === 'left' ? `${labelWidth}px` : undefined,
-    paddingRight: hasLabelItem && mode === 'right' ? `${labelWidth}px` : undefined,
+    ...(hasLabelItem && mode === 'left' && direction === 'rtl' ? { paddingRight: `${labelWidth}px` } : {}),
+    ...(hasLabelItem && mode === 'right' && direction === 'rtl' ? { paddingLeft: `${labelWidth}px` } : {}),
+    ...(hasLabelItem && mode === 'left' && direction !== 'rtl' ? { paddingLeft: `${labelWidth}px` } : {}),
+    ...(hasLabelItem && mode === 'right' && direction !== 'rtl' ? { paddingRight: `${labelWidth}px` } : {}),
   }
 
   return (
-    <ul {...restProps} className={classString} style={styleString}>
+    <ul {...restProps} className={classString} style={styleString} data-ignore-auto-rtl>
       {items?.map((item: React.ReactElement) => {
         return React.cloneElement(item, {
           mode,
