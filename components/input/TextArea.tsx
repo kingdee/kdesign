@@ -129,7 +129,9 @@ const InternalTextarea = (props: TextAreaProps, ref: unknown): FunctionComponent
       })
       return (
         <div className={countClass}>
-          {value ? value.length : 0}/{maxLength}
+          {direction === 'rtl'
+            ? `${maxLength}/${value ? value.length : 0}`
+            : `${value ? value.length : 0}/${maxLength}`}
         </div>
       )
     }
