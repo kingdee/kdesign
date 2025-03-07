@@ -17,7 +17,12 @@ export interface TimeLineItemProps {
 }
 
 const TimelineItem: React.FC<TimeLineItemProps> = (props) => {
-  const { getPrefixCls, prefixCls: pkgPrefixCls, compDefaultProps: userDefaultProps } = React.useContext(ConfigContext)
+  const {
+    getPrefixCls,
+    prefixCls: pkgPrefixCls,
+    compDefaultProps: userDefaultProps,
+    direction,
+  } = React.useContext(ConfigContext)
   const {
     prefixCls: customizePrefixCls,
     className,
@@ -52,13 +57,19 @@ const TimelineItem: React.FC<TimeLineItemProps> = (props) => {
     top: lineHeight / 2,
     backgroundColor: color && !hasColorClass ? color : undefined,
   }
+  const rtlMode = direction === 'rtl' ? (mode === 'left' ? 'right' : 'left') : mode
 
   const labelStyle =
     mode !== 'alternate'
-      ? {
-          width: `${labelWidth}px`,
-          [`margin${mode?.substring(0, 1).toUpperCase()}${mode?.substring(1)}`]: `-${labelWidth}px`,
-        }
+      ? direction === 'rtl'
+        ? {
+            width: `${labelWidth}px`,
+            [`margin${rtlMode?.substring(0, 1).toUpperCase()}${rtlMode?.substring(1)}`]: `-${labelWidth}px`,
+          }
+        : {
+            width: `${labelWidth}px`,
+            [`margin${mode?.substring(0, 1).toUpperCase()}${mode?.substring(1)}`]: `-${labelWidth}px`,
+          }
       : {}
 
   const marginDistance = pending ? Math.round(lineHeight / 2 + 12 / 2 + 2) : Math.round(lineHeight / 2 + 9 / 2 + 2)
@@ -66,12 +77,16 @@ const TimelineItem: React.FC<TimeLineItemProps> = (props) => {
   return (
     <li {...restProps} className={itemClassName}>
       {label && (
-        <div className={`${prefixCls}-label`} style={{ ...labelStyle, lineHeight: lineHeight + 'px' }}>
+        <div
+          className={`${prefixCls}-label`}
+          style={{ ...labelStyle, lineHeight: lineHeight + 'px' }}
+          data-ignore-auto-rtl
+        >
           {label}
         </div>
       )}
       <div className={`${prefixCls}-tail`} style={{ marginTop: marginDistance }} />
-      <div className={dotClassName} style={dotStyle}>
+      <div className={dotClassName} style={dotStyle} data-ignore-auto-rtl>
         {dot}
       </div>
       <div className={`${prefixCls}-content`} style={{ lineHeight: lineHeight + 'px' }}>
