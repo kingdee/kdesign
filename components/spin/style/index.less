@@ -165,15 +165,42 @@
 }
 /*! rtl:begin:ignore */
 .@{spin-prefix-cls}-rtl {
-  direction: rtl;
-  &.@{spin-prefix-cls}-container {
-    .@{spin-prefix-cls}-dot-spin {
-      transform: rotate(360deg);
-    }
-  }
-  &.@{spin-prefix-cls}-page {
-    .@{spin-prefix-cls}-dot-spin {
-      transform: rotate(360deg);
+  // direction: rtl;
+  &.@{spin-prefix-cls} {
+    &.@{spin-prefix-cls}-container {
+      .@{spin-prefix-cls}-dot-spin {
+       
+        .@{spin-prefix-cls}-dot-item {
+  
+          &:nth-child(2n+1) {
+            animation: containerLoading 1s .15s ease-in-out infinite
+          }
+  
+          &:nth-child(2n+2) {
+            background-color: @spin-dot-color-second;
+            animation: containerLoading 1s .3s ease-in-out infinite
+          }
+  
+          &:nth-child(2n+3) {
+            background-color: @spin-dot-color-third;
+            animation: containerLoading 1s .45s ease-in-out infinite
+          }
+  
+          &:nth-child(2n+4) {
+            background-color: @spin-dot-color-fourth;
+            animation: containerLoading 1s .6s ease-in-out infinite
+          }
+  
+          @keyframes containerLoading {
+            50% {
+              transform: translateY(-10px);
+            }
+            100% {
+              transform: translateY(0);
+            }
+          }
+        }
+      }
     }
   }
   &.@{spin-prefix-cls}-component {
