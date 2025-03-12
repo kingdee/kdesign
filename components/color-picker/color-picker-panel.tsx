@@ -432,9 +432,9 @@ const ColorPickerPanel: FC<IColorPickerPanelProps> = (props) => {
   })
   useEffect(() => {
     if (onVisibleChange) {
-      onVisibleChange(visible)
+      onVisibleChange(showPanel)
     }
-  }, [visible])
+  }, [showPanel])
   useEffect(() => {
     if (showPanel) {
       const scrollAlign = debounce((e: Event) => {

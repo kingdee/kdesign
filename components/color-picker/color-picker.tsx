@@ -172,7 +172,7 @@ const InternalColorPicker = (props: Partial<IColorPickerProps>, ref: RefObject<I
     if (typeof visible === 'undefined') {
       setShowPanel(!showPanel)
     }
-    onVisibleChange && onVisibleChange(!showPanel)
+    // onVisibleChange && onVisibleChange(!showPanel)
   }
 
   useEffect(() => {
