@@ -827,6 +827,7 @@ exports[`Modal should getContainer use right 4`] = `
             axis="both"
             bounds={false}
             cancel=".kd-modal-title-container, .kd-modal-close-icon"
+            data-ignore-auto-rtl={true}
             defaultClassName="react-draggable"
             defaultClassNameDragged="react-draggable-dragged"
             defaultClassNameDragging="react-draggable-dragging"
@@ -854,6 +855,7 @@ exports[`Modal should getContainer use right 4`] = `
             <DraggableCore
               allowAnyClick={false}
               cancel=".kd-modal-title-container, .kd-modal-close-icon"
+              data-ignore-auto-rtl={true}
               disabled={false}
               enableUserSelectHack={true}
               handle=".kd-modal-header"

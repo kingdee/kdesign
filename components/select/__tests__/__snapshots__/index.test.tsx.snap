@@ -66,6 +66,7 @@ exports[`Select renders correctly 1`] = `
   >
     <div
       class="kd-select-underline kd-select-size-middle kd-select-wrapper kd-select-multiple"
+      data-ignore-auto-rtl="false"
     >
       <span
         class="kd-select-selection-search"

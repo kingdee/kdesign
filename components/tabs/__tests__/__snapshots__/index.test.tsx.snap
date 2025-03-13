@@ -3,6 +3,7 @@
 exports[`Tabs renders correctly 1`] = `
 <div
   class="kd-tabs"
+  data-ignore-auto-rtl="true"
 >
   <div
     class="kd-tabs-navs kd-tabs-navs-line kd-tabs-navs-middle"
@@ -13,6 +14,7 @@ exports[`Tabs renders correctly 1`] = `
     >
       <div
         class="kd-tabs-tab-list"
+        data-ignore-auto-rtl="false"
         style="left:0px"
       >
         <span
@@ -61,6 +63,7 @@ exports[`Tabs renders correctly 1`] = `
 exports[`Tabs renders correctly 2`] = `
 <div
   class="kd-tabs"
+  data-ignore-auto-rtl="true"
 >
   <div
     class="kd-tabs-navs kd-tabs-navs-card kd-tabs-navs-middle"
@@ -71,6 +74,7 @@ exports[`Tabs renders correctly 2`] = `
     >
       <div
         class="kd-tabs-tab-list"
+        data-ignore-auto-rtl="false"
         style="left:0px"
       >
         <span
@@ -115,6 +119,7 @@ exports[`Tabs renders correctly 2`] = `
 exports[`Tabs renders correctly 3`] = `
 <div
   class="kd-tabs"
+  data-ignore-auto-rtl="true"
 >
   <div
     class="kd-tabs-navs kd-tabs-navs-grid kd-tabs-navs-middle"
@@ -125,6 +130,7 @@ exports[`Tabs renders correctly 3`] = `
     >
       <div
         class="kd-tabs-tab-list"
+        data-ignore-auto-rtl="false"
         style="left:0px"
       >
         <span
@@ -169,6 +175,7 @@ exports[`Tabs renders correctly 3`] = `
 exports[`Tabs renders correctly 4`] = `
 <div
   class="kd-tabs"
+  data-ignore-auto-rtl="true"
 >
   <div
     class="kd-tabs-navs kd-tabs-navs-dynamic kd-tabs-navs-middle"
@@ -179,6 +186,7 @@ exports[`Tabs renders correctly 4`] = `
     >
       <div
         class="kd-tabs-tab-list"
+        data-ignore-auto-rtl="false"
         style="left:0px"
       >
         <span
@@ -230,6 +238,7 @@ exports[`Tabs renders correctly 4`] = `
 exports[`Tabs renders correctly 5`] = `
 <div
   class="kd-tabs kd-tabs-top"
+  data-ignore-auto-rtl="true"
 >
   <div
     class="kd-tabs-navs kd-tabs-navs-card kd-tabs-navs-top kd-tabs-navs-middle"
@@ -241,6 +250,7 @@ exports[`Tabs renders correctly 5`] = `
     >
       <div
         class="kd-tabs-tab-list"
+        data-ignore-auto-rtl="false"
         style="left:0px"
       >
         <span
@@ -299,6 +309,7 @@ exports[`Tabs renders correctly 5`] = `
 exports[`Tabs renders correctly 6`] = `
 <div
   class="kd-tabs kd-tabs-left"
+  data-ignore-auto-rtl="true"
 >
   <div
     class="kd-tabs-navs kd-tabs-navs-card kd-tabs-navs-left kd-tabs-navs-middle"
@@ -310,6 +321,7 @@ exports[`Tabs renders correctly 6`] = `
     >
       <div
         class="kd-tabs-tab-list"
+        data-ignore-auto-rtl="false"
         style="left:0px"
       >
         <span
@@ -357,6 +369,7 @@ exports[`Tabs renders correctly 6`] = `
 exports[`Tabs renders correctly 7`] = `
 <div
   class="kd-tabs kd-tabs-right"
+  data-ignore-auto-rtl="true"
 >
   <div
     class="kd-tabs-navs kd-tabs-navs-card kd-tabs-navs-right kd-tabs-navs-middle"
@@ -368,6 +381,7 @@ exports[`Tabs renders correctly 7`] = `
     >
       <div
         class="kd-tabs-tab-list"
+        data-ignore-auto-rtl="false"
         style="left:0px"
       >
         <span
@@ -415,6 +429,7 @@ exports[`Tabs renders correctly 7`] = `
 exports[`Tabs renders correctly 8`] = `
 <div
   class="kd-tabs kd-tabs-bottom"
+  data-ignore-auto-rtl="true"
 >
   <div
     class="kd-tabs-navs kd-tabs-navs-card kd-tabs-navs-bottom kd-tabs-navs-middle"
@@ -426,6 +441,7 @@ exports[`Tabs renders correctly 8`] = `
     >
       <div
         class="kd-tabs-tab-list"
+        data-ignore-auto-rtl="false"
         style="left:0px"
       >
         <span
@@ -530,6 +546,7 @@ exports[`Tabs renders correctly 10`] = `
   >
     <div
       className="kd-tabs"
+      data-ignore-auto-rtl={true}
     >
       <div
         className="kd-tabs-navs kd-tabs-navs-card kd-tabs-navs-middle"
@@ -567,6 +584,7 @@ exports[`Tabs renders correctly 10`] = `
         >
           <div
             className="kd-tabs-tab-list"
+            data-ignore-auto-rtl={false}
             style={
               Object {
                 "left": "0px",
