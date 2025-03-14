@@ -567,7 +567,7 @@ const InternalModal = (
               onStop={onDragStop}
               bounds={bounds}
               cancel={`.${modalPrefixCls}-title-container, .${modalPrefixCls}-close-icon`}
-              data-ignore-auto-rtl
+              data-ignore-auto-rtl={direction === 'rtl'}
             >
               {container}
             </Draggable>
