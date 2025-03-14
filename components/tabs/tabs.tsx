@@ -462,7 +462,7 @@ const Tabs: React.FC<ITabsProps> = (props) => {
         getTriggerKey,
       }}
     >
-      <div className={tabsClasses} data-ignore-auto-rtl>
+      <div className={tabsClasses} data-ignore-auto-rtl={direction === 'rtl'}>
         {renderTabPane()}
         {renderContainer()}
       </div>
