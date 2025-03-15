@@ -85,7 +85,7 @@ export default function getApi(pipelineRef: React.MutableRefObject<TablePipeline
     const isRtl = direction === 'rtl'
     const pipeline = pipelineRef.current
     const tableBodyContainer = pipeline.ref?.current.domHelper.tableBody
-    const tableScroll = pipeline.ref?.current.domHelper.stickyScroll
+    const tableScroll = pipeline.ref?.current.domHelper.virtual // 这里要用virtual，不然会和其他地方同时设置scrollLeft时冲突导致bypassSet读取出问题
 
     const columnNodes = collectNodes(pipeline.getColumns(), 'leaf-only')
     const column = columnNodes.find((col) => col.code === code)
