@@ -1,4 +1,11 @@
-import React, { CSSProperties, FunctionComponentElement, isValidElement, useContext, useImperativeHandle } from 'react'
+import React, {
+  CSSProperties,
+  FunctionComponentElement,
+  isValidElement,
+  useContext,
+  useEffect,
+  useImperativeHandle,
+} from 'react'
 import classNames from 'classnames'
 import ConfigContext from '../config-provider/ConfigContext'
 import { getCompProps } from '../_utils'
@@ -123,11 +130,19 @@ const InternalCarousel = (
 
   const setScrollXEffectStyle = React.useCallback(() => {
     const tempChild = processChildren(children)
-    if (!listRef.current || tempChild.length <= 1) return
-    listRef.current.style.cssText = needAnimation
-      ? `transform: translateX(${posX}px); transition:all 0.3s ${easing}`
-      : `transform: translateX(${posX}px); transition:none`
+    if (!listRef.current) return
+    if (tempChild.length <= 1) {
+      listRef.current.style.cssText = ''
+    } else {
+      listRef.current.style.cssText = needAnimation
+        ? `transform: translateX(${posX}px); transition:all 0.3s ${easing}`
+        : `transform: translateX(${posX}px); transition:none`
+    }
   }, [children?.length, needAnimation, easing, posX])
+
+  useEffect(() => {
+    setCurrentIndex(0)
+  }, [children?.length])
 
   const jumpTo = React.useCallback(
     (index: number, needAnimation: boolean) => {
