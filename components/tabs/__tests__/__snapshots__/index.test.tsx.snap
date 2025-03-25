@@ -32,17 +32,6 @@ exports[`Tabs renders correctly 1`] = `
         />
       </div>
     </div>
-    <div
-      class="kd-tabs-right-arrows kd-tabs-right-arrows-line kd-tabs-right-arrows-noshadow"
-    >
-      <span
-        class="kd-dropdown-trigger kd-tabs-more-btn"
-      >
-        <i
-          class="kdicon kdicon-arrow-down"
-        />
-      </span>
-    </div>
   </div>
   <div
     class="kd-carousel-root"
@@ -88,17 +77,6 @@ exports[`Tabs renders correctly 2`] = `
         </span>
       </div>
     </div>
-    <div
-      class="kd-tabs-right-arrows kd-tabs-right-arrows-card kd-tabs-right-arrows-noshadow"
-    >
-      <span
-        class="kd-dropdown-trigger kd-tabs-more-btn"
-      >
-        <i
-          class="kdicon kdicon-arrow-down"
-        />
-      </span>
-    </div>
   </div>
   <div
     class="kd-carousel-root"
@@ -143,17 +121,6 @@ exports[`Tabs renders correctly 3`] = `
           </span>
         </span>
       </div>
-    </div>
-    <div
-      class="kd-tabs-right-arrows kd-tabs-right-arrows-grid kd-tabs-right-arrows-noshadow"
-    >
-      <span
-        class="kd-dropdown-trigger kd-tabs-more-btn"
-      >
-        <i
-          class="kdicon kdicon-more"
-        />
-      </span>
     </div>
   </div>
   <div
@@ -206,17 +173,6 @@ exports[`Tabs renders correctly 4`] = `
           style="left:0px;width:0px"
         />
       </div>
-    </div>
-    <div
-      class="kd-tabs-right-arrows kd-tabs-right-arrows-dynamic kd-tabs-right-arrows-noshadow"
-    >
-      <span
-        class="kd-dropdown-trigger kd-tabs-more-btn"
-      >
-        <i
-          class="kdicon kdicon-arrow-down"
-        />
-      </span>
     </div>
   </div>
   <div
@@ -272,17 +228,6 @@ exports[`Tabs renders correctly 5`] = `
           </span>
         </span>
       </div>
-    </div>
-    <div
-      class="kd-tabs-right-arrows kd-tabs-right-arrows-card kd-tabs-right-arrows-noshadow"
-    >
-      <span
-        class="kd-dropdown-trigger kd-tabs-more-btn"
-      >
-        <i
-          class="kdicon kdicon-arrow-down"
-        />
-      </span>
     </div>
   </div>
   <div
@@ -464,17 +409,6 @@ exports[`Tabs renders correctly 8`] = `
         </span>
       </div>
     </div>
-    <div
-      class="kd-tabs-right-arrows kd-tabs-right-arrows-card kd-tabs-right-arrows-noshadow"
-    >
-      <span
-        class="kd-dropdown-trigger kd-tabs-more-btn"
-      >
-        <i
-          class="kdicon kdicon-arrow-down"
-        />
-      </span>
-    </div>
   </div>
   <div
     class="kd-carousel-root"
@@ -553,32 +487,6 @@ exports[`Tabs renders correctly 10`] = `
         size="middle"
         type="card"
       >
-        <div
-          className="kd-tabs-left-arrows kd-tabs-left-arrows-card kd-tabs-left-arrows-noshadow"
-        >
-          <ArrowButton
-            direction="left"
-            disabled={true}
-            onClick={[Function]}
-          >
-            <span
-              className="kd-arrow-button kd-arrow-button-left kd-arrow-button-disabled"
-              onClick={[Function]}
-            >
-              <Icon
-                type="arrow-left"
-              >
-                <i
-                  className="kdicon kdicon-arrow-left"
-                  onClick={[Function]}
-                  onMouseEnter={[Function]}
-                  onMouseLeave={[Function]}
-                  style={Object {}}
-                />
-              </Icon>
-            </span>
-          </ArrowButton>
-        </div>
         <div
           className="kd-tabs-tab-wrap"
         >
@@ -932,160 +840,6 @@ exports[`Tabs renders correctly 10`] = `
               </span>
             </TabPane>
           </div>
-        </div>
-        <div
-          className="kd-tabs-right-arrows kd-tabs-right-arrows-card kd-tabs-right-arrows-noshadow"
-        >
-          <ArrowButton
-            direction="right"
-            disabled={true}
-            onClick={[Function]}
-          >
-            <span
-              className="kd-arrow-button kd-arrow-button-right kd-arrow-button-disabled"
-              onClick={[Function]}
-            >
-              <Icon
-                type="arrow-right"
-              >
-                <i
-                  className="kdicon kdicon-arrow-right"
-                  onClick={[Function]}
-                  onMouseEnter={[Function]}
-                  onMouseLeave={[Function]}
-                  style={Object {}}
-                />
-              </Icon>
-            </span>
-          </ArrowButton>
-          <Dropdown
-            menu={
-              Array [
-                Object {
-                  "disabled": undefined,
-                  "key": "0",
-                  "label": "TabPane00",
-                },
-                Object {
-                  "disabled": undefined,
-                  "key": "1",
-                  "label": "TabPane01",
-                },
-                Object {
-                  "disabled": undefined,
-                  "key": "2",
-                  "label": "TabPane02",
-                },
-                Object {
-                  "disabled": undefined,
-                  "key": "3",
-                  "label": "TabPane03",
-                },
-                Object {
-                  "disabled": undefined,
-                  "key": "4",
-                  "label": "TabPane04",
-                },
-                Object {
-                  "disabled": undefined,
-                  "key": "5",
-                  "label": "TabPane05",
-                },
-                Object {
-                  "disabled": undefined,
-                  "key": "6",
-                  "label": "TabPane06",
-                },
-                Object {
-                  "disabled": undefined,
-                  "key": "7",
-                  "label": "TabPane07",
-                },
-                Object {
-                  "disabled": undefined,
-                  "key": "8",
-                  "label": "TabPane08",
-                },
-                Object {
-                  "disabled": undefined,
-                  "key": "9",
-                  "label": "TabPane09",
-                },
-                Object {
-                  "disabled": undefined,
-                  "key": "10",
-                  "label": "TabPane010",
-                },
-                Object {
-                  "disabled": undefined,
-                  "key": "11",
-                  "label": "TabPane011",
-                },
-                Object {
-                  "disabled": undefined,
-                  "key": "12",
-                  "label": "TabPane012",
-                },
-                Object {
-                  "disabled": undefined,
-                  "key": "13",
-                  "label": "TabPane013",
-                },
-                Object {
-                  "disabled": undefined,
-                  "key": "14",
-                  "label": "TabPane014",
-                },
-                Object {
-                  "disabled": undefined,
-                  "key": "15",
-                  "label": "TabPane015",
-                },
-                Object {
-                  "disabled": undefined,
-                  "key": "16",
-                  "label": "TabPane016",
-                },
-                Object {
-                  "disabled": undefined,
-                  "key": "17",
-                  "label": "TabPane017",
-                },
-                Object {
-                  "disabled": undefined,
-                  "key": "18",
-                  "label": "TabPane018",
-                },
-                Object {
-                  "disabled": undefined,
-                  "key": "19",
-                  "label": "TabPane019",
-                },
-              ]
-            }
-            onItemClick={[Function]}
-            trigger={
-              Array [
-                "click",
-              ]
-            }
-          >
-            <span
-              className="kd-dropdown-trigger kd-tabs-more-btn"
-            >
-              <Icon
-                type="arrow-down"
-              >
-                <i
-                  className="kdicon kdicon-arrow-down"
-                  onClick={[Function]}
-                  onMouseEnter={[Function]}
-                  onMouseLeave={[Function]}
-                  style={Object {}}
-                />
-              </Icon>
-            </span>
-          </Dropdown>
         </div>
       </div>
       <Carousel
