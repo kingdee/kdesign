@@ -17,9 +17,10 @@ import { toArray } from '../_utils/react-children'
 import { Icon, Checkbox, Tag } from '../index'
 import Option from './option'
 import { ISelectProps, SelectValue } from './interface'
-import usePopper from '../_utils/usePopper'
 import VirtualList from '../virtual-list'
 import KeyCode from '../_utils/KeyCode'
+import Popper from '../popper'
+
 const INPUT_MIN_WIDTH = 4 // 输入框最小宽度
 
 const InternalSelect: React.ForwardRefRenderFunction<ISelectProps<SelectValue>> = (props: any, ref: unknown) => {
@@ -949,7 +950,11 @@ const InternalSelect: React.ForwardRefRenderFunction<ISelectProps<SelectValue>> 
     onVisibleChange: handleVisibleChange,
     clickToClose: !(isShowSearch && searchValue),
   }
-  return usePopper(renderSelect(), renderContent(), popperProps)
+  return (
+    <Popper tip={renderContent()} {...popperProps}>
+      {renderSelect()}
+    </Popper>
+  )
 }
 
 const Select = React.forwardRef<unknown, ISelectProps<SelectValue>>(InternalSelect)
