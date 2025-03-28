@@ -19,9 +19,9 @@ import { colorFormat, strFixed, getColorObj, highlightPresetColorIndex, presetCo
 import { defaultSystemColor } from './constant/defaultColor'
 import Color from 'color'
 import { getCompProps } from '../_utils'
+import usePopper from '../_utils/usePopper'
 import { systemPresetColor } from './constant/systemPresetColor'
 import { ICurrentColorType, removeTransparency } from './utils/removeTransparency'
-import Popper from '../popper'
 
 export type { IColorPickerProps } from './interface'
 const InternalColorPicker = (props: Partial<IColorPickerProps>, ref: RefObject<IColorPickerInputRef>) => {
@@ -308,11 +308,7 @@ const InternalColorPicker = (props: Partial<IColorPickerProps>, ref: RefObject<I
     clickToClose: false,
   }
 
-  return (
-    <Popper tip={panel} {...popperProps}>
-      {colorInputEle}
-    </Popper>
-  )
+  return usePopper(colorInputEle, panel, popperProps)
 }
 
 const ColorPicker = forwardRef<IColorPickerInputRef, Partial<IColorPickerProps>>(InternalColorPicker)
