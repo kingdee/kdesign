@@ -202,7 +202,7 @@ const Tabs: React.FC<ITabsProps> = (props) => {
   }
 
   const renderLeftArrow = () => {
-    if (!showScrollArrow || position === 'left' || ListWidth < boxWidth || (!ListWidth && !boxWidth)) return null
+    if (!showScrollArrow || position === 'left' || ListWidth < boxWidth || !ListWidth || !boxWidth) return null
     const leftClasses = classNames(`${tabsPrefixCls}-left-arrows`, {
       [`${tabsPrefixCls}-left-arrows-${type}`]: type,
       [`${tabsPrefixCls}-left-arrows-noshadow`]: ListPostion === 0,
@@ -225,7 +225,7 @@ const Tabs: React.FC<ITabsProps> = (props) => {
   }
 
   const renderRightArrows = (nodes: any) => {
-    if (ListWidth < boxWidth || (!ListWidth && !boxWidth) || ['left', 'right'].includes(position)) return null
+    if (ListWidth < boxWidth || !ListWidth || !boxWidth || ['left', 'right'].includes(position)) return null
 
     const rightClasses = classNames(`${tabsPrefixCls}-right-arrows`, {
       [`${tabsPrefixCls}-right-arrows-${type}`]: type,
