@@ -112,8 +112,8 @@ describe('Tabs', () => {
       </div>,
     )
 
-    expect(wrapper).toContainMatchingElement('.kd-arrow-button-left')
-    expect(wrapper).toContainMatchingElement('.kd-arrow-button-right')
+    expect(wrapper.find('.kd-arrow-button-left')).not.toExist()
+    expect(wrapper.find('.kd-arrow-button-right')).not.toExist()
   })
 
   it('should operations been render when type is dynamic', () => {
