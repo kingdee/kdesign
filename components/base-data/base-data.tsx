@@ -54,6 +54,12 @@ const InternalBaseData: React.ForwardRefRenderFunction<IAdvancedSelectorProps> =
   const [isFocused, setFocused] = useState(false)
   const [optionShow, setOptionShow] = useState(!!props.visible)
 
+  useEffect(() => {
+    if (typeof props.visible !== 'undefined') {
+      setOptionShow(props.visible)
+    }
+  }, [props.visible])
+
   const innerRef = useRef<HTMLElement>()
   const advancedSelectorRef = (ref as any) || innerRef
   const inputRef = useRef<any>()
@@ -213,7 +219,7 @@ const InternalBaseData: React.ForwardRefRenderFunction<IAdvancedSelectorProps> =
   }
 
   const changeInputText = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setOptionShow(true)
+    handleVisibleChange(true)
     const textValue = e.target.value
     let val = textValue
     const inputDom = inputRef.current?.input
@@ -383,6 +389,11 @@ const InternalBaseData: React.ForwardRefRenderFunction<IAdvancedSelectorProps> =
   }
 
   const handleSelect = (item: any) => {
+    if (props.visible === undefined) {
+      setOptionShow(false)
+    } else {
+      onVisibleChange?.(false)
+    }
     searchInfo.current.searchValue = undefined
     if (seletedOptions.findIndex((v) => v.value === item.value) !== -1) {
       const list = seletedOptions.filter((v) => v.value !== item.value)
@@ -394,24 +405,28 @@ const InternalBaseData: React.ForwardRefRenderFunction<IAdvancedSelectorProps> =
       )
       return
     }
-    const list = [...(searchInfo.current.editOptions || [])]
-    list?.splice(searchInfo.current.searchIndex || 0, 1, item)
+
     if (isMultiple) {
+      const list = [...seletedOptions, item]
       onChange?.(
-        (list || []).filter((item) => item).map((v) => v.value),
-        (list || []).filter((item) => item),
+        list.map((v) => v.value),
+        list,
       )
+      if (value === undefined) {
+        searchInfo.current.editOptions = list
+        setSeletedOptions(list)
+      }
     } else {
+      // 单选模式下直接替换选中项
+      const list = [item]
       onChange?.(item.value, item)
+      if (value === undefined) {
+        searchInfo.current.editOptions = list
+        setSeletedOptions(list)
+      }
     }
+
     onSelect?.(item.value, item)
-
-    if (value !== undefined) {
-      return
-    }
-
-    searchInfo.current.editOptions = list
-    setSeletedOptions((list || []).filter((item) => item))
   }
 
   const handleSelectAll = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -477,7 +492,7 @@ const InternalBaseData: React.ForwardRefRenderFunction<IAdvancedSelectorProps> =
   const renderContent = () => {
     return (
       <div className={`${advancedSelectorfixCls}-dropdown`}>
-        {searchInfo.current.searchValue ? renderDropdownContent(options, columns, true, true) : renderHistoryContent()}
+        {optionShow ? renderDropdownContent(options, columns, true, true) : renderHistoryContent()}
       </div>
     )
   }
