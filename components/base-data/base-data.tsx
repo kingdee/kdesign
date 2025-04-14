@@ -622,7 +622,11 @@ const InternalBaseData: React.ForwardRefRenderFunction<IAdvancedSelectorProps> =
               className={classNames(`${advancedSelectorfixCls}-dropdown-options`, {
                 selected: seletedOptions.some((v) => v.value === item.value),
               })}
-              onMouseDown={() => handleSelect(item)}
+              onMouseDown={(e) => {
+                e.stopPropagation()
+                e.preventDefault()
+                handleSelect(item)
+              }}
             >
               {myColumns.map((column: IColumnsProps, index) => (
                 <span
