@@ -392,13 +392,32 @@
     border-color: @tree-select-error-color;
   }
 
+}
+.@{tree-select-prefix-cls}-panel {
   &.topLeft.hidden,
+  &.topRight.hidden {
+    opacity: 0;
+    visibility: hidden;
+    transition: all calc(@transition-duration - 0.1s) @ease;
+    animation-name: kdSlideDownOut;
+  }
+
+  &.topLeft,
+  &.topRight {
+    animation-name: kdSlideDownIn;
+  }
+
   &.bottomLeft.hidden,
-  &.topRight.hidden,
   &.bottomRight.hidden {
     opacity: 0;
     visibility: hidden;
     transition: all calc(@transition-duration - 0.1s) @ease;
+    animation-name: kdSlideUpOut;
+  }
+
+  &.bottomLeft,
+  &.bottomRight {
+    animation-name: kdSlideUpIn;
   }
 }
 .@{tree-select-prefix-cls}-rtl {
