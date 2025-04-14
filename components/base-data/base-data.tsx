@@ -36,6 +36,7 @@ const InternalBaseData: React.ForwardRefRenderFunction<IAdvancedSelectorProps> =
     loading,
     searchField,
     dropdownStyle,
+    showEmptyOption = true, // 新增属性，控制是否显示空值选项
     onChange,
     onSearch,
     onSelect,
@@ -127,9 +128,15 @@ const InternalBaseData: React.ForwardRefRenderFunction<IAdvancedSelectorProps> =
     if (!isMultiple && value) {
       seletedItems = [value]
     }
+
+    // 如果不显示空值选项，过滤掉空值
+    if (!showEmptyOption) {
+      seletedItems = seletedItems.filter((item) => item && item[optionLabelProp])
+    }
+
     setSeletedOptions(seletedItems)
     searchInfo.current.editOptions = [...seletedItems]
-  }, [value, isMultiple])
+  }, [value, isMultiple, showEmptyOption, optionLabelProp])
 
   useEffect(() => {
     if (!searchInfo.current.previousEditValue) return
@@ -192,15 +199,19 @@ const InternalBaseData: React.ForwardRefRenderFunction<IAdvancedSelectorProps> =
 
   // 通过选中项显示input文字， optionLabelProp为回填到选择框的属性
   const setValueBySeleted = useCallback(() => {
-    const defaultInputValue = seletedOptions.reduce(
+    const filteredOptions = showEmptyOption
+      ? seletedOptions
+      : seletedOptions.filter((option) => option[optionLabelProp])
+
+    const defaultInputValue = filteredOptions.reduce(
       (pre: string, next: any, index, arr) =>
-        `${pre}${next[optionLabelProp]}${index !== arr.length - 1 ? delimiter : ''}`,
+        `${pre}${next[optionLabelProp] || ''}${index !== arr.length - 1 ? delimiter : ''}`,
       '',
     )
     searchInfo.current.previousInputValue = defaultInputValue
     setInputValue(defaultInputValue)
     searchInfo.current.previousEditValue = `${defaultInputValue}${delimiter}`
-  }, [delimiter, optionLabelProp, seletedOptions])
+  }, [delimiter, optionLabelProp, seletedOptions, showEmptyOption])
 
   useEffect(() => {
     setValueBySeleted()
@@ -395,6 +406,12 @@ const InternalBaseData: React.ForwardRefRenderFunction<IAdvancedSelectorProps> =
       onVisibleChange?.(false)
     }
     searchInfo.current.searchValue = undefined
+
+    // 如果不显示空值选项且当前选项的标签属性为空，则不进行选择
+    if (!showEmptyOption && !item[optionLabelProp]) {
+      return
+    }
+
     if (seletedOptions.findIndex((v) => v.value === item.value) !== -1) {
       const list = seletedOptions.filter((v) => v.value !== item.value)
       // 取消选中(非受控状态下)
