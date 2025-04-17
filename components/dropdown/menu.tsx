@@ -59,7 +59,12 @@ const Menu = React.forwardRef<unknown, DropdownMenuProps>((props, ref) => {
 })
 
 const Item: React.FC<DropdownItemProps> = (props) => {
-  const { getPrefixCls, prefixCls: pkgPrefixCls, compDefaultProps: userDefaultProps } = React.useContext(ConfigContext)
+  const {
+    getPrefixCls,
+    prefixCls: pkgPrefixCls,
+    compDefaultProps: userDefaultProps,
+    direction,
+  } = React.useContext(ConfigContext)
 
   const {
     prefixCls: customPrefixcls,
@@ -94,6 +99,7 @@ const Item: React.FC<DropdownItemProps> = (props) => {
         selected,
       })}
       role="menuitem"
+      dir={direction === 'rtl' ? 'auto' : undefined}
       {...restProps}
     >
       {childrenIsLink ? (
@@ -103,7 +109,7 @@ const Item: React.FC<DropdownItemProps> = (props) => {
           React.cloneElement(children, { children: linkChildren })
         )
       ) : (
-        <span>{children}</span>
+        <span dir={direction === 'rtl' ? 'auto' : undefined}>{children}</span>
       )}
     </li>
   )
