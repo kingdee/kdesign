@@ -392,11 +392,11 @@
         &:hover:not(.@{city-picker-prefix-cls}-disabled) {
           border: 1px solid @city-picker-g-color-border-hover;
         }
-  
+
         .@{city-picker-prefix-cls}-suffix {
           padding-right: 8px;
         }
-  
+
         .@{city-picker-prefix-cls}-placeholder {
           padding-left: @city-picker-bordered;
         }
@@ -450,6 +450,9 @@
         animation-name: kdSlideUpOut;
       }
     }
+  }
+  [dir='auto'] {
+    direction: unset;
   }
 }
 /*! rtl:end:ignore */

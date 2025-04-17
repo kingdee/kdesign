@@ -202,6 +202,7 @@ const Alert: React.FC<IAlertProps> = (props: IAlertProps): ReactElement | React.
           [`${alertPrefixCls}-message`]: true,
           [`${alertPrefixCls}-without-icon-message`]: !showIcon,
         })}
+        dir={direction === 'rtl' ? 'auto' : undefined}
       >
         {message}
       </div>
