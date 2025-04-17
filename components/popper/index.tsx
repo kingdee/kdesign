@@ -738,7 +738,7 @@ export const Popper = forwardRef<SubPopup | null, PopperProps>((props, ref) => {
         ReactDOM.createPortal(
           <TriggerContext.Provider value={context}>
             <div {...popperContainerProps}>
-              <div {...popperProps}>
+              <div {...popperProps} dir={direction === 'rtl' ? 'auto' : undefined}>
                 {popperElement}
                 {arrow && (
                   <div className={classnames('arrow', { transparent: backgroundTransparent })} data-popper-arrow="" />

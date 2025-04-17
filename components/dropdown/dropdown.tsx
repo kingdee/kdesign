@@ -165,10 +165,10 @@ const Dropdown = React.forwardRef<HTMLDivElement, DropDownProps>((props, ref) =>
             role="menuitem"
           >
             {href === undefined || disabled ? (
-              <span>{label}</span>
+              <span dir={direction === 'rtl' ? 'auto' : undefined}>{label}</span>
             ) : (
               <a {...alinkProps}>
-                <span>{label}</span>
+                <span dir={direction === 'rtl' ? 'auto' : undefined}>{label}</span>
               </a>
             )}
           </li>
