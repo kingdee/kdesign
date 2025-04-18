@@ -88,7 +88,11 @@ const Step: React.FC<StepProps> = (props) => {
             {title}
           </div>
           {description && (
-            <div className={`${prefixCls}-item-description`} title={isString(description) ? description : ''}>
+            <div
+              className={`${prefixCls}-item-description`}
+              title={isString(description) ? description : ''}
+              dir={direction === 'rtl' ? 'auto' : undefined}
+            >
               {description}
             </div>
           )}
