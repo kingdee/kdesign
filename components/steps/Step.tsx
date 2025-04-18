@@ -1,7 +1,9 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import classNames from 'classnames'
 
 import { Status, Icons } from './interface'
+import ConfigContext from '../config-provider/ConfigContext'
+
 export interface StepProps {
   style?: React.CSSProperties
   stepNumber?: number
@@ -22,6 +24,7 @@ function isString(str: any): str is string {
   return typeof str === 'string'
 }
 const Step: React.FC<StepProps> = (props) => {
+  const { direction } = useContext(ConfigContext)
   const {
     stepNumber = 1,
     stepIndex = 0,
@@ -77,7 +80,11 @@ const Step: React.FC<StepProps> = (props) => {
           <div className={`${prefixCls}-item-iconContainer-icon`}>{renderIconNode()}</div>
         </div>
         <div className={`${prefixCls}-item-content`}>
-          <div className={`${prefixCls}-item-title`} title={isString(title) ? title : ''}>
+          <div
+            className={`${prefixCls}-item-title`}
+            title={isString(title) ? title : ''}
+            dir={direction === 'rtl' ? 'auto' : undefined}
+          >
             {title}
           </div>
           {description && (
