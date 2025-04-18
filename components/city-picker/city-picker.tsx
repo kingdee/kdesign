@@ -383,7 +383,11 @@ const InternalSelect: React.ForwardRefRenderFunction<CityPickerProps> = (props: 
                 readOnly={!!disabled}
               />
               {!searchValue && (
-                <span className={itemCls} title={seletedCity?.name} dir={direction === 'rtl' ? 'auto' : undefined}>
+                <span
+                  className={itemCls}
+                  title={seletedCity?.name}
+                  dir={direction === 'rtl' && disabled ? 'auto' : undefined}
+                >
                   {seletedCity?.name}
                 </span>
               )}
@@ -392,7 +396,7 @@ const InternalSelect: React.ForwardRefRenderFunction<CityPickerProps> = (props: 
               <span
                 className={`${selectPrefixCls}-content-info`}
                 title={renderCityInfo(seletedCity) || undefined}
-                dir={direction === 'rtl' ? 'auto' : undefined}
+                dir={direction === 'rtl' && disabled ? 'auto' : undefined}
               >
                 {renderCityInfo(seletedCity)}
               </span>
@@ -502,7 +506,11 @@ const InternalSelect: React.ForwardRefRenderFunction<CityPickerProps> = (props: 
   const renderCityPicker = () => {
     return (
       <div className={cityPickerCls} ref={selectRef} style={style}>
-        {showDescription && <span className={`${selectPrefixCls}-description`}>{description}</span>}
+        {showDescription && (
+          <span className={`${selectPrefixCls}-description`} dir={direction === 'rtl' ? 'auto' : undefined}>
+            {description}
+          </span>
+        )}
         <span
           className={selectionCls}
           tabIndex={disabled ? -1 : 0}
