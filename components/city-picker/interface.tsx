@@ -63,6 +63,7 @@ export interface ICityPickerOptionProps {
   style?: React.CSSProperties
   activeIndex?: number
   index: number
+  direction?: string
   onChangeSelect?: (city: City | null) => void
   renderCityInfo?: (city: City, flag?: boolean, symbol?: string) => React.ReactNode
   itemRender?: (city: City) => React.ReactNode

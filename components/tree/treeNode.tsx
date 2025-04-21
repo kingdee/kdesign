@@ -293,7 +293,7 @@ const TreeNode = React.forwardRef<unknown, TreeNodeProps>((props) => {
                   className={classNames(`${treeNodePrefixCls}-title`, {
                     [`${treeNodePrefixCls}-title-disabled`]: disabled,
                   })}
-                  dir={direction === 'rtl' ? 'auto' : undefined}
+                  dir={direction === 'rtl' && typeof title === 'string' ? 'auto' : undefined}
                 >
                   {title}
                 </span>
@@ -303,7 +303,7 @@ const TreeNode = React.forwardRef<unknown, TreeNodeProps>((props) => {
                 className={classNames(`${treeNodePrefixCls}-title`, {
                   [`${treeNodePrefixCls}-title-disabled`]: disabled,
                 })}
-                dir={direction === 'rtl' ? 'auto' : undefined}
+                dir={direction === 'rtl' && typeof title === 'string' ? 'auto' : undefined}
               >
                 {title}
               </span>
