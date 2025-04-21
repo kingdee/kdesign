@@ -262,6 +262,7 @@ const InternalSelect: React.ForwardRefRenderFunction<CityPickerProps> = (props: 
               itemRender={itemRender}
               activeIndex={activeIndex}
               index={index}
+              direction={direction}
               onChangeActiveIndex={(i) => {
                 setActiveIndex(i)
               }}
