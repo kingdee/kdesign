@@ -12,7 +12,6 @@ const InternalOption: React.ForwardRefRenderFunction<unknown, ICityPickerOptionP
     className,
     activeIndex,
     index,
-    direction,
     onChangeSelect,
     city = {},
     renderCityInfo,
@@ -47,12 +46,8 @@ const InternalOption: React.ForwardRefRenderFunction<unknown, ICityPickerOptionP
           itemRender(city)
         ) : (
           <>
-            <span className={`${selectOptionPrefixCls}-content`} dir={direction === 'rtl' ? 'auto' : undefined}>
-              {children}
-            </span>
-            <span className={`${selectOptionPrefixCls}-info`} dir={direction === 'rtl' ? 'auto' : undefined}>
-              {renderCityInfo?.(city, true)}
-            </span>
+            <span className={`${selectOptionPrefixCls}-content`}>{children}</span>
+            <span className={`${selectOptionPrefixCls}-info`}>{renderCityInfo?.(city, true)}</span>
           </>
         )}
       </div>
