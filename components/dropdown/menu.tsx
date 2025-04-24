@@ -99,7 +99,6 @@ const Item: React.FC<DropdownItemProps> = (props) => {
         selected,
       })}
       role="menuitem"
-      dir={direction === 'rtl' ? 'auto' : undefined}
       {...restProps}
     >
       {childrenIsLink ? (
@@ -109,7 +108,7 @@ const Item: React.FC<DropdownItemProps> = (props) => {
           React.cloneElement(children, { children: linkChildren })
         )
       ) : (
-        <span dir={direction === 'rtl' ? 'auto' : undefined}>{children}</span>
+        <span dir={direction === 'rtl' && typeof children === 'string' ? 'auto' : undefined}>{children}</span>
       )}
     </li>
   )
