@@ -27,6 +27,7 @@ export const ConfirmModalTypes = ['confirm', 'normal']
 export const ModalTypes = tuple('confirm', 'warning', 'error', 'normal')
 export type ModalType = typeof ModalTypes[number]
 type CloseModalFCType = (
+  isClosed?: boolean,
   onDoingAction?: ((event?: ClickMouseEvent) => void) | undefined,
   event?: ClickMouseEvent,
 ) => void
@@ -51,6 +52,7 @@ export interface IModalProps {
   height?: number
   keyboard?: boolean
   mask?: boolean
+  isClosed?: boolean
   maskClassName?: string
   maskClosable?: boolean
   maskStyle?: CSSProperties
@@ -153,6 +155,7 @@ const InternalModal = (
     visible,
     width,
     showline,
+    isClosed = false,
     onDragStart,
     onDrag,
     onDragStop,
@@ -192,10 +195,13 @@ const InternalModal = (
     setInnerVisible(false)
   }, [])
   const proxyCloseModal: CloseModalFCType = useCallback(
-    (onDoingAction, event) => {
+    (isClosed, onDoingAction, event) => {
       onDoingAction && onDoingAction(event)
 
       if (isForceController) {
+        return
+      }
+      if (isClosed) {
         return
       }
       closeModal()
@@ -208,7 +214,7 @@ const InternalModal = (
       const isModalVisible = destroyOnClose || (isForceController ? visible : innerVisible)
       if (['Escape', 'Esc'].includes(evt.key) && isModalVisible) {
         evt.preventDefault()
-        proxyCloseModal(onCancel)
+        proxyCloseModal(isClosed, onCancel)
       }
     },
     [proxyCloseModal, onCancel],
@@ -216,7 +222,7 @@ const InternalModal = (
   const enterToCloseModal = useCallback(
     (evt: React.KeyboardEvent<HTMLDivElement>) => {
       if (evt.key === 'Enter' && evt.target === containerRef.current) {
-        proxyCloseModal(onOk)
+        proxyCloseModal(isClosed, onOk)
         // 无效
         // evt.stopPropagation()
       }
@@ -229,7 +235,7 @@ const InternalModal = (
     {
       onClick: useCallback(
         (event: ClickMouseEvent) => {
-          proxyCloseModal(onCancel, event)
+          proxyCloseModal(isClosed, onCancel, event)
         },
         [onCancel, proxyCloseModal],
       ),
@@ -244,7 +250,7 @@ const InternalModal = (
     {
       onClick: useCallback(
         (event: ClickMouseEvent) => {
-          proxyCloseModal(onOk, event)
+          proxyCloseModal(isClosed, onOk, event)
         },
         [onOk, proxyCloseModal],
       ),
@@ -444,7 +450,7 @@ const InternalModal = (
 
   const handleMaskClick = useCallback(() => {
     if (maskClosable) {
-      proxyCloseModal(onCancel)
+      proxyCloseModal(isClosed, onCancel)
     }
   }, [proxyCloseModal, onCancel, maskClosable])
 
@@ -504,7 +510,7 @@ const InternalModal = (
           <div className={`${modalPrefixCls}-title`}>{title}</div>
         </div>
         {closable && (
-          <div className={`${modalPrefixCls}-close-icon`} onClick={() => proxyCloseModal(onCancel)}>
+          <div className={`${modalPrefixCls}-close-icon`} onClick={() => proxyCloseModal(isClosed, onCancel)}>
             {closeIcon || <Icon type="close" />}
           </div>
         )}

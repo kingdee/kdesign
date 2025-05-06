@@ -1,3 +1,4 @@
+/*! rtl:begin:ignore */
 @import '../../style/themes/index';
 @import './mixin.less';
 @import './token.less';
@@ -131,7 +132,6 @@
   }
 }
 
-/*! rtl:begin:ignore */
 .@{alert-prefix-cls}-rtl {
   direction: rtl;
   .@{alert-prefix-cls}-icon {
@@ -141,9 +141,6 @@
   .@{alert-prefix-cls}-close-icon {
     margin-right: @alert-close-icon-margin-left;
     margin-left: 0;
-  }
-  [dir='auto'] {
-    direction: unset;
   }
 }
 /*! rtl:end:ignore */

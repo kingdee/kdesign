@@ -111,13 +111,16 @@
       }
     }
   }
-  /*! rtl:begin:ignore */
   .@{dropdown-prefix-cls}-menu-rtl {
     direction: rtl;
     [dir='auto'] {
-      direction: unset;
+      text-align: right;
+    }
+    .@{dropdown-prefix-cls}-menu-item {
+      > span {
+        text-align: right;
+      }
     }
   }
-  /*! rtl:end:ignore */
 }
 /*! rtl:end:ignore */
