@@ -44,6 +44,7 @@ subtitle: 弹出框
 | maskClassName | 遮罩样式 | string | - | - | 1.0.0 |
 | maskClosable | 点击蒙层是否允许关闭 | boolean | true | - | 1.0.0 |
 | maskStyle | 遮罩 styles | CSSProperties | - | - | 1.0.0 |
+| onClose | 非受控下enter是否关闭弹窗 | boolean | false(关闭弹窗) | - | 1.0.0 |
 | okButtonProps | 确定按钮属性（可接收 Button 控件的所有属性） | ButtonProps | - | - | 1.0.0 |
 | onDragStart | 开始拖拽的回调,如果返回`false`则不触发操作 | (event, data) => void \| false | - | - | 1.7.2 |
 | onDrag | 拖拽时的回调,如果返回`false`则不触发操作 | (event, data) => void \| false | - | - | 1.7.2 |
