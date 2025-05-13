@@ -28,6 +28,13 @@ export interface FormItemProps {
   required?: boolean // 必填，不设置的话根据校验规则生成
   rules?: Rule[] // 校验规则
   validateTrigger?: string | string[] // 字段校验的时机
+  syncValueTrigger?:
+    | string
+    | {
+        event: string
+        valueGetter?: (props: any, event: any) => any
+        delay?: boolean
+      } // 自定义同步值和触发校验的事件
   wrapperWidth?: string | number
   valuePropName?: string
   extra?: React.ReactNode
@@ -96,6 +103,7 @@ const Field: React.FC<FormItemProps> = (props) => {
     rules,
     wrapperWidth,
     validateTrigger,
+    syncValueTrigger,
     defaultValue,
     valuePropName,
     extra,
@@ -224,6 +232,18 @@ const Field: React.FC<FormItemProps> = (props) => {
     dispatch({ type: 'validateField', namePath: name })
   }, [name])
 
+  // // 在组件顶层添加这个 useEffect
+  // useEffect(() => {
+  //   // 检查子组件是否存在且是否有受控值
+  //   if (childrenNode && childrenNode.props && childrenNode.props[innerValuePropName] !== undefined) {
+  //     const childValue = childrenNode.props[innerValuePropName]
+  //     // 如果子组件的值与表单中的值不同，则更新表单值
+  //     if (childValue !== value) {
+  //       dispatch({ type: 'updateValue', namePath: name, value: childValue })
+  //     }
+  //   }
+  // }, [childrenNode, innerValuePropName, name, value, dispatch])
+
   const mergeProps = (fa: { [x: string]: any }, ch: React.ReactElement) => {
     if (!ch) {
       return {}
@@ -265,6 +285,53 @@ const Field: React.FC<FormItemProps> = (props) => {
       defaultValue,
       [innerValuePropName]: fieldValue,
       disabled: chDisabled !== undefined ? chDisabled : disabled !== undefined ? disabled : formDisabled,
+    }
+
+    // 处理自定义触发器
+    if (syncValueTrigger) {
+      const triggerEvent = typeof syncValueTrigger === 'string' ? syncValueTrigger : syncValueTrigger.event
+      const valueGetter = typeof syncValueTrigger === 'object' && syncValueTrigger.valueGetter
+      const shouldDelay = typeof syncValueTrigger === 'object' && syncValueTrigger.delay
+
+      if (triggerEvent && triggerEvent !== DEFAULT_TRIGGER) {
+        mergeResult[triggerEvent] = (...evt: any) => {
+          // 获取值并更新
+          const iv = getInputValueFormProp(evt[0], evt)
+
+          // 调用原始事件处理函数，让用户有机会更新组件状态
+          if (ch.props[triggerEvent] && typeof ch.props[triggerEvent] === 'function') {
+            ch.props[triggerEvent](...evt)
+          }
+
+          // 使用自定义的值获取器或默认值
+          const updateValue = () => {
+            let newValue
+            if (valueGetter) {
+              // 使用自定义的值获取器
+              newValue = valueGetter(ch.props, evt[0])
+            } else {
+              // 使用默认的值获取方式
+              newValue = chValue !== undefined ? chValue : iv
+            }
+
+            if (chValue === undefined) {
+              setFieldValue(newValue)
+            }
+
+            // 更新表单值
+            dispatch({ type: 'updateValue', namePath: name, value: newValue })
+          }
+
+          // 根据是否需要延迟来决定如何更新值
+          if (shouldDelay) {
+            // 延迟更新，确保在用户的事件处理函数执行完毕后再同步值到表单
+            setTimeout(updateValue, 0)
+          } else {
+            // 立即更新
+            updateValue()
+          }
+        }
+      }
     }
 
     const mergeEventArray = []
