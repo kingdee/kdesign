@@ -208,7 +208,7 @@ class FormStore {
     const prevStore = cloneDeep(this.store)
     set(this.store, name, value)
 
-    const trigger = get(this.fields, [name, 'meta', 'trigger'])
+    const trigger = get(this.fields, [name, 'current', 'meta', 'trigger'])
 
     // 默认是 onChange 触发校验
     if (trigger === undefined || trigger === 'onChange' || trigger.includes('onChange')) {

@@ -46,6 +46,7 @@ subtitle: 表单
 | name            | item名称 | `string` | | | 1.0.0      |
 | required        | 是否必录 | `boolean` | `false` | | 1.0.0      |
 | rules           | 校验规则 | `Rule[]` | | | 1.0.0      |
+| syncValueTrigger | 自定义同步值的事件 | `string \| { event: string; valueGetter?: (props: any, event: any) => any; delay?: boolean }` | - | -  | 1.8.45 |
 | validateTrigger | 字段校验的时机 | `string` | `'onchange'` | | 1.0.0      |
 | wrappedWidth    | 输入控件宽度 | `string | number` | |            | 1.0.0 |
 | htmlFor         | 设置子元素 label htmlFor 属性 | string | | | 1.6.7      |
