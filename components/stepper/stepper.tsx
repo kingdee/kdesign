@@ -171,16 +171,6 @@ const InternalStepper = (props: StepperProps, ref: unknown): FunctionComponentEl
   }
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const number = parseFloat(event.target.value)
-    if (
-      String(value).length &&
-      event.target.value?.length >= String(value).length &&
-      event.target.value !== '' &&
-      props?.value !== undefined &&
-      ((max && max < number) || (min && min > number))
-    ) {
-      return
-    }
     props?.value === undefined && setValue(event.target.value)
     props?.value === undefined && stepperrref.current.setValue(event.target.value)
     onChange && onChange(event)
