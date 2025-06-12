@@ -31,6 +31,7 @@ const InternalBaseData: React.ForwardRefRenderFunction<IAdvancedSelectorProps> =
     size,
     style,
     dropdownFooterRender,
+    isNeedDropDown = true,
     collectList = [],
     historyList = [],
     loading,
@@ -739,7 +740,7 @@ const InternalBaseData: React.ForwardRefRenderFunction<IAdvancedSelectorProps> =
     placement: direction === 'rtl' ? 'bottomRight' : 'bottomLeft',
     ...advancedSelectortProps,
     defaultVisible: optionShow,
-    visible: optionShow,
+    visible: isNeedDropDown ? optionShow : false,
     prefixCls: `${advancedSelectorfixCls}-dropdown-wrapper ${direction === 'rtl' ? rtlCls : null}`,
     onVisibleChange: handleVisibleChange,
   }
