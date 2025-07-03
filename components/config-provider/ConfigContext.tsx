@@ -22,6 +22,7 @@ export interface IConfigProps {
   localeConfig?: LocaleConfigType
   locale?: IntlUniversal
   direction?: DirectionType
+  isMobile?: boolean
 }
 export interface IContextConfigProps {
   getPrefixCls?: (configPrefixCls?: string, suffixCls?: string, customizePrefixCls?: string) => string
@@ -30,6 +31,7 @@ export interface IContextConfigProps {
   localeConfig?: LocaleConfigType
   locale: IntlUniversal
   direction?: DirectionType
+  isMobile?: boolean
 }
 const ConfigContext = createContext<IContextConfigProps>(defaultConfig)
 export default ConfigContext
