@@ -65,7 +65,7 @@ const Table = forwardRef<unknown, TableProps>((props: TableProps, ref) => {
     ...others
   } = props
 
-  const { getPrefixCls, prefixCls, locale, direction } = useContext(ConfigContext)
+  const { getPrefixCls, prefixCls, locale, direction, isMobile } = useContext(ConfigContext)
 
   const tablePrefixCls = getPrefixCls!(prefixCls, customPrefixcls)
   const tableCls = classNames(tablePrefixCls, className)
@@ -77,6 +77,7 @@ const Table = forwardRef<unknown, TableProps>((props: TableProps, ref) => {
     },
     localeText,
     direction,
+    isMobile,
   })
     .primaryKey(primaryKey === undefined ? '' : primaryKey)
     .input({
@@ -165,6 +166,7 @@ const Table = forwardRef<unknown, TableProps>((props: TableProps, ref) => {
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore
       direction={direction}
+      isMobile={isMobile}
       {...others}
     />
   )
