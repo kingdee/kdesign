@@ -7,6 +7,7 @@ exports[`Tabs renders correctly 1`] = `
 >
   <div
     class="kd-tabs-navs kd-tabs-navs-line kd-tabs-navs-middle"
+    style="touch-action:pan-y"
     type="line"
   >
     <div
@@ -56,6 +57,7 @@ exports[`Tabs renders correctly 2`] = `
 >
   <div
     class="kd-tabs-navs kd-tabs-navs-card kd-tabs-navs-middle"
+    style="touch-action:pan-y"
     type="card"
   >
     <div
@@ -101,6 +103,7 @@ exports[`Tabs renders correctly 3`] = `
 >
   <div
     class="kd-tabs-navs kd-tabs-navs-grid kd-tabs-navs-middle"
+    style="touch-action:pan-y"
     type="grid"
   >
     <div
@@ -146,6 +149,7 @@ exports[`Tabs renders correctly 4`] = `
 >
   <div
     class="kd-tabs-navs kd-tabs-navs-dynamic kd-tabs-navs-middle"
+    style="touch-action:pan-y"
     type="dynamic"
   >
     <div
@@ -199,6 +203,7 @@ exports[`Tabs renders correctly 5`] = `
   <div
     class="kd-tabs-navs kd-tabs-navs-card kd-tabs-navs-top kd-tabs-navs-middle"
     position="top"
+    style="touch-action:pan-y"
     type="card"
   >
     <div
@@ -259,6 +264,7 @@ exports[`Tabs renders correctly 6`] = `
   <div
     class="kd-tabs-navs kd-tabs-navs-card kd-tabs-navs-left kd-tabs-navs-middle"
     position="left"
+    style="touch-action:pan-y"
     type="card"
   >
     <div
@@ -319,6 +325,7 @@ exports[`Tabs renders correctly 7`] = `
   <div
     class="kd-tabs-navs kd-tabs-navs-card kd-tabs-navs-right kd-tabs-navs-middle"
     position="right"
+    style="touch-action:pan-y"
     type="card"
   >
     <div
@@ -379,6 +386,7 @@ exports[`Tabs renders correctly 8`] = `
   <div
     class="kd-tabs-navs kd-tabs-navs-card kd-tabs-navs-bottom kd-tabs-navs-middle"
     position="bottom"
+    style="touch-action:pan-y"
     type="card"
   >
     <div
@@ -484,7 +492,15 @@ exports[`Tabs renders correctly 10`] = `
     >
       <div
         className="kd-tabs-navs kd-tabs-navs-card kd-tabs-navs-middle"
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
         size="middle"
+        style={
+          Object {
+            "touchAction": "pan-y",
+          }
+        }
         type="card"
       >
         <div
