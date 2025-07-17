@@ -30,6 +30,7 @@ export interface ITabsProps {
   size?: TabsSize
   style?: Record<string, unknown> // 内联样式
   className?: string // 样式名
+  tabsDropdownClassName?: string // 下拉项样式名
   disabled?: boolean
   noContainer?: boolean
   showScrollArrow?: boolean
@@ -41,6 +42,7 @@ export interface ITabsProps {
   onChange?: TabChangeEventHandler
   getActiveLinePosition?: (left: number, width: number) => void
   getTriggerKey?: (key: any) => void
+  paneItemOperation?: boolean
 }
 
 function getDefaultActiveKey(props: ITabsProps) {
@@ -67,8 +69,10 @@ const Tabs: React.FC<ITabsProps> = (props) => {
     defaultActiveKey,
     showScrollArrow,
     effect = 'none',
+    tabsDropdownClassName,
     children,
     onChange,
+    needPanelOpration,
   } = tabsProps
 
   const tabsPrefixCls = getPrefixCls!(prefixCls, 'tabs', customPrefixcls)
@@ -93,12 +97,14 @@ const Tabs: React.FC<ITabsProps> = (props) => {
   const tabRef = useRef<HTMLDivElement>(null)
   const tabListRef = useRef<HTMLDivElement>(null)
   const carouselRef = useRef<any>(null)
-
+  const touchStartX = useRef<number>(0)
+  const lastListPosition = useRef(0)
+  const isDragging = useRef(false)
+  const [triggerState, setTriggerState] = useState<boolean>(false)
   const handleActive = (id: string | number, e?: React.MouseEvent<HTMLDivElement | HTMLAnchorElement, MouseEvent>) => {
     setCurActiveKey(id)
     onChange && onChange(id, e)
   }
-
   const getActiveLinePosition = (left: any, width: any) => {
     setLeft(left)
     setWidth(width)
@@ -107,7 +113,34 @@ const Tabs: React.FC<ITabsProps> = (props) => {
   const getTriggerKey = (key: any) => {
     setTriggerKey(key)
   }
+  const handleTouchStart = (e: React.TouchEvent<HTMLDivElement>) => {
+    if (ListWidth <= boxWidth) return
+    touchStartX.current = e.touches[0].clientX
+    lastListPosition.current = ListPostion
+    isDragging.current = true
+  }
 
+  const handleTouchMove = (e: React.TouchEvent<HTMLDivElement>) => {
+    if (!isDragging.current || ListWidth <= boxWidth) return
+    const currentX = e.touches[0].clientX
+    const deltaX = currentX - touchStartX.current
+    let newPosition = lastListPosition.current + deltaX
+
+    const maxLeft = 0
+    const maxRight = boxWidth - ListWidth
+    if (newPosition > maxLeft) newPosition = maxLeft
+    if (newPosition < maxRight) newPosition = maxRight
+
+    setListPosition(newPosition)
+  }
+
+  const handleTouchEnd = () => {
+    if (ListWidth <= boxWidth) return
+    isDragging.current = false
+  }
+  const handleVisibleChange = (visible: boolean) => {
+    setTriggerState(visible)
+  }
   useEffect(() => {
     setCurActiveKey(activeKey)
   }, [activeKey])
@@ -232,17 +265,25 @@ const Tabs: React.FC<ITabsProps> = (props) => {
       [`${tabsPrefixCls}-right-arrows-noshadow`]: ListWidth + ListPostion === boxWidth,
     })
 
-    const menu = nodes.map((node: any) => {
-      const tmp = {
-        label: '',
-        key: 0,
-        disabled: false,
-      }
-      tmp.label = node.props.tab
-      tmp.key = node.props.id
-      tmp.disabled = node.props.disabled
-      return tmp
-    })
+    const menu = (
+      <Dropdown.Menu
+        className={classNames(tabsDropdownClassName, {
+          [`${tabsPrefixCls}-right-arrows-menu`]: needPanelOpration,
+        })}
+      >
+        {nodes.map((node: any) => {
+          return (
+            <Dropdown.Item
+              key={node.props.id}
+              disabled={node.props.disabled}
+              className={node.props.id === curActiveKey ? `${tabsPrefixCls}-right-arrows-menu-active` : undefined}
+            >
+              <span>{node.props.tab}</span>
+            </Dropdown.Item>
+          )
+        })}
+      </Dropdown.Menu>
+    )
 
     const handleRight = () => {
       if (ListPostion === boxWidth - ListWidth) return
@@ -275,8 +316,8 @@ const Tabs: React.FC<ITabsProps> = (props) => {
             onClick={handleRight}
           />
         ) : null}
-        <Dropdown menu={menu} trigger={['click']} onItemClick={handleSelectItem}>
-          <span className={`${tabsPrefixCls}-more-btn`}>
+        <Dropdown menu={menu} trigger={['click']} onItemClick={handleSelectItem} onVisibleChange={handleVisibleChange}>
+          <span className={classNames(`${tabsPrefixCls}-more-btn`, `${tabsPrefixCls}-trigger-${triggerState}`)}>
             <Icon type="arrow-down" />
           </span>
         </Dropdown>
@@ -414,6 +455,10 @@ const Tabs: React.FC<ITabsProps> = (props) => {
       <div
         {...omit(tabsProps, ['activeKey', 'defaultActiveKey', 'showScrollArrow', 'noContainer'])}
         className={tabNavsClasses}
+        onTouchStart={handleTouchStart}
+        onTouchMove={handleTouchMove}
+        onTouchEnd={handleTouchEnd}
+        style={{ touchAction: 'pan-y' }} // 防止滚动被浏览器阻止
       >
         {renderLeftOperations()}
         {renderLeftArrow()}
