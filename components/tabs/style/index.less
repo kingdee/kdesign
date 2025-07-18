@@ -221,7 +221,7 @@
     text-overflow: ellipsis;
     max-width: @tab-pane-text-max-width;
     &-active,
-    &:hover {
+    &-notMobile:hover {
       color: @tabPane-font-color-active;
     }
     &-disabled {
@@ -230,6 +230,7 @@
       }
     }
   }
+
   &-disabled {
     color: @tabPane-font-color-disabled;
     cursor: not-allowed;
@@ -341,8 +342,11 @@
     &.@{tabPane-prefix-cls}-disabled {
       background-color: @tab-disabled-bg;
     }
+    
+  }
+  &-notMobile { 
     &:hover {
-      color: @tabPane-font-color-active;
+    color: @tabPane-font-color-active;
     }
   }
   &-operations {
