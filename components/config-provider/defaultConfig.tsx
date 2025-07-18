@@ -9,5 +9,6 @@ const defaultConfig = {
   },
   prefixCls: 'kd', // 样式前缀
   locale: { getLangMsg, getCompLangMsg },
+  isMobile: false,
 }
 export default defaultConfig
