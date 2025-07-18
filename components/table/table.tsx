@@ -166,6 +166,8 @@ const Table = forwardRef<unknown, TableProps>((props: TableProps, ref) => {
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore
       direction={direction}
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
       isMobile={isMobile}
       prefixCls={prefixCls}
       {...others}
