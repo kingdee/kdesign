@@ -33,7 +33,7 @@ export interface ITabPaneProps {
 const TabPane: React.FC<ITabPaneProps> = (props) => {
   const context = useContext(TabsContext)
   const tabPaneRef = useRef<HTMLDivElement>(null)
-  const { getPrefixCls, prefixCls } = useContext(ConfigContext)
+  const { getPrefixCls, prefixCls, isMobile } = useContext(ConfigContext)
 
   const { tab, id, className, disabled, operations, onChange } = props
 
@@ -55,11 +55,13 @@ const TabPane: React.FC<ITabPaneProps> = (props) => {
     [`${tabPanePrefixCls}-${tabPaneProps.position}`]: tabPaneProps.position,
     [`${tabPanePrefixCls}-${tabPaneProps.size}`]: tabPaneProps.size,
     [`${tabPanePrefixCls}-disabled`]: tabPaneProps.disabled,
+    [`${tabPanePrefixCls}-notMobile`]: !isMobile,
   })
 
   const tabPaneTextClasses = classNames(`${tabPanePrefixCls}-text`, {
     [`${tabPanePrefixCls}-text-active`]: String(tabPaneProps.activeKey) === String(id) && !tabPaneProps.disabled,
     [`${tabPanePrefixCls}-text-disabled`]: tabPaneProps.disabled,
+    [`${tabPanePrefixCls}-text-notMobile`]: !isMobile,
   })
 
   const operationsClasses = classNames(`${tabPanePrefixCls}-operations`, {
