@@ -167,6 +167,7 @@ const Table = forwardRef<unknown, TableProps>((props: TableProps, ref) => {
       // @ts-ignore
       direction={direction}
       isMobile={isMobile}
+      prefixCls={prefixCls}
       {...others}
     />
   )
