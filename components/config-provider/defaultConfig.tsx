@@ -12,5 +12,6 @@ const defaultConfig = {
   prefixCls: 'kd', // 样式前缀
   locale: { getLangMsg, getCompLangMsg },
   direction: 'ltr' as DirectionType,
+  isMobile: false,
 }
 export default defaultConfig
