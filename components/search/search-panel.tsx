@@ -169,6 +169,7 @@ const InternalSearchPanel: React.ForwardRefRenderFunction<ISearchPanelProps> = (
                       item.id === result.id ? ` ${prefixCls}-panel-dropDown-result-list-active` : ''
                     }`}
                     key={index}
+                    // eslint-disable-next-line jsx-a11y/mouse-events-have-key-events
                     onMouseOver={() => handleMouseOver(item)}
                     onClick={() => handleSelect(item)}
                   >
@@ -190,6 +191,7 @@ const InternalSearchPanel: React.ForwardRefRenderFunction<ISearchPanelProps> = (
               className={`${prefixCls}-panel-dropDown-search${
                 result.id === 'search' ? ` ${prefixCls}-panel-dropDown-search-active` : ''
               }`}
+              // eslint-disable-next-line jsx-a11y/mouse-events-have-key-events
               onMouseOver={() => handleMouseOver({ id: 'search' })}
               onClick={handleSearch}
             >
