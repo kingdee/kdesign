@@ -17,6 +17,7 @@ export interface IConfigProps {
   prefixCls?: string
   localeConfig?: LocaleConfigType
   locale?: IntlUniversal
+  isMobile?: boolean
 }
 export interface IContextConfigProps {
   getPrefixCls?: (configPrefixCls?: string, suffixCls?: string, customizePrefixCls?: string) => string
@@ -24,6 +25,7 @@ export interface IContextConfigProps {
   prefixCls?: string
   localeConfig?: LocaleConfigType
   locale: IntlUniversal
+  isMobile?: boolean
 }
 const ConfigContext = createContext<IContextConfigProps>(defaultConfig)
 export default ConfigContext
