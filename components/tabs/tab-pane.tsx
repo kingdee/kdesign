@@ -51,11 +51,13 @@ const TabPane: React.FC<ITabPaneProps> = (props) => {
 
   const tabPaneBoxClasses = classNames(tabPanePrefixCls, className, {
     [`${tabPanePrefixCls}-box-active`]: String(tabPaneProps.activeKey) === String(id) && !tabPaneProps.disabled,
+    [`${tabPanePrefixCls}-type-dynamic-notMobile`]: !isMobile,
     [`${tabPanePrefixCls}-type-${tabPaneProps.type}`]: tabPaneProps.type,
     [`${tabPanePrefixCls}-${tabPaneProps.position}`]: tabPaneProps.position,
     [`${tabPanePrefixCls}-${tabPaneProps.size}`]: tabPaneProps.size,
     [`${tabPanePrefixCls}-disabled`]: tabPaneProps.disabled,
     [`${tabPanePrefixCls}-notMobile`]: !isMobile,
+    [`${tabPanePrefixCls}-isMobile`]: isMobile,
   })
 
   const tabPaneTextClasses = classNames(`${tabPanePrefixCls}-text`, {
