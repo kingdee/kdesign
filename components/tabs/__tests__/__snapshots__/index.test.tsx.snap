@@ -19,10 +19,10 @@ exports[`Tabs renders correctly 1`] = `
         style="left:0px"
       >
         <span
-          class="kd-tab-pane kd-tab-pane-box-active kd-tab-pane-type-line kd-tab-pane-middle"
+          class="kd-tab-pane kd-tab-pane-box-active kd-tab-pane-type-dynamic-notMobile kd-tab-pane-type-line kd-tab-pane-middle kd-tab-pane-notMobile"
         >
           <span
-            class="kd-tab-pane-text kd-tab-pane-text-active"
+            class="kd-tab-pane-text kd-tab-pane-text-active kd-tab-pane-text-notMobile"
           >
             TabPane1
           </span>
@@ -69,10 +69,10 @@ exports[`Tabs renders correctly 2`] = `
         style="left:0px"
       >
         <span
-          class="kd-tab-pane kd-tab-pane-box-active kd-tab-pane-type-card kd-tab-pane-middle"
+          class="kd-tab-pane kd-tab-pane-box-active kd-tab-pane-type-dynamic-notMobile kd-tab-pane-type-card kd-tab-pane-middle kd-tab-pane-notMobile"
         >
           <span
-            class="kd-tab-pane-text kd-tab-pane-text-active"
+            class="kd-tab-pane-text kd-tab-pane-text-active kd-tab-pane-text-notMobile"
           >
             TabPane1
           </span>
@@ -115,10 +115,10 @@ exports[`Tabs renders correctly 3`] = `
         style="left:0px"
       >
         <span
-          class="kd-tab-pane kd-tab-pane-box-active kd-tab-pane-type-grid kd-tab-pane-middle"
+          class="kd-tab-pane kd-tab-pane-box-active kd-tab-pane-type-dynamic-notMobile kd-tab-pane-type-grid kd-tab-pane-middle kd-tab-pane-notMobile"
         >
           <span
-            class="kd-tab-pane-text kd-tab-pane-text-active"
+            class="kd-tab-pane-text kd-tab-pane-text-active kd-tab-pane-text-notMobile"
           >
             TabPane1
           </span>
@@ -161,10 +161,10 @@ exports[`Tabs renders correctly 4`] = `
         style="left:0px"
       >
         <span
-          class="kd-tab-pane kd-tab-pane-box-active kd-tab-pane-type-dynamic kd-tab-pane-middle"
+          class="kd-tab-pane kd-tab-pane-box-active kd-tab-pane-type-dynamic-notMobile kd-tab-pane-type-dynamic kd-tab-pane-middle kd-tab-pane-notMobile"
         >
           <span
-            class="kd-tab-pane-text kd-tab-pane-text-active"
+            class="kd-tab-pane-text kd-tab-pane-text-active kd-tab-pane-text-notMobile"
           >
             TabPane1
           </span>
@@ -215,19 +215,19 @@ exports[`Tabs renders correctly 5`] = `
         style="left:0px"
       >
         <span
-          class="kd-tab-pane kd-tab-pane-type-card kd-tab-pane-top kd-tab-pane-middle"
+          class="kd-tab-pane kd-tab-pane-type-dynamic-notMobile kd-tab-pane-type-card kd-tab-pane-top kd-tab-pane-middle kd-tab-pane-notMobile"
         >
           <span
-            class="kd-tab-pane-text"
+            class="kd-tab-pane-text kd-tab-pane-text-notMobile"
           >
             TabPane2
           </span>
         </span>
         <span
-          class="kd-tab-pane kd-tab-pane-type-card kd-tab-pane-top kd-tab-pane-middle kd-tab-pane-disabled"
+          class="kd-tab-pane kd-tab-pane-type-dynamic-notMobile kd-tab-pane-type-card kd-tab-pane-top kd-tab-pane-middle kd-tab-pane-disabled kd-tab-pane-notMobile"
         >
           <span
-            class="kd-tab-pane-text kd-tab-pane-text-disabled"
+            class="kd-tab-pane-text kd-tab-pane-text-disabled kd-tab-pane-text-notMobile"
           >
             TabPane1
           </span>
@@ -276,19 +276,19 @@ exports[`Tabs renders correctly 6`] = `
         style="left:0px"
       >
         <span
-          class="kd-tab-pane kd-tab-pane-type-card kd-tab-pane-left kd-tab-pane-middle"
+          class="kd-tab-pane kd-tab-pane-type-dynamic-notMobile kd-tab-pane-type-card kd-tab-pane-left kd-tab-pane-middle kd-tab-pane-notMobile"
         >
           <span
-            class="kd-tab-pane-text"
+            class="kd-tab-pane-text kd-tab-pane-text-notMobile"
           >
             TabPane2
           </span>
         </span>
         <span
-          class="kd-tab-pane kd-tab-pane-type-card kd-tab-pane-left kd-tab-pane-middle kd-tab-pane-disabled"
+          class="kd-tab-pane kd-tab-pane-type-dynamic-notMobile kd-tab-pane-type-card kd-tab-pane-left kd-tab-pane-middle kd-tab-pane-disabled kd-tab-pane-notMobile"
         >
           <span
-            class="kd-tab-pane-text kd-tab-pane-text-disabled"
+            class="kd-tab-pane-text kd-tab-pane-text-disabled kd-tab-pane-text-notMobile"
           >
             TabPane1
           </span>
@@ -337,19 +337,19 @@ exports[`Tabs renders correctly 7`] = `
         style="left:0px"
       >
         <span
-          class="kd-tab-pane kd-tab-pane-type-card kd-tab-pane-right kd-tab-pane-middle"
+          class="kd-tab-pane kd-tab-pane-type-dynamic-notMobile kd-tab-pane-type-card kd-tab-pane-right kd-tab-pane-middle kd-tab-pane-notMobile"
         >
           <span
-            class="kd-tab-pane-text"
+            class="kd-tab-pane-text kd-tab-pane-text-notMobile"
           >
             TabPane2
           </span>
         </span>
         <span
-          class="kd-tab-pane kd-tab-pane-type-card kd-tab-pane-right kd-tab-pane-middle kd-tab-pane-disabled"
+          class="kd-tab-pane kd-tab-pane-type-dynamic-notMobile kd-tab-pane-type-card kd-tab-pane-right kd-tab-pane-middle kd-tab-pane-disabled kd-tab-pane-notMobile"
         >
           <span
-            class="kd-tab-pane-text kd-tab-pane-text-disabled"
+            class="kd-tab-pane-text kd-tab-pane-text-disabled kd-tab-pane-text-notMobile"
           >
             TabPane1
           </span>
@@ -398,19 +398,19 @@ exports[`Tabs renders correctly 8`] = `
         style="left:0px"
       >
         <span
-          class="kd-tab-pane kd-tab-pane-type-card kd-tab-pane-bottom kd-tab-pane-middle"
+          class="kd-tab-pane kd-tab-pane-type-dynamic-notMobile kd-tab-pane-type-card kd-tab-pane-bottom kd-tab-pane-middle kd-tab-pane-notMobile"
         >
           <span
-            class="kd-tab-pane-text"
+            class="kd-tab-pane-text kd-tab-pane-text-notMobile"
           >
             TabPane2
           </span>
         </span>
         <span
-          class="kd-tab-pane kd-tab-pane-type-card kd-tab-pane-bottom kd-tab-pane-middle kd-tab-pane-disabled"
+          class="kd-tab-pane kd-tab-pane-type-dynamic-notMobile kd-tab-pane-type-card kd-tab-pane-bottom kd-tab-pane-middle kd-tab-pane-disabled kd-tab-pane-notMobile"
         >
           <span
-            class="kd-tab-pane-text kd-tab-pane-text-disabled"
+            class="kd-tab-pane-text kd-tab-pane-text-disabled kd-tab-pane-text-notMobile"
           >
             TabPane1
           </span>
@@ -522,11 +522,11 @@ exports[`Tabs renders correctly 10`] = `
               tab="TabPane00"
             >
               <span
-                className="kd-tab-pane kd-tab-pane-box-active kd-tab-pane-type-card kd-tab-pane-middle"
+                className="kd-tab-pane kd-tab-pane-box-active kd-tab-pane-type-dynamic-notMobile kd-tab-pane-type-card kd-tab-pane-middle kd-tab-pane-notMobile"
                 onClick={[Function]}
               >
                 <span
-                  className="kd-tab-pane-text kd-tab-pane-text-active"
+                  className="kd-tab-pane-text kd-tab-pane-text-active kd-tab-pane-text-notMobile"
                 >
                   TabPane00
                 </span>
@@ -539,11 +539,11 @@ exports[`Tabs renders correctly 10`] = `
               tab="TabPane01"
             >
               <span
-                className="kd-tab-pane kd-tab-pane-type-card kd-tab-pane-middle"
+                className="kd-tab-pane kd-tab-pane-type-dynamic-notMobile kd-tab-pane-type-card kd-tab-pane-middle kd-tab-pane-notMobile"
                 onClick={[Function]}
               >
                 <span
-                  className="kd-tab-pane-text"
+                  className="kd-tab-pane-text kd-tab-pane-text-notMobile"
                 >
                   TabPane01
                 </span>
@@ -556,11 +556,11 @@ exports[`Tabs renders correctly 10`] = `
               tab="TabPane02"
             >
               <span
-                className="kd-tab-pane kd-tab-pane-type-card kd-tab-pane-middle"
+                className="kd-tab-pane kd-tab-pane-type-dynamic-notMobile kd-tab-pane-type-card kd-tab-pane-middle kd-tab-pane-notMobile"
                 onClick={[Function]}
               >
                 <span
-                  className="kd-tab-pane-text"
+                  className="kd-tab-pane-text kd-tab-pane-text-notMobile"
                 >
                   TabPane02
                 </span>
@@ -573,11 +573,11 @@ exports[`Tabs renders correctly 10`] = `
               tab="TabPane03"
             >
               <span
-                className="kd-tab-pane kd-tab-pane-type-card kd-tab-pane-middle"
+                className="kd-tab-pane kd-tab-pane-type-dynamic-notMobile kd-tab-pane-type-card kd-tab-pane-middle kd-tab-pane-notMobile"
                 onClick={[Function]}
               >
                 <span
-                  className="kd-tab-pane-text"
+                  className="kd-tab-pane-text kd-tab-pane-text-notMobile"
                 >
                   TabPane03
                 </span>
@@ -590,11 +590,11 @@ exports[`Tabs renders correctly 10`] = `
               tab="TabPane04"
             >
               <span
-                className="kd-tab-pane kd-tab-pane-type-card kd-tab-pane-middle"
+                className="kd-tab-pane kd-tab-pane-type-dynamic-notMobile kd-tab-pane-type-card kd-tab-pane-middle kd-tab-pane-notMobile"
                 onClick={[Function]}
               >
                 <span
-                  className="kd-tab-pane-text"
+                  className="kd-tab-pane-text kd-tab-pane-text-notMobile"
                 >
                   TabPane04
                 </span>
@@ -607,11 +607,11 @@ exports[`Tabs renders correctly 10`] = `
               tab="TabPane05"
             >
               <span
-                className="kd-tab-pane kd-tab-pane-type-card kd-tab-pane-middle"
+                className="kd-tab-pane kd-tab-pane-type-dynamic-notMobile kd-tab-pane-type-card kd-tab-pane-middle kd-tab-pane-notMobile"
                 onClick={[Function]}
               >
                 <span
-                  className="kd-tab-pane-text"
+                  className="kd-tab-pane-text kd-tab-pane-text-notMobile"
                 >
                   TabPane05
                 </span>
@@ -624,11 +624,11 @@ exports[`Tabs renders correctly 10`] = `
               tab="TabPane06"
             >
               <span
-                className="kd-tab-pane kd-tab-pane-type-card kd-tab-pane-middle"
+                className="kd-tab-pane kd-tab-pane-type-dynamic-notMobile kd-tab-pane-type-card kd-tab-pane-middle kd-tab-pane-notMobile"
                 onClick={[Function]}
               >
                 <span
-                  className="kd-tab-pane-text"
+                  className="kd-tab-pane-text kd-tab-pane-text-notMobile"
                 >
                   TabPane06
                 </span>
@@ -641,11 +641,11 @@ exports[`Tabs renders correctly 10`] = `
               tab="TabPane07"
             >
               <span
-                className="kd-tab-pane kd-tab-pane-type-card kd-tab-pane-middle"
+                className="kd-tab-pane kd-tab-pane-type-dynamic-notMobile kd-tab-pane-type-card kd-tab-pane-middle kd-tab-pane-notMobile"
                 onClick={[Function]}
               >
                 <span
-                  className="kd-tab-pane-text"
+                  className="kd-tab-pane-text kd-tab-pane-text-notMobile"
                 >
                   TabPane07
                 </span>
@@ -658,11 +658,11 @@ exports[`Tabs renders correctly 10`] = `
               tab="TabPane08"
             >
               <span
-                className="kd-tab-pane kd-tab-pane-type-card kd-tab-pane-middle"
+                className="kd-tab-pane kd-tab-pane-type-dynamic-notMobile kd-tab-pane-type-card kd-tab-pane-middle kd-tab-pane-notMobile"
                 onClick={[Function]}
               >
                 <span
-                  className="kd-tab-pane-text"
+                  className="kd-tab-pane-text kd-tab-pane-text-notMobile"
                 >
                   TabPane08
                 </span>
@@ -675,11 +675,11 @@ exports[`Tabs renders correctly 10`] = `
               tab="TabPane09"
             >
               <span
-                className="kd-tab-pane kd-tab-pane-type-card kd-tab-pane-middle"
+                className="kd-tab-pane kd-tab-pane-type-dynamic-notMobile kd-tab-pane-type-card kd-tab-pane-middle kd-tab-pane-notMobile"
                 onClick={[Function]}
               >
                 <span
-                  className="kd-tab-pane-text"
+                  className="kd-tab-pane-text kd-tab-pane-text-notMobile"
                 >
                   TabPane09
                 </span>
@@ -692,11 +692,11 @@ exports[`Tabs renders correctly 10`] = `
               tab="TabPane010"
             >
               <span
-                className="kd-tab-pane kd-tab-pane-type-card kd-tab-pane-middle"
+                className="kd-tab-pane kd-tab-pane-type-dynamic-notMobile kd-tab-pane-type-card kd-tab-pane-middle kd-tab-pane-notMobile"
                 onClick={[Function]}
               >
                 <span
-                  className="kd-tab-pane-text"
+                  className="kd-tab-pane-text kd-tab-pane-text-notMobile"
                 >
                   TabPane010
                 </span>
@@ -709,11 +709,11 @@ exports[`Tabs renders correctly 10`] = `
               tab="TabPane011"
             >
               <span
-                className="kd-tab-pane kd-tab-pane-type-card kd-tab-pane-middle"
+                className="kd-tab-pane kd-tab-pane-type-dynamic-notMobile kd-tab-pane-type-card kd-tab-pane-middle kd-tab-pane-notMobile"
                 onClick={[Function]}
               >
                 <span
-                  className="kd-tab-pane-text"
+                  className="kd-tab-pane-text kd-tab-pane-text-notMobile"
                 >
                   TabPane011
                 </span>
@@ -726,11 +726,11 @@ exports[`Tabs renders correctly 10`] = `
               tab="TabPane012"
             >
               <span
-                className="kd-tab-pane kd-tab-pane-type-card kd-tab-pane-middle"
+                className="kd-tab-pane kd-tab-pane-type-dynamic-notMobile kd-tab-pane-type-card kd-tab-pane-middle kd-tab-pane-notMobile"
                 onClick={[Function]}
               >
                 <span
-                  className="kd-tab-pane-text"
+                  className="kd-tab-pane-text kd-tab-pane-text-notMobile"
                 >
                   TabPane012
                 </span>
@@ -743,11 +743,11 @@ exports[`Tabs renders correctly 10`] = `
               tab="TabPane013"
             >
               <span
-                className="kd-tab-pane kd-tab-pane-type-card kd-tab-pane-middle"
+                className="kd-tab-pane kd-tab-pane-type-dynamic-notMobile kd-tab-pane-type-card kd-tab-pane-middle kd-tab-pane-notMobile"
                 onClick={[Function]}
               >
                 <span
-                  className="kd-tab-pane-text"
+                  className="kd-tab-pane-text kd-tab-pane-text-notMobile"
                 >
                   TabPane013
                 </span>
@@ -760,11 +760,11 @@ exports[`Tabs renders correctly 10`] = `
               tab="TabPane014"
             >
               <span
-                className="kd-tab-pane kd-tab-pane-type-card kd-tab-pane-middle"
+                className="kd-tab-pane kd-tab-pane-type-dynamic-notMobile kd-tab-pane-type-card kd-tab-pane-middle kd-tab-pane-notMobile"
                 onClick={[Function]}
               >
                 <span
-                  className="kd-tab-pane-text"
+                  className="kd-tab-pane-text kd-tab-pane-text-notMobile"
                 >
                   TabPane014
                 </span>
@@ -777,11 +777,11 @@ exports[`Tabs renders correctly 10`] = `
               tab="TabPane015"
             >
               <span
-                className="kd-tab-pane kd-tab-pane-type-card kd-tab-pane-middle"
+                className="kd-tab-pane kd-tab-pane-type-dynamic-notMobile kd-tab-pane-type-card kd-tab-pane-middle kd-tab-pane-notMobile"
                 onClick={[Function]}
               >
                 <span
-                  className="kd-tab-pane-text"
+                  className="kd-tab-pane-text kd-tab-pane-text-notMobile"
                 >
                   TabPane015
                 </span>
@@ -794,11 +794,11 @@ exports[`Tabs renders correctly 10`] = `
               tab="TabPane016"
             >
               <span
-                className="kd-tab-pane kd-tab-pane-type-card kd-tab-pane-middle"
+                className="kd-tab-pane kd-tab-pane-type-dynamic-notMobile kd-tab-pane-type-card kd-tab-pane-middle kd-tab-pane-notMobile"
                 onClick={[Function]}
               >
                 <span
-                  className="kd-tab-pane-text"
+                  className="kd-tab-pane-text kd-tab-pane-text-notMobile"
                 >
                   TabPane016
                 </span>
@@ -811,11 +811,11 @@ exports[`Tabs renders correctly 10`] = `
               tab="TabPane017"
             >
               <span
-                className="kd-tab-pane kd-tab-pane-type-card kd-tab-pane-middle"
+                className="kd-tab-pane kd-tab-pane-type-dynamic-notMobile kd-tab-pane-type-card kd-tab-pane-middle kd-tab-pane-notMobile"
                 onClick={[Function]}
               >
                 <span
-                  className="kd-tab-pane-text"
+                  className="kd-tab-pane-text kd-tab-pane-text-notMobile"
                 >
                   TabPane017
                 </span>
@@ -828,11 +828,11 @@ exports[`Tabs renders correctly 10`] = `
               tab="TabPane018"
             >
               <span
-                className="kd-tab-pane kd-tab-pane-type-card kd-tab-pane-middle"
+                className="kd-tab-pane kd-tab-pane-type-dynamic-notMobile kd-tab-pane-type-card kd-tab-pane-middle kd-tab-pane-notMobile"
                 onClick={[Function]}
               >
                 <span
-                  className="kd-tab-pane-text"
+                  className="kd-tab-pane-text kd-tab-pane-text-notMobile"
                 >
                   TabPane018
                 </span>
@@ -845,11 +845,11 @@ exports[`Tabs renders correctly 10`] = `
               tab="TabPane019"
             >
               <span
-                className="kd-tab-pane kd-tab-pane-type-card kd-tab-pane-middle"
+                className="kd-tab-pane kd-tab-pane-type-dynamic-notMobile kd-tab-pane-type-card kd-tab-pane-middle kd-tab-pane-notMobile"
                 onClick={[Function]}
               >
                 <span
-                  className="kd-tab-pane-text"
+                  className="kd-tab-pane-text kd-tab-pane-text-notMobile"
                 >
                   TabPane019
                 </span>
