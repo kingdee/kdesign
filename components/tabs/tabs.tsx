@@ -122,6 +122,11 @@ const Tabs: React.FC<ITabsProps> = (props) => {
 
   const handleTouchMove = (e: React.TouchEvent<HTMLDivElement>) => {
     if (!isDragging.current || ListWidth <= boxWidth) return
+
+    const path = e.nativeEvent.composedPath?.() || []
+    const isFromTabList = path.some((el) => (el as HTMLElement)?.classList?.contains?.(`${tabsPrefixCls}-tab-list`))
+    if (!isFromTabList) return // 阻止非 tab 区域触发移动逻辑
+
     const currentX = e.touches[0].clientX
     const deltaX = currentX - touchStartX.current
     let newPosition = lastListPosition.current + deltaX
