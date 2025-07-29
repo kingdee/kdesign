@@ -1,6 +1,6 @@
 {
   "name": "@kdcloudjs/kdesign",
-  "version": "1.8.53",
+  "version": "1.8.53-stable.0",
   "description": "KDesign 金蝶前端react 组件库",
   "title": "kdesign",
   "keywords": [
@@ -61,7 +61,7 @@
     "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0 && node scripts/filter-changelog.js",
     "pub": "npm run test:all && cross-env PUB_ENV=pub np --no-publish --no-tests --no-cleanup && npm run build && npm publish",
     "pub:beta": "npm run test:all && npm run build && cross-env PUB_ENV=pub np --no-cleanup --anyBranch --no-tests --tag=beta",
-    "pub:usePopper": "npm run test:all && npm run build && cross-env PUB_ENV=pub np --no-cleanup --anyBranch --no-tests --tag=usePopper",
+    "pub:1.8.53-stable": "npm run test:all && npm run build && cross-env PUB_ENV=pub np --no-cleanup --anyBranch --no-tests --tag=stable-1.8.53.N",
     "new": "node scripts/create-component.js",
     "token": "node scripts/generate-token.js",
     "preinstall": "npx force-resolutions"
