@@ -543,9 +543,13 @@ const InternalSelect: React.ForwardRefRenderFunction<CityPickerProps> = (props: 
       onVisibleChange && onVisibleChange(visible)
     }
   }
+  const { style: originalStyle = {}, ...restSelectProps } = selectProps
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const { backgroundColor, ...styleWithoutBg } = originalStyle // 排除backgroundColor属性
 
   const popperProps = {
-    ...selectProps,
+    ...restSelectProps,
+    style: styleWithoutBg,
     prefixCls: classNames(`${selectPrefixCls}-dropdown`, rtlCls),
     placement: direction === 'rtl' ? 'bottomRight' : 'bottomLeft',
     popperStyle: catchStyle(),
