@@ -4,12 +4,16 @@ const chalk = require('chalk')
 const defaultVars = require('./default-vars.js')
 const sortWeightRegs = [
   // less文件名计算权重用正则表达式数组，索引越大权重越高
-  /.*\\mixin\.less/,
-  /components\\style\\.*\.less/,
-  /components\\style\\themes\\.*\.less/,
-  /components\\style\\themes\\default\.less/,
-  /components\\style\\themes\\index\.less/,
+  /.*[\\/]mixin\.less/,
+  /components[\\/]style[\\/]themes[\\/].*\.less/,
+  /components[\\/]style[\\/]themes[\\/]default\.less/,
+  /components[\\/]style[\\/]themes[\\/]index\.less/,
+  /components[\\/].*[\\/]style[\\/].*\.less/,
 ]
+
+// Add postcss and postcssConfig require
+const postcss = require('postcss')
+const postcssConfig = require('../postcss.config')
 
 function generateThemeFileContent(theme) {
   return `const { ${theme}ThemeSingle } = require('./theme');\nconst defaultTheme = require('./default-theme');\n
@@ -90,8 +94,10 @@ function sortLessFilesPaths(lessFilePaths) {
     sortWeightArr.push({ lessFilePath, sortWeight })
   })
   sortWeightArr.sort((a, b) => {
-    return b.sortWeight - a.sortWeight
+    return a.sortWeight - b.sortWeight
   })
+  // 把sortWeightArr 写入temp.json文件中
+  fs.writeFileSync(path.join(__dirname, 'temp.json'), JSON.stringify(sortWeightArr, null, 1))
   return sortWeightArr
 }
 /**
@@ -127,15 +133,89 @@ function writeCompleteLessFile(lessFilesPath) {
   let allLessContent = ''
   lessFilesPath.forEach((filePathObj) => {
     let data = fs.readFileSync(filePathObj.lessFilePath, 'utf-8')
-    data = data.replace(/@import\s['"].*?['"];?/g, '')
+    // 替换 @import 语句
+    data = data.replace(/@import\s['"](.*?)['"];?/g, '')
+    // 修正字体文件路径
+    data = data.replace(/url\(["']?([^"'\\)]+)["']?\)/g, (match, p1) => {
+      if (p1.includes('kdicon.woff')) {
+        return 'url("../lib/style/icon/kdicon.woff")'
+      }
+      return match
+    })
     allLessContent += data + '\n'
   })
   fs.writeFileSync(path.join(process.cwd(), 'dist', 'kdesign-complete.less'), allLessContent)
 }
 
+function writeThemeCompleteLessFile(lessFilesPath, variables) {
+  let allLessContent = ''
+
+  lessFilesPath.forEach((filePathObj) => {
+    let data = fs.readFileSync(filePathObj.lessFilePath, 'utf-8')
+    // 替换 @import 语句
+    data = data.replace(/@import\s['"](.+?)['"];?/g, '')
+    // 修正字体文件路径
+    data = data.replace(/url\(["']?([^"'\\)]+)["']?\)/g, (match, p1) => {
+      if (p1.includes('kdicon.woff')) {
+        return 'url("../lib/style/icon/kdicon.woff")'
+      }
+      return match
+    })
+    allLessContent += data + '\n'
+  })
+
+  // 添加变量覆盖
+  Object.entries(variables).forEach(([key, value]) => {
+    allLessContent += `${key}: ${value};\n`
+  })
+  allLessContent += '\n'
+
+  // 写入主题相关的文件
+  fs.writeFileSync(path.join(process.cwd(), 'dist', 'kdesign-complete-theme.less'), allLessContent)
+
+  // 使用 less 编译生成 CSS 文件
+  const less = require('less')
+  less
+    .render(allLessContent, {
+      compress: false,
+      javascriptEnabled: true,
+    })
+    .then((output) => {
+      // Add PostCSS processing here
+      return postcss(postcssConfig.plugins).process(output.css, { from: undefined })
+    })
+    .then((processedOutput) => {
+      fs.writeFileSync(path.join(process.cwd(), 'dist', 'kdesign-theme.css'), processedOutput.css)
+      // 生成压缩版本
+      const lessCompress = require('less')
+      lessCompress
+        .render(allLessContent, {
+          compress: true,
+          javascriptEnabled: true,
+        })
+        .then((minOutput) => {
+          // Add PostCSS processing for minified version
+          return postcss(postcssConfig.plugins).process(minOutput.css, { from: undefined })
+        })
+        .then((processedMinOutput) => {
+          fs.writeFileSync(path.join(process.cwd(), 'dist', 'kdesign-theme.min.css'), processedMinOutput.css)
+        })
+    })
+    .catch((error) => {
+      console.error('Error during Less or PostCSS processing:', error)
+    })
+}
+
 function finalizeDist() {
-  const filesPath = getLessFilesPaths(path.join(process.cwd(), 'components'))
-  writeCompleteLessFile(filesPath)
+  // 获取 components 目录下的 less 文件
+  const componentsFilesPath = getLessFilesPaths(path.join(process.cwd(), 'components'))
+
+  // 写入完整的 less 文件
+  writeCompleteLessFile(componentsFilesPath)
+
+  // 写入主题相关的文件
+  const themeVariables = require('./cq-theme-const.js')
+  writeThemeCompleteLessFile(componentsFilesPath, themeVariables)
   if (fs.existsSync(path.join(__dirname, '../dist'))) {
     // Build less entry file: dist/kdesign.less
     fs.writeFileSync(
