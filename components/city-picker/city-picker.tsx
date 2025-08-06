@@ -242,11 +242,10 @@ const InternalSelect: React.ForwardRefRenderFunction<CityPickerProps> = (props: 
     city.type = tabsValue === 'domestic' ? 'domestic' : 'foreign'
     city?.id !== initValue && onChange?.(city?.id, city)
 
-    if (!isMobile) {
-      searchRef.current?.focus()
-    }
     if (isMobile) {
       searchRef.current?.blur()
+    } else {
+      searchRef.current?.focus()
     }
     setAfterChangeFocus(true)
     if (typeof value === 'undefined') {
