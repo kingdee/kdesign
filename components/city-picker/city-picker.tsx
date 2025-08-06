@@ -19,7 +19,7 @@ const getCityId = (data: City | string | number) => {
 }
 
 const InternalSelect: React.ForwardRefRenderFunction<CityPickerProps> = (props: any, ref: unknown) => {
-  const { getPrefixCls, prefixCls, compDefaultProps: userDefaultProps, locale } = useContext(ConfigContext)
+  const { getPrefixCls, prefixCls, compDefaultProps: userDefaultProps, locale, isMobile } = useContext(ConfigContext)
   const selectProps = getCompProps('CityPicker', userDefaultProps, props)
   const cityPickerLangMsg = locale.getCompLangMsg({ componentName: 'CityPicker' })
   const {
@@ -241,7 +241,13 @@ const InternalSelect: React.ForwardRefRenderFunction<CityPickerProps> = (props: 
     handleVisibleChange(false)
     city.type = tabsValue === 'domestic' ? 'domestic' : 'foreign'
     city?.id !== initValue && onChange?.(city?.id, city)
-    searchRef.current?.focus()
+
+    if (!isMobile) {
+      searchRef.current?.focus()
+    }
+    if (isMobile) {
+      searchRef.current?.blur()
+    }
     setAfterChangeFocus(true)
     if (typeof value === 'undefined') {
       setSeletedCity(city)
