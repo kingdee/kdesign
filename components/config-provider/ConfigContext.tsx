@@ -30,6 +30,7 @@ export interface IContextConfigProps {
   localeConfig?: LocaleConfigType
   locale: IntlUniversal
   direction?: DirectionType
+  isMobile?: boolean
 }
 const ConfigContext = createContext<IContextConfigProps>(defaultConfig)
 export default ConfigContext
