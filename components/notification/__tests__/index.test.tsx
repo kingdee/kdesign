@@ -214,7 +214,7 @@ describe('Notification', () => {
       act(() => {
         const mouseenterEvent = new Event('mouseenter')
         el.dispatchEvent(mouseenterEvent)
-        jest.runTimersToTime(1000)
+        jest.advanceTimersByTime(1000)
       })
 
       expect(el).toBeTruthy()
@@ -236,7 +236,7 @@ describe('Notification', () => {
       expect(closeCount).toEqual(0)
 
       act(() => {
-        jest.runTimersToTime(3000)
+        jest.advanceTimersByTime(3000)
       })
       expect(closeCount).toEqual(0)
     })
