@@ -177,6 +177,68 @@ const getElement = (element: RenderType) => {
   return typeof element === 'function' ? element() : element
 }
 
+/**
+ * 兼容IE8及以上的closest替代方法
+ * @param {element} element DOM元素
+ * @param {selector} string 选择器字符串
+ * @returns DOM元素
+ */
+export function closestPolyfill(element: any, selector: string) {
+  // 处理IE8及以下不支持element.matches的情况
+  const matchesSelector = (el: any, sel: string) => {
+    if (el.matches) {
+      return el.matches(sel)
+    }
+    if (el.msMatchesSelector) {
+      return el.msMatchesSelector(sel)
+    }
+    if (el.webkitMatchesSelector) {
+      return el.webkitMatchesSelector(sel)
+    }
+
+    // 针对IE8的降级处理
+    const doc = el.document || el.ownerDocument
+    if (!doc) return null
+    const temp = doc.createElement('div')
+    const selectors = sel.split(',')
+    let matched = false
+
+    // 尝试为每个选择器创建临时元素进行匹配
+    for (let i = 0; i < selectors.length; i++) {
+      const selector = selectors[i].trim()
+      try {
+        // 使用选择器匹配元素
+        if (doc.querySelector) {
+          const test = doc.querySelector(selector)
+          if (test) {
+            // 检查元素是否与选择器匹配
+            temp.innerHTML = ''
+            temp.appendChild(el.cloneNode(false))
+            matched = temp.querySelector(selector) !== null
+            if (matched) break
+          }
+        }
+      } catch (e) {
+        // 处理选择器不支持的情况
+        continue
+      }
+    }
+
+    return matched
+  }
+
+  let el = element
+  // IE8及以下使用parentNode而非parentElement
+  while (el && el.nodeType === 1) {
+    if (matchesSelector(el, selector)) {
+      return el
+    }
+    // 兼容IE8的parentElement
+    el = el.parentElement || el.parentNode
+  }
+
+  return null
+}
 export type SubPopup = {
   dom: HTMLElement | null
   triggerOpen: (nextOpen: boolean, triggerType?: IReason, delay?: number, payload?: IPayload) => void
@@ -678,13 +740,12 @@ export const Popper = forwardRef<SubPopup | null, PopperProps>((props, ref) => {
     const current = getRealDom(referenceRef, referenceElement)
 
     if (current) {
-      popperInstance.current = createPopper(
+      const referenceEl =
         trigger === 'contextMenu'
           ? (virtualElement as VirtualElement)
-          : current?.closest(`.${referencePrefixCls}`) || current,
-        popperRefDom.current as HTMLElement,
-        popperOptionsInner,
-      )
+          : closestPolyfill(current, `.${referencePrefixCls}`) || current
+
+      popperInstance.current = createPopper(referenceEl, popperRefDom.current as HTMLElement, popperOptionsInner)
       registerSubPopup()
     }
 
