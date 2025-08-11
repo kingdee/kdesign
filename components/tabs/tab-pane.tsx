@@ -27,6 +27,7 @@ export interface ITabPaneProps {
   id?: string | number
   activeKey?: string | number
   children?: any
+  customTitleProps?: any
   onChange?: TabChangeEventHandler
 }
 
@@ -35,7 +36,7 @@ const TabPane: React.FC<ITabPaneProps> = (props) => {
   const tabPaneRef = useRef<HTMLDivElement>(null)
   const { getPrefixCls, prefixCls, isMobile } = useContext(ConfigContext)
 
-  const { tab, id, className, disabled, operations, onChange } = props
+  const { tab, id, className, disabled, operations, customTitleProps, onChange } = props
 
   const tabPaneProps: ITabPaneProps = { ...props }
 
@@ -105,14 +106,16 @@ const TabPane: React.FC<ITabPaneProps> = (props) => {
   if (tabPaneProps.type !== 'dynamic') {
     return (
       <span ref={tabPaneRef} className={tabPaneBoxClasses} onClick={handleClick}>
-        <span className={tabPaneTextClasses}>{tab}</span>
+        <span className={tabPaneTextClasses} {...customTitleProps}>
+          {tab}
+        </span>
       </span>
     )
   }
 
   return (
     <span className={tabPaneBoxClasses} onContextMenu={handleContextMenu}>
-      <span ref={tabPaneRef} className={tabPaneTextClasses} onClick={handleClick}>
+      <span ref={tabPaneRef} className={tabPaneTextClasses} onClick={handleClick} {...customTitleProps}>
         {tab}
       </span>
       <span className={operationsClasses}>{renderOperations()}</span>
