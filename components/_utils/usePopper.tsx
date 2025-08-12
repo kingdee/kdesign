@@ -63,6 +63,7 @@ export interface PopperProps {
   popperStyle?: React.CSSProperties
   trigger?: TriggerType | Array<TriggerType>
   clickToClose?: boolean
+  isMobile?: boolean
   onTrigger?: (trigger: TriggerType) => void
   onVisibleChange?: (visible: boolean) => void
   getTriggerElement?: (locatorNode: HTMLElement) => HTMLElement
@@ -185,6 +186,7 @@ function usePopper(locatorElement: React.ReactElement, popperElement: React.Reac
     defaultVisible = false,
     autoPlacement = true,
     clickToClose = true,
+    isMobile,
     getTriggerElement = (locatorNode) => locatorNode,
     getPopupContainer = () => document.body,
     onTransitionEnd,
@@ -241,6 +243,9 @@ function usePopper(locatorElement: React.ReactElement, popperElement: React.Reac
   const [canAlign, setCanAlign] = useState(!!props.visible || defaultVisible)
   const [visible, setVisible] = useState(false)
   const [active, setActive] = useState(false)
+  const [maxHeight, setMaxHeight] = useState<number | undefined>(undefined)
+  const [maxWidth, setMaxWidth] = useState<number | undefined>()
+
   useEffect(() => {
     if (props.visible) {
       !exist && setExist(true)
@@ -259,6 +264,8 @@ function usePopper(locatorElement: React.ReactElement, popperElement: React.Reac
   )
 
   useEffect(() => {
+    // 如果当前是移动端且正在 align，就不要重置 nextPlacement
+    if (isMobile) return
     if (nextPlacement !== placement && Placements.includes(placement)) {
       setNextPlacement(placement)
     }
@@ -400,6 +407,22 @@ function usePopper(locatorElement: React.ReactElement, popperElement: React.Reac
           alignPos.right = -1 * (right - document.body.clientWidth)
           arrowPos.left = popperWidth - arrowOffset - 2 * arrowSize
         }
+        if (isMobile) {
+          // left/right 边界超出时，往内偏移 Popper
+          const rightEdge = alignPos.left! + popperWidth
+          if (rightEdge > document.body.clientWidth) {
+            const overflowRight = rightEdge - document.body.clientWidth
+            alignPos.left = alignPos.left! - overflowRight
+            arrowPos.left = arrowPos.left - overflowRight
+          }
+
+          // 判断左边是否超出屏幕，如果是，则向右偏移
+          if (alignPos.left! < 0) {
+            const overflowLeft = -alignPos.left!
+            alignPos.left = 0
+            arrowPos.left = arrowPos.left + overflowLeft
+          }
+        }
       }
 
       setAlign(alignPos)
@@ -433,6 +456,88 @@ function usePopper(locatorElement: React.ReactElement, popperElement: React.Reac
     }
   }, [alignPopper, canAlign, onVisibleChange, props])
 
+  useEffect(() => {
+    if (canAlign && isMobile) {
+      const realDom = getRealDom(locatorRef, locatorElement)
+      const rect = realDom?.getBoundingClientRect()
+
+      if (rect) {
+        const viewportHeight = window.innerHeight || document.documentElement.clientHeight
+        const viewportWidth = window.innerWidth || document.documentElement.clientWidth
+        let placementForCalc = nextPlacement
+        // ---- 新增左右方向空间优先逻辑 ----
+        if (/^(left|right)/i.test(nextPlacement)) {
+          const popperRect = popperRef.current?.getBoundingClientRect()
+          const popperWidth =
+            popperRect?.width ??
+            (typeof (popperElement as any)?.props?.style?.width === 'number'
+              ? (popperElement as any).props.style.width
+              : (() => {
+                  const w = (popperElement as any)?.props?.style?.width
+                  if (typeof w === 'string' && w.endsWith('px')) return parseFloat(w)
+                  return 0
+                })())
+          const availableLeft = rect.left - gap // 可用于左侧摆放的净空间（不减 popperWidth）
+          const availableRight = viewportWidth - rect.right - gap
+
+          const canFitLeft = popperWidth <= availableLeft
+          const canFitRight = popperWidth <= availableRight
+
+          // 如果传入的方向空间不足，就自动选较大一侧
+          if (/^left/i.test(placementForCalc) && !canFitLeft) {
+            if (canFitRight) {
+              placementForCalc = 'right' + placementForCalc.replace(/^(left)/i, '')
+            } else {
+              placementForCalc =
+                availableRight >= availableLeft ? 'right' + placementForCalc.replace(/^(left)/i, '') : placementForCalc // 继续用 left（尽管会溢出）
+            }
+          } else if (/^right/i.test(placementForCalc) && !canFitRight) {
+            if (canFitLeft) {
+              placementForCalc = 'left' + placementForCalc.replace(/^(right)/i, '')
+            } else {
+              placementForCalc =
+                availableLeft >= availableRight ? 'left' + placementForCalc.replace(/^(right)/i, '') : placementForCalc
+            }
+          }
+
+          // 如果有合法的 placement，则更新 nextPlacement（并且后面立即用 placementForCalc 做计算）
+          if (Placements.includes(placementForCalc as PlacementType)) {
+            setNextPlacement(placementForCalc)
+          }
+        }
+        // ---- 左右优先逻辑结束 ----
+
+        let newMaxHeight = 0
+        let newMaxWidth
+
+        // 高度限制逻辑
+        if (/top/.test(placementForCalc)) {
+          newMaxHeight = rect.top - gap
+        } else if (/bottom/.test(placementForCalc)) {
+          newMaxHeight = viewportHeight - rect.bottom - gap
+        } else {
+          const spaceAbove = rect.top
+          const spaceBelow = viewportHeight - rect.bottom
+          newMaxHeight = Math.max(spaceAbove, spaceBelow) - gap
+          // 左右弹出时限制宽度
+          if (/left/.test(placementForCalc)) {
+            newMaxWidth = rect.left - gap
+          } else if (/right/.test(placementForCalc)) {
+            newMaxWidth = viewportWidth - rect.right - gap
+          }
+        }
+
+        setMaxHeight(Math.max(newMaxHeight, 0))
+        setMaxWidth(newMaxWidth && newMaxWidth > 0 ? newMaxWidth : undefined)
+      }
+      setCanAlign(false)
+      props.visible === undefined && setVisible(true)
+      onVisibleChange && onVisibleChange(true)
+      setActive(true)
+      setTimeout(() => setActive(false), 200)
+    }
+  }, [alignPopper, canAlign, onVisibleChange, props, isMobile, nextPlacement])
+
   const arrowStyle: Record<string, string> = {
     [`--arrowSize`]: arrowSize + 'px',
     [`--arrowSpill`]: arrowWidth / -2 + 'px',
@@ -444,6 +549,8 @@ function usePopper(locatorElement: React.ReactElement, popperElement: React.Reac
     position: 'absolute',
     ...align,
     ...(arrow ? arrowStyle : {}),
+    ...(maxHeight ? { maxHeight: maxHeight + 'px' } : {}),
+    ...(maxWidth ? { maxWidth: maxWidth + 'px' } : {}),
     ...popperStyle,
   }
 
