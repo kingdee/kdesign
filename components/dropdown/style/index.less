@@ -39,7 +39,6 @@
     max-height: @dropdown-menu-max-height;
     padding: @dropdown-menu-padding-vertical 0;
     overflow-y: auto;
-    flex: 1;
     &-item {
       position: relative;
       padding: @dropdown-item-vertical-gap @dropdown-item-horizontal-gap;
@@ -128,10 +127,13 @@
 .@{dropdown-prefix-cls}-mobile {
   max-width: 100vw;
   display: flex;
-  .@{dropdown-prefix-cls}-menu-item {
-    span {
-      .multipleEllipsis(1);
-      word-break: break-all;
+  .@{dropdown-prefix-cls}-menu {
+    flex: 1;
+    .@{dropdown-prefix-cls}-menu-item {
+      span {
+        .multipleEllipsis(1);
+        word-break: break-all;
+      }
     }
   }
 }
