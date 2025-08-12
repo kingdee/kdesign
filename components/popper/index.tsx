@@ -254,7 +254,7 @@ export type IPayload = {
 }
 
 export const Popper = forwardRef<SubPopup | null, PopperProps>((props, ref) => {
-  const { getPrefixCls, prefixCls: pkgPrefixCls, direction } = React.useContext(ConfigContext)
+  const { getPrefixCls, prefixCls: pkgPrefixCls, direction, isMobile } = React.useContext(ConfigContext)
   const {
     prefixCls,
     onTrigger,
@@ -700,6 +700,49 @@ export const Popper = forwardRef<SubPopup | null, PopperProps>((props, ref) => {
       }
     }
   }, [visibleInner, placementInner, arrow])
+
+  useEffect(() => {
+    if (!isMobile || !visibleInner) return
+
+    let rafId: number | null = null
+
+    const updateMaxHeight = () => {
+      if (rafId !== null) cancelAnimationFrame(rafId)
+
+      rafId = requestAnimationFrame(() => {
+        const referenceDom = getRealDom(referenceRef, referenceElement)
+        const popperDom = popperRefDom.current
+        if (!referenceDom || !popperDom) return
+
+        const rect = referenceDom.getBoundingClientRect()
+        const viewportHeight = window.innerHeight
+        const padding = 8
+
+        let maxHeight = 0
+        if (placementInner.startsWith('top')) {
+          maxHeight = rect.top - padding
+        } else if (placementInner.startsWith('bottom')) {
+          maxHeight = viewportHeight - rect.bottom - padding
+        } else {
+          maxHeight = viewportHeight - rect.top - padding
+        }
+
+        const childEl = popperDom.firstElementChild as HTMLElement | null
+        if (childEl) {
+          childEl.style.maxHeight = `${Math.max(100, maxHeight)}px`
+          childEl.style.overflow = 'auto'
+        }
+      })
+    }
+
+    updateMaxHeight()
+    window.addEventListener('resize', updateMaxHeight)
+
+    return () => {
+      if (rafId !== null) cancelAnimationFrame(rafId)
+      window.removeEventListener('resize', updateMaxHeight)
+    }
+  }, [isMobile, visibleInner, placementInner])
 
   useEffect(() => {
     if (!popperRefDom.current) return
