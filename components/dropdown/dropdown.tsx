@@ -43,6 +43,7 @@ const Dropdown = React.forwardRef<HTMLDivElement, DropDownProps>((props, ref) =>
     prefixCls: pkgPrefixCls,
     compDefaultProps: userDefaultProps,
     direction,
+    isMobile,
   } = React.useContext(ConfigContext)
 
   const allProps = getCompProps('Dropdown', userDefaultProps, props)
@@ -180,7 +181,8 @@ const Dropdown = React.forwardRef<HTMLDivElement, DropDownProps>((props, ref) =>
   const popperProps = {
     ...allProps,
     visible,
-    prefixCls,
+    isMobile,
+    prefixCls: `${prefixCls} ${isMobile ? `${prefixCls}-mobile` : ''}`,
     popperStyle: innerAnimation ? popperStyle : { animation: 'none', ...popperStyle },
     onVisibleChange: handleVisibleChange,
     placement: typeof props.placement !== 'undefined' ? placement : direction === 'rtl' ? 'bottomRight' : placement,
