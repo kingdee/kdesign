@@ -37,8 +37,13 @@ const findItem: (element: any) => any = (element) => {
   }
 }
 
-const Dropdown = React.forwardRef<unknown, DropDownProps>((props, ref) => {
-  const { getPrefixCls, prefixCls: pkgPrefixCls, compDefaultProps: userDefaultProps } = React.useContext(ConfigContext)
+const Dropdown = React.forwardRef<HTMLDivElement, DropDownProps>((props, ref) => {
+  const {
+    getPrefixCls,
+    prefixCls: pkgPrefixCls,
+    compDefaultProps: userDefaultProps,
+    isMobile,
+  } = React.useContext(ConfigContext)
 
   // 属性需要合并一遍用户定义的默认属性
   const allProps = getCompProps('Dropdown', userDefaultProps, props)
@@ -175,7 +180,8 @@ const Dropdown = React.forwardRef<unknown, DropDownProps>((props, ref) => {
   const popperProps = {
     ...allProps,
     visible,
-    prefixCls,
+    isMobile,
+    prefixCls: `${prefixCls} ${isMobile ? `${prefixCls}-mobile` : ''}`,
     popperStyle: innerAnimation ? popperStyle : { animation: 'none', ...popperStyle },
     onVisibleChange: handleVisibleChange,
   }
