@@ -107,6 +107,8 @@ const InternalSelect: React.ForwardRefRenderFunction<CityPickerProps> = (props: 
     [`${selectPrefixCls}-size-${size}`]: size,
     [`${selectPrefixCls}-wrapper`]: true,
     [`${selectPrefixCls}-show-search`]: focusd,
+    [`${selectPrefixCls}-isNotMobile-hover`]: !isMobile,
+    [`${selectPrefixCls}-isMobile-clear`]: optionShow && isMobile && allowClear,
   })
 
   useEffect(() => {

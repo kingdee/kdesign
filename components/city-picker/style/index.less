@@ -129,10 +129,6 @@
     overflow-x: hidden;
     position: relative;
 
-    &:hover .@{city-picker-prefix-cls}-icon-clear {
-      opacity: 1;
-    }
-
     .@{city-picker-prefix-cls}-icon-clear {
       color: @city-picker-clear-color;
       &:hover {
@@ -140,7 +136,16 @@
       }
     }
   }
-
+  &-isNotMobile-hover {
+    &:hover .@{city-picker-prefix-cls}-icon-clear {
+      opacity: 1;
+    }
+  }
+  &-isMobile-clear {
+    .@{city-picker-prefix-cls}-icon-clear {
+      opacity: 1;
+    }
+  }
   &-show-search {
     cursor: text;
   }
