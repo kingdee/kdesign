@@ -245,6 +245,7 @@ function usePopper(locatorElement: React.ReactElement, popperElement: React.Reac
   const [active, setActive] = useState(false)
   const [maxHeight, setMaxHeight] = useState<number | undefined>(undefined)
   const [maxWidth, setMaxWidth] = useState<number | undefined>()
+  const [forceStyle, setForceStyle] = useState<Record<string, any>>({})
 
   useEffect(() => {
     if (props.visible) {
@@ -509,7 +510,7 @@ function usePopper(locatorElement: React.ReactElement, popperElement: React.Reac
 
         let newMaxHeight = 0
         let newMaxWidth
-
+        let newForceStyle: Record<string, any> = {}
         // 高度限制逻辑
         if (/top/.test(placementForCalc)) {
           newMaxHeight = rect.top - gap
@@ -525,10 +526,20 @@ function usePopper(locatorElement: React.ReactElement, popperElement: React.Reac
           } else if (/right/.test(placementForCalc)) {
             newMaxWidth = viewportWidth - rect.right - gap
           }
+          const triggerWidth = rect.width
+          if (triggerWidth >= viewportWidth * 0.8) {
+            newForceStyle = {
+              left: 0,
+              right: 'auto',
+              transform: 'none',
+              maxWidth: '100vw',
+            }
+          }
         }
 
         setMaxHeight(Math.max(newMaxHeight, 0))
         setMaxWidth(newMaxWidth && newMaxWidth > 0 ? newMaxWidth : undefined)
+        setForceStyle(newForceStyle)
       }
       setCanAlign(false)
       props.visible === undefined && setVisible(true)
@@ -551,6 +562,7 @@ function usePopper(locatorElement: React.ReactElement, popperElement: React.Reac
     ...(arrow ? arrowStyle : {}),
     ...(maxHeight ? { maxHeight: maxHeight + 'px' } : {}),
     ...(maxWidth ? { maxWidth: maxWidth + 'px' } : {}),
+    ...forceStyle,
     ...popperStyle,
   }
 
