@@ -76,7 +76,7 @@ exports[`Space 2.render test should render width multiple chidren 1`] = `
     Text
   </span>
   <button
-    class="kd-btn kd-btn-second kd-btn-size-middle"
+    class="kd-btn kd-popper-reference kd-btn-second kd-btn-size-middle"
     click-animating-wave="false"
     type="button"
   >
@@ -85,7 +85,7 @@ exports[`Space 2.render test should render width multiple chidren 1`] = `
     </span>
   </button>
   <button
-    class="kd-btn kd-btn-second kd-btn-size-middle"
+    class="kd-btn kd-popper-reference kd-btn-second kd-btn-size-middle"
     click-animating-wave="false"
     disabled=""
     type="button"
