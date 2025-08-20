@@ -3,7 +3,7 @@ import Icon from '../icon'
 import Button, { ButtonType, IButtonProps } from '../button'
 import { getCompProps } from '../_utils'
 import { ConfigContext } from '../config-provider'
-import usePopper, { PopperProps } from '../_utils/usePopper'
+import Popper, { PopperProps } from '../popper'
 
 export type RenderFunction = () => React.ReactNode
 
@@ -108,7 +108,11 @@ const Popconfirm: React.FC<PopconfirmProps> = (props) => {
     onVisibleChange: handleVisibleChange,
   }
 
-  return usePopper(confirmLocator, confirmPopper, popperProps)
+  return (
+    <Popper tip={confirmPopper} {...popperProps}>
+      {confirmLocator}
+    </Popper>
+  )
 }
 
 Popconfirm.displayName = 'Popconfirm'
