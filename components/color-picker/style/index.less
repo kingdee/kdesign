@@ -347,7 +347,8 @@
             .@{kd-prefix}-select-item-option {
               display: flex;
               justify-content: center;
-              min-width: unset;
+              min-width: auto; /* IE */
+              min-width: unset; /* 现代浏览器 */
             }
           }
         }
@@ -501,9 +502,11 @@
         grid-row-gap: 8px;
 
         &-ie11 {
-          display: flex;
-          flex-wrap: wrap;
-
+          .@{color-picker-prefix-cls}-panel-color-box-container {
+            display: flex;
+            flex-wrap: wrap;
+            width: 100%;
+          }
           li {
             margin-right: 8px;
             margin-top: 8px;
