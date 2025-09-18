@@ -23,7 +23,14 @@ import KeyCode from '../_utils/KeyCode'
 const INPUT_MIN_WIDTH = 4 // 输入框最小宽度
 
 const InternalSelect: React.ForwardRefRenderFunction<ISelectProps<SelectValue>> = (props: any, ref: unknown) => {
-  const { getPrefixCls, prefixCls, compDefaultProps: userDefaultProps, locale, direction } = useContext(ConfigContext)
+  const {
+    getPrefixCls,
+    prefixCls,
+    compDefaultProps: userDefaultProps,
+    locale,
+    direction,
+    isMobile,
+  } = useContext(ConfigContext)
   const selectProps = getCompProps('Select', userDefaultProps, props)
   const selectLangMsg = locale.getCompLangMsg({ componentName: 'Select' })
   const {
@@ -783,6 +790,7 @@ const InternalSelect: React.ForwardRefRenderFunction<ISelectProps<SelectValue>> 
 
   const singleCls = classNames(commCls, {
     [`${selectPrefixCls}-single`]: true,
+    [`${selectPrefixCls}-single-isnotMobile`]: !isMobile,
     [`${selectPrefixCls}-single-disabled`]: disabled,
     [`${selectPrefixCls}-single-focused`]: (focusd && !disabled) || optionShow,
   })

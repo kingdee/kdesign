@@ -285,9 +285,7 @@
         color: @select-arrow-icon-color-text-disabled;
       }
     }
-    &:hover .@{select-prefix-cls}-icon-clear {
-      opacity: 1;
-    }
+
 
     .@{select-prefix-cls}-icon-clear {
       color: @select-clear-color;
@@ -303,6 +301,9 @@
       color: @select-color-text-disabled;
     }
   }
+    .@{select-prefix-cls}-single-isnotMobile:hover .@{select-prefix-cls}-icon-clear {
+      opacity: 1;
+    }  
 
   .@{select-prefix-cls}-selection-item {
     display: inline-flex;
