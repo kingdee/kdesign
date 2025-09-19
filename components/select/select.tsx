@@ -791,6 +791,7 @@ const InternalSelect: React.ForwardRefRenderFunction<ISelectProps<SelectValue>> 
   const singleCls = classNames(commCls, {
     [`${selectPrefixCls}-single`]: true,
     [`${selectPrefixCls}-single-isnotMobile`]: !isMobile,
+    [`${selectPrefixCls}-single-isMobile`]: isMobile && optionShow && allowClear,
     [`${selectPrefixCls}-single-disabled`]: disabled,
     [`${selectPrefixCls}-single-focused`]: (focusd && !disabled) || optionShow,
   })
