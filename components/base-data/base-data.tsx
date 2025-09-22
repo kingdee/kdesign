@@ -640,7 +640,7 @@ const InternalBaseData: React.ForwardRefRenderFunction<IAdvancedSelectorProps> =
               className={classNames(`${advancedSelectorfixCls}-dropdown-options`, {
                 selected: seletedOptions.some((v) => v.value === item.value),
               })}
-              onMouseDown={(e) => {
+              onClick={(e) => {
                 e.stopPropagation()
                 e.preventDefault()
                 handleSelect(item)
