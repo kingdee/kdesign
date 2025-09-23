@@ -186,7 +186,8 @@ const InternalBaseData: React.ForwardRefRenderFunction<IAdvancedSelectorProps> =
     if (!isMultiple) return
     const inputDom = inputRef.current?.input
     if (!inputDom) return
-    if (inputDom.scrollWidth - inputDom.offsetWidth > 0 && inputValue) {
+    if (inputDom.scrollWidth - inputDom.offsetWidth > 2 && inputValue) {
+      // 判断文字是否超出输入框 增加安全距离
       setShowTotal(true)
     } else {
       setShowTotal(false)
