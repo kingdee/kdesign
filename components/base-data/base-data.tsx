@@ -491,7 +491,7 @@ const InternalBaseData: React.ForwardRefRenderFunction<IAdvancedSelectorProps> =
         </ResizeObserver>
         {showTotal && !isFocused && isMultiple && (
           <span className={`${advancedSelectorfixCls}-total`} onClick={showInputTotal}>
-            {totalText ? totalText : allText}
+            {totalText || allText}
           </span>
         )}
         {isShowDetailBtn && !disabled && (
