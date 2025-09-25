@@ -38,7 +38,7 @@ const InternalBaseData: React.ForwardRefRenderFunction<IAdvancedSelectorProps> =
     searchField,
     dropdownStyle,
     showEmptyOption = true, // 新增属性，控制是否显示空值选项
-    allText,
+    totalText,
     onChange,
     onSearch,
     onSelect,
@@ -472,7 +472,7 @@ const InternalBaseData: React.ForwardRefRenderFunction<IAdvancedSelectorProps> =
   const isShowDetailBtn = showDetailIcon && !isMultiple && !isFocused
 
   const renderAdvancedSelector = () => {
-    const totalText = locale.getLangMsg('BaseData', 'total', { total: seletedOptions.length })
+    const allText = locale.getLangMsg('BaseData', 'total', { total: seletedOptions.length })
     return (
       <div className={advancedSelectorCls} ref={advancedSelectorRef} style={style}>
         <ResizeObserver onResize={handleShowTotal}>
@@ -490,7 +490,7 @@ const InternalBaseData: React.ForwardRefRenderFunction<IAdvancedSelectorProps> =
         </ResizeObserver>
         {showTotal && !isFocused && isMultiple && (
           <span className={`${advancedSelectorfixCls}-total`} onClick={showInputTotal}>
-            {allText ? allText : totalText}
+            {totalText ? totalText : allText}
           </span>
         )}
         {isShowDetailBtn && !disabled && (
