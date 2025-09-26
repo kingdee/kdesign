@@ -296,7 +296,7 @@ const Pagination: React.FC<IPaginationProps> = (props) => {
                 [`${prefixCls}-options-dropdown-open`]: isOpen,
               })}
             >
-              <span>{locale.getLangMsg('Pagination', 'perPage', { size })}</span>
+              <span className={`${prefixCls}-options-dropdown-text`}>{locale.getLangMsg('Pagination', 'perPage', { size })}</span>
               {innerIcon.down}
             </button>
           </Dropdown>
