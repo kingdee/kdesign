@@ -28,6 +28,7 @@ module.exports = {
     // 读取markdown文件的目录
     components: './components',
     docs: './docs',
+    kwc: './kwc',
   },
   themeConfig: {
     // 这里为空也要配个空对象，不然报错
