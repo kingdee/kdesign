@@ -11,13 +11,19 @@ import SideMenu from './SideMenu'
 // 获取文档菜单列表
 function getMenuData(props) {
   const { pathname } = props.location
-  const moduleName = /^\/?components/.test(pathname)
-    ? 'components'
-    : pathname
-        .split('/')
-        .filter((item) => item)
-        .slice(0, 2)
-        .join('/')
+  let moduleName
+  if (/^\/?components/.test(pathname)) {
+    moduleName = 'components'
+  } else if (/^\/?kwc/.test(pathname)) {
+    moduleName = 'kwc'
+  } else {
+    moduleName = pathname
+      .split('/')
+      .filter((item) => item)
+      .slice(0, 2)
+      .join('/')
+  }
+
   const menuList = props.picked[moduleName] ? [...props.picked[moduleName]] : undefined
   return menuList
 }
@@ -225,17 +231,22 @@ class Content extends React.Component {
   renderMenu(menuList) {
     const menuItems = utils.getMenuItems(menuList, categoryOrder, typeOrder)
     const { pathname } = this.props.location
-    return /^\/?components/.test(pathname) ? (
-      <div className="menu-components-wapper">{getComponentsMenu({ menuItems, pathname })}</div>
-    ) : (
-      getMenu({ menuItems, pathname })
-    )
+
+    if (/^\/?components/.test(pathname)) {
+      return <div className="menu-components-wapper">{getComponentsMenu({ menuItems, pathname })}</div>
+    } else if (/^\/?kwc/.test(pathname)) {
+      // kwc 直接使用通用 getMenu
+      return getMenu({ menuItems, pathname, prefixClass: 'kwc' })
+    } else {
+      return getMenu({ menuItems, pathname })
+    }
   }
 
   // 渲染右部锚点导航
   renderToc(props) {
     const { localizedPageData, demos } = props
     const { toc, api, meta } = localizedPageData
+    const kwcflag = location.pathname.startsWith('/kwc/')
     // demo需要生成的右侧导航
     let demosToc = demos
       ? Object.keys(demos)
@@ -292,9 +303,14 @@ class Content extends React.Component {
       .filter((n) => n)
     return (
       <ul className="toc">
+        {kwcflag && api && (
+          <li key="API" title="API">
+            <a href="#API">API</a>
+          </li>
+        )}
         {indexToc}
         {demosToc}
-        {api && (
+        {!kwcflag && api && (
           <li key="API" title="API">
             <a href="#API">API</a>
           </li>

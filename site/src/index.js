@@ -33,6 +33,15 @@ module.exports = {
     },
     'docs/guide': pickerGenerator('guide'),
     'docs/design': pickerGenerator('design'),
+    kwc(markdownData) {
+      const { filename } = markdownData.meta
+      if (!/^kwc/.test(filename) || /[/\\]demo$/.test(path.dirname(filename))) {
+        return null
+      }
+      return {
+        meta: markdownData.meta,
+      }
+    },
   },
   plugins: [
     'bisheng-plugin-description', // 抽取markdown文件的中间的description部分
@@ -60,6 +69,10 @@ module.exports = {
       },
       {
         path: 'docs/guide/:children',
+        component: contentTmpl,
+      },
+      {
+        path: 'kwc/:children',
         component: contentTmpl,
       },
     ],
