@@ -13,7 +13,7 @@ subtitle: 单选框组
 ---
 
 用于从多个选项中仅选择一项的单选框组。<br/>
-<img src="https://youke1.picui.cn/s1/2025/11/04/6909a30bcaba1.png" width="400px" />
+<img src="https://gitee.com/kingdee/kdesign/raw/main/kwc/image/radio-group.png" referrerpolicy="no-referrer" width="400px" />
 
 ## API
 

@@ -13,7 +13,7 @@ subtitle: 单选框
 ---
 
 可构成单选框组，供用户选择的单个选项。<br/>
-<img src="https://youke1.picui.cn/s1/2025/11/04/6909a30c0f06d.png" width="200px" />
+<img src="https://gitee.com/kingdee/kdesign/raw/main/kwc/image/radio.png" referrerpolicy="no-referrer" width="200px" />
 
 ## API
 

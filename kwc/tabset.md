@@ -13,7 +13,7 @@ subtitle: 选项卡
 ---
 
 选项卡切换组件。<br/>
-<img src="https://youke1.picui.cn/s1/2025/11/04/690971e1f2c01.png" width="500px" />
+<img src="https://gitee.com/kingdee/kdesign/raw/main/kwc/image/tabset.png" referrerpolicy="no-referrer" width="500px" />
 
 ## API
 

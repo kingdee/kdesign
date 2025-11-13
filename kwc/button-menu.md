@@ -13,7 +13,7 @@ subtitle: 按钮菜单
 ---
 
 下拉菜单组件，用户点击按钮后会显示多个可操作的菜单项。<br>
-<img src="https://youke1.picui.cn/s1/2025/11/04/690971d187254.png" width="300px" />
+<img src="https://gitee.com/kingdee/kdesign/raw/main/kwc/image/button-menu.png" referrerpolicy="no-referrer" width="300px" />
 
 ## API
 

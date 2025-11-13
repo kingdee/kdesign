@@ -12,7 +12,7 @@ subtitle: 布局
 ---
 
 布局是一种结构模板，通过定义视觉网格、间距和区域，确保应用程序之间的一致性。内容应放置于 layout-item内，只有 layout-item 可以作为 layout 的直接元素。<br/>
-<img src="https://youke1.picui.cn/s1/2025/11/04/69099fed1f709.png" width="800px" />
+<img src="https://gitee.com/kingdee/kdesign/raw/main/kwc/image/layout.png" referrerpolicy="no-referrer" width="800px" />
 
 ## API
 
