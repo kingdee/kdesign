@@ -13,7 +13,7 @@ subtitle: 消息提示
 ---
 
 用户操作后的一种反馈和确认机制。<br/>
-<img src="https://youke1.picui.cn/s1/2025/11/04/690971e385d69.png" width="400px" />
+<img src="https://gitee.com/kingdee/kdesign/raw/main/kwc/image/toast.png" referrerpolicy="no-referrer" width="400px" />
 
 ## API
 

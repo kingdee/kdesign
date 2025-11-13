@@ -8,7 +8,7 @@ subtitle: 按钮
 
 
 按钮是一种用于触发特定操作的组件。<br>
-<img src="https://youke1.picui.cn/s1/2025/11/04/690971d1c7b92.png" width="500px" />
+<img src="https://gitee.com/kingdee/kdesign/raw/main/kwc/image/button.png" referrerpolicy="no-referrer" width="500px" />
 ## API
 
 | 属性          | 说明                                                         | 类型    | 默认值  | 版本  |

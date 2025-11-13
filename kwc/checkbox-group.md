@@ -13,7 +13,7 @@ subtitle: 复选框组
 ---
 
 用于实现单选或多选功能的复选框组。<br/>
-<img src="https://youke1.picui.cn/s1/2025/11/04/690971d256ca4.png" width="300px" />
+<img src="https://gitee.com/kingdee/kdesign/raw/main/kwc/image/checkbox-group.png" referrerpolicy="no-referrer" width="300px" />
 ## API
 
 | 属性           | 说明                                                       | 类型    | 默认值     | 版本  |

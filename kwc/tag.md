@@ -13,7 +13,7 @@ subtitle: 标签
 ---
 
 标签是一种对事物进行标记和分类的组件。<br/>
-<img src="https://youke1.picui.cn/s1/2025/11/04/690971e248dcb.png" width="500px" />
+<img src="https://gitee.com/kingdee/kdesign/raw/main/kwc/image/tag.png" referrerpolicy="no-referrer" width="500px" />
 
 ## API
 

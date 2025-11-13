@@ -14,7 +14,7 @@ subtitle: 输入框
 
 
 用于文本输入的组件。<br/>
-<img src="https://youke1.picui.cn/s1/2025/11/04/6909a03f691a1.png" width="400px" />
+<img src="https://gitee.com/kingdee/kdesign/raw/main/kwc/image/input.png" referrerpolicy="no-referrer" width="400px" />
 
 ## API
 

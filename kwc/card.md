@@ -13,7 +13,7 @@ subtitle: 卡片
 ---
 
 通用卡片容器。<br>
-<img src="https://youke1.picui.cn/s1/2025/11/04/690971d34129b.png" width="900px" />
+<img src="https://gitee.com/kingdee/kdesign/raw/main/kwc/image/card.png" referrerpolicy="no-referrer" width="900px" />
 
 ## API
 

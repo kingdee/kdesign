@@ -13,7 +13,7 @@ subtitle: 表格
 ---
 
 表格用于展示结构化数据内容，通常还具备对数据进行操作的功能。<br/>
-<img src="https://youke1.picui.cn/s1/2025/11/04/690971da1d6b5.png" width="800px" />
+<img src="https://gitee.com/kingdee/kdesign/raw/main/kwc/image/datatable.png" referrerpolicy="no-referrer" width="800px" />
 
 ## API
 

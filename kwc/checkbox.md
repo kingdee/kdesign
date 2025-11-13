@@ -13,7 +13,7 @@ subtitle: 复选框
 
 可构成复选框组，供用户选择的单个选项。
 <br/>
-<img src="https://youke1.picui.cn/s1/2025/11/04/690971d6f3c6d.png" width="200px" />
+<img src="https://gitee.com/kingdee/kdesign/raw/main/kwc/image/checkbox.png" referrerpolicy="no-referrer" width="200px" />
 ## API
 
 | 属性            | 说明                                                         | 类型    | 默认值 | 版本  |
