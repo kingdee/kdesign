@@ -16,6 +16,8 @@ function getMenuData(props) {
     moduleName = 'components'
   } else if (/^\/?kwc/.test(pathname)) {
     moduleName = 'kwc'
+  } else if (/^\/?kwcdocs/.test(pathname)) {
+    moduleName = 'kwcdocs'
   } else {
     moduleName = pathname
       .split('/')

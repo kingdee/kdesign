@@ -29,6 +29,7 @@ module.exports = {
     components: './components',
     docs: './docs',
     kwc: './kwc',
+    kwcdocs: './kwcdocs', 
   },
   themeConfig: {
     // 这里为空也要配个空对象，不然报错
