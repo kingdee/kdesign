@@ -157,6 +157,7 @@ const InternalCarousel = (
         setCurrentIndex(index)
         setNeedAnimation(needAnimation)
       } else if (index >= -1 && index <= tempChild.length) {
+        if (index === tempChild.length) index = 0
         beforeChange && beforeChange(currentIndex, index)
         setCurrentIndex(index)
         setNeedAnimation(needAnimation)
