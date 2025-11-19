@@ -89,6 +89,7 @@ const InternalCarousel = (
   const carouselRef = React.useRef<HTMLDivElement>(null)
   const listRef = React.useRef<HTMLUListElement>(null)
   const autoplayRef = React.useRef<NodeJS.Timeout>()
+  const [isHidden, setIsHidden] = React.useState(false)
 
   const processChildren = (children: ItemType): ItemType[] => {
     const childCount = React.Children.count(children)
@@ -121,6 +122,9 @@ const InternalCarousel = (
 
   const reSize = React.useCallback(
     (rect: RectType) => {
+      // 记录当前可见性
+      setIsHidden(!!rect.hide)
+      // 仅在可见时更新宽度
       if (itemWidth !== rect.width && !rect.hide) {
         setItemWidth(rect.width)
       }
@@ -208,13 +212,44 @@ const InternalCarousel = (
   }, [setScrollXEffectStyle, isScrollxEffect])
 
   React.useEffect(() => {
-    if (autoplay) {
+    if (autoplay && !isHidden) {
       play()
     }
     return () => {
       autoplayRef.current && clearTimeout(autoplayRef.current)
     }
-  }, [currentIndex, autoplay, intervalTime, play])
+  }, [currentIndex, autoplay, intervalTime, play, isHidden])
+
+  // 当容器从隐藏恢复到可见时，归一化索引并恢复自动播放
+  React.useEffect(() => {
+    // 隐藏时清理定时器，避免越界索引累积
+    if (isHidden) {
+      autoplayRef.current && clearTimeout(autoplayRef.current)
+      return
+    }
+
+    // 可见时进行索引归一化，避免处于 -1 或 children.length 导致指示点不激活与自动播放停止
+    if (isScrollxEffect) {
+      const tempChild = processChildren(children)
+      const len = tempChild.length
+      let newIndex = currentIndex
+      if (newIndex === -1 && len > 0) {
+        newIndex = len - 1
+      }
+      if (newIndex === len && len > 0) {
+        newIndex = 0
+      }
+      if (newIndex !== currentIndex) {
+        setCurrentIndex(newIndex)
+        setNeedAnimation(false)
+      }
+    }
+
+    // 当前索引未变化时，确保自动播放恢复
+    if (autoplay) {
+      play()
+    }
+  }, [isHidden])
 
   const showDot = () => {
     return isBoolean(dots) ? dots : true
