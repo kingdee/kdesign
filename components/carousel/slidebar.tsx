@@ -19,15 +19,17 @@ export const Slidebar = (props: slideProps) => {
   })
   const renderDot = () => {
     const element: React.ReactNodeArray = []
+    // 归一化当前索引，避免在 scrollx 效果过渡到克隆项时出现 -1 或 number
+    const normalizedIndex = currentIndex < 0 ? number - 1 : currentIndex >= number ? 0 : currentIndex
     for (let i = 0; i <= number - 1; i++) {
       const dotClassName = isObject(dotsClassName)
         ? classNames({
             [`${dotsClassName.dotsClassName}`]: true,
-            [`${dotsClassName.activeDotsClassName}`]: i === currentIndex,
+            [`${dotsClassName.activeDotsClassName}`]: i === normalizedIndex,
           })
         : classNames({
             [`${slideBarPrefixCls}-dot`]: true,
-            [`${slideBarPrefixCls}-dot-active`]: i === currentIndex,
+            [`${slideBarPrefixCls}-dot-active`]: i === normalizedIndex,
           })
       const li: React.ReactNode = (
         <li key={i} className={dotClassName}>
