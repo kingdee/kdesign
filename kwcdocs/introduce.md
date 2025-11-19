@@ -2,7 +2,7 @@
 
 category: Components
 
-type: 总览
+type: 开发指南
 
 order: 3
 
