@@ -41,6 +41,11 @@ const navList = [
     details: 'kwc',
     path: '/kwc/button',
   },
+  {
+    text: 'KWC开发流程',
+    details: 'kwcdocs',
+    path: '/kwcdocs/introduce',
+  },
 ]
 export function withRouter<P, C extends ComponentType<P>>(target: C & React.ComponentType<P>): any {
   return withRouterComponent(target)

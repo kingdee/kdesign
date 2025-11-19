@@ -42,6 +42,15 @@ module.exports = {
         meta: markdownData.meta,
       }
     },
+    kwcdocs(markdownData) {
+      const { filename } = markdownData.meta
+      if (!/^kwcdocs/.test(filename) || /[/\\]demo$/.test(path.dirname(filename))) {
+        return null
+      }
+      return {
+        meta: markdownData.meta,
+      }
+    },
   },
   plugins: [
     'bisheng-plugin-description', // 抽取markdown文件的中间的description部分
@@ -74,6 +83,10 @@ module.exports = {
       {
         path: 'kwc/:children',
         component: contentTmpl,
+      },
+      {
+        path: 'kwcdocs/:children',
+        component: contentTmpl, // ★ 新增
       },
     ],
   },
