@@ -16,7 +16,7 @@ title: KWC 开发流程介绍
 
 开发流程如下：
 
-<img src="https://gitee.com/kingdee/kdesign/raw/main/kwcdocs/image/devolop.png" referrerpolicy="no-referrer"  />
+<img src="https://gitee.com/kingdee/kdesign/raw/main/kwcdocs/image/devolop.png" referrerpolicy="no-referrer"  width="600px" />
 
 ## 环境搭建
 
@@ -28,7 +28,7 @@ title: KWC 开发流程介绍
 
 以 v18.20.8 版本为例，安装完成后，点击菜单栏，找到命令行工具，如 powershell 或者是 git bash，以管理员身份运行：
 
-<img src="https://gitee.com/kingdee/kdesign/raw/main/kwcdocs/image/powershell.png" referrerpolicy="no-referrer" />
+<img src="https://gitee.com/kingdee/kdesign/raw/main/kwcdocs/image/powershell.PNG" referrerpolicy="no-referrer" />
 
 
 在命令行窗口中键入`node -v` ，出现结果版本号为`v18.20.8` 的话，则表明安装成功。
@@ -48,18 +48,18 @@ title: KWC 开发流程介绍
 
 假设使用的是 VSCode，则打开 VSCode ，左上角选择 File，选择 Open Folder 打开该项目
 
-<img src="https://gitee.com/kingdee/kdesign/raw/main/kwcdocs/image/image.png" referrerpolicy="no-referrer" />
+<img src="https://gitee.com/kingdee/kdesign/raw/main/kwcdocs/image/image.png" referrerpolicy="no-referrer" width="500px"/>
 <img src="https://gitee.com/kingdee/kdesign/raw/main/kwcdocs/image/image2.png" referrerpolicy="no-referrer"  />
 
 
 打开成功后，通过快捷键 `ctrl+``打开终端，输入 `npm run dev`运行项目，看到如下内容则表明已经启动成功
 
-<img src="https://gitee.com/kingdee/kdesign/raw/main/kwcdocs/image/image3.png" referrerpolicy="no-referrer" />
+<img src="https://gitee.com/kingdee/kdesign/raw/main/kwcdocs/image/image3.png" referrerpolicy="no-referrer" width="800px"/>
 
 
 使用浏览器访问 localhost:8000，看到如下页面，则项目成功启动，可以进行下一步的开发工作：
 
-<img src="https://gitee.com/kingdee/kdesign/raw/main/kwcdocs/image/image4.png" referrerpolicy="no-referrer" />
+<img src="https://gitee.com/kingdee/kdesign/raw/main/kwcdocs/image/image4.png" referrerpolicy="no-referrer" width="800px"/>
 
 
 注：项目运行可能会出现失败，失败时请截图反馈至群里协助解决
