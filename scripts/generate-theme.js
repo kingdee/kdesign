@@ -97,7 +97,7 @@ function sortLessFilesPaths(lessFilePaths) {
     return a.sortWeight - b.sortWeight
   })
   // 把sortWeightArr 写入temp.json文件中
-  fs.writeFileSync(path.join(__dirname, 'temp.json'), JSON.stringify(sortWeightArr, null, 1))
+  // fs.writeFileSync(path.join(__dirname, 'temp.json'), JSON.stringify(sortWeightArr, null, 1))
   return sortWeightArr
 }
 /**
