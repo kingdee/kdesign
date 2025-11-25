@@ -56,7 +56,7 @@ function getDefaultActiveKey(props: ITabsProps) {
 }
 
 const Tabs: React.FC<ITabsProps> = (props) => {
-  const { getPrefixCls, prefixCls, compDefaultProps: userDefaultProps, direction } = useContext(ConfigContext)
+  const { getPrefixCls, prefixCls, compDefaultProps: userDefaultProps, direction, isMobile } = useContext(ConfigContext)
   const tabsProps = getCompProps('Tabs', userDefaultProps, props)
   const {
     type,
@@ -101,6 +101,13 @@ const Tabs: React.FC<ITabsProps> = (props) => {
   const lastListPosition = useRef(0)
   const isDragging = useRef(false)
   const [triggerState, setTriggerState] = useState<boolean>(false)
+  // --- inertia start ---
+  const velocity = useRef(0) // 滑动速度
+  const lastMoveTime = useRef(0) // 上一次 move 时间
+  const lastMoveX = useRef(0) // 上一次 move X 坐标
+  const inertiaRaf = useRef<any>(null) // 惯性动画
+  // --- inertia end ---
+
   const handleActive = (id: string | number, e?: React.MouseEvent<HTMLDivElement | HTMLAnchorElement, MouseEvent>) => {
     setCurActiveKey(id)
     onChange && onChange(id, e)
@@ -115,9 +122,17 @@ const Tabs: React.FC<ITabsProps> = (props) => {
   }
   const handleTouchStart = (e: React.TouchEvent<HTMLDivElement>) => {
     if (ListWidth <= boxWidth) return
+
     touchStartX.current = e.touches[0].clientX
     lastListPosition.current = ListPostion
     isDragging.current = true
+
+    // --- inertia start ---
+    if (inertiaRaf.current) cancelAnimationFrame(inertiaRaf.current)
+    velocity.current = 0
+    lastMoveX.current = touchStartX.current
+    lastMoveTime.current = performance.now()
+    // --- inertia end ---
   }
 
   const handleTouchMove = (e: React.TouchEvent<HTMLDivElement>) => {
@@ -125,16 +140,29 @@ const Tabs: React.FC<ITabsProps> = (props) => {
 
     const path = e.nativeEvent.composedPath?.() || []
     const isFromTabList = path.some((el) => (el as HTMLElement)?.classList?.contains?.(`${tabsPrefixCls}-tab-list`))
-    if (!isFromTabList) return // 阻止非 tab 区域触发移动逻辑
+    if (!isFromTabList) return
 
     const currentX = e.touches[0].clientX
     const deltaX = currentX - touchStartX.current
     let newPosition = lastListPosition.current + deltaX
 
+    // --- inertia start: 计算速度（px/ms） ---
+    const now = performance.now()
+    const dx = currentX - lastMoveX.current
+    const dt = now - lastMoveTime.current
+    if (dt > 0) {
+      const rawV = -dx / dt
+
+      // 速度增强因子（仅增强，不改变方向）
+      velocity.current = rawV * 1.6 // 👉 最小增强，Android 会顺滑得多
+    }
+    lastMoveX.current = currentX
+    lastMoveTime.current = now
+    // --- inertia end ---
+
     const maxLeft = 0
     const maxRight = boxWidth - ListWidth
-    if (newPosition > maxLeft) newPosition = maxLeft
-    if (newPosition < maxRight) newPosition = maxRight
+    newPosition = Math.min(maxLeft, Math.max(maxRight, newPosition))
 
     setListPosition(newPosition)
   }
@@ -142,7 +170,41 @@ const Tabs: React.FC<ITabsProps> = (props) => {
   const handleTouchEnd = () => {
     if (ListWidth <= boxWidth) return
     isDragging.current = false
+
+    // --- inertia start ---
+    const decay = 0.88 // 阻尼
+    const minSpeed = 0.02 // 最低速度，停止
+    const maxLeft = 0
+    const maxRight = boxWidth - ListWidth
+
+    const step = () => {
+      let v = velocity.current
+      if (Math.abs(v) < minSpeed) {
+        return
+      }
+
+      let next = ListPostion + v * 16 // 16ms 近似一帧
+
+      // 到边界立即停止（完全无回弹）
+      if (next > maxLeft) {
+        setListPosition(maxLeft)
+        return
+      }
+      if (next < maxRight) {
+        setListPosition(maxRight)
+        return
+      }
+
+      setListPosition(next)
+
+      velocity.current = v * decay
+      inertiaRaf.current = requestAnimationFrame(step)
+    }
+
+    inertiaRaf.current = requestAnimationFrame(step)
+    // --- inertia end ---
   }
+
   const handleVisibleChange = (visible: boolean) => {
     setTriggerState(visible)
   }
@@ -411,11 +473,11 @@ const Tabs: React.FC<ITabsProps> = (props) => {
           : {
               left: `${ListPostion}px`,
             }
-
+      const tablistCls = `${tabsPrefixCls}-tab-list ${isMobile ? `${tabsPrefixCls}-tab-list-mobile` : ''}`
       const renderWrap = (
         <div
           ref={tabListRef}
-          className={`${tabsPrefixCls}-tab-list`}
+          className={tablistCls}
           style={listPositionStyle}
           data-ignore-auto-rtl={direction === 'rtl'}
         >
