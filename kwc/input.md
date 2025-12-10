@@ -23,7 +23,7 @@ subtitle: 输入框
 | 属性           | 说明                                                         | 类型    | 默认值   | 版本  |
 | -------------- | ------------------------------------------------------------ | ------- | -------- | ----- |
 | label          | 标题                                                         |         | -        | 1.0.0 |
-| name          | 数据提交标识                                                         |         | -        | 1.0.0 |
+| name           | 数据提交标识                                                 | string  | -        | 1.0.0 |
 | disabled       | 设置输入框禁用状态                                           | boolean | FALSE    | 1.0.0 |
 | read-only      | 设置输入框只读状态                                           | boolean | FALSE    | 1.0.0 |
 | required       | 设置输入框必录状态                                           | boolean | FALSE    | 1.0.0 |
@@ -36,8 +36,8 @@ subtitle: 输入框
 | message        | 反馈提示语，设置state时显示                                  |         | -        | 1.0.0 |
 | label-position | 标题位置，可选值包括vertical、inline、hidden                 |         | vertical | 1.0.0 |
 | variant        | 输入框的视觉样式变体，可选值包括underlined、outlined、borderless |         | outlined | 1.0.0 |
-| minlength      | 允许输入最小字符数                                           | number  | -        | 1.0.0 |
-| maxlength      | 允许输入最大字符数；最大为2000                               | number  | 2000     | 1.0.0 |
+| min-length     | 允许输入最小字符数                                           | number  | -        | 1.0.0 |
+| max-length     | 允许输入最大字符数；最大为2000                               | number  | 2000     | 1.0.0 |
 | type           | 输入框的类型，可选值包括text、password                       |         | text     | 1.0.0 |
 | onfocus        | 获取焦点时触发                                               |         | -        | 1.0.0 |
 | onblur         | 失去焦点时触发                                               |         | -        | 1.0.0 |
@@ -87,8 +87,7 @@ subtitle: 输入框
 | typography | --kdds-c-input-required-indicator-font-size  | 必填指示器字体大小         | var(--kdds-g-icon-sizing-1)              |
 | typography | --kdds-c-input-supporting-text-font-size     | 辅助文本字体大小           | var(--kdds-g-font-scale-2)               |
 | typography | --kdds-c-input-supporting-text-line-height   | 辅助文本行高               | var(--kdds-g-font-lineheight-4)          |
-| border     | --kdds-c-input-shape-square-border-radius    | 输入框方形边框圆角         | var(--kdds-g-radius-border-circle1)      |
-| border     | --kdds-c-input-shape-round-border-radius     | 输入框圆形边框圆角         | var(--kdds-g-radius-border-1)            |
+| border     | --kdds-c-input-border-radius                 | 输入框边框圆角             | var(--kdds-g-radius-border-1)            |
 | border     | --kdds-c-input-border-width                  | 输入框边框宽度             | var(--kdds-g-sizing-border-1)            |
 | spacing    | --kdds-c-input-padding-horizontal-small      | 输入框小尺寸水平方向内边距 | var(--kdds-g-spacing-4)                  |
 | spacing    | --kdds-c-input-padding-vertical-small        | 输入框小尺寸垂直方向内边距 | var(--kdds-g-spacing-1)                  |
