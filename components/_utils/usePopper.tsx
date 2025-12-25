@@ -675,13 +675,25 @@ function usePopper(locatorElement: React.ReactElement, popperElement: React.Reac
   useEffect(() => {
     if (visible) {
       const scrollAlign = debounce((e: Event) => {
-        const isPopperScroll = e.target === popperRef.current || popperRef.current.contains(e.target)
-        if (scrollHidden && !isPopperScroll) {
+        const target = e.target as HTMLElement | null
+
+        const popperNode = popperRef.current
+        const realDom = getRealDom(locatorRef, locatorElement)
+        const triggerNode = realDom ? getTriggerElement(realDom) : null
+
+        const isPopperScroll = popperNode && target && (target === popperNode || popperNode.contains(target))
+
+        const isTriggerScroll = triggerNode && target && (target === triggerNode || triggerNode.contains(target))
+
+        if (scrollHidden && !isPopperScroll && !isTriggerScroll) {
           props.visible === undefined && setVisible(false)
           onVisibleChange && onVisibleChange(false)
+          return
         }
+
         alignPopper()
       }, 10)
+
       window.addEventListener('resize', alignPopper)
       document.addEventListener('scroll', scrollAlign, true)
 
@@ -690,7 +702,17 @@ function usePopper(locatorElement: React.ReactElement, popperElement: React.Reac
         document.removeEventListener('scroll', scrollAlign, true)
       }
     }
-  }, [alignPopper, exist, onVisibleChange, popperNode, props.visible, scrollHidden, locatorNode, visible, popperRef])
+  }, [
+    visible,
+    alignPopper,
+    scrollHidden,
+    onVisibleChange,
+    props.visible,
+    popperRef,
+    locatorRef,
+    locatorElement,
+    getTriggerElement,
+  ])
 
   useEffect(() => {
     const realDom = getRealDom(locatorRef, locatorElement)
