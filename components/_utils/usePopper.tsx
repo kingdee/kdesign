@@ -64,6 +64,7 @@ export interface PopperProps {
   trigger?: TriggerType | Array<TriggerType>
   clickToClose?: boolean
   isMobile?: boolean
+  triggerScroll?: boolean
   onTrigger?: (trigger: TriggerType) => void
   onVisibleChange?: (visible: boolean) => void
   getTriggerElement?: (locatorNode: HTMLElement) => HTMLElement
@@ -187,6 +188,7 @@ function usePopper(locatorElement: React.ReactElement, popperElement: React.Reac
     autoPlacement = true,
     clickToClose = true,
     isMobile,
+    triggerScroll = false,
     getTriggerElement = (locatorNode) => locatorNode,
     getPopupContainer = () => document.body,
     onTransitionEnd,
@@ -683,7 +685,8 @@ function usePopper(locatorElement: React.ReactElement, popperElement: React.Reac
 
         const isPopperScroll = popperNode && target && (target === popperNode || popperNode.contains(target))
 
-        const isTriggerScroll = triggerNode && target && (target === triggerNode || triggerNode.contains(target))
+        const isTriggerScroll =
+          triggerNode && target && (target === triggerNode || triggerNode.contains(target)) && triggerScroll
 
         if (scrollHidden && !isPopperScroll && !isTriggerScroll) {
           props.visible === undefined && setVisible(false)

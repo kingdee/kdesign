@@ -955,6 +955,7 @@ const InternalSelect: React.ForwardRefRenderFunction<ISelectProps<SelectValue>> 
     popperStyle: catchStyle(),
     defaultVisible: optionShow,
     visible: optionShow,
+    triggerScroll: true,
     onVisibleChange: handleVisibleChange,
     clickToClose: !(isShowSearch && searchValue),
   }
