@@ -421,7 +421,9 @@ export const Popper = forwardRef<SubPopup | null, PopperProps>((props, ref) => {
   }
 
   const onClick = debounce(
-    () => {
+    (e: MouseEvent) => {
+      const targetEl = e.target as HTMLElement
+      if (targetEl?.closest('[data-popper-ignore]')) return // 忽略
       if (!visibleInner) {
         onTriggerInner(true, 'click')
       } else if (clickToClose) {
@@ -540,6 +542,12 @@ export const Popper = forwardRef<SubPopup | null, PopperProps>((props, ref) => {
   useEffect(() => {
     const clickHandle = debounce(
       (e: MouseEvent) => {
+        const targetEl = e.target as HTMLElement
+        if (!targetEl) return
+
+        const ignoreEl = closestPolyfill(targetEl, '[data-popper-ignore]')
+        if (ignoreEl) return
+
         if (visibleInner) {
           const isPopper = popperRefDom.current
             ? popperRefDom.current === e.target || popperRefDom.current.contains?.(e.target as Node)
@@ -565,7 +573,7 @@ export const Popper = forwardRef<SubPopup | null, PopperProps>((props, ref) => {
         }
       },
       10,
-      { leading: true },
+      { leading: true, trailing: false },
     )
 
     if (visibleInner) {
