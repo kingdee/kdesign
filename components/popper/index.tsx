@@ -423,7 +423,11 @@ export const Popper = forwardRef<SubPopup | null, PopperProps>((props, ref) => {
   const onClick = debounce(
     (e: MouseEvent) => {
       const targetEl = e.target as HTMLElement
-      if (targetEl?.closest('[data-popper-ignore]')) return // 忽略
+      if (!targetEl) return
+
+      const ignoreEl = closestPolyfill(targetEl, '[data-popper-ignore]')
+      if (ignoreEl) return
+
       if (!visibleInner) {
         onTriggerInner(true, 'click')
       } else if (clickToClose) {
