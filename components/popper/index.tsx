@@ -775,6 +775,25 @@ export const Popper = forwardRef<SubPopup | null, PopperProps>((props, ref) => {
     }
   }, [exist, placementInner])
 
+  // 添加对referenceElement的尺寸变化监听
+  useEffect(() => {
+    if (!exist) return
+
+    const current = getRealDom(referenceRef, referenceElement)
+    if (!current) return
+
+    const referenceResizeObserver = new ResizeObserver(() => {
+      // 当referenceElement尺寸变化时，更新popper位置
+      popperInstance.current?.update()
+    })
+
+    referenceResizeObserver.observe(current)
+
+    return () => {
+      referenceResizeObserver?.disconnect()
+    }
+  }, [exist, referenceRef, referenceElement])
+
   useEnhancedEffect(() => {
     if (!exist) {
       return undefined
