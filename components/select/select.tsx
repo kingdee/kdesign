@@ -17,7 +17,7 @@ import { toArray } from '../_utils/react-children'
 import { Icon, Checkbox, Tag } from '../index'
 import Option from './option'
 import { ISelectProps, SelectValue } from './interface'
-import usePopper from '../_utils/usePopper'
+import Popper from '../popper'
 import VirtualList from '../virtual-list'
 import KeyCode from '../_utils/KeyCode'
 const INPUT_MIN_WIDTH = 4 // 输入框最小宽度
@@ -748,6 +748,9 @@ const InternalSelect: React.ForwardRefRenderFunction<ISelectProps<SelectValue>> 
                       disabled={disabled}
                       onClose={(e) => handleRemove(e, value)}
                       data-tag={value}
+                      customCloseProps={{
+                        'data-popper-ignore': true,
+                      }}
                     >
                       {label}
                     </Tag>
@@ -959,7 +962,11 @@ const InternalSelect: React.ForwardRefRenderFunction<ISelectProps<SelectValue>> 
     onVisibleChange: handleVisibleChange,
     clickToClose: !(isShowSearch && searchValue),
   }
-  return usePopper(renderSelect(), renderContent(), popperProps)
+  return (
+    <Popper tip={renderContent()} {...popperProps}>
+      {renderSelect()}
+    </Popper>
+  )
 }
 
 const Select = React.forwardRef<unknown, ISelectProps<SelectValue>>(InternalSelect)

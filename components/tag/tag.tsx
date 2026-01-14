@@ -28,6 +28,7 @@ export interface ITagProps {
   onClose?: React.MouseEventHandler<HTMLElement> // 关闭时的回调
   children?: React.ReactNode // 子元素
   title?: string
+  customCloseProps?: unknown
 }
 
 // remove this line and code Tag component here
@@ -48,6 +49,7 @@ const InteranalTag = (props: ITagProps, ref: unknown): FunctionComponentElement<
     onClose,
     style,
     prefixCls: customPrefixcls,
+    customCloseProps,
     children,
     ...others
   } = tagProps
@@ -123,7 +125,7 @@ const InteranalTag = (props: ITagProps, ref: unknown): FunctionComponentElement<
       disabled ? (
         <span className={`${tagPrefixCls}-closeWrapper`}>{closeIconNode}</span>
       ) : (
-        <span className={`${tagPrefixCls}-closeWrapper`} onClick={handleClose}>
+        <span className={`${tagPrefixCls}-closeWrapper`} onClick={handleClose} {...customCloseProps}>
           {closeIconNode}
         </span>
       )
