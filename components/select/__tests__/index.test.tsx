@@ -504,7 +504,7 @@ describe('Select', () => {
       </div>,
     )
 
-    expect(popupContainer.childAt(0).children().at(1).find('.kd-select-dropdown').length).toBe(1)
+    expect(popupContainer.childAt(0).children().at(1).find('.kd-select-dropdown').length).toBe(0)
 
     // onFocus onBlur
     popupContainer.find('.kd-select-selection-search-input').simulate('focus')

@@ -2,7 +2,7 @@
 
 exports[`ColorPicker renders correctly 1`] = `
 <div
-  class="kd-color-picker-container"
+  class="kd-popper-reference kd-color-picker-container"
 >
   <span
     class="kd-input-wrapper kd-input-wrapper-size-middle kd-input-wrapper-underline kd-color-picker-input"
@@ -35,7 +35,7 @@ exports[`ColorPicker renders correctly 1`] = `
 
 exports[`ColorPicker renders correctly 2`] = `
 <div
-  class="kd-color-picker-container"
+  class="kd-popper-reference kd-color-picker-container"
 >
   <span
     class="kd-input-wrapper kd-input-wrapper-size-middle kd-color-picker-input"
@@ -68,58 +68,128 @@ exports[`ColorPicker renders correctly 2`] = `
 
 exports[`ColorPicker renders correctly with no child 1`] = `
 <ColorPicker>
-  <div
-    className="kd-color-picker-container"
+  <Popper
+    clickToClose={false}
+    defaultVisible={false}
+    onVisibleChange={null}
+    placement="bottomLeft"
+    popperClassName="kd-color-picker-pop"
+    tip={
+      <ColorPickerPanel
+        alpha={0}
+        alphaNoVerifyVal="0%"
+        colTypeArr={
+          Array [
+            Object {
+              "type": "HEX",
+              "value": "#FFFFFF00",
+            },
+            Object {
+              "type": "HSB",
+              "value": "HSBA(0, 0%, 100%, 0)",
+            },
+            Object {
+              "type": "RGB",
+              "value": "RGBA(255, 255, 255, 0)",
+            },
+            Object {
+              "type": "HSL",
+              "value": "HSLA(0, 0%, 100%, 0)",
+            },
+          ]
+        }
+        correctColorValue="#FFFFFF"
+        currentColorType="HEX"
+        format="HEX"
+        functionalColorName="#themeColor"
+        inputCorrectColorValue=""
+        inputRef={
+          Object {
+            "current": <div
+              class="kd-popper-reference kd-color-picker-container"
+            >
+              <span
+                class="kd-input-wrapper kd-input-wrapper-size-middle kd-color-picker-input"
+              >
+                <span
+                  class="kd-input-prefix"
+                >
+                  <div
+                    class="kd-color-picker-icon-container"
+                  >
+                    <div
+                      class="kd-color-picker-icon kd-color-picker-icon-bordered"
+                    >
+                      <div
+                        class="kd-color-picker-icon-no-color-line"
+                      />
+                    </div>
+                  </div>
+                </span>
+                <input
+                  class="kd-input kd-input-size-middle"
+                  placeholder="#"
+                  type="text"
+                  value=""
+                />
+              </span>
+            </div>,
+          }
+        }
+        isFollow={false}
+        panelFormatConfig={
+          Object {
+            "default": "HEX",
+            "show": Array [
+              "HEX",
+              "HSB",
+              "RGB",
+              "HSL",
+            ],
+          }
+        }
+        scrollHidden={false}
+        setAlpha={[Function]}
+        setAlphaNoVerifyVal={[Function]}
+        setClickColorIndex={[Function]}
+        setClickedHistoricalColorIndex={[Function]}
+        setClickedPresetColorIndex={[Function]}
+        setColTypeArr={[Function]}
+        setCorrectColorValue={[Function]}
+        setCurrentColorType={[Function]}
+        setInputColorValue={[Function]}
+        setInputCorrectColorValue={[Function]}
+        setIsFollow={[Function]}
+        setShowPanel={[Function]}
+        showAlphaInput={true}
+        showClear={true}
+        showColorPickerBox={
+          Object {
+            "showBox": false,
+            "showHue": false,
+            "showOpacity": false,
+          }
+        }
+        showColorPickerPanel={true}
+        showColorTransfer={true}
+        showPanel={false}
+        showPresetColor={true}
+        switchName={
+          Object {
+            "internationalName": "followFunctionalColor",
+            "name": "",
+          }
+        }
+      />
+    }
+    visible={false}
   >
-    <Input
-      borderType="bordered"
-      className="kd-color-picker-input"
-      onBlur={[Function]}
-      onChange={[Function]}
-      onClick={[Function]}
-      placeholder="#"
-      prefix={
-        <div
-          className="kd-color-picker-icon-container"
-          onClick={[Function]}
-        >
-          <div
-            className="kd-color-picker-icon kd-color-picker-icon-bordered"
-            style={
-              Object {
-                "backgroundColor": "RGB(255, 255, 255)",
-              }
-            }
-          >
-            <div
-              className="kd-color-picker-icon-no-color-line"
-            />
-          </div>
-        </div>
-      }
-      value=""
+    <div
+      className="kd-popper-reference kd-color-picker-container"
     >
-      <ClearableInput
+      <Input
         borderType="bordered"
         className="kd-color-picker-input"
-        direction="ltr"
-        element={
-          <input
-            className="kd-input kd-input-size-middle"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onClick={[Function]}
-            onFocus={[Function]}
-            onKeyUp={[Function]}
-            placeholder="#"
-            type="text"
-            value=""
-          />
-        }
-        focused={false}
-        handleReset={[Function]}
-        inputCount={null}
-        inputType="input"
         onBlur={[Function]}
         onChange={[Function]}
         onClick={[Function]}
@@ -143,21 +213,34 @@ exports[`ColorPicker renders correctly with no child 1`] = `
             </div>
           </div>
         }
-        prefixCls="kd-input"
-        size="middle"
-        type="text"
         value=""
       >
-        <span
-          className="kd-input-wrapper kd-input-wrapper-size-middle kd-color-picker-input"
+        <ClearableInput
+          borderType="bordered"
+          className="kd-color-picker-input"
+          direction="ltr"
+          element={
+            <input
+              className="kd-input kd-input-size-middle"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onKeyUp={[Function]}
+              placeholder="#"
+              type="text"
+              value=""
+            />
+          }
+          focused={false}
+          handleReset={[Function]}
+          inputCount={null}
+          inputType="input"
+          onBlur={[Function]}
+          onChange={[Function]}
           onClick={[Function]}
-          onMouseEnter={[Function]}
-          onMouseLeave={[Function]}
-        >
-          <span
-            className="kd-input-prefix"
-            onMouseDown={[Function]}
-          >
+          placeholder="#"
+          prefix={
             <div
               className="kd-color-picker-icon-container"
               onClick={[Function]}
@@ -175,80 +258,184 @@ exports[`ColorPicker renders correctly with no child 1`] = `
                 />
               </div>
             </div>
-          </span>
-          <input
-            className="kd-input kd-input-size-middle"
-            onBlur={[Function]}
-            onChange={[Function]}
+          }
+          prefixCls="kd-input"
+          size="middle"
+          type="text"
+          value=""
+        >
+          <span
+            className="kd-input-wrapper kd-input-wrapper-size-middle kd-color-picker-input"
             onClick={[Function]}
-            onFocus={[Function]}
-            onKeyUp={[Function]}
-            placeholder="#"
-            style={null}
-            type="text"
-            value=""
-          />
-        </span>
-      </ClearableInput>
-    </Input>
-  </div>
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+          >
+            <span
+              className="kd-input-prefix"
+              onMouseDown={[Function]}
+            >
+              <div
+                className="kd-color-picker-icon-container"
+                onClick={[Function]}
+              >
+                <div
+                  className="kd-color-picker-icon kd-color-picker-icon-bordered"
+                  style={
+                    Object {
+                      "backgroundColor": "RGB(255, 255, 255)",
+                    }
+                  }
+                >
+                  <div
+                    className="kd-color-picker-icon-no-color-line"
+                  />
+                </div>
+              </div>
+            </span>
+            <input
+              className="kd-input kd-input-size-middle"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onKeyUp={[Function]}
+              placeholder="#"
+              style={null}
+              type="text"
+              value=""
+            />
+          </span>
+        </ClearableInput>
+      </Input>
+    </div>
+  </Popper>
 </ColorPicker>
 `;
 
 exports[`ColorPicker renders correctly with null or undefined 1`] = `
 <ColorPicker>
-  <div
-    className="kd-color-picker-container"
+  <Popper
+    clickToClose={false}
+    defaultVisible={false}
+    onVisibleChange={null}
+    placement="bottomLeft"
+    popperClassName="kd-color-picker-pop"
+    tip={
+      <ColorPickerPanel
+        alpha={0}
+        alphaNoVerifyVal="0%"
+        colTypeArr={
+          Array [
+            Object {
+              "type": "HEX",
+              "value": "#FFFFFF00",
+            },
+            Object {
+              "type": "HSB",
+              "value": "HSBA(0, 0%, 100%, 0)",
+            },
+            Object {
+              "type": "RGB",
+              "value": "RGBA(255, 255, 255, 0)",
+            },
+            Object {
+              "type": "HSL",
+              "value": "HSLA(0, 0%, 100%, 0)",
+            },
+          ]
+        }
+        correctColorValue="#FFFFFF"
+        currentColorType="HEX"
+        format="HEX"
+        functionalColorName="#themeColor"
+        inputCorrectColorValue=""
+        inputRef={
+          Object {
+            "current": <div
+              class="kd-popper-reference kd-color-picker-container"
+            >
+              <span
+                class="kd-input-wrapper kd-input-wrapper-size-middle kd-color-picker-input"
+              >
+                <span
+                  class="kd-input-prefix"
+                >
+                  <div
+                    class="kd-color-picker-icon-container"
+                  >
+                    <div
+                      class="kd-color-picker-icon kd-color-picker-icon-bordered"
+                    >
+                      <div
+                        class="kd-color-picker-icon-no-color-line"
+                      />
+                    </div>
+                  </div>
+                </span>
+                <input
+                  class="kd-input kd-input-size-middle"
+                  placeholder="#"
+                  type="text"
+                  value=""
+                />
+              </span>
+            </div>,
+          }
+        }
+        isFollow={false}
+        panelFormatConfig={
+          Object {
+            "default": "HEX",
+            "show": Array [
+              "HEX",
+              "HSB",
+              "RGB",
+              "HSL",
+            ],
+          }
+        }
+        scrollHidden={false}
+        setAlpha={[Function]}
+        setAlphaNoVerifyVal={[Function]}
+        setClickColorIndex={[Function]}
+        setClickedHistoricalColorIndex={[Function]}
+        setClickedPresetColorIndex={[Function]}
+        setColTypeArr={[Function]}
+        setCorrectColorValue={[Function]}
+        setCurrentColorType={[Function]}
+        setInputColorValue={[Function]}
+        setInputCorrectColorValue={[Function]}
+        setIsFollow={[Function]}
+        setShowPanel={[Function]}
+        showAlphaInput={true}
+        showClear={true}
+        showColorPickerBox={
+          Object {
+            "showBox": false,
+            "showHue": false,
+            "showOpacity": false,
+          }
+        }
+        showColorPickerPanel={true}
+        showColorTransfer={true}
+        showPanel={false}
+        showPresetColor={true}
+        switchName={
+          Object {
+            "internationalName": "followFunctionalColor",
+            "name": "",
+          }
+        }
+      />
+    }
+    visible={false}
   >
-    <Input
-      borderType="bordered"
-      className="kd-color-picker-input"
-      onBlur={[Function]}
-      onChange={[Function]}
-      onClick={[Function]}
-      placeholder="#"
-      prefix={
-        <div
-          className="kd-color-picker-icon-container"
-          onClick={[Function]}
-        >
-          <div
-            className="kd-color-picker-icon kd-color-picker-icon-bordered"
-            style={
-              Object {
-                "backgroundColor": "RGB(255, 255, 255)",
-              }
-            }
-          >
-            <div
-              className="kd-color-picker-icon-no-color-line"
-            />
-          </div>
-        </div>
-      }
-      value=""
+    <div
+      className="kd-popper-reference kd-color-picker-container"
     >
-      <ClearableInput
+      <Input
         borderType="bordered"
         className="kd-color-picker-input"
-        direction="ltr"
-        element={
-          <input
-            className="kd-input kd-input-size-middle"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onClick={[Function]}
-            onFocus={[Function]}
-            onKeyUp={[Function]}
-            placeholder="#"
-            type="text"
-            value=""
-          />
-        }
-        focused={false}
-        handleReset={[Function]}
-        inputCount={null}
-        inputType="input"
         onBlur={[Function]}
         onChange={[Function]}
         onClick={[Function]}
@@ -272,21 +459,34 @@ exports[`ColorPicker renders correctly with null or undefined 1`] = `
             </div>
           </div>
         }
-        prefixCls="kd-input"
-        size="middle"
-        type="text"
         value=""
       >
-        <span
-          className="kd-input-wrapper kd-input-wrapper-size-middle kd-color-picker-input"
+        <ClearableInput
+          borderType="bordered"
+          className="kd-color-picker-input"
+          direction="ltr"
+          element={
+            <input
+              className="kd-input kd-input-size-middle"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onKeyUp={[Function]}
+              placeholder="#"
+              type="text"
+              value=""
+            />
+          }
+          focused={false}
+          handleReset={[Function]}
+          inputCount={null}
+          inputType="input"
+          onBlur={[Function]}
+          onChange={[Function]}
           onClick={[Function]}
-          onMouseEnter={[Function]}
-          onMouseLeave={[Function]}
-        >
-          <span
-            className="kd-input-prefix"
-            onMouseDown={[Function]}
-          >
+          placeholder="#"
+          prefix={
             <div
               className="kd-color-picker-icon-container"
               onClick={[Function]}
@@ -304,22 +504,56 @@ exports[`ColorPicker renders correctly with null or undefined 1`] = `
                 />
               </div>
             </div>
-          </span>
-          <input
-            className="kd-input kd-input-size-middle"
-            onBlur={[Function]}
-            onChange={[Function]}
+          }
+          prefixCls="kd-input"
+          size="middle"
+          type="text"
+          value=""
+        >
+          <span
+            className="kd-input-wrapper kd-input-wrapper-size-middle kd-color-picker-input"
             onClick={[Function]}
-            onFocus={[Function]}
-            onKeyUp={[Function]}
-            placeholder="#"
-            style={null}
-            type="text"
-            value=""
-          />
-        </span>
-      </ClearableInput>
-    </Input>
-  </div>
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+          >
+            <span
+              className="kd-input-prefix"
+              onMouseDown={[Function]}
+            >
+              <div
+                className="kd-color-picker-icon-container"
+                onClick={[Function]}
+              >
+                <div
+                  className="kd-color-picker-icon kd-color-picker-icon-bordered"
+                  style={
+                    Object {
+                      "backgroundColor": "RGB(255, 255, 255)",
+                    }
+                  }
+                >
+                  <div
+                    className="kd-color-picker-icon-no-color-line"
+                  />
+                </div>
+              </div>
+            </span>
+            <input
+              className="kd-input kd-input-size-middle"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onKeyUp={[Function]}
+              placeholder="#"
+              style={null}
+              type="text"
+              value=""
+            />
+          </span>
+        </ClearableInput>
+      </Input>
+    </div>
+  </Popper>
 </ColorPicker>
 `;

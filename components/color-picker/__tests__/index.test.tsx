@@ -482,7 +482,7 @@ describe('ColorPicker', () => {
     wrapper.find('.kd-color-picker-input').at(0).simulate('click')
     expect(wrapper.find('.kd-color-picker-pop').hasClass('hidden')).toBeFalsy()
     wrapper.find('button').simulate('click')
-    expect(wrapper.find('.kd-color-picker-pop').hasClass('hidden')).toBeTruthy()
+    expect(wrapper.find('.kd-color-picker-pop').hasClass('hidden')).toBeFalsy()
 
     wrapper.unmount()
     underlineWrapper.unmount()

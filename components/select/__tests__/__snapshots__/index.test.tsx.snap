@@ -2,63 +2,104 @@
 
 exports[`Select render no child without errors 1`] = `
 <Select>
-  <div
-    className="kd-select"
+  <Popper
+    borderType="underline"
+    clickToClose={true}
+    defaultOpen={false}
+    defaultVisible={false}
+    filterOption={true}
+    mode="single"
+    onVisibleChange={[Function]}
+    optionFilterProp="label"
+    optionLabelProp="children"
+    placement="bottomLeft"
+    popperStyle={
+      Object {
+        "maxWidth": 600,
+        "minWidth": 0,
+        "width": "auto",
+        "zIndex": 1050,
+      }
+    }
+    prefixCls="kd-select-dropdown-panel null"
+    showArrow={true}
+    size="middle"
+    tip={
+      <React.Fragment>
+        <div
+          className="kd-select-dropdown kd-select-dropdown-no-data"
+          style={Object {}}
+        >
+          <div
+            className="kd-select-dropdown-empty"
+          >
+            暂无数据
+          </div>
+          <div />
+        </div>
+      </React.Fragment>
+    }
+    triggerScroll={true}
+    visible={false}
   >
-    <span
-      className="kd-select-selector"
-      onFocus={[Function]}
-      onKeyDown={[Function]}
-      tabIndex={0}
+    <div
+      className="kd-popper-reference kd-select"
     >
-      <div
-        className="kd-select-underline kd-select-size-middle kd-select-wrapper kd-select-single kd-select-single-isnotMobile"
+      <span
+        className="kd-select-selector"
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        tabIndex={0}
       >
-        <span
-          className="kd-select-selection-search"
-        >
-          <input
-            className="kd-select-selection-search-input"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            readOnly={true}
-            value=""
-          />
-        </span>
-        <span
-          className="kd-select-placeholder"
-        >
-          请输入需要搜索的内容
-        </span>
-        <span
-          className="kd-select-suffix"
+        <div
+          className="kd-select-underline kd-select-size-middle kd-select-wrapper kd-select-single kd-select-single-isnotMobile"
         >
           <span
-            className="kd-select-icon-arrow kd-select-icon-arrow-down"
+            className="kd-select-selection-search"
           >
-            <Icon
-              type="arrow-down"
-            >
-              <i
-                className="kdicon kdicon-arrow-down"
-                onClick={[Function]}
-                onMouseEnter={[Function]}
-                onMouseLeave={[Function]}
-                style={Object {}}
-              />
-            </Icon>
+            <input
+              className="kd-select-selection-search-input"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              readOnly={true}
+              value=""
+            />
           </span>
-        </span>
-      </div>
-    </span>
-  </div>
+          <span
+            className="kd-select-placeholder"
+          >
+            请输入需要搜索的内容
+          </span>
+          <span
+            className="kd-select-suffix"
+          >
+            <span
+              className="kd-select-icon-arrow kd-select-icon-arrow-down"
+            >
+              <Icon
+                type="arrow-down"
+              >
+                <i
+                  className="kdicon kdicon-arrow-down"
+                  onClick={[Function]}
+                  onMouseEnter={[Function]}
+                  onMouseLeave={[Function]}
+                  style={Object {}}
+                />
+              </Icon>
+            </span>
+          </span>
+        </div>
+      </span>
+    </div>
+  </Popper>
 </Select>
 `;
 
 exports[`Select renders correctly 1`] = `
 <div
-  class="kd-select"
+  class="kd-popper-reference kd-select"
 >
   <span
     class="kd-select-selector"
@@ -105,7 +146,7 @@ exports[`Select renders correctly 1`] = `
 
 exports[`Select renders correctly 2`] = `
 <div
-  class="kd-select"
+  class="kd-popper-reference kd-select"
 >
   <span
     class="kd-select-selector"
@@ -146,7 +187,7 @@ exports[`Select renders correctly 2`] = `
 
 exports[`Select renders correctly 3`] = `
 <div
-  class="kd-select"
+  class="kd-popper-reference kd-select"
 >
   <span
     class="kd-select-selector"
@@ -187,7 +228,7 @@ exports[`Select renders correctly 3`] = `
 
 exports[`Select renders correctly 4`] = `
 <div
-  class="kd-select"
+  class="kd-popper-reference kd-select"
 >
   <span
     class="kd-select-selector"
@@ -228,7 +269,7 @@ exports[`Select renders correctly 4`] = `
 
 exports[`Select renders correctly 5`] = `
 <div
-  class="kd-select"
+  class="kd-popper-reference kd-select"
 >
   <span
     class="kd-select-selector"
@@ -269,7 +310,7 @@ exports[`Select renders correctly 5`] = `
 
 exports[`Select renders correctly 6`] = `
 <div
-  class="kd-select"
+  class="kd-popper-reference kd-select"
 >
   <span
     class="kd-select-selector"
@@ -310,7 +351,7 @@ exports[`Select renders correctly 6`] = `
 
 exports[`Select renders correctly 7`] = `
 <div
-  class="kd-select"
+  class="kd-popper-reference kd-select"
 >
   <span
     class="kd-select-selector"
@@ -351,7 +392,7 @@ exports[`Select renders correctly 7`] = `
 
 exports[`Select renders correctly 8`] = `
 <div
-  class="kd-select"
+  class="kd-popper-reference kd-select"
 >
   <span
     class="kd-select-selector"
