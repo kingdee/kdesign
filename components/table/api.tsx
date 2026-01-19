@@ -130,7 +130,7 @@ export default function getApi(pipelineRef: React.MutableRefObject<TablePipeline
     const colBeforeViewport = vScrollLeft > colLeftPixel // 滚动距离大于目标列前面列宽总和，说明目标列在视口之前
     const colPastViewport = vScrollRight < colRightPixel // 目标列是视口之后
 
-    const colToSmallForViewport = viewportWidth < column.width
+    const colToSmallForViewport = viewportWidth - lockColumnLeft - lockColumnRight < column.width
     const alignColToLeft = colBeforeViewport || colToSmallForViewport
     const alignColToRight = colPastViewport
 
