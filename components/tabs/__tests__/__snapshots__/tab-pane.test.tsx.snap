@@ -2,10 +2,10 @@
 
 exports[`Tabs Active Line renders correctly 1`] = `
 <span
-  class="kd-tab-pane kd-tab-pane-box-active"
+  class="kd-tab-pane kd-tab-pane-box-active kd-tab-pane-type-dynamic-notMobile kd-tab-pane-notMobile"
 >
   <span
-    class="kd-tab-pane-text kd-tab-pane-text-active"
+    class="kd-tab-pane-text kd-tab-pane-text-active kd-tab-pane-text-notMobile"
   >
     TabPane1
   </span>

@@ -1681,7 +1681,7 @@ exports[`Filter renders correctly 4`] = `
                   tabindex="0"
                 >
                   <div
-                    class="kd-select-bordered kd-select-size-middle kd-select-wrapper kd-select-single"
+                    class="kd-select-bordered kd-select-size-middle kd-select-wrapper kd-select-single kd-select-single-isnotMobile"
                     title="等于"
                   >
                     <span
@@ -1725,7 +1725,7 @@ exports[`Filter renders correctly 4`] = `
                   tabindex="0"
                 >
                   <div
-                    class="kd-select-bordered kd-select-size-middle kd-select-wrapper kd-select-single"
+                    class="kd-select-bordered kd-select-size-middle kd-select-wrapper kd-select-single kd-select-single-isnotMobile"
                     title="今天"
                   >
                     <span
@@ -2303,7 +2303,7 @@ exports[`Filter renders correctly 5`] = `
                   tabindex="0"
                 >
                   <div
-                    class="kd-select-bordered kd-select-size-middle kd-select-wrapper kd-select-single"
+                    class="kd-select-bordered kd-select-size-middle kd-select-wrapper kd-select-single kd-select-single-isnotMobile"
                     title="等于"
                   >
                     <span
@@ -2347,7 +2347,7 @@ exports[`Filter renders correctly 5`] = `
                   tabindex="0"
                 >
                   <div
-                    class="kd-select-bordered kd-select-size-middle kd-select-wrapper kd-select-single"
+                    class="kd-select-bordered kd-select-size-middle kd-select-wrapper kd-select-single kd-select-single-isnotMobile"
                     title="今天"
                   >
                     <span

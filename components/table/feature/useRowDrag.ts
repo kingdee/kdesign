@@ -5,7 +5,9 @@ function useRowDrag(pipeline: TablePipeline, rowDrag?: TableRowDrag, estimatedRo
   if (rowDrag) {
     pipeline.use(
       features.rowDrag({
-        rowHeight: estimatedRowHeight,
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
+        rowHeight: estimatedRowHeight as number | undefined,
         ...rowDrag,
       }),
     )

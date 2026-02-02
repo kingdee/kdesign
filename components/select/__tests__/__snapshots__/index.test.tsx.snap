@@ -12,7 +12,7 @@ exports[`Select render no child without errors 1`] = `
       tabIndex={0}
     >
       <div
-        className="kd-select-underline kd-select-size-middle kd-select-wrapper kd-select-single"
+        className="kd-select-underline kd-select-size-middle kd-select-wrapper kd-select-single kd-select-single-isnotMobile"
       >
         <span
           className="kd-select-selection-search"
@@ -111,7 +111,7 @@ exports[`Select renders correctly 2`] = `
     tabindex="0"
   >
     <div
-      class="kd-select-underline kd-select-size-middle kd-select-wrapper kd-select-single"
+      class="kd-select-underline kd-select-size-middle kd-select-wrapper kd-select-single kd-select-single-isnotMobile"
     >
       <span
         class="kd-select-selection-search"
@@ -152,7 +152,7 @@ exports[`Select renders correctly 3`] = `
     tabindex="0"
   >
     <div
-      class="kd-select-borderless kd-select-size-middle kd-select-wrapper kd-select-single"
+      class="kd-select-borderless kd-select-size-middle kd-select-wrapper kd-select-single kd-select-single-isnotMobile"
     >
       <span
         class="kd-select-selection-search"
@@ -193,7 +193,7 @@ exports[`Select renders correctly 4`] = `
     tabindex="0"
   >
     <div
-      class="kd-select-underline kd-select-size-middle kd-select-wrapper kd-select-single"
+      class="kd-select-underline kd-select-size-middle kd-select-wrapper kd-select-single kd-select-single-isnotMobile"
     >
       <span
         class="kd-select-selection-search"
@@ -234,7 +234,7 @@ exports[`Select renders correctly 5`] = `
     tabindex="0"
   >
     <div
-      class="kd-select-bordered kd-select-size-middle kd-select-wrapper kd-select-single"
+      class="kd-select-bordered kd-select-size-middle kd-select-wrapper kd-select-single kd-select-single-isnotMobile"
     >
       <span
         class="kd-select-selection-search"
@@ -275,7 +275,7 @@ exports[`Select renders correctly 6`] = `
     tabindex="0"
   >
     <div
-      class="kd-select-underline kd-select-size-large kd-select-wrapper kd-select-single"
+      class="kd-select-underline kd-select-size-large kd-select-wrapper kd-select-single kd-select-single-isnotMobile"
     >
       <span
         class="kd-select-selection-search"
@@ -316,7 +316,7 @@ exports[`Select renders correctly 7`] = `
     tabindex="0"
   >
     <div
-      class="kd-select-underline kd-select-size-middle kd-select-wrapper kd-select-single"
+      class="kd-select-underline kd-select-size-middle kd-select-wrapper kd-select-single kd-select-single-isnotMobile"
     >
       <span
         class="kd-select-selection-search"
@@ -357,7 +357,7 @@ exports[`Select renders correctly 8`] = `
     tabindex="0"
   >
     <div
-      class="kd-select-underline kd-select-size-small kd-select-wrapper kd-select-single"
+      class="kd-select-underline kd-select-size-small kd-select-wrapper kd-select-single kd-select-single-isnotMobile"
     >
       <span
         class="kd-select-selection-search"
