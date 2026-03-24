@@ -246,6 +246,8 @@ const InternalSelect: React.ForwardRefRenderFunction<CityPickerProps> = (props: 
     }
     city?.id !== initValue && onChange?.(city?.id, city)
 
+    handleClear()
+
     if (isMobile) {
       searchRef.current?.blur()
     } else {
