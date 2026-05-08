@@ -104,9 +104,9 @@ const Table = forwardRef<unknown, TableProps>((props: TableProps, ref) => {
   /* -------------------------------------------------------------------------- */
   /* features                                                                   */
   /* -------------------------------------------------------------------------- */
+  useRowSelection(pipeline, rowSelection)
   useFilter(pipeline, filter)
   useSort(pipeline, sort)
-  useRowSelection(pipeline, rowSelection)
   useRowDetail(pipeline, rowDetail)
   useAutoRowSpan(pipeline, autoRowSpan)
   useTreeMode(pipeline, treeMode)
