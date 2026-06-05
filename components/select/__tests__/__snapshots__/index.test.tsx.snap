@@ -39,7 +39,6 @@ exports[`Select render no child without errors 1`] = `
         </div>
       </React.Fragment>
     }
-    triggerScroll={true}
     visible={false}
   >
     <div
