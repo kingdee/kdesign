@@ -178,12 +178,12 @@ const Tabs: React.FC<ITabsProps> = (props) => {
     const maxRight = boxWidth - ListWidth
 
     const step = () => {
-      let v = velocity.current
+      const v = velocity.current
       if (Math.abs(v) < minSpeed) {
         return
       }
 
-      let next = ListPostion + v * 16 // 16ms 近似一帧
+      const next = ListPostion + v * 16 // 16ms 近似一帧
 
       // 到边界立即停止（完全无回弹）
       if (next > maxLeft) {

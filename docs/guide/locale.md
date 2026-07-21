@@ -27,26 +27,32 @@ return (
 const locale = {
   locale: 'zh-CN',
   // 将下面中文替换为新的语言
+
+  // ===== DatePicker 日期选择器 =====
   'DatePicker.placeholder': '请选择日期',
   'DatePicker.yearPlaceholder': '请选择年份',
   'DatePicker.quarterPlaceholder': '请选择季度',
   'DatePicker.monthPlaceholder': '请选择月份',
   'DatePicker.weekPlaceholder': '请选择周',
   'DatePicker.timePlaceholder': '请选择时间',
-  'DatePicker.now': '此刻',
-  'DatePicker.confrim': '确定',
-  'DatePicker.today': '今天',
-  'DatePicker.month': '月',
-  'DatePicker.year': '年',
-  'DatePicker.weekTitle': ['日', '一', '二', '三', '四', '五', '六'],
-  'DatePicker.monthTitle': ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月'],
+  'DatePicker.now': '此刻',               // 时间选择器"此刻"按钮文案
+  'DatePicker.confrim': '确定',            // 确认按钮文案
+  'DatePicker.today': '今天',              // "今天"快捷按钮文案
+  'DatePicker.month': '月',               // 面板头部月份后缀，如 "7月"
+  'DatePicker.year': '年',                // 面板头部年份后缀，如 "2026年"
+  'DatePicker.weekTitle': ['日', '一', '二', '三', '四', '五', '六'],  // 面板星期标题
+  'DatePicker.monthTitle': ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月'],  // 面板月份选择文字
+  // months: format 中 MMMM token 对应的月份全名（如 format="YYYY年MMMMd日" → "2026年七月13日"）
+  'DatePicker.months': ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月'],
+  // monthsShort: format 中 MMM token 对应的月份缩写（如 format="YYYY年MMMd日" → "2026年7月13日"）
+  'DatePicker.monthsShort': ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月'],
   'DatePicker.rangePlaceholder': ['开始日期', '结束日期'],
   'DatePicker.rangeYearPlaceholder': ['开始年份', '结束年份'],
   'DatePicker.rangeMonthPlaceholder': ['开始月份', '结束月份'],
   'DatePicker.rangeWeekPlaceholder': ['开始周', '结束周'],
   'DatePicker.rangeQuarterPlaceholder': ['开始季度', '结束季度'],
   'DatePicker.rangeTimePlaceholder': ['开始时间', '结束时间'],
-  'DatePicker.monthBeforeYear': false,
+  'DatePicker.monthBeforeYear': false,     // 面板头部是否月份在年份前（英文为 true: "January 2026"）
   'global.selectholder': '请选择',
   'global.placeholder': '请输入...',
   'global.cancel': '取消',

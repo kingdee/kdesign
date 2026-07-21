@@ -5,7 +5,7 @@ import useValueTexts, { ValueTextConfig } from './use-value-texts'
 
 export default function useHoverValue(
   valueText: string,
-  { format }: ValueTextConfig,
+  { format, locale }: ValueTextConfig,
 ): [string, (date: DateType) => void, (immediately?: boolean) => void] {
   const [value, internalSetValue] = useState<DateType | null>(null)
   const ref = useRef<number>()
@@ -23,6 +23,7 @@ export default function useHoverValue(
 
   const valueTexts = useValueTexts(value, {
     format,
+    locale,
   })!
 
   function onEnter(date: DateType) {

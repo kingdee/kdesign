@@ -4,8 +4,8 @@ import moment from 'moment'
 import MockDate from 'mockdate'
 import DatePicker from '../index'
 import locale from '../locale/zh_CN'
-import { Locale } from '../interface'
-import { formatDate } from '../utils/date-fns'
+import { Locale, InnerLocale } from '../interface'
+import { formatDate, parseDate } from '../utils/date-fns'
 import { sleep } from '../../../tests/utils'
 import { format, startOfYear } from 'date-fns'
 
@@ -625,5 +625,282 @@ describe('date-picker', () => {
     wrapper.find('.kd-date-picker-month-text').at(11).simulate('click')
     wrapper.find('.kd-date-picker-calendar-text').at(30).simulate('click')
     expect(wrapper.find('input').props().value).toBe('2020-12-29')
+  })
+})
+
+describe('date-picker locale format', () => {
+  beforeEach(() => {
+    MockDate.set(moment('2026-07-13 00:00:00').valueOf())
+  })
+
+  afterEach(() => {
+    MockDate.reset()
+  })
+
+  const zhLocale: Partial<InnerLocale> = {
+    months: ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月'],
+    monthsShort: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月'],
+  }
+
+  const enLocale: Partial<InnerLocale> = {
+    months: [
+      'January',
+      'February',
+      'March',
+      'April',
+      'May',
+      'June',
+      'July',
+      'August',
+      'September',
+      'October',
+      'November',
+      'December',
+    ],
+    monthsShort: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+  }
+
+  // 21. formatDate with MMMM and locale.months
+  it('formatDate with MMMM uses locale.months', () => {
+    const date = new Date('2026-07-13')
+
+    // 中文全名
+    expect(formatDate(date, 'YYYY年MMMMd日', zhLocale as InnerLocale)).toBe('2026年七月13日')
+    // 英文全名
+    expect(formatDate(date, 'MMMM DD, YYYY', enLocale as InnerLocale)).toBe('July 13, 2026')
+    // 一月
+    expect(formatDate(new Date('2026-01-05'), 'YYYY年MMMMd日', zhLocale as InnerLocale)).toBe('2026年一月5日')
+    // 十二月
+    expect(formatDate(new Date('2026-12-25'), 'MMMM DD', zhLocale as InnerLocale)).toBe('十二月 25')
+  })
+
+  // 22. formatDate with MMM and locale.monthsShort
+  it('formatDate with MMM uses locale.monthsShort', () => {
+    const date = new Date('2026-07-13')
+
+    // 中文缩写
+    expect(formatDate(date, 'YYYY年MMMd日', zhLocale as InnerLocale)).toBe('2026年7月13日')
+    // 英文缩写
+    expect(formatDate(date, 'MMM DD, YYYY', enLocale as InnerLocale)).toBe('Jul 13, 2026')
+    // 三月
+    expect(formatDate(new Date('2026-03-01'), 'MMMd日', zhLocale as InnerLocale)).toBe('3月1日')
+  })
+
+  // 23. formatDate without locale should not affect MMM/MMMM
+  it('formatDate without locale uses date-fns default', () => {
+    const date = new Date('2026-07-13')
+
+    // 不传 locale 时 MMM 输出 date-fns 默认值 (英文)
+    const result = formatDate(date, 'MMM DD, YYYY')
+    expect(result).toBe('Jul 13, 2026')
+  })
+
+  // 24. formatDate with locale but no months field falls through
+  it('formatDate with locale but without months/monthsShort fields', () => {
+    const date = new Date('2026-07-13')
+    const noMonthLocale: Partial<InnerLocale> = { locale: 'zh-CN' } as any
+
+    // 没有 months 字段，MMMM 应该用 date-fns 默认输出
+    const result = formatDate(date, 'MMMM DD, YYYY', noMonthLocale as InnerLocale)
+    expect(result).toBe('July 13, 2026')
+  })
+
+  // 25. parseDate with MMMM and locale.months
+  it('parseDate with MMMM uses locale.months', () => {
+    const result = parseDate('2026年七月13日', 'YYYY年MMMMd日', zhLocale as InnerLocale)
+    expect(result).not.toBeNull()
+    expect(result!.getFullYear()).toBe(2026)
+    expect(result!.getMonth()).toBe(6) // July = index 6
+    expect(result!.getDate()).toBe(13)
+  })
+
+  // 26. parseDate with MMM and locale.monthsShort
+  it('parseDate with MMM uses locale.monthsShort', () => {
+    const result = parseDate('2026年7月13日', 'YYYY年MMMd日', zhLocale as InnerLocale)
+    expect(result).not.toBeNull()
+    expect(result!.getFullYear()).toBe(2026)
+    expect(result!.getMonth()).toBe(6)
+    expect(result!.getDate()).toBe(13)
+  })
+
+  // 27. parseDate with English months
+  it('parseDate with English MMMM', () => {
+    const result = parseDate('July 13, 2026', 'MMMM DD, YYYY', enLocale as InnerLocale)
+    expect(result).not.toBeNull()
+    expect(result!.getFullYear()).toBe(2026)
+    expect(result!.getMonth()).toBe(6)
+    expect(result!.getDate()).toBe(13)
+  })
+
+  // 28. DatePicker component with MMMM format and locale
+  it('DatePicker renders MMMM format with locale.months', () => {
+    const wrapper = mount(
+      <DatePicker value={new Date('2026-07-13')} format="YYYY年MMMMd日" locale={zhLocale as any} open />,
+    )
+    expect(wrapper.find('input').props().value).toBe('2026年七月13日')
+  })
+
+  // 29. DatePicker component with MMM format and locale
+  it('DatePicker renders MMM format with locale.monthsShort', () => {
+    const wrapper = mount(
+      <DatePicker value={new Date('2026-03-05')} format="YYYY年MMMd日" locale={zhLocale as any} open />,
+    )
+    expect(wrapper.find('input').props().value).toBe('2026年3月5日')
+  })
+
+  // 30. onChange callback outputs formatted string with locale
+  it('onChange outputs locale formatted string', () => {
+    const onChange = jest.fn()
+    const wrapper = mount(
+      <DatePicker
+        value={new Date('2026-07-13')}
+        format="YYYY年MMMMd日"
+        locale={zhLocale as any}
+        open
+        onChange={onChange}
+      />,
+    )
+
+    // 点击日期触发 onChange
+    wrapper.find('.kd-date-picker-calendar-text').at(0).simulate('click')
+    expect(onChange).toHaveBeenCalled()
+    const [, dateString] = onChange.mock.calls[0]
+    // 验证 onChange 第二个参数（格式化字符串）包含中文月份
+    expect(dateString).toMatch(/\d{4}年.+月\d+日/)
+  })
+
+  // 31. format without MMM/MMMM is unaffected by locale
+  it('standard format is unaffected by locale months fields', () => {
+    const wrapper = mount(
+      <DatePicker value={new Date('2026-07-13')} format="YYYY-MM-DD" locale={zhLocale as any} open />,
+    )
+    expect(wrapper.find('input').props().value).toBe('2026-07-13')
+  })
+
+  // 32. all 12 months format correctly
+  it('all 12 months format correctly with MMMM', () => {
+    const expectedMonths = [
+      '一月',
+      '二月',
+      '三月',
+      '四月',
+      '五月',
+      '六月',
+      '七月',
+      '八月',
+      '九月',
+      '十月',
+      '十一月',
+      '十二月',
+    ]
+    expectedMonths.forEach((expected, index) => {
+      const date = new Date(2026, index, 15)
+      const result = formatDate(date, 'MMMM', zhLocale as InnerLocale)
+      expect(result).toBe(expected)
+    })
+  })
+
+  // 33. all 12 months parse correctly
+  it('all 12 months parse correctly with MMMM', () => {
+    const monthNames = [
+      '一月',
+      '二月',
+      '三月',
+      '四月',
+      '五月',
+      '六月',
+      '七月',
+      '八月',
+      '九月',
+      '十月',
+      '十一月',
+      '十二月',
+    ]
+    monthNames.forEach((name, index) => {
+      const result = parseDate(`2026年${name}15日`, 'YYYY年MMMMd日', zhLocale as InnerLocale)
+      expect(result).not.toBeNull()
+      expect(result!.getMonth()).toBe(index)
+    })
+  })
+
+  // 34. hover value uses locale format (not English fallback)
+  it('hover value uses locale months', () => {
+    const wrapper = mount(
+      <DatePicker value={new Date('2026-07-13')} format="YYYY年MMMMd日" locale={zhLocale as any} open />,
+    )
+
+    // 模拟鼠标悬浮到日期格子
+    const dateCell = wrapper.find('.kd-date-picker-calendar-text').at(0)
+    dateCell.simulate('mouseEnter')
+    wrapper.update()
+
+    // 悬浮后输入框显示的值不应该包含英文月份名
+    const inputValue = wrapper.find('input').props().value as string
+    expect(inputValue).not.toMatch(
+      /January|February|March|April|May|June|July|August|September|October|November|December/,
+    )
+
+    // 如果有值显示，应该使用中文月份
+    if (inputValue && inputValue !== '') {
+      expect(inputValue).toMatch(/[一二三四五六七八九十]+月/)
+    }
+  })
+
+  // 35. parseDate handles ambiguous month names (十一月 vs 一月)
+  it('parseDate correctly matches longer month names first', () => {
+    // "十一月" should not be confused with "一月"
+    const result11 = parseDate('2026年十一月15日', 'YYYY年MMMMd日', zhLocale as InnerLocale)
+    expect(result11).not.toBeNull()
+    expect(result11!.getMonth()).toBe(10) // November = index 10
+
+    // "十二月" should not be confused with "二月"
+    const result12 = parseDate('2026年十二月25日', 'YYYY年MMMMd日', zhLocale as InnerLocale)
+    expect(result12).not.toBeNull()
+    expect(result12!.getMonth()).toBe(11) // December = index 11
+
+    // "一月" should still work correctly
+    const result1 = parseDate('2026年一月1日', 'YYYY年MMMMd日', zhLocale as InnerLocale)
+    expect(result1).not.toBeNull()
+    expect(result1!.getMonth()).toBe(0) // January = index 0
+  })
+
+  // 36. formatDate escapes single quotes in month names
+  it('formatDate handles month names with special characters', () => {
+    const specialLocale: Partial<InnerLocale> = {
+      months: [
+        "Jan'uary",
+        'February',
+        'March',
+        'April',
+        'May',
+        'June',
+        'July',
+        'August',
+        'September',
+        'October',
+        'November',
+        'December',
+      ],
+    }
+    const date = new Date('2026-01-15')
+    // Should not throw
+    const result = formatDate(date, 'MMMM DD, YYYY', specialLocale as InnerLocale)
+    expect(result).not.toBeNull()
+    expect(result).toContain("Jan'uary")
+  })
+
+  // 37. mergeDateLocale discards incomplete months array
+  it('incomplete months array from merge does not cause issues', () => {
+    // If only partial months provided and global has none, should not break
+    const wrapper = mount(
+      <DatePicker
+        value={new Date('2026-07-13')}
+        format="YYYY年MMMMd日"
+        locale={{ months: ['一月', '二月', '三月'] } as any}
+        open
+      />,
+    )
+    // Should not crash, input should show something (either date-fns default or fallback)
+    expect(wrapper.find('input').props().value).toBeTruthy()
   })
 })

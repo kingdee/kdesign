@@ -122,6 +122,21 @@ export const mergeDateLocale = (globalLocale: InnerLocale, locale = {}) => {
     { length: 12 },
     (_, index) => mergeLocale.monthTitle[index] || globalLocale.monthTitle[index],
   ) as MonthTitleType
+  if (mergeLocale.months) {
+    const mergedMonths = Array.from(
+      { length: 12 },
+      (_, index) => mergeLocale.months![index] || globalLocale.months?.[index] || '',
+    ) as MonthTitleType
+    // Only keep months if all 12 entries are non-empty
+    mergeLocale.months = mergedMonths.every((m) => m !== '') ? mergedMonths : undefined
+  }
+  if (mergeLocale.monthsShort) {
+    const mergedMonthsShort = Array.from(
+      { length: 12 },
+      (_, index) => mergeLocale.monthsShort![index] || globalLocale.monthsShort?.[index] || '',
+    ) as MonthTitleType
+    mergeLocale.monthsShort = mergedMonthsShort.every((m) => m !== '') ? mergedMonthsShort : undefined
+  }
   if (mergeLocale?.month && mergeLocale.month !== MONTH_DEFAULT_SUFFIX) {
     mergeLocale.monthTitle = mergeLocale.monthTitle.map((d) =>
       d.toString().replace(MONTH_DEFAULT_SUFFIX, mergeLocale.month),
@@ -267,7 +282,7 @@ const InternalDatePicker = (
     setViewDate(dateValue)
   }, [dateValue])
 
-  const valueText = useValueTexts(selectedValue, { format: _format })
+  const valueText = useValueTexts(selectedValue, { format: _format, locale: datePickerLang })
 
   const [text, triggerTextChange, resetText] = useTextValueMapping({
     valueText,
@@ -276,7 +291,7 @@ const InternalDatePicker = (
         triggerChange(null)
         setViewDate(null)
       } else if (newText && newText.length >= _format.length) {
-        const inputTempDate = parseDate(newText, _format)
+        const inputTempDate = parseDate(newText, _format, datePickerLang)
         if (inputTempDate && (!disabledDate || !disabledDate(inputTempDate))) {
           if (picker !== 'year') {
             triggerChange(inputTempDate)
@@ -292,6 +307,7 @@ const InternalDatePicker = (
 
   const [hoverValue, onEnter, onLeave] = useHoverValue(text, {
     format: _format,
+    locale: datePickerLang,
   })
 
   const [openValue, triggerInnerOpen] = useMergedState(false, {
@@ -356,7 +372,7 @@ const InternalDatePicker = (
     }
 
     if (onChange && !isEqual(dateValue, newValue)) {
-      onChange(newValue, (newValue ? formatDate(newValue, _format) : '') as string)
+      onChange(newValue, (newValue ? formatDate(newValue, _format, datePickerLang) : '') as string)
     }
     setSelectedValue(newValue)
     setDateValue(newValue)

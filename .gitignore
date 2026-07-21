@@ -13,3 +13,46 @@ report.html
 /.history
 .idea
 CHANGELOG.md
+
+# ===================== AI 代码编辑器缓存/会话/索引 统一忽略 =====================
+# Kiro
+.kiro/
+**/.kiro/
+
+# Qoder
+.qoder/
+**/.qoder/
+
+# Codex
+.codex/
+**/.codex/
+
+# Trae
+.trae/
+**/.trae/
+
+# Cursor
+.cursor/
+**/.cursor/
+.cursorignore
+.cursorindexingignore
+
+# 其他主流AI编码工具
+.codeium/
+.windsurf/
+.claude/
+.claudeignore
+.aiignore
+.ai-sessions/
+.ai-cache/
+
+# AI工具密钥、会话数据库、日志
+.env
+.env.*
+**/auth.json
+**/secrets.json
+*.sqlite
+*.sqlite3
+*.db
+*.log
+ai-logs/

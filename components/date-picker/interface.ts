@@ -31,6 +31,8 @@ export interface Locale {
   'DatePicker.month': string
   'DatePicker.weekTitle': WeekTitleType
   'DatePicker.monthTitle': MonthTitleType
+  'DatePicker.months'?: MonthTitleType
+  'DatePicker.monthsShort'?: MonthTitleType
   'DatePicker.rangePlaceholder': [string, string]
   'DatePicker.rangeYearPlaceholder': [string, string]
   'DatePicker.rangeMonthPlaceholder': [string, string]
@@ -55,6 +57,8 @@ export interface InnerLocale {
   month: string
   weekTitle: WeekTitleType
   monthTitle: MonthTitleType
+  months?: MonthTitleType
+  monthsShort?: MonthTitleType
   rangePlaceholder: [string, string]
   rangeYearPlaceholder: [string, string]
   rangeMonthPlaceholder: [string, string]

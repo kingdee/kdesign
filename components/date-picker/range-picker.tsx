@@ -336,16 +336,16 @@ const InternalRangePicker = (
     defaultDates: defaultPickerValue,
   })
 
-  const startValueTexts = useValueTexts(getValue(selectedValue, 0), { format: _format })
+  const startValueTexts = useValueTexts(getValue(selectedValue, 0), { format: _format, locale: datePickerLang })
 
-  const endValueTexts = useValueTexts(getValue(selectedValue, 1), { format: _format })
+  const endValueTexts = useValueTexts(getValue(selectedValue, 1), { format: _format, locale: datePickerLang })
 
   const onTextChange = (newText: string, index: 0 | 1) => {
     let inputTempDate
     if (newText === '') {
       triggerChange(updateValues(selectedValue, null, index), index)
     } else if (newText && newText.length >= _format.length) {
-      inputTempDate = parseDate(newText, _format)
+      inputTempDate = parseDate(newText, _format, datePickerLang)
 
       const disabledFunc = index === 0 ? disabledStartDate : disabledEndDate
       if (inputTempDate && (!disabledFunc || !disabledFunc(inputTempDate))) {
@@ -374,10 +374,12 @@ const InternalRangePicker = (
 
   const [startHoverValue, onStartEnter, onStartLeave] = useHoverValue(startText, {
     format: _format,
+    locale: datePickerLang,
   })
 
   const [endHoverValue, onEndEnter, onEndLeave] = useHoverValue(endText, {
     format: _format,
+    locale: datePickerLang,
   })
 
   const [mergedOpen, triggerInnerOpen] = useMergedState(false, {
@@ -457,8 +459,8 @@ const InternalRangePicker = (
       (!isEqual(getValue(dateValue, 0)!, getValue(values, 0)) || !isEqual(getValue(dateValue, 1)!, getValue(values, 1)))
     ) {
       onChange(values, [
-        values && values[0] ? formatDate(values[0], _format) : '',
-        values && values[1] ? formatDate(values[1], _format) : '',
+        values && values[0] ? formatDate(values[0], _format, datePickerLang) : '',
+        values && values[1] ? formatDate(values[1], _format, datePickerLang) : '',
       ])
     }
   }
@@ -490,8 +492,8 @@ const InternalRangePicker = (
     }
 
     setSelectedValue(values)
-    const startStr = values && values[0] ? formatDate(values[0], _format) : ''
-    const endStr = values && values[1] ? formatDate(values[1], _format) : ''
+    const startStr = values && values[0] ? formatDate(values[0], _format, datePickerLang) : ''
+    const endStr = values && values[1] ? formatDate(values[1], _format, datePickerLang) : ''
 
     if (onCalendarChange) {
       const info: RangeInfo = { range: sourceIndex === 0 ? 'start' : 'end' }

@@ -46,7 +46,7 @@ import toDate from 'date-fns/toDate'
 import parse from 'date-fns/parse'
 import parseISO from 'date-fns/parseISO'
 
-import { DateFormat, DateType } from '../interface'
+import { DateFormat, DateType, InnerLocale } from '../interface'
 
 export const DEFAULT_YEAR_ITEM_NUMBER = 12
 function parseWeek(text: string) {
@@ -97,21 +97,48 @@ export function newDate<DateType extends Date | string | number>(value?: DateTyp
   return isValid(d) ? d : null
 }
 
-export function parseDate(value: string, dateFormat: DateFormat): Date | null {
+export function parseDate(value: string, dateFormat: DateFormat, locale?: InnerLocale): Date | null {
   let parsedDate = null
   const strictParsingValueMatch = true
 
   if (dateFormat.includes('wo')) {
     return parseWeek(value)
   }
-  parsedDate = parse(value, dateFormat, new Date())
+
+  // If locale has months/monthsShort, replace locale month names with numeric values before parsing
+  let normalizedValue = value
+  let normalizedFormat = dateFormat
+  if (locale) {
+    if (dateFormat.includes('MMMM') && locale.months) {
+      // Sort by length descending to match longest first (e.g., "十一月" before "一月")
+      const sortedIndices = locale.months
+        .map((m, i) => ({ name: m, index: i }))
+        .sort((a, b) => b.name.length - a.name.length)
+      const matched = sortedIndices.find(({ name }) => value.includes(name))
+      if (matched) {
+        normalizedValue = normalizedValue.replace(matched.name, String(matched.index + 1).padStart(2, '0'))
+        normalizedFormat = normalizedFormat.replace('MMMM', 'MM')
+      }
+    } else if (dateFormat.includes('MMM') && locale.monthsShort) {
+      const sortedIndices = locale.monthsShort
+        .map((m, i) => ({ name: m, index: i }))
+        .sort((a, b) => b.name.length - a.name.length)
+      const matched = sortedIndices.find(({ name }) => value.includes(name))
+      if (matched) {
+        normalizedValue = normalizedValue.replace(matched.name, String(matched.index + 1).padStart(2, '0'))
+        normalizedFormat = normalizedFormat.replace('MMM', 'MM')
+      }
+    }
+  }
+
+  parsedDate = parse(normalizedValue, localeParse(normalizedFormat), new Date())
   if (!isValid(parsedDate)) {
-    if (value.length > 0) {
-      parsedDate = parse(value, dateFormat.slice(0, value.length), new Date())
+    if (normalizedValue.length > 0) {
+      parsedDate = parse(normalizedValue, localeParse(normalizedFormat).slice(0, normalizedValue.length), new Date())
     }
 
     if (!isValid(parsedDate)) {
-      parsedDate = new Date(value)
+      parsedDate = new Date(normalizedValue)
     }
   }
 
@@ -124,9 +151,27 @@ export function isValid(date: DateType) {
   return isValidDate(date) && isAfter(date, new Date('1/1/1000'))
 }
 
-export function formatDate(date: DateType, _format: DateFormat, _locale?: string) {
+export function formatDate(date: DateType, _format: DateFormat, _locale?: string | InnerLocale) {
   if (!isValid(date)) {
     return null
+  }
+
+  // If locale object is provided and format contains MMM/MMMM, replace with locale month names
+  if (_locale && typeof _locale === 'object') {
+    const monthIndex = getMonth(date)
+    let result = localeParse(_format)
+
+    // Replace MMMM (full month name) first, then MMM (short month name)
+    // Escape single quotes in month names to avoid breaking date-fns literal syntax
+    if (result.includes('MMMM') && _locale.months) {
+      const escaped = _locale.months[monthIndex].replace(/'/g, "''")
+      result = result.replace(/MMMM/g, `'${escaped}'`)
+    } else if (result.includes('MMM') && _locale.monthsShort) {
+      const escaped = _locale.monthsShort[monthIndex].replace(/'/g, "''")
+      result = result.replace(/MMM/g, `'${escaped}'`)
+    }
+
+    return format(date, result)
   }
 
   return format(date, localeParse(_format))
