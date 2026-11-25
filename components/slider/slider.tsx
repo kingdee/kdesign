@@ -41,6 +41,8 @@ const InteranalSlider = (props: ISliderProps, ref: unknown): FunctionComponentEl
   const { getPrefixCls, prefixCls, compDefaultProps: userDefaultProps, direction } = useContext(ConfigContext)
   const rtl = direction === 'rtl'
   const sliderProps = getCompProps('Slider', userDefaultProps, props)
+  const latestPropsRef = useRef(sliderProps)
+  latestPropsRef.current = sliderProps
   const {
     className,
     style,
@@ -147,7 +149,10 @@ const InteranalSlider = (props: ISliderProps, ref: unknown): FunctionComponentEl
   const onEnd = () => {
     removeDocumentEvents()
     if (isDragging.current) {
-      onAfterChange && onAfterChange(valueRef.current)
+      const nextValue = ensureValueInRange(valueRef.current, latestPropsRef.current)!
+      valueRef.current = nextValue
+      setValue(nextValue)
+      latestPropsRef.current.onAfterChange?.(nextValue)
     }
     isDragging.current = false
   }
